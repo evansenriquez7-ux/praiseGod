@@ -1,0 +1,413 @@
+You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  blind-reviewer-haiku45-w2v1-mat_g1_na_q3_4-20261002
+
+Write one JSON object to:
+  local_only/scratch/w2_review/mat_g1_na_q3_4/verdicts.json
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: cognitive_capacity, competency_alignment, competency_fulfillment, comprehensive_coverage, scale_appropriateness, variant_comprehensiveness. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: ambiguity, contextual_logical_validity, learner_facing_clarity, mathematical_validity. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN: cite the sample_ids you EXAMINED and found lacking it (the list may never
+   be empty), and never cite a sample as SUPPORTING a clause it does not support.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{
+  "reviewer": "blind-reviewer-haiku45-w2v1-mat_g1_na_q3_4-20261002",
+  "<node_id>": {
+    "findings": {
+      "competency_fulfillment": {
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}
+      },
+      "<each other required finding>": {"verdict": "...", "rationale": "..."}
+    },
+    "sample_assessments": [
+      {"sample_id": "<opaque id>", "checks": {
+        "<each required sample check>": {"verdict": "...", "reasoning": "..."}
+      }}
+    ],
+    "clause_evidence": [
+      {"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }
+}
+
+== DISPATCH ADDENDUM (binding; read before judging) ==
+
+A. LENGTH. Every `rationale` and every `reasoning` string must be at least 60 characters and specific to
+   the node or sample it describes. Shorter strings are refused by the filing tool.
+
+B. QUOTING. Anything you put inside quotation marks must be a character-for-character substring of text
+   printed in the packet below. No paraphrase, summary, elision ("..."), placeholder, or comma-fragment
+   inside quotes, and never two quoted values joined by a dash. When in doubt, use NO quotation marks at
+   all and describe the text in your own words instead. An unmatched quote is treated as fabricated
+   evidence. The commonest failure: putting your OWN punctuation inside the quotes -- a trailing comma or
+   full stop that belongs to your sentence (write: the word "clock", never: "clock,"). Also never
+   quote a single ordinary word; quote only whole stems, hints or options, or nothing.
+
+C. THEMES. The generator deliberately themes items around a learner's chosen interest (26 curated
+   themes: names, objects, emoji, including religious and cultural themes). Do not judge whether a theme
+   is appropriate. Judge only whether the theming INTERFERES with the mathematics -- for example, a
+   wrapper that names a different object than the task counts, or a theme word that changes the meaning
+   of the question.
+
+D. HINTS. For every sample, compare each hint line against that sample's own stem, answer, options and
+   visual: does every equation in the hints hold, does the hint explain the question actually asked
+   (direction, unit, operation, which position is missing), and does it refer only to things the item
+   actually shows? A hint that contradicts or mis-describes its item is a sample-level defect.
+
+E. CITATIONS AND OVERALL. Every clause_evidence entry cites at least one sample_id; for a clause that
+   FAILs because something is absent, cite the sample_ids you examined. `overall` must follow the rule
+   in item 4 above exactly; the filing tool refuses a reply whose `overall` disagrees with its own
+   verdicts.
+
+F. CHECKLIST before you write (replies failing any of these are refused and sent back):
+   - use NO quotation marks anywhere in your prose; describe stems, hints and options in your own words;
+   - every rationale and every reasoning string is at least 60 characters;
+   - no two samples share a word-for-word reasoning -- name each sample's own numbers, words or visual;
+   - EVERY clause_evidence entry, including PASS ones, has a non-empty sample_ids list;
+   - `overall` follows the rule in item 4 from your own verdicts.
+
+Use only the Read tool on this prompt file and the Write tool for your one JSON reply. Do not open any
+other file.
+
+== BLIND PACKET ==
+
+==========================================================================
+NODE: mat_g1_na_q3_4
+PACKET DIGEST: 2f43983b151ba942dff87a74637d1ef7d5e06491a55f437ee1deb8b4a6c616f1
+COMPETENCY (Grade 1, Quarter 3, None):
+Subtract numbers where both numbers are less than 100 using concrete and pictorial models, without regrouping: 2-digit minus 1-digit numbers, and 2-digit minus 2-digit numbers.
+
+REQUIREMENTS (confirm this is a lossless decomposition of the competency):
+  subtract_numbers: Subtract numbers
+  less_than_100: numbers are less than 100
+  concrete_models: concrete
+  pictorial_models: pictorial models
+  without_regrouping: without regrouping
+  sub_2d_1d: 2-digit minus 1-digit numbers
+  sub_2d_2d: 2-digit minus 2-digit numbers
+
+SAMPLES (every one of these is real rendered output):
+  sample 0609e7bc944f66d7cc62  seed 42  [read_mcq]
+      stem:    🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀 — There are 12 items.
+Taking away 11 items.
+How many items are left?
+      answer:  1
+      options: 12 / 0 / 23 / 1
+      hints:   ["We are subtracting 11 from 12.", "Subtract the ones: 2 − 1 = 1.", "Subtract the tens: 1 − 1 = 0.", "The difference of 12 − 11 = 1."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 26, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀"], "distinct_colours": [], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample e7bbf42e2766eaa2293c  seed 43  [read_mcq]
+      stem:    The dot is at 45 and it moves backward 10 numbers. Starting from 45, just count back 10 numbers. Which number will the dot land on?
+      answer:  35
+      options: 35 / 34 / 55 / 36
+      hints:   ["We are subtracting 10 from 45.", "Subtract the ones: 5 − 0 = 5.", "Subtract the tens: 4 − 1 = 3.", "The difference of 45 − 10 = 35."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 25, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "10", "20", "30", "40", "50", "60"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample a400a55b88948ac80462  seed 44  [read_mcq]
+      stem:    (Large group of 90 cupcakes) — There are 90 cupcakes.
+Taking away 20 cupcakes.
+How many cupcakes are left?
+      answer:  70
+      options: 110 / 90 / 69 / 70
+      hints:   ["We are subtracting 20 from 90.", "Subtract the ones: 0 − 0 = 0.", "Subtract the tens: 9 − 2 = 7.", "The difference of 90 − 20 = 70."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 64, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["🛍️", "10x 🧁", "🛍️", "10x 🧁", "🛍️", "10x 🧁", "🛍️", "10x 🧁", "🛍️", "10x 🧁", "🛍️", "10x 🧁", "🛍️", "10x 🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁"], "distinct_colours": ["hsl(var(--card-bg)", "hsl(var(--border-color)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 548b1b64698469aab4a0  seed 45  [read_mcq]
+      stem:    (Large group of 66 items) — There are 66 items.
+Taking away 30 items.
+How many items are left?
+      answer:  36
+      options: 30 / 96 / 36 / 66
+      hints:   ["We are subtracting 30 from 66.", "Subtract the ones: 6 − 0 = 6.", "Subtract the tens: 6 − 3 = 3.", "The difference of 66 − 30 = 36."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 42, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["🛍️", "10x 💃", "🛍️", "10x 💃", "🛍️", "10x 💃", "💃", "1x 💃", "💃", "1x 💃", "💃", "1x 💃", "💃", "1x 💃", "💃", "1x 💃", "💃", "1x 💃", "🛍️", "10x 💃", "🛍️", "10x 💃", "🛍️", "10x 💃"], "distinct_colours": ["hsl(var(--card-bg)", "hsl(var(--border-color)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample ce6c6dc3698cf6684253  seed 46  [read_mcq]
+      stem:    The dot is at 63 and it moves backward 60 numbers. Starting from 63, just count back 60 numbers. Which number will the dot land on?
+      answer:  3
+      options: 3 / 4 / 2 / 123
+      hints:   ["We are subtracting 60 from 63.", "Subtract the ones: 3 − 0 = 3.", "Subtract the tens: 6 − 6 = 0.", "The difference of 63 − 60 = 3."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 28, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "10", "20", "30", "40", "50", "60", "70"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample c2d95b8c3a5d259f411d  seed 500  [read_mcq]
+      stem:    (Large group of 81 items) — There are 81 items.
+Taking away 80 items.
+How many items are left?
+      answer:  1
+      options: 161 / 1 / 0 / 81
+      hints:   ["We are subtracting 80 from 81.", "Subtract the ones: 1 − 0 = 1.", "Subtract the tens: 8 − 8 = 0.", "The difference of 81 − 80 = 1."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 36, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["🐕", "🛍️", "10x 🐕", "🛍️", "10x 🐕", "🛍️", "10x 🐕", "🛍️", "10x 🐕", "🛍️", "10x 🐕", "🛍️", "10x 🐕", "🛍️", "10x 🐕", "🛍️", "10x 🐕"], "distinct_colours": ["hsl(var(--card-bg)", "hsl(var(--border-color)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 66459ffc8104a03689e4  seed 501  [read_mcq]
+      stem:    (Large group of 91 items) — There are 91 items.
+Taking away 71 items.
+How many items are left?
+      answer:  20
+      options: 20 / 91 / 21 / 162
+      hints:   ["We are subtracting 71 from 91.", "Subtract the ones: 1 − 1 = 0.", "Subtract the tens: 9 − 7 = 2.", "The difference of 91 − 71 = 20."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 55, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃", "🛍️", "10x 💃", "🛍️", "10x 💃", "🛍️", "10x 💃", "🛍️", "10x 💃", "🛍️", "10x 💃", "🛍️", "10x 💃", "🛍️", "10x 💃", "💃", "1x 💃"], "distinct_colours": ["hsl(var(--card-bg)", "hsl(var(--border-color)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 0f13ab9a2895344f2380  seed 502  [read_mcq]
+      stem:    (Large group of 69 paints) — There are 69 paints.
+Taking away 7 paints.
+How many paints are left?
+      answer:  62
+      options: 63 / 62 / 69 / 61
+      hints:   ["We are subtracting 7 from 69.", "Subtract the ones: 9 − 7 = 2.", "Subtract the tens: 6 − 0 = 6.", "The difference of 69 − 7 = 62."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 41, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["🛍️", "10x 🎨", "🛍️", "10x 🎨", "🛍️", "10x 🎨", "🛍️", "10x 🎨", "🛍️", "10x 🎨", "🛍️", "10x 🎨", "🎨", "1x 🎨", "🎨", "1x 🎨", "🎨", "🎨", "🎨", "🎨", "🎨", "🎨", "🎨"], "distinct_colours": ["hsl(var(--card-bg)", "hsl(var(--border-color)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 6aea8d7e39b171eedbeb  seed 600  [read_mcq]
+      stem:    (Large group of 50 items) — There are 50 items.
+Taking away 50 items.
+How many items are left?
+      answer:  0
+      options: 100 / 0 / 50 / 1
+      hints:   ["We are subtracting 50 from 50.", "Subtract the ones: 0 − 0 = 0.", "Subtract the tens: 5 − 5 = 0.", "The difference of 50 − 50 = 0."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 23, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["🛍️", "10x 💃", "🛍️", "10x 💃", "🛍️", "10x 💃", "🛍️", "10x 💃", "🛍️", "10x 💃"], "distinct_colours": ["hsl(var(--card-bg)", "hsl(var(--border-color)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 1b416e823866922a9afc  seed 601  [read_mcq]
+      stem:    🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴 — There are 13 items.
+Taking away 10 items.
+How many items are left?
+      answer:  3
+      options: 23 / 4 / 3 / 10
+      hints:   ["We are subtracting 10 from 13.", "Subtract the ones: 3 − 0 = 3.", "Subtract the tens: 1 − 1 = 0.", "The difference of 13 − 10 = 3."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 26, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["🚴", "🚴", "🚴", "🚴", "🚴", "🚴", "🚴", "🚴", "🚴", "🚴", "🚴", "🚴", "🚴"], "distinct_colours": [], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 92b2e98f6c8e8b987d13  seed 602  [read_mcq]
+      stem:    (Large group of 33 cupcakes) — There are 33 cupcakes.
+Taking away 10 cupcakes.
+How many cupcakes are left?
+      answer:  23
+      options: 33 / 22 / 23 / 10
+      hints:   ["We are subtracting 10 from 33.", "Subtract the ones: 3 − 0 = 3.", "Subtract the tens: 3 − 1 = 2.", "The difference of 33 − 10 = 23."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 38, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["🛍️", "10x 🧁", "🛍️", "10x 🧁", "🧁", "1x 🧁", "🧁", "1x 🧁", "🧁", "1x 🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁"], "distinct_colours": ["hsl(var(--card-bg)", "hsl(var(--border-color)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 98597d047a82582dbcbb  seed 603  [read_mcq]
+      stem:    The dot is at 48 and it moves backward 30 numbers. Starting from 48, just count back 30 numbers. Which number will the dot land on?
+      answer:  18
+      options: 18 / 17 / 19 / 78
+      hints:   ["We are subtracting 30 from 48.", "Subtract the ones: 8 − 0 = 8.", "Subtract the tens: 4 − 3 = 1.", "The difference of 48 − 30 = 18."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 25, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "10", "20", "30", "40", "50", "60"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 695e11625d20d8a84207  seed 604  [read_mcq]
+      stem:    (Large group of 35 items) — There are 35 items.
+Taking away 15 items.
+How many items are left?
+      answer:  20
+      options: 20 / 15 / 35 / 21
+      hints:   ["We are subtracting 15 from 35.", "Subtract the ones: 5 − 5 = 0.", "Subtract the tens: 3 − 1 = 2.", "The difference of 35 − 15 = 20."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 53, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀"], "distinct_colours": [], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample f02d93554e9322a259e8  seed 605  [read_mcq]
+      stem:    The dot is at 70 and it moves backward 40 numbers. Starting from 70, just count back 40 numbers. Which number will the dot land on?
+      answer:  30
+      options: 30 / 29 / 31 / 110
+      hints:   ["We are subtracting 40 from 70.", "Subtract the ones: 0 − 0 = 0.", "Subtract the tens: 7 − 4 = 3.", "The difference of 70 − 40 = 30."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 25, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["20", "30", "40", "50", "60", "70", "80"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 0f3347450a75eda5c16c  seed 606  [read_mcq]
+      stem:    The dot is at 54 and it moves backward 30 numbers. Starting from 54, just count back 30 numbers. Which number will the dot land on?
+      answer:  24
+      options: 25 / 84 / 23 / 24
+      hints:   ["We are subtracting 30 from 54.", "Subtract the ones: 4 − 0 = 4.", "Subtract the tens: 5 − 3 = 2.", "The difference of 54 − 30 = 24."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 22, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["10", "20", "30", "40", "50", "60"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 8c2334b5162f6c38e876  seed 607  [read_mcq]
+      stem:    🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀 — There are 20 items.
+Taking away 20 items.
+How many items are left?
+      answer:  0
+      options: 20 / 1 / 40 / 0
+      hints:   ["We are subtracting 20 from 20.", "Subtract the ones: 0 − 0 = 0.", "Subtract the tens: 2 − 2 = 0.", "The difference of 20 − 20 = 0."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 43, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀"], "distinct_colours": [], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 1b9947c6b65db916e2b2  seed 608  [read_mcq]
+      stem:    (Large group of 35 items) — There are 35 items.
+Taking away 30 items.
+How many items are left?
+      answer:  5
+      options: 35 / 5 / 4 / 65
+      hints:   ["We are subtracting 30 from 35.", "Subtract the ones: 5 − 0 = 5.", "Subtract the tens: 3 − 3 = 0.", "The difference of 35 − 30 = 5."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 20, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["🏐", "🏐", "🏐", "🏐", "🏐", "🛍️", "10x 🏐", "🛍️", "10x 🏐", "🛍️", "10x 🏐"], "distinct_colours": ["hsl(var(--card-bg)", "hsl(var(--border-color)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 114f53800c100ca8f3d3  seed 609  [read_mcq]
+      stem:    💃💃💃💃💃💃💃💃💃💃💃💃💃💃 — There are 14 items.
+Taking away 1 item.
+How many items are left?
+      answer:  13
+      options: 1 / 14 / 13 / 15
+      hints:   ["We are subtracting 1 from 14.", "Subtract the ones: 4 − 1 = 3.", "Subtract the tens: 1 − 0 = 1.", "The difference of 14 − 1 = 13."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 18, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃"], "distinct_colours": [], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 510bed76cb0a15ae05aa  seed 610  [read_mcq]
+      stem:    (Large group of 65 items) — There are 65 items.
+Taking away 30 items.
+How many items are left?
+      answer:  35
+      options: 30 / 35 / 34 / 65
+      hints:   ["We are subtracting 30 from 65.", "Subtract the ones: 5 − 0 = 5.", "Subtract the tens: 6 − 3 = 3.", "The difference of 65 − 30 = 35."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 39, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["🛍️", "10x 🐕", "🛍️", "10x 🐕", "🛍️", "10x 🐕", "🐕", "1x 🐕", "🐕", "1x 🐕", "🐕", "1x 🐕", "🐕", "1x 🐕", "🐕", "1x 🐕", "🛍️", "10x 🐕", "🛍️", "10x 🐕", "🛍️", "10x 🐕"], "distinct_colours": ["hsl(var(--card-bg)", "hsl(var(--border-color)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 6c3922d7cc985bbe38c3  seed 700  [read_mcq]
+      stem:    (Large group of 34 items) — There are 34 items.
+Taking away 30 items.
+How many items are left?
+      answer:  4
+      options: 64 / 3 / 30 / 4
+      hints:   ["We are subtracting 30 from 34.", "Subtract the ones: 4 − 0 = 4.", "Subtract the tens: 3 − 3 = 0.", "The difference of 34 − 30 = 4."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 19, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["🏐", "🏐", "🏐", "🏐", "🛍️", "10x 🏐", "🛍️", "10x 🏐", "🛍️", "10x 🏐"], "distinct_colours": ["hsl(var(--card-bg)", "hsl(var(--border-color)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 2fbdd14f419e360e3924  seed 701  [read_mcq]
+      stem:    💃 Sir Rez enjoys dance shoes. Here is a math challenge. (Large group of 81 items) — There are 81 items.
+Taking away 30 items.
+How many items are left?
+      answer:  51
+      options: 52 / 51 / 50 / 81
+      hints:   ["We are subtracting 30 from 81.", "Subtract the ones: 1 − 0 = 1.", "Subtract the tens: 8 − 3 = 5.", "The difference of 81 − 30 = 51."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 33, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["🛍️", "10x 💃", "🛍️", "10x 💃", "🛍️", "10x 💃", "🛍️", "10x 💃", "🛍️", "10x 💃", "💃", "1x 💃", "🛍️", "10x 💃", "🛍️", "10x 💃", "🛍️", "10x 💃"], "distinct_colours": ["hsl(var(--card-bg)", "hsl(var(--border-color)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 85c01bd0209ccf4cb2fe  seed 702  [read_mcq]
+      stem:    💃 Ate Gab enjoys costumes. Here is a math challenge. (Large group of 22 items) — There are 22 items.
+Taking away 20 items.
+How many items are left?
+      answer:  2
+      options: 2 / 20 / 3 / 22
+      hints:   ["We are subtracting 20 from 22.", "Subtract the ones: 2 − 0 = 2.", "Subtract the tens: 2 − 2 = 0.", "The difference of 22 − 20 = 2."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 45, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃"], "distinct_colours": [], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 99b72c76b36ac364b342  seed 800  [read_mcq]
+      stem:    (Large group of 81 items) — There are 81 items.
+Taking away 80 items.
+How many items are left?
+      answer:  1
+      options: 161 / 2 / 0 / 1
+      hints:   ["We are subtracting 80 from 81.", "Subtract the ones: 1 − 0 = 1.", "Subtract the tens: 8 − 8 = 0.", "The difference of 81 − 80 = 1."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 36, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["🐕", "🛍️", "10x 🐕", "🛍️", "10x 🐕", "🛍️", "10x 🐕", "🛍️", "10x 🐕", "🛍️", "10x 🐕", "🛍️", "10x 🐕", "🛍️", "10x 🐕", "🛍️", "10x 🐕"], "distinct_colours": ["hsl(var(--card-bg)", "hsl(var(--border-color)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 90361ff4b05d281d176e  seed 900  [read_mcq]
+      stem:    The dot is at 27 and it moves backward 22 numbers. Starting from 27, just count back 22 numbers. Which number will the dot land on?
+      answer:  5
+      options: 49 / 4 / 6 / 5
+      hints:   ["We are subtracting 22 from 27.", "Subtract the ones: 7 − 2 = 5.", "Subtract the tens: 2 − 2 = 0.", "The difference of 27 − 22 = 5."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 19, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "10", "20", "30", "40"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 0fb00af1b9fa43762049  seed 901  [read_mcq]
+      stem:    (Large group of 25 cupcakes) — There are 25 cupcakes.
+Taking away 14 cupcakes.
+How many cupcakes are left?
+      answer:  11
+      options: 11 / 25 / 14 / 12
+      hints:   ["We are subtracting 14 from 25.", "Subtract the ones: 5 − 4 = 1.", "Subtract the tens: 2 − 1 = 1.", "The difference of 25 − 14 = 11."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 42, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁"], "distinct_colours": [], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 8b4f5c530b77e91af920  seed 1000  [read_mcq]
+      stem:    🧁🧁🧁🧁🧁🧁🧁🧁🧁🧁🧁🧁🧁🧁🧁🧁🧁🧁 — There are 18 cupcakes.
+Taking away 10 cupcakes.
+How many cupcakes are left?
+      answer:  8
+      options: 8 / 7 / 9 / 28
+      hints:   ["We are subtracting 10 from 18.", "Subtract the ones: 8 − 0 = 8.", "Subtract the tens: 1 − 1 = 0.", "The difference of 18 − 10 = 8."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "hint_gated"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 31, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁"], "distinct_colours": [], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 18fd51919e53e5edabf6  seed 1001  [read_mcq]
+      stem:    (Large group of 35 items) — There are 35 items.
+Taking away 10 items.
+How many items are left?
+      answer:  25
+      options: 25 / 45 / 26 / 10
+      hints:   ["We are subtracting 10 from 35.", "Subtract the ones: 5 − 0 = 5.", "Subtract the tens: 3 − 1 = 2.", "The difference of 35 − 10 = 25."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "mastery_drill"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 44, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["🛍️", "10x ✝️", "🛍️", "10x ✝️", "✝️", "1x ✝️", "✝️", "1x ✝️", "✝️", "1x ✝️", "✝️", "1x ✝️", "✝️", "1x ✝️", "✝️", "✝️", "✝️", "✝️", "✝️", "✝️", "✝️", "✝️", "✝️", "✝️"], "distinct_colours": ["hsl(var(--card-bg)", "hsl(var(--border-color)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample c4be93a2df3af479479b  seed 1002  [read_mcq]
+      stem:    (Large group of 37 cupcakes) — There are 37 cupcakes.
+Taking away 30 cupcakes.
+How many cupcakes are left?
+      answer:  7
+      options: 8 / 7 / 6 / 67
+      hints:   ["We are subtracting 30 from 37.", "Subtract the ones: 7 − 0 = 7.", "Subtract the tens: 3 − 3 = 0.", "The difference of 37 − 30 = 7."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "scaffolded"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 22, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🛍️", "10x 🧁", "🛍️", "10x 🧁", "🛍️", "10x 🧁"], "distinct_colours": ["hsl(var(--card-bg)", "hsl(var(--border-color)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+

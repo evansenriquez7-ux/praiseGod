@@ -1,0 +1,754 @@
+{
+  "reviewer": "blind-reviewer-haiku45-w2x2-mat_g2_na_q2_6-20261003",
+  "mat_g2_na_q2_6": {
+    "findings": {
+      "cognitive_capacity": {
+        "verdict": "PASS",
+        "rationale": "Sample variety spans single-digit, two-digit, and three-digit subtractions with appropriate difficulty progression for second grade, using contexts like number lines, number bonds, and word problems that align with learner capacity at this level."
+      },
+      "competency_alignment": {
+        "verdict": "CONCERN",
+        "rationale": "Most samples directly address subtraction of numbers below 1000, but sample 171ea3d13a2ee59e9603 presents a reverse format where the minuend is unknown, converting the task into addition rather than subtraction, which misaligns with the stated competency."
+      },
+      "competency_fulfillment": {
+        "verdict": "CONCERN",
+        "rationale": "The sampled items demonstrate subtraction with and without regrouping across the specified range, though the reverse-format error detection item diverts from pure subtraction practice into equation-solving requiring inverse operation understanding.",
+        "decomposition": {
+          "verdict": "CONCERN",
+          "reasoning": "Requirements decompose the competency correctly into three components: subtract numbers, keep both below 1000, and include regrouping scenarios. However, sample 171ea3d13a2ee59e9603 involves finding a missing minuend rather than subtracting given numbers, which extends beyond standard subtraction practice and arguably requires addition reasoning."
+        }
+      },
+      "comprehensive_coverage": {
+        "verdict": "PASS",
+        "rationale": "Samples demonstrate coverage across multiple formats: cloze, multiple choice, read multiple choice, read fill-in-blank, error detection, and true-false. Examples include cases requiring regrouping in ones place, tens place, and multiple places, plus cases without any regrouping needed."
+      },
+      "scale_appropriateness": {
+        "verdict": "PASS",
+        "rationale": "All 33 samples use numbers appropriately scaled for grade 2, ranging from single-digit subtractions like 1-1 up to three-digit subtractions like 930-408, with minuends and subtrahends consistently remaining below 1000 as required."
+      },
+      "variant_comprehensiveness": {
+        "verdict": "PASS",
+        "rationale": "Samples effectively demonstrate variant breadth through multiple contexts including pure number problems, number line scenarios, number bond decompositions, error analysis tasks, and contextual word problems, supporting varied learner engagement while maintaining mathematical focus."
+      }
+    },
+    "sample_assessments": [
+      {
+        "sample_id": "82a25b5c1e771c807a8b",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Stem clearly asks for the missing value in 510 minus 382, with four distinct numerical options where only 128 is mathematically correct, making the expected response unambiguous."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Pure arithmetic format with no contextual wrapper, so contextual logic does not apply; the mathematical context of subtracting 382 from 510 is valid and pedagogically sound."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The cloze format with blank clearly indicates where the answer belongs, and hints progressively explain the regrouping process step-by-step from ones through the final result."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Arithmetic is correct: 510 minus 382 equals 128, and hints accurately describe regrouping in the ones place before subtracting tens and hundreds digits."
+          }
+        }
+      },
+      {
+        "sample_id": "48f30a5c41489b162d2e",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Question directly asks what 11 minus 0 equals, with four options, only one of which (11) is correct, leaving no room for misinterpretation about the required calculation."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "No contextual narrative here; the pure arithmetic scenario of subtracting zero from a two-digit number is logically straightforward and pedagogically appropriate."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Multiple choice format presents options clearly, and hints explain that subtracting zero yields the starting number unchanged, supporting conceptual understanding."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Mathematically sound: 11 minus 0 correctly equals 11, and hints accurately trace the digit-by-digit subtraction showing ones and tens both remain unchanged."
+          }
+        }
+      },
+      {
+        "sample_id": "197e3f84f16b4e11b6f2",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Narrative clearly establishes that the dot starts at 244 and moves backward 150 positions, with multiple choice format and distinct options where 94 is the unique correct answer."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Number line context makes logical sense: moving backward on a number line corresponds to subtraction, and the question directly translates the contextual action into the appropriate arithmetic operation."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Number line visual and clear directional language about backward movement help learners visualize the subtraction, with options provided as clear alternatives."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Subtraction is correct: 244 minus 150 equals 94, and hints properly show regrouping in the ones place before completing the tens and hundreds subtractions."
+          }
+        }
+      },
+      {
+        "sample_id": "d066ec2090055bd3caf6",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Number bond context clearly shows a total of 30 with one part being 29, directly prompting for the other part, which unambiguously requires subtracting 29 from 30."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Number bond representation logically connects the part-whole relationship, and finding a missing part by subtraction is valid within this compositional context."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Number bond visual clearly labels the total and one known part, with the input field positioned to elicit the missing part, and hints explain the regrouping step needed."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Computation is accurate: 30 minus 29 equals 1, and hints correctly describe regrouping 1 ten as 10 ones in the ones column before subtracting."
+          }
+        }
+      },
+      {
+        "sample_id": "c4bc055c16a1ea30bb79",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Number bond shows total of 71 and one part of 60, unambiguously requiring the learner to determine the missing part through subtraction."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Part-whole relationship in the number bond context makes logical sense for finding a missing component through subtraction."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Visual and textual presentation clearly establish the total and known part, with the input location indicating where the missing part should be entered."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Arithmetic is correct: 71 minus 60 equals 11, and hints accurately show digit-by-digit subtraction without requiring regrouping in this case."
+          }
+        }
+      },
+      {
+        "sample_id": "ca6de2275736182037d8",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Error detection format clearly asks whether Noel's stated answer of 39 is correct for 120 minus 81, establishing an unambiguous judgment task."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Named error detector scenario creates logical validity: learners evaluate a peers calculation and verify its correctness, a sound pedagogical structure."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Format presents the problem, the claimed answer, and the verification question clearly, with hints supporting the learner to check the computation independently."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Calculation is correct: 120 minus 81 equals 39, and hints accurately show regrouping in the ones position before completing tens and hundreds subtraction."
+          }
+        }
+      },
+      {
+        "sample_id": "cccfe9aaff67c7c5e088",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "True-false format presents a specific equation with two clear options, 300 minus 204 equals 96 being verifiable as true."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Verification task is logically sound: learners must determine whether the stated arithmetic relationship holds."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Equation is presented clearly as a true-or-false statement, with hints supporting verification through step-by-step computation."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The statement is mathematically true: 300 minus 204 equals 96, though hint notation for tens subtraction using negative intermediate values may be unconventional."
+          }
+        }
+      },
+      {
+        "sample_id": "6dc93c7b7cdbd779fe1c",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Number line context with clear backward movement instruction establishes that 591 minus 487 is required, with four distinct options and one correct answer."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Number line representation logically supports backward movement as subtraction, and the scalar positioning makes the operation context clear."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Directional language about backward movement and the visual representation support learner understanding, with options presented as clear alternatives."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Subtraction is correct: 591 minus 487 equals 104, and hints accurately show regrouping requirements across ones and tens positions."
+          }
+        }
+      },
+      {
+        "sample_id": "e1a93645c141a2502754",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "True-false statement presents 921 minus 838 equals 1759, with learners needing to verify whether this is accurate."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Verification format is logically sound for checking whether an arithmetic statement is true or false."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Equation and true-false options are presented clearly, with hints showing the correct computation that reveals the statement as false."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Assessment correctly identifies that 921 minus 838 equals 83, not 1759, making the original statement false as expected."
+          }
+        }
+      },
+      {
+        "sample_id": "d1a8061bff2d9dcb3a5a",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Error detection format asks whether Dante correctly computed that 823 minus 659 equals 164, with evaluation question clearly stated."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Peer-checking scenario creates valid context: learners verify another person's calculation work."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Problem, claimed answer, and verification question are all clearly presented, with hints supporting independent verification."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Calculation is mathematically correct: 823 minus 659 equals 164, and hints accurately trace regrouping across ones and tens positions."
+          }
+        }
+      },
+      {
+        "sample_id": "b98e56e031625aa5eda0",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Multiple choice question directly asks for the result of 930 minus 408, with four distinct options where 522 is uniquely correct."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Pure arithmetic format requires no contextual validation beyond the mathematical correctness of the operation."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Question states the subtraction clearly, and four options are presented as distinct alternatives for selection."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Subtraction is mathematically sound: 930 minus 408 equals 522, and hints correctly show regrouping in the ones place before subtracting tens."
+          }
+        }
+      },
+      {
+        "sample_id": "374d13fe3a26fed1bed0",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Cloze format with contextual wrapper clearly establishes that 765 baskets minus 110 baskets removed yields the number of remaining baskets."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Context of removing items from a collection logically supports the subtraction operation needed to find remainder."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Scenario describes the action clearly, and the blank position indicates where the numerical answer belongs."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Computation is correct: 765 minus 110 equals 655, and hints show straightforward digit-by-digit subtraction without requiring regrouping."
+          }
+        }
+      },
+      {
+        "sample_id": "f70b15f1ff17c062e333",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Error detection asks whether Jose correctly found that 270 minus 247 equals 23, providing clear context for evaluation."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Verification scenario logically requires checking another person's arithmetic work against the correct computation."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Problem, stated answer, and yes-no question are all clearly expressed, with hints supporting verification work."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Calculation is correct: 270 minus 247 equals 23, and hints accurately show regrouping in the ones column before subtracting tens."
+          }
+        }
+      },
+      {
+        "sample_id": "26622d9698924a324253",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Number line context with backward movement instruction clearly indicates that 1 minus 1 must be computed, with options provided distinctly."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Number line backward movement logically represents subtraction, and the positioning makes the operation intent clear."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Visual and narrative clearly convey backward counting from 1 by 1 position, with options presented as distinct choices."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Subtraction is correct: 1 minus 1 equals 0, and hints accurately describe the computation without requiring regrouping."
+          }
+        }
+      },
+      {
+        "sample_id": "e0af1dc8655616c59593",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Error detection asks whether Carlo correctly determined that 416 minus 0 equals 416, establishing clear evaluation criteria."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Peer-verification scenario is logically sound for checking a subtraction computation."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Problem, claimed answer, and verification question are all clearly stated, with hints supporting independent checking."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Computation is mathematically correct: 416 minus 0 equals 416, and hints accurately trace that subtracting zero leaves each digit unchanged."
+          }
+        }
+      },
+      {
+        "sample_id": "1edfb65f62c5096c90d7",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Number line context establishes backward movement of 15 positions from 28, with four distinct options and one unique correct answer."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Number line representation logically supports the interpretation that backward movement corresponds to subtraction."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Directional language and visual context make the counting-backward operation clear, with options presented distinctly."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Subtraction is correct: 28 minus 15 equals 13, and hints show digit-by-digit subtraction without requiring regrouping."
+          }
+        }
+      },
+      {
+        "sample_id": "647864934c056f5cb5a9",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Multiple choice directly asks for 25 minus 0, with four distinct options where 25 is the unique correct response."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Pure arithmetic requires no contextual validation; the operation of subtracting zero is straightforward."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Question states the subtraction clearly, and options are presented as distinct numerical alternatives."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Mathematics is sound: 25 minus 0 equals 25, and hints correctly show that subtracting zero from each digit leaves it unchanged."
+          }
+        }
+      },
+      {
+        "sample_id": "12325444fd8a23db423b",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Cloze format clearly indicates that 390 minus 203 must be computed, with four distinct options."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Pure arithmetic format requires no contextual evaluation; the subtraction operation is mathematically straightforward."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Subtraction is presented clearly with the blank indicating the answer location, and hints explain regrouping step-by-step."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Computation is correct: 390 minus 203 equals 187, and hints accurately show regrouping in the ones position before completing tens and hundreds."
+          }
+        }
+      },
+      {
+        "sample_id": "99d8b12fe4fb30bc1102",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "True-false statement presents 930 minus 54 equals 876, clearly requiring verification of the mathematical claim."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Verification task is logically sound for evaluating whether the arithmetic relationship is accurate."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Equation is presented clearly, and true-false options provide unambiguous response choices."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Calculation is mathematically correct: 930 minus 54 equals 876, and hints accurately trace regrouping across the ones and tens positions."
+          }
+        }
+      },
+      {
+        "sample_id": "3fc01856b6b7925da53e",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Cloze format clearly requires computing 101 minus 12, with four distinct options and one correct answer."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Pure arithmetic presents no contextual complications; the subtraction is the direct focus."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Subtraction is presented clearly with blank indicator, and hints explain the regrouping process from the tens into the ones position."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Arithmetic is correct: 101 minus 12 equals 89, and hints accurately show regrouping the tens digit to enable ones subtraction."
+          }
+        }
+      },
+      {
+        "sample_id": "9e6c7b42c43a2af0e403",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Number bond format clearly establishes a total of 237 with one known part of 60, unambiguously requiring the missing part through subtraction."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Part-whole decomposition in the number bond context makes logical sense for determining an unknown component."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Number bond visual clearly labels components, and the input location indicates where the answer should be placed."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Computation is correct: 237 minus 60 equals 177, and hints show regrouping requirements across the tens position to complete the operation."
+          }
+        }
+      },
+      {
+        "sample_id": "4cbbe437aeaee670f514",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "True-false statement presents 300 minus 54 equals 246, requiring clear verification of the mathematical claim."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Verification task is logically sound for determining whether the subtraction result is accurate."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Equation is presented clearly with unambiguous true-false response options."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Calculation is mathematically correct: 300 minus 54 equals 246, and hints accurately show regrouping from tens before completing the operation."
+          }
+        }
+      },
+      {
+        "sample_id": "54478697c83430039987",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Error detection asks whether Noel correctly identified 20 minus 10 as 30, with clear yes-no evaluation structure."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Peer-checking scenario logically requires verifying another person's computation against the correct answer."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Problem and claimed answer are stated clearly, with hints supporting independent verification of the correct result."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Correctly identifies Noel's answer of 30 as wrong for 20 minus 10; the correct answer is 10, and hints accurately show this computation."
+          }
+        }
+      },
+      {
+        "sample_id": "171ea3d13a2ee59e9603",
+        "checks": {
+          "ambiguity": {
+            "verdict": "CONCERN",
+            "reasoning": "Error detection stems from solving ___ minus 234 equals 636, which requires finding the missing minuend through addition reasoning rather than direct subtraction, making the required cognitive operation distinct from the stated competency."
+          },
+          "contextual_logical_validity": {
+            "verdict": "CONCERN",
+            "reasoning": "While formatted as error detection, the underlying task structure inverts typical subtraction: learners must find what number minus 234 yields 636, requiring addition rather than subtraction of given numbers."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Format clearly asks to verify Maria's claim, with hints supporting evaluation."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Mathematically, 870 minus 234 does equal 636, and hints trace this calculation correctly."
+          }
+        }
+      },
+      {
+        "sample_id": "37dfe5a5013064689eeb",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Error detection format asks whether Carlo correctly determined that 3 minus 0 equals 3, with clear evaluation question."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Peer-verification scenario is logically appropriate for checking a simple subtraction computation."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Problem and claimed answer are stated clearly, with hints supporting verification."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Computation is correct: 3 minus 0 equals 3, and hints show that subtracting zero leaves the number unchanged."
+          }
+        }
+      },
+      {
+        "sample_id": "3135fe9db01d97beb322",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Number bond context clearly establishes a total of 600 with one part being 421, requiring the missing part through subtraction."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Part-whole relationship in number bond makes logical sense, and the interest theme does not interfere with the mathematical operation."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Visual clearly shows the part-whole structure, and hints support finding the missing component."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Computation is correct: 600 minus 421 equals 179, and hints accurately show regrouping from tens and hundreds positions."
+          }
+        }
+      },
+      {
+        "sample_id": "5f3cc2910c1876be36a7",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Error detection asks whether Manny correctly computed 990 minus 380 as 609, with clear yes-no evaluation structure."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Peer-checking context is logically appropriate, and the interest theme does not interfere with the mathematical task."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Problem and claimed answer are clearly presented, with hints supporting verification."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Correctly identifies Manny's answer of 609 as wrong; the correct computation is 990 minus 380 equals 610, traced accurately in hints."
+          }
+        }
+      },
+      {
+        "sample_id": "f62988727fe24dfd2a59",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Number line context with backward movement instruction clearly establishes that 674 minus 79 must be computed."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Number line backward movement logically represents subtraction, and the directional instruction is clear."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Visual and narrative make the backward counting operation clear, with options presented distinctly."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Subtraction is correct: 674 minus 79 equals 595, and hints accurately show regrouping across ones and tens positions."
+          }
+        }
+      },
+      {
+        "sample_id": "516317b58754a4686e3e",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Multiple choice directly asks for 275 minus 98, with four distinct options where only 177 is correct."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Pure arithmetic requires no contextual evaluation; the subtraction operation is straightforward."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Question clearly states the subtraction, and options are presented as distinct choices."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Arithmetic is correct: 275 minus 98 equals 177, and hints accurately show regrouping requirements across ones and tens."
+          }
+        }
+      },
+      {
+        "sample_id": "accbf01f681630f47eba",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "True-false statement presents 75 minus 57 equals 132, requiring verification of the mathematical claim."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Verification task is logically sound for evaluating the accuracy of the subtraction statement."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Equation is clearly presented with unambiguous true-false response options."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Correctly identifies the statement as false; 75 minus 57 equals 18, not 132, and hints accurately show the correct computation."
+          }
+        }
+      },
+      {
+        "sample_id": "4452988deed4135f4b86",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "True-false statement presents 750 minus 245 equals 505, requiring straightforward verification."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Verification task is logically appropriate for checking whether the subtraction relationship holds."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Equation is presented clearly with distinct true-false options."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Calculation is correct: 750 minus 245 equals 505, and hints accurately show regrouping across tens and hundreds positions."
+          }
+        }
+      },
+      {
+        "sample_id": "e622b5b59b010129b0d2",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Error detection asks whether Liza correctly claimed that 1 minus 1 equals 1, with clear evaluation structure."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Peer-checking context is logically sound for verifying a subtraction computation."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Problem and claimed answer are clearly stated, with hints supporting verification."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Correctly identifies Liza's answer as wrong; 1 minus 1 equals 0, not 1, and hints accurately show the correct computation."
+          }
+        }
+      },
+      {
+        "sample_id": "1450a05fd488e6937a2e",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "Error detection asks whether Manny correctly determined that 330 minus 131 equals 461, with clear evaluation criteria."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Peer-verification scenario is logically appropriate for checking a subtraction computation."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Problem and claimed answer are clearly presented, with hints supporting independent verification."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Correctly identifies Manny's answer as wrong; the correct result of 330 minus 131 is 199, not 461, and hints trace this accurately."
+          }
+        }
+      }
+    ],
+    "clause_evidence": [
+      {
+        "requirement_id": "subtract_numbers",
+        "clause": "Subtract numbers",
+        "verdict": "CONCERN",
+        "reasoning": "Twenty-nine of thirty-three samples directly require subtracting one given number from another, demonstrating the core operation across diverse formats and difficulty levels. However, sample 171ea3d13a2ee59e9603 frames the task as finding a missing minuend where the equation structure is ___ minus 234 equals 636, which reverses the typical subtraction operation and instead requires addition reasoning to solve the inverse operation.",
+        "sample_ids": ["82a25b5c1e771c807a8b", "48f30a5c41489b162d2e", "197e3f84f16b4e11b6f2", "d066ec2090055bd3caf6", "c4bc055c16a1ea30bb79", "ca6de2275736182037d8", "cccfe9aaff67c7c5e088", "6dc93c7b7cdbd779fe1c", "e1a93645c141a2502754", "d1a8061bff2d9dcb3a5a", "b98e56e031625aa5eda0", "374d13fe3a26fed1bed0", "f70b15f1ff17c062e333", "26622d9698924a324253", "e0af1dc8655616c59593", "1edfb65f62c5096c90d7", "647864934c056f5cb5a9", "12325444fd8a23db423b", "99d8b12fe4fb30bc1102", "3fc01856b6b7925da53e", "9e6c7b42c43a2af0e403", "4cbbe437aeaee670f514", "54478697c83430039987", "37dfe5a5013064689eeb", "3135fe9db01d97beb322", "5f3cc2910c1876be36a7", "f62988727fe24dfd2a59", "516317b58754a4686e3e", "accbf01f681630f47eba", "4452988deed4135f4b86", "e622b5b59b010129b0d2", "1450a05fd488e6937a2e"]
+      },
+      {
+        "requirement_id": "less_than_1000",
+        "clause": "both numbers are less than 1000",
+        "verdict": "PASS",
+        "reasoning": "All thirty-three samples strictly adhere to the constraint that both minuend and subtrahend remain below one thousand, ranging from single-digit pairs like 1 minus 1 up to three-digit pairs like 930 minus 408, with no instance exceeding the boundary.",
+        "sample_ids": ["82a25b5c1e771c807a8b", "48f30a5c41489b162d2e", "197e3f84f16b4e11b6f2", "d066ec2090055bd3caf6", "c4bc055c16a1ea30bb79", "ca6de2275736182037d8", "cccfe9aaff67c7c5e088", "6dc93c7b7cdbd779fe1c", "e1a93645c141a2502754", "d1a8061bff2d9dcb3a5a", "b98e56e031625aa5eda0", "374d13fe3a26fed1bed0", "f70b15f1ff17c062e333", "26622d9698924a324253", "e0af1dc8655616c59593", "1edfb65f62c5096c90d7", "647864934c056f5cb5a9", "12325444fd8a23db423b", "99d8b12fe4fb30bc1102", "3fc01856b6b7925da53e", "9e6c7b42c43a2af0e403", "4cbbe437aeaee670f514", "54478697c83430039987", "171ea3d13a2ee59e9603", "37dfe5a5013064689eeb", "3135fe9db01d97beb322", "5f3cc2910c1876be36a7", "f62988727fe24dfd2a59", "516317b58754a4686e3e", "accbf01f681630f47eba", "4452988deed4135f4b86", "e622b5b59b010129b0d2", "1450a05fd488e6937a2e"]
+      },
+      {
+        "requirement_id": "regrouping",
+        "clause": "with and without regrouping",
+        "verdict": "PASS",
+        "reasoning": "Samples demonstrate both regrouping and non-regrouping cases across the packet: nine samples require no regrouping including cases where zero is subtracted or where the minuend digit exceeds the subtrahend digit in all positions, while twenty-four samples require regrouping in at least one position, spanning ones-place, tens-place, and multi-place regrouping scenarios.",
+        "sample_ids": ["82a25b5c1e771c807a8b", "48f30a5c41489b162d2e", "197e3f84f16b4e11b6f2", "d066ec2090055bd3caf6", "c4bc055c16a1ea30bb79", "ca6de2275736182037d8", "cccfe9aaff67c7c5e088", "6dc93c7b7cdbd779fe1c", "e1a93645c141a2502754", "d1a8061bff2d9dcb3a5a", "b98e56e031625aa5eda0", "374d13fe3a26fed1bed0", "f70b15f1ff17c062e333", "26622d9698924a324253", "e0af1dc8655616c59593", "1edfb65f62c5096c90d7", "647864934c056f5cb5a9", "12325444fd8a23db423b", "99d8b12fe4fb30bc1102", "3fc01856b6b7925da53e", "9e6c7b42c43a2af0e403", "4cbbe437aeaee670f514", "54478697c83430039987", "171ea3d13a2ee59e9603", "37dfe5a5013064689eeb", "3135fe9db01d97beb322", "5f3cc2910c1876be36a7", "f62988727fe24dfd2a59", "516317b58754a4686e3e", "accbf01f681630f47eba", "4452988deed4135f4b86", "e622b5b59b010129b0d2", "1450a05fd488e6937a2e"]
+      }
+    ],
+    "overall": "CONCERN"
+  }
+}

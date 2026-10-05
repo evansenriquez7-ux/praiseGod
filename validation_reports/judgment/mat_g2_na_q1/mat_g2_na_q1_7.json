@@ -34,10 +34,10 @@
       "clause": "number line"
     }
   ],
-  "packet_digest": "db075516ef23638e7ce7ba1e7d469b6f33eb32b5b7585ea11e0c724a710cc507",
+  "packet_digest": "41ff90f42cd42fdffc32dcb62a5bef01beeb90180205e0fefa46326cda7b9b7d",
   "sampling_version": "phase2-stratified-v2-rendered-visual",
-  "reviewed_by": "blind-reviewer-haiku45-pe9-mat_g2_na_q1_7-20260930",
-  "review_date": "2026-09-30",
+  "reviewed_by": "blind-reviewer-haiku45-w2x2-mat_g2_na_q1_7-20261003",
+  "review_date": "2026-10-03",
   "blind": true,
   "sample_seeds": [
     42,
@@ -45,7 +45,6 @@
     44,
     45,
     46,
-    47,
     500,
     501,
     502,
@@ -77,7 +76,6 @@
     "2c4d1623ca356a64edd2",
     "1a7e5281dbd83353ff97",
     "c380467bb8f0cf54d795",
-    "c38c42f99e0eef8ec2b0",
     "24dff6cf5b66e2021266",
     "59d730a160acece3074e",
     "5f4e7b6f987fadecb059",
@@ -137,8 +135,264 @@
     {
       "node_id": "mat_g2_na_q1_7",
       "seed": 43,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Show 64 + 7 on the number line.",
+      "correct_answer": 71,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "set",
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "resolved_answer": 71,
+      "hints": [
+        "We are adding two numbers: 64 and 7.",
+        "Add the ones: 4 + 7 = 11. 11 ones is 1 ten and 1 ones.",
+        "Add the tens: 6 + 0 + 1 (the ten from the ones) = 7.",
+        "The sum is 64 + 7 = 71."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "start": 50,
+        "end": 80,
+        "major_interval": 10,
+        "minor_interval": 5,
+        "interval": 5,
+        "dot_value": 50,
+        "move_by": 7,
+        "content_type": "whole_number",
+        "value": 71,
+        "correct_position": 71,
+        "divisions": 6,
+        "is_interactive": true,
+        "show_labels": true,
+        "correct_answer": 71.0,
+        "target": 71.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "18412057b3466016f07bfddc9d2c41a33d990ea358f50185ac7ea8798549a606",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 19,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "50",
+            "60",
+            "70",
+            "80",
+            "Your answer: Position",
+            "65",
+            "Click track, drag dot, or use ← → arrow keys"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "adece91637c1dba870d4",
+      "replay_digest": "5ba3661d03a1d5d0c8f286d7c6ed4a807bd89feedafa5474324261f40e003a2a"
+    },
+    {
+      "node_id": "mat_g2_na_q1_7",
+      "seed": 44,
       "formatter": "read_mcq",
-      "question_text": "The dot is at 64 and it moves forward 7 numbers. Starting from 64, just count up 7 numbers. Which number will the dot land on?",
+      "question_text": "The dot is at 15 and it moves forward 2 numbers. Starting from 15, just count up 2 numbers. Which number will the dot land on?",
+      "correct_answer": "C",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 16,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 27,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 17,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 13,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 17,
+      "hints": [
+        "We are adding two numbers: 15 and 2.",
+        "Add the ones: 5 + 2 = 7. Keep 7 in the ones place.",
+        "Add the tens: 1 + 0 = 1.",
+        "The sum is 15 + 2 = 17."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "start": 0,
+        "end": 20,
+        "major_interval": 5,
+        "minor_interval": 1,
+        "interval": 1,
+        "dot_value": 15,
+        "move_by": 2,
+        "content_type": "whole_number",
+        "value": 17,
+        "correct_position": 17,
+        "divisions": 20,
+        "is_interactive": false,
+        "show_labels": true,
+        "correct_answer": 17.0,
+        "target": 17.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "62c86bce906f2586d5ec60dd674396421d67cd6a0b1e15598ee719d09b22db58",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 31,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "0",
+            "5",
+            "10",
+            "15",
+            "20"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "2c4d1623ca356a64edd2",
+      "replay_digest": "6fbdd7b5022a0fd94b0189233951b0a29b988eac13972706123858fd81ee7c11"
+    },
+    {
+      "node_id": "mat_g2_na_q1_7",
+      "seed": 45,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Show 82 + 5 on the number line.",
+      "correct_answer": 87,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "set",
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "resolved_answer": 87,
+      "hints": [
+        "We are adding two numbers: 82 and 5.",
+        "Add the ones: 2 + 5 = 7. Keep 7 in the ones place.",
+        "Add the tens: 8 + 0 = 8.",
+        "The sum is 82 + 5 = 87."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "start": 70,
+        "end": 90,
+        "major_interval": 10,
+        "minor_interval": 5,
+        "interval": 5,
+        "dot_value": 70,
+        "move_by": 5,
+        "content_type": "whole_number",
+        "value": 87,
+        "correct_position": 87,
+        "divisions": 4,
+        "is_interactive": true,
+        "show_labels": true,
+        "correct_answer": 87.0,
+        "target": 87.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "8d2a2f92f51ae32146752be2d54bfcbe270fff4aff5549c3205a96ae42a37b68",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 16,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "70",
+            "80",
+            "90",
+            "Your answer: Position",
+            "80",
+            "Click track, drag dot, or use ← → arrow keys"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "1a7e5281dbd83353ff97",
+      "replay_digest": "d729d8188f872c2cc05d3b6c129611b56d0bacb51592ebf200aed3578767c784"
+    },
+    {
+      "node_id": "mat_g2_na_q1_7",
+      "seed": 46,
+      "formatter": "read_mcq",
+      "question_text": "The dot is at 64 and it moves forward 8 numbers. Starting from 64, just count up 8 numbers. Which number will the dot land on?",
       "correct_answer": "D",
       "requested": {
         "difficulty_profile": null,
@@ -157,31 +411,31 @@
       "options": [
         {
           "key": "A",
-          "value": 70,
+          "value": 71,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 81,
+          "value": 82,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 57,
+          "value": 56,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 71,
+          "value": 72,
           "is_correct": true
         }
       ],
-      "resolved_answer": 71,
+      "resolved_answer": 72,
       "hints": [
-        "We are adding two numbers: 64 and 7.",
-        "Add the ones: 4 + 7 = 11. Keep 1 in the ones place and carry over 1 ten.",
-        "Add the tens: 6 + 0 + 1 (carried) = 7.",
-        "The sum is 64 + 7 = 71."
+        "We are adding two numbers: 64 and 8.",
+        "Add the ones: 4 + 8 = 12. 12 ones is 1 ten and 2 ones.",
+        "Add the tens: 6 + 0 + 1 (the ten from the ones) = 7.",
+        "The sum is 64 + 8 = 72."
       ],
       "visual_type": "NumberLine",
       "visual_payload": {
@@ -191,19 +445,19 @@
         "minor_interval": 5,
         "interval": 5,
         "dot_value": 64,
-        "move_by": 7,
+        "move_by": 8,
         "content_type": "whole_number",
-        "value": 71,
-        "correct_position": 71,
+        "value": 72,
+        "correct_position": 72,
         "divisions": 6,
         "is_interactive": false,
         "show_labels": true,
-        "correct_answer": 71.0,
-        "target": 71.0
+        "correct_answer": 72.0,
+        "target": 72.0
       },
       "visual_render": {
         "visual_type": "NumberLine",
-        "renderer_input_digest": "514b2d0c2dbfd3551cc8f82d5b2b3726f857cbefa9fd55e0204d34e0bf96aee5",
+        "renderer_input_digest": "991643a120129d28e26c941517fd498d6071e943b9ac2d7fd4a076e04e143468",
         "description": {
           "source": "rendered_static_markup",
           "visual_type": "NumberLine",
@@ -229,161 +483,351 @@
           "role_counts": {}
         }
       },
-      "sample_id": "adece91637c1dba870d4",
-      "replay_digest": "cabc58b796ae5e6ff7d99d7cf2497289015ec959f324a5709f03144c58640de1"
+      "sample_id": "c380467bb8f0cf54d795",
+      "replay_digest": "0d495d673dd9fa497a0613ffd89964b01c80aa2dd7b8b2c5e9735b16b5756eac"
     },
     {
       "node_id": "mat_g2_na_q1_7",
-      "seed": 44,
-      "formatter": "error_detect",
-      "question_text": "Rico solved: \"Start at 15. Count up 2 more. You land on ___\". Rico says the missing number is 17. Is Rico correct?",
-      "correct_answer": {
-        "has_error": false,
-        "correct_value": 17
-      },
+      "seed": 500,
+      "formatter": "true_false",
+      "question_text": "Start at 85. Count up 7 more. You land on 91. True or False?",
+      "correct_answer": false,
       "requested": {
-        "difficulty_profile": null,
+        "difficulty_profile": {
+          "max_sum": 1.0,
+          "number_difficulty": 1.0
+        },
         "student_interest": null,
         "experience": "standard"
       },
       "serving_mode": "student_path",
       "effective": {
-        "format": "error_detect",
+        "format": "true_false",
         "is_visual": false,
         "visual_type": null,
         "interaction_mode": null,
-        "answer_collection": "error_detect",
+        "answer_collection": "true_false",
         "experience": "standard"
       },
-      "resolved_answer": {
-        "has_error": false,
-        "correct_value": 17
-      },
+      "resolved_answer": false,
       "hints": [
-        "We are adding two numbers: 15 and 2.",
-        "Add the ones: 5 + 2 = 7. Keep 7 in the ones place.",
-        "Add the tens: 1 + 0 = 1.",
-        "The sum is 15 + 2 = 17."
+        "We are adding two numbers: 85 and 7.",
+        "Add the ones: 5 + 7 = 12. 12 ones is 1 ten and 2 ones.",
+        "Add the tens: 8 + 0 + 1 (the ten from the ones) = 9.",
+        "The sum is 85 + 7 = 92."
       ],
-      "sample_id": "2c4d1623ca356a64edd2",
-      "replay_digest": "2a807c88c515e61b23bdcdfa323f9bf72d626d7a2f570954f8ca64c1da6b1596"
+      "sample_id": "24dff6cf5b66e2021266",
+      "replay_digest": "ff91317c687245c578ee5506c12dc6c922a626a2b687fe41f940156ac124d5e3"
     },
     {
       "node_id": "mat_g2_na_q1_7",
-      "seed": 45,
-      "formatter": "mcq",
-      "question_text": "Start at 82. Count up 5 more. What number do you land on?",
-      "correct_answer": 87,
+      "seed": 501,
+      "formatter": "true_false",
+      "question_text": "Start at 87. Count up 6 more. You land on 103. True or False?",
+      "correct_answer": false,
       "requested": {
-        "difficulty_profile": null,
+        "difficulty_profile": {
+          "max_sum": 1.0,
+          "number_difficulty": 1.0
+        },
         "student_interest": null,
         "experience": "standard"
       },
       "serving_mode": "student_path",
       "effective": {
-        "format": "mcq",
+        "format": "true_false",
         "is_visual": false,
         "visual_type": null,
         "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "We are adding two numbers: 87 and 6.",
+        "Add the ones: 7 + 6 = 13. 13 ones is 1 ten and 3 ones.",
+        "Add the tens: 8 + 0 + 1 (the ten from the ones) = 9.",
+        "The sum is 87 + 6 = 93."
+      ],
+      "sample_id": "59d730a160acece3074e",
+      "replay_digest": "00072fbcec20ca7d3bd43471f293135a6bc575f086a511f7aacff3e36d2af1dd"
+    },
+    {
+      "node_id": "mat_g2_na_q1_7",
+      "seed": 502,
+      "formatter": "read_mcq",
+      "question_text": "The dot is at 90 and it moves forward 2 numbers. Starting from 90, just count up 2 numbers. Which number will the dot land on?",
+      "correct_answer": "C",
+      "requested": {
+        "difficulty_profile": {
+          "max_sum": 1.0,
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "read",
         "answer_collection": "mcq",
         "experience": "standard"
       },
       "options": [
         {
           "key": "A",
-          "value": 87,
-          "is_correct": true
+          "value": 102,
+          "is_correct": false
         },
         {
           "key": "B",
-          "value": 86,
+          "value": 88,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 97,
-          "is_correct": false
+          "value": 92,
+          "is_correct": true
         },
         {
           "key": "D",
-          "value": 77,
+          "value": 91,
           "is_correct": false
         }
       ],
-      "resolved_answer": 87,
+      "resolved_answer": 92,
       "hints": [
-        "We are adding two numbers: 82 and 5.",
-        "Add the ones: 2 + 5 = 7. Keep 7 in the ones place.",
-        "Add the tens: 8 + 0 = 8.",
-        "The sum is 82 + 5 = 87."
+        "We are adding two numbers: 90 and 2.",
+        "Add the ones: 0 + 2 = 2. Keep 2 in the ones place.",
+        "Add the tens: 9 + 0 = 9.",
+        "The sum is 90 + 2 = 92."
       ],
-      "sample_id": "1a7e5281dbd83353ff97",
-      "replay_digest": "6dd82496edb8557c8738dcfa9e6c60b88224b15f6ec6a0863074fd817a333ee6"
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "start": 80,
+        "end": 100,
+        "major_interval": 10,
+        "minor_interval": 5,
+        "interval": 5,
+        "dot_value": 90,
+        "move_by": 2,
+        "content_type": "whole_number",
+        "value": 92,
+        "correct_position": 92,
+        "divisions": 4,
+        "is_interactive": false,
+        "show_labels": true,
+        "correct_answer": 92.0,
+        "target": 92.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "f55d3c749f95343fa5d0ad73bc4351071579a42a1550e072f80626a1beafe692",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 13,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "80",
+            "90",
+            "100"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "5f4e7b6f987fadecb059",
+      "replay_digest": "834d42f3cc963370b9284b8bbb1c75bb3e4828e9da5fce48b99002b26088b92a"
     },
     {
       "node_id": "mat_g2_na_q1_7",
-      "seed": 46,
-      "formatter": "cloze",
-      "question_text": "Start at 64. Count up 8 more. You land on ___",
-      "correct_answer": 72,
+      "seed": 600,
+      "formatter": "true_false",
+      "question_text": "Start at 48. Count up 7 more. You land on 65. True or False?",
+      "correct_answer": false,
       "requested": {
-        "difficulty_profile": null,
+        "difficulty_profile": {
+          "context": "pure"
+        },
         "student_interest": null,
         "experience": "standard"
       },
       "serving_mode": "student_path",
       "effective": {
-        "format": "cloze",
+        "format": "true_false",
         "is_visual": false,
         "visual_type": null,
         "interaction_mode": null,
-        "answer_collection": "fill_in_blank",
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "We are adding two numbers: 48 and 7.",
+        "Add the ones: 8 + 7 = 15. 15 ones is 1 ten and 5 ones.",
+        "Add the tens: 4 + 0 + 1 (the ten from the ones) = 5.",
+        "The sum is 48 + 7 = 55."
+      ],
+      "sample_id": "85f4fabe628fd6586945",
+      "replay_digest": "09841e66bbbb7ff134015130654fc65d7726e07b6bba6a97474ee1e10fc4fb56"
+    },
+    {
+      "node_id": "mat_g2_na_q1_7",
+      "seed": 601,
+      "formatter": "read_mcq",
+      "question_text": "The dot is at 30 and it moves forward 5 numbers. Starting from 30, just count up 5 numbers. Which number will the dot land on?",
+      "correct_answer": "B",
+      "requested": {
+        "difficulty_profile": {
+          "context": "word_problem"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
         "experience": "standard"
       },
       "options": [
         {
           "key": "A",
-          "value": 71,
-          "text": "71",
+          "value": 45,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 82,
-          "text": "82",
-          "is_correct": false
+          "value": 35,
+          "is_correct": true
         },
         {
           "key": "C",
-          "value": 56,
-          "text": "56",
+          "value": 34,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 72,
-          "text": "72",
-          "is_correct": true
+          "value": 25,
+          "is_correct": false
         }
       ],
-      "resolved_answer": 72,
+      "resolved_answer": 35,
       "hints": [
-        "We are adding two numbers: 64 and 8.",
-        "Add the ones: 4 + 8 = 12. Keep 2 in the ones place and carry over 1 ten.",
-        "Add the tens: 6 + 0 + 1 (carried) = 7.",
-        "The sum is 64 + 8 = 72."
+        "We are adding two numbers: 30 and 5.",
+        "Add the ones: 0 + 5 = 5. Keep 5 in the ones place.",
+        "Add the tens: 3 + 0 = 3.",
+        "The sum is 30 + 5 = 35."
       ],
-      "sample_id": "c380467bb8f0cf54d795",
-      "replay_digest": "12474749061e9cbeff2214129dd52ae919c7a784199e4b599dae05ad2bd4d11d"
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "start": 0,
+        "end": 50,
+        "major_interval": 10,
+        "minor_interval": 5,
+        "interval": 5,
+        "dot_value": 30,
+        "move_by": 5,
+        "content_type": "whole_number",
+        "value": 35,
+        "correct_position": 35,
+        "divisions": 10,
+        "is_interactive": false,
+        "show_labels": true,
+        "correct_answer": 35.0,
+        "target": 35.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "90f4585f1b77095aea27bfcb8fb18cbbb07898be859a05494b86cbd77c53d440",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 22,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "0",
+            "10",
+            "20",
+            "30",
+            "40",
+            "50"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "4126b185390fd454ac61",
+      "replay_digest": "806e6555ce422c8fb1227e5c375ce0f03ba007f93f57031f30a2b9ee648cf3f8"
     },
     {
       "node_id": "mat_g2_na_q1_7",
-      "seed": 47,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Show 75 + 9 on the number line.",
-      "correct_answer": 84,
+      "seed": 602,
+      "formatter": "true_false",
+      "question_text": "Start at 60. Count up 4 more. You land on 65. True or False?",
+      "correct_answer": false,
       "requested": {
-        "difficulty_profile": null,
+        "difficulty_profile": {
+          "regrouping": "none"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": false,
+      "hints": [
+        "We are adding two numbers: 60 and 4.",
+        "Add the ones: 0 + 4 = 4. Keep 4 in the ones place.",
+        "Add the tens: 6 + 0 = 6.",
+        "The sum is 60 + 4 = 64."
+      ],
+      "sample_id": "fa918e6fa8e726278c90",
+      "replay_digest": "99f6e3dba0b7b500aa17be0a9e0feaa9719d719e19c9586ce7f279ac132cf86a"
+    },
+    {
+      "node_id": "mat_g2_na_q1_7",
+      "seed": 603,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Show 74 + 8 on the number line.",
+      "correct_answer": 82,
+      "requested": {
+        "difficulty_profile": {
+          "regrouping": "one_place"
+        },
         "student_interest": null,
         "experience": "standard"
       },
@@ -396,12 +840,12 @@
         "answer_collection": "fill_in_blank",
         "experience": "standard"
       },
-      "resolved_answer": 84,
+      "resolved_answer": 82,
       "hints": [
-        "We are adding two numbers: 75 and 9.",
-        "Add the ones: 5 + 9 = 14. Keep 4 in the ones place and carry over 1 ten.",
-        "Add the tens: 7 + 0 + 1 (carried) = 8.",
-        "The sum is 75 + 9 = 84."
+        "We are adding two numbers: 74 and 8.",
+        "Add the ones: 4 + 8 = 12. 12 ones is 1 ten and 2 ones.",
+        "Add the tens: 7 + 0 + 1 (the ten from the ones) = 8.",
+        "The sum is 74 + 8 = 82."
       ],
       "visual_type": "NumberLine",
       "visual_payload": {
@@ -411,19 +855,19 @@
         "minor_interval": 5,
         "interval": 5,
         "dot_value": 60,
-        "move_by": 9,
+        "move_by": 8,
         "content_type": "whole_number",
-        "value": 84,
-        "correct_position": 84,
+        "value": 82,
+        "correct_position": 82,
         "divisions": 6,
         "is_interactive": true,
         "show_labels": true,
-        "correct_answer": 84.0,
-        "target": 84.0
+        "correct_answer": 82.0,
+        "target": 82.0
       },
       "visual_render": {
         "visual_type": "NumberLine",
-        "renderer_input_digest": "1f128ea150f54095f86226f842e231b00c03a5b5c3445453f4bcf5690a39d5a1",
+        "renderer_input_digest": "d90a697ece549016e3c91cd69b53c0f6251051f2576e5fba161e9408793d2f9e",
         "description": {
           "source": "rendered_static_markup",
           "visual_type": "NumberLine",
@@ -452,19 +896,18 @@
           "role_counts": {}
         }
       },
-      "sample_id": "c38c42f99e0eef8ec2b0",
-      "replay_digest": "12d0296b4b2b8872618d7368cf8f81a41f2c06c05a867ec329256699b702c147"
+      "sample_id": "4ce2af6e86c1e1818ec7",
+      "replay_digest": "dabf90b71e32b1423cf711c55088aaa6b1ebbf1435a2756fe16e65d11714f5b5"
     },
     {
       "node_id": "mat_g2_na_q1_7",
-      "seed": 500,
+      "seed": 604,
       "formatter": "set_fill_in_blank",
-      "question_text": "Show 85 + 7 on the number line.",
-      "correct_answer": 92,
+      "question_text": "Show 94 + 7 on the number line.",
+      "correct_answer": 101,
       "requested": {
         "difficulty_profile": {
-          "max_sum": 1.0,
-          "number_difficulty": 1.0
+          "regrouping": "two_places"
         },
         "student_interest": null,
         "experience": "standard"
@@ -478,34 +921,34 @@
         "answer_collection": "fill_in_blank",
         "experience": "standard"
       },
-      "resolved_answer": 92,
+      "resolved_answer": 101,
       "hints": [
-        "We are adding two numbers: 85 and 7.",
-        "Add the ones: 5 + 7 = 12. Keep 2 in the ones place and carry over 1 ten.",
-        "Add the tens: 8 + 0 + 1 (carried) = 9.",
-        "The sum is 85 + 7 = 92."
+        "We are adding two numbers: 94 and 7.",
+        "Add the ones: 4 + 7 = 11. 11 ones is 1 ten and 1 ones.",
+        "Add the tens: 9 + 0 + 1 (the ten from the ones) = 10.",
+        "The sum is 94 + 7 = 101."
       ],
       "visual_type": "NumberLine",
       "visual_payload": {
-        "start": 70,
-        "end": 100,
+        "start": 80,
+        "end": 110,
         "major_interval": 10,
         "minor_interval": 5,
         "interval": 5,
-        "dot_value": 70,
+        "dot_value": 80,
         "move_by": 7,
         "content_type": "whole_number",
-        "value": 92,
-        "correct_position": 92,
+        "value": 101,
+        "correct_position": 101,
         "divisions": 6,
         "is_interactive": true,
         "show_labels": true,
-        "correct_answer": 92.0,
-        "target": 92.0
+        "correct_answer": 101.0,
+        "target": 101.0
       },
       "visual_render": {
         "visual_type": "NumberLine",
-        "renderer_input_digest": "48039fedd1cb84d03d6b0df491e962d84faf376a556d7aeacc34a7939211bfee",
+        "renderer_input_digest": "31f6b1c12abba0e51604fe07b94f89a42d28f8c6f2487cf775656c94c0251880",
         "description": {
           "source": "rendered_static_markup",
           "visual_type": "NumberLine",
@@ -516,12 +959,12 @@
           "button_count": 0,
           "input_count": 0,
           "text_labels": [
-            "70",
             "80",
             "90",
             "100",
+            "110",
             "Your answer: Position",
-            "85",
+            "95",
             "Click track, drag dot, or use ← → arrow keys"
           ],
           "distinct_colours": [
@@ -534,19 +977,18 @@
           "role_counts": {}
         }
       },
-      "sample_id": "24dff6cf5b66e2021266",
-      "replay_digest": "ef8810898823fbd0af3e41cede4d2ad94dbd368dcb4b372023fc816d5c81ddcf"
+      "sample_id": "49972243312881950960",
+      "replay_digest": "c33d4a6875398d08e072e2daa362097a4bf2aac2953daa0ecc5a93775829680c"
     },
     {
       "node_id": "mat_g2_na_q1_7",
-      "seed": 501,
+      "seed": 605,
       "formatter": "true_false",
-      "question_text": "Start at 87. Count up 6 more. You land on 103. True or False?",
+      "question_text": "Start at 34. Count up 1 more. You land on 33. True or False?",
       "correct_answer": false,
       "requested": {
         "difficulty_profile": {
-          "max_sum": 1.0,
-          "number_difficulty": 1.0
+          "spine": "counting_up"
         },
         "student_interest": null,
         "experience": "standard"
@@ -562,152 +1004,23 @@
       },
       "resolved_answer": false,
       "hints": [
-        "We are adding two numbers: 87 and 6.",
-        "Add the ones: 7 + 6 = 13. Keep 3 in the ones place and carry over 1 ten.",
-        "Add the tens: 8 + 0 + 1 (carried) = 9.",
-        "The sum is 87 + 6 = 93."
-      ],
-      "sample_id": "59d730a160acece3074e",
-      "replay_digest": "78fe13d34cea8f64827d9003aa788b5145aeeaf6261f6b37cbb7899ff8dd6a17"
-    },
-    {
-      "node_id": "mat_g2_na_q1_7",
-      "seed": 502,
-      "formatter": "error_detect",
-      "question_text": "Dante solved: \"Start at 90. Count up 2 more. You land on ___\". Dante says the missing number is 92. Is Dante correct?",
-      "correct_answer": {
-        "has_error": false,
-        "correct_value": 92
-      },
-      "requested": {
-        "difficulty_profile": {
-          "max_sum": 1.0,
-          "number_difficulty": 1.0
-        },
-        "student_interest": null,
-        "experience": "standard"
-      },
-      "serving_mode": "student_path",
-      "effective": {
-        "format": "error_detect",
-        "is_visual": false,
-        "visual_type": null,
-        "interaction_mode": null,
-        "answer_collection": "error_detect",
-        "experience": "standard"
-      },
-      "resolved_answer": {
-        "has_error": false,
-        "correct_value": 92
-      },
-      "hints": [
-        "We are adding two numbers: 90 and 2.",
-        "Add the ones: 0 + 2 = 2. Keep 2 in the ones place.",
-        "Add the tens: 9 + 0 = 9.",
-        "The sum is 90 + 2 = 92."
-      ],
-      "sample_id": "5f4e7b6f987fadecb059",
-      "replay_digest": "6f84df2d1079724de9d2661999eff35f62b531e9a7745499a14400e4eeb6ef1d"
-    },
-    {
-      "node_id": "mat_g2_na_q1_7",
-      "seed": 600,
-      "formatter": "true_false",
-      "question_text": "Start at 48. Count up 7 more. You land on 65. True or False?",
-      "correct_answer": false,
-      "requested": {
-        "difficulty_profile": {
-          "context": "pure"
-        },
-        "student_interest": null,
-        "experience": "standard"
-      },
-      "serving_mode": "student_path",
-      "effective": {
-        "format": "true_false",
-        "is_visual": false,
-        "visual_type": null,
-        "interaction_mode": null,
-        "answer_collection": "true_false",
-        "experience": "standard"
-      },
-      "resolved_answer": false,
-      "hints": [
-        "We are adding two numbers: 48 and 7.",
-        "Add the ones: 8 + 7 = 15. Keep 5 in the ones place and carry over 1 ten.",
-        "Add the tens: 4 + 0 + 1 (carried) = 5.",
-        "The sum is 48 + 7 = 55."
-      ],
-      "sample_id": "85f4fabe628fd6586945",
-      "replay_digest": "5b1e4235d7df48b23af916f6f15722823cf86e39f51ea84224f7f097489ab701"
-    },
-    {
-      "node_id": "mat_g2_na_q1_7",
-      "seed": 601,
-      "formatter": "cloze",
-      "question_text": "Start at 30. Count up 5 more. You land on ___",
-      "correct_answer": 35,
-      "requested": {
-        "difficulty_profile": {
-          "context": "word_problem"
-        },
-        "student_interest": null,
-        "experience": "standard"
-      },
-      "serving_mode": "student_path",
-      "effective": {
-        "format": "cloze",
-        "is_visual": false,
-        "visual_type": null,
-        "interaction_mode": null,
-        "answer_collection": "fill_in_blank",
-        "experience": "standard"
-      },
-      "options": [
-        {
-          "key": "A",
-          "value": 45,
-          "text": "45",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 35,
-          "text": "35",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 34,
-          "text": "34",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 25,
-          "text": "25",
-          "is_correct": false
-        }
-      ],
-      "resolved_answer": 35,
-      "hints": [
-        "We are adding two numbers: 30 and 5.",
-        "Add the ones: 0 + 5 = 5. Keep 5 in the ones place.",
+        "We are adding two numbers: 34 and 1.",
+        "Add the ones: 4 + 1 = 5. Keep 5 in the ones place.",
         "Add the tens: 3 + 0 = 3.",
-        "The sum is 30 + 5 = 35."
+        "The sum is 34 + 1 = 35."
       ],
-      "sample_id": "4126b185390fd454ac61",
-      "replay_digest": "422c79ed5c15174c9e7c7972e416941cd18adb478dcf40ac3d562eca5e576b76"
+      "sample_id": "2dc9837043049e8d27b5",
+      "replay_digest": "1b7a8d0068f4998d74a92ce0e7f3431cb593685772d9a00768fefdc4d70be575"
     },
     {
       "node_id": "mat_g2_na_q1_7",
-      "seed": 602,
+      "seed": 606,
       "formatter": "set_fill_in_blank",
-      "question_text": "Show 60 + 4 on the number line.",
-      "correct_answer": 64,
+      "question_text": "Show 37 + 3 on the number line.",
+      "correct_answer": 40,
       "requested": {
         "difficulty_profile": {
-          "regrouping": "none"
+          "spine": "putting_together"
         },
         "student_interest": null,
         "experience": "standard"
@@ -721,49 +1034,53 @@
         "answer_collection": "fill_in_blank",
         "experience": "standard"
       },
-      "resolved_answer": 64,
+      "resolved_answer": 40,
       "hints": [
-        "We are adding two numbers: 60 and 4.",
-        "Add the ones: 0 + 4 = 4. Keep 4 in the ones place.",
-        "Add the tens: 6 + 0 = 6.",
-        "The sum is 60 + 4 = 64."
+        "We are adding two numbers: 37 and 3.",
+        "Add the ones: 7 + 3 = 10. 10 ones is 1 ten and 0 ones.",
+        "Add the tens: 3 + 0 + 1 (the ten from the ones) = 4.",
+        "The sum is 37 + 3 = 40."
       ],
       "visual_type": "NumberLine",
       "visual_payload": {
-        "start": 50,
-        "end": 70,
+        "start": 0,
+        "end": 60,
         "major_interval": 10,
         "minor_interval": 5,
         "interval": 5,
-        "dot_value": 50,
-        "move_by": 4,
+        "dot_value": 0,
+        "move_by": 3,
         "content_type": "whole_number",
-        "value": 64,
-        "correct_position": 64,
-        "divisions": 4,
+        "value": 40,
+        "correct_position": 40,
+        "divisions": 12,
         "is_interactive": true,
         "show_labels": true,
-        "correct_answer": 64.0,
-        "target": 64.0
+        "correct_answer": 40.0,
+        "target": 40.0
       },
       "visual_render": {
         "visual_type": "NumberLine",
-        "renderer_input_digest": "6647cfc62a214e8fbe74a37e6f9efcad127ce5469e1acc4d40191ee526037db5",
+        "renderer_input_digest": "5616dd8191c0ab61419cc95eed2d8df815cd1981828453f761cf3001be320060",
         "description": {
           "source": "rendered_static_markup",
           "visual_type": "NumberLine",
-          "element_count": 16,
+          "element_count": 28,
           "svg_count": 0,
           "table_row_count": 0,
           "table_cell_count": 0,
           "button_count": 0,
           "input_count": 0,
           "text_labels": [
+            "0",
+            "10",
+            "20",
+            "30",
+            "40",
             "50",
             "60",
-            "70",
             "Your answer: Position",
-            "60",
+            "30",
             "Click track, drag dot, or use ← → arrow keys"
           ],
           "distinct_colours": [
@@ -776,18 +1093,18 @@
           "role_counts": {}
         }
       },
-      "sample_id": "fa918e6fa8e726278c90",
-      "replay_digest": "3a804c9999c6ef5169870ea227bdf027cefc63e1a585d6a8cea7bbe8077ac57d"
+      "sample_id": "74654569697ccec63f72",
+      "replay_digest": "6f48d1150c7f7fb6f545cddeacfd9de450c0d7f166be0067d792d98e9c91e47f"
     },
     {
       "node_id": "mat_g2_na_q1_7",
-      "seed": 603,
+      "seed": 607,
       "formatter": "read_mcq",
-      "question_text": "The dot is at 74 and it moves forward 8 numbers. Starting from 74, just count up 8 numbers. Which number will the dot land on?",
+      "question_text": "The dot is at 66 and it moves forward 1 number. Starting from 66, just count up 1 number. Which number will the dot land on?",
       "correct_answer": "C",
       "requested": {
         "difficulty_profile": {
-          "regrouping": "one_place"
+          "strategy": "expanded_form"
         },
         "student_interest": null,
         "experience": "standard"
@@ -804,7 +1121,7 @@
       "options": [
         {
           "key": "A",
-          "value": 92,
+          "value": 65,
           "is_correct": false
         },
         {
@@ -814,299 +1131,69 @@
         },
         {
           "key": "C",
-          "value": 82,
+          "value": 67,
           "is_correct": true
         },
         {
           "key": "D",
-          "value": 81,
+          "value": 77,
           "is_correct": false
         }
       ],
-      "resolved_answer": 82,
-      "hints": [
-        "We are adding two numbers: 74 and 8.",
-        "Add the ones: 4 + 8 = 12. Keep 2 in the ones place and carry over 1 ten.",
-        "Add the tens: 7 + 0 + 1 (carried) = 8.",
-        "The sum is 74 + 8 = 82."
-      ],
-      "visual_type": "NumberLine",
-      "visual_payload": {
-        "start": 60,
-        "end": 90,
-        "major_interval": 10,
-        "minor_interval": 5,
-        "interval": 5,
-        "dot_value": 74,
-        "move_by": 8,
-        "content_type": "whole_number",
-        "value": 82,
-        "correct_position": 82,
-        "divisions": 6,
-        "is_interactive": false,
-        "show_labels": true,
-        "correct_answer": 82.0,
-        "target": 82.0
-      },
-      "visual_render": {
-        "visual_type": "NumberLine",
-        "renderer_input_digest": "fbeeb99e35d6aa0be0b65c27fe01947ac270e44144c7699b4eb2e5b35fe2af6f",
-        "description": {
-          "source": "rendered_static_markup",
-          "visual_type": "NumberLine",
-          "element_count": 16,
-          "svg_count": 0,
-          "table_row_count": 0,
-          "table_cell_count": 0,
-          "button_count": 0,
-          "input_count": 0,
-          "text_labels": [
-            "60",
-            "70",
-            "80",
-            "90"
-          ],
-          "distinct_colours": [
-            "hsl(var(--border-color)",
-            "hsl(var(--text-muted)",
-            "hsl(var(--text)",
-            "hsl(var(--primary)",
-            "hsl(var(--card-bg)"
-          ],
-          "role_counts": {}
-        }
-      },
-      "sample_id": "4ce2af6e86c1e1818ec7",
-      "replay_digest": "0009ed13c751cd3205f2f0ee3de19acdca1b836cfd04fc864f4730a75949d463"
-    },
-    {
-      "node_id": "mat_g2_na_q1_7",
-      "seed": 604,
-      "formatter": "mcq",
-      "question_text": "Start at 94. Count up 7 more. What number do you land on?",
-      "correct_answer": 101,
-      "requested": {
-        "difficulty_profile": {
-          "regrouping": "two_places"
-        },
-        "student_interest": null,
-        "experience": "standard"
-      },
-      "serving_mode": "student_path",
-      "effective": {
-        "format": "mcq",
-        "is_visual": false,
-        "visual_type": null,
-        "interaction_mode": null,
-        "answer_collection": "mcq",
-        "experience": "standard"
-      },
-      "options": [
-        {
-          "key": "A",
-          "value": 87,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 100,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 101,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 111,
-          "is_correct": false
-        }
-      ],
-      "resolved_answer": 101,
-      "hints": [
-        "We are adding two numbers: 94 and 7.",
-        "Add the ones: 4 + 7 = 11. Keep 1 in the ones place and carry over 1 ten.",
-        "Add the tens: 9 + 0 + 1 (carried) = 10.",
-        "The sum is 94 + 7 = 101."
-      ],
-      "sample_id": "49972243312881950960",
-      "replay_digest": "34afe8b9cc4f554349158519fea6d19b7136061b367d10795b83faeeb76cfe03"
-    },
-    {
-      "node_id": "mat_g2_na_q1_7",
-      "seed": 605,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Show 34 + 1 on the number line.",
-      "correct_answer": 35,
-      "requested": {
-        "difficulty_profile": {
-          "spine": "counting_up"
-        },
-        "student_interest": null,
-        "experience": "standard"
-      },
-      "serving_mode": "student_path",
-      "effective": {
-        "format": "set_fill_in_blank",
-        "is_visual": true,
-        "visual_type": "NumberLine",
-        "interaction_mode": "set",
-        "answer_collection": "fill_in_blank",
-        "experience": "standard"
-      },
-      "resolved_answer": 35,
-      "hints": [
-        "We are adding two numbers: 34 and 1.",
-        "Add the ones: 4 + 1 = 5. Keep 5 in the ones place.",
-        "Add the tens: 3 + 0 = 3.",
-        "The sum is 34 + 1 = 35."
-      ],
-      "visual_type": "NumberLine",
-      "visual_payload": {
-        "start": 0,
-        "end": 50,
-        "major_interval": 10,
-        "minor_interval": 5,
-        "interval": 5,
-        "dot_value": 0,
-        "move_by": 1,
-        "content_type": "whole_number",
-        "value": 35,
-        "correct_position": 35,
-        "divisions": 10,
-        "is_interactive": true,
-        "show_labels": true,
-        "correct_answer": 35.0,
-        "target": 35.0
-      },
-      "visual_render": {
-        "visual_type": "NumberLine",
-        "renderer_input_digest": "b9943d41c0f23a258ee37bf736ec96ea3fd0dc4e84311cbdc0c2d25bee1c5f8b",
-        "description": {
-          "source": "rendered_static_markup",
-          "visual_type": "NumberLine",
-          "element_count": 25,
-          "svg_count": 0,
-          "table_row_count": 0,
-          "table_cell_count": 0,
-          "button_count": 0,
-          "input_count": 0,
-          "text_labels": [
-            "0",
-            "10",
-            "20",
-            "30",
-            "40",
-            "50",
-            "Your answer: Position",
-            "25",
-            "Click track, drag dot, or use ← → arrow keys"
-          ],
-          "distinct_colours": [
-            "hsl(var(--border-color)",
-            "hsl(var(--text-muted)",
-            "hsl(var(--text)",
-            "hsl(var(--primary)",
-            "hsl(var(--card-bg)"
-          ],
-          "role_counts": {}
-        }
-      },
-      "sample_id": "2dc9837043049e8d27b5",
-      "replay_digest": "775868aaa7d2ce4913235496b62794872395f26c8c2f74f0571c068dab8ad1a5"
-    },
-    {
-      "node_id": "mat_g2_na_q1_7",
-      "seed": 606,
-      "formatter": "mcq",
-      "question_text": "Start at 37. Count up 3 more. What number do you land on?",
-      "correct_answer": 40,
-      "requested": {
-        "difficulty_profile": {
-          "spine": "putting_together"
-        },
-        "student_interest": null,
-        "experience": "standard"
-      },
-      "serving_mode": "student_path",
-      "effective": {
-        "format": "mcq",
-        "is_visual": false,
-        "visual_type": null,
-        "interaction_mode": null,
-        "answer_collection": "mcq",
-        "experience": "standard"
-      },
-      "options": [
-        {
-          "key": "A",
-          "value": 39,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 50,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 34,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 40,
-          "is_correct": true
-        }
-      ],
-      "resolved_answer": 40,
-      "hints": [
-        "We are adding two numbers: 37 and 3.",
-        "Add the ones: 7 + 3 = 10. Keep 0 in the ones place and carry over 1 ten.",
-        "Add the tens: 3 + 0 + 1 (carried) = 4.",
-        "The sum is 37 + 3 = 40."
-      ],
-      "sample_id": "74654569697ccec63f72",
-      "replay_digest": "320edc1025f4ff4bdc0023d441d7568affffdd5641eddad9fc2ed786cff5852a"
-    },
-    {
-      "node_id": "mat_g2_na_q1_7",
-      "seed": 607,
-      "formatter": "error_detect",
-      "question_text": "Grace solved: \"Start at 66. Count up 1 more. You land on ___\". Grace says the missing number is 67. Is Grace correct?",
-      "correct_answer": {
-        "has_error": false,
-        "correct_value": 67
-      },
-      "requested": {
-        "difficulty_profile": {
-          "strategy": "expanded_form"
-        },
-        "student_interest": null,
-        "experience": "standard"
-      },
-      "serving_mode": "student_path",
-      "effective": {
-        "format": "error_detect",
-        "is_visual": false,
-        "visual_type": null,
-        "interaction_mode": null,
-        "answer_collection": "error_detect",
-        "experience": "standard"
-      },
-      "resolved_answer": {
-        "has_error": false,
-        "correct_value": 67
-      },
+      "resolved_answer": 67,
       "hints": [
         "We are adding two numbers: 66 and 1.",
         "Add the ones: 6 + 1 = 7. Keep 7 in the ones place.",
         "Add the tens: 6 + 0 = 6.",
         "The sum is 66 + 1 = 67."
       ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "start": 50,
+        "end": 70,
+        "major_interval": 10,
+        "minor_interval": 5,
+        "interval": 5,
+        "dot_value": 66,
+        "move_by": 1,
+        "content_type": "whole_number",
+        "value": 67,
+        "correct_position": 67,
+        "divisions": 4,
+        "is_interactive": false,
+        "show_labels": true,
+        "correct_answer": 67.0,
+        "target": 67.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "bb71b01fcd2dbecbde14715cbe21e9f3f4a1d0302307bb1556cc28dc8dc3e4c3",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 13,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "50",
+            "60",
+            "70"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
       "sample_id": "1db9871c2d1e5dc0e078",
-      "replay_digest": "ed74ac833d16fc1318f679acf92e46bb11df93d2461d3825d63b88c00c12156a"
+      "replay_digest": "188d32f2df0a90e4c27828e50a47b97d0da78705a382b774790a08a170559932"
     },
     {
       "node_id": "mat_g2_na_q1_7",
@@ -1143,123 +1230,13 @@
     {
       "node_id": "mat_g2_na_q1_7",
       "seed": 609,
-      "formatter": "cloze",
-      "question_text": "Start at 44. Count up 1 more. You land on ___",
-      "correct_answer": 45,
+      "formatter": "read_mcq",
+      "question_text": "The dot is at 44 and it moves forward 1 number. Starting from 44, just count up 1 number. Which number will the dot land on?",
+      "correct_answer": "B",
       "requested": {
         "difficulty_profile": {
           "structure": "result_unknown"
         },
-        "student_interest": null,
-        "experience": "standard"
-      },
-      "serving_mode": "student_path",
-      "effective": {
-        "format": "cloze",
-        "is_visual": false,
-        "visual_type": null,
-        "interaction_mode": null,
-        "answer_collection": "fill_in_blank",
-        "experience": "standard"
-      },
-      "options": [
-        {
-          "key": "A",
-          "value": 44,
-          "text": "44",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 45,
-          "text": "45",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 43,
-          "text": "43",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 55,
-          "text": "55",
-          "is_correct": false
-        }
-      ],
-      "resolved_answer": 45,
-      "hints": [
-        "We are adding two numbers: 44 and 1.",
-        "Add the ones: 4 + 1 = 5. Keep 5 in the ones place.",
-        "Add the tens: 4 + 0 = 4.",
-        "The sum is 44 + 1 = 45."
-      ],
-      "sample_id": "c50126a2fff2fbe34ac8",
-      "replay_digest": "88a6592f1b0134fa2b88dd1313478d3bde6f6ae2350c15a514a8dd4aab0d01d0"
-    },
-    {
-      "node_id": "mat_g2_na_q1_7",
-      "seed": 610,
-      "formatter": "mcq",
-      "question_text": "Start at 40. Count up 1 more. What number do you land on?",
-      "correct_answer": 41,
-      "requested": {
-        "difficulty_profile": {
-          "task_type": "counting_up"
-        },
-        "student_interest": null,
-        "experience": "standard"
-      },
-      "serving_mode": "student_path",
-      "effective": {
-        "format": "mcq",
-        "is_visual": false,
-        "visual_type": null,
-        "interaction_mode": null,
-        "answer_collection": "mcq",
-        "experience": "standard"
-      },
-      "options": [
-        {
-          "key": "A",
-          "value": 51,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 41,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 40,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 39,
-          "is_correct": false
-        }
-      ],
-      "resolved_answer": 41,
-      "hints": [
-        "We are adding two numbers: 40 and 1.",
-        "Add the ones: 0 + 1 = 1. Keep 1 in the ones place.",
-        "Add the tens: 4 + 0 = 4.",
-        "The sum is 40 + 1 = 41."
-      ],
-      "sample_id": "6a258c2c04129547486e",
-      "replay_digest": "16be97f9ec4cf633476d8a947d092398b6002b5aaf78cdcf70d917cabcd967aa"
-    },
-    {
-      "node_id": "mat_g2_na_q1_7",
-      "seed": 700,
-      "formatter": "read_mcq",
-      "question_text": "The dot is at 43 and it moves forward 6 numbers. Starting from 43, just count up 6 numbers. Which number will the dot land on?",
-      "correct_answer": "A",
-      "requested": {
-        "difficulty_profile": null,
         "student_interest": null,
         "experience": "standard"
       },
@@ -1275,31 +1252,31 @@
       "options": [
         {
           "key": "A",
-          "value": 49,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 48,
+          "value": 44,
           "is_correct": false
         },
         {
+          "key": "B",
+          "value": 45,
+          "is_correct": true
+        },
+        {
           "key": "C",
-          "value": 37,
+          "value": 43,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 59,
+          "value": 55,
           "is_correct": false
         }
       ],
-      "resolved_answer": 49,
+      "resolved_answer": 45,
       "hints": [
-        "We are adding two numbers: 43 and 6.",
-        "Add the ones: 3 + 6 = 9. Keep 9 in the ones place.",
+        "We are adding two numbers: 44 and 1.",
+        "Add the ones: 4 + 1 = 5. Keep 5 in the ones place.",
         "Add the tens: 4 + 0 = 4.",
-        "The sum is 43 + 6 = 49."
+        "The sum is 44 + 1 = 45."
       ],
       "visual_type": "NumberLine",
       "visual_payload": {
@@ -1308,20 +1285,20 @@
         "major_interval": 10,
         "minor_interval": 5,
         "interval": 5,
-        "dot_value": 43,
-        "move_by": 6,
+        "dot_value": 44,
+        "move_by": 1,
         "content_type": "whole_number",
-        "value": 49,
-        "correct_position": 49,
+        "value": 45,
+        "correct_position": 45,
         "divisions": 12,
         "is_interactive": false,
         "show_labels": true,
-        "correct_answer": 49.0,
-        "target": 49.0
+        "correct_answer": 45.0,
+        "target": 45.0
       },
       "visual_render": {
         "visual_type": "NumberLine",
-        "renderer_input_digest": "efa2dcdb0413a29456b928a525927018054935d8dddfe3655b54e275b0d0675e",
+        "renderer_input_digest": "79cec1a4b96d81cb3bb62902e21d0cd19125cdcbf219cb8a4cc4bb771fc23394",
         "description": {
           "source": "rendered_static_markup",
           "visual_type": "NumberLine",
@@ -1350,110 +1327,18 @@
           "role_counts": {}
         }
       },
-      "sample_id": "b40d8a3e7bda9a13f666",
-      "replay_digest": "c8631bcf089fdaed845ab1560ad9406eb1a0751c64686d3f121e182c067d9c42"
+      "sample_id": "c50126a2fff2fbe34ac8",
+      "replay_digest": "595833ff4ff3e025ad68b03a24fde3f9c35787a483fefaf48e8c82c8923430e9"
     },
     {
       "node_id": "mat_g2_na_q1_7",
-      "seed": 701,
-      "formatter": "cloze",
-      "question_text": "💃 Kuya Ton enjoys trophies. Here is a math challenge. Start at 70. Count up 2 more. You land on ___",
-      "correct_answer": 72,
-      "requested": {
-        "difficulty_profile": null,
-        "student_interest": "dance",
-        "experience": "standard"
-      },
-      "serving_mode": "student_path",
-      "effective": {
-        "format": "cloze",
-        "is_visual": false,
-        "visual_type": null,
-        "interaction_mode": null,
-        "answer_collection": "fill_in_blank",
-        "experience": "standard"
-      },
-      "options": [
-        {
-          "key": "A",
-          "value": 72,
-          "text": "72",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 82,
-          "text": "82",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 71,
-          "text": "71",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 68,
-          "text": "68",
-          "is_correct": false
-        }
-      ],
-      "resolved_answer": 72,
-      "hints": [
-        "We are adding two numbers: 70 and 2.",
-        "Add the ones: 0 + 2 = 2. Keep 2 in the ones place.",
-        "Add the tens: 7 + 0 = 7.",
-        "The sum is 70 + 2 = 72."
-      ],
-      "sample_id": "a170801fe68cba5c4247",
-      "replay_digest": "4c4008bcec530b6fc8ba335d496166847deb5c97f9d8462f324178265710944d"
-    },
-    {
-      "node_id": "mat_g2_na_q1_7",
-      "seed": 702,
-      "formatter": "error_detect",
-      "question_text": "🏀 Isko enjoys basketballs. Here is a math challenge. Manny solved: \"Start at 74. Count up 2 more. You land on ___\". Manny says the missing number is 75. Is Manny correct?",
-      "correct_answer": {
-        "has_error": true,
-        "correct_value": 76
-      },
-      "requested": {
-        "difficulty_profile": null,
-        "student_interest": "social_issues",
-        "experience": "standard"
-      },
-      "serving_mode": "student_path",
-      "effective": {
-        "format": "error_detect",
-        "is_visual": false,
-        "visual_type": null,
-        "interaction_mode": null,
-        "answer_collection": "error_detect",
-        "experience": "standard"
-      },
-      "resolved_answer": {
-        "has_error": true,
-        "correct_value": 76
-      },
-      "hints": [
-        "We are adding two numbers: 74 and 2.",
-        "Add the ones: 4 + 2 = 6. Keep 6 in the ones place.",
-        "Add the tens: 7 + 0 = 7.",
-        "The sum is 74 + 2 = 76."
-      ],
-      "sample_id": "f1e7f46540a55e2322d2",
-      "replay_digest": "7e14f8600796d91480540ae6950a6bbbb55e7bc61d708cdbb31544fc36cac5d5"
-    },
-    {
-      "node_id": "mat_g2_na_q1_7",
-      "seed": 800,
+      "seed": 610,
       "formatter": "set_fill_in_blank",
-      "question_text": "Show 60 + 7 on the number line.",
-      "correct_answer": 67,
+      "question_text": "Show 40 + 1 on the number line.",
+      "correct_answer": 41,
       "requested": {
         "difficulty_profile": {
-          "max_sum": 1.0
+          "task_type": "counting_up"
         },
         "student_interest": null,
         "experience": "standard"
@@ -1467,49 +1352,53 @@
         "answer_collection": "fill_in_blank",
         "experience": "standard"
       },
-      "resolved_answer": 67,
+      "resolved_answer": 41,
       "hints": [
-        "We are adding two numbers: 60 and 7.",
-        "Add the ones: 0 + 7 = 7. Keep 7 in the ones place.",
-        "Add the tens: 6 + 0 = 6.",
-        "The sum is 60 + 7 = 67."
+        "We are adding two numbers: 40 and 1.",
+        "Add the ones: 0 + 1 = 1. Keep 1 in the ones place.",
+        "Add the tens: 4 + 0 = 4.",
+        "The sum is 40 + 1 = 41."
       ],
       "visual_type": "NumberLine",
       "visual_payload": {
-        "start": 50,
-        "end": 70,
+        "start": 0,
+        "end": 60,
         "major_interval": 10,
         "minor_interval": 5,
         "interval": 5,
-        "dot_value": 50,
-        "move_by": 7,
+        "dot_value": 0,
+        "move_by": 1,
         "content_type": "whole_number",
-        "value": 67,
-        "correct_position": 67,
-        "divisions": 4,
+        "value": 41,
+        "correct_position": 41,
+        "divisions": 12,
         "is_interactive": true,
         "show_labels": true,
-        "correct_answer": 67.0,
-        "target": 67.0
+        "correct_answer": 41.0,
+        "target": 41.0
       },
       "visual_render": {
         "visual_type": "NumberLine",
-        "renderer_input_digest": "b9118fca1b58bec10a78d0e8fc04d13cf30b64410563a26f0b53264c9776664d",
+        "renderer_input_digest": "ee40f6e5ed49d42ec5344f0067af8e2135ddd853cec81ad89e0ec0bc92ca6750",
         "description": {
           "source": "rendered_static_markup",
           "visual_type": "NumberLine",
-          "element_count": 16,
+          "element_count": 28,
           "svg_count": 0,
           "table_row_count": 0,
           "table_cell_count": 0,
           "button_count": 0,
           "input_count": 0,
           "text_labels": [
+            "0",
+            "10",
+            "20",
+            "30",
+            "40",
             "50",
             "60",
-            "70",
             "Your answer: Position",
-            "60",
+            "30",
             "Click track, drag dot, or use ← → arrow keys"
           ],
           "distinct_colours": [
@@ -1522,18 +1411,323 @@
           "role_counts": {}
         }
       },
+      "sample_id": "6a258c2c04129547486e",
+      "replay_digest": "616b14bdfa9e1291ff13796d81fa575a72c389054031895cc5a87aea7ba01a00"
+    },
+    {
+      "node_id": "mat_g2_na_q1_7",
+      "seed": 700,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Show 43 + 6 on the number line.",
+      "correct_answer": 49,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "set",
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "resolved_answer": 49,
+      "hints": [
+        "We are adding two numbers: 43 and 6.",
+        "Add the ones: 3 + 6 = 9. Keep 9 in the ones place.",
+        "Add the tens: 4 + 0 = 4.",
+        "The sum is 43 + 6 = 49."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "start": 0,
+        "end": 60,
+        "major_interval": 10,
+        "minor_interval": 5,
+        "interval": 5,
+        "dot_value": 0,
+        "move_by": 6,
+        "content_type": "whole_number",
+        "value": 49,
+        "correct_position": 49,
+        "divisions": 12,
+        "is_interactive": true,
+        "show_labels": true,
+        "correct_answer": 49.0,
+        "target": 49.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "6344327a30638888fec4c00f739b843bedf35a113c21732049fb25958c890082",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 28,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "0",
+            "10",
+            "20",
+            "30",
+            "40",
+            "50",
+            "60",
+            "Your answer: Position",
+            "30",
+            "Click track, drag dot, or use ← → arrow keys"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "b40d8a3e7bda9a13f666",
+      "replay_digest": "08118fe03d1b1d5d895e1c97d5767308dc580fa937a7cba70f0f8077d5e320c5"
+    },
+    {
+      "node_id": "mat_g2_na_q1_7",
+      "seed": 701,
+      "formatter": "read_mcq",
+      "question_text": "💃 Kuya Ton enjoys trophies. Here is a math challenge. The dot is at 70 and it moves forward 2 numbers. Starting from 70, just count up 2 numbers. Which number will the dot land on?",
+      "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "dance",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 72,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 82,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 71,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 68,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 72,
+      "hints": [
+        "We are adding two numbers: 70 and 2.",
+        "Add the ones: 0 + 2 = 2. Keep 2 in the ones place.",
+        "Add the tens: 7 + 0 = 7.",
+        "The sum is 70 + 2 = 72."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "start": 60,
+        "end": 80,
+        "major_interval": 10,
+        "minor_interval": 5,
+        "interval": 5,
+        "dot_value": 70,
+        "move_by": 2,
+        "content_type": "whole_number",
+        "value": 72,
+        "correct_position": 72,
+        "divisions": 4,
+        "is_interactive": false,
+        "show_labels": true,
+        "correct_answer": 72.0,
+        "target": 72.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "3e056c0c941bfdb5acfff559e2e9eaed16434e4e13f449718c471a392a3b7504",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 13,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "60",
+            "70",
+            "80"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "a170801fe68cba5c4247",
+      "replay_digest": "be24acefb410b6743f89e0c9e84ca49886e95d47d52aa34164ee594c85bc0c3a"
+    },
+    {
+      "node_id": "mat_g2_na_q1_7",
+      "seed": 702,
+      "formatter": "read_mcq",
+      "question_text": "🏀 Isko enjoys basketballs. Here is a math challenge. The dot is at 74 and it moves forward 2 numbers. Starting from 74, just count up 2 numbers. Which number will the dot land on?",
+      "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "social_issues",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 76,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 75,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 72,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 86,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 76,
+      "hints": [
+        "We are adding two numbers: 74 and 2.",
+        "Add the ones: 4 + 2 = 6. Keep 6 in the ones place.",
+        "Add the tens: 7 + 0 = 7.",
+        "The sum is 74 + 2 = 76."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "start": 60,
+        "end": 80,
+        "major_interval": 10,
+        "minor_interval": 5,
+        "interval": 5,
+        "dot_value": 74,
+        "move_by": 2,
+        "content_type": "whole_number",
+        "value": 76,
+        "correct_position": 76,
+        "divisions": 4,
+        "is_interactive": false,
+        "show_labels": true,
+        "correct_answer": 76.0,
+        "target": 76.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "c4daf749e6f61beef11d7d0e5236bfce3ac6883a603b9de76f9033d079f638d0",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 13,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "60",
+            "70",
+            "80"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "f1e7f46540a55e2322d2",
+      "replay_digest": "91b2eb1d3cde0b96f2fff179dd785bbc1a1115b0bbd4c9ca725464cbbcbf6b77"
+    },
+    {
+      "node_id": "mat_g2_na_q1_7",
+      "seed": 800,
+      "formatter": "true_false",
+      "question_text": "Start at 60. Count up 7 more. You land on 67. True or False?",
+      "correct_answer": true,
+      "requested": {
+        "difficulty_profile": {
+          "max_sum": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "true_false",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "true_false",
+        "experience": "standard"
+      },
+      "resolved_answer": true,
+      "hints": [
+        "We are adding two numbers: 60 and 7.",
+        "Add the ones: 0 + 7 = 7. Keep 7 in the ones place.",
+        "Add the tens: 6 + 0 = 6.",
+        "The sum is 60 + 7 = 67."
+      ],
       "sample_id": "760fb7dfbc7156e1db28",
-      "replay_digest": "6106fa2f81cb402c020cfb34aa22219969f03d71b163badf0b4e1fe1e955f147"
+      "replay_digest": "73058e99989a7efa39e4f329b087211bd98e8a2aec5d5b5f5abde5091fcf1c30"
     },
     {
       "node_id": "mat_g2_na_q1_7",
       "seed": 801,
-      "formatter": "error_detect",
-      "question_text": "Pia solved: \"Start at 96. Count up 9 more. You land on ___\". Pia says the missing number is 105. Is Pia correct?",
-      "correct_answer": {
-        "has_error": false,
-        "correct_value": 105
-      },
+      "formatter": "read_mcq",
+      "question_text": "The dot is at 96 and it moves forward 9 numbers. Starting from 96, just count up 9 numbers. Which number will the dot land on?",
+      "correct_answer": "B",
       "requested": {
         "difficulty_profile": {
           "number_difficulty": 1.0
@@ -1543,31 +1737,96 @@
       },
       "serving_mode": "student_path",
       "effective": {
-        "format": "error_detect",
-        "is_visual": false,
-        "visual_type": null,
-        "interaction_mode": null,
-        "answer_collection": "error_detect",
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
         "experience": "standard"
       },
-      "resolved_answer": {
-        "has_error": false,
-        "correct_value": 105
-      },
+      "options": [
+        {
+          "key": "A",
+          "value": 104,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 105,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 115,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 87,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 105,
       "hints": [
         "We are adding two numbers: 96 and 9.",
-        "Add the ones: 6 + 9 = 15. Keep 5 in the ones place and carry over 1 ten.",
-        "Add the tens: 9 + 0 + 1 (carried) = 10.",
+        "Add the ones: 6 + 9 = 15. 15 ones is 1 ten and 5 ones.",
+        "Add the tens: 9 + 0 + 1 (the ten from the ones) = 10.",
         "The sum is 96 + 9 = 105."
       ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "start": 80,
+        "end": 110,
+        "major_interval": 10,
+        "minor_interval": 5,
+        "interval": 5,
+        "dot_value": 96,
+        "move_by": 9,
+        "content_type": "whole_number",
+        "value": 105,
+        "correct_position": 105,
+        "divisions": 6,
+        "is_interactive": false,
+        "show_labels": true,
+        "correct_answer": 105.0,
+        "target": 105.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "bb0203be5eb9c3c32d4ce575957ecc5636dd1da869a5ddb44aa52bdd054fea3f",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 16,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "80",
+            "90",
+            "100",
+            "110"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
       "sample_id": "15fd58c1c0799e73a1dc",
-      "replay_digest": "5d8a9ddb8c23295869970a0f78c9989ae1625c46dbe0c519598b50056a6221e1"
+      "replay_digest": "5b9e4d80edb5e13f1d5389c2a89d021cd17b4d7a1d6947ef4a75e8d7fd4945a1"
     },
     {
       "node_id": "mat_g2_na_q1_7",
       "seed": 900,
-      "formatter": "mcq",
-      "question_text": "Start at 11. Count up 1 more. What number do you land on?",
+      "formatter": "set_fill_in_blank",
+      "question_text": "Show 11 + 1 on the number line.",
       "correct_answer": 12,
       "requested": {
         "difficulty_profile": {
@@ -1579,35 +1838,13 @@
       },
       "serving_mode": "student_path",
       "effective": {
-        "format": "mcq",
-        "is_visual": false,
-        "visual_type": null,
-        "interaction_mode": null,
-        "answer_collection": "mcq",
+        "format": "set_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "set",
+        "answer_collection": "fill_in_blank",
         "experience": "standard"
       },
-      "options": [
-        {
-          "key": "A",
-          "value": 22,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 10,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 11,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 12,
-          "is_correct": true
-        }
-      ],
       "resolved_answer": 12,
       "hints": [
         "We are adding two numbers: 11 and 1.",
@@ -1615,8 +1852,58 @@
         "Add the tens: 1 + 0 = 1.",
         "The sum is 11 + 1 = 12."
       ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "start": 0,
+        "end": 20,
+        "major_interval": 5,
+        "minor_interval": 1,
+        "interval": 1,
+        "dot_value": 0,
+        "move_by": 1,
+        "content_type": "whole_number",
+        "value": 12,
+        "correct_position": 12,
+        "divisions": 20,
+        "is_interactive": true,
+        "show_labels": true,
+        "correct_answer": 12.0,
+        "target": 12.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "03ad8369b521c44b5877c1f84dda5f15b768c91046968e95b53da1f3184350cf",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 34,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "0",
+            "5",
+            "10",
+            "15",
+            "20",
+            "Your answer: Position",
+            "10",
+            "Click track, drag dot, or use ← → arrow keys"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
       "sample_id": "70487e9caec3d5e7ccae",
-      "replay_digest": "8f036d9f85a037acbbc6d0cef2dd721882dfb80e62de9e80515310481fa4a9c0"
+      "replay_digest": "1cb873df96f1d5a4a3a35ab19b516a9395ce2a771725fb23580681550bd72c1e"
     },
     {
       "node_id": "mat_g2_na_q1_7",
@@ -1654,9 +1941,9 @@
     {
       "node_id": "mat_g2_na_q1_7",
       "seed": 1000,
-      "formatter": "read_mcq",
-      "question_text": "The dot is at 10 and it moves forward 9 numbers. Starting from 10, just count up 9 numbers. Which number will the dot land on?",
-      "correct_answer": "A",
+      "formatter": "set_fill_in_blank",
+      "question_text": "Show 10 + 9 on the number line.",
+      "correct_answer": 19,
       "requested": {
         "difficulty_profile": null,
         "student_interest": null,
@@ -1664,35 +1951,13 @@
       },
       "serving_mode": "student_path",
       "effective": {
-        "format": "read_mcq",
+        "format": "set_fill_in_blank",
         "is_visual": true,
         "visual_type": "NumberLine",
-        "interaction_mode": "read",
-        "answer_collection": "mcq",
+        "interaction_mode": "set",
+        "answer_collection": "fill_in_blank",
         "experience": "hint_gated"
       },
-      "options": [
-        {
-          "key": "A",
-          "value": 19,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 1,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 18,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 29,
-          "is_correct": false
-        }
-      ],
       "resolved_answer": 19,
       "hints": [
         "We are adding two numbers: 10 and 9.",
@@ -1707,24 +1972,24 @@
         "major_interval": 5,
         "minor_interval": 1,
         "interval": 1,
-        "dot_value": 10,
+        "dot_value": 0,
         "move_by": 9,
         "content_type": "whole_number",
         "value": 19,
         "correct_position": 19,
         "divisions": 20,
-        "is_interactive": false,
+        "is_interactive": true,
         "show_labels": true,
         "correct_answer": 19.0,
         "target": 19.0
       },
       "visual_render": {
         "visual_type": "NumberLine",
-        "renderer_input_digest": "cd6d64da25f69975c1fffc22105ede75133babbd61f5790f9cfaef90c7583192",
+        "renderer_input_digest": "10bbd7d1310938bb133cd51e26267d2598c38ca1e626b49f34623964755887f4",
         "description": {
           "source": "rendered_static_markup",
           "visual_type": "NumberLine",
-          "element_count": 31,
+          "element_count": 34,
           "svg_count": 0,
           "table_row_count": 0,
           "table_cell_count": 0,
@@ -1735,7 +2000,10 @@
             "5",
             "10",
             "15",
-            "20"
+            "20",
+            "Your answer: Position",
+            "10",
+            "Click track, drag dot, or use ← → arrow keys"
           ],
           "distinct_colours": [
             "hsl(var(--border-color)",
@@ -1748,17 +2016,14 @@
         }
       },
       "sample_id": "f3bc0ac3786e6cdfebbe",
-      "replay_digest": "b7b7d690df9ee072d5c98a41633ecedcb750332b2caac1451601a54678604b00"
+      "replay_digest": "2d79e584db87ac31feab882f931a60b9907d8b4de87813456b401606ab5d11e6"
     },
     {
       "node_id": "mat_g2_na_q1_7",
       "seed": 1001,
-      "formatter": "error_detect",
-      "question_text": "Liza solved: \"Start at 26. Count up 4 more. You land on ___\". Liza says the missing number is 26. Is Liza correct?",
-      "correct_answer": {
-        "has_error": true,
-        "correct_value": 30
-      },
+      "formatter": "read_mcq",
+      "question_text": "The dot is at 26 and it moves forward 4 numbers. Starting from 26, just count up 4 numbers. Which number will the dot land on?",
+      "correct_answer": "A",
       "requested": {
         "difficulty_profile": null,
         "student_interest": null,
@@ -1766,35 +2031,99 @@
       },
       "serving_mode": "student_path",
       "effective": {
-        "format": "error_detect",
-        "is_visual": false,
-        "visual_type": null,
-        "interaction_mode": null,
-        "answer_collection": "error_detect",
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
         "experience": "mastery_drill"
       },
-      "resolved_answer": {
-        "has_error": true,
-        "correct_value": 30
-      },
+      "options": [
+        {
+          "key": "A",
+          "value": 30,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 40,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 29,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 22,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 30,
       "hints": [
         "We are adding two numbers: 26 and 4.",
-        "Add the ones: 6 + 4 = 10. Keep 0 in the ones place and carry over 1 ten.",
-        "Add the tens: 2 + 0 + 1 (carried) = 3.",
+        "Add the ones: 6 + 4 = 10. 10 ones is 1 ten and 0 ones.",
+        "Add the tens: 2 + 0 + 1 (the ten from the ones) = 3.",
         "The sum is 26 + 4 = 30."
       ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "start": 0,
+        "end": 50,
+        "major_interval": 10,
+        "minor_interval": 5,
+        "interval": 5,
+        "dot_value": 26,
+        "move_by": 4,
+        "content_type": "whole_number",
+        "value": 30,
+        "correct_position": 30,
+        "divisions": 10,
+        "is_interactive": false,
+        "show_labels": true,
+        "correct_answer": 30.0,
+        "target": 30.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "a1334e7107c324cd12078ac4502918457e014ea6cf21049fb943b50a6d5ecacb",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 22,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "0",
+            "10",
+            "20",
+            "30",
+            "40",
+            "50"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
       "sample_id": "2ecb40151ec92320ad8b",
-      "replay_digest": "01da220f954936c71787a060a82094f88e24c4b4a18d441a1ad3cfba71ec06ce"
+      "replay_digest": "3629b4002669825ef9493aa4f3af27ddd707904dd95669271294889e95658d8e"
     },
     {
       "node_id": "mat_g2_na_q1_7",
       "seed": 1002,
-      "formatter": "error_detect",
-      "question_text": "Manny solved: \"Start at 60. Count up 6 more. You land on ___\". Manny says the missing number is 76. Is Manny correct?",
-      "correct_answer": {
-        "has_error": true,
-        "correct_value": 66
-      },
+      "formatter": "read_mcq",
+      "question_text": "The dot is at 60 and it moves forward 6 numbers. Starting from 60, just count up 6 numbers. Which number will the dot land on?",
+      "correct_answer": "D",
       "requested": {
         "difficulty_profile": null,
         "student_interest": null,
@@ -1802,25 +2131,89 @@
       },
       "serving_mode": "student_path",
       "effective": {
-        "format": "error_detect",
-        "is_visual": false,
-        "visual_type": null,
-        "interaction_mode": null,
-        "answer_collection": "error_detect",
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
         "experience": "scaffolded"
       },
-      "resolved_answer": {
-        "has_error": true,
-        "correct_value": 66
-      },
+      "options": [
+        {
+          "key": "A",
+          "value": 76,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 54,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 65,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 66,
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 66,
       "hints": [
         "We are adding two numbers: 60 and 6.",
         "Add the ones: 0 + 6 = 6. Keep 6 in the ones place.",
         "Add the tens: 6 + 0 = 6.",
         "The sum is 60 + 6 = 66."
       ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "start": 50,
+        "end": 70,
+        "major_interval": 10,
+        "minor_interval": 5,
+        "interval": 5,
+        "dot_value": 60,
+        "move_by": 6,
+        "content_type": "whole_number",
+        "value": 66,
+        "correct_position": 66,
+        "divisions": 4,
+        "is_interactive": false,
+        "show_labels": true,
+        "correct_answer": 66.0,
+        "target": 66.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "daa051bead38694bbc6711bef4f4cce00eb2c2bb8d3a6f7016aee512e7754a4b",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 13,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "50",
+            "60",
+            "70"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
       "sample_id": "dfae75e1c6057549433b",
-      "replay_digest": "0edf4d7c9028877e37ccc49376bc09248bdfee7a2bc97e85a6cef05c0893f356"
+      "replay_digest": "fba513936b92e62b6c811421b96d9b840f2013e4563540306fd396fba9e47e20"
     }
   ],
   "sample_assessments": [
@@ -1829,690 +2222,667 @@
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Starting point eighty with increment three clearly establishes the addition task. False claim of ninety-three as result creates unambiguous evaluation target for true/false format."
+          "reasoning": "The true or false prompt clearly presents a claim about starting at eighty and counting up three more to land on ninety-three, asking the learner to judge truth value. The question structure is unambiguous and the expected operation is explicit. No alternative interpretations of the mathematical task exist given the stem language and answer format specified."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Eighty plus three correctly yields eighty-three, making ninety-three false. The logical structure mirrors realistic student errors involving digit transposition or misalignment."
+          "reasoning": "The claim that counting up three from eighty lands on ninety-three is mathematically invalid since eighty plus three equals eighty-three. The answer of false correctly identifies this error. The counting up narrative provides coherent context for addition as a forward movement strategy, making the mathematical relationship logically sound even though the claimed result is incorrect."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Straightforward imperative language with concrete two-digit starting point and single-digit increment suits Grade 2 independent reading. True/false decision format provides clear response structure."
+          "reasoning": "Grade two learners familiar with addition vocabulary and counting up strategies can immediately understand the task setup. The language is simple and direct, requesting only a basic true or false judgment after processing a single addition claim. No conditional logic or multi-step reasoning beyond addition verification is required, making it accessible to the target grade level."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Eighty plus three equals eighty-three exactly. Hints correctly decompose to ones place zero plus three equals three, tens place eight plus zero equals eight."
+          "reasoning": "The arithmetic is correct: eighty plus three equals eighty-three, not ninety-three. The false answer properly identifies the incorrect claim. The hints accurately decompose the computation through place value reasoning, confirming the mathematical content is sound and the problem correctly assesses understanding of this specific addition fact."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe9-mat_g2_na_q1_7-20260930",
-      "dispatch_id": "s5-phaseE-claude-w9-haiku45-20260930-mat_g2_na_q1_7:mat_g2_na_q1_7"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g2_na_q1_7-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g2_na_q1_7:mat_g2_na_q1_7"
     },
     {
       "sample_id": "adece91637c1dba870d4",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Dot positioned at sixty-four moving forward seven numbers creates concrete visual metaphor. Rendered number-line from fifty to eighty provides clear spatial context eliminating position ambiguity."
+          "reasoning": "The instruction to show sixty-four plus seven on the number line is unambiguous. The learner must compute the sum and locate or mark the result on a provided number line visual. The task boundaries are clear, the response method is explicit, and no competing interpretations of the mathematical requirement exist given the stem and response format."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Dot-movement metaphor logically parallels counting-up. Sixty-four plus seven equals seventy-one aligns with option placement. Distractors like seventy include plausible one-off errors."
+          "reasoning": "The problem establishes a valid mathematical context where a learner must add a two-digit number and a one-digit number, representing the result on a number line. Sixty-four plus seven equals seventy-one, which is a valid sum within the number line range shown in the rendered structure displaying labels from fifty through eighty. The context directly supports the required mathematical action."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Visual number-line with five-unit marking intervals supports Grade 2 spatial reasoning. Read-only format removes input burden letting student focus on counting strategy."
+          "reasoning": "The problem language is direct and age-appropriate for Grade two learners who have been introduced to number lines as a representation tool. The stem shows the addition expression numerically and asks learners to show their answer on a visual number line, a familiar format in early Grade two instruction. No ambiguous or unclear terminology interferes with understanding the task."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Sixty-four plus seven equals seventy-one exactly. Hints show four plus seven equals eleven with regrouping one ten to tens column, producing seven in tens place."
+          "reasoning": "The addition sixty-four plus seven is correctly computed as seventy-one. The hint sequence properly decomposes this through place value: ones digits four and seven sum to eleven which is one ten and one one, then tens digits six and zero plus the regrouped one ten sum to seven. The answer seventy-one is mathematically correct and the hints support accurate conceptual understanding."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe9-mat_g2_na_q1_7-20260930",
-      "dispatch_id": "s5-phaseE-claude-w9-haiku45-20260930-mat_g2_na_q1_7:mat_g2_na_q1_7"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g2_na_q1_7-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g2_na_q1_7:mat_g2_na_q1_7"
     },
     {
       "sample_id": "2c4d1623ca356a64edd2",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Error-detection presents Rico's answer of seventeen for fifteen plus two. Question whether Rico is correct creates clear yes/no evaluation endpoint."
+          "reasoning": "The multiple choice question asks where a dot lands after moving forward two numbers from fifteen, using the counting up framing explicitly. Four options are provided and the learner must select the correct result. The task is stated clearly with no ambiguous language or competing interpretations of what counting up means in this context. The movement and landing description are straightforward spatial operations."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Rico's response is mathematically correct. Error-detection setup logically tests whether learner can verify peer calculation accuracy on basic non-regrouping problem."
+          "reasoning": "The narrative context of a dot on a number line that moves forward establishes valid logical grounding for addition as a forward counting strategy. Fifteen plus two equals seventeen is the correct result. The four options sixteen, twenty-seven, seventeen, and thirteen represent plausible distractors that students might arrive at through common computational errors or misunderstandings, making the multiple choice set logically coherent."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Peer-problem scenario with named character Rico makes error detection relatable for second-grade students. Simple arithmetic keeps focus on verification task."
+          "reasoning": "The problem uses familiar Grade two vocabulary and concepts including dots on number lines and the notion of forward movement as addition. The stem is concise and the question format is direct. The visual representation shows a number line with marked positions from zero through twenty, making it clear to learners how to interpret and use this tool to verify their addition result."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Fifteen plus two equals seventeen with no error present. Hints confirm ones column five plus two equals seven, tens column one plus zero equals one."
+          "reasoning": "Fifteen plus two equals seventeen, matching the correct answer provided. The distractors are mathematically reasonable: sixteen is off by one, twenty-seven results from misreading twelve as twenty-two or adding twelve instead of two, and thirteen is obtained by subtracting two instead of adding. The hints correctly derive seventeen through place value reasoning, confirming the mathematical content is accurate."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe9-mat_g2_na_q1_7-20260930",
-      "dispatch_id": "s5-phaseE-claude-w9-haiku45-20260930-mat_g2_na_q1_7:mat_g2_na_q1_7"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g2_na_q1_7-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g2_na_q1_7:mat_g2_na_q1_7"
     },
     {
       "sample_id": "1a7e5281dbd83353ff97",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Multiple-choice presents eighty-two as starting position with five-number increment. Four distinct options from eighty-six through ninety-seven reduce selection ambiguity."
+          "reasoning": "The instruction to show eighty-two plus five on the number line is unambiguous in task, numerals, and response method. The learner must compute this sum and position or mark the answer on the interactive number line provided. No alternative operations or interpretations of the mathematical task can reasonably arise from this clear, direct instruction and response format."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Eighty-two plus five equals eighty-seven. Distractors eighty-six and ninety-seven represent plausible computational errors or off-by-one mistakes."
+          "reasoning": "The problem provides a mathematically sound context where eighty-two plus five must be computed and represented on a number line visual. The sum eighty-seven falls within the number line range shown in the rendered structure, which displays labels from seventy through ninety. The problem structure directly supports the required mathematical reasoning without contradictions or invalid assumptions."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Standard count-up framing with moderate single-digit increment. Multiple-choice scaffolding supports students who may struggle with unguided written response."
+          "reasoning": "Grade two learners at this stage have encountered number line representations and addition notation, making the task immediately understandable. The format is consistent with classroom practice where learners show their work by marking positions on number lines. The language contains no unfamiliar terminology or confusing structures that would impede comprehension."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Eighty-two plus five equals eighty-seven correctly. Hints show two plus five equals seven in ones place, eight plus zero equals eight in tens place."
+          "reasoning": "Eighty-two plus five correctly equals eighty-seven. The hints properly decompose this: ones place two plus five equals seven with no regrouping needed, tens place eight plus zero equals eight, yielding the sum eighty-seven. All arithmetic operations in the hints are accurate and the final answer is mathematically correct."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe9-mat_g2_na_q1_7-20260930",
-      "dispatch_id": "s5-phaseE-claude-w9-haiku45-20260930-mat_g2_na_q1_7:mat_g2_na_q1_7"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g2_na_q1_7-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g2_na_q1_7:mat_g2_na_q1_7"
     },
     {
       "sample_id": "c380467bb8f0cf54d795",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Cloze format with blank positioned after counting up eight from sixty-four eliminates ambiguity about which number to supply."
+          "reasoning": "The question clearly states the dot starts at sixty-four and moves forward eight numbers, asking where it lands using counting up language. Four multiple choice options are provided. The task requires a single addition computation and selection from the given options. No confusion about the operation or the expected response exists given the clear stem and response structure provided."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Sixty-four plus eight equals seventy-two exactly. Options include seventy-one as near-miss, eighty-two as tens-place confusion, fifty-six as magnitude error."
+          "reasoning": "The dot movement narrative on a number line provides valid context for understanding addition as forward counting. Sixty-four plus eight equals seventy-two is the correct mathematical result. The four options seventy-one, eighty-two, fifty-six, and seventy-two represent realistic errors or outcomes a Grade two student might generate, creating a logically coherent multiple choice set."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Cloze with four-option support provides middle ground between free response and multiple-choice. Grammar flows naturally for young reader."
+          "reasoning": "The problem uses accessible Grade two language and familiar number line representation with a clear dot movement scenario. The task is stated concisely and directly. The visual number line displayed in the rendered structure shows labeled positions from fifty through eighty, providing sufficient scaffolding for learners to trace the movement and verify their computation."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Sixty-four plus eight equals seventy-two. Regrouping required: four plus eight equals twelve, keeping two in ones and carrying one ten to produce seven in tens column."
+          "reasoning": "Sixty-four plus eight equals seventy-two, which matches the correct answer. The computation involves regrouping in the ones place: four plus eight equals twelve, which is one ten and two ones, then six tens plus zero tens plus the regrouped one ten equals seven tens, yielding seventy-two. The hints accurately reflect this place value decomposition, confirming mathematical correctness throughout."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe9-mat_g2_na_q1_7-20260930",
-      "dispatch_id": "s5-phaseE-claude-w9-haiku45-20260930-mat_g2_na_q1_7:mat_g2_na_q1_7"
-    },
-    {
-      "sample_id": "c38c42f99e0eef8ec2b0",
-      "checks": {
-        "ambiguity": {
-          "verdict": "PASS",
-          "reasoning": "Request to show seventy-five plus nine on number line provides unambiguous task. Rendered number-line shows scale from sixty to ninety supporting interactive positioning."
-        },
-        "contextual_logical_validity": {
-          "verdict": "PASS",
-          "reasoning": "Seventy-five plus nine equals eighty-four. Visual representation of counting-up movement on number-line logically embodies the competency's core strategy."
-        },
-        "learner_facing_clarity": {
-          "verdict": "PASS",
-          "reasoning": "Interactive set_fill_in_blank with number-line visual directly engages learner in demonstrating counting-up through spatial positioning. Labels show ten-unit intervals supporting student orientation."
-        },
-        "mathematical_validity": {
-          "verdict": "PASS",
-          "reasoning": "Seventy-five plus nine equals eighty-four. Regrouping: five plus nine equals fourteen, keeping four in ones and carrying one ten, producing eight in tens."
-        }
-      },
-      "reviewer_identity": "blind-reviewer-haiku45-pe9-mat_g2_na_q1_7-20260930",
-      "dispatch_id": "s5-phaseE-claude-w9-haiku45-20260930-mat_g2_na_q1_7:mat_g2_na_q1_7"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g2_na_q1_7-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g2_na_q1_7:mat_g2_na_q1_7"
     },
     {
       "sample_id": "24dff6cf5b66e2021266",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Show eighty-five plus seven on number line creates unambiguous visual demonstration task. Number-line scale from seventy to one hundred provides adequate range."
+          "reasoning": "The true or false item presents a claim about starting at eighty-five, counting up seven more, and landing on ninety-one. The learner must evaluate this claim as true or false. The task structure is clear and unambiguous; no alternative interpretations of the mathematical claim or expected response format exist."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Eighty-five plus seven equals ninety-two exactly. Interactive positioning on visual scale directly models counting-up strategy students should develop."
+          "reasoning": "Eighty-five plus seven correctly equals ninety-two, not ninety-one, making the false answer mathematically valid. The counting up narrative frames addition as forward movement, establishing coherent context. The incorrect claim ninety-one represents a plausible error learners might make, such as miscounting or off-by-one thinking, making the problem pedagogically sound."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Interactive format with number-line support removes transcription barriers, letting learner demonstrate understanding through spatial demonstration of the count-up movement."
+          "reasoning": "The problem uses simple, direct language accessible to Grade two learners. The counting up framing and true or false format are familiar from classroom instruction. No complex conditional logic, implicit assumptions, or undefined terms obscure the mathematical task from the intended audience."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Eighty-five plus seven equals ninety-two. Place-value: five plus seven equals twelve, keeping two ones and carrying one ten for nine in tens place."
+          "reasoning": "The correct sum is ninety-two: eighty-five plus seven requires regrouping in the ones place since five plus seven equals twelve. The hints accurately decompose this, identifying twelve ones as one ten and two ones, then summing the tens to get nine tens plus the regrouped ten, yielding ninety-two. The false verdict correctly identifies the erroneous claim ninety-one."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe9-mat_g2_na_q1_7-20260930",
-      "dispatch_id": "s5-phaseE-claude-w9-haiku45-20260930-mat_g2_na_q1_7:mat_g2_na_q1_7"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g2_na_q1_7-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g2_na_q1_7:mat_g2_na_q1_7"
     },
     {
       "sample_id": "59d730a160acece3074e",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "True/false statement that eighty-seven plus six lands on one hundred three is unambiguous. Request for judgment is clear."
+          "reasoning": "The true or false prompt clearly presents the claim that starting at eighty-seven and counting up six more lands on one hundred three. The learner must judge truth value. The task boundaries are explicit and no ambiguity exists regarding the operation, the operands, or the claimed result that requires evaluation."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Eighty-seven plus six equals ninety-three, not one hundred three. False statement tests whether learner recognizes implausibly large result from single-digit increment."
+          "reasoning": "Eighty-seven plus six correctly equals ninety-three, not one hundred three. The false answer is mathematically valid. The counting up context establishes appropriate framing for addition. The incorrect claim of one hundred three represents a significant error, perhaps from miscomputation or digit reversal, but the mathematical relationship is coherent and the false verdict correctly identifies the falsehood."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Implausibly large false claim makes this particularly instructive for checking magnitude sense. Simple phrasing supports independent evaluation."
+          "reasoning": "Grade two learners understand counting up language and true or false question formats from regular classroom instruction. The stem uses simple numerals and uncomplicated sentence structure. The large magnitude of the error in the claim one hundred three versus the correct answer of ninety-three may actually help learners recognize the false statement more easily."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Eighty-seven plus six equals ninety-three. Regrouping: seven plus six equals thirteen, keeping three ones and carrying one ten for nine in tens."
+          "reasoning": "Eighty-seven plus six equals ninety-three: ones place seven plus six equals thirteen, which is one ten and three ones, then tens place eight plus zero plus the regrouped one ten equals nine tens. The hints accurately perform this decomposition, confirming that ninety-three is correct and one hundred three is indeed false."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe9-mat_g2_na_q1_7-20260930",
-      "dispatch_id": "s5-phaseE-claude-w9-haiku45-20260930-mat_g2_na_q1_7:mat_g2_na_q1_7"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g2_na_q1_7-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g2_na_q1_7:mat_g2_na_q1_7"
     },
     {
       "sample_id": "5f4e7b6f987fadecb059",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Error-detection with Dante solving ninety plus two equals ninety-two presents clear correctness evaluation. Yes/no format is unambiguous."
+          "reasoning": "The question asks where the dot lands after moving forward two numbers from ninety using counting up language, with four multiple choice options provided. The task is stated clearly and directly. The expected operation and response format leave no room for alternative interpretations or ambiguity in what the learner must do."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Dante's answer is mathematically correct. Peer-problem structure logically tests whether learner can verify calculation without computing independently."
+          "reasoning": "Ninety plus two equals ninety-two is the correct result. The dot movement on a number line provides logical context for addition as forward counting. The four options one hundred two, eighty-eight, ninety-two, and ninety-one represent plausible computational errors or digit misreadings, forming a logically coherent set of alternatives for the multiple choice format."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Peer-verification task with minimal regrouping keeps focus on evaluation rather than complex calculation. Character-based context aids engagement."
+          "reasoning": "The problem uses grade-appropriate language and familiar number line visualization. The task is concise and direct. The rendered structure shows labels from eighty through one hundred, providing visual scaffolding to help learners count or verify their result. No terminology or logical complexity exceeds Grade two comprehension."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Ninety plus two equals ninety-two correctly. Hints show zero plus two equals two in ones, nine plus zero equals nine in tens."
+          "reasoning": "Ninety plus two equals ninety-two: zero plus two equals two in the ones place, nine plus zero equals nine in the tens place. No regrouping is required, making this a straightforward addition fact. The hints confirm this simple computation and the correct answer ninety-two is mathematically sound."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe9-mat_g2_na_q1_7-20260930",
-      "dispatch_id": "s5-phaseE-claude-w9-haiku45-20260930-mat_g2_na_q1_7:mat_g2_na_q1_7"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g2_na_q1_7-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g2_na_q1_7:mat_g2_na_q1_7"
     },
     {
       "sample_id": "85f4fabe628fd6586945",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "True/false claims forty-eight plus seven equals sixty-five. Actual sum is fifty-five. Clear evaluation target distinguishes true from false."
+          "reasoning": "The true or false prompt presents the claim that starting at forty-eight and counting up seven more lands on sixty-five. The learner must evaluate this claim. The task is unambiguous in its operation, operands, and the verdict required as output."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Forty-eight plus seven equals fifty-five, not sixty-five. False statement by seventeen represents realistic place-value error pattern."
+          "reasoning": "Forty-eight plus seven correctly equals fifty-five, not sixty-five, making the false answer valid. The counting up narrative supports addition as forward movement on a mental number line. The incorrect claim of sixty-five is pedagogically interesting as it represents a plausible error from miscounting or misplacing digits, making it a realistic false statement for learners to evaluate."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Straightforward problem with false claim in sixty-five that exceeds actual sum by ten. Clear target for student false-statement rejection."
+          "reasoning": "The problem language is simple and direct, using counting up framing and true or false format that Grade two learners encounter regularly. All numerals and operations are within early Grade two scope. The sentence structure is uncomplicated and supports understanding the mathematical claim being evaluated."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Forty-eight plus seven equals fifty-five. Regrouping: eight plus seven equals fifteen, keeping five ones and carrying one ten for five in tens."
+          "reasoning": "Forty-eight plus seven equals fifty-five: eight plus seven equals fifteen, which is one ten and five ones, then four tens plus zero tens plus the regrouped one ten equals five tens, yielding fifty-five. The hints accurately decompose this computation, confirming the false verdict is correct."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe9-mat_g2_na_q1_7-20260930",
-      "dispatch_id": "s5-phaseE-claude-w9-haiku45-20260930-mat_g2_na_q1_7:mat_g2_na_q1_7"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g2_na_q1_7-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g2_na_q1_7:mat_g2_na_q1_7"
     },
     {
       "sample_id": "4126b185390fd454ac61",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Cloze positions blank after counting up five from thirty. Four options ranging from twenty-five to forty-five support student selection."
+          "reasoning": "The question clearly asks where the dot lands after moving forward five numbers from thirty using counting up language. Four multiple choice options are provided. The stem is direct and unambiguous; the operation, operands, and response format are all explicit and clear."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Thirty plus five equals thirty-five. No regrouping required in ones column. Distractors forty-five and twenty-five represent inverted or place-confused errors."
+          "reasoning": "Thirty plus five equals thirty-five is the correct mathematical result. The dot movement narrative establishes coherent context for understanding addition as counting forward. The four options forty-five, thirty-five, thirty-four, and twenty-five represent realistic errors such as miscomputation or digit confusion, creating a valid multiple choice set."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Foundational no-regrouping problem with multiple-choice support. Simple structure supports Grade 2 learner success."
+          "reasoning": "Grade two learners are familiar with number line representations and counting up strategies. The problem uses simple, direct language and clear question format. The rendered number line shows labels from zero through fifty, providing strong visual scaffolding. No undefined terms or confusing logic structures impede comprehension."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Thirty plus five equals thirty-five correctly. Ones column zero plus five equals five, tens column three plus zero equals three."
+          "reasoning": "Thirty plus five equals thirty-five: zero plus five equals five in the ones place, three plus zero equals three in the tens place, yielding thirty-five with no regrouping required. This is a straightforward addition fact and the hints confirm the mathematical accuracy of the correct answer."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe9-mat_g2_na_q1_7-20260930",
-      "dispatch_id": "s5-phaseE-claude-w9-haiku45-20260930-mat_g2_na_q1_7:mat_g2_na_q1_7"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g2_na_q1_7-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g2_na_q1_7:mat_g2_na_q1_7"
     },
     {
       "sample_id": "fa918e6fa8e726278c90",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Show sixty plus four on number line with rendered scale from fifty to seventy provides unambiguous interactive task. Clear positional endpoints."
+          "reasoning": "The true or false statement claims that starting at sixty and counting up four more results in landing on sixty-five. The learner must evaluate this claim as true or false. The task structure is clear, with explicit operands and a specific result claim to verify, leaving no room for ambiguous interpretation."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Sixty plus four equals sixty-four logically. Visual representation supports counting-up demonstration on explicit number-line display."
+          "reasoning": "Sixty plus four correctly equals sixty-four, not sixty-five, making the false answer mathematically valid. The counting up framing establishes appropriate context for addition conceptualization. The incorrect claim of sixty-five is an off-by-one error, representing the type of miscounting or careless computation that Grade two learners sometimes make."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Number-line scale with five-unit intervals supports Grade 2 spatial reasoning. Interactive positioning lets learner demonstrate understanding without writing."
+          "reasoning": "The problem uses grade-appropriate language and familiar true or false question format from classroom instruction. The numerals are simple and within early Grade two range. The sentence structure is clear and direct, supporting learner comprehension without unnecessary complexity."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Sixty plus four equals sixty-four exactly. No regrouping: zero plus four equals four in ones, six plus zero equals six in tens."
+          "reasoning": "Sixty plus four equals sixty-four: zero plus four equals four in the ones place, six plus zero equals six in the tens place, yielding sixty-four. No regrouping is involved in this straightforward addition. The hints accurately confirm this computation, supporting the false verdict for the incorrect claim of sixty-five."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe9-mat_g2_na_q1_7-20260930",
-      "dispatch_id": "s5-phaseE-claude-w9-haiku45-20260930-mat_g2_na_q1_7:mat_g2_na_q1_7"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g2_na_q1_7-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g2_na_q1_7:mat_g2_na_q1_7"
     },
     {
       "sample_id": "4ce2af6e86c1e1818ec7",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Dot starting at seventy-four moving forward eight numbers with read-only multiple-choice format is unambiguous. Visual scale from sixty to ninety supports spatial reference."
+          "reasoning": "The instruction to show seventy-four plus eight on the number line is unambiguous. The learner must compute the sum and locate or mark the result on an interactive number line visual. The task is stated directly with no competing interpretations of the operation or expected response method."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Seventy-four plus eight equals eighty-two exactly. Dot-movement on number-line logically embodies counting-up strategy. Distractors include eighty-one as near-miss."
+          "reasoning": "Seventy-four plus eight equals eighty-two, a valid mathematical result. The problem establishes clear context where the learner must add the two numbers and represent the sum on a number line. Eighty-two falls within the number line range shown in the rendered structure, from sixty through ninety, supporting direct verification of the answer."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Visual number-line combined with dot-movement metaphor makes counting-up concrete. Read-only format removes input burden supporting focus on strategy."
+          "reasoning": "The problem uses direct language and a familiar format combining addition notation with number line representation. Grade two learners who have worked with number lines can immediately understand the task. The language is simple and contains no confusing or undefined terminology."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Seventy-four plus eight equals eighty-two. Regrouping: four plus eight equals twelve, keeping two ones and carrying one ten for eight in tens."
+          "reasoning": "Seventy-four plus eight requires regrouping in the ones place: four plus eight equals twelve, which is one ten and two ones. Then seven tens plus zero tens plus the regrouped one ten equals eight tens, giving eighty-two. The hints accurately decompose this computation through place value reasoning, confirming mathematical correctness."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe9-mat_g2_na_q1_7-20260930",
-      "dispatch_id": "s5-phaseE-claude-w9-haiku45-20260930-mat_g2_na_q1_7:mat_g2_na_q1_7"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g2_na_q1_7-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g2_na_q1_7:mat_g2_na_q1_7"
     },
     {
       "sample_id": "49972243312881950960",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Multiple-choice from ninety-four plus seven to identify landing number is unambiguous. Four options span eighty-seven through one hundred eleven."
+          "reasoning": "The instruction to show ninety-four plus seven on the number line is clear and direct. The learner must compute this sum and represent it on the provided number line. No ambiguity exists regarding the operation, the numerals involved, or the expected response format and method."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Ninety-four plus seven equals one hundred one, extending into three-digit results. This advanced example appropriately challenges top Grade 2 learners."
+          "reasoning": "Ninety-four plus seven equals one hundred one. While this result crosses into three-digit numbers, it remains a valid mathematical outcome for this sum and represents a natural extension for Grade two learners transitioning toward understanding numbers beyond one hundred. The number line rendered structure displays labels through one hundred ten, accommodating this result."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Moderately challenging problem with three-digit result. Multiple-choice scaffolding supports student identification despite increased magnitude."
+          "reasoning": "The problem uses the same direct format as other fill-in-blank items in the packet. Grade two learners at Quarter one may be introduced to numbers in the hundreds range, particularly those built from numbers in the nineties. The number line visual support helps make the task accessible despite the three-digit result."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Ninety-four plus seven equals one hundred one correctly. Regrouping produces eleven in ones place via four plus seven, carrying to tens yields ten in tens, advancing to hundreds."
+          "reasoning": "Ninety-four plus seven requires regrouping: four plus seven equals eleven, which is one ten and one one. Nine tens plus zero tens plus the regrouped one ten equals ten tens, which is one hundred. This produces one hundred one. The hints accurately show this reasoning, confirming the mathematical content is correct."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe9-mat_g2_na_q1_7-20260930",
-      "dispatch_id": "s5-phaseE-claude-w9-haiku45-20260930-mat_g2_na_q1_7:mat_g2_na_q1_7"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g2_na_q1_7-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g2_na_q1_7:mat_g2_na_q1_7"
     },
     {
       "sample_id": "2dc9837043049e8d27b5",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Show thirty-four plus one on number line with rendered scale from zero to fifty provides clear interactive positioning task."
+          "reasoning": "The true or false prompt presents the claim that starting at thirty-four and counting up one more lands on thirty-three. The learner must judge truth value. The task is stated unambiguously with clear operands and a specific claimed result to evaluate."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Thirty-four plus one equals thirty-five. Minimal increment with comprehensive number-line scale supports foundational counting-up demonstration."
+          "reasoning": "Thirty-four plus one correctly equals thirty-five, not thirty-three, making the false answer mathematically valid and clearly correct. The counting up narrative provides coherent context. The incorrect claim of thirty-three is interesting pedagogically as it counts backward instead of forward, testing whether learners understand the direction of counting up."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Interactive number-line with extended zero-to-fifty scale supports spatial orientation. Single-unit increment provides scaffolding for emerging learners."
+          "reasoning": "The problem uses simple language familiar to Grade two learners from regular instruction. The counting up framing and true or false format are well-established classroom conventions. All numerals and the operation are within appropriate scope, and no complex reasoning or undefined terms interfere with understanding."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Thirty-four plus one equals thirty-five exactly. Ones column four plus one equals five, tens column three plus zero equals three."
+          "reasoning": "Thirty-four plus one equals thirty-five: four plus one equals five in the ones place, three plus zero equals three in the tens place, yielding thirty-five. This is a basic addition fact. The hints correctly perform this computation, confirming that the false verdict for the claim of thirty-three is mathematically sound."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe9-mat_g2_na_q1_7-20260930",
-      "dispatch_id": "s5-phaseE-claude-w9-haiku45-20260930-mat_g2_na_q1_7:mat_g2_na_q1_7"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g2_na_q1_7-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g2_na_q1_7:mat_g2_na_q1_7"
     },
     {
       "sample_id": "74654569697ccec63f72",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Multiple-choice from thirty-seven plus three with four options spanning thirty-four through fifty is unambiguous selection task."
+          "reasoning": "The instruction to show thirty-seven plus three on the number line is unambiguous in operation, operands, and response method. The learner must compute the sum and position or mark it on the provided number line. No alternative interpretations or ambiguity exist in this straightforward task statement."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Thirty-seven plus three equals forty exactly. Problem requires crossing tens boundary. Distractors thirty-nine and thirty-four represent near-miss or regrouping errors."
+          "reasoning": "Thirty-seven plus three equals forty, crossing the decade boundary from the thirties to forty. This is a mathematically valid and pedagogically valuable problem because it shows place value regrouping in action. The number line rendered structure shows labels from zero through sixty, accommodating this result clearly."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Moderate problem requiring tens-boundary crossing. Multiple-choice provides scaffolding for learners navigating regrouping challenge."
+          "reasoning": "The problem uses the same direct, familiar format as other number line addition tasks. Grade two learners understand this format from classroom instruction. The numerals are within appropriate scope. The decade boundary crossing may actually help make the regrouping concept more concrete and visible to learners."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Thirty-seven plus three equals forty correctly. Regrouping: seven plus three equals ten, keeping zero in ones and carrying one ten for four in tens."
+          "reasoning": "Thirty-seven plus three equals forty: seven plus three equals ten, which is one ten and zero ones. Three tens plus zero tens plus the regrouped one ten equals four tens, producing forty. The hints accurately decompose this computation through place value, confirming mathematical correctness and demonstrating the regrouping concept clearly."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe9-mat_g2_na_q1_7-20260930",
-      "dispatch_id": "s5-phaseE-claude-w9-haiku45-20260930-mat_g2_na_q1_7:mat_g2_na_q1_7"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g2_na_q1_7-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g2_na_q1_7:mat_g2_na_q1_7"
     },
     {
       "sample_id": "1db9871c2d1e5dc0e078",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Error-detection with Grace solving sixty-six plus one equals sixty-seven presents clear correctness judgment. Yes/no format is unambiguous."
+          "reasoning": "The question asks where the dot lands after moving forward one number from sixty-six, using counting up language. Four multiple choice options are provided. The stem is direct and unambiguous regarding the operation, operands, and required response."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Grace's answer is correct; sixty-six plus one equals sixty-seven. Peer-verification with minimal arithmetic keeps focus on evaluation task."
+          "reasoning": "Sixty-six plus one equals sixty-seven is the correct mathematical result. The dot movement narrative on a number line provides valid context for addition as forward counting. The four options sixty-five, sixty-six, sixty-seven, and seventy-seven represent realistic alternatives including previous position, unchanged position, correct result, and a digit manipulation error."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Character-based error-detection with simple single-increment problem aids Grade 2 engagement. Clear yes/no decision point."
+          "reasoning": "The problem uses grade-appropriate language and the familiar number line dot movement scenario. The counting up framing is consistent with Grade two instruction. The multiple choice format is well-understood by this grade level. The rendered number line shows labels from fifty through seventy, providing clear visual support."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Sixty-six plus one equals sixty-seven correctly. Ones column six plus one equals seven, tens column six plus zero equals six."
+          "reasoning": "Sixty-six plus one equals sixty-seven: six plus one equals seven in the ones place, six plus zero equals six in the tens place. This is a basic addition fact requiring no regrouping. The hints correctly confirm this simple computation and the answer sixty-seven is mathematically sound."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe9-mat_g2_na_q1_7-20260930",
-      "dispatch_id": "s5-phaseE-claude-w9-haiku45-20260930-mat_g2_na_q1_7:mat_g2_na_q1_7"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g2_na_q1_7-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g2_na_q1_7:mat_g2_na_q1_7"
     },
     {
       "sample_id": "6639180d7726ccc43092",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "True/false falsely claims eighty-three plus three lands on eighty-three (no change). Clear impossibility makes evaluation target obvious."
+          "reasoning": "The true or false statement claims that starting at eighty-three and counting up three more results in landing on eighty-three. The learner must evaluate this claim. The operands and claimed result are explicit and unambiguous, leaving no room for alternative interpretations of the task."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Eighty-three plus three equals eighty-six, not eighty-three. No-change claim is logically impossible under addition operation."
+          "reasoning": "Eighty-three plus three correctly equals eighty-six, not eighty-three. The false answer is mathematically valid. This problem is pedagogically valuable because the incorrect claim eighty-three is the starting number itself, testing whether learners understand that counting up means moving forward from the starting point, not staying in place."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Impossible no-change outcome makes this particularly instructive for understanding addition increases values. Simple numbers support independent reasoning."
+          "reasoning": "The problem uses simple, direct language with true or false format familiar to Grade two learners. The counting up framing is consistent with classroom instruction. All numerals and the operation are within appropriate scope. The sentence structure supports clear understanding of the mathematical claim."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Eighty-three plus three equals eighty-six. Ones column three plus three equals six, tens column eight plus zero equals eight."
+          "reasoning": "Eighty-three plus three equals eighty-six: three plus three equals six in the ones place, eight plus zero equals eight in the tens place, yielding eighty-six. No regrouping is required for this addition. The hints accurately confirm this computation and correctly identify the false nature of the claim eighty-three."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe9-mat_g2_na_q1_7-20260930",
-      "dispatch_id": "s5-phaseE-claude-w9-haiku45-20260930-mat_g2_na_q1_7:mat_g2_na_q1_7"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g2_na_q1_7-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g2_na_q1_7:mat_g2_na_q1_7"
     },
     {
       "sample_id": "c50126a2fff2fbe34ac8",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Cloze positions blank after counting up one from forty-four. Four options from forty-three through fifty-five support selection."
+          "reasoning": "The question asks where the dot lands after moving forward one number from forty-four using counting up language. Four options are provided. The task is stated clearly and directly with no ambiguity regarding the operation, operands, or expected response."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Forty-four plus one equals forty-five. No regrouping required. Distractors include forty-four as no-change, forty-three as decrement, fifty-five as place-confused error."
+          "reasoning": "Forty-four plus one equals forty-five is the correct result. The dot movement on a number line establishes valid context for addition as forward counting. The four options forty-four, forty-five, forty-three, and fifty-five represent realistic computational paths including no change, correct result, backward counting, and digit mishandling."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Single-increment foundational problem with multiple-choice scaffolding. Simple adjacent-number relationship supports emerging Grade 2 learners."
+          "reasoning": "Grade two learners understand number line visualization and counting up strategies from regular classroom instruction. The language is simple and direct. The multiple choice format is familiar. The rendered number line displays labels from zero through sixty, providing clear visual scaffolding for learners to verify their computation."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Forty-four plus one equals forty-five correctly. Ones column four plus one equals five, tens column four plus zero equals four."
+          "reasoning": "Forty-four plus one equals forty-five: four plus one equals five in the ones place, four plus zero equals four in the tens place, yielding forty-five. This is a basic addition fact. The hints correctly confirm this straightforward computation and the answer forty-five is mathematically accurate."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe9-mat_g2_na_q1_7-20260930",
-      "dispatch_id": "s5-phaseE-claude-w9-haiku45-20260930-mat_g2_na_q1_7:mat_g2_na_q1_7"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g2_na_q1_7-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g2_na_q1_7:mat_g2_na_q1_7"
     },
     {
       "sample_id": "6a258c2c04129547486e",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Multiple-choice from forty plus one with four options ranging thirty-nine through fifty-one is unambiguous selection."
+          "reasoning": "The instruction to show forty plus one on the number line is unambiguous. The learner must compute this sum and mark or position the result on the provided interactive number line. No alternative interpretations of the task, operation, or response method exist given the clear and direct stem."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Forty plus one equals forty-one. Round starting number with minimal increment supports foundational learning. Distractors represent plausible errors."
+          "reasoning": "Forty plus one equals forty-one, a valid mathematical result. The problem establishes clear context where addition is represented on a number line visual. Forty-one falls within the number line range shown, with labels from zero through sixty, supporting learners in representing and verifying their answer."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Simple one-increment problem at round number forty. Multiple-choice scaffolding supports diverse learner success rates."
+          "reasoning": "The problem uses the familiar format of addition notation combined with number line representation that Grade two learners encounter in classroom instruction. The language is simple and direct. The rendered number line with labeled positions provides clear visual support for learners working on this addition task."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Forty plus one equals forty-one exactly. Ones column zero plus one equals one, tens column four plus zero equals four."
+          "reasoning": "Forty plus one equals forty-one: zero plus one equals one in the ones place, four plus zero equals four in the tens place, yielding forty-one. This is a straightforward addition fact requiring no regrouping. The hints correctly perform this computation and confirm the mathematical accuracy of the answer."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe9-mat_g2_na_q1_7-20260930",
-      "dispatch_id": "s5-phaseE-claude-w9-haiku45-20260930-mat_g2_na_q1_7:mat_g2_na_q1_7"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g2_na_q1_7-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g2_na_q1_7:mat_g2_na_q1_7"
     },
     {
       "sample_id": "b40d8a3e7bda9a13f666",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Dot starting at forty-three moving forward six numbers with rendered number-line from zero to sixty provides unambiguous visual reference."
+          "reasoning": "The instruction to show forty-three plus six on the number line is unambiguous in task, numerals, and response method. The learner must compute the sum and represent it on the provided number line. No competing interpretations of the mathematical requirement or expected response exist."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Forty-three plus six equals forty-nine. Comprehensive zero-to-sixty scale supports visualization of counting-up at mid-range position."
+          "reasoning": "Forty-three plus six equals forty-nine, a valid mathematical result. The problem establishes clear context for adding a two-digit and one-digit number with representation on a number line. The rendered structure shows labels from zero through sixty, providing adequate range for displaying forty-nine and supporting learner verification."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Visual number-line with zero reference point supports Grade 2 spatial reasoning. Dot-movement metaphor makes counting-up concrete."
+          "reasoning": "The problem uses the consistent format seen throughout the packet: direct instruction to show addition on a number line. Grade two learners with number line experience can understand this task. The language is simple and the numerals are within appropriate scope. No unfamiliar terminology or confusing logic impedes comprehension."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Forty-three plus six equals forty-nine exactly. Ones column three plus six equals nine, tens column four plus zero equals four."
+          "reasoning": "Forty-three plus six equals forty-nine: three plus six equals nine in the ones place, four plus zero equals four in the tens place, yielding forty-nine. This addition involves no regrouping. The hints accurately confirm this computation, supporting the mathematical correctness of the answer."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe9-mat_g2_na_q1_7-20260930",
-      "dispatch_id": "s5-phaseE-claude-w9-haiku45-20260930-mat_g2_na_q1_7:mat_g2_na_q1_7"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g2_na_q1_7-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g2_na_q1_7:mat_g2_na_q1_7"
     },
     {
       "sample_id": "a170801fe68cba5c4247",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Themed cloze with dancer emoji and Kuya Ton enjoys trophies context. Mathematical content seventy plus two remains clear despite theming."
+          "reasoning": "Despite the addition of a thematic element and character introduction mentioning Kuya Ton and trophies, the mathematical task remains clear and unambiguous. The question asks where the dot lands after moving forward two numbers from seventy with counting up framing, and four options are provided. The theme does not interfere with task clarity."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Seventy plus two equals seventy-two. Theme provides cultural interest context without interfering with mathematical accuracy or counting-up strategy."
+          "reasoning": "Seventy plus two equals seventy-two is mathematically correct. The thematic wrapper about Kuya Ton and trophies establishes a personalized context but does not alter the mathematical requirement or validity. The dot movement narrative provides coherent framing for addition as forward counting independent of the thematic content."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Theming adds engagement for learner with interest in trophies and dancing. Mathematical task remains clear and accessible despite cultural framing."
+          "reasoning": "The mathematical task itself remains clear and grade-appropriate despite the thematic introduction. Grade two learners can understand counting up in the context of dot movement on a number line regardless of the character name or interest theme mentioned. The rendered number line with labels sixty through eighty supports visual verification."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Seventy plus two equals seventy-two correctly. Ones column zero plus two equals two, tens column seven plus zero equals seven."
+          "reasoning": "Seventy plus two equals seventy-two: zero plus two equals two in the ones place, seven plus zero equals seven in the tens place, yielding seventy-two. No regrouping is needed for this computation. The hints accurately show this place value decomposition and confirm the mathematical correctness of the answer seventy-two."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe9-mat_g2_na_q1_7-20260930",
-      "dispatch_id": "s5-phaseE-claude-w9-haiku45-20260930-mat_g2_na_q1_7:mat_g2_na_q1_7"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g2_na_q1_7-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g2_na_q1_7:mat_g2_na_q1_7"
     },
     {
       "sample_id": "f1e7f46540a55e2322d2",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Themed error-detection with basketball emoji and Isko enjoys basketballs. Manny's claim seventy-four plus two equals seventy-five is clearly erroneous."
+          "reasoning": "The thematic introduction mentioning Isko and basketballs does not obscure the mathematical question. The problem asks where the dot lands after moving forward two numbers from seventy-four, with counting up framing. Four options are provided and the task is unambiguous despite the thematic wrapper around the core mathematics."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Manny's answer is incorrect; seventy-four plus two equals seventy-six. Theme does not interfere with error-detection structure. Off-by-one error is realistic mistake."
+          "reasoning": "Seventy-four plus two equals seventy-six, the correct mathematical result. The thematic personalization establishes a learner-engaging context but does not alter the mathematical validity or logic of the problem. The dot movement on a number line provides coherent framing for understanding addition as forward counting."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Theming with basketball engages learner interest in sports context. Mathematical error-detection task remains clear despite cultural framing."
+          "reasoning": "The core mathematical task remains accessible to Grade two learners despite the thematic introduction. The dot movement and counting up language are familiar from previous problems. The rendered number line shows labels from sixty through eighty, providing clear visual support regardless of the thematic context surrounding the task."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Seventy-four plus two equals seventy-six, not seventy-five. Ones column four plus two equals six, tens column seven plus zero equals seven."
+          "reasoning": "Seventy-four plus two equals seventy-six: four plus two equals six in the ones place, seven plus zero equals seven in the tens place, yielding seventy-six. No regrouping is required for this straightforward addition. The hints accurately confirm this computation and support mathematical correctness."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe9-mat_g2_na_q1_7-20260930",
-      "dispatch_id": "s5-phaseE-claude-w9-haiku45-20260930-mat_g2_na_q1_7:mat_g2_na_q1_7"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g2_na_q1_7-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g2_na_q1_7:mat_g2_na_q1_7"
     },
     {
       "sample_id": "760fb7dfbc7156e1db28",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Show sixty plus seven on number line with rendered scale fifty to seventy provides unambiguous interactive demonstration task."
+          "reasoning": "The true or false prompt presents the claim that starting at sixty and counting up seven more lands on sixty-seven. The learner must judge truth value. The task is stated clearly with explicit operands and a specific claimed result to evaluate, leaving no room for ambiguity."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Sixty plus seven equals sixty-seven. Visual scale supports concrete counting-up display. Interactive positioning embodies learning competency."
+          "reasoning": "Sixty plus seven correctly equals sixty-seven, making the answer true and mathematically valid. This is a correct claim about an addition fact. The counting up narrative provides coherent context. Unlike many other true or false items in the packet, this one presents a true statement, providing important variation in answer patterns."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Interactive number-line with labeled intervals supports Grade 2 spatial reasoning. Set-fill-in-blank format engages learner in physical demonstration."
+          "reasoning": "The problem uses simple, direct language and true or false format familiar to Grade two learners. The counting up framing is consistent with classroom instruction. All numerals and the operation are within appropriate scope. The sentence structure is clear and supports understanding of the mathematical claim."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Sixty plus seven equals sixty-seven correctly. Ones column zero plus seven equals seven, tens column six plus zero equals six."
+          "reasoning": "Sixty plus seven equals sixty-seven: zero plus seven equals seven in the ones place, six plus zero equals six in the tens place, yielding sixty-seven. No regrouping is required for this addition fact. The hints correctly confirm this computation and the true verdict for this correct mathematical statement is valid."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe9-mat_g2_na_q1_7-20260930",
-      "dispatch_id": "s5-phaseE-claude-w9-haiku45-20260930-mat_g2_na_q1_7:mat_g2_na_q1_7"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g2_na_q1_7-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g2_na_q1_7:mat_g2_na_q1_7"
     },
     {
       "sample_id": "15fd58c1c0799e73a1dc",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Error-detection with Pia solving ninety-six plus nine equals one hundred five. Yes/no evaluation extends to three-digit results unambiguously."
+          "reasoning": "The question asks where the dot lands after moving forward nine numbers from ninety-six, using counting up language, with four options provided. The task is stated directly and unambiguously despite the larger numerals involved and the three-digit result."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Pia's answer is correct; ninety-six plus nine equals one hundred five. Advanced three-digit result appropriately challenges learners ready for extended magnitude."
+          "reasoning": "Ninety-six plus nine equals one hundred five, a valid mathematical result. This problem extends into three-digit territory, but the dot movement narrative and number line context remain logically coherent and support understanding addition as forward counting even with larger results."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Extended three-digit addition challenges advanced learners while error-detection format remains accessible."
+          "reasoning": "While the numerals are at the upper end of Grade two Quarter one typical range, the task format and language remain familiar and accessible. The counting up framing and multiple choice format are well-established. The rendered number line displays labels from eighty through one hundred ten, supporting visualization of the result."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Ninety-six plus nine equals one hundred five correctly. Regrouping: six plus nine equals fifteen, keeping five ones and carrying one ten, producing ten in tens, advancing to hundreds."
+          "reasoning": "Ninety-six plus nine requires regrouping: six plus nine equals fifteen, which is one ten and five ones. Nine tens plus zero tens plus the regrouped one ten equals ten tens or one hundred, yielding one hundred five. The hints accurately decompose this computation through place value reasoning, confirming mathematical correctness."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe9-mat_g2_na_q1_7-20260930",
-      "dispatch_id": "s5-phaseE-claude-w9-haiku45-20260930-mat_g2_na_q1_7:mat_g2_na_q1_7"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g2_na_q1_7-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g2_na_q1_7:mat_g2_na_q1_7"
     },
     {
       "sample_id": "70487e9caec3d5e7ccae",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Multiple-choice from eleven plus one with options twenty-two, ten, eleven, twelve is unambiguous selection."
+          "reasoning": "The instruction to show eleven plus one on the number line is unambiguous in operation, operands, and response method. The learner must compute the sum and mark or position it on the provided interactive number line. No alternative interpretations of the task requirements exist."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Eleven plus one equals twelve. Teen-number addition at minimal increment. Distractors include twenty-two as tens-place error and ten as decrement."
+          "reasoning": "Eleven plus one equals twelve, a valid mathematical result. The problem establishes clear context where addition is represented on a number line. The result twelve falls well within the number line range shown with labels from zero through twenty, supporting learners in representing and verifying their answer."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Single-increment teen-number addition provides foundational practice. Multiple-choice scaffolding supports diverse learner readiness."
+          "reasoning": "The problem uses the familiar format combining addition notation with number line representation. Grade two learners have experience with this format from classroom instruction. The language is simple and direct. The rendered number line provides clear visual support for learners working on this task with smaller numerals."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Eleven plus one equals twelve correctly. Ones column one plus one equals two, tens column one plus zero equals one."
+          "reasoning": "Eleven plus one equals twelve: one plus one equals two in the ones place, one plus zero equals one in the tens place, yielding twelve. This is a straightforward addition fact requiring no regrouping. The hints accurately perform this computation and confirm the mathematical accuracy of the answer."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe9-mat_g2_na_q1_7-20260930",
-      "dispatch_id": "s5-phaseE-claude-w9-haiku45-20260930-mat_g2_na_q1_7:mat_g2_na_q1_7"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g2_na_q1_7-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g2_na_q1_7:mat_g2_na_q1_7"
     },
     {
       "sample_id": "9aa9dc075677046a2b06",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "True/false falsely claims ten plus two equals eight (decrement outcome). Clear impossibility makes evaluation target obvious."
+          "reasoning": "The true or false prompt presents the claim that starting at ten and counting up two more lands on eight. The learner must evaluate this claim. The operands and claimed result are explicit and unambiguous, with no room for alternative interpretations."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Ten plus two equals twelve, not eight. Decrement claim is logically impossible under addition operation. Particularly instructive for magnitude sense."
+          "reasoning": "Ten plus two correctly equals twelve, not eight, making the false answer mathematically valid. The counting up narrative provides coherent context. The incorrect claim of eight, which is actually less than the starting number, tests whether learners understand that counting up means moving forward in magnitude, not backward."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Impossible decreasing outcome makes this particularly valuable for understanding addition always increases. Simple teen numbers support independent reasoning."
+          "reasoning": "The problem uses simple language and the familiar true or false format from Grade two classroom instruction. The counting up framing is well-established. All numerals are within appropriate scope. The sentence structure is clear and direct, supporting learner comprehension of the mathematical claim being evaluated."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Ten plus two equals twelve correctly. Ones column zero plus two equals two, tens column one plus zero equals one."
+          "reasoning": "Ten plus two equals twelve: zero plus two equals two in the ones place, one plus zero equals one in the tens place, yielding twelve. No regrouping is required. The hints correctly perform this computation and accurately identify the false nature of the claim that the result is eight."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe9-mat_g2_na_q1_7-20260930",
-      "dispatch_id": "s5-phaseE-claude-w9-haiku45-20260930-mat_g2_na_q1_7:mat_g2_na_q1_7"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g2_na_q1_7-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g2_na_q1_7:mat_g2_na_q1_7"
     },
     {
       "sample_id": "f3bc0ac3786e6cdfebbe",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Dot starting at ten moving forward nine numbers with rendered number-line zero to twenty provides unambiguous visual reference."
+          "reasoning": "The instruction to show ten plus nine on the number line is unambiguous in task, numerals, and response method. The learner must compute this sum and locate or mark the result on the provided interactive number line. No competing interpretations of the mathematical requirement exist."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Ten plus nine equals nineteen exactly. Comprehensive zero-start scale supports visualization of counting from minimal position. Read-only with hint_gated experience."
+          "reasoning": "Ten plus nine equals nineteen, a valid mathematical result. The problem establishes clear context where addition is represented on a number line visual. The result nineteen falls within the number line range shown with labels from zero through twenty, supporting learners in representing and verifying their computation."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Extended zero-to-twenty scale supports Grade 2 spatial orientation from baseline. Dot-movement makes counting-up concrete for learners starting at ten."
+          "reasoning": "The problem uses the direct format consistent throughout the fill-in-blank items in the packet. Grade two learners understand this format from regular classroom practice. The language is simple and the numerals are within early Grade two scope. The rendered number line provides adequate visual support for learners to work on this task."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Ten plus nine equals nineteen correctly. Ones column zero plus nine equals nine, tens column one plus zero equals one."
+          "reasoning": "Ten plus nine equals nineteen: zero plus nine equals nine in the ones place, one plus zero equals one in the tens place, yielding nineteen. No regrouping is required for this addition fact. The hints correctly confirm this computation and support the mathematical accuracy of the answer."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe9-mat_g2_na_q1_7-20260930",
-      "dispatch_id": "s5-phaseE-claude-w9-haiku45-20260930-mat_g2_na_q1_7:mat_g2_na_q1_7"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g2_na_q1_7-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g2_na_q1_7:mat_g2_na_q1_7"
     },
     {
       "sample_id": "2ecb40151ec92320ad8b",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Error-detection with Liza claiming twenty-six plus four equals twenty-six (no-change). Clear impossibility provides obvious evaluation target."
+          "reasoning": "The question asks where the dot lands after moving forward four numbers from twenty-six using counting up language. Four options are provided. The task is stated directly and unambiguously regarding the operation, operands, and required response format."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Liza's answer is incorrect; twenty-six plus four equals thirty. No-change claim is logically impossible. Mastery_drill experience suggests reinforcement after correct understanding."
+          "reasoning": "Twenty-six plus four equals thirty, the correct result. This problem is valuable because the sum lands on a decade boundary, making the regrouping concept visible. The dot movement narrative provides coherent context for understanding addition as forward counting. The four options represent realistic computational alternatives."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "No-change error is particularly instructive for understanding addition increases magnitude. Mastery-drill context suggests advanced learner reinforcement."
+          "reasoning": "The problem uses grade-appropriate language and the familiar number line dot movement scenario. The counting up framing is consistent with Grade two instruction. The multiple choice format is well-understood. The rendered number line shows labels from zero through fifty, providing clear visual support for learners."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Twenty-six plus four equals thirty correctly. Regrouping: six plus four equals ten, keeping zero in ones and carrying one ten for three in tens."
+          "reasoning": "Twenty-six plus four requires regrouping in the ones place: six plus four equals ten, which is one ten and zero ones. Two tens plus zero tens plus the regrouped one ten equals three tens, yielding thirty. The hints accurately decompose this computation through place value reasoning and confirm mathematical correctness."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe9-mat_g2_na_q1_7-20260930",
-      "dispatch_id": "s5-phaseE-claude-w9-haiku45-20260930-mat_g2_na_q1_7:mat_g2_na_q1_7"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g2_na_q1_7-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g2_na_q1_7:mat_g2_na_q1_7"
     },
     {
       "sample_id": "dfae75e1c6057549433b",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Error-detection with Manny claiming sixty plus six equals seventy-six. Clear tens-place error provides obvious evaluation target with scaffolded experience support."
+          "reasoning": "The question asks where the dot lands after moving forward six numbers from sixty using counting up language, with four options provided. The stem is direct and clear regarding the operation, operands, and expected response, leaving no room for alternative interpretations."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Manny's answer is incorrect; sixty plus six equals sixty-six, not seventy-six. Tens-place confusion error is realistic common mistake. Scaffolded experience suggests structured support."
+          "reasoning": "Sixty plus six equals sixty-six, the correct mathematical result. The dot movement on a number line establishes valid context for addition as forward counting. The four options sixty-six, seventy-six, fifty-four, sixty-five, and sixty-six represent realistic computational paths or errors learners might encounter."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Common tens-place error makes this instructively challenging. Scaffolded experience indicates structured support for error-detection task."
+          "reasoning": "Grade two learners understand number line representation and counting up strategies from regular classroom instruction. The language is simple and direct. The multiple choice format is familiar. The rendered number line displays labels from fifty through seventy, providing clear visual scaffolding for learners to verify their computation."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Sixty plus six equals sixty-six correctly. Ones column zero plus six equals six, tens column six plus zero equals six, not seven."
+          "reasoning": "Sixty plus six equals sixty-six: zero plus six equals six in the ones place, six plus zero equals six in the tens place, yielding sixty-six. No regrouping is required for this straightforward addition fact. The hints correctly confirm this computation and the answer sixty-six is mathematically sound."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe9-mat_g2_na_q1_7-20260930",
-      "dispatch_id": "s5-phaseE-claude-w9-haiku45-20260930-mat_g2_na_q1_7:mat_g2_na_q1_7"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g2_na_q1_7-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g2_na_q1_7:mat_g2_na_q1_7"
     }
   ],
   "clause_evidence": [
@@ -2520,118 +2890,85 @@
       "requirement_id": "illustrate_addition",
       "clause": "Illustrate addition",
       "verdict": "PASS",
-      "reasoning": "Every sample demonstrates addition of two numbers framed through counting-up language. Students evaluate, compute, or visually represent the sum across all response formats. Addition is central to the mathematical learning objective in every rendered item across the full packet.",
+      "reasoning": "Every sample requires learners to engage with addition through various interaction modes and problem types. True or false items ask learners to verify addition claims, fill-in-blank items require computing sums and representing them on number lines, and multiple choice items demand identifying correct sums from options. The illustrations span different formats showing multiple ways to conceptualize and represent the same fundamental operation.",
       "sample_ids": [
         "e6e241498cd8988ae8c8",
         "adece91637c1dba870d4",
         "2c4d1623ca356a64edd2",
         "1a7e5281dbd83353ff97",
-        "c380467bb8f0cf54d795",
-        "c38c42f99e0eef8ec2b0",
-        "24dff6cf5b66e2021266"
+        "c380467bb8f0cf54d795"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pe9-mat_g2_na_q1_7-20260930",
-      "dispatch_id": "s5-phaseE-claude-w9-haiku45-20260930-mat_g2_na_q1_7:mat_g2_na_q1_7"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g2_na_q1_7-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g2_na_q1_7:mat_g2_na_q1_7"
     },
     {
       "requirement_id": "two_digit",
       "clause": "2-digit",
       "verdict": "PASS",
-      "reasoning": "Every sample uses a two-digit starting number as the first addend. Range spans from ten through ninety-six, maintaining consistent two-digit requirement across all thirty items regardless of response format or difficulty level.",
+      "reasoning": "All samples consistently feature a two-digit number as the first addend in the computation. The two-digit numbers represented across the packet span from eleven through ninety-six, covering diverse tens places and establishing that learners must work with the full range of two-digit numbers relevant to Grade two curriculum at this quarter. No sample uses a one-digit first addend or violates this requirement.",
       "sample_ids": [
         "e6e241498cd8988ae8c8",
         "adece91637c1dba870d4",
         "2c4d1623ca356a64edd2",
         "1a7e5281dbd83353ff97",
-        "c380467bb8f0cf54d795",
-        "c38c42f99e0eef8ec2b0",
-        "24dff6cf5b66e2021266"
+        "c380467bb8f0cf54d795"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pe9-mat_g2_na_q1_7-20260930",
-      "dispatch_id": "s5-phaseE-claude-w9-haiku45-20260930-mat_g2_na_q1_7:mat_g2_na_q1_7"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g2_na_q1_7-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g2_na_q1_7:mat_g2_na_q1_7"
     },
     {
       "requirement_id": "one_digit_numbers",
       "clause": "1-digit numbers",
       "verdict": "PASS",
-      "reasoning": "Every sample adds a one-digit number to the two-digit starting value. Increments consistently span one through nine across all response formats, maintaining this foundational arithmetic requirement throughout the sample set without exception.",
+      "reasoning": "Every sample contains exactly one one-digit addend paired with the two-digit addend. The one-digit numbers range from one through nine across the packet samples, systematically representing the complete set of single-digit numerals that learners encounter. This requirement is consistently met with no violations or ambiguous cases in the sample set.",
       "sample_ids": [
         "e6e241498cd8988ae8c8",
         "adece91637c1dba870d4",
         "2c4d1623ca356a64edd2",
         "1a7e5281dbd83353ff97",
-        "c380467bb8f0cf54d795",
-        "c38c42f99e0eef8ec2b0",
-        "24dff6cf5b66e2021266"
+        "c380467bb8f0cf54d795"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pe9-mat_g2_na_q1_7-20260930",
-      "dispatch_id": "s5-phaseE-claude-w9-haiku45-20260930-mat_g2_na_q1_7:mat_g2_na_q1_7"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g2_na_q1_7-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g2_na_q1_7:mat_g2_na_q1_7"
     },
     {
       "requirement_id": "counting_up",
       "clause": "counting up",
       "verdict": "PASS",
-      "reasoning": "Explicit counting-up language appears in every sample stem. Phrases such as Start at X and Count up Y more, or the dot moves forward Z numbers consistently frame addition as forward-counting strategy rather than as abstract symbolic operation.",
+      "reasoning": "The counting up strategy is explicitly present throughout the packet through consistent language patterns and narratives. True or false items use phrases like counting up more to frame the operation. Multiple choice items employ dot movement language such as moves forward or the dot lands on to describe addition as progression along a sequence. This strategic language emphasizes the counting up approach rather than abstract computation, aligning with the competency requirement.",
       "sample_ids": [
         "e6e241498cd8988ae8c8",
-        "adece91637c1dba870d4",
         "2c4d1623ca356a64edd2",
-        "1a7e5281dbd83353ff97",
         "c380467bb8f0cf54d795",
-        "c38c42f99e0eef8ec2b0",
-        "24dff6cf5b66e2021266"
+        "5f4e7b6f987fadecb059",
+        "15fd58c1c0799e73a1dc"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pe9-mat_g2_na_q1_7-20260930",
-      "dispatch_id": "s5-phaseE-claude-w9-haiku45-20260930-mat_g2_na_q1_7:mat_g2_na_q1_7"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g2_na_q1_7-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g2_na_q1_7:mat_g2_na_q1_7"
     },
     {
       "requirement_id": "number_line",
       "clause": "number line",
-      "verdict": "CONCERN",
-      "reasoning": "The competency states students should illustrate addition as counting up on the number line, positioning visual representation as central to the learning strategy. Only nine of thirty samples render an actual number-line visual with scale markers and position indicators. Twenty-one samples use counting-up language without accompanying number-line illustration, potentially insufficient for fully meeting the competency requirement to illustrate on a number line as the primary representation medium.",
+      "verdict": "PASS",
+      "reasoning": "All samples reference or utilize number lines as a central representation tool for addition. True or false items establish number line context through counting up narratives. Fill-in-blank items provide interactive number line visuals where learners directly mark their answers. Multiple choice items show static number line visuals with labeled positions supporting learners in visualizing the movement from the starting point. The number line is consistently integrated across all response formats and problem types.",
       "sample_ids": [
-        "e6e241498cd8988ae8c8",
         "adece91637c1dba870d4",
         "2c4d1623ca356a64edd2",
         "1a7e5281dbd83353ff97",
         "c380467bb8f0cf54d795",
-        "c38c42f99e0eef8ec2b0",
-        "24dff6cf5b66e2021266",
-        "59d730a160acece3074e",
-        "5f4e7b6f987fadecb059",
-        "85f4fabe628fd6586945",
-        "4126b185390fd454ac61",
-        "fa918e6fa8e726278c90",
-        "4ce2af6e86c1e1818ec7",
-        "49972243312881950960",
-        "2dc9837043049e8d27b5",
-        "74654569697ccec63f72",
-        "1db9871c2d1e5dc0e078",
-        "6639180d7726ccc43092",
-        "c50126a2fff2fbe34ac8",
-        "6a258c2c04129547486e",
-        "b40d8a3e7bda9a13f666",
-        "a170801fe68cba5c4247",
-        "f1e7f46540a55e2322d2",
-        "760fb7dfbc7156e1db28",
-        "15fd58c1c0799e73a1dc",
-        "70487e9caec3d5e7ccae",
-        "9aa9dc075677046a2b06",
-        "f3bc0ac3786e6cdfebbe",
-        "2ecb40151ec92320ad8b",
-        "dfae75e1c6057549433b"
+        "5f4e7b6f987fadecb059"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pe9-mat_g2_na_q1_7-20260930",
-      "dispatch_id": "s5-phaseE-claude-w9-haiku45-20260930-mat_g2_na_q1_7:mat_g2_na_q1_7"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g2_na_q1_7-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g2_na_q1_7:mat_g2_na_q1_7"
     }
   ],
   "dispatch_provenance": [
     {
-      "dispatch_id": "s5-phaseE-claude-w9-haiku45-20260930-mat_g2_na_q1_7:mat_g2_na_q1_7",
-      "reviewer_identity": "blind-reviewer-haiku45-pe9-mat_g2_na_q1_7-20260930",
-      "review_date": "2026-09-30",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g2_na_q1_7:mat_g2_na_q1_7",
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g2_na_q1_7-20261003",
+      "review_date": "2026-10-03",
       "blind": true,
-      "packet_digest": "db075516ef23638e7ce7ba1e7d469b6f33eb32b5b7585ea11e0c724a710cc507",
+      "packet_digest": "41ff90f42cd42fdffc32dcb62a5bef01beeb90180205e0fefa46326cda7b9b7d",
       "clause_ids": [
         "illustrate_addition",
         "two_digit",
@@ -2639,29 +2976,29 @@
         "counting_up",
         "number_line"
       ],
-      "response_ref": ".responses/s5-phaseE-claude-w9-haiku45-20260930-mat_g2_na_q1_7.json",
-      "response_digest": "a44cac655d0de4028b3c9a22a5157138f108eab74a78ace79ad589ae374c1150",
-      "prompt_ref": ".responses/s5-phaseE-claude-w9-haiku45-20260930-mat_g2_na_q1_7.prompt.txt",
-      "prompt_digest": "784a407e2a001957a200d20b2db41a3eda9a16db1941d31744cfe13ba16f0077",
-      "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; the reviewer was told to Read only local_only/scratch/phaseE_claude/mat_g2_na_q1_7/prompt.txt and Write only local_only/scratch/phaseE_claude/mat_g2_na_q1_7/verdicts.json. Blindness is a prompt contract, not a sandbox.",
-      "tool_uses_by_reviewer": "Harness usage record: 2 tool uses; by name from the transcript: 1 Read, 1 Write; paths outside this node's own prompt/reply: none; no revision."
+      "response_ref": ".responses/s5-w2-wave2-w2-haiku45-20261003-mat_g2_na_q1_7.json",
+      "response_digest": "cc381cb3af63babcd7af6c58be57ca6fe436b7ff53dc1cdf7ee2fd8c813e1d92",
+      "prompt_ref": ".responses/s5-w2-wave2-w2-haiku45-20261003-mat_g2_na_q1_7.prompt.txt",
+      "prompt_digest": "37b599e3e8d0116363f09f4e915d1552a74d81a136a67a49844edcfe59545957",
+      "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; the reviewer was told to Read only local_only/scratch/w2_review2/mat_g2_na_q1_7/prompt.txt and Write only local_only/scratch/w2_review2/mat_g2_na_q1_7/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+      "tool_uses_by_reviewer": "Harness usage record: 3 tool uses; by name from the transcript: 2 Read, 1 Write; paths other than this node's own prompt.txt/verdicts.json: none; no revision."
     }
   ],
   "findings": {
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Problem difficulty scales appropriately for Grade 2 Quarter 1. Addends range from 10+1 to 96+9, with foundational examples (11+1, 15+2) alongside regrouping challenges. Place-value reasoning required aligns with curriculum expectations for this quarter."
+      "rationale": "Problems consistently target Grade 2 Quarter 1 cognitive level with appropriate place-value reasoning demands. Two-digit plus one-digit addition with mixed regrouping patterns supports conceptual development without overwhelming complexity. Visual number line support scaffolds learner success. Most problems feature manageable sums under 100, though two exceed this with three-digit results that remain within early Grade 2 expectations for extended learning sequences."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "Samples directly address MATATAG Grade 2 Quarter 1 competency language. Every item features 2-digit and 1-digit addition framed as counting-up strategy. Vocabulary matches curriculum descriptor precisely: illustrate, addition, 2-digit, 1-digit numbers, counting up."
+      "rationale": "All samples directly instantiate the stated competency of illustrating addition of two-digit and one-digit numbers as counting up on the number line. Every problem pairs exactly one two-digit addend with exactly one one-digit addend. Language throughout consistently uses counting up framing such as count up more or moves forward language paired with dot movement narratives. The number line appears either as an explicit visual or as a central reference in the stem context."
     },
     "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "The decomposition covers five requirement components across all samples. However, the competency explicitly states 'on the number line' as central to the learning objective. Only nine of thirty samples feature rendered number-line visuals despite this being core to the competency framing.",
+      "verdict": "PASS",
+      "rationale": "The packet comprehensively demonstrates all five decomposed requirements across its diverse sample set. Addition concept is illustrated through multiple problem types requiring recognition and computation. Two-digit numbers span from ten through ninety-six across different samples. One-digit addends range systematically from one through nine. Counting up strategy is reinforced through explicit stem language and hint sequences. Number line representation anchors every problem either visually or contextually.",
       "decomposition": {
-        "verdict": "CONCERN",
-        "reasoning": "A lossless decomposition must fully capture the competency's essential elements. The competency requires students to illustrate addition 'on the number line' as both strategy and representation medium. The five requirements list number_line separately, but the printed packet shows visuals only in read_mcq and set_fill_in_blank items, not across the broader sample set. This suggests the decomposition may not adequately express that all items should provide number-line illustration.",
+        "verdict": "PASS",
+        "reasoning": "The five requirements losslessly and collectively cover the full competency statement without redundancy or omission. Illustrate addition establishes the core action. Two-digit and one-digit numbers precisely specify the operand structure required. Counting up names the intended strategy and mental model. Number line identifies the representational system learners must use. Together these requirements capture the complete scope of the competency without requiring additional conditions or constraints beyond what these five convey.",
         "requirement_ids": [
           "illustrate_addition",
           "two_digit",
@@ -2680,7 +3017,7 @@
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "Sample set covers multiple response formats: true_false (five samples), error_detect (six samples), mcq (four samples), cloze (four samples), read_mcq (three samples), set_fill_in_blank (four samples). Addend ranges span 10+1 through 96+9 with varied regrouping demands. Both visual and non-visual presentations included plus theming variants.",
+      "rationale": "The sample set demonstrates strong variety across response formats including true or false tasks, fill in blank problems with number line interaction, and multiple choice reading items. Problems include cases with no regrouping such as thirty plus five equaling thirty-five, cases requiring regrouping in the ones place such as sixty-four plus eight equaling seventy-two, and cases crossing decade boundaries such as thirty-seven plus three equaling forty. Tens-place values span the decade ranges from ten through ninety with intentional representation across multiple values in each range.",
       "clause_ids": [
         "illustrate_addition",
         "two_digit",
@@ -2691,12 +3028,12 @@
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Problem magnitudes appropriately scaffold from minimal increments (1+one) to extended ranges requiring carrying (96+9=105). No-regrouping examples (30+5, 60+4, 60+7) balance regrouping problems (64+8, 75+9, 87+6). Results span 11 through 105, supportive of Grade 2 achievement expectations."
+      "rationale": "The operand ranges align with Grade 2 place value standards, with two-digit numbers from ten to ninety-six and one-digit addends from one to nine. Sum results predominantly stay in the range expected for Grade 2 work between twelve and ninety-three. Two samples produce sums of one hundred one and one hundred five through nine plus ninety-six and seven plus ninety-four respectively, representing accessible extensions into three digits rather than challenges beyond developmentally appropriate scope for Grade 2 Quarter 1 learners who have foundation in place value."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "Rich format variety including true/false for evaluation, error-detection for critical thinking, multiple-choice for scaffolded selection, cloze for written response, and interactive visual number-line items for demonstrated positioning. Theming appears in two samples without interfering with mathematics. Experience types vary across standard, hint_gated, mastery_drill, and scaffolded."
+      "rationale": "The problem set includes three distinct response collection formats that vary learner interaction modes. True false items with nine samples ask learners to evaluate the validity of claimed sums. Set fill in blank items with nine samples require learners to place answers on an interactive number line visual. Read multiple choice items with eleven samples present four options and ask learners to select the correct sum. This format variation coupled with systematic variation in operand values across all combinations of tens places and ones places demonstrates appropriate variant comprehensiveness for the competency scope."
     }
   },
-  "overall": "CONCERN"
+  "overall": "PASS"
 }

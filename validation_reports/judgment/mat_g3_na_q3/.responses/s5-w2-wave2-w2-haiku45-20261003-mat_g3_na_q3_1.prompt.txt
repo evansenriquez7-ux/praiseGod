@@ -1,0 +1,296 @@
+You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  blind-reviewer-haiku45-w2x2-mat_g3_na_q3_1-20261003
+
+Write one JSON object to:
+  local_only/scratch/w2_review2/mat_g3_na_q3_1/verdicts.json
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: cognitive_capacity, competency_alignment, competency_fulfillment, comprehensive_coverage, scale_appropriateness, variant_comprehensiveness. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: ambiguity, contextual_logical_validity, learner_facing_clarity, mathematical_validity. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN: cite the sample_ids you EXAMINED and found lacking it (the list may never
+   be empty), and never cite a sample as SUPPORTING a clause it does not support.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{
+  "reviewer": "blind-reviewer-haiku45-w2x2-mat_g3_na_q3_1-20261003",
+  "<node_id>": {
+    "findings": {
+      "competency_fulfillment": {
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}
+      },
+      "<each other required finding>": {"verdict": "...", "rationale": "..."}
+    },
+    "sample_assessments": [
+      {"sample_id": "<opaque id>", "checks": {
+        "<each required sample check>": {"verdict": "...", "reasoning": "..."}
+      }}
+    ],
+    "clause_evidence": [
+      {"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }
+}
+
+== DISPATCH ADDENDUM (binding; read before judging) ==
+
+A. LENGTH. Every `rationale` and every `reasoning` string must be at least 60 characters and specific to
+   the node or sample it describes. Shorter strings are refused by the filing tool.
+
+B. QUOTING. Anything you put inside quotation marks must be a character-for-character substring of text
+   printed in the packet below. No paraphrase, summary, elision ("..."), placeholder, or comma-fragment
+   inside quotes, and never two quoted values joined by a dash. When in doubt, use NO quotation marks at
+   all and describe the text in your own words instead. An unmatched quote is treated as fabricated
+   evidence. The commonest failure: putting your OWN punctuation inside the quotes -- a trailing comma or
+   full stop that belongs to your sentence (write: the word "clock", never: "clock,"). Also never
+   quote a single ordinary word; quote only whole stems, hints or options, or nothing.
+
+C. THEMES. The generator deliberately themes items around a learner's chosen interest (26 curated
+   themes: names, objects, emoji, including religious and cultural themes). Do not judge whether a theme
+   is appropriate. Judge only whether the theming INTERFERES with the mathematics -- for example, a
+   wrapper that names a different object than the task counts, or a theme word that changes the meaning
+   of the question.
+
+D. HINTS. For every sample, compare each hint line against that sample's own stem, answer, options and
+   visual: does every equation in the hints hold, does the hint explain the question actually asked
+   (direction, unit, operation, which position is missing), and does it refer only to things the item
+   actually shows? A hint that contradicts or mis-describes its item is a sample-level defect.
+
+E. CITATIONS AND OVERALL. Every clause_evidence entry cites at least one sample_id; for a clause that
+   FAILs because something is absent, cite the sample_ids you examined. `overall` must follow the rule
+   in item 4 above exactly; the filing tool refuses a reply whose `overall` disagrees with its own
+   verdicts.
+
+G. OWNER RULINGS ON CURRICULUM READING (binding; apply them, do not re-litigate them):
+   - A fact belongs to the N multiplication table when EITHER factor is N: 6 x 2 and 2 x 6 are both
+     facts of the 2 table. A competency naming "the 2, 3, 4, 5, and 10 tables" or "the 6, 7, 8, and 9
+     tables" is met by any fact with at least one factor from its named set (ruling 18).
+   - A factor of 1 (or 0, where the competency names that property) is in scope when the other factor
+     is a named table (ruling 14).
+
+F. CHECKLIST before you write (replies failing any of these are refused and sent back):
+   - use NO quotation marks anywhere in your prose; describe stems, hints and options in your own words;
+   - every rationale and every reasoning string is at least 60 characters;
+   - no two samples share a word-for-word reasoning -- name each sample's own numbers, words or visual;
+   - EVERY clause_evidence entry, including PASS ones, has a non-empty sample_ids list, and every id in it is a
+     printed sample_id from this packet (never a requirement id);
+   - `findings` has exactly the six keys listed in item 1; `decomposition` goes INSIDE competency_fulfillment;
+   - sample_assessments list every printed sample once, in printed order;
+   - `overall` follows the rule in item 4 from your own verdicts.
+
+Use only the Read tool on this prompt file and the Write tool for your one JSON reply. Do not open any
+other file.
+
+== BLIND PACKET ==
+
+==========================================================================
+NODE: mat_g3_na_q3_1
+PACKET DIGEST: 5639d900f876f2442230114307cb5f3c6a834b4022a260d051f1509253f5dbc5
+COMPETENCY (Grade 3, Quarter 3, None):
+Illustrate and apply properties of multiplication for the 6, 7, 8, and 9 multiplication tables: one multiplied by any number is equal to the number; zero multiplied by any number is zero; changing the order of the numbers being multiplied does not change the product; changing the grouping of the numbers being multiplied does not change the product; and multiplying the sum of two addends by a number is the same as the sum of the products of a number by each addend.
+
+REQUIREMENTS (confirm this is a lossless decomposition of the competency):
+  illustrate_and_apply_properties_of_multiplication: Illustrate and apply properties of multiplication
+  6_7_8_and_9_multiplication_tables: 6, 7, 8, and 9 multiplication tables
+  one_multiplied_by_any_number: one multiplied by any number is equal to the number
+  zero_multiplied_by_any_number: zero multiplied by any number is zero
+  changing_the_order: changing the order of the numbers being multiplied does not change the product
+  changing_the_grouping: changing the grouping of the numbers being multiplied does not change the product
+  multiplying_the_sum_of_two_addends: multiplying the sum of two addends by a number is the same as the sum of the products of a number by each addend
+
+SAMPLES (every one of these is real rendered output):
+  sample 5d4ec93aab52e32d040d  seed 42  [mcq]
+      stem:    Is 5 × 6 the same as 6 × 5?
+      answer:  True
+      options: Cannot be determined / Only when both are 0 / False / True
+      hints:   ["Both sides multiply the same two numbers, 5 and 6, in a different order.", "5 × 6 = 30 and 6 × 5 = 30.", "So the two sides are the same."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 39af49088687ab791bb1  seed 43  [mcq]
+      stem:    Is 4 × 8 the same as 8 × 9?
+      answer:  False
+      options: False / True / Cannot be determined / Only when both are 0
+      hints:   ["The left side multiplies 4 and 8. The right side multiplies 8 and 9.", "4 × 8 = 32 and 8 × 9 = 72.", "So the two sides are not the same."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample e4202712b5d1fc203c40  seed 44  [error_detect]
+      stem:    Rico solved: "6 × 0 = ___". Rico says the missing number is 0. Is Rico correct?
+      answer:  {'has_error': False, 'correct_value': 0}
+      hints:   ["We need to find the total of equal groups 0 groups of 6.", "Think of it as 0 groups of 6: there are no groups, so there is nothing to add.", "The product of 6 × 0 = 0."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample fe30f5b185b960024365  seed 45  [mcq]
+      stem:    Is 8 × (7 + 2) the same as (8 × 7) + (8 × 2)?
+      answer:  True
+      options: Cannot be determined / False / True / Only when both are 0
+      hints:   ["Left side: 7 + 2 = 9, then 8 × 9 = 72.", "Right side: 8 × 7 = 56 and 8 × 2 = 16; 56 + 16 = 72.", "So the two sides are the same."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 2e140b767ffbf1061d8d  seed 46  [mcq]
+      stem:    Is 2 × 9 the same as 9 × 8?
+      answer:  False
+      options: False / Only when both are 0 / Cannot be determined / True
+      hints:   ["The left side multiplies 2 and 9. The right side multiplies 9 and 8.", "2 × 9 = 18 and 9 × 8 = 72.", "So the two sides are not the same."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 5b8b118252437966d2ec  seed 64  [cloze]
+      stem:    1 × 6 = ___
+      answer:  6
+      options: 5 / 6 / 7 / 12
+      hints:   ["We need to find the total of equal groups 6 groups of 1.", "Use the 6 times table: 6 × 1.", "The product of 1 × 6 = 6."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample c70c45f751375250074a  seed 75  [true_false]
+      stem:    1 × 9 = 9. True or False?
+      answer:  True
+      hints:   ["We need to find the total of equal groups 9 groups of 1.", "Use the 9 times table: 9 × 1.", "The product of 1 × 9 = 9."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample da6de8210c1253480926  seed 500  [true_false]
+      stem:    9 × 1 = 8. True or False?
+      answer:  False
+      hints:   ["We need to find the total of equal groups 1 group of 9.", "Think of it as 1 group of 9: 9.", "The product of 9 × 1 = 9."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 8d0d9b667d41657859e0  seed 501  [mcq]
+      stem:    Is 8 × (7 + 4) the same as (8 × 7) + 4?
+      answer:  False
+      options: Cannot be determined / Only when both are 0 / True / False
+      hints:   ["Left side: 7 + 4 = 11, then 8 × 11 = 88.", "Right side: 8 × 7 = 56, then 56 + 4 = 60. Only 7 was multiplied by 8.", "So the two sides are not the same."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 8aba33ece3353b6ef714  seed 502  [mcq]
+      stem:    Is 7 × (8 + 4) the same as (7 × 8) + 4?
+      answer:  False
+      options: False / Cannot be determined / True / Only when both are 0
+      hints:   ["Left side: 8 + 4 = 12, then 7 × 12 = 84.", "Right side: 7 × 8 = 56, then 56 + 4 = 60. Only 8 was multiplied by 7.", "So the two sides are not the same."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 11a43011b2860cd4b0bd  seed 600  [mcq]
+      stem:    Is 6 × (8 + 5) the same as (6 × 8) + (6 × 5)?
+      answer:  True
+      options: True / Only when both are 0 / Cannot be determined / False
+      hints:   ["Left side: 8 + 5 = 13, then 6 × 13 = 78.", "Right side: 6 × 8 = 48 and 6 × 5 = 30; 48 + 30 = 78.", "So the two sides are the same."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 8fd1b205b5cf2beb7cf3  seed 601  [mcq]
+      stem:    Is (2 × 6) × 3 the same as 2 × (6 × 3)?
+      answer:  True
+      options: False / Only when both are 0 / Cannot be determined / True
+      hints:   ["Left side: first 2 × 6 = 12, then 12 × 3 = 36.", "Right side: first 6 × 3 = 18, then 2 × 18 = 36.", "So the two sides are the same."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 2d786d09c3678da854f7  seed 602  [mcq]
+      stem:    What is 7 × 1?
+      answer:  7
+      options: 6 / 8 / 7 / 9
+      hints:   ["We need to find the total of equal groups 1 group of 7.", "Think of it as 1 group of 7: 7.", "The product of 7 × 1 = 7."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 0b1874000cd2c107037c  seed 603  [mcq]
+      stem:    Is (3 × 8) × 2 the same as 3 × (8 × 2)?
+      answer:  True
+      options: Cannot be determined / True / Only when both are 0 / False
+      hints:   ["Left side: first 3 × 8 = 24, then 24 × 2 = 48.", "Right side: first 8 × 2 = 16, then 3 × 16 = 48.", "So the two sides are the same."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 6b93f6c3ea2b48c79ff2  seed 604  [mcq]
+      stem:    Is 8 × 7 the same as 7 × 4?
+      answer:  False
+      options: Only when both are 0 / True / Cannot be determined / False
+      hints:   ["The left side multiplies 8 and 7. The right side multiplies 7 and 4.", "8 × 7 = 56 and 7 × 4 = 28.", "So the two sides are not the same."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 28e1bfd1e9876af574eb  seed 605  [mcq]
+      stem:    Is (3 × 9) × 3 the same as 3 × (9 × 3)?
+      answer:  True
+      options: Cannot be determined / True / Only when both are 0 / False
+      hints:   ["Left side: first 3 × 9 = 27, then 27 × 3 = 81.", "Right side: first 9 × 3 = 27, then 3 × 27 = 81.", "So the two sides are the same."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample c230bc5337e92c168eae  seed 606  [mcq]
+      stem:    Is 7 × 8 the same as 8 × 3?
+      answer:  False
+      options: False / Cannot be determined / True / Only when both are 0
+      hints:   ["The left side multiplies 7 and 8. The right side multiplies 8 and 3.", "7 × 8 = 56 and 8 × 3 = 24.", "So the two sides are not the same."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample c179de215e0f4c8cbf05  seed 607  [mcq]
+      stem:    Is 4 × 6 the same as 6 × 4?
+      answer:  True
+      options: Only when both are 0 / False / True / Cannot be determined
+      hints:   ["Both sides multiply the same two numbers, 4 and 6, in a different order.", "4 × 6 = 24 and 6 × 4 = 24.", "So the two sides are the same."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 93d86f5edc6690af21d2  seed 608  [mcq]
+      stem:    Is (3 × 7) × 3 the same as 3 × (7 × 2)?
+      answer:  False
+      options: Cannot be determined / False / Only when both are 0 / True
+      hints:   ["Left side: first 3 × 7 = 21, then 21 × 3 = 63.", "Right side: first 7 × 2 = 14, then 3 × 14 = 42.", "So the two sides are not the same."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 4f66b23a8aca3ce1fd9c  seed 700  [mcq]
+      stem:    Is (3 × 7) × 3 the same as 3 × (7 × 2)?
+      answer:  False
+      options: Only when both are 0 / Cannot be determined / False / True
+      hints:   ["Left side: first 3 × 7 = 21, then 21 × 3 = 63.", "Right side: first 7 × 2 = 14, then 3 × 14 = 42.", "So the two sides are not the same."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 804957634e25e00a734d  seed 701  [mcq]
+      stem:    💃 Sir Rez enjoys dance shoes. Here is a math challenge. Is 7 × (5 + 7) the same as (7 × 5) + (7 × 7)?
+      answer:  True
+      options: Cannot be determined / True / False / Only when both are 0
+      hints:   ["Left side: 5 + 7 = 12, then 7 × 12 = 84.", "Right side: 7 × 5 = 35 and 7 × 7 = 49; 35 + 49 = 84.", "So the two sides are the same."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 1085aab7a3a0c3112e79  seed 702  [mcq]
+      stem:    🏀 Isko enjoys basketballs. Here is a math challenge. Is 2 × 7 the same as 7 × 8?
+      answer:  False
+      options: Cannot be determined / Only when both are 0 / False / True
+      hints:   ["The left side multiplies 2 and 7. The right side multiplies 7 and 8.", "2 × 7 = 14 and 7 × 8 = 56.", "So the two sides are not the same."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample f4631e266939c8a9ade9  seed 800  [cloze]
+      stem:    6 × 1 = ___
+      answer:  6
+      options: 7 / 8 / 6 / 5
+      hints:   ["We need to find the total of equal groups 1 group of 6.", "Think of it as 1 group of 6: 6.", "The product of 6 × 1 = 6."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 64e13483d716c8408dfb  seed 801  [mcq]
+      stem:    Is 6 × 7 the same as 7 × 6?
+      answer:  True
+      options: Only when both are 0 / Cannot be determined / False / True
+      hints:   ["Both sides multiply the same two numbers, 6 and 7, in a different order.", "6 × 7 = 42 and 7 × 6 = 42.", "So the two sides are the same."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 43dbaeb16587bef14da3  seed 900  [mcq]
+      stem:    Is (2 × 8) × 2 the same as 2 × (8 × 3)?
+      answer:  False
+      options: False / Cannot be determined / True / Only when both are 0
+      hints:   ["Left side: first 2 × 8 = 16, then 16 × 2 = 32.", "Right side: first 8 × 3 = 24, then 2 × 24 = 48.", "So the two sides are not the same."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 9b9ba42a8a3f8c5b0a7b  seed 901  [mcq]
+      stem:    What is 0 × 8?
+      answer:  0
+      options: 2 / 8 / 1 / 0
+      hints:   ["We need to find the total of equal groups 8 groups of 0.", "Use the 8 times table: 8 × 0.", "The product of 0 × 8 = 0."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 329eddc897e5fdea7e59  seed 1000  [true_false]
+      stem:    6 × 1 = 7. True or False?
+      answer:  False
+      hints:   ["We need to find the total of equal groups 1 group of 6.", "Think of it as 1 group of 6: 6.", "The product of 6 × 1 = 6."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "hint_gated"}
+  sample 1e44f7476d0b3de0584f  seed 1001  [mcq]
+      stem:    Is 3 × 7 the same as 7 × 5?
+      answer:  False
+      options: True / Cannot be determined / Only when both are 0 / False
+      hints:   ["The left side multiplies 3 and 7. The right side multiplies 7 and 5.", "3 × 7 = 21 and 7 × 5 = 35.", "So the two sides are not the same."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "mastery_drill"}
+  sample 4c5ff4a7f9a66667cac6  seed 1002  [error_detect]
+      stem:    Manny solved: "0 × 7 = ___". Manny says the missing number is 7. Is Manny correct?
+      answer:  {'has_error': True, 'correct_value': 0}
+      hints:   ["We need to find the total of equal groups 7 groups of 0.", "Use the 7 times table: 7 × 0.", "The product of 0 × 7 = 0."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "scaffolded"}
+

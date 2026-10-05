@@ -1,0 +1,283 @@
+You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  blind-reviewer-haiku45-w2x2-mat_g1_na_q2_4-20261003
+
+Write one JSON object to:
+  local_only/scratch/w2_review2/mat_g1_na_q2_4/verdicts.json
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: cognitive_capacity, competency_alignment, competency_fulfillment, comprehensive_coverage, scale_appropriateness, variant_comprehensiveness. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: ambiguity, contextual_logical_validity, learner_facing_clarity, mathematical_validity. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN: cite the sample_ids you EXAMINED and found lacking it (the list may never
+   be empty), and never cite a sample as SUPPORTING a clause it does not support.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{
+  "reviewer": "blind-reviewer-haiku45-w2x2-mat_g1_na_q2_4-20261003",
+  "<node_id>": {
+    "findings": {
+      "competency_fulfillment": {
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}
+      },
+      "<each other required finding>": {"verdict": "...", "rationale": "..."}
+    },
+    "sample_assessments": [
+      {"sample_id": "<opaque id>", "checks": {
+        "<each required sample check>": {"verdict": "...", "reasoning": "..."}
+      }}
+    ],
+    "clause_evidence": [
+      {"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }
+}
+
+== DISPATCH ADDENDUM (binding; read before judging) ==
+
+A. LENGTH. Every `rationale` and every `reasoning` string must be at least 60 characters and specific to
+   the node or sample it describes. Shorter strings are refused by the filing tool.
+
+B. QUOTING. Anything you put inside quotation marks must be a character-for-character substring of text
+   printed in the packet below. No paraphrase, summary, elision ("..."), placeholder, or comma-fragment
+   inside quotes, and never two quoted values joined by a dash. When in doubt, use NO quotation marks at
+   all and describe the text in your own words instead. An unmatched quote is treated as fabricated
+   evidence. The commonest failure: putting your OWN punctuation inside the quotes -- a trailing comma or
+   full stop that belongs to your sentence (write: the word "clock", never: "clock,"). Also never
+   quote a single ordinary word; quote only whole stems, hints or options, or nothing.
+
+C. THEMES. The generator deliberately themes items around a learner's chosen interest (26 curated
+   themes: names, objects, emoji, including religious and cultural themes). Do not judge whether a theme
+   is appropriate. Judge only whether the theming INTERFERES with the mathematics -- for example, a
+   wrapper that names a different object than the task counts, or a theme word that changes the meaning
+   of the question.
+
+D. HINTS. For every sample, compare each hint line against that sample's own stem, answer, options and
+   visual: does every equation in the hints hold, does the hint explain the question actually asked
+   (direction, unit, operation, which position is missing), and does it refer only to things the item
+   actually shows? A hint that contradicts or mis-describes its item is a sample-level defect.
+
+E. CITATIONS AND OVERALL. Every clause_evidence entry cites at least one sample_id; for a clause that
+   FAILs because something is absent, cite the sample_ids you examined. `overall` must follow the rule
+   in item 4 above exactly; the filing tool refuses a reply whose `overall` disagrees with its own
+   verdicts.
+
+G. OWNER RULINGS ON CURRICULUM READING (binding; apply them, do not re-litigate them):
+   - A fact belongs to the N multiplication table when EITHER factor is N: 6 x 2 and 2 x 6 are both
+     facts of the 2 table. A competency naming "the 2, 3, 4, 5, and 10 tables" or "the 6, 7, 8, and 9
+     tables" is met by any fact with at least one factor from its named set (ruling 18).
+   - A factor of 1 (or 0, where the competency names that property) is in scope when the other factor
+     is a named table (ruling 14).
+
+F. CHECKLIST before you write (replies failing any of these are refused and sent back):
+   - use NO quotation marks anywhere in your prose; describe stems, hints and options in your own words;
+   - every rationale and every reasoning string is at least 60 characters;
+   - no two samples share a word-for-word reasoning -- name each sample's own numbers, words or visual;
+   - EVERY clause_evidence entry, including PASS ones, has a non-empty sample_ids list, and every id in it is a
+     printed sample_id from this packet (never a requirement id);
+   - `findings` has exactly the six keys listed in item 1; `decomposition` goes INSIDE competency_fulfillment;
+   - sample_assessments list every printed sample once, in printed order;
+   - `overall` follows the rule in item 4 from your own verdicts.
+
+Use only the Read tool on this prompt file and the Write tool for your one JSON reply. Do not open any
+other file.
+
+== BLIND PACKET ==
+
+==========================================================================
+NODE: mat_g1_na_q2_4
+PACKET DIGEST: 2f01acb34e34534534b2bb5c265b6bdea5de238cbb5371dcd7826bf582c089e4
+COMPETENCY (Grade 1, Quarter 2, None):
+Add numbers by expressing addends as tens and ones (expanded form).
+
+REQUIREMENTS (confirm this is a lossless decomposition of the competency):
+  add: Add numbers
+  express_addends: expressing addends
+  tens_ones: tens and ones
+  expanded_form: expanded form
+
+SAMPLES (every one of these is real rendered output):
+  sample f9cd019886c72a856fc8  seed 42  [mcq]
+      stem:    10 is 1 ten and 0 ones. 62 is 6 tens and 2 ones. Add the place values, then find the total: what is 10 + 62?
+      answer:  72
+      options: 82 / 71 / 73 / 72
+      hints:   ["We are adding two numbers: 10 and 62.", "Add the ones: 0 + 2 = 2. Keep 2 in the ones place.", "Add the tens: 1 + 6 = 7.", "The sum is 10 + 62 = 72."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 289efaa4c0f0d60eef4e  seed 43  [true_false]
+      stem:    24 is 2 tens and 4 ones. 3 is 3 ones. Add the place values, then find the total: 24 + 3 = 37. True or False?
+      answer:  False
+      hints:   ["We are adding two numbers: 24 and 3.", "Add the ones: 4 + 3 = 7. Keep 7 in the ones place.", "Add the tens: 2 + 0 = 2.", "The sum is 24 + 3 = 27."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 5f1c36cba4022c414489  seed 44  [error_detect]
+      stem:    Rico solved: "30 is 3 tens and 0 ones. 22 is 2 tens and 2 ones. Add the place values, then find the total: 30 + 22 = ___". Rico says the blank is 52. Is Rico correct?
+      answer:  {'has_error': False, 'correct_value': 52}
+      hints:   ["We are adding two numbers: 30 and 22.", "Add the ones: 0 + 2 = 2. Keep 2 in the ones place.", "Add the tens: 3 + 2 = 5.", "The sum is 30 + 22 = 52."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample 0e0a6f05daab2423e8ec  seed 45  [mcq]
+      stem:    60 is 6 tens and 0 ones. 10 is 1 ten and 0 ones. Add the place values, then find the total: what is 60 + 10?
+      answer:  70
+      options: 69 / 70 / 80 / 71
+      hints:   ["We are adding two numbers: 60 and 10.", "Add the ones: 0 + 0 = 0. Keep 0 in the ones place.", "Add the tens: 6 + 1 = 7.", "The sum is 60 + 10 = 70."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 8fca89be10ce3edb4d97  seed 46  [cloze]
+      stem:    57 is 5 tens and 7 ones. 43 is 4 tens and 3 ones. Add the place values, then find the total: 57 + 43 = ___
+      answer:  100
+      options: 110 / 99 / 101 / 100
+      hints:   ["We are adding two numbers: 57 and 43.", "Add the ones: 7 + 3 = 10. 10 ones is 1 ten and 0 ones.", "Add the tens: 5 + 4 + 1 (the ten from the ones) = 10.", "The sum is 57 + 43 = 100."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample e135687eac28d61e84dd  seed 500  [true_false]
+      stem:    55 is 5 tens and 5 ones. 43 is 4 tens and 3 ones. Add the place values, then find the total: 55 + 43 = 55. True or False?
+      answer:  False
+      hints:   ["We are adding two numbers: 55 and 43.", "Add the ones: 5 + 3 = 8. Keep 8 in the ones place.", "Add the tens: 5 + 4 = 9.", "The sum is 55 + 43 = 98."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 7a668eb1a8f669bfaf94  seed 501  [mcq]
+      stem:    70 is 7 tens and 0 ones. 18 is 1 ten and 8 ones. Add the place values, then find the total: what is 70 + 18?
+      answer:  88
+      options: 89 / 98 / 88 / 87
+      hints:   ["We are adding two numbers: 70 and 18.", "Add the ones: 0 + 8 = 8. Keep 8 in the ones place.", "Add the tens: 7 + 1 = 8.", "The sum is 70 + 18 = 88."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 77083079c7c0ffa835f0  seed 502  [error_detect]
+      stem:    Dante solved: "87 is 8 tens and 7 ones. 9 is 9 ones. Add the place values, then find the total: 87 + 9 = ___". Dante says the blank is 96. Is Dante correct?
+      answer:  {'has_error': False, 'correct_value': 96}
+      hints:   ["We are adding two numbers: 87 and 9.", "Add the ones: 7 + 9 = 16. 16 ones is 1 ten and 6 ones.", "Add the tens: 8 + 0 + 1 (the ten from the ones) = 9.", "The sum is 87 + 9 = 96."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample 70e081a83c244410565e  seed 600  [true_false]
+      stem:    47 is 4 tens and 7 ones. 7 is 7 ones. Add the place values, then find the total: 47 + 7 = 54. True or False?
+      answer:  True
+      hints:   ["We are adding two numbers: 47 and 7.", "Add the ones: 7 + 7 = 14. 14 ones is 1 ten and 4 ones.", "Add the tens: 4 + 0 + 1 (the ten from the ones) = 5.", "The sum is 47 + 7 = 54."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 10a82e1286db42661def  seed 601  [cloze]
+      stem:    60 is 6 tens and 0 ones. 30 is 3 tens and 0 ones. Add the place values, then find the total: 60 + 30 = ___
+      answer:  90
+      options: 100 / 89 / 90 / 91
+      hints:   ["We are adding two numbers: 60 and 30.", "Add the ones: 0 + 0 = 0. Keep 0 in the ones place.", "Add the tens: 6 + 3 = 9.", "The sum is 60 + 30 = 90."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample b0da07245b581ce7605f  seed 602  [mcq]
+      stem:    30 is 3 tens and 0 ones. 6 is 6 ones. Add the place values, then find the total: what is 30 + 6?
+      answer:  36
+      options: 36 / 37 / 35 / 46
+      hints:   ["We are adding two numbers: 30 and 6.", "Add the ones: 0 + 6 = 6. Keep 6 in the ones place.", "Add the tens: 3 + 0 = 3.", "The sum is 30 + 6 = 36."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 09f2a1239c6990cd1176  seed 603  [true_false]
+      stem:    19 is 1 ten and 9 ones. 54 is 5 tens and 4 ones. Add the place values, then find the total: 19 + 54 = 73. True or False?
+      answer:  True
+      hints:   ["We are adding two numbers: 19 and 54.", "Add the ones: 9 + 4 = 13. 13 ones is 1 ten and 3 ones.", "Add the tens: 1 + 5 + 1 (the ten from the ones) = 7.", "The sum is 19 + 54 = 73."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 476ba37d3fb021b4620a  seed 604  [mcq]
+      stem:    19 is 1 ten and 9 ones. 81 is 8 tens and 1 one. Add the place values, then find the total: what is 19 + 81?
+      answer:  100
+      options: 110 / 101 / 99 / 100
+      hints:   ["We are adding two numbers: 19 and 81.", "Add the ones: 9 + 1 = 10. 10 ones is 1 ten and 0 ones.", "Add the tens: 1 + 8 + 1 (the ten from the ones) = 10.", "The sum is 19 + 81 = 100."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample ca5d2f5c2787227b4642  seed 605  [true_false]
+      stem:    60 is 6 tens and 0 ones. 30 is 3 tens and 0 ones. Add the place values, then find the total: 60 + 30 = 90. True or False?
+      answer:  True
+      hints:   ["We are adding two numbers: 60 and 30.", "Add the ones: 0 + 0 = 0. Keep 0 in the ones place.", "Add the tens: 6 + 3 = 9.", "The sum is 60 + 30 = 90."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 273f92dbed53a6b89abf  seed 606  [mcq]
+      stem:    33 is 3 tens and 3 ones. 13 is 1 ten and 3 ones. Add the place values, then find the total: what is 33 + 13?
+      answer:  46
+      options: 45 / 47 / 46 / 56
+      hints:   ["We are adding two numbers: 33 and 13.", "Add the ones: 3 + 3 = 6. Keep 6 in the ones place.", "Add the tens: 3 + 1 = 4.", "The sum is 33 + 13 = 46."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 5b30b41ad1ce564cc622  seed 607  [error_detect]
+      stem:    Grace solved: "16 is 1 ten and 6 ones. 18 is 1 ten and 8 ones. Add the place values, then find the total: 16 + 18 = ___". Grace says the blank is 34. Is Grace correct?
+      answer:  {'has_error': False, 'correct_value': 34}
+      hints:   ["We are adding two numbers: 16 and 18.", "Add the ones: 6 + 8 = 14. 14 ones is 1 ten and 4 ones.", "Add the tens: 1 + 1 + 1 (the ten from the ones) = 3.", "The sum is 16 + 18 = 34."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample 7a2514474a9f11b94a6d  seed 608  [true_false]
+      stem:    60 is 6 tens and 0 ones. 30 is 3 tens and 0 ones. Add the place values, then find the total: 60 + 30 = 91. True or False?
+      answer:  False
+      hints:   ["We are adding two numbers: 60 and 30.", "Add the ones: 0 + 0 = 0. Keep 0 in the ones place.", "Add the tens: 6 + 3 = 9.", "The sum is 60 + 30 = 90."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample cb6a58682efd9aac4214  seed 609  [cloze]
+      stem:    11 is 1 ten and 1 one. 13 is 1 ten and 3 ones. Add the place values, then find the total: 11 + 13 = ___
+      answer:  24
+      options: 34 / 24 / 23 / 25
+      hints:   ["We are adding two numbers: 11 and 13.", "Add the ones: 1 + 3 = 4. Keep 4 in the ones place.", "Add the tens: 1 + 1 = 2.", "The sum is 11 + 13 = 24."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 8c9da4d30b04a65a9f5c  seed 610  [mcq]
+      stem:    30 is 3 tens and 0 ones. 50 is 5 tens and 0 ones. Add the place values, then find the total: what is 30 + 50?
+      answer:  80
+      options: 79 / 81 / 80 / 90
+      hints:   ["We are adding two numbers: 30 and 50.", "Add the ones: 0 + 0 = 0. Keep 0 in the ones place.", "Add the tens: 3 + 5 = 8.", "The sum is 30 + 50 = 80."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 5c9c5dbc42479352b1a3  seed 700  [true_false]
+      stem:    30 is 3 tens and 0 ones. 30 is 3 tens and 0 ones. Add the place values, then find the total: 30 + 30 = 60. True or False?
+      answer:  True
+      hints:   ["We are adding two numbers: 30 and 30.", "Add the ones: 0 + 0 = 0. Keep 0 in the ones place.", "Add the tens: 3 + 3 = 6.", "The sum is 30 + 30 = 60."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample a059149bc280147e34b5  seed 701  [cloze]
+      stem:    ✝️ Daniel enjoys stones. Here is a math challenge. 43 is 4 tens and 3 ones. 29 is 2 tens and 9 ones. Add the place values, then find the total: 43 + 29 = ___
+      answer:  72
+      options: 72 / 82 / 73 / 71
+      hints:   ["We are adding two numbers: 43 and 29.", "Add the ones: 3 + 9 = 12. 12 ones is 1 ten and 2 ones.", "Add the tens: 4 + 2 + 1 (the ten from the ones) = 7.", "The sum is 43 + 29 = 72."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 7d98e0f1f6a3f0515a99  seed 702  [error_detect]
+      stem:    🏀 Isko enjoys basketballs. Here is a math challenge. Manny solved: "18 is 1 ten and 8 ones. 14 is 1 ten and 4 ones. Add the place values, then find the total: 18 + 14 = ___". Manny says the blank is 33. Is Manny correct?
+      answer:  {'has_error': True, 'correct_value': 32}
+      hints:   ["We are adding two numbers: 18 and 14.", "Add the ones: 8 + 4 = 12. 12 ones is 1 ten and 2 ones.", "Add the tens: 1 + 1 + 1 (the ten from the ones) = 3.", "The sum is 18 + 14 = 32."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample 33f5d35c052545674c94  seed 800  [cloze]
+      stem:    50 is 5 tens and 0 ones. 12 is 1 ten and 2 ones. Add the place values, then find the total: 50 + 12 = ___
+      answer:  62
+      options: 72 / 63 / 62 / 61
+      hints:   ["We are adding two numbers: 50 and 12.", "Add the ones: 0 + 2 = 2. Keep 2 in the ones place.", "Add the tens: 5 + 1 = 6.", "The sum is 50 + 12 = 62."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample dd2c8ffa7649b88be20d  seed 801  [error_detect]
+      stem:    Pia solved: "13 is 1 ten and 3 ones. 71 is 7 tens and 1 one. Add the place values, then find the total: 13 + 71 = ___". Pia says the blank is 84. Is Pia correct?
+      answer:  {'has_error': False, 'correct_value': 84}
+      hints:   ["We are adding two numbers: 13 and 71.", "Add the ones: 3 + 1 = 4. Keep 4 in the ones place.", "Add the tens: 1 + 7 = 8.", "The sum is 13 + 71 = 84."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample 1715c6069393a43468e4  seed 900  [mcq]
+      stem:    10 is 1 ten and 0 ones. 2 is 2 ones. Add the place values, then find the total: what is 10 + 2?
+      answer:  12
+      options: 11 / 22 / 12 / 13
+      hints:   ["We are adding two numbers: 10 and 2.", "Add the ones: 0 + 2 = 2. Keep 2 in the ones place.", "Add the tens: 1 + 0 = 1.", "The sum is 10 + 2 = 12."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 0c548e156f00478caab2  seed 901  [mcq]
+      stem:    11 is 1 ten and 1 one. 1 is 1 one. Add the place values, then find the total: what is 11 + 1?
+      answer:  12
+      options: 22 / 13 / 12 / 11
+      hints:   ["We are adding two numbers: 11 and 1.", "Add the ones: 1 + 1 = 2. Keep 2 in the ones place.", "Add the tens: 1 + 0 = 1.", "The sum is 11 + 1 = 12."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample db8cd4daf7d64c558d67  seed 1000  [true_false]
+      stem:    61 is 6 tens and 1 one. 6 is 6 ones. Add the place values, then find the total: 61 + 6 = 77. True or False?
+      answer:  False
+      hints:   ["We are adding two numbers: 61 and 6.", "Add the ones: 1 + 6 = 7. Keep 7 in the ones place.", "Add the tens: 6 + 0 = 6.", "The sum is 61 + 6 = 67."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "hint_gated"}
+  sample c56dc0f5d5dccc607aad  seed 1001  [error_detect]
+      stem:    Liza solved: "77 is 7 tens and 7 ones. 18 is 1 ten and 8 ones. Add the place values, then find the total: 77 + 18 = ___". Liza says the blank is 77. Is Liza correct?
+      answer:  {'has_error': True, 'correct_value': 95}
+      hints:   ["We are adding two numbers: 77 and 18.", "Add the ones: 7 + 8 = 15. 15 ones is 1 ten and 5 ones.", "Add the tens: 7 + 1 + 1 (the ten from the ones) = 9.", "The sum is 77 + 18 = 95."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "mastery_drill"}
+  sample cb604974705f289e145e  seed 1002  [error_detect]
+      stem:    Manny solved: "90 is 9 tens and 0 ones. 1 is 1 one. Add the place values, then find the total: 90 + 1 = ___". Manny says the blank is 101. Is Manny correct?
+      answer:  {'has_error': True, 'correct_value': 91}
+      hints:   ["We are adding two numbers: 90 and 1.", "Add the ones: 0 + 1 = 1. Keep 1 in the ones place.", "Add the tens: 9 + 0 = 9.", "The sum is 90 + 1 = 91."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "scaffolded"}
+

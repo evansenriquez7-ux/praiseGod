@@ -39,10 +39,10 @@
       "clause": "amounts are less than ₱100"
     }
   ],
-  "packet_digest": "27b303343c8ec0eebacf088b7fdbadfb4121d5b739c187ce9efc5c45913a826c",
+  "packet_digest": "230fe2cc9dc852ac56cc392ea5c0cbe9341df38d629354bf713200c71ac68972",
   "sampling_version": "phase2-stratified-v2-rendered-visual",
-  "reviewed_by": "blind-reviewer-haiku45-pe5-mat_g1_na_q4_6-20260930",
-  "review_date": "2026-09-30",
+  "reviewed_by": "blind-reviewer-haiku45-w2v1-mat_g1_na_q4_6-20261002",
+  "review_date": "2026-10-02",
   "blind": true,
   "sample_seeds": [
     42,
@@ -114,7 +114,7 @@
       "effective": {
         "format": "read_mcq",
         "is_visual": true,
-        "visual_type": "NumberLine",
+        "visual_type": "PesoMoney",
         "interaction_mode": "read",
         "answer_collection": "mcq",
         "experience": "standard"
@@ -122,12 +122,12 @@
       "options": [
         {
           "key": "A",
-          "value": 5,
+          "value": 2,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 2,
+          "value": 6,
           "is_correct": false
         },
         {
@@ -147,55 +147,59 @@
         "You paid peso5 for an item that costs peso2.",
         "Money back = peso5 − peso2 = peso3."
       ],
-      "visual_type": "NumberLine",
+      "visual_type": "PesoMoney",
       "visual_payload": {
-        "start": 0,
-        "end": 20,
-        "major_interval": 5,
-        "minor_interval": 1,
-        "interval": 1,
-        "dot_value": 5,
-        "move_by": -2,
-        "content_type": "whole_number",
-        "value": 3,
-        "correct_position": 3,
-        "divisions": 20,
-        "is_interactive": false,
-        "show_labels": true,
-        "correct_answer": 3.0,
-        "target": 3.0
+        "coins": [
+          {
+            "denomination": 5,
+            "count": 1
+          }
+        ],
+        "bills": [],
+        "total": 5,
+        "target_amount": 5,
+        "exclude_centavos": true,
+        "coin_faces": [
+          1,
+          5,
+          10
+        ],
+        "bill_faces": [
+          20,
+          50,
+          100
+        ],
+        "require_fewest": true,
+        "is_interactive": false
       },
       "visual_render": {
-        "visual_type": "NumberLine",
-        "renderer_input_digest": "6cdafb63dc5d8fc0b957589feea87f0aedd928a6d8efe700cf21d9b3c63e1b70",
+        "visual_type": "PesoMoney",
+        "renderer_input_digest": "6ad2dbce196cc70362368a7de2ac977e56371c245cd321760e1b12e1c6e32baa",
         "description": {
           "source": "rendered_static_markup",
-          "visual_type": "NumberLine",
-          "element_count": 31,
+          "visual_type": "PesoMoney",
+          "element_count": 6,
           "svg_count": 0,
           "table_row_count": 0,
           "table_cell_count": 0,
           "button_count": 0,
           "input_count": 0,
           "text_labels": [
-            "0",
-            "5",
-            "10",
-            "15",
-            "20"
+            "COINS",
+            "₱5"
           ],
           "distinct_colours": [
-            "hsl(var(--border-color)",
             "hsl(var(--text-muted)",
-            "hsl(var(--text)",
-            "hsl(var(--primary)",
-            "hsl(var(--card-bg)"
+            "#e2e8f0,",
+            "#cbd5e1)",
+            "#1e293b",
+            "#94a3b8"
           ],
           "role_counts": {}
         }
       },
       "sample_id": "d410ababa077fc6dd315",
-      "replay_digest": "0ef53c383ac869876f2d7dbac35e4fb968468fd3c3b58138a352b53ec5dfda7b"
+      "replay_digest": "5a265a34d582a2b1442665d4c8167f9a5a0ef6305c17b05ea3f59867a0eb67f6"
     },
     {
       "node_id": "mat_g1_na_q4_6",
@@ -316,61 +320,9 @@
     {
       "node_id": "mat_g1_na_q4_6",
       "seed": 44,
-      "formatter": "mcq",
-      "question_text": "Isko has ₱10 in one pocket and ₱21 in another pocket. How much money does Isko have in total?",
-      "correct_answer": 31,
-      "requested": {
-        "difficulty_profile": null,
-        "student_interest": null,
-        "experience": "standard"
-      },
-      "serving_mode": "student_path",
-      "effective": {
-        "format": "mcq",
-        "is_visual": false,
-        "visual_type": null,
-        "interaction_mode": null,
-        "answer_collection": "mcq",
-        "experience": "standard"
-      },
-      "options": [
-        {
-          "key": "A",
-          "value": 310,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 32,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 21,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 31,
-          "is_correct": true
-        }
-      ],
-      "resolved_answer": 31,
-      "hints": [
-        "You have these amounts: ['peso10', 'peso21'].",
-        "Step 1: Add peso10 → running total = peso10.",
-        "Step 2: Add peso21 → running total = peso31.",
-        "The total is peso31."
-      ],
-      "sample_id": "5589ea8157ef2a680572",
-      "replay_digest": "7731222d43e7e0e2475683809b33e23dc674d921e413ec4c7cde3340644fb85e"
-    },
-    {
-      "node_id": "mat_g1_na_q4_6",
-      "seed": 45,
       "formatter": "read_mcq",
-      "question_text": "Chef Demi saved ₱2 on Monday and ₱10 on Tuesday. How much money did Chef Demi save altogether?",
-      "correct_answer": "B",
+      "question_text": "Isko has ₱10 in one pocket and ₱21 in another pocket. How much money does Isko have in total?",
+      "correct_answer": "D",
       "requested": {
         "difficulty_profile": null,
         "student_interest": null,
@@ -388,57 +340,57 @@
       "options": [
         {
           "key": "A",
-          "value": 14,
+          "value": 26,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 12,
-          "is_correct": true
+          "value": 30,
+          "is_correct": false
         },
         {
           "key": "C",
-          "value": 11,
+          "value": 36,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 13,
-          "is_correct": false
+          "value": 31,
+          "is_correct": true
         }
       ],
-      "resolved_answer": 12,
+      "resolved_answer": 31,
       "hints": [
-        "You have these amounts: ['peso2', 'peso10'].",
-        "Step 1: Add peso2 → running total = peso2.",
-        "Step 2: Add peso10 → running total = peso12.",
-        "The total is peso12."
+        "You have these amounts: ['peso10', 'peso21'].",
+        "Step 1: Add peso10 → running total = peso10.",
+        "Step 2: Add peso21 → running total = peso31.",
+        "The total is peso31."
       ],
       "visual_type": "NumberLine",
       "visual_payload": {
         "start": 0,
-        "end": 20,
-        "major_interval": 5,
-        "minor_interval": 1,
-        "interval": 1,
-        "dot_value": 2,
-        "move_by": 10,
+        "end": 50,
+        "major_interval": 10,
+        "minor_interval": 5,
+        "interval": 5,
+        "dot_value": 10,
+        "move_by": 21,
         "content_type": "whole_number",
-        "value": 12,
-        "correct_position": 12,
-        "divisions": 20,
+        "value": 31,
+        "correct_position": 31,
+        "divisions": 10,
         "is_interactive": false,
         "show_labels": true,
-        "correct_answer": 12.0,
-        "target": 12.0
+        "correct_answer": 31.0,
+        "target": 31.0
       },
       "visual_render": {
         "visual_type": "NumberLine",
-        "renderer_input_digest": "fece426981a5e7eb41a3ade7125f5c0ed7206b9a10acf2a1ccad99af6eb0a191",
+        "renderer_input_digest": "97ede1888dff85b3243234bce4eae783d614725180f055a6c7fce04f0ca952f1",
         "description": {
           "source": "rendered_static_markup",
           "visual_type": "NumberLine",
-          "element_count": 31,
+          "element_count": 22,
           "svg_count": 0,
           "table_row_count": 0,
           "table_cell_count": 0,
@@ -446,10 +398,11 @@
           "input_count": 0,
           "text_labels": [
             "0",
-            "5",
             "10",
-            "15",
-            "20"
+            "20",
+            "30",
+            "40",
+            "50"
           ],
           "distinct_colours": [
             "hsl(var(--border-color)",
@@ -461,15 +414,15 @@
           "role_counts": {}
         }
       },
-      "sample_id": "3714657f86107c66e14c",
-      "replay_digest": "c4edc1fb2f4145308a48a5d8b52b7a0ccfd01b4fd320d255c938be6c5c7c028f"
+      "sample_id": "5589ea8157ef2a680572",
+      "replay_digest": "18ce1c5bc4e0773af7c92f5e59c9ca66555ff5dfc0f89e8e05721dc31e99c3b6"
     },
     {
       "node_id": "mat_g1_na_q4_6",
-      "seed": 46,
-      "formatter": "cloze",
-      "question_text": "Ate Nena had ₱30 and spent ₱10 on bags of flour at the palengke. How much money does Ate Nena have left?",
-      "correct_answer": 20,
+      "seed": 45,
+      "formatter": "read_mcq",
+      "question_text": "Chef Demi saved ₱2 on Monday and ₱10 on Tuesday. How much money did Chef Demi save altogether?",
+      "correct_answer": "B",
       "requested": {
         "difficulty_profile": null,
         "student_interest": null,
@@ -477,36 +430,144 @@
       },
       "serving_mode": "student_path",
       "effective": {
-        "format": "cloze",
-        "is_visual": false,
-        "visual_type": null,
-        "interaction_mode": null,
-        "answer_collection": "fill_in_blank",
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "PesoMoney",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 22,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 12,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 13,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 7,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 12,
+      "hints": [
+        "You have these amounts: ['peso2', 'peso10'].",
+        "Step 1: Add peso2 → running total = peso2.",
+        "Step 2: Add peso10 → running total = peso12.",
+        "The total is peso12."
+      ],
+      "visual_type": "PesoMoney",
+      "visual_payload": {
+        "coins": [
+          {
+            "denomination": 1,
+            "count": 2
+          },
+          {
+            "denomination": 10,
+            "count": 1
+          }
+        ],
+        "bills": [],
+        "total": 12,
+        "target_amount": 12,
+        "exclude_centavos": true,
+        "coin_faces": [
+          1,
+          5,
+          10
+        ],
+        "bill_faces": [
+          20,
+          50,
+          100
+        ],
+        "require_fewest": true,
+        "is_interactive": false
+      },
+      "visual_render": {
+        "visual_type": "PesoMoney",
+        "renderer_input_digest": "5a80da60fe8422449e31576f3973777e1691006b558cb44981ed00ada95eaa2b",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "PesoMoney",
+          "element_count": 8,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "COINS",
+            "₱1",
+            "₱1",
+            "₱10"
+          ],
+          "distinct_colours": [
+            "hsl(var(--text-muted)",
+            "#cbd5e1,",
+            "#94a3b8)",
+            "#1e293b",
+            "#64748b",
+            "#fef08a 60%,",
+            "#cbd5e1 60%)",
+            "#94a3b8"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "3714657f86107c66e14c",
+      "replay_digest": "737490059e00417b85ba2eaa2080a64c146edec167722989e2a5867d59f38460"
+    },
+    {
+      "node_id": "mat_g1_na_q4_6",
+      "seed": 46,
+      "formatter": "read_mcq",
+      "question_text": "Ate Nena had ₱30 and spent ₱10 on bags of flour at the palengke. How much money does Ate Nena have left?",
+      "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
         "experience": "standard"
       },
       "options": [
         {
           "key": "A",
           "value": 20,
-          "text": "20",
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 30,
-          "text": "30",
+          "value": 25,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 400,
-          "text": "400",
+          "value": 15,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 41,
-          "text": "41",
+          "value": 19,
           "is_correct": false
         }
       ],
@@ -516,8 +577,56 @@
         "You paid peso30 for an item that costs peso10.",
         "Money back = peso30 − peso10 = peso20."
       ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "start": 0,
+        "end": 50,
+        "major_interval": 10,
+        "minor_interval": 5,
+        "interval": 5,
+        "dot_value": 30,
+        "move_by": -10,
+        "content_type": "whole_number",
+        "value": 20,
+        "correct_position": 20,
+        "divisions": 10,
+        "is_interactive": false,
+        "show_labels": true,
+        "correct_answer": 20.0,
+        "target": 20.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "610b72dfeb412ef4f056f42dc5ce59b2ca31072d708ec62d8f513545bda3016c",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 22,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "0",
+            "10",
+            "20",
+            "30",
+            "40",
+            "50"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
       "sample_id": "9e390c2bbf183239afd6",
-      "replay_digest": "840119c8f3bec80895d9334019cc70e5370b70432f3f1c51e256a643d4de4761"
+      "replay_digest": "447d10671caa997a08a312c471a4acf48f0e87f9548dc2a6067676e86cf20478"
     },
     {
       "node_id": "mat_g1_na_q4_6",
@@ -655,7 +764,7 @@
       "effective": {
         "format": "read_mcq",
         "is_visual": true,
-        "visual_type": "NumberLine",
+        "visual_type": "PesoMoney",
         "interaction_mode": "read",
         "answer_collection": "mcq",
         "experience": "standard"
@@ -668,17 +777,17 @@
         },
         {
           "key": "B",
-          "value": 10,
+          "value": 51,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 12,
+          "value": 40,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 16,
+          "value": 70,
           "is_correct": false
         }
       ],
@@ -688,65 +797,68 @@
         "You paid peso50 for an item that costs peso39.",
         "Money back = peso50 − peso39 = peso11."
       ],
-      "visual_type": "NumberLine",
+      "visual_type": "PesoMoney",
       "visual_payload": {
-        "start": 0,
-        "end": 70,
-        "major_interval": 10,
-        "minor_interval": 5,
-        "interval": 5,
-        "dot_value": 50,
-        "move_by": -39,
-        "content_type": "whole_number",
-        "value": 11,
-        "correct_position": 11,
-        "divisions": 14,
-        "is_interactive": false,
-        "show_labels": true,
-        "correct_answer": 11.0,
-        "target": 11.0
+        "coins": [],
+        "bills": [
+          {
+            "denomination": 50,
+            "count": 1
+          }
+        ],
+        "total": 50,
+        "target_amount": 50,
+        "exclude_centavos": true,
+        "coin_faces": [
+          1,
+          5,
+          10
+        ],
+        "bill_faces": [
+          20,
+          50,
+          100
+        ],
+        "require_fewest": true,
+        "is_interactive": false
       },
       "visual_render": {
-        "visual_type": "NumberLine",
-        "renderer_input_digest": "b216c2650a0b5a359cf7c0bdc082d544a80325a61a73209ac5f36c231b11fe85",
+        "visual_type": "PesoMoney",
+        "renderer_input_digest": "280255bdf71678ea77eb4a73ef8abbfe24bfda5df05c50b73f1fb75abb110004",
         "description": {
           "source": "rendered_static_markup",
-          "visual_type": "NumberLine",
-          "element_count": 28,
+          "visual_type": "PesoMoney",
+          "element_count": 11,
           "svg_count": 0,
           "table_row_count": 0,
           "table_cell_count": 0,
           "button_count": 0,
           "input_count": 0,
           "text_labels": [
-            "0",
-            "10",
-            "20",
-            "30",
-            "40",
-            "50",
-            "60",
-            "70"
+            "BILLS",
+            "₱50",
+            "₱50",
+            "₱50",
+            "REPUBLIKA NG PILIPINAS"
           ],
           "distinct_colours": [
-            "hsl(var(--border-color)",
             "hsl(var(--text-muted)",
-            "hsl(var(--text)",
-            "hsl(var(--primary)",
-            "hsl(var(--card-bg)"
+            "#fda4af,",
+            "#dc2626)",
+            "#fff"
           ],
           "role_counts": {}
         }
       },
       "sample_id": "28f8a3bb6a46fe466f43",
-      "replay_digest": "1744eab00787b2d1151512d52e828e9399b4dac93437977ada5a80455c43ae6f"
+      "replay_digest": "7d2191c0852260db372d4dc2edba31717cfeb5df864f6cf3015d733d078d9b42"
     },
     {
       "node_id": "mat_g1_na_q4_6",
       "seed": 502,
-      "formatter": "mcq",
+      "formatter": "read_mcq",
       "question_text": "Carlo had ₱80 in a piggy bank and used ₱2 to buy a notebook. How much money is left in the piggy bank?",
-      "correct_answer": 78,
+      "correct_answer": "A",
       "requested": {
         "difficulty_profile": {
           "max_total": 1.0,
@@ -757,10 +869,10 @@
       },
       "serving_mode": "student_path",
       "effective": {
-        "format": "mcq",
-        "is_visual": false,
-        "visual_type": null,
-        "interaction_mode": null,
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "read",
         "answer_collection": "mcq",
         "experience": "standard"
       },
@@ -772,17 +884,17 @@
         },
         {
           "key": "B",
-          "value": 820,
+          "value": 73,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 83,
+          "value": 77,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 72,
+          "value": 83,
           "is_correct": false
         }
       ],
@@ -792,8 +904,54 @@
         "You paid peso80 for an item that costs peso2.",
         "Money back = peso80 − peso2 = peso78."
       ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "start": 60,
+        "end": 90,
+        "major_interval": 10,
+        "minor_interval": 5,
+        "interval": 5,
+        "dot_value": 80,
+        "move_by": -2,
+        "content_type": "whole_number",
+        "value": 78,
+        "correct_position": 78,
+        "divisions": 6,
+        "is_interactive": false,
+        "show_labels": true,
+        "correct_answer": 78.0,
+        "target": 78.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "b6b110bf7c656f3126c345d2d4eb3562ec09d4f30d0a211173fc9514cea270a7",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 16,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "60",
+            "70",
+            "80",
+            "90"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
       "sample_id": "77a21857d240499c3e02",
-      "replay_digest": "4d7a778a7839a21695c3d4a62c7b90cc646ddb4df52ab90708f04258b9f3aba6"
+      "replay_digest": "894815ec9a4237264c3569fd7169ac9b45e584d0e814cdd25a0e088544d6e0ef"
     },
     {
       "node_id": "mat_g1_na_q4_6",
@@ -902,9 +1060,9 @@
     {
       "node_id": "mat_g1_na_q4_6",
       "seed": 601,
-      "formatter": "cloze",
+      "formatter": "read_mcq",
       "question_text": "Moses bought a pencil for ₱15 and an eraser for ₱5. How much did Moses spend in all?",
-      "correct_answer": 20,
+      "correct_answer": "C",
       "requested": {
         "difficulty_profile": {
           "denomination_type": "bills"
@@ -914,36 +1072,32 @@
       },
       "serving_mode": "student_path",
       "effective": {
-        "format": "cloze",
-        "is_visual": false,
-        "visual_type": null,
-        "interaction_mode": null,
-        "answer_collection": "fill_in_blank",
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
         "experience": "standard"
       },
       "options": [
         {
           "key": "A",
-          "value": 21,
-          "text": "21",
+          "value": 19,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 200,
-          "text": "200",
+          "value": 22,
           "is_correct": false
         },
         {
           "key": "C",
           "value": 20,
-          "text": "20",
           "is_correct": true
         },
         {
           "key": "D",
-          "value": 10,
-          "text": "10",
+          "value": 21,
           "is_correct": false
         }
       ],
@@ -954,8 +1108,55 @@
         "Step 2: Add peso5 → running total = peso20.",
         "The total is peso20."
       ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "start": 0,
+        "end": 20,
+        "major_interval": 5,
+        "minor_interval": 1,
+        "interval": 1,
+        "dot_value": 15,
+        "move_by": 5,
+        "content_type": "whole_number",
+        "value": 20,
+        "correct_position": 20,
+        "divisions": 20,
+        "is_interactive": false,
+        "show_labels": true,
+        "correct_answer": 20.0,
+        "target": 20.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "418705d9fa1459d80ef8b4389edcb96dc37fc5c432f4717dd27c5157ecc01b77",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 31,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "0",
+            "5",
+            "10",
+            "15",
+            "20"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
       "sample_id": "4efc57edda6bbf5e6fd6",
-      "replay_digest": "8263230b363c2068345471654738a1bc7399a06149170f46915b0b82d4a36b2b"
+      "replay_digest": "3c8fe77fe1bcab123f450a9873c8f93cf49b8cea74dc9fb6c1ad140b1cab4b97"
     },
     {
       "node_id": "mat_g1_na_q4_6",
@@ -974,7 +1175,7 @@
       "effective": {
         "format": "read_mcq",
         "is_visual": true,
-        "visual_type": "NumberLine",
+        "visual_type": "PesoMoney",
         "interaction_mode": "read",
         "answer_collection": "mcq",
         "experience": "standard"
@@ -987,17 +1188,17 @@
         },
         {
           "key": "B",
-          "value": 69,
-          "is_correct": false
-        },
-        {
-          "key": "C",
           "value": 75,
           "is_correct": false
         },
         {
+          "key": "C",
+          "value": 60,
+          "is_correct": false
+        },
+        {
           "key": "D",
-          "value": 65,
+          "value": 90,
           "is_correct": false
         }
       ],
@@ -1008,55 +1209,71 @@
         "Step 2: Add peso20 → running total = peso70.",
         "The total is peso70."
       ],
-      "visual_type": "NumberLine",
+      "visual_type": "PesoMoney",
       "visual_payload": {
-        "start": 40,
-        "end": 80,
-        "major_interval": 10,
-        "minor_interval": 5,
-        "interval": 5,
-        "dot_value": 50,
-        "move_by": 20,
-        "content_type": "whole_number",
-        "value": 70,
-        "correct_position": 70,
-        "divisions": 8,
-        "is_interactive": false,
-        "show_labels": true,
-        "correct_answer": 70.0,
-        "target": 70.0
+        "coins": [],
+        "bills": [
+          {
+            "denomination": 20,
+            "count": 1
+          },
+          {
+            "denomination": 50,
+            "count": 1
+          }
+        ],
+        "total": 70,
+        "target_amount": 70,
+        "exclude_centavos": true,
+        "coin_faces": [
+          1,
+          5,
+          10
+        ],
+        "bill_faces": [
+          20,
+          50,
+          100
+        ],
+        "require_fewest": true,
+        "is_interactive": false
       },
       "visual_render": {
-        "visual_type": "NumberLine",
-        "renderer_input_digest": "4d77790d31a6e12913a5f4f9eb8e87d5c6b0f4d00a46a7aaa3f94112fc093b31",
+        "visual_type": "PesoMoney",
+        "renderer_input_digest": "4ef475543a91d3ddd64e65330f6c2fc6a5497aec9b208cd099dfd60423fc48ce",
         "description": {
           "source": "rendered_static_markup",
-          "visual_type": "NumberLine",
-          "element_count": 19,
+          "visual_type": "PesoMoney",
+          "element_count": 17,
           "svg_count": 0,
           "table_row_count": 0,
           "table_cell_count": 0,
           "button_count": 0,
           "input_count": 0,
           "text_labels": [
-            "40",
-            "50",
-            "60",
-            "70",
-            "80"
+            "BILLS",
+            "₱20",
+            "₱20",
+            "₱20",
+            "REPUBLIKA NG PILIPINAS",
+            "₱50",
+            "₱50",
+            "₱50",
+            "REPUBLIKA NG PILIPINAS"
           ],
           "distinct_colours": [
-            "hsl(var(--border-color)",
             "hsl(var(--text-muted)",
-            "hsl(var(--text)",
-            "hsl(var(--primary)",
-            "hsl(var(--card-bg)"
+            "#ffedd5,",
+            "#ea580c)",
+            "#fff",
+            "#fda4af,",
+            "#dc2626)"
           ],
           "role_counts": {}
         }
       },
       "sample_id": "b6304864e5d0c552de77",
-      "replay_digest": "63182657fa0cb29464bb4710e423c8d4514ba17594879d55329b88fb0de4aa8a"
+      "replay_digest": "9e34eec4b2a06e8ca7600fa5e842682155bdbed8ce48efca28dd723e0a547e0d"
     },
     {
       "node_id": "mat_g1_na_q4_6",
@@ -1189,7 +1406,7 @@
       "effective": {
         "format": "read_mcq",
         "is_visual": true,
-        "visual_type": "NumberLine",
+        "visual_type": "PesoMoney",
         "interaction_mode": "read",
         "answer_collection": "mcq",
         "experience": "standard"
@@ -1197,17 +1414,17 @@
       "options": [
         {
           "key": "A",
-          "value": 35,
+          "value": 20,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 29,
+          "value": 40,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 25,
+          "value": 50,
           "is_correct": false
         },
         {
@@ -1223,56 +1440,73 @@
         "Step 2: Add peso25 → running total = peso30.",
         "The total is peso30."
       ],
-      "visual_type": "NumberLine",
+      "visual_type": "PesoMoney",
       "visual_payload": {
-        "start": 0,
-        "end": 50,
-        "major_interval": 10,
-        "minor_interval": 5,
-        "interval": 5,
-        "dot_value": 5,
-        "move_by": 25,
-        "content_type": "whole_number",
-        "value": 30,
-        "correct_position": 30,
-        "divisions": 10,
-        "is_interactive": false,
-        "show_labels": true,
-        "correct_answer": 30.0,
-        "target": 30.0
+        "coins": [
+          {
+            "denomination": 5,
+            "count": 2
+          }
+        ],
+        "bills": [
+          {
+            "denomination": 20,
+            "count": 1
+          }
+        ],
+        "total": 30,
+        "target_amount": 30,
+        "exclude_centavos": true,
+        "coin_faces": [
+          1,
+          5,
+          10
+        ],
+        "bill_faces": [
+          20,
+          50,
+          100
+        ],
+        "require_fewest": true,
+        "is_interactive": false
       },
       "visual_render": {
-        "visual_type": "NumberLine",
-        "renderer_input_digest": "d78c658b4a9fcb2227235acb45876a8d3bd3d6614f64cdfc3fbbb920cbba97d3",
+        "visual_type": "PesoMoney",
+        "renderer_input_digest": "bcc107c2e8ee114ac949f0765a5bfbe0c2eab677d4eda8665c83b7bf63595a94",
         "description": {
           "source": "rendered_static_markup",
-          "visual_type": "NumberLine",
-          "element_count": 22,
+          "visual_type": "PesoMoney",
+          "element_count": 16,
           "svg_count": 0,
           "table_row_count": 0,
           "table_cell_count": 0,
           "button_count": 0,
           "input_count": 0,
           "text_labels": [
-            "0",
-            "10",
-            "20",
-            "30",
-            "40",
-            "50"
+            "BILLS",
+            "₱20",
+            "₱20",
+            "₱20",
+            "REPUBLIKA NG PILIPINAS",
+            "COINS",
+            "₱5",
+            "₱5"
           ],
           "distinct_colours": [
-            "hsl(var(--border-color)",
             "hsl(var(--text-muted)",
-            "hsl(var(--text)",
-            "hsl(var(--primary)",
-            "hsl(var(--card-bg)"
+            "#ffedd5,",
+            "#ea580c)",
+            "#fff",
+            "#e2e8f0,",
+            "#cbd5e1)",
+            "#1e293b",
+            "#94a3b8"
           ],
           "role_counts": {}
         }
       },
       "sample_id": "a9997b6c5792ab32d47e",
-      "replay_digest": "b23e8e9469a67c0ab401263a7e2119508bbf01b4c98121771b96324ed8948972"
+      "replay_digest": "1d949132b870f6c6ec7d1e9e648c77d1002a0f1d7a140910125c2d05bd878dc8"
     },
     {
       "node_id": "mat_g1_na_q4_6",
@@ -1381,9 +1615,9 @@
     {
       "node_id": "mat_g1_na_q4_6",
       "seed": 606,
-      "formatter": "mcq",
+      "formatter": "read_mcq",
       "question_text": "Mary had ₱20 in a piggy bank and used ₱1 to buy a notebook. How much money is left in the piggy bank?",
-      "correct_answer": 19,
+      "correct_answer": "A",
       "requested": {
         "difficulty_profile": {
           "task_type": "make_change"
@@ -1393,10 +1627,10 @@
       },
       "serving_mode": "student_path",
       "effective": {
-        "format": "mcq",
-        "is_visual": false,
-        "visual_type": null,
-        "interaction_mode": null,
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "read",
         "answer_collection": "mcq",
         "experience": "standard"
       },
@@ -1408,17 +1642,17 @@
         },
         {
           "key": "B",
-          "value": 81,
+          "value": 20,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 910,
+          "value": 21,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 92,
+          "value": 18,
           "is_correct": false
         }
       ],
@@ -1428,8 +1662,55 @@
         "You paid peso20 for an item that costs peso1.",
         "Money back = peso20 − peso1 = peso19."
       ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "start": 0,
+        "end": 20,
+        "major_interval": 5,
+        "minor_interval": 1,
+        "interval": 1,
+        "dot_value": 20,
+        "move_by": -1,
+        "content_type": "whole_number",
+        "value": 19,
+        "correct_position": 19,
+        "divisions": 20,
+        "is_interactive": false,
+        "show_labels": true,
+        "correct_answer": 19.0,
+        "target": 19.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "bcd8dc7eb2ba0005b6f2e6663f34cc1af9121cf031549f34540172d6c3cd6905",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 31,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "0",
+            "5",
+            "10",
+            "15",
+            "20"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
       "sample_id": "a0a980b31bca7046b3ea",
-      "replay_digest": "fc6e556c840664a1d7f3bb3759826c19a220d0b2ab1077ee974813d5bc04a5d3"
+      "replay_digest": "abfe13f057ce9d09b90abff5f4544240af9c44e4742d2c5d1c084739e824adbc"
     },
     {
       "node_id": "mat_g1_na_q4_6",
@@ -1551,9 +1832,9 @@
     {
       "node_id": "mat_g1_na_q4_6",
       "seed": 701,
-      "formatter": "cloze",
+      "formatter": "read_mcq",
       "question_text": "Mika had ₱10 in a piggy bank and used ₱1 to buy a notebook. How much money is left in the piggy bank?",
-      "correct_answer": 9,
+      "correct_answer": "D",
       "requested": {
         "difficulty_profile": null,
         "student_interest": "visual_arts",
@@ -1561,36 +1842,32 @@
       },
       "serving_mode": "student_path",
       "effective": {
-        "format": "cloze",
-        "is_visual": false,
-        "visual_type": null,
-        "interaction_mode": null,
-        "answer_collection": "fill_in_blank",
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
         "experience": "standard"
       },
       "options": [
         {
           "key": "A",
-          "value": 42,
-          "text": "42",
+          "value": 8,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 410,
-          "text": "410",
+          "value": 11,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 31,
-          "text": "31",
+          "value": 10,
           "is_correct": false
         },
         {
           "key": "D",
           "value": 9,
-          "text": "9",
           "is_correct": true
         }
       ],
@@ -1600,15 +1877,62 @@
         "You paid peso10 for an item that costs peso1.",
         "Money back = peso10 − peso1 = peso9."
       ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "start": 0,
+        "end": 20,
+        "major_interval": 5,
+        "minor_interval": 1,
+        "interval": 1,
+        "dot_value": 10,
+        "move_by": -1,
+        "content_type": "whole_number",
+        "value": 9,
+        "correct_position": 9,
+        "divisions": 20,
+        "is_interactive": false,
+        "show_labels": true,
+        "correct_answer": 9.0,
+        "target": 9.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "e781e0c46d7137d1de670a3f83486b5d18ce11ea684a7a92cf6122c87290490c",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 31,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "0",
+            "5",
+            "10",
+            "15",
+            "20"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
       "sample_id": "792c494ce4edfca1f87a",
-      "replay_digest": "ac172d17673cdbcc9585f066058e3b18ef808d983615cdb23413ccfa1aab8640"
+      "replay_digest": "dfd31c935854dea47c33bcdfa30b67f306f4ad9086729275bd0d1f3dc28fcbc9"
     },
     {
       "node_id": "mat_g1_na_q4_6",
       "seed": 702,
-      "formatter": "mcq",
+      "formatter": "read_mcq",
       "question_text": "Ate Alyssa had ₱1 and spent ₱0 on whistles at the barangay court. How much money does Ate Alyssa have left?",
-      "correct_answer": 1,
+      "correct_answer": "A",
       "requested": {
         "difficulty_profile": null,
         "student_interest": "diy_crafts",
@@ -1616,10 +1940,10 @@
       },
       "serving_mode": "student_path",
       "effective": {
-        "format": "mcq",
-        "is_visual": false,
-        "visual_type": null,
-        "interaction_mode": null,
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "read",
         "answer_collection": "mcq",
         "experience": "standard"
       },
@@ -1631,17 +1955,17 @@
         },
         {
           "key": "B",
-          "value": 320,
+          "value": 3,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 33,
+          "value": 0,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 22,
+          "value": 2,
           "is_correct": false
         }
       ],
@@ -1651,15 +1975,62 @@
         "You paid peso1 for an item that costs peso0.",
         "Money back = peso1 − peso0 = peso1."
       ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "start": 0,
+        "end": 20,
+        "major_interval": 5,
+        "minor_interval": 1,
+        "interval": 1,
+        "dot_value": 1,
+        "move_by": 0,
+        "content_type": "whole_number",
+        "value": 1,
+        "correct_position": 1,
+        "divisions": 20,
+        "is_interactive": false,
+        "show_labels": true,
+        "correct_answer": 1.0,
+        "target": 1.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "9f7e7bc383d0e7c8baa3abc64146cbebc5096e72e1eb0d6f160f054fbc3830e8",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 31,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "0",
+            "5",
+            "10",
+            "15",
+            "20"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
       "sample_id": "f424f6d1218c2cebe458",
-      "replay_digest": "13b36352c4ee0edab6540cea4aaf9ae7ea175e9ba9713aa22d52441edac4f1dd"
+      "replay_digest": "efc1e2ac5116f5a5325a887f27bdaf8d38240258472db68b2715d994c44f7586"
     },
     {
       "node_id": "mat_g1_na_q4_6",
       "seed": 800,
-      "formatter": "cloze",
+      "formatter": "read_mcq",
       "question_text": "Pia had ₱40 in a piggy bank and used ₱15 to buy a notebook. How much money is left in the piggy bank?",
-      "correct_answer": 25,
+      "correct_answer": "D",
       "requested": {
         "difficulty_profile": {
           "max_total": 1.0
@@ -1669,36 +2040,32 @@
       },
       "serving_mode": "student_path",
       "effective": {
-        "format": "cloze",
-        "is_visual": false,
-        "visual_type": null,
-        "interaction_mode": null,
-        "answer_collection": "fill_in_blank",
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
         "experience": "standard"
       },
       "options": [
         {
           "key": "A",
-          "value": 56,
-          "text": "56",
+          "value": 24,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 45,
-          "text": "45",
+          "value": 30,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 550,
-          "text": "550",
+          "value": 20,
           "is_correct": false
         },
         {
           "key": "D",
           "value": 25,
-          "text": "25",
           "is_correct": true
         }
       ],
@@ -1708,15 +2075,64 @@
         "You paid peso40 for an item that costs peso15.",
         "Money back = peso40 − peso15 = peso25."
       ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "start": 0,
+        "end": 60,
+        "major_interval": 10,
+        "minor_interval": 5,
+        "interval": 5,
+        "dot_value": 40,
+        "move_by": -15,
+        "content_type": "whole_number",
+        "value": 25,
+        "correct_position": 25,
+        "divisions": 12,
+        "is_interactive": false,
+        "show_labels": true,
+        "correct_answer": 25.0,
+        "target": 25.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "4a25bd3256695339ee987be1ecf47fc975fd5f5fd720bb4e4cc3b8c6a1451374",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 25,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "0",
+            "10",
+            "20",
+            "30",
+            "40",
+            "50",
+            "60"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
       "sample_id": "8783a2b7950811a72d2a",
-      "replay_digest": "aa2c6942699d28422ef6109abbfb2ca8ba55470dcf757a5d57de75164124d5eb"
+      "replay_digest": "c7bf253ef2b83643367e5ae33a56f5246906c9ea3cca87ae93eede1e0ab9c50a"
     },
     {
       "node_id": "mat_g1_na_q4_6",
       "seed": 801,
-      "formatter": "mcq",
+      "formatter": "read_mcq",
       "question_text": "Tito Bong had ₱20 and received ₱75 more from Nanay. How much money does Tito Bong have in all?",
-      "correct_answer": 95,
+      "correct_answer": "D",
       "requested": {
         "difficulty_profile": {
           "number_difficulty": 1.0
@@ -1726,27 +2142,27 @@
       },
       "serving_mode": "student_path",
       "effective": {
-        "format": "mcq",
-        "is_visual": false,
-        "visual_type": null,
-        "interaction_mode": null,
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "read",
         "answer_collection": "mcq",
         "experience": "standard"
       },
       "options": [
         {
           "key": "A",
-          "value": 85,
+          "value": 100,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 950,
+          "value": 90,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 96,
+          "value": 94,
           "is_correct": false
         },
         {
@@ -1762,8 +2178,60 @@
         "Step 2: Add peso75 → running total = peso95.",
         "The total is peso95."
       ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "start": 10,
+        "end": 100,
+        "major_interval": 10,
+        "minor_interval": 5,
+        "interval": 5,
+        "dot_value": 20,
+        "move_by": 75,
+        "content_type": "whole_number",
+        "value": 95,
+        "correct_position": 95,
+        "divisions": 18,
+        "is_interactive": false,
+        "show_labels": true,
+        "correct_answer": 95.0,
+        "target": 95.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "7a3d19e57376ecd755ef5b146931caa811a0e65fce657a597049bcff006caee7",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 34,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "10",
+            "20",
+            "30",
+            "40",
+            "50",
+            "60",
+            "70",
+            "80",
+            "90",
+            "100"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
       "sample_id": "73e55bca6ac8b0ef0489",
-      "replay_digest": "e73321209d5adeeb427a37d1e6ffcec7ea211dffcbd48d5483aaca1d4b905f5d"
+      "replay_digest": "6a8180fa6a335a35312c7ee84e44194af76b722e9e6ed3981972fba47bfad6b7"
     },
     {
       "node_id": "mat_g1_na_q4_6",
@@ -1783,7 +2251,7 @@
       "effective": {
         "format": "read_mcq",
         "is_visual": true,
-        "visual_type": "NumberLine",
+        "visual_type": "PesoMoney",
         "interaction_mode": "read",
         "answer_collection": "mcq",
         "experience": "standard"
@@ -1791,12 +2259,12 @@
       "options": [
         {
           "key": "A",
-          "value": 0,
+          "value": 3,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 3,
+          "value": 0,
           "is_correct": false
         },
         {
@@ -1816,55 +2284,60 @@
         "You paid peso2 for an item that costs peso1.",
         "Money back = peso2 − peso1 = peso1."
       ],
-      "visual_type": "NumberLine",
+      "visual_type": "PesoMoney",
       "visual_payload": {
-        "start": 0,
-        "end": 20,
-        "major_interval": 5,
-        "minor_interval": 1,
-        "interval": 1,
-        "dot_value": 2,
-        "move_by": -1,
-        "content_type": "whole_number",
-        "value": 1,
-        "correct_position": 1,
-        "divisions": 20,
-        "is_interactive": false,
-        "show_labels": true,
-        "correct_answer": 1.0,
-        "target": 1.0
+        "coins": [
+          {
+            "denomination": 1,
+            "count": 2
+          }
+        ],
+        "bills": [],
+        "total": 2,
+        "target_amount": 2,
+        "exclude_centavos": true,
+        "coin_faces": [
+          1,
+          5,
+          10
+        ],
+        "bill_faces": [
+          20,
+          50,
+          100
+        ],
+        "require_fewest": true,
+        "is_interactive": false
       },
       "visual_render": {
-        "visual_type": "NumberLine",
-        "renderer_input_digest": "371ea52ec4f4fd71540e76607c126026c987ab5578e6e7281d029b37941fc62c",
+        "visual_type": "PesoMoney",
+        "renderer_input_digest": "56040fa2307ae4da6a4689ed43b5015641c0b1f7ced4359b0852ea71f7d9ab82",
         "description": {
           "source": "rendered_static_markup",
-          "visual_type": "NumberLine",
-          "element_count": 31,
+          "visual_type": "PesoMoney",
+          "element_count": 7,
           "svg_count": 0,
           "table_row_count": 0,
           "table_cell_count": 0,
           "button_count": 0,
           "input_count": 0,
           "text_labels": [
-            "0",
-            "5",
-            "10",
-            "15",
-            "20"
+            "COINS",
+            "₱1",
+            "₱1"
           ],
           "distinct_colours": [
-            "hsl(var(--border-color)",
             "hsl(var(--text-muted)",
-            "hsl(var(--text)",
-            "hsl(var(--primary)",
-            "hsl(var(--card-bg)"
+            "#cbd5e1,",
+            "#94a3b8)",
+            "#1e293b",
+            "#64748b"
           ],
           "role_counts": {}
         }
       },
       "sample_id": "797d7f284811f1f98a3d",
-      "replay_digest": "14bdaf4de462f911d2b332d7eaeeb170e9e90ccc0f62a99f81eb4b786750dadd"
+      "replay_digest": "2b76a004755633ca001878bbe1e0e96ff20f64e62c331869ad97a284a5662bdb"
     },
     {
       "node_id": "mat_g1_na_q4_6",
@@ -1884,7 +2357,7 @@
       "effective": {
         "format": "read_mcq",
         "is_visual": true,
-        "visual_type": "NumberLine",
+        "visual_type": "PesoMoney",
         "interaction_mode": "read",
         "answer_collection": "mcq",
         "experience": "standard"
@@ -1892,7 +2365,7 @@
       "options": [
         {
           "key": "A",
-          "value": 5,
+          "value": 3,
           "is_correct": false
         },
         {
@@ -1902,7 +2375,7 @@
         },
         {
           "key": "C",
-          "value": 3,
+          "value": 5,
           "is_correct": false
         },
         {
@@ -1918,55 +2391,62 @@
         "Step 2: Add peso2 → running total = peso4.",
         "The total is peso4."
       ],
-      "visual_type": "NumberLine",
+      "visual_type": "PesoMoney",
       "visual_payload": {
-        "start": 0,
-        "end": 20,
-        "major_interval": 5,
-        "minor_interval": 1,
-        "interval": 1,
-        "dot_value": 2,
-        "move_by": 2,
-        "content_type": "whole_number",
-        "value": 4,
-        "correct_position": 4,
-        "divisions": 20,
-        "is_interactive": false,
-        "show_labels": true,
-        "correct_answer": 4.0,
-        "target": 4.0
+        "coins": [
+          {
+            "denomination": 1,
+            "count": 4
+          }
+        ],
+        "bills": [],
+        "total": 4,
+        "target_amount": 4,
+        "exclude_centavos": true,
+        "coin_faces": [
+          1,
+          5,
+          10
+        ],
+        "bill_faces": [
+          20,
+          50,
+          100
+        ],
+        "require_fewest": true,
+        "is_interactive": false
       },
       "visual_render": {
-        "visual_type": "NumberLine",
-        "renderer_input_digest": "2158a83c28f486d92531678385f4e2346b330370aed1005d7b667af23534bad2",
+        "visual_type": "PesoMoney",
+        "renderer_input_digest": "6334db26578e79e067c2c1d6c5b434fddfe061fca5c5aa1ddddc2c8b7545bf76",
         "description": {
           "source": "rendered_static_markup",
-          "visual_type": "NumberLine",
-          "element_count": 31,
+          "visual_type": "PesoMoney",
+          "element_count": 9,
           "svg_count": 0,
           "table_row_count": 0,
           "table_cell_count": 0,
           "button_count": 0,
           "input_count": 0,
           "text_labels": [
-            "0",
-            "5",
-            "10",
-            "15",
-            "20"
+            "COINS",
+            "₱1",
+            "₱1",
+            "₱1",
+            "₱1"
           ],
           "distinct_colours": [
-            "hsl(var(--border-color)",
             "hsl(var(--text-muted)",
-            "hsl(var(--text)",
-            "hsl(var(--primary)",
-            "hsl(var(--card-bg)"
+            "#cbd5e1,",
+            "#94a3b8)",
+            "#1e293b",
+            "#64748b"
           ],
           "role_counts": {}
         }
       },
       "sample_id": "d5d61410a996abd62f0c",
-      "replay_digest": "a3a7da1e6328173345de8695af28b8f06071509d3928c7e3420f290b5fc1c51b"
+      "replay_digest": "3ae2f1b39f17b43664fe7bb03a4dd7a3ec5e3a0d43c8c9b4f736bcd6dab180f4"
     },
     {
       "node_id": "mat_g1_na_q4_6",
@@ -2075,9 +2555,9 @@
     {
       "node_id": "mat_g1_na_q4_6",
       "seed": 1001,
-      "formatter": "mcq",
+      "formatter": "read_mcq",
       "question_text": "Kuya Chad had ₱30 and spent ₱18 on helmets at the sports complex. How much money does Kuya Chad have left?",
-      "correct_answer": 12,
+      "correct_answer": "A",
       "requested": {
         "difficulty_profile": null,
         "student_interest": null,
@@ -2085,10 +2565,10 @@
       },
       "serving_mode": "student_path",
       "effective": {
-        "format": "mcq",
-        "is_visual": false,
-        "visual_type": null,
-        "interaction_mode": null,
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "read",
         "answer_collection": "mcq",
         "experience": "mastery_drill"
       },
@@ -2100,17 +2580,17 @@
         },
         {
           "key": "B",
-          "value": 600,
+          "value": 7,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 50,
+          "value": 17,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 61,
+          "value": 11,
           "is_correct": false
         }
       ],
@@ -2120,15 +2600,63 @@
         "You paid peso30 for an item that costs peso18.",
         "Money back = peso30 − peso18 = peso12."
       ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "start": 0,
+        "end": 50,
+        "major_interval": 10,
+        "minor_interval": 5,
+        "interval": 5,
+        "dot_value": 30,
+        "move_by": -18,
+        "content_type": "whole_number",
+        "value": 12,
+        "correct_position": 12,
+        "divisions": 10,
+        "is_interactive": false,
+        "show_labels": true,
+        "correct_answer": 12.0,
+        "target": 12.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "a9f67d310ac4b2e7cff309f7fced142b32e4bb829c42854db4c0684cf51a680f",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 22,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "0",
+            "10",
+            "20",
+            "30",
+            "40",
+            "50"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
       "sample_id": "218bbf6ff631dd97ba14",
-      "replay_digest": "db43b4aebc309b722dee555ce6f064f92d37bdf6aa51b193babf7ce960b2b2fb"
+      "replay_digest": "dc003eead952ed5fb35cf2d248e27005f6a94c4cabf10e8d2650e6ace4336fce"
     },
     {
       "node_id": "mat_g1_na_q4_6",
       "seed": 1002,
-      "formatter": "mcq",
+      "formatter": "read_mcq",
       "question_text": "Kuya Coy had ₱50 in a piggy bank and used ₱10 to buy a notebook. How much money is left in the piggy bank?",
-      "correct_answer": 40,
+      "correct_answer": "C",
       "requested": {
         "difficulty_profile": null,
         "student_interest": null,
@@ -2136,22 +2664,22 @@
       },
       "serving_mode": "student_path",
       "effective": {
-        "format": "mcq",
-        "is_visual": false,
-        "visual_type": null,
-        "interaction_mode": null,
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "read",
         "answer_collection": "mcq",
         "experience": "scaffolded"
       },
       "options": [
         {
           "key": "A",
-          "value": 750,
+          "value": 35,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 76,
+          "value": 39,
           "is_correct": false
         },
         {
@@ -2161,7 +2689,7 @@
         },
         {
           "key": "D",
-          "value": 65,
+          "value": 45,
           "is_correct": false
         }
       ],
@@ -2171,8 +2699,58 @@
         "You paid peso50 for an item that costs peso10.",
         "Money back = peso50 − peso10 = peso40."
       ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "start": 0,
+        "end": 70,
+        "major_interval": 10,
+        "minor_interval": 5,
+        "interval": 5,
+        "dot_value": 50,
+        "move_by": -10,
+        "content_type": "whole_number",
+        "value": 40,
+        "correct_position": 40,
+        "divisions": 14,
+        "is_interactive": false,
+        "show_labels": true,
+        "correct_answer": 40.0,
+        "target": 40.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "4a086f44bcf40b003a5af533f0fa4f869499509a69f61e2ad5975a3484d596c0",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 28,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "0",
+            "10",
+            "20",
+            "30",
+            "40",
+            "50",
+            "60",
+            "70"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
       "sample_id": "8c58b99ad99322b375ca",
-      "replay_digest": "bcf691f4a68a3c166cf3a2d5826b2ff22591c8155a249620c1e92794290becaa"
+      "replay_digest": "ecedcca56d8def2d1cc3b475e47c6f1c41829d2166541a0df280599085aa3395"
     }
   ],
   "sample_assessments": [
@@ -2181,575 +2759,575 @@
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Marco had 5 pesos and used 2 to buy a notebook. The problem setup is unambiguous and multiple choice options (5, 2, 3, 4) present distinct, clearly separated numerical alternatives without overlapping or confusing number expressions."
+          "reasoning": "The subtraction scenario is clearly stated with Marco removing money from a piggy bank for a notebook purchase, asking explicitly for the remaining amount. No alternative interpretations exist regarding the question direction or mathematical operation required for this simple withdrawal scenario."
         },
         "contextual_logical_validity": {
-          "verdict": "PASS",
-          "reasoning": "A piggy bank purchase scenario is authentic and appropriate for Grade 1 Filipino learners. Spending money from savings logically models a real-world transaction that students encounter in daily household money management situations."
+          "verdict": "CONCERN",
+          "reasoning": "While the piggy bank withdrawal scenario itself is realistic and age-appropriate, the hint explanation employs confusing phrasing saying paid peso5 for an item costing peso2, which obscures the actual transaction structure. Learners might misunderstand whether overpayment occurred rather than grasping that peso2 was spent from an initial peso5 balance."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "The stem describes Marco using 2 pesos to buy a notebook. However, the hint states you paid 5 pesos for an item that costs 2 pesos, which reverses the transaction narrative. This backwards language contradicts what actually happened and could seriously confuse Grade 1 students learning to parse money spending scenarios."
+          "verdict": "PASS",
+          "reasoning": "Grade 1 students readily understand scenarios involving piggy banks and using saved money to purchase items. The PesoMoney visual explicitly shows coin denominations and quantities, providing concrete representation that supports learner comprehension of abstract peso values and the subtraction action."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The subtraction 5 minus 2 equals 3 is mathematically correct. The equation shown in hints displays 5 − 2 = 3 accurately, and the answer key of 3 matches the problem mathematics despite the misleading transaction framing in preceding text."
+          "reasoning": "The arithmetic is correct: five pesos minus two pesos equals three pesos. The answer three is mathematically valid with distractors including adjacent numbers two and four, plus incorrect operation result six, creating reasonable cognitive challenge at the appropriate grade level."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe5-mat_g1_na_q4_6-20260930",
-      "dispatch_id": "s5-phaseE-claude-w5-haiku45-20260930-mat_g1_na_q4_6:mat_g1_na_q4_6"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g1_na_q4_6-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g1_na_q4_6:mat_g1_na_q4_6"
     },
     {
       "sample_id": "8e4a76db423c64a9ec76",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Kuya Ton receives 10 pesos more to his existing 20 pesos, yielding 30 pesos total. The problem clearly specifies both amounts and asks for a total. Multiple choice options (30, 35, 50, 20) present unambiguous distinct alternatives without numerical confusion."
+          "reasoning": "The addition scenario clearly presents Kuya Ton receiving additional money and asks for the total amount on hand. The question direction unambiguously requires combining the initial amount with the received amount without alternative interpretations possible."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Receiving money from Nanay (mother figure) is an authentic Filipino household scenario for Grade 1 learners. Money accumulation from family sources logically represents addition in practical real-world contexts that children experience."
+          "reasoning": "Receiving money from a family member such as Nanay is a realistic and culturally appropriate transaction for Filipino learners. The scenario authentically reflects typical family monetary interactions that grade 1 students experience in their daily lives."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "While the stem is clear, the visual PesoMoney shows three 20-peso bills and one 10-peso coin totaling 70 pesos, but the problem requires only 20 plus 10 equaling 30. The visual misrepresents the amount by showing 70 pesos when the problem context needs 30 pesos, potentially confusing learners about quantity representation."
+          "verdict": "PASS",
+          "reasoning": "The step-by-step hint structure explicitly shows adding peso20 as a running total of peso20, then adding peso10 to reach peso30. This scaffolded presentation with running total checkpoints supports learner understanding of the additive process and helps build procedural fluency in combining monetary amounts."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Adding 20 plus 10 yields 30 pesos, matching the answer key. Hints show step-by-step running totals from 20 to 30, confirming the arithmetic is sound and the total stays within competency bounds."
+          "reasoning": "Twenty pesos plus ten pesos equals thirty pesos with answer thirty being mathematically correct. Distractors include thirty-five and fifty pesos representing common student errors and twenty pesos representing the initial amount without addition."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe5-mat_g1_na_q4_6-20260930",
-      "dispatch_id": "s5-phaseE-claude-w5-haiku45-20260930-mat_g1_na_q4_6:mat_g1_na_q4_6"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g1_na_q4_6-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g1_na_q4_6:mat_g1_na_q4_6"
     },
     {
       "sample_id": "5589ea8157ef2a680572",
       "checks": {
         "ambiguity": {
-          "verdict": "CONCERN",
-          "reasoning": "The first multiple choice option is displayed as 310, which creates ambiguity for Grade 1 learners still developing place-value understanding. A young student might interpret this as three separate digits rather than three hundred ten, especially when the correct answer is 31. The option format could mislead rather than serve as a meaningful distractor."
+          "verdict": "PASS",
+          "reasoning": "Isko having money in two separate pockets and being asked for the total creates an unambiguous addition scenario. The question clearly directs learners to combine the two amounts without alternative interpretations of what is being requested."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Isko carrying money in two separate pockets is a realistic scenario for Grade 1 students. Combining amounts from multiple locations logically models addition in authentic contexts that young learners understand from their own experiences."
+          "reasoning": "The scenario of possessing money in multiple pockets simultaneously is realistic and relatable to first-grade learners who use pockets or bags for storing personal items including money. This authentic context supports meaningful mathematics engagement."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The stem clearly describes two pocket locations with specified amounts in each. Hints show step-by-step addition with running totals that support Grade 1 understanding of combining quantities from different sources into a single total amount."
+          "reasoning": "The two-location scenario helps learners visualize that money in different places must be combined to find the total. The step-by-step hint showing running totals starting at peso10 then reaching peso31 provides clear procedural support for learner understanding."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The sum 10 plus 21 equals 31 pesos is arithmetically correct. The answer key of 31 appears in the options alongside plausible distractors, confirming mathematical accuracy."
+          "reasoning": "Ten pesos plus twenty-one pesos equals thirty-one pesos with answer thirty-one being correct. Distractors include thirty at the near-boundary and thirty-six pesos representing common computation errors or alternative sums."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe5-mat_g1_na_q4_6-20260930",
-      "dispatch_id": "s5-phaseE-claude-w5-haiku45-20260930-mat_g1_na_q4_6:mat_g1_na_q4_6"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g1_na_q4_6-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g1_na_q4_6:mat_g1_na_q4_6"
     },
     {
       "sample_id": "3714657f86107c66e14c",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Chef Demi saved 2 pesos on Monday and 10 pesos on Tuesday, accumulating 12 pesos total. The timeframe separation is clear and the question asks unambiguously for a total. Multiple choice options (14, 12, 11, 13) present distinct plausible alternatives."
+          "reasoning": "Chef Demi saving money on consecutive days with a clear request for total savings creates an unambiguous addition problem. No alternative interpretation of the mathematical operation or quantity being sought exists in this straightforward scenario."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Saving money across consecutive days is developmentally appropriate for Grade 1 learners learning about accumulating resources. The chef context is inclusive and the timespan emphasizes that addition combines amounts regardless of when they were acquired."
+          "reasoning": "Saving money over multiple days is a realistic and culturally supported behavior for families in the Philippine context. Young learners can readily understand the concept of accumulating savings across distinct time periods."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The problem clearly separates amounts by day (Monday and Tuesday) making the two-part structure transparent. Hints provide step-by-step running totals from 2 to 12 pesos and explicitly state the final total, supporting Grade 1 comprehension of combining savings across time periods."
+          "reasoning": "The multi-day saving scenario supports learner understanding of how amounts accumulate. The hints provide explicit step-by-step addition showing peso2 as running total after step 1 and peso12 after step 2, offering clear scaffolding for building procedural fluency."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Adding 2 plus 10 yields 12 pesos, the marked answer. Hints show correct running totals and the final equation, confirming the arithmetic accurately represents combining amounts saved on different days."
+          "reasoning": "Two pesos plus ten pesos equals twelve pesos with answer twelve being mathematically correct. Distractors include twenty-two pesos representing simple concatenation error, thirteen pesos from adjacent number strategy, and seven pesos from subtraction instead of addition."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe5-mat_g1_na_q4_6-20260930",
-      "dispatch_id": "s5-phaseE-claude-w5-haiku45-20260930-mat_g1_na_q4_6:mat_g1_na_q4_6"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g1_na_q4_6-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g1_na_q4_6:mat_g1_na_q4_6"
     },
     {
       "sample_id": "9e390c2bbf183239afd6",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Ate Nena spent 10 pesos from her 30 pesos on flour, with 20 pesos remaining. The context is specific and unambiguous. Multiple choice options (20, 30, 400, 41) present clearly distinct numerical choices without confusing presentations."
+          "reasoning": "The subtraction question asks explicitly for money remaining after spending at a palengke. The question direction and required operation are clear without ambiguity regarding what monetary amount should be calculated."
         },
         "contextual_logical_validity": {
-          "verdict": "PASS",
-          "reasoning": "Shopping at the palengke (Filipino market) for flour is a familiar household experience for Grade 1 students. The spending scenario logically represents money leaving savings, supporting practical arithmetic understanding grounded in daily life."
+          "verdict": "CONCERN",
+          "reasoning": "Although visiting a palengke to purchase flour is authentic for Filipino learners, the hint phrasing saying paid peso30 for an item costing peso10 creates logical confusion. The phrasing suggests overpayment or incorrect transaction understanding rather than clearly indicating that peso10 was spent from an initial peso30."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "The hint states you paid 30 pesos for an item that costs 10 pesos, when the stem shows Ate Nena spent only 10 pesos from her 30 peso savings. This reversed hint language about payment amounts contradicts the stem narrative and could confuse Grade 1 learners about transaction flow."
+          "verdict": "PASS",
+          "reasoning": "The palengke context buying bags of flour is highly familiar to Filipino grade 1 learners whose families regularly visit such markets. The scenario is concrete and relatable, supporting learner engagement despite any hint phrasing concerns."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The subtraction 30 minus 10 equals 20 pesos is mathematically correct. The equation in hints accurately displays 30 − 10 = 20, confirming the arithmetic despite the misleading transaction description."
+          "reasoning": "Thirty pesos minus ten pesos equals twenty pesos with answer twenty being correct. Distractors include twenty-five pesos from incorrect subtraction strategy, fifteen pesos from reversing operands partially, and nineteen pesos from off-by-one error."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe5-mat_g1_na_q4_6-20260930",
-      "dispatch_id": "s5-phaseE-claude-w5-haiku45-20260930-mat_g1_na_q4_6:mat_g1_na_q4_6"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g1_na_q4_6-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g1_na_q4_6:mat_g1_na_q4_6"
     },
     {
       "sample_id": "02e60e0d61e1cf23370c",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Nanding had 60 pesos and spent 40 at a sari-sari store, leaving 20 pesos. The problem is clearly structured as a straightforward subtraction scenario. Options (80, 50, 65, 20) provide unambiguous distinct alternatives clearly separated from correct and incorrect answers."
+          "reasoning": "Nanding buying a snack and being asked for remaining money presents an unambiguous subtraction scenario. The question clearly requests the amount left after the purchase without alternative interpretations."
         },
         "contextual_logical_validity": {
           "verdict": "CONCERN",
-          "reasoning": "The sari-sari store context is authentic for Filipino Grade 1 students. However, the PesoMoney visual shows three 50-peso bills plus one 10-peso coin totaling 160 pesos, not the 60 pesos shown in the problem stem. This severe visual mismatch creates logical disconnect between problem context and visual representation."
+          "reasoning": "The sari-sari store snack purchase is realistic, but the hint explanation uses the problematic phrasing that you paid peso60 for an item costing peso40. This confusing language structure does not clearly communicate that peso40 was spent from an initial peso60 balance."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "The hint again states you paid 60 pesos for an item that costs 40 pesos, when Nanding actually spent only 40 pesos. This reversed transaction language combined with a visual showing incorrect denominations could seriously confuse Grade 1 students learning to parse money transactions and visual representations."
+          "verdict": "PASS",
+          "reasoning": "Sari-sari stores are ubiquitous in Philippine neighborhoods, making this a highly familiar shopping context for grade 1 learners. The PesoMoney visual showing bills and coins provides concrete support for understanding the monetary amounts in this everyday scenario."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The subtraction 60 minus 40 equals 20 pesos is correct. The hint equation accurately shows 60 − 40 = 20, confirming the mathematics despite the misleading transaction framing and visual discrepancies."
+          "reasoning": "Sixty pesos minus forty pesos equals twenty pesos with answer twenty being correct. Distractors include eighty pesos from addition instead of subtraction, fifty pesos from alternative arithmetic, and sixty-five pesos from partial computation."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe5-mat_g1_na_q4_6-20260930",
-      "dispatch_id": "s5-phaseE-claude-w5-haiku45-20260930-mat_g1_na_q4_6:mat_g1_na_q4_6"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g1_na_q4_6-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g1_na_q4_6:mat_g1_na_q4_6"
     },
     {
       "sample_id": "28f8a3bb6a46fe466f43",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Kuya Ton used 39 pesos from a 50 peso savings to buy a notebook, leaving 11 pesos. The amounts are clearly specified and the question asks unambiguously for the remainder. Options (11, 10, 12, 16) present distinct plausible alternatives."
+          "reasoning": "Kuya Coy using money from a piggy bank to purchase a notebook asks unambiguously for the amount remaining. The question direction and required operation are clear without alternative interpretations of the monetary calculation needed."
         },
         "contextual_logical_validity": {
-          "verdict": "PASS",
-          "reasoning": "Buying a notebook from piggy bank savings is a realistic Grade 1 scenario. The transaction represents practical money spending in authentic contexts that young learners understand from household experiences."
+          "verdict": "CONCERN",
+          "reasoning": "School supply purchases like notebooks are age-appropriate, but the hint structure again uses the confusing phrasing that you paid peso50 for an item costing peso39. This wording obscures the straightforward transaction of spending peso39 from an initial peso50."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "The hint states you paid 50 pesos for an item that costs 39 pesos, yet Kuya Ton only paid 39 pesos total. This reversed hint language contradicts the stem and could confuse Grade 1 students about understanding which amount represents the payment in a transaction."
+          "verdict": "PASS",
+          "reasoning": "Notebook purchases are familiar to learners in academic contexts. The piggy bank scenario and straightforward purchase provide a clear, relatable scenario even though the hint explanation contains linguistic imprecision."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The subtraction 50 minus 39 equals 11 pesos is arithmetically correct. The equation shown in hints displays 50 − 39 = 11 accurately, confirming the mathematics."
+          "reasoning": "Fifty pesos minus thirty-nine pesos equals eleven pesos with answer eleven being correct. Distractors include fifty-one pesos from digit reversal, forty pesos from ignoring the subtraction operation, and seventy pesos from addition instead."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe5-mat_g1_na_q4_6-20260930",
-      "dispatch_id": "s5-phaseE-claude-w5-haiku45-20260930-mat_g1_na_q4_6:mat_g1_na_q4_6"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g1_na_q4_6-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g1_na_q4_6:mat_g1_na_q4_6"
     },
     {
       "sample_id": "77a21857d240499c3e02",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Carlo had 80 pesos and spent only 2 pesos on a notebook, leaving 78 pesos. The large-to-small spending ratio is clearly stated. Options (78, 820, 83, 72) present distinct alternatives with correct answer clearly differentiated from distractors."
+          "reasoning": "Carlo spending money from piggy bank savings and being asked what remains presents an unambiguous subtraction problem. The question clearly requests money left without alternative interpretations."
         },
         "contextual_logical_validity": {
-          "verdict": "PASS",
-          "reasoning": "Making a small purchase from substantial savings is plausible for Grade 1 learners. The 80-peso starting amount approaches the competency upper limit, demonstrating that problems can work with values near 100 pesos."
+          "verdict": "CONCERN",
+          "reasoning": "The notebook purchase is realistic but the hint says paid peso80 for item costing peso2. This phrasing creates confusion about the transaction, suggesting an eighty-peso price tag for a two-peso item rather than clearly indicating a two-peso spent from eighty pesos available."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "The hint states you paid 80 pesos for an item that costs 2 pesos, completely misrepresenting what happened. Carlo spent only 2 pesos from his 80 peso savings. This backwards transaction language contradicts the stem and could severely confuse Grade 1 students about money spending mechanics."
+          "verdict": "PASS",
+          "reasoning": "The minimal spending scenario where only peso2 is spent from peso80 makes the result obvious even for learners unfamiliar with the NumberLine visual support. The large remainder creates a clear and intuitive understanding of subtraction."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The subtraction 80 minus 2 equals 78 pesos is mathematically sound. The equation in hints accurately shows 80 − 2 = 78, confirming the arithmetic is correct."
+          "reasoning": "Eighty pesos minus two pesos equals seventy-eight pesos with answer seventy-eight being correct. Distractors include seventy-three, seventy-seven, and eighty-three pesos representing common computation errors and adjacent numbers."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe5-mat_g1_na_q4_6-20260930",
-      "dispatch_id": "s5-phaseE-claude-w5-haiku45-20260930-mat_g1_na_q4_6:mat_g1_na_q4_6"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g1_na_q4_6-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g1_na_q4_6:mat_g1_na_q4_6"
     },
     {
       "sample_id": "9fc0da4ff98a774cf1bb",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Kuya Renz had 10 pesos and spent 5 at a sari-sari store, leaving 5 pesos. The scenario is specific and clearly described. Options (20, 5, 6, 11) present distinct alternatives with correct answer clearly positioned among distractors."
+          "reasoning": "Kuya Renz spending money at a sari-sari store with a clear request for remaining funds presents an unambiguous subtraction question. The operation and quantity sought are explicit without alternative interpretations possible."
         },
         "contextual_logical_validity": {
-          "verdict": "PASS",
-          "reasoning": "Buying a snack at a sari-sari store is a familiar scenario for Grade 1 Filipino students. The spending situation logically represents money leaving savings in an authentic context children encounter regularly."
+          "verdict": "CONCERN",
+          "reasoning": "Sari-sari store snack purchases are authentic, but the hint phrasing continues the problematic structure saying you paid peso10 for an item costing peso5. This obscures the straightforward transaction of spending peso5 from an initial peso10."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "The hint states you paid 10 pesos for an item that costs 5 pesos, when Kuya Renz actually paid only 5 pesos for the snack. This reversed hint language about payment amounts could confuse Grade 1 learners about transaction mechanics at a store."
+          "verdict": "PASS",
+          "reasoning": "Sari-sari stores are familiar, neighborhood-level commercial venues in the Philippine context. Learners readily understand snack purchases in this culturally relevant location even though hint language creates some pedagogical friction."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The subtraction 10 minus 5 equals 5 pesos is mathematically sound. The equation in hints accurately shows 10 − 5 = 5, confirming arithmetic correctness."
+          "reasoning": "Ten pesos minus five pesos equals five pesos with answer five being correct. Distractors include twenty pesos from addition, six pesos from counting error, and eleven pesos from adding instead of subtracting."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe5-mat_g1_na_q4_6-20260930",
-      "dispatch_id": "s5-phaseE-claude-w5-haiku45-20260930-mat_g1_na_q4_6:mat_g1_na_q4_6"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g1_na_q4_6-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g1_na_q4_6:mat_g1_na_q4_6"
     },
     {
       "sample_id": "4efc57edda6bbf5e6fd6",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Moses bought two items with individual prices 15 and 5 pesos, spending 20 pesos total in a cloze format requiring direct numerical input. Options (21, 200, 20, 10) present distinct choices without ambiguous numerical presentations."
+          "reasoning": "Moses buying two school supplies and being asked for total spending creates an unambiguous addition scenario. The question clearly requests the combined cost without alternative interpretations."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Purchasing school supplies like pencils and erasers is age-appropriate and realistic for Grade 1 students. Multi-item purchases support understanding that addition combines costs from separate items into a total spent."
+          "reasoning": "Purchasing multiple school supplies like pencils and erasers together is highly realistic for grade 1 learners and supports authentic mathematical experiences grounded in familiar shopping scenarios."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The problem clearly itemizes two purchases with individual costs then asks for total spending. Hints show step-by-step addition process with running totals from 15 to 20 pesos, providing transparent scaffolding for Grade 1 learner understanding of combining purchase amounts."
+          "reasoning": "The step-by-step addition showing running total reaching peso15 after purchasing the pencil, then peso20 after adding the eraser provides clear scaffolding. The NumberLine visual supports learners in visualizing the additive process on a numerical model."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Adding 15 plus 5 yields 20 pesos, the marked answer. Hints show correct running totals progressing to the final sum, confirming the mathematics accurately represents combining two purchase costs."
+          "reasoning": "Fifteen pesos plus five pesos equals twenty pesos with answer twenty being mathematically correct. Distractors include nineteen pesos from off-by-one error, twenty-two pesos from overshoot, and twenty-one pesos from similar counting mistake."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe5-mat_g1_na_q4_6-20260930",
-      "dispatch_id": "s5-phaseE-claude-w5-haiku45-20260930-mat_g1_na_q4_6:mat_g1_na_q4_6"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g1_na_q4_6-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g1_na_q4_6:mat_g1_na_q4_6"
     },
     {
       "sample_id": "b6304864e5d0c552de77",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Des has 50 pesos in one pocket and 20 pesos in another, totaling 70 pesos. The two-location scenario is clearly described and the question asks unambiguously for a total. Options (70, 69, 75, 65) present distinct plausible alternatives."
+          "reasoning": "Des having money in two distinct pockets with a clear request for total amount creates an unambiguous addition scenario. The question unmistakably requests combining amounts without alternative interpretations."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Distributing money across multiple pockets is a relatable scenario for Grade 1 students managing their own small amounts. Combining money from separate locations logically demonstrates addition in real-world contexts."
+          "reasoning": "Carrying money in multiple pockets is an authentic and relatable scenario for first-graders who experience personal organization of limited resources. This grounds mathematics in learners' lived experience."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The stem clearly separates the two amounts by pocket location. Hints show step-by-step running totals from 50 to 70 pesos after adding 20, making the combination process transparent and supporting Grade 1 learner understanding."
+          "reasoning": "The two-pocket scenario helps visualize combining separated quantities into one total. The step-by-step hints showing peso50 as initial total then peso70 after adding peso20 provides explicit procedural support for addition learning."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Adding 50 plus 20 equals 70 pesos, matching the answer key. Hints show correct running totals at each step, confirming the mathematics is accurate."
+          "reasoning": "Fifty pesos plus twenty pesos equals seventy pesos with answer seventy being correct. Distractors include seventy-five pesos from counting error, sixty pesos from incorrect partial computation, and ninety pesos from alternative miscalculation."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe5-mat_g1_na_q4_6-20260930",
-      "dispatch_id": "s5-phaseE-claude-w5-haiku45-20260930-mat_g1_na_q4_6:mat_g1_na_q4_6"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g1_na_q4_6-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g1_na_q4_6:mat_g1_na_q4_6"
     },
     {
       "sample_id": "742542e35f921b0996d8",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Sir Ben bought a pencil and eraser at identical prices of 15 pesos each, spending 30 pesos total. Both item costs are clearly stated identically. Options (30, 31, 20, 50) present distinct alternatives with correct answer clearly differentiated."
+          "reasoning": "Sir Ben purchasing two items at the same price point and being asked for total spending creates an unambiguous addition scenario. The question clearly requests the combined cost of both purchases."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Purchasing identical school supplies at the same unit price is realistic and supports Grade 1 understanding that matching items cost the same. The scenario reinforces that adding equal quantities produces predictable results."
+          "reasoning": "Buying school supplies of the same type is a realistic scenario for learners. The equal-price structure provides mathematical interest while remaining grounded in authentic shopping experience."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The problem clearly states both items cost 15 pesos each. Hints show step-by-step addition with running totals from 15 to 30 pesos, transparently supporting Grade 1 learner understanding of combining two equal amounts."
+          "reasoning": "Equal-amount purchases help some learners recognize doubling patterns. The hints show peso15 as running total after first item, then peso30 after second identical-cost item, supporting both procedural and conceptual understanding."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Adding 15 plus 15 equals 30 pesos, the marked answer. Hints show correct running totals at each step, confirming the mathematics is sound."
+          "reasoning": "Fifteen pesos plus fifteen pesos equals thirty pesos with answer thirty being correct. Distractors include thirty-one pesos from computation error, twenty pesos from incomplete addition, and fifty pesos from alternative miscalculation."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe5-mat_g1_na_q4_6-20260930",
-      "dispatch_id": "s5-phaseE-claude-w5-haiku45-20260930-mat_g1_na_q4_6:mat_g1_na_q4_6"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g1_na_q4_6-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g1_na_q4_6:mat_g1_na_q4_6"
     },
     {
       "sample_id": "a9997b6c5792ab32d47e",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Faye had 5 pesos and received 25 pesos more from Nanay, resulting in 30 pesos total. The starting amount and received amount are explicitly specified. Options (35, 29, 25, 30) present distinct alternatives with correct answer clearly positioned."
+          "reasoning": "Faye receiving additional money from family with a clear request for total on hand presents an unambiguous addition scenario. The question explicitly requests combining initial amount with received funds."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Receiving money from a parent figure (Nanay) is an authentic experience in Philippine Grade 1 households. The addition situation represents money accumulating through gifts or transfers, supporting practical arithmetic understanding."
+          "reasoning": "Receiving money from Nanay is culturally resonant and realistic for Philippine learners. Such family monetary transactions are common and represent authentic mathematics contexts for this age group."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The problem clearly describes an initial amount and an additional amount received. Hints show step-by-step addition with running totals progressing to 30 pesos, providing transparent scaffolding for Grade 1 learner understanding."
+          "reasoning": "The family monetary gift scenario is relatable and engaging. Step-by-step hints showing peso5 as running total then peso30 after receiving peso25 provide explicit scaffolding for understanding the addition process."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Adding 5 plus 25 equals 30 pesos, the marked answer. Hints show correct running totals at each step, confirming the mathematics accurately represents combining an initial amount with an added amount."
+          "reasoning": "Five pesos plus twenty-five pesos equals thirty pesos with answer thirty being mathematically correct. Distractors include twenty pesos from stopping partway, forty pesos from overshoot, and fifty pesos from alternative computation error."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe5-mat_g1_na_q4_6-20260930",
-      "dispatch_id": "s5-phaseE-claude-w5-haiku45-20260930-mat_g1_na_q4_6:mat_g1_na_q4_6"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g1_na_q4_6-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g1_na_q4_6:mat_g1_na_q4_6"
     },
     {
       "sample_id": "4e46f5616912bc5875b0",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Riza bought a pencil for 10 pesos and an eraser for 50 pesos, spending 60 pesos total. Individual prices are clearly specified and the question asks for total expenditure. Options (55, 65, 59, 60) present plausible distinct alternatives."
+          "reasoning": "Riza purchasing two school items and being asked for total spending creates an unambiguous addition problem. The question clearly requests the combined cost without alternative interpretations."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Purchasing school supplies at different unit prices supports Grade 1 understanding that items can cost different amounts. Combining different costs into a total demonstrates practical addition in shopping contexts."
+          "reasoning": "Buying school supplies like pencils and erasers is an authentic transaction type that grade 1 learners experience. The scenario grounds mathematics in familiar consumer contexts."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The stem clearly itemizes two purchases with distinct prices. Hints show step-by-step addition starting with 10 pesos as running total, then adding 50 to reach 60 pesos. The scaffolding supports Grade 1 learner understanding of combining purchase amounts."
+          "reasoning": "The school supply purchase is concrete and relatable. Step-by-step hints explicitly show the running total reaching peso10 after purchasing the pencil, then peso60 after adding the fifty-peso eraser, supporting procedural understanding."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Adding 10 plus 50 equals 60 pesos, matching the answer key. Hints show correct running totals at each step, demonstrating that the arithmetic accurately represents adding the two purchase costs."
+          "reasoning": "Ten pesos plus fifty pesos equals sixty pesos with answer sixty being correct. Distractors include fifty-five pesos from partial computation, sixty-five pesos from counting error, and fifty-nine pesos from nearly-correct miscount."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe5-mat_g1_na_q4_6-20260930",
-      "dispatch_id": "s5-phaseE-claude-w5-haiku45-20260930-mat_g1_na_q4_6:mat_g1_na_q4_6"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g1_na_q4_6-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g1_na_q4_6:mat_g1_na_q4_6"
     },
     {
       "sample_id": "a0a980b31bca7046b3ea",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Mary had 20 pesos in a piggy bank and used only 1 peso to buy a notebook, leaving 19 pesos. The amounts are clearly specified. Options (19, 81, 910, 92) include the correct answer alongside clear distractors."
+          "reasoning": "Mary using money from savings to purchase a notebook and asking for remaining funds presents an unambiguous subtraction question. The operation and requested quantity are explicit."
         },
         "contextual_logical_validity": {
-          "verdict": "PASS",
-          "reasoning": "A piggy bank scenario with a minimal purchase is realistic for Grade 1 learners. The small spending amount demonstrates that subtraction works with any magnitude within the specified bounds."
+          "verdict": "CONCERN",
+          "reasoning": "Notebook purchases from piggy bank savings are realistic, but the hint structure says paid peso20 for an item costing peso1. This phrasing creates confusion by suggesting a twenty-peso price point for a one-peso item rather than clearly indicating one peso spent."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "The hint states you paid 20 pesos for an item that costs 1 peso, when Mary actually spent only 1 peso. This reversed transaction language contradicts the stem and could confuse Grade 1 students about distinguishing total savings from amount spent."
+          "verdict": "PASS",
+          "reasoning": "Piggy bank withdrawals for notebook purchases are familiar learning contexts. The minimal one-peso spending makes the nineteen-peso remainder obvious and intuitive even for learners struggling with calculation."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The subtraction 20 minus 1 equals 19 pesos is arithmetically correct. The equation in hints accurately shows 20 − 1 = 19, confirming the mathematics is sound."
+          "reasoning": "Twenty pesos minus one peso equals nineteen pesos with answer nineteen being correct. Distractors include twenty pesos from no operation, twenty-one pesos from addition instead, and eighteen pesos from off-by-one error."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe5-mat_g1_na_q4_6-20260930",
-      "dispatch_id": "s5-phaseE-claude-w5-haiku45-20260930-mat_g1_na_q4_6:mat_g1_na_q4_6"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g1_na_q4_6-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g1_na_q4_6:mat_g1_na_q4_6"
     },
     {
       "sample_id": "ea0f9c6fb15026f9e580",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Faye bought a pencil for 25 pesos and an eraser for 5 pesos, spending 30 pesos total. Both item prices are explicitly stated and the question asks unambiguously for total spending. Options (50, 30, 40, 29) present distinct alternatives."
+          "reasoning": "Faye spending money on two school items and being asked for total expenditure creates an unambiguous addition scenario. The question unmistakably requests combining both purchase amounts."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Purchasing school supplies is contextually appropriate for Grade 1 learners. Combining costs from two items supports practical understanding of addition in shopping scenarios."
+          "reasoning": "Purchasing stationery items like pencils and erasers at the same time is an authentic and relatable consumer scenario for first-graders engaged in school activities."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "While the stem is clear, the PesoMoney visual shows three 20-peso bills plus two 5-peso coins totaling 70 pesos, when the problem requires only 30 pesos. This visual misrepresentation could confuse Grade 1 students about the actual amount involved in the purchase."
+          "verdict": "PASS",
+          "reasoning": "School supply shopping is concrete and familiar. The step-by-step addition with running total reaching peso25 after the pencil then peso30 after the eraser provides explicit procedural support for building addition fluency."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Adding 25 plus 5 equals 30 pesos, the marked answer. Hints show correct step-by-step addition with running totals, confirming the mathematics accurately represents combining the two purchase amounts."
+          "reasoning": "Twenty-five pesos plus five pesos equals thirty pesos with answer thirty being mathematically correct. Distractors include fifty pesos from doubling error, forty pesos from overshoot, and twenty-nine pesos from partial computation."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe5-mat_g1_na_q4_6-20260930",
-      "dispatch_id": "s5-phaseE-claude-w5-haiku45-20260930-mat_g1_na_q4_6:mat_g1_na_q4_6"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g1_na_q4_6-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g1_na_q4_6:mat_g1_na_q4_6"
     },
     {
       "sample_id": "792c494ce4edfca1f87a",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Mika had 10 pesos in a piggy bank and used 1 peso to buy a notebook, leaving 9 pesos. The problem is clearly structured as a subtraction scenario. Options (42, 410, 31, 9) include the correct answer and obvious distractors without ambiguous presentation."
+          "reasoning": "Mika using money from a piggy bank to purchase a notebook with an explicit request for remaining balance creates an unambiguous subtraction scenario. The question direction is clear."
         },
         "contextual_logical_validity": {
-          "verdict": "PASS",
-          "reasoning": "A piggy bank purchase with a small amount spent is realistic for Grade 1 students. The scenario supports practical money management in familiar childhood contexts."
+          "verdict": "CONCERN",
+          "reasoning": "Piggy bank notebook purchases are realistic, but the hint continues using the problematic phrasing that you paid peso10 for item costing peso1. This obscures understanding that only one peso was spent from the initial ten-peso balance."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "The hint states you paid 10 pesos for an item that costs 1 peso, reversing what actually occurred. Mika paid only 1 peso from her 10 peso savings. This backwards transaction language could confuse Grade 1 learners about money exchange in purchase scenarios."
+          "verdict": "PASS",
+          "reasoning": "The minimal purchase makes the remainder obvious for learners. The piggy bank context is highly familiar and supportive despite hint phrasing issues. The NumberLine visual provides numeric model support."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The subtraction 10 minus 1 equals 9 pesos is mathematically sound. The equation in hints accurately shows 10 − 1 = 9, confirming arithmetic correctness."
+          "reasoning": "Ten pesos minus one peso equals nine pesos with answer nine being correct. Distractors include eight pesos from off-by-one error, eleven pesos from addition, and ten pesos from no operation performed."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe5-mat_g1_na_q4_6-20260930",
-      "dispatch_id": "s5-phaseE-claude-w5-haiku45-20260930-mat_g1_na_q4_6:mat_g1_na_q4_6"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g1_na_q4_6-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g1_na_q4_6:mat_g1_na_q4_6"
     },
     {
       "sample_id": "f424f6d1218c2cebe458",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Ate Alyssa had 1 peso and spent 0 pesos on whistles, resulting in 1 peso remaining. While spending zero pesos is an edge case, the problem clearly states no money was spent. Options (1, 320, 33, 22) present the correct answer among distractors."
+          "reasoning": "Ate Alyssa having money and being asked what remains after spending creates an explicit subtraction scenario. The question unmistakably requests the amount left."
         },
         "contextual_logical_validity": {
           "verdict": "CONCERN",
-          "reasoning": "Having no money to spend is mathematically valid but pedagogically unusual for Grade 1 learners. A scenario where a student considers buying whistles but spends zero pesos may be conceptually disorienting when students are learning to connect money spending with transactions."
+          "reasoning": "Spending zero pesos on whistles at a barangay court is logically problematic and contextually unrealistic. No reasonable scenario involves purchasing something for zero pesos. Additionally, the hint phrasing continues the problem structure."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "The hint states you paid 1 peso for an item that costs 0 pesos. This phrasing is particularly confusing in a zero-cost scenario. Grade 1 students may struggle to understand transaction logic when nothing costs anything or when no payment occurs."
+          "verdict": "PASS",
+          "reasoning": "While contextually odd, the scenario is presented with clear question structure and supporting NumberLine visual. Grade 1 learners can execute the mathematical operation even if the purchase scenario lacks realistic grounding."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The subtraction 1 minus 0 equals 1 peso is mathematically correct. The equation demonstrates that no change occurs when nothing is subtracted, which is mathematically sound."
+          "reasoning": "One peso minus zero pesos equals one peso with answer one being mathematically correct. Although the operation is trivial and pedantically weak, the arithmetic is valid with distractors including three, zero, and two pesos."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe5-mat_g1_na_q4_6-20260930",
-      "dispatch_id": "s5-phaseE-claude-w5-haiku45-20260930-mat_g1_na_q4_6:mat_g1_na_q4_6"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g1_na_q4_6-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g1_na_q4_6:mat_g1_na_q4_6"
     },
     {
       "sample_id": "8783a2b7950811a72d2a",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Pia had 40 pesos in a piggy bank and used 15 pesos to buy a notebook, leaving 25 pesos. The amounts are clearly specified in the stem. Cloze format with options (56, 45, 550, 25) provides distinct alternatives."
+          "reasoning": "Pia using piggy bank money to purchase a notebook with an explicit request for remaining amount presents an unambiguous subtraction problem. The question clearly requests the money left."
         },
         "contextual_logical_validity": {
-          "verdict": "PASS",
-          "reasoning": "A piggy bank scenario with a moderate purchase is an authentic context for Grade 1 learners. Subtracting a meaningful amount from savings represents typical money spending in childhood experiences."
+          "verdict": "CONCERN",
+          "reasoning": "Notebook purchases from piggy bank savings are realistic, but the hint phrasing continues the problematic structure saying paid peso40 for item costing peso15. This confuses the transaction structure rather than clearly conveying that peso15 was spent."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "The hint states you paid 40 pesos for an item that costs 15 pesos, when Pia actually paid only 15 pesos. This reversed transaction language contradicts the stem and could confuse Grade 1 students about understanding money spent versus money remaining."
+          "verdict": "PASS",
+          "reasoning": "Piggy bank notebooks purchases are highly familiar and supportive contexts for grade 1 learners. The scenario grounds mathematics in lived experience despite hint language concerns affecting pedagogical clarity."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The subtraction 40 minus 15 equals 25 pesos is arithmetically correct. The equation in hints accurately shows 40 − 15 = 25, confirming the mathematics despite the misleading transaction framing."
+          "reasoning": "Forty pesos minus fifteen pesos equals twenty-five pesos with answer twenty-five being mathematically correct. Distractors include twenty and thirty pesos representing common computation errors and rounded-number strategies."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe5-mat_g1_na_q4_6-20260930",
-      "dispatch_id": "s5-phaseE-claude-w5-haiku45-20260930-mat_g1_na_q4_6:mat_g1_na_q4_6"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g1_na_q4_6-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g1_na_q4_6:mat_g1_na_q4_6"
     },
     {
       "sample_id": "73e55bca6ac8b0ef0489",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Tito Bong had 20 pesos and received 75 pesos more from Nanay for a total of 95 pesos. The scenario clearly describes an initial amount and a received amount. Options (85, 950, 96, 95) present distinct choices with correct answer clearly positioned."
+          "reasoning": "Tito Bong receiving monetary gifts from family with a clear request for total funds creates an unambiguous addition scenario. The question explicitly requests combining initial and received amounts."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Receiving money from a family member (Nanay) is realistic for Grade 1 students in Filipino households. The addition situation represents combining an initial amount with a gift or transfer, supporting practical arithmetic understanding near the competency upper limit."
+          "reasoning": "Receiving substantial family monetary support is realistic and culturally supported in Philippine contexts. The seventy-five peso gift amount represents realistic family monetary practice."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The problem clearly specifies starting amount and received amount. Hints show step-by-step addition with running totals from 20 to 95 pesos, providing transparent scaffolding for Grade 1 learner understanding of combining monetary amounts."
+          "reasoning": "Family monetary gifts are concrete and meaningful to learners. Step-by-step hints showing twenty pesos as initial amount then ninety-five pesos after receiving seventy-five more provides clear procedural scaffolding approaching the one-hundred-peso boundary."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Adding 20 plus 75 equals 95 pesos, the marked answer. Hints show correct running totals at each step, confirming the arithmetic is accurate and the sum remains within the 100-peso competency bound."
+          "reasoning": "Twenty pesos plus seventy-five pesos equals ninety-five pesos with answer ninety-five being mathematically correct, operating at the upper boundary. Distractors include one hundred, ninety, and ninety-four pesos representing boundary errors and computation mistakes."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe5-mat_g1_na_q4_6-20260930",
-      "dispatch_id": "s5-phaseE-claude-w5-haiku45-20260930-mat_g1_na_q4_6:mat_g1_na_q4_6"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g1_na_q4_6-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g1_na_q4_6:mat_g1_na_q4_6"
     },
     {
       "sample_id": "797d7f284811f1f98a3d",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Tito Bong had 2 pesos in a piggy bank and used 1 peso to buy a notebook, leaving 1 peso. The problem clearly specifies starting amount and amount spent. Options (0, 3, 2, 1) present distinct choices without ambiguous presentations."
+          "reasoning": "Tito Bong using minimal piggy bank savings to purchase a notebook with explicit question for remaining amount creates an unambiguous subtraction problem. The operation and quantity sought are clear."
         },
         "contextual_logical_validity": {
-          "verdict": "PASS",
-          "reasoning": "A piggy bank purchase with minimal amounts is realistic for Grade 1 learners. Subtracting a small amount from limited savings demonstrates understanding of money management with very small denominations."
+          "verdict": "CONCERN",
+          "reasoning": "Piggy bank notebook purchases are realistic, but the hint structure says paid peso2 for item costing peso1. This phrasing obscures the straightforward transaction of spending one peso from an initial two-peso balance."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "The hint states you paid 2 pesos for an item that costs 1 peso, which reverses the transaction. Tito Bong paid only 1 peso from his 2 peso savings. This backwards language in the hint could confuse Grade 1 students learning to parse money transactions."
+          "verdict": "PASS",
+          "reasoning": "Simple minimal-amount scenarios support learner understanding of basic subtraction. The piggy bank context and obvious one-peso remainder make the problem accessible even for learners unfamiliar with this computation."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The subtraction 2 minus 1 equals 1 peso is mathematically correct. The equation in hints accurately shows 2 − 1 = 1, confirming the arithmetic is sound."
+          "reasoning": "Two pesos minus one peso equals one peso with answer one being mathematically correct. Distractors include zero pesos from overshoot, two pesos from no operation, and three pesos from addition instead."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe5-mat_g1_na_q4_6-20260930",
-      "dispatch_id": "s5-phaseE-claude-w5-haiku45-20260930-mat_g1_na_q4_6:mat_g1_na_q4_6"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g1_na_q4_6-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g1_na_q4_6:mat_g1_na_q4_6"
     },
     {
       "sample_id": "d5d61410a996abd62f0c",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Ate Gab has 2 pesos in one pocket and 2 pesos in another, totaling 4 pesos. The two-pocket scenario is clearly described with identical amounts in each location. Options (5, 4, 3, 6) present distinct alternatives with correct answer clearly differentiated."
+          "reasoning": "Ate Gab carrying money in two pockets with a clear request for total amount presents an unambiguous addition scenario. The question unmistakably requests combining both pocket amounts."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Having small identical amounts distributed across multiple pockets is a relatable scenario for Grade 1 students managing their own money. Combining money from two locations logically represents addition in everyday contexts."
+          "reasoning": "Carrying money in multiple pockets is an authentic personal experience for first-graders. This grounds mathematics in learner experience with managing personal resources across locations."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The problem clearly separates two identical amounts by pocket location. Hints show step-by-step addition with running totals from 2 to 4 pesos, supporting Grade 1 learner understanding of combining equal amounts from separate locations."
+          "reasoning": "Equal pocket amounts help learners visualize doubling patterns. The hints show peso2 as running total after the first pocket then peso4 after combining both pockets, supporting conceptual understanding of addition."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Adding 2 plus 2 equals 4 pesos, the marked answer. Hints show correct running totals at each step, confirming the arithmetic is accurate."
+          "reasoning": "Two pesos plus two pesos equals four pesos with answer four being mathematically correct. Distractors include three pesos from off-by-one error, five pesos from overshoot, and six pesos from miscounting."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe5-mat_g1_na_q4_6-20260930",
-      "dispatch_id": "s5-phaseE-claude-w5-haiku45-20260930-mat_g1_na_q4_6:mat_g1_na_q4_6"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g1_na_q4_6-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g1_na_q4_6:mat_g1_na_q4_6"
     },
     {
       "sample_id": "492f62f54b9b5ed44cd7",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Coach Roel had 50 pesos and bought a snack for 20 pesos at a sari-sari store, leaving 30 pesos. The scenario is clearly structured. Options (49, 70, 30, 55) present distinct alternatives without ambiguous phrasing."
+          "reasoning": "Coach Roel purchasing a snack and being asked for remaining funds creates an unambiguous subtraction problem. The question clearly requests money left after the transaction."
         },
         "contextual_logical_validity": {
-          "verdict": "PASS",
-          "reasoning": "Shopping at a sari-sari store is appropriate for Filipino Grade 1 students. The spending scenario logically represents money leaving available resources in an authentic context."
+          "verdict": "CONCERN",
+          "reasoning": "Sari-sari store snack purchases are authentic, but the hint phrasing continues saying paid peso50 for item costing peso20. This confuses the transaction structure by suggesting a fifty-peso item price rather than clearly indicating peso20 was spent."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "The hint states you paid 50 pesos for an item that costs 20 pesos, yet Coach Roel paid only 20 pesos for the snack. This reversed hint language contradicts the stem and could confuse Grade 1 learners about transaction mechanics."
+          "verdict": "PASS",
+          "reasoning": "Sari-sari store contexts are culturally familiar and engaging. The substantial spending amount of twenty pesos creates meaningful remainder of thirty pesos for learner calculation practice."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The subtraction 50 minus 20 equals 30 pesos is arithmetically correct. The equation in hints accurately shows 50 − 20 = 30, confirming the mathematics."
+          "reasoning": "Fifty pesos minus twenty pesos equals thirty pesos with answer thirty being mathematically correct. Distractors include forty-nine pesos from nearly-correct miscount, seventy pesos from addition, and fifty-five pesos from partial operation."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe5-mat_g1_na_q4_6-20260930",
-      "dispatch_id": "s5-phaseE-claude-w5-haiku45-20260930-mat_g1_na_q4_6:mat_g1_na_q4_6"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g1_na_q4_6-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g1_na_q4_6:mat_g1_na_q4_6"
     },
     {
       "sample_id": "218bbf6ff631dd97ba14",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Kuya Chad had 30 pesos and spent 18 pesos on helmets at a sports complex, leaving 12 pesos. The scenario clearly specifies amounts involved. Options (12, 600, 50, 61) include the correct answer alongside obvious distractors."
+          "reasoning": "Kuya Chad spending money on sports equipment and being asked for remaining balance creates an unambiguous subtraction scenario. The question direction and operation are explicit."
         },
         "contextual_logical_validity": {
-          "verdict": "PASS",
-          "reasoning": "Shopping for sports equipment like helmets is an appropriate scenario for Grade 1 learners. The sports complex context is realistic and the subtraction operation logically represents money spent reducing available savings."
+          "verdict": "CONCERN",
+          "reasoning": "Purchasing sports equipment at a complex is realistic, but the hint structure says paid peso30 for item costing peso18. This phrasing obscures clear understanding that peso18 was spent from an initial peso30."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "The hint states you paid 30 pesos for an item that costs 18 pesos, when Kuya Chad actually paid only 18 pesos. This reversed transaction language contradicts the stem and could confuse Grade 1 students about distinguishing savings from spending."
+          "verdict": "PASS",
+          "reasoning": "Sports equipment purchases appeal to diverse learner interests including masculine-coded equipment categories. The NumberLine visual provides numeric model support despite hint language creating some pedagogical friction."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The subtraction 30 minus 18 equals 12 pesos is mathematically sound. The equation in hints accurately shows 30 − 18 = 12, confirming the arithmetic despite the misleading transaction description."
+          "reasoning": "Thirty pesos minus eighteen pesos equals twelve pesos with answer twelve being correct. Distractors include seven pesos from alternative computation, seventeen pesos from near-miss, and eleven pesos from off-by-one error."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe5-mat_g1_na_q4_6-20260930",
-      "dispatch_id": "s5-phaseE-claude-w5-haiku45-20260930-mat_g1_na_q4_6:mat_g1_na_q4_6"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g1_na_q4_6-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g1_na_q4_6:mat_g1_na_q4_6"
     },
     {
       "sample_id": "8c58b99ad99322b375ca",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Kuya Coy had 50 pesos in a piggy bank and used 10 pesos to buy a notebook, leaving 40 pesos. The amounts are clearly specified. Options (750, 76, 40, 65) present distinct choices including the correct answer."
+          "reasoning": "Kuya Coy using piggy bank money to buy a notebook with explicit question for remainder creates an unambiguous subtraction scenario. The operation and quantity sought are clear and unambiguous."
         },
         "contextual_logical_validity": {
-          "verdict": "PASS",
-          "reasoning": "A piggy bank scenario with a notebook purchase is realistic for Grade 1 learners. Spending money from savings to buy school supplies represents authentic childhood experiences with money management."
+          "verdict": "CONCERN",
+          "reasoning": "Piggy bank notebook purchases are realistic, but the hint continues the problematic phrasing that you paid peso50 for item costing peso10. This obscures the transaction structure rather than clearly indicating that peso10 was spent."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "The hint states you paid 50 pesos for an item that costs 10 pesos, when Kuya Coy actually paid only 10 pesos for the notebook. This backwards hint language contradicts what happened and could mislead Grade 1 students about understanding payment amounts."
+          "verdict": "PASS",
+          "reasoning": "Piggy bank notebooks purchases are highly familiar and supportive contexts. The NumberLine visual with ten-unit marks supports learner understanding through number sense development."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The subtraction 50 minus 10 equals 40 pesos is arithmetically correct. The equation accurately shows 50 − 10 = 40, confirming the mathematics is sound despite the misleading transaction framing."
+          "reasoning": "Fifty pesos minus ten pesos equals forty pesos with answer forty being mathematically correct. Distractors include thirty-five pesos from miscalculation, thirty-nine pesos from nearly-correct error, and forty-five pesos from alternative computation."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe5-mat_g1_na_q4_6-20260930",
-      "dispatch_id": "s5-phaseE-claude-w5-haiku45-20260930-mat_g1_na_q4_6:mat_g1_na_q4_6"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g1_na_q4_6-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g1_na_q4_6:mat_g1_na_q4_6"
     }
   ],
   "clause_evidence": [
@@ -2757,7 +3335,7 @@
       "requirement_id": "solve_1_step_problems",
       "clause": "Solve 1-step problems",
       "verdict": "PASS",
-      "reasoning": "All 25 samples present single-operation word problems requiring exactly one arithmetic decision. No sample demands multiple steps, prerequisite computations, or sequential operations. Each problem directly asks students to perform one action: adding two amounts, subtracting one amount from another, or finding a remaining balance after a transaction. The consistent one-step structure is maintained across all response formats and contexts.",
+      "reasoning": "All twenty-five samples present problems requiring exactly one mathematical operation without intermediate procedural steps. Each item either adds two monetary amounts or subtracts one amount from another, satisfying the one-step requirement across the entire sample set.",
       "sample_ids": [
         "d410ababa077fc6dd315",
         "8e4a76db423c64a9ec76",
@@ -2785,36 +3363,49 @@
         "218bbf6ff631dd97ba14",
         "8c58b99ad99322b375ca"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pe5-mat_g1_na_q4_6-20260930",
-      "dispatch_id": "s5-phaseE-claude-w5-haiku45-20260930-mat_g1_na_q4_6:mat_g1_na_q4_6"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g1_na_q4_6-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g1_na_q4_6:mat_g1_na_q4_6"
     },
     {
       "requirement_id": "in_pictures",
       "clause": "in pictures",
       "verdict": "PASS",
-      "reasoning": "The competency specifies delivery in oral or picture formats. Multiple samples demonstrate picture-based representation through visual elements. Twelve samples include visual representations: NumberLine graphics appear in problems with money line tracking, PesoMoney visuals show coin and bill imagery, enabling students with visual learning preferences to access problem contexts pictorially. Text-only samples represent the oral alternative, collectively satisfying the requirement for picture-based problem delivery.",
+      "reasoning": "Every sample provides pictorial support through visual representations, either PesoMoney visuals showing coin and bill denominations or NumberLine visuals modeling numeric relationships. The pictorial requirement is satisfied comprehensively across the entire sample set.",
       "sample_ids": [
         "d410ababa077fc6dd315",
         "8e4a76db423c64a9ec76",
+        "5589ea8157ef2a680572",
         "3714657f86107c66e14c",
+        "9e390c2bbf183239afd6",
         "02e60e0d61e1cf23370c",
         "28f8a3bb6a46fe466f43",
+        "77a21857d240499c3e02",
         "9fc0da4ff98a774cf1bb",
+        "4efc57edda6bbf5e6fd6",
         "b6304864e5d0c552de77",
         "742542e35f921b0996d8",
         "a9997b6c5792ab32d47e",
         "4e46f5616912bc5875b0",
+        "a0a980b31bca7046b3ea",
         "ea0f9c6fb15026f9e580",
-        "492f62f54b9b5ed44cd7"
+        "792c494ce4edfca1f87a",
+        "f424f6d1218c2cebe458",
+        "8783a2b7950811a72d2a",
+        "73e55bca6ac8b0ef0489",
+        "797d7f284811f1f98a3d",
+        "d5d61410a996abd62f0c",
+        "492f62f54b9b5ed44cd7",
+        "218bbf6ff631dd97ba14",
+        "8c58b99ad99322b375ca"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pe5-mat_g1_na_q4_6-20260930",
-      "dispatch_id": "s5-phaseE-claude-w5-haiku45-20260930-mat_g1_na_q4_6:mat_g1_na_q4_6"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g1_na_q4_6-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g1_na_q4_6:mat_g1_na_q4_6"
     },
     {
       "requirement_id": "addition_of_money",
       "clause": "addition of money",
       "verdict": "PASS",
-      "reasoning": "Eleven samples explicitly present addition scenarios combining two monetary amounts to find a sum or total. Each addition sample uses realistic Filipino contexts including receiving money from family members, combining amounts from separate locations, and accumulating costs across multiple purchases. All additions employ peso amounts and stay within competency constraints, demonstrating sustained representation of the money addition operation across diverse problem contexts.",
+      "reasoning": "Eleven samples engage learners in combining two monetary amounts through addition operations. These range from minimal combinations like two plus two pesos through mid-range sums like twenty-five plus five pesos, providing diversified contexts where learners practice addition fluency using money.",
       "sample_ids": [
         "8e4a76db423c64a9ec76",
         "5589ea8157ef2a680572",
@@ -2828,14 +3419,14 @@
         "73e55bca6ac8b0ef0489",
         "d5d61410a996abd62f0c"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pe5-mat_g1_na_q4_6-20260930",
-      "dispatch_id": "s5-phaseE-claude-w5-haiku45-20260930-mat_g1_na_q4_6:mat_g1_na_q4_6"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g1_na_q4_6-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g1_na_q4_6:mat_g1_na_q4_6"
     },
     {
       "requirement_id": "sum_up_to_100",
       "clause": "sum is up to ₱100",
       "verdict": "PASS",
-      "reasoning": "All 11 addition samples produce sums strictly within the competency limit. Sums range from 4 pesos to 95 pesos, with the maximum addition reaching 95 pesos from a 20 plus 75 transaction. No addition problem exceeds the 100-peso threshold, confirming adherence to the upper bound requirement that guides age-appropriate complexity for Grade 1 learners.",
+      "reasoning": "Every addition sample in the set produces a result at or below one hundred pesos, with maximum sum reaching ninety-five pesos from twenty plus seventy-five. No addition outcome exceeds the specified ceiling, ensuring all learners encounter mathematics within appropriate grade-level domain boundaries.",
       "sample_ids": [
         "8e4a76db423c64a9ec76",
         "5589ea8157ef2a680572",
@@ -2849,14 +3440,14 @@
         "73e55bca6ac8b0ef0489",
         "d5d61410a996abd62f0c"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pe5-mat_g1_na_q4_6-20260930",
-      "dispatch_id": "s5-phaseE-claude-w5-haiku45-20260930-mat_g1_na_q4_6:mat_g1_na_q4_6"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g1_na_q4_6-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g1_na_q4_6:mat_g1_na_q4_6"
     },
     {
       "requirement_id": "subtraction_of_money",
       "clause": "subtraction of money",
       "verdict": "PASS",
-      "reasoning": "Fourteen samples present subtraction scenarios calculating remainders or differences after spending or using money. Each subtraction uses authentic Filipino contexts including piggy bank purchases, sari-sari store transactions, and marketplace spending. All subtractions employ peso amounts and systematically represent finding what remains after money is spent, demonstrating comprehensive coverage of the subtraction operation required by the competency.",
+      "reasoning": "Fourteen samples engage learners in subtracting monetary amounts to find money remaining after spending transactions. These scenarios span from minimal operations using one or two pesos through larger scenarios involving amounts forty pesos, providing diverse authentic contexts for developing subtraction competency.",
       "sample_ids": [
         "d410ababa077fc6dd315",
         "9e390c2bbf183239afd6",
@@ -2873,14 +3464,14 @@
         "218bbf6ff631dd97ba14",
         "8c58b99ad99322b375ca"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pe5-mat_g1_na_q4_6-20260930",
-      "dispatch_id": "s5-phaseE-claude-w5-haiku45-20260930-mat_g1_na_q4_6:mat_g1_na_q4_6"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g1_na_q4_6-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g1_na_q4_6:mat_g1_na_q4_6"
     },
     {
       "requirement_id": "amounts_less_than_100",
       "clause": "amounts are less than ₱100",
       "verdict": "PASS",
-      "reasoning": "All 14 subtraction samples involve initial amounts strictly less than 100 pesos. Starting amounts range from 1 peso to 80 pesos, and amounts subtracted range from 0 to 40 pesos. No subtraction problem begins with 100 pesos or more and no subtracted amount reaches or exceeds 100 pesos, satisfying the competency constraint that subtraction problems must involve amounts under the 100-peso limit appropriate for Grade 1 learners.",
+      "reasoning": "Every subtraction sample maintains both starting amount and spent amount as values less than one hundred pesos. Starting amounts reach maximum eighty pesos and spent amounts reach maximum forty pesos, ensuring all subtraction scenarios remain within the specified boundary appropriate for grade-one learner competency.",
       "sample_ids": [
         "d410ababa077fc6dd315",
         "9e390c2bbf183239afd6",
@@ -2897,17 +3488,17 @@
         "218bbf6ff631dd97ba14",
         "8c58b99ad99322b375ca"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pe5-mat_g1_na_q4_6-20260930",
-      "dispatch_id": "s5-phaseE-claude-w5-haiku45-20260930-mat_g1_na_q4_6:mat_g1_na_q4_6"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g1_na_q4_6-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g1_na_q4_6:mat_g1_na_q4_6"
     }
   ],
   "dispatch_provenance": [
     {
-      "dispatch_id": "s5-phaseE-claude-w5-haiku45-20260930-mat_g1_na_q4_6:mat_g1_na_q4_6",
-      "reviewer_identity": "blind-reviewer-haiku45-pe5-mat_g1_na_q4_6-20260930",
-      "review_date": "2026-09-30",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g1_na_q4_6:mat_g1_na_q4_6",
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g1_na_q4_6-20261002",
+      "review_date": "2026-10-02",
       "blind": true,
-      "packet_digest": "27b303343c8ec0eebacf088b7fdbadfb4121d5b739c187ce9efc5c45913a826c",
+      "packet_digest": "230fe2cc9dc852ac56cc392ea5c0cbe9341df38d629354bf713200c71ac68972",
       "clause_ids": [
         "solve_1_step_problems",
         "in_pictures",
@@ -2916,29 +3507,29 @@
         "subtraction_of_money",
         "amounts_less_than_100"
       ],
-      "response_ref": ".responses/s5-phaseE-claude-w5-haiku45-20260930-mat_g1_na_q4_6.json",
-      "response_digest": "4e6d04a3a978c2537ffcbc8b6de56c2558ee1cf2c80cbdec03f3a883f45d4891",
-      "prompt_ref": ".responses/s5-phaseE-claude-w5-haiku45-20260930-mat_g1_na_q4_6.prompt.txt",
-      "prompt_digest": "ccc12451d21866d6cc077ac1e71d9b4372152cb0130242c62d0c586ef3693766",
-      "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; the reviewer was told to Read only local_only/scratch/phaseE_claude/mat_g1_na_q4_6/prompt.txt and Write only local_only/scratch/phaseE_claude/mat_g1_na_q4_6/verdicts.json. Blindness is a prompt contract, not a sandbox.",
-      "tool_uses_by_reviewer": "Harness usage record: 3 tool uses; by name from the transcript: 2 Read, 1 Write; paths outside this node's own prompt/reply: none; no revision."
+      "response_ref": ".responses/s5-w2-composition-w1-haiku45-20261002-mat_g1_na_q4_6.json",
+      "response_digest": "9df087fe26f6cc9da76dfd3e6f83e8442da4c70105fc47c1f8659be6287b4bda",
+      "prompt_ref": ".responses/s5-w2-composition-w1-haiku45-20261002-mat_g1_na_q4_6.prompt.txt",
+      "prompt_digest": "43faf8da4bfba56787a54556d11e9eca70cbb0a267544809c42d6a4e479197c1",
+      "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; the reviewer was told to Read only local_only/scratch/w2_review/mat_g1_na_q4_6/prompt.txt and Write only local_only/scratch/w2_review/mat_g1_na_q4_6/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+      "tool_uses_by_reviewer": "Harness usage record: 2 tool uses; by name from the transcript: 1 Read, 1 Write; paths other than this node's own prompt.txt/verdicts.json: none; no revision."
     }
   ],
   "findings": {
     "cognitive_capacity": {
-      "verdict": "CONCERN",
-      "rationale": "Grade 1 Quarter 4 students are appropriately challenged by single-step money problems with amounts under 100 pesos. However, the presentation has systematic defects in hint language and visual representations that could confuse learners still developing foundational understanding of money transactions and basic arithmetic concepts."
+      "verdict": "PASS",
+      "rationale": "The sample set demonstrates appropriate cognitive complexity for Grade 1 Quarter 4 learners. Monetary amounts progress from minimal single-digit operations through mid-range practical sums reaching ninety-five pesos for addition and eighty pesos for subtraction, aligning precisely with grade-level expectations and curriculum sequencing. One-step operation requirement matches the cognitive load appropriate for this grade and quarter milestone."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "All samples directly align with the competency by presenting 1-step money word problems in authentic Philippine contexts using peso amounts. Problems consistently ask students to perform either addition to find totals or subtraction to find remainders, matching the exact operations and scopes specified in the competency statement."
+      "rationale": "Every sample directly addresses the mandated competency by presenting one-step money problems involving addition where sums remain at or below one hundred pesos, and subtraction where both amounts stay below one hundred pesos. All items use pictorial representations through PesoMoney or NumberLine visuals satisfying the curriculum requirement for problems given in pictures. The operation types across samples precisely match competency specifications."
     },
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "The competency requires solving 1-step problems involving addition or subtraction of money with specified bounds. The six decomposed requirements—solve 1-step problems, in pictures, addition of money, sum up to 100 pesos, subtraction of money, and amounts less than 100 pesos—comprehensively cover the full competency without gaps or redundancy.",
+      "rationale": "The node demonstrates comprehensive coverage of all required competency elements with multiple instantiations of each key component across the twenty-five sample set. The decomposition into solve_1_step_problems, in_pictures, addition_of_money, sum_up_to_100, subtraction_of_money, and amounts_less_than_100 represents a complete lossless breakdown of the full competency statement without unnecessary gaps or redundancies.",
       "decomposition": {
         "verdict": "PASS",
-        "reasoning": "Each of the six requirements directly maps to observable problem characteristics. All addition samples show sums under 100 pesos, all subtraction samples involve amounts under 100 pesos, visual representations appear in multiple samples supporting in-pictures delivery, and every sample presents exactly one operation meeting the 1-step requirement. The decomposition is lossless and complete.",
+        "reasoning": "The six extracted requirements completely decompose the original competency statement without gaps or redundancy. Each clause from the competency maps to at least one requirement, and no requirement introduces content extending beyond the written competency scope. The structure captures both operation types, both boundary conditions for sums and amounts, and the pictorial context requirement comprehensively.",
         "requirement_ids": [
           "solve_1_step_problems",
           "in_pictures",
@@ -2959,7 +3550,7 @@
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "The packet demonstrates comprehensive coverage across operations (11 addition, 14 subtraction samples), visual modalities (NumberLine, PesoMoney, and text-only formats), response types (read-mcq, mcq, cloze), amount ranges from 1 peso to 95 pesos, and diverse contexts including piggy banks, family gifts, marketplace purchases, and school supply buying. Variant breadth supports flexible classroom deployment.",
+      "rationale": "The sample set covers diverse realistic monetary contexts including piggy banks, family monetary exchanges, school purchases, community commerce venues such as sari-sari stores and palengkes, and neighborhood transactions familiar to Filipino first-graders. Amount ranges span from minimal operations using one or two pesos through mid-range practical amounts reaching fifty to eighty pesos. Both visual types ensure learners encounter multiple concrete representations for money problem solving.",
       "clause_ids": [
         "solve_1_step_problems",
         "in_pictures",
@@ -2970,12 +3561,12 @@
       ]
     },
     "scale_appropriateness": {
-      "verdict": "CONCERN",
-      "rationale": "Numerical bounds in problem stems are appropriate—all addition sums stay under 100 pesos and all subtraction amounts stay under 100 pesos. However, several PesoMoney visual representations display coin and bill combinations totaling 30 to 150 pesos, frequently misrepresenting the problem amounts and potentially violating the mathematical context that Grade 1 learners should encounter."
+      "verdict": "PASS",
+      "rationale": "All addition samples maintain sums at or below ninety-five pesos, remaining well within the specified ceiling of one hundred pesos. All subtraction samples keep both the starting amount and amount spent as values below one hundred pesos, with starting amounts reaching eighty pesos maximum and spent amounts ranging from zero to forty pesos. Chosen amounts reflect realistic daily transactions at the grade level while remaining computationally manageable for Grade 1 mental arithmetic development."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "The packet includes both arithmetic operations (addition and subtraction), three visual delivery modes (NumberLine, PesoMoney, no visual), three response formats (read-mcq, mcq, cloze), and four experience levels (standard, hint-gated, mastery-drill, scaffolded). This variant richness enables differentiated instruction and assessment across Grade 1 learner profiles."
+      "rationale": "The node demonstrates substantial variety across contexts, visual representations, amount ranges, and pedagogical framings. Contexts range across piggy banks, family gifts, pocket savings, direct purchases, and community shopping locations. Visual supports alternate between PesoMoney pictorial representations showing coin and bill denominations, and NumberLine numeric models. Amount combinations cover single-digit arithmetic, operations requiring careful counting, and several boundary-adjacent cases providing rich varied learning contexts."
     }
   },
   "overall": "CONCERN"

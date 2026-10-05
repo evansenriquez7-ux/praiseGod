@@ -1,0 +1,244 @@
+You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  blind-reviewer-haiku45-w2v1-mat_g3_na_q4_3-20261002
+
+Write one JSON object to:
+  local_only/scratch/w2_review/mat_g3_na_q4_3/verdicts.json
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: cognitive_capacity, competency_alignment, competency_fulfillment, comprehensive_coverage, scale_appropriateness, variant_comprehensiveness. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: ambiguity, contextual_logical_validity, learner_facing_clarity, mathematical_validity. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN: cite the sample_ids you EXAMINED and found lacking it (the list may never
+   be empty), and never cite a sample as SUPPORTING a clause it does not support.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{
+  "reviewer": "blind-reviewer-haiku45-w2v1-mat_g3_na_q4_3-20261002",
+  "<node_id>": {
+    "findings": {
+      "competency_fulfillment": {
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}
+      },
+      "<each other required finding>": {"verdict": "...", "rationale": "..."}
+    },
+    "sample_assessments": [
+      {"sample_id": "<opaque id>", "checks": {
+        "<each required sample check>": {"verdict": "...", "reasoning": "..."}
+      }}
+    ],
+    "clause_evidence": [
+      {"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }
+}
+
+== DISPATCH ADDENDUM (binding; read before judging) ==
+
+A. LENGTH. Every `rationale` and every `reasoning` string must be at least 60 characters and specific to
+   the node or sample it describes. Shorter strings are refused by the filing tool.
+
+B. QUOTING. Anything you put inside quotation marks must be a character-for-character substring of text
+   printed in the packet below. No paraphrase, summary, elision ("..."), placeholder, or comma-fragment
+   inside quotes, and never two quoted values joined by a dash. When in doubt, use NO quotation marks at
+   all and describe the text in your own words instead. An unmatched quote is treated as fabricated
+   evidence. The commonest failure: putting your OWN punctuation inside the quotes -- a trailing comma or
+   full stop that belongs to your sentence (write: the word "clock", never: "clock,"). Also never
+   quote a single ordinary word; quote only whole stems, hints or options, or nothing.
+
+C. THEMES. The generator deliberately themes items around a learner's chosen interest (26 curated
+   themes: names, objects, emoji, including religious and cultural themes). Do not judge whether a theme
+   is appropriate. Judge only whether the theming INTERFERES with the mathematics -- for example, a
+   wrapper that names a different object than the task counts, or a theme word that changes the meaning
+   of the question.
+
+D. HINTS. For every sample, compare each hint line against that sample's own stem, answer, options and
+   visual: does every equation in the hints hold, does the hint explain the question actually asked
+   (direction, unit, operation, which position is missing), and does it refer only to things the item
+   actually shows? A hint that contradicts or mis-describes its item is a sample-level defect.
+
+E. CITATIONS AND OVERALL. Every clause_evidence entry cites at least one sample_id; for a clause that
+   FAILs because something is absent, cite the sample_ids you examined. `overall` must follow the rule
+   in item 4 above exactly; the filing tool refuses a reply whose `overall` disagrees with its own
+   verdicts.
+
+F. CHECKLIST before you write (replies failing any of these are refused and sent back):
+   - use NO quotation marks anywhere in your prose; describe stems, hints and options in your own words;
+   - every rationale and every reasoning string is at least 60 characters;
+   - no two samples share a word-for-word reasoning -- name each sample's own numbers, words or visual;
+   - EVERY clause_evidence entry, including PASS ones, has a non-empty sample_ids list;
+   - `overall` follows the rule in item 4 from your own verdicts.
+
+Use only the Read tool on this prompt file and the Write tool for your one JSON reply. Do not open any
+other file.
+
+== BLIND PACKET ==
+
+==========================================================================
+NODE: mat_g3_na_q4_3
+PACKET DIGEST: 49fb61fc7c2f0bcd411e845a5ef857ceb0c63dad039ba534806432ac64ffcc1a
+COMPETENCY (Grade 3, Quarter 4, None):
+Divide numbers with and without remainder: 2- to 3-digit numbers by 1-digit number without remainder, 2-digit numbers by 1-digit number with remainder, and 2- to 4-digit numbers by 10,100, and 1000.
+
+REQUIREMENTS (confirm this is a lossless decomposition of the competency):
+  divide_numbers: Divide numbers
+  with_and_without_remainder: with and without remainder
+  2_to_3_digit_numbers: 2- to 3-digit numbers
+  1_digit_number_without_remainder: 1-digit number without remainder
+  2_digit_numbers: 2-digit numbers
+  1_digit_number_with_remainder: 1-digit number with remainder
+  2_to_4_digit_numbers: 2- to 4-digit numbers
+  10_100_1000: 10,100, and 1000
+
+SAMPLES (every one of these is real rendered output):
+  sample 70d1b4d574c36827ad22  seed 42  [cloze]
+      stem:    2000 ÷ 1000 = ___
+      answer:  2
+      options: 1 / 3 / 2 / 1000
+      hints:   ["We need to divide 2000 by 1000. The number being divided is 2000; the number we divide by is 1000.", "Ask: how many times does 1000 fit into 2000? 1000 × 2 = 2000.", "The quotient of 2000 ÷ 1000 = 2."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample ee500eea4aedc17554c1  seed 43  [mcq]
+      stem:    What is 78 ÷ 6?
+      answer:  13
+      options: 14 / 13 / 6 / 72
+      hints:   ["We need to divide 78 by 6. The number being divided is 78; the number we divide by is 6.", "Ask: how many times does 6 fit into 78? 6 × 13 = 78.", "The quotient of 78 ÷ 6 = 13."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample dfe83cad1a376d98eda2  seed 44  [cloze]
+      stem:    6540 ÷ 10 = ___
+      answer:  654
+      options: 6530 / 10 / 654 / 655
+      hints:   ["We need to divide 6540 by 10. The number being divided is 6540; the number we divide by is 10.", "Ask: how many times does 10 fit into 6540? 10 × 654 = 6540.", "The quotient of 6540 ÷ 10 = 654."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 8dfa5824649def578f11  seed 45  [true_false]
+      stem:    51 ÷ 8 = 7 R 3. True or False?
+      answer:  False
+      hints:   ["We need to divide 51 by 8. The number being divided is 51; the number we divide by is 8.", "Ask: how many times does 8 fit into 51? 8 × 6 = 48.", "51 − 48 = 3. The remainder is 3.", "The quotient is 6 remainder 3 (written as 6 R 3)."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 9e60e7ad5d87fea47081  seed 46  [true_false]
+      stem:    16 ÷ 8 = 2. True or False?
+      answer:  True
+      hints:   ["We need to divide 16 by 8. The number being divided is 16; the number we divide by is 8.", "Ask: how many times does 8 fit into 16? 8 × 2 = 16.", "The quotient of 16 ÷ 8 = 2."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 5e078a1084e6cf63a066  seed 48  [error_detect]
+      stem:    Noel solved: "2600 ÷ 100 = ___". Noel says the missing number is 26. Is Noel correct?
+      answer:  {'has_error': False, 'correct_value': 26}
+      hints:   ["We need to divide 2600 by 100. The number being divided is 2600; the number we divide by is 100.", "Ask: how many times does 100 fit into 2600? 100 × 26 = 2600.", "The quotient of 2600 ÷ 100 = 26."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample d7fec7e732e25703731d  seed 500  [true_false]
+      stem:    6920 ÷ 10 = 691. True or False?
+      answer:  False
+      hints:   ["We need to divide 6920 by 10. The number being divided is 6920; the number we divide by is 10.", "Ask: how many times does 10 fit into 6920? 10 × 692 = 6920.", "The quotient of 6920 ÷ 10 = 692."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 0cbcba7968524f48d760  seed 501  [mcq]
+      stem:    What is 5000 ÷ 1000?
+      answer:  5
+      options: 4000 / 1000 / 5 / 6
+      hints:   ["We need to divide 5000 by 1000. The number being divided is 5000; the number we divide by is 1000.", "Ask: how many times does 1000 fit into 5000? 1000 × 5 = 5000.", "The quotient of 5000 ÷ 1000 = 5."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample bf278a6d269076e4dd50  seed 502  [error_detect]
+      stem:    Dante solved: "3100 ÷ 100 = ___". Dante says the missing number is 31. Is Dante correct?
+      answer:  {'has_error': False, 'correct_value': 31}
+      hints:   ["We need to divide 3100 by 100. The number being divided is 3100; the number we divide by is 100.", "Ask: how many times does 100 fit into 3100? 100 × 31 = 3100.", "The quotient of 3100 ÷ 100 = 31."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample e99e400248fdadbcee74  seed 600  [mcq]
+      stem:    What is 60 ÷ 7?
+      answer:  8 R 4
+      options: 8 R 3 / 9 R 4 / 8 / 8 R 4
+      hints:   ["We need to divide 60 by 7. The number being divided is 60; the number we divide by is 7.", "Ask: how many times does 7 fit into 60? 7 × 8 = 56.", "60 − 56 = 4. The remainder is 4.", "The quotient is 8 remainder 4 (written as 8 R 4)."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 0d2e37cc03c2ddcf2ef9  seed 601  [cloze]
+      stem:    158 ÷ 2 = ___
+      answer:  79
+      options: 80 / 79 / 156 / 2
+      hints:   ["We need to divide 158 by 2. The number being divided is 158; the number we divide by is 2.", "Ask: how many times does 2 fit into 158? 2 × 79 = 158.", "The quotient of 158 ÷ 2 = 79."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample dde50f2b4265aac7c8bc  seed 602  [error_detect]
+      stem:    Jose solved: "70 ÷ 10 = ___". Jose says the missing number is 7. Is Jose correct?
+      answer:  {'has_error': False, 'correct_value': 7}
+      hints:   ["We need to divide 70 by 10. The number being divided is 70; the number we divide by is 10.", "Ask: how many times does 10 fit into 70? 10 × 7 = 70.", "The quotient of 70 ÷ 10 = 7."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample 178a283ca2e434cdc49b  seed 603  [mcq]
+      stem:    What is 448 ÷ 7?
+      answer:  64
+      options: 7 / 65 / 441 / 64
+      hints:   ["We need to divide 448 by 7. The number being divided is 448; the number we divide by is 7.", "Ask: how many times does 7 fit into 448? 7 × 64 = 448.", "The quotient of 448 ÷ 7 = 64."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample b9ca052222d67cac86b0  seed 604  [error_detect]
+      stem:    Carlo solved: "75 ÷ 5 = ___". Carlo says the missing number is 15. Is Carlo correct?
+      answer:  {'has_error': False, 'correct_value': 15}
+      hints:   ["We need to divide 75 by 5. The number being divided is 75; the number we divide by is 5.", "Ask: how many times does 5 fit into 75? 5 × 15 = 75.", "The quotient of 75 ÷ 5 = 15."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample 4f10acbe30bd4fa69284  seed 700  [error_detect]
+      stem:    Carlo solved: "335 ÷ 5 = ___". Carlo says the missing number is 67. Is Carlo correct?
+      answer:  {'has_error': False, 'correct_value': 67}
+      hints:   ["We need to divide 335 by 5. The number being divided is 335; the number we divide by is 5.", "Ask: how many times does 5 fit into 335? 5 × 67 = 335.", "The quotient of 335 ÷ 5 = 67."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample ad99b169f5f5ff640fe0  seed 701  [true_false]
+      stem:    💃 Sir Rez enjoys dance shoes. Here is a math challenge. 5000 ÷ 1000 = 5. True or False?
+      answer:  True
+      hints:   ["We need to divide 5000 by 1000. The number being divided is 5000; the number we divide by is 1000.", "Ask: how many times does 1000 fit into 5000? 1000 × 5 = 5000.", "The quotient of 5000 ÷ 1000 = 5."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample de07d1892952811eaa54  seed 702  [error_detect]
+      stem:    🏀 Isko enjoys basketballs. Here is a math challenge. Manny solved: "12 ÷ 4 = ___". Manny says the missing number is 4. Is Manny correct?
+      answer:  {'has_error': True, 'correct_value': 3}
+      hints:   ["We need to divide 12 by 4. The number being divided is 12; the number we divide by is 4.", "Ask: how many times does 4 fit into 12? 4 × 3 = 12.", "The quotient of 12 ÷ 4 = 3."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample 0738b76694dfccafbabf  seed 800  [cloze]
+      stem:    8000 ÷ 1000 = ___
+      answer:  8
+      options: 8 / 7000 / 1000 / 9
+      hints:   ["We need to divide 8000 by 1000. The number being divided is 8000; the number we divide by is 1000.", "Ask: how many times does 1000 fit into 8000? 1000 × 8 = 8000.", "The quotient of 8000 ÷ 1000 = 8."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 64847f546901f5052736  seed 900  [mcq]
+      stem:    What is 600 ÷ 100?
+      answer:  6
+      options: 100 / 500 / 7 / 6
+      hints:   ["We need to divide 600 by 100. The number being divided is 600; the number we divide by is 100.", "Ask: how many times does 100 fit into 600? 100 × 6 = 600.", "The quotient of 600 ÷ 100 = 6."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 69cdcd990e5c8a2d663d  seed 901  [mcq]
+      stem:    What is 4010 ÷ 10?
+      answer:  401
+      options: 4000 / 10 / 402 / 401
+      hints:   ["We need to divide 4010 by 10. The number being divided is 4010; the number we divide by is 10.", "Ask: how many times does 10 fit into 4010? 10 × 401 = 4010.", "The quotient of 4010 ÷ 10 = 401."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample e6c772b3269df259a2b0  seed 1000  [cloze]
+      stem:    8780 ÷ 10 = ___
+      answer:  878
+      options: 878 / 10 / 879 / 8770
+      hints:   ["We need to divide 8780 by 10. The number being divided is 8780; the number we divide by is 10.", "Ask: how many times does 10 fit into 8780? 10 × 878 = 8780.", "The quotient of 8780 ÷ 10 = 878."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "hint_gated"}
+  sample 1f28b60c150061fa8745  seed 1001  [error_detect]
+      stem:    Liza solved: "25 ÷ 5 = ___". Liza says the missing number is 4. Is Liza correct?
+      answer:  {'has_error': True, 'correct_value': 5}
+      hints:   ["We need to divide 25 by 5. The number being divided is 25; the number we divide by is 5.", "Ask: how many times does 5 fit into 25? 5 × 5 = 25.", "The quotient of 25 ÷ 5 = 5."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "mastery_drill"}
+  sample ed148c9abba49a739429  seed 1002  [error_detect]
+      stem:    Manny solved: "3800 ÷ 100 = ___". Manny says the missing number is 100. Is Manny correct?
+      answer:  {'has_error': True, 'correct_value': 38}
+      hints:   ["We need to divide 3800 by 100. The number being divided is 3800; the number we divide by is 100.", "Ask: how many times does 100 fit into 3800? 100 × 38 = 3800.", "The quotient of 3800 ÷ 100 = 38."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "scaffolded"}
+

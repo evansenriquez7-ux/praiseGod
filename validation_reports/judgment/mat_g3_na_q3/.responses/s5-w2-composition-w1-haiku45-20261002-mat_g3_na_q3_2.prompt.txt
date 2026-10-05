@@ -1,0 +1,235 @@
+You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  blind-reviewer-haiku45-w2v1-mat_g3_na_q3_2-20261002
+
+Write one JSON object to:
+  local_only/scratch/w2_review/mat_g3_na_q3_2/verdicts.json
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: cognitive_capacity, competency_alignment, competency_fulfillment, comprehensive_coverage, scale_appropriateness, variant_comprehensiveness. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: ambiguity, contextual_logical_validity, learner_facing_clarity, mathematical_validity. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN: cite the sample_ids you EXAMINED and found lacking it (the list may never
+   be empty), and never cite a sample as SUPPORTING a clause it does not support.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{
+  "reviewer": "blind-reviewer-haiku45-w2v1-mat_g3_na_q3_2-20261002",
+  "<node_id>": {
+    "findings": {
+      "competency_fulfillment": {
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}
+      },
+      "<each other required finding>": {"verdict": "...", "rationale": "..."}
+    },
+    "sample_assessments": [
+      {"sample_id": "<opaque id>", "checks": {
+        "<each required sample check>": {"verdict": "...", "reasoning": "..."}
+      }}
+    ],
+    "clause_evidence": [
+      {"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }
+}
+
+== DISPATCH ADDENDUM (binding; read before judging) ==
+
+A. LENGTH. Every `rationale` and every `reasoning` string must be at least 60 characters and specific to
+   the node or sample it describes. Shorter strings are refused by the filing tool.
+
+B. QUOTING. Anything you put inside quotation marks must be a character-for-character substring of text
+   printed in the packet below. No paraphrase, summary, elision ("..."), placeholder, or comma-fragment
+   inside quotes, and never two quoted values joined by a dash. When in doubt, use NO quotation marks at
+   all and describe the text in your own words instead. An unmatched quote is treated as fabricated
+   evidence. The commonest failure: putting your OWN punctuation inside the quotes -- a trailing comma or
+   full stop that belongs to your sentence (write: the word "clock", never: "clock,"). Also never
+   quote a single ordinary word; quote only whole stems, hints or options, or nothing.
+
+C. THEMES. The generator deliberately themes items around a learner's chosen interest (26 curated
+   themes: names, objects, emoji, including religious and cultural themes). Do not judge whether a theme
+   is appropriate. Judge only whether the theming INTERFERES with the mathematics -- for example, a
+   wrapper that names a different object than the task counts, or a theme word that changes the meaning
+   of the question.
+
+D. HINTS. For every sample, compare each hint line against that sample's own stem, answer, options and
+   visual: does every equation in the hints hold, does the hint explain the question actually asked
+   (direction, unit, operation, which position is missing), and does it refer only to things the item
+   actually shows? A hint that contradicts or mis-describes its item is a sample-level defect.
+
+E. CITATIONS AND OVERALL. Every clause_evidence entry cites at least one sample_id; for a clause that
+   FAILs because something is absent, cite the sample_ids you examined. `overall` must follow the rule
+   in item 4 above exactly; the filing tool refuses a reply whose `overall` disagrees with its own
+   verdicts.
+
+F. CHECKLIST before you write (replies failing any of these are refused and sent back):
+   - use NO quotation marks anywhere in your prose; describe stems, hints and options in your own words;
+   - every rationale and every reasoning string is at least 60 characters;
+   - no two samples share a word-for-word reasoning -- name each sample's own numbers, words or visual;
+   - EVERY clause_evidence entry, including PASS ones, has a non-empty sample_ids list;
+   - `overall` follows the rule in item 4 from your own verdicts.
+
+Use only the Read tool on this prompt file and the Write tool for your one JSON reply. Do not open any
+other file.
+
+== BLIND PACKET ==
+
+==========================================================================
+NODE: mat_g3_na_q3_2
+PACKET DIGEST: 3406f0dd074ff899989327d8dbcea952d72368dee9c00d4e891c05b034e300dc
+COMPETENCY (Grade 3, Quarter 3, None):
+Multiply numbers with and without regrouping: 2- to 3-digit numbers by a 1-digit number, and 2- to 4-digit numbers by a number whose leading digit is the only non-zero digit, with products up to 10 000.
+
+REQUIREMENTS (confirm this is a lossless decomposition of the competency):
+  multiply_numbers: Multiply numbers
+  with_and_without_regrouping: with and without regrouping
+  2_to_3_digit_by_1_digit: 2- to 3-digit numbers by a 1-digit number
+  2_to_4_digit_by_leading_non_zero: 2- to 4-digit numbers by a number whose leading digit is the only non-zero digit
+  products_up_to_10_000: products up to 10 000
+
+SAMPLES (every one of these is real rendered output):
+  sample c8b530fe3e9caa6eee68  seed 42  [mcq]
+      stem:    What is 41 × 6?
+      answer:  246
+      options: 246 / 47 / 240 / 35
+      hints:   ["We need to find the total of equal groups 6 groups of 41.", "Use the 6 times table: 6 × 41.", "Break 41 into 40 + 1: (40 × 6) + (1 × 6) = 240 + 6 = 246.", "The product of 41 × 6 = 246."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 22c5cf9838aa32f5ee25  seed 43  [true_false]
+      stem:    573 × 4 = 577. True or False?
+      answer:  False
+      hints:   ["We need to find the total of equal groups 4 groups of 573.", "Think of it as 4 groups of 573: 573 + 573 + 573 + 573.", "Break 573 into 570 + 3: (570 × 4) + (3 × 4) = 2280 + 12 = 2292.", "The product of 573 × 4 = 2292."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 54036ffa8aca22c50258  seed 44  [error_detect]
+      stem:    Rico solved: "1000 × 10 = ___". Rico says the missing number is 10000. Is Rico correct?
+      answer:  {'has_error': False, 'correct_value': 10000}
+      hints:   ["We need to find the total of equal groups 10 groups of 1000.", "Use the 10 times table: 10 × 1000.", "Break 1000 into 1000 + 0: (1000 × 10) + (0 × 10) = 10000 + 0 = 10000.", "The product of 1000 × 10 = 10000."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample d6730a6716c2db78c0d2  seed 45  [mcq]
+      stem:    What is 108 × 80?
+      answer:  8640
+      options: 8640 / 8560 / 28 / 188
+      hints:   ["We need to find the total of equal groups 80 groups of 108.", "Use the 80 times table: 80 × 108.", "Break 108 into 100 + 8: (100 × 80) + (8 × 80) = 8000 + 640 = 8640.", "The product of 108 × 80 = 8640."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample efb811b9c11decd2ef07  seed 46  [cloze]
+      stem:    702 × 2 = ___
+      answer:  1404
+      options: 1402 / 704 / 700 / 1404
+      hints:   ["We need to find the total of equal groups 2 groups of 702.", "Think of it as 2 groups of 702: 702 + 702.", "Break 702 into 700 + 2: (700 × 2) + (2 × 2) = 1400 + 4 = 1404.", "The product of 702 × 2 = 1404."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 2ececb4dcf84f585e9cb  seed 500  [true_false]
+      stem:    1000 × 10 = 9999. True or False?
+      answer:  False
+      hints:   ["We need to find the total of equal groups 10 groups of 1000.", "Use the 10 times table: 10 × 1000.", "Break 1000 into 1000 + 0: (1000 × 10) + (0 × 10) = 10000 + 0 = 10000.", "The product of 1000 × 10 = 10000."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample e8f22f71c2888fd38497  seed 501  [mcq]
+      stem:    What is 1000 × 10?
+      answer:  10000
+      options: 9990 / 1010 / 990 / 10000
+      hints:   ["We need to find the total of equal groups 10 groups of 1000.", "Use the 10 times table: 10 × 1000.", "Break 1000 into 1000 + 0: (1000 × 10) + (0 × 10) = 10000 + 0 = 10000.", "The product of 1000 × 10 = 10000."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 78fada99efc04c162d02  seed 502  [error_detect]
+      stem:    Dante solved: "33 × 300 = ___". Dante says the missing number is 9900. Is Dante correct?
+      answer:  {'has_error': False, 'correct_value': 9900}
+      hints:   ["We need to find the total of equal groups 300 groups of 33.", "Use the 300 times table: 300 × 33.", "Break 33 into 30 + 3: (30 × 300) + (3 × 300) = 9000 + 900 = 9900.", "The product of 33 × 300 = 9900."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample c9464b9d292f04c1b715  seed 600  [true_false]
+      stem:    104 × 80 = 8320. True or False?
+      answer:  True
+      hints:   ["We need to find the total of equal groups 80 groups of 104.", "Use the 80 times table: 80 × 104.", "Break 104 into 100 + 4: (100 × 80) + (4 × 80) = 8000 + 320 = 8320.", "The product of 104 × 80 = 8320."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 12798b888e6857483124  seed 601  [cloze]
+      stem:    69 × 3 = ___
+      answer:  207
+      options: 207 / 204 / 66 / 72
+      hints:   ["We need to find the total of equal groups 3 groups of 69.", "Think of it as 3 groups of 69: 69 + 69 + 69.", "Break 69 into 60 + 9: (60 × 3) + (9 × 3) = 180 + 27 = 207.", "The product of 69 × 3 = 207."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 6df3ecedd3bb0efbd334  seed 602  [mcq]
+      stem:    What is 43 × 200?
+      answer:  8600
+      options: 8400 / 243 / 8600 / 8599
+      hints:   ["We need to find the total of equal groups 200 groups of 43.", "Use the 200 times table: 200 × 43.", "Break 43 into 40 + 3: (40 × 200) + (3 × 200) = 8000 + 600 = 8600.", "The product of 43 × 200 = 8600."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample b144737d63a20e13a6c3  seed 603  [true_false]
+      stem:    108 × 9 = 972. True or False?
+      answer:  True
+      hints:   ["We need to find the total of equal groups 9 groups of 108.", "Use the 9 times table: 9 × 108.", "Break 108 into 100 + 8: (100 × 9) + (8 × 9) = 900 + 72 = 972.", "The product of 108 × 9 = 972."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample f1cc24ce074d28baa645  seed 700  [true_false]
+      stem:    99 × 9 = 891. True or False?
+      answer:  True
+      hints:   ["We need to find the total of equal groups 9 groups of 99.", "Use the 9 times table: 9 × 99.", "Break 99 into 90 + 9: (90 × 9) + (9 × 9) = 810 + 81 = 891.", "The product of 99 × 9 = 891."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample fc2cfdfca1bcdd7cd225  seed 701  [cloze]
+      stem:    🚴 Ate Sam enjoys running shoes. Here is a math challenge. 156 × 20 = ___
+      answer:  3120
+      options: 3120 / 136 / 176 / 3100
+      hints:   ["We need to find the total of equal groups 20 groups of 156.", "Use the 20 times table: 20 × 156.", "Break 156 into 150 + 6: (150 × 20) + (6 × 20) = 3000 + 120 = 3120.", "The product of 156 × 20 = 3120."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 1969462a895889a84c60  seed 702  [error_detect]
+      stem:    🏐 Ate Alyssa enjoys shuttlecocks. Here is a math challenge. Manny solved: "44 × 2 = ___". Manny says the missing number is 86. Is Manny correct?
+      answer:  {'has_error': True, 'correct_value': 88}
+      hints:   ["We need to find the total of equal groups 2 groups of 44.", "Think of it as 2 groups of 44: 44 + 44.", "Break 44 into 40 + 4: (40 × 2) + (4 × 2) = 80 + 8 = 88.", "The product of 44 × 2 = 88."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample 5487bab0c85a168b5fcd  seed 800  [cloze]
+      stem:    1000 × 10 = ___
+      answer:  10000
+      options: 9990 / 10000 / 990 / 1010
+      hints:   ["We need to find the total of equal groups 10 groups of 1000.", "Use the 10 times table: 10 × 1000.", "Break 1000 into 1000 + 0: (1000 × 10) + (0 × 10) = 10000 + 0 = 10000.", "The product of 1000 × 10 = 10000."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample d9912518f4bfcfd07b8b  seed 801  [error_detect]
+      stem:    Pia solved: "24 × 7 = ___". Pia says the missing number is 168. Is Pia correct?
+      answer:  {'has_error': False, 'correct_value': 168}
+      hints:   ["We need to find the total of equal groups 7 groups of 24.", "Use the 7 times table: 7 × 24.", "Break 24 into 20 + 4: (20 × 7) + (4 × 7) = 140 + 28 = 168.", "The product of 24 × 7 = 168."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample 0d8f2a0f353e8ca2bf7a  seed 900  [mcq]
+      stem:    What is 10 × 6?
+      answer:  60
+      options: 16 / 60 / 54 / 4
+      hints:   ["We need to find the total of equal groups 6 groups of 10.", "Use the 6 times table: 6 × 10.", "Break 10 into 10 + 0: (10 × 6) + (0 × 6) = 60 + 0 = 60.", "The product of 10 × 6 = 60."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 99bcbb42e5fffa6f36e1  seed 901  [mcq]
+      stem:    What is 12 × 5?
+      answer:  60
+      options: 55 / 17 / 60 / 7
+      hints:   ["We need to find the total of equal groups 5 groups of 12.", "Think of it as 5 groups of 12: 12 + 12 + 12 + 12 + 12.", "Break 12 into 10 + 2: (10 × 5) + (2 × 5) = 50 + 10 = 60.", "The product of 12 × 5 = 60."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 0220807f2b2118bb005e  seed 1000  [true_false]
+      stem:    1000 × 10 = 1010. True or False?
+      answer:  False
+      hints:   ["We need to find the total of equal groups 10 groups of 1000.", "Use the 10 times table: 10 × 1000.", "Break 1000 into 1000 + 0: (1000 × 10) + (0 × 10) = 10000 + 0 = 10000.", "The product of 1000 × 10 = 10000."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "hint_gated"}
+  sample 5c051afdcc7f90b3b289  seed 1001  [error_detect]
+      stem:    Liza solved: "81 × 3 = ___". Liza says the missing number is 246. Is Liza correct?
+      answer:  {'has_error': True, 'correct_value': 243}
+      hints:   ["We need to find the total of equal groups 3 groups of 81.", "Think of it as 3 groups of 81: 81 + 81 + 81.", "Break 81 into 80 + 1: (80 × 3) + (1 × 3) = 240 + 3 = 243.", "The product of 81 × 3 = 243."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "mastery_drill"}
+  sample 597b81db1a63e40b2df8  seed 1002  [error_detect]
+      stem:    Manny solved: "26 × 50 = ___". Manny says the missing number is 1250. Is Manny correct?
+      answer:  {'has_error': True, 'correct_value': 1300}
+      hints:   ["We need to find the total of equal groups 50 groups of 26.", "Use the 50 times table: 50 × 26.", "Break 26 into 20 + 6: (20 × 50) + (6 × 50) = 1000 + 300 = 1300.", "The product of 26 × 50 = 1300."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "scaffolded"}
+

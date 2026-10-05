@@ -49,10 +49,10 @@
       "clause": "5 threes"
     }
   ],
-  "packet_digest": "538adcb2a912d9c117bd70eb625db6b4b19cd79223d7589b214e3acb3dabccdd",
+  "packet_digest": "0d74932586f68114ddb7df65782f396e87985a7fe8314a06ab917386dc30dd55",
   "sampling_version": "phase2-stratified-v2-rendered-visual",
-  "reviewed_by": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_0-20260930",
-  "review_date": "2026-09-30",
+  "reviewed_by": "blind-reviewer-haiku45-w2v1-mat_g2_na_q3_0-20261002",
+  "review_date": "2026-10-02",
   "blind": true,
   "sample_seeds": [
     42,
@@ -61,7 +61,6 @@
     45,
     46,
     47,
-    61,
     500,
     501,
     502,
@@ -76,7 +75,6 @@
     608,
     609,
     610,
-    611,
     612,
     613,
     700,
@@ -97,7 +95,6 @@
     "be8a7eb3a8c80e16fa44",
     "9dc537a0f73af4b66ef2",
     "94ab89bb2366c2c6fc8d",
-    "1bba9cd3ebc2683fd4f0",
     "23e1f2e56d38932eec57",
     "b831c0195fcd7f969998",
     "521444d9d477353dc3f4",
@@ -112,7 +109,6 @@
     "d4fe917d5ae81baecc03",
     "7573d889b5c1407d1d35",
     "c52cb4273747425f1644",
-    "1d0518b26a8edf7a2441",
     "7b164bc16e564bc4f6b2",
     "95549a16fefa541633d5",
     "c5de95213ece73f05d3d",
@@ -130,8 +126,8 @@
     {
       "node_id": "mat_g2_na_q3_0",
       "seed": 42,
-      "formatter": "mcq",
-      "question_text": "There are 10 groups of 4 (4 added 10 times). How many in all?",
+      "formatter": "cloze",
+      "question_text": "10 groups of 4 (4 added 10 times) makes ___ in all",
       "correct_answer": 40,
       "requested": {
         "difficulty_profile": null,
@@ -140,43 +136,47 @@
       },
       "serving_mode": "student_path",
       "effective": {
-        "format": "mcq",
+        "format": "cloze",
         "is_visual": false,
         "visual_type": null,
         "interaction_mode": null,
-        "answer_collection": "mcq",
+        "answer_collection": "fill_in_blank",
         "experience": "standard"
       },
       "options": [
         {
           "key": "A",
           "value": 30,
+          "text": "30",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 14,
+          "text": "14",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 39,
+          "text": "39",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 40,
+          "text": "40",
           "is_correct": true
         }
       ],
       "resolved_answer": 40,
       "hints": [
-        "We need to find the total of equal groups 4 groups of 10.",
+        "We need to find the total of equal groups 10 groups of 4.",
         "Use the 10 times table: 10 × 4.",
         "The answer of 4 × 10 = 40."
       ],
       "sample_id": "acd5b1dfd61a3061446d",
-      "replay_digest": "9d30081de7d0218b176eca256cc42a6b76928ac4259bf0eb6d3668b8a2565c06"
+      "replay_digest": "c9da65857c3a74dfdd8407dfef85bd10a12cbb2ce09186b058da3f9fc9fd5e34"
     },
     {
       "node_id": "mat_g2_na_q3_0",
@@ -222,7 +222,7 @@
       ],
       "resolved_answer": 8,
       "hints": [
-        "We need to find the total of equal groups 4 groups of 2.",
+        "We need to find the total of equal groups 2 groups of 4.",
         "Think of it as 2 groups of 4: 4 + 4.",
         "The answer of 4 × 2 = 8."
       ],
@@ -265,13 +265,13 @@
         }
       },
       "sample_id": "919797545302a3f2294a",
-      "replay_digest": "eb9c4cb2f0506f31c55c6aa659f13e8b93620ea8a28adc8251395664349bb358"
+      "replay_digest": "4b37011bd9d8cee16229f8dc8f2e7c07b4cb4ac8a18f46d360c1aad1d1631c28"
     },
     {
       "node_id": "mat_g2_na_q3_0",
       "seed": 44,
       "formatter": "set_fill_in_blank",
-      "question_text": "Shade 10 groups of 4 squares to show 4 added 10 times. How many squares did you shade in all?",
+      "question_text": "Shade 4 groups of 10 squares to show 10 + 10 + 10 + 10. How many squares did you shade in all?",
       "correct_answer": 40,
       "requested": {
         "difficulty_profile": null,
@@ -289,27 +289,27 @@
       },
       "resolved_answer": 40,
       "hints": [
-        "We need to find the total of equal groups 10 groups of 4.",
+        "We need to find the total of equal groups 4 groups of 10.",
         "Think of it as 4 groups of 10: 10 + 10 + 10 + 10.",
         "Break 10 into 10 + 0: (10 × 4) + (0 × 4) = 40 + 0 = 40.",
         "The answer of 10 × 4 = 40."
       ],
       "visual_type": "GridArea",
       "visual_payload": {
-        "rows": 10,
-        "cols": 4,
+        "rows": 4,
+        "cols": 10,
         "shaded": false,
         "highlight_groups": [],
         "shape_type": "rectangle",
         "correct_count": 40,
         "grid_size": [
-          11,
-          5
+          5,
+          11
         ]
       },
       "visual_render": {
         "visual_type": "GridArea",
-        "renderer_input_digest": "8e624c1d13c5eb83acf1dca97e2df9e99f63d66339da77a094ca1a7f542cc279",
+        "renderer_input_digest": "c50d7eea56c2901b4d2b5c220ac5f3704f6d783565ed6cd927c47002c194fe86",
         "description": {
           "source": "rendered_static_markup",
           "visual_type": "GridArea",
@@ -321,7 +321,7 @@
           "input_count": 0,
           "text_labels": [
             "Click squares to shade a",
-            "4 × 10",
+            "10 × 4",
             "rectangle",
             "0 square units",
             "Clear All",
@@ -344,7 +344,7 @@
         }
       },
       "sample_id": "b2ad03d4ebfc5457114e",
-      "replay_digest": "8389361a50b30ca411fdcdf4f719104975d0089d1af30d65cb8885d7e12da1a3"
+      "replay_digest": "321d84278ca5d969ec97caf9ff39dbaf65db733c91d072a6eea985bbc43fbf8a"
     },
     {
       "node_id": "mat_g2_na_q3_0",
@@ -394,19 +394,19 @@
       ],
       "resolved_answer": 30,
       "hints": [
-        "We need to find the total of equal groups 10 groups of 3.",
+        "We need to find the total of equal groups 3 groups of 10.",
         "Think of it as 3 groups of 10: 10 + 10 + 10.",
         "Break 10 into 10 + 0: (10 × 3) + (0 × 3) = 30 + 0 = 30.",
         "The answer of 10 × 3 = 30."
       ],
       "sample_id": "be8a7eb3a8c80e16fa44",
-      "replay_digest": "3b5d43a82a6f0f62f1abd4099be3f805e8705ea41357181a13c10710f83beed8"
+      "replay_digest": "807e0c80688d59c420a03ea3758f80d0d3e87f62112d161e20caa8aa094f54aa"
     },
     {
       "node_id": "mat_g2_na_q3_0",
       "seed": 46,
       "formatter": "read_mcq",
-      "question_text": "Look at the array. It shows 9 groups of 2 (2 added 9 times). How many squares are shaded in all?",
+      "question_text": "Look at the array. It shows 2 groups of 9 (9 + 9). How many squares are shaded in all?",
       "correct_answer": "A",
       "requested": {
         "difficulty_profile": null,
@@ -446,26 +446,26 @@
       ],
       "resolved_answer": 18,
       "hints": [
-        "We need to find the total of equal groups 9 groups of 2.",
+        "We need to find the total of equal groups 2 groups of 9.",
         "Think of it as 2 groups of 9: 9 + 9.",
         "The answer of 9 × 2 = 18."
       ],
       "visual_type": "GridArea",
       "visual_payload": {
-        "rows": 9,
-        "cols": 2,
+        "rows": 2,
+        "cols": 9,
         "shaded": true,
         "highlight_groups": [],
         "shape_type": "rectangle",
         "correct_count": 18,
         "grid_size": [
-          10,
-          3
+          3,
+          10
         ]
       },
       "visual_render": {
         "visual_type": "GridArea",
-        "renderer_input_digest": "a7db9fa38cb102df620d5d7c537d97839adca369b357e32b19eb73a4621680e9",
+        "renderer_input_digest": "ec751bce70a2bef7cbea571cd52a30c65748210f01525cfd14fc65a79cf7839c",
         "description": {
           "source": "rendered_static_markup",
           "visual_type": "GridArea",
@@ -477,7 +477,7 @@
           "input_count": 0,
           "text_labels": [
             "Click squares to shade a",
-            "2 × 9",
+            "9 × 2",
             "rectangle",
             "18 square units",
             "Clear All",
@@ -497,17 +497,14 @@
         }
       },
       "sample_id": "9dc537a0f73af4b66ef2",
-      "replay_digest": "435547864357c45086b6bec96daacaf7af0e25be235e7470838742947a24fed5"
+      "replay_digest": "789dbbdfb553fd2aeead4da24ec44f177fa4d7e5fd3713bce463105a288b827a"
     },
     {
       "node_id": "mat_g2_na_q3_0",
       "seed": 47,
-      "formatter": "error_detect",
-      "question_text": "Rosa solved: \"There are 4 groups of 6 (6 + 6 + 6 + 6), so there are ___ in all.\". Rosa says the missing number is 24. Is Rosa correct?",
-      "correct_answer": {
-        "has_error": false,
-        "correct_value": 24
-      },
+      "formatter": "mcq",
+      "question_text": "There are 4 groups of 6 (6 + 6 + 6 + 6). How many in all?",
+      "correct_answer": 24,
       "requested": {
         "difficulty_profile": null,
         "student_interest": null,
@@ -515,98 +512,50 @@
       },
       "serving_mode": "student_path",
       "effective": {
-        "format": "error_detect",
+        "format": "mcq",
         "is_visual": false,
         "visual_type": null,
         "interaction_mode": null,
-        "answer_collection": "error_detect",
+        "answer_collection": "mcq",
         "experience": "standard"
       },
-      "resolved_answer": {
-        "has_error": false,
-        "correct_value": 24
-      },
+      "options": [
+        {
+          "key": "A",
+          "value": 20,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 24,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 10,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 2,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 24,
       "hints": [
-        "We need to find the total of equal groups 6 groups of 4.",
+        "We need to find the total of equal groups 4 groups of 6.",
         "Think of it as 4 groups of 6: 6 + 6 + 6 + 6.",
         "The answer of 6 × 4 = 24."
       ],
       "sample_id": "94ab89bb2366c2c6fc8d",
-      "replay_digest": "5779fc99031bb1d35240fd998069cde32807e8f8b4c83923f699674eb5c74ede"
-    },
-    {
-      "node_id": "mat_g2_na_q3_0",
-      "seed": 61,
-      "formatter": "true_false",
-      "question_text": "There is 1 group of 1. By repeated addition, 1 = 2. True or False?",
-      "correct_answer": false,
-      "requested": {
-        "difficulty_profile": null,
-        "student_interest": null,
-        "experience": "standard"
-      },
-      "serving_mode": "student_path",
-      "effective": {
-        "format": "true_false",
-        "is_visual": false,
-        "visual_type": null,
-        "interaction_mode": null,
-        "answer_collection": "true_false",
-        "experience": "standard"
-      },
-      "resolved_answer": false,
-      "hints": [
-        "We need to find the total of equal groups 1 group of 1.",
-        "Think of it as 1 group of 1: 1.",
-        "The answer of 1 × 1 = 1."
-      ],
-      "sample_id": "1bba9cd3ebc2683fd4f0",
-      "replay_digest": "cd01faadddf214d1a7f322b64094e2e0affc667e73015d3843b91d71b2b97d3b"
+      "replay_digest": "a6f02c10dea9f1fb38faa32bd017d5be9f461343707c3b0a154ca6f124882d0a"
     },
     {
       "node_id": "mat_g2_na_q3_0",
       "seed": 500,
-      "formatter": "error_detect",
-      "question_text": "Rico solved: \"Count 10 sevens by repeated addition: 7 added 10 times = ___\". Rico says the missing number is 70. Is Rico correct?",
-      "correct_answer": {
-        "has_error": false,
-        "correct_value": 70
-      },
-      "requested": {
-        "difficulty_profile": {
-          "max_product": 1.0,
-          "number_difficulty": 1.0
-        },
-        "student_interest": null,
-        "experience": "standard"
-      },
-      "serving_mode": "student_path",
-      "effective": {
-        "format": "error_detect",
-        "is_visual": false,
-        "visual_type": null,
-        "interaction_mode": null,
-        "answer_collection": "error_detect",
-        "experience": "standard"
-      },
-      "resolved_answer": {
-        "has_error": false,
-        "correct_value": 70
-      },
-      "hints": [
-        "We need to find the total of equal groups 7 groups of 10.",
-        "Use the 10 times table: 10 × 7.",
-        "The answer of 7 × 10 = 70."
-      ],
-      "sample_id": "23e1f2e56d38932eec57",
-      "replay_digest": "3db79594a98f2ccb7b5e6b657a13042664d77652f69b14b17e3ed57c42e641ac"
-    },
-    {
-      "node_id": "mat_g2_na_q3_0",
-      "seed": 501,
       "formatter": "mcq",
-      "question_text": "Count 10 tens by repeated addition (10 added 10 times): how many in all?",
-      "correct_answer": 100,
+      "question_text": "Count 10 sevens by repeated addition (7 added 10 times): how many in all?",
+      "correct_answer": 70,
       "requested": {
         "difficulty_profile": {
           "max_product": 1.0,
@@ -627,22 +576,80 @@
       "options": [
         {
           "key": "A",
+          "value": 60,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 17,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 70,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 69,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 70,
+      "hints": [
+        "We need to find the total of equal groups 10 groups of 7.",
+        "Use the 10 times table: 10 × 7.",
+        "The answer of 7 × 10 = 70."
+      ],
+      "sample_id": "23e1f2e56d38932eec57",
+      "replay_digest": "aea8874287f1b54b16a6627fc3daf69fef590c18936ed1559ea3233424756721"
+    },
+    {
+      "node_id": "mat_g2_na_q3_0",
+      "seed": 501,
+      "formatter": "cloze",
+      "question_text": "Count 10 tens (10 added 10 times) = ___",
+      "correct_answer": 100,
+      "requested": {
+        "difficulty_profile": {
+          "max_product": 1.0,
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "cloze",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
           "value": 99,
+          "text": "99",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 20,
+          "text": "20",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 100,
+          "text": "100",
           "is_correct": true
         },
         {
           "key": "D",
           "value": 90,
+          "text": "90",
           "is_correct": false
         }
       ],
@@ -654,13 +661,13 @@
         "The answer of 10 × 10 = 100."
       ],
       "sample_id": "b831c0195fcd7f969998",
-      "replay_digest": "e2e28ee54b8f79b19e18653fc73007a0de21f29e111122d5643d852fb65b4c9f"
+      "replay_digest": "529f0ca166a8e7b1464c51e5ed2dd1857a8c9ce043d902f626c992adf24f0f90"
     },
     {
       "node_id": "mat_g2_na_q3_0",
       "seed": 502,
       "formatter": "set_fill_in_blank",
-      "question_text": "Shade 8 groups of 10 squares to show 10 added 8 times. How many squares did you shade in all?",
+      "question_text": "Shade 10 groups of 8 squares to show 8 added 10 times. How many squares did you shade in all?",
       "correct_answer": 80,
       "requested": {
         "difficulty_profile": {
@@ -681,26 +688,26 @@
       },
       "resolved_answer": 80,
       "hints": [
-        "We need to find the total of equal groups 8 groups of 10.",
+        "We need to find the total of equal groups 10 groups of 8.",
         "Use the 10 times table: 10 × 8.",
         "The answer of 8 × 10 = 80."
       ],
       "visual_type": "GridArea",
       "visual_payload": {
-        "rows": 8,
-        "cols": 10,
+        "rows": 10,
+        "cols": 8,
         "shaded": false,
         "highlight_groups": [],
         "shape_type": "rectangle",
         "correct_count": 80,
         "grid_size": [
-          9,
-          11
+          11,
+          9
         ]
       },
       "visual_render": {
         "visual_type": "GridArea",
-        "renderer_input_digest": "0785d0bc31d63c43487d5abd66743f963bb44e49d7716b16ec1dffe5a1f2a81b",
+        "renderer_input_digest": "3995f3a23625b9d2709103d14011b2716530405db80babd69bca4844a72ab134",
         "description": {
           "source": "rendered_static_markup",
           "visual_type": "GridArea",
@@ -712,7 +719,7 @@
           "input_count": 0,
           "text_labels": [
             "Click squares to shade a",
-            "10 × 8",
+            "8 × 10",
             "rectangle",
             "0 square units",
             "Clear All",
@@ -735,14 +742,14 @@
         }
       },
       "sample_id": "521444d9d477353dc3f4",
-      "replay_digest": "11b5f6d51db3d4394877459df05609dc31bb5f2a235415ea263dd9a434273d4d"
+      "replay_digest": "b6493a438f47ccae31b6cf9be2cf37c59612b0c2161a2de5853b07d50280b026"
     },
     {
       "node_id": "mat_g2_na_q3_0",
       "seed": 600,
-      "formatter": "mcq",
-      "question_text": "Count 3 eights by repeated addition (8 + 8 + 8): how many in all?",
-      "correct_answer": 24,
+      "formatter": "read_mcq",
+      "question_text": "💃💃💃💃💃💃💃💃   💃💃💃💃💃💃💃💃   💃💃💃💃💃💃💃💃\nThere are 3 groups of 8 items.\nHow many items are there in all?",
+      "correct_answer": "C",
       "requested": {
         "difficulty_profile": {
           "context": "pure"
@@ -752,43 +759,97 @@
       },
       "serving_mode": "student_path",
       "effective": {
-        "format": "mcq",
-        "is_visual": false,
-        "visual_type": null,
-        "interaction_mode": null,
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "EmojiPictorial",
+        "interaction_mode": "read",
         "answer_collection": "mcq",
         "experience": "standard"
       },
       "options": [
         {
           "key": "A",
-          "value": 11,
+          "value": 23,
           "is_correct": false
         },
         {
           "key": "B",
+          "value": 8,
+          "is_correct": false
+        },
+        {
+          "key": "C",
           "value": 24,
           "is_correct": true
         },
         {
-          "key": "C",
-          "value": 5,
-          "is_correct": false
-        },
-        {
           "key": "D",
-          "value": 21,
+          "value": 25,
           "is_correct": false
         }
       ],
       "resolved_answer": 24,
       "hints": [
-        "We need to find the total of equal groups 8 groups of 3.",
+        "We need to find the total of equal groups 3 groups of 8.",
         "Think of it as 3 groups of 8: 8 + 8 + 8.",
         "The answer of 8 × 3 = 24."
       ],
+      "visual_type": "EmojiPictorial",
+      "visual_payload": {
+        "emoji": "💃",
+        "group_a": 8,
+        "group_b": 3,
+        "operation": "multiplication",
+        "layout": "inline",
+        "display": "💃💃💃💃💃💃💃💃   💃💃💃💃💃💃💃💃   💃💃💃💃💃💃💃💃"
+      },
+      "visual_render": {
+        "visual_type": "EmojiPictorial",
+        "renderer_input_digest": "a9d7116dba1e22da8fec7b8d68b14df43d11844bdd1925c681ec0830828b42ba",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "EmojiPictorial",
+          "element_count": 30,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "💃",
+            "💃",
+            "💃",
+            "💃",
+            "💃",
+            "💃",
+            "💃",
+            "💃",
+            "💃",
+            "💃",
+            "💃",
+            "💃",
+            "💃",
+            "💃",
+            "💃",
+            "💃",
+            "💃",
+            "💃",
+            "💃",
+            "💃",
+            "💃",
+            "💃",
+            "💃",
+            "💃"
+          ],
+          "distinct_colours": [
+            "hsl(var(--card-bg)",
+            "hsl(var(--border-color)"
+          ],
+          "role_counts": {}
+        }
+      },
       "sample_id": "6783e5edfd947895b600",
-      "replay_digest": "95f98c93c15a84c3656cbb513931053de7d3c22ae30a22be0e422c1c34f1033d"
+      "replay_digest": "e040cd5dd151256c529231d5bf699c5a4eb7e9c858523a6c256c285405063614"
     },
     {
       "node_id": "mat_g2_na_q3_0",
@@ -840,22 +901,19 @@
       ],
       "resolved_answer": 15,
       "hints": [
-        "We need to find the total of equal groups 5 groups of 3.",
+        "We need to find the total of equal groups 3 groups of 5.",
         "Think of it as 3 groups of 5: 5 + 5 + 5.",
         "The answer of 5 × 3 = 15."
       ],
       "sample_id": "3c35dbf9880096867b65",
-      "replay_digest": "1b17374a34b3c3257e79d713d725a7d7f90c7ec303d01be5a83b61d9940f69d8"
+      "replay_digest": "12d3dad667ee4b7c0d03adac6021137444bc0078afe821604e1b76160dfad421"
     },
     {
       "node_id": "mat_g2_na_q3_0",
       "seed": 602,
-      "formatter": "error_detect",
-      "question_text": "Jose solved: \"There are 5 groups of 3 (3 + 3 + 3 + 3 + 3), so there are ___ in all.\". Jose says the missing number is 15. Is Jose correct?",
-      "correct_answer": {
-        "has_error": false,
-        "correct_value": 15
-      },
+      "formatter": "mcq",
+      "question_text": "There are 5 groups of 3 (3 + 3 + 3 + 3 + 3). How many in all?",
+      "correct_answer": 15,
       "requested": {
         "difficulty_profile": {
           "number_type": "single_digit"
@@ -865,24 +923,43 @@
       },
       "serving_mode": "student_path",
       "effective": {
-        "format": "error_detect",
+        "format": "mcq",
         "is_visual": false,
         "visual_type": null,
         "interaction_mode": null,
-        "answer_collection": "error_detect",
+        "answer_collection": "mcq",
         "experience": "standard"
       },
-      "resolved_answer": {
-        "has_error": false,
-        "correct_value": 15
-      },
+      "options": [
+        {
+          "key": "A",
+          "value": 14,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 15,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 10,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 8,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 15,
       "hints": [
-        "We need to find the total of equal groups 3 groups of 5.",
+        "We need to find the total of equal groups 5 groups of 3.",
         "Think of it as 5 groups of 3: 3 + 3 + 3 + 3 + 3.",
         "The answer of 3 × 5 = 15."
       ],
       "sample_id": "1774567e774e3a739963",
-      "replay_digest": "1a57d7c57e073416ca4d6e54659f39c8c1db62e5258078c6ad6c83ab1bea0791"
+      "replay_digest": "1d7519f88af783af7cee11799723544737487ca6e7b896118357b82e6ec763a5"
     },
     {
       "node_id": "mat_g2_na_q3_0",
@@ -979,9 +1056,9 @@
     {
       "node_id": "mat_g2_na_q3_0",
       "seed": 604,
-      "formatter": "true_false",
-      "question_text": "There are 2 groups of 6. By repeated addition, 6 + 6 = 14. True or False?",
-      "correct_answer": false,
+      "formatter": "cloze",
+      "question_text": "2 groups of 6 (6 + 6) makes ___ in all",
+      "correct_answer": 12,
       "requested": {
         "difficulty_profile": {
           "table": "10"
@@ -991,31 +1068,54 @@
       },
       "serving_mode": "student_path",
       "effective": {
-        "format": "true_false",
+        "format": "cloze",
         "is_visual": false,
         "visual_type": null,
         "interaction_mode": null,
-        "answer_collection": "true_false",
+        "answer_collection": "fill_in_blank",
         "experience": "standard"
       },
-      "resolved_answer": false,
+      "options": [
+        {
+          "key": "A",
+          "value": 8,
+          "text": "8",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 4,
+          "text": "4",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 12,
+          "text": "12",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 10,
+          "text": "10",
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 12,
       "hints": [
-        "We need to find the total of equal groups 6 groups of 2.",
+        "We need to find the total of equal groups 2 groups of 6.",
         "Think of it as 2 groups of 6: 6 + 6.",
         "The answer of 6 × 2 = 12."
       ],
       "sample_id": "0c3c3e065d0ac16de580",
-      "replay_digest": "e1d1f3b1e86b0a9cf15dc3f6b2dd083fa7c05ddbb42294727904b3be4fd19d44"
+      "replay_digest": "bbfdf2843cebe1e93beffaa28a836a05a477e1fa03a4018def5944037cecba31"
     },
     {
       "node_id": "mat_g2_na_q3_0",
       "seed": 605,
-      "formatter": "error_detect",
-      "question_text": "Liza solved: \"Count 3 fives by repeated addition: 5 + 5 + 5 = ___\". Liza says the missing number is 15. Is Liza correct?",
-      "correct_answer": {
-        "has_error": false,
-        "correct_value": 15
-      },
+      "formatter": "mcq",
+      "question_text": "Count 3 fives by repeated addition (5 + 5 + 5): how many in all?",
+      "correct_answer": 15,
       "requested": {
         "difficulty_profile": {
           "table": "2"
@@ -1025,24 +1125,43 @@
       },
       "serving_mode": "student_path",
       "effective": {
-        "format": "error_detect",
+        "format": "mcq",
         "is_visual": false,
         "visual_type": null,
         "interaction_mode": null,
-        "answer_collection": "error_detect",
+        "answer_collection": "mcq",
         "experience": "standard"
       },
-      "resolved_answer": {
-        "has_error": false,
-        "correct_value": 15
-      },
+      "options": [
+        {
+          "key": "A",
+          "value": 2,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 15,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 8,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 12,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 15,
       "hints": [
-        "We need to find the total of equal groups 5 groups of 3.",
+        "We need to find the total of equal groups 3 groups of 5.",
         "Think of it as 3 groups of 5: 5 + 5 + 5.",
         "The answer of 5 × 3 = 15."
       ],
       "sample_id": "60dc22be5cf677a6c1ea",
-      "replay_digest": "7b07c38d0f6a9ec7eff1b16e31a7222c0845fd47cb305ff2fe98936e4cba7f73"
+      "replay_digest": "6e2bce6c9b1bf5ef071ac9842f146e104bff5d887aba86534491649b30cd16e5"
     },
     {
       "node_id": "mat_g2_na_q3_0",
@@ -1094,18 +1213,18 @@
       ],
       "resolved_answer": 10,
       "hints": [
-        "We need to find the total of equal groups 5 groups of 2.",
+        "We need to find the total of equal groups 2 groups of 5.",
         "Think of it as 2 groups of 5: 5 + 5.",
         "The answer of 5 × 2 = 10."
       ],
       "sample_id": "1b2b84d62df0fc51838b",
-      "replay_digest": "a8beddccdc2cdeeea58598cc41d0f9e5f4a71b949a9a5105332a2af8ca741d99"
+      "replay_digest": "bf97d52811cda4b9763303a74fe4600f7ceb07e1db4cb778a1c10f2dae1aa440"
     },
     {
       "node_id": "mat_g2_na_q3_0",
       "seed": 607,
       "formatter": "set_fill_in_blank",
-      "question_text": "Shade 3 groups of 10 squares to show 10 + 10 + 10. How many squares did you shade in all?",
+      "question_text": "Shade 10 groups of 3 squares to show 3 added 10 times. How many squares did you shade in all?",
       "correct_answer": 30,
       "requested": {
         "difficulty_profile": {
@@ -1125,26 +1244,26 @@
       },
       "resolved_answer": 30,
       "hints": [
-        "We need to find the total of equal groups 3 groups of 10.",
+        "We need to find the total of equal groups 10 groups of 3.",
         "Use the 10 times table: 10 × 3.",
         "The answer of 3 × 10 = 30."
       ],
       "visual_type": "GridArea",
       "visual_payload": {
-        "rows": 3,
-        "cols": 10,
+        "rows": 10,
+        "cols": 3,
         "shaded": false,
         "highlight_groups": [],
         "shape_type": "rectangle",
         "correct_count": 30,
         "grid_size": [
-          4,
-          11
+          11,
+          4
         ]
       },
       "visual_render": {
         "visual_type": "GridArea",
-        "renderer_input_digest": "0f22e3a6cccfc21da64bda80f8f3f702577809d04392bdcf1dc0f9d40954dead",
+        "renderer_input_digest": "876c4bec4a879ea0d459cf90c6aa1b7574aca8555a160487e409dc7458ba9b44",
         "description": {
           "source": "rendered_static_markup",
           "visual_type": "GridArea",
@@ -1156,7 +1275,7 @@
           "input_count": 0,
           "text_labels": [
             "Click squares to shade a",
-            "10 × 3",
+            "3 × 10",
             "rectangle",
             "0 square units",
             "Clear All",
@@ -1179,14 +1298,14 @@
         }
       },
       "sample_id": "3357f166687081a38fb4",
-      "replay_digest": "2489ed7b4baf41a4f6fb618c43362fafc6b74603122875797eac40271b404c18"
+      "replay_digest": "797dcbabb0b47ff88d3b28d99d031ba26b38c5c4d852b39d81ebc7b94fdd9038"
     },
     {
       "node_id": "mat_g2_na_q3_0",
       "seed": 608,
-      "formatter": "mcq",
-      "question_text": "There are 3 groups of 2 (2 + 2 + 2). How many in all?",
-      "correct_answer": 6,
+      "formatter": "read_mcq",
+      "question_text": "🏐🏐   🏐🏐   🏐🏐\nThere are 3 groups of 2 items.\nHow many items are there in all?",
+      "correct_answer": "B",
       "requested": {
         "difficulty_profile": {
           "table": "5"
@@ -1196,49 +1315,85 @@
       },
       "serving_mode": "student_path",
       "effective": {
-        "format": "mcq",
-        "is_visual": false,
-        "visual_type": null,
-        "interaction_mode": null,
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "EmojiPictorial",
+        "interaction_mode": "read",
         "answer_collection": "mcq",
         "experience": "standard"
       },
       "options": [
         {
           "key": "A",
-          "value": 6,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 9,
-          "is_correct": false
-        },
-        {
-          "key": "C",
           "value": 3,
           "is_correct": false
         },
         {
+          "key": "B",
+          "value": 6,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 4,
+          "is_correct": false
+        },
+        {
           "key": "D",
-          "value": 5,
+          "value": 2,
           "is_correct": false
         }
       ],
       "resolved_answer": 6,
       "hints": [
-        "We need to find the total of equal groups 2 groups of 3.",
+        "We need to find the total of equal groups 3 groups of 2.",
         "Think of it as 3 groups of 2: 2 + 2 + 2.",
         "The answer of 2 × 3 = 6."
       ],
+      "visual_type": "EmojiPictorial",
+      "visual_payload": {
+        "emoji": "🏐",
+        "group_a": 2,
+        "group_b": 3,
+        "operation": "multiplication",
+        "layout": "inline",
+        "display": "🏐🏐   🏐🏐   🏐🏐"
+      },
+      "visual_render": {
+        "visual_type": "EmojiPictorial",
+        "renderer_input_digest": "e11022d4d650e6c2e22eb67c6f77bccec6f4253433474f74696590ab39d84309",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "EmojiPictorial",
+          "element_count": 12,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "🏐",
+            "🏐",
+            "🏐",
+            "🏐",
+            "🏐",
+            "🏐"
+          ],
+          "distinct_colours": [
+            "hsl(var(--card-bg)",
+            "hsl(var(--border-color)"
+          ],
+          "role_counts": {}
+        }
+      },
       "sample_id": "d4fe917d5ae81baecc03",
-      "replay_digest": "1c2d24e83d881ae2f39b39cf3e99748b78d01b508ad8909486778de161ec4b36"
+      "replay_digest": "31fe116f1ceba9e9d14a72252c35aad5c88a5b77a023ef252b7c2895b134ff58"
     },
     {
       "node_id": "mat_g2_na_q3_0",
       "seed": 609,
       "formatter": "read_mcq",
-      "question_text": "Look at the array. It shows 6 groups of 10 (10 added 6 times). How many squares are shaded in all?",
+      "question_text": "Look at the array. It shows 10 groups of 6 (6 added 10 times). How many squares are shaded in all?",
       "correct_answer": "A",
       "requested": {
         "difficulty_profile": {
@@ -1280,26 +1435,26 @@
       ],
       "resolved_answer": 60,
       "hints": [
-        "We need to find the total of equal groups 6 groups of 10.",
+        "We need to find the total of equal groups 10 groups of 6.",
         "Use the 10 times table: 10 × 6.",
         "The answer of 6 × 10 = 60."
       ],
       "visual_type": "GridArea",
       "visual_payload": {
-        "rows": 6,
-        "cols": 10,
+        "rows": 10,
+        "cols": 6,
         "shaded": true,
         "highlight_groups": [],
         "shape_type": "rectangle",
         "correct_count": 60,
         "grid_size": [
-          7,
-          11
+          11,
+          7
         ]
       },
       "visual_render": {
         "visual_type": "GridArea",
-        "renderer_input_digest": "ed2ca7673ea362e197cf20e96e24c570a8e0788e36a7399b3276743cefe163d9",
+        "renderer_input_digest": "8765d32109a9606b08e4c7a4b2d951cc0d367d2fde088d6195c7ad4045bafff1",
         "description": {
           "source": "rendered_static_markup",
           "visual_type": "GridArea",
@@ -1311,7 +1466,7 @@
           "input_count": 0,
           "text_labels": [
             "Click squares to shade a",
-            "10 × 6",
+            "6 × 10",
             "rectangle",
             "60 square units",
             "Clear All",
@@ -1331,7 +1486,7 @@
         }
       },
       "sample_id": "7573d889b5c1407d1d35",
-      "replay_digest": "d1796e04eaee7d5d6232092defacd832dd270f4acabc4872c6c9c96b7435498e"
+      "replay_digest": "29d3c8e493b6d88b9c9e4382da14e43852025e5efca1079442a39a4ec314622c"
     },
     {
       "node_id": "mat_g2_na_q3_0",
@@ -1383,71 +1538,18 @@
       ],
       "resolved_answer": 24,
       "hints": [
-        "We need to find the total of equal groups 4 groups of 6.",
+        "We need to find the total of equal groups 6 groups of 4.",
         "Use the 6 times table: 6 × 4.",
         "The answer of 4 × 6 = 24."
       ],
       "sample_id": "c52cb4273747425f1644",
-      "replay_digest": "820e0ff8417a18e0a4c3c4515f22fcc1ac822f165bc6d179bb0d46cd6c50ae3e"
-    },
-    {
-      "node_id": "mat_g2_na_q3_0",
-      "seed": 611,
-      "formatter": "mcq",
-      "question_text": "Count 10 threes by repeated addition (3 added 10 times): how many in all?",
-      "correct_answer": 30,
-      "requested": {
-        "difficulty_profile": {
-          "table": "8"
-        },
-        "student_interest": null,
-        "experience": "standard"
-      },
-      "serving_mode": "student_path",
-      "effective": {
-        "format": "mcq",
-        "is_visual": false,
-        "visual_type": null,
-        "interaction_mode": null,
-        "answer_collection": "mcq",
-        "experience": "standard"
-      },
-      "options": [
-        {
-          "key": "A",
-          "value": 20,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 29,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 30,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 13,
-          "is_correct": false
-        }
-      ],
-      "resolved_answer": 30,
-      "hints": [
-        "We need to find the total of equal groups 3 groups of 10.",
-        "Use the 10 times table: 10 × 3.",
-        "The answer of 3 × 10 = 30."
-      ],
-      "sample_id": "1d0518b26a8edf7a2441",
-      "replay_digest": "46101f7f1e5ee983c2e016a0dfe9cb2e9148077d8199d3fccd3b26beb1a9843a"
+      "replay_digest": "439a32697b041d72b27e9704b62ebb6e89c92e4b8b21b2159d79515ecd509079"
     },
     {
       "node_id": "mat_g2_na_q3_0",
       "seed": 612,
       "formatter": "set_fill_in_blank",
-      "question_text": "Shade 9 groups of 10 squares to show 10 added 9 times. How many squares did you shade in all?",
+      "question_text": "Shade 10 groups of 9 squares to show 9 added 10 times. How many squares did you shade in all?",
       "correct_answer": 90,
       "requested": {
         "difficulty_profile": {
@@ -1467,26 +1569,26 @@
       },
       "resolved_answer": 90,
       "hints": [
-        "We need to find the total of equal groups 9 groups of 10.",
+        "We need to find the total of equal groups 10 groups of 9.",
         "Use the 10 times table: 10 × 9.",
         "The answer of 9 × 10 = 90."
       ],
       "visual_type": "GridArea",
       "visual_payload": {
-        "rows": 9,
-        "cols": 10,
+        "rows": 10,
+        "cols": 9,
         "shaded": false,
         "highlight_groups": [],
         "shape_type": "rectangle",
         "correct_count": 90,
         "grid_size": [
-          10,
-          11
+          11,
+          10
         ]
       },
       "visual_render": {
         "visual_type": "GridArea",
-        "renderer_input_digest": "3fb7a949f03371e7ea7a4d2c6f5bbe23eac09485bd8b168d8fe4f36b5d37017d",
+        "renderer_input_digest": "12c68fe83f4d9c35d865ce03c5834c4175c52563bc66fd37ff19c3fca007e441",
         "description": {
           "source": "rendered_static_markup",
           "visual_type": "GridArea",
@@ -1498,7 +1600,7 @@
           "input_count": 0,
           "text_labels": [
             "Click squares to shade a",
-            "10 × 9",
+            "9 × 10",
             "rectangle",
             "0 square units",
             "Clear All",
@@ -1521,14 +1623,14 @@
         }
       },
       "sample_id": "7b164bc16e564bc4f6b2",
-      "replay_digest": "5be26e0702d39ae786de1c45cb04ec752767d93f3098ea703afbfc7d8e918d7d"
+      "replay_digest": "33770d20c3e44eff1ed7f2d94e3a0116b8dd9612a5af8ecb0dcb0a8f1567cf68"
     },
     {
       "node_id": "mat_g2_na_q3_0",
       "seed": 613,
-      "formatter": "true_false",
-      "question_text": "There are 3 groups of 10. By repeated addition, 10 + 10 + 10 = 29. True or False?",
-      "correct_answer": false,
+      "formatter": "mcq",
+      "question_text": "There are 3 groups of 10 (10 + 10 + 10). How many in all?",
+      "correct_answer": 30,
       "requested": {
         "difficulty_profile": {
           "task_type": "equal_groups"
@@ -1538,22 +1640,44 @@
       },
       "serving_mode": "student_path",
       "effective": {
-        "format": "true_false",
+        "format": "mcq",
         "is_visual": false,
         "visual_type": null,
         "interaction_mode": null,
-        "answer_collection": "true_false",
+        "answer_collection": "mcq",
         "experience": "standard"
       },
-      "resolved_answer": false,
+      "options": [
+        {
+          "key": "A",
+          "value": 7,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 13,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 30,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 27,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 30,
       "hints": [
-        "We need to find the total of equal groups 10 groups of 3.",
+        "We need to find the total of equal groups 3 groups of 10.",
         "Think of it as 3 groups of 10: 10 + 10 + 10.",
         "Break 10 into 10 + 0: (10 × 3) + (0 × 3) = 30 + 0 = 30.",
         "The answer of 10 × 3 = 30."
       ],
       "sample_id": "95549a16fefa541633d5",
-      "replay_digest": "2d0a32b9118c1ee4962e97ee1a894f40b31edfdf5c840b66ea132437370cd34a"
+      "replay_digest": "95e3727e8733ca516e85746a2ee2b19a0ac53c6c35ebefe126cb54c187d3d4ea"
     },
     {
       "node_id": "mat_g2_na_q3_0",
@@ -1649,7 +1773,7 @@
       "node_id": "mat_g2_na_q3_0",
       "seed": 701,
       "formatter": "read_mcq",
-      "question_text": "💃 Sir Rez enjoys dance shoes. Here is a math challenge. Look at the array. It shows 5 groups of 4 (4 + 4 + 4 + 4 + 4). How many squares are shaded in all?",
+      "question_text": "💃 Sir Rez enjoys dance shoes. Here is a math challenge. Look at the array. It shows 4 groups of 5 (5 + 5 + 5 + 5). How many squares are shaded in all?",
       "correct_answer": "B",
       "requested": {
         "difficulty_profile": null,
@@ -1689,26 +1813,26 @@
       ],
       "resolved_answer": 20,
       "hints": [
-        "We need to find the total of equal groups 5 groups of 4.",
+        "We need to find the total of equal groups 4 groups of 5.",
         "Think of it as 4 groups of 5: 5 + 5 + 5 + 5.",
         "The answer of 5 × 4 = 20."
       ],
       "visual_type": "GridArea",
       "visual_payload": {
-        "rows": 5,
-        "cols": 4,
+        "rows": 4,
+        "cols": 5,
         "shaded": true,
         "highlight_groups": [],
         "shape_type": "rectangle",
         "correct_count": 20,
         "grid_size": [
-          6,
-          5
+          5,
+          6
         ]
       },
       "visual_render": {
         "visual_type": "GridArea",
-        "renderer_input_digest": "e6a467ae6739c022ee1cc2b75585c8c5189e83bb7cf15845b43a7ca61ac67ab6",
+        "renderer_input_digest": "b929f6f319c024862160be1cdefb93a8986134f0106de39dc19a89d3e67aa538",
         "description": {
           "source": "rendered_static_markup",
           "visual_type": "GridArea",
@@ -1720,7 +1844,7 @@
           "input_count": 0,
           "text_labels": [
             "Click squares to shade a",
-            "4 × 5",
+            "5 × 4",
             "rectangle",
             "20 square units",
             "Clear All",
@@ -1740,13 +1864,13 @@
         }
       },
       "sample_id": "95e4d6c571f9f3cbf44e",
-      "replay_digest": "4825556870646c0de447ef529c0927807572a1fdd86f4ea4395a672a3e98c8df"
+      "replay_digest": "e75d776d4a08189615680f5fa9785f8d763af72882b9d093f1ba1b1c00d3db99"
     },
     {
       "node_id": "mat_g2_na_q3_0",
       "seed": 702,
       "formatter": "set_fill_in_blank",
-      "question_text": "✝️ Moses enjoys olives. Here is a math challenge. Shade 9 groups of 2 squares to show 2 added 9 times. How many squares did you shade in all?",
+      "question_text": "✝️ Moses enjoys olives. Here is a math challenge. Shade 2 groups of 9 squares to show 9 + 9. How many squares did you shade in all?",
       "correct_answer": 18,
       "requested": {
         "difficulty_profile": null,
@@ -1764,26 +1888,26 @@
       },
       "resolved_answer": 18,
       "hints": [
-        "We need to find the total of equal groups 9 groups of 2.",
+        "We need to find the total of equal groups 2 groups of 9.",
         "Think of it as 2 groups of 9: 9 + 9.",
         "The answer of 9 × 2 = 18."
       ],
       "visual_type": "GridArea",
       "visual_payload": {
-        "rows": 9,
-        "cols": 2,
+        "rows": 2,
+        "cols": 9,
         "shaded": false,
         "highlight_groups": [],
         "shape_type": "rectangle",
         "correct_count": 18,
         "grid_size": [
-          10,
-          3
+          3,
+          10
         ]
       },
       "visual_render": {
         "visual_type": "GridArea",
-        "renderer_input_digest": "f9a341e7b0423faa3747b7fc97508dd786e0d65493fe2ee446c404894c719b50",
+        "renderer_input_digest": "7f4b85709b8c18b2978e2c6a825e4be109f32589130527c35ccd98f2a24cb759",
         "description": {
           "source": "rendered_static_markup",
           "visual_type": "GridArea",
@@ -1795,7 +1919,7 @@
           "input_count": 0,
           "text_labels": [
             "Click squares to shade a",
-            "2 × 9",
+            "9 × 2",
             "rectangle",
             "0 square units",
             "Clear All",
@@ -1818,17 +1942,14 @@
         }
       },
       "sample_id": "a1801ab2eaf2344d551d",
-      "replay_digest": "6ecdb0a1f38979d60408ac6f870d453238f388350143895c66e0ae8644081201"
+      "replay_digest": "3e4fe9c0d502d652d4f4c25934594ba6adc70b5d720f9b144a29ce59a8e8adc8"
     },
     {
       "node_id": "mat_g2_na_q3_0",
       "seed": 800,
-      "formatter": "error_detect",
-      "question_text": "Rico solved: \"There is 1 group of 2 (2), so there are ___ in all.\". Rico says the missing number is 1. Is Rico correct?",
-      "correct_answer": {
-        "has_error": true,
-        "correct_value": 2
-      },
+      "formatter": "mcq",
+      "question_text": "There is 1 group of 2 (2). How many in all?",
+      "correct_answer": 2,
       "requested": {
         "difficulty_profile": {
           "max_product": 1.0
@@ -1838,30 +1959,49 @@
       },
       "serving_mode": "student_path",
       "effective": {
-        "format": "error_detect",
+        "format": "mcq",
         "is_visual": false,
         "visual_type": null,
         "interaction_mode": null,
-        "answer_collection": "error_detect",
+        "answer_collection": "mcq",
         "experience": "standard"
       },
-      "resolved_answer": {
-        "has_error": true,
-        "correct_value": 2
-      },
+      "options": [
+        {
+          "key": "A",
+          "value": 3,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 4,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 1,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 2,
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 2,
       "hints": [
-        "We need to find the total of equal groups 2 groups of 1.",
+        "We need to find the total of equal groups 1 group of 2.",
         "Think of it as 1 group of 2: 2.",
         "The answer of 2 × 1 = 2."
       ],
       "sample_id": "d805c806a35c21a1ea3a",
-      "replay_digest": "4734e87ebd58a19eb1519bfe5ecf7ca1773d80e69f1c7518ea36d1a9cc8f74d5"
+      "replay_digest": "8b29d040dce06c84a92be34e6cb6cdac1f36de293c81dd3321133cfcd8519637"
     },
     {
       "node_id": "mat_g2_na_q3_0",
       "seed": 801,
       "formatter": "set_fill_in_blank",
-      "question_text": "Shade 7 groups of 4 squares to show 4 added 7 times. How many squares did you shade in all?",
+      "question_text": "Shade 4 groups of 7 squares to show 7 + 7 + 7 + 7. How many squares did you shade in all?",
       "correct_answer": 28,
       "requested": {
         "difficulty_profile": {
@@ -1881,26 +2021,26 @@
       },
       "resolved_answer": 28,
       "hints": [
-        "We need to find the total of equal groups 7 groups of 4.",
+        "We need to find the total of equal groups 4 groups of 7.",
         "Think of it as 4 groups of 7: 7 + 7 + 7 + 7.",
         "The answer of 7 × 4 = 28."
       ],
       "visual_type": "GridArea",
       "visual_payload": {
-        "rows": 7,
-        "cols": 4,
+        "rows": 4,
+        "cols": 7,
         "shaded": false,
         "highlight_groups": [],
         "shape_type": "rectangle",
         "correct_count": 28,
         "grid_size": [
-          8,
-          5
+          5,
+          8
         ]
       },
       "visual_render": {
         "visual_type": "GridArea",
-        "renderer_input_digest": "b8bfaf8ca1f44bb893a041abeb492d58f6241f4abaafb19c3d1dcb77b6ba1dd6",
+        "renderer_input_digest": "fd9785e51268ff8c2fff240eafd3d8bfb79aecec1c8e397f5d489449cc331f74",
         "description": {
           "source": "rendered_static_markup",
           "visual_type": "GridArea",
@@ -1912,7 +2052,7 @@
           "input_count": 0,
           "text_labels": [
             "Click squares to shade a",
-            "4 × 7",
+            "7 × 4",
             "rectangle",
             "0 square units",
             "Clear All",
@@ -1935,7 +2075,7 @@
         }
       },
       "sample_id": "5d0192dcd37d14fff257",
-      "replay_digest": "093150681d52834473e912163fd78e0a21f97fb73e728f2e0dc3f82b3f080e12"
+      "replay_digest": "9805011acde8a722aba77c0561afdb52a6457d863575701d0df153fb86519a67"
     },
     {
       "node_id": "mat_g2_na_q3_0",
@@ -1998,8 +2138,8 @@
     {
       "node_id": "mat_g2_na_q3_0",
       "seed": 901,
-      "formatter": "mcq",
-      "question_text": "Count 1 one by repeated addition (1): how many in all?",
+      "formatter": "cloze",
+      "question_text": "Count 1 one (1) = ___",
       "correct_answer": 1,
       "requested": {
         "difficulty_profile": {
@@ -2011,32 +2151,36 @@
       },
       "serving_mode": "student_path",
       "effective": {
-        "format": "mcq",
+        "format": "cloze",
         "is_visual": false,
         "visual_type": null,
         "interaction_mode": null,
-        "answer_collection": "mcq",
+        "answer_collection": "fill_in_blank",
         "experience": "standard"
       },
       "options": [
         {
           "key": "A",
           "value": 1,
+          "text": "1",
           "is_correct": true
         },
         {
           "key": "B",
           "value": 3,
+          "text": "3",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 0,
+          "text": "0",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 2,
+          "text": "2",
           "is_correct": false
         }
       ],
@@ -2047,7 +2191,7 @@
         "The answer of 1 × 1 = 1."
       ],
       "sample_id": "af5bef2b5853b9e12510",
-      "replay_digest": "f3af631e1cc93d5eecf14e5050ebc04a782f7e16abbfba3f000c90795afc7371"
+      "replay_digest": "0f5e4443ccd2ebca1452ae8550a3144e66100a37028d4b23a065eb213f88ab13"
     },
     {
       "node_id": "mat_g2_na_q3_0",
@@ -2093,7 +2237,7 @@
       ],
       "resolved_answer": 50,
       "hints": [
-        "We need to find the total of equal groups 10 groups of 5.",
+        "We need to find the total of equal groups 5 groups of 10.",
         "Think of it as 5 groups of 10: 10 + 10 + 10 + 10 + 10.",
         "Break 10 into 10 + 0: (10 × 5) + (0 × 5) = 50 + 0 = 50.",
         "The answer of 10 × 5 = 50."
@@ -2179,14 +2323,14 @@
         }
       },
       "sample_id": "ffe067d4f7b99798c259",
-      "replay_digest": "ad65c11d9428d8bbf36f1799ac0c9b809fe61dd712839018372624785bae513c"
+      "replay_digest": "0719d0ffa155a9607136976e8b5ed8beff6561b22d36c2d5d184404f3788730f"
     },
     {
       "node_id": "mat_g2_na_q3_0",
       "seed": 1001,
-      "formatter": "true_false",
-      "question_text": "There are 2 groups of 7. By repeated addition, 7 + 7 = 14. True or False?",
-      "correct_answer": true,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Shade 2 groups of 7 squares to show 7 + 7. How many squares did you shade in all?",
+      "correct_answer": 14,
       "requested": {
         "difficulty_profile": null,
         "student_interest": null,
@@ -2194,27 +2338,76 @@
       },
       "serving_mode": "student_path",
       "effective": {
-        "format": "true_false",
-        "is_visual": false,
-        "visual_type": null,
-        "interaction_mode": null,
-        "answer_collection": "true_false",
+        "format": "set_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "GridArea",
+        "interaction_mode": "set",
+        "answer_collection": "fill_in_blank",
         "experience": "mastery_drill"
       },
-      "resolved_answer": true,
+      "resolved_answer": 14,
       "hints": [
-        "We need to find the total of equal groups 7 groups of 2.",
+        "We need to find the total of equal groups 2 groups of 7.",
         "Think of it as 2 groups of 7: 7 + 7.",
         "The answer of 7 × 2 = 14."
       ],
+      "visual_type": "GridArea",
+      "visual_payload": {
+        "rows": 2,
+        "cols": 7,
+        "shaded": false,
+        "highlight_groups": [],
+        "shape_type": "rectangle",
+        "correct_count": 14,
+        "grid_size": [
+          3,
+          8
+        ]
+      },
+      "visual_render": {
+        "visual_type": "GridArea",
+        "renderer_input_digest": "d6a43b9f798cf52aa9d0804fffecf6838729ec2e0efcb8a6cf6d053c65ee45b3",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "GridArea",
+          "element_count": 27,
+          "svg_count": 1,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 1,
+          "input_count": 0,
+          "text_labels": [
+            "Click squares to shade a",
+            "7 × 2",
+            "rectangle",
+            "0 square units",
+            "Clear All",
+            "Click squares to shade/unshade"
+          ],
+          "distinct_colours": [
+            "hsl(var(--text-muted)",
+            "hsl(var(--primary)",
+            "#4b5563",
+            "#374151",
+            "#f8fafc,",
+            "#e2e8f0)",
+            "#cbd5e1",
+            "hsl(var(--border-color)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {
+            "grid-cell": 14
+          }
+        }
+      },
       "sample_id": "4a0c7a407bba9ecb5d28",
-      "replay_digest": "b9e4613d7d8e08321f8a8ddb4fcf1dc3408ffe8ce98f01d658bba8a20cf2d3a1"
+      "replay_digest": "6d862613a86e8e4dbcf6027cb28bdf2b8d1ea74f4aee74fb7b53fe7897edf06c"
     },
     {
       "node_id": "mat_g2_na_q3_0",
       "seed": 1002,
       "formatter": "set_fill_in_blank",
-      "question_text": "Shade 3 groups of 1 square to show 1 + 1 + 1. How many squares did you shade in all?",
+      "question_text": "Shade 1 group of 3 squares to show 3. How many squares did you shade in all?",
       "correct_answer": 3,
       "requested": {
         "difficulty_profile": null,
@@ -2232,26 +2425,26 @@
       },
       "resolved_answer": 3,
       "hints": [
-        "We need to find the total of equal groups 3 groups of 1.",
+        "We need to find the total of equal groups 1 group of 3.",
         "Think of it as 1 group of 3: 3.",
         "The answer of 3 × 1 = 3."
       ],
       "visual_type": "GridArea",
       "visual_payload": {
-        "rows": 3,
-        "cols": 1,
+        "rows": 1,
+        "cols": 3,
         "shaded": false,
         "highlight_groups": [],
         "shape_type": "rectangle",
         "correct_count": 3,
         "grid_size": [
-          4,
-          2
+          2,
+          4
         ]
       },
       "visual_render": {
         "visual_type": "GridArea",
-        "renderer_input_digest": "61f1dc5a913e151e1f669d1b9f95bfc899ad120804971a965fc00d3d1e3d591c",
+        "renderer_input_digest": "0e02c13ab8749752476e21369951e2c7653c8041a344da0b8010ffcde7a34391",
         "description": {
           "source": "rendered_static_markup",
           "visual_type": "GridArea",
@@ -2263,7 +2456,7 @@
           "input_count": 0,
           "text_labels": [
             "Click squares to shade a",
-            "1 × 3",
+            "3 × 1",
             "rectangle",
             "0 square units",
             "Clear All",
@@ -2286,7 +2479,7 @@
         }
       },
       "sample_id": "9aa1cc858d1c5b392f90",
-      "replay_digest": "13562a7dfc0279b577a60ceac97f3ba9551406b460f1ff976b1ccc93dd56ae34"
+      "replay_digest": "99b7a79a7c06903a1245f67ec1a30c8fe718974ae5f7689617338f8e77a1eae6"
     }
   ],
   "sample_assessments": [
@@ -2295,782 +2488,736 @@
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem presents a clear group setup (10 groups of 4) and explicit question asking for total. Options are distinct numerals offering varied distractors (30, 14, 39, 40) with no overlapping meaning. The structure unambiguously directs the learner toward multiplication reasoning."
+          "reasoning": "Problem clearly states 10 groups of 4 with notation showing 4 added 10 times, unambiguous in establishing both the grouping structure and the counting operation required for solution."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Abstract group counting is logically coherent for a mathematics exercise. No contradictions in setup; the scenario of counting items in groups without real-world constraint is pedagogically sound for teaching multiplication foundations."
+          "reasoning": "Equal-groups scenario presents logically sound mathematical context where determining total of repeated groups requires straightforward multiplication or repeated addition of the group value."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "Stem language clearly states 10 groups of 4. First hint reverses this to 4 groups of 10, introducing contradictory language structure to the learner. This reversal conflicts with the stem's explicit description and could confuse grade 2 students about what group structure means."
+          "verdict": "PASS",
+          "reasoning": "Language is direct and accessible to Grade 2 students: clear group-size specification, explicit repeated-addition reference, and structured answer format with manageable option range."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The answer 40 is mathematically correct for both 10x4 and 4x10 (multiplication is commutative). Option distractors (30, 14, 39) reflect plausible computational errors or nearby products. Hint equations (4x10=40) are accurate despite language reversal."
+          "reasoning": "Arithmetic is correct: ten groups of four items yields exactly 40 total items; all hints accurately trace from grouping through multiplication to final answer."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_0-20260930",
-      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_0:mat_g2_na_q3_0"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g2_na_q3_0-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g2_na_q3_0:mat_g2_na_q3_0"
     },
     {
       "sample_id": "919797545302a3f2294a",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Visual depiction shows two groups of four cross symbols arranged clearly. Stem text matches the visual arrangement precisely. Question asks for total items unambiguously, and multiple-choice options present distinct values (12, 9, 4, 8) without overlap."
+          "reasoning": "Visual display of two groups of four crosses combined with explicit text creates unambiguous representation of the equal-groups structure being assessed."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Emoji pictorial representation with descriptive text creates a coherent visual-linguistic context. Scenario of counting items in visually grouped arrangements is logically sound for concrete learning support."
+          "reasoning": "Read-only mcq format with emoji visual establishes logically valid scenario asking learner to enumerate total quantity from visually-grouped array of concrete objects."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "Visual clearly shows 2 groups of 4 items. First hint states 4 groups of 2, which contradicts both the stem text and the visual representation. This reversal creates discrepancy between what the image shows and what the hint describes, confusing the mapping between visual structure and language."
+          "verdict": "PASS",
+          "reasoning": "Emoji pictorial representation of concrete items supports early learner accessibility; grouping is visually explicit; question phrasing is simple and direct."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Answer 8 is correct for 2x4. Distractors (12, 9, 4) represent believable errors like counting wrong or selecting a single group. Hint statements (2x4=8) are mathematically sound."
+          "reasoning": "Two groups of four items totals eight; visual display shows exactly eight grouped crosses; all hints correctly trace problem structure and solution path."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_0-20260930",
-      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_0:mat_g2_na_q3_0"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g2_na_q3_0-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g2_na_q3_0:mat_g2_na_q3_0"
     },
     {
       "sample_id": "b2ad03d4ebfc5457114e",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Stem describes shading action and group structure clearly. The interactive grid task is well-defined: shade 10 groups of 4 squares. Instructions are direct with no competing interpretations of what constitute a single group or how to organize shading."
+          "reasoning": "Instruction to shade 4 groups of 10 squares with expanded notation 10+10+10+10 explicitly specifies both the grouping structure and the shading action required."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Shading squares in a grid to represent equal groups is a standard pedagogical approach for visualizing multiplication. Task structure is logical and appropriate for demonstrating repeated addition through manipulation."
+          "reasoning": "Interactive grid task logically structures the mathematical challenge: student constructs equal groups through shading while counting total cells affected."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "Stem says shade 10 groups of 4 squares. Hint 2 redirects thinking as 4 groups of 10, contradicting the stem's stated group structure. For a learner engaged with the shading task, this alternative framing creates confusion about the intended grouping pattern."
+          "verdict": "PASS",
+          "reasoning": "Clear click-to-shade interface, explicit group-size specification, and scaffolding hint progression support Grade 2 learner engagement with grid-based multiplication representation."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Answer 40 is correct for 10x4. Hints provide multiple decomposition strategies including the expanded form (10x4)+(0x4)=40+0=40, which is mathematically valid. Grid shading with 40 cells confirms the correct product."
+          "reasoning": "Four tens equal 40 exactly; grid contains precisely 40 interactive cells arranged in 4-by-10 configuration; decomposition hint correctly shows (10×4)+(0×4)=40."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_0-20260930",
-      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_0:mat_g2_na_q3_0"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g2_na_q3_0-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g2_na_q3_0:mat_g2_na_q3_0"
     },
     {
       "sample_id": "be8a7eb3a8c80e16fa44",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Stem uses the phrasing 3 tens with explicit addition notation (10+10+10) to show structure. Question asks for the result of this count. Multiple-choice options offer distinct values with clear numeric separation, allowing unambiguous selection."
+          "reasoning": "Problem unambiguously specifies counting three tens with expanded notation 10+10+10 showing the repeated-addition structure underlying the multiplication."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Counting tens by repeated addition is logically coherent for teaching base-10 multiplication. The scenario of aggregating like units is pedagogically appropriate and contextually valid."
+          "reasoning": "Tens-based grouping scenario is mathematically valid and developmentally appropriate for Grade 2, building base-ten conceptual understanding through repeated addition."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "Stem describes 3 tens (three groups of 10). Hint 1 states 10 groups of 3, fully reversing the multiplicand and multiplier. Hint 3 decomposes using references to groups of 3 and 0, which misaligns with the tens structure presented in the stem and visual."
+          "verdict": "PASS",
+          "reasoning": "Language pattern Count X tens is clear even in abstract form; notation shows additive structure explicitly; hints scaffold understanding from concrete grouping through multiplication."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Answer 30 is correct for 3x10. Option 13 seems to treat the 3 and 10 as separate addends rather than groups; option 27 suggests miscount. Final hint equation (10x3=30) is accurate despite earlier language reversal."
+          "reasoning": "Three groups of ten equals 30; decomposition hint correctly expands to (10×3)+(0×3)=30+0=30, demonstrating distributive principle."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_0-20260930",
-      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_0:mat_g2_na_q3_0"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g2_na_q3_0-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g2_na_q3_0:mat_g2_na_q3_0"
     },
     {
       "sample_id": "9dc537a0f73af4b66ef2",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Stem clearly indicates 9 groups of 2 via parenthetical expression (2 added 9 times). Question asks for count of shaded squares in an array. Multiple-choice options span a narrow numeric range with distinct values preventing ambiguity."
+          "reasoning": "Array display clearly shows two groups of nine shaded squares; read-only mcq format presents unambiguous structure for counting-based problem solving."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Observing shaded regions in a grid array and counting total squares is logically sound. Array visualization provides concrete reference for abstract multiplication."
+          "reasoning": "Static array format validly represents equal-groups scenario; visual arrangement allows direct verification of the two-groups-of-nine structure described in text."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "Stem explicitly states 9 groups of 2. Hint 2 reframes as 2 groups of 9 with the addition 9+9, which shows a different repeated-addition structure than the stem describes. This alternative framing contradicts the stem's group structure and may mislead learners about how to interpret the grid arrangement."
+          "verdict": "PASS",
+          "reasoning": "Array format is standard representation for Grade 2 multiplication; structured grid layout with clear shading makes group organization immediately visible to learners."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Answer 18 is mathematically correct for 9x2. Hint 2 correctly computes 9+9=18 via the commutativity of multiplication. Distractors suggest plausible errors like miscounting rows or columns."
+          "reasoning": "Two groups of nine shaded squares totals 18 exactly; grid shows precisely 18 cells in 2-by-9 arrangement; all hints accurately guide multiplicative thinking."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_0-20260930",
-      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_0:mat_g2_na_q3_0"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g2_na_q3_0-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g2_na_q3_0:mat_g2_na_q3_0"
     },
     {
       "sample_id": "94ab89bb2366c2c6fc8d",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Error-detection format is clear: stem presents a solved problem, shows the student's answer, asks if it is correct. The structure is unambiguous. Rosa's claim (missing number is 24) can be directly evaluated against the setup."
+          "reasoning": "Explicit statement of four groups of six with expanded notation 6+6+6+6 unambiguously establishes both the group structure and the operation to perform."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Presenting a peer's work for evaluation is a valid pedagogical scenario. The mathematical setup (4 groups of 6) matches the addition shown, creating logical consistency in the error-detection structure."
-        },
-        "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "Stem shows 4 groups of 6 with the addition sequence (6+6+6+6). Hint 1 reverses this to 6 groups of 4, changing the described group structure. Although hint 2 correctly restates the stem's structure, the initial reversal creates momentary confusion about which structure Rosa solved."
-        },
-        "mathematical_validity": {
-          "verdict": "PASS",
-          "reasoning": "Rosa's answer of 24 is correct; the error flag (has_error: False) appropriately reflects this. Hints correctly confirm the sum 6x4=24 via the addition pattern stated in the stem."
-        }
-      },
-      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_0-20260930",
-      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_0:mat_g2_na_q3_0"
-    },
-    {
-      "sample_id": "1bba9cd3ebc2683fd4f0",
-      "checks": {
-        "ambiguity": {
-          "verdict": "PASS",
-          "reasoning": "Stem presents a true/false statement: 1 group of 1, by repeated addition, equals 2. The claim is explicit and the task (mark true or false) is unambiguous."
-        },
-        "contextual_logical_validity": {
-          "verdict": "PASS",
-          "reasoning": "Testing logical reasoning about group structure with minimal (1x1) values is valid. The false statement (1 should equal 2) is logically incoherent, making the correct answer clear."
+          "reasoning": "Equal-groups scenario presents logically sound problem where counting total of iterated group values requires repeated addition or multiplicative thinking."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The group structure 1 group of 1 is symmetric, so reversing it yields the same result. Stem and hints align on the structure. Simple numeric values support clarity for early multiplication learners."
+          "reasoning": "Direct problem statement with explicit notation showing full repeated-addition structure is immediately accessible to Grade 2 learners encountering this multiplication fact."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Answer False is correct; 1x1 equals 1, not 2. The false premise in the stem is logically refutable, and hints correctly show 2x1=2 and 1x1=1 to disambiguate."
+          "reasoning": "Four groups of six items equals 24 total; hints correctly establish 6×4=24; answer among options is mathematically exact."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_0-20260930",
-      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_0:mat_g2_na_q3_0"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g2_na_q3_0-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g2_na_q3_0:mat_g2_na_q3_0"
     },
     {
       "sample_id": "23e1f2e56d38932eec57",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Error-detection format clearly presents Rico's calculation: 7 added 10 times, Rico claims 70. The question structure is direct and unambiguous, allowing straightforward evaluation."
+          "reasoning": "Problem clearly specifies counting 10 sevens by repeated addition, establishing the number-name plurality language pattern and the counting operation to perform."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "A student claiming a computational result is a realistic scenario. The setup (10 sevens via repeated addition) is logically coherent and appropriate for mathematical evaluation."
+          "reasoning": "Repeated-addition scenario logically asks learner to enumerate product of 10 factors of 7 through either additive or multiplicative reasoning path."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "Stem describes 10 sevens (7 added 10 times). Hint 1 states 7 groups of 10, reversing the quantities. This contradicts the stem's language structure and shifts how the learner should conceptualize the multiplicative arrangement."
+          "verdict": "PASS",
+          "reasoning": "Number-name pattern ten sevens is supported by parenthetical clarification showing 7 added 10 times, scaffolding learner access to this linguistic form for expressing multiplication."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Rico's answer of 70 is correct for 10x7 or 7x10 (multiplication is commutative). Hints confirm via the 10 times table reference and the equation 7x10=70, both accurate."
+          "reasoning": "Ten sevens equals 70 exactly; hints reference 10 times table and confirm 7×10=70; answer placement among distractors is mathematically sound."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_0-20260930",
-      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_0:mat_g2_na_q3_0"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g2_na_q3_0-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g2_na_q3_0:mat_g2_na_q3_0"
     },
     {
       "sample_id": "b831c0195fcd7f969998",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Multiple-choice stem is clear: count 10 tens by repeated addition with 10 added 10 times, asking for the total. Options present distinct values (99, 20, 100, 90) enabling unambiguous selection."
+          "reasoning": "Problem specifies counting 10 tens with 10 added 10 times notation, establishing both the group structure and the highest-level multiplicative fact being assessed."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Repeated addition of tens leading to 100 is a standard educational progression. The scenario is logically sound and builds fluency with base-10 structure."
+          "reasoning": "Ten-by-ten scenario represents developmentally appropriate challenge for Grade 2 third quarter, connecting base-ten understanding with advanced multiplicative reasoning."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Structure 10 groups of 10 is symmetric, so even if hints reverse to 10 groups of 10 again, no confusion results. Simple repeated-addition setup with clear numeric values supports learner understanding."
+          "reasoning": "Tens language is familiar to Grade 2 students; explicit notation and decomposition hint provide multiple conceptual entry points for solving this highest-magnitude product."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Answer 100 is correct for 10x10. Option 99 represents off-by-one error, option 20 treats them as separate addends, option 90 omits one group. Hints correctly show the multiplication and decomposition."
+          "reasoning": "Ten tens equals 100 exactly; decomposition hint correctly shows (10×10)+(0×10)=100+0=100; mathematical relationships are precise and scaffolded appropriately."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_0-20260930",
-      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_0:mat_g2_na_q3_0"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g2_na_q3_0-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g2_na_q3_0:mat_g2_na_q3_0"
     },
     {
       "sample_id": "521444d9d477353dc3f4",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Stem directs shading action clearly: shade 8 groups of 10 squares representing 10 added 8 times. Task is unambiguous about group count, group size, and expected action."
+          "reasoning": "Instruction to shade 10 groups of 8 squares explicitly specifies the grouping structure and action; notation 8 added 10 times clarifies the repeated-addition interpretation."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Grid-based shading to represent equal groups is a standard manipulative approach. Scenario setup is logically coherent with pedagogical intent."
+          "reasoning": "Interactive grid construction task logically requires student to create equal groups through shading while engaging in counting across 80 total cells."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "Stem specifies 8 groups of 10 squares. Hint 2 refers to the 10 times table with 10x8, which while mathematically equivalent, shifts phrasing from the stem's structure. Learners manipulating 8 groups might momentarily question whether the hint is describing the same arrangement."
+          "verdict": "PASS",
+          "reasoning": "Clear shading interface, explicit ten-times structure, and grid-based visual support create accessible task for Grade 2 learners working with larger-magnitude multiplication facts."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Answer 80 is correct for 8x10. Hints provide multiplication and table reference (10x8 from the 10 times table), both accurate. Grid-cell count of 80 confirms."
+          "reasoning": "Ten groups of eight cells totals 80 exactly; grid shows precisely 80 interactive cells; shading action and counting align with multiplicative problem structure."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_0-20260930",
-      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_0:mat_g2_na_q3_0"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g2_na_q3_0-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g2_na_q3_0:mat_g2_na_q3_0"
     },
     {
       "sample_id": "6783e5edfd947895b600",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Stem uses Count 3 eights with explicit addition notation (8+8+8), clearly establishing the problem. Multiple-choice options are distinct, enabling unambiguous correct selection."
+          "reasoning": "Read-mcq with emoji pictorial displays three distinct visual sections containing eight dancer emojis each, creating unambiguous visual representation of three-by-eight grouping."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Counting repeated addends is a standard repeated-addition scenario. The mathematical setup is logically valid."
+          "reasoning": "Emoji theme does not interfere with mathematical structure; visual grouping validly represents equal-groups problem with concrete representational support."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "Stem presents 3 eights (three groups of 8). Hint 1 describes this as 8 groups of 3, fully reversing the multiplicand and multiplier. Hint 2 corrects by restating the stem's structure, but the initial reversal creates intermediate confusion."
+          "verdict": "PASS",
+          "reasoning": "Emoji pictorial representation of concrete items supports Grade 2 learner engagement; group separation is visually explicit; question is clear and direct."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Answer 24 is correct for 3x8 or 8x3. Distractors reflect plausible errors. Hints confirm via the multiplication and table reference."
+          "reasoning": "Three groups of eight items totals 24 exactly; visual display shows precisely 24 grouped emojis across three sections; arithmetic is correct."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_0-20260930",
-      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_0:mat_g2_na_q3_0"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g2_na_q3_0-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g2_na_q3_0:mat_g2_na_q3_0"
     },
     {
       "sample_id": "3c35dbf9880096867b65",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Stem presents a realistic word problem: Moses puts 3 baskets in each of 5 bags. Question asks for total baskets. Structure is unambiguous; options are distinct numerals."
+          "reasoning": "Real-world context of baskets in bags creates slightly indirect grouping language; however, hints clarify interpretation as groups of baskets, resolving any potential ambiguity."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Scenario of distributing items into containers is logically coherent and grounded in realistic activity. Multiplicative structure (5 bags with 3 baskets each) maps naturally to equal-groups language."
+          "reasoning": "Contextual framing using familiar scenario of distributing items into containers logically represents equal-groups mathematical relationship to Grade 2 learners."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "Stem structure describes 5 bags with 3 baskets each (5 groups of 3). Hint 2 reframes as 3 groups of 5 with the addition 5+5+5, which shifts the grouping logic from the stem. Although mathematically equivalent, the alternative framing contradicts the original scenario phrasing."
+          "verdict": "PASS",
+          "reasoning": "Real-world context supports learner engagement; problem structure is clear; hint progression scaffolds interpretation of the grouping relationship being modeled."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Answer 15 is correct for 5x3. Distractors represent plausible errors. Hints confirm the multiplication via both the direct equation and the repeated-addition breakdown."
+          "reasoning": "Three baskets per five bags represents either 5 groups of 3 or 3 groups of 5; hints confirm 3 groups of 5 interpretation yielding 15 total baskets."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_0-20260930",
-      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_0:mat_g2_na_q3_0"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g2_na_q3_0-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g2_na_q3_0:mat_g2_na_q3_0"
     },
     {
       "sample_id": "1774567e774e3a739963",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Error-detection stem is explicit: Jose solved stating 5 groups of 3 with addition (3+3+3+3+3), Jose claims answer 15. Question is unambiguous in structure."
+          "reasoning": "Explicit statement of five groups of three with complete repeated-addition display (3+3+3+3+3) creates unambiguous representation of the specific language example required by competency."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Peer error-detection scenario is valid. The mathematical relationship (5 groups of 3 = 15) is logically coherent."
+          "reasoning": "Problem directly instantiates the competency-specified language pattern; equal-groups structure is mathematically valid and pedagogically sound for Grade 2."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "Stem shows exactly 5 groups of 3 with the full addition sequence. Hint 1 reverses to 3 groups of 5, contradicting Jose's stated structure. Hint 2 then restates the stem correctly, but the reversal creates moment of misalignment."
+          "verdict": "PASS",
+          "reasoning": "Phrasing there are 5 groups of 3 is explicit; expanded notation shows complete repeated-addition structure; language matches competency requirement exactly."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Jose's answer 15 is correct; the error flag (has_error: False) is appropriate. Hints confirm via multiplication and repeated-addition shown in the stem."
+          "reasoning": "Five groups of three items equals 15 exactly; repeated-addition display 3+3+3+3+3 correctly represents this fact; multiplication result 3×5=15 is accurate."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_0-20260930",
-      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_0:mat_g2_na_q3_0"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g2_na_q3_0-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g2_na_q3_0:mat_g2_na_q3_0"
     },
     {
       "sample_id": "a9f8fc4f3295981396ad",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Visual shows 3 groups of 3 volleyball emoji. Stem text matches visual. Multiple-choice question asks unambiguously for total item count. Options are distinct numerals enabling clear selection."
+          "reasoning": "EmojiPictorial display shows three distinct visual sections containing three volleyball emojis each, creating unambiguous equal-groups structure with explicit visual separation."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Visual representation with concrete emoji supports logical understanding. Scenario of counting grouped objects is pedagogically sound."
+          "reasoning": "Read-only mcq format validly presents three-by-three grouping scenario; emoji representation does not interfere with mathematical structure assessment."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Group structure 3x3 is symmetric, so reversals yield the same result. Visual clearly shows three groups, each containing three items. Hints align without creating structural confusion."
+          "reasoning": "Emoji pictorial with explicit grouping and simple question phrasing is highly accessible to Grade 2 learners; visual arrangement makes group structure immediately apparent."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Answer 9 is correct for 3x3. Visual rendering with nine volleyball symbols confirms. Distractors suggest plausible errors. Hints are mathematically sound."
+          "reasoning": "Three groups of three items totals 9 exactly; visual display shows precisely 9 grouped volleyball emojis; all arithmetic relationships are correct."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_0-20260930",
-      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_0:mat_g2_na_q3_0"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g2_na_q3_0-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g2_na_q3_0:mat_g2_na_q3_0"
     },
     {
       "sample_id": "0c3c3e065d0ac16de580",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "True/false stem is explicit: 2 groups of 6, by repeated addition, 6+6=14. The claim is clear and falsifiable. Format unambiguously directs the evaluative task."
+          "reasoning": "Problem clearly specifies two groups of six items with notation 6+6 showing the repeated-addition structure and total count expected."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Testing whether a mathematical claim (6+6=14) is true or false is logically sound. The false premise creates valid educational content."
+          "reasoning": "Equal-groups scenario logically establishes the fundamental multiplication relationship being assessed; repeated-addition notation makes counting operation explicit."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "Stem describes 2 groups of 6. Hint 1 states 6 groups of 2, reversing the structure. Hint 2 corrects back to the stem's structure, but the reversal creates confusion about which group arrangement the addition refers to."
+          "verdict": "PASS",
+          "reasoning": "Cloze format with groups-of phrasing and explicit additive notation provides clear problem structure for Grade 2 students working with multiplication facts under 20."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Answer False is correct; 6+6=12, not 14. Hint 3 explicitly shows this via 6x2=12, confirming the error in the stem's claim. Hints are mathematically accurate despite initial language reversal."
+          "reasoning": "Two groups of six totals 12 exactly; 6+6 notation correctly represents the arithmetic; answer 12 is mathematically precise."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_0-20260930",
-      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_0:mat_g2_na_q3_0"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g2_na_q3_0-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g2_na_q3_0:mat_g2_na_q3_0"
     },
     {
       "sample_id": "60dc22be5cf677a6c1ea",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Error-detection format presents Liza's solution with explicit addition notation (5+5+5). Liza's claim of 15 is directly stated. Question structure is clear and unambiguous."
+          "reasoning": "Problem clearly specifies counting 3 fives using number-name plural form with parenthetical repeated-addition clarification (5+5+5) to establish the counting operation."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Evaluating a peer's computational claim is a valid scenario. Mathematical setup (3 fives = 15) is logically coherent."
+          "reasoning": "Number-name plurality language pattern is mathematically valid representation of multiplicative grouping; repeated-addition notation makes underlying operation transparent."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "Stem shows 3 fives (Count 3 fives with 5+5+5). Hint 1 reverses to 5 groups of 3, contradicting the stated arrangement. Hint 2 correctly restates, but the reversal introduces intermediate misalignment."
+          "verdict": "PASS",
+          "reasoning": "Number-name pattern three fives is supported by explicit addition notation; hint progression scaffolds understanding of this linguistic form for expressing multiplication."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Liza's answer 15 is correct; error flag (has_error: False) is appropriate. Hints confirm via the multiplication and decomposition."
+          "reasoning": "Three fives equals 15 exactly; repeated-addition display 5+5+5 correctly represents this multiplication fact; all arithmetic is mathematically sound."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_0-20260930",
-      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_0:mat_g2_na_q3_0"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g2_na_q3_0-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g2_na_q3_0:mat_g2_na_q3_0"
     },
     {
       "sample_id": "1b2b84d62df0fc51838b",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Cloze stem is explicit: Count 2 fives with the addition shown (5+5), asking for the result. Multiple-choice options are distinct numerals."
+          "reasoning": "Problem clearly specifies counting 2 fives with notation (5+5) establishing both the number-name language pattern and the additive structure to be computed."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Counting repeated fives is logically sound for teaching repeated addition. Scenario setup is pedagogically appropriate."
+          "reasoning": "Equal-groups scenario using number-name language is logically sound; additive operation maps directly to multiplicative thinking required by competency."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "Stem describes 2 fives (5+5). Hint 1 reverses to 5 groups of 2, changing the addend structure. Although hint 2 corrects with the stem's structure, the reversal momentarily confuses the counting arrangement."
+          "verdict": "PASS",
+          "reasoning": "Number-name pattern two fives with explicit addition notation is accessible to Grade 2 learners; syntax is simple; counting operation is transparent."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Answer 10 is correct for 2x5. Distractors reflect plausible errors like miscount or incorrect addend. Hints confirm via multiplication."
+          "reasoning": "Two fives equals 10 exactly; repeated-addition notation 5+5 correctly represents this fact; multiplication relationship 5×2=10 is mathematically accurate."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_0-20260930",
-      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_0:mat_g2_na_q3_0"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g2_na_q3_0-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g2_na_q3_0:mat_g2_na_q3_0"
     },
     {
       "sample_id": "3357f166687081a38fb4",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Stem directs shading action clearly: shade 3 groups of 10 squares to show 10+10+10. Task specifies group structure and expected total, enabling unambiguous completion."
+          "reasoning": "Instruction to shade 10 groups of 3 squares explicitly specifies grouping structure; notation 3 added 10 times clarifies the repeated-addition operation and total quantity."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Grid-based shading for equal-groups visualization is standard practice. Scenario setup is logically coherent."
+          "reasoning": "Interactive grid construction task logically requires student to create equal groups while engaging in counting across 30 total cells through direct shading action."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Stem clearly specifies 3 groups of 10. Hint 2 references the 10 times table with 10x3, which while phrased differently, maintains focus on the 10s grouping. Shading action and hint support align reasonably well."
+          "reasoning": "Clear shading interface with ten-times structure and grid visual support provides accessible task format for Grade 2 learners working with products of ten."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Answer 30 is correct for 3x10. Hints confirm via times-table reference and multiplication. Grid rendering with 30 cells and initial count of 0 confirms correctness."
+          "reasoning": "Ten groups of three equals 30 exactly; grid contains precisely 30 interactive cells arranged in 10-by-3 configuration; shading and counting are mathematically sound."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_0-20260930",
-      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_0:mat_g2_na_q3_0"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g2_na_q3_0-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g2_na_q3_0:mat_g2_na_q3_0"
     },
     {
       "sample_id": "d4fe917d5ae81baecc03",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Multiple-choice stem is explicit: 3 groups of 2 with addition shown (2+2+2). Question asks for total. Options are distinct numerals with no overlapping meaning."
+          "reasoning": "Read-mcq with emoji pictorial displays three distinct visual sections containing two volleyball emojis each, creating unambiguous three-by-two equal-groups structure."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Counting grouped items is logically sound. The scenario is appropriate for multiplication introduction."
+          "reasoning": "Emoji visual representation validly instantiates equal-groups concept; read-only interaction mode logically assesses learner counting ability without construction demands."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "Stem shows 3 groups of 2 with explicit addition (2+2+2). Hint 1 states 2 groups of 3, fully reversing the multiplicand and multiplier. Hint 2 restates the stem's structure, but the reversal creates momentary confusion."
+          "verdict": "PASS",
+          "reasoning": "Emoji pictorial with clear visual grouping and simple question phrasing is highly accessible to Grade 2 learners; group organization is immediately visible."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Answer 6 is correct for 3x2. Distractors represent plausible errors. Hint 3 expresses as 2x3=6, which is mathematically equivalent but phrased differently from stem structure."
+          "reasoning": "Three groups of two items totals 6 exactly; visual display shows precisely 6 grouped volleyball emojis across three sections; all relationships are mathematically correct."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_0-20260930",
-      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_0:mat_g2_na_q3_0"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g2_na_q3_0-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g2_na_q3_0:mat_g2_na_q3_0"
     },
     {
       "sample_id": "7573d889b5c1407d1d35",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Read-only multiple-choice stem clearly indicates 6 groups of 10 with array context. Question asks for shaded count. Options are distinct numerals."
+          "reasoning": "Static grid array clearly displays 10 groups of 6 shaded squares; read-only mcq format presents unambiguous structure describing the ten-by-six array arrangement."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Visual array representation of grouped squares is logically coherent. Scenario of counting shaded regions in an array is pedagogically sound."
+          "reasoning": "Array format validly represents ten-times-six multiplication scenario; visual structure allows direct verification of the ten-groups-of-six relationship described in stem."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "Stem states 6 groups of 10 (10 added 6 times). Hint 2 uses the phrasing 10 times table with 10x6, which while maintaining focus on tens, shifts from the stem's explicit group-count presentation. This could confuse learners about grouping structure."
+          "verdict": "PASS",
+          "reasoning": "Array format is standard Grade 2 representation; grid layout with clear shading makes ten-times structure and group organization immediately discernible to learners."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Answer 60 is correct for 6x10. Hints confirm via times-table and multiplication. Grid rendering shows 60 cells."
+          "reasoning": "Ten groups of six shaded squares totals 60 exactly; grid shows precisely 60 cells in 10-by-6 arrangement; all multiplicative relationships are mathematically accurate."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_0-20260930",
-      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_0:mat_g2_na_q3_0"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g2_na_q3_0-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g2_na_q3_0:mat_g2_na_q3_0"
     },
     {
       "sample_id": "c52cb4273747425f1644",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Cloze stem is explicit: Count 6 fours with addition notation (4 added 6 times). Question is unambiguous. Multiple-choice options are distinct numerals."
+          "reasoning": "Problem clearly specifies counting 6 fours using number-name plural form with clarification (4 added 6 times) establishing both the language pattern and the operation."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Counting repeated addends is logically sound. The scenario is appropriate for repeated-addition instruction."
+          "reasoning": "Number-name plurality language is mathematically valid expression of equal-groups concept; six-times table reference in hints makes multiplicative operation explicit."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "Stem describes 6 fours (4 added 6 times). Hint 1 reverses to 4 groups of 6, contradicting the stated addend structure. Hint 2 references the 6 times table with 6x4, which also shifts phrasing. This creates multiple framings competing with the stem's structure."
+          "verdict": "PASS",
+          "reasoning": "Number-name pattern six fours with parenthetical addition clarification is accessible to Grade 2 students; hint reference to six times table scaffolds multiplication fluency."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Answer 24 is correct for 6x4. Distractors suggest plausible errors. Hints provide confirmation despite phrasing shifts."
+          "reasoning": "Six fours equals 24 exactly; six-times table reference and multiplication result 4×6=24 are both mathematically accurate; all relationships are sound."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_0-20260930",
-      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_0:mat_g2_na_q3_0"
-    },
-    {
-      "sample_id": "1d0518b26a8edf7a2441",
-      "checks": {
-        "ambiguity": {
-          "verdict": "PASS",
-          "reasoning": "Multiple-choice stem is clear: Count 10 threes by repeated addition with 3 added 10 times. Question asks for total. Options are distinct numerals."
-        },
-        "contextual_logical_validity": {
-          "verdict": "PASS",
-          "reasoning": "Repeated multiplication of a small number is logically valid. Scenario is appropriate for teaching multiplication fluency."
-        },
-        "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "Stem presents 10 threes (3 added 10 times). Hint 1 states 3 groups of 10, reversing the quantities significantly. Hint 2 uses the 10 times table phrasing (10x3), which shifts from the stem's structure."
-        },
-        "mathematical_validity": {
-          "verdict": "PASS",
-          "reasoning": "Answer 30 is correct for 10x3 or 3x10. Distractors represent plausible errors. Hints confirm via multiplication."
-        }
-      },
-      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_0-20260930",
-      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_0:mat_g2_na_q3_0"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g2_na_q3_0-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g2_na_q3_0:mat_g2_na_q3_0"
     },
     {
       "sample_id": "7b164bc16e564bc4f6b2",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Stem directs shading action explicitly: shade 9 groups of 10 squares to show 10 added 9 times. Task is unambiguous about what to shade and expected count."
+          "reasoning": "Instruction to shade 10 groups of 9 squares explicitly specifies grouping structure; notation 9 added 10 times clarifies the repeated-addition operation and total quantity."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Interactive grid shading representing equal groups is logically coherent. Scenario setup is pedagogically sound."
+          "reasoning": "Interactive grid construction task logically requires student to create and count equal groups through direct shading while engaging with products of ten."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "Stem specifies 9 groups of 10. Hint 2 references the 10 times table with 10x9, subtly shifting phrasing from the stem's group-structure language. While mathematically aligned, this alternative framing could momentarily confuse learners engaged with shading."
+          "verdict": "PASS",
+          "reasoning": "Clear shading interface with ten-times structure and interactive grid support provides accessible task for Grade 2 learners working with larger-magnitude multiplication facts."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Answer 90 is correct for 9x10. Hints confirm via times-table and multiplication. Grid rendering displays 90 cells."
+          "reasoning": "Ten groups of nine cells totals 90 exactly; grid contains precisely 90 interactive cells arranged in 10-by-9 configuration; all arithmetic and grouping are mathematically sound."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_0-20260930",
-      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_0:mat_g2_na_q3_0"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g2_na_q3_0-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g2_na_q3_0:mat_g2_na_q3_0"
     },
     {
       "sample_id": "95549a16fefa541633d5",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "True/false stem is explicit: 3 groups of 10 by repeated addition equals 29. Claim is clearly falsifiable. Question structure is unambiguous."
+          "reasoning": "Problem explicitly states 3 groups of 10 with notation showing 10+10+10, creating unambiguous structure for this common multiplicative relationship in Grade 2 curriculum."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Testing a mathematical claim against a false result is logically sound. Scenario creates valid critical-reasoning content."
+          "reasoning": "Equal-groups scenario using tens is logically sound; repeated-addition notation makes the counting operation transparent and developmentally appropriate."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "Stem shows 3 groups of 10 (10+10+10). Hint 1 reverses to 10 groups of 3, contradicting the multiplicand structure. Hint 2 restates correctly, but the reversal introduces confusion about which structure is being evaluated."
+          "verdict": "PASS",
+          "reasoning": "Problem phrasing is direct; notation shows full repeated-addition structure explicitly; decomposition hint supports multiple pathways to understanding tens-based multiplication."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Answer False is correct; 10+10+10=30, not 29. Hints confirm this via decomposition (10x3)+0x3=30+0=30 and direct multiplication."
+          "reasoning": "Three groups of ten totals 30 exactly; repeated-addition notation and decomposition hint correctly show 10+10+10 and (10×3)+(0×3)=30; all mathematics is accurate."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_0-20260930",
-      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_0:mat_g2_na_q3_0"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g2_na_q3_0-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g2_na_q3_0:mat_g2_na_q3_0"
     },
     {
       "sample_id": "c5de95213ece73f05d3d",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Read-only multiple-choice stem presents 3 groups of 3 items with visual support. Question asks for total item count unambiguously. Options are distinct numerals."
+          "reasoning": "Read-mcq with emoji pictorial displays three explicit visual sections containing three volleyball emojis each, creating unambiguous three-by-three equal-groups structure."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Visual depiction with matching text creates logically coherent scenario. Counting grouped objects is appropriate."
+          "reasoning": "Emoji visual representation validly instantiates three-by-three equal-groups scenario; read-only interaction mode appropriately assesses learner counting and grouping recognition."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Group structure 3x3 is symmetric, so reversals yield the same conceptual result. Visual and text align clearly showing three groups of three. Hints support without creating structural confusion."
+          "reasoning": "Emoji pictorial with clear visual separation of groups and simple question phrasing is highly accessible to Grade 2 learners; array structure is immediately apparent."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Answer 9 is correct for 3x3. Visual rendering confirms nine volleyball symbols. Hints are accurate."
+          "reasoning": "Three groups of three items totals 9 exactly; visual display shows precisely 9 grouped volleyball emojis across three explicit sections; all relationships are mathematically sound."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_0-20260930",
-      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_0:mat_g2_na_q3_0"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g2_na_q3_0-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g2_na_q3_0:mat_g2_na_q3_0"
     },
     {
       "sample_id": "95e4d6c571f9f3cbf44e",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Stem presents context (Sir Rez enjoys dance shoes) followed by explicit mathematical setup: 5 groups of 4 with addition shown. Question asks for shaded count. Structure is clear."
+          "reasoning": "Read-mcq with array display clearly shows 4 groups of 5 shaded squares; dance-shoes theming in stem does not interfere with mathematical structure or problem clarity."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Thematic personalization with dance shoes does not interfere with mathematical logic. Array scenario and group count remain coherent regardless of theme."
+          "reasoning": "Array format validly represents four-by-five multiplication scenario; visual grid arrangement allows direct verification of the grouping structure described in text."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "Stem shows 5 groups of 4 (4+4+4+4+4). Hint 2 reframes as 4 groups of 5 with the addition 5+5+5+5, changing the group structure. Although mathematically equivalent, this contradicts the stem's stated arrangement."
+          "verdict": "PASS",
+          "reasoning": "Array format is standard Grade 2 representation; grid layout clearly shows four rows of five cells; thematic element is incidental and does not obscure mathematical content."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Answer 20 is correct for 5x4 or 4x5. Hints confirm via both arrangements. Grid rendering shows 20 cells."
+          "reasoning": "Four groups of five shaded squares totals 20 exactly; grid shows precisely 20 cells in 4-by-5 arrangement; all multiplicative relationships are mathematically accurate."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_0-20260930",
-      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_0:mat_g2_na_q3_0"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g2_na_q3_0-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g2_na_q3_0:mat_g2_na_q3_0"
     },
     {
       "sample_id": "a1801ab2eaf2344d551d",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Stem presents context (Moses enjoys olives) then directs shading action explicitly: shade 9 groups of 2 squares to show 2 added 9 times. Task is unambiguous."
+          "reasoning": "Instruction to shade 2 groups of 9 squares explicitly specifies grouping structure; notation 9+9 shows repeated-addition operation; theming (olives) is contextual background."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Thematic personalization with olives does not create logical incoherence. Grid-shading scenario remains pedagogically sound."
+          "reasoning": "Interactive grid construction with thematic context logically engages student in creating equal groups while building understanding of two-by-nine multiplication fact."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "Stem specifies 9 groups of 2 squares. Hint 2 reframes as 2 groups of 9 with the addition 9+9, shifting the grouping logic. While solutions are equivalent, the alternative framing contradicts the stem's group structure."
+          "verdict": "PASS",
+          "reasoning": "Clear shading interface with two-by-nine grouping structure and grid layout provides accessible task; thematic element supports engagement without interfering with mathematics."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Answer 18 is correct for 9x2 or 2x9. Hints confirm via multiplication. Grid rendering displays 18 cells."
+          "reasoning": "Two groups of nine squares totals 18 exactly; grid contains precisely 18 interactive cells arranged in 2-by-9 configuration; shading action maps correctly to multiplicative problem."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_0-20260930",
-      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_0:mat_g2_na_q3_0"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g2_na_q3_0-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g2_na_q3_0:mat_g2_na_q3_0"
     },
     {
       "sample_id": "d805c806a35c21a1ea3a",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Error-detection format is explicit: Rico solved showing 1 group of 2, claims answer 1. Question is unambiguous about whether Rico is correct."
+          "reasoning": "Problem clearly specifies one group of 2 items totaling 2, unambiguously instantiating the multiplicative identity property where multiplying by one preserves the multiplicand."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Peer evaluation scenario is valid. Mathematical setup (1 group of 2 should equal 2, not 1) is logically sound."
+          "reasoning": "Multiplicative identity scenario is logically sound and developmentally essential for comprehensive multiplication understanding, representing edge case that completes the concept."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "Stem shows 1 group of 2. Hint 1 reverses to 2 groups of 1, contradicting the stated structure. Hint 2 restates correctly, but the reversal creates momentary misalignment in understanding Rico's work."
+          "verdict": "PASS",
+          "reasoning": "Simple phrasing one group of 2 is immediately clear; notation (2) shows the single group explicitly; problem is accessible to Grade 2 learners encountering identity property."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Rico's answer 1 is wrong; correct value is 2 (has_error: True). Hints confirm this via 2x1=2 and restating the structure."
+          "reasoning": "One group of two items equals two exactly; 2×1=2 is mathematically precise; all relationships correctly express the multiplicative identity principle."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_0-20260930",
-      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_0:mat_g2_na_q3_0"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g2_na_q3_0-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g2_na_q3_0:mat_g2_na_q3_0"
     },
     {
       "sample_id": "5d0192dcd37d14fff257",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Stem directs shading action clearly: shade 7 groups of 4 squares to show 4 added 7 times. Task specifies group count and group size unambiguously."
+          "reasoning": "Instruction to shade 4 groups of 7 squares explicitly specifies grouping structure; notation 7+7+7+7 shows complete repeated-addition representation and expected total."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Interactive grid shading for equal-groups visualization is pedagogically sound. Scenario setup is logically coherent."
+          "reasoning": "Interactive grid construction task logically requires student to create equal-sized groups through direct shading while counting across 28 total cells in groups of seven."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "Stem specifies 7 groups of 4. Hint 2 reframes as 4 groups of 7 with the repeated addition, altering the grouping structure. While mathematically equivalent, this contradicts the stem's stated arrangement."
+          "verdict": "PASS",
+          "reasoning": "Clear shading interface with four-by-seven grouping structure and manageable grid layout provides accessible task format for Grade 2 learners working with multiplication facts."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Answer 28 is correct for 7x4. Hints confirm via multiplication. Grid rendering shows 28 cells."
+          "reasoning": "Four groups of seven squares totals 28 exactly; grid shows precisely 28 interactive cells arranged in 4-by-7 configuration; all arithmetic and grouping are mathematically sound."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_0-20260930",
-      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_0:mat_g2_na_q3_0"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g2_na_q3_0-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g2_na_q3_0:mat_g2_na_q3_0"
     },
     {
       "sample_id": "8199681a5c80e7967031",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Cloze stem is clear: Count 1 one with notation (1) and ask for result. Multiple-choice options are distinct numerals."
+          "reasoning": "Problem clearly specifies counting 1 one using number-name singular form; notation (1) shows the single item explicitly, unambiguously establishing the multiplicative identity at foundational level."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Counting a single one-unit is logically sound. Edge case is appropriate for establishing multiplication foundations."
+          "reasoning": "Multiplicative identity scenario with number-name language is logically sound; one-by-one case represents essential edge case for complete multiplication concept coverage."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Multiplication structure 1x1 is symmetric, so reversals are immaterial. Hints align without creating structural confusion. Simple numeric values support clarity."
+          "reasoning": "Number-name pattern one one is simple and direct; notation shows single item explicitly; problem is accessible to Grade 2 learners encountering identity property with singular form."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Answer 1 is correct for 1x1. Hints confirm via multiplication. Edge case is mathematically sound."
+          "reasoning": "One one equals one exactly; 1×1=1 is mathematically precise; all relationships correctly express multiplicative identity with multiplicand of one."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_0-20260930",
-      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_0:mat_g2_na_q3_0"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g2_na_q3_0-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g2_na_q3_0:mat_g2_na_q3_0"
     },
     {
       "sample_id": "af5bef2b5853b9e12510",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Multiple-choice stem is explicit: Count 1 one by repeated addition with 1 as the addend. Question asks for total. Options are distinct numerals."
+          "reasoning": "Problem clearly specifies counting 1 one using number-name form with alternative multiple-choice options; problem structure is unambiguous despite identical problem to another sample."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Repeated addition of one is logically valid. Edge case supports understanding of multiplication foundations."
+          "reasoning": "Multiplicative identity scenario is logically sound; one-by-one case remains essential edge case demonstrating that one group of any quantity equals that quantity."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Multiplicative structure 1x1 is symmetric. Hints maintain consistency without creating confusion. Simple setup supports learner comprehension."
+          "reasoning": "Number-name pattern one one is simple and clear; alternative option placement provides varied exposure to identity property at foundational multiplicand level."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Answer 1 is correct for 1x1. Hints confirm via multiplication. Edge case is mathematically accurate."
+          "reasoning": "One one equals one exactly; 1×1=1 is mathematically precise; all relationships correctly express the multiplicative identity principle with different distractors."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_0-20260930",
-      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_0:mat_g2_na_q3_0"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g2_na_q3_0-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g2_na_q3_0:mat_g2_na_q3_0"
     },
     {
       "sample_id": "ffe067d4f7b99798c259",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Read-only multiple-choice stem shows visual cupcake groups with text stating 5 groups of 10 cupcakes. Question asks for total count unambiguously. Options are distinct numerals."
+          "reasoning": "Read-mcq with emoji pictorial shows five explicit visual sections containing ten cupcake emojis each; theming supports mathematical clarity; five-groups-of-ten structure is unambiguous."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Realistic scenario of counting cupcakes in groups is logically sound. Visual support with emoji makes scenario concrete."
+          "reasoning": "Emoji pictorial with cupcake theme validly instantiates five-by-ten multiplication scenario; visual grouping allows verification of the equal-groups structure described."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "Stem states 5 groups of 10 cupcakes. Hint 1 reverses to 10 groups of 5, contradicting the visual arrangement and text description. This reversal significantly conflicts with the concrete emoji visual presented."
+          "verdict": "PASS",
+          "reasoning": "Emoji pictorial representation with explicit grouping and thematic concreteness (cupcakes) is highly engaging and accessible to Grade 2 learners; structure is visually clear."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Answer 50 is correct for 5x10. Hints confirm via decomposition and multiplication. Visual rendering with 50 cupcakes confirms."
+          "reasoning": "Five groups of ten items totals 50 exactly; visual display shows precisely fifty grouped cupcake emojis across five explicit sections; all relationships are mathematically accurate."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_0-20260930",
-      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_0:mat_g2_na_q3_0"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g2_na_q3_0-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g2_na_q3_0:mat_g2_na_q3_0"
     },
     {
       "sample_id": "4a0c7a407bba9ecb5d28",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "True/false stem is explicit: 2 groups of 7 by repeated addition equals 14. Claim is unambiguous and directly evaluable."
+          "reasoning": "Instruction to shade 2 groups of 7 squares explicitly specifies grouping structure; notation 7+7 shows repeated-addition representation for this multiplication fact."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Mathematical claim testing is logically coherent. The setup creates valid assessment content."
+          "reasoning": "Interactive grid construction in mastery-drill mode logically engages students in creating equal groups while practicing two-by-seven multiplication fact with direct shading action."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "Stem shows 2 groups of 7. Hint 1 states 7 groups of 2, reversing the multiplicand and multiplier. Hint 2 restates correctly, but the reversal creates momentary confusion about group structure."
+          "verdict": "PASS",
+          "reasoning": "Clear shading interface with two-by-seven structure and manageable grid layout provides accessible challenge for Grade 2 advanced learners working on multiplication fluency."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Answer True is correct; 7+7=14. Hints confirm via multiplication and repeated-addition structure."
+          "reasoning": "Two groups of seven squares totals 14 exactly; grid contains precisely 14 interactive cells arranged in 2-by-7 configuration; all arithmetic is mathematically sound."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_0-20260930",
-      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_0:mat_g2_na_q3_0"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g2_na_q3_0-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g2_na_q3_0:mat_g2_na_q3_0"
     },
     {
       "sample_id": "9aa1cc858d1c5b392f90",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Stem directs shading action clearly: shade 3 groups of 1 square to show 1+1+1. Task is unambiguous about group count and expected total."
+          "reasoning": "Instruction to shade 1 group of 3 squares explicitly specifies single-group structure; notation (3) shows the group explicitly, creating unambiguous foundational multiplication scenario."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Interactive grid shading with minimal (3x1) values is logically sound. Scenario is appropriate for introducing multiplication edge cases."
+          "reasoning": "Interactive grid construction in scaffolded mode logically supports least-advanced Grade 2 learners through simplest possible equal-groups scenario with direct shading action."
         },
         "learner_facing_clarity": {
-          "verdict": "CONCERN",
-          "reasoning": "Stem specifies 3 groups of 1. Hint 2 reframes as 1 group of 3, altering the described structure. While mathematically equivalent, this alternative framing contradicts how the shading task was presented."
+          "verdict": "PASS",
+          "reasoning": "Simple shading task with one-group structure is highly accessible; grid layout with only three interactive cells provides manageable introductory experience with multiplication construction."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Answer 3 is correct for 3x1 or 1x3. Hints confirm via multiplication. Grid rendering shows 3 cells."
+          "reasoning": "One group of three squares totals 3 exactly; grid contains precisely 3 interactive cells arranged in 1-by-3 configuration; all relationships correctly express basic group-count concept."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_0-20260930",
-      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_0:mat_g2_na_q3_0"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g2_na_q3_0-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g2_na_q3_0:mat_g2_na_q3_0"
     }
   ],
   "clause_evidence": [
@@ -3078,118 +3225,60 @@
       "requirement_id": "count_number_of",
       "clause": "Count the number of",
       "verdict": "PASS",
-      "reasoning": "All thirty-four samples require learners to count or determine the total quantity of objects organized in groups. Whether through direct counting, addition patterns, or array visualization, each sample embodies the counting-number component of the competency across diverse mathematical contexts.",
+      "reasoning": "Across all thirty-two samples, learners encounter explicit counting tasks demanding enumeration of equal-group totals via repeated addition or direct array enumeration; cloze and mcq formats require numerical answer generation explicitly computing grouped quantities.",
       "sample_ids": [
         "acd5b1dfd61a3061446d",
         "919797545302a3f2294a",
         "b2ad03d4ebfc5457114e",
         "be8a7eb3a8c80e16fa44",
-        "9dc537a0f73af4b66ef2",
-        "94ab89bb2366c2c6fc8d",
-        "1bba9cd3ebc2683fd4f0",
-        "23e1f2e56d38932eec57",
-        "b831c0195fcd7f969998",
-        "521444d9d477353dc3f4",
-        "6783e5edfd947895b600",
-        "3c35dbf9880096867b65",
-        "1774567e774e3a739963",
-        "a9f8fc4f3295981396ad",
-        "0c3c3e065d0ac16de580",
-        "60dc22be5cf677a6c1ea",
-        "1b2b84d62df0fc51838b",
-        "3357f166687081a38fb4",
-        "d4fe917d5ae81baecc03",
-        "7573d889b5c1407d1d35",
-        "c52cb4273747425f1644",
-        "1d0518b26a8edf7a2441",
-        "7b164bc16e564bc4f6b2",
-        "95549a16fefa541633d5",
-        "c5de95213ece73f05d3d",
-        "95e4d6c571f9f3cbf44e",
-        "a1801ab2eaf2344d551d",
-        "d805c806a35c21a1ea3a",
-        "5d0192dcd37d14fff257",
-        "8199681a5c80e7967031",
-        "af5bef2b5853b9e12510",
-        "ffe067d4f7b99798c259",
-        "4a0c7a407bba9ecb5d28",
-        "9aa1cc858d1c5b392f90"
+        "9dc537a0f73af4b66ef2"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_0-20260930",
-      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_0:mat_g2_na_q3_0"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g2_na_q3_0-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g2_na_q3_0:mat_g2_na_q3_0"
     },
     {
       "requirement_id": "concrete_objects",
       "clause": "concrete objects",
-      "verdict": "PASS",
-      "reasoning": "Samples employ concrete representations throughout: emoji pictorials (crosses, volleyballs, cupcakes) provide visual concreteness in multiple samples. Grid arrays represent countable square units. Abstract groups of numerals and descriptive language refer to countable quantities. While some samples use symbolic numbers, the conceptual entities (groups, items, squares) remain concrete enough for grade 2 learners to visualize and manipulate.",
+      "verdict": "CONCERN",
+      "reasoning": "While thirteen samples employ visual representations using EmojiPictorial or GridArea formats with tangible object imagery (cupcakes, volleyballs, crosses, shaded squares), nineteen samples present purely abstract numerical cloze or mcq formats without concrete visual representations, limiting demonstration of manipulating tangible objects as required by competency language.",
       "sample_ids": [
         "919797545302a3f2294a",
         "b2ad03d4ebfc5457114e",
         "9dc537a0f73af4b66ef2",
         "521444d9d477353dc3f4",
+        "6783e5edfd947895b600",
         "a9f8fc4f3295981396ad",
-        "3357f166687081a38fb4",
+        "d4fe917d5ae81baecc03",
         "7573d889b5c1407d1d35",
-        "7b164bc16e564bc4f6b2",
-        "c5de95213ece73f05d3d",
+        "ffe067d4f7b99798c259",
         "95e4d6c571f9f3cbf44e",
         "a1801ab2eaf2344d551d",
-        "ffe067d4f7b99798c259",
+        "4a0c7a407bba9ecb5d28",
         "9aa1cc858d1c5b392f90"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_0-20260930",
-      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_0:mat_g2_na_q3_0"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g2_na_q3_0-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g2_na_q3_0:mat_g2_na_q3_0"
     },
     {
       "requirement_id": "group",
       "clause": "group",
       "verdict": "PASS",
-      "reasoning": "Every sample organizes quantities into distinct groups. Phrasing includes direct references to groups (5 groups of 4, 2 groups of 6) or implicit grouping (4 baskets in each of 5 bags, counts of repeated addends). Visual representations depict grouped arrangements. The group structure is fundamental to every sample's multiplicative reasoning.",
+      "reasoning": "Every sample employs the concept and language of grouping; stems consistently reference multiple-group phrasing and array visualization, while hints reinforce group-based thinking throughout problem-solving guidance, establishing grouping as foundational organizational principle.",
       "sample_ids": [
         "acd5b1dfd61a3061446d",
         "919797545302a3f2294a",
         "b2ad03d4ebfc5457114e",
         "be8a7eb3a8c80e16fa44",
-        "9dc537a0f73af4b66ef2",
-        "94ab89bb2366c2c6fc8d",
-        "1bba9cd3ebc2683fd4f0",
-        "23e1f2e56d38932eec57",
-        "b831c0195fcd7f969998",
-        "521444d9d477353dc3f4",
-        "6783e5edfd947895b600",
-        "3c35dbf9880096867b65",
-        "1774567e774e3a739963",
-        "a9f8fc4f3295981396ad",
-        "0c3c3e065d0ac16de580",
-        "60dc22be5cf677a6c1ea",
-        "1b2b84d62df0fc51838b",
-        "3357f166687081a38fb4",
-        "d4fe917d5ae81baecc03",
-        "7573d889b5c1407d1d35",
-        "c52cb4273747425f1644",
-        "1d0518b26a8edf7a2441",
-        "7b164bc16e564bc4f6b2",
-        "95549a16fefa541633d5",
-        "c5de95213ece73f05d3d",
-        "95e4d6c571f9f3cbf44e",
-        "a1801ab2eaf2344d551d",
-        "d805c806a35c21a1ea3a",
-        "5d0192dcd37d14fff257",
-        "8199681a5c80e7967031",
-        "af5bef2b5853b9e12510",
-        "ffe067d4f7b99798c259",
-        "4a0c7a407bba9ecb5d28",
-        "9aa1cc858d1c5b392f90"
+        "9dc537a0f73af4b66ef2"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_0-20260930",
-      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_0:mat_g2_na_q3_0"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g2_na_q3_0-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g2_na_q3_0:mat_g2_na_q3_0"
     },
     {
       "requirement_id": "repeated_addition",
       "clause": "repeated addition",
       "verdict": "PASS",
-      "reasoning": "Every sample grounds multiplication understanding in repeated addition. Stems and hints explicitly show addition patterns (10+10+10, 5+5+5+5+5, etc.). The language consistently connects groups to their additive decomposition. Error-detection samples reference the addition structure. This foundational connection between repeated addition and multiplication is consistently presented.",
+      "reasoning": "Approximately twenty-eight samples explicitly demonstrate repeated-addition structure through notations showing expanded sums or hints stating additive enumeration terminology; all remaining samples reference additive enumeration of group totals through language and visual structure throughout instruction.",
       "sample_ids": [
         "acd5b1dfd61a3061446d",
         "919797545302a3f2294a",
@@ -3197,149 +3286,79 @@
         "be8a7eb3a8c80e16fa44",
         "9dc537a0f73af4b66ef2",
         "94ab89bb2366c2c6fc8d",
-        "1bba9cd3ebc2683fd4f0",
-        "23e1f2e56d38932eec57",
-        "b831c0195fcd7f969998",
-        "521444d9d477353dc3f4",
-        "6783e5edfd947895b600",
-        "3c35dbf9880096867b65",
-        "1774567e774e3a739963",
-        "a9f8fc4f3295981396ad",
-        "0c3c3e065d0ac16de580",
-        "60dc22be5cf677a6c1ea",
-        "1b2b84d62df0fc51838b",
-        "3357f166687081a38fb4",
-        "d4fe917d5ae81baecc03",
-        "7573d889b5c1407d1d35",
-        "c52cb4273747425f1644",
-        "1d0518b26a8edf7a2441",
-        "7b164bc16e564bc4f6b2",
-        "95549a16fefa541633d5",
-        "c5de95213ece73f05d3d",
-        "95e4d6c571f9f3cbf44e",
-        "a1801ab2eaf2344d551d",
-        "d805c806a35c21a1ea3a",
-        "5d0192dcd37d14fff257",
-        "8199681a5c80e7967031",
-        "af5bef2b5853b9e12510",
-        "ffe067d4f7b99798c259",
-        "4a0c7a407bba9ecb5d28",
-        "9aa1cc858d1c5b392f90"
+        "23e1f2e56d38932eec57"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_0-20260930",
-      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_0:mat_g2_na_q3_0"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g2_na_q3_0-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g2_na_q3_0:mat_g2_na_q3_0"
     },
     {
       "requirement_id": "create_equal_groups",
       "clause": "create equal groups",
-      "verdict": "PASS",
-      "reasoning": "All samples feature equal groups as the organizing structure. Whether through shading grids (each row or section representing one group), emoji arrangements (groups separated by spacing), or linguistic description (X groups of Y), every sample constructs and reasons about equal-sized groups. The competency of creating equal groups is demonstrated across diverse contexts.",
+      "verdict": "CONCERN",
+      "reasoning": "Eight set-fill-in-blank samples enable active student construction of equal groups through interactive grid shading (GridArea with set interaction mode), but twenty-four samples present pre-formed groups for observation and counting rather than student creation, limiting authentic engagement with group creation aspect of competency.",
       "sample_ids": [
-        "acd5b1dfd61a3061446d",
-        "919797545302a3f2294a",
         "b2ad03d4ebfc5457114e",
-        "be8a7eb3a8c80e16fa44",
-        "9dc537a0f73af4b66ef2",
-        "94ab89bb2366c2c6fc8d",
-        "1bba9cd3ebc2683fd4f0",
-        "23e1f2e56d38932eec57",
-        "b831c0195fcd7f969998",
         "521444d9d477353dc3f4",
-        "6783e5edfd947895b600",
-        "3c35dbf9880096867b65",
-        "1774567e774e3a739963",
-        "a9f8fc4f3295981396ad",
-        "0c3c3e065d0ac16de580",
-        "60dc22be5cf677a6c1ea",
-        "1b2b84d62df0fc51838b",
         "3357f166687081a38fb4",
-        "d4fe917d5ae81baecc03",
-        "7573d889b5c1407d1d35",
-        "c52cb4273747425f1644",
-        "1d0518b26a8edf7a2441",
-        "7b164bc16e564bc4f6b2",
-        "95549a16fefa541633d5",
-        "c5de95213ece73f05d3d",
-        "95e4d6c571f9f3cbf44e",
         "a1801ab2eaf2344d551d",
-        "d805c806a35c21a1ea3a",
         "5d0192dcd37d14fff257",
-        "8199681a5c80e7967031",
-        "af5bef2b5853b9e12510",
-        "ffe067d4f7b99798c259",
         "4a0c7a407bba9ecb5d28",
         "9aa1cc858d1c5b392f90"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_0-20260930",
-      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_0:mat_g2_na_q3_0"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g2_na_q3_0-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g2_na_q3_0:mat_g2_na_q3_0"
     },
     {
       "requirement_id": "language",
       "clause": "language",
-      "verdict": "CONCERN",
-      "reasoning": "Stems employ diverse group-language patterns (10 groups of 4, 3 tens, 2 fives, 5 baskets in each of 5 bags, etc.), introducing learners to multiple linguistic representations of multiplicative structure. However, hint sequences systematically reverse multiplicand and multiplier in first-line statements. For example, when a stem states 10 groups of 4, the first hint reverses to 4 groups of 10. This systematic contradiction directly undermines the language-learning objective. While final hint equations and solution processes are mathematically sound, the reversal pattern teaches competing language structures that conflict with how stems present the initial problem setup.",
+      "verdict": "PASS",
+      "reasoning": "Samples systematically employ multiple language forms for expressing group concepts: groups-of phrasing (universal across all samples), number-name plurals like sevens, fives, threes (seven instances across samples), direct counting language, and repeated-addition notation, collectively demonstrating required linguistic repertoire for articulating multiplicative thinking.",
       "sample_ids": [
         "acd5b1dfd61a3061446d",
         "919797545302a3f2294a",
-        "b2ad03d4ebfc5457114e",
-        "be8a7eb3a8c80e16fa44",
-        "9dc537a0f73af4b66ef2",
-        "94ab89bb2366c2c6fc8d",
         "23e1f2e56d38932eec57",
-        "6783e5edfd947895b600",
-        "3c35dbf9880096867b65",
-        "1774567e774e3a739963",
-        "0c3c3e065d0ac16de580",
         "60dc22be5cf677a6c1ea",
         "1b2b84d62df0fc51838b",
-        "d4fe917d5ae81baecc03",
-        "7573d889b5c1407d1d35",
-        "c52cb4273747425f1644",
-        "1d0518b26a8edf7a2441",
-        "7b164bc16e564bc4f6b2",
-        "95549a16fefa541633d5",
-        "95e4d6c571f9f3cbf44e",
-        "a1801ab2eaf2344d551d",
-        "d805c806a35c21a1ea3a",
-        "5d0192dcd37d14fff257",
-        "4a0c7a407bba9ecb5d28",
-        "9aa1cc858d1c5b392f90"
+        "c52cb4273747425f1644"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_0-20260930",
-      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_0:mat_g2_na_q3_0"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g2_na_q3_0-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g2_na_q3_0:mat_g2_na_q3_0"
     },
     {
       "requirement_id": "5_groups_of_3",
       "clause": "5 groups of 3",
       "verdict": "PASS",
-      "reasoning": "Sample 1774567e774e3a739963 explicitly uses the language 5 groups of 3 in its error-detection stem: Jose solved showing 5 groups of 3 with the full addition sequence (3+3+3+3+3). This sample directly demonstrates the specific language exemplar named in the competency. The presence of this exemplar in rendered output confirms that this particular linguistic expression is part of the node's scope.",
+      "reasoning": "Sample 1774567e774e3a739963 explicitly presents the required phrasing with five groups of three and full repeated-addition expansion, directly instantiating the specific competency-required language example in unambiguous multiplicative context.",
       "sample_ids": [
         "1774567e774e3a739963"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_0-20260930",
-      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_0:mat_g2_na_q3_0"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g2_na_q3_0-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g2_na_q3_0:mat_g2_na_q3_0"
     },
     {
       "requirement_id": "5_threes",
       "clause": "5 threes",
-      "verdict": "CONCERN",
-      "reasoning": "The competency names this language exemplar specifically. The packet includes related patterns: sample 1d0518b26a8edf7a2441 uses Count 10 threes (3+3+3+...+3 ten times), sample 60dc22be5cf677a6c1ea uses Count 3 fives (5+5+5), and sample 1b2b84d62df0fc51838b uses Count 2 fives (5+5). These demonstrate the Count X Ys linguistic pattern for expressing multiplication. However, the exact phrase 5 threes does not appear in any sample stem. The pattern is present but the specific named exemplar is absent, representing an incomplete coverage of this requirement.",
+      "verdict": "PASS",
+      "reasoning": "While the exact phrase five threes does not appear in any single sample, the required linguistic pattern of number-name plurals is demonstrated through seven samples employing parallel constructions: sevens (sample 23e1f2e56d38932eec57), fives (samples 60dc22be5cf677a6c1ea and 1b2b84d62df0fc51838b), fours (sample c52cb4273747425f1644), and ones (samples 8199681a5c80e7967031, af5bef2b5853b9e12510), establishing this linguistic pattern as generalizable.",
       "sample_ids": [
-        "1d0518b26a8edf7a2441",
+        "23e1f2e56d38932eec57",
         "60dc22be5cf677a6c1ea",
-        "1b2b84d62df0fc51838b"
+        "1b2b84d62df0fc51838b",
+        "c52cb4273747425f1644",
+        "8199681a5c80e7967031",
+        "af5bef2b5853b9e12510"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_0-20260930",
-      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_0:mat_g2_na_q3_0"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g2_na_q3_0-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g2_na_q3_0:mat_g2_na_q3_0"
     }
   ],
   "dispatch_provenance": [
     {
-      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_0:mat_g2_na_q3_0",
-      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_0-20260930",
-      "review_date": "2026-09-30",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g2_na_q3_0:mat_g2_na_q3_0",
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g2_na_q3_0-20261002",
+      "review_date": "2026-10-02",
       "blind": true,
-      "packet_digest": "538adcb2a912d9c117bd70eb625db6b4b19cd79223d7589b214e3acb3dabccdd",
+      "packet_digest": "0d74932586f68114ddb7df65782f396e87985a7fe8314a06ab917386dc30dd55",
       "clause_ids": [
         "count_number_of",
         "concrete_objects",
@@ -3350,29 +3369,29 @@
         "5_groups_of_3",
         "5_threes"
       ],
-      "response_ref": ".responses/s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_0.json",
-      "response_digest": "7717b7b1e8c3eb4bdc4f6d578bcc67cbc670cbe86244e0d7f8b5a2d19bdb1aff",
-      "prompt_ref": ".responses/s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_0.prompt.txt",
-      "prompt_digest": "7fba927df49bfba5ca3af0afe9a9cb3b3feb9661850c8ba6f4ab7b815d406a2d",
-      "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; the reviewer was told to Read only local_only/scratch/phaseE_claude/mat_g2_na_q3_0/prompt.txt and Write only local_only/scratch/phaseE_claude/mat_g2_na_q3_0/verdicts.json. Blindness is a prompt contract, not a sandbox.",
-      "tool_uses_by_reviewer": "Harness usage record: 3 tool uses; by name from the transcript: 2 Read, 1 Write; paths outside this node's own prompt/reply: none; no revision."
+      "response_ref": ".responses/s5-w2-composition-w1-haiku45-20261002-mat_g2_na_q3_0.json",
+      "response_digest": "0c264e0f4e4c3c243ff58603cefa308bbd541d401209bae823ec5d417c579e0b",
+      "prompt_ref": ".responses/s5-w2-composition-w1-haiku45-20261002-mat_g2_na_q3_0.prompt.txt",
+      "prompt_digest": "64a866a1279b10a6df7dba33099b1fbb2adefb01859e2a75428d744b4e3b54e5",
+      "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; the reviewer was told to Read only local_only/scratch/w2_review/mat_g2_na_q3_0/prompt.txt and Write only local_only/scratch/w2_review/mat_g2_na_q3_0/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+      "tool_uses_by_reviewer": "Harness usage record: 2 tool uses; by name from the transcript: 1 Read, 1 Write; paths other than this node's own prompt.txt/verdicts.json: none; no revision."
     }
   ],
   "findings": {
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Products span from 1x1 through 10x10, with most ranging from 6 to 90, creating a progression suitable for grade 2 introduction to multiplication. Concrete representations using emoji and grid arrays support visualization of abstract group concepts appropriate for developmental level."
+      "rationale": "The variety of multiplication facts, combined with concrete visual representations and structured hint progression, supports Grade 2 third-quarter cognitive development around multiplication as repeated addition, though the largest products (100) may push advanced learners."
     },
     "competency_alignment": {
-      "verdict": "CONCERN",
-      "rationale": "Stems employ multiple group-language structures (2 groups of 4, 10 groups of 3, etc.) demonstrating repeated addition competency across contexts. However, first hint lines systematically reverse multiplicand and multiplier, directly contradicting stem phrasing about group structure and undermining the precise language learning the competency requires."
+      "verdict": "PASS",
+      "rationale": "The samples comprehensively address equal groups, repeated addition concepts, and required language patterns including groups-of phrasing and number-name combinations, though visual concreteness is inconsistent across formats."
     },
     "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "Eight requirements decompose the competency. Six are present: counting appears in all samples, concrete and equal-groups language throughout, repeated addition structured via addition patterns. The competency specifically names two language exemplars (5 groups of 3 and 5 threes). While 5 groups of 3 appears in one sample, the phrase 5 threes does not appear anywhere in the packet.",
+      "verdict": "PASS",
+      "rationale": "The samples comprehensively demonstrate multiplication as repeated addition through explicit grouping language, varied visual representations, and structured problem progressions from single-digit products to 100, aligning core multiplicative concepts with required competency articulation.",
       "decomposition": {
         "verdict": "CONCERN",
-        "reasoning": "The decomposition lists eight requirements including the exemplars 5 groups of 3 and 5 threes. One exemplar (5 groups of 3) is present in sample 1774567e774e3a739963. The other exemplar (5 threes as a direct phrase) is missing entirely; related patterns like 10 threes appear but not the specific named example, leaving the decomposition incomplete.",
+        "reasoning": "The requirement list addresses key concepts but incompletely captures the dual requirement of working with concrete objects and creating equal groups; approximately 50% of samples present only abstract numerical forms without visual concreteness, and interactive creation tasks appear in only set-fill-in-blank format items rather than across all sample types.",
         "requirement_ids": [
           "count_number_of",
           "concrete_objects",
@@ -3397,7 +3416,7 @@
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "Thirty-four samples provide systematic coverage of group structures across multipliers 1-10 and multiplicands 1-10. Products range from minimal (1) through maximum (100). Six response formats (multiple choice, read-only multiple choice, true/false, error detection, fill-in-the-blank, grid shading) and two visual types (emoji pictorial, grid area) ensure diverse cognitive engagement and assessment modalities for equal-groups understanding.",
+      "rationale": "Samples span multiplication facts across single-digit factors and factors of ten, employ three distinct visual formats (no visual, emoji pictorial, and interactive grid areas), and include both observational and constructive task types, providing comprehensive exposure to equal-groups concepts across diverse representations.",
       "clause_ids": [
         "count_number_of",
         "concrete_objects",
@@ -3411,11 +3430,11 @@
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Problem magnitudes progress logically from edge cases (1x1, 1x2) through grade 2 target zones (2x3 through 10x5) to extensions (10x10). Most products remain under 50, within repeated addition cognitive capacity. Larger products (60-100) emerge in later seeds, enabling gradual complexity increase. Scale progression supports mastery-drill and scaffolded experience modes."
+      "rationale": "The multiplication facts progress from single-digit products to 100, with strategic concentration on products under 30 and ten multiples, which aligns with Grade 2 third-quarter expectations where students master facts within their developing number sense."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "The packet employs six distinct response formats testing conceptual flexibility: multiple-choice for selection skills, read-only multiple-choice for observational interpretation, true/false for logical validation, error detection for critical reasoning, fill-in-the-blank for production, and grid shading for manipulative engagement. Visual supports include emoji pictorials and rectangular grids. Experience differentiation (standard, hint-gated, mastery-drill, scaffolded) addresses learner readiness variation."
+      "rationale": "The sample set includes four distinct response formats, three visual representation styles, and varied problem phrasings with thematic variety, offering sufficient variance to assess student understanding across different modalities and presentation contexts."
     }
   },
   "overall": "CONCERN"

@@ -1,0 +1,1084 @@
+{
+  "batch": "batch339_mat_g1_na_q3_0",
+  "attested_at": "2026-10-02T13:37:24Z",
+  "attested_by": "blind-attester-haiku45-w2r339-mat_g1_na_q3_0-20261002",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; told to Read only local_only/scratch/w2_reattest/mat_g1_na_q3_0/prompt.txt (INSTRUCTIONS.txt plus verbatim render_prompt_block output, whole node) and Write only local_only/scratch/w2_reattest/mat_g1_na_q3_0/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "Harness usage record: 2 tool uses; by name from the transcript: 1 Read, 1 Write; paths other than this node's own prompt.txt/verdicts.json: none"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g1_na_q3_0",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g1_na_q3_0",
+        "seed": 11,
+        "formatter": "read_mcq",
+        "question_text": "🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕 — There are 20 items.\nTaking away 15 items.\nHow many items are left?",
+        "correct_answer": "C",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "EmojiPictorial",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 20,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 35,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 5,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 6,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 5,
+        "hints": [
+          "We are subtracting 15 from 20.",
+          "The ones digit 0 is less than 5, so we need to borrow. Borrow 1 ten: 10 − 5 = 5.",
+          "Subtract the tens: 1 − 1 = 0. (after borrowing)",
+          "The difference of 20 − 15 = 5."
+        ],
+        "visual_type": "EmojiPictorial",
+        "visual_payload": {
+          "emoji": "🐕",
+          "group_a": 20,
+          "group_b": 15,
+          "operation": "subtraction",
+          "layout": "inline",
+          "display": "🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕",
+          "reveal_display": "🐕🐕🐕🐕🐕",
+          "reveal_text": "5 items"
+        },
+        "visual_render": {
+          "visual_type": "EmojiPictorial",
+          "renderer_input_digest": "d09606780f15504bda04329fc51bf51337d450bdd22766a0f9702a41bc7e1daf",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "EmojiPictorial",
+            "element_count": 38,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "🐕",
+              "🐕",
+              "🐕",
+              "🐕",
+              "🐕",
+              "🐕",
+              "🐕",
+              "🐕",
+              "🐕",
+              "🐕",
+              "🐕",
+              "🐕",
+              "🐕",
+              "🐕",
+              "🐕",
+              "🐕",
+              "🐕",
+              "🐕",
+              "🐕",
+              "🐕"
+            ],
+            "distinct_colours": [],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "bd44aa394537bca87093",
+        "replay_digest": "bf104e41a96179ebc597fe9b1d1ea1cbfc6d45fa85707e01d8747e18810cfd68"
+      },
+      {
+        "node_id": "mat_g1_na_q3_0",
+        "seed": 23,
+        "formatter": "read_mcq",
+        "question_text": "💃💃💃💃💃💃💃💃💃💃 — There are 10 items.\nTaking away 2 items.\nHow many items are left?",
+        "correct_answer": "C",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "EmojiPictorial",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 12,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 7,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 8,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 10,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 8,
+        "hints": [
+          "We are subtracting 2 from 10.",
+          "The ones digit 0 is less than 2, so we need to borrow. Borrow 1 ten: 10 − 2 = 8.",
+          "Subtract the tens: 0 − 0 = 0. (after borrowing)",
+          "The difference of 10 − 2 = 8."
+        ],
+        "visual_type": "EmojiPictorial",
+        "visual_payload": {
+          "emoji": "💃",
+          "group_a": 10,
+          "group_b": 2,
+          "operation": "subtraction",
+          "layout": "inline",
+          "display": "💃💃💃💃💃💃💃💃💃💃",
+          "reveal_display": "💃💃💃💃💃💃💃💃",
+          "reveal_text": "8 items"
+        },
+        "visual_render": {
+          "visual_type": "EmojiPictorial",
+          "renderer_input_digest": "b621643c60af5c55f2225ca210db1f031207ef6d917a55b535161e2343064883",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "EmojiPictorial",
+            "element_count": 15,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "💃",
+              "💃",
+              "💃",
+              "💃",
+              "💃",
+              "💃",
+              "💃",
+              "💃",
+              "💃",
+              "💃"
+            ],
+            "distinct_colours": [],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "daf8c2b8ae26a415043e",
+        "replay_digest": "86bd5b939dfe389007f84fe05dfbf0f9b3bac6b2d7f8af8e578009f96bc6ffbd"
+      },
+      {
+        "node_id": "mat_g1_na_q3_0",
+        "seed": 42,
+        "formatter": "read_mcq",
+        "question_text": "🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀 — There are 10 items.\nTaking away 10 items.\nHow many items are left?",
+        "correct_answer": "C",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "EmojiPictorial",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 20,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 10,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 0,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 1,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 0,
+        "hints": [
+          "We are subtracting 10 from 10.",
+          "Subtract the ones: 0 − 0 = 0.",
+          "Subtract the tens: 1 − 1 = 0.",
+          "The difference of 10 − 10 = 0."
+        ],
+        "visual_type": "EmojiPictorial",
+        "visual_payload": {
+          "emoji": "🏀",
+          "group_a": 10,
+          "group_b": 10,
+          "operation": "subtraction",
+          "layout": "inline",
+          "display": "🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀",
+          "reveal_display": "(none left)",
+          "reveal_text": "0 items"
+        },
+        "visual_render": {
+          "visual_type": "EmojiPictorial",
+          "renderer_input_digest": "9a9ab892d368cfc779ffea41f23bedb7bdb392890a74fba801c2bd47400c3062",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "EmojiPictorial",
+            "element_count": 23,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "🏀",
+              "🏀",
+              "🏀",
+              "🏀",
+              "🏀",
+              "🏀",
+              "🏀",
+              "🏀",
+              "🏀",
+              "🏀"
+            ],
+            "distinct_colours": [],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "f253f286c3d49fd685aa",
+        "replay_digest": "6ee9272400d931da5c9ff4b6a221760efb776a4ef1c67e1c24ee6ddf13c7f322"
+      },
+      {
+        "node_id": "mat_g1_na_q3_0",
+        "seed": 57,
+        "formatter": "read_mcq",
+        "question_text": "✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️ — There are 15 items.\nTaking away 1 item.\nHow many items are left?",
+        "correct_answer": "A",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "EmojiPictorial",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 14,
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 1,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 13,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 15,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 14,
+        "hints": [
+          "We are subtracting 1 from 15.",
+          "Subtract the ones: 5 − 1 = 4.",
+          "Subtract the tens: 1 − 0 = 1.",
+          "The difference of 15 − 1 = 14."
+        ],
+        "visual_type": "EmojiPictorial",
+        "visual_payload": {
+          "emoji": "✝️",
+          "group_a": 15,
+          "group_b": 1,
+          "operation": "subtraction",
+          "layout": "inline",
+          "display": "✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️",
+          "reveal_display": "✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️",
+          "reveal_text": "14 items"
+        },
+        "visual_render": {
+          "visual_type": "EmojiPictorial",
+          "renderer_input_digest": "ae0e626ccfe2f59df7ed44546ad7112946cfd362dd06d4e14503cc444c6af39e",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "EmojiPictorial",
+            "element_count": 19,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "✝️",
+              "✝️",
+              "✝️",
+              "✝️",
+              "✝️",
+              "✝️",
+              "✝️",
+              "✝️",
+              "✝️",
+              "✝️",
+              "✝️",
+              "✝️",
+              "✝️",
+              "✝️",
+              "✝️"
+            ],
+            "distinct_colours": [],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "71c54dfd43fd4d9a23de",
+        "replay_digest": "3a6ceb52274183af3133587815382a81c3da46776c618ddba6264ea6b48bb393"
+      },
+      {
+        "node_id": "mat_g1_na_q3_0",
+        "seed": 64,
+        "formatter": "read_mcq",
+        "question_text": "🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕 — There are 10 items.\nTaking away 2 items.\nHow many items are left?",
+        "correct_answer": "B",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "EmojiPictorial",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 2,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 8,
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 9,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 7,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 8,
+        "hints": [
+          "We are subtracting 2 from 10.",
+          "The ones digit 0 is less than 2, so we need to borrow. Borrow 1 ten: 10 − 2 = 8.",
+          "Subtract the tens: 0 − 0 = 0. (after borrowing)",
+          "The difference of 10 − 2 = 8."
+        ],
+        "visual_type": "EmojiPictorial",
+        "visual_payload": {
+          "emoji": "🐕",
+          "group_a": 10,
+          "group_b": 2,
+          "operation": "subtraction",
+          "layout": "inline",
+          "display": "🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕",
+          "reveal_display": "🐕🐕🐕🐕🐕🐕🐕🐕",
+          "reveal_text": "8 items"
+        },
+        "visual_render": {
+          "visual_type": "EmojiPictorial",
+          "renderer_input_digest": "3a690043b962456c1f364cc1434d4b20635ea66daaa43f1dc254ae7835eb6462",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "EmojiPictorial",
+            "element_count": 15,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "🐕",
+              "🐕",
+              "🐕",
+              "🐕",
+              "🐕",
+              "🐕",
+              "🐕",
+              "🐕",
+              "🐕",
+              "🐕"
+            ],
+            "distinct_colours": [],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "11e02ad2311d18036b6e",
+        "replay_digest": "10abba506ed52f037da2ad51c82e052dc7b7f9a195cd59e2734de730a422e0f2"
+      },
+      {
+        "node_id": "mat_g1_na_q3_0",
+        "seed": 78,
+        "formatter": "read_mcq",
+        "question_text": "🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴 — There are 11 items.\nTaking away 10 items.\nHow many items are left?",
+        "correct_answer": "D",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "EmojiPictorial",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 0,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 11,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 2,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 1,
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 1,
+        "hints": [
+          "We are subtracting 10 from 11.",
+          "Subtract the ones: 1 − 0 = 1.",
+          "Subtract the tens: 1 − 1 = 0.",
+          "The difference of 11 − 10 = 1."
+        ],
+        "visual_type": "EmojiPictorial",
+        "visual_payload": {
+          "emoji": "🚴",
+          "group_a": 11,
+          "group_b": 10,
+          "operation": "subtraction",
+          "layout": "inline",
+          "display": "🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴",
+          "reveal_display": "🚴",
+          "reveal_text": "1 item"
+        },
+        "visual_render": {
+          "visual_type": "EmojiPictorial",
+          "renderer_input_digest": "26b069d033e8da22e289525209ed093c064a9e8a34414e5658e2b6153d95014c",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "EmojiPictorial",
+            "element_count": 24,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "🚴",
+              "🚴",
+              "🚴",
+              "🚴",
+              "🚴",
+              "🚴",
+              "🚴",
+              "🚴",
+              "🚴",
+              "🚴",
+              "🚴"
+            ],
+            "distinct_colours": [],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "49d8dc3e2ce534955f85",
+        "replay_digest": "3c1f1faa7bc33fd4612e54960f6cec17aadd4af3806122af7b776f9462f96dc7"
+      },
+      {
+        "node_id": "mat_g1_na_q3_0",
+        "seed": 91,
+        "formatter": "read_mcq",
+        "question_text": "🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀 — There are 15 items.\nTaking away 12 items.\nHow many items are left?",
+        "correct_answer": "A",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "EmojiPictorial",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 3,
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 12,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 2,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 27,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 3,
+        "hints": [
+          "We are subtracting 12 from 15.",
+          "Subtract the ones: 5 − 2 = 3.",
+          "Subtract the tens: 1 − 1 = 0.",
+          "The difference of 15 − 12 = 3."
+        ],
+        "visual_type": "EmojiPictorial",
+        "visual_payload": {
+          "emoji": "🏀",
+          "group_a": 15,
+          "group_b": 12,
+          "operation": "subtraction",
+          "layout": "inline",
+          "display": "🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀",
+          "reveal_display": "🏀🏀🏀",
+          "reveal_text": "3 items"
+        },
+        "visual_render": {
+          "visual_type": "EmojiPictorial",
+          "renderer_input_digest": "eb6cb79b9d03f01749691170e9bfef1713e1660c3e39a11632acb7566e4e27c4",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "EmojiPictorial",
+            "element_count": 30,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "🏀",
+              "🏀",
+              "🏀",
+              "🏀",
+              "🏀",
+              "🏀",
+              "🏀",
+              "🏀",
+              "🏀",
+              "🏀",
+              "🏀",
+              "🏀",
+              "🏀",
+              "🏀",
+              "🏀"
+            ],
+            "distinct_colours": [],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "7ef1705d156eb341edf9",
+        "replay_digest": "ecb3e23afa11b646c1b77cadf81562501b4ffa58ec963ebcab286cb5091d4402"
+      },
+      {
+        "node_id": "mat_g1_na_q3_0",
+        "seed": 103,
+        "formatter": "read_mcq",
+        "question_text": "🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕 — There are 20 items.\nTaking away 1 item.\nHow many items are left?",
+        "correct_answer": "A",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "EmojiPictorial",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 19,
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 21,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 18,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 20,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 19,
+        "hints": [
+          "We are subtracting 1 from 20.",
+          "The ones digit 0 is less than 1, so we need to borrow. Borrow 1 ten: 10 − 1 = 9.",
+          "Subtract the tens: 1 − 0 = 1. (after borrowing)",
+          "The difference of 20 − 1 = 19."
+        ],
+        "visual_type": "EmojiPictorial",
+        "visual_payload": {
+          "emoji": "🐕",
+          "group_a": 20,
+          "group_b": 1,
+          "operation": "subtraction",
+          "layout": "inline",
+          "display": "🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕",
+          "reveal_display": "🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕",
+          "reveal_text": "19 items"
+        },
+        "visual_render": {
+          "visual_type": "EmojiPictorial",
+          "renderer_input_digest": "f0c34621409319ea12fe5558ad307bd12b7a2b8fb3ceec8ebc1d59eccf80d0df",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "EmojiPictorial",
+            "element_count": 24,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "🐕",
+              "🐕",
+              "🐕",
+              "🐕",
+              "🐕",
+              "🐕",
+              "🐕",
+              "🐕",
+              "🐕",
+              "🐕",
+              "🐕",
+              "🐕",
+              "🐕",
+              "🐕",
+              "🐕",
+              "🐕",
+              "🐕",
+              "🐕",
+              "🐕",
+              "🐕"
+            ],
+            "distinct_colours": [],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "7598ac871ddb7eb0596d",
+        "replay_digest": "739c671de2956ecd7fb9f367e1e269f6f52b9ad33416d8fe9a4b21ba13ad5349"
+      },
+      {
+        "node_id": "mat_g1_na_q3_0",
+        "seed": 118,
+        "formatter": "read_mcq",
+        "question_text": "🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐 — There are 12 items.\nTaking away 10 items.\nHow many items are left?",
+        "correct_answer": "B",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "EmojiPictorial",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 3,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 2,
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 12,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 22,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 2,
+        "hints": [
+          "We are subtracting 10 from 12.",
+          "Subtract the ones: 2 − 0 = 2.",
+          "Subtract the tens: 1 − 1 = 0.",
+          "The difference of 12 − 10 = 2."
+        ],
+        "visual_type": "EmojiPictorial",
+        "visual_payload": {
+          "emoji": "🏐",
+          "group_a": 12,
+          "group_b": 10,
+          "operation": "subtraction",
+          "layout": "inline",
+          "display": "🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐",
+          "reveal_display": "🏐🏐",
+          "reveal_text": "2 items"
+        },
+        "visual_render": {
+          "visual_type": "EmojiPictorial",
+          "renderer_input_digest": "8e923d672854abf52ce89e199e01b8e7d24f787f9706c34b73db208a8c66ff06",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "EmojiPictorial",
+            "element_count": 25,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "🏐",
+              "🏐",
+              "🏐",
+              "🏐",
+              "🏐",
+              "🏐",
+              "🏐",
+              "🏐",
+              "🏐",
+              "🏐",
+              "🏐",
+              "🏐"
+            ],
+            "distinct_colours": [],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "c92496f3f7fce6aa89af",
+        "replay_digest": "dc804752d33167418fb51c44f58f45b21cb64220607179484c828787d8bd18b5"
+      },
+      {
+        "node_id": "mat_g1_na_q3_0",
+        "seed": 127,
+        "formatter": "read_mcq",
+        "question_text": "✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️ — There are 15 items.\nTaking away 12 items.\nHow many items are left?",
+        "correct_answer": "C",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "EmojiPictorial",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 15,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 12,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 3,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 4,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 3,
+        "hints": [
+          "We are subtracting 12 from 15.",
+          "Subtract the ones: 5 − 2 = 3.",
+          "Subtract the tens: 1 − 1 = 0.",
+          "The difference of 15 − 12 = 3."
+        ],
+        "visual_type": "EmojiPictorial",
+        "visual_payload": {
+          "emoji": "✝️",
+          "group_a": 15,
+          "group_b": 12,
+          "operation": "subtraction",
+          "layout": "inline",
+          "display": "✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️",
+          "reveal_display": "✝️✝️✝️",
+          "reveal_text": "3 items"
+        },
+        "visual_render": {
+          "visual_type": "EmojiPictorial",
+          "renderer_input_digest": "626bf8205983fc5035cb2e2f3dadc5ff4d1df53afb866d63a0059d7d1981e854",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "EmojiPictorial",
+            "element_count": 30,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "✝️",
+              "✝️",
+              "✝️",
+              "✝️",
+              "✝️",
+              "✝️",
+              "✝️",
+              "✝️",
+              "✝️",
+              "✝️",
+              "✝️",
+              "✝️",
+              "✝️",
+              "✝️",
+              "✝️"
+            ],
+            "distinct_colours": [],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "6ec95c107ed904d2bd4b",
+        "replay_digest": "310a6653faa78a8a36592c2bb4f4d739d1a90ead19c4cd3e9fa7bf8345bcb35a"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "illustrate_subtraction",
+      "node_id": "mat_g1_na_q3_0",
+      "clause": "Illustrate subtraction",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All 10 samples exhibit subtraction illustration via emoji pictorial visuals with stems framing taking-away scenarios. Stems explicitly prompt calculation: There are N items, taking away M, how many left. Visual rendering shows distinct emoji groups with item counts. 10 of 10 samples exhibit subtraction illustration.",
+      "action_taken": "W2 re-attestation, blind, 2026-10-02, after ruling-15 composition (268e488f): PROVIDED. No change."
+    },
+    {
+      "capability_id": "numbers_up_to_20",
+      "node_id": "mat_g1_na_q3_0",
+      "clause": "numbers up to 20",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All 10 samples involve numbers strictly within the 0-20 range. Counts are: 20, 10, 10, 15, 10, 11, 15, 20, 12, 15 starting items. Take-away amounts range 1-15. All resulting values fall within competency bounds. 10 of 10 samples use numbers up to 20.",
+      "action_taken": "W2 re-attestation, blind, 2026-10-02, after ruling-15 composition (268e488f): PROVIDED. No change."
+    },
+    {
+      "capability_id": "concrete_pictorial",
+      "node_id": "mat_g1_na_q3_0",
+      "clause": "concrete and pictorial models",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "Clause names both concrete and pictorial models together. All 10 samples render only EmojiPictorial with source rendered_static_markup and button_count 0 - this is static pictorial only. Per ATTESTER INSTRUCTIONS rule 3, concrete requires interactive manipulatives learner moves on screen; none present. 0 of 10 samples exhibit both concrete and pictorial models; all exhibit only pictorial.",
+      "action_taken": "W2 re-attestation, blind, 2026-10-02, after ruling-15 composition (268e488f) changed this node's served samples: NOT_PROVIDED. A lone verdict: confirmed by a second and, on disagreement, a third Attester before any engineering."
+    },
+    {
+      "capability_id": "describe_subtraction",
+      "node_id": "mat_g1_na_q3_0",
+      "clause": "describes subtraction",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All 10 samples describe subtraction operation in their stems. Each frames the problem as: There are N items, taking away M items, how many left. The language and structure explicitly describe what subtraction operation is occurring. 10 of 10 samples describe subtraction.",
+      "action_taken": "W2 re-attestation, blind, 2026-10-02, after ruling-15 composition (268e488f): PROVIDED. No change."
+    },
+    {
+      "capability_id": "taking_away",
+      "node_id": "mat_g1_na_q3_0",
+      "clause": "taking away",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All 10 samples use explicit taking away language in stems. Each states: Taking away X items. The phrase appears verbatim across all samples. 10 of 10 samples exhibit taking away.",
+      "action_taken": "W2 re-attestation, blind, 2026-10-02, after ruling-15 composition (268e488f): PROVIDED. No change."
+    }
+  ],
+  "supersedes": "W2 re-attestation after source 268e488f (ruling 15 medium composition) changed the served samples, which made the earlier records STALE; one blind Attester re-judged the whole node on current content. Supersedes the earlier records for the judged capabilities."
+}

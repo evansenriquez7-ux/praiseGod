@@ -1,0 +1,365 @@
+You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  blind-reviewer-haiku45-w2v1-mat_g2_na_q3_0-20261002
+
+Write one JSON object to:
+  local_only/scratch/w2_review/mat_g2_na_q3_0/verdicts.json
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: cognitive_capacity, competency_alignment, competency_fulfillment, comprehensive_coverage, scale_appropriateness, variant_comprehensiveness. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: ambiguity, contextual_logical_validity, learner_facing_clarity, mathematical_validity. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN: cite the sample_ids you EXAMINED and found lacking it (the list may never
+   be empty), and never cite a sample as SUPPORTING a clause it does not support.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{
+  "reviewer": "blind-reviewer-haiku45-w2v1-mat_g2_na_q3_0-20261002",
+  "<node_id>": {
+    "findings": {
+      "competency_fulfillment": {
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}
+      },
+      "<each other required finding>": {"verdict": "...", "rationale": "..."}
+    },
+    "sample_assessments": [
+      {"sample_id": "<opaque id>", "checks": {
+        "<each required sample check>": {"verdict": "...", "reasoning": "..."}
+      }}
+    ],
+    "clause_evidence": [
+      {"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }
+}
+
+== DISPATCH ADDENDUM (binding; read before judging) ==
+
+A. LENGTH. Every `rationale` and every `reasoning` string must be at least 60 characters and specific to
+   the node or sample it describes. Shorter strings are refused by the filing tool.
+
+B. QUOTING. Anything you put inside quotation marks must be a character-for-character substring of text
+   printed in the packet below. No paraphrase, summary, elision ("..."), placeholder, or comma-fragment
+   inside quotes, and never two quoted values joined by a dash. When in doubt, use NO quotation marks at
+   all and describe the text in your own words instead. An unmatched quote is treated as fabricated
+   evidence. The commonest failure: putting your OWN punctuation inside the quotes -- a trailing comma or
+   full stop that belongs to your sentence (write: the word "clock", never: "clock,"). Also never
+   quote a single ordinary word; quote only whole stems, hints or options, or nothing.
+
+C. THEMES. The generator deliberately themes items around a learner's chosen interest (26 curated
+   themes: names, objects, emoji, including religious and cultural themes). Do not judge whether a theme
+   is appropriate. Judge only whether the theming INTERFERES with the mathematics -- for example, a
+   wrapper that names a different object than the task counts, or a theme word that changes the meaning
+   of the question.
+
+D. HINTS. For every sample, compare each hint line against that sample's own stem, answer, options and
+   visual: does every equation in the hints hold, does the hint explain the question actually asked
+   (direction, unit, operation, which position is missing), and does it refer only to things the item
+   actually shows? A hint that contradicts or mis-describes its item is a sample-level defect.
+
+E. CITATIONS AND OVERALL. Every clause_evidence entry cites at least one sample_id; for a clause that
+   FAILs because something is absent, cite the sample_ids you examined. `overall` must follow the rule
+   in item 4 above exactly; the filing tool refuses a reply whose `overall` disagrees with its own
+   verdicts.
+
+F. CHECKLIST before you write (replies failing any of these are refused and sent back):
+   - use NO quotation marks anywhere in your prose; describe stems, hints and options in your own words;
+   - every rationale and every reasoning string is at least 60 characters;
+   - no two samples share a word-for-word reasoning -- name each sample's own numbers, words or visual;
+   - EVERY clause_evidence entry, including PASS ones, has a non-empty sample_ids list;
+   - `overall` follows the rule in item 4 from your own verdicts.
+
+Use only the Read tool on this prompt file and the Write tool for your one JSON reply. Do not open any
+other file.
+
+== BLIND PACKET ==
+
+==========================================================================
+NODE: mat_g2_na_q3_0
+PACKET DIGEST: 0d74932586f68114ddb7df65782f396e87985a7fe8314a06ab917386dc30dd55
+COMPETENCY (Grade 2, Quarter 3, None):
+Count the number of concrete objects in a group by repeated addition and create equal groups, using language such as '5 groups of 3' and '5 threes'.
+
+REQUIREMENTS (confirm this is a lossless decomposition of the competency):
+  count_number_of: Count the number of
+  concrete_objects: concrete objects
+  group: group
+  repeated_addition: repeated addition
+  create_equal_groups: create equal groups
+  language: language
+  5_groups_of_3: 5 groups of 3
+  5_threes: 5 threes
+
+SAMPLES (every one of these is real rendered output):
+  sample acd5b1dfd61a3061446d  seed 42  [cloze]
+      stem:    10 groups of 4 (4 added 10 times) makes ___ in all
+      answer:  40
+      options: 30 / 14 / 39 / 40
+      hints:   ["We need to find the total of equal groups 10 groups of 4.", "Use the 10 times table: 10 × 4.", "The answer of 4 × 10 = 40."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 919797545302a3f2294a  seed 43  [read_mcq]
+      stem:    ✝️✝️✝️✝️   ✝️✝️✝️✝️
+There are 2 groups of 4 items.
+How many items are there in all?
+      answer:  8
+      options: 12 / 9 / 4 / 8
+      hints:   ["We need to find the total of equal groups 2 groups of 4.", "Think of it as 2 groups of 4: 4 + 4.", "The answer of 4 × 2 = 8."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 13, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["✝️", "✝️", "✝️", "✝️", "✝️", "✝️", "✝️", "✝️"], "distinct_colours": ["hsl(var(--card-bg)", "hsl(var(--border-color)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample b2ad03d4ebfc5457114e  seed 44  [set_fill_in_blank]
+      stem:    Shade 4 groups of 10 squares to show 10 + 10 + 10 + 10. How many squares did you shade in all?
+      answer:  40
+      hints:   ["We need to find the total of equal groups 4 groups of 10.", "Think of it as 4 groups of 10: 10 + 10 + 10 + 10.", "Break 10 into 10 + 0: (10 × 4) + (0 × 4) = 40 + 0 = 40.", "The answer of 10 × 4 = 40."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "GridArea", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  GridArea
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "GridArea", "element_count": 53, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 1, "input_count": 0, "text_labels": ["Click squares to shade a", "10 × 4", "rectangle", "0 square units", "Clear All", "Click squares to shade/unshade"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--primary)", "#4b5563", "#374151", "#f8fafc,", "#e2e8f0)", "#cbd5e1", "hsl(var(--border-color)", "hsl(var(--text)"], "role_counts": {"grid-cell": 40}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample be8a7eb3a8c80e16fa44  seed 45  [cloze]
+      stem:    Count 3 tens (10 + 10 + 10) = ___
+      answer:  30
+      options: 30 / 13 / 27 / 7
+      hints:   ["We need to find the total of equal groups 3 groups of 10.", "Think of it as 3 groups of 10: 10 + 10 + 10.", "Break 10 into 10 + 0: (10 × 3) + (0 × 3) = 30 + 0 = 30.", "The answer of 10 × 3 = 30."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 9dc537a0f73af4b66ef2  seed 46  [read_mcq]
+      stem:    Look at the array. It shows 2 groups of 9 (9 + 9). How many squares are shaded in all?
+      answer:  18
+      options: 18 / 21 / 15 / 22
+      hints:   ["We need to find the total of equal groups 2 groups of 9.", "Think of it as 2 groups of 9: 9 + 9.", "The answer of 9 × 2 = 18."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "GridArea", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  GridArea
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "GridArea", "element_count": 31, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 1, "input_count": 0, "text_labels": ["Click squares to shade a", "9 × 2", "rectangle", "18 square units", "Clear All", "Click squares to shade/unshade"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--primary)", "#4b5563", "#374151", "hsl(var(--border-color)", "hsl(var(--text)"], "role_counts": {"grid-cell": 18}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 94ab89bb2366c2c6fc8d  seed 47  [mcq]
+      stem:    There are 4 groups of 6 (6 + 6 + 6 + 6). How many in all?
+      answer:  24
+      options: 20 / 24 / 10 / 2
+      hints:   ["We need to find the total of equal groups 4 groups of 6.", "Think of it as 4 groups of 6: 6 + 6 + 6 + 6.", "The answer of 6 × 4 = 24."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 23e1f2e56d38932eec57  seed 500  [mcq]
+      stem:    Count 10 sevens by repeated addition (7 added 10 times): how many in all?
+      answer:  70
+      options: 60 / 17 / 70 / 69
+      hints:   ["We need to find the total of equal groups 10 groups of 7.", "Use the 10 times table: 10 × 7.", "The answer of 7 × 10 = 70."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample b831c0195fcd7f969998  seed 501  [cloze]
+      stem:    Count 10 tens (10 added 10 times) = ___
+      answer:  100
+      options: 99 / 20 / 100 / 90
+      hints:   ["We need to find the total of equal groups 10 groups of 10.", "Use the 10 times table: 10 × 10.", "Break 10 into 10 + 0: (10 × 10) + (0 × 10) = 100 + 0 = 100.", "The answer of 10 × 10 = 100."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 521444d9d477353dc3f4  seed 502  [set_fill_in_blank]
+      stem:    Shade 10 groups of 8 squares to show 8 added 10 times. How many squares did you shade in all?
+      answer:  80
+      hints:   ["We need to find the total of equal groups 10 groups of 8.", "Use the 10 times table: 10 × 8.", "The answer of 8 × 10 = 80."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "GridArea", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  GridArea
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "GridArea", "element_count": 93, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 1, "input_count": 0, "text_labels": ["Click squares to shade a", "8 × 10", "rectangle", "0 square units", "Clear All", "Click squares to shade/unshade"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--primary)", "#4b5563", "#374151", "#f8fafc,", "#e2e8f0)", "#cbd5e1", "hsl(var(--border-color)", "hsl(var(--text)"], "role_counts": {"grid-cell": 80}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 6783e5edfd947895b600  seed 600  [read_mcq]
+      stem:    💃💃💃💃💃💃💃💃   💃💃💃💃💃💃💃💃   💃💃💃💃💃💃💃💃
+There are 3 groups of 8 items.
+How many items are there in all?
+      answer:  24
+      options: 23 / 8 / 24 / 25
+      hints:   ["We need to find the total of equal groups 3 groups of 8.", "Think of it as 3 groups of 8: 8 + 8 + 8.", "The answer of 8 × 3 = 24."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 30, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃"], "distinct_colours": ["hsl(var(--card-bg)", "hsl(var(--border-color)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 3c35dbf9880096867b65  seed 601  [cloze]
+      stem:    Moses puts 3 baskets in each of 5 bags. How many baskets are in all the bags?
+      answer:  15
+      options: 2 / 12 / 8 / 15
+      hints:   ["We need to find the total of equal groups 3 groups of 5.", "Think of it as 3 groups of 5: 5 + 5 + 5.", "The answer of 5 × 3 = 15."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 1774567e774e3a739963  seed 602  [mcq]
+      stem:    There are 5 groups of 3 (3 + 3 + 3 + 3 + 3). How many in all?
+      answer:  15
+      options: 14 / 15 / 10 / 8
+      hints:   ["We need to find the total of equal groups 5 groups of 3.", "Think of it as 5 groups of 3: 3 + 3 + 3 + 3 + 3.", "The answer of 3 × 5 = 15."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample a9f8fc4f3295981396ad  seed 603  [read_mcq]
+      stem:    🏐🏐🏐   🏐🏐🏐   🏐🏐🏐
+There are 3 groups of 3 items.
+How many items are there in all?
+      answer:  9
+      options: 10 / 6 / 9 / 8
+      hints:   ["We need to find the total of equal groups 3 groups of 3.", "Think of it as 3 groups of 3: 3 + 3 + 3.", "The answer of 3 × 3 = 9."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 15, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["🏐", "🏐", "🏐", "🏐", "🏐", "🏐", "🏐", "🏐", "🏐"], "distinct_colours": ["hsl(var(--card-bg)", "hsl(var(--border-color)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 0c3c3e065d0ac16de580  seed 604  [cloze]
+      stem:    2 groups of 6 (6 + 6) makes ___ in all
+      answer:  12
+      options: 8 / 4 / 12 / 10
+      hints:   ["We need to find the total of equal groups 2 groups of 6.", "Think of it as 2 groups of 6: 6 + 6.", "The answer of 6 × 2 = 12."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 60dc22be5cf677a6c1ea  seed 605  [mcq]
+      stem:    Count 3 fives by repeated addition (5 + 5 + 5): how many in all?
+      answer:  15
+      options: 2 / 15 / 8 / 12
+      hints:   ["We need to find the total of equal groups 3 groups of 5.", "Think of it as 3 groups of 5: 5 + 5 + 5.", "The answer of 5 × 3 = 15."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 1b2b84d62df0fc51838b  seed 606  [cloze]
+      stem:    Count 2 fives (5 + 5) = ___
+      answer:  10
+      options: 3 / 7 / 8 / 10
+      hints:   ["We need to find the total of equal groups 2 groups of 5.", "Think of it as 2 groups of 5: 5 + 5.", "The answer of 5 × 2 = 10."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 3357f166687081a38fb4  seed 607  [set_fill_in_blank]
+      stem:    Shade 10 groups of 3 squares to show 3 added 10 times. How many squares did you shade in all?
+      answer:  30
+      hints:   ["We need to find the total of equal groups 10 groups of 3.", "Use the 10 times table: 10 × 3.", "The answer of 3 × 10 = 30."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "GridArea", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  GridArea
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "GridArea", "element_count": 43, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 1, "input_count": 0, "text_labels": ["Click squares to shade a", "3 × 10", "rectangle", "0 square units", "Clear All", "Click squares to shade/unshade"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--primary)", "#4b5563", "#374151", "#f8fafc,", "#e2e8f0)", "#cbd5e1", "hsl(var(--border-color)", "hsl(var(--text)"], "role_counts": {"grid-cell": 30}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample d4fe917d5ae81baecc03  seed 608  [read_mcq]
+      stem:    🏐🏐   🏐🏐   🏐🏐
+There are 3 groups of 2 items.
+How many items are there in all?
+      answer:  6
+      options: 3 / 6 / 4 / 2
+      hints:   ["We need to find the total of equal groups 3 groups of 2.", "Think of it as 3 groups of 2: 2 + 2 + 2.", "The answer of 2 × 3 = 6."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 12, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["🏐", "🏐", "🏐", "🏐", "🏐", "🏐"], "distinct_colours": ["hsl(var(--card-bg)", "hsl(var(--border-color)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 7573d889b5c1407d1d35  seed 609  [read_mcq]
+      stem:    Look at the array. It shows 10 groups of 6 (6 added 10 times). How many squares are shaded in all?
+      answer:  60
+      options: 60 / 32 / 59 / 63
+      hints:   ["We need to find the total of equal groups 10 groups of 6.", "Use the 10 times table: 10 × 6.", "The answer of 6 × 10 = 60."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "GridArea", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  GridArea
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "GridArea", "element_count": 73, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 1, "input_count": 0, "text_labels": ["Click squares to shade a", "6 × 10", "rectangle", "60 square units", "Clear All", "Click squares to shade/unshade"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--primary)", "#4b5563", "#374151", "hsl(var(--border-color)", "hsl(var(--text)"], "role_counts": {"grid-cell": 60}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample c52cb4273747425f1644  seed 610  [cloze]
+      stem:    Count 6 fours (4 added 6 times) = ___
+      answer:  24
+      options: 24 / 23 / 10 / 18
+      hints:   ["We need to find the total of equal groups 6 groups of 4.", "Use the 6 times table: 6 × 4.", "The answer of 4 × 6 = 24."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 7b164bc16e564bc4f6b2  seed 612  [set_fill_in_blank]
+      stem:    Shade 10 groups of 9 squares to show 9 added 10 times. How many squares did you shade in all?
+      answer:  90
+      hints:   ["We need to find the total of equal groups 10 groups of 9.", "Use the 10 times table: 10 × 9.", "The answer of 9 × 10 = 90."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "GridArea", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  GridArea
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "GridArea", "element_count": 103, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 1, "input_count": 0, "text_labels": ["Click squares to shade a", "9 × 10", "rectangle", "0 square units", "Clear All", "Click squares to shade/unshade"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--primary)", "#4b5563", "#374151", "#f8fafc,", "#e2e8f0)", "#cbd5e1", "hsl(var(--border-color)", "hsl(var(--text)"], "role_counts": {"grid-cell": 90}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 95549a16fefa541633d5  seed 613  [mcq]
+      stem:    There are 3 groups of 10 (10 + 10 + 10). How many in all?
+      answer:  30
+      options: 7 / 13 / 30 / 27
+      hints:   ["We need to find the total of equal groups 3 groups of 10.", "Think of it as 3 groups of 10: 10 + 10 + 10.", "Break 10 into 10 + 0: (10 × 3) + (0 × 3) = 30 + 0 = 30.", "The answer of 10 × 3 = 30."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample c5de95213ece73f05d3d  seed 700  [read_mcq]
+      stem:    🏐🏐🏐   🏐🏐🏐   🏐🏐🏐
+There are 3 groups of 3 items.
+How many items are there in all?
+      answer:  9
+      options: 10 / 3 / 9 / 12
+      hints:   ["We need to find the total of equal groups 3 groups of 3.", "Think of it as 3 groups of 3: 3 + 3 + 3.", "The answer of 3 × 3 = 9."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 15, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["🏐", "🏐", "🏐", "🏐", "🏐", "🏐", "🏐", "🏐", "🏐"], "distinct_colours": ["hsl(var(--card-bg)", "hsl(var(--border-color)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 95e4d6c571f9f3cbf44e  seed 701  [read_mcq]
+      stem:    💃 Sir Rez enjoys dance shoes. Here is a math challenge. Look at the array. It shows 4 groups of 5 (5 + 5 + 5 + 5). How many squares are shaded in all?
+      answer:  20
+      options: 19 / 20 / 18 / 23
+      hints:   ["We need to find the total of equal groups 4 groups of 5.", "Think of it as 4 groups of 5: 5 + 5 + 5 + 5.", "The answer of 5 × 4 = 20."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "GridArea", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  GridArea
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "GridArea", "element_count": 33, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 1, "input_count": 0, "text_labels": ["Click squares to shade a", "5 × 4", "rectangle", "20 square units", "Clear All", "Click squares to shade/unshade"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--primary)", "#4b5563", "#374151", "hsl(var(--border-color)", "hsl(var(--text)"], "role_counts": {"grid-cell": 20}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample a1801ab2eaf2344d551d  seed 702  [set_fill_in_blank]
+      stem:    ✝️ Moses enjoys olives. Here is a math challenge. Shade 2 groups of 9 squares to show 9 + 9. How many squares did you shade in all?
+      answer:  18
+      hints:   ["We need to find the total of equal groups 2 groups of 9.", "Think of it as 2 groups of 9: 9 + 9.", "The answer of 9 × 2 = 18."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "GridArea", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  GridArea
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "GridArea", "element_count": 31, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 1, "input_count": 0, "text_labels": ["Click squares to shade a", "9 × 2", "rectangle", "0 square units", "Clear All", "Click squares to shade/unshade"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--primary)", "#4b5563", "#374151", "#f8fafc,", "#e2e8f0)", "#cbd5e1", "hsl(var(--border-color)", "hsl(var(--text)"], "role_counts": {"grid-cell": 18}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample d805c806a35c21a1ea3a  seed 800  [mcq]
+      stem:    There is 1 group of 2 (2). How many in all?
+      answer:  2
+      options: 3 / 4 / 1 / 2
+      hints:   ["We need to find the total of equal groups 1 group of 2.", "Think of it as 1 group of 2: 2.", "The answer of 2 × 1 = 2."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 5d0192dcd37d14fff257  seed 801  [set_fill_in_blank]
+      stem:    Shade 4 groups of 7 squares to show 7 + 7 + 7 + 7. How many squares did you shade in all?
+      answer:  28
+      hints:   ["We need to find the total of equal groups 4 groups of 7.", "Think of it as 4 groups of 7: 7 + 7 + 7 + 7.", "The answer of 7 × 4 = 28."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "GridArea", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  GridArea
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "GridArea", "element_count": 41, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 1, "input_count": 0, "text_labels": ["Click squares to shade a", "7 × 4", "rectangle", "0 square units", "Clear All", "Click squares to shade/unshade"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--primary)", "#4b5563", "#374151", "#f8fafc,", "#e2e8f0)", "#cbd5e1", "hsl(var(--border-color)", "hsl(var(--text)"], "role_counts": {"grid-cell": 28}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 8199681a5c80e7967031  seed 900  [cloze]
+      stem:    Count 1 one (1) = ___
+      answer:  1
+      options: 0 / 3 / 2 / 1
+      hints:   ["We need to find the total of equal groups 1 group of 1.", "Think of it as 1 group of 1: 1.", "The answer of 1 × 1 = 1."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample af5bef2b5853b9e12510  seed 901  [cloze]
+      stem:    Count 1 one (1) = ___
+      answer:  1
+      options: 1 / 3 / 0 / 2
+      hints:   ["We need to find the total of equal groups 1 group of 1.", "Think of it as 1 group of 1: 1.", "The answer of 1 × 1 = 1."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample ffe067d4f7b99798c259  seed 1000  [read_mcq]
+      stem:    🧁🧁🧁🧁🧁🧁🧁🧁🧁🧁   🧁🧁🧁🧁🧁🧁🧁🧁🧁🧁   🧁🧁🧁🧁🧁🧁🧁🧁🧁🧁   🧁🧁🧁🧁🧁🧁🧁🧁🧁🧁   🧁🧁🧁🧁🧁🧁🧁🧁🧁🧁
+There are 5 groups of 10 cupcakes.
+How many cupcakes are there in all?
+      answer:  50
+      options: 60 / 49 / 50 / 51
+      hints:   ["We need to find the total of equal groups 5 groups of 10.", "Think of it as 5 groups of 10: 10 + 10 + 10 + 10 + 10.", "Break 10 into 10 + 0: (10 × 5) + (0 × 5) = 50 + 0 = 50.", "The answer of 10 × 5 = 50."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "hint_gated"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 58, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁"], "distinct_colours": ["hsl(var(--card-bg)", "hsl(var(--border-color)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 4a0c7a407bba9ecb5d28  seed 1001  [set_fill_in_blank]
+      stem:    Shade 2 groups of 7 squares to show 7 + 7. How many squares did you shade in all?
+      answer:  14
+      hints:   ["We need to find the total of equal groups 2 groups of 7.", "Think of it as 2 groups of 7: 7 + 7.", "The answer of 7 × 2 = 14."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "GridArea", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "mastery_drill"}
+      visual:  GridArea
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "GridArea", "element_count": 27, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 1, "input_count": 0, "text_labels": ["Click squares to shade a", "7 × 2", "rectangle", "0 square units", "Clear All", "Click squares to shade/unshade"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--primary)", "#4b5563", "#374151", "#f8fafc,", "#e2e8f0)", "#cbd5e1", "hsl(var(--border-color)", "hsl(var(--text)"], "role_counts": {"grid-cell": 14}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 9aa1cc858d1c5b392f90  seed 1002  [set_fill_in_blank]
+      stem:    Shade 1 group of 3 squares to show 3. How many squares did you shade in all?
+      answer:  3
+      hints:   ["We need to find the total of equal groups 1 group of 3.", "Think of it as 1 group of 3: 3.", "The answer of 3 × 1 = 3."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "GridArea", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "scaffolded"}
+      visual:  GridArea
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "GridArea", "element_count": 16, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 1, "input_count": 0, "text_labels": ["Click squares to shade a", "3 × 1", "rectangle", "0 square units", "Clear All", "Click squares to shade/unshade"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--primary)", "#4b5563", "#374151", "#f8fafc,", "#e2e8f0)", "#cbd5e1", "hsl(var(--border-color)", "hsl(var(--text)"], "role_counts": {"grid-cell": 3}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+

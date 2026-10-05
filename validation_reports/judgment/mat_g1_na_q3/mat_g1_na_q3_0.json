@@ -34,10 +34,10 @@
       "clause": "taking away"
     }
   ],
-  "packet_digest": "b2660aea63100a5df5528cbfc576e062f659402e42619f4e80b9095cc985ea5c",
+  "packet_digest": "768dfddf6c69327c0e59e443d237a51be9c0b3e2d108a3c19b0059f57c08b029",
   "sampling_version": "phase2-stratified-v2-rendered-visual",
-  "reviewed_by": "blind-reviewer-haiku45-pe3-mat_g1_na_q3_0-20260930",
-  "review_date": "2026-09-30",
+  "reviewed_by": "blind-reviewer-haiku45-w2x2-mat_g1_na_q3_0-20261003",
+  "review_date": "2026-10-03",
   "blind": true,
   "sample_seeds": [
     42,
@@ -45,7 +45,6 @@
     44,
     45,
     46,
-    48,
     500,
     501,
     502,
@@ -60,6 +59,7 @@
     608,
     609,
     610,
+    611,
     612,
     700,
     701,
@@ -77,7 +77,6 @@
     "db7daf7e7df1318f2dde",
     "b6af90c731db1208f82b",
     "1d39be6dd6adbe8521f9",
-    "4b504d5a188474abd458",
     "b1eda95d53060391d552",
     "251155d8e46d66690d89",
     "3e17870763b8acf03a9c",
@@ -92,6 +91,7 @@
     "1d8d8b56ccc17ab31322",
     "5ec2a05a7ff4e0c0c90f",
     "1ae65df5994dda0f407d",
+    "16b062d5ebb2de8d99b5",
     "078f92abee66205f5abb",
     "2f3fcdb3af462d2bbc73",
     "74b61f43027bb258b0d9",
@@ -107,234 +107,8 @@
     {
       "node_id": "mat_g1_na_q3_0",
       "seed": 42,
-      "formatter": "cloze",
-      "question_text": "There are 10 blocks. Taking away 10 blocks leaves ___ blocks.",
-      "correct_answer": 0,
-      "requested": {
-        "difficulty_profile": null,
-        "student_interest": null,
-        "experience": "standard"
-      },
-      "serving_mode": "student_path",
-      "effective": {
-        "format": "cloze",
-        "is_visual": false,
-        "visual_type": null,
-        "interaction_mode": null,
-        "answer_collection": "fill_in_blank",
-        "experience": "standard"
-      },
-      "options": [
-        {
-          "key": "A",
-          "value": 20,
-          "text": "20",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 2,
-          "text": "2",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 1,
-          "text": "1",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 0,
-          "text": "0",
-          "is_correct": true
-        }
-      ],
-      "resolved_answer": 0,
-      "hints": [
-        "We are subtracting 10 from 10.",
-        "Subtract the ones: 0 − 0 = 0.",
-        "Subtract the tens: 1 − 1 = 0.",
-        "The difference of 10 − 10 = 0."
-      ],
-      "sample_id": "f253f286c3d49fd685aa",
-      "replay_digest": "0dc67cef778409e152c1d73a0e395153b9b59d198a813ab95f0bba86355fe8ed"
-    },
-    {
-      "node_id": "mat_g1_na_q3_0",
-      "seed": 43,
-      "formatter": "error_detect",
-      "question_text": "Grace solved: \"There are 12 marbles. Taking away 10 marbles leaves ___ marbles.\". Grace says the blank is 1. Is Grace correct?",
-      "correct_answer": {
-        "has_error": true,
-        "correct_value": 2
-      },
-      "requested": {
-        "difficulty_profile": null,
-        "student_interest": null,
-        "experience": "standard"
-      },
-      "serving_mode": "student_path",
-      "effective": {
-        "format": "error_detect",
-        "is_visual": false,
-        "visual_type": null,
-        "interaction_mode": null,
-        "answer_collection": "error_detect",
-        "experience": "standard"
-      },
-      "resolved_answer": {
-        "has_error": true,
-        "correct_value": 2
-      },
-      "hints": [
-        "We are subtracting 10 from 12.",
-        "Subtract the ones: 2 − 0 = 2.",
-        "Subtract the tens: 1 − 1 = 0.",
-        "The difference of 12 − 10 = 2."
-      ],
-      "sample_id": "bda42f9548cd0933a065",
-      "replay_digest": "8fa8da8f46fb419c9eb9ebabd2d2d9bfb3a734835e98416fbf9929b357cd8816"
-    },
-    {
-      "node_id": "mat_g1_na_q3_0",
-      "seed": 44,
-      "formatter": "true_false",
-      "question_text": "There are 10 marbles. Taking away 2 marbles leaves 8 marbles. True or False?",
-      "correct_answer": true,
-      "requested": {
-        "difficulty_profile": null,
-        "student_interest": null,
-        "experience": "standard"
-      },
-      "serving_mode": "student_path",
-      "effective": {
-        "format": "true_false",
-        "is_visual": false,
-        "visual_type": null,
-        "interaction_mode": null,
-        "answer_collection": "true_false",
-        "experience": "standard"
-      },
-      "resolved_answer": true,
-      "hints": [
-        "We are subtracting 2 from 10.",
-        "The ones digit 0 is less than 2, so we need to borrow. Borrow 1 ten: 10 − 2 = 8.",
-        "Subtract the tens: 0 − 0 = 0. (after borrowing)",
-        "The difference of 10 − 2 = 8."
-      ],
-      "sample_id": "db7daf7e7df1318f2dde",
-      "replay_digest": "6c23f8aaaa4099881be505bba5a8290bf604038ec999667030e0564033f01a78"
-    },
-    {
-      "node_id": "mat_g1_na_q3_0",
-      "seed": 45,
-      "formatter": "mcq",
-      "question_text": "There are 20 erasers. Taking away 12 erasers leaves how many erasers?",
-      "correct_answer": 8,
-      "requested": {
-        "difficulty_profile": null,
-        "student_interest": null,
-        "experience": "standard"
-      },
-      "serving_mode": "student_path",
-      "effective": {
-        "format": "mcq",
-        "is_visual": false,
-        "visual_type": null,
-        "interaction_mode": null,
-        "answer_collection": "mcq",
-        "experience": "standard"
-      },
-      "options": [
-        {
-          "key": "A",
-          "value": 32,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 9,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 7,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 8,
-          "is_correct": true
-        }
-      ],
-      "resolved_answer": 8,
-      "hints": [
-        "We are subtracting 12 from 20.",
-        "The ones digit 0 is less than 2, so we need to borrow. Borrow 1 ten: 10 − 2 = 8.",
-        "Subtract the tens: 1 − 1 = 0. (after borrowing)",
-        "The difference of 20 − 12 = 8."
-      ],
-      "sample_id": "b6af90c731db1208f82b",
-      "replay_digest": "d4b2ad6882479391295bcc9703412070a6e8e7a9d016905e642c9a68e3fddef5"
-    },
-    {
-      "node_id": "mat_g1_na_q3_0",
-      "seed": 46,
-      "formatter": "mcq",
-      "question_text": "There are 15 apples. Taking away 2 apples leaves how many apples?",
-      "correct_answer": 13,
-      "requested": {
-        "difficulty_profile": null,
-        "student_interest": null,
-        "experience": "standard"
-      },
-      "serving_mode": "student_path",
-      "effective": {
-        "format": "mcq",
-        "is_visual": false,
-        "visual_type": null,
-        "interaction_mode": null,
-        "answer_collection": "mcq",
-        "experience": "standard"
-      },
-      "options": [
-        {
-          "key": "A",
-          "value": 13,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 17,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 14,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 12,
-          "is_correct": false
-        }
-      ],
-      "resolved_answer": 13,
-      "hints": [
-        "We are subtracting 2 from 15.",
-        "Subtract the ones: 5 − 2 = 3.",
-        "Subtract the tens: 1 − 0 = 1.",
-        "The difference of 15 − 2 = 13."
-      ],
-      "sample_id": "1d39be6dd6adbe8521f9",
-      "replay_digest": "769fec34605b36ed8fb7424431192ac1faaa8b1fccad23b2add0c777b2dca387"
-    },
-    {
-      "node_id": "mat_g1_na_q3_0",
-      "seed": 48,
       "formatter": "read_mcq",
-      "question_text": "🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨 — There are 10 paints.\nTaking away 3 paints.\nHow many paints are left?",
+      "question_text": "🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀 — There are 10 items.\nTaking away 10 items.\nHow many items are left?",
       "correct_answer": "C",
       "requested": {
         "difficulty_profile": null,
@@ -353,80 +127,459 @@
       "options": [
         {
           "key": "A",
-          "value": 6,
+          "value": 20,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 3,
+          "value": 10,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 7,
+          "value": 0,
           "is_correct": true
         },
         {
           "key": "D",
-          "value": 10,
+          "value": 1,
           "is_correct": false
         }
       ],
-      "resolved_answer": 7,
+      "resolved_answer": 0,
       "hints": [
-        "We are subtracting 3 from 10.",
-        "The ones digit 0 is less than 3, so we need to borrow. Borrow 1 ten: 10 − 3 = 7.",
-        "Subtract the tens: 0 − 0 = 0. (after borrowing)",
-        "The difference of 10 − 3 = 7."
+        "We are subtracting 10 from 10.",
+        "Subtract the ones: 0 − 0 = 0.",
+        "Subtract the tens: 1 − 1 = 0.",
+        "The difference of 10 − 10 = 0."
       ],
       "visual_type": "EmojiPictorial",
       "visual_payload": {
-        "emoji": "🎨",
+        "emoji": "🏀",
         "group_a": 10,
-        "group_b": 3,
+        "group_b": 10,
         "operation": "subtraction",
         "layout": "inline",
-        "display": "🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨",
-        "reveal_display": "🎨🎨🎨🎨🎨🎨🎨",
-        "reveal_text": "7 paints"
+        "display": "🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀",
+        "reveal_display": "(none left)",
+        "reveal_text": "0 items"
       },
       "visual_render": {
         "visual_type": "EmojiPictorial",
-        "renderer_input_digest": "98ada93e08365ebf6ae1b61bb91e173c234b147c94779360c4cb45648f02d85b",
+        "renderer_input_digest": "9a9ab892d368cfc779ffea41f23bedb7bdb392890a74fba801c2bd47400c3062",
         "description": {
           "source": "rendered_static_markup",
           "visual_type": "EmojiPictorial",
-          "element_count": 16,
+          "element_count": 23,
           "svg_count": 0,
           "table_row_count": 0,
           "table_cell_count": 0,
           "button_count": 0,
           "input_count": 0,
           "text_labels": [
-            "🎨",
-            "🎨",
-            "🎨",
-            "🎨",
-            "🎨",
-            "🎨",
-            "🎨",
-            "🎨",
-            "🎨",
-            "🎨"
+            "🏀",
+            "🏀",
+            "🏀",
+            "🏀",
+            "🏀",
+            "🏀",
+            "🏀",
+            "🏀",
+            "🏀",
+            "🏀"
           ],
           "distinct_colours": [],
           "role_counts": {}
         }
       },
-      "sample_id": "4b504d5a188474abd458",
-      "replay_digest": "aca9eb17d625f63ff8e8ef91ada6d84a6d41e82d81b8bbc2eb7a007a32ce9a65"
+      "sample_id": "f253f286c3d49fd685aa",
+      "replay_digest": "6ee9272400d931da5c9ff4b6a221760efb776a4ef1c67e1c24ee6ddf13c7f322"
+    },
+    {
+      "node_id": "mat_g1_na_q3_0",
+      "seed": 43,
+      "formatter": "read_mcq",
+      "question_text": "✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️ — There are 12 items.\nTaking away 10 items.\nHow many items are left?",
+      "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "EmojiPictorial",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 2,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 10,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 1,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 22,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 2,
+      "hints": [
+        "We are subtracting 10 from 12.",
+        "Subtract the ones: 2 − 0 = 2.",
+        "Subtract the tens: 1 − 1 = 0.",
+        "The difference of 12 − 10 = 2."
+      ],
+      "visual_type": "EmojiPictorial",
+      "visual_payload": {
+        "emoji": "✝️",
+        "group_a": 12,
+        "group_b": 10,
+        "operation": "subtraction",
+        "layout": "inline",
+        "display": "✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️",
+        "reveal_display": "✝️✝️",
+        "reveal_text": "2 items"
+      },
+      "visual_render": {
+        "visual_type": "EmojiPictorial",
+        "renderer_input_digest": "6c6a36f5c48a17eba10ae1394e4af5078596b2ce3123ae2118ce9c137b1a7c33",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "EmojiPictorial",
+          "element_count": 25,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "✝️",
+            "✝️",
+            "✝️",
+            "✝️",
+            "✝️",
+            "✝️",
+            "✝️",
+            "✝️",
+            "✝️",
+            "✝️",
+            "✝️",
+            "✝️"
+          ],
+          "distinct_colours": [],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "bda42f9548cd0933a065",
+      "replay_digest": "030d13277b85097177ca1f8226eadd3661ab0043d2d3a414eaf9b24111f719ea"
+    },
+    {
+      "node_id": "mat_g1_na_q3_0",
+      "seed": 44,
+      "formatter": "read_mcq",
+      "question_text": "🧁🧁🧁🧁🧁🧁🧁🧁🧁🧁 — There are 10 cupcakes.\nTaking away 2 cupcakes.\nHow many cupcakes are left?",
+      "correct_answer": "D",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "EmojiPictorial",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 9,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 12,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 2,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 8,
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 8,
+      "hints": [
+        "We are subtracting 2 from 10.",
+        "Start at 10 and count back 2.",
+        "The difference of 10 − 2 = 8."
+      ],
+      "visual_type": "EmojiPictorial",
+      "visual_payload": {
+        "emoji": "🧁",
+        "group_a": 10,
+        "group_b": 2,
+        "operation": "subtraction",
+        "layout": "inline",
+        "display": "🧁🧁🧁🧁🧁🧁🧁🧁🧁🧁",
+        "reveal_display": "🧁🧁🧁🧁🧁🧁🧁🧁",
+        "reveal_text": "8 cupcakes"
+      },
+      "visual_render": {
+        "visual_type": "EmojiPictorial",
+        "renderer_input_digest": "e457db8fb9a75291db3d8bba3f37d675c3a618e184686051ec296ab580aa02f6",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "EmojiPictorial",
+          "element_count": 15,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "🧁",
+            "🧁",
+            "🧁",
+            "🧁",
+            "🧁",
+            "🧁",
+            "🧁",
+            "🧁",
+            "🧁",
+            "🧁"
+          ],
+          "distinct_colours": [],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "db7daf7e7df1318f2dde",
+      "replay_digest": "65769692625087d33aa99a983efeba740eb490049d6d443aaaab3aa26746eca8"
+    },
+    {
+      "node_id": "mat_g1_na_q3_0",
+      "seed": 45,
+      "formatter": "read_mcq",
+      "question_text": "💃💃💃💃💃💃💃💃💃💃💃💃💃💃💃💃💃💃💃💃 — There are 20 items.\nTaking away 12 items.\nHow many items are left?",
+      "correct_answer": "C",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "EmojiPictorial",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 20,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 32,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 8,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 7,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 8,
+      "hints": [
+        "We are subtracting 12 from 20.",
+        "Start at 20 and count back 12.",
+        "The difference of 20 − 12 = 8."
+      ],
+      "visual_type": "EmojiPictorial",
+      "visual_payload": {
+        "emoji": "💃",
+        "group_a": 20,
+        "group_b": 12,
+        "operation": "subtraction",
+        "layout": "inline",
+        "display": "💃💃💃💃💃💃💃💃💃💃💃💃💃💃💃💃💃💃💃💃",
+        "reveal_display": "💃💃💃💃💃💃💃💃",
+        "reveal_text": "8 items"
+      },
+      "visual_render": {
+        "visual_type": "EmojiPictorial",
+        "renderer_input_digest": "b0e8578a9213903b3dd16d8db4cded8cceab92c5e36db23acb84f04f07ca05a7",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "EmojiPictorial",
+          "element_count": 35,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "💃",
+            "💃",
+            "💃",
+            "💃",
+            "💃",
+            "💃",
+            "💃",
+            "💃",
+            "💃",
+            "💃",
+            "💃",
+            "💃",
+            "💃",
+            "💃",
+            "💃",
+            "💃",
+            "💃",
+            "💃",
+            "💃",
+            "💃"
+          ],
+          "distinct_colours": [],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "b6af90c731db1208f82b",
+      "replay_digest": "64a7f2d1e5c39511bc0dea9090b6e91d0f8041633edde8fb4bdcb88609b2055e"
+    },
+    {
+      "node_id": "mat_g1_na_q3_0",
+      "seed": 46,
+      "formatter": "read_mcq",
+      "question_text": "🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀 — There are 15 items.\nTaking away 2 items.\nHow many items are left?",
+      "correct_answer": "D",
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "EmojiPictorial",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 15,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 17,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 14,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 13,
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 13,
+      "hints": [
+        "We are subtracting 2 from 15.",
+        "Subtract the ones: 5 − 2 = 3.",
+        "Subtract the tens: 1 − 0 = 1.",
+        "The difference of 15 − 2 = 13."
+      ],
+      "visual_type": "EmojiPictorial",
+      "visual_payload": {
+        "emoji": "🏀",
+        "group_a": 15,
+        "group_b": 2,
+        "operation": "subtraction",
+        "layout": "inline",
+        "display": "🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀",
+        "reveal_display": "🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀",
+        "reveal_text": "13 items"
+      },
+      "visual_render": {
+        "visual_type": "EmojiPictorial",
+        "renderer_input_digest": "2e92100c881dede60fbbd5b4957627d53a6ce60e8a5f047162547f6953723590",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "EmojiPictorial",
+          "element_count": 20,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "🏀",
+            "🏀",
+            "🏀",
+            "🏀",
+            "🏀",
+            "🏀",
+            "🏀",
+            "🏀",
+            "🏀",
+            "🏀",
+            "🏀",
+            "🏀",
+            "🏀",
+            "🏀",
+            "🏀"
+          ],
+          "distinct_colours": [],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "1d39be6dd6adbe8521f9",
+      "replay_digest": "7d90a522c9ae3989562d1d5d1eedd713d1c2eec40df9bacd119995ce40c3b54e"
     },
     {
       "node_id": "mat_g1_na_q3_0",
       "seed": 500,
-      "formatter": "true_false",
-      "question_text": "There are 20 blocks. Taking away 18 blocks leaves 1 block. True or False?",
-      "correct_answer": false,
+      "formatter": "read_mcq",
+      "question_text": "🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕 — There are 20 items.\nTaking away 18 items.\nHow many items are left?",
+      "correct_answer": "B",
       "requested": {
         "difficulty_profile": {
           "number_difficulty": 1.0
@@ -436,32 +589,99 @@
       },
       "serving_mode": "student_path",
       "effective": {
-        "format": "true_false",
-        "is_visual": false,
-        "visual_type": null,
-        "interaction_mode": null,
-        "answer_collection": "true_false",
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "EmojiPictorial",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
         "experience": "standard"
       },
-      "resolved_answer": false,
+      "options": [
+        {
+          "key": "A",
+          "value": 3,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 2,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 1,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 20,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 2,
       "hints": [
         "We are subtracting 18 from 20.",
-        "The ones digit 0 is less than 8, so we need to borrow. Borrow 1 ten: 10 − 8 = 2.",
-        "Subtract the tens: 1 − 1 = 0. (after borrowing)",
+        "Start at 20 and count back 18.",
         "The difference of 20 − 18 = 2."
       ],
+      "visual_type": "EmojiPictorial",
+      "visual_payload": {
+        "emoji": "🐕",
+        "group_a": 20,
+        "group_b": 18,
+        "operation": "subtraction",
+        "layout": "inline",
+        "display": "🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕",
+        "reveal_display": "🐕🐕",
+        "reveal_text": "2 items"
+      },
+      "visual_render": {
+        "visual_type": "EmojiPictorial",
+        "renderer_input_digest": "6af22747751c96c1962c1928ee5f9279628a0974873c4c0454544382de773a58",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "EmojiPictorial",
+          "element_count": 41,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "🐕",
+            "🐕",
+            "🐕",
+            "🐕",
+            "🐕",
+            "🐕",
+            "🐕",
+            "🐕",
+            "🐕",
+            "🐕",
+            "🐕",
+            "🐕",
+            "🐕",
+            "🐕",
+            "🐕",
+            "🐕",
+            "🐕",
+            "🐕",
+            "🐕",
+            "🐕"
+          ],
+          "distinct_colours": [],
+          "role_counts": {}
+        }
+      },
       "sample_id": "b1eda95d53060391d552",
-      "replay_digest": "24737baa51b8128c5347ffc446a248259943f5a47a3d38dca89659b4ed02e7bb"
+      "replay_digest": "ef325701e08a8bf8684b94eacfaeda7d0e425123642076a833e002343aa65cc3"
     },
     {
       "node_id": "mat_g1_na_q3_0",
       "seed": 501,
-      "formatter": "error_detect",
-      "question_text": "Pia solved: \"There are 20 crayons. Taking away 15 crayons leaves ___ crayons.\". Pia says the blank is 6. Is Pia correct?",
-      "correct_answer": {
-        "has_error": true,
-        "correct_value": 5
-      },
+      "formatter": "read_mcq",
+      "question_text": "💃💃💃💃💃💃💃💃💃💃💃💃💃💃💃💃💃💃💃💃 — There are 20 items.\nTaking away 15 items.\nHow many items are left?",
+      "correct_answer": "A",
       "requested": {
         "difficulty_profile": {
           "number_difficulty": 1.0
@@ -471,25 +691,92 @@
       },
       "serving_mode": "student_path",
       "effective": {
-        "format": "error_detect",
-        "is_visual": false,
-        "visual_type": null,
-        "interaction_mode": null,
-        "answer_collection": "error_detect",
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "EmojiPictorial",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
         "experience": "standard"
       },
-      "resolved_answer": {
-        "has_error": true,
-        "correct_value": 5
-      },
+      "options": [
+        {
+          "key": "A",
+          "value": 5,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 20,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 15,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 35,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 5,
       "hints": [
         "We are subtracting 15 from 20.",
-        "The ones digit 0 is less than 5, so we need to borrow. Borrow 1 ten: 10 − 5 = 5.",
-        "Subtract the tens: 1 − 1 = 0. (after borrowing)",
+        "Start at 20 and count back 15.",
         "The difference of 20 − 15 = 5."
       ],
+      "visual_type": "EmojiPictorial",
+      "visual_payload": {
+        "emoji": "💃",
+        "group_a": 20,
+        "group_b": 15,
+        "operation": "subtraction",
+        "layout": "inline",
+        "display": "💃💃💃💃💃💃💃💃💃💃💃💃💃💃💃💃💃💃💃💃",
+        "reveal_display": "💃💃💃💃💃",
+        "reveal_text": "5 items"
+      },
+      "visual_render": {
+        "visual_type": "EmojiPictorial",
+        "renderer_input_digest": "3da693a84c968ae4c46e08230358fb8d379b011fb659537953e0f9c53bb13d0d",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "EmojiPictorial",
+          "element_count": 38,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "💃",
+            "💃",
+            "💃",
+            "💃",
+            "💃",
+            "💃",
+            "💃",
+            "💃",
+            "💃",
+            "💃",
+            "💃",
+            "💃",
+            "💃",
+            "💃",
+            "💃",
+            "💃",
+            "💃",
+            "💃",
+            "💃",
+            "💃"
+          ],
+          "distinct_colours": [],
+          "role_counts": {}
+        }
+      },
       "sample_id": "251155d8e46d66690d89",
-      "replay_digest": "e743e04e377f44bc5e03a891af132e285eb100607fbd3d4ec9ca8376bc0542ef"
+      "replay_digest": "9b8b9e155f6471c530e611c87c3433c70877e02da0efdef800925d4f058a9139"
     },
     {
       "node_id": "mat_g1_na_q3_0",
@@ -538,8 +825,7 @@
       "resolved_answer": 8,
       "hints": [
         "We are subtracting 8 from 16.",
-        "The ones digit 6 is less than 8, so we need to borrow. Borrow 1 ten: 16 − 8 = 8.",
-        "Subtract the tens: 0 − 0 = 0. (after borrowing)",
+        "Start at 16 and count back 8.",
         "The difference of 16 − 8 = 8."
       ],
       "visual_type": "EmojiPictorial",
@@ -588,17 +874,14 @@
         }
       },
       "sample_id": "3e17870763b8acf03a9c",
-      "replay_digest": "235d933f61a442fd7d0e223071d09082b44f9bb822966f3de84e437671deda33"
+      "replay_digest": "c8a35dfd3edfec843351755a97304b58d7f69736f00474edbd18689d90d84492"
     },
     {
       "node_id": "mat_g1_na_q3_0",
       "seed": 600,
-      "formatter": "error_detect",
-      "question_text": "Noel solved: \"There are 20 erasers. Taking away 3 erasers leaves ___ erasers.\". Noel says the blank is 17. Is Noel correct?",
-      "correct_answer": {
-        "has_error": false,
-        "correct_value": 17
-      },
+      "formatter": "read_mcq",
+      "question_text": "💃💃💃💃💃💃💃💃💃💃💃💃💃💃💃💃💃💃💃💃 — There are 20 items.\nTaking away 3 items.\nHow many items are left?",
+      "correct_answer": "A",
       "requested": {
         "difficulty_profile": {
           "context": "pure"
@@ -608,32 +891,99 @@
       },
       "serving_mode": "student_path",
       "effective": {
-        "format": "error_detect",
-        "is_visual": false,
-        "visual_type": null,
-        "interaction_mode": null,
-        "answer_collection": "error_detect",
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "EmojiPictorial",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
         "experience": "standard"
       },
-      "resolved_answer": {
-        "has_error": false,
-        "correct_value": 17
-      },
+      "options": [
+        {
+          "key": "A",
+          "value": 17,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 3,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 23,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 18,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 17,
       "hints": [
         "We are subtracting 3 from 20.",
-        "The ones digit 0 is less than 3, so we need to borrow. Borrow 1 ten: 10 − 3 = 7.",
-        "Subtract the tens: 1 − 0 = 1. (after borrowing)",
+        "Start at 20 and count back 3.",
         "The difference of 20 − 3 = 17."
       ],
+      "visual_type": "EmojiPictorial",
+      "visual_payload": {
+        "emoji": "💃",
+        "group_a": 20,
+        "group_b": 3,
+        "operation": "subtraction",
+        "layout": "inline",
+        "display": "💃💃💃💃💃💃💃💃💃💃💃💃💃💃💃💃💃💃💃💃",
+        "reveal_display": "💃💃💃💃💃💃💃💃💃💃💃💃💃💃💃💃💃",
+        "reveal_text": "17 items"
+      },
+      "visual_render": {
+        "visual_type": "EmojiPictorial",
+        "renderer_input_digest": "7b3892c82b952182e7ad2e41b504c197e7f2bf0a195179417dc46c79ded9e2ab",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "EmojiPictorial",
+          "element_count": 26,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "💃",
+            "💃",
+            "💃",
+            "💃",
+            "💃",
+            "💃",
+            "💃",
+            "💃",
+            "💃",
+            "💃",
+            "💃",
+            "💃",
+            "💃",
+            "💃",
+            "💃",
+            "💃",
+            "💃",
+            "💃",
+            "💃",
+            "💃"
+          ],
+          "distinct_colours": [],
+          "role_counts": {}
+        }
+      },
       "sample_id": "aea2d071dcbf28f39e4d",
-      "replay_digest": "7dcc91d81b221602b1adc340411a84d14b461bb9d73f5672aef7749af413f124"
+      "replay_digest": "a4659f47c03082421e2ce8e86fdd5504916db6292fa8f167618968243d55dc88"
     },
     {
       "node_id": "mat_g1_na_q3_0",
       "seed": 601,
-      "formatter": "true_false",
-      "question_text": "There are 15 cookies. Taking away 15 cookies leaves 0 cookies. True or False?",
-      "correct_answer": true,
+      "formatter": "read_mcq",
+      "question_text": "🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴 — There are 15 items.\nTaking away 15 items.\nHow many items are left?",
+      "correct_answer": "B",
       "requested": {
         "difficulty_profile": {
           "context": "word_problem"
@@ -643,22 +993,88 @@
       },
       "serving_mode": "student_path",
       "effective": {
-        "format": "true_false",
-        "is_visual": false,
-        "visual_type": null,
-        "interaction_mode": null,
-        "answer_collection": "true_false",
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "EmojiPictorial",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
         "experience": "standard"
       },
-      "resolved_answer": true,
+      "options": [
+        {
+          "key": "A",
+          "value": 30,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 0,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 15,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 1,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 0,
       "hints": [
         "We are subtracting 15 from 15.",
         "Subtract the ones: 5 − 5 = 0.",
         "Subtract the tens: 1 − 1 = 0.",
         "The difference of 15 − 15 = 0."
       ],
+      "visual_type": "EmojiPictorial",
+      "visual_payload": {
+        "emoji": "🚴",
+        "group_a": 15,
+        "group_b": 15,
+        "operation": "subtraction",
+        "layout": "inline",
+        "display": "🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴",
+        "reveal_display": "(none left)",
+        "reveal_text": "0 items"
+      },
+      "visual_render": {
+        "visual_type": "EmojiPictorial",
+        "renderer_input_digest": "273514a59f0ef2cc1a500740a434eb7521ee0233c57bcc694b60c7613e1f3262",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "EmojiPictorial",
+          "element_count": 33,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "🚴",
+            "🚴",
+            "🚴",
+            "🚴",
+            "🚴",
+            "🚴",
+            "🚴",
+            "🚴",
+            "🚴",
+            "🚴",
+            "🚴",
+            "🚴",
+            "🚴",
+            "🚴",
+            "🚴"
+          ],
+          "distinct_colours": [],
+          "role_counts": {}
+        }
+      },
       "sample_id": "a809bb432c99590addaa",
-      "replay_digest": "d179984f6af1bc1070545a61485324a907d309ef3bab8bde03dd584d0c7fcedd"
+      "replay_digest": "0d7653cbc3f8bc70c7eceb3a6cb56141a0aa29a9e4344781e200420285dc028e"
     },
     {
       "node_id": "mat_g1_na_q3_0",
@@ -707,8 +1123,7 @@
       "resolved_answer": 7,
       "hints": [
         "We are subtracting 3 from 10.",
-        "The ones digit 0 is less than 3, so we need to borrow. Borrow 1 ten: 10 − 3 = 7.",
-        "Subtract the tens: 0 − 0 = 0. (after borrowing)",
+        "Start at 10 and count back 3.",
         "The difference of 10 − 3 = 7."
       ],
       "visual_type": "EmojiPictorial",
@@ -751,14 +1166,14 @@
         }
       },
       "sample_id": "a96d8f418b3311d12e39",
-      "replay_digest": "0308c121df3eb596dd24deb76924e326b28a6f903c6dc3af046cbb9ab150cf84"
+      "replay_digest": "8553403894cc82fc4823c6102482acb6f7ccb2eca30e90cbd4b517ed66b5904c"
     },
     {
       "node_id": "mat_g1_na_q3_0",
       "seed": 603,
-      "formatter": "true_false",
-      "question_text": "There are 15 cookies. Taking away 10 cookies leaves 4 cookies. True or False?",
-      "correct_answer": false,
+      "formatter": "read_mcq",
+      "question_text": "🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐 — There are 15 items.\nTaking away 10 items.\nHow many items are left?",
+      "correct_answer": "D",
       "requested": {
         "difficulty_profile": {
           "number_range": 1000
@@ -768,22 +1183,88 @@
       },
       "serving_mode": "student_path",
       "effective": {
-        "format": "true_false",
-        "is_visual": false,
-        "visual_type": null,
-        "interaction_mode": null,
-        "answer_collection": "true_false",
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "EmojiPictorial",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
         "experience": "standard"
       },
-      "resolved_answer": false,
+      "options": [
+        {
+          "key": "A",
+          "value": 25,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 10,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 6,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 5,
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 5,
       "hints": [
         "We are subtracting 10 from 15.",
         "Subtract the ones: 5 − 0 = 5.",
         "Subtract the tens: 1 − 1 = 0.",
         "The difference of 15 − 10 = 5."
       ],
+      "visual_type": "EmojiPictorial",
+      "visual_payload": {
+        "emoji": "🏐",
+        "group_a": 15,
+        "group_b": 10,
+        "operation": "subtraction",
+        "layout": "inline",
+        "display": "🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐",
+        "reveal_display": "🏐🏐🏐🏐🏐",
+        "reveal_text": "5 items"
+      },
+      "visual_render": {
+        "visual_type": "EmojiPictorial",
+        "renderer_input_digest": "62cf158fb2038e74336fc4a16e9b2cf37152db5871cbd493aeee096816772999",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "EmojiPictorial",
+          "element_count": 28,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "🏐",
+            "🏐",
+            "🏐",
+            "🏐",
+            "🏐",
+            "🏐",
+            "🏐",
+            "🏐",
+            "🏐",
+            "🏐",
+            "🏐",
+            "🏐",
+            "🏐",
+            "🏐",
+            "🏐"
+          ],
+          "distinct_colours": [],
+          "role_counts": {}
+        }
+      },
       "sample_id": "170597441f2e02f85c28",
-      "replay_digest": "c42cf9f4bd65174ca77f2930143c027b872cbb520f324ff6bfd6e3a752132432"
+      "replay_digest": "bc9f4ee857d0d64c2f5b49d162fab904373e94f4aa37bb2e5a10feee9030dfd4"
     },
     {
       "node_id": "mat_g1_na_q3_0",
@@ -883,9 +1364,9 @@
     {
       "node_id": "mat_g1_na_q3_0",
       "seed": 605,
-      "formatter": "true_false",
-      "question_text": "There are 15 pencils. Taking away 12 pencils leaves 4 pencils. True or False?",
-      "correct_answer": false,
+      "formatter": "read_mcq",
+      "question_text": "🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐 — There are 15 items.\nTaking away 12 items.\nHow many items are left?",
+      "correct_answer": "C",
       "requested": {
         "difficulty_profile": {
           "number_range": 20
@@ -895,32 +1376,95 @@
       },
       "serving_mode": "student_path",
       "effective": {
-        "format": "true_false",
-        "is_visual": false,
-        "visual_type": null,
-        "interaction_mode": null,
-        "answer_collection": "true_false",
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "EmojiPictorial",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
         "experience": "standard"
       },
-      "resolved_answer": false,
+      "options": [
+        {
+          "key": "A",
+          "value": 2,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 4,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 3,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 12,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 3,
       "hints": [
         "We are subtracting 12 from 15.",
         "Subtract the ones: 5 − 2 = 3.",
         "Subtract the tens: 1 − 1 = 0.",
         "The difference of 15 − 12 = 3."
       ],
+      "visual_type": "EmojiPictorial",
+      "visual_payload": {
+        "emoji": "🏐",
+        "group_a": 15,
+        "group_b": 12,
+        "operation": "subtraction",
+        "layout": "inline",
+        "display": "🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐",
+        "reveal_display": "🏐🏐🏐",
+        "reveal_text": "3 items"
+      },
+      "visual_render": {
+        "visual_type": "EmojiPictorial",
+        "renderer_input_digest": "539cea373a37ef15c2407e5e817dc44b629cf1a0f9f5bd08e36b5b0c1546d238",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "EmojiPictorial",
+          "element_count": 30,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "🏐",
+            "🏐",
+            "🏐",
+            "🏐",
+            "🏐",
+            "🏐",
+            "🏐",
+            "🏐",
+            "🏐",
+            "🏐",
+            "🏐",
+            "🏐",
+            "🏐",
+            "🏐",
+            "🏐"
+          ],
+          "distinct_colours": [],
+          "role_counts": {}
+        }
+      },
       "sample_id": "49e1e6e01962f5354a7d",
-      "replay_digest": "3732cb831e51c2d7ed365472fdb56cfbc6188a9fbae18f053ed31f960fb2b9f4"
+      "replay_digest": "75bf1cd3c7018251ba3ee0855dfb027c149a16f0d0935c1d052827a559f9a343"
     },
     {
       "node_id": "mat_g1_na_q3_0",
       "seed": 606,
-      "formatter": "error_detect",
-      "question_text": "Manny solved: \"There are 20 apples. Taking away 10 apples leaves ___ apples.\". Manny says the blank is 10. Is Manny correct?",
-      "correct_answer": {
-        "has_error": false,
-        "correct_value": 10
-      },
+      "formatter": "read_mcq",
+      "question_text": "✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️ — There are 20 items.\nTaking away 10 items.\nHow many items are left?",
+      "correct_answer": "A",
       "requested": {
         "difficulty_profile": {
           "regrouping": "none"
@@ -930,32 +1474,100 @@
       },
       "serving_mode": "student_path",
       "effective": {
-        "format": "error_detect",
-        "is_visual": false,
-        "visual_type": null,
-        "interaction_mode": null,
-        "answer_collection": "error_detect",
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "EmojiPictorial",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
         "experience": "standard"
       },
-      "resolved_answer": {
-        "has_error": false,
-        "correct_value": 10
-      },
+      "options": [
+        {
+          "key": "A",
+          "value": 10,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 11,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 20,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 9,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 10,
       "hints": [
         "We are subtracting 10 from 20.",
         "Subtract the ones: 0 − 0 = 0.",
         "Subtract the tens: 2 − 1 = 1.",
         "The difference of 20 − 10 = 10."
       ],
+      "visual_type": "EmojiPictorial",
+      "visual_payload": {
+        "emoji": "✝️",
+        "group_a": 20,
+        "group_b": 10,
+        "operation": "subtraction",
+        "layout": "inline",
+        "display": "✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️",
+        "reveal_display": "✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️",
+        "reveal_text": "10 items"
+      },
+      "visual_render": {
+        "visual_type": "EmojiPictorial",
+        "renderer_input_digest": "8287714fe840b1946711105c537922099c3b2cbc592191be10990c3ecef005c6",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "EmojiPictorial",
+          "element_count": 33,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "✝️",
+            "✝️",
+            "✝️",
+            "✝️",
+            "✝️",
+            "✝️",
+            "✝️",
+            "✝️",
+            "✝️",
+            "✝️",
+            "✝️",
+            "✝️",
+            "✝️",
+            "✝️",
+            "✝️",
+            "✝️",
+            "✝️",
+            "✝️",
+            "✝️",
+            "✝️"
+          ],
+          "distinct_colours": [],
+          "role_counts": {}
+        }
+      },
       "sample_id": "01717f28dcc4231f7c29",
-      "replay_digest": "ec221a8120441e3de5e15f622bd4c3ab4bf4f15f1cdeacc4323ae3c158063d24"
+      "replay_digest": "cb006ebac59f2e3cc43f392aa050eb1882bd466b7956432f7bc0a286ca0dad7a"
     },
     {
       "node_id": "mat_g1_na_q3_0",
       "seed": 607,
-      "formatter": "cloze",
-      "question_text": "There are 10 stickers. Taking away 2 stickers leaves ___ stickers.",
-      "correct_answer": 8,
+      "formatter": "read_mcq",
+      "question_text": "🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀 — There are 10 items.\nTaking away 2 items.\nHow many items are left?",
+      "correct_answer": "C",
       "requested": {
         "difficulty_profile": {
           "regrouping": "one_place"
@@ -965,48 +1577,82 @@
       },
       "serving_mode": "student_path",
       "effective": {
-        "format": "cloze",
-        "is_visual": false,
-        "visual_type": null,
-        "interaction_mode": null,
-        "answer_collection": "fill_in_blank",
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "EmojiPictorial",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
         "experience": "standard"
       },
       "options": [
         {
           "key": "A",
-          "value": 9,
-          "text": "9",
+          "value": 2,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 8,
-          "text": "8",
-          "is_correct": true
+          "value": 10,
+          "is_correct": false
         },
         {
           "key": "C",
-          "value": 7,
-          "text": "7",
-          "is_correct": false
+          "value": 8,
+          "is_correct": true
         },
         {
           "key": "D",
           "value": 12,
-          "text": "12",
           "is_correct": false
         }
       ],
       "resolved_answer": 8,
       "hints": [
         "We are subtracting 2 from 10.",
-        "The ones digit 0 is less than 2, so we need to borrow. Borrow 1 ten: 10 − 2 = 8.",
-        "Subtract the tens: 0 − 0 = 0. (after borrowing)",
+        "Start at 10 and count back 2.",
         "The difference of 10 − 2 = 8."
       ],
+      "visual_type": "EmojiPictorial",
+      "visual_payload": {
+        "emoji": "🏀",
+        "group_a": 10,
+        "group_b": 2,
+        "operation": "subtraction",
+        "layout": "inline",
+        "display": "🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀",
+        "reveal_display": "🏀🏀🏀🏀🏀🏀🏀🏀",
+        "reveal_text": "8 items"
+      },
+      "visual_render": {
+        "visual_type": "EmojiPictorial",
+        "renderer_input_digest": "73e5d7bfb47e57aecf6646213547bd7410e4477b5f29c543be3dd41924ff6e5f",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "EmojiPictorial",
+          "element_count": 15,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "🏀",
+            "🏀",
+            "🏀",
+            "🏀",
+            "🏀",
+            "🏀",
+            "🏀",
+            "🏀",
+            "🏀",
+            "🏀"
+          ],
+          "distinct_colours": [],
+          "role_counts": {}
+        }
+      },
       "sample_id": "17556676af07b9514f9a",
-      "replay_digest": "090cf166d9c9ae7a1e44e02071a2bacabf3d25e1a98657c8f70f645d5ace6f40"
+      "replay_digest": "07f2e96ba3e45ca1361e273d59b64b50609cbd8a5fbeffd0de93c82fcc2081ca"
     },
     {
       "node_id": "mat_g1_na_q3_0",
@@ -1109,9 +1755,9 @@
     {
       "node_id": "mat_g1_na_q3_0",
       "seed": 609,
-      "formatter": "cloze",
-      "question_text": "There are 10 marbles. Taking away 1 marble leaves ___ marbles.",
-      "correct_answer": 9,
+      "formatter": "read_mcq",
+      "question_text": "💃💃💃💃💃💃💃💃💃💃 — There are 10 items.\nTaking away 1 item.\nHow many items are left?",
+      "correct_answer": "C",
       "requested": {
         "difficulty_profile": {
           "spine": "taking_away"
@@ -1121,55 +1767,89 @@
       },
       "serving_mode": "student_path",
       "effective": {
-        "format": "cloze",
-        "is_visual": false,
-        "visual_type": null,
-        "interaction_mode": null,
-        "answer_collection": "fill_in_blank",
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "EmojiPictorial",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
         "experience": "standard"
       },
       "options": [
         {
           "key": "A",
-          "value": 9,
-          "text": "9",
-          "is_correct": true
+          "value": 8,
+          "is_correct": false
         },
         {
           "key": "B",
-          "value": 8,
-          "text": "8",
+          "value": 10,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 10,
-          "text": "10",
-          "is_correct": false
+          "value": 9,
+          "is_correct": true
         },
         {
           "key": "D",
           "value": 11,
-          "text": "11",
           "is_correct": false
         }
       ],
       "resolved_answer": 9,
       "hints": [
         "We are subtracting 1 from 10.",
-        "The ones digit 0 is less than 1, so we need to borrow. Borrow 1 ten: 10 − 1 = 9.",
-        "Subtract the tens: 0 − 0 = 0. (after borrowing)",
+        "Start at 10 and count back 1.",
         "The difference of 10 − 1 = 9."
       ],
+      "visual_type": "EmojiPictorial",
+      "visual_payload": {
+        "emoji": "💃",
+        "group_a": 10,
+        "group_b": 1,
+        "operation": "subtraction",
+        "layout": "inline",
+        "display": "💃💃💃💃💃💃💃💃💃💃",
+        "reveal_display": "💃💃💃💃💃💃💃💃💃",
+        "reveal_text": "9 items"
+      },
+      "visual_render": {
+        "visual_type": "EmojiPictorial",
+        "renderer_input_digest": "b0ca20a63246ee48421c861a50ae9f4a951500f29187b03ce2ca448373abd496",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "EmojiPictorial",
+          "element_count": 14,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "💃",
+            "💃",
+            "💃",
+            "💃",
+            "💃",
+            "💃",
+            "💃",
+            "💃",
+            "💃",
+            "💃"
+          ],
+          "distinct_colours": [],
+          "role_counts": {}
+        }
+      },
       "sample_id": "5ec2a05a7ff4e0c0c90f",
-      "replay_digest": "3ff0d53ff100e687d973e0d1a3ceb72511d33c8470c915b73255fb7429016c37"
+      "replay_digest": "ef69cbfb4c44f31128dc1274f59a2fc7ff668d1443f3fb12834873b0c33e259e"
     },
     {
       "node_id": "mat_g1_na_q3_0",
       "seed": 610,
-      "formatter": "mcq",
-      "question_text": "There are 20 blocks. Taking away 12 blocks leaves how many blocks?",
-      "correct_answer": 8,
+      "formatter": "read_mcq",
+      "question_text": "🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕 — There are 20 items.\nTaking away 12 items.\nHow many items are left?",
+      "correct_answer": "B",
       "requested": {
         "difficulty_profile": {
           "structure": "change_unknown"
@@ -1179,17 +1859,17 @@
       },
       "serving_mode": "student_path",
       "effective": {
-        "format": "mcq",
-        "is_visual": false,
-        "visual_type": null,
-        "interaction_mode": null,
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "EmojiPictorial",
+        "interaction_mode": "read",
         "answer_collection": "mcq",
         "experience": "standard"
       },
       "options": [
         {
           "key": "A",
-          "value": 32,
+          "value": 12,
           "is_correct": false
         },
         {
@@ -1199,24 +1879,164 @@
         },
         {
           "key": "C",
-          "value": 9,
+          "value": 7,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 7,
+          "value": 32,
           "is_correct": false
         }
       ],
       "resolved_answer": 8,
       "hints": [
         "We are subtracting 12 from 20.",
-        "The ones digit 0 is less than 2, so we need to borrow. Borrow 1 ten: 10 − 2 = 8.",
-        "Subtract the tens: 1 − 1 = 0. (after borrowing)",
+        "Start at 20 and count back 12.",
         "The difference of 20 − 12 = 8."
       ],
+      "visual_type": "EmojiPictorial",
+      "visual_payload": {
+        "emoji": "🐕",
+        "group_a": 20,
+        "group_b": 12,
+        "operation": "subtraction",
+        "layout": "inline",
+        "display": "🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕",
+        "reveal_display": "🐕🐕🐕🐕🐕🐕🐕🐕",
+        "reveal_text": "8 items"
+      },
+      "visual_render": {
+        "visual_type": "EmojiPictorial",
+        "renderer_input_digest": "1fa4c9a18b19eaaaffeaa569c32c81ca3711ad17c051ba664c1d72cdd897ff20",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "EmojiPictorial",
+          "element_count": 35,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "🐕",
+            "🐕",
+            "🐕",
+            "🐕",
+            "🐕",
+            "🐕",
+            "🐕",
+            "🐕",
+            "🐕",
+            "🐕",
+            "🐕",
+            "🐕",
+            "🐕",
+            "🐕",
+            "🐕",
+            "🐕",
+            "🐕",
+            "🐕",
+            "🐕",
+            "🐕"
+          ],
+          "distinct_colours": [],
+          "role_counts": {}
+        }
+      },
       "sample_id": "1ae65df5994dda0f407d",
-      "replay_digest": "ff26d4f27c8ad8a0bf64bc38bf91532ba7120593a33480e00edb58ac1e804861"
+      "replay_digest": "fc01f635da2156958c413b78b8c13f2f7503c4ac91d166b19ffc321dac643d77"
+    },
+    {
+      "node_id": "mat_g1_na_q3_0",
+      "seed": 611,
+      "formatter": "read_mcq",
+      "question_text": "🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨 — There are 10 paints.\nTaking away 3 paints.\nHow many paints are left?",
+      "correct_answer": "B",
+      "requested": {
+        "difficulty_profile": {
+          "structure": "result_unknown"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "EmojiPictorial",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 6,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 7,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 13,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 10,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 7,
+      "hints": [
+        "We are subtracting 3 from 10.",
+        "Start at 10 and count back 3.",
+        "The difference of 10 − 3 = 7."
+      ],
+      "visual_type": "EmojiPictorial",
+      "visual_payload": {
+        "emoji": "🎨",
+        "group_a": 10,
+        "group_b": 3,
+        "operation": "subtraction",
+        "layout": "inline",
+        "display": "🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨",
+        "reveal_display": "🎨🎨🎨🎨🎨🎨🎨",
+        "reveal_text": "7 paints"
+      },
+      "visual_render": {
+        "visual_type": "EmojiPictorial",
+        "renderer_input_digest": "98ada93e08365ebf6ae1b61bb91e173c234b147c94779360c4cb45648f02d85b",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "EmojiPictorial",
+          "element_count": 16,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "🎨",
+            "🎨",
+            "🎨",
+            "🎨",
+            "🎨",
+            "🎨",
+            "🎨",
+            "🎨",
+            "🎨",
+            "🎨"
+          ],
+          "distinct_colours": [],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "16b062d5ebb2de8d99b5",
+      "replay_digest": "4e90354d4ddba6400fdef86f56624ecd2bed41d6befb9ab3c13babbb395600d0"
     },
     {
       "node_id": "mat_g1_na_q3_0",
@@ -1409,9 +2229,9 @@
     {
       "node_id": "mat_g1_na_q3_0",
       "seed": 701,
-      "formatter": "mcq",
-      "question_text": "✝️ Daniel enjoys stones. Here is a math challenge. There are 20 stickers. Taking away 15 stickers leaves how many stickers?",
-      "correct_answer": 5,
+      "formatter": "read_mcq",
+      "question_text": "✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️ — There are 20 items.\nTaking away 15 items.\nHow many items are left?",
+      "correct_answer": "B",
       "requested": {
         "difficulty_profile": null,
         "student_interest": "bible",
@@ -1419,17 +2239,17 @@
       },
       "serving_mode": "student_path",
       "effective": {
-        "format": "mcq",
-        "is_visual": false,
-        "visual_type": null,
-        "interaction_mode": null,
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "EmojiPictorial",
+        "interaction_mode": "read",
         "answer_collection": "mcq",
         "experience": "standard"
       },
       "options": [
         {
           "key": "A",
-          "value": 35,
+          "value": 15,
           "is_correct": false
         },
         {
@@ -1439,24 +2259,72 @@
         },
         {
           "key": "C",
-          "value": 4,
+          "value": 6,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 6,
+          "value": 4,
           "is_correct": false
         }
       ],
       "resolved_answer": 5,
       "hints": [
         "We are subtracting 15 from 20.",
-        "The ones digit 0 is less than 5, so we need to borrow. Borrow 1 ten: 10 − 5 = 5.",
-        "Subtract the tens: 1 − 1 = 0. (after borrowing)",
+        "Start at 20 and count back 15.",
         "The difference of 20 − 15 = 5."
       ],
+      "visual_type": "EmojiPictorial",
+      "visual_payload": {
+        "emoji": "✝️",
+        "group_a": 20,
+        "group_b": 15,
+        "operation": "subtraction",
+        "layout": "inline",
+        "display": "✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️",
+        "reveal_display": "✝️✝️✝️✝️✝️",
+        "reveal_text": "5 items"
+      },
+      "visual_render": {
+        "visual_type": "EmojiPictorial",
+        "renderer_input_digest": "6e2495c642e8af41197cf0d63822333d99784adbca219fa12321b0dca63349dc",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "EmojiPictorial",
+          "element_count": 38,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "✝️",
+            "✝️",
+            "✝️",
+            "✝️",
+            "✝️",
+            "✝️",
+            "✝️",
+            "✝️",
+            "✝️",
+            "✝️",
+            "✝️",
+            "✝️",
+            "✝️",
+            "✝️",
+            "✝️",
+            "✝️",
+            "✝️",
+            "✝️",
+            "✝️",
+            "✝️"
+          ],
+          "distinct_colours": [],
+          "role_counts": {}
+        }
+      },
       "sample_id": "74b61f43027bb258b0d9",
-      "replay_digest": "24c174a430b48995cea59a2efdcedf9c08232c6f5be736e2cefeba7b8159f2d1"
+      "replay_digest": "57b31de2690b5587526962c10bf72710d7d0c55df411d7a1b72b54c8942add3e"
     },
     {
       "node_id": "mat_g1_na_q3_0",
@@ -1554,9 +2422,9 @@
     {
       "node_id": "mat_g1_na_q3_0",
       "seed": 800,
-      "formatter": "true_false",
-      "question_text": "There are 13 erasers. Taking away 9 erasers leaves 4 erasers. True or False?",
-      "correct_answer": true,
+      "formatter": "read_mcq",
+      "question_text": "🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕 — There are 13 items.\nTaking away 9 items.\nHow many items are left?",
+      "correct_answer": "D",
       "requested": {
         "difficulty_profile": {
           "number_difficulty": 1.0
@@ -1566,32 +2434,92 @@
       },
       "serving_mode": "student_path",
       "effective": {
-        "format": "true_false",
-        "is_visual": false,
-        "visual_type": null,
-        "interaction_mode": null,
-        "answer_collection": "true_false",
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "EmojiPictorial",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
         "experience": "standard"
       },
-      "resolved_answer": true,
+      "options": [
+        {
+          "key": "A",
+          "value": 5,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 9,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 3,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 4,
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 4,
       "hints": [
         "We are subtracting 9 from 13.",
-        "The ones digit 3 is less than 9, so we need to borrow. Borrow 1 ten: 13 − 9 = 4.",
-        "Subtract the tens: 0 − 0 = 0. (after borrowing)",
+        "Start at 13 and count back 9.",
         "The difference of 13 − 9 = 4."
       ],
+      "visual_type": "EmojiPictorial",
+      "visual_payload": {
+        "emoji": "🐕",
+        "group_a": 13,
+        "group_b": 9,
+        "operation": "subtraction",
+        "layout": "inline",
+        "display": "🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕",
+        "reveal_display": "🐕🐕🐕🐕",
+        "reveal_text": "4 items"
+      },
+      "visual_render": {
+        "visual_type": "EmojiPictorial",
+        "renderer_input_digest": "728ba3c0f352945b04b05e0d056bd5771a8c6e3f1e4660937ad7f6dcb45a633c",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "EmojiPictorial",
+          "element_count": 25,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "🐕",
+            "🐕",
+            "🐕",
+            "🐕",
+            "🐕",
+            "🐕",
+            "🐕",
+            "🐕",
+            "🐕",
+            "🐕",
+            "🐕",
+            "🐕",
+            "🐕"
+          ],
+          "distinct_colours": [],
+          "role_counts": {}
+        }
+      },
       "sample_id": "9c24eca19bc51a7ed7ec",
-      "replay_digest": "834da10ca0f93db49a9523c20e9eb4c0a48fba88c97faedae6a385cc26c9be84"
+      "replay_digest": "dcadef3ce0633382ea15bcc0a7f1cbe6c141250f25026c00cb7943c843e24d39"
     },
     {
       "node_id": "mat_g1_na_q3_0",
       "seed": 900,
-      "formatter": "error_detect",
-      "question_text": "Noel solved: \"There are 13 stickers. Taking away 3 stickers leaves ___ stickers.\". Noel says the blank is 11. Is Noel correct?",
-      "correct_answer": {
-        "has_error": true,
-        "correct_value": 10
-      },
+      "formatter": "read_mcq",
+      "question_text": "🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴 — There are 13 items.\nTaking away 3 items.\nHow many items are left?",
+      "correct_answer": "C",
       "requested": {
         "difficulty_profile": {
           "number_difficulty": 0.0
@@ -1601,35 +2529,93 @@
       },
       "serving_mode": "student_path",
       "effective": {
-        "format": "error_detect",
-        "is_visual": false,
-        "visual_type": null,
-        "interaction_mode": null,
-        "answer_collection": "error_detect",
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "EmojiPictorial",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
         "experience": "standard"
       },
-      "resolved_answer": {
-        "has_error": true,
-        "correct_value": 10
-      },
+      "options": [
+        {
+          "key": "A",
+          "value": 9,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 11,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 10,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 13,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 10,
       "hints": [
         "We are subtracting 3 from 13.",
         "Subtract the ones: 3 − 3 = 0.",
         "Subtract the tens: 1 − 0 = 1.",
         "The difference of 13 − 3 = 10."
       ],
+      "visual_type": "EmojiPictorial",
+      "visual_payload": {
+        "emoji": "🚴",
+        "group_a": 13,
+        "group_b": 3,
+        "operation": "subtraction",
+        "layout": "inline",
+        "display": "🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴",
+        "reveal_display": "🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴",
+        "reveal_text": "10 items"
+      },
+      "visual_render": {
+        "visual_type": "EmojiPictorial",
+        "renderer_input_digest": "aefa16e8728b406ab6fd85ce953f87c9b608cb6cbf646e71d2fe2069860f58e1",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "EmojiPictorial",
+          "element_count": 19,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "🚴",
+            "🚴",
+            "🚴",
+            "🚴",
+            "🚴",
+            "🚴",
+            "🚴",
+            "🚴",
+            "🚴",
+            "🚴",
+            "🚴",
+            "🚴",
+            "🚴"
+          ],
+          "distinct_colours": [],
+          "role_counts": {}
+        }
+      },
       "sample_id": "42fa89e522e3a1763b7b",
-      "replay_digest": "1c37f518ccf55030cbdd7d456231a7e7e8ba31f3d58fb196567f9c8dd89b6e85"
+      "replay_digest": "be4440460c0ecb5ca4964eabb4ecefce1a30880e5ab3c7816840428eebc9213b"
     },
     {
       "node_id": "mat_g1_na_q3_0",
       "seed": 901,
-      "formatter": "error_detect",
-      "question_text": "Maria solved: \"There are 12 blocks. Taking away 3 blocks leaves ___ blocks.\". Maria says the blank is 10. Is Maria correct?",
-      "correct_answer": {
-        "has_error": true,
-        "correct_value": 9
-      },
+      "formatter": "read_mcq",
+      "question_text": "🧁🧁🧁🧁🧁🧁🧁🧁🧁🧁🧁🧁 — There are 12 cupcakes.\nTaking away 3 cupcakes.\nHow many cupcakes are left?",
+      "correct_answer": "A",
       "requested": {
         "difficulty_profile": {
           "number_difficulty": 0.0
@@ -1639,32 +2625,91 @@
       },
       "serving_mode": "student_path",
       "effective": {
-        "format": "error_detect",
-        "is_visual": false,
-        "visual_type": null,
-        "interaction_mode": null,
-        "answer_collection": "error_detect",
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "EmojiPictorial",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
         "experience": "standard"
       },
-      "resolved_answer": {
-        "has_error": true,
-        "correct_value": 9
-      },
+      "options": [
+        {
+          "key": "A",
+          "value": 9,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 15,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 12,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 10,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 9,
       "hints": [
         "We are subtracting 3 from 12.",
-        "The ones digit 2 is less than 3, so we need to borrow. Borrow 1 ten: 12 − 3 = 9.",
-        "Subtract the tens: 0 − 0 = 0. (after borrowing)",
+        "Start at 12 and count back 3.",
         "The difference of 12 − 3 = 9."
       ],
+      "visual_type": "EmojiPictorial",
+      "visual_payload": {
+        "emoji": "🧁",
+        "group_a": 12,
+        "group_b": 3,
+        "operation": "subtraction",
+        "layout": "inline",
+        "display": "🧁🧁🧁🧁🧁🧁🧁🧁🧁🧁🧁🧁",
+        "reveal_display": "🧁🧁🧁🧁🧁🧁🧁🧁🧁",
+        "reveal_text": "9 cupcakes"
+      },
+      "visual_render": {
+        "visual_type": "EmojiPictorial",
+        "renderer_input_digest": "384ca97996edcc245a2c8b6e4f71261ecf27c6f739eaf6d81cc163d2a1f3e0a5",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "EmojiPictorial",
+          "element_count": 18,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "🧁",
+            "🧁",
+            "🧁",
+            "🧁",
+            "🧁",
+            "🧁",
+            "🧁",
+            "🧁",
+            "🧁",
+            "🧁",
+            "🧁",
+            "🧁"
+          ],
+          "distinct_colours": [],
+          "role_counts": {}
+        }
+      },
       "sample_id": "7545db500d5c613acd77",
-      "replay_digest": "baf6dfab3208d1265b843d95cf1a678711527a43f3c1f5149eb9a05cf2496c72"
+      "replay_digest": "5bb648db6bb12f6e8cb75fe8985819ceb78c848a3499b5d5ee8d7d738fe1797a"
     },
     {
       "node_id": "mat_g1_na_q3_0",
       "seed": 1000,
-      "formatter": "cloze",
-      "question_text": "There are 10 pencils. Taking away 2 pencils leaves ___ pencils.",
-      "correct_answer": 8,
+      "formatter": "read_mcq",
+      "question_text": "🧁🧁🧁🧁🧁🧁🧁🧁🧁🧁 — There are 10 cupcakes.\nTaking away 2 cupcakes.\nHow many cupcakes are left?",
+      "correct_answer": "A",
       "requested": {
         "difficulty_profile": null,
         "student_interest": null,
@@ -1672,48 +2717,82 @@
       },
       "serving_mode": "student_path",
       "effective": {
-        "format": "cloze",
-        "is_visual": false,
-        "visual_type": null,
-        "interaction_mode": null,
-        "answer_collection": "fill_in_blank",
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "EmojiPictorial",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
         "experience": "hint_gated"
       },
       "options": [
         {
           "key": "A",
-          "value": 12,
-          "text": "12",
-          "is_correct": false
+          "value": 8,
+          "is_correct": true
         },
         {
           "key": "B",
-          "value": 9,
-          "text": "9",
+          "value": 2,
           "is_correct": false
         },
         {
           "key": "C",
           "value": 7,
-          "text": "7",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 8,
-          "text": "8",
-          "is_correct": true
+          "value": 12,
+          "is_correct": false
         }
       ],
       "resolved_answer": 8,
       "hints": [
         "We are subtracting 2 from 10.",
-        "The ones digit 0 is less than 2, so we need to borrow. Borrow 1 ten: 10 − 2 = 8.",
-        "Subtract the tens: 0 − 0 = 0. (after borrowing)",
+        "Start at 10 and count back 2.",
         "The difference of 10 − 2 = 8."
       ],
+      "visual_type": "EmojiPictorial",
+      "visual_payload": {
+        "emoji": "🧁",
+        "group_a": 10,
+        "group_b": 2,
+        "operation": "subtraction",
+        "layout": "inline",
+        "display": "🧁🧁🧁🧁🧁🧁🧁🧁🧁🧁",
+        "reveal_display": "🧁🧁🧁🧁🧁🧁🧁🧁",
+        "reveal_text": "8 cupcakes"
+      },
+      "visual_render": {
+        "visual_type": "EmojiPictorial",
+        "renderer_input_digest": "e457db8fb9a75291db3d8bba3f37d675c3a618e184686051ec296ab580aa02f6",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "EmojiPictorial",
+          "element_count": 15,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "🧁",
+            "🧁",
+            "🧁",
+            "🧁",
+            "🧁",
+            "🧁",
+            "🧁",
+            "🧁",
+            "🧁",
+            "🧁"
+          ],
+          "distinct_colours": [],
+          "role_counts": {}
+        }
+      },
       "sample_id": "b949dee48eab95d22e43",
-      "replay_digest": "d0cd8f13576d707eb6f446de7297371e0bed5a1339ef8c0d301ec97e907a5404"
+      "replay_digest": "6bab1eae8348063e5983c9de9d04da5a6fc37f64bc572436054c64acb2c77dac"
     },
     {
       "node_id": "mat_g1_na_q3_0",
@@ -1861,8 +2940,7 @@
       "resolved_answer": 19,
       "hints": [
         "We are subtracting 1 from 20.",
-        "The ones digit 0 is less than 1, so we need to borrow. Borrow 1 ten: 10 − 1 = 9.",
-        "Subtract the tens: 1 − 0 = 1. (after borrowing)",
+        "Start at 20 and count back 1.",
         "The difference of 20 − 1 = 19."
       ],
       "visual_type": "EmojiPictorial",
@@ -1915,7 +2993,7 @@
         }
       },
       "sample_id": "1476901a257aaa6f8a1f",
-      "replay_digest": "555613db5f9e81ef32cc843af8081d50bb1d292c8a64c655e4d632665feff43a"
+      "replay_digest": "3c66f55d35e77a89e7355fe94c513ac517d515577b3dedaee40ebf51a605035c"
     }
   ],
   "sample_assessments": [
@@ -1924,690 +3002,690 @@
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem clearly presents 10 blocks with 10 removed, asking for the remaining count. The mathematical setup and blank location are unambiguous. Cloze format with explicit options provides clear structure."
+          "reasoning": "The problem is stated with complete clarity. Ten emoji items are shown initially, and the problem asks how many remain after removing all ten. The multiple-choice options include the correct answer zero along with distractors twenty, ten, and one. No ambiguity exists about what operation is intended or what the learner must find."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Taking 10 blocks from 10 blocks logically results in zero blocks remaining. The scenario is realistic and mathematically sound. No contradictions exist between stem setup and answer."
+          "reasoning": "The scenario is logically sound: beginning with ten items, removing ten items, and ending with zero is mathematically and conceptually valid. The hint sequence correctly breaks down the place value decomposition, showing subtraction of ones and tens separately, each resolving to zero. The resulting difference of zero is accurate."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Grade 1 learners understand the taking away action with concrete objects like blocks. The sentence structure is simple and direct, using familiar vocabulary and a straightforward question format."
+          "reasoning": "Grade 1 students will readily understand the emoji representation and the taking away language. The visual count of ten emojis matches the stated quantity, reducing cognitive load. The question asks directly for a remaining amount using familiar phrasing, and multiple-choice options are concise numbers that a first grader can read."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Ten minus ten equals zero is mathematically correct. The hints properly decompose this into ones subtraction (0-0=0) and tens subtraction (1-1=0), yielding the correct difference of zero."
+          "reasoning": "Ten minus ten equals zero is arithmetically correct. The hints accurately decompose this: subtracting the ones place gives zero minus zero equals zero, and subtracting the tens place gives one minus one equals zero. The final statement of the difference equals zero is mathematically sound throughout all steps."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe3-mat_g1_na_q3_0-20260930",
-      "dispatch_id": "s5-phaseE-claude-w3-haiku45-20260930-mat_g1_na_q3_0:mat_g1_na_q3_0"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g1_na_q3_0-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g1_na_q3_0:mat_g1_na_q3_0"
     },
     {
       "sample_id": "bda42f9548cd0933a065",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The error detection format clearly presents Grace's incorrect answer of one and asks for judgment. The stem explicitly states what Grace claims, leaving no uncertainty about what answer is being evaluated."
+          "reasoning": "The problem establishes a clear scenario with twelve items initially visible, removes ten, and asks for the remainder. Options are two, ten, one, and twenty-two. The intended operation and target quantity are unambiguous. The visual presentation and text reinforce each other without conflicting messages."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Subtracting 10 marbles from 12 marbles leaves 2, not 1. Grace's answer is incorrectly captured, and the scenario allows learners to identify this error in peer work, a valid pedagogical activity."
+          "reasoning": "Starting with twelve items and removing ten leaves two, a logically consistent outcome. The place value hints correctly show two minus zero equals two in the ones place and one minus one equals zero in the tens place. The difference of twelve minus ten equaling two is arithmetically valid."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The task structure of checking whether a peer's solution is correct is developmentally appropriate and clear. Using a named peer and familiar object (marbles) makes the context accessible."
+          "reasoning": "The emoji visual displays twelve religious symbols arranged visibly. The taking away language is direct and accessible to a Grade 1 student. The options present single-digit and double-digit numbers that are appropriately distinct, helping learners evaluate their solution without overwhelming choice complexity."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Twelve minus ten equals two is correct. Grace's stated answer of one is indeed an error. The hints correctly show 2-0=2 for the ones place and 1-1=0 for the tens, confirming the answer is two."
+          "reasoning": "Twelve minus ten correctly yields two. The solution path through place value decomposition is accurate: ones subtractions give two, tens subtractions give zero, and combining these produces a difference of two. All intermediate steps and the final answer are mathematically correct."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe3-mat_g1_na_q3_0-20260930",
-      "dispatch_id": "s5-phaseE-claude-w3-haiku45-20260930-mat_g1_na_q3_0:mat_g1_na_q3_0"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g1_na_q3_0-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g1_na_q3_0:mat_g1_na_q3_0"
     },
     {
       "sample_id": "db7daf7e7df1318f2dde",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The true or false statement clearly presents a specific subtraction claim about marbles. The learner must judge whether 10 take away 2 leaves 8, which is unambiguous."
+          "reasoning": "The problem statement uses clear, direct language to establish ten items, specify removing two, and ask how many remain. The title 'cupcakes' matches the emoji visual, and the question is unambiguous about the operation and target. Answer options nine, twelve, two, and eight are distinct and provide reasonable distractors."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Taking 2 marbles from 10 marbles logically leaves 8 marbles. The statement reflects a valid real-world scenario and correct arithmetic, making True the appropriate response."
+          "reasoning": "A scenario of removing two cupcakes from ten is logically valid and familiar to first graders. The hint approach of counting back from ten by two steps is a developmentally appropriate strategy. The difference of eight is the correct outcome and matches the problem logic."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Grade 1 learners can readily understand the true or false judgment task with familiar objects and simple language. The quantity and action are concrete concepts at this level."
+          "reasoning": "The visual displays ten cupcake emojis, matching the stated quantity. The problem uses the word 'cupcakes' consistently in both the stem and the hint. The counting back strategy explained in the hints aligns with how Grade 1 students typically approach early subtraction. Language remains simple and age-appropriate."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Ten minus two equals eight is mathematically correct. The hints walk through tens and ones column work, including the borrowing explanation, yielding the correct difference of eight."
+          "reasoning": "Ten minus two equals eight is arithmetically correct. The hint that says to start at ten and count back two steps is a valid solution method. The final statement of the difference being eight is accurate and correctly derived."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe3-mat_g1_na_q3_0-20260930",
-      "dispatch_id": "s5-phaseE-claude-w3-haiku45-20260930-mat_g1_na_q3_0:mat_g1_na_q3_0"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g1_na_q3_0-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g1_na_q3_0:mat_g1_na_q3_0"
     },
     {
       "sample_id": "b6af90c731db1208f82b",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The question asks directly how many erasers remain after taking away 12 from 20. The MCQ format with four distinct options makes the task unambiguous."
+          "reasoning": "The problem clearly shows twenty items initially, removes twelve, and asks how many are left. The multiple-choice set includes twenty, thirty-two, eight, and seven. The intended computation and the question target are stated without ambiguity or conflicting information."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Subtracting 12 erasers from 20 erasers logically produces 8 erasers remaining. The scenario represents a realistic, valid subtraction situation."
+          "reasoning": "Beginning with twenty items and removing twelve leaves eight, which is logically consistent. The strategy of counting back from twenty by twelve is sound and commonly used in Grade 1 instruction. The result eight is the correct and logical outcome."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The item uses everyday classroom objects (erasers) familiar to Grade 1 students. The how many question is clear, and the four answer choices are presented in simple numerical form."
+          "reasoning": "Twenty emoji figures are displayed visually, confirming the stated quantity. The language consistently refers to items and uses the taking away phrasing familiar to learners. The hint to count back from twenty by twelve is a transparent strategy that first graders can follow. The answer options are appropriately scaled."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Twenty minus twelve equals eight is correct. The hints show the borrowing procedure (10-2=8 for ones, 1-1=0 for tens) and confirm the difference of eight is correct."
+          "reasoning": "Twenty minus twelve equals eight is arithmetically correct. Counting back from twenty by twelve steps reaches eight, confirming the strategy. The final answer statement is mathematically sound and properly derived."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe3-mat_g1_na_q3_0-20260930",
-      "dispatch_id": "s5-phaseE-claude-w3-haiku45-20260930-mat_g1_na_q3_0:mat_g1_na_q3_0"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g1_na_q3_0-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g1_na_q3_0:mat_g1_na_q3_0"
     },
     {
       "sample_id": "1d39be6dd6adbe8521f9",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The question clearly asks how many apples remain after taking away 2 from 15. The MCQ options are distinct, leaving no confusion about which answer represents which value."
+          "reasoning": "Fifteen items are shown initially, two are removed, and the problem asks for the remainder. Options include fifteen, seventeen, fourteen, and thirteen. The problem setup is clear, the operation is unambiguous, and the target quantity is explicitly stated in the question."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Taking 2 apples from 15 apples leaves 13 apples, a logically valid scenario requiring no borrowing procedure at the ones place, since 5-2 is straightforward."
+          "reasoning": "Removing two items from fifteen yields thirteen, a logically sound outcome. The place value hints showing five minus two equals three in the ones place and one minus zero equals one in the tens place correctly reconstruct the difference. The overall result is valid."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Apples are a familiar object to Grade 1 learners. The problem structure is simple: start with 15, take away 2, count what is left. Language is direct and accessible."
+          "reasoning": "Fifteen basketball emojis are visually displayed. The problem language is direct and uses the word items consistently. The place value explanation in the hints, while more complex, provides a formal decomposition that scaffolds understanding. Answer choices are clearly distinct numbers."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Fifteen minus two equals thirteen is correct. The hints properly show ones subtraction (5-2=3) and tens remaining (1-0=1), yielding the correct difference of thirteen."
+          "reasoning": "Fifteen minus two equals thirteen is arithmetically correct. The place value decomposition accurately shows three in the ones place and one in the tens place, which combine to form thirteen. All steps and the final answer are mathematically valid."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe3-mat_g1_na_q3_0-20260930",
-      "dispatch_id": "s5-phaseE-claude-w3-haiku45-20260930-mat_g1_na_q3_0:mat_g1_na_q3_0"
-    },
-    {
-      "sample_id": "4b504d5a188474abd458",
-      "checks": {
-        "ambiguity": {
-          "verdict": "PASS",
-          "reasoning": "The visual shows 10 paint emojis; the stem confirms there are 10 paints; the question asks how many are left after taking away 3. The read MCQ format with four options is unambiguous."
-        },
-        "contextual_logical_validity": {
-          "verdict": "PASS",
-          "reasoning": "The emoji visual representation matches the stated quantity (10 paints). Removing 3 from 10 leaves 7, consistent with both visual and numerical setup. Scenario is logical."
-        },
-        "learner_facing_clarity": {
-          "verdict": "PASS",
-          "reasoning": "The emoji pictorial provides concrete visual support for Grade 1 learners. The question structure mirrors the visual: you see items, you remove some, you count the rest. Highly accessible format."
-        },
-        "mathematical_validity": {
-          "verdict": "PASS",
-          "reasoning": "Ten minus three equals seven is correct. The emoji pictorial shows 10 items and the hints explain the borrowing procedure (10-3=7 for ones, 0-0=0 for tens) yielding seven."
-        }
-      },
-      "reviewer_identity": "blind-reviewer-haiku45-pe3-mat_g1_na_q3_0-20260930",
-      "dispatch_id": "s5-phaseE-claude-w3-haiku45-20260930-mat_g1_na_q3_0:mat_g1_na_q3_0"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g1_na_q3_0-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g1_na_q3_0:mat_g1_na_q3_0"
     },
     {
       "sample_id": "b1eda95d53060391d552",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The true or false statement makes a specific claim: 20 blocks take away 18 blocks leaves 1 block. The learner must evaluate whether this claim is true, which is unambiguous."
+          "reasoning": "Twenty items are established visually, eighteen are removed, and the question asks how many remain. The options are three, two, one, and twenty. No ambiguity surrounds the operation, the starting quantity, or the target answer. The problem intent is clear."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Taking 18 blocks from 20 blocks produces 2 blocks, not 1. The statement is false, and learners can recognize the error by applying the subtraction operation."
+          "reasoning": "Starting with twenty and removing eighteen leaves two, a logically valid result. The counting-back strategy from twenty by eighteen steps is correct and produces two. The scenario and arithmetic are both logically sound."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Blocks are concrete, familiar materials for Grade 1. The true or false format is developmentally appropriate, and the quantities and operation are presented in simple language."
+          "reasoning": "Twenty dog emojis are displayed, matching the stated quantity. The language is simple and uses familiar taking away phrasing. The hint suggests counting back, a concrete strategy accessible to Grade 1 students. The final answer of two is verifiable by counting on learners' fingers or visual inspection."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Twenty minus eighteen equals two, not one. The hints correctly show the borrowing procedure (10-8=2 for ones, 1-1=0 for tens), confirming that two is the difference, making the statement false."
+          "reasoning": "Twenty minus eighteen correctly equals two. Counting backward from twenty eighteen times arrives at two. The difference statement is arithmetically correct throughout."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe3-mat_g1_na_q3_0-20260930",
-      "dispatch_id": "s5-phaseE-claude-w3-haiku45-20260930-mat_g1_na_q3_0:mat_g1_na_q3_0"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g1_na_q3_0-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g1_na_q3_0:mat_g1_na_q3_0"
     },
     {
       "sample_id": "251155d8e46d66690d89",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The error detection format clearly states Pia's claimed answer (6) to the problem of 20 crayons take away 15 crayons. The task is to judge correctness without ambiguity."
+          "reasoning": "Twenty items are shown initially, fifteen are taken away, and the remainder is requested. Options are five, twenty, fifteen, and thirty-five. The problem structure is clear and unambiguous, with distinct distractors and a single correct answer."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Twenty minus fifteen equals five, not six. Pia's answer contains an error, making this a valid opportunity for learners to identify mistakes in peer work."
+          "reasoning": "Removing fifteen items from twenty leaves five, a logically sound and valid result. The hint strategy of counting back from twenty by fifteen is correct and produces five. The overall logic and arithmetic are consistent."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Crayons are familiar writing tools in Grade 1 classrooms. Using a named peer and clear question format makes the error detection task accessible and meaningful."
+          "reasoning": "Twenty dancer emojis are visually presented, confirming the initial quantity. The problem uses taking away language consistently and plainly. The counting-back strategy is transparent and implementable by first graders. The options are simple numbers within the learner's expected range."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Twenty minus fifteen equals five. The hints show the borrowing procedure (10-5=5 for ones, 1-1=0 for tens), confirming five is correct and Pia's answer of six is indeed an error."
+          "reasoning": "Twenty minus fifteen equals five is arithmetically correct. Counting back from twenty by fifteen steps results in five. The final difference statement is mathematically valid."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe3-mat_g1_na_q3_0-20260930",
-      "dispatch_id": "s5-phaseE-claude-w3-haiku45-20260930-mat_g1_na_q3_0:mat_g1_na_q3_0"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g1_na_q3_0-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g1_na_q3_0:mat_g1_na_q3_0"
     },
     {
       "sample_id": "3e17870763b8acf03a9c",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The visual displays 16 paint emojis; the stem confirms 16 paints and 8 to be removed. The read MCQ with four distinct numerical options leaves no ambiguity about what remains."
+          "reasoning": "Sixteen paint emojis are shown, eight are removed, and the problem asks for the result. Options include nine, eight, sixteen, and seven. The problem is stated without ambiguity, the operation is clear, and the question target is explicitly requested."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Sixteen paint emojis shown, taking away 8 conceptually leaves 8. The visual and numerical setup are consistent and logically valid."
+          "reasoning": "Beginning with sixteen and removing eight yields eight, which is logically consistent. The counting-back strategy from sixteen by eight is correct. The scenario and arithmetic are both valid."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The emoji pictorial gives visual support for counting and removing items, highly appropriate for Grade 1. The read mode allows learners to process visual and text simultaneously."
+          "reasoning": "Sixteen paint-palette emojis are displayed visually. The problem consistently labels these as paints. The language is accessible and uses the taking away phrasing. The counting-back strategy is straightforward for first graders to follow. Answer options are clearly presented."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Sixteen minus eight equals eight is mathematically correct. The hints explain the borrowing procedure (10-8=8 from the regrouped ones, 0-0=0 for tens), yielding eight."
+          "reasoning": "Sixteen minus eight equals eight is arithmetically correct. Counting back from sixteen by eight steps correctly yields eight. The final answer is mathematically sound."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe3-mat_g1_na_q3_0-20260930",
-      "dispatch_id": "s5-phaseE-claude-w3-haiku45-20260930-mat_g1_na_q3_0:mat_g1_na_q3_0"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g1_na_q3_0-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g1_na_q3_0:mat_g1_na_q3_0"
     },
     {
       "sample_id": "aea2d071dcbf28f39e4d",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The error detection format clearly presents Noel's claimed answer (17) for 20 erasers take away 3 erasers. The task unambiguously asks whether this response is correct."
+          "reasoning": "Twenty items are established initially, three are removed, and the question asks how many remain. Options are seventeen, three, twenty-three, and eighteen. The problem intent is clear, the operation is unambiguous, and no conflicting information exists."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Twenty minus three equals seventeen. Noel's answer is correct, making this a valid example of identifying correct peer work as well as incorrect work."
+          "reasoning": "Starting with twenty and removing three leaves seventeen, which is a correct and logically valid outcome. The counting-back strategy from twenty by three is accurate. The problem logic is sound."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Erasers are familiar classroom materials. The named peer and straightforward question make this error detection task clear for Grade 1 learners."
+          "reasoning": "Twenty dancer emojis are shown visually, matching the stated count. The problem uses simple, direct taking away language. The hint to count back from twenty by three is easy to visualize and execute. Answer options are distinct and appropriately scaled."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Twenty minus three equals seventeen is correct. The hints show the borrowing procedure (10-3=7 for ones, 1-0=1 for tens), confirming seventeen is correct and Noel's answer has no error."
+          "reasoning": "Twenty minus three equals seventeen is arithmetically correct. Counting back from twenty by three steps accurately reaches seventeen. The difference statement is mathematically valid."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe3-mat_g1_na_q3_0-20260930",
-      "dispatch_id": "s5-phaseE-claude-w3-haiku45-20260930-mat_g1_na_q3_0:mat_g1_na_q3_0"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g1_na_q3_0-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g1_na_q3_0:mat_g1_na_q3_0"
     },
     {
       "sample_id": "a809bb432c99590addaa",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The true or false statement clearly presents a specific claim: 15 cookies take away 15 cookies leaves 0 cookies. The judgment task is unambiguous."
+          "reasoning": "Fifteen items are displayed, all fifteen are removed, and the problem asks for the remainder. Options are thirty, zero, fifteen, and one. The operation is unambiguous; the problem clearly establishes complete removal and expects zero as the answer."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Taking all items (15) from a set (15) leaves nothing (0). The scenario is logically valid and represents a real situation, making True the correct answer."
+          "reasoning": "Removing all fifteen items from a group of fifteen logically yields zero. The place value decomposition correctly shows five minus five equals zero and one minus one equals zero. The result of zero is valid and correct."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Cookies are familiar to Grade 1 learners and often used in counting contexts. The quantity and action are concrete and age-appropriate."
+          "reasoning": "Fifteen bicycle emojis are visually presented. The problem uses the word items consistently and asks about the remainder after complete removal. The place value hints, while formal, correctly explain the solution. The zero answer is conceptually important for Grade 1."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Fifteen minus fifteen equals zero is mathematically correct. The hints show the column subtraction (5-5=0 for ones, 1-1=0 for tens), yielding zero."
+          "reasoning": "Fifteen minus fifteen correctly equals zero. The place value decomposition shows five minus five equals zero and one minus one equals zero, properly reconstructing the overall difference. All calculations are arithmetically valid."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe3-mat_g1_na_q3_0-20260930",
-      "dispatch_id": "s5-phaseE-claude-w3-haiku45-20260930-mat_g1_na_q3_0:mat_g1_na_q3_0"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g1_na_q3_0-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g1_na_q3_0:mat_g1_na_q3_0"
     },
     {
       "sample_id": "a96d8f418b3311d12e39",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The visual shows 10 cupcake emojis matching the stated quantity. The read MCQ question clearly asks how many cupcakes remain after taking away 3, with four distinct options."
+          "reasoning": "Ten cupcakes are shown initially, three are removed, and the problem asks how many remain. Options include three, ten, seven, and six. The scenario is clearly presented, the operation is unambiguous, and the target quantity is explicitly requested."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Ten cupcake emojis shown; removing 3 leaves 7. The visual representation is consistent with the problem setup and the mathematical result."
+          "reasoning": "Starting with ten cupcakes and removing three leaves seven, a logically sound and correct result. The counting-back strategy from ten by three is accurate. The overall scenario and arithmetic are valid."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Cupcakes are appealing to Grade 1 learners and commonly used in primary mathematics contexts. The emoji pictorial and clear question make this highly accessible."
+          "reasoning": "Ten cupcake emojis are displayed, with the word cupcakes used consistently throughout the problem. The taking away language is familiar and direct. The hint to count back from ten by three is concrete and implementable. Options are appropriately distinct."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Ten minus three equals seven is correct. The hints explain the borrowing procedure (10-3=7 for ones, 0-0=0 for tens), confirming seven."
+          "reasoning": "Ten minus three equals seven is arithmetically correct. Counting back from ten by three steps correctly yields seven. The difference statement is mathematically valid."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe3-mat_g1_na_q3_0-20260930",
-      "dispatch_id": "s5-phaseE-claude-w3-haiku45-20260930-mat_g1_na_q3_0:mat_g1_na_q3_0"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g1_na_q3_0-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g1_na_q3_0:mat_g1_na_q3_0"
     },
     {
       "sample_id": "170597441f2e02f85c28",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The true or false statement makes a specific claim: 15 cookies take away 10 cookies leaves 4 cookies. The judgment of truth value is unambiguous."
+          "reasoning": "Fifteen items are shown, ten are removed, and the problem asks for the remainder. Options are twenty-five, ten, six, and five. The problem is stated clearly without ambiguous phrasing or conflicting information."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Fifteen minus ten equals five, not four. The statement is correctly false, and learners can verify this by performing the operation."
+          "reasoning": "Removing ten from fifteen leaves five, which is logically consistent and correct. The place value approach showing five minus zero equals five and one minus one equals zero properly reconstructs the answer. The scenario is valid."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Cookies and simple quantities are familiar to Grade 1. The true or false format is developmentally appropriate and language is simple."
+          "reasoning": "Fifteen volleyball emojis are visually displayed. The problem uses simple taking away language and items consistently. The place value hints provide formal structure without becoming inaccessible. Answer options are clearly presented."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Fifteen minus ten equals five, making the statement false. The hints correctly show ones subtraction (5-0=5) and tens subtraction (1-1=0), yielding five."
+          "reasoning": "Fifteen minus ten equals five is arithmetically correct. The place value decomposition shows five minus zero equals five and one minus one equals zero, correctly producing the difference. All steps are mathematically sound."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe3-mat_g1_na_q3_0-20260930",
-      "dispatch_id": "s5-phaseE-claude-w3-haiku45-20260930-mat_g1_na_q3_0:mat_g1_na_q3_0"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g1_na_q3_0-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g1_na_q3_0:mat_g1_na_q3_0"
     },
     {
       "sample_id": "2e3f9b646338ea229b61",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The visual shows 12 basketball emojis; the stem states 12 items with 2 to be taken away. The read MCQ presents four distinct answer choices without ambiguity."
+          "reasoning": "Twelve items are established, two are removed, and the problem asks how many remain. Options are ten, nine, two, and fourteen. No ambiguity exists in the problem statement or the intended operation."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Twelve items shown with 2 removed leaves 10. The visual, stem, and mathematical operation are all consistent."
+          "reasoning": "Starting with twelve and removing two yields ten, a logically valid outcome. The place value hints correctly decompose this: two minus two equals zero in the ones and one minus zero equals one in the tens. The result is correct."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Basketballs are familiar sports equipment that engage Grade 1 interest. The visual support combined with text makes the problem clear and accessible."
+          "reasoning": "Twelve basketball emojis are shown. The language is direct and uses items consistently. The place value explanation provides scaffolding through familiar operations. Answer choices are distinct and appropriate for Grade 1."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Twelve minus two equals ten is correct. The hints show ones subtraction (2-2=0) and tens remaining (1-0=1), yielding ten."
+          "reasoning": "Twelve minus two equals ten is arithmetically correct. The place value decomposition accurately shows zero in the ones place and one in the tens place, reconstructing ten. All steps are valid."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe3-mat_g1_na_q3_0-20260930",
-      "dispatch_id": "s5-phaseE-claude-w3-haiku45-20260930-mat_g1_na_q3_0:mat_g1_na_q3_0"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g1_na_q3_0-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g1_na_q3_0:mat_g1_na_q3_0"
     },
     {
       "sample_id": "49e1e6e01962f5354a7d",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The true or false statement clearly claims that 15 pencils take away 12 pencils leaves 4 pencils. The task to judge this claim's truth value is unambiguous."
+          "reasoning": "Fifteen items are presented initially, twelve are removed, and the remainder is requested. Options are two, four, three, and twelve. The problem is unambiguous in its setup and the operation it specifies."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Fifteen minus twelve equals three, not four. The statement is false, and learners can verify this through subtraction."
+          "reasoning": "Fifteen minus twelve correctly yields three, a logically sound result. The place value hints show five minus two equals three in the ones and one minus one equals zero in the tens. The outcome is valid."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Pencils are everyday classroom supplies familiar to all Grade 1 learners. The quantities and taking away action are concrete and understandable."
+          "reasoning": "Fifteen volleyball emojis are displayed. The problem language is simple and uses items consistently. The place value decomposition breaks the problem into manageable steps. Options are clearly presented and distinct."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Fifteen minus twelve equals three, not four, making the statement false. The hints show ones subtraction (5-2=3) and tens subtraction (1-1=0), confirming three."
+          "reasoning": "Fifteen minus twelve equals three is arithmetically correct. The place value decomposition shows three in the ones and zero in the tens, correctly producing the difference. All calculations are sound."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe3-mat_g1_na_q3_0-20260930",
-      "dispatch_id": "s5-phaseE-claude-w3-haiku45-20260930-mat_g1_na_q3_0:mat_g1_na_q3_0"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g1_na_q3_0-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g1_na_q3_0:mat_g1_na_q3_0"
     },
     {
       "sample_id": "01717f28dcc4231f7c29",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The error detection format clearly presents Manny's claimed answer (10) for 20 apples take away 10 apples. The correctness judgment is unambiguous."
+          "reasoning": "Twenty items are shown initially, ten are removed, and the question asks for the remainder. Options include ten, eleven, twenty, and nine. The problem intent is clear and unambiguous throughout."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Twenty minus ten equals ten. Manny's answer is correct, providing a valid example of recognizing correct peer responses."
+          "reasoning": "Starting with twenty and removing ten leaves ten, a logically valid outcome. The place value approach correctly shows zero minus zero equals zero in the ones and two minus one equals one in the tens. The result is correct."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Apples are familiar produce that children know. The named peer format and straightforward setup make the error detection task clear."
+          "reasoning": "Twenty religious emojis are visually presented, matching the stated quantity. The taking away language is direct and familiar. The place value hints scaffold the solution process. Answer options are distinct."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Twenty minus ten equals ten is correct. The hints show ones subtraction (0-0=0) and tens subtraction (2-1=1), yielding ten, confirming Manny has no error."
+          "reasoning": "Twenty minus ten equals ten is arithmetically correct. The place value decomposition shows zero minus zero equals zero and two minus one equals one, properly reconstructing ten. All steps are mathematically valid."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe3-mat_g1_na_q3_0-20260930",
-      "dispatch_id": "s5-phaseE-claude-w3-haiku45-20260930-mat_g1_na_q3_0:mat_g1_na_q3_0"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g1_na_q3_0-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g1_na_q3_0:mat_g1_na_q3_0"
     },
     {
       "sample_id": "17556676af07b9514f9a",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The cloze stem clearly presents 10 stickers with 2 to be taken away. The blank location indicates where the answer goes, and four options are provided."
+          "reasoning": "Ten items are displayed, two are removed, and the remainder is requested. Options are two, ten, eight, and twelve. The problem is clearly stated without ambiguous elements or conflicting instructions."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Taking 2 stickers from 10 stickers logically leaves 8 stickers. The scenario is realistic and mathematically sound."
+          "reasoning": "Removing two from ten yields eight, a logically consistent and correct result. The counting-back strategy from ten by two is accurate. The scenario and arithmetic are both valid."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Stickers are highly motivating for Grade 1 learners and commonly used in classrooms. The blank fill format is familiar and appropriate."
+          "reasoning": "Ten basketball emojis are shown visually. The problem uses simple taking away language throughout. The hint to count back from ten by two is transparent and easy for first graders to visualize. Options are appropriately spaced."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Ten minus two equals eight is correct. The hints show the borrowing procedure (10-2=8 for ones, 0-0=0 for tens), confirming eight."
+          "reasoning": "Ten minus two equals eight is arithmetically correct. Counting back from ten by two steps correctly yields eight. The final answer is mathematically sound."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe3-mat_g1_na_q3_0-20260930",
-      "dispatch_id": "s5-phaseE-claude-w3-haiku45-20260930-mat_g1_na_q3_0:mat_g1_na_q3_0"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g1_na_q3_0-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g1_na_q3_0:mat_g1_na_q3_0"
     },
     {
       "sample_id": "1d8d8b56ccc17ab31322",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The visual shows 15 volleyball emojis matching the stem's statement of 15 items. The read MCQ question clearly asks how many remain after 15 items are taken away."
+          "reasoning": "Fifteen items are established, all fifteen are removed, and the problem asks for the remainder. Options include zero, one, thirty, and fifteen. The scenario unambiguously represents complete removal with zero as the expected result."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Removing all 15 items from 15 items leaves zero. The visual, setup, and result are logically consistent."
+          "reasoning": "Removing all fifteen items from a group of fifteen logically yields zero. The place value decomposition correctly shows five minus five equals zero and one minus one equals zero. The result is valid and correct."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The emoji pictorial provides visual clarity for the taking away action. The question structure is straightforward and appropriate for read mode."
+          "reasoning": "Fifteen volleyball emojis are visually displayed. The language uses items consistently and describes complete removal clearly. The place value explanation provides formal scaffolding. The concept of zero remainder is important for Grade 1 development."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Fifteen minus fifteen equals zero is mathematically correct. The hints show ones subtraction (5-5=0) and tens subtraction (1-1=0), yielding zero."
+          "reasoning": "Fifteen minus fifteen correctly equals zero. The place value decomposition shows five minus five equals zero and one minus one equals zero, properly constructing the overall difference. All calculations are arithmetically valid."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe3-mat_g1_na_q3_0-20260930",
-      "dispatch_id": "s5-phaseE-claude-w3-haiku45-20260930-mat_g1_na_q3_0:mat_g1_na_q3_0"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g1_na_q3_0-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g1_na_q3_0:mat_g1_na_q3_0"
     },
     {
       "sample_id": "5ec2a05a7ff4e0c0c90f",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The cloze stem presents 10 marbles with 1 to be taken away and asks for the remaining count. The blank and four options make the task unambiguous."
+          "reasoning": "Ten items are shown, one is removed, and the problem asks how many remain. Options are eight, ten, nine, and eleven. The problem is stated clearly with no ambiguous language or conflicting information."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Taking 1 marble from 10 marbles logically leaves 9 marbles. The scenario is realistic and mathematically sound."
+          "reasoning": "Starting with ten and removing one leaves nine, a logically sound and correct outcome. The counting-back strategy from ten by one is accurate and appropriate. The scenario is valid."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Marbles are familiar objects that children know. The problem structure uses simple language and a straightforward blank to fill."
+          "reasoning": "Ten dancer emojis are displayed. The language is simple and uses taking away phrasing throughout. The hint to count back from ten by one is the simplest possible strategy for Grade 1. Options are clearly distinct numbers."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Ten minus one equals nine is correct. The hints explain the borrowing procedure (10-1=9 for ones, 0-0=0 for tens), confirming nine."
+          "reasoning": "Ten minus one equals nine is arithmetically correct. Counting back from ten by one step correctly yields nine. The difference statement is mathematically valid."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe3-mat_g1_na_q3_0-20260930",
-      "dispatch_id": "s5-phaseE-claude-w3-haiku45-20260930-mat_g1_na_q3_0:mat_g1_na_q3_0"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g1_na_q3_0-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g1_na_q3_0:mat_g1_na_q3_0"
     },
     {
       "sample_id": "1ae65df5994dda0f407d",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The MCQ question directly asks how many blocks remain after taking 12 blocks from 20 blocks. Four distinct options are provided without confusion."
+          "reasoning": "Twenty items are presented initially, twelve are removed, and the problem asks for the remainder. Options include twelve, eight, seven, and thirty-two. No ambiguity exists in the problem statement or the operation specified."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Twenty minus twelve equals eight. The setup is logically consistent and represents a valid subtraction situation."
+          "reasoning": "Twenty minus twelve equals eight, a logically consistent and correct result. The counting-back strategy from twenty by twelve is accurate. The scenario and arithmetic are both valid."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Blocks are fundamental materials in Grade 1 mathematics learning. The how many question is clear, and the simple numerical options are accessible."
+          "reasoning": "Twenty dog emojis are visually displayed, matching the stated quantity. The problem uses taking away language consistently. The hint to count back from twenty by twelve, while requiring multiple steps, is transparent. Options are appropriately distinct."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Twenty minus twelve equals eight is correct. The hints show the borrowing procedure (10-2=8 for ones, 1-1=0 for tens), confirming eight."
+          "reasoning": "Twenty minus twelve equals eight is arithmetically correct. Counting back from twenty by twelve steps correctly yields eight. The final answer is mathematically sound."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe3-mat_g1_na_q3_0-20260930",
-      "dispatch_id": "s5-phaseE-claude-w3-haiku45-20260930-mat_g1_na_q3_0:mat_g1_na_q3_0"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g1_na_q3_0-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g1_na_q3_0:mat_g1_na_q3_0"
+    },
+    {
+      "sample_id": "16b062d5ebb2de8d99b5",
+      "checks": {
+        "ambiguity": {
+          "verdict": "PASS",
+          "reasoning": "Ten paints are shown initially, three are removed, and the problem asks how many remain. Options include six, seven, thirteen, and ten. The problem is unambiguous in its structure and the operation it describes."
+        },
+        "contextual_logical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Removing three from ten leaves seven, a logically valid and correct outcome. The counting-back strategy from ten by three is accurate. The scenario is realistic for Grade 1."
+        },
+        "learner_facing_clarity": {
+          "verdict": "PASS",
+          "reasoning": "Ten paint-palette emojis are displayed. The word paints is used consistently in both the problem and the hint. The language is simple and takes away is emphasized. The counting-back approach is accessible to first graders."
+        },
+        "mathematical_validity": {
+          "verdict": "PASS",
+          "reasoning": "Ten minus three equals seven is arithmetically correct. Counting back from ten by three steps correctly produces seven. The difference statement is mathematically valid."
+        }
+      },
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g1_na_q3_0-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g1_na_q3_0:mat_g1_na_q3_0"
     },
     {
       "sample_id": "078f92abee66205f5abb",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The visual shows 12 bicycle emojis; the stem confirms 12 items with 2 to remove. The read MCQ presents four answer choices unambiguously."
+          "reasoning": "Twelve items are established, two are removed, and the remainder is requested. Options are eleven, ten, two, and twelve. The problem statement is clear and unambiguous in its operation and target."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Twelve items shown with 2 removed leaves 10. The visual representation matches the problem description logically."
+          "reasoning": "Twelve minus two equals ten, a logically sound and correct result. The place value decomposition shows two minus two equals zero and one minus zero equals one. The outcome is valid."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Bicycles are familiar vehicles to Grade 1 learners. The emoji visual combined with the clear question makes the task accessible."
+          "reasoning": "Twelve bicycle emojis are visually presented. The problem uses items language consistently. The place value hints provide formal structure to the solution. Options are clearly distinct."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Twelve minus two equals ten is correct. The hints show ones subtraction (2-2=0) and tens remaining (1-0=1), yielding ten."
+          "reasoning": "Twelve minus two equals ten is arithmetically correct. The place value decomposition shows zero in the ones and one in the tens, correctly reconstructing ten. All calculations are mathematically sound."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe3-mat_g1_na_q3_0-20260930",
-      "dispatch_id": "s5-phaseE-claude-w3-haiku45-20260930-mat_g1_na_q3_0:mat_g1_na_q3_0"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g1_na_q3_0-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g1_na_q3_0:mat_g1_na_q3_0"
     },
     {
       "sample_id": "2f3fcdb3af462d2bbc73",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The visual displays 12 volleyball emojis; the stem asks how many remain after taking away 2 items. The read MCQ format with four options is unambiguous."
+          "reasoning": "Twelve items are shown, two are removed, and the problem asks how many remain. Options include two, eleven, fourteen, and ten. The problem is clearly stated without ambiguous phrasing."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Twelve items shown with 2 removed leaves 10. The setup is logically consistent with the visual representation."
+          "reasoning": "Removing two from twelve yields ten, which is logically valid and correct. The place value approach correctly decomposes this: two minus two equals zero and one minus zero equals one. The result is sound."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The emoji pictorial provides concrete visual support. The question structure is clear and the task is developmentally appropriate for Grade 1."
+          "reasoning": "Twelve volleyball emojis are displayed. The language is direct and uses taking away consistently. The place value scaffolding breaks the problem into familiar components. Answer options are distinct."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Twelve minus two equals ten is correct. The hints show ones subtraction (2-2=0) and tens remaining (1-0=1), confirming ten."
+          "reasoning": "Twelve minus two equals ten is arithmetically correct. The place value decomposition shows zero in the ones and one in the tens, properly yielding ten. All steps are mathematically valid."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe3-mat_g1_na_q3_0-20260930",
-      "dispatch_id": "s5-phaseE-claude-w3-haiku45-20260930-mat_g1_na_q3_0:mat_g1_na_q3_0"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g1_na_q3_0-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g1_na_q3_0:mat_g1_na_q3_0"
     },
     {
       "sample_id": "74b61f43027bb258b0d9",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The MCQ stem states 20 stickers with 15 to be taken away, asking how many remain. Four numerical options are distinct and unambiguous."
+          "reasoning": "Twenty items are presented, fifteen are removed, and the remainder is requested. Options are fifteen, five, six, and four. The problem is unambiguous in its setup and the operation it specifies."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Twenty minus fifteen equals five. The mathematical operation is valid and the context with theming (cross emoji and name reference) does not interfere."
+          "reasoning": "Starting with twenty and removing fifteen leaves five, a logically consistent and correct result. The counting-back strategy from twenty by fifteen is accurate. The scenario is valid."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Stickers engage Grade 1 interest. The theming with a peer name adds context without confusing the core mathematics task."
+          "reasoning": "Twenty religious emojis are visually displayed. The problem uses taking away language consistently and plainly. The hint to count back from twenty by fifteen, while involving multiple steps, is transparent. Options are appropriately spaced."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Twenty minus fifteen equals five is correct. The hints show the borrowing procedure (10-5=5 for ones, 1-1=0 for tens), confirming five."
+          "reasoning": "Twenty minus fifteen equals five is arithmetically correct. Counting back from twenty by fifteen steps correctly reaches five. The final answer is mathematically sound."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe3-mat_g1_na_q3_0-20260930",
-      "dispatch_id": "s5-phaseE-claude-w3-haiku45-20260930-mat_g1_na_q3_0:mat_g1_na_q3_0"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g1_na_q3_0-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g1_na_q3_0:mat_g1_na_q3_0"
     },
     {
       "sample_id": "bbe85608606f40cfdc0a",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The visual shows 12 basketball emojis matching the stated quantity. The read MCQ clearly asks how many items remain after taking away 1 item."
+          "reasoning": "Twelve items are shown, one is removed, and the problem asks how many remain. Options include eleven, ten, twelve, and thirteen. The problem is stated clearly with no ambiguity in operation or target."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Twelve items shown with 1 removed leaves 11. The visual, stem, and mathematical operation are logically consistent."
+          "reasoning": "Removing one from twelve leaves eleven, a logically valid and correct outcome. The place value decomposition correctly shows two minus one equals one and one minus zero equals one. The result is sound."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Basketballs are familiar sports objects. The emoji pictorial provides visual clarity, and the subtraction of 1 item is very accessible."
+          "reasoning": "Twelve basketball emojis are presented visually. The language is simple and uses items consistently. The place value hints scaffold the solution while remaining accessible. Options are clearly presented."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Twelve minus one equals eleven is correct. The hints show ones subtraction (2-1=1) and tens remaining (1-0=1), yielding eleven."
+          "reasoning": "Twelve minus one equals eleven is arithmetically correct. The place value decomposition shows one in the ones and one in the tens, properly reconstructing eleven. All calculations are mathematically valid."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe3-mat_g1_na_q3_0-20260930",
-      "dispatch_id": "s5-phaseE-claude-w3-haiku45-20260930-mat_g1_na_q3_0:mat_g1_na_q3_0"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g1_na_q3_0-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g1_na_q3_0:mat_g1_na_q3_0"
     },
     {
       "sample_id": "9c24eca19bc51a7ed7ec",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The true or false statement clearly claims that 13 erasers take away 9 erasers leaves 4 erasers. The judgment task is unambiguous."
+          "reasoning": "Thirteen items are established, nine are removed, and the problem asks for the remainder. Options are five, nine, three, and four. The scenario is clearly presented without ambiguous elements."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Thirteen minus nine equals four. The statement is logically sound and represents a realistic subtraction scenario."
+          "reasoning": "Starting with thirteen and removing nine leaves four, a logically sound and correct result. The counting-back strategy from thirteen by nine is accurate. The scenario and arithmetic are both valid."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Erasers are everyday classroom materials. The quantities and taking away action are concrete and understandable for Grade 1."
+          "reasoning": "Thirteen dog emojis are displayed. The language uses items consistently and employs taking away phrasing. The hint to count back from thirteen by nine, while involving multiple steps, is transparent. Options are appropriately distinct."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Thirteen minus nine equals four is mathematically correct. The hints show the borrowing procedure (13-9=4 for ones, 0-0=0 for tens), confirming four."
+          "reasoning": "Thirteen minus nine equals four is arithmetically correct. Counting back from thirteen by nine steps correctly yields four. The difference statement is mathematically valid."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe3-mat_g1_na_q3_0-20260930",
-      "dispatch_id": "s5-phaseE-claude-w3-haiku45-20260930-mat_g1_na_q3_0:mat_g1_na_q3_0"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g1_na_q3_0-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g1_na_q3_0:mat_g1_na_q3_0"
     },
     {
       "sample_id": "42fa89e522e3a1763b7b",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The error detection format presents Noel's claimed answer (11) for 13 stickers take away 3 stickers. The task unambiguously asks whether this is correct."
+          "reasoning": "Thirteen items are shown, three are removed, and the remainder is requested. Options include nine, eleven, ten, and thirteen. No ambiguity exists in the problem statement or the intended operation."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Thirteen minus three equals ten, not eleven. Noel's answer contains an error, making this a valid error detection opportunity."
+          "reasoning": "Thirteen minus three equals ten, a logically valid and correct outcome. The place value hints correctly show three minus three equals zero and one minus zero equals one. The result is sound."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Stickers are motivating for Grade 1 learners. The named peer format and straightforward setup make the error detection task accessible."
+          "reasoning": "Thirteen bicycle emojis are visually presented. The problem uses items language and taking away phrasing consistently. The place value decomposition provides scaffolding. Options are clearly distinct."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Thirteen minus three equals ten, not eleven. The hints show ones subtraction (3-3=0) and tens remaining (1-0=1), confirming ten and identifying Noel's error."
+          "reasoning": "Thirteen minus three equals ten is arithmetically correct. The place value decomposition shows zero in the ones and one in the tens, correctly yielding ten. All steps are mathematically sound."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe3-mat_g1_na_q3_0-20260930",
-      "dispatch_id": "s5-phaseE-claude-w3-haiku45-20260930-mat_g1_na_q3_0:mat_g1_na_q3_0"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g1_na_q3_0-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g1_na_q3_0:mat_g1_na_q3_0"
     },
     {
       "sample_id": "7545db500d5c613acd77",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The error detection format clearly states Maria's claimed answer (10) for 12 blocks take away 3 blocks. The correctness judgment is unambiguous."
+          "reasoning": "Twelve cupcakes are displayed, three are removed, and the problem asks how many remain. Options are nine, fifteen, twelve, and ten. The scenario is unambiguous in its setup and operation."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Twelve minus three equals nine, not ten. Maria's answer is incorrect, providing a valid error detection scenario."
+          "reasoning": "Removing three cupcakes from twelve leaves nine, a logically consistent and correct result. The counting-back strategy from twelve by three is accurate. The scenario is realistic and valid."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Blocks are familiar manipulative materials in Grade 1. The named peer and clear question format make the error detection task clear."
+          "reasoning": "Twelve cupcake emojis are shown, and the word cupcakes is used consistently throughout. The language is simple and emphasizes taking away. The counting-back hint is transparent and accessible. Options are appropriately spaced."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Twelve minus three equals nine, not ten. The hints show the borrowing procedure (12-3=9 for ones, 0-0=0 for tens), confirming nine and identifying Maria's error."
+          "reasoning": "Twelve minus three equals nine is arithmetically correct. Counting back from twelve by three steps correctly produces nine. The final answer is mathematically valid."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe3-mat_g1_na_q3_0-20260930",
-      "dispatch_id": "s5-phaseE-claude-w3-haiku45-20260930-mat_g1_na_q3_0:mat_g1_na_q3_0"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g1_na_q3_0-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g1_na_q3_0:mat_g1_na_q3_0"
     },
     {
       "sample_id": "b949dee48eab95d22e43",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The cloze stem presents 10 pencils with 2 to be taken away. The blank location and four options are clear, and the task is unambiguous."
+          "reasoning": "Ten cupcakes are shown, two are removed, and the remainder is requested. Options include eight, two, seven, and twelve. The problem is clearly stated with no ambiguous elements."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Taking 2 pencils from 10 pencils leaves 8 pencils. The scenario is realistic and mathematically valid."
+          "reasoning": "Starting with ten and removing two leaves eight, a logically valid and correct outcome. The counting-back strategy from ten by two is accurate and appropriate. The scenario is sound."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Pencils are familiar writing tools in Grade 1 classrooms. The blank fill format is developmentally appropriate and language is simple."
+          "reasoning": "Ten cupcake emojis are displayed. The word cupcakes appears consistently throughout the problem. The language is direct and uses taking away phrasing. The counting-back approach is simple and accessible. Options are distinct."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Ten minus two equals eight is correct. The hints show the borrowing procedure (10-2=8 for ones, 0-0=0 for tens), confirming eight."
+          "reasoning": "Ten minus two equals eight is arithmetically correct. Counting back from ten by two steps correctly yields eight. The difference is mathematically valid."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe3-mat_g1_na_q3_0-20260930",
-      "dispatch_id": "s5-phaseE-claude-w3-haiku45-20260930-mat_g1_na_q3_0:mat_g1_na_q3_0"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g1_na_q3_0-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g1_na_q3_0:mat_g1_na_q3_0"
     },
     {
       "sample_id": "67c3ebc06e3db5f49c2f",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The visual displays 20 cross emojis; the stem confirms 20 items with 20 to remove. The read MCQ presents four answer options without ambiguity."
+          "reasoning": "Twenty items are established, all twenty are removed, and the problem asks how many remain. Options are zero, one, forty, and twenty. The scenario unambiguously represents complete removal with zero as the result."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Taking all 20 items from 20 items leaves zero. The visual and numerical setup are consistent and logically valid."
+          "reasoning": "Removing all twenty items from a group of twenty logically yields zero. The place value decomposition correctly shows zero minus zero equals zero and two minus two equals zero. The outcome is valid."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The emoji pictorial provides visual support for removing all items. The mastery drill experience indicates this is review material, making it appropriate for practicing known concepts."
+          "reasoning": "Twenty religious emojis are visually presented. The problem uses taking away language clearly. The place value hints explain the solution formally. The concept of zero is essential for Grade 1 understanding."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Twenty minus twenty equals zero is correct. The hints show ones subtraction (0-0=0) and tens subtraction (2-2=0), confirming zero."
+          "reasoning": "Twenty minus twenty correctly equals zero. The place value decomposition shows zero minus zero equals zero and two minus two equals zero, properly yielding zero. All calculations are arithmetically valid."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe3-mat_g1_na_q3_0-20260930",
-      "dispatch_id": "s5-phaseE-claude-w3-haiku45-20260930-mat_g1_na_q3_0:mat_g1_na_q3_0"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g1_na_q3_0-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g1_na_q3_0:mat_g1_na_q3_0"
     },
     {
       "sample_id": "1476901a257aaa6f8a1f",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The visual shows 20 cupcake emojis; the stem confirms 20 cupcakes with 1 to remove. The read MCQ with four options is unambiguous."
+          "reasoning": "Twenty cupcakes are shown, one is removed, and the problem asks how many remain. Options include twenty, twenty-one, nineteen, and one. The scenario is clearly presented without ambiguous phrasing."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Twenty items shown with 1 removed leaves 19. The visual, statement, and result are logically consistent."
+          "reasoning": "Starting with twenty and removing one leaves nineteen, a logically sound and correct result. The counting-back strategy from twenty by one is accurate. The scenario is realistic for Grade 1."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Cupcakes are appealing to Grade 1 learners. The scaffolded experience indicates this provides support, and the visual aids comprehension of the taking away concept."
+          "reasoning": "Twenty cupcake emojis are displayed, and cupcakes is used consistently. The language is simple and employs taking away phrasing. The hint to count back from twenty by one is the simplest strategy. Options are appropriately distinct."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Twenty minus one equals nineteen is correct. The hints show the borrowing procedure (10-1=9 for ones, 1-0=1 for tens), confirming nineteen."
+          "reasoning": "Twenty minus one equals nineteen is arithmetically correct. Counting back from twenty by one step correctly produces nineteen. The final answer is mathematically sound."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe3-mat_g1_na_q3_0-20260930",
-      "dispatch_id": "s5-phaseE-claude-w3-haiku45-20260930-mat_g1_na_q3_0:mat_g1_na_q3_0"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g1_na_q3_0-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g1_na_q3_0:mat_g1_na_q3_0"
     }
   ],
   "clause_evidence": [
@@ -2615,14 +3693,13 @@
       "requirement_id": "illustrate_subtraction",
       "clause": "Illustrate subtraction",
       "verdict": "PASS",
-      "reasoning": "All 30 samples present subtraction in varied formats including visual emoji pictorials on 10 samples and non-visual presentation on 20 samples. The cloze items show blanks where answers go; MCQ and true/false require learners to apply subtraction logic; error detection showcases subtraction in peer work contexts. Hints consistently explain the subtraction operation numerically.",
+      "reasoning": "All thirty samples present subtraction through visual display of emojis and explicit problem structures that show initial quantity, removal of items, and final remainder. Each item clearly illustrates the subtraction operation through concrete pictorial representation, meeting the core requirement to illustrate subtraction across diverse contexts and emoji themes.",
       "sample_ids": [
         "f253f286c3d49fd685aa",
         "bda42f9548cd0933a065",
         "db7daf7e7df1318f2dde",
         "b6af90c731db1208f82b",
         "1d39be6dd6adbe8521f9",
-        "4b504d5a188474abd458",
         "b1eda95d53060391d552",
         "251155d8e46d66690d89",
         "3e17870763b8acf03a9c",
@@ -2637,6 +3714,7 @@
         "1d8d8b56ccc17ab31322",
         "5ec2a05a7ff4e0c0c90f",
         "1ae65df5994dda0f407d",
+        "16b062d5ebb2de8d99b5",
         "078f92abee66205f5abb",
         "2f3fcdb3af462d2bbc73",
         "74b61f43027bb258b0d9",
@@ -2648,21 +3726,20 @@
         "67c3ebc06e3db5f49c2f",
         "1476901a257aaa6f8a1f"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pe3-mat_g1_na_q3_0-20260930",
-      "dispatch_id": "s5-phaseE-claude-w3-haiku45-20260930-mat_g1_na_q3_0:mat_g1_na_q3_0"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g1_na_q3_0-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g1_na_q3_0:mat_g1_na_q3_0"
     },
     {
       "requirement_id": "numbers_up_to_20",
       "clause": "numbers up to 20",
       "verdict": "PASS",
-      "reasoning": "Every sample uses minuends and subtrahends that remain within the 0 to 20 range specified in the competency. Minuends range from 10 to 20 across samples; subtrahends range from 1 to 20; results range from 0 to 19. No sample exceeds 20 as a starting quantity, ensuring all arithmetic stays within the defined boundary.",
+      "reasoning": "Every sample restricts its numbers to the range of one through twenty as specified. Initial quantities span from ten to twenty, subtracted amounts range from one to twenty, and resulting remainders range from zero to nineteen. All arithmetic values remain within the stated boundary, ensuring compliance with this quantitative requirement across the complete sample set.",
       "sample_ids": [
         "f253f286c3d49fd685aa",
         "bda42f9548cd0933a065",
         "db7daf7e7df1318f2dde",
         "b6af90c731db1208f82b",
         "1d39be6dd6adbe8521f9",
-        "4b504d5a188474abd458",
         "b1eda95d53060391d552",
         "251155d8e46d66690d89",
         "3e17870763b8acf03a9c",
@@ -2677,6 +3754,7 @@
         "1d8d8b56ccc17ab31322",
         "5ec2a05a7ff4e0c0c90f",
         "1ae65df5994dda0f407d",
+        "16b062d5ebb2de8d99b5",
         "078f92abee66205f5abb",
         "2f3fcdb3af462d2bbc73",
         "74b61f43027bb258b0d9",
@@ -2688,41 +3766,60 @@
         "67c3ebc06e3db5f49c2f",
         "1476901a257aaa6f8a1f"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pe3-mat_g1_na_q3_0-20260930",
-      "dispatch_id": "s5-phaseE-claude-w3-haiku45-20260930-mat_g1_na_q3_0:mat_g1_na_q3_0"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g1_na_q3_0-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g1_na_q3_0:mat_g1_na_q3_0"
     },
     {
       "requirement_id": "concrete_pictorial",
       "clause": "concrete and pictorial models",
-      "verdict": "CONCERN",
-      "reasoning": "Pictorial models are present and well-represented through emoji pictorials in 10 read MCQ samples, where visual representations support understanding of quantities and removal. However, concrete models (physical manipulatives, base-ten blocks, or explicit concrete representations) are notably absent. The emoji pictorials serve as pictorial representations but not as concrete manipulatives in the traditional sense. Twenty samples are non-visual text presentations with no concrete or pictorial support, which means only one-third of the pool includes visual model representation.",
+      "verdict": "PASS",
+      "reasoning": "Every sample employs emoji pictorial visual models to represent the mathematical situation concretely. The emojis function as manipulatives or visual anchors, allowing students to count, match, and verify quantities without abstract notation. Seven distinct emoji types appear across the samples, providing diverse pictorial representations while maintaining the pedagogical function of concrete modeling.",
       "sample_ids": [
-        "4b504d5a188474abd458",
+        "f253f286c3d49fd685aa",
+        "bda42f9548cd0933a065",
+        "db7daf7e7df1318f2dde",
+        "b6af90c731db1208f82b",
+        "1d39be6dd6adbe8521f9",
+        "b1eda95d53060391d552",
+        "251155d8e46d66690d89",
         "3e17870763b8acf03a9c",
+        "aea2d071dcbf28f39e4d",
+        "a809bb432c99590addaa",
         "a96d8f418b3311d12e39",
+        "170597441f2e02f85c28",
         "2e3f9b646338ea229b61",
+        "49e1e6e01962f5354a7d",
+        "01717f28dcc4231f7c29",
+        "17556676af07b9514f9a",
         "1d8d8b56ccc17ab31322",
+        "5ec2a05a7ff4e0c0c90f",
+        "1ae65df5994dda0f407d",
+        "16b062d5ebb2de8d99b5",
         "078f92abee66205f5abb",
         "2f3fcdb3af462d2bbc73",
+        "74b61f43027bb258b0d9",
         "bbe85608606f40cfdc0a",
+        "9c24eca19bc51a7ed7ec",
+        "42fa89e522e3a1763b7b",
+        "7545db500d5c613acd77",
+        "b949dee48eab95d22e43",
         "67c3ebc06e3db5f49c2f",
         "1476901a257aaa6f8a1f"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pe3-mat_g1_na_q3_0-20260930",
-      "dispatch_id": "s5-phaseE-claude-w3-haiku45-20260930-mat_g1_na_q3_0:mat_g1_na_q3_0"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g1_na_q3_0-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g1_na_q3_0:mat_g1_na_q3_0"
     },
     {
       "requirement_id": "describe_subtraction",
       "clause": "describes subtraction",
       "verdict": "PASS",
-      "reasoning": "Every sample describes subtraction through language and hint explanations. Stems describe the operation as removing a quantity from another quantity. Hints explicitly state the operation (We are subtracting X from Y) and explain the mathematical process through column subtraction or direct computation. Both the conceptual framing and numerical description are present across all samples.",
+      "reasoning": "Every sample provides explicit verbal description of the subtraction operation. Hints explain what operation is performed by stating facts such as we are subtracting a certain amount from a starting value. Additionally, hints frequently show or describe the mathematical equation and its result, ensuring learners understand not just the mechanics but the concept being illustrated.",
       "sample_ids": [
         "f253f286c3d49fd685aa",
         "bda42f9548cd0933a065",
         "db7daf7e7df1318f2dde",
         "b6af90c731db1208f82b",
         "1d39be6dd6adbe8521f9",
-        "4b504d5a188474abd458",
         "b1eda95d53060391d552",
         "251155d8e46d66690d89",
         "3e17870763b8acf03a9c",
@@ -2737,6 +3834,7 @@
         "1d8d8b56ccc17ab31322",
         "5ec2a05a7ff4e0c0c90f",
         "1ae65df5994dda0f407d",
+        "16b062d5ebb2de8d99b5",
         "078f92abee66205f5abb",
         "2f3fcdb3af462d2bbc73",
         "74b61f43027bb258b0d9",
@@ -2748,21 +3846,20 @@
         "67c3ebc06e3db5f49c2f",
         "1476901a257aaa6f8a1f"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pe3-mat_g1_na_q3_0-20260930",
-      "dispatch_id": "s5-phaseE-claude-w3-haiku45-20260930-mat_g1_na_q3_0:mat_g1_na_q3_0"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g1_na_q3_0-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g1_na_q3_0:mat_g1_na_q3_0"
     },
     {
       "requirement_id": "taking_away",
       "clause": "taking away",
       "verdict": "PASS",
-      "reasoning": "All 30 samples explicitly use the phrase and concept of taking away. Every stem includes the language taking away or removing a specific quantity. This consistent vocabulary grounds subtraction in the concrete action of removal, directly supporting the competency's requirement to describe subtraction as taking away. No sample uses alternative subtraction language such as comparison or missing addend.",
+      "reasoning": "Every sample explicitly uses the phrase taking away in its problem stem to describe the subtraction operation. This language consistently and clearly conveys the semantic meaning of subtraction as a removal or decrease. The phrase appears in every sample stem, making the operation concrete and understandable to Grade 1 students who are building foundational subtraction concepts through this specific model.",
       "sample_ids": [
         "f253f286c3d49fd685aa",
         "bda42f9548cd0933a065",
         "db7daf7e7df1318f2dde",
         "b6af90c731db1208f82b",
         "1d39be6dd6adbe8521f9",
-        "4b504d5a188474abd458",
         "b1eda95d53060391d552",
         "251155d8e46d66690d89",
         "3e17870763b8acf03a9c",
@@ -2777,6 +3874,7 @@
         "1d8d8b56ccc17ab31322",
         "5ec2a05a7ff4e0c0c90f",
         "1ae65df5994dda0f407d",
+        "16b062d5ebb2de8d99b5",
         "078f92abee66205f5abb",
         "2f3fcdb3af462d2bbc73",
         "74b61f43027bb258b0d9",
@@ -2788,17 +3886,17 @@
         "67c3ebc06e3db5f49c2f",
         "1476901a257aaa6f8a1f"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pe3-mat_g1_na_q3_0-20260930",
-      "dispatch_id": "s5-phaseE-claude-w3-haiku45-20260930-mat_g1_na_q3_0:mat_g1_na_q3_0"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g1_na_q3_0-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g1_na_q3_0:mat_g1_na_q3_0"
     }
   ],
   "dispatch_provenance": [
     {
-      "dispatch_id": "s5-phaseE-claude-w3-haiku45-20260930-mat_g1_na_q3_0:mat_g1_na_q3_0",
-      "reviewer_identity": "blind-reviewer-haiku45-pe3-mat_g1_na_q3_0-20260930",
-      "review_date": "2026-09-30",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g1_na_q3_0:mat_g1_na_q3_0",
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g1_na_q3_0-20261003",
+      "review_date": "2026-10-03",
       "blind": true,
-      "packet_digest": "b2660aea63100a5df5528cbfc576e062f659402e42619f4e80b9095cc985ea5c",
+      "packet_digest": "768dfddf6c69327c0e59e443d237a51be9c0b3e2d108a3c19b0059f57c08b029",
       "clause_ids": [
         "illustrate_subtraction",
         "numbers_up_to_20",
@@ -2806,29 +3904,29 @@
         "describe_subtraction",
         "taking_away"
       ],
-      "response_ref": ".responses/s5-phaseE-claude-w3-haiku45-20260930-mat_g1_na_q3_0.json",
-      "response_digest": "89f28b00ea9e49280247162c5b36c4bf0da78b5f4ed0afe8472b0ef585636ff0",
-      "prompt_ref": ".responses/s5-phaseE-claude-w3-haiku45-20260930-mat_g1_na_q3_0.prompt.txt",
-      "prompt_digest": "601fd95a4a09f73cd8b26fc8bd9043b9e6d2acd6470d1036a79468043794eb3f",
-      "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; the reviewer was told to Read only local_only/scratch/phaseE_claude/mat_g1_na_q3_0/prompt.txt and Write only local_only/scratch/phaseE_claude/mat_g1_na_q3_0/verdicts.json. Blindness is a prompt contract, not a sandbox.",
-      "tool_uses_by_reviewer": "Harness usage record: 2 tool uses; by name from the transcript: 1 Read, 1 Write; paths outside this node's own prompt/reply: none; no revision. Dispatcher note: two pairs of samples share word-for-word mathematical_validity reasoning (2e3f9b64/078f92ab both show 12 items; 17556676/b949dee4 both compute 10 minus 2 = 8, differing only in the object noun); identical arithmetic, so identical reasoning is accurate, not templating."
+      "response_ref": ".responses/s5-w2-wave2-w2-haiku45-20261003-mat_g1_na_q3_0.json",
+      "response_digest": "6c4fe50cb92657e4a18ab7be97336c9227a2cd68706adc4cc95217bdc6f15fd1",
+      "prompt_ref": ".responses/s5-w2-wave2-w2-haiku45-20261003-mat_g1_na_q3_0.prompt.txt",
+      "prompt_digest": "7ce40b2b46ad23af371fee80bd91658c472c50838cca4f2c8dd33398391217b4",
+      "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; the reviewer was told to Read only local_only/scratch/w2_review2/mat_g1_na_q3_0/prompt.txt and Write only local_only/scratch/w2_review2/mat_g1_na_q3_0/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+      "tool_uses_by_reviewer": "Harness usage record: 2 tool uses; by name from the transcript: 1 Read, 1 Write; paths other than this node's own prompt.txt/verdicts.json: none; no revision."
     }
   ],
   "findings": {
     "cognitive_capacity": {
-      "verdict": "CONCERN",
-      "rationale": "The numeric range and taking away context suit Grade 1 Quarter 3 learners, but the formal column subtraction with regrouping procedure described in hints throughout the pool may exceed typical cognitive development at this point. The explicit teaching of tens and ones decomposition appears consistently even for simpler facts like 10-2, which most Grade 1 curricula teach through conceptual understanding before introducing formal procedures."
+      "verdict": "PASS",
+      "rationale": "All problems present Grade 1 Quarter 3 appropriate difficulty levels. Numbers range from 10 to 20 with single- or double-digit subtractors, matching late-first-grade cognitive capacity. Visual emoji supports students who need concrete anchoring without overwhelming them with abstract notation."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "All 30 samples require learners to illustrate subtraction involving numbers up to 20, consistently frame operations as taking away, use emoji pictorial models on half the samples, and describe subtraction through both stems and hints. The vocabulary throughout matches the competency's explicit reference to taking away as the core concept, with appropriate use of action language consistently."
+      "rationale": "Every sample demonstrates subtraction as removing items from a group, directly addressing the Grade 1 MATATAG competency. All problems use the language 'taking away' explicitly in problem stems, showing precise alignment with both the illustration and descriptive components of the learning target."
     },
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "The five requirements form a complete decomposition of the competency without gaps or redundancy.",
+      "rationale": "The five printed requirements partition the competency cleanly: illustration and concrete models are shown together through emoji visuals; numbers up to 20 is quantified; describing subtraction as taking away appears in every sample stem. Coverage is complete and non-redundant across the requirement set.",
       "decomposition": {
         "verdict": "PASS",
-        "reasoning": "Each of the five stated requirements maps directly to distinct aspects of the competency statement. Illustrate subtraction covers the main operation; numbers up to 20 specifies the range; concrete pictorial names the representation modes; describe subtraction and taking away both address the conceptual framing. No component of the full competency statement is left unaddressed, and no requirement overstates its scope.",
+        "reasoning": "The decomposition into illustrate subtraction, numbers up to 20, concrete pictorial models, describe subtraction, and taking away captures all essential elements. Each addresses a distinct facet: the action, the magnitude boundary, the pedagogical mode, the concept, and the mechanism. No material gap remains between the competency statement and these five requirements.",
         "requirement_ids": [
           "illustrate_subtraction",
           "numbers_up_to_20",
@@ -2847,7 +3945,7 @@
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "The sample pool covers a broad range of minuends (10, 12, 13, 15, 16, 20), subtrahends (1 through 20), and results (0 through 19). Five response formats appear (cloze with 4 samples, standard MCQ with 4, true/false with 6, error detection with 6, and read MCQ with 10). Visual emoji pictorials appear in 10 samples, providing mixed representational support across the pool.",
+      "rationale": "All five requirements appear across the sample set. Emoji visuals satisfy concrete and pictorial demand in every item. The language 'taking away' occurs in all thirty stems. Numbers span 10 to 20 for initial quantities. Subtraction is illustrated through consistent problem structure across all variations and contexts.",
       "clause_ids": [
         "illustrate_subtraction",
         "numbers_up_to_20",
@@ -2858,12 +3956,12 @@
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Individual item difficulty ranges from straightforward (15 take away 2 equals 13) to more complex (20 take away 15 equals 5). The mix of operations without requiring from simpler to harder progression is typical for randomized practice pools. Each item targets the stated competency, and no item reaches beyond the grade or quarter's defined scope."
+      "rationale": "Starting values remain within the required 1 to 20 range across all samples, with initial quantities from 10 to 20. Subtracted amounts range from 1 to 20, and results span from 0 to 19, keeping all values within the stated mathematical boundary. Visual groupings remain manageable, showing at most twenty emoji items per problem."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "The response format variants show strong coverage: cloze format with fill in blank answers, multiple choice selection, true or false judgment, error detection with student work analysis, and read mode MCQ with visual emoji pictorial support. The themes across items (paints, apples, cookies, stickers, blocks, cupcakes, erasers, marbles, pencils, balls) introduce interest-based variation without interfering with mathematics."
+      "rationale": "The sample set demonstrates substantial variation across multiple dimensions: seven distinct emoji themes including balls, religious symbols, food, people, dogs, art supplies, and bicycles appear throughout. Initial quantities include 10, 12, 13, 15, 16, and 20. Subtracted amounts vary from 1 through 20. Results range across the spectrum from complete removal to small decrements, providing meaningful variance in problem structure."
     }
   },
-  "overall": "CONCERN"
+  "overall": "PASS"
 }

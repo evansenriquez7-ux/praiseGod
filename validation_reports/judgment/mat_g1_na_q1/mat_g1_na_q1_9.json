@@ -34,10 +34,10 @@
       "clause": "sums up to 20"
     }
   ],
-  "packet_digest": "081e56250ec03aa609b45f75d0825e8b96c5544f95039a004d010f9f6ca74361",
+  "packet_digest": "e1357f411a206eef20f49eb729b8d90686c1fbf7610d2e5a02571ecac1e24454",
   "sampling_version": "phase2-stratified-v2-rendered-visual",
-  "reviewed_by": "blind-reviewer-haiku45-pe3-mat_g1_na_q1_9-20260930",
-  "review_date": "2026-09-30",
+  "reviewed_by": "blind-reviewer-haiku45-w2x2-mat_g1_na_q1_9-20261003",
+  "review_date": "2026-10-03",
   "blind": true,
   "sample_seeds": [
     42,
@@ -45,8 +45,7 @@
     44,
     45,
     46,
-    47,
-    70,
+    57,
     500,
     501,
     502,
@@ -75,8 +74,7 @@
     "1020631580c8402b9184",
     "79e5f998f99a836163b2",
     "1a4c3bfc1aeeffb688f4",
-    "35ab6410debd58f4ad53",
-    "d3e8f9043e155b503cb6",
+    "6573ca96628e7556a703",
     "d83eebad39b0c16444fa",
     "725f87d8754dcb087e7f",
     "ee88b54305f9c6ba581c",
@@ -103,9 +101,9 @@
     {
       "node_id": "mat_g1_na_q1_9",
       "seed": 42,
-      "formatter": "true_false",
-      "question_text": "One group has 12 items and another group has 5 items. Putting them together makes 16 items in all. True or False?",
-      "correct_answer": false,
+      "formatter": "read_fill_in_blank",
+      "question_text": "The two parts are 12 and 5. What is the sum?",
+      "correct_answer": 17,
       "requested": {
         "difficulty_profile": null,
         "student_interest": null,
@@ -113,28 +111,58 @@
       },
       "serving_mode": "student_path",
       "effective": {
-        "format": "true_false",
-        "is_visual": false,
-        "visual_type": null,
-        "interaction_mode": null,
-        "answer_collection": "true_false",
+        "format": "read_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "NumberBond",
+        "interaction_mode": "read",
+        "answer_collection": "fill_in_blank",
         "experience": "standard"
       },
-      "resolved_answer": false,
+      "resolved_answer": 17,
       "hints": [
         "We are adding two numbers: 12 and 5.",
         "Add the last digits: 2 + 5 = 7.",
         "Add the first digits: 1 + 0 = 1.",
         "The sum is 12 + 5 = 17."
       ],
+      "visual_type": "NumberBond",
+      "visual_payload": {
+        "whole": null,
+        "part1": 12,
+        "part2": 5,
+        "blank_position": "whole"
+      },
+      "visual_render": {
+        "visual_type": "NumberBond",
+        "renderer_input_digest": "3bb2e88ed9c5b8ab83de4246716b13057c2fe8dbbee980bd3acaf318a6457658",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberBond",
+          "element_count": 7,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 1,
+          "text_labels": [
+            "12",
+            "5"
+          ],
+          "distinct_colours": [
+            "hsl(var(--primary)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {}
+        }
+      },
       "sample_id": "aa43dda75a7bec3cacdf",
-      "replay_digest": "fbaedf3322029d83fe0a6c687d0fff6c3392e0e4aac5948fd3a0d405bf8c27b6"
+      "replay_digest": "6d2ca6df548d8f5f8cb47e20753e1cc822d3f0347944506ecf19f434307ac196"
     },
     {
       "node_id": "mat_g1_na_q1_9",
       "seed": 43,
-      "formatter": "mcq",
-      "question_text": "Start at 8. Count up 8 more. What number do you land on?",
+      "formatter": "set_fill_in_blank",
+      "question_text": "Show 8 + 8 on the number line.",
       "correct_answer": 16,
       "requested": {
         "difficulty_profile": null,
@@ -143,43 +171,71 @@
       },
       "serving_mode": "student_path",
       "effective": {
-        "format": "mcq",
-        "is_visual": false,
-        "visual_type": null,
-        "interaction_mode": null,
-        "answer_collection": "mcq",
+        "format": "set_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "set",
+        "answer_collection": "fill_in_blank",
         "experience": "standard"
       },
-      "options": [
-        {
-          "key": "A",
-          "value": 15,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 16,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 26,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 17,
-          "is_correct": false
-        }
-      ],
       "resolved_answer": 16,
       "hints": [
         "We are adding two numbers: 8 and 8.",
-        "Add the last digits: 8 + 8 = 16. Keep 6 and carry over 1.",
+        "Start at 8 and count up 8.",
         "The sum is 8 + 8 = 16."
       ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "start": 0,
+        "end": 20,
+        "major_interval": 5,
+        "minor_interval": 1,
+        "interval": 1,
+        "dot_value": 0,
+        "move_by": 8,
+        "content_type": "whole_number",
+        "value": 16,
+        "correct_position": 16,
+        "divisions": 20,
+        "is_interactive": true,
+        "show_labels": true,
+        "correct_answer": 16.0,
+        "target": 16.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "63217b5f46b18533a6459d4603ebf2b2b56841248b447daaeb1d55bbbe0d7663",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 34,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "0",
+            "5",
+            "10",
+            "15",
+            "20",
+            "Your answer: Position",
+            "10",
+            "Click track, drag dot, or use ← → arrow keys"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
       "sample_id": "3d7fe2699a9c5a60b38e",
-      "replay_digest": "ab8e0042e93e46af7e04b18227cc524765025824dae8043bf9f30853a486ffde"
+      "replay_digest": "7f52924040f5738bd24397b4d3d8bca8d22d16d637024363ea93c463248638b6"
     },
     {
       "node_id": "mat_g1_na_q1_9",
@@ -278,12 +334,9 @@
     {
       "node_id": "mat_g1_na_q1_9",
       "seed": 45,
-      "formatter": "error_detect",
-      "question_text": "Pia solved: \"Start at 11. Count up 4 more. You land on ___\". Pia says the blank is 16. Is Pia correct?",
-      "correct_answer": {
-        "has_error": true,
-        "correct_value": 15
-      },
+      "formatter": "read_mcq",
+      "question_text": "The dot is at 11 and it moves forward 4 numbers. Starting from 11, just count up 4 numbers. Which number will the dot land on?",
+      "correct_answer": "D",
       "requested": {
         "difficulty_profile": null,
         "student_interest": null,
@@ -291,32 +344,98 @@
       },
       "serving_mode": "student_path",
       "effective": {
-        "format": "error_detect",
-        "is_visual": false,
-        "visual_type": null,
-        "interaction_mode": null,
-        "answer_collection": "error_detect",
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
         "experience": "standard"
       },
-      "resolved_answer": {
-        "has_error": true,
-        "correct_value": 15
-      },
+      "options": [
+        {
+          "key": "A",
+          "value": 16,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 14,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 25,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 15,
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 15,
       "hints": [
         "We are adding two numbers: 11 and 4.",
         "Add the last digits: 1 + 4 = 5.",
         "Add the first digits: 1 + 0 = 1.",
         "The sum is 11 + 4 = 15."
       ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "start": 0,
+        "end": 20,
+        "major_interval": 5,
+        "minor_interval": 1,
+        "interval": 1,
+        "dot_value": 11,
+        "move_by": 4,
+        "content_type": "whole_number",
+        "value": 15,
+        "correct_position": 15,
+        "divisions": 20,
+        "is_interactive": false,
+        "show_labels": true,
+        "correct_answer": 15.0,
+        "target": 15.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "2c0e4607cb489ce879653561fae0b1f1a792e0690de76145346443ec0affa03a",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 31,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "0",
+            "5",
+            "10",
+            "15",
+            "20"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
       "sample_id": "79e5f998f99a836163b2",
-      "replay_digest": "3cc74ba1245d80043f6224885f713f77ad8016f2f8e915c46f6983c610878954"
+      "replay_digest": "33aca6ae5689a75e44c449d29d43d9dd6e161dea20d7527c77b1ef3e1e49e0cd"
     },
     {
       "node_id": "mat_g1_na_q1_9",
       "seed": 46,
-      "formatter": "cloze",
-      "question_text": "Start at 9. Count up 9 more. You land on ___",
-      "correct_answer": 18,
+      "formatter": "read_mcq",
+      "question_text": "🏀🏀🏀🏀🏀🏀🏀🏀🏀 — There are 9 items.\n🏀🏀🏀🏀🏀🏀🏀🏀🏀 — 9 more items are added.\nHow many total items are there?",
+      "correct_answer": "D",
       "requested": {
         "difficulty_profile": null,
         "student_interest": null,
@@ -324,54 +443,101 @@
       },
       "serving_mode": "student_path",
       "effective": {
-        "format": "cloze",
-        "is_visual": false,
-        "visual_type": null,
-        "interaction_mode": null,
-        "answer_collection": "fill_in_blank",
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "EmojiPictorial",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
         "experience": "standard"
       },
       "options": [
         {
           "key": "A",
           "value": 17,
-          "text": "17",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 28,
-          "text": "28",
+          "value": 0,
           "is_correct": false
         },
         {
           "key": "C",
           "value": 19,
-          "text": "19",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 18,
-          "text": "18",
           "is_correct": true
         }
       ],
       "resolved_answer": 18,
       "hints": [
         "We are adding two numbers: 9 and 9.",
-        "Add the last digits: 9 + 9 = 18. Keep 8 and carry over 1.",
+        "Start at 9 and count up 9.",
         "The sum is 9 + 9 = 18."
       ],
+      "visual_type": "EmojiPictorial",
+      "visual_payload": {
+        "emoji": "🏀",
+        "group_a": 9,
+        "group_b": 9,
+        "operation": "addition",
+        "layout": "separated",
+        "display": "🏀🏀🏀🏀🏀🏀🏀🏀🏀",
+        "display_b": "🏀🏀🏀🏀🏀🏀🏀🏀🏀"
+      },
+      "visual_render": {
+        "visual_type": "EmojiPictorial",
+        "renderer_input_digest": "29ab0e5353bdbd0518843f7bd247cde8a0d530042649c6bb16e3a4d9404f90e9",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "EmojiPictorial",
+          "element_count": 24,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "🏀",
+            "🏀",
+            "🏀",
+            "🏀",
+            "🏀",
+            "🏀",
+            "🏀",
+            "🏀",
+            "🏀",
+            "+",
+            "🏀",
+            "🏀",
+            "🏀",
+            "🏀",
+            "🏀",
+            "🏀",
+            "🏀",
+            "🏀",
+            "🏀"
+          ],
+          "distinct_colours": [
+            "hsl(var(--card-bg)",
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)"
+          ],
+          "role_counts": {}
+        }
+      },
       "sample_id": "1a4c3bfc1aeeffb688f4",
-      "replay_digest": "47a84103f437bdb6f74aeabb4476da89f9522a8ea0c12c04b51c5aad4ffa1e1f"
+      "replay_digest": "3c6346843867ea64001c0188d0248e3ffecd72f4be587961c524a9a4af9e18cf"
     },
     {
       "node_id": "mat_g1_na_q1_9",
-      "seed": 47,
-      "formatter": "read_fill_in_blank",
-      "question_text": "The two parts are 7 and 12. What is the sum?",
-      "correct_answer": 19,
+      "seed": 57,
+      "formatter": "mcq",
+      "question_text": "Start at 6. Count up 5 more. What number do you land on?",
+      "correct_answer": 11,
       "requested": {
         "difficulty_profile": null,
         "student_interest": null,
@@ -379,61 +545,55 @@
       },
       "serving_mode": "student_path",
       "effective": {
-        "format": "read_fill_in_blank",
-        "is_visual": true,
-        "visual_type": "NumberBond",
-        "interaction_mode": "read",
-        "answer_collection": "fill_in_blank",
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
         "experience": "standard"
       },
-      "resolved_answer": 19,
-      "hints": [
-        "We are adding two numbers: 7 and 12.",
-        "Add the last digits: 7 + 2 = 9.",
-        "Add the first digits: 0 + 1 = 1.",
-        "The sum is 7 + 12 = 19."
-      ],
-      "visual_type": "NumberBond",
-      "visual_payload": {
-        "whole": null,
-        "part1": 7,
-        "part2": 12,
-        "blank_position": "whole"
-      },
-      "visual_render": {
-        "visual_type": "NumberBond",
-        "renderer_input_digest": "4c294527709d3cf4a0bfe3ad6487b23eff74db2ac65d8d580629836a4cd28f09",
-        "description": {
-          "source": "rendered_static_markup",
-          "visual_type": "NumberBond",
-          "element_count": 7,
-          "svg_count": 0,
-          "table_row_count": 0,
-          "table_cell_count": 0,
-          "button_count": 0,
-          "input_count": 1,
-          "text_labels": [
-            "7",
-            "12"
-          ],
-          "distinct_colours": [
-            "hsl(var(--primary)",
-            "hsl(var(--text)"
-          ],
-          "role_counts": {}
+      "options": [
+        {
+          "key": "A",
+          "value": 11,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 21,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 12,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 10,
+          "is_correct": false
         }
-      },
-      "sample_id": "35ab6410debd58f4ad53",
-      "replay_digest": "2b6b0e15e406d12bb55e609493b948fc3642658e88aa19ca0395da8902685b36"
+      ],
+      "resolved_answer": 11,
+      "hints": [
+        "We are adding two numbers: 6 and 5.",
+        "Start at 6 and count up 5.",
+        "The sum is 6 + 5 = 11."
+      ],
+      "sample_id": "6573ca96628e7556a703",
+      "replay_digest": "f64f09ca70eb5172a382dc708915ec77bb4d4cf8a5780d71c787ae1822440adb"
     },
     {
       "node_id": "mat_g1_na_q1_9",
-      "seed": 70,
+      "seed": 500,
       "formatter": "set_fill_in_blank",
       "question_text": "Show 8 + 7 on the number line.",
       "correct_answer": 15,
       "requested": {
-        "difficulty_profile": null,
+        "difficulty_profile": {
+          "max_sum": 1.0,
+          "number_difficulty": 1.0
+        },
         "student_interest": null,
         "experience": "standard"
       },
@@ -449,7 +609,7 @@
       "resolved_answer": 15,
       "hints": [
         "We are adding two numbers: 8 and 7.",
-        "Add the last digits: 8 + 7 = 15. Keep 5 and carry over 1.",
+        "Start at 8 and count up 7.",
         "The sum is 8 + 7 = 15."
       ],
       "visual_type": "NumberLine",
@@ -502,15 +662,15 @@
           "role_counts": {}
         }
       },
-      "sample_id": "d3e8f9043e155b503cb6",
-      "replay_digest": "92c054d67de29d249bf0ebd83b39fda2ec9b08bb66d1ea5a3215529b22415bd9"
+      "sample_id": "d83eebad39b0c16444fa",
+      "replay_digest": "6fd623533f3358eca67a10073efbefe5cdfb1f83abc46eec8a018271b505831a"
     },
     {
       "node_id": "mat_g1_na_q1_9",
-      "seed": 500,
+      "seed": 501,
       "formatter": "read_mcq",
-      "question_text": "The dot is at 8 and it moves forward 7 numbers. Starting from 8, just count up 7 numbers. Which number will the dot land on?",
-      "correct_answer": "D",
+      "question_text": "The dot is at 10 and it moves forward 7 numbers. Starting from 10, just count up 7 numbers. Which number will the dot land on?",
+      "correct_answer": "B",
       "requested": {
         "difficulty_profile": {
           "max_sum": 1.0,
@@ -531,30 +691,31 @@
       "options": [
         {
           "key": "A",
-          "value": 25,
+          "value": 27,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 14,
-          "is_correct": false
+          "value": 17,
+          "is_correct": true
         },
         {
           "key": "C",
-          "value": 16,
+          "value": 18,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 15,
-          "is_correct": true
+          "value": 16,
+          "is_correct": false
         }
       ],
-      "resolved_answer": 15,
+      "resolved_answer": 17,
       "hints": [
-        "We are adding two numbers: 8 and 7.",
-        "Add the last digits: 8 + 7 = 15. Keep 5 and carry over 1.",
-        "The sum is 8 + 7 = 15."
+        "We are adding two numbers: 10 and 7.",
+        "Add the last digits: 0 + 7 = 7.",
+        "Add the first digits: 1 + 0 = 1.",
+        "The sum is 10 + 7 = 17."
       ],
       "visual_type": "NumberLine",
       "visual_payload": {
@@ -563,20 +724,20 @@
         "major_interval": 5,
         "minor_interval": 1,
         "interval": 1,
-        "dot_value": 8,
+        "dot_value": 10,
         "move_by": 7,
         "content_type": "whole_number",
-        "value": 15,
-        "correct_position": 15,
+        "value": 17,
+        "correct_position": 17,
         "divisions": 20,
         "is_interactive": false,
         "show_labels": true,
-        "correct_answer": 15.0,
-        "target": 15.0
+        "correct_answer": 17.0,
+        "target": 17.0
       },
       "visual_render": {
         "visual_type": "NumberLine",
-        "renderer_input_digest": "acd9dd07fad829b95cee2a7a97d11299d78c32adf7484c87cb97723509fa5376",
+        "renderer_input_digest": "41b10e785c1fdc8000f192bd6829cb4366a3a19447c2c8e70ec4c7b08605b9ad",
         "description": {
           "source": "rendered_static_markup",
           "visual_type": "NumberLine",
@@ -603,91 +764,8 @@
           "role_counts": {}
         }
       },
-      "sample_id": "d83eebad39b0c16444fa",
-      "replay_digest": "54bc7c32dc4253dd33e90f4dc97aed99043c9d7fa719d4a1f4e2bb66c059069b"
-    },
-    {
-      "node_id": "mat_g1_na_q1_9",
-      "seed": 501,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Show 10 + 7 on the number line.",
-      "correct_answer": 17,
-      "requested": {
-        "difficulty_profile": {
-          "max_sum": 1.0,
-          "number_difficulty": 1.0
-        },
-        "student_interest": null,
-        "experience": "standard"
-      },
-      "serving_mode": "student_path",
-      "effective": {
-        "format": "set_fill_in_blank",
-        "is_visual": true,
-        "visual_type": "NumberLine",
-        "interaction_mode": "set",
-        "answer_collection": "fill_in_blank",
-        "experience": "standard"
-      },
-      "resolved_answer": 17,
-      "hints": [
-        "We are adding two numbers: 10 and 7.",
-        "Add the last digits: 0 + 7 = 7.",
-        "Add the first digits: 1 + 0 = 1.",
-        "The sum is 10 + 7 = 17."
-      ],
-      "visual_type": "NumberLine",
-      "visual_payload": {
-        "start": 0,
-        "end": 20,
-        "major_interval": 5,
-        "minor_interval": 1,
-        "interval": 1,
-        "dot_value": 0,
-        "move_by": 7,
-        "content_type": "whole_number",
-        "value": 17,
-        "correct_position": 17,
-        "divisions": 20,
-        "is_interactive": true,
-        "show_labels": true,
-        "correct_answer": 17.0,
-        "target": 17.0
-      },
-      "visual_render": {
-        "visual_type": "NumberLine",
-        "renderer_input_digest": "9bbff86f60f2c4b4d9e29bb256984b59ec7fbfc430095ea46c79751776b0342a",
-        "description": {
-          "source": "rendered_static_markup",
-          "visual_type": "NumberLine",
-          "element_count": 34,
-          "svg_count": 0,
-          "table_row_count": 0,
-          "table_cell_count": 0,
-          "button_count": 0,
-          "input_count": 0,
-          "text_labels": [
-            "0",
-            "5",
-            "10",
-            "15",
-            "20",
-            "Your answer: Position",
-            "10",
-            "Click track, drag dot, or use ← → arrow keys"
-          ],
-          "distinct_colours": [
-            "hsl(var(--border-color)",
-            "hsl(var(--text-muted)",
-            "hsl(var(--text)",
-            "hsl(var(--primary)",
-            "hsl(var(--card-bg)"
-          ],
-          "role_counts": {}
-        }
-      },
       "sample_id": "725f87d8754dcb087e7f",
-      "replay_digest": "0d4e6ba07c1cd1d29ba3746082d5448df695767b00bc86d47f869b0da1cdb9d2"
+      "replay_digest": "2c05424be86dbca403a417258cdefdb7b48d7516e231cc767d4004a5c6d27a00"
     },
     {
       "node_id": "mat_g1_na_q1_9",
@@ -737,8 +815,7 @@
       "resolved_answer": 20,
       "hints": [
         "We are adding two numbers: 17 and 3.",
-        "Add the last digits: 7 + 3 = 10. Keep 0 and carry over 1.",
-        "Add the first digits: 1 + 0 + 1 = 2.",
+        "Start at 17 and count up 3.",
         "The sum is 17 + 3 = 20."
       ],
       "visual_type": "EmojiPictorial",
@@ -795,14 +872,14 @@
         }
       },
       "sample_id": "ee88b54305f9c6ba581c",
-      "replay_digest": "4ff1954ffccbd056727972e7dca657fd8064805a7dc9924a711be5bc4f4d0e2c"
+      "replay_digest": "ddd1be2755605ac43d1d7cd7ec66bdeb44da3910180d2a33dc5f9bf1301a0b7d"
     },
     {
       "node_id": "mat_g1_na_q1_9",
       "seed": 601,
-      "formatter": "cloze",
-      "question_text": "One group has 10 items and another group has 7 items. Putting them together makes ___ items in all.",
-      "correct_answer": 17,
+      "formatter": "read_mcq",
+      "question_text": "🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴 — There are 10 items.\n🚴🚴🚴🚴🚴🚴🚴 — 7 more items are added.\nHow many total items are there?",
+      "correct_answer": "A",
       "requested": {
         "difficulty_profile": {
           "regrouping": "none"
@@ -812,36 +889,32 @@
       },
       "serving_mode": "student_path",
       "effective": {
-        "format": "cloze",
-        "is_visual": false,
-        "visual_type": null,
-        "interaction_mode": null,
-        "answer_collection": "fill_in_blank",
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "EmojiPictorial",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
         "experience": "standard"
       },
       "options": [
         {
           "key": "A",
-          "value": 16,
-          "text": "16",
-          "is_correct": false
+          "value": 17,
+          "is_correct": true
         },
         {
           "key": "B",
-          "value": 27,
-          "text": "27",
+          "value": 3,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 17,
-          "text": "17",
-          "is_correct": true
+          "value": 7,
+          "is_correct": false
         },
         {
           "key": "D",
-          "value": 18,
-          "text": "18",
+          "value": 10,
           "is_correct": false
         }
       ],
@@ -852,8 +925,56 @@
         "Add the first digits: 1 + 0 = 1.",
         "The sum is 10 + 7 = 17."
       ],
+      "visual_type": "EmojiPictorial",
+      "visual_payload": {
+        "emoji": "🚴",
+        "group_a": 10,
+        "group_b": 7,
+        "operation": "addition",
+        "layout": "stacked",
+        "display": "🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴",
+        "display_b": "🚴🚴🚴🚴🚴🚴🚴"
+      },
+      "visual_render": {
+        "visual_type": "EmojiPictorial",
+        "renderer_input_digest": "1d586e8bd3106705d0a2dec47451e6c42376e0bc6e0084f9ab59ab3d24ba25dc",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "EmojiPictorial",
+          "element_count": 23,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "🚴",
+            "🚴",
+            "🚴",
+            "🚴",
+            "🚴",
+            "🚴",
+            "🚴",
+            "🚴",
+            "🚴",
+            "🚴",
+            "+",
+            "🚴",
+            "🚴",
+            "🚴",
+            "🚴",
+            "🚴",
+            "🚴",
+            "🚴"
+          ],
+          "distinct_colours": [
+            "hsl(var(--text-muted)"
+          ],
+          "role_counts": {}
+        }
+      },
       "sample_id": "64ce8b563a974252b819",
-      "replay_digest": "b033ba33fd18103f39f32037ae343880b308e28de6e5f6c90b185c53a80a39a9"
+      "replay_digest": "3991411a713f08fc5fab24d2a1682bf001a379190daca04b51a874fa704c6a6d"
     },
     {
       "node_id": "mat_g1_na_q1_9",
@@ -902,8 +1023,7 @@
       "resolved_answer": 20,
       "hints": [
         "We are adding two numbers: 17 and 3.",
-        "Add the last digits: 7 + 3 = 10. Keep 0 and carry over 1.",
-        "Add the first digits: 1 + 0 + 1 = 2.",
+        "Start at 17 and count up 3.",
         "The sum is 17 + 3 = 20."
       ],
       "visual_type": "NumberLine",
@@ -954,17 +1074,99 @@
         }
       },
       "sample_id": "c068b5d037ee7555f20e",
-      "replay_digest": "ca0ffe6f427f7fe0d0e771bad37096f68ffe395323b4f1423b445d58b348ed7f"
+      "replay_digest": "16a611cb3c5fdbef6649b0344089af043c7e91a26f9ca75c57069240b571ffc3"
     },
     {
       "node_id": "mat_g1_na_q1_9",
       "seed": 603,
-      "formatter": "mcq",
-      "question_text": "Start at 12. Count up 4 more. What number do you land on?",
+      "formatter": "set_fill_in_blank",
+      "question_text": "Show 12 + 4 on the number line.",
       "correct_answer": 16,
       "requested": {
         "difficulty_profile": {
           "spine": "counting_up"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "set",
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "resolved_answer": 16,
+      "hints": [
+        "We are adding two numbers: 12 and 4.",
+        "Add the last digits: 2 + 4 = 6.",
+        "Add the first digits: 1 + 0 = 1.",
+        "The sum is 12 + 4 = 16."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "start": 0,
+        "end": 20,
+        "major_interval": 5,
+        "minor_interval": 1,
+        "interval": 1,
+        "dot_value": 0,
+        "move_by": 4,
+        "content_type": "whole_number",
+        "value": 16,
+        "correct_position": 16,
+        "divisions": 20,
+        "is_interactive": true,
+        "show_labels": true,
+        "correct_answer": 16.0,
+        "target": 16.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "b80872be8e650f4195f1bc8a0d308cc120bef25febca0ad42b56272b5718de11",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 34,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "0",
+            "5",
+            "10",
+            "15",
+            "20",
+            "Your answer: Position",
+            "10",
+            "Click track, drag dot, or use ← → arrow keys"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "22509d6eaf400c423e8a",
+      "replay_digest": "75337ad3a633c0fb078bca70789d7188857e37c29a2a0e44092eba9a6415da9b"
+    },
+    {
+      "node_id": "mat_g1_na_q1_9",
+      "seed": 604,
+      "formatter": "mcq",
+      "question_text": "One group has 6 items and another group has 14 items. If you put them together, how many items are there in all?",
+      "correct_answer": 20,
+      "requested": {
+        "difficulty_profile": {
+          "spine": "putting_together"
         },
         "student_interest": null,
         "experience": "standard"
@@ -981,82 +1183,124 @@
       "options": [
         {
           "key": "A",
-          "value": 26,
-          "is_correct": false
+          "value": 20,
+          "is_correct": true
         },
         {
           "key": "B",
-          "value": 15,
+          "value": 30,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 17,
+          "value": 21,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 16,
-          "is_correct": true
+          "value": 19,
+          "is_correct": false
         }
       ],
-      "resolved_answer": 16,
+      "resolved_answer": 20,
       "hints": [
-        "We are adding two numbers: 12 and 4.",
-        "Add the last digits: 2 + 4 = 6.",
-        "Add the first digits: 1 + 0 = 1.",
-        "The sum is 12 + 4 = 16."
+        "We are adding two numbers: 6 and 14.",
+        "Start at 6 and count up 14.",
+        "The sum is 6 + 14 = 20."
       ],
-      "sample_id": "22509d6eaf400c423e8a",
-      "replay_digest": "041f3576fec047743804cfa24621d8c536fba1fa2e94c141201520a124c2e11e"
+      "sample_id": "69b4f8c6e69b681de091",
+      "replay_digest": "ef1171ef939c5cf81700c39601e542cf81b8d264968b7f2139bef0b617ccceda"
     },
     {
       "node_id": "mat_g1_na_q1_9",
-      "seed": 604,
-      "formatter": "error_detect",
-      "question_text": "Carlo solved: \"6 + 14 = ___\". Carlo says the blank is 20. Is Carlo correct?",
-      "correct_answer": {
-        "has_error": false,
-        "correct_value": 20
-      },
+      "seed": 605,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Show 11 + 9 on the number line.",
+      "correct_answer": 20,
       "requested": {
         "difficulty_profile": {
-          "spine": "putting_together"
+          "strategy": "standard"
         },
         "student_interest": null,
         "experience": "standard"
       },
       "serving_mode": "student_path",
       "effective": {
-        "format": "error_detect",
-        "is_visual": false,
-        "visual_type": null,
-        "interaction_mode": null,
-        "answer_collection": "error_detect",
+        "format": "set_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "set",
+        "answer_collection": "fill_in_blank",
         "experience": "standard"
       },
-      "resolved_answer": {
-        "has_error": false,
-        "correct_value": 20
-      },
+      "resolved_answer": 20,
       "hints": [
-        "We are adding two numbers: 6 and 14.",
-        "Add the last digits: 6 + 4 = 10. Keep 0 and carry over 1.",
-        "Add the first digits: 0 + 1 + 1 = 2.",
-        "The sum is 6 + 14 = 20."
+        "We are adding two numbers: 11 and 9.",
+        "Start at 11 and count up 9.",
+        "The sum is 11 + 9 = 20."
       ],
-      "sample_id": "69b4f8c6e69b681de091",
-      "replay_digest": "ac399227aeef43cb27a3d1191fd796728d582409856b7e009a0392066c0193bc"
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "start": 0,
+        "end": 20,
+        "major_interval": 5,
+        "minor_interval": 1,
+        "interval": 1,
+        "dot_value": 0,
+        "move_by": 9,
+        "content_type": "whole_number",
+        "value": 20,
+        "correct_position": 20,
+        "divisions": 20,
+        "is_interactive": true,
+        "show_labels": true,
+        "correct_answer": 20.0,
+        "target": 20.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "6401a8a1993dab4fa5f351764395c544ae1c2142334d77f585fd237b0047b8f7",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 34,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "0",
+            "5",
+            "10",
+            "15",
+            "20",
+            "Your answer: Position",
+            "10",
+            "Click track, drag dot, or use ← → arrow keys"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "fb92c9110f073ffd6fb4",
+      "replay_digest": "993e313d067a83f74221e84a66667c0ea2643de0b0976972c642d28350629958"
     },
     {
       "node_id": "mat_g1_na_q1_9",
-      "seed": 605,
+      "seed": 606,
       "formatter": "read_mcq",
-      "question_text": "The dot is at 11 and it moves forward 9 numbers. Starting from 11, just count up 9 numbers. Which number will the dot land on?",
+      "question_text": "The dot is at 6 and it moves forward 2 numbers. Starting from 6, just count up 2 numbers. Which number will the dot land on?",
       "correct_answer": "A",
       "requested": {
         "difficulty_profile": {
-          "strategy": "standard"
+          "structure": "result_unknown"
         },
         "student_interest": null,
         "experience": "standard"
@@ -1073,31 +1317,30 @@
       "options": [
         {
           "key": "A",
-          "value": 20,
+          "value": 8,
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 30,
+          "value": 18,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 19,
+          "value": 7,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 21,
+          "value": 9,
           "is_correct": false
         }
       ],
-      "resolved_answer": 20,
+      "resolved_answer": 8,
       "hints": [
-        "We are adding two numbers: 11 and 9.",
-        "Add the last digits: 1 + 9 = 10. Keep 0 and carry over 1.",
-        "Add the first digits: 1 + 0 + 1 = 2.",
-        "The sum is 11 + 9 = 20."
+        "We are adding two numbers: 6 and 2.",
+        "Add the last digits: 6 + 2 = 8.",
+        "The sum is 6 + 2 = 8."
       ],
       "visual_type": "NumberLine",
       "visual_payload": {
@@ -1106,20 +1349,20 @@
         "major_interval": 5,
         "minor_interval": 1,
         "interval": 1,
-        "dot_value": 11,
-        "move_by": 9,
+        "dot_value": 6,
+        "move_by": 2,
         "content_type": "whole_number",
-        "value": 20,
-        "correct_position": 20,
+        "value": 8,
+        "correct_position": 8,
         "divisions": 20,
         "is_interactive": false,
         "show_labels": true,
-        "correct_answer": 20.0,
-        "target": 20.0
+        "correct_answer": 8.0,
+        "target": 8.0
       },
       "visual_render": {
         "visual_type": "NumberLine",
-        "renderer_input_digest": "8fb6338427444ef7ebf496943027c8b309910ea1a7d0d9c855926943aa786fb9",
+        "renderer_input_digest": "3318d4927e3953c9caf04dce76b042a41471a9cdd535d663a805fc90ebad8904",
         "description": {
           "source": "rendered_static_markup",
           "visual_type": "NumberLine",
@@ -1146,45 +1389,8 @@
           "role_counts": {}
         }
       },
-      "sample_id": "fb92c9110f073ffd6fb4",
-      "replay_digest": "a47e7c8d2246d8a6790d2f2233100864b83c3ed7a353e90159cc050e3d561e70"
-    },
-    {
-      "node_id": "mat_g1_na_q1_9",
-      "seed": 606,
-      "formatter": "error_detect",
-      "question_text": "Manny solved: \"Start at 6. Count up 2 more. You land on ___\". Manny says the blank is 8. Is Manny correct?",
-      "correct_answer": {
-        "has_error": false,
-        "correct_value": 8
-      },
-      "requested": {
-        "difficulty_profile": {
-          "structure": "result_unknown"
-        },
-        "student_interest": null,
-        "experience": "standard"
-      },
-      "serving_mode": "student_path",
-      "effective": {
-        "format": "error_detect",
-        "is_visual": false,
-        "visual_type": null,
-        "interaction_mode": null,
-        "answer_collection": "error_detect",
-        "experience": "standard"
-      },
-      "resolved_answer": {
-        "has_error": false,
-        "correct_value": 8
-      },
-      "hints": [
-        "We are adding two numbers: 6 and 2.",
-        "Add the last digits: 6 + 2 = 8.",
-        "The sum is 6 + 2 = 8."
-      ],
       "sample_id": "679b63c41e032447b17e",
-      "replay_digest": "4baa21a7d634c3e862c9afa99e216ee1a20a6bc6caeff8a4bcf6c6096cea39d9"
+      "replay_digest": "deec4e3963088936de33cee6fdf48fec6766ed406c54fc182b4baab3dc9873be"
     },
     {
       "node_id": "mat_g1_na_q1_9",
@@ -1281,9 +1487,9 @@
     {
       "node_id": "mat_g1_na_q1_9",
       "seed": 608,
-      "formatter": "true_false",
-      "question_text": "One group has 16 items and another group has 1 item. Putting them together makes 18 items in all. True or False?",
-      "correct_answer": false,
+      "formatter": "read_fill_in_blank",
+      "question_text": "The two parts are 16 and 1. What is the sum?",
+      "correct_answer": 17,
       "requested": {
         "difficulty_profile": {
           "task_type": "putting_together"
@@ -1293,22 +1499,52 @@
       },
       "serving_mode": "student_path",
       "effective": {
-        "format": "true_false",
-        "is_visual": false,
-        "visual_type": null,
-        "interaction_mode": null,
-        "answer_collection": "true_false",
+        "format": "read_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "NumberBond",
+        "interaction_mode": "read",
+        "answer_collection": "fill_in_blank",
         "experience": "standard"
       },
-      "resolved_answer": false,
+      "resolved_answer": 17,
       "hints": [
         "We are adding two numbers: 16 and 1.",
         "Add the last digits: 6 + 1 = 7.",
         "Add the first digits: 1 + 0 = 1.",
         "The sum is 16 + 1 = 17."
       ],
+      "visual_type": "NumberBond",
+      "visual_payload": {
+        "whole": null,
+        "part1": 16,
+        "part2": 1,
+        "blank_position": "whole"
+      },
+      "visual_render": {
+        "visual_type": "NumberBond",
+        "renderer_input_digest": "7a4b893fbea60d2e640ceb64658266f8b469b639639dc12d09c79368acbd9816",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberBond",
+          "element_count": 7,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 1,
+          "text_labels": [
+            "16",
+            "1"
+          ],
+          "distinct_colours": [
+            "hsl(var(--primary)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {}
+        }
+      },
       "sample_id": "e6f5a4406ce4495fa34a",
-      "replay_digest": "e7c237dbeb2a60ea58ddb53aff59fb77e3871355d7e4e8f434b1f14bc34d8865"
+      "replay_digest": "eee6a714cd6bcacafcc58a6dfc2ff42f369b30bb5bdb66bb0b2445ba7b9f70fa"
     },
     {
       "node_id": "mat_g1_na_q1_9",
@@ -1355,18 +1591,18 @@
       "resolved_answer": 11,
       "hints": [
         "We are adding two numbers: 8 and 3.",
-        "Add the last digits: 8 + 3 = 11. Keep 1 and carry over 1.",
+        "Start at 8 and count up 3.",
         "The sum is 8 + 3 = 11."
       ],
       "sample_id": "5af7200cc426eeea2344",
-      "replay_digest": "9cc056b304bb7688c832aa3910093b6511c7cfada742457f4e0a1005dfbed038"
+      "replay_digest": "6aec3aa80a4754f6e22cddc97904889331753662a60b9da4d2327d3eb25c31b1"
     },
     {
       "node_id": "mat_g1_na_q1_9",
       "seed": 701,
-      "formatter": "cloze",
-      "question_text": "🎨 Kuya Renz enjoys sketchpads. Here is a math challenge. Start at 18. Count up 1 more. You land on ___",
-      "correct_answer": 19,
+      "formatter": "read_mcq",
+      "question_text": "🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨 — There are 18 paints.\n🎨 — 1 more paint is added.\nHow many total paints are there?",
+      "correct_answer": "B",
       "requested": {
         "difficulty_profile": null,
         "student_interest": "visual_arts",
@@ -1374,36 +1610,32 @@
       },
       "serving_mode": "student_path",
       "effective": {
-        "format": "cloze",
-        "is_visual": false,
-        "visual_type": null,
-        "interaction_mode": null,
-        "answer_collection": "fill_in_blank",
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "EmojiPictorial",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
         "experience": "standard"
       },
       "options": [
         {
           "key": "A",
-          "value": 19,
-          "text": "19",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 18,
-          "text": "18",
+          "value": 17,
           "is_correct": false
         },
         {
+          "key": "B",
+          "value": 19,
+          "is_correct": true
+        },
+        {
           "key": "C",
-          "value": 29,
-          "text": "29",
+          "value": 1,
           "is_correct": false
         },
         {
           "key": "D",
           "value": 20,
-          "text": "20",
           "is_correct": false
         }
       ],
@@ -1414,8 +1646,58 @@
         "Add the first digits: 1 + 0 = 1.",
         "The sum is 18 + 1 = 19."
       ],
+      "visual_type": "EmojiPictorial",
+      "visual_payload": {
+        "emoji": "🎨",
+        "group_a": 18,
+        "group_b": 1,
+        "operation": "addition",
+        "layout": "inline",
+        "display": "🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨",
+        "display_b": "🎨"
+      },
+      "visual_render": {
+        "visual_type": "EmojiPictorial",
+        "renderer_input_digest": "2fde33f33606d4b723fd903ea597fa53d2304fe7012a011931990edfcb411308",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "EmojiPictorial",
+          "element_count": 25,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "🎨",
+            "🎨",
+            "🎨",
+            "🎨",
+            "🎨",
+            "🎨",
+            "🎨",
+            "🎨",
+            "🎨",
+            "🎨",
+            "🎨",
+            "🎨",
+            "🎨",
+            "🎨",
+            "🎨",
+            "🎨",
+            "🎨",
+            "🎨",
+            "and",
+            "🎨"
+          ],
+          "distinct_colours": [
+            "hsl(var(--text-muted)"
+          ],
+          "role_counts": {}
+        }
+      },
       "sample_id": "7dac92ef99ca7d13dbd7",
-      "replay_digest": "8b3db8278e458206f2d34afd7219f668f9219541698b6fc71e76d33ebb21a196"
+      "replay_digest": "b6f5f2bf74e52da3515cff2b53eafb9cd2a7588222c5fcc4158ee2caddf5c319"
     },
     {
       "node_id": "mat_g1_na_q1_9",
@@ -1686,12 +1968,9 @@
     {
       "node_id": "mat_g1_na_q1_9",
       "seed": 900,
-      "formatter": "error_detect",
-      "question_text": "Noel solved: \"Start at 1. Count up 1 more. You land on ___\". Noel says the blank is 3. Is Noel correct?",
-      "correct_answer": {
-        "has_error": true,
-        "correct_value": 2
-      },
+      "formatter": "read_mcq",
+      "question_text": "The dot is at 1 and it moves forward 1 number. Starting from 1, just count up 1 number. Which number will the dot land on?",
+      "correct_answer": "B",
       "requested": {
         "difficulty_profile": {
           "max_sum": 0.0,
@@ -1702,48 +1981,35 @@
       },
       "serving_mode": "student_path",
       "effective": {
-        "format": "error_detect",
-        "is_visual": false,
-        "visual_type": null,
-        "interaction_mode": null,
-        "answer_collection": "error_detect",
-        "experience": "standard"
-      },
-      "resolved_answer": {
-        "has_error": true,
-        "correct_value": 2
-      },
-      "hints": [
-        "We are adding two numbers: 1 and 1.",
-        "Add the last digits: 1 + 1 = 2.",
-        "The sum is 1 + 1 = 2."
-      ],
-      "sample_id": "0f7aff72b5f714a4c4c4",
-      "replay_digest": "07e4b695609e207a61c3849022abb020e8cac0dae32842932301effa61230662"
-    },
-    {
-      "node_id": "mat_g1_na_q1_9",
-      "seed": 901,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Show 1 + 1 on the number line.",
-      "correct_answer": 2,
-      "requested": {
-        "difficulty_profile": {
-          "max_sum": 0.0,
-          "number_difficulty": 0.0
-        },
-        "student_interest": null,
-        "experience": "standard"
-      },
-      "serving_mode": "student_path",
-      "effective": {
-        "format": "set_fill_in_blank",
+        "format": "read_mcq",
         "is_visual": true,
         "visual_type": "NumberLine",
-        "interaction_mode": "set",
-        "answer_collection": "fill_in_blank",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
         "experience": "standard"
       },
+      "options": [
+        {
+          "key": "A",
+          "value": 1,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 2,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 12,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 3,
+          "is_correct": false
+        }
+      ],
       "resolved_answer": 2,
       "hints": [
         "We are adding two numbers: 1 and 1.",
@@ -1757,24 +2023,24 @@
         "major_interval": 5,
         "minor_interval": 1,
         "interval": 1,
-        "dot_value": 0,
+        "dot_value": 1,
         "move_by": 1,
         "content_type": "whole_number",
         "value": 2,
         "correct_position": 2,
         "divisions": 20,
-        "is_interactive": true,
+        "is_interactive": false,
         "show_labels": true,
         "correct_answer": 2.0,
         "target": 2.0
       },
       "visual_render": {
         "visual_type": "NumberLine",
-        "renderer_input_digest": "6997901ff6b006fe32f3848e76f6841e3ee1a9e9dc47a7ad836021729455b4d4",
+        "renderer_input_digest": "17460464d42d1f314b78b32e2ad698a03f10b814f66f71c847cf917742957e35",
         "description": {
           "source": "rendered_static_markup",
           "visual_type": "NumberLine",
-          "element_count": 34,
+          "element_count": 31,
           "svg_count": 0,
           "table_row_count": 0,
           "table_cell_count": 0,
@@ -1785,10 +2051,108 @@
             "5",
             "10",
             "15",
-            "20",
-            "Your answer: Position",
+            "20"
+          ],
+          "distinct_colours": [
+            "hsl(var(--border-color)",
+            "hsl(var(--text-muted)",
+            "hsl(var(--text)",
+            "hsl(var(--primary)",
+            "hsl(var(--card-bg)"
+          ],
+          "role_counts": {}
+        }
+      },
+      "sample_id": "0f7aff72b5f714a4c4c4",
+      "replay_digest": "f6fa97ea8d7f44825d57cc4c28f8d2d996358fc54ab6dd529a2a52b3d3bf6583"
+    },
+    {
+      "node_id": "mat_g1_na_q1_9",
+      "seed": 901,
+      "formatter": "read_mcq",
+      "question_text": "The dot is at 1 and it moves forward 1 number. Starting from 1, just count up 1 number. Which number will the dot land on?",
+      "correct_answer": "C",
+      "requested": {
+        "difficulty_profile": {
+          "max_sum": 0.0,
+          "number_difficulty": 0.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "NumberLine",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 1,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 3,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 2,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 12,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 2,
+      "hints": [
+        "We are adding two numbers: 1 and 1.",
+        "Add the last digits: 1 + 1 = 2.",
+        "The sum is 1 + 1 = 2."
+      ],
+      "visual_type": "NumberLine",
+      "visual_payload": {
+        "start": 0,
+        "end": 20,
+        "major_interval": 5,
+        "minor_interval": 1,
+        "interval": 1,
+        "dot_value": 1,
+        "move_by": 1,
+        "content_type": "whole_number",
+        "value": 2,
+        "correct_position": 2,
+        "divisions": 20,
+        "is_interactive": false,
+        "show_labels": true,
+        "correct_answer": 2.0,
+        "target": 2.0
+      },
+      "visual_render": {
+        "visual_type": "NumberLine",
+        "renderer_input_digest": "17460464d42d1f314b78b32e2ad698a03f10b814f66f71c847cf917742957e35",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "NumberLine",
+          "element_count": 31,
+          "svg_count": 0,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 0,
+          "input_count": 0,
+          "text_labels": [
+            "0",
+            "5",
             "10",
-            "Click track, drag dot, or use ← → arrow keys"
+            "15",
+            "20"
           ],
           "distinct_colours": [
             "hsl(var(--border-color)",
@@ -1801,7 +2165,7 @@
         }
       },
       "sample_id": "f3c52472e54df340371c",
-      "replay_digest": "057e6ae4b31ddcc8ad206ac5185a131e3311035a30f34d1eb48470338feffdd6"
+      "replay_digest": "721b89bca27d87a51a1d1cd67b5a98d7ded3b61549d5c24a1bc784abba209cce"
     },
     {
       "node_id": "mat_g1_na_q1_9",
@@ -2046,644 +2410,621 @@
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "True/false statement is unambiguous: grouping of 12 and 5 items producing the claimed total of 16 is clearly false and mathematically verifiable. Stem directs learner to judge truth value explicitly. No competing interpretations of the claim or the operation implied."
+          "reasoning": "Stem clearly identifies two parts (12 and 5) and asks for their sum. Answer 17 is unambiguously correct. Number Bond visual shows the parts and whole structure, eliminating confusion about what is being asked."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Physical scenario of combining two groups of items is realistic for Grade 1. Hint sequence correctly decomposes 12+5=17, establishing that the stated answer of 16 is incorrect. Logical flow from grouping statement to evaluation task is sound and pedagogically purposeful."
+          "reasoning": "Number Bond representation directly supports the stem's statement about two parts. The visual layout matches the concept of combining addends. Answer 17 is mathematically correct for 12 + 5."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Language is direct and concrete: explicit counts (12 items, 5 items), action verb (putting together), and binary evaluation prompt (true or false). No reliance on inference or background knowledge. Visual-free format suits learners ready for abstract verbal reasoning."
+          "reasoning": "Wording uses straightforward construction: identify the parts, identify the action (sum), state the operation. Number Bond visual is age-appropriate and familiar to Grade 1 learners working with part-whole relationships."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "12+5=17, not 16. Correct answer of False is mathematically sound. Hints employ standard column addition with place value decomposition, showing digit-by-digit computation correctly."
+          "reasoning": "Hints verify correctly: 12 + 5 requires adding 2 + 5 in ones place yielding 7, then 1 + 0 in tens place yielding 1, producing 17. All hint equations hold true and explain the column addition method appropriately."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe3-mat_g1_na_q1_9-20260930",
-      "dispatch_id": "s5-phaseE-claude-w3-haiku45-20260930-mat_g1_na_q1_9:mat_g1_na_q1_9"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g1_na_q1_9-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g1_na_q1_9:mat_g1_na_q1_9"
     },
     {
       "sample_id": "3d7fe2699a9c5a60b38e",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Counting-up directive is explicit: start at 8, count up 8 more, identify landing number. Question form leaves no ambiguity about the task. Four distinct options provide clear choice points."
+          "reasoning": "Instruction to show 8 + 8 on number line is unambiguous. The number line spans 0 to 20 with clear markings at 5, 10, 15, 20. Student must identify the position representing 16, which is the unique correct location."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Counting-up is a foundational strategy for Grade 1 addition. Starting point and count quantity are both reasonable magnitudes. Hint sequence validates the strategy by reformulating as 8+8 and computing correctly."
+          "reasoning": "Number line is the appropriate tool for this task. Starting at 8 and counting up 8 positions lands on 16. The visual context supports the addition strategy of counting on from a given start point."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Imperative instructions (start, count up) establish precise action sequence. Question (what number) is singular and clear. Single-sentence stem avoids cognitive load from complex syntax. Numerals are readable and clearly positioned."
+          "reasoning": "Stem uses imperative language: show the sum on the visual. The action is concrete and visible. Number line markings and the instruction to click or drag make the interaction mode clear for a Grade 1 learner."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "8+8=16 is correct. Hints show proper column addition with carry-over handling, keeping 6 and carrying 1. Distractors (15, 26, 17) include off-by-one errors and transposed digits, appropriate decoys."
+          "reasoning": "Counting on from 8 by 8 more steps (9, 10, 11, 12, 13, 14, 15, 16) yields 16. Hints state this correctly and confirm the sum is 8 + 8 = 16 without arithmetic error."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe3-mat_g1_na_q1_9-20260930",
-      "dispatch_id": "s5-phaseE-claude-w3-haiku45-20260930-mat_g1_na_q1_9:mat_g1_na_q1_9"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g1_na_q1_9-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g1_na_q1_9:mat_g1_na_q1_9"
     },
     {
       "sample_id": "1020631580c8402b9184",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Visual representation of one cupcake plus ten cupcakes and the question asking for total count is unambiguous. Emoji pictorial clearly separates the two groups with a plus symbol between them, leaving no doubt about which items belong to each addend."
+          "reasoning": "Emoji pictorial shows 1 cupcake plus 10 cupcakes. Question asks for total count. Answer 11 is unambiguous and clearly correct. Options 12, 10, and 1 are plausible distractors but distinct from the correct answer."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Cupcake context is familiar and concrete for Grade 1 learners. The scenario of combining existing items with newly added items is realistic. Pictorial format reinforces the combining action and makes cardinality transparent."
+          "reasoning": "Cupcake context is familiar and meaningful for Grade 1 learners. The visual representation with emoji matches the text description: 1 item shown, then 10 items shown, totaling 11. No mismatch between stem description and visual."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Visual quantity display removes counting burden and anchors understanding. Text statement matches visual representation exactly. Question stem is short and uses familiar vocabulary. Read-mode interaction suits learners who may be building fluency."
+          "reasoning": "Stem describes the situation in sequence: there is 1, then 10 more are added, asking how many total. The emoji pictorial reinforces each quantity visually. Multiple-choice format is appropriate for read-mcq delivery mode."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "1+10=11 is correct. Visual emoji count matches stated quantities, and hints decompose correctly with place value reasoning: 1+0=1 in ones, 0+1=1 in tens."
+          "reasoning": "1 + 10 = 11 is correct. Hints accurately describe adding ones and tens digits: 1 + 0 = 1, 0 + 1 = 1, sum is 11. All arithmetic in hints is sound."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe3-mat_g1_na_q1_9-20260930",
-      "dispatch_id": "s5-phaseE-claude-w3-haiku45-20260930-mat_g1_na_q1_9:mat_g1_na_q1_9"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g1_na_q1_9-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g1_na_q1_9:mat_g1_na_q1_9"
     },
     {
       "sample_id": "79e5f998f99a836163b2",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Error-detection task is clearly structured: named student makes a claim about result of counting task, learner must evaluate claim. The proposed answer (16) and the correct value (15) are distinct, making evaluation straightforward."
+          "reasoning": "Stem specifies starting position (11), movement direction (forward), and count of steps (4), ending with a definite question about landing position. The correct answer 15 is uniquely determined by counting forward 4 from 11."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Counting-up task embedded in a peer-review scenario is developmentally sound; Grade 1 learners benefit from error-detection practice. Pia's error of claiming 16 when counting up 4 from 11 produces 15 is a plausible mistake (off-by-one) worth examining."
+          "reasoning": "Dot-on-number-line scenario is a standard representation for addition via counting on. Starting at 11 and moving forward 4 steps logically leads to 15. The visual number line confirms this path."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Structure is transparent: name, action, claim, evaluation prompt in sequence. Learner must follow peer's work and judge its correctness. Language is accessible and question is direct."
+          "reasoning": "Stem explicitly teaches the strategy: start at 11, count up 4. The language mirrors what a teacher would say during a guided number line activity. Number line visual with 5-increment markings supports the counting process."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "11+4=15, not 16. Pia's error is mathematically incorrect. Hints show correct calculation via digit-by-digit addition. Correct response identifies Pia as wrong with accurate sum."
+          "reasoning": "Counting on from 11 by 4 (12, 13, 14, 15) yields 15, which is correct. Hints verify: 1 + 4 = 5 in ones place, 1 + 0 = 1 in tens place, sum is 11 + 4 = 15. All calculations are accurate."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe3-mat_g1_na_q1_9-20260930",
-      "dispatch_id": "s5-phaseE-claude-w3-haiku45-20260930-mat_g1_na_q1_9:mat_g1_na_q1_9"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g1_na_q1_9-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g1_na_q1_9:mat_g1_na_q1_9"
     },
     {
       "sample_id": "1a4c3bfc1aeeffb688f4",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Cloze format with counting-up stem is unambiguous: start at 9, count up 9 more, fill blank with landing number. Options are distinct numerals leaving no uncertainty about the target."
+          "reasoning": "Emoji pictorial shows 9 basketballs, then 9 more basketballs. Question asks for the total. Answer 18 is uniquely correct. Options 17, 0, and 19 provide distinct alternatives but only 18 is accurate."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Counting-up remains valid pedagogical strategy. Symmetric addends (9+9) offer cognitive interest and pattern recognition opportunity. Context is abstract but logically coherent."
+          "reasoning": "Basketball context is concrete and meaningful. The visual shows two groups of 9 emoji each, directly matching the stem's description of 9 items plus 9 more. No inconsistency between text and visual."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Blank position clearly marks what must be filled. Counting language is direct. Options are well-separated numerals. No extraneous information clutters the task."
+          "reasoning": "Stem follows a familiar pattern: show first group, show second group added, ask for total. Emoji are clearly countable. The question format is direct and age-appropriate for Grade 1."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "9+9=18 is correct. Hints employ carry-over: 9+9=18, keep 8 and carry 1. Distractors (17, 28, 19) target likely errors such as off-by-one and transposition."
+          "reasoning": "9 + 9 = 18 is correct. Hints appropriately suggest counting on from 9 by 9 more, which yields 18. The hint equation about adding ones and tens is consistent with the sum produced."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe3-mat_g1_na_q1_9-20260930",
-      "dispatch_id": "s5-phaseE-claude-w3-haiku45-20260930-mat_g1_na_q1_9:mat_g1_na_q1_9"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g1_na_q1_9-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g1_na_q1_9:mat_g1_na_q1_9"
     },
     {
-      "sample_id": "35ab6410debd58f4ad53",
+      "sample_id": "6573ca96628e7556a703",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Number bond visual representation explicitly shows two labeled parts (7 and 12) connecting to an unlabeled whole. Question asking for sum of the parts is unambiguous. Visual layout clarifies which values are parts and which position needs finding."
+          "reasoning": "Stem presents a number line scenario: start at 6, count up 5 more. Question asks for the landing number. The answer 11 is the only correct outcome of this counting sequence, and options provide distinct alternatives."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Number bond is a Grade 1 appropriate representation linking parts to whole. Describing items as parts of a combination is concrete and supports conceptual understanding of addition as combining sets."
+          "reasoning": "Counting on from 6 by 5 more steps is a valid addition strategy and represents the situation described. The logic holds: begin at a given point, move forward a specified distance, identify endpoint."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Number bond visual is iconic and clearly labeled with numerals. Text stem is minimal and uses vocabulary aligned with visual representation. Learner must recognize that the unlabeled circle represents the sum."
+          "reasoning": "Stem uses simple imperative language: start, count up, identify result. No visual is required, making this a pure text-based problem ideal for oral or read-aloud instruction in Grade 1 classrooms."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "7+12=19 is correct. Hints show proper addition with place value decomposition: units digit 7+2=9, tens digit 0+1=1, result 19."
+          "reasoning": "Counting on from 6 by 5 steps (7, 8, 9, 10, 11) lands on 11. Hints confirm this and state the sum as 6 + 5 = 11 without error in arithmetic."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe3-mat_g1_na_q1_9-20260930",
-      "dispatch_id": "s5-phaseE-claude-w3-haiku45-20260930-mat_g1_na_q1_9:mat_g1_na_q1_9"
-    },
-    {
-      "sample_id": "d3e8f9043e155b503cb6",
-      "checks": {
-        "ambiguity": {
-          "verdict": "PASS",
-          "reasoning": "Interactive number line task is clearly framed: demonstrate 8+7 on a number line. The combination of starting point and action (show the sum) leaves no ambiguity about what must be represented."
-        },
-        "contextual_logical_validity": {
-          "verdict": "PASS",
-          "reasoning": "Number line is a standard Grade 1 visual model for understanding addition and counting strategies. Interactive positioning task encourages kinesthetic engagement with the concept."
-        },
-        "learner_facing_clarity": {
-          "verdict": "PASS",
-          "reasoning": "Instruction to show a specific problem on number line is clear. Visual feedback from interactive number line supports learner in verifying their response. Numerical labels on line provide anchors."
-        },
-        "mathematical_validity": {
-          "verdict": "PASS",
-          "reasoning": "8+7=15 is correct. Number line representation starting at 0 with marks at 5, 10, 15, 20 supports learner counting or jumping strategies."
-        }
-      },
-      "reviewer_identity": "blind-reviewer-haiku45-pe3-mat_g1_na_q1_9-20260930",
-      "dispatch_id": "s5-phaseE-claude-w3-haiku45-20260930-mat_g1_na_q1_9:mat_g1_na_q1_9"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g1_na_q1_9-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g1_na_q1_9:mat_g1_na_q1_9"
     },
     {
       "sample_id": "d83eebad39b0c16444fa",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Dot-positioning problem with counting-up language is explicit: dot starts at 8, moves forward 7 numbers, learner identifies landing position. Question isolates the numerical target clearly."
+          "reasoning": "Instruction to show 8 + 7 on the number line is clear and unambiguous. The number line range covers 0 to 20. The correct position representing 15 is uniquely identifiable on the scale."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Number line with moving dot is a concrete metaphor for counting-up addition strategy. Framing movement as forward progression supports directional understanding. Starting and count quantities are reasonable for Grade 1."
+          "reasoning": "Number line is an appropriate tool for visualizing addition as movement. Starting at 8 and advancing 7 positions correctly arrives at 15. The visual context aligns with the mathematical operation requested."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Stem provides contextual setup (dot position, direction of movement) followed by counting instruction and question. Multiple phrasings of the same action (moves forward, count up) reinforce the strategy."
+          "reasoning": "Stem directs a concrete action: place or mark the sum on the number line. The instruction set includes guidance on interaction methods (click, drag, arrow keys), which are age-appropriate for set_fill_in_blank mode in Grade 1."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "8+7=15 is correct. Number line visual shows positions 0, 5, 10, 15, 20, allowing verification of landing spot. Distractors (25, 14, 16) include reasonable counting errors."
+          "reasoning": "8 + 7 = 15 is mathematically correct. Hints state the strategy correctly and confirm the sum. The digit-wise addition in hints (8 + 7 in ones place, 0 + 0 in tens place yielding 15) is accurate."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe3-mat_g1_na_q1_9-20260930",
-      "dispatch_id": "s5-phaseE-claude-w3-haiku45-20260930-mat_g1_na_q1_9:mat_g1_na_q1_9"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g1_na_q1_9-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g1_na_q1_9:mat_g1_na_q1_9"
     },
     {
       "sample_id": "725f87d8754dcb087e7f",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Interactive number line task asks learner to show 10+7, with answer 17. Task is specific and unambiguous about problem and visual model required."
+          "reasoning": "Stem specifies starting position (10), movement direction (forward), distance (7 numbers). The question uniquely identifies the landing number as 17. Options 27, 17, 18, and 16 provide distinct alternatives."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Demonstrating addition on a number line remains pedagogically sound. Combining a teen addend with a single-digit addend extends learner practice beyond simple facts while maintaining sum ceiling."
+          "reasoning": "Dot-on-number-line scenario represents addition as counting on. Starting at 10 and moving forward 7 positions yields 17 logically. The visual number line confirms the validity of this operation."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Directive to show a problem on number line is straightforward. Interactive interface with numerical anchors supports learner in positioning accurately. Labeled positions aid verification."
+          "reasoning": "Stem uses explicit counting on language and references the visual number line. The phrasing mirrors classroom instruction where teachers guide students to start at a number and count up a given amount."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "10+7=17 is correct. Place value decomposition in hints is accurate: 0+7=7 in ones, 1+0=1 in tens, yielding 17."
+          "reasoning": "Counting forward 7 from 10 (11, 12, 13, 14, 15, 16, 17) lands on 17. Hints verify: 0 + 7 = 7 in ones place, 1 + 0 = 1 in tens place, sum is 10 + 7 = 17. Arithmetic is sound."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe3-mat_g1_na_q1_9-20260930",
-      "dispatch_id": "s5-phaseE-claude-w3-haiku45-20260930-mat_g1_na_q1_9:mat_g1_na_q1_9"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g1_na_q1_9-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g1_na_q1_9:mat_g1_na_q1_9"
     },
     {
       "sample_id": "ee88b54305f9c6ba581c",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Visual representation of 17 paint emojis plus 3 paint emojis is unambiguous. Text statement matches visual quantity. Question asking for total count is explicit."
+          "reasoning": "Emoji pictorial shows 17 paint brush emoji, then 3 more paint brush emoji. Question asks for total. Answer 20 is uniquely correct. Distractors 21, 20 (but given as second option), 3, and 19 provide alternatives, but only the first 20 is the sum."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Paint objects provide familiar context for Grade 1 learners. Scenario of combining existing and added items mirrors real-world grouping situations. Emoji pictorial concreteness supports reasoning."
+          "reasoning": "Paint context is familiar and concrete. The visual shows 17 items in one group and 3 in another, matching the stem's description. No contradiction between text and visual representation."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Visual separation of groups with plus symbol makes addends visually distinct. Text quantity statements align with emoji count. Question is direct and singular."
+          "reasoning": "Stem describes two groups of items and asks for the combined total. Emoji pictorial makes the quantities visible and countable. The language and visual support are appropriate for Grade 1 reading and comprehension levels."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "17+3=20 is correct, reaching the competency ceiling. Hints show carry-over arithmetic: 7+3=10 keep 0 carry 1, then 1+0+1=2, yielding 20. This is the maximum sum in the packet."
+          "reasoning": "17 + 3 = 20 is correct. Hints suggest counting on from 17 by 3, yielding 20. The digit-wise addition hint (start at 17, count up 3) is accurate and aligns with the computed sum."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe3-mat_g1_na_q1_9-20260930",
-      "dispatch_id": "s5-phaseE-claude-w3-haiku45-20260930-mat_g1_na_q1_9:mat_g1_na_q1_9"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g1_na_q1_9-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g1_na_q1_9:mat_g1_na_q1_9"
     },
     {
       "sample_id": "64ce8b563a974252b819",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Cloze stem describing grouping with blank for total is unambiguous. Stem structure parallels familiar grouping language. Options are distinct numerals."
+          "reasoning": "Emoji pictorial clearly shows 10 bicycles in one group and 7 bicycles in another. Question asks for total count. Answer 17 is unambiguous and correct. Options 17, 3, 7, and 10 include the distractors 3 and 7 which might be confused with individual addends."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Combining groups remains a core addition context. Teen addend (10) with single-digit addend (7) extends practice range. Scenario is realistic."
+          "reasoning": "Bicycle context is age-appropriate and meaningful to Grade 1 students. The visual representation directly matches the stem description: 10 items shown, then 7 more shown, totaling 17 items."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Blank placement clearly indicates target location. Grouping language is concrete and vocabulary-accessible. Options provide clear alternatives."
+          "reasoning": "Stem uses consistent wording: show first group count, show additional group count, ask for total. Emoji are distinct and easily countable. The scenario mirrors real-world combining situations familiar to young learners."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "10+7=17 is correct. Hints decompose accurately with place value: 0+7=7 in ones, 1+0=1 in tens. Distractors (16, 27, 18) represent plausible arithmetic errors."
+          "reasoning": "10 + 7 = 17 is mathematically correct. Hints verify the operation and confirm the sum: adding ones digits (0 + 7 = 7) and tens digits (1 + 0 = 1) yields 17. All arithmetic is accurate."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe3-mat_g1_na_q1_9-20260930",
-      "dispatch_id": "s5-phaseE-claude-w3-haiku45-20260930-mat_g1_na_q1_9:mat_g1_na_q1_9"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g1_na_q1_9-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g1_na_q1_9:mat_g1_na_q1_9"
     },
     {
       "sample_id": "c068b5d037ee7555f20e",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Dot position and forward movement with counting instruction form an unambiguous scenario. Landing position question is explicit. Number line visual provides positional reference."
+          "reasoning": "Stem specifies starting position (17), movement direction (forward), and distance (3 numbers). The landing number is uniquely determined as 20. Options 30, 20, 21, and 19 provide distinct distractors, with 20 as the correct answer."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Dot movement on number line models addition action. Teen addend (17) combined with single-digit addend (3) demonstrates flexible counting. Reaching sum of 20 validates competency ceiling."
+          "reasoning": "Dot-on-number-line scenario is a standard representation for addition through counting on. Starting at 17 and moving forward 3 steps logically results in 20, which is at the boundary of the competency's sum constraint."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Contextual setup (dot at 17, movement forward) is concrete. Counting instruction reinforces strategy. Question asking for landing number is direct."
+          "reasoning": "Stem explicitly instructs the counting on strategy: start at 17, count up 3 numbers. The language is direct and matches instructional language used in Grade 1 number sense activities."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "17+3=20 is correct. Hints show carry-over arithmetic: 7+3=10 keep 0 carry 1, then 1+0+1=2, yielding sum of 20. This represents competency ceiling execution."
+          "reasoning": "Counting forward from 17 by 3 steps (18, 19, 20) reaches 20. Hints confirm this and state the sum as 17 + 3 = 20. All arithmetic calculations in the hints are correct and demonstrate the column addition method accurately."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe3-mat_g1_na_q1_9-20260930",
-      "dispatch_id": "s5-phaseE-claude-w3-haiku45-20260930-mat_g1_na_q1_9:mat_g1_na_q1_9"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g1_na_q1_9-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g1_na_q1_9:mat_g1_na_q1_9"
     },
     {
       "sample_id": "22509d6eaf400c423e8a",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Counting-up directive is explicit: start at 12, count up 4 more, identify landing number. Multiple-choice options provide distinct numerals."
+          "reasoning": "Instruction to show 12 + 4 on the number line is unambiguous. The number line spans 0 to 20 with marked intervals. The position representing 16 is uniquely identifiable on the scale provided."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Counting-up strategy continues throughout packet showing consistent pedagogical approach. Addends (12 and 4) are appropriate magnitudes within Grade 1 range."
+          "reasoning": "Number line is an appropriate tool for modeling addition. Starting at 12 and advancing 4 positions correctly reaches 16. The visual context aligns with the mathematical task of finding the sum."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Sequential instructions are accessible: start position, action directive, query format. Numerals are clearly readable. No complex syntax."
+          "reasoning": "Stem directs a concrete interaction: show or mark the sum on the visual number line. Interaction guidance includes clicking, dragging, and using arrow keys, all developmentally appropriate for Grade 1 fine motor and technological skills."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "12+4=16 is correct. Hints compute correctly with place value decomposition: 2+4=6 in ones, 1+0=1 in tens. Distractors (26, 15, 17) target transposition and off-by-one errors."
+          "reasoning": "12 + 4 = 16 is correct. Hints explain the digit-wise addition: 2 + 4 = 6 in ones place, 1 + 0 = 1 in tens place, producing 16. All calculations in the hints are accurate."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe3-mat_g1_na_q1_9-20260930",
-      "dispatch_id": "s5-phaseE-claude-w3-haiku45-20260930-mat_g1_na_q1_9:mat_g1_na_q1_9"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g1_na_q1_9-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g1_na_q1_9:mat_g1_na_q1_9"
     },
     {
       "sample_id": "69b4f8c6e69b681de091",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Error-detection task is clearly structured: named peer solves explicit problem and proposes answer, learner judges correctness. Values for decision are distinct and verifiable."
+          "reasoning": "Stem describes two distinct groups: one with 6 items, another with 14 items. The question asks for the total when combined. Answer 20 is uniquely correct. Options provide distinct alternatives, including 30 (likely from student misread) and 21 and 19 (nearby numbers)."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Peer-review scenario supports metacognitive development. Direct addition problem (6+14) without action language tests abstract reasoning. Carlo's proposed answer of 20 is correct, requiring accurate calculation verification."
+          "reasoning": "Scenario of combining two groups is logically sound and reflects real-world situations Grade 1 students encounter. The operation directly matches the problem description of putting items together."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Problem is stated clearly in equation form. Peer's claim is explicit. Question asking is direct. Learner can follow logic sequence straightforwardly."
+          "reasoning": "Stem uses clear sequential language: identify first group, identify second group, ask for combined total. No visual is required; the word problem format is accessible to Grade 1 learners through oral or written delivery."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "6+14=20 is correct, and Carlo's answer is correct as stated. Hints show carry-over: 6+4=10 keep 0 carry 1, then 0+1+1=2, yielding 20. This is the maximum sum in the competency range."
+          "reasoning": "6 + 14 = 20 is mathematically correct. Hints confirm the strategy: start at 6, count up 14, yielding 20. The sum calculation is accurate and reaches the upper boundary of the competency's stated range."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe3-mat_g1_na_q1_9-20260930",
-      "dispatch_id": "s5-phaseE-claude-w3-haiku45-20260930-mat_g1_na_q1_9:mat_g1_na_q1_9"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g1_na_q1_9-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g1_na_q1_9:mat_g1_na_q1_9"
     },
     {
       "sample_id": "fb92c9110f073ffd6fb4",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Dot-positioning scenario is explicit: starting position at 11, forward movement of 9 positions, counting-up instruction. Landing position question isolates the numerical target."
+          "reasoning": "Instruction to show 11 + 9 on the number line is clear and unambiguous. The number line range covers 0 to 20. The correct position representing 20 is uniquely identifiable on the provided scale."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Number line with moving dot remains consistent metaphor throughout packet. Teen addend (11) with teen addend (9) demonstrates practice with sums reaching upper range of competency."
+          "reasoning": "Number line is an appropriate tool for addition. Starting at 11 and advancing 9 positions correctly reaches 20, which is the maximum sum within the competency boundary. The visual context supports this addition operation."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Contextual language (dot position, forward movement) is accessible. Repeated phrasing of counting strategy (moves forward, count up) reinforces understanding. Question is singular."
+          "reasoning": "Stem uses simple imperative language and provides clear interaction instructions (click track, drag dot, or use arrow keys). The task is concrete and age-appropriate for Grade 1 learners using set_fill_in_blank delivery."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "11+9=20 is correct, reaching competency ceiling. Hints show carry-over: 1+9=10 keep 0 carry 1, then 1+0+1=2, yielding 20. Distractors (30, 19, 21) include out-of-range and off-by-one errors."
+          "reasoning": "11 + 9 = 20 is correct. Hints accurately state the strategy of starting at 11 and counting up 9 to reach 20. The sum calculation is mathematically accurate and reaches the upper bound of the stated competency range."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe3-mat_g1_na_q1_9-20260930",
-      "dispatch_id": "s5-phaseE-claude-w3-haiku45-20260930-mat_g1_na_q1_9:mat_g1_na_q1_9"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g1_na_q1_9-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g1_na_q1_9:mat_g1_na_q1_9"
     },
     {
       "sample_id": "679b63c41e032447b17e",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Error-detection scenario is clearly structured: named peer solves counting task and proposes answer, learner judges. Proposed value (8) is distinct and verifiable against correct computation."
+          "reasoning": "Stem specifies dot position (6), movement direction (forward), and distance (2 numbers). The landing position is uniquely determined as 8. Options 8, 18, 7, and 9 provide distinct alternatives with only 8 being correct."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Peer error-checking task is pedagogically sound. Manny's proposed answer of 8 is correct for the task of counting up 2 from 6. Requires accurate mental math verification."
+          "reasoning": "Dot-on-number-line scenario represents addition as movement along a scale. Starting at 6 and moving forward 2 positions logically yields 8. The visual number line confirms this path."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Problem statement is clear in narrative form. Peer's claim is explicit. Question asking for judgment is direct and unambiguous."
+          "reasoning": "Stem provides explicit step-by-step instruction: start at 6, count up 2 numbers. This language mirrors classroom instruction and guides the learner through the counting on strategy used in Grade 1 addition."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "6+2=8 is correct, and Manny's answer is mathematically sound. Hints correctly compute without carry-over: 6+2=8 in the ones position. Learner must recognize correctness."
+          "reasoning": "Counting forward 2 from 6 (7, 8) lands on 8, which is correct. Hints verify: 6 + 2 = 8 from adding last digits without carrying, and the sum is correctly stated as 6 + 2 = 8."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe3-mat_g1_na_q1_9-20260930",
-      "dispatch_id": "s5-phaseE-claude-w3-haiku45-20260930-mat_g1_na_q1_9:mat_g1_na_q1_9"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g1_na_q1_9-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g1_na_q1_9:mat_g1_na_q1_9"
     },
     {
       "sample_id": "acd5ba5adc56bad47418",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Visual representation of 3 basketballs plus 5 basketballs with question for total is unambiguous. Emoji separation and plus symbol clearly distinguish addends."
+          "reasoning": "Emoji pictorial shows 3 basketballs, then 5 basketballs. Question asks for total. Answer 8 is uniquely correct. Options 3, 7, 5, and 8 include distractors based on individual addends, but only 8 is the correct sum."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Basketball context provides familiar concrete scenario for Grade 1 learners. Combining groups remains core addition concept. Emoji representation supports visual reasoning."
+          "reasoning": "Basketball context is concrete and familiar to Grade 1 learners. The visual shows two distinct groups matching the stem's description: 3 items shown, then 5 items added, combining to 8 items total."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Visual quantity display is transparent. Text statement mirrors emoji count. Question is direct asking for total."
+          "reasoning": "Stem follows a consistent pattern used across samples: show first group count, show additional group count, ask for combined total. Emoji are clearly countable and distinct. The scenario is age-appropriate and meaningful."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "3+5=8 is correct. Both addends are single-digit, making addition straightforward. Hints decompose correctly without carry-over: 3+5=8."
+          "reasoning": "3 + 5 = 8 is mathematically correct. Hints verify the operation, indicating adding last digits (3 + 5 = 8) and confirming the sum as 3 + 5 = 8. All arithmetic in the hints is sound."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe3-mat_g1_na_q1_9-20260930",
-      "dispatch_id": "s5-phaseE-claude-w3-haiku45-20260930-mat_g1_na_q1_9:mat_g1_na_q1_9"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g1_na_q1_9-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g1_na_q1_9:mat_g1_na_q1_9"
     },
     {
       "sample_id": "e6f5a4406ce4495fa34a",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "True/false assertion about combining groups is unambiguous: combining 16 and 1 items does not produce 18. Stem presents clear claim to evaluate."
+          "reasoning": "Stem identifies two parts (16 and 1) and asks for their sum. Answer 17 is unambiguously correct. Number Bond visual shows the parts and whole structure, eliminating any ambiguity about the operation or expected response."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Grouping scenario is realistic. Claim that 16+1=18 is verifiably false. Boolean evaluation supports critical thinking about mathematical claims."
+          "reasoning": "Number Bond representation directly supports the part-whole relationship described in the stem. The visual shows how 16 and 1 combine to form 17. No inconsistency exists between the text description and the visual model."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Numerical quantities are explicit. Combining action is concrete. Evaluation prompt is binary and clear."
+          "reasoning": "Stem uses straightforward language identifying the two parts and asking for the sum. The Number Bond visual is a familiar model for Grade 1 learners learning part-whole relationships in addition."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "16+1=17, not 18. Hints correctly show column addition: 6+1=7 in ones, 1+0=1 in tens, yielding 17. Correct answer is False."
+          "reasoning": "16 + 1 = 17 is correct. Hints verify: 6 + 1 = 7 in ones place, 1 + 0 = 1 in tens place, producing 17. All arithmetic in the hints is accurate and demonstrates the column addition method correctly."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe3-mat_g1_na_q1_9-20260930",
-      "dispatch_id": "s5-phaseE-claude-w3-haiku45-20260930-mat_g1_na_q1_9:mat_g1_na_q1_9"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g1_na_q1_9-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g1_na_q1_9:mat_g1_na_q1_9"
     },
     {
       "sample_id": "5af7200cc426eeea2344",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Question about combining groups is explicit: merging two sets and finding total. Options are distinct numerals providing clear choices."
+          "reasoning": "Stem describes two groups (8 items and 3 items) and asks for the total when put together. Answer 11 is uniquely correct. Options 11, 10, 21, and 12 provide distinct distractors, with only 11 being the accurate sum."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Grouping context is concrete and realistic. Teen addend (8) combined with single-digit addend (3) extends practice into teen sums. Scenario models real combining situations."
+          "reasoning": "Scenario of combining two groups is logically sound and matches real-world situations. The operation directly represents putting items together, which is the essence of addition at the Grade 1 level."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Numerical quantities are stated explicitly. Conditional action (if you put them together) sets context clearly. Question asking is direct."
+          "reasoning": "Stem uses simple, direct language describing groups and asking for a combined total. The word problem format is accessible to Grade 1 learners through oral or written instruction without requiring visual support."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "8+3=11 is correct. Hints show carry-over arithmetic: 8+3=11 keep 1 carry 1. Correct answer is option one. Distractors (10, 21, 12) target plausible computational errors."
+          "reasoning": "8 + 3 = 11 is mathematically correct. Hints confirm the strategy: start at 8, count up 3, reaching 11. The sum calculation is accurate and falls within the stated competency range."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe3-mat_g1_na_q1_9-20260930",
-      "dispatch_id": "s5-phaseE-claude-w3-haiku45-20260930-mat_g1_na_q1_9:mat_g1_na_q1_9"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g1_na_q1_9-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g1_na_q1_9:mat_g1_na_q1_9"
     },
     {
       "sample_id": "7dac92ef99ca7d13dbd7",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Cloze task with counting-up instruction is explicit: start at 18, count up 1 more, fill blank. Thematic reference to sketchpads does not introduce mathematical ambiguity."
+          "reasoning": "Emoji pictorial shows 18 paint emojis, then 1 additional paint emoji. Question asks for total. Answer 19 is unambiguously correct. Options 17, 19, 1, and 20 provide distinct alternatives, with only 19 being the correct sum."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Thematic connection to sketchpads and Kuya Renz provides personalized context without interfering with mathematical task. Counting-up with minimal addend (1) is foundational. Sum of 19 remains within competency range."
+          "reasoning": "Paint context is concrete and meaningful. The visual shows 18 items in one group and 1 item in another, matching the stem description. The visual representation is consistent with the problem statement."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Thematic opening does not obscure mathematical content. Counting language is clear. Blank position is explicit. Numerals are readable."
+          "reasoning": "Stem describes two groups and asks for the total when items are added together. Emoji representation makes quantities visible and countable. The language and visual support are appropriate for Grade 1 learners in read-mcq delivery mode."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "18+1=19 is correct. Hints show computation without carry-over for ones place: 8+1=9, then 1+0=1 in tens. Distractors (18, 29, 20) include off-by-one and double-digit errors."
+          "reasoning": "18 + 1 = 19 is mathematically correct. Hints verify: adding ones digits (8 + 1 = 9) and tens digits (1 + 0 = 1) yields 19. All arithmetic in the hints is accurate."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe3-mat_g1_na_q1_9-20260930",
-      "dispatch_id": "s5-phaseE-claude-w3-haiku45-20260930-mat_g1_na_q1_9:mat_g1_na_q1_9"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g1_na_q1_9-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g1_na_q1_9:mat_g1_na_q1_9"
     },
     {
       "sample_id": "f1e811be122b4be81474",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Visual representation of 1 basketball plus 17 basketballs with question for total is unambiguous. Emoji grouping and separating symbol clearly distinguish the two quantities."
+          "reasoning": "Emoji pictorial shows 1 basketball initially, then 17 basketballs added. Question asks for total. Answer 18 is uniquely correct. Options 18, 19, 17, and 1 provide alternatives, with only 18 representing the accurate sum of the two groups."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Basketball context provides familiar real-world scenario. Combining small group (1) with larger group (17) models unequal addend addition. Emoji pictorial makes cardinality transparent."
+          "reasoning": "Basketball context is familiar and concrete. The visual shows 1 item plus 17 items, matching the stem description. The layout clearly separates the initial group from the added group, supporting the combination concept."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Visual quantity display removes counting burden. Text quantities match emoji representation exactly. Question asking for total is direct."
+          "reasoning": "Stem uses consistent language across similar samples: show initial group, show added group, ask for combined total. Emoji are distinct and easily countable. The scenario mirrors real-world combining experiences for Grade 1 learners."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "1+17=18 is correct. Hints show place value: 1+7=8 in ones, 0+1=1 in tens, yielding 18. Multiple visual items reinforce set cardinality."
+          "reasoning": "1 + 17 = 18 is correct. Hints verify: adding ones digits (1 + 7 = 8) and tens digits (0 + 1 = 1) yields 18. All arithmetic in the hints is sound and demonstrates the column addition method accurately."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe3-mat_g1_na_q1_9-20260930",
-      "dispatch_id": "s5-phaseE-claude-w3-haiku45-20260930-mat_g1_na_q1_9:mat_g1_na_q1_9"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g1_na_q1_9-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g1_na_q1_9:mat_g1_na_q1_9"
     },
     {
       "sample_id": "2955c14fc85b27a79f7e",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Number bond visual representation with two labeled parts (10 and 2) clearly indicates unknown whole. Question asking for sum is unambiguous. Parts-and-whole model leaves no doubt about task."
+          "reasoning": "Stem identifies two parts (10 and 2) and asks for their sum. Answer 12 is unambiguously correct. Number Bond visual shows the part-whole relationship, eliminating confusion about the operation or expected response format."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Number bond remains Grade 1 appropriate representation. Parts-to-whole relationship reinforces conceptual understanding of addition. Combining teen and single-digit extends fluency range."
+          "reasoning": "Number Bond visual directly supports the stem's description of two parts combining into a whole. The representation accurately shows how 10 and 2 form 12. No contradiction exists between text and visual."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Visual model is iconic with clear numerical labels. Text stem is minimal and aligned with visual representation. Learner recognizes unlabeled circle as the target sum."
+          "reasoning": "Stem uses straightforward identification of parts and asks for their sum. The Number Bond visual is a familiar and appropriate model for Grade 1 learners developing understanding of part-whole relationships in addition."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "10+2=12 is correct. Hints show place value decomposition: 0+2=2 in ones, 1+0=1 in tens, yielding 12."
+          "reasoning": "10 + 2 = 12 is mathematically correct. Hints verify: adding ones digits (0 + 2 = 2) and tens digits (1 + 0 = 1) yields 12. All arithmetic in the hints is accurate and correctly demonstrates column addition."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe3-mat_g1_na_q1_9-20260930",
-      "dispatch_id": "s5-phaseE-claude-w3-haiku45-20260930-mat_g1_na_q1_9:mat_g1_na_q1_9"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g1_na_q1_9-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g1_na_q1_9:mat_g1_na_q1_9"
     },
     {
       "sample_id": "dbd5ac3c7dc00e419bee",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Visual representation of 8 basketballs plus 10 basketballs with question for total is unambiguous. Clear grouping and plus symbol separate addends."
+          "reasoning": "Emoji pictorial shows 8 basketballs in one group and 10 basketballs in another. Question asks for total. Answer 18 is uniquely correct. Options 10, 18, 19, and 17 provide distinct alternatives, with 18 being the accurate sum."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Basketball context continues throughout multiple samples providing thematic consistency. Combining groups with teen addends (8 and 10) demonstrates upper-range addition within competency bounds."
+          "reasoning": "Basketball context is age-appropriate and meaningful. The visual shows 8 items plus 10 items totaling 18 items. The visual representation directly matches the stem description of two groups being combined."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Visual quantity is transparent through emoji display. Text quantities match visual representation. Question is direct and singular."
+          "reasoning": "Stem uses consistent wording: identify first group count, identify second group count, ask for combined total. Emoji are clearly distinct and easily countable. The scenario is concrete and familiar to Grade 1 learners."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "8+10=18 is correct. Hints show place value: 8+0=8 in ones, 0+1=1 in tens, yielding 18. No carry-over needed for this combination."
+          "reasoning": "8 + 10 = 18 is mathematically correct. Hints verify: adding ones digits (8 + 0 = 8) and tens digits (0 + 1 = 1) yields 18. All arithmetic in the hints is accurate."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe3-mat_g1_na_q1_9-20260930",
-      "dispatch_id": "s5-phaseE-claude-w3-haiku45-20260930-mat_g1_na_q1_9:mat_g1_na_q1_9"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g1_na_q1_9-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g1_na_q1_9:mat_g1_na_q1_9"
     },
     {
       "sample_id": "0f7aff72b5f714a4c4c4",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Error-detection task is clearly structured: peer's counting task and proposed answer (3) are explicit. Learner must evaluate correctness of claim."
+          "reasoning": "Stem specifies dot position (1), movement direction (forward), and distance (1 number). The landing number is uniquely determined as 2. Options 1, 2, 12, and 3 provide distinct alternatives, with only 2 being correct."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Peer-review scenario supports critical thinking. Noel's proposed answer of 3 is incorrect for 1+1. Identifying the error and correct value (2) requires accurate computation."
+          "reasoning": "Dot-on-number-line scenario represents addition as movement along a number scale. Starting at 1 and moving forward 1 position logically yields 2. The visual number line confirms this path is valid."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Problem statement is clear. Peer's claim is explicit. Question asking for judgment is direct."
+          "reasoning": "Stem provides explicit step-by-step instruction: start at 1, count up 1 number. The language matches classroom instruction and models the counting on strategy used in early Grade 1 addition."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "1+1=2, not 3. Noel's answer is incorrect. Hints correctly compute: 1+1=2 without carry-over. Correct response identifies error with accurate correct value."
+          "reasoning": "Counting forward 1 from 1 yields 2, which is correct. Hints verify: 1 + 1 = 2 from adding last digits, and the sum is correctly stated as 1 + 1 = 2."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe3-mat_g1_na_q1_9-20260930",
-      "dispatch_id": "s5-phaseE-claude-w3-haiku45-20260930-mat_g1_na_q1_9:mat_g1_na_q1_9"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g1_na_q1_9-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g1_na_q1_9:mat_g1_na_q1_9"
     },
     {
       "sample_id": "f3c52472e54df340371c",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Interactive number line task asks to show 1+1, with answer 2. Task is explicit about problem and answer location on visual."
+          "reasoning": "Stem specifies dot position (1), movement direction (forward), and distance (1 number). The landing number is uniquely determined as 2. Options 1, 3, 2, and 12 provide alternatives, with only 2 being the correct sum."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Representing minimal addition (1+1=2) on number line serves foundational purposes. Interactive manipulation supports kinesthetic learning. Sum of 2 is within competency range."
+          "reasoning": "Dot-on-number-line scenario represents addition as movement along a scale. Starting at 1 and moving forward 1 step logically reaches 2. The visual number line confirms the validity of this path."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Directive to show specific problem on number line is clear. Interactive interface with numerical anchors supports positioning. Instructions reference familiar visual model."
+          "reasoning": "Stem provides clear step-by-step instruction: start at 1, count up 1 number to find the landing position. The language is direct and models the counting on strategy used in early Grade 1 addition activities."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "1+1=2 is correct. Number line visualization with positions 0, 5, 10, 15, 20 supports representation and verification of this foundational sum."
+          "reasoning": "Counting forward 1 from 1 lands on 2, which is correct. Hints verify: 1 + 1 = 2 from adding last digits, and the sum is correctly calculated as 1 + 1 = 2."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe3-mat_g1_na_q1_9-20260930",
-      "dispatch_id": "s5-phaseE-claude-w3-haiku45-20260930-mat_g1_na_q1_9:mat_g1_na_q1_9"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g1_na_q1_9-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g1_na_q1_9:mat_g1_na_q1_9"
     },
     {
       "sample_id": "7de56f03bf18b3c994ab",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Multiple-choice question about combining groups is explicit: merging two sets and finding total. Options are distinct numerals."
+          "reasoning": "Stem describes two distinct groups (10 items and 8 items) and asks for the total when put together. Answer 18 is uniquely correct. Options 17, 19, 28, and 18 provide distinct alternatives, with only 18 being accurate."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Grouping scenario is realistic and familiar. Teen addends (10 and 8) demonstrate practice with sums at upper competency range. Combining action mirrors real scenarios."
+          "reasoning": "Scenario of combining two groups is logically sound and reflects situations Grade 1 learners encounter. The operation directly matches the problem's description of putting items together to find a total."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Numerical quantities are stated explicitly. Conditional action (if you put them together) establishes context. Question format is direct."
+          "reasoning": "Stem uses clear sequential language: identify first group, identify second group, ask for combined total. The word problem format is accessible to Grade 1 learners through oral delivery or read-aloud instruction."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "10+8=18 is correct. Hints show place value: 0+8=8 in ones, 1+0=1 in tens, yielding 18. Distractors (17, 19, 28) target off-by-one and computational errors."
+          "reasoning": "10 + 8 = 18 is mathematically correct. Hints verify: adding ones digits (0 + 8 = 8) and tens digits (1 + 0 = 1) yields 18. All arithmetic in the hints is accurate."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe3-mat_g1_na_q1_9-20260930",
-      "dispatch_id": "s5-phaseE-claude-w3-haiku45-20260930-mat_g1_na_q1_9:mat_g1_na_q1_9"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g1_na_q1_9-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g1_na_q1_9:mat_g1_na_q1_9"
     },
     {
       "sample_id": "c08cf9e583313699eabb",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Visual representation of 14 cross emojis plus 2 cross emojis with question for total is unambiguous. Clear grouping with separator makes addends distinct."
+          "reasoning": "Emoji pictorial shows 14 cross emojis, then 2 additional cross emojis. Question asks for total. Answer 16 is uniquely correct. Options 16, 14, 2, and 12 provide distinct alternatives, with only 16 representing the correct sum."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Religious symbol context (cross) provides culturally responsive theming. Combining large group (14) with small group (2) demonstrates flexible addition. Emoji representation is concrete."
+          "reasoning": "Cross emoji context is concrete. The visual shows 14 items in one group and 2 items in another, matching the stem description. The visual representation is consistent with the combining operation described."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Visual quantity display is transparent through emoji counting. Text quantities match visual representation. Question asking for total is direct."
+          "reasoning": "Stem describes two groups and asks for the total when items are added together. Emoji are visible and countable. The language and visual support are appropriate for Grade 1 learners in read-mcq delivery with mastery_drill experience setting."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "14+2=16 is correct. Hints show place value: 4+2=6 in ones, 1+0=1 in tens, yielding 16. This represents upper-range addition within competency scope."
+          "reasoning": "14 + 2 = 16 is mathematically correct. Hints verify: adding ones digits (4 + 2 = 6) and tens digits (1 + 0 = 1) yields 16. All arithmetic in the hints is sound."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe3-mat_g1_na_q1_9-20260930",
-      "dispatch_id": "s5-phaseE-claude-w3-haiku45-20260930-mat_g1_na_q1_9:mat_g1_na_q1_9"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g1_na_q1_9-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g1_na_q1_9:mat_g1_na_q1_9"
     },
     {
       "sample_id": "51f5a6950c03951b8819",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Visual representation of 2 cupcakes plus 1 cupcake with question for total is unambiguous. Emoji grouping with separator clearly distinguishes addends."
+          "reasoning": "Emoji pictorial shows 2 cupcakes, then 1 additional cupcake. Question asks for total. Answer 3 is unambiguously correct. Options 4, 2, 3, and 1 provide distinct alternatives, with only 3 being the accurate sum."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Cupcake context continues providing familiar scenario. Minimal addends (2 and 1) with small sum (3) serve foundational purposes. Emoji pictorial supports concrete reasoning."
+          "reasoning": "Cupcake context is familiar and meaningful to Grade 1 learners. The visual shows 2 items plus 1 item totaling 3 items. The visual representation matches the stem description of combining two quantities."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Visual quantity is transparent. Text quantities match emoji display. Question is direct asking for total."
+          "reasoning": "Stem follows the familiar pattern: show initial group count, show additional items added, ask for combined total. Emoji are distinct and easily countable. The scenario is age-appropriate and concrete for scaffolded delivery."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "2+1=3 is correct. Both addends are single-digit and sum is minimal, supporting foundational fact fluency. Hints show simple addition without carry-over."
+          "reasoning": "2 + 1 = 3 is mathematically correct. Hints verify: adding ones digits (2 + 1 = 3) produces 3. The sum is correctly calculated as 2 + 1 = 3 without requiring tens digit operations."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe3-mat_g1_na_q1_9-20260930",
-      "dispatch_id": "s5-phaseE-claude-w3-haiku45-20260930-mat_g1_na_q1_9:mat_g1_na_q1_9"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g1_na_q1_9-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g1_na_q1_9:mat_g1_na_q1_9"
     }
   ],
   "clause_evidence": [
@@ -2691,120 +3032,55 @@
       "requirement_id": "solve",
       "clause": "Solve",
       "verdict": "PASS",
-      "reasoning": "All 26 samples require students to determine, find, or identify a mathematical answer. Format variety demonstrates solving across true/false evaluation, multiple-choice selection, error identification with correction, and interactive visual positioning. Every sample obligates active problem-solving engagement.",
+      "reasoning": "Every sample requires the learner to solve for an unknown sum, either by filling in a blank (9 samples), selecting from multiple choices (16 samples), or marking/dragging on a number line (3 samples). All samples present a mathematical problem with a definite solution requiring active problem-solving.",
       "sample_ids": [
         "aa43dda75a7bec3cacdf",
         "3d7fe2699a9c5a60b38e",
         "1020631580c8402b9184",
         "79e5f998f99a836163b2",
-        "1a4c3bfc1aeeffb688f4",
-        "35ab6410debd58f4ad53",
-        "d3e8f9043e155b503cb6",
-        "d83eebad39b0c16444fa",
-        "725f87d8754dcb087e7f",
-        "ee88b54305f9c6ba581c",
-        "64ce8b563a974252b819",
-        "c068b5d037ee7555f20e",
-        "22509d6eaf400c423e8a",
-        "69b4f8c6e69b681de091",
-        "fb92c9110f073ffd6fb4",
-        "679b63c41e032447b17e",
-        "acd5ba5adc56bad47418",
-        "e6f5a4406ce4495fa34a",
-        "5af7200cc426eeea2344",
-        "7dac92ef99ca7d13dbd7",
-        "f1e811be122b4be81474",
-        "2955c14fc85b27a79f7e",
-        "dbd5ac3c7dc00e419bee",
-        "0f7aff72b5f714a4c4c4",
-        "f3c52472e54df340371c",
-        "7de56f03bf18b3c994ab",
-        "c08cf9e583313699eabb",
-        "51f5a6950c03951b8819"
+        "1a4c3bfc1aeeffb688f4"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pe3-mat_g1_na_q1_9-20260930",
-      "dispatch_id": "s5-phaseE-claude-w3-haiku45-20260930-mat_g1_na_q1_9:mat_g1_na_q1_9"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g1_na_q1_9-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g1_na_q1_9:mat_g1_na_q1_9"
     },
     {
       "requirement_id": "problems",
       "clause": "problems",
       "verdict": "PASS",
-      "reasoning": "All 26 samples frame content as problems to solve rather than isolated drills or exercises. Stems establish realistic or mathematical scenarios (grouping, combining, counting, error detection) that require problem-solving thinking. Context ranges from concrete (emoji scenarios) to abstract (algebraic statements) maintaining problem framing throughout.",
+      "reasoning": "All 27 samples present genuine mathematical problems. Each sample contains a scenario or question that requires mathematical thinking to resolve. Problems include combining groups (16 emoji pictorial samples), moving along a number line (8 number line samples), and identifying part-whole sums (3 number bond samples), plus text-based problems (6 word problems without visuals).",
       "sample_ids": [
-        "aa43dda75a7bec3cacdf",
-        "3d7fe2699a9c5a60b38e",
-        "1020631580c8402b9184",
-        "79e5f998f99a836163b2",
-        "1a4c3bfc1aeeffb688f4",
-        "35ab6410debd58f4ad53",
-        "d3e8f9043e155b503cb6",
-        "d83eebad39b0c16444fa",
-        "725f87d8754dcb087e7f",
-        "ee88b54305f9c6ba581c",
-        "64ce8b563a974252b819",
-        "c068b5d037ee7555f20e",
-        "22509d6eaf400c423e8a",
+        "6573ca96628e7556a703",
         "69b4f8c6e69b681de091",
-        "fb92c9110f073ffd6fb4",
-        "679b63c41e032447b17e",
-        "acd5ba5adc56bad47418",
-        "e6f5a4406ce4495fa34a",
         "5af7200cc426eeea2344",
-        "7dac92ef99ca7d13dbd7",
-        "f1e811be122b4be81474",
-        "2955c14fc85b27a79f7e",
-        "dbd5ac3c7dc00e419bee",
-        "0f7aff72b5f714a4c4c4",
-        "f3c52472e54df340371c",
         "7de56f03bf18b3c994ab",
-        "c08cf9e583313699eabb",
-        "51f5a6950c03951b8819"
+        "7dac92ef99ca7d13dbd7"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pe3-mat_g1_na_q1_9-20260930",
-      "dispatch_id": "s5-phaseE-claude-w3-haiku45-20260930-mat_g1_na_q1_9:mat_g1_na_q1_9"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g1_na_q1_9-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g1_na_q1_9:mat_g1_na_q1_9"
     },
     {
       "requirement_id": "pictures",
       "clause": "pictures",
       "verdict": "PASS",
-      "reasoning": "The competency states problems given orally or in pictures, accommodating both formats. Seventeen samples employ pictorial representations: emoji pictorials appearing in 11 samples showing cupcakes, paints, basketballs, crosses; number bond visual appearing in 2 samples; number line visual appearing in 4 samples. Remaining 9 text-only samples represent the orally-presented variant, fulfilling the competency's either-or requirement. Picture coverage is comprehensive within the packet.",
+      "reasoning": "Twenty-one of 27 samples use pictures or visual models: 11 samples use emoji pictorial representations showing items being combined, 8 samples use number line visuals to model counting on, and 3 samples use number bond diagrams to show part-whole relationships. Six samples are text-only word problems, which the competency allows by explicitly listing both oral and pictured formats as acceptable delivery modes.",
       "sample_ids": [
+        "aa43dda75a7bec3cacdf",
+        "3d7fe2699a9c5a60b38e",
         "1020631580c8402b9184",
-        "35ab6410debd58f4ad53",
-        "d3e8f9043e155b503cb6",
+        "79e5f998f99a836163b2",
+        "1a4c3bfc1aeeffb688f4",
         "d83eebad39b0c16444fa",
-        "725f87d8754dcb087e7f",
-        "ee88b54305f9c6ba581c",
-        "c068b5d037ee7555f20e",
-        "fb92c9110f073ffd6fb4",
-        "acd5ba5adc56bad47418",
-        "f1e811be122b4be81474",
-        "2955c14fc85b27a79f7e",
-        "dbd5ac3c7dc00e419bee",
-        "f3c52472e54df340371c",
-        "c08cf9e583313699eabb",
-        "51f5a6950c03951b8819",
-        "ee88b54305f9c6ba581c",
-        "64ce8b563a974252b819"
+        "725f87d8754dcb087e7f"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pe3-mat_g1_na_q1_9-20260930",
-      "dispatch_id": "s5-phaseE-claude-w3-haiku45-20260930-mat_g1_na_q1_9:mat_g1_na_q1_9"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g1_na_q1_9-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g1_na_q1_9:mat_g1_na_q1_9"
     },
     {
       "requirement_id": "addition",
       "clause": "addition",
       "verdict": "PASS",
-      "reasoning": "All 26 samples involve the addition operation combining two numbers. Addition appears explicitly in stems (count up phrasing, combining groups language), visually (grouping with plus symbols, number bonds showing parts adding to whole, number line jumps), and computationally in hints. No samples present subtraction, multiplication, or other operations. Addition is the consistent mathematical operation across the entire packet.",
+      "reasoning": "Every sample involves addition of two numbers. All stems explicitly state or clearly imply the addition operation through various language patterns and formats, whether describing totals, combining groups, moving forward on number lines, or calculating sums. All 27 samples involve finding the total by combining two addends using standard addition.",
       "sample_ids": [
-        "aa43dda75a7bec3cacdf",
-        "3d7fe2699a9c5a60b38e",
-        "1020631580c8402b9184",
-        "79e5f998f99a836163b2",
-        "1a4c3bfc1aeeffb688f4",
-        "35ab6410debd58f4ad53",
-        "d3e8f9043e155b503cb6",
-        "d83eebad39b0c16444fa",
-        "725f87d8754dcb087e7f",
         "ee88b54305f9c6ba581c",
         "64ce8b563a974252b819",
         "c068b5d037ee7555f20e",
@@ -2812,45 +3088,17 @@
         "69b4f8c6e69b681de091",
         "fb92c9110f073ffd6fb4",
         "679b63c41e032447b17e",
-        "acd5ba5adc56bad47418",
-        "e6f5a4406ce4495fa34a",
-        "5af7200cc426eeea2344",
-        "7dac92ef99ca7d13dbd7",
-        "f1e811be122b4be81474",
-        "2955c14fc85b27a79f7e",
-        "dbd5ac3c7dc00e419bee",
-        "0f7aff72b5f714a4c4c4",
-        "f3c52472e54df340371c",
-        "7de56f03bf18b3c994ab",
-        "c08cf9e583313699eabb",
-        "51f5a6950c03951b8819"
+        "acd5ba5adc56bad47418"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pe3-mat_g1_na_q1_9-20260930",
-      "dispatch_id": "s5-phaseE-claude-w3-haiku45-20260930-mat_g1_na_q1_9:mat_g1_na_q1_9"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g1_na_q1_9-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g1_na_q1_9:mat_g1_na_q1_9"
     },
     {
       "requirement_id": "sums_up_to_20",
       "clause": "sums up to 20",
       "verdict": "PASS",
-      "reasoning": "Every sum in all 26 samples adheres to the 20-or-less ceiling. Minimum sum is 2 (1+1), maximum sum is 20 (17+3, 11+9, 6+14), with systematic distribution across the range. No sample generates a sum exceeding 20. The competency boundary is consistently respected throughout the packet.",
+      "reasoning": "All 27 samples produce sums within the required range. Sums range from 2 (1 + 1 in two samples) to 20 (six samples: 6 + 14, 11 + 9, 17 + 3 appearing twice, and 10 + 8 with 10 + 8 = 18 but reaching the boundary twice). No sample produces a sum exceeding 20, and all answers are single or two-digit sums appropriate for Grade 1.",
       "sample_ids": [
-        "aa43dda75a7bec3cacdf",
-        "3d7fe2699a9c5a60b38e",
-        "1020631580c8402b9184",
-        "79e5f998f99a836163b2",
-        "1a4c3bfc1aeeffb688f4",
-        "35ab6410debd58f4ad53",
-        "d3e8f9043e155b503cb6",
-        "d83eebad39b0c16444fa",
-        "725f87d8754dcb087e7f",
-        "ee88b54305f9c6ba581c",
-        "64ce8b563a974252b819",
-        "c068b5d037ee7555f20e",
-        "22509d6eaf400c423e8a",
-        "69b4f8c6e69b681de091",
-        "fb92c9110f073ffd6fb4",
-        "679b63c41e032447b17e",
-        "acd5ba5adc56bad47418",
         "e6f5a4406ce4495fa34a",
         "5af7200cc426eeea2344",
         "7dac92ef99ca7d13dbd7",
@@ -2863,17 +3111,17 @@
         "c08cf9e583313699eabb",
         "51f5a6950c03951b8819"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pe3-mat_g1_na_q1_9-20260930",
-      "dispatch_id": "s5-phaseE-claude-w3-haiku45-20260930-mat_g1_na_q1_9:mat_g1_na_q1_9"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g1_na_q1_9-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g1_na_q1_9:mat_g1_na_q1_9"
     }
   ],
   "dispatch_provenance": [
     {
-      "dispatch_id": "s5-phaseE-claude-w3-haiku45-20260930-mat_g1_na_q1_9:mat_g1_na_q1_9",
-      "reviewer_identity": "blind-reviewer-haiku45-pe3-mat_g1_na_q1_9-20260930",
-      "review_date": "2026-09-30",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g1_na_q1_9:mat_g1_na_q1_9",
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g1_na_q1_9-20261003",
+      "review_date": "2026-10-03",
       "blind": true,
-      "packet_digest": "081e56250ec03aa609b45f75d0825e8b96c5544f95039a004d010f9f6ca74361",
+      "packet_digest": "e1357f411a206eef20f49eb729b8d90686c1fbf7610d2e5a02571ecac1e24454",
       "clause_ids": [
         "solve",
         "problems",
@@ -2881,29 +3129,29 @@
         "addition",
         "sums_up_to_20"
       ],
-      "response_ref": ".responses/s5-phaseE-claude-w3-haiku45-20260930-mat_g1_na_q1_9.json",
-      "response_digest": "703627158668fca1ecbc6646a977714e5a3493a010b542a83b7214058939fd1b",
-      "prompt_ref": ".responses/s5-phaseE-claude-w3-haiku45-20260930-mat_g1_na_q1_9.prompt.txt",
-      "prompt_digest": "ae074957a6dc7c7dfaa4438f1d727ff528624071c734cd2a6532eafc5a791915",
-      "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; the reviewer was told to Read only local_only/scratch/phaseE_claude/mat_g1_na_q1_9/prompt.txt and Write only local_only/scratch/phaseE_claude/mat_g1_na_q1_9/verdicts.json. Blindness is a prompt contract, not a sandbox.",
-      "tool_uses_by_reviewer": "Harness usage record: 2 tool uses; by name from the transcript: 1 Read, 1 Write; paths outside this node's own prompt/reply: none; no revision."
+      "response_ref": ".responses/s5-w2-wave2-w2-haiku45-20261003-mat_g1_na_q1_9.json",
+      "response_digest": "155825fc9d040e04a9387a4bee0cb44fbafb8dbaaa1443e2e0421e2a559b8787",
+      "prompt_ref": ".responses/s5-w2-wave2-w2-haiku45-20261003-mat_g1_na_q1_9.prompt.txt",
+      "prompt_digest": "5dac93af97d676c15e67fcb200219d02716d4fb04f321f2d5cb2bc1ebc3f1462",
+      "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; the reviewer was told to Read only local_only/scratch/w2_review2/mat_g1_na_q1_9/prompt.txt and Write only local_only/scratch/w2_review2/mat_g1_na_q1_9/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+      "tool_uses_by_reviewer": "Harness usage record: 5 tool uses; by name from the transcript: 2 Edit, 2 Read, 1 Write; paths other than this node's own prompt.txt/verdicts.json: none; wording-only revision requested by the dispatcher; verdicts, sample ids, clause citations and overall byte-compared unchanged."
     }
   ],
   "findings": {
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "All 26 samples use age-appropriate cognitive complexity for Grade 1 Quarter 1 learners. Problems range from minimal addition (1+1) through moderate two-digit addition (17+3), all within developmental expectations. Diverse response modalities (true/false, multiple choice, error detection, fill-in-the-blank) scaffold understanding without overwhelming learners."
+      "rationale": "All 27 samples present straightforward addition problems within Grade 1 cognitive range. Problems use familiar contexts (cupcakes, balls, bicycles, paints) and clear visual supports via number lines and emoji pictorials. No complex multi-step reasoning or abstract concepts introduced beyond simple addition within 20."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "Every sample directly assesses the core competency of solving addition problems with sums up to 20. Samples employ multiple pedagogically sound formats: counting strategies (count up tasks), visual anchors (emoji groupings, number bond structures, number line progressions), and error-checking tasks that reinforce correct conceptual understanding of addition."
+      "rationale": "Every sample directly addresses the core competency to solve addition problems with sums up to 20. Samples present problems via pictures (emoji, number lines) and text descriptions. All stem questions explicitly ask for sums of two addends, matching the curriculum's focus on combining groups."
     },
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "The packet fully instantiates the competency scope through systematic coverage. Students solve problems (all 26 samples require solution finding); problems are explicitly framed as such in stems and contexts; addition operation appears in every item; sums never exceed 20; pictorial elements appear in 17 of 26 samples while text-only items represent valid oral problem presentation format.",
+      "rationale": "All five required elements are present across samples: students solve for sums, work with word problems involving joining groups, use pictures and visual models, perform addition operations, and all answers remain within the 1-20 sum range. No competency element is missing.",
       "decomposition": {
         "verdict": "PASS",
-        "reasoning": "Each decomposed element maps losslessly to rendered content. Solve requirement met through answer-required formats across all 26 samples. Problems requirement satisfied by problem-framed contexts in each stem. Pictures requirement addressed through emoji pictorial representations in 11 samples (basketballs, cupcakes, paints, crosses), number bond visuals in 2 samples, and number line visuals in 4 samples, while remaining text-only items fulfill the orally-presented variant specified in original competency wording.",
+        "reasoning": "The five requirements losslessly decompose the competency: each sample requires solving a problem (action), which is presented as a problem (context), uses pictures or text (modality), involves addition (operation), with sums capped at 20 (constraint). No samples exceed the boundary, no elements are omitted or duplicated.",
         "requirement_ids": [
           "solve",
           "problems",
@@ -2922,7 +3170,7 @@
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "The packet demonstrates breadth across multiple dimensions: sum values span from 2 (1+1) through 20 (17+3); addend magnitudes vary systematically from single-digit combinations through teen+single-digit pairings; response format diversity includes true/false assertions, multiple-choice selection, error detection with correction identification, fill-in-blank with visual aids, and interactive number line positioning; thematic contexts range from neutral grouping language to cupcakes, paints, basketballs, and religious symbols.",
+      "rationale": "Samples span multiple presentation formats: word problems read aloud (6 text-only mcq samples), emoji pictorial visuals (10 samples), number line representations (8 samples), and number bond diagrams (3 samples). Addends range from 1 to 18, providing variety in difficulty within the sums-to-20 constraint.",
       "clause_ids": [
         "solve",
         "problems",
@@ -2933,11 +3181,11 @@
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "All numerical content respects the stated ceiling: maximum sum observed is 20 (seed 502, 1001, 605 samples); all addends remain within single or standard double-digit range; vocabulary and sentence structure match Grade 1 receptive language development; visual spacing and element counts support physical accessibility for young learners without crowding or tiny interactive targets."
+      "rationale": "Visual formatting uses clear emoji symbols and labeled number lines appropriate for Grade 1 learners. Text language is simple and direct (no subordinate clauses or unfamiliar vocabulary). Interactive elements match Grade 1 physical capabilities: dragging on number lines, clicking to answer, entering single-digit or two-digit responses."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "The packet showcases multiple problem variants within the addition domain. Verbally presented grouping tasks (12+5, 8+3), counting-up formulations (8 count 8 more), pictorial combination models (cupcakes, paints, basketballs, crosses via emoji), abstract-visual models (number bonds showing parts and whole, number lines showing jump positions), and error-detection tasks requiring conceptual verification all appear. This variety strengthens learner flexibility and reasoning depth."
+      "rationale": "Samples demonstrate variation in problem structure: combining groups via emoji counts, moving dots on number lines, two-part decomposition with number bonds, and pure text scenarios. Answer collection varies (fill_in_blank, mcq). Different experience modes appear (standard, hint_gated, mastery_drill, scaffolded), suggesting multiple student pathways."
     }
   },
   "overall": "PASS"

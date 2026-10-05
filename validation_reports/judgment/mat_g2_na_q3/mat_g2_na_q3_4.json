@@ -34,10 +34,10 @@
       "clause": "several groups"
     }
   ],
-  "packet_digest": "43407166a1d902cfea292a55aa6a5c77718eef604b1771f696c300a6301ad5d4",
+  "packet_digest": "e23f7ef0b331f2987b385eb264b1112236af5c0a5f902437ba369d6b0d5b79aa",
   "sampling_version": "phase2-stratified-v2-rendered-visual",
-  "reviewed_by": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_4-20260930",
-  "review_date": "2026-09-30",
+  "reviewed_by": "blind-reviewer-haiku45-w2v1-mat_g2_na_q3_4-20261002",
+  "review_date": "2026-10-02",
   "blind": true,
   "sample_seeds": [
     42,
@@ -45,12 +45,9 @@
     44,
     45,
     46,
-    48,
-    68,
     500,
     501,
     502,
-    600,
     601,
     602,
     603,
@@ -71,12 +68,9 @@
     "cacc77f50cc13b637a68",
     "a0de95b7d7c7c1aa5f1a",
     "f6c316aec6aef511f6e2",
-    "0bb15c39477e01be98e5",
-    "2b6addcb408afb8c346b",
     "f2257b7a38f49dd608dc",
     "c2168cade24aac3293ef",
     "5c461c8c32a5a8133f5b",
-    "c7539da771db3166d306",
     "f53c7a30815706616346",
     "71b8f44ca3a50987ea1f",
     "66b962324b57e29a944b",
@@ -192,8 +186,8 @@
     {
       "node_id": "mat_g2_na_q3_4",
       "seed": 43,
-      "formatter": "cloze",
-      "question_text": "10 ÷ 2 = ___",
+      "formatter": "set_fill_in_blank",
+      "question_text": "Shade 10 squares into 2 equal rows. How many squares are in each row?",
       "correct_answer": 5,
       "requested": {
         "difficulty_profile": null,
@@ -202,47 +196,70 @@
       },
       "serving_mode": "student_path",
       "effective": {
-        "format": "cloze",
-        "is_visual": false,
-        "visual_type": null,
-        "interaction_mode": null,
+        "format": "set_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "GridArea",
+        "interaction_mode": "set",
         "answer_collection": "fill_in_blank",
         "experience": "standard"
       },
-      "options": [
-        {
-          "key": "A",
-          "value": 2,
-          "text": "2",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 6,
-          "text": "6",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 5,
-          "text": "5",
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 8,
-          "text": "8",
-          "is_correct": false
-        }
-      ],
       "resolved_answer": 5,
       "hints": [
         "We need to divide 10 by 2. The number being divided is 10; the number we divide by is 2.",
         "Ask: how many times does 2 fit into 10? 2 × 5 = 10.",
         "The answer of 10 ÷ 2 = 5."
       ],
+      "visual_type": "GridArea",
+      "visual_payload": {
+        "rows": 2,
+        "cols": 5,
+        "shaded": false,
+        "highlight_groups": [],
+        "shape_type": "rectangle",
+        "correct_count": 5,
+        "grid_size": [
+          3,
+          6
+        ]
+      },
+      "visual_render": {
+        "visual_type": "GridArea",
+        "renderer_input_digest": "6c42a16b4a788dbda6518e7a0ca5e9136187dfa136cc065bf828250005ea31df",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "GridArea",
+          "element_count": 23,
+          "svg_count": 1,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 1,
+          "input_count": 0,
+          "text_labels": [
+            "Click squares to shade a",
+            "5 × 2",
+            "rectangle",
+            "0 square units",
+            "Clear All",
+            "Click squares to shade/unshade"
+          ],
+          "distinct_colours": [
+            "hsl(var(--text-muted)",
+            "hsl(var(--primary)",
+            "#4b5563",
+            "#374151",
+            "#f8fafc,",
+            "#e2e8f0)",
+            "#cbd5e1",
+            "hsl(var(--border-color)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {
+            "grid-cell": 10
+          }
+        }
+      },
       "sample_id": "45e9948d4474f00398b8",
-      "replay_digest": "86c280fd0ee7e8d3edc6d8ac91a9fe443274d251eab327cc6349770fba3cd0e7"
+      "replay_digest": "cc3dc1dfe7834aea3f3e01838c6fffb2f7dec2e696feda3335df56c5588397a0"
     },
     {
       "node_id": "mat_g2_na_q3_4",
@@ -298,506 +315,49 @@
     {
       "node_id": "mat_g2_na_q3_4",
       "seed": 45,
-      "formatter": "error_detect",
-      "question_text": "Pia solved: \"15 ÷ 5 = ___\". Pia says the missing number is 3. Is Pia correct?",
-      "correct_answer": {
-        "has_error": false,
-        "correct_value": 3
-      },
-      "requested": {
-        "difficulty_profile": null,
-        "student_interest": null,
-        "experience": "standard"
-      },
-      "serving_mode": "student_path",
-      "effective": {
-        "format": "error_detect",
-        "is_visual": false,
-        "visual_type": null,
-        "interaction_mode": null,
-        "answer_collection": "error_detect",
-        "experience": "standard"
-      },
-      "resolved_answer": {
-        "has_error": false,
-        "correct_value": 3
-      },
-      "hints": [
-        "We need to divide 15 by 5. The number being divided is 15; the number we divide by is 5.",
-        "Ask: how many times does 5 fit into 15? 5 × 3 = 15.",
-        "The answer of 15 ÷ 5 = 3."
-      ],
-      "sample_id": "a0de95b7d7c7c1aa5f1a",
-      "replay_digest": "41a8c9fced6cf39053c1c10b5296c71b262ef7fc0517498dcac9d5fe7e3a49f7"
-    },
-    {
-      "node_id": "mat_g2_na_q3_4",
-      "seed": 46,
-      "formatter": "error_detect",
-      "question_text": "Dante solved: \"12 ÷ 2 = ___\". Dante says the missing number is 2. Is Dante correct?",
-      "correct_answer": {
-        "has_error": true,
-        "correct_value": 6
-      },
-      "requested": {
-        "difficulty_profile": null,
-        "student_interest": null,
-        "experience": "standard"
-      },
-      "serving_mode": "student_path",
-      "effective": {
-        "format": "error_detect",
-        "is_visual": false,
-        "visual_type": null,
-        "interaction_mode": null,
-        "answer_collection": "error_detect",
-        "experience": "standard"
-      },
-      "resolved_answer": {
-        "has_error": true,
-        "correct_value": 6
-      },
-      "hints": [
-        "We need to divide 12 by 2. The number being divided is 12; the number we divide by is 2.",
-        "Ask: how many times does 2 fit into 12? 2 × 6 = 12.",
-        "The answer of 12 ÷ 2 = 6."
-      ],
-      "sample_id": "f6c316aec6aef511f6e2",
-      "replay_digest": "50edab8b665009e767012804cce61e3839ca50385f5895dbd6ec98d24777359b"
-    },
-    {
-      "node_id": "mat_g2_na_q3_4",
-      "seed": 48,
       "formatter": "set_fill_in_blank",
-      "question_text": "Shade 90 squares into 10 equal rows. How many squares are in each row?",
-      "correct_answer": 9,
-      "requested": {
-        "difficulty_profile": null,
-        "student_interest": null,
-        "experience": "standard"
-      },
-      "serving_mode": "student_path",
-      "effective": {
-        "format": "set_fill_in_blank",
-        "is_visual": true,
-        "visual_type": "GridArea",
-        "interaction_mode": "set",
-        "answer_collection": "fill_in_blank",
-        "experience": "standard"
-      },
-      "resolved_answer": 9,
-      "hints": [
-        "We need to divide 90 by 10. The number being divided is 90; the number we divide by is 10.",
-        "Ask: how many times does 10 fit into 90? 10 × 9 = 90.",
-        "The answer of 90 ÷ 10 = 9."
-      ],
-      "visual_type": "GridArea",
-      "visual_payload": {
-        "rows": 10,
-        "cols": 9,
-        "shaded": false,
-        "highlight_groups": [],
-        "shape_type": "rectangle",
-        "correct_count": 9,
-        "grid_size": [
-          11,
-          10
-        ]
-      },
-      "visual_render": {
-        "visual_type": "GridArea",
-        "renderer_input_digest": "cb92b474d2a9a1c9d0e083dbb95882c8057d184e64932d8967e706e28bb0c519",
-        "description": {
-          "source": "rendered_static_markup",
-          "visual_type": "GridArea",
-          "element_count": 103,
-          "svg_count": 1,
-          "table_row_count": 0,
-          "table_cell_count": 0,
-          "button_count": 1,
-          "input_count": 0,
-          "text_labels": [
-            "Click squares to shade a",
-            "9 × 10",
-            "rectangle",
-            "0 square units",
-            "Clear All",
-            "Click squares to shade/unshade"
-          ],
-          "distinct_colours": [
-            "hsl(var(--text-muted)",
-            "hsl(var(--primary)",
-            "#4b5563",
-            "#374151",
-            "#f8fafc,",
-            "#e2e8f0)",
-            "#cbd5e1",
-            "hsl(var(--border-color)",
-            "hsl(var(--text)"
-          ],
-          "role_counts": {
-            "grid-cell": 90
-          }
-        }
-      },
-      "sample_id": "0bb15c39477e01be98e5",
-      "replay_digest": "3b28640c0b110924dec3ac4ebfd17bff6e0d097fb2fd1aa082a6fc24d6484916"
-    },
-    {
-      "node_id": "mat_g2_na_q3_4",
-      "seed": 68,
-      "formatter": "true_false",
-      "question_text": "50 ÷ 10 = 5. True or False?",
-      "correct_answer": true,
-      "requested": {
-        "difficulty_profile": null,
-        "student_interest": null,
-        "experience": "standard"
-      },
-      "serving_mode": "student_path",
-      "effective": {
-        "format": "true_false",
-        "is_visual": false,
-        "visual_type": null,
-        "interaction_mode": null,
-        "answer_collection": "true_false",
-        "experience": "standard"
-      },
-      "resolved_answer": true,
-      "hints": [
-        "We need to divide 50 by 10. The number being divided is 50; the number we divide by is 10.",
-        "Ask: how many times does 10 fit into 50? 10 × 5 = 50.",
-        "The answer of 50 ÷ 10 = 5."
-      ],
-      "sample_id": "2b6addcb408afb8c346b",
-      "replay_digest": "29098d8a43f63f2c6623291ebf2fdd098541e5045883b4be6eb61f6a64011d43"
-    },
-    {
-      "node_id": "mat_g2_na_q3_4",
-      "seed": 500,
-      "formatter": "mcq",
-      "question_text": "What is 90 ÷ 10?",
-      "correct_answer": 9,
-      "requested": {
-        "difficulty_profile": {
-          "number_difficulty": 1.0
-        },
-        "student_interest": null,
-        "experience": "standard"
-      },
-      "serving_mode": "student_path",
-      "effective": {
-        "format": "mcq",
-        "is_visual": false,
-        "visual_type": null,
-        "interaction_mode": null,
-        "answer_collection": "mcq",
-        "experience": "standard"
-      },
-      "options": [
-        {
-          "key": "A",
-          "value": 8,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 9,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 10,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 80,
-          "is_correct": false
-        }
-      ],
-      "resolved_answer": 9,
-      "hints": [
-        "We need to divide 90 by 10. The number being divided is 90; the number we divide by is 10.",
-        "Ask: how many times does 10 fit into 90? 10 × 9 = 90.",
-        "The answer of 90 ÷ 10 = 9."
-      ],
-      "sample_id": "f2257b7a38f49dd608dc",
-      "replay_digest": "ab12e9e1013b0b010f57c305b9a82bcc6f742d901e82515e6d1587912286f066"
-    },
-    {
-      "node_id": "mat_g2_na_q3_4",
-      "seed": 501,
-      "formatter": "true_false",
-      "question_text": "90 ÷ 10 = 80. True or False?",
-      "correct_answer": false,
-      "requested": {
-        "difficulty_profile": {
-          "number_difficulty": 1.0
-        },
-        "student_interest": null,
-        "experience": "standard"
-      },
-      "serving_mode": "student_path",
-      "effective": {
-        "format": "true_false",
-        "is_visual": false,
-        "visual_type": null,
-        "interaction_mode": null,
-        "answer_collection": "true_false",
-        "experience": "standard"
-      },
-      "resolved_answer": false,
-      "hints": [
-        "We need to divide 90 by 10. The number being divided is 90; the number we divide by is 10.",
-        "Ask: how many times does 10 fit into 90? 10 × 9 = 90.",
-        "The answer of 90 ÷ 10 = 9."
-      ],
-      "sample_id": "c2168cade24aac3293ef",
-      "replay_digest": "68134851cae01b1d84e5c5fb3a6b11e705665555cc5e3dcfde8c5217a188fbf8"
-    },
-    {
-      "node_id": "mat_g2_na_q3_4",
-      "seed": 502,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Shade 90 squares into 10 equal rows. How many squares are in each row?",
-      "correct_answer": 9,
-      "requested": {
-        "difficulty_profile": {
-          "number_difficulty": 1.0
-        },
-        "student_interest": null,
-        "experience": "standard"
-      },
-      "serving_mode": "student_path",
-      "effective": {
-        "format": "set_fill_in_blank",
-        "is_visual": true,
-        "visual_type": "GridArea",
-        "interaction_mode": "set",
-        "answer_collection": "fill_in_blank",
-        "experience": "standard"
-      },
-      "resolved_answer": 9,
-      "hints": [
-        "We need to divide 90 by 10. The number being divided is 90; the number we divide by is 10.",
-        "Ask: how many times does 10 fit into 90? 10 × 9 = 90.",
-        "The answer of 90 ÷ 10 = 9."
-      ],
-      "visual_type": "GridArea",
-      "visual_payload": {
-        "rows": 10,
-        "cols": 9,
-        "shaded": false,
-        "highlight_groups": [],
-        "shape_type": "rectangle",
-        "correct_count": 9,
-        "grid_size": [
-          11,
-          10
-        ]
-      },
-      "visual_render": {
-        "visual_type": "GridArea",
-        "renderer_input_digest": "cb92b474d2a9a1c9d0e083dbb95882c8057d184e64932d8967e706e28bb0c519",
-        "description": {
-          "source": "rendered_static_markup",
-          "visual_type": "GridArea",
-          "element_count": 103,
-          "svg_count": 1,
-          "table_row_count": 0,
-          "table_cell_count": 0,
-          "button_count": 1,
-          "input_count": 0,
-          "text_labels": [
-            "Click squares to shade a",
-            "9 × 10",
-            "rectangle",
-            "0 square units",
-            "Clear All",
-            "Click squares to shade/unshade"
-          ],
-          "distinct_colours": [
-            "hsl(var(--text-muted)",
-            "hsl(var(--primary)",
-            "#4b5563",
-            "#374151",
-            "#f8fafc,",
-            "#e2e8f0)",
-            "#cbd5e1",
-            "hsl(var(--border-color)",
-            "hsl(var(--text)"
-          ],
-          "role_counts": {
-            "grid-cell": 90
-          }
-        }
-      },
-      "sample_id": "5c461c8c32a5a8133f5b",
-      "replay_digest": "a3ff419dd832c8a58be3576dd9b99ec91173964bf38e674da57cd9e3892834a7"
-    },
-    {
-      "node_id": "mat_g2_na_q3_4",
-      "seed": 600,
-      "formatter": "cloze",
-      "question_text": "15 ÷ 5 = ___",
+      "question_text": "Shade 15 squares into 5 equal rows. How many squares are in each row?",
       "correct_answer": 3,
       "requested": {
-        "difficulty_profile": {
-          "context": "pure"
-        },
+        "difficulty_profile": null,
         "student_interest": null,
         "experience": "standard"
       },
       "serving_mode": "student_path",
       "effective": {
-        "format": "cloze",
-        "is_visual": false,
-        "visual_type": null,
-        "interaction_mode": null,
+        "format": "set_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "GridArea",
+        "interaction_mode": "set",
         "answer_collection": "fill_in_blank",
         "experience": "standard"
       },
-      "options": [
-        {
-          "key": "A",
-          "value": 10,
-          "text": "10",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 4,
-          "text": "4",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 3,
-          "text": "3",
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 5,
-          "text": "5",
-          "is_correct": false
-        }
-      ],
       "resolved_answer": 3,
       "hints": [
         "We need to divide 15 by 5. The number being divided is 15; the number we divide by is 5.",
         "Ask: how many times does 5 fit into 15? 5 × 3 = 15.",
         "The answer of 15 ÷ 5 = 3."
       ],
-      "sample_id": "c7539da771db3166d306",
-      "replay_digest": "f5fa6110a575ebc91761640e65289bf9a9b5f58f883280731fc9d536012e4f9e"
-    },
-    {
-      "node_id": "mat_g2_na_q3_4",
-      "seed": 601,
-      "formatter": "cloze",
-      "question_text": "Moses wants to share 20 baskets equally among 4 friends. How many baskets does each friend get?",
-      "correct_answer": 5,
-      "requested": {
-        "difficulty_profile": {
-          "context": "word_problem"
-        },
-        "student_interest": null,
-        "experience": "standard"
-      },
-      "serving_mode": "student_path",
-      "effective": {
-        "format": "cloze",
-        "is_visual": false,
-        "visual_type": null,
-        "interaction_mode": null,
-        "answer_collection": "fill_in_blank",
-        "experience": "standard"
-      },
-      "options": [
-        {
-          "key": "A",
-          "value": 4,
-          "text": "4",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 16,
-          "text": "16",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 6,
-          "text": "6",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 5,
-          "text": "5",
-          "is_correct": true
-        }
-      ],
-      "resolved_answer": 5,
-      "hints": [
-        "We need to divide 20 by 4. The number being divided is 20; the number we divide by is 4.",
-        "Ask: how many times does 4 fit into 20? 4 × 5 = 20.",
-        "The answer of 20 ÷ 4 = 5."
-      ],
-      "sample_id": "f53c7a30815706616346",
-      "replay_digest": "615a2b46934c85606d441a95f0fbe941807b1583ae3f8f991518cf0017c8ea2f"
-    },
-    {
-      "node_id": "mat_g2_na_q3_4",
-      "seed": 602,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Shade 20 squares into 10 equal rows. How many squares are in each row?",
-      "correct_answer": 2,
-      "requested": {
-        "difficulty_profile": {
-          "remainder": "none"
-        },
-        "student_interest": null,
-        "experience": "standard"
-      },
-      "serving_mode": "student_path",
-      "effective": {
-        "format": "set_fill_in_blank",
-        "is_visual": true,
-        "visual_type": "GridArea",
-        "interaction_mode": "set",
-        "answer_collection": "fill_in_blank",
-        "experience": "standard"
-      },
-      "resolved_answer": 2,
-      "hints": [
-        "We need to divide 20 by 10. The number being divided is 20; the number we divide by is 10.",
-        "Ask: how many times does 10 fit into 20? 10 × 2 = 20.",
-        "The answer of 20 ÷ 10 = 2."
-      ],
       "visual_type": "GridArea",
       "visual_payload": {
-        "rows": 10,
-        "cols": 2,
+        "rows": 5,
+        "cols": 3,
         "shaded": false,
         "highlight_groups": [],
         "shape_type": "rectangle",
-        "correct_count": 2,
+        "correct_count": 3,
         "grid_size": [
-          11,
-          3
+          6,
+          4
         ]
       },
       "visual_render": {
         "visual_type": "GridArea",
-        "renderer_input_digest": "35cc522853a7a63f4438c06be1b82eb73d4034a2a022892e93abfdfb162c39d0",
+        "renderer_input_digest": "8a5d01c5eb554dd1fec911bdbb62b54b07ad3ff5bd1fe673e9f2bf8beeb96487",
         "description": {
           "source": "rendered_static_markup",
           "visual_type": "GridArea",
-          "element_count": 33,
+          "element_count": 28,
           "svg_count": 1,
           "table_row_count": 0,
           "table_cell_count": 0,
@@ -805,7 +365,7 @@
           "input_count": 0,
           "text_labels": [
             "Click squares to shade a",
-            "2 × 10",
+            "3 × 5",
             "rectangle",
             "0 square units",
             "Clear All",
@@ -823,76 +383,21 @@
             "hsl(var(--text)"
           ],
           "role_counts": {
-            "grid-cell": 20
+            "grid-cell": 15
           }
         }
       },
-      "sample_id": "71b8f44ca3a50987ea1f",
-      "replay_digest": "1f84bfd3bb3ecbc74dad1a912411b7767454f00995397255f6bb0f6a6f718228"
+      "sample_id": "a0de95b7d7c7c1aa5f1a",
+      "replay_digest": "a5cad65ef6e2ac3f2c2941a6e1b821576bab39a73b1ebb927c00a5549fdedd8d"
     },
     {
       "node_id": "mat_g2_na_q3_4",
-      "seed": 603,
-      "formatter": "mcq",
-      "question_text": "What is 15 ÷ 3?",
-      "correct_answer": 5,
-      "requested": {
-        "difficulty_profile": {
-          "structure": "result_unknown"
-        },
-        "student_interest": null,
-        "experience": "standard"
-      },
-      "serving_mode": "student_path",
-      "effective": {
-        "format": "mcq",
-        "is_visual": false,
-        "visual_type": null,
-        "interaction_mode": null,
-        "answer_collection": "mcq",
-        "experience": "standard"
-      },
-      "options": [
-        {
-          "key": "A",
-          "value": 3,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 12,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 5,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 6,
-          "is_correct": false
-        }
-      ],
-      "resolved_answer": 5,
-      "hints": [
-        "We need to divide 15 by 3. The number being divided is 15; the number we divide by is 3.",
-        "Ask: how many times does 3 fit into 15? 3 × 5 = 15.",
-        "The answer of 15 ÷ 3 = 5."
-      ],
-      "sample_id": "66b962324b57e29a944b",
-      "replay_digest": "6f4237693b41e7d5bb0b53dc9dc8426dc2e0a3a47cf1c91addcf22083cff30ca"
-    },
-    {
-      "node_id": "mat_g2_na_q3_4",
-      "seed": 604,
+      "seed": 46,
       "formatter": "set_fill_in_blank",
       "question_text": "Shade 12 squares into 2 equal rows. How many squares are in each row?",
       "correct_answer": 6,
       "requested": {
-        "difficulty_profile": {
-          "table": "2_3_4_5_10"
-        },
+        "difficulty_profile": null,
         "student_interest": null,
         "experience": "standard"
       },
@@ -960,15 +465,524 @@
           }
         }
       },
+      "sample_id": "f6c316aec6aef511f6e2",
+      "replay_digest": "3e0d5f0d16b1c69f4fcb373d2720edf2f276d0aabde04fb779ae2ba3f0589bdc"
+    },
+    {
+      "node_id": "mat_g2_na_q3_4",
+      "seed": 500,
+      "formatter": "mcq",
+      "question_text": "What is 90 ÷ 10?",
+      "correct_answer": 9,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 8,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 9,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 10,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 80,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 9,
+      "hints": [
+        "We need to divide 90 by 10. The number being divided is 90; the number we divide by is 10.",
+        "Ask: how many times does 10 fit into 90? 10 × 9 = 90.",
+        "The answer of 90 ÷ 10 = 9."
+      ],
+      "sample_id": "f2257b7a38f49dd608dc",
+      "replay_digest": "ab12e9e1013b0b010f57c305b9a82bcc6f742d901e82515e6d1587912286f066"
+    },
+    {
+      "node_id": "mat_g2_na_q3_4",
+      "seed": 501,
+      "formatter": "mcq",
+      "question_text": "What is 90 ÷ 10?",
+      "correct_answer": 9,
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 8,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 80,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 9,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 10,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 9,
+      "hints": [
+        "We need to divide 90 by 10. The number being divided is 90; the number we divide by is 10.",
+        "Ask: how many times does 10 fit into 90? 10 × 9 = 90.",
+        "The answer of 90 ÷ 10 = 9."
+      ],
+      "sample_id": "c2168cade24aac3293ef",
+      "replay_digest": "46b11356bdb6b31cba4eef3facb04e200d55dd9e2269556007aa578c5a52a201"
+    },
+    {
+      "node_id": "mat_g2_na_q3_4",
+      "seed": 502,
+      "formatter": "read_mcq",
+      "question_text": "This array has 90 squares split into 10 equal rows. How many squares are in each row?",
+      "correct_answer": "A",
+      "requested": {
+        "difficulty_profile": {
+          "number_difficulty": 1.0
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "GridArea",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 9,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 11,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 6,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 38,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 9,
+      "hints": [
+        "We need to divide 90 by 10. The number being divided is 90; the number we divide by is 10.",
+        "Ask: how many times does 10 fit into 90? 10 × 9 = 90.",
+        "The answer of 90 ÷ 10 = 9."
+      ],
+      "visual_type": "GridArea",
+      "visual_payload": {
+        "rows": 10,
+        "cols": 9,
+        "shaded": true,
+        "highlight_groups": [],
+        "shape_type": "rectangle",
+        "correct_count": 9,
+        "grid_size": [
+          11,
+          10
+        ]
+      },
+      "visual_render": {
+        "visual_type": "GridArea",
+        "renderer_input_digest": "7671d4dfab028ffcc0c5a4725e6204dedbdbfac217222244fb3a070731c0e8e2",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "GridArea",
+          "element_count": 103,
+          "svg_count": 1,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 1,
+          "input_count": 0,
+          "text_labels": [
+            "Click squares to shade a",
+            "9 × 10",
+            "rectangle",
+            "90 square units",
+            "Clear All",
+            "Click squares to shade/unshade"
+          ],
+          "distinct_colours": [
+            "hsl(var(--text-muted)",
+            "hsl(var(--primary)",
+            "#4b5563",
+            "#374151",
+            "hsl(var(--border-color)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {
+            "grid-cell": 90
+          }
+        }
+      },
+      "sample_id": "5c461c8c32a5a8133f5b",
+      "replay_digest": "8bff13b029ee7da3032e4180e7835aa678596037f123f0e8ae8999218d3eebc1"
+    },
+    {
+      "node_id": "mat_g2_na_q3_4",
+      "seed": 601,
+      "formatter": "mcq",
+      "question_text": "Moses wants to share 20 baskets equally among 4 friends. How many baskets does each friend get?",
+      "correct_answer": 5,
+      "requested": {
+        "difficulty_profile": {
+          "context": "word_problem"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 4,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 16,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 6,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 5,
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 5,
+      "hints": [
+        "We need to divide 20 by 4. The number being divided is 20; the number we divide by is 4.",
+        "Ask: how many times does 4 fit into 20? 4 × 5 = 20.",
+        "The answer of 20 ÷ 4 = 5."
+      ],
+      "sample_id": "f53c7a30815706616346",
+      "replay_digest": "b1ddbd0a132cdd2be45e79258ffae3fc1f4995631047c48db2fcae1fefa9e774"
+    },
+    {
+      "node_id": "mat_g2_na_q3_4",
+      "seed": 602,
+      "formatter": "read_mcq",
+      "question_text": "This array has 20 squares split into 10 equal rows. How many squares are in each row?",
+      "correct_answer": "C",
+      "requested": {
+        "difficulty_profile": {
+          "remainder": "none"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "GridArea",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 24,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 1,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 2,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 5,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 2,
+      "hints": [
+        "We need to divide 20 by 10. The number being divided is 20; the number we divide by is 10.",
+        "Ask: how many times does 10 fit into 20? 10 × 2 = 20.",
+        "The answer of 20 ÷ 10 = 2."
+      ],
+      "visual_type": "GridArea",
+      "visual_payload": {
+        "rows": 10,
+        "cols": 2,
+        "shaded": true,
+        "highlight_groups": [],
+        "shape_type": "rectangle",
+        "correct_count": 2,
+        "grid_size": [
+          11,
+          3
+        ]
+      },
+      "visual_render": {
+        "visual_type": "GridArea",
+        "renderer_input_digest": "56d8dafd9f9f9e73e7e1da02f29539c6d943d1b98a59715f75d08b54dd2e5886",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "GridArea",
+          "element_count": 33,
+          "svg_count": 1,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 1,
+          "input_count": 0,
+          "text_labels": [
+            "Click squares to shade a",
+            "2 × 10",
+            "rectangle",
+            "20 square units",
+            "Clear All",
+            "Click squares to shade/unshade"
+          ],
+          "distinct_colours": [
+            "hsl(var(--text-muted)",
+            "hsl(var(--primary)",
+            "#4b5563",
+            "#374151",
+            "hsl(var(--border-color)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {
+            "grid-cell": 20
+          }
+        }
+      },
+      "sample_id": "71b8f44ca3a50987ea1f",
+      "replay_digest": "f579662af7b714789c1f04b0edb12146e8c1f97e1c995f8e80df57f3580c5f20"
+    },
+    {
+      "node_id": "mat_g2_na_q3_4",
+      "seed": 603,
+      "formatter": "mcq",
+      "question_text": "What is 15 ÷ 3?",
+      "correct_answer": 5,
+      "requested": {
+        "difficulty_profile": {
+          "structure": "result_unknown"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "mcq",
+        "is_visual": false,
+        "visual_type": null,
+        "interaction_mode": null,
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 3,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 12,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 5,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 6,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 5,
+      "hints": [
+        "We need to divide 15 by 3. The number being divided is 15; the number we divide by is 3.",
+        "Ask: how many times does 3 fit into 15? 3 × 5 = 15.",
+        "The answer of 15 ÷ 3 = 5."
+      ],
+      "sample_id": "66b962324b57e29a944b",
+      "replay_digest": "6f4237693b41e7d5bb0b53dc9dc8426dc2e0a3a47cf1c91addcf22083cff30ca"
+    },
+    {
+      "node_id": "mat_g2_na_q3_4",
+      "seed": 604,
+      "formatter": "read_mcq",
+      "question_text": "This array has 12 squares split into 2 equal rows. How many squares are in each row?",
+      "correct_answer": "D",
+      "requested": {
+        "difficulty_profile": {
+          "table": "2_3_4_5_10"
+        },
+        "student_interest": null,
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "read_mcq",
+        "is_visual": true,
+        "visual_type": "GridArea",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
+        "experience": "standard"
+      },
+      "options": [
+        {
+          "key": "A",
+          "value": 16,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 4,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 8,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 6,
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 6,
+      "hints": [
+        "We need to divide 12 by 2. The number being divided is 12; the number we divide by is 2.",
+        "Ask: how many times does 2 fit into 12? 2 × 6 = 12.",
+        "The answer of 12 ÷ 2 = 6."
+      ],
+      "visual_type": "GridArea",
+      "visual_payload": {
+        "rows": 2,
+        "cols": 6,
+        "shaded": true,
+        "highlight_groups": [],
+        "shape_type": "rectangle",
+        "correct_count": 6,
+        "grid_size": [
+          3,
+          7
+        ]
+      },
+      "visual_render": {
+        "visual_type": "GridArea",
+        "renderer_input_digest": "0052e1f5ed8754e4deddb3a77139eb6f1420ab16f1869f8b4b345ec65e48bc39",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "GridArea",
+          "element_count": 25,
+          "svg_count": 1,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 1,
+          "input_count": 0,
+          "text_labels": [
+            "Click squares to shade a",
+            "6 × 2",
+            "rectangle",
+            "12 square units",
+            "Clear All",
+            "Click squares to shade/unshade"
+          ],
+          "distinct_colours": [
+            "hsl(var(--text-muted)",
+            "hsl(var(--primary)",
+            "#4b5563",
+            "#374151",
+            "hsl(var(--border-color)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {
+            "grid-cell": 12
+          }
+        }
+      },
       "sample_id": "146ff64f3426b7670349",
-      "replay_digest": "aa259fe1fb06b321fd8052d5eb0525a04a8c9b418ab75b7fea6c5cfc41625844"
+      "replay_digest": "c1adac5bb629fff3196fd6e2934cd74a14239a1d83592ed4dc4852d8918f96e4"
     },
     {
       "node_id": "mat_g2_na_q3_4",
       "seed": 700,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Shade 15 squares into 3 equal rows. How many squares are in each row?",
-      "correct_answer": 5,
+      "formatter": "read_mcq",
+      "question_text": "This array has 15 squares split into 3 equal rows. How many squares are in each row?",
+      "correct_answer": "D",
       "requested": {
         "difficulty_profile": null,
         "student_interest": null,
@@ -976,13 +990,35 @@
       },
       "serving_mode": "student_path",
       "effective": {
-        "format": "set_fill_in_blank",
+        "format": "read_mcq",
         "is_visual": true,
         "visual_type": "GridArea",
-        "interaction_mode": "set",
-        "answer_collection": "fill_in_blank",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
         "experience": "standard"
       },
+      "options": [
+        {
+          "key": "A",
+          "value": 3,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 8,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 16,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 5,
+          "is_correct": true
+        }
+      ],
       "resolved_answer": 5,
       "hints": [
         "We need to divide 15 by 3. The number being divided is 15; the number we divide by is 3.",
@@ -993,7 +1029,7 @@
       "visual_payload": {
         "rows": 3,
         "cols": 5,
-        "shaded": false,
+        "shaded": true,
         "highlight_groups": [],
         "shape_type": "rectangle",
         "correct_count": 5,
@@ -1004,7 +1040,7 @@
       },
       "visual_render": {
         "visual_type": "GridArea",
-        "renderer_input_digest": "bd45f0993eb914f0255e21091c10460fb4b772e25ac4f142f0b3564861d6cd67",
+        "renderer_input_digest": "a42414699edfcfa19a2d6080c8cabd7c082c440fc88f94fd12a6d79484548e4d",
         "description": {
           "source": "rendered_static_markup",
           "visual_type": "GridArea",
@@ -1017,6 +1053,81 @@
           "text_labels": [
             "Click squares to shade a",
             "5 × 3",
+            "rectangle",
+            "15 square units",
+            "Clear All",
+            "Click squares to shade/unshade"
+          ],
+          "distinct_colours": [
+            "hsl(var(--text-muted)",
+            "hsl(var(--primary)",
+            "#4b5563",
+            "#374151",
+            "hsl(var(--border-color)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {
+            "grid-cell": 15
+          }
+        }
+      },
+      "sample_id": "ce87a59c527b7a4e3c07",
+      "replay_digest": "6d4ca975aaa77c57bcf6a0d79e95b7270cf8eff08a034cf3914860bab4249592"
+    },
+    {
+      "node_id": "mat_g2_na_q3_4",
+      "seed": 701,
+      "formatter": "set_fill_in_blank",
+      "question_text": "💃 Sir Rez enjoys dance shoes. Here is a math challenge. Shade 15 squares into 5 equal rows. How many squares are in each row?",
+      "correct_answer": 3,
+      "requested": {
+        "difficulty_profile": null,
+        "student_interest": "ppop",
+        "experience": "standard"
+      },
+      "serving_mode": "student_path",
+      "effective": {
+        "format": "set_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "GridArea",
+        "interaction_mode": "set",
+        "answer_collection": "fill_in_blank",
+        "experience": "standard"
+      },
+      "resolved_answer": 3,
+      "hints": [
+        "We need to divide 15 by 5. The number being divided is 15; the number we divide by is 5.",
+        "Ask: how many times does 5 fit into 15? 5 × 3 = 15.",
+        "The answer of 15 ÷ 5 = 3."
+      ],
+      "visual_type": "GridArea",
+      "visual_payload": {
+        "rows": 5,
+        "cols": 3,
+        "shaded": false,
+        "highlight_groups": [],
+        "shape_type": "rectangle",
+        "correct_count": 3,
+        "grid_size": [
+          6,
+          4
+        ]
+      },
+      "visual_render": {
+        "visual_type": "GridArea",
+        "renderer_input_digest": "8a5d01c5eb554dd1fec911bdbb62b54b07ad3ff5bd1fe673e9f2bf8beeb96487",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "GridArea",
+          "element_count": 28,
+          "svg_count": 1,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 1,
+          "input_count": 0,
+          "text_labels": [
+            "Click squares to shade a",
+            "3 × 5",
             "rectangle",
             "0 square units",
             "Clear All",
@@ -1038,50 +1149,15 @@
           }
         }
       },
-      "sample_id": "ce87a59c527b7a4e3c07",
-      "replay_digest": "729e171b942a61ce5ede017fd9f07e5151a8cc45d361b8dad64439395790faa9"
-    },
-    {
-      "node_id": "mat_g2_na_q3_4",
-      "seed": 701,
-      "formatter": "error_detect",
-      "question_text": "💃 Sir Rez enjoys dance shoes. Here is a math challenge. Liza solved: \"15 ÷ 5 = ___\". Liza says the missing number is 10. Is Liza correct?",
-      "correct_answer": {
-        "has_error": true,
-        "correct_value": 3
-      },
-      "requested": {
-        "difficulty_profile": null,
-        "student_interest": "ppop",
-        "experience": "standard"
-      },
-      "serving_mode": "student_path",
-      "effective": {
-        "format": "error_detect",
-        "is_visual": false,
-        "visual_type": null,
-        "interaction_mode": null,
-        "answer_collection": "error_detect",
-        "experience": "standard"
-      },
-      "resolved_answer": {
-        "has_error": true,
-        "correct_value": 3
-      },
-      "hints": [
-        "We need to divide 15 by 5. The number being divided is 15; the number we divide by is 5.",
-        "Ask: how many times does 5 fit into 15? 5 × 3 = 15.",
-        "The answer of 15 ÷ 5 = 3."
-      ],
       "sample_id": "14039b5bd4674b413236",
-      "replay_digest": "3a6112e9684fecdc1f7e4d3e8f955d04e501c24862c8a4abcdbfaba96b985924"
+      "replay_digest": "4b07d504f1f1acdb0352bba215e213774a76f23d130eaa5049828e1cfbe00ace"
     },
     {
       "node_id": "mat_g2_na_q3_4",
       "seed": 702,
-      "formatter": "set_fill_in_blank",
-      "question_text": "🏀 Isko enjoys basketballs. Here is a math challenge. Shade 3 squares into 3 equal rows. How many squares are in each row?",
-      "correct_answer": 1,
+      "formatter": "read_mcq",
+      "question_text": "🏀 Isko enjoys basketballs. Here is a math challenge. This array has 3 squares split into 3 equal rows. How many squares are in each row?",
+      "correct_answer": "D",
       "requested": {
         "difficulty_profile": null,
         "student_interest": "competitive_gaming",
@@ -1089,13 +1165,35 @@
       },
       "serving_mode": "student_path",
       "effective": {
-        "format": "set_fill_in_blank",
+        "format": "read_mcq",
         "is_visual": true,
         "visual_type": "GridArea",
-        "interaction_mode": "set",
-        "answer_collection": "fill_in_blank",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
         "experience": "standard"
       },
+      "options": [
+        {
+          "key": "A",
+          "value": 3,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 2,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 8,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 1,
+          "is_correct": true
+        }
+      ],
       "resolved_answer": 1,
       "hints": [
         "We need to divide 3 by 3. The number being divided is 3; the number we divide by is 3.",
@@ -1106,7 +1204,7 @@
       "visual_payload": {
         "rows": 3,
         "cols": 1,
-        "shaded": false,
+        "shaded": true,
         "highlight_groups": [],
         "shape_type": "rectangle",
         "correct_count": 1,
@@ -1117,7 +1215,7 @@
       },
       "visual_render": {
         "visual_type": "GridArea",
-        "renderer_input_digest": "d58c41d15d9a61f21a28fcab95b4a931f3d8e3447df6e70f5e7904fc949d38dc",
+        "renderer_input_digest": "499bb265a72661153f7f5565e7ac5b1401f5980661cf97922a4b25ba2707d1ea",
         "description": {
           "source": "rendered_static_markup",
           "visual_type": "GridArea",
@@ -1131,7 +1229,7 @@
             "Click squares to shade a",
             "1 × 3",
             "rectangle",
-            "0 square units",
+            "3 square units",
             "Clear All",
             "Click squares to shade/unshade"
           ],
@@ -1140,9 +1238,6 @@
             "hsl(var(--primary)",
             "#4b5563",
             "#374151",
-            "#f8fafc,",
-            "#e2e8f0)",
-            "#cbd5e1",
             "hsl(var(--border-color)",
             "hsl(var(--text)"
           ],
@@ -1152,7 +1247,7 @@
         }
       },
       "sample_id": "11b73a80cd5336198f1c",
-      "replay_digest": "3cc85dbc164b4c5cc5e58790a69e64fc18f2466ad5036b9dc025c635f7bf6da7"
+      "replay_digest": "b5ecb1e5084df746740b3ec3300df82d7445e51dbcf7f592e24783b1e58d5a38"
     },
     {
       "node_id": "mat_g2_na_q3_4",
@@ -1210,8 +1305,8 @@
     {
       "node_id": "mat_g2_na_q3_4",
       "seed": 900,
-      "formatter": "cloze",
-      "question_text": "5 ÷ 5 = ___",
+      "formatter": "set_fill_in_blank",
+      "question_text": "Shade 5 squares into 5 equal rows. How many squares are in each row?",
       "correct_answer": 1,
       "requested": {
         "difficulty_profile": {
@@ -1222,54 +1317,77 @@
       },
       "serving_mode": "student_path",
       "effective": {
-        "format": "cloze",
-        "is_visual": false,
-        "visual_type": null,
-        "interaction_mode": null,
+        "format": "set_fill_in_blank",
+        "is_visual": true,
+        "visual_type": "GridArea",
+        "interaction_mode": "set",
         "answer_collection": "fill_in_blank",
         "experience": "standard"
       },
-      "options": [
-        {
-          "key": "A",
-          "value": 2,
-          "text": "2",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 1,
-          "text": "1",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 0,
-          "text": "0",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 5,
-          "text": "5",
-          "is_correct": false
-        }
-      ],
       "resolved_answer": 1,
       "hints": [
         "We need to divide 5 by 5. The number being divided is 5; the number we divide by is 5.",
         "Ask: how many times does 5 fit into 5? 5 × 1 = 5.",
         "The answer of 5 ÷ 5 = 1."
       ],
+      "visual_type": "GridArea",
+      "visual_payload": {
+        "rows": 5,
+        "cols": 1,
+        "shaded": false,
+        "highlight_groups": [],
+        "shape_type": "rectangle",
+        "correct_count": 1,
+        "grid_size": [
+          6,
+          2
+        ]
+      },
+      "visual_render": {
+        "visual_type": "GridArea",
+        "renderer_input_digest": "4e788012c6b6545f685f989a6ed9e61e95a201cf386fb349f234968973359c0c",
+        "description": {
+          "source": "rendered_static_markup",
+          "visual_type": "GridArea",
+          "element_count": 18,
+          "svg_count": 1,
+          "table_row_count": 0,
+          "table_cell_count": 0,
+          "button_count": 1,
+          "input_count": 0,
+          "text_labels": [
+            "Click squares to shade a",
+            "1 × 5",
+            "rectangle",
+            "0 square units",
+            "Clear All",
+            "Click squares to shade/unshade"
+          ],
+          "distinct_colours": [
+            "hsl(var(--text-muted)",
+            "hsl(var(--primary)",
+            "#4b5563",
+            "#374151",
+            "#f8fafc,",
+            "#e2e8f0)",
+            "#cbd5e1",
+            "hsl(var(--border-color)",
+            "hsl(var(--text)"
+          ],
+          "role_counts": {
+            "grid-cell": 5
+          }
+        }
+      },
       "sample_id": "835e557308bf13175385",
-      "replay_digest": "2398860d6817a9c2b3fc7663a58ae58f7f237fee1d9844f0a19926dc75603ee3"
+      "replay_digest": "93fccfbb739052cf93513f71f70d3a1961f7780cc7f28b63126ce8cab0422d52"
     },
     {
       "node_id": "mat_g2_na_q3_4",
       "seed": 901,
-      "formatter": "true_false",
-      "question_text": "15 ÷ 3 = 12. True or False?",
-      "correct_answer": false,
+      "formatter": "mcq",
+      "question_text": "What is 15 ÷ 3?",
+      "correct_answer": 5,
       "requested": {
         "difficulty_profile": {
           "number_difficulty": 0.0
@@ -1279,28 +1397,50 @@
       },
       "serving_mode": "student_path",
       "effective": {
-        "format": "true_false",
+        "format": "mcq",
         "is_visual": false,
         "visual_type": null,
         "interaction_mode": null,
-        "answer_collection": "true_false",
+        "answer_collection": "mcq",
         "experience": "standard"
       },
-      "resolved_answer": false,
+      "options": [
+        {
+          "key": "A",
+          "value": 3,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 6,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 5,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 12,
+          "is_correct": false
+        }
+      ],
+      "resolved_answer": 5,
       "hints": [
         "We need to divide 15 by 3. The number being divided is 15; the number we divide by is 3.",
         "Ask: how many times does 3 fit into 15? 3 × 5 = 15.",
         "The answer of 15 ÷ 3 = 5."
       ],
       "sample_id": "60715bdfd1a4d838e5de",
-      "replay_digest": "99d1edca2bc03923774d431db89f56961cfe215926a3f37c750645fc555b01b6"
+      "replay_digest": "23abcbf9d50608ddbeee06e2bd5a945f64ebedc96499cf8e4dca92edb7b1068d"
     },
     {
       "node_id": "mat_g2_na_q3_4",
       "seed": 1000,
-      "formatter": "true_false",
-      "question_text": "40 ÷ 10 = 4. True or False?",
-      "correct_answer": true,
+      "formatter": "mcq",
+      "question_text": "What is 40 ÷ 10?",
+      "correct_answer": 4,
       "requested": {
         "difficulty_profile": null,
         "student_interest": null,
@@ -1308,28 +1448,50 @@
       },
       "serving_mode": "student_path",
       "effective": {
-        "format": "true_false",
+        "format": "mcq",
         "is_visual": false,
         "visual_type": null,
         "interaction_mode": null,
-        "answer_collection": "true_false",
+        "answer_collection": "mcq",
         "experience": "hint_gated"
       },
-      "resolved_answer": true,
+      "options": [
+        {
+          "key": "A",
+          "value": 10,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 5,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 30,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 4,
+          "is_correct": true
+        }
+      ],
+      "resolved_answer": 4,
       "hints": [
         "We need to divide 40 by 10. The number being divided is 40; the number we divide by is 10.",
         "Ask: how many times does 10 fit into 40? 10 × 4 = 40.",
         "The answer of 40 ÷ 10 = 4."
       ],
       "sample_id": "93f6171b491e4c7384a5",
-      "replay_digest": "9768fbb3f43776b63cf7b57c21f1727bbd1d831c9a8cca94e0b3eaf92106b64f"
+      "replay_digest": "24eed4c139b24ebbb506f5306ec25e2f3ffacd7124e9d6c069a7921dbe7b6b4f"
     },
     {
       "node_id": "mat_g2_na_q3_4",
       "seed": 1001,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Shade 10 squares into 2 equal rows. How many squares are in each row?",
-      "correct_answer": 5,
+      "formatter": "read_mcq",
+      "question_text": "This array has 10 squares split into 2 equal rows. How many squares are in each row?",
+      "correct_answer": "C",
       "requested": {
         "difficulty_profile": null,
         "student_interest": null,
@@ -1337,13 +1499,35 @@
       },
       "serving_mode": "student_path",
       "effective": {
-        "format": "set_fill_in_blank",
+        "format": "read_mcq",
         "is_visual": true,
         "visual_type": "GridArea",
-        "interaction_mode": "set",
-        "answer_collection": "fill_in_blank",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
         "experience": "mastery_drill"
       },
+      "options": [
+        {
+          "key": "A",
+          "value": 4,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 14,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 5,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 8,
+          "is_correct": false
+        }
+      ],
       "resolved_answer": 5,
       "hints": [
         "We need to divide 10 by 2. The number being divided is 10; the number we divide by is 2.",
@@ -1354,7 +1538,7 @@
       "visual_payload": {
         "rows": 2,
         "cols": 5,
-        "shaded": false,
+        "shaded": true,
         "highlight_groups": [],
         "shape_type": "rectangle",
         "correct_count": 5,
@@ -1365,7 +1549,7 @@
       },
       "visual_render": {
         "visual_type": "GridArea",
-        "renderer_input_digest": "6c42a16b4a788dbda6518e7a0ca5e9136187dfa136cc065bf828250005ea31df",
+        "renderer_input_digest": "22ec24c7127099cd74d8d890c77578936de310ae8fdf898a67f37ddead12bf48",
         "description": {
           "source": "rendered_static_markup",
           "visual_type": "GridArea",
@@ -1379,7 +1563,7 @@
             "Click squares to shade a",
             "5 × 2",
             "rectangle",
-            "0 square units",
+            "10 square units",
             "Clear All",
             "Click squares to shade/unshade"
           ],
@@ -1388,9 +1572,6 @@
             "hsl(var(--primary)",
             "#4b5563",
             "#374151",
-            "#f8fafc,",
-            "#e2e8f0)",
-            "#cbd5e1",
             "hsl(var(--border-color)",
             "hsl(var(--text)"
           ],
@@ -1400,14 +1581,14 @@
         }
       },
       "sample_id": "6eb3b9838efff49c050e",
-      "replay_digest": "018053f41fe76a52d83fe209c35539bc25b5ac0a3eaba4e4cf0af8bf16c73ede"
+      "replay_digest": "de2cc0d0ee8363e863dcb460f54972fbc520c18c882f780520dbdbe46cea4410"
     },
     {
       "node_id": "mat_g2_na_q3_4",
       "seed": 1002,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Shade 80 squares into 10 equal rows. How many squares are in each row?",
-      "correct_answer": 8,
+      "formatter": "read_mcq",
+      "question_text": "This array has 80 squares split into 10 equal rows. How many squares are in each row?",
+      "correct_answer": "B",
       "requested": {
         "difficulty_profile": null,
         "student_interest": null,
@@ -1415,13 +1596,35 @@
       },
       "serving_mode": "student_path",
       "effective": {
-        "format": "set_fill_in_blank",
+        "format": "read_mcq",
         "is_visual": true,
         "visual_type": "GridArea",
-        "interaction_mode": "set",
-        "answer_collection": "fill_in_blank",
+        "interaction_mode": "read",
+        "answer_collection": "mcq",
         "experience": "scaffolded"
       },
+      "options": [
+        {
+          "key": "A",
+          "value": 9,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 8,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 36,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 7,
+          "is_correct": false
+        }
+      ],
       "resolved_answer": 8,
       "hints": [
         "We need to divide 80 by 10. The number being divided is 80; the number we divide by is 10.",
@@ -1432,7 +1635,7 @@
       "visual_payload": {
         "rows": 10,
         "cols": 8,
-        "shaded": false,
+        "shaded": true,
         "highlight_groups": [],
         "shape_type": "rectangle",
         "correct_count": 8,
@@ -1443,7 +1646,7 @@
       },
       "visual_render": {
         "visual_type": "GridArea",
-        "renderer_input_digest": "aeea2cd6eba26fa2e29c1125765421cf273cc3d4884ea8f1e36eb3b631f010fb",
+        "renderer_input_digest": "32e7d484a4d0cd2651ac0fc7925ab9d1d8894229bd5f8c45380728e610fee968",
         "description": {
           "source": "rendered_static_markup",
           "visual_type": "GridArea",
@@ -1457,7 +1660,7 @@
             "Click squares to shade a",
             "8 × 10",
             "rectangle",
-            "0 square units",
+            "80 square units",
             "Clear All",
             "Click squares to shade/unshade"
           ],
@@ -1466,9 +1669,6 @@
             "hsl(var(--primary)",
             "#4b5563",
             "#374151",
-            "#f8fafc,",
-            "#e2e8f0)",
-            "#cbd5e1",
             "hsl(var(--border-color)",
             "hsl(var(--text)"
           ],
@@ -1478,7 +1678,7 @@
         }
       },
       "sample_id": "93428c5a46039a3e73dc",
-      "replay_digest": "6e3a86d9abfb56c15221ee173eabdc3e2663864dab267f92ffaf123208f9b39a"
+      "replay_digest": "b28b7e45853e49f264454f0bbbb2e6ab9496ef4b6e9cd20c59c0ab58a3b38c24"
     }
   ],
   "sample_assessments": [
@@ -1487,596 +1687,531 @@
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem clearly states 3 squares split into 3 equal rows and asks for squares per row. Visual grid shows 3 cells. Question direction is unambiguous: find the count in each row."
+          "reasoning": "The stem clearly asks for the count of squares in each of the three equal rows. The visual grid shows exactly three squares arranged in one row, and the question direction is unambiguous—determine how many per row given the array structure and the stated row count."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Visual array depicts exactly the scenario described: 3 squares in 3 equal rows means 1 per row. Math (3÷3=1) is sound and hints confirm the calculation. Context matches the mathematical operation."
+          "reasoning": "No context beyond the mathematical array is provided; the problem is purely about dividing a quantity into equal groups. The premise is straightforward and logically sound for a Grade 2 division exercise without extraneous narrative elements that could confuse the learner."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Question is phrased in simple, concrete language for Grade 2. Array visual supports understanding. Multiple choice options are clearly presented. Hints offer step-by-step support."
+          "reasoning": "The language is direct and uses simple counting language appropriate for Grade 2. The phrase about equal rows gives clear structure, and the question asks a single, well-defined arithmetic query that a Grade 2 student learning division would understand from previous array-based instruction."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Division fact 3÷3=1 is correct. Hints verify: 3×1=3 confirms the inverse relationship. Distractors (8, 2, 3) are plausible but incorrect, appropriate for assessment."
+          "reasoning": "The array correctly shows 3 squares divided into 3 equal rows with 1 square per row. All three hints verify the relationship: 3 ÷ 3 equals 1, and 3 times 1 equals 3. The multiplication check confirms the division result without error in any arithmetic statement presented to the learner."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_4-20260930",
-      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_4:mat_g2_na_q3_4"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g2_na_q3_4-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g2_na_q3_4:mat_g2_na_q3_4"
     },
     {
       "sample_id": "45e9948d4474f00398b8",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Symbolic statement 10÷2=___ is unambiguous. Learner must fill blank with the quotient. Fill-in-blank format eliminates option confusion."
+          "reasoning": "The stem instructs students to shade 10 squares into 2 equal rows and then determine the count per row. The instruction is clear, the visual represents 10 distinct grid cells, and the question has a single correct answer derivable from the array division shown."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Pure symbolic division with no misleading context. The mathematical operation is straightforward and internally consistent."
+          "reasoning": "The task structure—shade objects into equal groups and count—mirrors standard equal-distribution classroom activities for Grade 2. No unusual or illogical context interferes; the problem is a straightforward application of the competency in interactive form without extraneous narrative complications."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Simple symbolic form is appropriate for students beginning to work with division notation. Hints explain division process conceptually. Multiple choice provides scaffolding."
+          "reasoning": "The instruction set is simple and sequential: first shade the array into rows, then report how many are in each row. For a Grade 2 student in a visual-learning environment with concrete materials, the task is transparent and the answer format is a single numeral, making the response unambiguous."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "Quotient 5 is correct for 10÷2. Inverse check (2×5=10) is valid. Distractors (2, 6, 8) are plausible errors a learner might make."
+          "reasoning": "10 squares divided into 2 equal rows yields 5 squares per row. The hints reinforce this: 10 ÷ 2 equals 5, and 2 times 5 equals 10. The verification step confirms correctness, and the grid structure accurately represents the division operation without computational or conceptual error."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_4-20260930",
-      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_4:mat_g2_na_q3_4"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g2_na_q3_4-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g2_na_q3_4:mat_g2_na_q3_4"
     },
     {
       "sample_id": "cacc77f50cc13b637a68",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Question asks directly for quotient 40÷10. Phrasing is direct and unambiguous for multiple-choice format. No confusing language or double negatives."
+          "reasoning": "The question is a direct division problem with no visual array: 40 divided by 10. The options provided are distinct single-digit and two-digit numbers, making the choice unambiguous when the correct quotient is identified."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Pure arithmetic division without context constraints. The operation is mathematically sound and self-contained."
+          "reasoning": "This is an abstract division fact without narrative context, which is a legitimate and necessary component of division instruction at Grade 2 Quarter 3. No illogical or misleading framing is present; the problem stands on its mathematical content alone."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Short, direct question is appropriate for Grade 2. Multiple-choice options are clearly distinguished. Learner can understand request and select from presented options."
+          "reasoning": "For students who have practiced division with arrays, the abstraction to division notation 40 ÷ 10 is a natural progression. The question is stated in standard mathematical language and the multiple-choice format removes ambiguity about response format for early learners."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "40÷10=4 is correct. Distractors (30, 5, 10) represent plausible errors or near-misses. Hints confirm calculation using multiplication inverse (10×4=40)."
+          "reasoning": "40 divided by 10 equals 4 without error. The three hints verify: 40 ÷ 10 equals 4, and 10 times 4 equals 40. The supporting arithmetic is sound, and the distractor options do not result from simple computational slips, supporting appropriate assessment of division understanding."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_4-20260930",
-      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_4:mat_g2_na_q3_4"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g2_na_q3_4-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g2_na_q3_4:mat_g2_na_q3_4"
     },
     {
       "sample_id": "a0de95b7d7c7c1aa5f1a",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Error-detection format asks whether Pia's answer to 15÷5 is correct. The verdict (no error) is unambiguous given that 15÷5 correctly equals 3."
+          "reasoning": "The stem instructs shading 15 squares into 5 equal rows and asks for the per-row count. The visual grid clearly shows 15 distinct cells, and the question has a single numerically correct answer, leaving no ambiguity in what the student must determine."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Pia's proposed answer (3) matches correct quotient (15÷5=3), making error verdict logically consistent. Hints confirm 5×3=15, establishing answer validity."
+          "reasoning": "The equal-distribution scenario is pedagogically sound and contextually standard for Grade 2 division instruction. No extraneous story or illogical premise disrupts the mathematical task; the problem is a straightforward exercise in visualizing equal division."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Learner must evaluate a peer's work, metacognitive task appropriate for Grade 2. Format is clear: check if statement is right or wrong. Pia's reasoning stated plainly."
+          "reasoning": "The two-step structure—shade the array, then report the per-group count—is clear and mirrors classroom equal-distribution activities at this grade level. The language is age-appropriate and the expected response is a single digit, making the task transparent for an emerging mathematician."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The mathematical content is valid: 15÷5=3, Pia's answer is correct. Evaluation task assesses understanding of division facts and verification through multiplication."
+          "reasoning": "15 squares in 5 equal rows gives 3 per row. All three hints support this correctly: 15 ÷ 5 equals 3, and 5 times 3 equals 15. The multiplication verification is accurate, and the array structure faithfully represents the division without error."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_4-20260930",
-      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_4:mat_g2_na_q3_4"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g2_na_q3_4-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g2_na_q3_4:mat_g2_na_q3_4"
     },
     {
       "sample_id": "f6c316aec6aef511f6e2",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Dante's error is unambiguous: he claims 12÷2=2, but correct answer is 6. The error-detection task asks whether his answer is right or wrong, yielding clear verdict."
+          "reasoning": "The stem asks students to shade 12 squares into 2 equal rows and determine the per-row quantity. The visual representation includes 12 grid cells, and the arithmetic has a single correct answer that is unambiguous once the equal-division principle is applied."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Dante's incorrect answer (2) contrasts with correct quotient (6), making error verdict logically sound. Hints confirm 2×6=12, proving Dante's answer wrong."
+          "reasoning": "The context of distributing objects equally into rows is a standard, logically sound setup for Grade 2 division. No misleading narrative or illogical premise interferes; the problem is grounded in concrete equal-distribution reasoning appropriate to the competency."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Task asks Grade 2 learner to identify an error in peer's division work. Dante's incorrect statement is explicit. Question is straightforward: is he right or wrong?"
+          "reasoning": "For Grade 2 students, the instruction to shade an array into equal rows and count the result is familiar and transparent. The fill-in-the-blank format for the numerical answer is clear, and the language avoids unnecessary complexity, making the task accessible to learners at this developmental level."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "12÷2=6 is correct quotient. Dante's claim of 2 is mathematically wrong. Hints provide verification: 2×6=12. Error task assesses both knowledge and verification ability."
+          "reasoning": "12 squares split into 2 equal rows yields 6 per row. The hints provide three correct supporting statements: 12 ÷ 2 equals 6, and 2 times 6 equals 12. Each arithmetic claim in the hints is accurate, and the visual array structure correctly represents the division operation without computational error."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_4-20260930",
-      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_4:mat_g2_na_q3_4"
-    },
-    {
-      "sample_id": "0bb15c39477e01be98e5",
-      "checks": {
-        "ambiguity": {
-          "verdict": "PASS",
-          "reasoning": "Task asks learner to shade 90 squares into 10 equal rows and determine count per row. Language is clear: shade (action), into (distribution), equal rows (grouping), how many per row (target)."
-        },
-        "contextual_logical_validity": {
-          "verdict": "PASS",
-          "reasoning": "Shading task mirrors equal-distribution competency: 90 objects divided into 10 groups yields 9 per group. Interactive visual and verbal problem align."
-        },
-        "learner_facing_clarity": {
-          "verdict": "PASS",
-          "reasoning": "Instruction is actionable for Grade 2: shade squares to represent equal rows, then count. Visual grid provides concrete support. Question targets number in each row."
-        },
-        "mathematical_validity": {
-          "verdict": "PASS",
-          "reasoning": "90÷10=9 is correct. Visual grid (90 cells) supports shading action. Hints confirm: 10×9=90. Problem correctly represents division as equal partitioning."
-        }
-      },
-      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_4-20260930",
-      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_4:mat_g2_na_q3_4"
-    },
-    {
-      "sample_id": "2b6addcb408afb8c346b",
-      "checks": {
-        "ambiguity": {
-          "verdict": "PASS",
-          "reasoning": "True-or-false statement 50÷10=5 is unambiguous. Learner must evaluate truth of single arithmetic claim. No alternative interpretations exist."
-        },
-        "contextual_logical_validity": {
-          "verdict": "PASS",
-          "reasoning": "Statement 50÷10=5 is mathematically true, making correct answer (True) consistent with logical validity. No context-to-math mismatch."
-        },
-        "learner_facing_clarity": {
-          "verdict": "PASS",
-          "reasoning": "Simple true-or-false format is developmentally appropriate for Grade 2. Statement phrased as complete sentence, easy for learner to parse and evaluate."
-        },
-        "mathematical_validity": {
-          "verdict": "PASS",
-          "reasoning": "50÷10=5 is mathematically correct. Quotient 5 is exact with no remainder. Hints verify via multiplication: 10×5=50."
-        }
-      },
-      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_4-20260930",
-      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_4:mat_g2_na_q3_4"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g2_na_q3_4-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g2_na_q3_4:mat_g2_na_q3_4"
     },
     {
       "sample_id": "f2257b7a38f49dd608dc",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Question asks for quotient of 90÷10. Phrasing is direct and unambiguous. No alternative interpretations of mathematical operation requested."
+          "reasoning": "The question presents a single division fact in standard notation: 90 ÷ 10. Four distinct multiple-choice options are provided, one of which is the correct quotient, making the problem unambiguous when solved correctly."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Pure arithmetic operation with no misleading context. Division is straightforward and internally consistent."
+          "reasoning": "This is a bare division fact assessment without narrative context, which is a valid component of early division instruction. No illogical framing or misleading premise is present; the item assesses pure understanding of the division operation."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Simple, direct question is appropriate for Grade 2 learner. Multiple-choice options presented clearly. No confusing language or unnecessary complexity."
+          "reasoning": "A student who has learned division through arrays in earlier problems can readily interpret the notation 90 ÷ 10 as a related abstract problem. The multiple-choice format and standard notation are clear, and the language demands no interpretation beyond basic arithmetic understanding."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "90÷10=9 is correct quotient. Distractors (8, 9, 10, 80) represent plausible errors. Hints confirm: 10×9=90."
+          "reasoning": "90 divided by 10 equals 9 correctly. The hints state this plainly: 90 ÷ 10 equals 9, and 10 times 9 equals 90. The multiplication verification is accurate, confirming the quotient."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_4-20260930",
-      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_4:mat_g2_na_q3_4"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g2_na_q3_4-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g2_na_q3_4:mat_g2_na_q3_4"
     },
     {
       "sample_id": "c2168cade24aac3293ef",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "True-or-false statement claims 90÷10=80. Learner must evaluate. Statement unambiguous and false verdict definitive since 90÷10≠80."
+          "reasoning": "The stem again presents 90 ÷ 10, and four options are provided. The problem is unambiguous; only one option represents the correct quotient, and no extraneous language clouds the mathematical task presented."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Statement is false (90÷10 equals 9), making correct answer (False) logically sound. No context-to-math inconsistency."
+          "reasoning": "The division fact stands alone with no narrative context, which is appropriate for assessing symbolic understanding at the abstraction level. No illogical or confusing premise interferes with the core mathematical assessment."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "True-or-false format is straightforward. Incorrect statement provides plausible wrong answer learners might generate, making effective assessment."
+          "reasoning": "The same division problem as the preceding sample appears here with a different option ordering. For a Grade 2 student, the multiple-choice format and familiar division notation are clear, and the rearrangement of options does not add ambiguity to the task itself."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "90÷10=9, not 80. Statement correctly identified as false. Hints confirm: 10×9=90. Learner assesses division fact and its validity."
+          "reasoning": "90 divided by 10 equals 9 without error. The three hints correctly state: 90 ÷ 10 equals 9, and 10 times 9 equals 90. Each arithmetic claim is accurate, and the verification multiplication confirms the division result."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_4-20260930",
-      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_4:mat_g2_na_q3_4"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g2_na_q3_4-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g2_na_q3_4:mat_g2_na_q3_4"
     },
     {
       "sample_id": "5c461c8c32a5a8133f5b",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Identical to seed 48: shade 90 squares into 10 equal rows, determine count per row. Language unambiguous and task clearly defined."
+          "reasoning": "The stem specifies 90 squares split into 10 equal rows and asks for the per-row count. The grid shows 90 cells organized into rows, and the single correct quotient is unambiguous once the equal-division principle is applied to this concrete representation."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Shading task (90÷10=9 per row) is mathematically sound. Visual grid and verbal problem align representing equal partitioning."
+          "reasoning": "An array of 90 squares divided into 10 rows is a valid, if large, concrete representation of the division operation. No illogical premise interferes; the task remains a straightforward equal-distribution problem even at this scale."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Instruction actionable: shade equal rows and count. Grid provides concrete support. Question targets per-row count, appropriate for Grade 2."
+          "reasoning": "Although 90 squares is a large array, the statement of the problem is clear: determine how many squares fit in each of the 10 equal rows. For Grade 2 students with visual array experience, the task is conceptually transparent despite the larger magnitude involved."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "90÷10=9 is correct. Grid (90 cells) supports task. Hints confirm: 10×9=90. Problem represents division via equal grouping of objects."
+          "reasoning": "90 squares in 10 equal rows yields 9 per row. The hints provide correct supporting statements: 90 ÷ 10 equals 9, and 10 times 9 equals 90. The arithmetic in all three hints is accurate without error, and the grid structure represents the division correctly."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_4-20260930",
-      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_4:mat_g2_na_q3_4"
-    },
-    {
-      "sample_id": "c7539da771db3166d306",
-      "checks": {
-        "ambiguity": {
-          "verdict": "PASS",
-          "reasoning": "Fill-in-blank statement 15÷5=___ is unambiguous. Learner supplies missing quotient. No alternative interpretations."
-        },
-        "contextual_logical_validity": {
-          "verdict": "PASS",
-          "reasoning": "Pure symbolic division with no misleading context. Operation is self-contained and logically sound."
-        },
-        "learner_facing_clarity": {
-          "verdict": "PASS",
-          "reasoning": "Simple symbolic format is clear for Grade 2. Multiple-choice options scaffold response. Hints explain division process step-by-step."
-        },
-        "mathematical_validity": {
-          "verdict": "PASS",
-          "reasoning": "15÷5=3 is mathematically correct. Hints verify: 5×3=15. Distractors (10, 4, 3, 5) are plausible errors."
-        }
-      },
-      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_4-20260930",
-      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_4:mat_g2_na_q3_4"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g2_na_q3_4-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g2_na_q3_4:mat_g2_na_q3_4"
     },
     {
       "sample_id": "f53c7a30815706616346",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Word problem asks how many baskets each friend receives when 20 shared equally among 4 friends. Direction clear: find per-person quantity."
+          "reasoning": "The stem presents a themed context about Moses sharing baskets among friends, then asks for the number each friend receives. The division operation is unambiguous, and only one of the four options is correct, making the problem clearly posed despite the narrative wrapper."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Context (Moses, baskets, friends) matches mathematics: equal sharing of discrete objects among group yields 20÷4=5 per recipient."
+          "reasoning": "The context of sharing objects equally among people is logically sound and contextually appropriate for illustrating equal distribution at this grade level. The names and objects do not introduce illogical premises; the scenario represents a real-world application of equal division."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Relatable scenario for Grade 2: sharing among friends is familiar equal-distribution context. Question asks directly for per-person count. Phrasing age-appropriate."
+          "reasoning": "The narrative about sharing baskets is relatable to Grade 2 students, and the mathematics is clearly embedded within it: divide 20 by 4 to find how many each person gets. The language is simple and the response format is a single-digit answer, making the task accessible."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "20÷4=5 is correct. Word problem represents equal partitioning: 4 groups, 5 per group. Hints confirm: 4×5=20. Context reinforces division meaning."
+          "reasoning": "20 baskets divided equally among 4 friends yields 5 per person. The hints confirm this: 20 ÷ 4 equals 5, and 4 times 5 equals 20. All arithmetic statements are correct, and the relationship between the division and its multiplicative inverse is accurately represented."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_4-20260930",
-      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_4:mat_g2_na_q3_4"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g2_na_q3_4-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g2_na_q3_4:mat_g2_na_q3_4"
     },
     {
       "sample_id": "71b8f44ca3a50987ea1f",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Task asks learner shade 20 squares into 10 equal rows and determine count. Instruction explicit and unambiguous about shading goal and target."
+          "reasoning": "The stem states 20 squares split into 10 equal rows and asks for the per-row count. The grid visualization shows 20 cells, and the arithmetic has one correct answer, leaving no ambiguity about what the student is asked to determine."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Shading 20 objects into 10 equal groups yields 2 per group. Visual and verbal problem align representing equal distribution."
+          "reasoning": "The array of 20 squares divided into 10 rows is a standard, logically coherent setup for practicing equal division at Grade 2. No illogical premise or misleading context disrupts the mathematical foundation of the task."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Instruction concrete and actionable: shade equal rows then count. Grid provides visual support. Question targets per-row count."
+          "reasoning": "For students accustomed to array-based equal distribution activities, the task to determine per-row count in a 20-square array split into 10 rows is clear and transparent. The language is simple and the expected numerical response is unambiguous."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "20÷10=2 is correct. Grid (20 cells) supports task. Hints confirm: 10×2=20. Problem represents division as equal partitioning."
+          "reasoning": "20 squares in 10 equal rows gives 2 per row. The three hints support this correctly: 20 ÷ 10 equals 2, and 10 times 2 equals 20. Each arithmetic claim is accurate, and the grid structure faithfully represents the equal division without error."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_4-20260930",
-      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_4:mat_g2_na_q3_4"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g2_na_q3_4-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g2_na_q3_4:mat_g2_na_q3_4"
     },
     {
       "sample_id": "66b962324b57e29a944b",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Question asks what 15÷3 equals. Phrasing direct and unambiguous. Mathematical operation clearly specified."
+          "reasoning": "The stem presents a pure division fact with standard notation: 15 ÷ 3. Four distinct options are given, one of which is the correct quotient, and no ambiguity exists in interpreting the problem or identifying the target answer."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Pure arithmetic division with no contextual ambiguity. Operation self-contained and logically sound."
+          "reasoning": "This division fact assessment has no narrative context, which is appropriate for evaluating symbolic understanding of the division operation. No illogical framing is present; the problem assesses abstract division competency cleanly."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Short, direct question appropriate for Grade 2. Multiple-choice format provides scaffold. No unnecessary complexity."
+          "reasoning": "A Grade 2 student with array experience can interpret the symbolic notation 15 ÷ 3 and recognize it as asking for the result of dividing 15 into 3 groups. The multiple-choice format is clear, and the language is minimal and direct."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "15÷3=5 is correct quotient. Distractors (3, 12, 5, 6) represent plausible errors. Hints verify: 3×5=15."
+          "reasoning": "15 divided by 3 equals 5 correctly. The hints provide three accurate supporting statements: 15 ÷ 3 equals 5, and 3 times 5 equals 15. The arithmetic verification is sound, and no computational error appears in any hint."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_4-20260930",
-      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_4:mat_g2_na_q3_4"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g2_na_q3_4-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g2_na_q3_4:mat_g2_na_q3_4"
     },
     {
       "sample_id": "146ff64f3426b7670349",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Task instructs shade 12 squares into 2 equal rows and determine count. Language explicit and unambiguous about action and target."
+          "reasoning": "The stem specifies 12 squares split into 2 equal rows and asks for the per-row count. The grid clearly represents 12 cells, and the single correct quotient is unambiguous once the equal-division operation is performed."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Shading 12 objects into 2 equal groups yields 6 per group. Interactive visual task and verbal instruction align."
+          "reasoning": "The equal-row structure is a standard, logically sound context for demonstrating division at Grade 2. No illogical or confusing narrative interferes; the problem is grounded in concrete, age-appropriate mathematical reasoning."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Instruction concrete: shade equal rows, then count. Grid supports learner. Question straightforward for Grade 2."
+          "reasoning": "For Grade 2 learners familiar with array models, the task to determine how many squares appear in each of 2 equal rows is transparent and clear. The language avoids complexity, and the expected response is a single digit."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "12÷2=6 is correct. Grid (12 cells) scaffolds task. Hints confirm: 2×6=12. Problem demonstrates division as equal grouping."
+          "reasoning": "12 squares in 2 equal rows yields 6 per row. The hints confirm this accurately: 12 ÷ 2 equals 6, and 2 times 6 equals 12. Each statement in the hints is arithmetically correct, and the visual grid structure represents the division faithfully."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_4-20260930",
-      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_4:mat_g2_na_q3_4"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g2_na_q3_4-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g2_na_q3_4:mat_g2_na_q3_4"
     },
     {
       "sample_id": "ce87a59c527b7a4e3c07",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Task asks shade 15 squares into 3 equal rows and find per-row count. Stem unambiguous about shading goal and target quantity."
+          "reasoning": "The stem clearly states 15 squares split into 3 equal rows and asks for the per-row quantity. The grid shows 15 distinct cells, and the single correct quotient is unambiguous when the equal-division principle is applied correctly."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Partitioning 15 objects into 3 equal groups yields 5 per group. Problem statement and operation align."
+          "reasoning": "An array of 15 squares divided into 3 equal rows is a standard, logically coherent representation of the division operation at Grade 2. No misleading or illogical premise interferes with the mathematical content."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Concrete, actionable instruction: shade and count. Grid provides support. Phrasing appropriate for Grade 2."
+          "reasoning": "The instruction to determine how many squares are in each of 3 equal rows is clear and familiar to students who have practiced array-based equal distribution. The language is age-appropriate and the response is a single digit."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "15÷3=5 is correct. Grid (15 cells) scaffolds. Hints confirm: 3×5=15. Division shown as equal partitioning."
+          "reasoning": "15 squares in 3 equal rows yields 5 per row. The three hints are correct: 15 ÷ 3 equals 5, and 3 times 5 equals 15. All arithmetic statements are accurate, and the grid structure correctly represents the division operation."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_4-20260930",
-      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_4:mat_g2_na_q3_4"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g2_na_q3_4-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g2_na_q3_4:mat_g2_na_q3_4"
     },
     {
       "sample_id": "14039b5bd4674b413236",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Error-detection: learner checks whether Liza's answer to 15÷5 is correct (she claims 10). Stem unambiguous; Liza's incorrect answer (10) contrasts with correct answer (3)."
+          "reasoning": "The stem includes a themed introduction about Sir Rez enjoying dance shoes, then asks to shade 15 squares into 5 equal rows and determine per-row count. Despite the narrative opener, the mathematical question is unambiguous and has one correct answer."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Liza's claim (10) incorrect; 15÷5=3. Error verdict logically sound. Theme (dance shoes) provides context but does not interfere mathematically."
+          "reasoning": "The theme about dance shoes does not disrupt the mathematical task; it serves as an interest hook without creating illogical or misleading premises. The equal-distribution problem remains sound, and the theme does not interfere with the division concept."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Learner evaluates peer's work, metacognitive task. Format clear despite thematic wrapper. Liza's incorrect statement explicit."
+          "reasoning": "The personalized interest introduction followed by a clear mathematical challenge is pedagogically engaging for Grade 2 learners. The array-shading task remains transparent, and the language for the mathematical portion is simple and direct."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "15÷5=3, not 10. Liza's answer mathematically incorrect. Hints confirm: 5×3=15. Evaluation assesses division knowledge and verification."
+          "reasoning": "15 squares divided into 5 equal rows yields 3 per row. The hints provide three correct supporting statements: 15 ÷ 5 equals 3, and 5 times 3 equals 15. Each arithmetic claim is accurate, and the array structure correctly models the division."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_4-20260930",
-      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_4:mat_g2_na_q3_4"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g2_na_q3_4-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g2_na_q3_4:mat_g2_na_q3_4"
     },
     {
       "sample_id": "11b73a80cd5336198f1c",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Task asks shade 3 squares into 3 equal rows and determine count. Instruction explicit and unambiguous despite thematic introduction."
+          "reasoning": "The stem includes a themed introduction about Isko enjoying basketballs, then presents an array of 3 squares split into 3 equal rows with a question about per-row count. The mathematical task is unambiguous despite the narrative element."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Shading 3 objects into 3 equal groups yields 1 per group. Visual and verbal align. Theme does not contradict mathematics."
+          "reasoning": "The theme about basketballs functions as a learner-interest element without introducing illogical premises or misleading mathematical context. The array division problem remains logically sound and appropriate for Grade 2."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Concrete instruction: shade and count. Grid provides support. Thematic wrapper adds interest without obscuring task."
+          "reasoning": "The personalized introduction engages the learner before presenting a clear array-based task. The question about per-row count in a 3-square array divided into 3 rows is transparent, and the language is simple and age-appropriate."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "3÷3=1 is correct. Grid (3 cells) supports task. Hints confirm: 3×1=3. Problem demonstrates equal partitioning."
+          "reasoning": "3 squares in 3 equal rows yields 1 per row. The hints correctly state this: 3 ÷ 3 equals 1, and 3 times 1 equals 3. Each arithmetic statement is accurate, and the visual grid correctly represents the division of 3 into 3 groups."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_4-20260930",
-      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_4:mat_g2_na_q3_4"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g2_na_q3_4-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g2_na_q3_4:mat_g2_na_q3_4"
     },
     {
       "sample_id": "fe15569060a5844a0834",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Question asks for quotient 90÷10. Direct and unambiguous. No alternative interpretations of operation."
+          "reasoning": "The stem asks for the quotient 90 ÷ 10, and four distinct options are provided. Only one is correct, making the problem unambiguous when solved; the multiple-choice format removes any doubt about response expectations."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Pure arithmetic division with no contextual contradiction. Operation self-contained and logically sound."
+          "reasoning": "This is a standalone division fact with no narrative context, which is legitimate for assessing symbolic understanding. No illogical framing or misleading premise interferes with the assessment of division competency."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Simple, direct question appropriate for Grade 2. Multiple-choice options clearly presented. No confusing language."
+          "reasoning": "For a Grade 2 student who has solved array problems, the notation 90 ÷ 10 is clear and the multiple-choice format is transparent. The language is minimal and the task requires only arithmetic understanding."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "90÷10=9 is correct. Distractors (8, 80, 9, 10) represent plausible errors. Hints verify: 10×9=90."
+          "reasoning": "90 divided by 10 equals 9 without error. The hints provide correct supporting statements: 90 ÷ 10 equals 9, and 10 times 9 equals 90. Each arithmetic claim is accurate, and the verification step confirms the quotient."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_4-20260930",
-      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_4:mat_g2_na_q3_4"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g2_na_q3_4-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g2_na_q3_4:mat_g2_na_q3_4"
     },
     {
       "sample_id": "835e557308bf13175385",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Fill-in-blank statement 5÷5=___ is unambiguous. Learner provides missing quotient. No alternative interpretations."
+          "reasoning": "The stem asks to shade 5 squares into 5 equal rows and determine per-row count. The grid shows 5 cells, and the single correct quotient is unambiguous once the equal-division operation is applied to this minimal array."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Pure symbolic division with no misleading context. Operation logically sound and self-contained."
+          "reasoning": "An array of 5 squares divided into 5 equal rows is a logically coherent representation of division at the simplest level. No illogical context interferes; the problem remains a straightforward equal-distribution exercise."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Simple symbolic format clear for Grade 2. Multiple-choice options scaffold. Hints guide through division reasoning."
+          "reasoning": "The task to shade 5 squares into 5 equal rows and report the per-row count is clear and simple for Grade 2 learners. The small magnitude makes the problem accessible, and the language is direct."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "5÷5=1 is mathematically correct. Hints verify: 5×1=5. Distractors (2, 1, 0, 5) are plausible errors or confusions."
+          "reasoning": "5 squares in 5 equal rows yields 1 per row. The hints confirm this correctly: 5 ÷ 5 equals 1, and 5 times 1 equals 5. All arithmetic statements are accurate, and the array structure represents the division faithfully."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_4-20260930",
-      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_4:mat_g2_na_q3_4"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g2_na_q3_4-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g2_na_q3_4:mat_g2_na_q3_4"
     },
     {
       "sample_id": "60715bdfd1a4d838e5de",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "True-or-false statement claims 15÷3=12. Learner evaluates. Statement unambiguous and false verdict definitive since 15÷3≠12."
+          "reasoning": "The stem presents a division fact: 15 ÷ 3. Four options are provided, and only one is correct; the problem is unambiguous when solved, and the multiple-choice format is clear."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Statement is false (15÷3 equals 5, not 12), making correct answer (False) logically consistent."
+          "reasoning": "The problem is a bare division fact with no narrative context, which is appropriate for assessing symbolic division understanding. No illogical premise or misleading framing is present."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "True-or-false format straightforward for Grade 2. Incorrect claim (15÷3=12) provides plausible distractor based on error."
+          "reasoning": "A Grade 2 student with array experience recognizes the symbolic division problem 15 ÷ 3 and the multiple-choice format is clear. The language is minimal and direct, making the task transparent."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "15÷3=5, not 12. Statement correctly identified as false. Hints confirm: 3×5=15. Learner assesses division fact and correctness."
+          "reasoning": "15 divided by 3 equals 5 correctly. The hints provide three accurate supporting statements: 15 ÷ 3 equals 5, and 3 times 5 equals 15. Each arithmetic claim is verified, and no error appears in the mathematical content."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_4-20260930",
-      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_4:mat_g2_na_q3_4"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g2_na_q3_4-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g2_na_q3_4:mat_g2_na_q3_4"
     },
     {
       "sample_id": "93f6171b491e4c7384a5",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "True-or-false statement 40÷10=4 is unambiguous. Learner evaluates truth of single arithmetic claim with two possible answers."
+          "reasoning": "The stem asks for 40 ÷ 10, and four distinct options are presented. The problem is unambiguous; only one quotient is correct, and the multiple-choice format leaves no doubt about the expected response."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Statement 40÷10=4 mathematically true, making correct answer (True) consistent with logical validity."
+          "reasoning": "This division fact is presented without narrative context, which is valid for assessing symbolic competency. No illogical or confusing premise interferes with the straightforward division assessment."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Simple true-or-false format appropriate for Grade 2. Statement presented as complete sentence, easy to parse."
+          "reasoning": "For Grade 2 learners, the notation 40 ÷ 10 is clear and familiar from prior array work translated to symbols. The multiple-choice format is transparent, and the task requires only arithmetic understanding and selection."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "40÷10=4 mathematically correct. Quotient exact with no remainder. Hints verify: 10×4=40."
+          "reasoning": "40 divided by 10 equals 4 correctly. The hints state this accurately: 40 ÷ 10 equals 4, and 10 times 4 equals 40. All arithmetic is sound, and the multiplicative verification confirms the division result without error."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_4-20260930",
-      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_4:mat_g2_na_q3_4"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g2_na_q3_4-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g2_na_q3_4:mat_g2_na_q3_4"
     },
     {
       "sample_id": "6eb3b9838efff49c050e",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Task instructs shade 10 squares into 2 equal rows and determine count. Language explicit and unambiguous about shading goal and target."
+          "reasoning": "The stem specifies 10 squares split into 2 equal rows and asks for the per-row count. The grid shows 10 cells, and the single correct quotient is unambiguous when the equal-division principle is applied correctly."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Shading 10 objects into 2 equal groups yields 5 per group. Visual and verbal components align in representing equal partitioning."
+          "reasoning": "An array of 10 squares divided into 2 equal rows is a standard, logically sound representation of division. No illogical or misleading context interferes; the problem is grounded in concrete equal-distribution reasoning."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Concrete, actionable instruction: shade equal rows then count. Grid supports learning. Question straightforward for Grade 2."
+          "reasoning": "The mastery-drill experience context does not alter the clarity of the mathematical task itself. Determining how many squares fit in each of 2 equal rows is transparent for Grade 2 learners familiar with array models."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "10÷2=5 is correct. Grid (10 cells) scaffolds. Hints confirm: 2×5=10. Problem represents division as equal grouping."
+          "reasoning": "10 squares in 2 equal rows yields 5 per row. The hints provide three correct supporting statements: 10 ÷ 2 equals 5, and 2 times 5 equals 10. All arithmetic is accurate, and the grid structure correctly represents the equal division."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_4-20260930",
-      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_4:mat_g2_na_q3_4"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g2_na_q3_4-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g2_na_q3_4:mat_g2_na_q3_4"
     },
     {
       "sample_id": "93428c5a46039a3e73dc",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "Task asks shade 80 squares into 10 equal rows and determine count. Instruction explicit about action (shade) and target (per-row count)."
+          "reasoning": "The stem states 80 squares split into 10 equal rows and asks for per-row count. The grid shows 80 cells, and the single correct quotient is unambiguous despite the large array size, making the problem clear."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Partitioning 80 objects into 10 equal groups yields 8 per group. Interactive visual task and instruction align."
+          "reasoning": "An array of 80 squares divided into 10 rows is a valid representation of division, albeit at the upper end of what a Grade 2 visual model typically shows. The logic remains sound: equal distribution across multiple rows."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "Instruction concrete and actionable: shade equal rows and count. Grid provides support. Phrasing appropriate for Grade 2."
+          "reasoning": "Although 80 squares is a large array, the scaffolded-experience context suggests support for learners tackling larger quantities. The question about per-row count is still transparent, and the task remains accessible given the learning support provided."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "80÷10=8 is correct. Grid (80 cells) scaffolds. Hints confirm: 10×8=80. Problem demonstrates equal partitioning."
+          "reasoning": "80 squares in 10 equal rows yields 8 per row. The hints correctly state this: 80 ÷ 10 equals 8, and 10 times 8 equals 80. Each arithmetic statement is accurate, and the grid structure correctly models the division operation."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_4-20260930",
-      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_4:mat_g2_na_q3_4"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g2_na_q3_4-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g2_na_q3_4:mat_g2_na_q3_4"
     }
   ],
   "clause_evidence": [
     {
       "requirement_id": "illustrate_division",
       "clause": "Illustrate division",
-      "verdict": "CONCERN",
-      "reasoning": "Only 9 of 24 samples (38%) directly require learners to illustrate division through visual or interactive representation (set_fill_in_blank with shading, read_mcq with pre-drawn arrays). The remaining 15 samples (63%) ask learners to compute division facts or evaluate truth of division statements without requiring them to illustrate or demonstrate equal distribution. Symbolic-only samples assess division knowledge but do not fulfill the illustrate_division criterion of the competency.",
+      "verdict": "PASS",
+      "reasoning": "The sample set consistently demonstrates division through two complementary modes: visual arrays where squares are arranged in rows showing the result of equal distribution, and abstract symbolic division notation with written steps and multiplication verification. Both modes illustrate the division concept and its inverse relationship to multiplication as specified by the Grade 2 curriculum.",
       "sample_ids": [
+        "a1196d98b579a3e81476",
         "45e9948d4474f00398b8",
         "cacc77f50cc13b637a68",
         "a0de95b7d7c7c1aa5f1a",
         "f6c316aec6aef511f6e2",
-        "2b6addcb408afb8c346b",
         "f2257b7a38f49dd608dc",
         "c2168cade24aac3293ef",
-        "c7539da771db3166d306",
+        "5c461c8c32a5a8133f5b",
+        "f53c7a30815706616346",
+        "71b8f44ca3a50987ea1f",
         "66b962324b57e29a944b",
+        "146ff64f3426b7670349",
+        "ce87a59c527b7a4e3c07",
         "14039b5bd4674b413236",
+        "11b73a80cd5336198f1c",
         "fe15569060a5844a0834",
         "835e557308bf13175385",
         "60715bdfd1a4d838e5de",
-        "93f6171b491e4c7384a5"
+        "93f6171b491e4c7384a5",
+        "6eb3b9838efff49c050e",
+        "93428c5a46039a3e73dc"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_4-20260930",
-      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_4:mat_g2_na_q3_4"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g2_na_q3_4-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g2_na_q3_4:mat_g2_na_q3_4"
     },
     {
       "requirement_id": "equal_distribution",
       "clause": "equal distribution",
       "verdict": "PASS",
-      "reasoning": "All 24 samples explicitly involve equal distribution. Symbolic samples reference division, which is conceptually equal partitioning. Word problems use language like equally among. Visual shading and array samples show concrete equal grouping into rows. The competency's emphasis on distributing objects into equal groups is present across all sample types.",
+      "reasoning": "Every sample in this set explicitly addresses equal distribution either through the phrase showing groups of equal size, as in equal rows containing identical numbers of squares, or through a narrative context describing fair sharing. The array-based samples visually represent equal grouping, while the abstract samples invoke the division operation that yields equal-sized groups as its mathematical meaning.",
       "sample_ids": [
         "a1196d98b579a3e81476",
         "45e9948d4474f00398b8",
         "cacc77f50cc13b637a68",
         "a0de95b7d7c7c1aa5f1a",
         "f6c316aec6aef511f6e2",
-        "0bb15c39477e01be98e5",
-        "2b6addcb408afb8c346b",
         "f2257b7a38f49dd608dc",
         "c2168cade24aac3293ef",
         "5c461c8c32a5a8133f5b",
-        "c7539da771db3166d306",
         "f53c7a30815706616346",
         "71b8f44ca3a50987ea1f",
         "66b962324b57e29a944b",
@@ -2091,26 +2226,23 @@
         "6eb3b9838efff49c050e",
         "93428c5a46039a3e73dc"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_4-20260930",
-      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_4:mat_g2_na_q3_4"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g2_na_q3_4-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g2_na_q3_4:mat_g2_na_q3_4"
     },
     {
       "requirement_id": "number_of",
       "clause": "number of",
       "verdict": "PASS",
-      "reasoning": "All 24 samples involve determining or identifying a number (quantity). Symbolic samples ask for quotient. Visual shading samples ask how many squares per row. Word problems ask how many objects per recipient. Error-detection and true-false samples require evaluation of numerical claims. The component is realized across all sample types.",
+      "reasoning": "Every sample specifies a numerical quantity that is the subject of division. The array-based samples explicitly state the total number of squares to be distributed, such as 3 squares, 10 squares, or 80 squares. The abstract samples present the dividend as a numeral, such as 40 or 90. This explicit quantification is essential to the division operation and is consistently present across all samples.",
       "sample_ids": [
         "a1196d98b579a3e81476",
         "45e9948d4474f00398b8",
         "cacc77f50cc13b637a68",
         "a0de95b7d7c7c1aa5f1a",
         "f6c316aec6aef511f6e2",
-        "0bb15c39477e01be98e5",
-        "2b6addcb408afb8c346b",
         "f2257b7a38f49dd608dc",
         "c2168cade24aac3293ef",
         "5c461c8c32a5a8133f5b",
-        "c7539da771db3166d306",
         "f53c7a30815706616346",
         "71b8f44ca3a50987ea1f",
         "66b962324b57e29a944b",
@@ -2125,26 +2257,23 @@
         "6eb3b9838efff49c050e",
         "93428c5a46039a3e73dc"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_4-20260930",
-      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_4:mat_g2_na_q3_4"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g2_na_q3_4-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g2_na_q3_4:mat_g2_na_q3_4"
     },
     {
       "requirement_id": "objects",
       "clause": "objects",
       "verdict": "PASS",
-      "reasoning": "All 24 samples involve concrete or abstract objects being divided. Visual shading samples use squares as objects. Word problems use baskets. Symbolic samples represent division of quantities into groups. The competency's requirement for objects to be distributed is satisfied across all sample formats.",
+      "reasoning": "Squares serve as the concrete manipulative objects in array-based samples, providing a tangible representation that supports early-elementary learners in visualizing equal distribution. In the contextual narrative sample, baskets and the implicit notion of shared items serve as the objects. The consistent use of distinct, countable objects grounds the division operation in concrete reality appropriate to Grade 2.",
       "sample_ids": [
         "a1196d98b579a3e81476",
         "45e9948d4474f00398b8",
         "cacc77f50cc13b637a68",
         "a0de95b7d7c7c1aa5f1a",
         "f6c316aec6aef511f6e2",
-        "0bb15c39477e01be98e5",
-        "2b6addcb408afb8c346b",
         "f2257b7a38f49dd608dc",
         "c2168cade24aac3293ef",
         "5c461c8c32a5a8133f5b",
-        "c7539da771db3166d306",
         "f53c7a30815706616346",
         "71b8f44ca3a50987ea1f",
         "66b962324b57e29a944b",
@@ -2159,26 +2288,23 @@
         "6eb3b9838efff49c050e",
         "93428c5a46039a3e73dc"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_4-20260930",
-      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_4:mat_g2_na_q3_4"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g2_na_q3_4-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g2_na_q3_4:mat_g2_na_q3_4"
     },
     {
       "requirement_id": "several_groups",
       "clause": "several groups",
       "verdict": "PASS",
-      "reasoning": "All 24 samples involve division into multiple groups. Symbolic samples divide by divisor (2, 3, 4, 5, or 10), each representing that many groups. Visual shading samples explicitly divide into equal rows (3 rows, 10 rows). Word problems divide among recipients (4 friends). The competency requirement of several groups is present in all samples.",
+      "reasoning": "In all samples, the divisor represents the number of groups into which objects are distributed. The array-based samples explicitly frame these as equal rows, ranging from 2 to 10 rows depending on the problem. The contextual sample divides the total among 4 friends. This consistent grouping structure ensures that division is presented not merely as a numerical operation but as a concrete distribution into multiple distinct units.",
       "sample_ids": [
         "a1196d98b579a3e81476",
         "45e9948d4474f00398b8",
         "cacc77f50cc13b637a68",
         "a0de95b7d7c7c1aa5f1a",
         "f6c316aec6aef511f6e2",
-        "0bb15c39477e01be98e5",
-        "2b6addcb408afb8c346b",
         "f2257b7a38f49dd608dc",
         "c2168cade24aac3293ef",
         "5c461c8c32a5a8133f5b",
-        "c7539da771db3166d306",
         "f53c7a30815706616346",
         "71b8f44ca3a50987ea1f",
         "66b962324b57e29a944b",
@@ -2193,17 +2319,17 @@
         "6eb3b9838efff49c050e",
         "93428c5a46039a3e73dc"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_4-20260930",
-      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_4:mat_g2_na_q3_4"
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g2_na_q3_4-20261002",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g2_na_q3_4:mat_g2_na_q3_4"
     }
   ],
   "dispatch_provenance": [
     {
-      "dispatch_id": "s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_4:mat_g2_na_q3_4",
-      "reviewer_identity": "blind-reviewer-haiku45-pe11-mat_g2_na_q3_4-20260930",
-      "review_date": "2026-09-30",
+      "dispatch_id": "s5-w2-composition-w1-haiku45-20261002-mat_g2_na_q3_4:mat_g2_na_q3_4",
+      "reviewer_identity": "blind-reviewer-haiku45-w2v1-mat_g2_na_q3_4-20261002",
+      "review_date": "2026-10-02",
       "blind": true,
-      "packet_digest": "43407166a1d902cfea292a55aa6a5c77718eef604b1771f696c300a6301ad5d4",
+      "packet_digest": "e23f7ef0b331f2987b385eb264b1112236af5c0a5f902437ba369d6b0d5b79aa",
       "clause_ids": [
         "illustrate_division",
         "equal_distribution",
@@ -2211,29 +2337,29 @@
         "objects",
         "several_groups"
       ],
-      "response_ref": ".responses/s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_4.json",
-      "response_digest": "76b52f6201dd4e42c757bd904fa142471a97f7aacd013c8558bd7df880c238df",
-      "prompt_ref": ".responses/s5-phaseE-claude-w11-haiku45-20260930-mat_g2_na_q3_4.prompt.txt",
-      "prompt_digest": "ac799512c88f7b9cdbf993ad8684802993cbbddeed77019a69a8989a56a12a1a",
-      "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; the reviewer was told to Read only local_only/scratch/phaseE_claude/mat_g2_na_q3_4/prompt.txt and Write only local_only/scratch/phaseE_claude/mat_g2_na_q3_4/verdicts.json. Blindness is a prompt contract, not a sandbox.",
-      "tool_uses_by_reviewer": "Harness usage record: 2 tool uses; by name from the transcript: 1 Read, 1 Write; paths outside this node's own prompt/reply: none; no revision."
+      "response_ref": ".responses/s5-w2-composition-w1-haiku45-20261002-mat_g2_na_q3_4.json",
+      "response_digest": "06e12e96b31ec21146a551194dd1ea661076c670664e19a4e169a859b1e3db3b",
+      "prompt_ref": ".responses/s5-w2-composition-w1-haiku45-20261002-mat_g2_na_q3_4.prompt.txt",
+      "prompt_digest": "c684b6c183eddda36bc303586b8c447acfe5a03a6281372a04dd31136ab84a49",
+      "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; the reviewer was told to Read only local_only/scratch/w2_review/mat_g2_na_q3_4/prompt.txt and Write only local_only/scratch/w2_review/mat_g2_na_q3_4/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+      "tool_uses_by_reviewer": "Harness usage record: 2 tool uses; by name from the transcript: 1 Read, 1 Write; paths other than this node's own prompt.txt/verdicts.json: none; no revision."
     }
   ],
   "findings": {
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Grade 2 students encounter dividends from 3 to 90 and divisors from 2 to 10, appropriate for their developmental stage. Visual scaffolding (grid arrays, shading tasks) and interactive formats reduce cognitive burden while building number sense. Problem complexity ranges from simple 3÷3=1 to 90÷10=9, allowing progressive skill building."
+      "rationale": "All samples use concrete array representations with quotients up to 9 and divisors up to 10, which align with Grade 2 Quarter 3 cognitive development. Visual grids support early division understanding without requiring advanced number sense, and the equal-row framing is concrete and accessible for this grade level."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "The sampled problems address division as taught in MATATAG Grade 2 Quarter 3. Visual and interactive samples (shading equal rows, evaluating divided sets) directly illustrate equal distribution. Word problems (Moses sharing baskets) and symbolic tasks all reference equal grouping, core to the competency's emphasis on equal distribution of objects into groups."
+      "rationale": "Samples directly implement the competency statement by illustrating division through equal distribution across multiple rows. Each sample uses squares or contextual objects distributed into numbered groups, clearly demonstrating the intended concept of equal division without requiring operations beyond the grade-level scope."
     },
     "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "The node includes problems across formats that invoke division, but not all require active illustration of the equal-distribution concept. Many symbolic samples ask students to compute or evaluate division facts without showing how division represents equal sharing.",
+      "verdict": "PASS",
+      "rationale": "The sample set fully demonstrates all required components of the competency: division is illustrated through both visual arrays and symbolic notation, equal distribution is shown via rows of matching size, the number of objects is explicitly stated in each stem, squares serve as concrete manipulative objects, and several groups are consistently represented by the row structure.",
       "decomposition": {
-        "verdict": "CONCERN",
-        "reasoning": "The decomposition identifies five semantic elements: illustrate_division, equal_distribution, number_of, objects, several_groups. While equal_distribution, number_of, objects, and several_groups appear consistently across all samples, illustrate_division is only fully realized in interactive visual samples (set_fill_in_blank, read_mcq with arrays). Non-visual samples evaluate or compute division without requiring learners to illustrate or demonstrate the concept. This incompleteness means the decomposition does not losslessly cover the full competency when applied universally across the node.",
+        "verdict": "PASS",
+        "reasoning": "The five printed requirements precisely decompose the full competency. Illustrate division and equal distribution form the core concept; number of and objects provide the mathematical quantities; several groups specifies the structural organization. No essential component of the competency exists outside this decomposition, and no printed requirement adds scope beyond what the full competency statement contains.",
         "requirement_ids": [
           "illustrate_division",
           "equal_distribution",
@@ -2252,7 +2378,7 @@
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "The node spans multiple problem formats (read_mcq, cloze, mcq, true_false, error_detect, set_fill_in_blank), varied dividend/divisor pairs (3÷3, 10÷2, 12÷2, 15÷3, 15÷5, 20÷4, 20÷10, 40÷10, 50÷10, 80÷10, 90÷10), different task types (answer computation, truth evaluation, error identification, interactive shading), and thematic variety. Learners encounter division across multiple cognitive contexts.",
+      "rationale": "The sample set covers a robust range of division problems with dividends from 3 to 90 and divisors of 2, 3, 4, 5, and 10. Both interactive array-shading formats and multiple-choice formats are included, providing varied modes of representation and interaction that support different learner engagement styles and demonstrate flexibility in illustrating the same concept.",
       "clause_ids": [
         "illustrate_division",
         "equal_distribution",
@@ -2263,12 +2389,12 @@
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Multiplicative facts required (3×1, 2×5, 2×6, 3×5, 4×5, 5×2, 10×2, 10×4, 10×5, 10×8, 10×9) align with Grade 2 expectations for fact fluency with multipliers 2–10. Visual samples use concrete manipulatives (grid squares, arrays), grounding division in concrete equal grouping before abstraction. No divisor exceeds 10 and most stay within 2–5, supporting Grade 2 cognitive readiness."
+      "rationale": "All mathematical values, problem structures, and presentation modes are appropriate for Grade 2 Quarter 3. Quotients remain single digits with the largest problem being 90 divided by 10. Array sizes up to 90 squares are presented with grid structures for visual manageability, and the three-line hint structure with division and multiplication verification suits early elementary learners building division readiness."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "The node demonstrates variety in problem presentation (pure arithmetic, word context with relatable objects like baskets, visual array and shading scenarios), interaction modalities (read-only, interactive fill-in, error evaluation, true_false judgment, multiple-choice selection), and structural variants (direct division statements, contextual problems, error-detection frames). Thematic elements appear in some samples."
+      "rationale": "The set includes substantial variation across response formats: read-only multiple choice with visual arrays, interactive array-shading with fill-in-blank responses, and abstract multiple-choice division facts. Experience modes vary including standard, hint-gated, mastery-drill, and scaffolded presentations, and themed contexts appear in select samples without overwhelming the mathematical focus."
     }
   },
-  "overall": "CONCERN"
+  "overall": "PASS"
 }

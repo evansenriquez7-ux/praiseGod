@@ -1,0 +1,455 @@
+You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  blind-reviewer-haiku45-w2x2-mat_g1_na_q3_0-20261003
+
+Write one JSON object to:
+  local_only/scratch/w2_review2/mat_g1_na_q3_0/verdicts.json
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: cognitive_capacity, competency_alignment, competency_fulfillment, comprehensive_coverage, scale_appropriateness, variant_comprehensiveness. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: ambiguity, contextual_logical_validity, learner_facing_clarity, mathematical_validity. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN: cite the sample_ids you EXAMINED and found lacking it (the list may never
+   be empty), and never cite a sample as SUPPORTING a clause it does not support.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{
+  "reviewer": "blind-reviewer-haiku45-w2x2-mat_g1_na_q3_0-20261003",
+  "<node_id>": {
+    "findings": {
+      "competency_fulfillment": {
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}
+      },
+      "<each other required finding>": {"verdict": "...", "rationale": "..."}
+    },
+    "sample_assessments": [
+      {"sample_id": "<opaque id>", "checks": {
+        "<each required sample check>": {"verdict": "...", "reasoning": "..."}
+      }}
+    ],
+    "clause_evidence": [
+      {"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }
+}
+
+== DISPATCH ADDENDUM (binding; read before judging) ==
+
+A. LENGTH. Every `rationale` and every `reasoning` string must be at least 60 characters and specific to
+   the node or sample it describes. Shorter strings are refused by the filing tool.
+
+B. QUOTING. Anything you put inside quotation marks must be a character-for-character substring of text
+   printed in the packet below. No paraphrase, summary, elision ("..."), placeholder, or comma-fragment
+   inside quotes, and never two quoted values joined by a dash. When in doubt, use NO quotation marks at
+   all and describe the text in your own words instead. An unmatched quote is treated as fabricated
+   evidence. The commonest failure: putting your OWN punctuation inside the quotes -- a trailing comma or
+   full stop that belongs to your sentence (write: the word "clock", never: "clock,"). Also never
+   quote a single ordinary word; quote only whole stems, hints or options, or nothing.
+
+C. THEMES. The generator deliberately themes items around a learner's chosen interest (26 curated
+   themes: names, objects, emoji, including religious and cultural themes). Do not judge whether a theme
+   is appropriate. Judge only whether the theming INTERFERES with the mathematics -- for example, a
+   wrapper that names a different object than the task counts, or a theme word that changes the meaning
+   of the question.
+
+D. HINTS. For every sample, compare each hint line against that sample's own stem, answer, options and
+   visual: does every equation in the hints hold, does the hint explain the question actually asked
+   (direction, unit, operation, which position is missing), and does it refer only to things the item
+   actually shows? A hint that contradicts or mis-describes its item is a sample-level defect.
+
+E. CITATIONS AND OVERALL. Every clause_evidence entry cites at least one sample_id; for a clause that
+   FAILs because something is absent, cite the sample_ids you examined. `overall` must follow the rule
+   in item 4 above exactly; the filing tool refuses a reply whose `overall` disagrees with its own
+   verdicts.
+
+G. OWNER RULINGS ON CURRICULUM READING (binding; apply them, do not re-litigate them):
+   - A fact belongs to the N multiplication table when EITHER factor is N: 6 x 2 and 2 x 6 are both
+     facts of the 2 table. A competency naming "the 2, 3, 4, 5, and 10 tables" or "the 6, 7, 8, and 9
+     tables" is met by any fact with at least one factor from its named set (ruling 18).
+   - A factor of 1 (or 0, where the competency names that property) is in scope when the other factor
+     is a named table (ruling 14).
+
+F. CHECKLIST before you write (replies failing any of these are refused and sent back):
+   - use NO quotation marks anywhere in your prose; describe stems, hints and options in your own words;
+   - every rationale and every reasoning string is at least 60 characters;
+   - no two samples share a word-for-word reasoning -- name each sample's own numbers, words or visual;
+   - EVERY clause_evidence entry, including PASS ones, has a non-empty sample_ids list, and every id in it is a
+     printed sample_id from this packet (never a requirement id);
+   - `findings` has exactly the six keys listed in item 1; `decomposition` goes INSIDE competency_fulfillment;
+   - sample_assessments list every printed sample once, in printed order;
+   - `overall` follows the rule in item 4 from your own verdicts.
+
+Use only the Read tool on this prompt file and the Write tool for your one JSON reply. Do not open any
+other file.
+
+== BLIND PACKET ==
+
+==========================================================================
+NODE: mat_g1_na_q3_0
+PACKET DIGEST: 768dfddf6c69327c0e59e443d237a51be9c0b3e2d108a3c19b0059f57c08b029
+COMPETENCY (Grade 1, Quarter 3, None):
+Illustrate subtraction involving numbers up to 20 using a variety of concrete and pictorial models, and describes subtraction as 'taking away'.
+
+REQUIREMENTS (confirm this is a lossless decomposition of the competency):
+  illustrate_subtraction: Illustrate subtraction
+  numbers_up_to_20: numbers up to 20
+  concrete_pictorial: concrete and pictorial models
+  describe_subtraction: describes subtraction
+  taking_away: taking away
+
+SAMPLES (every one of these is real rendered output):
+  sample f253f286c3d49fd685aa  seed 42  [read_mcq]
+      stem:    🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀 — There are 10 items.
+Taking away 10 items.
+How many items are left?
+      answer:  0
+      options: 20 / 10 / 0 / 1
+      hints:   ["We are subtracting 10 from 10.", "Subtract the ones: 0 − 0 = 0.", "Subtract the tens: 1 − 1 = 0.", "The difference of 10 − 10 = 0."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 23, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀"], "distinct_colours": [], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample bda42f9548cd0933a065  seed 43  [read_mcq]
+      stem:    ✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️ — There are 12 items.
+Taking away 10 items.
+How many items are left?
+      answer:  2
+      options: 2 / 10 / 1 / 22
+      hints:   ["We are subtracting 10 from 12.", "Subtract the ones: 2 − 0 = 2.", "Subtract the tens: 1 − 1 = 0.", "The difference of 12 − 10 = 2."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 25, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["✝️", "✝️", "✝️", "✝️", "✝️", "✝️", "✝️", "✝️", "✝️", "✝️", "✝️", "✝️"], "distinct_colours": [], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample db7daf7e7df1318f2dde  seed 44  [read_mcq]
+      stem:    🧁🧁🧁🧁🧁🧁🧁🧁🧁🧁 — There are 10 cupcakes.
+Taking away 2 cupcakes.
+How many cupcakes are left?
+      answer:  8
+      options: 9 / 12 / 2 / 8
+      hints:   ["We are subtracting 2 from 10.", "Start at 10 and count back 2.", "The difference of 10 − 2 = 8."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 15, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁"], "distinct_colours": [], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample b6af90c731db1208f82b  seed 45  [read_mcq]
+      stem:    💃💃💃💃💃💃💃💃💃💃💃💃💃💃💃💃💃💃💃💃 — There are 20 items.
+Taking away 12 items.
+How many items are left?
+      answer:  8
+      options: 20 / 32 / 8 / 7
+      hints:   ["We are subtracting 12 from 20.", "Start at 20 and count back 12.", "The difference of 20 − 12 = 8."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 35, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃"], "distinct_colours": [], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 1d39be6dd6adbe8521f9  seed 46  [read_mcq]
+      stem:    🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀 — There are 15 items.
+Taking away 2 items.
+How many items are left?
+      answer:  13
+      options: 15 / 17 / 14 / 13
+      hints:   ["We are subtracting 2 from 15.", "Subtract the ones: 5 − 2 = 3.", "Subtract the tens: 1 − 0 = 1.", "The difference of 15 − 2 = 13."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 20, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀"], "distinct_colours": [], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample b1eda95d53060391d552  seed 500  [read_mcq]
+      stem:    🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕 — There are 20 items.
+Taking away 18 items.
+How many items are left?
+      answer:  2
+      options: 3 / 2 / 1 / 20
+      hints:   ["We are subtracting 18 from 20.", "Start at 20 and count back 18.", "The difference of 20 − 18 = 2."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 41, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["🐕", "🐕", "🐕", "🐕", "🐕", "🐕", "🐕", "🐕", "🐕", "🐕", "🐕", "🐕", "🐕", "🐕", "🐕", "🐕", "🐕", "🐕", "🐕", "🐕"], "distinct_colours": [], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 251155d8e46d66690d89  seed 501  [read_mcq]
+      stem:    💃💃💃💃💃💃💃💃💃💃💃💃💃💃💃💃💃💃💃💃 — There are 20 items.
+Taking away 15 items.
+How many items are left?
+      answer:  5
+      options: 5 / 20 / 15 / 35
+      hints:   ["We are subtracting 15 from 20.", "Start at 20 and count back 15.", "The difference of 20 − 15 = 5."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 38, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃"], "distinct_colours": [], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 3e17870763b8acf03a9c  seed 502  [read_mcq]
+      stem:    🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨 — There are 16 paints.
+Taking away 8 paints.
+How many paints are left?
+      answer:  8
+      options: 9 / 8 / 16 / 7
+      hints:   ["We are subtracting 8 from 16.", "Start at 16 and count back 8.", "The difference of 16 − 8 = 8."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 27, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["🎨", "🎨", "🎨", "🎨", "🎨", "🎨", "🎨", "🎨", "🎨", "🎨", "🎨", "🎨", "🎨", "🎨", "🎨", "🎨"], "distinct_colours": [], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample aea2d071dcbf28f39e4d  seed 600  [read_mcq]
+      stem:    💃💃💃💃💃💃💃💃💃💃💃💃💃💃💃💃💃💃💃💃 — There are 20 items.
+Taking away 3 items.
+How many items are left?
+      answer:  17
+      options: 17 / 3 / 23 / 18
+      hints:   ["We are subtracting 3 from 20.", "Start at 20 and count back 3.", "The difference of 20 − 3 = 17."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 26, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃"], "distinct_colours": [], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample a809bb432c99590addaa  seed 601  [read_mcq]
+      stem:    🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴 — There are 15 items.
+Taking away 15 items.
+How many items are left?
+      answer:  0
+      options: 30 / 0 / 15 / 1
+      hints:   ["We are subtracting 15 from 15.", "Subtract the ones: 5 − 5 = 0.", "Subtract the tens: 1 − 1 = 0.", "The difference of 15 − 15 = 0."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 33, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["🚴", "🚴", "🚴", "🚴", "🚴", "🚴", "🚴", "🚴", "🚴", "🚴", "🚴", "🚴", "🚴", "🚴", "🚴"], "distinct_colours": [], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample a96d8f418b3311d12e39  seed 602  [read_mcq]
+      stem:    🧁🧁🧁🧁🧁🧁🧁🧁🧁🧁 — There are 10 cupcakes.
+Taking away 3 cupcakes.
+How many cupcakes are left?
+      answer:  7
+      options: 3 / 10 / 7 / 6
+      hints:   ["We are subtracting 3 from 10.", "Start at 10 and count back 3.", "The difference of 10 − 3 = 7."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 16, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁"], "distinct_colours": [], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 170597441f2e02f85c28  seed 603  [read_mcq]
+      stem:    🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐 — There are 15 items.
+Taking away 10 items.
+How many items are left?
+      answer:  5
+      options: 25 / 10 / 6 / 5
+      hints:   ["We are subtracting 10 from 15.", "Subtract the ones: 5 − 0 = 5.", "Subtract the tens: 1 − 1 = 0.", "The difference of 15 − 10 = 5."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 28, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["🏐", "🏐", "🏐", "🏐", "🏐", "🏐", "🏐", "🏐", "🏐", "🏐", "🏐", "🏐", "🏐", "🏐", "🏐"], "distinct_colours": [], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 2e3f9b646338ea229b61  seed 604  [read_mcq]
+      stem:    🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀 — There are 12 items.
+Taking away 2 items.
+How many items are left?
+      answer:  10
+      options: 10 / 9 / 2 / 14
+      hints:   ["We are subtracting 2 from 12.", "Subtract the ones: 2 − 2 = 0.", "Subtract the tens: 1 − 0 = 1.", "The difference of 12 − 2 = 10."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 17, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀"], "distinct_colours": [], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 49e1e6e01962f5354a7d  seed 605  [read_mcq]
+      stem:    🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐 — There are 15 items.
+Taking away 12 items.
+How many items are left?
+      answer:  3
+      options: 2 / 4 / 3 / 12
+      hints:   ["We are subtracting 12 from 15.", "Subtract the ones: 5 − 2 = 3.", "Subtract the tens: 1 − 1 = 0.", "The difference of 15 − 12 = 3."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 30, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["🏐", "🏐", "🏐", "🏐", "🏐", "🏐", "🏐", "🏐", "🏐", "🏐", "🏐", "🏐", "🏐", "🏐", "🏐"], "distinct_colours": [], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 01717f28dcc4231f7c29  seed 606  [read_mcq]
+      stem:    ✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️ — There are 20 items.
+Taking away 10 items.
+How many items are left?
+      answer:  10
+      options: 10 / 11 / 20 / 9
+      hints:   ["We are subtracting 10 from 20.", "Subtract the ones: 0 − 0 = 0.", "Subtract the tens: 2 − 1 = 1.", "The difference of 20 − 10 = 10."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 33, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["✝️", "✝️", "✝️", "✝️", "✝️", "✝️", "✝️", "✝️", "✝️", "✝️", "✝️", "✝️", "✝️", "✝️", "✝️", "✝️", "✝️", "✝️", "✝️", "✝️"], "distinct_colours": [], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 17556676af07b9514f9a  seed 607  [read_mcq]
+      stem:    🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀 — There are 10 items.
+Taking away 2 items.
+How many items are left?
+      answer:  8
+      options: 2 / 10 / 8 / 12
+      hints:   ["We are subtracting 2 from 10.", "Start at 10 and count back 2.", "The difference of 10 − 2 = 8."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 15, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀"], "distinct_colours": [], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 1d8d8b56ccc17ab31322  seed 608  [read_mcq]
+      stem:    🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐 — There are 15 items.
+Taking away 15 items.
+How many items are left?
+      answer:  0
+      options: 0 / 1 / 30 / 15
+      hints:   ["We are subtracting 15 from 15.", "Subtract the ones: 5 − 5 = 0.", "Subtract the tens: 1 − 1 = 0.", "The difference of 15 − 15 = 0."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 33, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["🏐", "🏐", "🏐", "🏐", "🏐", "🏐", "🏐", "🏐", "🏐", "🏐", "🏐", "🏐", "🏐", "🏐", "🏐"], "distinct_colours": [], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 5ec2a05a7ff4e0c0c90f  seed 609  [read_mcq]
+      stem:    💃💃💃💃💃💃💃💃💃💃 — There are 10 items.
+Taking away 1 item.
+How many items are left?
+      answer:  9
+      options: 8 / 10 / 9 / 11
+      hints:   ["We are subtracting 1 from 10.", "Start at 10 and count back 1.", "The difference of 10 − 1 = 9."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 14, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃", "💃"], "distinct_colours": [], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 1ae65df5994dda0f407d  seed 610  [read_mcq]
+      stem:    🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕 — There are 20 items.
+Taking away 12 items.
+How many items are left?
+      answer:  8
+      options: 12 / 8 / 7 / 32
+      hints:   ["We are subtracting 12 from 20.", "Start at 20 and count back 12.", "The difference of 20 − 12 = 8."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 35, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["🐕", "🐕", "🐕", "🐕", "🐕", "🐕", "🐕", "🐕", "🐕", "🐕", "🐕", "🐕", "🐕", "🐕", "🐕", "🐕", "🐕", "🐕", "🐕", "🐕"], "distinct_colours": [], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 16b062d5ebb2de8d99b5  seed 611  [read_mcq]
+      stem:    🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨 — There are 10 paints.
+Taking away 3 paints.
+How many paints are left?
+      answer:  7
+      options: 6 / 7 / 13 / 10
+      hints:   ["We are subtracting 3 from 10.", "Start at 10 and count back 3.", "The difference of 10 − 3 = 7."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 16, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["🎨", "🎨", "🎨", "🎨", "🎨", "🎨", "🎨", "🎨", "🎨", "🎨"], "distinct_colours": [], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 078f92abee66205f5abb  seed 612  [read_mcq]
+      stem:    🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴 — There are 12 items.
+Taking away 2 items.
+How many items are left?
+      answer:  10
+      options: 11 / 10 / 2 / 12
+      hints:   ["We are subtracting 2 from 12.", "Subtract the ones: 2 − 2 = 0.", "Subtract the tens: 1 − 0 = 1.", "The difference of 12 − 2 = 10."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 17, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["🚴", "🚴", "🚴", "🚴", "🚴", "🚴", "🚴", "🚴", "🚴", "🚴", "🚴", "🚴"], "distinct_colours": [], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 2f3fcdb3af462d2bbc73  seed 700  [read_mcq]
+      stem:    🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐🏐 — There are 12 items.
+Taking away 2 items.
+How many items are left?
+      answer:  10
+      options: 2 / 11 / 14 / 10
+      hints:   ["We are subtracting 2 from 12.", "Subtract the ones: 2 − 2 = 0.", "Subtract the tens: 1 − 0 = 1.", "The difference of 12 − 2 = 10."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 17, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["🏐", "🏐", "🏐", "🏐", "🏐", "🏐", "🏐", "🏐", "🏐", "🏐", "🏐", "🏐"], "distinct_colours": [], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 74b61f43027bb258b0d9  seed 701  [read_mcq]
+      stem:    ✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️ — There are 20 items.
+Taking away 15 items.
+How many items are left?
+      answer:  5
+      options: 15 / 5 / 6 / 4
+      hints:   ["We are subtracting 15 from 20.", "Start at 20 and count back 15.", "The difference of 20 − 15 = 5."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 38, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["✝️", "✝️", "✝️", "✝️", "✝️", "✝️", "✝️", "✝️", "✝️", "✝️", "✝️", "✝️", "✝️", "✝️", "✝️", "✝️", "✝️", "✝️", "✝️", "✝️"], "distinct_colours": [], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample bbe85608606f40cfdc0a  seed 702  [read_mcq]
+      stem:    🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀 — There are 12 items.
+Taking away 1 item.
+How many items are left?
+      answer:  11
+      options: 11 / 10 / 12 / 13
+      hints:   ["We are subtracting 1 from 12.", "Subtract the ones: 2 − 1 = 1.", "Subtract the tens: 1 − 0 = 1.", "The difference of 12 − 1 = 11."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 16, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀"], "distinct_colours": [], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 9c24eca19bc51a7ed7ec  seed 800  [read_mcq]
+      stem:    🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕 — There are 13 items.
+Taking away 9 items.
+How many items are left?
+      answer:  4
+      options: 5 / 9 / 3 / 4
+      hints:   ["We are subtracting 9 from 13.", "Start at 13 and count back 9.", "The difference of 13 − 9 = 4."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 25, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["🐕", "🐕", "🐕", "🐕", "🐕", "🐕", "🐕", "🐕", "🐕", "🐕", "🐕", "🐕", "🐕"], "distinct_colours": [], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 42fa89e522e3a1763b7b  seed 900  [read_mcq]
+      stem:    🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴🚴 — There are 13 items.
+Taking away 3 items.
+How many items are left?
+      answer:  10
+      options: 9 / 11 / 10 / 13
+      hints:   ["We are subtracting 3 from 13.", "Subtract the ones: 3 − 3 = 0.", "Subtract the tens: 1 − 0 = 1.", "The difference of 13 − 3 = 10."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 19, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["🚴", "🚴", "🚴", "🚴", "🚴", "🚴", "🚴", "🚴", "🚴", "🚴", "🚴", "🚴", "🚴"], "distinct_colours": [], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 7545db500d5c613acd77  seed 901  [read_mcq]
+      stem:    🧁🧁🧁🧁🧁🧁🧁🧁🧁🧁🧁🧁 — There are 12 cupcakes.
+Taking away 3 cupcakes.
+How many cupcakes are left?
+      answer:  9
+      options: 9 / 15 / 12 / 10
+      hints:   ["We are subtracting 3 from 12.", "Start at 12 and count back 3.", "The difference of 12 − 3 = 9."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 18, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁"], "distinct_colours": [], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample b949dee48eab95d22e43  seed 1000  [read_mcq]
+      stem:    🧁🧁🧁🧁🧁🧁🧁🧁🧁🧁 — There are 10 cupcakes.
+Taking away 2 cupcakes.
+How many cupcakes are left?
+      answer:  8
+      options: 8 / 2 / 7 / 12
+      hints:   ["We are subtracting 2 from 10.", "Start at 10 and count back 2.", "The difference of 10 − 2 = 8."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "hint_gated"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 15, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁"], "distinct_colours": [], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 67c3ebc06e3db5f49c2f  seed 1001  [read_mcq]
+      stem:    ✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️✝️ — There are 20 items.
+Taking away 20 items.
+How many items are left?
+      answer:  0
+      options: 0 / 1 / 40 / 20
+      hints:   ["We are subtracting 20 from 20.", "Subtract the ones: 0 − 0 = 0.", "Subtract the tens: 2 − 2 = 0.", "The difference of 20 − 20 = 0."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "mastery_drill"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 43, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["✝️", "✝️", "✝️", "✝️", "✝️", "✝️", "✝️", "✝️", "✝️", "✝️", "✝️", "✝️", "✝️", "✝️", "✝️", "✝️", "✝️", "✝️", "✝️", "✝️"], "distinct_colours": [], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 1476901a257aaa6f8a1f  seed 1002  [read_mcq]
+      stem:    🧁🧁🧁🧁🧁🧁🧁🧁🧁🧁🧁🧁🧁🧁🧁🧁🧁🧁🧁🧁 — There are 20 cupcakes.
+Taking away 1 cupcake.
+How many cupcakes are left?
+      answer:  19
+      options: 20 / 21 / 19 / 1
+      hints:   ["We are subtracting 1 from 20.", "Start at 20 and count back 1.", "The difference of 20 − 1 = 19."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "scaffolded"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 24, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁", "🧁"], "distinct_colours": [], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+

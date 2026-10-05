@@ -1,0 +1,752 @@
+{
+  "reviewer": "blind-reviewer-haiku45-w2v1-mat_g3_na_q3_1-20261002",
+  "mat_g3_na_q3_1": {
+    "findings": {
+      "cognitive_capacity": {
+        "verdict": "PASS",
+        "rationale": "All items use straightforward question formats appropriate for Grade 3 students, including multiple-choice, true/false, cloze, and error detection tasks that do not exceed the expected cognitive load for this grade level and quarter."
+      },
+      "competency_alignment": {
+        "verdict": "FAIL",
+        "rationale": "The competency explicitly requires application within the 6, 7, 8, and 9 multiplication tables context, yet numerous samples introduce numbers outside this defined range including 0, 1, 2, 3, 4, and 5 as multiplicands or in comparative expressions, which violates the stated scope boundary for this quarter's instruction."
+      },
+      "competency_fulfillment": {
+        "verdict": "FAIL",
+        "rationale": "While all five multiplication properties are represented across the sample set, the required constraint of application specifically within the 6, 7, 8, and 9 tables is systematically violated throughout the packet, meaning the full competency as written cannot be satisfied by this generator output.",
+        "decomposition": {
+          "verdict": "FAIL",
+          "reasoning": "The printed requirements claim to decompose the competency losslessly, but the decomposition fails to enforce the critical constraint that problems must exclusively use the 6, 7, 8, and 9 multiplication tables. This omission from the requirements set means the decomposition is incomplete and does not guarantee fulfillment of the stated competency when applied to content generation."
+        }
+      },
+      "comprehensive_coverage": {
+        "verdict": "PASS",
+        "rationale": "The packet demonstrates all five mathematical properties required by the competency: the identity property with one, the zero property, commutativity, associativity, and the distributive property, with multiple examples and counterexamples for each property represented across the sample set."
+      },
+      "scale_appropriateness": {
+        "verdict": "PASS",
+        "rationale": "The problem difficulty and presentation formats align well with Grade 3 Quarter 3 expectations, with hint structures that scaffold understanding progressively and answer choices that are appropriately spaced to require genuine mathematical reasoning rather than pattern recognition alone."
+      },
+      "variant_comprehensiveness": {
+        "verdict": "CONCERN",
+        "rationale": "The packet includes multiple item formats (multiple-choice, true/false, cloze, error detection) and diverse property demonstrations, but contains one near-perfect duplicate where seed 608 and seed 700 render identical associative property comparison items, suggesting potential issues in variant generation or filtering logic."
+      }
+    },
+    "sample_assessments": [
+      {
+        "sample_id": "5d4ec93aab52e32d040d",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The question asks whether two multiplication expressions with numbers in different order produce the same result, and the mathematical intent to assess commutativity is unambiguous despite using the number 5, which falls outside the designated 6-9 range."
+          },
+          "contextual_logical_validity": {
+            "verdict": "CONCERN",
+            "reasoning": "While the comparison of 5 and 6 is mathematically valid and demonstrates the commutative property correctly, this example violates the competency requirement that instruction should focus on the 6, 7, 8, and 9 multiplication tables exclusively."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The question is phrased clearly for a Grade 3 reader asking a yes/no question about multiplication equivalence, and the hints provide step-by-step verification of each side with explicit calculations that are easy to follow."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Both calculations are correct: 5 times 6 equals 30 and 6 times 5 equals 30, accurately demonstrating that the commutative property holds for this pair of numbers."
+          }
+        }
+      },
+      {
+        "sample_id": "39af49088687ab791bb1",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The stem clearly presents two distinct multiplication expressions and asks whether they are equivalent, requiring a comparison that tests understanding of when the commutative property does not apply to different factors."
+          },
+          "contextual_logical_validity": {
+            "verdict": "CONCERN",
+            "reasoning": "The number 4 appears in the first expression, which is outside the mandated 6 through 9 multiplication tables context, creating a scope violation even though the comparison with 9 provides pedagogical value."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The false answer correctly signals that 4 times 8 and 8 times 9 are not equal, and the hints explicitly state which numbers are multiplied on each side and provide computed values for verification."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The arithmetic is correct: 4 multiplied by 8 yields 32, and 8 multiplied by 9 yields 72, confirming these are distinctly different and the false answer is mathematically appropriate."
+          }
+        }
+      },
+      {
+        "sample_id": "e4202712b5d1fc203c40",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The error-detection format clearly asks whether Rico's identification of a missing value is correct, with explicit yes/no structure that leaves no uncertainty about what the learner must evaluate."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The context of a student solving a multiplication problem is realistic and appropriate for Grade 3, and the zero property being tested is a fundamental concept that should be mastered in this quarter."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The problem presents a completed multiplication fact with a blank and asks whether the student's proposed answer is correct, and the hints scaffold understanding by first conceptualizing zero groups and then applying the zero property."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The zero property is correctly applied: any number multiplied by zero equals zero, so 6 times 0 is indeed 0, and Rico's answer is correct, making the false-error verdict mathematically sound."
+          }
+        }
+      },
+      {
+        "sample_id": "fe30f5b185b960024365",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The question asks whether two expressions representing the distributive property expansion and its original form are equivalent, with clear mathematical intent to assess understanding of grouping and multiplication relationships."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "This item uses only the numbers 8 and 7, both within the mandated 6-9 multiplication tables range, to demonstrate the distributive property with an addend, meeting the competency scope requirements."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The nested expression notation is presented consistently on both sides, and the hints break down each side separately with intermediate addition and multiplication steps that a Grade 3 learner can verify."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "All calculations are correct: left side gives 7 plus 2 equals 9, then 8 times 9 equals 72; right side gives 8 times 7 equals 56 and 8 times 2 equals 16, then 56 plus 16 equals 72, confirming the distributive property."
+          }
+        }
+      },
+      {
+        "sample_id": "2e140b767ffbf1061d8d",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The question directly asks if two multiplication expressions produce the same result, presenting a clear comparison that tests whether learners assume commutativity applies universally to any pair."
+          },
+          "contextual_logical_validity": {
+            "verdict": "CONCERN",
+            "reasoning": "The number 2 in the first expression violates the requirement that items focus on the 6, 7, 8, and 9 tables, even though the comparison with 9 and 8 provides a valid counterexample to commutativity."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The false answer is clearly supported by the hints which show 2 times 9 equals 18 while 9 times 8 equals 72, making it easy for students to see these are different values."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The calculations are correct with 2 times 9 equaling 18 and 9 times 8 equaling 72, properly demonstrating that expressions with different factor pairs produce different products."
+          }
+        }
+      },
+      {
+        "sample_id": "5b8b118252437966d2ec",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The cloze format with a clear blank for the missing multiplicative result and four distinct numeric options makes it unambiguous that students must identify the product of 1 and 6."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "This item directly addresses the identity property using only 1 and 6, where 6 is within the required tables, providing a straightforward application of the one-times-any-number property."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The question is phrased as a simple fill-in-the-blank with nearby distractors that are close in value, and hints explain the conceptual foundation of one group of six before stating the final product."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The identity property is correctly applied: 1 times 6 equals 6, and 6 is the correct answer among options that include 5, 7, and 12."
+          }
+        }
+      },
+      {
+        "sample_id": "c70c45f751375250074a",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The true/false format presents a multiplication fact with a stated result and asks learners to determine its correctness, leaving no ambiguity about the required judgment."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The item tests the identity property using 1 and 9, both within or foundational to the required number context, demonstrating a core multiplicative property appropriate for this quarter."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The statement is presented in simple declarative form suitable for Grade 3, and the hints progressively explain one group of nine before confirming the product equals nine."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The identity property is correctly applied: 1 multiplied by 9 equals 9, making the true answer mathematically sound and appropriate for this fact-based assessment."
+          }
+        }
+      },
+      {
+        "sample_id": "da6de8210c1253480926",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The true/false format presents an incorrect multiplication fact and asks for evaluation, with clear expectation that learners identify the false statement."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "This item tests understanding of the identity property by presenting a false equation where 9 times 1 is incorrectly stated as 8, providing a direct contrast with the correct value."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The incorrect equation is straightforward, and the hints clarify that 9 times 1 equals 9, not 8, by explaining one group of nine conceptually then stating the correct product."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The identity property is correctly applied in the explanation: 9 times 1 equals 9, making the false verdict appropriate for an item that deliberately presents an incorrect fact."
+          }
+        }
+      },
+      {
+        "sample_id": "8d0d9b667d41657859e0",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The question asks whether a nested multiplication with a sum equals an incomplete distribution, clearly testing whether learners understand that both addends must be multiplied."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "This item uses only 8 and 7 from the required tables to demonstrate why incomplete application of the distributive property fails, providing pedagogically sound counterexample."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The hints show calculations for both sides separately, making it clear that multiplying only the first addend by 8 produces a different result than multiplying the entire sum."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Left side correctly computes as 7 plus 4 equals 11 and 8 times 11 equals 88; right side correctly shows 8 times 7 equals 56 then adds 4 to get 60, properly demonstrating why distribution requires multiplying each addend."
+          }
+        }
+      },
+      {
+        "sample_id": "8aba33ece3353b6ef714",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The comparison asks whether two expressions are equivalent when only one addend is multiplied in the right expression, creating a clear test of distributive property understanding."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "This item uses 7 and 8 from the required tables to show incorrect partial distribution, providing an appropriate counterexample to common student errors in applying the distributive property."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The hints methodically compute each side, showing that the left side equals 84 while the right side equals 60, making the discrepancy obvious to a Grade 3 student."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Calculations are accurate: left side is 8 plus 4 equals 12 then 7 times 12 equals 84; right side is 7 times 8 equals 56 then plus 4 equals 60, correctly showing these expressions are not equivalent."
+          }
+        }
+      },
+      {
+        "sample_id": "11a43011b2860cd4b0bd",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The question asks whether multiplying a sum equals the sum of products, presenting the distributive property in standard form with clear comparison structure."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "This item uses 6 and 8 exclusively from the required multiplication tables, directly addressing the distributive property within the specified scope."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The hints break down each calculation step including the intermediate addition 8 plus 5 equals 13, making the parallel structure and matching results transparently clear."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "All arithmetic is correct: left side computes as 8 plus 5 equals 13 then 6 times 13 equals 78; right side computes as 6 times 8 equals 48 and 6 times 5 equals 30 with 48 plus 30 equals 78."
+          }
+        }
+      },
+      {
+        "sample_id": "8fd1b205b5cf2beb7cf3",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The question tests the associative property by asking whether changing the grouping of three multiplied factors produces the same result, with unambiguous structure."
+          },
+          "contextual_logical_validity": {
+            "verdict": "CONCERN",
+            "reasoning": "The item includes 2 and 3 which fall outside the mandated 6-9 tables, though the use of 6 as a factor and the pedagogical goal of demonstrating associativity remain sound."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The hints show the left side computation as first 2 times 6 equals 12 then 12 times 3 equals 36, and the right side as first 6 times 3 equals 18 then 2 times 18 equals 36."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "All calculations are correct: both groupings produce 36, properly demonstrating that the associative property holds when multiplying three factors in different orders."
+          }
+        }
+      },
+      {
+        "sample_id": "2d786d09c3678da854f7",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The multiple-choice question directly asks for the product of 7 and 1, presenting four distinct numeric options that require actual multiplication knowledge rather than guessing."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "This item demonstrates the identity property using 7 from the required tables, providing a direct calculation task that supports conceptual understanding of multiplying by one."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The hints explain one group of 7 conceptually and then state the product, supporting learners who may need to construct the meaning before recalling or calculating the fact."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The identity property is correctly applied: 7 times 1 equals 7, and 7 is the correct answer among options of 6, 8, and 9 which are adjacent values."
+          }
+        }
+      },
+      {
+        "sample_id": "0b1874000cd2c107037c",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The question asks whether two expressions using triple multiplication with different groupings are equivalent, with clear focus on the associative property."
+          },
+          "contextual_logical_validity": {
+            "verdict": "CONCERN",
+            "reasoning": "The numbers 2 and 3 appear in this associative property item, both falling outside the required 6-9 tables, though 8 is included and the property being tested is appropriate."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The hints methodically show left side as first 3 times 8 equals 24 then 24 times 2 equals 48, and right side as first 8 times 2 equals 16 then 3 times 16 equals 48."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "All multiplication facts are accurate and the associative property is correctly demonstrated: both groupings yield 48, confirming that the order of grouping does not affect the product."
+          }
+        }
+      },
+      {
+        "sample_id": "6b93f6c3ea2b48c79ff2",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The question asks whether two multiplication expressions with different factor pairs produce the same result, clearly testing understanding of when commutativity does not apply."
+          },
+          "contextual_logical_validity": {
+            "verdict": "CONCERN",
+            "reasoning": "The number 4 appears in this commutativity test item, which is outside the specified 6-9 tables, creating a scope violation despite the pedagogical value of the counterexample."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The hints identify which numbers are on each side and provide the computed products of 56 and 28, making it evident these are different values with different factors."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The calculations are correct: 8 times 7 equals 56 and 7 times 4 equals 28, properly demonstrating that different factor pairs produce different products."
+          }
+        }
+      },
+      {
+        "sample_id": "28e1bfd1e9876af574eb",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The question asks whether changing the grouping in a three-factor multiplication affects the product, with clear focus on testing the associative property."
+          },
+          "contextual_logical_validity": {
+            "verdict": "CONCERN",
+            "reasoning": "The items include 3 which is outside the designated 6-9 range, though 9 is included and the associative property being tested is a core competency."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The hints show step-by-step computation with left side as first 3 times 9 equals 27 then 27 times 3 equals 81, and right side as first 9 times 3 equals 27 then 3 times 27 equals 81."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "All calculations are correct and demonstrate the associative property: both grouping arrangements yield 81, confirming that rearranging parentheses does not change the product."
+          }
+        }
+      },
+      {
+        "sample_id": "c230bc5337e92c168eae",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The question asks whether two multiplication expressions with partially different factors are equivalent, testing whether learners confuse variables in commutativity."
+          },
+          "contextual_logical_validity": {
+            "verdict": "CONCERN",
+            "reasoning": "The number 3 appears in the right expression, which is outside the required 6-9 tables, violating the scope specification even though 7 and 8 are present."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The hints clearly identify the factors on each side and show their products of 56 and 24, making it unmistakable that these are unequal expressions."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The mathematics is correct: 7 times 8 equals 56 and 8 times 3 equals 24, properly showing that expressions with different factors produce different products."
+          }
+        }
+      },
+      {
+        "sample_id": "c179de215e0f4c8cbf05",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The question asks whether reversing the order of two factors produces the same product, directly testing commutativity with clear yes/no structure."
+          },
+          "contextual_logical_validity": {
+            "verdict": "CONCERN",
+            "reasoning": "The number 4 in this commutativity item falls outside the required 6-9 tables, though 6 is within scope and the commutativity property being tested is a core competency."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The hints explain that both expressions multiply the same two numbers in different order and then show both equal 24, making the commutative property clear."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Both calculations are correct: 4 times 6 equals 24 and 6 times 4 equals 24, properly demonstrating the commutative property with this factor pair."
+          }
+        }
+      },
+      {
+        "sample_id": "93d86f5edc6690af21d2",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The question asks whether two differently grouped three-factor expressions are equal, presenting a clear test of understanding the associative property."
+          },
+          "contextual_logical_validity": {
+            "verdict": "CONCERN",
+            "reasoning": "Multiple numbers including 2 and 3 fall outside the specified 6-9 tables, though 7 is included and the associative property is appropriately tested for Grade 3."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The hints show left side computation as first 3 times 7 equals 21 then 21 times 3 equals 63, and right side as first 7 times 2 equals 14 then 3 times 14 equals 42."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "All arithmetic is accurate: left side equals 63 and right side equals 42, correctly demonstrating that these differently grouped expressions yield different products."
+          }
+        }
+      },
+      {
+        "sample_id": "4f66b23a8aca3ce1fd9c",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The question asks whether two differently grouped three-factor multiplication expressions are equivalent, with the same clear associative property testing structure."
+          },
+          "contextual_logical_validity": {
+            "verdict": "CONCERN",
+            "reasoning": "This sample is a near-perfect duplicate of sample 19, with identical stem, answer, and hints, suggesting a potential issue with the generation or filtering process that created this repetition."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The presentation is clear with step-by-step hints showing the left calculation yields 63 and the right calculation yields 42, making the inequality evident."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The calculations are correct: left side of 3 times 7 times 3 equals 63 while right side of 3 times 7 times 2 equals 42, properly demonstrating unequal products."
+          }
+        }
+      },
+      {
+        "sample_id": "804957634e25e00a734d",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The question asks whether a nested multiplication with sum expansion equals its complete distribution, testing understanding of the distributive property with thematic wrapper."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "This item features a dance-related theme with 7 and 5 and 7, where 7 is within the required tables; the thematic element does not interfere with the mathematical content being assessed."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "Despite the thematic prefix mentioning a student's interest in dance, the mathematical question remains clear and the hints break down calculations showing both sides equal 84."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "All calculations are correct: left side is 5 plus 7 equals 12 then 7 times 12 equals 84; right side is 7 times 5 equals 35 and 7 times 7 equals 49 with 35 plus 49 equals 84."
+          }
+        }
+      },
+      {
+        "sample_id": "1085aab7a3a0c3112e79",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The question asks whether two multiplication expressions with different factors produce the same result, testing commutativity with thematic wrapper context."
+          },
+          "contextual_logical_validity": {
+            "verdict": "CONCERN",
+            "reasoning": "The number 2 appears in this commutativity test, which falls outside the required 6-9 tables, creating a scope violation though the basketball theme does not interfere with mathematics."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The hints identify factors on each side and show products of 14 and 56, making it clear these expressions are not equivalent despite the thematic basketball reference."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Both calculations are correct: 2 times 7 equals 14 and 7 times 8 equals 56, properly demonstrating that different factor pairs produce different products."
+          }
+        }
+      },
+      {
+        "sample_id": "f4631e266939c8a9ade9",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The cloze format presents a simple multiplication fact with a blank and four numeric options, requiring clear understanding of the identity property."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "This item tests the identity property using 6 from the required tables with 1, providing a straightforward application of the one-times-any-number principle."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The question format is simple and direct, with options nearby but distinct, and hints explain one group of 6 before confirming the product."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The identity property is correctly applied: 6 times 1 equals 6, and 6 is the correct answer among the options of 7, 8, and 5."
+          }
+        }
+      },
+      {
+        "sample_id": "64e13483d716c8408dfb",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The question asks whether reversing the order of two multiplication factors maintains equivalence, testing the commutative property with explicit yes/no structure."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "This item uses 6 and 7 exclusively from the required tables, directly addressing commutativity within the specified scope."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The hints explain that both sides multiply the same two numbers in different orders and then show both products equal 42, making commutativity transparent."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Both calculations are correct: 6 times 7 equals 42 and 7 times 6 equals 42, properly demonstrating the commutative property with these numbers from the designated tables."
+          }
+        }
+      },
+      {
+        "sample_id": "43dbaeb16587bef14da3",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The question asks whether two differently grouped three-factor expressions are equivalent, testing understanding of the associative property with nested multiplication."
+          },
+          "contextual_logical_validity": {
+            "verdict": "CONCERN",
+            "reasoning": "Numbers 2 and 3 appear in this associative property test, both outside the required 6-9 range, though 8 is included and the property being tested is foundational."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The hints show left side as first 2 times 8 equals 16 then 16 times 2 equals 32, and right side as first 8 times 3 equals 24 then 2 times 24 equals 48."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "All calculations are accurate: left side yields 32 and right side yields 48, properly demonstrating that different groupings with different third factors produce different products."
+          }
+        }
+      },
+      {
+        "sample_id": "9b9ba42a8a3f8c5b0a7b",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The multiple-choice question directly asks for the product of 0 and 8, presenting four distinct numeric options for learners to select the correct zero property application."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "This item directly demonstrates the zero property using 8 from the required tables, providing a computational task that reinforces the fundamental concept."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The hints explain zero groups of 8 conceptually and then state the product, supporting learners in understanding why any number multiplied by zero equals zero."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The zero property is correctly applied: 0 times 8 equals 0, and 0 is the correct answer among options of 2, 8, 1, and 0."
+          }
+        }
+      },
+      {
+        "sample_id": "329eddc897e5fdea7e59",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The true/false format presents an incorrect multiplication fact and asks learners to judge its correctness, with unambiguous expectation of identifying the false statement."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "This item tests the identity property with 6 from the required tables by presenting an incorrect product of 7, providing practice in distinguishing correct from incorrect facts."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The presentation is straightforward with an incorrect statement, and the hints explain one group of 6 and confirm the true product is 6, not 7."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The identity property is correctly stated in the hints: 6 times 1 equals 6, making the false verdict appropriate for an item presenting an incorrect fact."
+          }
+        }
+      },
+      {
+        "sample_id": "1e44f7476d0b3de0584f",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The question asks whether two multiplication expressions with different factors produce the same result, testing commutativity with clear comparison structure."
+          },
+          "contextual_logical_validity": {
+            "verdict": "CONCERN",
+            "reasoning": "Numbers 3 and 5 both fall outside the required 6-9 tables, creating a scope violation though the commutativity property being tested is foundational for this quarter."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The hints identify the different factors on each side and show products of 21 and 35, making it clear the expressions are not equivalent."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "Both calculations are correct: 3 times 7 equals 21 and 7 times 5 equals 35, properly demonstrating that different factor pairs produce different products."
+          }
+        }
+      },
+      {
+        "sample_id": "4c5ff4a7f9a66667cac6",
+        "checks": {
+          "ambiguity": {
+            "verdict": "PASS",
+            "reasoning": "The error-detection format asks whether a student's identification of a missing multiplicative value is correct, with clear yes/no judgment required."
+          },
+          "contextual_logical_validity": {
+            "verdict": "PASS",
+            "reasoning": "This item tests the zero property using 7 from the required tables, with realistic context of a student proposing an incorrect answer that violates the zero principle."
+          },
+          "learner_facing_clarity": {
+            "verdict": "PASS",
+            "reasoning": "The hints explain zero groups conceptually then apply the zero property, showing that 7 is an incorrect answer and the true product must be zero."
+          },
+          "mathematical_validity": {
+            "verdict": "PASS",
+            "reasoning": "The zero property is correctly applied: 0 times 7 equals 0, making Manny's answer of 7 incorrect, so the error detection verdict is mathematically appropriate."
+          }
+        }
+      }
+    ],
+    "clause_evidence": [
+      {
+        "requirement_id": "illustrate_and_apply_properties_of_multiplication",
+        "clause": "Illustrate and apply properties of multiplication",
+        "verdict": "PASS",
+        "reasoning": "The packet demonstrates all five multiplication properties through both direct application and error detection formats, with multiple examples of commutative, associative, distributive, identity, and zero properties represented across the full sample set.",
+        "sample_ids": [
+          "5d4ec93aab52e32d040d",
+          "c179de215e0f4c8cbf05",
+          "8fd1b205b5cf2beb7cf3",
+          "11a43011b2860cd4b0bd",
+          "e4202712b5d1fc203c40"
+        ]
+      },
+      {
+        "requirement_id": "6_7_8_and_9_multiplication_tables",
+        "clause": "6, 7, 8, and 9 multiplication tables",
+        "verdict": "FAIL",
+        "reasoning": "Numerous samples violate this requirement by incorporating numbers outside the 6-9 range including 0, 1, 2, 3, 4, and 5 as primary factors or in comparative expressions, fundamentally undermining the stated scope constraint of the competency.",
+        "sample_ids": [
+          "5d4ec93aab52e32d040d",
+          "39af49088687ab791bb1",
+          "2e140b767ffbf1061d8d",
+          "8fd1b205b5cf2beb7cf3",
+          "6b93f6c3ea2b48c79ff2",
+          "28e1bfd1e9876af574eb",
+          "c230bc5337e92c168eae",
+          "c179de215e0f4c8cbf05",
+          "93d86f5edc6690af21d2",
+          "4f66b23a8aca3ce1fd9c",
+          "1085aab7a3a0c3112e79",
+          "43dbaeb16587bef14da3",
+          "1e44f7476d0b3de0584f"
+        ]
+      },
+      {
+        "requirement_id": "one_multiplied_by_any_number",
+        "clause": "one multiplied by any number is equal to the number",
+        "verdict": "PASS",
+        "reasoning": "The identity property with one is represented through multiple formats including cloze, true/false, and error detection samples, with both direct calculations and false statements providing comprehensive coverage of this principle.",
+        "sample_ids": [
+          "5b8b118252437966d2ec",
+          "c70c45f751375250074a",
+          "da6de8210c1253480926",
+          "2d786d09c3678da854f7",
+          "f4631e266939c8a9ade9",
+          "329eddc897e5fdea7e59"
+        ]
+      },
+      {
+        "requirement_id": "zero_multiplied_by_any_number",
+        "clause": "zero multiplied by any number is zero",
+        "verdict": "PASS",
+        "reasoning": "The zero property is demonstrated through multiple samples including error detection tasks where students must identify incorrect zero applications and direct multiplication tasks showing zero products with various factors.",
+        "sample_ids": [
+          "e4202712b5d1fc203c40",
+          "9b9ba42a8a3f8c5b0a7b",
+          "4c5ff4a7f9a66667cac6"
+        ]
+      },
+      {
+        "requirement_id": "changing_the_order",
+        "clause": "changing the order of the numbers being multiplied does not change the product",
+        "verdict": "PASS",
+        "reasoning": "The commutative property is extensively represented through multiple comparison questions where learners must evaluate whether reversing factor order maintains equivalence, with both correct applications and counterexamples across samples.",
+        "sample_ids": [
+          "5d4ec93aab52e32d040d",
+          "39af49088687ab791bb1",
+          "2e140b767ffbf1061d8d",
+          "6b93f6c3ea2b48c79ff2",
+          "c230bc5337e92c168eae",
+          "c179de215e0f4c8cbf05",
+          "1085aab7a3a0c3112e79",
+          "64e13483d716c8408dfb",
+          "1e44f7476d0b3de0584f"
+        ]
+      },
+      {
+        "requirement_id": "changing_the_grouping",
+        "clause": "changing the grouping of the numbers being multiplied does not change the product",
+        "verdict": "PASS",
+        "reasoning": "The associative property is represented through multiple three-factor multiplication comparisons with parentheses showing different groupings, with samples demonstrating both correct applications where grouping does not affect results and incorrect cases where different third factors change products.",
+        "sample_ids": [
+          "8fd1b205b5cf2beb7cf3",
+          "0b1874000cd2c107037c",
+          "28e1bfd1e9876af574eb",
+          "93d86f5edc6690af21d2",
+          "4f66b23a8aca3ce1fd9c",
+          "43dbaeb16587bef14da3"
+        ]
+      },
+      {
+        "requirement_id": "multiplying_the_sum_of_two_addends",
+        "clause": "multiplying the sum of two addends by a number is the same as the sum of the products of a number by each addend",
+        "verdict": "PASS",
+        "reasoning": "The distributive property is demonstrated through multiple comparison questions showing the relationship between multiplying a sum and summing individual products, with both correct applications and carefully constructed counterexamples where only one addend is multiplied.",
+        "sample_ids": [
+          "fe30f5b185b960024365",
+          "8d0d9b667d41657859e0",
+          "8aba33ece3353b6ef714",
+          "11a43011b2860cd4b0bd",
+          "804957634e25e00a734d"
+        ]
+      }
+    ],
+    "overall": "FAIL"
+  }
+}

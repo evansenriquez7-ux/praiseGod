@@ -1,0 +1,341 @@
+You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  blind-reviewer-haiku45-w2v1-mat_g1_na_q2_6-20261002
+
+Write one JSON object to:
+  local_only/scratch/w2_review/mat_g1_na_q2_6/verdicts.json
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: cognitive_capacity, competency_alignment, competency_fulfillment, comprehensive_coverage, scale_appropriateness, variant_comprehensiveness. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: ambiguity, contextual_logical_validity, learner_facing_clarity, mathematical_validity. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN: cite the sample_ids you EXAMINED and found lacking it (the list may never
+   be empty), and never cite a sample as SUPPORTING a clause it does not support.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{
+  "reviewer": "blind-reviewer-haiku45-w2v1-mat_g1_na_q2_6-20261002",
+  "<node_id>": {
+    "findings": {
+      "competency_fulfillment": {
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}
+      },
+      "<each other required finding>": {"verdict": "...", "rationale": "..."}
+    },
+    "sample_assessments": [
+      {"sample_id": "<opaque id>", "checks": {
+        "<each required sample check>": {"verdict": "...", "reasoning": "..."}
+      }}
+    ],
+    "clause_evidence": [
+      {"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }
+}
+
+== DISPATCH ADDENDUM (binding; read before judging) ==
+
+A. LENGTH. Every `rationale` and every `reasoning` string must be at least 60 characters and specific to
+   the node or sample it describes. Shorter strings are refused by the filing tool.
+
+B. QUOTING. Anything you put inside quotation marks must be a character-for-character substring of text
+   printed in the packet below. No paraphrase, summary, elision ("..."), placeholder, or comma-fragment
+   inside quotes, and never two quoted values joined by a dash. When in doubt, use NO quotation marks at
+   all and describe the text in your own words instead. An unmatched quote is treated as fabricated
+   evidence. The commonest failure: putting your OWN punctuation inside the quotes -- a trailing comma or
+   full stop that belongs to your sentence (write: the word "clock", never: "clock,"). Also never
+   quote a single ordinary word; quote only whole stems, hints or options, or nothing.
+
+C. THEMES. The generator deliberately themes items around a learner's chosen interest (26 curated
+   themes: names, objects, emoji, including religious and cultural themes). Do not judge whether a theme
+   is appropriate. Judge only whether the theming INTERFERES with the mathematics -- for example, a
+   wrapper that names a different object than the task counts, or a theme word that changes the meaning
+   of the question.
+
+D. HINTS. For every sample, compare each hint line against that sample's own stem, answer, options and
+   visual: does every equation in the hints hold, does the hint explain the question actually asked
+   (direction, unit, operation, which position is missing), and does it refer only to things the item
+   actually shows? A hint that contradicts or mis-describes its item is a sample-level defect.
+
+E. CITATIONS AND OVERALL. Every clause_evidence entry cites at least one sample_id; for a clause that
+   FAILs because something is absent, cite the sample_ids you examined. `overall` must follow the rule
+   in item 4 above exactly; the filing tool refuses a reply whose `overall` disagrees with its own
+   verdicts.
+
+F. CHECKLIST before you write (replies failing any of these are refused and sent back):
+   - use NO quotation marks anywhere in your prose; describe stems, hints and options in your own words;
+   - every rationale and every reasoning string is at least 60 characters;
+   - no two samples share a word-for-word reasoning -- name each sample's own numbers, words or visual;
+   - EVERY clause_evidence entry, including PASS ones, has a non-empty sample_ids list;
+   - `overall` follows the rule in item 4 from your own verdicts.
+
+Use only the Read tool on this prompt file and the Write tool for your one JSON reply. Do not open any
+other file.
+
+== BLIND PACKET ==
+
+==========================================================================
+NODE: mat_g1_na_q2_6
+PACKET DIGEST: 4eeef2b60fa7948dcd85fbd768969ac96a6a2db3bbb1ad36988c9ddf52cbd562
+COMPETENCY (Grade 1, Quarter 2, None):
+Solve problems (given orally or in pictures) involving addition with sums up to 100 without regrouping.
+
+REQUIREMENTS (confirm this is a lossless decomposition of the competency):
+  solve_problems: Solve problems
+  pictures: pictures
+  addition: addition
+  sum_up_to_100: sums up to 100
+  without_regrouping: without regrouping
+
+SAMPLES (every one of these is real rendered output):
+  sample e826f3e06986a1e8b34f  seed 42  [read_fill_in_blank]
+      stem:    The two parts are 1 and 63. What is the sum?
+      answer:  64
+      hints:   ["We are adding two numbers: 1 and 63.", "Add the ones: 1 + 3 = 4. Keep 4 in the ones place.", "Add the tens: 0 + 6 = 6.", "The sum is 1 + 63 = 64."]
+      response: {"format": "read_fill_in_blank", "is_visual": true, "visual_type": "NumberBond", "interaction_mode": "read", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  NumberBond
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberBond", "element_count": 7, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 1, "text_labels": ["1", "63"], "distinct_colours": ["hsl(var(--primary)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 7c53a7776007cb24c9a2  seed 43  [mcq]
+      stem:    One group has 23 items and another group has 45 items. If you put them together, how many items are there in all?
+      answer:  68
+      options: 67 / 78 / 69 / 68
+      hints:   ["We are adding two numbers: 23 and 45.", "Add the ones: 3 + 5 = 8. Keep 8 in the ones place.", "Add the tens: 2 + 4 = 6.", "The sum is 23 + 45 = 68."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample c1c8effd0c65ebc059b8  seed 44  [mcq]
+      stem:    Start at 30. Count up 25 more. What number do you land on?
+      answer:  55
+      options: 65 / 55 / 56 / 54
+      hints:   ["We are adding two numbers: 30 and 25.", "Add the ones: 0 + 5 = 5. Keep 5 in the ones place.", "Add the tens: 3 + 2 = 5.", "The sum is 30 + 25 = 55."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 2b972d9ea28babb8d2af  seed 45  [read_mcq]
+      stem:    The dot is at 64 and it moves forward 23 numbers. Starting from 64, just count up 23 numbers. Which number will the dot land on?
+      answer:  87
+      options: 88 / 87 / 97 / 86
+      hints:   ["We are adding two numbers: 64 and 23.", "Add the ones: 4 + 3 = 7. Keep 7 in the ones place.", "Add the tens: 6 + 2 = 8.", "The sum is 64 + 23 = 87."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 19, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["50", "60", "70", "80", "90"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 0461c002a9e099704303  seed 46  [read_mcq]
+      stem:    (Large group of 33 items) — There are 33 items.
+(Large group of 51 items) — 51 more items are added.
+How many total items are there?
+      answer:  84
+      options: 51 / 33 / 85 / 84
+      hints:   ["We are adding two numbers: 33 and 51.", "Add the ones: 3 + 1 = 4. Keep 4 in the ones place.", "Add the tens: 3 + 5 = 8.", "The sum is 33 + 51 = 84."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 42, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["🛍️", "10x 🏀", "🛍️", "10x 🏀", "🛍️", "10x 🏀", "🏀", "1x 🏀", "🏀", "1x 🏀", "🏀", "1x 🏀", "+", "🛍️", "10x 🏀", "🛍️", "10x 🏀", "🛍️", "10x 🏀", "🛍️", "10x 🏀", "🛍️", "10x 🏀", "🏀", "1x 🏀"], "distinct_colours": ["hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text-muted)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 7369ecaa0d1d16042297  seed 47  [set_fill_in_blank]
+      stem:    Show 60 + 20 on the number line.
+      answer:  80
+      hints:   ["We are adding two numbers: 60 and 20.", "Add the ones: 0 + 0 = 0. Keep 0 in the ones place.", "Add the tens: 6 + 2 = 8.", "The sum is 60 + 20 = 80."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 22, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["50", "60", "70", "80", "90", "Your answer: Position", "70", "Click track, drag dot, or use ← → arrow keys"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 961d722222b3047f3dca  seed 500  [set_fill_in_blank]
+      stem:    Show 55 + 43 on the number line.
+      answer:  98
+      hints:   ["We are adding two numbers: 55 and 43.", "Add the ones: 5 + 3 = 8. Keep 8 in the ones place.", "Add the tens: 5 + 4 = 9.", "The sum is 55 + 43 = 98."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 28, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["40", "50", "60", "70", "80", "90", "100", "Your answer: Position", "70", "Click track, drag dot, or use ← → arrow keys"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 44ad936352802d80d628  seed 501  [read_mcq]
+      stem:    The dot is at 80 and it moves forward 3 numbers. Starting from 80, just count up 3 numbers. Which number will the dot land on?
+      answer:  83
+      options: 84 / 83 / 93 / 82
+      hints:   ["We are adding two numbers: 80 and 3.", "Add the ones: 0 + 3 = 3. Keep 3 in the ones place.", "Add the tens: 8 + 0 = 8.", "The sum is 80 + 3 = 83."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 13, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["70", "80", "90"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample b9feb49a947bc5da72fd  seed 502  [mcq]
+      stem:    Start at 90. Count up 1 more. What number do you land on?
+      answer:  91
+      options: 91 / 90 / 101 / 92
+      hints:   ["We are adding two numbers: 90 and 1.", "Add the ones: 0 + 1 = 1. Keep 1 in the ones place.", "Add the tens: 9 + 0 = 9.", "The sum is 90 + 1 = 91."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample f5bc3f2cf23a6d7b6fb2  seed 600  [set_fill_in_blank]
+      stem:    Show 73 + 26 on the number line.
+      answer:  99
+      hints:   ["We are adding two numbers: 73 and 26.", "Add the ones: 3 + 6 = 9. Keep 9 in the ones place.", "Add the tens: 7 + 2 = 9.", "The sum is 73 + 26 = 99."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 22, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["60", "70", "80", "90", "100", "Your answer: Position", "80", "Click track, drag dot, or use ← → arrow keys"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 652d84d380936f00e79c  seed 601  [read_mcq]
+      stem:    (Large group of 60 items) — There are 60 items.
+(Large group of 30 items) — 30 more items are added.
+How many total items are there?
+      answer:  90
+      options: 91 / 89 / 60 / 90
+      hints:   ["We are adding two numbers: 60 and 30.", "Add the ones: 0 + 0 = 0. Keep 0 in the ones place.", "Add the tens: 6 + 3 = 9.", "The sum is 60 + 30 = 90."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 33, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["🛍️", "10x 🚴", "🛍️", "10x 🚴", "🛍️", "10x 🚴", "🛍️", "10x 🚴", "🛍️", "10x 🚴", "🛍️", "10x 🚴", "+", "🛍️", "10x 🚴", "🛍️", "10x 🚴", "🛍️", "10x 🚴"], "distinct_colours": ["hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text-muted)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 6deace4e64a597de08ce  seed 602  [read_mcq]
+      stem:    The dot is at 30 and it moves forward 13 numbers. Starting from 30, just count up 13 numbers. Which number will the dot land on?
+      answer:  43
+      options: 42 / 43 / 44 / 53
+      hints:   ["We are adding two numbers: 30 and 13.", "Add the ones: 0 + 3 = 3. Keep 3 in the ones place.", "Add the tens: 3 + 1 = 4.", "The sum is 30 + 13 = 43."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 25, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "10", "20", "30", "40", "50", "60"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 21371b2490ae064406d8  seed 603  [mcq]
+      stem:    One group has 60 items and another group has 30 items. If you put them together, how many items are there in all?
+      answer:  90
+      options: 100 / 91 / 90 / 89
+      hints:   ["We are adding two numbers: 60 and 30.", "Add the ones: 0 + 0 = 0. Keep 0 in the ones place.", "Add the tens: 6 + 3 = 9.", "The sum is 60 + 30 = 90."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 4ea9e710f32ba206a565  seed 604  [mcq]
+      stem:    One group has 30 items and another group has 30 items. If you put them together, how many items are there in all?
+      answer:  60
+      options: 61 / 60 / 70 / 59
+      hints:   ["We are adding two numbers: 30 and 30.", "Add the ones: 0 + 0 = 0. Keep 0 in the ones place.", "Add the tens: 3 + 3 = 6.", "The sum is 30 + 30 = 60."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 722e19dd4211c9de41eb  seed 605  [read_fill_in_blank]
+      stem:    The two parts are 60 and 30. What is the sum?
+      answer:  90
+      hints:   ["We are adding two numbers: 60 and 30.", "Add the ones: 0 + 0 = 0. Keep 0 in the ones place.", "Add the tens: 6 + 3 = 9.", "The sum is 60 + 30 = 90."]
+      response: {"format": "read_fill_in_blank", "is_visual": true, "visual_type": "NumberBond", "interaction_mode": "read", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  NumberBond
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberBond", "element_count": 7, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 1, "text_labels": ["60", "30"], "distinct_colours": ["hsl(var(--primary)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample f2596a00794bc034e75c  seed 606  [mcq]
+      stem:    One group has 41 items and another group has 6 items. If you put them together, how many items are there in all?
+      answer:  47
+      options: 48 / 57 / 47 / 46
+      hints:   ["We are adding two numbers: 41 and 6.", "Add the ones: 1 + 6 = 7. Keep 7 in the ones place.", "Add the tens: 4 + 0 = 4.", "The sum is 41 + 6 = 47."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 8b63130b3313e98a78fc  seed 607  [read_mcq]
+      stem:    🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀 — There are 11 items.
+🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀 — 11 more items are added.
+How many total items are there?
+      answer:  22
+      options: 11 / 23 / 21 / 22
+      hints:   ["We are adding two numbers: 11 and 11.", "Add the ones: 1 + 1 = 2. Keep 2 in the ones place.", "Add the tens: 1 + 1 = 2.", "The sum is 11 + 11 = 22."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 28, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "+", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀"], "distinct_colours": ["hsl(var(--text-muted)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample b929d42a3b1f3814f4f4  seed 700  [mcq]
+      stem:    One group has 30 items and another group has 30 items. If you put them together, how many items are there in all?
+      answer:  60
+      options: 60 / 61 / 70 / 59
+      hints:   ["We are adding two numbers: 30 and 30.", "Add the ones: 0 + 0 = 0. Keep 0 in the ones place.", "Add the tens: 3 + 3 = 6.", "The sum is 30 + 30 = 60."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 7a076e2974c16b15cfdb  seed 701  [read_mcq]
+      stem:    (Large group of 52 items) — There are 52 items.
+💃💃💃 — 3 more items are added.
+How many total items are there?
+      answer:  55
+      options: 54 / 55 / 3 / 52
+      hints:   ["We are adding two numbers: 52 and 3.", "Add the ones: 2 + 3 = 5. Keep 5 in the ones place.", "Add the tens: 5 + 0 = 5.", "The sum is 52 + 3 = 55."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 30, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["🛍️", "10x 💃", "🛍️", "10x 💃", "🛍️", "10x 💃", "🛍️", "10x 💃", "🛍️", "10x 💃", "💃", "1x 💃", "💃", "1x 💃", "and", "💃", "💃", "💃"], "distinct_colours": ["hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text-muted)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample cb1441c997db18efb152  seed 702  [read_mcq]
+      stem:    🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀 — There are 14 items.
+🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀 — 11 more items are added.
+How many total items are there?
+      answer:  25
+      options: 25 / 3 / 24 / 26
+      hints:   ["We are adding two numbers: 14 and 11.", "Add the ones: 4 + 1 = 5. Keep 5 in the ones place.", "Add the tens: 1 + 1 = 2.", "The sum is 14 + 11 = 25."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 31, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "and", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀"], "distinct_colours": ["hsl(var(--text-muted)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 488f90153e64685b50c9  seed 800  [read_mcq]
+      stem:    (Large group of 60 items) — There are 60 items.
+🐕🐕🐕🐕🐕🐕🐕 — 7 more items are added.
+How many total items are there?
+      answer:  67
+      options: 68 / 66 / 67 / 60
+      hints:   ["We are adding two numbers: 60 and 7.", "Add the ones: 0 + 7 = 7. Keep 7 in the ones place.", "Add the tens: 6 + 0 = 6.", "The sum is 60 + 7 = 67."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 31, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["🛍️", "10x 🐕", "🛍️", "10x 🐕", "🛍️", "10x 🐕", "🛍️", "10x 🐕", "🛍️", "10x 🐕", "🛍️", "10x 🐕", "+", "🐕", "🐕", "🐕", "🐕", "🐕", "🐕", "🐕"], "distinct_colours": ["hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text-muted)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample afff2855a81cadc51ea8  seed 801  [read_mcq]
+      stem:    🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀 — There are 19 items.
+(Large group of 80 items) — 80 more items are added.
+How many total items are there?
+      answer:  99
+      options: 19 / 99 / 100 / 98
+      hints:   ["We are adding two numbers: 19 and 80.", "Add the ones: 9 + 0 = 9. Keep 9 in the ones place.", "Add the tens: 1 + 8 = 9.", "The sum is 19 + 80 = 99."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 49, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "🏀", "+", "🛍️", "10x 🏀", "🛍️", "10x 🏀", "🛍️", "10x 🏀", "🛍️", "10x 🏀", "🛍️", "10x 🏀", "🛍️", "10x 🏀", "🛍️", "10x 🏀", "🛍️", "10x 🏀"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--card-bg)", "hsl(var(--border-color)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 5f1691943d26f1ddff69  seed 900  [mcq]
+      stem:    One group has 1 item and another group has 1 item. If you put them together, how many items are there in all?
+      answer:  2
+      options: 12 / 1 / 3 / 2
+      hints:   ["We are adding two numbers: 1 and 1.", "Add the ones: 1 + 1 = 2. Keep 2 in the ones place.", "The sum is 1 + 1 = 2."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample e394b393434fc79d47cc  seed 901  [read_mcq]
+      stem:    The dot is at 1 and it moves forward 1 number. Starting from 1, just count up 1 number. Which number will the dot land on?
+      answer:  2
+      options: 12 / 3 / 1 / 2
+      hints:   ["We are adding two numbers: 1 and 1.", "Add the ones: 1 + 1 = 2. Keep 2 in the ones place.", "The sum is 1 + 1 = 2."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 31, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "5", "10", "15", "20"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 16e693eeb9dc63fc1072  seed 1000  [set_fill_in_blank]
+      stem:    Show 61 + 12 on the number line.
+      answer:  73
+      hints:   ["We are adding two numbers: 61 and 12.", "Add the ones: 1 + 2 = 3. Keep 3 in the ones place.", "Add the tens: 6 + 1 = 7.", "The sum is 61 + 12 = 73."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "hint_gated"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 19, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["50", "60", "70", "80", "Your answer: Position", "65", "Click track, drag dot, or use ← → arrow keys"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample e10d8121c2fa5dec374e  seed 1001  [read_mcq]
+      stem:    (Large group of 55 items) — There are 55 items.
+✝️✝️✝️✝️ — 4 more items are added.
+How many total items are there?
+      answer:  59
+      options: 59 / 55 / 4 / 51
+      hints:   ["We are adding two numbers: 55 and 4.", "Add the ones: 5 + 4 = 9. Keep 9 in the ones place.", "Add the tens: 5 + 0 = 5.", "The sum is 55 + 4 = 59."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "EmojiPictorial", "interaction_mode": "read", "answer_collection": "mcq", "experience": "mastery_drill"}
+      visual:  EmojiPictorial
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "EmojiPictorial", "element_count": 40, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["🛍️", "10x ✝️", "🛍️", "10x ✝️", "🛍️", "10x ✝️", "🛍️", "10x ✝️", "🛍️", "10x ✝️", "✝️", "1x ✝️", "✝️", "1x ✝️", "✝️", "1x ✝️", "✝️", "1x ✝️", "✝️", "1x ✝️", "and", "✝️", "✝️", "✝️", "✝️"], "distinct_colours": ["hsl(var(--card-bg)", "hsl(var(--border-color)", "hsl(var(--text-muted)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample c7b4eb991ad5975cbdd7  seed 1002  [mcq]
+      stem:    Start at 30. Count up 2 more. What number do you land on?
+      answer:  32
+      options: 42 / 32 / 31 / 33
+      hints:   ["We are adding two numbers: 30 and 2.", "Add the ones: 0 + 2 = 2. Keep 2 in the ones place.", "Add the tens: 3 + 0 = 3.", "The sum is 30 + 2 = 32."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "scaffolded"}
+

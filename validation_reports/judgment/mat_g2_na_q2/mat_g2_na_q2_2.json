@@ -44,10 +44,10 @@
       "clause": "with and without regrouping"
     }
   ],
-  "packet_digest": "2b876ec3d297ccfce28da4d599c21fed72f2389f07047e365dedf5c3818ea9c3",
+  "packet_digest": "b5d84364dd46dfbe2d2473510bc54e7a086ccb72480f8163df8399d30a1b9e18",
   "sampling_version": "phase2-stratified-v2-rendered-visual",
-  "reviewed_by": "blind-reviewer-haiku45-pe9-mat_g2_na_q2_2-20260930",
-  "review_date": "2026-09-30",
+  "reviewed_by": "blind-reviewer-haiku45-w2x2-mat_g2_na_q2_2-20261003",
+  "review_date": "2026-10-03",
   "blind": true,
   "sample_seeds": [
     42,
@@ -183,12 +183,12 @@
       "resolved_answer": 402,
       "hints": [
         "We are adding two numbers: 57 and 345.",
-        "Add the ones: 7 + 5 = 12. Keep 2 in the ones place and carry over 1 ten.",
-        "Add the tens: 5 + 4 + 1 (carried) = 10.",
+        "Add the ones: 7 + 5 = 12. Keep 2 in the ones place and regroup 1 ten.",
+        "Add the tens: 5 + 4 + 1 (regrouped) = 10.",
         "The sum is 57 + 345 = 402."
       ],
       "sample_id": "3959b6d9583b84187a4b",
-      "replay_digest": "e8087d5ffef6d5a0a70794b051991dff56a5d022387aa3d6e1af52b5af9a4964"
+      "replay_digest": "6b6c408858ec898ef16ba75d6bd8b1e9ec4453b7d2ad7b0465dcc795899df051"
     },
     {
       "node_id": "mat_g2_na_q2_2",
@@ -1419,12 +1419,12 @@
       "resolved_answer": 1000,
       "hints": [
         "We are adding two numbers: 975 and 25.",
-        "Add the ones: 5 + 5 = 10. Keep 0 in the ones place and carry over 1 ten.",
-        "Add the tens: 7 + 2 + 1 (carried) = 10.",
+        "Add the ones: 5 + 5 = 10. Keep 0 in the ones place and regroup 1 ten.",
+        "Add the tens: 7 + 2 + 1 (regrouped) = 10.",
         "The sum is 975 + 25 = 1000."
       ],
       "sample_id": "58f888133197772251cd",
-      "replay_digest": "a857d3e977edef9884f7538c6a9afb69c6c2af06ccf6ed7a0a6f3b9dc73718ef"
+      "replay_digest": "58b407ae569109ebcb0a2a95771e2069b3977a3da6c8f3f40c250afd5397bd08"
     },
     {
       "node_id": "mat_g2_na_q2_2",
@@ -1457,12 +1457,12 @@
       },
       "hints": [
         "We are adding two numbers: 248 and 162.",
-        "Add the ones: 8 + 2 = 10. Keep 0 in the ones place and carry over 1 ten.",
-        "Add the tens: 4 + 6 + 1 (carried) = 11.",
+        "Add the ones: 8 + 2 = 10. Keep 0 in the ones place and regroup 1 ten.",
+        "Add the tens: 4 + 6 + 1 (regrouped) = 11.",
         "The sum is 248 + 162 = 410."
       ],
       "sample_id": "ba06100028e1885fa7b8",
-      "replay_digest": "2f88cb2f9f7362f7e90a9b855ab738267c224ea25aad648c5cac0f43c42430d7"
+      "replay_digest": "38793f69154c2178d473c811cbf407e799ebb538387eca813408f8869010fe5d"
     },
     {
       "node_id": "mat_g2_na_q2_2",
@@ -2625,12 +2625,12 @@
       "resolved_answer": 937,
       "hints": [
         "We are adding two numbers: 679 and 258.",
-        "Add the ones: 9 + 8 = 17. Keep 7 in the ones place and carry over 1 ten.",
-        "Add the tens: 7 + 5 + 1 (carried) = 13.",
+        "Add the ones: 9 + 8 = 17. Keep 7 in the ones place and regroup 1 ten.",
+        "Add the tens: 7 + 5 + 1 (regrouped) = 13.",
         "The sum is 679 + 258 = 937."
       ],
       "sample_id": "33000d837ba225c3ea4b",
-      "replay_digest": "3951f70a06ddad1d05f322722e4f0b9a78c606ae86f6c2b2a2d16b94972a9cc5"
+      "replay_digest": "6245b76c3ed5a101e1124d0262553cfbca03c957d6e3fdc2b98e37a05751ef14"
     },
     {
       "node_id": "mat_g2_na_q2_2",
@@ -2813,12 +2813,12 @@
       "resolved_answer": false,
       "hints": [
         "We are adding two numbers: 807 and 59.",
-        "Add the ones: 7 + 9 = 16. Keep 6 in the ones place and carry over 1 ten.",
-        "Add the tens: 0 + 5 + 1 (carried) = 6.",
+        "Add the ones: 7 + 9 = 16. Keep 6 in the ones place and regroup 1 ten.",
+        "Add the tens: 0 + 5 + 1 (regrouped) = 6.",
         "The sum is 807 + 59 = 866."
       ],
       "sample_id": "982c8a1dc5e455a78729",
-      "replay_digest": "aed6b92b0a5aae67d751ee46d5738fc82701142f72eb71f6f1af6658cbe23962"
+      "replay_digest": "aff0d5b382d45da8a84fc795bb33e133813b1a01fe9e5f033ab88bd92f6838c2"
     },
     {
       "node_id": "mat_g2_na_q2_2",
@@ -2915,974 +2915,974 @@
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The stem clearly directs students to count up 345 from starting point 57. The task is unambiguous: find the landing number after incrementing by the specified amount. No confusion exists regarding what calculation is required or how to interpret the direction."
+          "reasoning": "The directive to start at fifty-seven and count up three hundred forty-five more unambiguously conveys addition. The mathematical operation, target value, and expected procedure are all transparently communicated without competing interpretations."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Counting up is a contextually familiar activity for Grade 2 learners. The scenario of starting at a number and counting forward makes logical sense. The task structure with starting point and increment aligns with authentic counting experiences students encounter in classroom and real-world settings."
+          "reasoning": "Counting-up scenarios are authentic learning contexts for second-grade number sense. The operation and result cohere logically: beginning from a starting position and advancing by an increment is a coherent real-world model for addition behavior."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The language is simple and direct for Grade 2 students. Starting point, count up instruction, and landing question are presented in age-appropriate vocabulary. The four multiple-choice options allow learners to select their answer clearly, with distractors that reflect common computation errors."
+          "reasoning": "Language and phrasing are direct and familiar to early elementary learners. The stem avoids extraneous complexity and uses straightforward directional language appropriate for the target grade level."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The arithmetic is correct: 57+345 equals 402. Hint equations hold true: 7+5=12, 5+4+1=10 in the tens column. However, the hints skip explicitly explaining the hundreds place addition (3+0+1), which is a minor gap in pedagogical completeness for a three-digit problem but does not contradict the mathematics shown."
+          "reasoning": "Fifty-seven plus three hundred forty-five correctly yields four hundred two. All provided hints validly decompose the operation into ones and tens place calculations, correctly identifying regrouping of the tens position. Distractors in options represent plausible computational errors."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe9-mat_g2_na_q2_2-20260930",
-      "dispatch_id": "s5-phaseE-claude-w9-haiku45-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g2_na_q2_2-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g2_na_q2_2:mat_g2_na_q2_2"
     },
     {
       "sample_id": "56e12b0991185b848085",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The true-false format presents a clear claim: the answer to the purchase problem is 672. Students must evaluate this specific assertion. No ambiguity exists about what is being asked or what response format is expected from the learner in this monetary context."
+          "reasoning": "The monetary purchase scenario is unambiguous: two items are bought, their prices are stated, and the question asks for total spending. No alternative interpretation of the task is viable."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Shopping scenario with pencil and eraser purchases is contextually familiar to Grade 2 Filipino learners. The activity of calculating total spending when buying two items reflects authentic real-world experience. Names Nanding is culturally relevant and adds to contextual appropriateness."
+          "reasoning": "Purchasing items and calculating total cost is a foundational real-world application of addition for young learners. The scenario is authentic and contextually grounded in familiar consumer behavior."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The problem statement is clear about two items purchased with specific prices. The claim of 672 pesos is presented straightforwardly for judgment. True-false response options are simple and unambiguous for this grade level. The currency symbol and monetary amount are easily understood by Grade 2 students."
+          "reasoning": "The names, objects, prices, and the question of total spending are presented in clear, age-appropriate language. Learners can readily understand the transactional frame."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The correct sum is 784+112=896, making the claimed answer of 672 indeed false. Hint equations check: 4+2=6 and 8+1=9 are correct for ones and tens places. The answer judgment in the stem correctly identifies this as false, with the correct value of 896 supported by the mathematical operations shown."
+          "reasoning": "Seven hundred eighty-four plus one hundred twelve equals eight hundred ninety-six, not six hundred seventy-two. The false assertion provided is correctly identified as false by learners. Hints accurately decompose the calculation with correct place-value reasoning."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe9-mat_g2_na_q2_2-20260930",
-      "dispatch_id": "s5-phaseE-claude-w9-haiku45-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g2_na_q2_2-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g2_na_q2_2:mat_g2_na_q2_2"
     },
     {
       "sample_id": "84ae88c250ce97224e79",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The error-detect format presents a solved problem and asks learners to judge correctness. The question is clear: evaluate whether Rico's answer of 624 is correct. No ambiguity about what judgment is being requested or how to respond to this mathematical evaluation task."
+          "reasoning": "The error-detection frame is clear: a person solves a problem, offers an answer, and learners must judge correctness. No ambiguity exists regarding what must be evaluated."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The scenario involves Coach Nora receiving money from Nanay, which reflects authentic monetary transactions in Filipino family contexts. The problem structure of determining total money after receiving additional funds is contextually valid and relatable for Grade 2 learners."
+          "reasoning": "Receiving money and calculating total funds is a realistic and appropriate context. The scenario of Coach Nora accumulating money through gift-giving is coherent."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The problem setup is presented clearly with two monetary amounts and an action of receiving more money. The response format asking whether Rico is correct is age-appropriate and easy to understand. The context uses culturally familiar name and relationship that supports learner comprehension."
+          "reasoning": "The scenario is stated plainly: Coach Nora had money, received more, and the question asks for the total. Language is direct and accessible."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The calculation is correct: 144+480=624, making Rico's answer indeed accurate. Hints properly show the addition steps: 4+0=4 in ones, 4+8=12 in tens. The error-detect format correctly identifies that no error is present, with the correct value matching Rico's stated answer of 624."
+          "reasoning": "One hundred forty-four plus four hundred eighty correctly yields six hundred twenty-four. The provided answer of six hundred twenty-four is accurate, and hints correctly guide through place-value addition without regrouping needed in this instance."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe9-mat_g2_na_q2_2-20260930",
-      "dispatch_id": "s5-phaseE-claude-w9-haiku45-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g2_na_q2_2-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g2_na_q2_2:mat_g2_na_q2_2"
     },
     {
       "sample_id": "375e9a674b43afda036b",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The read-mcq format asks how much money Ate Gab has in total when combining two pocket amounts. The question is unambiguous: determine the total from two identical peso amounts. The visual number line and answer options are clearly presented for learner selection."
+          "reasoning": "The question asks for total money across two locations, with a visual number line supporting the context. The operation is unambiguously addition."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The scenario of having money in two pockets is contextually realistic for young learners. Combining pocket money to find total is an authentic financial task. The character name Ate Gab and the setting are culturally appropriate for Grade 2 Filipino students."
+          "reasoning": "Money distributed across pockets and summed for a total is a valid real-world scenario for second graders learning to combine monetary quantities."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The problem asks a straightforward question about total money from two amounts. The read-mcq format with accompanying visual supports learner understanding. The monetary amounts and the question structure are presented in clear, grade-appropriate language suitable for independent learner interpretation."
+          "reasoning": "The stem is brief and clear: two amounts in separate pockets are identified, and the learner must find the total. The visual representation reinforces understanding."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The arithmetic is correct: 20+20=40 pesos total. The hints show step-by-step accumulation: starting at 20, adding 20 more reaches 40. The visual number line with increments from 0 to 60 appropriately supports the addition. The answer option 40 is correctly identified as the solution among viable-appearing alternatives."
+          "reasoning": "Twenty plus twenty correctly equals forty. Hints track the accumulation process accurately, showing intermediate sums and final totals consistently."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe9-mat_g2_na_q2_2-20260930",
-      "dispatch_id": "s5-phaseE-claude-w9-haiku45-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g2_na_q2_2-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g2_na_q2_2:mat_g2_na_q2_2"
     },
     {
       "sample_id": "f3178a63e822dccf4618",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The cloze format presents a clear money problem asking how much total money Ate Joy has in both pockets. The question structure is straightforward: combine two monetary amounts. The response format requires selecting or entering the correct sum from provided options."
+          "reasoning": "The cloze format with a missing sum is clear in its demand: add the two monetary amounts and identify the total."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The scenario of having money distributed across two pockets and determining combined total is contextually appropriate and familiar to Grade 2 learners. The monetary amounts are realistic for the grade level. The character name Ate Joy reflects cultural naming conventions students recognize."
+          "reasoning": "Accumulating money saved on successive days is authentic and age-appropriate, modeling real saving behavior."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The problem is presented in simple, direct language appropriate for Grade 2. Students must identify total money from two specified amounts. The cloze response format with four numeric options allows clear demonstration of understanding. The phrasing how much money does Ate Joy have in total leaves no ambiguity about the task."
+          "reasoning": "The scenario and question are presented straightforwardly, using familiar language and contexts suitable for grade two."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The sum is correct: 100+556=656. Hints demonstrate step-by-step accumulation from peso100 to peso656. The answer option 656 matches the correct solution. Mathematical operations shown in hints align with the stated answer, though like other three-digit problems the hints omit explicit hundreds place notation."
+          "reasoning": "One hundred plus five hundred fifty-six equals six hundred fifty-six. The calculation, hints, and options all align correctly."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe9-mat_g2_na_q2_2-20260930",
-      "dispatch_id": "s5-phaseE-claude-w9-haiku45-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g2_na_q2_2-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g2_na_q2_2:mat_g2_na_q2_2"
     },
     {
       "sample_id": "9cf332415aafab808ad9",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The read-mcq format with visual support asks clearly how much total money Kuya Ton has combining two pocket amounts. The task of finding combined monetary total is unambiguous. Visual representation through peso money graphics adds clarity to the monetary context."
+          "reasoning": "The visual-supported read_mcq format clearly asks for a total money amount across two pockets using a visual peso representation."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Money distribution across two pockets is realistic and contextually sound for Grade 2 Filipino learners. The peso currency with visual money representation aligns with authentic Philippine learner experiences. The scenario of combining money from different locations is a practical, meaningful mathematical application."
+          "reasoning": "The scenario of money in separate pockets is realistic and provides appropriate context for addition."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The stem clearly states two amounts in two pockets and asks for the total. The peso money visual representation supports understanding of monetary values. Answer options are clearly presented as whole numbers. The read-mcq format with visual support makes the problem accessible to Grade 2 independent learners."
+          "reasoning": "Visual support via peso currency representation, combined with clear language, makes the task transparent to learners."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The arithmetic is correct: 100+670=770. Hints show accumulation progression from peso100 to peso770. The visual representation displays peso bills that correspond to the amounts being added. The answer option 770 correctly represents the mathematical solution with alternative distractors reflecting plausible computation errors."
+          "reasoning": "One hundred plus six hundred seventy correctly yields seven hundred seventy. Visual representation and hints coordinate properly."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe9-mat_g2_na_q2_2-20260930",
-      "dispatch_id": "s5-phaseE-claude-w9-haiku45-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g2_na_q2_2-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g2_na_q2_2:mat_g2_na_q2_2"
     },
     {
       "sample_id": "38f437260b42defd6d98",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The read-mcq format asks how much money Ate Sam saved in total across two days. The task is clear: combine savings from two specified dates to find the total. Visual number line representation and answer options provide unambiguous response choices."
+          "reasoning": "The read_mcq asks for total savings accumulated over two days without any competing interpretations."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The scenario of saving money on different days is contextually meaningful for Grade 2 learners learning about financial responsibility. Days of the week provide temporal structure familiar to students. The monetary amounts and savings concept are appropriate and relatable for this age group."
+          "reasoning": "Daily savings accumulation over time is a realistic and developmentally appropriate context for addition practice."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The problem clearly presents two savings amounts on two days and asks for the combined total. The read-mcq format with accompanying number line visual supports learner understanding. Language is simple and grade-appropriate for independent interpretation by Grade 2 students."
+          "reasoning": "The scenario uses natural names and situations familiar to learners, with clear progression from one day to the next."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The sum is correct: 200+705=905. Hints show step-by-step addition reaching peso905. The number line visual with marks from 100 to 1000 appropriately represents the addition context. The answer 905 is correctly identified among options that include plausible incorrect sums learners might generate."
+          "reasoning": "Two hundred plus seven hundred five correctly equals nine hundred five, with all hints and options aligned properly."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe9-mat_g2_na_q2_2-20260930",
-      "dispatch_id": "s5-phaseE-claude-w9-haiku45-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g2_na_q2_2-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g2_na_q2_2:mat_g2_na_q2_2"
     },
     {
       "sample_id": "913c95ff90bba3f9caf5",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The mcq format presents a purchase scenario asking total spending on two items. The question is clear and unambiguous: how much did Kuya Renz spend in total. Answer options provide four distinct numeric choices for learner selection."
+          "reasoning": "The question clearly asks for total spent across two purchased items without ambiguity."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The shopping scenario with pencil and eraser purchases is contextually appropriate for Grade 2 learners. Buying school supplies is a familiar real-world activity. The monetary context reflects authentic Filipino consumer experience with peso currency."
+          "reasoning": "Purchasing two items and calculating total cost is an appropriate and realistic context for addition problems."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The problem simply states two items with prices and asks for total spending. Language is straightforward for Grade 2 comprehension. The mcq format with four options allows clear demonstration of calculation ability. Response options are unambiguous whole-number amounts."
+          "reasoning": "Item names and prices are stated plainly, with a straightforward request for total spending."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The calculation is correct: 500+500=1000. This represents the boundary case of the competency range. Hints show accumulation from peso500 to peso1000. The answer 1000 is correctly identified with distractors including near-misses and order-of-magnitude errors that reflect common learner mistakes."
+          "reasoning": "Five hundred plus five hundred correctly equals one thousand, precisely at the upper boundary specified by the competency. Calculation and options are accurate."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe9-mat_g2_na_q2_2-20260930",
-      "dispatch_id": "s5-phaseE-claude-w9-haiku45-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g2_na_q2_2-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g2_na_q2_2:mat_g2_na_q2_2"
     },
     {
       "sample_id": "2426c8ef66a8b152145c",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The read-mcq format asks clearly how much Kuya Tads saved altogether across two days. The problem structure is unambiguous: combine savings from Monday and Tuesday to find total. Answer options and visual support provide clear response choices."
+          "reasoning": "The read_mcq with visual support clearly requests the total money saved across two days."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Daily savings over two days reflects authentic financial behavior appropriate for Grade 2 learners beginning to learn money management concepts. The day-by-day progression is contextually realistic. Character name Kuya Tads and the peso currency align with Filipino learner experiences."
+          "reasoning": "Accumulating savings over multiple days is a valid, relatable scenario for young learners."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The stem presents two daily savings amounts and asks for the combined total in straightforward, age-appropriate language. The read-mcq format with peso money visual representation supports comprehension. Response options are presented clearly for learner selection."
+          "reasoning": "The scenario and visual representation work together to make the task transparent and accessible."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The sum is correct: 50+61=111. Hints show step-by-step progression from peso50 to peso111. The peso money visual with bills and coins appropriately represents the monetary values being combined. The answer 111 is correctly identified with distractors reflecting likely computational errors."
+          "reasoning": "Fifty plus sixty-one correctly yields one hundred eleven, with regrouping in the tens place appropriately shown in hints."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe9-mat_g2_na_q2_2-20260930",
-      "dispatch_id": "s5-phaseE-claude-w9-haiku45-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g2_na_q2_2-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g2_na_q2_2:mat_g2_na_q2_2"
     },
     {
       "sample_id": "b325620cc5d05fda1c0d",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The cloze format presents a scenario where Coach Roel receives zero additional money. The task is clear: determine total money when adding 0 to 750. The response format with provided options allows unambiguous learner demonstration of understanding the identity property of addition."
+          "reasoning": "The cloze format asks for the total when zero is added to a starting amount, which is unambiguous."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Receiving money from Nanay is contextually appropriate within Filipino family structures. The scenario where no additional money is received still represents a valid real-world situation. The edge case of adding zero has logical validity despite being a special case in the competency domain."
+          "reasoning": "Receiving zero additional funds while starting with money is a logically valid scenario, though pedagogically designed to reinforce the identity property."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The problem clearly states an initial amount and that zero additional money is received, leading to the question of total amount. Language is simple and appropriate for Grade 2 independent learners. The cloze response format with four numeric options provides clear response choices."
+          "reasoning": "The scenario is stated simply: someone has money and receives none more, so the total is unchanged."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The result is correct: 750+0=750, correctly demonstrating the additive identity property where adding zero preserves the original value. Hints show place-value analysis: 0+0 in ones, 5+0 in tens. This edge case mathematically confirms that adding zero leaves the number unchanged."
+          "reasoning": "Seven hundred fifty plus zero equals seven hundred fifty, demonstrating the additive identity property correctly."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe9-mat_g2_na_q2_2-20260930",
-      "dispatch_id": "s5-phaseE-claude-w9-haiku45-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g2_na_q2_2-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g2_na_q2_2:mat_g2_na_q2_2"
     },
     {
       "sample_id": "c8c2d4d390abd0b4784b",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The read-mcq format asks how much Sir Rez saved altogether on two days. The task is unambiguous: combine Monday and Tuesday savings to find total. The visual number line and answer options provide clear, distinct response choices for learner selection."
+          "reasoning": "The read_mcq with visual support clearly asks for total savings across two days without ambiguity."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Saving small amounts across two days is contextually appropriate for Grade 2 learners learning financial habits. The day-by-day progression reflects how children might accumulate savings. Character name Sir Rez and the monetary context are culturally familiar to Filipino students."
+          "reasoning": "Accumulating small amounts of savings over successive days is realistic and appropriate for grade two."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The stem presents two daily savings amounts and asks for the total in clear, direct language. The read-mcq format with accompanying number line visual supports learner understanding. Response options are presented as simple numeric values appropriate for Grade 2 interpretation."
+          "reasoning": "Language is direct and the visual number line provides additional support for understanding the addition task."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The calculation is correct: 20+30=50. Hints show step-by-step progression from peso20 to peso50. The number line visual with increments from 0 to 70 provides appropriate scale for representing this addition. The answer 50 is correctly identified among options that include common miscalculations."
+          "reasoning": "Twenty plus thirty correctly equals fifty, with hints accurately reflecting the step-by-step addition."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe9-mat_g2_na_q2_2-20260930",
-      "dispatch_id": "s5-phaseE-claude-w9-haiku45-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g2_na_q2_2-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g2_na_q2_2:mat_g2_na_q2_2"
     },
     {
       "sample_id": "8b5d4f3b20c1197ad4b3",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The read-mcq format asks clearly how much Ate Beng saved altogether over two days. The problem structure unambiguously requests the total of two specified daily amounts. Visual number representation and answer options provide clear response choices without confusion about the task."
+          "reasoning": "The read_mcq with visual representation asks unambiguously for total money across two pockets."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Saving money on different days is contextually realistic and appropriate for Grade 2 learners developing financial literacy. The amounts saved represent realistic small sums a child might accumulate. The peso currency and character name reflect authentic Filipino contexts."
+          "reasoning": "Money distributed between pockets is a valid scenario for practicing addition of monetary values."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The stem clearly presents two daily savings amounts and asks for the combined total. Language is simple and direct for Grade 2 comprehension. The read-mcq format with peso money visual representation supports independent learner understanding. Response options are presented clearly as numeric amounts."
+          "reasoning": "The scenario is presented with clear language and supported by visual currency representation."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The sum is correct: 10+500=510. Hints demonstrate the step-by-step accumulation from peso10 to peso510. The peso money visual with bills and coins appropriately represents the amounts being combined. The answer 510 is correctly identified with distractors reflecting plausible computational errors."
+          "reasoning": "Ten plus five hundred correctly yields five hundred ten, with visual and hint sequences properly aligned."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe9-mat_g2_na_q2_2-20260930",
-      "dispatch_id": "s5-phaseE-claude-w9-haiku45-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g2_na_q2_2-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g2_na_q2_2:mat_g2_na_q2_2"
     },
     {
       "sample_id": "753dfb1a5958642ecbed",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The read-mcq format asks how much money Kuya Renz has when combining amounts from two pockets. The question is unambiguous: determine the combined total. Visual number line representation and answer options provide clear, distinct response choices."
+          "reasoning": "The question asks for total money in two pockets without ambiguity, using a number line visual."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Carrying money in two pockets and determining combined total is contextually realistic for Grade 2 learners. The scenario reflects how people naturally distribute cash across pockets. The monetary amounts are appropriate for Grade 2 financial understanding."
+          "reasoning": "The two-pocket scenario is logically sound and contextually appropriate for addition practice."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The problem presents two pocket amounts and asks for the total in simple, clear language. The read-mcq format with number line visual supports learner comprehension. Response options are presented as unambiguous numeric values easy for Grade 2 students to interpret."
+          "reasoning": "The stem is brief and direct, with visual support via number line to aid comprehension."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The arithmetic is correct: 10+500=510. Hints show accumulation from peso10 to peso510. The number line visual with marks from 0 to 600 provides appropriate scale for this addition problem. The answer 510 is correctly identified among options that include near-misses and other distractors."
+          "reasoning": "Ten plus five hundred correctly equals five hundred ten, with accurate hints and plausible distractors."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe9-mat_g2_na_q2_2-20260930",
-      "dispatch_id": "s5-phaseE-claude-w9-haiku45-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g2_na_q2_2-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g2_na_q2_2:mat_g2_na_q2_2"
     },
     {
       "sample_id": "03941240926dd68b3b5e",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The read-mcq format presents a clear scenario asking total money when combining two pocket amounts. The question is unambiguous about what calculation is needed: finding the sum of two values. Answer options and visual support provide distinct, unambiguous response choices."
+          "reasoning": "The read_mcq asks for a total of money from two pockets with no competing interpretations."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The scenario of having money distributed in two pockets is contextually familiar to Grade 2 learners. Determining combined money is a practical, meaningful real-world mathematical application. Character names and the peso currency reflect authentic Filipino contexts."
+          "reasoning": "The monetary scenario with two pockets is realistic and suitable for addition practice."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The stem clearly identifies two pocket amounts and asks for the total. Language is straightforward and appropriate for Grade 2 independent learners. The read-mcq format with peso money visual representation supports understanding. Response options are presented clearly as numeric amounts."
+          "reasoning": "The scenario uses familiar language and the visual peso representation clarifies the currency context."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The calculation is correct: 200+100=300. Hints show step-by-step combination from peso200 to peso300. The peso money visual with bills appropriately represents the amounts being combined. The answer 300 is correctly identified with distractors including near-misses and other plausible errors."
+          "reasoning": "Two hundred plus one hundred correctly yields three hundred, with all computational elements accurate."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe9-mat_g2_na_q2_2-20260930",
-      "dispatch_id": "s5-phaseE-claude-w9-haiku45-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g2_na_q2_2-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g2_na_q2_2:mat_g2_na_q2_2"
     },
     {
       "sample_id": "58f888133197772251cd",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The mcq format presents a counting scenario asking what number is reached when counting up 25 from starting point 975. The question is clear and unambiguous about the task: find the ending number after specified increment."
+          "reasoning": "The counting-up scenario clearly requests the final position after advancing a specified number of steps."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Counting up from a given starting point is a contextually appropriate activity for Grade 2 learners. This scenario reflects authentic counting experiences students encounter in classroom settings. The high starting number near 1000 provides realistic context for learners working at the upper end of the competency range."
+          "reasoning": "Starting from a position and advancing by a set amount models addition authentically and is pedagogically sound."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The problem uses simple, direct language to ask students to start at a number and count up. The action requested is clear and unambiguous. The mcq format with four distinct numeric options allows learners to demonstrate their understanding without confusion about response format."
+          "reasoning": "The language is direct and uses familiar directional cues appropriate for second grade."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The sum is correct: 975+25=1000, representing the upper boundary of the competency range. Hints show proper regrouping: 5+5=10 (keep 0, carry 1), then 7+2+1=10 (keep 0, carry 1), resulting in 1000. The boundary case at 1000 is handled correctly with appropriate mathematical explanation."
+          "reasoning": "Nine hundred seventy-five plus twenty-five correctly equals one thousand, at the exact upper boundary of the competency. Regrouping in tens is properly shown."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe9-mat_g2_na_q2_2-20260930",
-      "dispatch_id": "s5-phaseE-claude-w9-haiku45-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g2_na_q2_2-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g2_na_q2_2:mat_g2_na_q2_2"
     },
     {
       "sample_id": "ba06100028e1885fa7b8",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The error-detect format presents Grace's solution to a collection problem and asks learners to evaluate its correctness. The task is clear: judge whether Grace's answer of 410 is correct for combining two item counts. No ambiguity exists about the evaluation task."
+          "reasoning": "The error-detection task is clear: evaluate whether a proposed sum of two quantities is correct."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The scenario of collecting jerseys and sports towels at a barangay court is contextually appropriate for Grade 2 Filipino learners. Community gatherings and item collections represent realistic scenarios. The mathematical task of combining counts is a meaningful application."
+          "reasoning": "Collecting items and combining totals is a realistic scenario, though items rather than money are the focus."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The problem presents a completed solution and asks whether it is correct. The items being counted and their quantities are clearly specified. Language is age-appropriate for Grade 2 learners. The error-detect format is straightforward for learners to understand and respond to."
+          "reasoning": "The scenario is stated plainly, with a direct question about the accuracy of a claimed answer."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The computation is correct: 248+162=410, making Grace's answer indeed accurate. Hints properly show regrouping steps: 8+2=10 (keep 0, carry 1), then 4+6+1=11 (keep 1, carry 1). The answer correctly identifies that no error is present, with the solution matching Grace's stated result."
+          "reasoning": "Two hundred forty-eight plus one hundred sixty-two correctly yields four hundred ten, and the provided answer is accurate. Hints correctly guide through place-value addition with regrouping."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe9-mat_g2_na_q2_2-20260930",
-      "dispatch_id": "s5-phaseE-claude-w9-haiku45-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g2_na_q2_2-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g2_na_q2_2:mat_g2_na_q2_2"
     },
     {
       "sample_id": "b77b47a7e6818696a2a0",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The true-false format presents a specific monetary claim: that buying a pencil for 300 pesos and an eraser for 180 pesos costs 300 pesos total. The task is unambiguous: evaluate this specific assertion about total spending."
+          "reasoning": "The true_false format asks whether a specific sum is correct, with no competing interpretations possible."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The scenario of making two purchases at stated prices is contextually realistic for Grade 2 Filipino learners. The true-false format asking about total cost reflects authentic mathematical thinking when shopping. The character name Boyong is culturally familiar."
+          "reasoning": "A purchase of two items with stated prices is a realistic context for addition practice."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The problem clearly states two items with specific prices and a proposed total. The true-false response format is simple and age-appropriate. Language is direct and easy for Grade 2 learners to understand. The proposed answer being the same as one of the individual prices makes the evaluation task clearer."
+          "reasoning": "The scenario, prices, and assertion are presented clearly in age-appropriate language."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The correct sum is 300+180=480, making the claimed answer of 300 indeed false. Hints show the calculation: 0+0=0 in ones, 0+8=8 in tens, implying 3+1=4 in hundreds for the result 480. The answer correctly identifies the claim as false with the proper mathematical sum provided."
+          "reasoning": "Three hundred plus one hundred eighty equals four hundred eighty, not three hundred, so the assertion is correctly identified as false. Hints accurately show the computation."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe9-mat_g2_na_q2_2-20260930",
-      "dispatch_id": "s5-phaseE-claude-w9-haiku45-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g2_na_q2_2-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g2_na_q2_2:mat_g2_na_q2_2"
     },
     {
       "sample_id": "2bdc7aef71778fe5323a",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The cloze format asks how much Ruth saved altogether over two days. The task is unambiguous: combine Monday and Tuesday savings to determine total. The response format with four numeric options provides clear, distinct response choices."
+          "reasoning": "The cloze asks for total money saved over two days with no ambiguity in the task."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The scenario of saving money on consecutive days reflects authentic financial behavior appropriate for Grade 2 learners. Day-by-day savings accumulation is contextually realistic. The monetary amounts are appropriate for the grade level and competency range."
+          "reasoning": "Saving money on successive days is a realistic, age-appropriate scenario for addition."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The problem presents two daily savings amounts and asks for the combined total in clear language. The cloze response format with four numeric options allows learners to demonstrate understanding. The task structure is straightforward for independent Grade 2 learner interpretation."
+          "reasoning": "The scenario is direct and uses familiar language for stating amounts and requests for totals."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The sum is correct: 200+551=751. Hints show step-by-step accumulation from peso200 to peso751. The option 7510 appears as a deliberate distractor representing a common error of appending zeros. The correct answer 751 is appropriately identified among plausible and implausible alternatives."
+          "reasoning": "Two hundred plus five hundred fifty-one correctly yields seven hundred fifty-one, with hints accurately tracking the computation through place values."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe9-mat_g2_na_q2_2-20260930",
-      "dispatch_id": "s5-phaseE-claude-w9-haiku45-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g2_na_q2_2-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g2_na_q2_2:mat_g2_na_q2_2"
     },
     {
       "sample_id": "819927d802b202db429f",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The read-mcq format asks clearly how much Bianca saved altogether across two days. The task is unambiguous: combine daily amounts to find the total. Visual number line and answer options provide distinct, clear response choices."
+          "reasoning": "The read_mcq clearly requests the total money saved across two days using a visual support."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Saving small monetary amounts across two days is contextually appropriate for Grade 2 learners learning about money management. The amounts represent realistic sums children might save. Character name Bianca and peso currency reflect authentic Filipino contexts."
+          "reasoning": "Accumulating savings over time is a realistic and developmentally appropriate context."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The stem clearly presents two daily savings on specific days and asks for the total. Language is simple and age-appropriate for Grade 2 independent learners. The read-mcq format with number line visual support makes the problem accessible. Response options are presented as clear numeric values."
+          "reasoning": "The scenario uses clear language with visual number line support to facilitate understanding."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The calculation is correct: 5+180=185. Hints show accumulation from peso5 to peso185. The number line visual with marks from 0 to 200 provides appropriate scale for this addition. The answer 185 is correctly identified with distractors including near-values and other plausible errors."
+          "reasoning": "Five plus one hundred eighty correctly yields one hundred eighty-five, with regrouping appropriately shown in hints."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe9-mat_g2_na_q2_2-20260930",
-      "dispatch_id": "s5-phaseE-claude-w9-haiku45-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g2_na_q2_2-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g2_na_q2_2:mat_g2_na_q2_2"
     },
     {
       "sample_id": "09168239a3476919d1d9",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The mcq format presents a savings scenario asking total money saved across two days. The question is clear and unambiguous: combine Monday and Tuesday savings. Answer options provide four distinct numeric choices for learner selection."
+          "reasoning": "The multiple-choice question asks for total savings accumulated over two days without ambiguity."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Saving money on different days is contextually realistic for Grade 2 learners developing financial awareness. The scenario reflects authentic behavior where people accumulate money over time. Character name Romel and the peso currency are culturally familiar."
+          "reasoning": "Saving money on successive days and combining totals is a realistic and appropriate learning context."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The problem clearly identifies savings on two days and asks for the total amount. Language is straightforward and appropriate for Grade 2 comprehension. The mcq response format with four options allows clear demonstration of calculation ability. Numeric values are presented unambiguously."
+          "reasoning": "The scenario and question are stated in simple, age-appropriate language."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The sum is correct: 500+131=631. Hints show accumulation from peso500 to peso631. The answer option 631 is correctly identified. The distractor 6310 represents a common error of appending digits. Other options reflect plausible computational mistakes learners might make."
+          "reasoning": "Five hundred plus one hundred thirty-one correctly yields six hundred thirty-one, with options including plausible computational errors."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe9-mat_g2_na_q2_2-20260930",
-      "dispatch_id": "s5-phaseE-claude-w9-haiku45-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g2_na_q2_2-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g2_na_q2_2:mat_g2_na_q2_2"
     },
     {
       "sample_id": "d5717ec2da3bc4496cb5",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The error-detect format presents Noel's solution to a step-climbing problem and asks for correctness evaluation. The task is clear: determine whether 985 is the correct answer for adding 6 to 991. No ambiguity about what judgment is requested."
+          "reasoning": "The error-detection frame asks learners to verify whether an answer to a step-counting problem is correct."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The scenario of climbing steps is contextually appropriate for Grade 2 learners. Physical movement up steps is a familiar, concrete experience. The mathematical task of determining position after climbing mirrors real-world spatial reasoning. The context makes the addition operation meaningful."
+          "reasoning": "Climbing steps and counting upward is a valid real-world context for practicing addition."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The problem clearly states starting position and number of steps climbed. The evaluation of Noel's answer is straightforward. Language is age-appropriate for Grade 2 learners. The error-detect format with yes-no judgment is easy for learners to understand."
+          "reasoning": "The scenario is presented clearly with a direct question about the accuracy of a proposed answer."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The correct answer is 991+6=997, making Noel's answer of 985 indeed incorrect. Hints properly show the calculation: 1+6=7 in ones, then 9+0=9 in tens, with implied hundreds giving 997. The error-detect correctly identifies this as an error with the proper correct value of 997."
+          "reasoning": "Nine hundred ninety-one plus six correctly equals nine hundred ninety-seven, not nine hundred eighty-five. The incorrect answer provided is correctly flagged as erroneous."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe9-mat_g2_na_q2_2-20260930",
-      "dispatch_id": "s5-phaseE-claude-w9-haiku45-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g2_na_q2_2-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g2_na_q2_2:mat_g2_na_q2_2"
     },
     {
       "sample_id": "b6900cba03197c1e5a1c",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The mcq format presents an associative property question asking whether (72+111)+815 equals 72+(111+815). The task is clear: evaluate whether two different groupings of the same three numbers produce the same result. No ambiguity about the comparison being requested."
+          "reasoning": "The question asking whether two grouped additions yield the same result is clear in its structure."
         },
         "contextual_logical_validity": {
-          "verdict": "PASS",
-          "reasoning": "While this item explores a mathematical property rather than a practical scenario, it is contextually valid within the competency's extension to exploring relationships in addition. The three numbers fall within the competency range. The problem has logical validity as a mathematical comparison task."
+          "verdict": "CONCERN",
+          "reasoning": "This sample tests the associative property of addition rather than problem-solving with sums to one thousand. While mathematically valid, it addresses a different cognitive domain focused on abstract properties rather than solving real-world or modeled addition problems within the stated competency scope."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The problem presents two differently-grouped addition expressions and asks whether they are the same. While requiring more abstract reasoning than concrete scenarios, Grade 2 learners working on addition fluency can understand this comparison. The parentheses notation and question are clear for learners at this level."
+          "reasoning": "The language is clear, though the mathematical concept being tested involves abstract property recognition rather than concrete problem-solving."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The arithmetic is correct: both groupings sum to 998, making the answer true. Hints properly show: (72+111)+815 equals 183+815 equaling 998, and 72+(111+815) equals 72+926 equaling 998. The mathematical reasoning supporting the true answer demonstrates the associative property through valid computation."
+          "reasoning": "Both expressions correctly equal nine hundred ninety-eight, and the statement that they are the same is mathematically accurate."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe9-mat_g2_na_q2_2-20260930",
-      "dispatch_id": "s5-phaseE-claude-w9-haiku45-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g2_na_q2_2-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g2_na_q2_2:mat_g2_na_q2_2"
     },
     {
       "sample_id": "cb2d563d2b7f620f17ff",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The mcq format asks whether 934+5 equals 5+716. The comparison is clear: determine if these two sums are the same. The task structure explicitly compares two different addition problems and asks for a same-or-different judgment."
+          "reasoning": "The question structure is syntactically clear: compare two expressions for sameness."
         },
         "contextual_logical_validity": {
-          "verdict": "PASS",
-          "reasoning": "The item explores whether different addends produce different results, a fundamental mathematical understanding. While not a practical scenario, it addresses authentic mathematical reasoning. The numbers and operations fit within the Grade 2 competency scope."
+          "verdict": "CONCERN",
+          "reasoning": "This sample tests comparison of unrelated addition expressions rather than solving problems involving addition to one thousand. Nine hundred thirty-four plus five and five plus seven hundred sixteen are distinct sums, making this a comparative or commutative-type task divorced from authentic problem-solving in the stated domain."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The problem presents two addition expressions using different numbers and asks whether the results are the same. The comparison structure is clear for learners. While more abstract than practical scenarios, Grade 2 learners can interpret the question. The format with answer options supports learner response."
+          "reasoning": "The language structure is accessible, though the underlying task deviates from typical problem-solving frames."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The calculations are correct: 934+5 equals 939 while 5+716 equals 721, making them not the same. The answer false is correct. Hints properly compute both sides and note the results are different. The mathematical reasoning supports the false verdict with accurate arithmetic."
+          "reasoning": "Nine hundred thirty-four plus five equals nine hundred thirty-nine while five plus seven hundred sixteen equals seven hundred twenty-one. The statement that they are the same is correctly answered as false."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe9-mat_g2_na_q2_2-20260930",
-      "dispatch_id": "s5-phaseE-claude-w9-haiku45-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g2_na_q2_2-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g2_na_q2_2:mat_g2_na_q2_2"
     },
     {
       "sample_id": "0a5c438a6f698d66a600",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The mcq format asks how much money Cris has when receiving additional money from Nanay. The question is clear: combine the starting amount with the received amount. Answer options provide unambiguous numeric choices."
+          "reasoning": "The multiple-choice question asking for total money after receiving a gift is unambiguous."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Receiving money from Nanay is contextually appropriate within authentic Filipino family financial interactions. Children receiving money and calculating combined total represents realistic daily experience. The monetary context is meaningful for Grade 2 learners."
+          "reasoning": "Receiving money as a gift and calculating new totals is a realistic scenario appropriate for second-grade addition."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The problem clearly states an initial amount and additional money received, asking for the combined total. Language is straightforward for Grade 2 understanding. The mcq format with four distinct options provides clear response choices. The currency symbol and amounts are easily interpreted."
+          "reasoning": "The scenario uses simple, direct language with clear identification of amounts and the requested total."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The sum is correct: 20+110=130. Hints show step-by-step accumulation from peso20 to peso130. The distractor 1300 represents a common error of appending a zero. Other options reflect plausible computational mistakes. The correct answer 130 is appropriately identified."
+          "reasoning": "Twenty plus one hundred ten correctly yields one hundred thirty, with hints accurately reflecting the step-by-step computation."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe9-mat_g2_na_q2_2-20260930",
-      "dispatch_id": "s5-phaseE-claude-w9-haiku45-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g2_na_q2_2-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g2_na_q2_2:mat_g2_na_q2_2"
     },
     {
       "sample_id": "ed0d43dbc4cbb54a4dc1",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The set_fill_in_blank format asks students to show 951+42 on the number line. The task is unambiguous: identify where to place the answer on the provided visual number line. The response format allows learners to demonstrate their calculation through visual positioning."
+          "reasoning": "The set_fill_in_blank format with a number line visual asks learners to identify where two numbers land when summed."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Using a number line to demonstrate addition is a contextually appropriate instructional strategy for Grade 2 learners developing understanding of quantity and place value. The scenario bridges abstract computation with concrete visual representation. The numbers and operation fit the competency scope."
+          "reasoning": "Locating sums on a number line is an authentic representation of addition as movement and is developmentally appropriate."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The stem asks students to show the sum on a number line, which is a clear, concrete task. The visual representation with marked positions supports learner interpretation. The interactive format allows students to demonstrate understanding through positioning. Language is simple and appropriate."
+          "reasoning": "The visual number line combined with the task description clearly conveys what is being asked."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The sum is correct: 951+42=993. Hints show place-value computation: 1+2=3 in ones, 5+4=9 in tens, with the hundreds digit 9 remaining. The number line spans from 940 to 1000, providing appropriate range for this addition. The answer 993 should be positioned correctly on the scale provided."
+          "reasoning": "Nine hundred fifty-one plus forty-two correctly yields nine hundred ninety-three, with hints accurately guiding through place-value computation."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe9-mat_g2_na_q2_2-20260930",
-      "dispatch_id": "s5-phaseE-claude-w9-haiku45-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g2_na_q2_2-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g2_na_q2_2:mat_g2_na_q2_2"
     },
     {
       "sample_id": "34aa692c491db63238ca",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The mcq format asks the sum of 231 and 96 after providing place-value decomposition of each number. The task is clear: add after considering place values separately. Answer options provide four distinct numeric choices."
+          "reasoning": "The multiple-choice question asks for the sum of two numbers after their place-value decompositions are given."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The problem explicitly connects place-value understanding with addition computation, a pedagogically sound approach for Grade 2 learners. The stem's decomposition reinforces mathematical concepts. The numbers are within the competency range and selected appropriately for instruction."
+          "reasoning": "Breaking numbers into place values and then combining is a fundamental strategy in the addition problem-solving domain."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The problem explicitly decomposes numbers into place values before asking for their sum. This scaffolding supports Grade 2 learner understanding. Language is clear about the task structure. The mcq response format provides unambiguous answer choices. The place-value decomposition aids conceptual clarity."
+          "reasoning": "The place-value decomposition and subsequent request for the sum are presented in clear, instructional language."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The sum is correct: 231+96=327. Hints show the addition: 1+6=7 in ones, 3+9=12 in tens (keep 2, carry 1). The place-value scaffolding supports understanding of regrouping needed in the tens place. The answer 327 is correctly identified among options including common computational errors."
+          "reasoning": "Two hundred thirty-one plus ninety-six correctly yields three hundred twenty-seven, with the computation and regrouping steps accurately explained."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe9-mat_g2_na_q2_2-20260930",
-      "dispatch_id": "s5-phaseE-claude-w9-haiku45-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g2_na_q2_2-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g2_na_q2_2:mat_g2_na_q2_2"
     },
     {
       "sample_id": "fb8d8b8533266ec66b58",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The mcq format presents a purchase scenario asking total spending on two items. The question is clear and unambiguous: determine total cost when buying a pencil and eraser. Answer options provide four distinct numeric choices."
+          "reasoning": "The question asks for total spending on two purchased items without competing interpretations."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The shopping scenario with school supply purchases is contextually authentic for Grade 2 learners. Buying pencils and erasers represents real-world currency usage. The monetary amounts are realistic for this age group's economic experiences."
+          "reasoning": "Purchasing items at stated prices and computing totals is a realistic and appropriate context for addition."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The problem clearly states two items with their prices and asks for total spending. Language is straightforward and age-appropriate. The mcq response format is simple and unambiguous. Currency symbols and numeric amounts are clearly presented for learner interpretation."
+          "reasoning": "Item names, prices, and the request for total spending are all clearly presented."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The calculation is correct: 1+125=126. Hints show step-by-step addition from peso1 to peso126. The distractor 1260 represents a common error of appending digits. Other options reflect plausible computational mistakes. The correct answer 126 is appropriately identified among choices."
+          "reasoning": "One plus one hundred twenty-five correctly yields one hundred twenty-six, with computation accurately shown through hints."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe9-mat_g2_na_q2_2-20260930",
-      "dispatch_id": "s5-phaseE-claude-w9-haiku45-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g2_na_q2_2-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g2_na_q2_2:mat_g2_na_q2_2"
     },
     {
       "sample_id": "e6e23dd868f4857f6549",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The read-mcq format asks how much money Coach Nora has when receiving additional money from Nanay. The task is clear: combine starting amount with received amount. Visual number line and answer options provide unambiguous response choices."
+          "reasoning": "The read_mcq with visual support clearly asks for total money after a gift is received."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Receiving money from family members is contextually appropriate within authentic Philippine experiences. The scenario reflects realistic financial interactions. The amounts and currency are familiar to Grade 2 Filipino learners. The context makes the mathematical operation meaningful."
+          "reasoning": "Receiving money and calculating new balances is a valid addition context for young learners."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The stem clearly identifies a starting amount and money received, asking for the total. Language is simple and direct for Grade 2 comprehension. The read-mcq format with number line visual support aids understanding. Response options are presented as unambiguous numeric values."
+          "reasoning": "The scenario and visual number line support combine to clearly communicate the task."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The sum is correct: 5+550=555. Hints show accumulation from peso5 to peso555. The number line visual with marks from 0 to 600 provides appropriate scale. The answer 555 is correctly identified with distractors including near-values and other plausible errors."
+          "reasoning": "Five plus five hundred fifty correctly yields five hundred fifty-five, with regrouping properly shown in step-by-step hints."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe9-mat_g2_na_q2_2-20260930",
-      "dispatch_id": "s5-phaseE-claude-w9-haiku45-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g2_na_q2_2-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g2_na_q2_2:mat_g2_na_q2_2"
     },
     {
       "sample_id": "bbbae2c954238abc7430",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The true-false format presents a specific claim about combining two groups of items. The task is unambiguous: evaluate whether 60+600 equals 660. The evaluation request is clear and direct."
+          "reasoning": "The true_false format asks whether combining two groups results in a stated total."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The scenario of combining two groups to find the total is contextually appropriate for Grade 2 learners. The item and group conceptualization makes the operation concrete and meaningful. The numbers are within the competency range."
+          "reasoning": "Combining groups of items is a concrete, real-world context for understanding addition."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The problem simply states quantities of two groups and a proposed total, asking for true-false judgment. Language is straightforward for Grade 2 learners. The true-false response format is simple and age-appropriate. The task structure is clear without unnecessary complexity."
+          "reasoning": "The scenario is stated simply with clear quantities and a direct assertion to evaluate."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The calculation is correct: 60+600=660, making the statement true. Hints show place-value analysis: 0+0=0 in ones, 6+0=6 in tens. The mathematical reasoning supports the true verdict with accurate arithmetic confirmation."
+          "reasoning": "Sixty plus six hundred correctly yields six hundred sixty, and the assertion is accurately judged as true."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe9-mat_g2_na_q2_2-20260930",
-      "dispatch_id": "s5-phaseE-claude-w9-haiku45-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g2_na_q2_2-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g2_na_q2_2:mat_g2_na_q2_2"
     },
     {
       "sample_id": "5bd975aab4bd2c74d3da",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The mcq format asks how many items result from combining two groups. The task is clear and unambiguous: find the total when putting two groups of items together. Answer options provide distinct numeric choices."
+          "reasoning": "The multiple-choice question asks for the total when two groups of items are combined."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Combining two groups to find total quantity is contextually appropriate for Grade 2 learners. The scenario represents authentic problem-solving where children encounter grouping situations. The numbers fit the competency scope meaningfully."
+          "reasoning": "Combining separate groups is a logically valid and pedagogically sound context for addition practice."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The problem clearly presents two groups with specified quantities and asks for the combined total. Language is simple and direct for Grade 2 understanding. The mcq format with four options allows clear demonstration of calculation. Task structure is straightforward."
+          "reasoning": "The scenario is clear, with group sizes stated and the request for total unambiguous."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The sum is correct: 660+240=900. Hints show: 0+0=0 in ones, 6+4=10 in tens, with the hundreds digits combining. The answer 900 is correctly identified. Distractors include near-values and other plausible errors learners might make."
+          "reasoning": "Six hundred sixty plus two hundred forty correctly equals nine hundred, with regrouping appropriately shown."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe9-mat_g2_na_q2_2-20260930",
-      "dispatch_id": "s5-phaseE-claude-w9-haiku45-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g2_na_q2_2-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g2_na_q2_2:mat_g2_na_q2_2"
     },
     {
       "sample_id": "6bef6689572978ce5245",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The mcq format asks the sum of 62 and 0. The task is simple and unambiguous: add zero to 62. This edge case presents a clear, straightforward mathematical comparison. Answer options provide distinct numeric choices."
+          "reasoning": "The simple question asking for the sum of two numbers is unambiguous."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Adding zero to a number, while not a practical scenario, has logical mathematical validity. This edge case explores the additive identity property essential to Grade 2 addition understanding. The numbers fall within the competency scope."
+          "reasoning": "Adding a number to zero, demonstrating the identity property, is mathematically valid even if the context is abstract."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The problem asks a straightforward arithmetic question about adding zero. Language is minimal and age-appropriate. The mcq response format is simple and clear. Despite the abstract nature, Grade 2 learners at this competency level can understand the task."
+          "reasoning": "The question is presented in straightforward mathematical notation suitable for grade two."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The result is correct: 62+0=62, demonstrating the additive identity property. Hints show place-value analysis: 2+0=2 in ones, 6+0=6 in tens, resulting in 62. The answer correctly confirms that adding zero preserves the original value."
+          "reasoning": "Sixty-two plus zero correctly equals sixty-two, with hints accurately showing that adding zero leaves the value unchanged."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe9-mat_g2_na_q2_2-20260930",
-      "dispatch_id": "s5-phaseE-claude-w9-haiku45-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g2_na_q2_2-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g2_na_q2_2:mat_g2_na_q2_2"
     },
     {
       "sample_id": "718e19dfcad2114a1e46",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The true-false format presents a specific spending claim about purchasing a pencil and eraser. The task is unambiguous: evaluate whether the total is 780 pesos. The evaluation request is clear and straightforward."
+          "reasoning": "The true_false format asks whether a stated total for a purchase is correct without ambiguity."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "The shopping scenario with pencil and eraser purchases is contextually appropriate for Grade 2 Filipino learners. The currency and purchase context reflect authentic experiences. The monetary amounts are realistic for this age group's economic understanding."
+          "reasoning": "Calculating total spending on multiple items is a realistic and appropriate context for addition practice."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The problem clearly states two item purchases with prices and a proposed total. The true-false response format is simple and age-appropriate. Language is straightforward for Grade 2 comprehension. The task structure is clear without unnecessary complexity."
+          "reasoning": "Items, prices, and the assertion being evaluated are all presented in clear language."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The calculation is correct: 630+150=780, making the statement true. Hints show place-value analysis: 0+0=0 in ones, 3+5=8 in tens, with the hundreds digits combining. The mathematical reasoning confirms the true verdict."
+          "reasoning": "Six hundred thirty plus one hundred fifty correctly yields seven hundred eighty, and the assertion is accurately identified as true."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe9-mat_g2_na_q2_2-20260930",
-      "dispatch_id": "s5-phaseE-claude-w9-haiku45-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g2_na_q2_2-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g2_na_q2_2:mat_g2_na_q2_2"
     },
     {
       "sample_id": "ddd31c57a5b07a10b02a",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The cloze format asks how much money Marco has when combining amounts from two pockets. The task is unambiguous: find the total of two specified amounts. Response format with four numeric options provides clear choices."
+          "reasoning": "The cloze format asks for total money from two pockets without competing interpretations."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Having money in two pockets and determining combined total is contextually realistic for Grade 2 learners. The scenario reflects authentic financial situations children encounter. The monetary amounts are appropriate for the grade level."
+          "reasoning": "Money in separate locations summed to a total is a valid real-world scenario for addition."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The problem presents two pocket amounts and asks for the combined total in clear language. The cloze response format with numeric options is appropriate for Grade 2. The task structure is straightforward without unnecessary complexity. Currency symbol adds clarity."
+          "reasoning": "The scenario is clearly stated with straightforward language about pockets and monetary amounts."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The sum is correct: 100+500=600. Hints show step-by-step accumulation from peso100 to peso600. The distractor 6000 represents a common error of appending zeros. Other options reflect plausible computational mistakes. The answer 600 is correctly identified."
+          "reasoning": "One hundred plus five hundred correctly yields six hundred, with hints accurately tracking the computation."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe9-mat_g2_na_q2_2-20260930",
-      "dispatch_id": "s5-phaseE-claude-w9-haiku45-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g2_na_q2_2-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g2_na_q2_2:mat_g2_na_q2_2"
     },
     {
       "sample_id": "0551058c181a7bf417ac",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The error-detect format presents Manny's solution to an item collection problem and asks whether the answer is correct. The task is clear: evaluate whether 766 is the correct sum for 362+403. The evaluation judgment requested is unambiguous."
+          "reasoning": "The error-detection frame asks whether a proposed sum is correct, with no ambiguous elements."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Collecting different types of items is contextually appropriate for Grade 2 learners. The barangay court setting reflects authentic Filipino community spaces. The mathematical task of summing item counts represents a meaningful real-world application."
+          "reasoning": "Collecting different types of items and computing totals is a realistic scenario for addition practice."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The problem presents a completed solution to an item-counting problem and asks for correctness evaluation. The task structure is clear: judge if Manny is correct. Language is straightforward for Grade 2 learners. The error-detect format is easy to understand and respond to."
+          "reasoning": "The scenario scenario and the question asking whether an answer is correct are both clearly stated."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The correct sum is 362+403=765, making Manny's answer of 766 indeed incorrect. Hints properly show: 2+3=5 in ones, 6+0=6 in tens, 3+4=7 in hundreds, totaling 765. The error-detect correctly identifies an error with the proper correct value of 765."
+          "reasoning": "Three hundred sixty-two plus four hundred three correctly yields seven hundred sixty-five, not seven hundred sixty-six. The error is correctly identified."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe9-mat_g2_na_q2_2-20260930",
-      "dispatch_id": "s5-phaseE-claude-w9-haiku45-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g2_na_q2_2-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g2_na_q2_2:mat_g2_na_q2_2"
     },
     {
       "sample_id": "e3218b889a3b45315ebf",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The cloze format asks how much money Lola Caring has when receiving additional money from Nanay. The task is unambiguous: combine starting amount with received amount. Response format with four numeric options provides clear, distinct choices."
+          "reasoning": "The cloze format asks for total money accumulated across two scenarios without ambiguity."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Receiving money from family members is contextually appropriate in authentic Filipino financial interactions. The scenario reflects realistic money exchanges. The amounts and currency symbol are familiar to Grade 2 Philippine learners experiencing this competency."
+          "reasoning": "Receiving money and calculating total balance is a realistic scenario for addition practice."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The problem clearly identifies an initial amount and money received, asking for the combined total. Language is simple for Grade 2 understanding. The cloze response format with numeric options supports learner response. The task structure is clear and straightforward."
+          "reasoning": "The scenario is clearly presented with straightforward language and a direct request for the total."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The sum is correct: 20+711=731. Hints show accumulation from peso20 to peso731. The distractor 7310 represents appending a zero, a common learner error. Other options include plausible miscalculations. The answer 731 is correctly identified among choices."
+          "reasoning": "Twenty plus seven hundred eleven correctly yields seven hundred thirty-one, with computation accurately shown."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe9-mat_g2_na_q2_2-20260930",
-      "dispatch_id": "s5-phaseE-claude-w9-haiku45-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g2_na_q2_2-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g2_na_q2_2:mat_g2_na_q2_2"
     },
     {
       "sample_id": "3712f5c370c91ca274bf",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The cloze format asks how much Coach Roel saved altogether across two days. The task is unambiguous: combine Monday and Tuesday savings. Response format with four numeric options provides clear choices without ambiguity."
+          "reasoning": "The cloze format asks for total money saved across two days without ambiguity."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Saving money on consecutive days reflects authentic financial behavior appropriate for Grade 2 learners. Day-by-day accumulation of savings represents realistic, meaningful contexts. The amounts are appropriate for this grade's financial understanding."
+          "reasoning": "Saving money on successive days and combining totals is an authentic context for addition practice."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The problem presents savings on two specified days and asks for the combined total. Language is straightforward for Grade 2 learners. The cloze response format with numeric options is clear and age-appropriate. Currency symbols support understanding."
+          "reasoning": "The scenario is stated clearly with day labels and monetary amounts, making the task transparent."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The sum is correct: 50+700=750. Hints show accumulation from peso50 to peso750. The distractor 7500 represents appending zeros, a common error. Other options reflect plausible miscalculations. The answer 750 is correctly identified among the choices provided."
+          "reasoning": "Fifty plus seven hundred correctly yields seven hundred fifty, with hints accurately guiding through the computation."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe9-mat_g2_na_q2_2-20260930",
-      "dispatch_id": "s5-phaseE-claude-w9-haiku45-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g2_na_q2_2-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g2_na_q2_2:mat_g2_na_q2_2"
     },
     {
       "sample_id": "33000d837ba225c3ea4b",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The mcq format presents an item accumulation scenario asking how many sketchpads Mika has after receiving additional ones. The task is clear and unambiguous: determine total sketchpads. Answer options provide four distinct numeric choices."
+          "reasoning": "The multiple-choice question asking for a new total after receiving additional items is unambiguous."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Owning items and receiving additional items is contextually appropriate for Grade 2 learners. Sketchpads represent a concrete, relatable object students might own. The addition scenario mirrors real-world accumulation of possessions."
+          "reasoning": "Accumulating items such as sketchpads over time is a realistic and age-appropriate scenario."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The problem clearly states initial quantity and items received, asking for total. Language is straightforward and age-appropriate. The mcq format with four distinct options allows clear demonstration of understanding. The task structure is simple and unambiguous."
+          "reasoning": "The item type, starting quantity, amount received, and request for total are all clearly presented."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The sum is correct: 679+258=937. Hints show regrouping: 9+8=17 (keep 7, carry 1), then 7+5+1=13 (keep 3, carry 1). The answer 937 is correctly identified with distractors including near-values and common computational errors."
+          "reasoning": "Six hundred seventy-nine plus two hundred fifty-eight correctly yields nine hundred thirty-seven, with regrouping shown throughout computation steps."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe9-mat_g2_na_q2_2-20260930",
-      "dispatch_id": "s5-phaseE-claude-w9-haiku45-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g2_na_q2_2-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g2_na_q2_2:mat_g2_na_q2_2"
     },
     {
       "sample_id": "f9d575b28f09f92f6327",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The mcq format asks the step number Ate Liza reaches after climbing one step from starting position. The task is clear and unambiguous: determine final position after specified increment. Answer options provide four distinct numeric choices."
+          "reasoning": "The multiple-choice question asks for a final step position after ascending by one step."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Climbing steps from a starting position is contextually familiar for Grade 2 learners experiencing spatial positioning. The edge case of starting at step zero represents a valid mathematical scenario. The context makes the addition operation concrete."
+          "reasoning": "Step-climbing scenarios model addition by movement and are appropriate contexts for young learners."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The problem clearly states a starting position and action of climbing. The question about ending position is straightforward. Language is simple for Grade 2 understanding. The mcq format with numeric options provides clear response choices."
+          "reasoning": "The directional language and starting position are clearly stated, making the task transparent."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The calculation is correct: 0+1=1. Hints show the simple addition: 0+1=1 in the ones place. This edge case with zero demonstrates that adding 1 to 0 produces 1. The answer is correctly identified among options including a distractor of 11 (digit repetition error)."
+          "reasoning": "Zero plus one correctly yields one, with hints accurately showing the computation."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe9-mat_g2_na_q2_2-20260930",
-      "dispatch_id": "s5-phaseE-claude-w9-haiku45-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g2_na_q2_2-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g2_na_q2_2:mat_g2_na_q2_2"
     },
     {
       "sample_id": "f61e23d0f386d8f93234",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The read-mcq format asks how much Jun saved altogether across two days. The task is unambiguous: combine small daily savings amounts. Visual number line and answer options provide clear, distinct response choices."
+          "reasoning": "The read_mcq with visual support asks for total money saved over two days without ambiguity."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Saving small amounts across consecutive days is contextually appropriate for Grade 2 learners. The very small amounts represent realistic savings children might accumulate. Character name Jun is culturally familiar to Philippine learners."
+          "reasoning": "Daily savings accumulation is a realistic scenario appropriate for second-grade addition practice."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The problem presents savings on two specific days and asks for the combined total. Language is clear and age-appropriate. The read-mcq format with number line visual aids comprehension. Response options are presented as simple numeric values."
+          "reasoning": "The scenario uses clear language with day labels and visual support via number line."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The sum is correct: 1+1=2. Hints show step-by-step accumulation from peso1 to peso2. This edge case with minimal amounts demonstrates addition of very small values. The number line visual with scale 0-20 appropriately represents this small sum."
+          "reasoning": "One plus one correctly yields two, with hints accurately tracking the simple computation."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe9-mat_g2_na_q2_2-20260930",
-      "dispatch_id": "s5-phaseE-claude-w9-haiku45-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g2_na_q2_2-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g2_na_q2_2:mat_g2_na_q2_2"
     },
     {
       "sample_id": "982c8a1dc5e455a78729",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The true-false format presents a specific claim about water bottle quantities. The task is unambiguous: evaluate whether 807+59 equals 748. The evaluation judgment is clear and straightforward."
+          "reasoning": "The true_false format asks whether a stated total for water bottles is correct."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Counting items in baskets is a contextually appropriate scenario for Grade 2 learners. Water bottles represent concrete, countable objects. The setting reflects realistic inventory-type problems children might encounter."
+          "reasoning": "Combining containers of items is a logically valid and age-appropriate addition context."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The problem clearly states quantities in two baskets and proposes a total. The true-false response format is simple and age-appropriate. Language is straightforward for Grade 2 comprehension. The task structure is clear without unnecessary complexity."
+          "reasoning": "The scenario with quantities and assertion are presented in clear, accessible language."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The correct sum is 807+59=866, making the claimed answer of 748 indeed false. Hints properly show regrouping: 7+9=16 (keep 6, carry 1), then 0+5+1=6. The answer correctly identifies this as false with proper mathematics demonstrated."
+          "reasoning": "Eight hundred seven plus fifty-nine correctly equals eight hundred sixty-six, not seven hundred forty-eight. The false assertion is correctly identified."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe9-mat_g2_na_q2_2-20260930",
-      "dispatch_id": "s5-phaseE-claude-w9-haiku45-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g2_na_q2_2-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g2_na_q2_2:mat_g2_na_q2_2"
     },
     {
       "sample_id": "52cfd9783ff822e12376",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The error-detect format presents Liza's response to a counting scenario and asks for correctness evaluation. The task is clear: determine whether starting at 805 and counting up 141 results in 805. No ambiguity about the evaluation requested."
+          "reasoning": "The error-detection format asks whether a proposed answer to a step-counting problem is correct."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Starting at a number and counting forward is contextually familiar for Grade 2 learners. The scenario represents authentic mathematical thinking. The large numbers near the competency boundary provide realistic context for advanced learners."
+          "reasoning": "Counting up steps by a given increment authentically models addition and is appropriate for second grade."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The problem presents a counting scenario and Liza's answer, asking for evaluation. The task is straightforward. Language is age-appropriate for Grade 2 learners. The error-detect format with yes-no judgment is easy to understand and respond to."
+          "reasoning": "The scenario with starting position and increment, plus the question about accuracy, are clearly stated."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The correct answer is 805+141=946, making Liza's answer of 805 clearly incorrect. Hints show: 5+1=6 in ones, 0+4=4 in tens, 8+1=9 in hundreds, totaling 946. The error-detect correctly identifies this as an error with the proper correct value of 946."
+          "reasoning": "Eight hundred five plus one hundred forty-one correctly equals nine hundred forty-six, not eight hundred five. The error is correctly flagged."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe9-mat_g2_na_q2_2-20260930",
-      "dispatch_id": "s5-phaseE-claude-w9-haiku45-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g2_na_q2_2-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g2_na_q2_2:mat_g2_na_q2_2"
     },
     {
       "sample_id": "38b94049a344cde85f71",
       "checks": {
         "ambiguity": {
           "verdict": "PASS",
-          "reasoning": "The mcq format presents a scenario asking total money Aling Rosa has from two pockets. The task is clear and unambiguous: determine combined total. Answer options provide four distinct numeric choices for learner selection."
+          "reasoning": "The multiple-choice question asks for total money from two pockets without ambiguity."
         },
         "contextual_logical_validity": {
           "verdict": "PASS",
-          "reasoning": "Having money in two pockets and finding combined total is contextually realistic for Grade 2 learners. Money distribution and combination represents authentic financial thinking. Character name Aling Rosa is culturally familiar to Philippine students."
+          "reasoning": "Money held in separate locations and summed to a total is a realistic addition scenario."
         },
         "learner_facing_clarity": {
           "verdict": "PASS",
-          "reasoning": "The problem clearly identifies two pocket amounts and asks for the combined total. Language is straightforward for Grade 2 understanding. The mcq response format with four options is simple and clear. The task structure is unambiguous and age-appropriate."
+          "reasoning": "The scenario is directly presented with clear identification of amounts and request for total."
         },
         "mathematical_validity": {
           "verdict": "PASS",
-          "reasoning": "The sum is correct: 100+12=112. Hints show accumulation from peso100 to peso112. The distractor 1120 represents appending a digit, a common learner error. Other options reflect plausible miscalculations. The answer 112 is correctly identified among choices."
+          "reasoning": "One hundred plus twelve correctly equals one hundred twelve, with hints accurately reflecting the step-by-step addition."
         }
       },
-      "reviewer_identity": "blind-reviewer-haiku45-pe9-mat_g2_na_q2_2-20260930",
-      "dispatch_id": "s5-phaseE-claude-w9-haiku45-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g2_na_q2_2-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g2_na_q2_2:mat_g2_na_q2_2"
     }
   ],
   "clause_evidence": [
     {
       "requirement_id": "solve_problems",
       "clause": "Solve problems",
-      "verdict": "PASS",
-      "reasoning": "All 43 items present mathematical problems requiring students to solve for unknown values or evaluate solutions. From straightforward arithmetic calculations like determining sums to error-detection scenarios where students evaluate others' work, every sample engages learners in problem-solving. Even items exploring mathematical properties ask students to solve comparison problems.",
+      "verdict": "CONCERN",
+      "reasoning": "Thirty-nine of the forty-two samples present authentic problem-solving situations where learners must perform addition to reach a meaningful answer. However, samples b6900cba03197c1e5a1c and cb2d563d2b7f620f17ff deviate by testing abstract properties and comparisons rather than genuine problem-solving, which dilutes the coherence of this foundational requirement and creates misalignment with the core competency intent.",
       "sample_ids": [
         "3959b6d9583b84187a4b",
         "56e12b0991185b848085",
@@ -3905,8 +3905,6 @@
         "819927d802b202db429f",
         "09168239a3476919d1d9",
         "d5717ec2da3bc4496cb5",
-        "b6900cba03197c1e5a1c",
-        "cb2d563d2b7f620f17ff",
         "0a5c438a6f698d66a600",
         "ed0d43dbc4cbb54a4dc1",
         "34aa692c491db63238ca",
@@ -3927,14 +3925,14 @@
         "52cfd9783ff822e12376",
         "38b94049a344cde85f71"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pe9-mat_g2_na_q2_2-20260930",
-      "dispatch_id": "s5-phaseE-claude-w9-haiku45-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g2_na_q2_2-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g2_na_q2_2:mat_g2_na_q2_2"
     },
     {
       "requirement_id": "involving",
       "clause": "involving",
       "verdict": "PASS",
-      "reasoning": "The packet demonstrates that items involve multiple competency elements together: problems involve addition, addition involves sums, sums involve numbers up to 1000, and many problems involve money. The connector word is satisfied by the integrated nature of all sample items.",
+      "reasoning": "All forty-two samples demonstrate addition operations in contexts that involve specific scenarios, quantities, and purposes. Each sample engages learners with addition in contextually embedded situations ranging from monetary transactions to item accumulation to step-counting scenarios, fulfilling the involvement criterion thoroughly.",
       "sample_ids": [
         "3959b6d9583b84187a4b",
         "56e12b0991185b848085",
@@ -3979,14 +3977,14 @@
         "52cfd9783ff822e12376",
         "38b94049a344cde85f71"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pe9-mat_g2_na_q2_2-20260930",
-      "dispatch_id": "s5-phaseE-claude-w9-haiku45-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g2_na_q2_2-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g2_na_q2_2:mat_g2_na_q2_2"
     },
     {
       "requirement_id": "addition",
       "clause": "addition",
       "verdict": "PASS",
-      "reasoning": "Every sample involves addition operations, either direct computation, hint-based explanation of addition steps, or comparison of addition results. Items range from simple two-digit additions to complex regrouping scenarios with three-digit numbers. No sample asks for subtraction or other operations in place of addition.",
+      "reasoning": "All forty-two samples employ addition as the primary or sole mathematical operation. Every problem, whether in monetary, item accumulation, or directional contexts, requires learners to combine two or more quantities using addition. This requirement is comprehensively and consistently fulfilled across the entire packet.",
       "sample_ids": [
         "3959b6d9583b84187a4b",
         "56e12b0991185b848085",
@@ -4031,14 +4029,14 @@
         "52cfd9783ff822e12376",
         "38b94049a344cde85f71"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pe9-mat_g2_na_q2_2-20260930",
-      "dispatch_id": "s5-phaseE-claude-w9-haiku45-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g2_na_q2_2-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g2_na_q2_2:mat_g2_na_q2_2"
     },
     {
       "requirement_id": "sums_up_to_1000",
       "clause": "sums up to 1000",
       "verdict": "PASS",
-      "reasoning": "Every sample has an answer that is less than or equal to 1000. Sums range from 1 (0+1) to 1000 (975+25 and 500+500), with the majority falling in the 100-900 range. No sample produces a sum exceeding 1000, demonstrating consistent adherence to the upper bound specified in the competency.",
+      "reasoning": "All forty-two samples produce sums within the range of zero to one thousand inclusive. The packet includes boundary cases such as five hundred plus five hundred equaling one thousand and nine hundred seventy-five plus twenty-five equaling one thousand, as well as minimal cases like zero plus one equaling one. No sample generates a sum exceeding one thousand, meeting this critical constraint for grade two competency.",
       "sample_ids": [
         "3959b6d9583b84187a4b",
         "56e12b0991185b848085",
@@ -4083,14 +4081,14 @@
         "52cfd9783ff822e12376",
         "38b94049a344cde85f71"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pe9-mat_g2_na_q2_2-20260930",
-      "dispatch_id": "s5-phaseE-claude-w9-haiku45-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g2_na_q2_2-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g2_na_q2_2:mat_g2_na_q2_2"
     },
     {
       "requirement_id": "problems",
       "clause": "problems",
       "verdict": "PASS",
-      "reasoning": "The packet contains 43 distinct mathematical problems in multiple formats. Items present students with scenarios requiring calculation, evaluation, or comparison. Every sample frames its content as a problem or task to be solved, whether through direct computation, true-false evaluation, error detection, or fill-in-blank response formats.",
+      "reasoning": "Forty of forty-two samples present genuine problem contexts requiring learners to apply addition to answer meaningful questions. Problem framing includes realistic scenarios such as purchases, savings accumulation, combining items, and step-counting. Two samples deviate from problem-solving toward property testing, but the overwhelming majority exemplifies authentic problems requiring computational thinking.",
       "sample_ids": [
         "3959b6d9583b84187a4b",
         "56e12b0991185b848085",
@@ -4113,8 +4111,6 @@
         "819927d802b202db429f",
         "09168239a3476919d1d9",
         "d5717ec2da3bc4496cb5",
-        "b6900cba03197c1e5a1c",
-        "cb2d563d2b7f620f17ff",
         "0a5c438a6f698d66a600",
         "ed0d43dbc4cbb54a4dc1",
         "34aa692c491db63238ca",
@@ -4135,14 +4131,14 @@
         "52cfd9783ff822e12376",
         "38b94049a344cde85f71"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pe9-mat_g2_na_q2_2-20260930",
-      "dispatch_id": "s5-phaseE-claude-w9-haiku45-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g2_na_q2_2-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g2_na_q2_2:mat_g2_na_q2_2"
     },
     {
       "requirement_id": "money",
       "clause": "money",
       "verdict": "PASS",
-      "reasoning": "The competency explicitly allows for both money and non-money problems through the phrase including problems involving money. The packet contains approximately 26 money-related items spanning various monetary contexts: purchases, savings, receiving money from family. Non-money items address abstract additions and object collections. This balance demonstrates comprehensive coverage where money problems are well-represented without excluding other problem types.",
+      "reasoning": "The competency explicitly states problems should include money, which the packet addresses through approximately twenty-six monetary samples spanning various contexts. Samples feature Filipino peso currency values in realistic scenarios such as purchasing items, saving money over days, and accumulating funds. Monetary contexts are balanced with non-monetary problems exploring items and abstract scenarios, meeting the requirement to include money while maintaining broader topical diversity.",
       "sample_ids": [
         "56e12b0991185b848085",
         "84ae88c250ce97224e79",
@@ -4157,28 +4153,28 @@
         "8b5d4f3b20c1197ad4b3",
         "753dfb1a5958642ecbed",
         "03941240926dd68b3b5e",
+        "b77b47a7e6818696a2a0",
+        "2bdc7aef71778fe5323a",
+        "819927d802b202db429f",
         "09168239a3476919d1d9",
         "0a5c438a6f698d66a600",
+        "fb8d8b8533266ec66b58",
         "e6e23dd868f4857f6549",
+        "718e19dfcad2114a1e46",
         "ddd31c57a5b07a10b02a",
         "e3218b889a3b45315ebf",
         "3712f5c370c91ca274bf",
-        "fb8d8b8533266ec66b58",
-        "2bdc7aef71778fe5323a",
-        "819927d802b202db429f",
-        "718e19dfcad2114a1e46",
-        "09168239a3476919d1d9",
         "f61e23d0f386d8f93234",
         "38b94049a344cde85f71"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pe9-mat_g2_na_q2_2-20260930",
-      "dispatch_id": "s5-phaseE-claude-w9-haiku45-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g2_na_q2_2-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g2_na_q2_2:mat_g2_na_q2_2"
     },
     {
       "requirement_id": "regrouping",
       "clause": "with and without regrouping",
       "verdict": "PASS",
-      "reasoning": "The packet demonstrates regrouping scenarios across multiple samples where adding place values produces results exceeding the tens or ones place: samples with 57+345, 248+162, 975+25, 679+258 all require regrouping operations. Non-regrouping samples include 784+112, 750+0, 62+0, 60+600 where no carry operations are needed. This balance confirms both regrouping variants are comprehensively addressed.",
+      "reasoning": "The packet systematically includes both regrouping and non-regrouping addition scenarios. Samples featuring regrouping include problems where ones sum to ten or greater and tens sum to ten or greater, requiring carrying to the next place value. Non-regrouping samples include simple additions like twenty plus thirty or one hundred plus five hundred. Both conditions are well represented, spanning from straightforward combinations to complex multi-digit calculations with carries.",
       "sample_ids": [
         "3959b6d9583b84187a4b",
         "56e12b0991185b848085",
@@ -4223,17 +4219,17 @@
         "52cfd9783ff822e12376",
         "38b94049a344cde85f71"
       ],
-      "reviewer_identity": "blind-reviewer-haiku45-pe9-mat_g2_na_q2_2-20260930",
-      "dispatch_id": "s5-phaseE-claude-w9-haiku45-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2"
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g2_na_q2_2-20261003",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g2_na_q2_2:mat_g2_na_q2_2"
     }
   ],
   "dispatch_provenance": [
     {
-      "dispatch_id": "s5-phaseE-claude-w9-haiku45-20260930-mat_g2_na_q2_2:mat_g2_na_q2_2",
-      "reviewer_identity": "blind-reviewer-haiku45-pe9-mat_g2_na_q2_2-20260930",
-      "review_date": "2026-09-30",
+      "dispatch_id": "s5-w2-wave2-w2-haiku45-20261003-mat_g2_na_q2_2:mat_g2_na_q2_2",
+      "reviewer_identity": "blind-reviewer-haiku45-w2x2-mat_g2_na_q2_2-20261003",
+      "review_date": "2026-10-03",
       "blind": true,
-      "packet_digest": "2b876ec3d297ccfce28da4d599c21fed72f2389f07047e365dedf5c3818ea9c3",
+      "packet_digest": "b5d84364dd46dfbe2d2473510bc54e7a086ccb72480f8163df8399d30a1b9e18",
       "clause_ids": [
         "solve_problems",
         "involving",
@@ -4243,29 +4239,29 @@
         "money",
         "regrouping"
       ],
-      "response_ref": ".responses/s5-phaseE-claude-w9-haiku45-20260930-mat_g2_na_q2_2.json",
-      "response_digest": "321cec9db5f6cab6b72e64d5d0392e21c2d2fdddf178c3a9c2b17ac8427e2ec0",
-      "prompt_ref": ".responses/s5-phaseE-claude-w9-haiku45-20260930-mat_g2_na_q2_2.prompt.txt",
-      "prompt_digest": "fb490fba0f799e448ea31f881fa5e521e71cdb4e62010c1d01b8f3ea85d57a33",
-      "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; the reviewer was told to Read only local_only/scratch/phaseE_claude/mat_g2_na_q2_2/prompt.txt and Write only local_only/scratch/phaseE_claude/mat_g2_na_q2_2/verdicts.json. Blindness is a prompt contract, not a sandbox.",
-      "tool_uses_by_reviewer": "Harness usage record: 3 tool uses; by name from the transcript: 2 Read, 1 Write; paths outside this node's own prompt/reply: none; no revision."
+      "response_ref": ".responses/s5-w2-wave2-w2-haiku45-20261003-mat_g2_na_q2_2.json",
+      "response_digest": "125e95adac9ef2c694a4d7dee5f6ebea930f19f82cc13e60cbc8c5b03c3d0022",
+      "prompt_ref": ".responses/s5-w2-wave2-w2-haiku45-20261003-mat_g2_na_q2_2.prompt.txt",
+      "prompt_digest": "827b6b67dd96772cadca9d623e3e621f5aaf09cc1a6858f08e7d8dc39dbc58b5",
+      "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; the reviewer was told to Read only local_only/scratch/w2_review2/mat_g2_na_q2_2/prompt.txt and Write only local_only/scratch/w2_review2/mat_g2_na_q2_2/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+      "tool_uses_by_reviewer": "Harness usage record: 2 tool uses; by name from the transcript: 1 Read, 1 Write; paths other than this node's own prompt.txt/verdicts.json: none; no revision."
     }
   ],
   "findings": {
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Items are appropriately targeted for Grade 2 Quarter 2 learners. Problem contexts involving money, object collections, and step-counting align with learner experiences. Numerical complexity progresses logically from simple additions like 62+0 through more challenging multi-digit operations with regrouping, matching typical Grade 2 cognitive development expectations for this quarter."
+      "rationale": "All 42 samples present age-appropriate problem structures for second grade, quarter two. Operand ranges span from simple pairs like zero plus one up through strategic additions near one thousand, with most falling comfortably in the intermediate range. Regrouping requirements scale appropriately with context, and visual scaffolds via number lines and money representations support cognitive load management effectively for emerging learners."
     },
     "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "All items consistently address the core competency of solving addition problems with sums not exceeding 1000. Items blend monetary and non-monetary contexts as the competency allows. Regrouping scenarios appear throughout the packet, and all answers fall within the specified sum range, demonstrating direct alignment to stated competency requirements."
+      "verdict": "CONCERN",
+      "rationale": "Thirty-nine of forty-two samples directly test problem-solving with addition to one thousand, demonstrating clear alignment to the core competency. However, samples b6900cba03197c1e5a1c and cb2d563d2b7f620f17ff deviate significantly by testing properties of addition such as associativity and comparison operations rather than direct problem-solving contexts. These two samples stretch beyond the explicit scope of solving problems and reduce overall alignment fidelity."
     },
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "The seven-part requirement decomposition comprehensively captures all essential elements of the competency statement. Solve problems and problems appear in every item; involving connects all requirements; addition is present throughout; sums up to 1000 constrains all answers; money appears in majority of items; regrouping is demonstrated across multiple problem types.",
+      "rationale": "The printed requirements establish a decomposition that comprehensively spans the competency statement. Each listed requirement addresses a distinct essential component: problem-solving framing, additive operations, monetary and non-monetary contexts, and both regrouping conditions. The decomposition is lossless and complete.",
       "decomposition": {
         "verdict": "PASS",
-        "reasoning": "The printed decomposition breaks the competency into: solve_problems, involving, addition, sums_up_to_1000, problems, money, and regrouping. Each requirement maps losslessly to components of the original competency statement. No redundancy exists between requirements; each addresses a distinct aspect. The decomposition preserves the full scope without omission or overlap, supporting lossless coverage.",
+        "reasoning": "The seven printed requirements collectively capture all binding elements of the competency statement without redundancy. The decomposition maps directly onto the stated goal to solve problems involving addition with sums to one thousand, including money scenarios with and without regrouping. No essential meaning is lost across this breakdown.",
         "requirement_ids": [
           "solve_problems",
           "involving",
@@ -4287,8 +4283,8 @@
       ]
     },
     "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The sample set demonstrates breadth across operation types (regrouping and non-regrouping cases), problem contexts (monetary transactions and item collections), numerical ranges (single digits through 1000), item formats (mcq, true-false, error detection, cloze, read_mcq, set_fill_in_blank), and complexity levels. Coverage includes edge cases like adding zero and reaching the 1000 boundary.",
+      "verdict": "CONCERN",
+      "rationale": "The packet provides broad coverage across operand ranges, regrouping types, problem contexts both monetary and non-monetary, and diverse interaction formats including multiple choice, true or false, cloze, error detection, and visual-based reading tasks. Multiple visual representation systems appear across samples. However, the inclusion of two off-topic samples addressing properties rather than problem-solving introduces noise that dilutes otherwise comprehensive foundational coverage.",
       "clause_ids": [
         "solve_problems",
         "involving",
@@ -4301,12 +4297,12 @@
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "All sum answers remain at or below 1000 as specified for Grade 2 Quarter 2. Numerical values scale appropriately within the grade level expectations, with early samples featuring smaller two-digit numbers and later samples approaching the 1000 threshold. The progression ensures students encounter the full range of the competency scope without exceeding grade-level limits."
+      "rationale": "The forty-two rendered samples provide sufficient depth to exercise the domain space across meaningful variation dimensions without excessive redundancy. This volume supports robust sampling of monetary scenarios, non-monetary contexts, boundary cases at the thousand-sum threshold, and both conditions of regrouping, balancing breadth with pedagogical efficiency."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "The packet includes six distinct item formats (mcq, true-false, error-detect, cloze, read_mcq, set_fill_in_blank), with and without visual representations (number lines, peso money visuals). Numbers span from 0 to 1000. Problem contexts include item purchases, money savings and receipts, collection tasks, step-climbing, and abstract addition comparisons. This diversity ensures students encounter the competency through multiple presentation angles."
+      "rationale": "The packet demonstrates systematic variation across multiple axes: operand magnitude from minimal single-digit pairs to three-digit combinations, regrouping in ones and tens positions, problem narratives spanning shopping scenarios and accumulation contexts, multiple response formats and visual supports via number lines and peso currency representations, and both error detection and standard problem modes."
     }
   },
-  "overall": "PASS"
+  "overall": "CONCERN"
 }

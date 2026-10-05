@@ -1,0 +1,827 @@
+{
+  "batch": "batch357_mat_g2_na_q3_4",
+  "attested_at": "2026-10-02T13:40:12Z",
+  "attested_by": "blind-attester-haiku45-w2s357-mat_g2_na_q3_4-20261002",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose; told to Read only local_only/scratch/w2_reconfirm/mat_g2_na_q3_4/prompt.txt (INSTRUCTIONS.txt plus verbatim render_prompt_block output, trimmed to the disputed capabilities) and Write only local_only/scratch/w2_reconfirm/mat_g2_na_q3_4/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "Harness usage record: 2 tool uses; by name from the transcript: 1 Read, 1 Write; paths other than this node's own prompt.txt/verdicts.json: none"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g2_na_q3_4",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g2_na_q3_4",
+        "seed": 11,
+        "formatter": "mcq",
+        "question_text": "What is 50 ÷ 10?",
+        "correct_answer": 5,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 10,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 6,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 40,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 5,
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 5,
+        "hints": [
+          "We need to divide 50 by 10. The number being divided is 50; the number we divide by is 10.",
+          "Ask: how many times does 10 fit into 50? 10 × 5 = 50.",
+          "The answer of 50 ÷ 10 = 5."
+        ],
+        "sample_id": "74cc25e35850434e9f64",
+        "replay_digest": "4c71e42fccec77af5a82df378d24b7510a68814f237d412d3a2214548c8b978f"
+      },
+      {
+        "node_id": "mat_g2_na_q3_4",
+        "seed": 23,
+        "formatter": "read_mcq",
+        "question_text": "This array has 20 squares split into 5 equal rows. How many squares are in each row?",
+        "correct_answer": "D",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "GridArea",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 3,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 18,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 7,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 4,
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 4,
+        "hints": [
+          "We need to divide 20 by 5. The number being divided is 20; the number we divide by is 5.",
+          "Ask: how many times does 5 fit into 20? 5 × 4 = 20.",
+          "The answer of 20 ÷ 5 = 4."
+        ],
+        "visual_type": "GridArea",
+        "visual_payload": {
+          "rows": 5,
+          "cols": 4,
+          "shaded": true,
+          "highlight_groups": [],
+          "shape_type": "rectangle",
+          "correct_count": 4,
+          "grid_size": [
+            6,
+            5
+          ]
+        },
+        "visual_render": {
+          "visual_type": "GridArea",
+          "renderer_input_digest": "cfcaafd53c27001931d20399ccac0d5d43b16798730f55f56fe25c7132d0823e",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "GridArea",
+            "element_count": 33,
+            "svg_count": 1,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 1,
+            "input_count": 0,
+            "text_labels": [
+              "Click squares to shade a",
+              "4 × 5",
+              "rectangle",
+              "20 square units",
+              "Clear All",
+              "Click squares to shade/unshade"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--primary)",
+              "#4b5563",
+              "#374151",
+              "hsl(var(--border-color)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {
+              "grid-cell": 20
+            }
+          }
+        },
+        "sample_id": "779d760bd63684cf0fec",
+        "replay_digest": "6f90c015408589a342acdffada7220078494cd9ed401c87363d018499d8ff515"
+      },
+      {
+        "node_id": "mat_g2_na_q3_4",
+        "seed": 42,
+        "formatter": "read_mcq",
+        "question_text": "This array has 3 squares split into 3 equal rows. How many squares are in each row?",
+        "correct_answer": "A",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "GridArea",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 1,
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 8,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 2,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 3,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 1,
+        "hints": [
+          "We need to divide 3 by 3. The number being divided is 3; the number we divide by is 3.",
+          "Ask: how many times does 3 fit into 3? 3 × 1 = 3.",
+          "The answer of 3 ÷ 3 = 1."
+        ],
+        "visual_type": "GridArea",
+        "visual_payload": {
+          "rows": 3,
+          "cols": 1,
+          "shaded": true,
+          "highlight_groups": [],
+          "shape_type": "rectangle",
+          "correct_count": 1,
+          "grid_size": [
+            4,
+            2
+          ]
+        },
+        "visual_render": {
+          "visual_type": "GridArea",
+          "renderer_input_digest": "499bb265a72661153f7f5565e7ac5b1401f5980661cf97922a4b25ba2707d1ea",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "GridArea",
+            "element_count": 16,
+            "svg_count": 1,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 1,
+            "input_count": 0,
+            "text_labels": [
+              "Click squares to shade a",
+              "1 × 3",
+              "rectangle",
+              "3 square units",
+              "Clear All",
+              "Click squares to shade/unshade"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--primary)",
+              "#4b5563",
+              "#374151",
+              "hsl(var(--border-color)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {
+              "grid-cell": 3
+            }
+          }
+        },
+        "sample_id": "a1196d98b579a3e81476",
+        "replay_digest": "ee56dedf356d000635d0dc7334100c2ab3dcda69cdbffb0e8da712a4974d5cd2"
+      },
+      {
+        "node_id": "mat_g2_na_q3_4",
+        "seed": 57,
+        "formatter": "set_fill_in_blank",
+        "question_text": "Shade 10 squares into 2 equal rows. How many squares are in each row?",
+        "correct_answer": 5,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "set_fill_in_blank",
+          "is_visual": true,
+          "visual_type": "GridArea",
+          "interaction_mode": "set",
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "resolved_answer": 5,
+        "hints": [
+          "We need to divide 10 by 2. The number being divided is 10; the number we divide by is 2.",
+          "Ask: how many times does 2 fit into 10? 2 × 5 = 10.",
+          "The answer of 10 ÷ 2 = 5."
+        ],
+        "visual_type": "GridArea",
+        "visual_payload": {
+          "rows": 2,
+          "cols": 5,
+          "shaded": false,
+          "highlight_groups": [],
+          "shape_type": "rectangle",
+          "correct_count": 5,
+          "grid_size": [
+            3,
+            6
+          ]
+        },
+        "visual_render": {
+          "visual_type": "GridArea",
+          "renderer_input_digest": "6c42a16b4a788dbda6518e7a0ca5e9136187dfa136cc065bf828250005ea31df",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "GridArea",
+            "element_count": 23,
+            "svg_count": 1,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 1,
+            "input_count": 0,
+            "text_labels": [
+              "Click squares to shade a",
+              "5 × 2",
+              "rectangle",
+              "0 square units",
+              "Clear All",
+              "Click squares to shade/unshade"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--primary)",
+              "#4b5563",
+              "#374151",
+              "#f8fafc,",
+              "#e2e8f0)",
+              "#cbd5e1",
+              "hsl(var(--border-color)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {
+              "grid-cell": 10
+            }
+          }
+        },
+        "sample_id": "c830b00ac18a750fbf11",
+        "replay_digest": "3469d789a15a2aea28a93b1e37abf3a0c6c9aaa11df04fb93ed62f3e2b6df2d2"
+      },
+      {
+        "node_id": "mat_g2_na_q3_4",
+        "seed": 64,
+        "formatter": "read_mcq",
+        "question_text": "This array has 70 squares split into 10 equal rows. How many squares are in each row?",
+        "correct_answer": "D",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "GridArea",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 10,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 34,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 4,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 7,
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 7,
+        "hints": [
+          "We need to divide 70 by 10. The number being divided is 70; the number we divide by is 10.",
+          "Ask: how many times does 10 fit into 70? 10 × 7 = 70.",
+          "The answer of 70 ÷ 10 = 7."
+        ],
+        "visual_type": "GridArea",
+        "visual_payload": {
+          "rows": 10,
+          "cols": 7,
+          "shaded": true,
+          "highlight_groups": [],
+          "shape_type": "rectangle",
+          "correct_count": 7,
+          "grid_size": [
+            11,
+            8
+          ]
+        },
+        "visual_render": {
+          "visual_type": "GridArea",
+          "renderer_input_digest": "02fbbde4cfeb5fdaa9ea1d63553567f0795104f66b3810f52db96ad88f5d3316",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "GridArea",
+            "element_count": 83,
+            "svg_count": 1,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 1,
+            "input_count": 0,
+            "text_labels": [
+              "Click squares to shade a",
+              "7 × 10",
+              "rectangle",
+              "70 square units",
+              "Clear All",
+              "Click squares to shade/unshade"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--primary)",
+              "#4b5563",
+              "#374151",
+              "hsl(var(--border-color)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {
+              "grid-cell": 70
+            }
+          }
+        },
+        "sample_id": "25db6f4be61cdaf6e0e1",
+        "replay_digest": "4040b265ff57b39f3eb1f25a563ab4b1aea7950b512803621bb51522fcfb3c00"
+      },
+      {
+        "node_id": "mat_g2_na_q3_4",
+        "seed": 78,
+        "formatter": "read_mcq",
+        "question_text": "This array has 20 squares split into 4 equal rows. How many squares are in each row?",
+        "correct_answer": "D",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "GridArea",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 8,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 3,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 18,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 5,
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 5,
+        "hints": [
+          "We need to divide 20 by 4. The number being divided is 20; the number we divide by is 4.",
+          "Ask: how many times does 4 fit into 20? 4 × 5 = 20.",
+          "The answer of 20 ÷ 4 = 5."
+        ],
+        "visual_type": "GridArea",
+        "visual_payload": {
+          "rows": 4,
+          "cols": 5,
+          "shaded": true,
+          "highlight_groups": [],
+          "shape_type": "rectangle",
+          "correct_count": 5,
+          "grid_size": [
+            5,
+            6
+          ]
+        },
+        "visual_render": {
+          "visual_type": "GridArea",
+          "renderer_input_digest": "bfacef220c9b704a7f2a9ac4d41b7ca8e58591150097f96f34efd2ecbb5b9684",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "GridArea",
+            "element_count": 33,
+            "svg_count": 1,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 1,
+            "input_count": 0,
+            "text_labels": [
+              "Click squares to shade a",
+              "5 × 4",
+              "rectangle",
+              "20 square units",
+              "Clear All",
+              "Click squares to shade/unshade"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--primary)",
+              "#4b5563",
+              "#374151",
+              "hsl(var(--border-color)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {
+              "grid-cell": 20
+            }
+          }
+        },
+        "sample_id": "c4f06fa5b24dd7328b87",
+        "replay_digest": "17cfa9c7795efa0f447f885385c0e797a409de80e53400a58609d3f2e88b5dde"
+      },
+      {
+        "node_id": "mat_g2_na_q3_4",
+        "seed": 91,
+        "formatter": "mcq",
+        "question_text": "What is 12 ÷ 2?",
+        "correct_answer": 6,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 2,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 10,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 7,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 6,
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 6,
+        "hints": [
+          "We need to divide 12 by 2. The number being divided is 12; the number we divide by is 2.",
+          "Ask: how many times does 2 fit into 12? 2 × 6 = 12.",
+          "The answer of 12 ÷ 2 = 6."
+        ],
+        "sample_id": "fb877745b3df5133986a",
+        "replay_digest": "ff6121a35549f978231f8d75fd917efbe30425286d8580ec90ecbce3347757eb"
+      },
+      {
+        "node_id": "mat_g2_na_q3_4",
+        "seed": 103,
+        "formatter": "mcq",
+        "question_text": "What is 50 ÷ 10?",
+        "correct_answer": 5,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 10,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 40,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 5,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 6,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 5,
+        "hints": [
+          "We need to divide 50 by 10. The number being divided is 50; the number we divide by is 10.",
+          "Ask: how many times does 10 fit into 50? 10 × 5 = 50.",
+          "The answer of 50 ÷ 10 = 5."
+        ],
+        "sample_id": "69375b13be3c3ef2c734",
+        "replay_digest": "df81f736cea60a7bd0623ff7b9acb425c959fbd6990b74c9fc0b5c67d48a231b"
+      },
+      {
+        "node_id": "mat_g2_na_q3_4",
+        "seed": 118,
+        "formatter": "set_fill_in_blank",
+        "question_text": "Shade 15 squares into 3 equal rows. How many squares are in each row?",
+        "correct_answer": 5,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "set_fill_in_blank",
+          "is_visual": true,
+          "visual_type": "GridArea",
+          "interaction_mode": "set",
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "resolved_answer": 5,
+        "hints": [
+          "We need to divide 15 by 3. The number being divided is 15; the number we divide by is 3.",
+          "Ask: how many times does 3 fit into 15? 3 × 5 = 15.",
+          "The answer of 15 ÷ 3 = 5."
+        ],
+        "visual_type": "GridArea",
+        "visual_payload": {
+          "rows": 3,
+          "cols": 5,
+          "shaded": false,
+          "highlight_groups": [],
+          "shape_type": "rectangle",
+          "correct_count": 5,
+          "grid_size": [
+            4,
+            6
+          ]
+        },
+        "visual_render": {
+          "visual_type": "GridArea",
+          "renderer_input_digest": "bd45f0993eb914f0255e21091c10460fb4b772e25ac4f142f0b3564861d6cd67",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "GridArea",
+            "element_count": 28,
+            "svg_count": 1,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 1,
+            "input_count": 0,
+            "text_labels": [
+              "Click squares to shade a",
+              "5 × 3",
+              "rectangle",
+              "0 square units",
+              "Clear All",
+              "Click squares to shade/unshade"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--primary)",
+              "#4b5563",
+              "#374151",
+              "#f8fafc,",
+              "#e2e8f0)",
+              "#cbd5e1",
+              "hsl(var(--border-color)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {
+              "grid-cell": 15
+            }
+          }
+        },
+        "sample_id": "0d733f1bfeacad7799c9",
+        "replay_digest": "001b99fca53bbc995ccf1f1cce6624d75243c506ec724c3b8c4c83e6925e4886"
+      },
+      {
+        "node_id": "mat_g2_na_q3_4",
+        "seed": 127,
+        "formatter": "mcq",
+        "question_text": "What is 10 ÷ 2?",
+        "correct_answer": 5,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 5,
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 6,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 8,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 2,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 5,
+        "hints": [
+          "We need to divide 10 by 2. The number being divided is 10; the number we divide by is 2.",
+          "Ask: how many times does 2 fit into 10? 2 × 5 = 10.",
+          "The answer of 10 ÷ 2 = 5."
+        ],
+        "sample_id": "b990ef764146bbd9c448",
+        "replay_digest": "377eba3db451329bd19b54f66a44ce3bd348890edc7fdc70430dadfbbbb92484"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "illustrate_division",
+      "node_id": "mat_g2_na_q3_4",
+      "clause": "Illustrate division",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        23,
+        42,
+        57,
+        64,
+        78,
+        118
+      ],
+      "reasoning": "The clause illustrate division appears in 6 of 10 samples through GridArea visual representations showing arrays of squares divided into equal rows. Seeds 23, 42, 57, 64, 78, 118 explicitly render arrays as visual objects with grid structures, while seeds 11, 91, 103, 127 present bare division calculations without visual illustration.",
+      "action_taken": "W2 re-confirmation, blind second Attester, 2026-10-02, after ruling-15 composition (268e488f): PROVIDED. No change."
+    },
+    {
+      "capability_id": "objects",
+      "node_id": "mat_g2_na_q3_4",
+      "clause": "objects",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        23,
+        42,
+        57,
+        64,
+        78,
+        118
+      ],
+      "reasoning": "The clause objects is exhibited in 6 of 10 samples through rendered GridArea visuals with grid-cell elements representing counted objects. Seeds 23, 42, 57, 64, 78, 118 show rendered square objects in arrays; the remaining seeds present abstract division without visual objects rendered.",
+      "action_taken": "W2 re-confirmation, blind second Attester, 2026-10-02, after ruling-15 composition (268e488f): PROVIDED. No change."
+    }
+  ],
+  "supersedes": "W2 re-confirmation: the post-composition re-attestation (batch336-347) flipped these capabilities against their prior winner; a second independent blind Attester re-judged them on the same current content. Supersedes the earlier records for the judged capabilities only."
+}

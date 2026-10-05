@@ -1,0 +1,287 @@
+You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  blind-reviewer-haiku45-w2x2-mat_g2_na_q1_8-20261003
+
+Write one JSON object to:
+  local_only/scratch/w2_review2/mat_g2_na_q1_8/verdicts.json
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: cognitive_capacity, competency_alignment, competency_fulfillment, comprehensive_coverage, scale_appropriateness, variant_comprehensiveness. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: ambiguity, contextual_logical_validity, learner_facing_clarity, mathematical_validity. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN: cite the sample_ids you EXAMINED and found lacking it (the list may never
+   be empty), and never cite a sample as SUPPORTING a clause it does not support.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{
+  "reviewer": "blind-reviewer-haiku45-w2x2-mat_g2_na_q1_8-20261003",
+  "<node_id>": {
+    "findings": {
+      "competency_fulfillment": {
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}
+      },
+      "<each other required finding>": {"verdict": "...", "rationale": "..."}
+    },
+    "sample_assessments": [
+      {"sample_id": "<opaque id>", "checks": {
+        "<each required sample check>": {"verdict": "...", "reasoning": "..."}
+      }}
+    ],
+    "clause_evidence": [
+      {"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }
+}
+
+== DISPATCH ADDENDUM (binding; read before judging) ==
+
+A. LENGTH. Every `rationale` and every `reasoning` string must be at least 60 characters and specific to
+   the node or sample it describes. Shorter strings are refused by the filing tool.
+
+B. QUOTING. Anything you put inside quotation marks must be a character-for-character substring of text
+   printed in the packet below. No paraphrase, summary, elision ("..."), placeholder, or comma-fragment
+   inside quotes, and never two quoted values joined by a dash. When in doubt, use NO quotation marks at
+   all and describe the text in your own words instead. An unmatched quote is treated as fabricated
+   evidence. The commonest failure: putting your OWN punctuation inside the quotes -- a trailing comma or
+   full stop that belongs to your sentence (write: the word "clock", never: "clock,"). Also never
+   quote a single ordinary word; quote only whole stems, hints or options, or nothing.
+
+C. THEMES. The generator deliberately themes items around a learner's chosen interest (26 curated
+   themes: names, objects, emoji, including religious and cultural themes). Do not judge whether a theme
+   is appropriate. Judge only whether the theming INTERFERES with the mathematics -- for example, a
+   wrapper that names a different object than the task counts, or a theme word that changes the meaning
+   of the question.
+
+D. HINTS. For every sample, compare each hint line against that sample's own stem, answer, options and
+   visual: does every equation in the hints hold, does the hint explain the question actually asked
+   (direction, unit, operation, which position is missing), and does it refer only to things the item
+   actually shows? A hint that contradicts or mis-describes its item is a sample-level defect.
+
+E. CITATIONS AND OVERALL. Every clause_evidence entry cites at least one sample_id; for a clause that
+   FAILs because something is absent, cite the sample_ids you examined. `overall` must follow the rule
+   in item 4 above exactly; the filing tool refuses a reply whose `overall` disagrees with its own
+   verdicts.
+
+G. OWNER RULINGS ON CURRICULUM READING (binding; apply them, do not re-litigate them):
+   - A fact belongs to the N multiplication table when EITHER factor is N: 6 x 2 and 2 x 6 are both
+     facts of the 2 table. A competency naming "the 2, 3, 4, 5, and 10 tables" or "the 6, 7, 8, and 9
+     tables" is met by any fact with at least one factor from its named set (ruling 18).
+   - A factor of 1 (or 0, where the competency names that property) is in scope when the other factor
+     is a named table (ruling 14).
+
+F. CHECKLIST before you write (replies failing any of these are refused and sent back):
+   - use NO quotation marks anywhere in your prose; describe stems, hints and options in your own words;
+   - every rationale and every reasoning string is at least 60 characters;
+   - no two samples share a word-for-word reasoning -- name each sample's own numbers, words or visual;
+   - EVERY clause_evidence entry, including PASS ones, has a non-empty sample_ids list, and every id in it is a
+     printed sample_id from this packet (never a requirement id);
+   - `findings` has exactly the six keys listed in item 1; `decomposition` goes INSIDE competency_fulfillment;
+   - sample_assessments list every printed sample once, in printed order;
+   - `overall` follows the rule in item 4 from your own verdicts.
+
+Use only the Read tool on this prompt file and the Write tool for your one JSON reply. Do not open any
+other file.
+
+== BLIND PACKET ==
+
+==========================================================================
+NODE: mat_g2_na_q1_8
+PACKET DIGEST: 47a213373a3f7e13db1a10bf2f3fc6cf4d905a5555184396d98a30531e55cf63
+COMPETENCY (Grade 2, Quarter 1, None):
+Add numbers with sums up to 1000 in expanded form.
+
+REQUIREMENTS (confirm this is a lossless decomposition of the competency):
+  add_numbers: Add numbers
+  sums_up_to_1000: sums up to 1000
+  expanded_form: expanded form
+
+SAMPLES (every one of these is real rendered output):
+  sample 1561cc0f457b611fbff4  seed 42  [mcq]
+      stem:    280 is 2 hundreds, 8 tens, and 0 ones. 550 is 5 hundreds, 5 tens, and 0 ones. Add the place values, then find the total: what is 280 + 550?
+      answer:  830
+      options: 830 / 840 / 831 / 829
+      hints:   ["We are adding two numbers: 280 and 550.", "Add the ones: 0 + 0 = 0. Keep 0 in the ones place.", "Add the tens: 8 + 5 = 13.", "The sum is 280 + 550 = 830."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample e50d46bc5b5a752beac2  seed 43  [true_false]
+      stem:    791 is 7 hundreds, 9 tens, and 1 one. 12 is 1 ten and 2 ones. Add the place values, then find the total: 791 + 12 = 779. True or False?
+      answer:  False
+      hints:   ["We are adding two numbers: 791 and 12.", "Add the ones: 1 + 2 = 3. Keep 3 in the ones place.", "Add the tens: 9 + 1 = 10.", "The sum is 791 + 12 = 803."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample b0a024646f69b886d6ab  seed 44  [error_detect]
+      stem:    Rico solved: "192 is 1 hundred, 9 tens, and 2 ones. 360 is 3 hundreds, 6 tens, and 0 ones. Add the place values, then find the total: 192 + 360 = ___". Rico says the missing number is 552. Is Rico correct?
+      answer:  {'has_error': False, 'correct_value': 552}
+      hints:   ["We are adding two numbers: 192 and 360.", "Add the ones: 2 + 0 = 2. Keep 2 in the ones place.", "Add the tens: 9 + 6 = 15.", "The sum is 192 + 360 = 552."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample fb0e748d27731d7a95ad  seed 45  [mcq]
+      stem:    363 is 3 hundreds, 6 tens, and 3 ones. 442 is 4 hundreds, 4 tens, and 2 ones. Add the place values, then find the total: what is 363 + 442?
+      answer:  805
+      options: 804 / 815 / 805 / 806
+      hints:   ["We are adding two numbers: 363 and 442.", "Add the ones: 3 + 2 = 5. Keep 5 in the ones place.", "Add the tens: 6 + 4 = 10.", "The sum is 363 + 442 = 805."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 5518e978bd3dd6739fee  seed 46  [cloze]
+      stem:    54 is 5 tens and 4 ones. 481 is 4 hundreds, 8 tens, and 1 one. Add the place values, then find the total: 54 + 481 = ___
+      answer:  535
+      options: 536 / 535 / 545 / 534
+      hints:   ["We are adding two numbers: 54 and 481.", "Add the ones: 4 + 1 = 5. Keep 5 in the ones place.", "Add the tens: 5 + 8 = 13.", "The sum is 54 + 481 = 535."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 721955014964cf0756e2  seed 500  [true_false]
+      stem:    958 is 9 hundreds, 5 tens, and 8 ones. 35 is 3 tens and 5 ones. Add the place values, then find the total: 958 + 35 = 994. True or False?
+      answer:  False
+      hints:   ["We are adding two numbers: 958 and 35.", "Add the ones: 8 + 5 = 13. 13 ones is 1 ten and 3 ones.", "Add the tens: 5 + 3 + 1 (the ten from the ones) = 9.", "The sum is 958 + 35 = 993."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample a12abeb8a6e4fab256f3  seed 501  [mcq]
+      stem:    250 is 2 hundreds, 5 tens, and 0 ones. 681 is 6 hundreds, 8 tens, and 1 one. Add the place values, then find the total: what is 250 + 681?
+      answer:  931
+      options: 930 / 941 / 931 / 932
+      hints:   ["We are adding two numbers: 250 and 681.", "Add the ones: 0 + 1 = 1. Keep 1 in the ones place.", "Add the tens: 5 + 8 = 13.", "The sum is 250 + 681 = 931."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample aaf19ea6ef56a45e26c6  seed 502  [error_detect]
+      stem:    Dante solved: "231 is 2 hundreds, 3 tens, and 1 one. 723 is 7 hundreds, 2 tens, and 3 ones. Add the place values, then find the total: 231 + 723 = ___". Dante says the missing number is 954. Is Dante correct?
+      answer:  {'has_error': False, 'correct_value': 954}
+      hints:   ["We are adding two numbers: 231 and 723.", "Add the ones: 1 + 3 = 4. Keep 4 in the ones place.", "Add the tens: 3 + 2 = 5.", "The sum is 231 + 723 = 954."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample d15804bb368b0e4e5a04  seed 600  [true_false]
+      stem:    31 is 3 tens and 1 one. 859 is 8 hundreds, 5 tens, and 9 ones. Add the place values, then find the total: 31 + 859 = 890. True or False?
+      answer:  True
+      hints:   ["We are adding two numbers: 31 and 859.", "Add the ones: 1 + 9 = 10. 10 ones is 1 ten and 0 ones.", "Add the tens: 3 + 5 + 1 (the ten from the ones) = 9.", "The sum is 31 + 859 = 890."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 04ca373a1118a538b9f1  seed 601  [cloze]
+      stem:    208 is 2 hundreds, 0 tens, and 8 ones. 772 is 7 hundreds, 7 tens, and 2 ones. Add the place values, then find the total: 208 + 772 = ___
+      answer:  980
+      options: 979 / 981 / 990 / 980
+      hints:   ["We are adding two numbers: 208 and 772.", "Add the ones: 8 + 2 = 10. 10 ones is 1 ten and 0 ones.", "Add the tens: 0 + 7 + 1 (the ten from the ones) = 8.", "The sum is 208 + 772 = 980."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample abcea6ece209870b0d50  seed 602  [mcq]
+      stem:    360 is 3 hundreds, 6 tens, and 0 ones. 103 is 1 hundred, 0 tens, and 3 ones. Add the place values, then find the total: what is 360 + 103?
+      answer:  463
+      options: 257 / 462 / 473 / 463
+      hints:   ["We are adding two numbers: 360 and 103.", "Add the ones: 0 + 3 = 3. Keep 3 in the ones place.", "Add the tens: 6 + 0 = 6.", "The sum is 360 + 103 = 463."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 5e6c61556c4e30c37b7d  seed 603  [true_false]
+      stem:    240 is 2 hundreds, 4 tens, and 0 ones. 670 is 6 hundreds, 7 tens, and 0 ones. Add the place values, then find the total: 240 + 670 = 910. True or False?
+      answer:  True
+      hints:   ["We are adding two numbers: 240 and 670.", "Add the ones: 0 + 0 = 0. Keep 0 in the ones place.", "Add the tens: 4 + 7 = 11.", "The sum is 240 + 670 = 910."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 5724c5d41c4164ad0a65  seed 604  [mcq]
+      stem:    156 is 1 hundred, 5 tens, and 6 ones. 844 is 8 hundreds, 4 tens, and 4 ones. Add the place values, then find the total: what is 156 + 844?
+      answer:  1000
+      options: 1001 / 1010 / 999 / 1000
+      hints:   ["We are adding two numbers: 156 and 844.", "Add the ones: 6 + 4 = 10. 10 ones is 1 ten and 0 ones.", "Add the tens: 5 + 4 + 1 (the ten from the ones) = 10.", "The sum is 156 + 844 = 1000."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 694d5e66732c47936160  seed 605  [true_false]
+      stem:    647 is 6 hundreds, 4 tens, and 7 ones. 175 is 1 hundred, 7 tens, and 5 ones. Add the place values, then find the total: 647 + 175 = 822. True or False?
+      answer:  True
+      hints:   ["We are adding two numbers: 647 and 175.", "Add the ones: 7 + 5 = 12. 12 ones is 1 ten and 2 ones.", "Add the tens: 4 + 7 + 1 (the ten from the ones) = 12.", "The sum is 647 + 175 = 822."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 2480a1eb18692e32ef01  seed 606  [mcq]
+      stem:    506 is 5 hundreds, 0 tens, and 6 ones. 155 is 1 hundred, 5 tens, and 5 ones. Add the place values, then find the total: what is 506 + 155?
+      answer:  661
+      options: 671 / 351 / 660 / 661
+      hints:   ["We are adding two numbers: 506 and 155.", "Add the ones: 6 + 5 = 11. 11 ones is 1 ten and 1 ones.", "Add the tens: 0 + 5 + 1 (the ten from the ones) = 6.", "The sum is 506 + 155 = 661."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 3a35ceb76e3174379a3a  seed 607  [error_detect]
+      stem:    Grace solved: "233 is 2 hundreds, 3 tens, and 3 ones. 284 is 2 hundreds, 8 tens, and 4 ones. Add the place values, then find the total: 233 + 284 = ___". Grace says the missing number is 517. Is Grace correct?
+      answer:  {'has_error': False, 'correct_value': 517}
+      hints:   ["We are adding two numbers: 233 and 284.", "Add the ones: 3 + 4 = 7. Keep 7 in the ones place.", "Add the tens: 3 + 8 = 11.", "The sum is 233 + 284 = 517."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample 146acbe87c4c698d1aa2  seed 608  [true_false]
+      stem:    457 is 4 hundreds, 5 tens, and 7 ones. 510 is 5 hundreds, 1 ten, and 0 ones. Add the place values, then find the total: 457 + 510 = 968. True or False?
+      answer:  False
+      hints:   ["We are adding two numbers: 457 and 510.", "Add the ones: 7 + 0 = 7. Keep 7 in the ones place.", "Add the tens: 5 + 1 = 6.", "The sum is 457 + 510 = 967."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample cc3f007ee6dc7c8a7479  seed 609  [cloze]
+      stem:    11 is 1 ten and 1 one. 148 is 1 hundred, 4 tens, and 8 ones. Add the place values, then find the total: 11 + 148 = ___
+      answer:  159
+      options: 169 / 160 / 158 / 159
+      hints:   ["We are adding two numbers: 11 and 148.", "Add the ones: 1 + 8 = 9. Keep 9 in the ones place.", "Add the tens: 1 + 4 = 5.", "The sum is 11 + 148 = 159."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 3e3ead57b5a1393e2436  seed 610  [mcq]
+      stem:    165 is 1 hundred, 6 tens, and 5 ones. 810 is 8 hundreds, 1 ten, and 0 ones. Add the place values, then find the total: what is 165 + 810?
+      answer:  975
+      options: 985 / 976 / 974 / 975
+      hints:   ["We are adding two numbers: 165 and 810.", "Add the ones: 5 + 0 = 5. Keep 5 in the ones place.", "Add the tens: 6 + 1 = 7.", "The sum is 165 + 810 = 975."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 706237c2a3158c00e744  seed 611  [error_detect]
+      stem:    Rosa solved: "480 is 4 hundreds, 8 tens, and 0 ones. 305 is 3 hundreds, 0 tens, and 5 ones. Add the place values, then find the total: 480 + 305 = ___". Rosa says the missing number is 785. Is Rosa correct?
+      answer:  {'has_error': False, 'correct_value': 785}
+      hints:   ["We are adding two numbers: 480 and 305.", "Add the ones: 0 + 5 = 5. Keep 5 in the ones place.", "Add the tens: 8 + 0 = 8.", "The sum is 480 + 305 = 785."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample 942367ed1f8a0155b7f6  seed 700  [true_false]
+      stem:    138 is 1 hundred, 3 tens, and 8 ones. 281 is 2 hundreds, 8 tens, and 1 one. Add the place values, then find the total: 138 + 281 = 419. True or False?
+      answer:  True
+      hints:   ["We are adding two numbers: 138 and 281.", "Add the ones: 8 + 1 = 9. Keep 9 in the ones place.", "Add the tens: 3 + 8 = 11.", "The sum is 138 + 281 = 419."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 3994d4d62a81f6c549cd  seed 701  [cloze]
+      stem:    💃 Sir Rez enjoys dance shoes. Here is a math challenge. 436 is 4 hundreds, 3 tens, and 6 ones. 219 is 2 hundreds, 1 ten, and 9 ones. Add the place values, then find the total: 436 + 219 = ___
+      answer:  655
+      options: 654 / 655 / 665 / 217
+      hints:   ["We are adding two numbers: 436 and 219.", "Add the ones: 6 + 9 = 15. 15 ones is 1 ten and 5 ones.", "Add the tens: 3 + 1 + 1 (the ten from the ones) = 5.", "The sum is 436 + 219 = 655."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 3fe97634cf6ef30ec346  seed 702  [error_detect]
+      stem:    🏀 Isko enjoys basketballs. Here is a math challenge. Manny solved: "442 is 4 hundreds, 4 tens, and 2 ones. 2 is 2 ones. Add the place values, then find the total: 442 + 2 = ___". Manny says the missing number is 443. Is Manny correct?
+      answer:  {'has_error': True, 'correct_value': 444}
+      hints:   ["We are adding two numbers: 442 and 2.", "Add the ones: 2 + 2 = 4. Keep 4 in the ones place.", "Add the tens: 4 + 0 = 4.", "The sum is 442 + 2 = 444."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample 3454c42cabc897384d4b  seed 800  [cloze]
+      stem:    333 is 3 hundreds, 3 tens, and 3 ones. 510 is 5 hundreds, 1 ten, and 0 ones. Add the place values, then find the total: 333 + 510 = ___
+      answer:  843
+      options: 842 / 844 / 843 / 853
+      hints:   ["We are adding two numbers: 333 and 510.", "Add the ones: 3 + 0 = 3. Keep 3 in the ones place.", "Add the tens: 3 + 1 = 4.", "The sum is 333 + 510 = 843."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 9d19a8b7a0907d1f2af7  seed 801  [error_detect]
+      stem:    Pia solved: "366 is 3 hundreds, 6 tens, and 6 ones. 398 is 3 hundreds, 9 tens, and 8 ones. Add the place values, then find the total: 366 + 398 = ___". Pia says the missing number is 764. Is Pia correct?
+      answer:  {'has_error': False, 'correct_value': 764}
+      hints:   ["We are adding two numbers: 366 and 398.", "Add the ones: 6 + 8 = 14. 14 ones is 1 ten and 4 ones.", "Add the tens: 6 + 9 + 1 (the ten from the ones) = 16.", "The sum is 366 + 398 = 764."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample b98e52bf15576e163e19  seed 900  [mcq]
+      stem:    11 is 1 ten and 1 one. 2 is 2 ones. Add the place values, then find the total: what is 11 + 2?
+      answer:  13
+      options: 12 / 13 / 9 / 23
+      hints:   ["We are adding two numbers: 11 and 2.", "Add the ones: 1 + 2 = 3. Keep 3 in the ones place.", "Add the tens: 1 + 0 = 1.", "The sum is 11 + 2 = 13."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 50429ad857ecfed76336  seed 901  [mcq]
+      stem:    11 is 1 ten and 1 one. 1 is 1 one. Add the place values, then find the total: what is 11 + 1?
+      answer:  12
+      options: 12 / 10 / 22 / 11
+      hints:   ["We are adding two numbers: 11 and 1.", "Add the ones: 1 + 1 = 2. Keep 2 in the ones place.", "Add the tens: 1 + 0 = 1.", "The sum is 11 + 1 = 12."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample c48c47b0ffd3517c6010  seed 1000  [true_false]
+      stem:    19 is 1 ten and 9 ones. 229 is 2 hundreds, 2 tens, and 9 ones. Add the place values, then find the total: 19 + 229 = 258. True or False?
+      answer:  False
+      hints:   ["We are adding two numbers: 19 and 229.", "Add the ones: 9 + 9 = 18. 18 ones is 1 ten and 8 ones.", "Add the tens: 1 + 2 + 1 (the ten from the ones) = 4.", "The sum is 19 + 229 = 248."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "hint_gated"}
+  sample 23a60d59f072d6614f3d  seed 1001  [error_detect]
+      stem:    Liza solved: "57 is 5 tens and 7 ones. 168 is 1 hundred, 6 tens, and 8 ones. Add the place values, then find the total: 57 + 168 = ___". Liza says the missing number is 57. Is Liza correct?
+      answer:  {'has_error': True, 'correct_value': 225}
+      hints:   ["We are adding two numbers: 57 and 168.", "Add the ones: 7 + 8 = 15. 15 ones is 1 ten and 5 ones.", "Add the tens: 5 + 6 + 1 (the ten from the ones) = 12.", "The sum is 57 + 168 = 225."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "mastery_drill"}
+  sample 0f46945f2ff977ce9c25  seed 1002  [error_detect]
+      stem:    Manny solved: "520 is 5 hundreds, 2 tens, and 0 ones. 285 is 2 hundreds, 8 tens, and 5 ones. Add the place values, then find the total: 520 + 285 = ___". Manny says the missing number is 815. Is Manny correct?
+      answer:  {'has_error': True, 'correct_value': 805}
+      hints:   ["We are adding two numbers: 520 and 285.", "Add the ones: 0 + 5 = 5. Keep 5 in the ones place.", "Add the tens: 2 + 8 = 10.", "The sum is 520 + 285 = 805."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "scaffolded"}
+

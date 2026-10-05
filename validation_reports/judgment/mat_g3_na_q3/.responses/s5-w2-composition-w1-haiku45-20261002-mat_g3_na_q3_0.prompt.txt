@@ -1,0 +1,272 @@
+You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  blind-reviewer-haiku45-w2v1-mat_g3_na_q3_0-20261002
+
+Write one JSON object to:
+  local_only/scratch/w2_review/mat_g3_na_q3_0/verdicts.json
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: cognitive_capacity, competency_alignment, competency_fulfillment, comprehensive_coverage, scale_appropriateness, variant_comprehensiveness. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: ambiguity, contextual_logical_validity, learner_facing_clarity, mathematical_validity. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN: cite the sample_ids you EXAMINED and found lacking it (the list may never
+   be empty), and never cite a sample as SUPPORTING a clause it does not support.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{
+  "reviewer": "blind-reviewer-haiku45-w2v1-mat_g3_na_q3_0-20261002",
+  "<node_id>": {
+    "findings": {
+      "competency_fulfillment": {
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}
+      },
+      "<each other required finding>": {"verdict": "...", "rationale": "..."}
+    },
+    "sample_assessments": [
+      {"sample_id": "<opaque id>", "checks": {
+        "<each required sample check>": {"verdict": "...", "reasoning": "..."}
+      }}
+    ],
+    "clause_evidence": [
+      {"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }
+}
+
+== DISPATCH ADDENDUM (binding; read before judging) ==
+
+A. LENGTH. Every `rationale` and every `reasoning` string must be at least 60 characters and specific to
+   the node or sample it describes. Shorter strings are refused by the filing tool.
+
+B. QUOTING. Anything you put inside quotation marks must be a character-for-character substring of text
+   printed in the packet below. No paraphrase, summary, elision ("..."), placeholder, or comma-fragment
+   inside quotes, and never two quoted values joined by a dash. When in doubt, use NO quotation marks at
+   all and describe the text in your own words instead. An unmatched quote is treated as fabricated
+   evidence. The commonest failure: putting your OWN punctuation inside the quotes -- a trailing comma or
+   full stop that belongs to your sentence (write: the word "clock", never: "clock,"). Also never
+   quote a single ordinary word; quote only whole stems, hints or options, or nothing.
+
+C. THEMES. The generator deliberately themes items around a learner's chosen interest (26 curated
+   themes: names, objects, emoji, including religious and cultural themes). Do not judge whether a theme
+   is appropriate. Judge only whether the theming INTERFERES with the mathematics -- for example, a
+   wrapper that names a different object than the task counts, or a theme word that changes the meaning
+   of the question.
+
+D. HINTS. For every sample, compare each hint line against that sample's own stem, answer, options and
+   visual: does every equation in the hints hold, does the hint explain the question actually asked
+   (direction, unit, operation, which position is missing), and does it refer only to things the item
+   actually shows? A hint that contradicts or mis-describes its item is a sample-level defect.
+
+E. CITATIONS AND OVERALL. Every clause_evidence entry cites at least one sample_id; for a clause that
+   FAILs because something is absent, cite the sample_ids you examined. `overall` must follow the rule
+   in item 4 above exactly; the filing tool refuses a reply whose `overall` disagrees with its own
+   verdicts.
+
+F. CHECKLIST before you write (replies failing any of these are refused and sent back):
+   - use NO quotation marks anywhere in your prose; describe stems, hints and options in your own words;
+   - every rationale and every reasoning string is at least 60 characters;
+   - no two samples share a word-for-word reasoning -- name each sample's own numbers, words or visual;
+   - EVERY clause_evidence entry, including PASS ones, has a non-empty sample_ids list;
+   - `overall` follows the rule in item 4 from your own verdicts.
+
+Use only the Read tool on this prompt file and the Write tool for your one JSON reply. Do not open any
+other file.
+
+== BLIND PACKET ==
+
+==========================================================================
+NODE: mat_g3_na_q3_0
+PACKET DIGEST: e5c9e447e123aa39708b8200f21120c01db9e43ec22f151f249fb6cf5ce56bda
+COMPETENCY (Grade 3, Quarter 3, None):
+Multiply numbers using the 6, 7, 8, and 9 multiplication tables.
+
+REQUIREMENTS (confirm this is a lossless decomposition of the competency):
+  multiply_numbers: Multiply numbers
+  6_7_8_and_9_multiplication_tables: 6, 7, 8, and 9 multiplication tables
+
+SAMPLES (every one of these is real rendered output):
+  sample 9c6770d3a349fdd9fdb7  seed 42  [true_false]
+      stem:    6 × 1 = 7. True or False?
+      answer:  False
+      hints:   ["We need to find the total of equal groups 1 group of 6.", "Think of it as 1 group of 6: 6.", "The product of 6 × 1 = 6."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 35d54ef5d737660eabd9  seed 43  [error_detect]
+      stem:    Grace solved: "6 × 4 = ___". Grace says the missing number is 24. Is Grace correct?
+      answer:  {'has_error': False, 'correct_value': 24}
+      hints:   ["We need to find the total of equal groups 4 groups of 6.", "Think of it as 4 groups of 6: 6 + 6 + 6 + 6.", "The product of 6 × 4 = 24."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample e43725555501b7abbe2b  seed 44  [set_fill_in_blank]
+      stem:    Shade all the squares inside the 4×9 rectangle. How many squares did you shade in all?
+      answer:  36
+      hints:   ["We need to find the total of equal groups 4 groups of 9.", "Think of it as 4 groups of 9: 9 + 9 + 9 + 9.", "The product of 9 × 4 = 36."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "GridArea", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  GridArea
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "GridArea", "element_count": 49, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 1, "input_count": 0, "text_labels": ["Click squares to shade a", "9 × 4", "rectangle", "0 square units", "Clear All", "Click squares to shade/unshade"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--primary)", "#4b5563", "#374151", "#f8fafc,", "#e2e8f0)", "#cbd5e1", "hsl(var(--border-color)", "hsl(var(--text)"], "role_counts": {"grid-cell": 36}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample c5a7148398aef9851dfd  seed 45  [cloze]
+      stem:    8 × 3 = ___
+      answer:  24
+      options: 21 / 5 / 11 / 24
+      hints:   ["We need to find the total of equal groups 3 groups of 8.", "Think of it as 3 groups of 8: 8 + 8 + 8.", "The product of 8 × 3 = 24."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample f2642622eec24900d8b2  seed 46  [read_mcq]
+      stem:    Look at the 6×6 array. How many squares are shaded in all?
+      answer:  36
+      options: 39 / 36 / 33 / 24
+      hints:   ["We need to find the total of equal groups 6 groups of 6.", "Use the 6 times table: 6 × 6.", "The product of 6 × 6 = 36."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "GridArea", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  GridArea
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "GridArea", "element_count": 49, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 1, "input_count": 0, "text_labels": ["Click squares to shade a", "6 × 6", "rectangle", "36 square units", "Clear All", "Click squares to shade/unshade"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--primary)", "#4b5563", "#374151", "hsl(var(--border-color)", "hsl(var(--text)"], "role_counts": {"grid-cell": 36}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 4f3faf1d7823f5656245  seed 47  [mcq]
+      stem:    What is 8 × 8?
+      answer:  64
+      options: 64 / 63 / 56 / 16
+      hints:   ["We need to find the total of equal groups 8 groups of 8.", "Use the 8 times table: 8 × 8.", "The product of 8 × 8 = 64."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 1f4ce568a0acddefc551  seed 500  [mcq]
+      stem:    What is 8 × 9?
+      answer:  72
+      options: 63 / 71 / 17 / 72
+      hints:   ["We need to find the total of equal groups 9 groups of 8.", "Use the 9 times table: 9 × 8.", "The product of 8 × 9 = 72."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample dc73c8c2eabac807a1f8  seed 501  [true_false]
+      stem:    9 × 8 = 1. True or False?
+      answer:  False
+      hints:   ["We need to find the total of equal groups 8 groups of 9.", "Use the 8 times table: 8 × 9.", "The product of 9 × 8 = 72."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 0ace611f928137ee0fdd  seed 502  [set_fill_in_blank]
+      stem:    Shade all the squares inside the 4×9 rectangle. How many squares did you shade in all?
+      answer:  36
+      hints:   ["We need to find the total of equal groups 4 groups of 9.", "Think of it as 4 groups of 9: 9 + 9 + 9 + 9.", "The product of 9 × 4 = 36."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "GridArea", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  GridArea
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "GridArea", "element_count": 49, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 1, "input_count": 0, "text_labels": ["Click squares to shade a", "9 × 4", "rectangle", "0 square units", "Clear All", "Click squares to shade/unshade"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--primary)", "#4b5563", "#374151", "#f8fafc,", "#e2e8f0)", "#cbd5e1", "hsl(var(--border-color)", "hsl(var(--text)"], "role_counts": {"grid-cell": 36}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 103b2526da3759fc20a4  seed 600  [true_false]
+      stem:    7 × 6 = 1. True or False?
+      answer:  False
+      hints:   ["We need to find the total of equal groups 6 groups of 7.", "Use the 6 times table: 6 × 7.", "The product of 7 × 6 = 42."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 89cce8913b688fa21af9  seed 601  [cloze]
+      stem:    Pia puts 6 water bowls in each of 7 bags. How many water bowls are in all the bags?
+      answer:  42
+      options: 1 / 36 / 42 / 13
+      hints:   ["We need to find the total of equal groups 6 groups of 7.", "Use the 6 times table: 6 × 7.", "The product of 7 × 6 = 42."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 803ef22cc6d1a4a7e7b5  seed 602  [mcq]
+      stem:    What is 9 × 3?
+      answer:  27
+      options: 12 / 27 / 24 / 6
+      hints:   ["We need to find the total of equal groups 3 groups of 9.", "Think of it as 3 groups of 9: 9 + 9 + 9.", "The product of 9 × 3 = 27."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 71b8232ed03c01e53aac  seed 603  [error_detect]
+      stem:    Ana solved: "7 × 4 = ___". Ana says the missing number is 32. Is Ana correct?
+      answer:  {'has_error': True, 'correct_value': 28}
+      hints:   ["We need to find the total of equal groups 4 groups of 7.", "Think of it as 4 groups of 7: 7 + 7 + 7 + 7.", "The product of 7 × 4 = 28."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample 054c50f6c48bb20f2467  seed 604  [cloze]
+      stem:    6 × 6 = ___
+      answer:  36
+      options: 35 / 12 / 30 / 36
+      hints:   ["We need to find the total of equal groups 6 groups of 6.", "Use the 6 times table: 6 × 6.", "The product of 6 × 6 = 36."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 354fa4ce67194732fd04  seed 605  [mcq]
+      stem:    What is 7 × 5?
+      answer:  35
+      options: 2 / 35 / 12 / 30
+      hints:   ["We need to find the total of equal groups 5 groups of 7.", "Think of it as 5 groups of 7: 7 + 7 + 7 + 7 + 7.", "The product of 7 × 5 = 35."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 1965536df162b987a964  seed 700  [error_detect]
+      stem:    Carlo solved: "7 × 4 = ___". Carlo says the missing number is 32. Is Carlo correct?
+      answer:  {'has_error': True, 'correct_value': 28}
+      hints:   ["We need to find the total of equal groups 4 groups of 7.", "Think of it as 4 groups of 7: 7 + 7 + 7 + 7.", "The product of 7 × 4 = 28."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample 83a3d5d3330a8f71e81e  seed 701  [read_mcq]
+      stem:    💃 Sir Rez enjoys dance shoes. Here is a math challenge. Look at the 1×7 array. How many squares are shaded in all?
+      answer:  7
+      options: 6 / 16 / 7 / 10
+      hints:   ["We need to find the total of equal groups 1 group of 7.", "Think of it as 1 group of 7: 7.", "The product of 7 × 1 = 7."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "GridArea", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  GridArea
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "GridArea", "element_count": 20, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 1, "input_count": 0, "text_labels": ["Click squares to shade a", "7 × 1", "rectangle", "7 square units", "Clear All", "Click squares to shade/unshade"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--primary)", "#4b5563", "#374151", "hsl(var(--border-color)", "hsl(var(--text)"], "role_counts": {"grid-cell": 7}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 4e8db5e03f2c7cc0de87  seed 702  [set_fill_in_blank]
+      stem:    🐕 Ate Beng enjoys cat toys. Here is a math challenge. Shade all the squares inside the 5×6 rectangle. How many squares did you shade in all?
+      answer:  30
+      hints:   ["We need to find the total of equal groups 5 groups of 6.", "Think of it as 5 groups of 6: 6 + 6 + 6 + 6 + 6.", "The product of 6 × 5 = 30."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "GridArea", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  GridArea
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "GridArea", "element_count": 43, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 1, "input_count": 0, "text_labels": ["Click squares to shade a", "6 × 5", "rectangle", "0 square units", "Clear All", "Click squares to shade/unshade"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--primary)", "#4b5563", "#374151", "#f8fafc,", "#e2e8f0)", "#cbd5e1", "hsl(var(--border-color)", "hsl(var(--text)"], "role_counts": {"grid-cell": 30}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 4661f64f71ed606e4385  seed 800  [mcq]
+      stem:    What is 9 × 9?
+      answer:  81
+      options: 81 / 18 / 80 / 72
+      hints:   ["We need to find the total of equal groups 9 groups of 9.", "Use the 9 times table: 9 × 9.", "The product of 9 × 9 = 81."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample a977a15eea298fd32764  seed 801  [set_fill_in_blank]
+      stem:    Shade all the squares inside the 4×7 rectangle. How many squares did you shade in all?
+      answer:  28
+      hints:   ["We need to find the total of equal groups 4 groups of 7.", "Think of it as 4 groups of 7: 7 + 7 + 7 + 7.", "The product of 7 × 4 = 28."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "GridArea", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  GridArea
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "GridArea", "element_count": 41, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 1, "input_count": 0, "text_labels": ["Click squares to shade a", "7 × 4", "rectangle", "0 square units", "Clear All", "Click squares to shade/unshade"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--primary)", "#4b5563", "#374151", "#f8fafc,", "#e2e8f0)", "#cbd5e1", "hsl(var(--border-color)", "hsl(var(--text)"], "role_counts": {"grid-cell": 28}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 6e17117b389b7b8c2070  seed 900  [cloze]
+      stem:    6 × 1 = ___
+      answer:  6
+      options: 7 / 6 / 5 / 8
+      hints:   ["We need to find the total of equal groups 1 group of 6.", "Think of it as 1 group of 6: 6.", "The product of 6 × 1 = 6."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 2b0ccdcdcc75040e479b  seed 901  [true_false]
+      stem:    6 × 1 = 7. True or False?
+      answer:  False
+      hints:   ["We need to find the total of equal groups 1 group of 6.", "Think of it as 1 group of 6: 6.", "The product of 6 × 1 = 6."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 3f480174626bfeb864aa  seed 1000  [error_detect]
+      stem:    Carlo solved: "6 × 1 = ___". Carlo says the missing number is 6. Is Carlo correct?
+      answer:  {'has_error': False, 'correct_value': 6}
+      hints:   ["We need to find the total of equal groups 1 group of 6.", "Think of it as 1 group of 6: 6.", "The product of 6 × 1 = 6."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "hint_gated"}
+  sample 4d496cfe4e83cb87a16d  seed 1001  [set_fill_in_blank]
+      stem:    Shade all the squares inside the 3×6 rectangle. How many squares did you shade in all?
+      answer:  18
+      hints:   ["We need to find the total of equal groups 3 groups of 6.", "Think of it as 3 groups of 6: 6 + 6 + 6.", "The product of 6 × 3 = 18."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "GridArea", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "mastery_drill"}
+      visual:  GridArea
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "GridArea", "element_count": 31, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 1, "input_count": 0, "text_labels": ["Click squares to shade a", "6 × 3", "rectangle", "0 square units", "Clear All", "Click squares to shade/unshade"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--primary)", "#4b5563", "#374151", "#f8fafc,", "#e2e8f0)", "#cbd5e1", "hsl(var(--border-color)", "hsl(var(--text)"], "role_counts": {"grid-cell": 18}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 596693cc1652e3f2ad04  seed 1002  [set_fill_in_blank]
+      stem:    Shade all the squares inside the 1×7 rectangle. How many squares did you shade in all?
+      answer:  7
+      hints:   ["We need to find the total of equal groups 1 group of 7.", "Think of it as 1 group of 7: 7.", "The product of 7 × 1 = 7."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "GridArea", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "scaffolded"}
+      visual:  GridArea
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "GridArea", "element_count": 20, "svg_count": 1, "table_row_count": 0, "table_cell_count": 0, "button_count": 1, "input_count": 0, "text_labels": ["Click squares to shade a", "7 × 1", "rectangle", "0 square units", "Clear All", "Click squares to shade/unshade"], "distinct_colours": ["hsl(var(--text-muted)", "hsl(var(--primary)", "#4b5563", "#374151", "#f8fafc,", "#e2e8f0)", "#cbd5e1", "hsl(var(--border-color)", "hsl(var(--text)"], "role_counts": {"grid-cell": 7}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+

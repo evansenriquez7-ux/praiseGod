@@ -18008,3 +18008,85 @@ NAMED LIMITS:
 - The tie-break judge saw only the disputed capabilities, not the whole node.
 
 **Commits:** `80b2d770`, `0ab59915`, `945192c4`.
+
+## 2026-10-05 — Recovery audit of interrupted W2 evidence (`codex-h06-w2-resume-2026-10-05`)
+
+The Claude-hosted continuation stopped during W2 after filing additional blind Claude Haiku 4.5
+judgments and attestations and after making further source/harness commits. This recovery pass audited
+the live worktree before staging anything. It did not carry forward or alter a reviewer verdict.
+
+**Process and storage preflight.** No validation or mutation process was live, and the data volume had
+17 GiB available:
+
+```text
+$ ps -eo pid,etime,command | grep -iE "[m]utation_harness|[o]bligation_executor|[v]alidate_|[p]ytest|backend.app.practice_gen.validation.[r]un_all" || true
+$ df -h /System/Volumes/Data
+Filesystem      Size    Used   Avail Capacity iused ifree %iused  Mounted on
+/dev/disk1s1   112Gi    79Gi    17Gi    83%    1.3M  173M    1%   /System/Volumes/Data
+```
+
+**Judgment validation.** The live validator was run against all 151 reviews:
+
+```text
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_judgment --all > /tmp/review_claude_vj.log 2>&1; echo "EXIT $?"
+EXIT 1
+Verdicts over 151 reviewed nodes: PASS=80 CONCERN=50 FAIL=21 UNKNOWN=0
+Judgment review validation: 680 problem(s) found.
+```
+
+Exactly seven reviews are STALE on the current source: `mat_g2_na_q2_3`, `mat_g2_na_q2_7`,
+`mat_g3_na_q2_1`, `mat_g3_na_q2_3`, `mat_g3_na_q2_4`, `mat_g3_na_q3_3`, and
+`mat_g3_na_q3_4`. None is one of the 25 modified review records in this checkpoint. The remaining
+findings are the reviewers' live content findings, not filing-integrity failures.
+
+The 25 modified records were also audited against their recorded dispatch provenance:
+
+```text
+modified_judgments=25
+unique_dispatch_ids=25
+missing_provenance_files=0
+provenance_digest_errors=0
+all_reviewer_identities_haiku45=True
+untracked_attestations_336_361=26
+unique_attester_identities=26
+all_attester_identities_haiku45=True
+```
+
+Every modified review has its own raw response and prompt pair, both byte-matching the SHA-256 digest
+recorded by the filer. The identities name the model that judged: Claude Haiku 4.5. The filed records
+report each reviewer's reasoning and tool-use provenance; this recovery pass did not infer tool use
+from reviewer self-report.
+
+**Capability validation.** The live Phase 2 validator was run after all current source commits:
+
+```text
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_capability --phase 2 > /tmp/review_claude_cap2.log 2>&1; echo "EXIT $?"
+EXIT 1
+Capability contract: 130 failure(s) (0 Phase 1 / artifact-free, floor 5; 130 Phase 2 / attestation).
+```
+
+The 130 are 127 CONTRADICTED findings across 56 nodes plus three STALE records. The stale records are
+`batch113_mat_g1_na_q3_6`, `batch347_mat_g3_mg_q1_0`, and `batch358_mat_g3_mg_q1_0`.
+`batch347` and `batch358` are preserved as historical blind judgments: the later square/rectangle
+wording change made their packets stale, so they require fresh superseding judgments and must not be
+edited or deleted. Of the 26 newly present `batch336`–`batch361` records, 24 are current and those two
+are stale.
+
+**Current focused execution.** The current source and harness changes pass their focused tests:
+
+```text
+$ PYTHONPATH=. .venv/bin/python -m pytest tests/unit/test_hint_contract.py tests/unit/test_formatter_supports_profile.py -q -p no:cacheprovider
+........................................................................ [ 38%]
+........................................................................ [ 77%]
+.........................................                                [100%]
+185 passed in 197.10s (0:03:17)
+```
+
+NAMED LIMITS:
+- The full `run_all` and mutation corpus have not been re-run at the current HEAD. All 199 existing
+  mutation proof files and all six release shards are stale after later source/harness commits and are
+  deliberately excluded from this evidence checkpoint.
+- The capability baseline remains red, so the 127 contradictions are the active engineering queue,
+  not a certified result.
+- Blindness remains a prompt contract rather than a sandbox. The filed provenance is retained without
+  embellishment.
