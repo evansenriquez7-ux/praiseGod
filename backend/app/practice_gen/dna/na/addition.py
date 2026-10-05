@@ -19,6 +19,7 @@ from backend.app.practice_gen.dna.base import (
     DimensionSpec,
     ErrorPattern,
     VocabGated,
+    count_noun,
 )
 
 
@@ -1098,9 +1099,11 @@ def generate_hints(
                 f"Keep {ones_sum % 10} in the ones place and {reg_phrase} 1 ten."
             )
         elif makes_a_ten:
+            remainder = ones_sum % 10
             hints.append(
                 f"Add the ones: {ones_a} + {ones_b} = {ones_sum}. "
-                f"{ones_sum} ones is 1 ten and {ones_sum % 10} ones."
+                f"{ones_sum} ones is 1 ten and {remainder} "
+                f"{count_noun(remainder, 'ones')}."
             )
         else:
             hints.append(f"Add the ones: {ones_a} + {ones_b} = {ones_sum}. Keep {ones_sum} in the ones place.")

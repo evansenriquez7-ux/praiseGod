@@ -277,3 +277,18 @@ def test_a_property_statement_keyed_false_is_false(task_type):
         for seed in range(120):
             values = multiplication.generate_params(3, {"task_type": task_type, "max_product": max_product}, seed)
             multiplication.generate_hints(values, set())
+
+
+@pytest.mark.parametrize(
+    ("a", "b", "expected"),
+    [(23, 8, "11 ones is 1 ten and 1 one."),
+     (27, 5, "12 ones is 1 ten and 2 ones.")],
+)
+def test_addition_non_regrouping_hint_inflects_ones(a, b, expected):
+    """The place-value explanation agrees with its own remainder count."""
+    addition = importlib.import_module("backend.app.practice_gen.dna.na.addition")
+    hints = addition.generate_hints(
+        {"task_type": "putting_together", "a": a, "b": b, "result": a + b},
+        {"ones", "tens"},
+    )
+    assert any(expected in hint for hint in hints), hints
