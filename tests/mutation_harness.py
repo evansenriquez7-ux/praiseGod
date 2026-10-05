@@ -1858,6 +1858,49 @@ MUTATIONS: List[Mutation] = [
         baseline_must_not_contain=["ClockSet period PM is absent"],
     ),
     Mutation(
+        name="frontend_shape_board_erases_size",
+        asserts=["rendered_visual_description_12"],
+        description=(
+            "Erase the ShapeBoard dimensions that mat_g1_mg_q1_0's "
+            "different-size/different-orientation competency requires. The payload "
+            "remains valid, so only inspecting emitted React markup can detect the "
+            "same-size figures and the rectangle drawn as a square."
+        ),
+        edits={
+            "frontend/src/components/VisualSkeletons.jsx": (
+                "        const shapeWidth = s.type === 'rectangle' ? Math.round(shapeSize * 1.25) : shapeSize;\n"
+                "        const shapeHeight = s.type === 'rectangle' ? Math.round(shapeSize * 0.8) : shapeSize;\n",
+                "        const shapeWidth = 50;  // planted mutation\n"
+                "        const shapeHeight = 50;\n",
+            ),
+        },
+        command=["tests.frontend_suite"],
+        expected_check="§12 (ShapeBoard markup preserves MATATAG size and orientation)",
+        expect_output_contains=["FAIL frontend_static_render_12",
+                                "Grade 1 shape identification lost its three rendered sizes",
+                                "Grade 1 rectangle was drawn as a square"],
+        baseline_must_not_contain=["Grade 1 shape identification lost its three rendered sizes"],
+    ),
+    Mutation(
+        name="frontend_shape_board_erases_orientation",
+        asserts=["rendered_visual_description_12"],
+        description=(
+            "Force every ShapeBoard figure upright while leaving orientation_deg "
+            "intact in the payload. The rendered-markup check must catch the mismatch."
+        ),
+        edits={
+            "frontend/src/components/VisualSkeletons.jsx": (
+                "              transform: `rotate(${s.orientation_deg || 0}deg) ${isHighlighted ? 'scale(1.3)' : 'scale(1)'}`,\n",
+                "              transform: `rotate(0deg) ${isHighlighted ? 'scale(1.3)' : 'scale(1)'}`,  // planted mutation\n",
+            ),
+        },
+        command=["tests.frontend_suite"],
+        expected_check="§12 (ShapeBoard markup preserves MATATAG orientation)",
+        expect_output_contains=["FAIL frontend_static_render_12",
+                                "Grade 1 shape identification lost its three rendered orientations"],
+        baseline_must_not_contain=["Grade 1 shape identification lost its three rendered orientations"],
+    ),
+    Mutation(
         name="frontend_description_omits_drawn_element",
         asserts=["rendered_visual_description_12"],
         description=(

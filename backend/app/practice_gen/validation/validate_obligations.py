@@ -107,9 +107,17 @@ UNREACHABLE_ROUTE_FLOOR = 5
 # pair, 0 added, 0 unattributable. Measured before -> after: discrete 4249 -> 3861
 # (-388), continuous crossings 18567 -> 16737 (-1830), finite 458892 -> 416988
 # (-41904). Each floor moved by that delta, keeping its prior slack.
-BASE_OBLIGATION_FLOOR = 3824       # 4212 - 388
-FINITE_OBLIGATION_FLOOR = 412_992  # 454_896 - 41_904
-CONTINUOUS_CROSSING_FLOOR = 16_590  # 18_420 - 1_830
+#
+# LOWERED 2026-10-05 by exactly the measured shrink on mat_g1_mg_q1_0. The
+# MATATAG clause names shapes "of different size and in different orientation";
+# text-only mcq/categorize cannot show either property. Toggling only that node's
+# COMPOSED entry yields 3861 -> 3849 base (-12), 16737 -> 16701 continuous
+# crossings (-36), and 416988 -> 415692 finite (-1296). Full obligation-key diff:
+# 0 added; all 12 removed keys are this node's mcq/categorize routes; every
+# other node's key set is byte-identical. Prior slack is unchanged.
+BASE_OBLIGATION_FLOOR = 3812       # 3824 - 12
+FINITE_OBLIGATION_FLOOR = 411_696  # 412_992 - 1_296
+CONTINUOUS_CROSSING_FLOOR = 16_554  # 16_590 - 36
 REQUIRED_RESPONSE_MODES = {
     "click", "drag", "error_detect", "fill_in_blank", "mcq", "true_false",
 }

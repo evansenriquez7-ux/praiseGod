@@ -17,6 +17,7 @@ visual_params:
                 "corners":      int,
                 "is_regular":   bool,
                 "orientation_deg": int, # 0 | 45 | 90 | 135
+                "size_px":      int, # rendered width in CSS pixels
             },
             ...
         ],
@@ -105,6 +106,19 @@ def _shapes_from_item(values: dict, rng: random.Random) -> List[dict]:
         if type_name and type_name not in found:
             found.append(type_name)
 
+    # MATATAG mat_g1_mg_q1_0: "Identify triangles, rectangles, and squares of
+    # different size and in different orientation." Show every named kind on
+    # each identification board. A target-only drawing makes the other kinds
+    # incidental even though their names appear among the options.
+    basic_identification = (
+        values.get("shape_set") == "basic_triangles_rectangles_squares"
+        and values.get("task_type") == "identify_name"
+    )
+    if basic_identification:
+        found = ["triangle", "rectangle", "square"]
+    sizes = rng.sample([40, 52, 64, 76], k=3) if basic_identification else []
+    orientations = rng.sample(_ORIENTATIONS, k=3) if basic_identification else []
+
     shapes: List[dict] = []
     # "rotated" is the DNA's own orientation field; it is the difficulty knob the
     # competency names ("of different size and in different orientation"), so it
@@ -114,14 +128,19 @@ def _shapes_from_item(values: dict, rng: random.Random) -> List[dict]:
         entry = _catalogue_entry(type_name)
         if entry is None:
             continue
-        shapes.append({
+        shape = {
             "id": f"shape_{i}",
             "type": entry["type"],
             "sides": entry["sides"],
             "corners": entry["corners"],
             "is_regular": entry["is_regular"],
-            "orientation_deg": rng.choice(_ORIENTATIONS[1:]) if varied else 0,
-        })
+            "orientation_deg": orientations[i] if basic_identification else (
+                rng.choice(_ORIENTATIONS[1:]) if varied else 0
+            ),
+        }
+        if basic_identification:
+            shape["size_px"] = sizes[i]
+        shapes.append(shape)
     return shapes
 
 
@@ -306,13 +325,36 @@ def format_shape_board(
         format_data: dict = {"visual_params": vp}
         if mcq_options:
             format_data["mcq_options"] = mcq_options
+        question_text = str(_vals["question"])
+        if (
+            _vals.get("shape_set") == "basic_triangles_rectangles_squares"
+            and _vals.get("task_type") == "identify_name"
+        ):
+            # The static-bank story adjectives ("small", "large", "tilted")
+            # described an object that might disagree with the rendered figure's
+            # actual size or angle. Ask about the figure the pupil can see.
+            clues = {
+                "triangle": "three straight edges",
+                "square": "four equal straight edges",
+                "rectangle": "two longer and two shorter straight edges",
+            }
+            answer_type = str(_vals["answer"]).lower()
+            if answer_type not in clues:
+                raise ValueError(
+                    f"ShapeBoard has no identification clue for answer "
+                    f"{answer_type!r} (node={ctx.node_id}, seed={ctx.seed})"
+                )
+            question_text = (
+                "Look at the shapes in different sizes and orientations. "
+                f"Which shape on the board has {clues[answer_type]}?"
+            )
         return FormattedProblem(
             problem_id=f"{ctx.node_id}_{ctx.seed}_shapeboard",
             node_id=ctx.node_id,
             competency_text=ctx.competency_text,
             grade=ctx.grade,
             seed=ctx.seed,
-            question_text=str(_vals["question"]),
+            question_text=question_text,
             correct_answer=final_answer,
             distractors=traps,
             hints=ctx.hints,

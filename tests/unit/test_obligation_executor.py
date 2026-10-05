@@ -88,11 +88,16 @@ def test_current_finite_product_is_the_corrected_reachable_count():
     # composition switched off, 0 obligations added and 0 removed that are not such a
     # pair. Per node: g1_na_q1_9 12, q2_6 24, q3_0 48, q3_3 24, q3_4 48, q4_6 18,
     # g2_na_q1_7 24, q2_5 24, q3_0 36, q3_1 108, q3_4 6, g3_mg_q1_0 16.
-    assert len(_base_obligations()) == 3861
+    # 3861 -> 3849 on 2026-10-05, exactly 12 text-only mcq/categorize routes
+    # removed from mat_g1_mg_q1_0. Its MATATAG competency names shapes "of different
+    # size and in different orientation"; those routes draw neither property.
+    # Full key-set diff with this node's composition toggled: 0 added, 12 removed,
+    # every removed key belongs to mat_g1_mg_q1_0, all other keys byte-identical.
+    assert len(_base_obligations()) == 3849
     assert len(interest_request_values()) == 27
     assert len(experience_values()) == 4
-    assert finite_obligation_count() == 416_988
-    assert represented_execution_count() == 2_084_940
+    assert finite_obligation_count() == 415_692
+    assert represented_execution_count() == 2_078_460
 
 
 def test_seed_slots_cover_boundaries_and_extra_interiors():

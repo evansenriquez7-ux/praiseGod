@@ -3965,6 +3965,12 @@ export function ShapeBoardInteractive({ params, onAnswer, disabled }) {
           s.id ? s.id === params.highlighted_shape.id : JSON.stringify(s) === JSON.stringify(params.highlighted_shape)
         );
         const rank = order.indexOf(i) + 1;
+        const authoredSize = Number(s.size_px);
+        const shapeSize = Number.isFinite(authoredSize)
+          ? Math.max(32, Math.min(80, authoredSize))
+          : 50;
+        const shapeWidth = s.type === 'rectangle' ? Math.round(shapeSize * 1.25) : shapeSize;
+        const shapeHeight = s.type === 'rectangle' ? Math.round(shapeSize * 0.8) : shapeSize;
         
         return (
           <div 
@@ -4002,12 +4008,14 @@ export function ShapeBoardInteractive({ params, onAnswer, disabled }) {
                 {rank}
               </span>
             )}
-            <div style={{
+            <div data-pgen-shape-type={s.type} style={{
+              // The emitted dimensions and angle are also captured from this
+              // rendered element in the blind-review packet's DOM description.
               filter: isHighlighted ? 'drop-shadow(0 0 15px #f59e0b) drop-shadow(0 0 5px #f59e0b)' : 'drop-shadow(0 4px 6px rgba(0,0,0,0.1))',
               transform: `rotate(${s.orientation_deg || 0}deg) ${isHighlighted ? 'scale(1.3)' : 'scale(1)'}`,
               transition: 'all 0.3s ease',
               zIndex: isHighlighted ? 10 : 1,
-              width: '50px', height: '50px',
+              width: `${shapeWidth}px`, height: `${shapeHeight}px`,
               border: isHighlighted && !s.type.includes('triangle') ? '4px solid #f59e0b' : 'none',
               borderRadius: borderRadius,
               boxSizing: 'border-box'

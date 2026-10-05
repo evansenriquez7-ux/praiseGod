@@ -63,6 +63,21 @@ export function describeStaticMarkup(visualType, markup) {
     distinct_colours: colors,
     role_counts: roleCounts,
   };
+  if (visualType === 'ShapeBoard') {
+    // Read the dimensions and rotation from the DOM that React actually emitted.
+    // Reading the input payload here once hid a renderer that drew every figure
+    // at the same 50px size even when the payload claimed variation.
+    description.rendered_shapes = [...document.querySelectorAll('[data-pgen-shape-type]')]
+      .map((el) => ({
+        type: el.getAttribute('data-pgen-shape-type'),
+        width_px: Number.parseInt(el.style.width, 10),
+        height_px: Number.parseInt(el.style.height, 10),
+        orientation_deg: Number.parseInt(
+          /rotate\((-?\d+)deg\)/.exec(el.style.transform)?.[1] ?? '',
+          10,
+        ),
+      }));
+  }
   dom.window.close();
   return description;
 }
@@ -92,6 +107,38 @@ export function assertVisualEvidence(sample, evidence) {
   if (evidence.markup.includes('Unknown visual type:')) findings.push('unknown visual type fallback');
   if (/\b(?:undefined|NaN)\b/.test(evidence.markup)) findings.push('undefined/NaN reached markup');
   if (evidence.description.element_count <= 2) findings.push('degenerate empty box');
+  if (sample.visual_type === 'ShapeBoard') {
+    const expected = sample.visual_params.shapes || [];
+    const rendered = evidence.description.rendered_shapes || [];
+    if (rendered.length !== expected.length) {
+      findings.push(`ShapeBoard drew ${rendered.length} shapes; payload names ${expected.length}`);
+    }
+    rendered.forEach((shape, i) => {
+      const source = expected[i];
+      if (!source) return;
+      if (shape.type !== source.type) {
+        findings.push(`ShapeBoard shape ${i} rendered ${shape.type} instead of ${source.type}`);
+      }
+      if (!Number.isFinite(shape.width_px) || !Number.isFinite(shape.height_px)) {
+        findings.push(`ShapeBoard shape ${i} has no rendered dimensions`);
+      }
+      if (shape.orientation_deg !== (source.orientation_deg || 0)) {
+        findings.push(`ShapeBoard shape ${i} lost orientation ${source.orientation_deg}`);
+      }
+    });
+    if (sample.node_id === 'mat_g1_mg_q1_0') {
+      if (new Set(rendered.map((shape) => shape.width_px)).size !== 3) {
+        findings.push('Grade 1 shape identification lost its three rendered sizes');
+      }
+      if (new Set(rendered.map((shape) => shape.orientation_deg)).size !== 3) {
+        findings.push('Grade 1 shape identification lost its three rendered orientations');
+      }
+      const rectangle = rendered.find((shape) => shape.type === 'rectangle');
+      if (!rectangle || rectangle.width_px === rectangle.height_px) {
+        findings.push('Grade 1 rectangle was drawn as a square');
+      }
+    }
+  }
   if (sample.visual_type === 'NumberLine' && sample.visual_params.jump_count > 0) {
     const rendered = evidence.description.role_counts['number-line-jump'] || 0;
     if (rendered !== sample.visual_params.jump_count) {

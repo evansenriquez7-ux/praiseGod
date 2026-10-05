@@ -57,7 +57,7 @@ from typing import Dict, Iterable, List, Tuple
 
 # Words that name a medium the learner works in (ruling 1), or the medium itself.
 MEDIUM_CLAUSE_RE = re.compile(
-    r"\b(illustrat\w*|represent\w*|models?|modell?ing|draws?|drawing|concrete|pictorial|pictures?)\b",
+    r"\b(illustrat\w*|represent\w*|models?|modell?ing|draws?|drawing|concrete|pictorial|pictures?|different size|different orientation)\b",
     re.I,
 )
 
@@ -68,6 +68,22 @@ MEDIUM_SHARE_FLOOR = 0.5
 #   {"clause": <the KG clause, verbatim>, "medium": "visual" | "interactive",
 #    "competency": <the competency phrase it comes from, quoted>, "drop": [formatter, ...]}
 COMPOSED: Dict[str, Dict[str, Dict]] = {
+    'mat_g1_mg_q1_0': {
+        'different_size': {
+            'clause': 'different size',
+            'medium': 'visual',
+            'competency': 'Identify simple 2-dimensional shapes (triangle, rectangle, square) of different size and in different orientation.',
+            'drop': ['mcq', 'categorize'],
+            'note': 'The learner must see the shape sizes; text-only formatters cannot render them.',
+        },
+        'different_orientation': {
+            'clause': 'different orientation',
+            'medium': 'visual',
+            'competency': 'Identify simple 2-dimensional shapes (triangle, rectangle, square) of different size and in different orientation.',
+            'drop': ['mcq', 'categorize'],
+            'note': 'The learner must see rotated shapes; text-only formatters cannot render them.',
+        },
+    },
     'mat_g1_na_q1_2': {
         'represent': {'clause': 'represent', 'medium': 'visual', 'competency': 'Recognize and represent numbers up to 100 using a variety of concrete and pictorial models (e.g., number line, block or bar models, and numerals).', 'drop': []},
         'concrete_models': {'clause': 'concrete', 'medium': 'interactive', 'competency': 'Recognize and represent numbers up to 100 using a variety of concrete and pictorial models (e.g., number line, block or bar models, and numerals).', 'drop': [], 'note': 'place_value_blocks_set is served'},
