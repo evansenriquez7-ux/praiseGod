@@ -1,6 +1,6 @@
 # Task prompt: continue Phase 2 hardening (fresh GPT-hosted session)
 
-**Rewritten 2026-09-30 after Phase D; state refreshed 2026-10-01 after Phase E W1. This REPLACES every
+**Rewritten 2026-10-06 after the first W2 source batch and its full re-proof. This REPLACES every
 earlier version of this file.** `GPT_HANDOFF_PROMPT.md` beside it is finished history; do not execute it.
 `CLAUDE_AGENT_PROMPT.md` is the same plan written for a Claude host; its §5–§10 hold the long-form
 method and traps this file summarises. Where sources disagree, trust them in this order: a command you
@@ -27,20 +27,22 @@ It will not reach 0 this session. Leave it closer to 0, with every claim proven 
 
 ## 1. State at handoff (re-measure it; never quote these numbers without re-running)
 
-**Updated 2026-10-01 after Phase E W1 completed.**
+**Updated 2026-10-06 after commits `421c9070` and `383879af` and a full re-proof at digest
+`878f0affe08d27d4`. Re-measure before quoting.**
 
 ```
-tree_state            CERTIFIED (see `git log` for the closeout and lock-release commits)
-run_all               last measured EXIT 1, failed=3 (judgment_reviews_5, capability_phase2, assertion_coverage_8)
-judgment_reviews_5    module: 750 findings, 0 of 151 reviews STALE
-capability_phase2     173 CONTRADICTED + 46 STALE attestations (36 of the 46 are description-only,
-                      from the 8a8b99a4 describer fix)
+HEAD                  383879af plus the re-proof/bookkeeping closeout commits
+tree_state            CERTIFIED after closeout at digest 878f0affe08d27d4
+run_all               EXIT 1; scheduled=17 completed=14 failed=3 crashed=0
+judgment_reviews_5    runner 763 findings; module 762; 14 of 151 reviews STALE
+capability_phase2     137 = 127 CONTRADICTED + 10 STALE attestations
 assertion_coverage_8  3: the §6F mutation cluster; clears only when capability_phase2 reaches 0
-every Phase 1 stage   PASS
-mutation corpus       188/191 DETECTED; the 3 INVALID are the §6F cluster
-review corpus         151/151 schema-v2: 78 PASS / 47 CONCERN / 26 FAIL;
-                      118 haiku45, 33 gpt-5.6-luna (medium)
-H-06                  status open; lock released
+all other Phase 1     PASS, including count_noun_1J (0 findings / 9,060 samples)
+mutation corpus       198/201 DETECTED; only the 3 expected §6F controls INVALID
+obligations           420 pairs, 3,849 base, 16,701 continuous, 415,692 finite,
+                      2,078,460 executions; 6 release shards clean
+review verdicts       151/151 schema-v2: 80 PASS / 50 CONCERN / 21 FAIL
+H-06                  status open; lock released after the closeout commit
 ```
 
 Commands that re-measure this state:
@@ -51,24 +53,27 @@ PYTHONPATH=. .venv/bin/python tests/hardening_status.py
 PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_judgment --all > /tmp/vj.log 2>&1; echo "EXIT $?"
 ```
 
-**W1 is DONE.** Every STALE review was refreshed. The `HARDENING_EVIDENCE.md` Phase E entry has the method,
-every set-aside, and every mechanical repair with its proof.
+**W1 was complete before this source batch; 14 reviews are now stale and must be freshly re-reviewed.**
+Never carry a verdict forward. The stale nodes are:
 
-**Confirmed defects waiting for a source batch, in priority order:**
-1. **Corrupted remainder hints, live:** `mat_g3_na_q4_3` seeds 45 and 600.
-   - Seed 45 serves "8 × 6 R 3 = 6 R 36 R 36 …" on "51 ÷ 8 = 7 R 3. True or False?".
-   - `dna/na/division.py` emits clean hint text, so the corruption is introduced downstream of
-     `generate_hints` on the true/false route. Find it by rendering and stepping through the formatter.
-   - The hint contract cannot parse "R" notation, so close that gap with a mutation in the same batch.
-2. **Group/size swap:** `mat_g2_na_q3_1` seed 42, stem "2 equal jumps of 5", hints "5 groups of 2" then
-   "2 groups of 5". The same shape is claimed on `mat_g2_na_q3_0`. No hint-contract dimension checks
-   these roles.
-3. **Owner calls, not code:**
-   - The bare connector requirement clauses (`with_regrouping: with`) on `mat_g2_na_q1_9` and
-     `mat_g3_na_q2_1` come from human-authored decomposition ground truth.
-   - Whether `2 × 1` is in scope for "multiplication … by 2, 3, 4, 5, and 10" (`mat_g2_na_q3_7`).
+- `mat_g1_mg_q1_0`, `mat_g1_mg_q1_1`, `mat_g1_mg_q1_2`
+- `mat_g2_mg_q1_0`, `mat_g2_mg_q1_1`
+- `mat_g2_na_q1_7`, `mat_g2_na_q1_8`, `mat_g2_na_q2_3`, `mat_g2_na_q2_7`
+- `mat_g3_na_q2_1`, `mat_g3_na_q2_3`, `mat_g3_na_q2_4`, `mat_g3_na_q3_3`, `mat_g3_na_q3_4`
 
-Any source batch re-stales the reviews whose packets change and owes the full re-proof chain (§5).
+**The first W2 source batch is complete and fully re-proved.** `mat_g1_mg_q1_0` now serves the
+curriculum-required triangle, rectangle, and square at different sizes and orientations. The batch also
+fixed the `1 ones` regression exposed by `run_all`; commit `383879af` clears all 12 §1J findings.
+
+**Resume in this order:**
+
+1. Freshly re-review the 14 stale review nodes and freshly supersede the 10 stale attestation records.
+2. Re-run §5 and §6F and commit the judgment-only checkpoint; no source re-proof is owed.
+3. Continue the 127 majority-confirmed CONTRADICTED findings by Content Rule 4, in small source batches.
+   Every source batch must quote the MATATAG clause and pay the full chain in §5.
+
+The complete commands, exact outputs, obligation delta, stale sets, and named limits are in the
+2026-10-05/06 entry of `validation_reports/HARDENING_EVIDENCE.md`.
 
 ---
 
@@ -80,13 +85,10 @@ the Claude host. Both were owner rulings of 2026-09-30.
 - The identity always names the model that actually judged.
 - Never rename any existing record.
 
-**Gate B: scope.** The owner must choose the next work:
-- the **source batch** for the confirmed defects in §1, which re-stales reviews and owes a re-proof
-  chain;
-- **W2**, the 173 CONTRADICTED plus the 46 STALE attestations;
-- or both, in a stated order.
-
-If neither gate is answered, do only W0 and then ask.
+**Gate B: scope is resolved.** The owner directed the agents to continue until the prompt is effectively
+complete. Follow §1's order: refresh the 14 stale reviews and 10 stale attestations, then continue the
+127 CONTRADICTED W2 findings. Stop only at a new content judgment that MATATAG and the recorded owner
+rulings do not settle.
 
 ---
 

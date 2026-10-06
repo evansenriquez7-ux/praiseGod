@@ -1,0 +1,44 @@
+{
+ "asserts": [
+  "rendered_visual_description_12"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "Grade 1 shape identification lost its three rendered orientations"
+ ],
+ "command": [
+  "tests.frontend_suite"
+ ],
+ "definition_digest": "ba68ca3a285bf180110b5e28c8f8a5d4ebf8ad5dbe3756df853018577ebe7d62",
+ "detected": true,
+ "diagnostic_line": "exit 1 — FAIL frontend_static_render_12: 10 finding(s)",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "FAIL frontend_static_render_12",
+  "Grade 1 shape identification lost its three rendered orientations"
+ ],
+ "expected_check": "§12 (ShapeBoard markup preserves MATATAG orientation)",
+ "finished_at": "2026-10-06T03:44:31+08:00",
+ "input_digest": "878f0affe08d27d4dba94a53ce3c19f0e0ea643d2a5d856b641b11854641dc4d",
+ "mutated_paths": [
+  "frontend/src/components/VisualSkeletons.jsx"
+ ],
+ "mutation": "frontend_shape_board_erases_orientation",
+ "observed_markers": {
+  "FAIL frontend_static_render_12": true,
+  "Grade 1 shape identification lost its three rendered orientations": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-10-06T03:44:10+08:00"
+}

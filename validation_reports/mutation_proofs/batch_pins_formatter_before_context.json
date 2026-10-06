@@ -1,0 +1,44 @@
+{
+ "asserts": [
+  "batch_matches_single"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "FAIL batch_matches_single"
+ ],
+ "command": [
+  "backend.app.practice_gen.validation.validate_compat",
+  "--only",
+  "batch"
+ ],
+ "definition_digest": "2832bd9cc2bdc726a95f1a743ac2902e66838a59caa3e32fd6d1c3756f88a87c",
+ "detected": true,
+ "diagnostic_line": "exit 1 — FAIL batch_matches_single (416):",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "FAIL batch_matches_single"
+ ],
+ "expected_check": "§2K (the portal batch feed serves what the student path serves)",
+ "finished_at": "2026-10-06T03:52:46+08:00",
+ "input_digest": "878f0affe08d27d4dba94a53ce3c19f0e0ea643d2a5d856b641b11854641dc4d",
+ "mutated_paths": [
+  "backend/app/services/orchestrator.py"
+ ],
+ "mutation": "batch_pins_formatter_before_context",
+ "observed_markers": {
+  "FAIL batch_matches_single": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-10-06T03:52:11+08:00"
+}

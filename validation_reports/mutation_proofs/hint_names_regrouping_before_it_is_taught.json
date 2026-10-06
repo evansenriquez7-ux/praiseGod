@@ -1,0 +1,46 @@
+{
+ "asserts": [
+  "vocabulary_gating"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "NOT_YET_KNOWN"
+ ],
+ "command": [
+  "backend.app.practice_gen.validation.validate_matrix",
+  "--node",
+  "mat_g1_na_q3_0"
+ ],
+ "definition_digest": "d1f086d9b5682e173d8c92e7b1ab43cdf9b666646a3bf4b11e29c8c2d40f1d7a",
+ "detected": true,
+ "diagnostic_line": "exit 1 — [1/1] Checking mat_g1_na_q3_0 ...  FAIL",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "NOT_YET_KNOWN",
+  "regrouping"
+ ],
+ "expected_check": "§1D (vocabulary gating, including the forms of a NOT_YET_KNOWN term)",
+ "finished_at": "2026-10-06T03:53:00+08:00",
+ "input_digest": "878f0affe08d27d4dba94a53ce3c19f0e0ea643d2a5d856b641b11854641dc4d",
+ "mutated_paths": [
+  "backend/app/practice_gen/dna/na/subtraction.py"
+ ],
+ "mutation": "hint_names_regrouping_before_it_is_taught",
+ "observed_markers": {
+  "NOT_YET_KNOWN": true,
+  "regrouping": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-10-06T03:52:46+08:00"
+}

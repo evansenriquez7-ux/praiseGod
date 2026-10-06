@@ -1,0 +1,48 @@
+{
+ "asserts": [
+  "medium_composition"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "FAIL medium_composition"
+ ],
+ "command": [
+  "backend.app.practice_gen.validation.validate_compat",
+  "--only",
+  "medium"
+ ],
+ "definition_digest": "71f5d05f5e80ad4098d918e5c77ba8c5ef32801ff2c72a9fbce2ac93018ff1af",
+ "detected": true,
+ "diagnostic_line": "exit 1 — FAIL medium_composition (2):",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "FAIL medium_composition",
+  "classified in nothing",
+  "names no live medium clause"
+ ],
+ "expected_check": "§2J (every medium clause classified; no stale entry)",
+ "finished_at": "2026-10-06T03:50:54+08:00",
+ "input_digest": "878f0affe08d27d4dba94a53ce3c19f0e0ea643d2a5d856b641b11854641dc4d",
+ "mutated_paths": [
+  "backend/app/practice_gen/medium_composition.py"
+ ],
+ "mutation": "medium_clause_left_unclassified",
+ "observed_markers": {
+  "FAIL medium_composition": true,
+  "classified in nothing": true,
+  "names no live medium clause": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-10-06T03:50:19+08:00"
+}

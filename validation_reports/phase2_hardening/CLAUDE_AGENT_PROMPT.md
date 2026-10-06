@@ -1,9 +1,8 @@
-# Task prompt — Phase 2 hardening, PHASE C: resume the review queue (fresh Claude Code session)
+# Task prompt — Phase 2 hardening: continue W2 after the first source batch (fresh Claude Code session)
 
-**Rewritten 2026-09-25 after Phases A and B landed. This REPLACES every previous version of this file and
-its banners.** Figures below were executed on 2026-09-25 at digest `35171c2cf3c5c288` (HEAD `b8960171` or
-later). If you refresh this file, **rewrite the state section rather than stacking a banner** — a sibling
-prompt reached eight banners contradicting its own body before it was rewritten.
+**State rewritten 2026-10-06 after the first W2 source batch and full re-proof. This REPLACES every
+previous state block and banner.** Figures below were executed at digest `878f0affe08d27d4`. If you
+refresh this file, rewrite the state section rather than stacking a banner.
 
 You are working in `/Users/enrichmentcap/Documents/antigravity/ccmed` on the Adaptive K-12 Mastery
 Engine's practice-problem-generator hardening. Your job is to move `run_all` toward exiting 0.
@@ -77,27 +76,36 @@ host. The fast unit suite takes ~12 minutes; pass `-m "not slow"` explicitly.
 ## 2. State
 
 ```
-run_all               last measured EXIT 1, failed=3: judgment_reviews_5, capability_phase2, assertion_coverage_8
-§5 (module)           750 findings; 0 of 151 reviews STALE
-§6F                   219: 173 CONTRADICTED + 46 STALE attestations (36 of them description-only)
-corpus                151/151 schema-v2: 78 PASS / 47 CONCERN / 26 FAIL; 118 haiku45, 33 gpt-5.6-luna
-proof artifacts       191 mutation proofs (188 DETECTED + the 3 §6F INVALID), 6 release shards,
+HEAD                  383879af plus the re-proof/bookkeeping closeout commits
+tree_state            CERTIFIED after closeout at digest 878f0affe08d27d4
+run_all               EXIT 1; scheduled=17 completed=14 failed=3 crashed=0
+§5                    runner 763 findings; module 762; 14 of 151 reviews STALE
+§6F                   137: 127 CONTRADICTED + 10 STALE attestations
+corpus                151/151 schema-v2: 80 PASS / 50 CONCERN / 21 FAIL
+proof artifacts       201 mutation proofs (198 DETECTED + the 3 §6F INVALID), 6 release shards,
                       benchmark and frontend fresh
-tree_state            CERTIFIED (see `git log` for the closeout commits); H-06 lock released
+obligations           420 pairs; 3,849 base; 415,692 finite; 2,078,460 executions
+H-06                  status open; lock released after closeout
 ```
 
-Phases A–D are done, and **Phase E W1 is done (2026-10-01)**: every STALE review was refreshed, on GPT-5.6
-Luna and then Claude Haiku 4.5, both by owner ruling. The campaign found and fixed a packet-description
-defect (`8a8b99a4`): repeated rendered text was de-duplicated, so reviewers failed rows that were drawn.
-Its cost is recorded in the evidence log.
+The first W2 source batch is complete. Commit `421c9070` implements the MATATAG requirement that
+`mat_g1_mg_q1_0` identify triangle, rectangle, and square “of different size and in different
+orientation”; commit `383879af` fixes the `1 ones` regression that the first full run exposed. The final
+chain passed the unit suite, benchmark, frontend suite, 198/201 mutation controls, and all six release
+shards. Every Phase 1 stage now passes except the three expected §6F assertion-coverage controls, whose
+baselines remain red while capability findings remain.
 
-**Next work needs an owner decision** (`NEXT_AGENT_PROMPT.md` §2 Gate B):
-- the source batch for the confirmed defects; the top one is `mat_g3_na_q4_3`'s live corrupted remainder
-  hints, which the hint contract cannot parse;
-- W2, the 173 CONTRADICTED and 46 STALE attestations.
+**Resume in this order:**
 
-Sections 4–6's "START HERE" wording is historical. If an executed command disagrees with this section,
-believe the command.
+1. Freshly re-review the 14 stale nodes listed in `NEXT_AGENT_PROMPT.md` §1. On a Claude host, use Claude
+   Haiku 4.5 under the existing owner ruling, and truthfully name it in every identity.
+2. Freshly supersede the 10 stale attestation records. Never edit or delete the historical blind records.
+3. Re-measure §5 and §6F, then continue the 127 majority-confirmed CONTRADICTED findings under Content
+   Rule 4 in small source batches. Every source batch quotes the MATATAG clause and owes the full chain.
+
+The 2026-10-05/06 evidence entry holds exact commands, outputs, stale sets, and named limits. Sections
+4–6's “START HERE” wording is historical. If an executed command disagrees with this section, believe
+the command.
 
 ## 3. PHASE A — DONE (2026-09-25). Do not redo it; know what it gives you.
 

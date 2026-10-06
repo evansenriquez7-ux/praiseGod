@@ -18090,3 +18090,114 @@ NAMED LIMITS:
   not a certified result.
 - Blindness remains a prompt contract rather than a sandbox. The filed provenance is retained without
   embellishment.
+
+## 2026-10-05/06 — W2 source batch: shape-medium provision and §1J regression repair
+
+This batch resumed the interrupted W2 work after preserving the Claude-hosted review and attestation
+evidence unchanged. It landed two source commits:
+
+- `421c9070` implements the MATATAG clause for `mat_g1_mg_q1_0`: **“Identify simple 2-dimensional
+  shapes (triangle, rectangle, square) of different size and in different orientation.”** The default
+  student path now serves all three named figures through `ShapeBoard`, with explicit size and angle
+  data consumed by React. The renderer evidence reads the emitted dimensions/angles and rejects a
+  rectangle drawn as a square. `medium_composition` removes the two text-only routes that cannot
+  provide size or orientation. Full obligation-key diff: 0 additions, exactly 12 removals, all on
+  `mat_g1_mg_q1_0`; base 3,861 -> 3,849, continuous crossings 16,737 -> 16,701, finite obligations
+  416,988 -> 415,692. New mutations `frontend_shape_board_erases_size` and
+  `frontend_shape_board_erases_orientation` are detected in the full corpus.
+- `383879af` fixes the regression exposed by the first full `run_all`: the shared addition hint emitted
+  `1 ones` when decomposing eleven ones. The remainder now goes through `dna.base.count_noun`, with
+  singular and plural regression cases. The original 12 §1J findings were on `mat_g1_na_q2_4`,
+  `mat_g2_na_q1_7`, and `mat_g2_na_q1_8`.
+
+Focused §1J execution on final source bytes:
+
+```text
+$ PYTHONPATH=. .venv/bin/python -m pytest tests/unit/test_hint_contract.py -q -p no:cacheprovider -k regrouping_hint_remainder
+2 passed, 170 deselected in 0.22s
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_language --node-ids mat_g1_na_q2_4,mat_g2_na_q1_7,mat_g2_na_q1_8
+PASS count_noun_agreement_1J: 0 findings over 180 student-path sample(s), 1186 text(s) linted; 0 singular-after-many construction(s) observed and NOT judged (known limitation 1), 203 already-singular word(s) after a count of 1
+PASS unclassified_pupil_text_1J: every string-bearing payload field is either linted or deliberately excluded
+$ PYTHONPATH=. .venv/bin/python tests/mutation_harness.py --only count_noun_disagrees
+1/1 mutations detected.
+```
+
+The pre-commit unit suite on final source bytes passed before `383879af`:
+
+```text
+$ PYTHONPATH=. .venv/bin/python -m pytest tests/unit -m "not slow" -q -p no:cacheprovider
+1004 passed, 1 skipped, 2 deselected, 4 warnings in 1319.33s (0:21:59)
+```
+
+The complete re-proof chain was restarted after `383879af`; all steps ran alone. The benchmark and
+frontend stages passed:
+
+```text
+$ PYTHONPATH=. .venv/bin/python -m tests.obligation_executor --tier benchmark --sample-size 1000
+cache_keys=1000 represented_executions=4000 elapsed=17.630s median=7.306ms p95=29.785ms peak_rss=111828992B failures=0
+projected_release=2.545h recommended_shards=6 projected_per_shard=25.447m
+$ DATABASE_URL= PYTHONPATH=. .venv/bin/python tests/frontend_suite.py
+PASS frontend_static_render_12: 34 payloads, 68 active/disabled renders, 18 visual types
+Test Files 2 passed
+Tests 47 passed
+PASS frontend_static_render_12: 34 real payloads; 18 production visual types executed active and disabled
+```
+
+The full mutation corpus ended with the only expected invalid controls, and no plant escaped:
+
+```text
+$ PYTHONPATH=. .venv/bin/python tests/mutation_harness.py > local_only/scratch/w2_eng/final_corpus.log 2>&1; echo "EXIT $?"
+EXIT 1
+198/201 mutations detected.
+A surviving mutation is a hole in the harness, not a harmless gap:
+  - contradicted_attestation: nothing enforces §6F (blind Attester verdict contradicted by the table)
+  - attestation_drops_options: nothing enforces §6F adjudicability (an attestation must carry the choices it was shown)
+  - attestation_leaks_into_phase1: nothing enforces §6 phase boundary (Phase 1 must run with the attestation corpus absent)
+$ git grep -n -E '#\s*planted mutation|//\s*planted ' HEAD -- backend/ frontend/src | grep -v mutation_harness
+# no output; exit 1
+```
+
+All six release shards completed with `EXIT 0`. Their final summaries were, in shard order:
+
+```text
+cache_keys=86603 represented_executions=346412 elapsed=1394.265s median=7.170ms p95=30.070ms peak_rss=121315328B failures=0
+cache_keys=86603 represented_executions=346412 elapsed=1396.934s median=7.221ms p95=30.208ms peak_rss=124063744B failures=0
+cache_keys=86603 represented_executions=346412 elapsed=1443.836s median=7.197ms p95=30.208ms peak_rss=123686912B failures=0
+cache_keys=86602 represented_executions=346408 elapsed=1575.182s median=7.220ms p95=30.287ms peak_rss=126488576B failures=0
+cache_keys=86602 represented_executions=346408 elapsed=1601.317s median=7.240ms p95=30.133ms peak_rss=123109376B failures=0
+cache_keys=86602 represented_executions=346408 elapsed=1619.252s median=7.257ms p95=30.253ms peak_rss=122175488B failures=0
+$ PYTHONPATH=. .venv/bin/python -m tests.obligation_executor --tier verify-release
+release_status=complete receipts=6 complete=True
+```
+
+Final harness execution on digest `878f0affe08d27d4`:
+
+```text
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.run_all > local_only/scratch/w2_eng/final_run_all.log 2>&1; echo "EXIT $?"
+EXIT 1
+PASS count_noun_agreement_1J: 0 findings over 9060 student-path sample(s), 73875 text(s) linted; 7129 singular-after-many construction(s) observed and NOT judged (known limitation 1), 1319 already-singular word(s) after a count of 1
+PASS obligation_dimension_coverage_11: 3849 base x 27 interest requests x 4 experiences = 415692 finite obligations; 2078460 executions at 5 seeds
+PASS obligation_release_shards_11: 6 current shards cover 519615 cache keys / 2078460 executions with no overlap
+scheduled=17 completed=14 failed=3 crashed=0 not_run=0 incomplete=0
+```
+
+The three failed stages are exactly `assertion_coverage_8`, `judgment_reviews_5`, and
+`capability_phase2`. Every other Phase 1 stage passed. The direct judgment validator measured 762
+module findings and 14 STALE nodes; the runner reports 763 because it adds the stage-level failure.
+The stale nodes are `mat_g1_mg_q1_0`, `mat_g1_mg_q1_1`, `mat_g1_mg_q1_2`, `mat_g2_mg_q1_0`,
+`mat_g2_mg_q1_1`, `mat_g2_na_q1_7`, `mat_g2_na_q1_8`, `mat_g2_na_q2_3`, `mat_g2_na_q2_7`,
+`mat_g3_na_q2_1`, `mat_g3_na_q2_3`, `mat_g3_na_q2_4`, `mat_g3_na_q3_3`, and `mat_g3_na_q3_4`.
+
+Capability Phase 2 now has **137** findings: **127 CONTRADICTED + 10 STALE**, with 0 UNATTESTED and
+0 UNADJUDICABLE. The ten stale records are on `mat_g1_na_q3_6`, `mat_g1_mg_q1_0/1/2`,
+`mat_g2_mg_q1_0/1` (two historical records each), and `mat_g3_mg_q1_0` (two historical records).
+The old blind records are preserved; they require fresh superseding judgments, never edits.
+
+NAMED LIMITS:
+- The §6F baseline remains red, so the three §6F mutations remain INVALID rather than DETECTED. They
+  cannot prove their checks until the capability queue reaches zero.
+- Static markup proves emitted shape dimensions and angles, not physical layout or perceptual
+  legibility. Fresh blind review and attestation are still required for the changed shape packet.
+- The source batch advances one curriculum-required artifact and clears the §1J regression; it does
+  not settle the remaining 127 capability contradictions or the 14 stale reviews/10 stale
+  attestations.

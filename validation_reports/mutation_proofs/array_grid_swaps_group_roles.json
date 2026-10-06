@@ -1,0 +1,48 @@
+{
+ "asserts": [
+  "hint_contract_roles"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "test_no_served_hint_contradicts_its_item[mat_g2_na_q3_0] && failed"
+ ],
+ "command": [
+  "pytest",
+  "tests/unit/test_hint_contract.py::test_no_served_hint_contradicts_its_item[mat_g2_na_q3_0]",
+  "-q"
+ ],
+ "definition_digest": "020f017cf125c5c82a455c7d8ecf6a4d02a7d2e95dbaec9a30a799e7a01adf25",
+ "detected": true,
+ "diagnostic_line": "exit 1 — =================================== FAILURES ===================================",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "test_no_served_hint_contradicts_its_item[mat_g2_na_q3_0]",
+  "failed",
+  "[roles]"
+ ],
+ "expected_check": "§0 hint contract (hint_contract_roles)",
+ "finished_at": "2026-10-06T03:46:48+08:00",
+ "input_digest": "878f0affe08d27d4dba94a53ce3c19f0e0ea643d2a5d856b641b11854641dc4d",
+ "mutated_paths": [
+  "backend/app/practice_gen/formatters/visual/fmt_array_grid.py"
+ ],
+ "mutation": "array_grid_swaps_group_roles",
+ "observed_markers": {
+  "[roles]": true,
+  "failed": true,
+  "test_no_served_hint_contradicts_its_item[mat_g2_na_q3_0]": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-10-06T03:46:45+08:00"
+}

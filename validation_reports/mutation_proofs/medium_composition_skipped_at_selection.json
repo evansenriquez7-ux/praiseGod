@@ -1,0 +1,46 @@
+{
+ "asserts": [
+  "medium_composition"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "FAIL medium_composition"
+ ],
+ "command": [
+  "backend.app.practice_gen.validation.validate_compat",
+  "--only",
+  "medium"
+ ],
+ "definition_digest": "ed60e0345789635e44822b63e2aebd80097ae3b3ab978b2a7252c27ee2394cb2",
+ "detected": true,
+ "diagnostic_line": "exit 1 — FAIL medium_composition (724):",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "FAIL medium_composition",
+  "which ruling 15 composed away"
+ ],
+ "expected_check": "§2J (a medium-naming competency is served in that medium on >= 50% of items)",
+ "finished_at": "2026-10-06T03:50:18+08:00",
+ "input_digest": "878f0affe08d27d4dba94a53ce3c19f0e0ea643d2a5d856b641b11854641dc4d",
+ "mutated_paths": [
+  "backend/app/services/orchestrator.py"
+ ],
+ "mutation": "medium_composition_skipped_at_selection",
+ "observed_markers": {
+  "FAIL medium_composition": true,
+  "which ruling 15 composed away": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-10-06T03:49:43+08:00"
+}
