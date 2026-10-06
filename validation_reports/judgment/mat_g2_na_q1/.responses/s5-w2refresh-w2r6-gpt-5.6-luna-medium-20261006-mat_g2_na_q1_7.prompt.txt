@@ -1,0 +1,292 @@
+You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  blind-reviewer-gpt-5.6-luna-medium-w2r6-mat_g2_na_q1_7-20261006
+
+Write one JSON object to:
+  local_only/scratch/w2_refresh/mat_g2_na_q1_7/verdicts.json
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: cognitive_capacity, competency_alignment, competency_fulfillment, comprehensive_coverage, scale_appropriateness, variant_comprehensiveness. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: ambiguity, contextual_logical_validity, learner_facing_clarity, mathematical_validity. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN: cite the sample_ids you EXAMINED and found lacking it (the list may never
+   be empty), and never cite a sample as SUPPORTING a clause it does not support.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{
+  "reviewer": "blind-reviewer-gpt-5.6-luna-medium-w2r6-mat_g2_na_q1_7-20261006",
+  "<node_id>": {
+    "findings": {
+      "competency_fulfillment": {
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}
+      },
+      "<each other required finding>": {"verdict": "...", "rationale": "..."}
+    },
+    "sample_assessments": [
+      {"sample_id": "<opaque id>", "checks": {
+        "<each required sample check>": {"verdict": "...", "reasoning": "..."}
+      }}
+    ],
+    "clause_evidence": [
+      {"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }
+}
+
+== BLIND PACKET ==
+
+==========================================================================
+NODE: mat_g2_na_q1_7
+PACKET DIGEST: 374c1f6cd8e7d72910accdc948d8ede0b056ed96bc610e5ece007376dcca5fe4
+COMPETENCY (Grade 2, Quarter 1, None):
+Illustrate addition of 2-digit and 1-digit numbers as 'counting up' on the number line.
+
+REQUIREMENTS (confirm this is a lossless decomposition of the competency):
+  illustrate_addition: Illustrate addition
+  two_digit: 2-digit
+  one_digit_numbers: 1-digit numbers
+  counting_up: counting up
+  number_line: number line
+
+SAMPLES (every one of these is real rendered output):
+  sample e6e241498cd8988ae8c8  seed 42  [true_false]
+      stem:    Start at 80. Count up 3 more. You land on 93. True or False?
+      answer:  False
+      hints:   ["We are adding two numbers: 80 and 3.", "Add the ones: 0 + 3 = 3. Keep 3 in the ones place.", "Add the tens: 8 + 0 = 8.", "The sum is 80 + 3 = 83."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample adece91637c1dba870d4  seed 43  [set_fill_in_blank]
+      stem:    Show 64 + 7 on the number line.
+      answer:  71
+      hints:   ["We are adding two numbers: 64 and 7.", "Add the ones: 4 + 7 = 11. 11 ones is 1 ten and 1 one.", "Add the tens: 6 + 0 + 1 (the ten from the ones) = 7.", "The sum is 64 + 7 = 71."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 19, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["50", "60", "70", "80", "Your answer: Position", "65", "Click track, drag dot, or use ← → arrow keys"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 2c4d1623ca356a64edd2  seed 44  [read_mcq]
+      stem:    The dot is at 15 and it moves forward 2 numbers. Starting from 15, just count up 2 numbers. Which number will the dot land on?
+      answer:  17
+      options: 16 / 27 / 17 / 13
+      hints:   ["We are adding two numbers: 15 and 2.", "Add the ones: 5 + 2 = 7. Keep 7 in the ones place.", "Add the tens: 1 + 0 = 1.", "The sum is 15 + 2 = 17."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 31, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "5", "10", "15", "20"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 1a7e5281dbd83353ff97  seed 45  [set_fill_in_blank]
+      stem:    Show 82 + 5 on the number line.
+      answer:  87
+      hints:   ["We are adding two numbers: 82 and 5.", "Add the ones: 2 + 5 = 7. Keep 7 in the ones place.", "Add the tens: 8 + 0 = 8.", "The sum is 82 + 5 = 87."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 16, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["70", "80", "90", "Your answer: Position", "80", "Click track, drag dot, or use ← → arrow keys"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample c380467bb8f0cf54d795  seed 46  [read_mcq]
+      stem:    The dot is at 64 and it moves forward 8 numbers. Starting from 64, just count up 8 numbers. Which number will the dot land on?
+      answer:  72
+      options: 71 / 82 / 56 / 72
+      hints:   ["We are adding two numbers: 64 and 8.", "Add the ones: 4 + 8 = 12. 12 ones is 1 ten and 2 ones.", "Add the tens: 6 + 0 + 1 (the ten from the ones) = 7.", "The sum is 64 + 8 = 72."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 16, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["50", "60", "70", "80"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 24dff6cf5b66e2021266  seed 500  [true_false]
+      stem:    Start at 85. Count up 7 more. You land on 91. True or False?
+      answer:  False
+      hints:   ["We are adding two numbers: 85 and 7.", "Add the ones: 5 + 7 = 12. 12 ones is 1 ten and 2 ones.", "Add the tens: 8 + 0 + 1 (the ten from the ones) = 9.", "The sum is 85 + 7 = 92."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 59d730a160acece3074e  seed 501  [true_false]
+      stem:    Start at 87. Count up 6 more. You land on 103. True or False?
+      answer:  False
+      hints:   ["We are adding two numbers: 87 and 6.", "Add the ones: 7 + 6 = 13. 13 ones is 1 ten and 3 ones.", "Add the tens: 8 + 0 + 1 (the ten from the ones) = 9.", "The sum is 87 + 6 = 93."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 5f4e7b6f987fadecb059  seed 502  [read_mcq]
+      stem:    The dot is at 90 and it moves forward 2 numbers. Starting from 90, just count up 2 numbers. Which number will the dot land on?
+      answer:  92
+      options: 102 / 88 / 92 / 91
+      hints:   ["We are adding two numbers: 90 and 2.", "Add the ones: 0 + 2 = 2. Keep 2 in the ones place.", "Add the tens: 9 + 0 = 9.", "The sum is 90 + 2 = 92."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 13, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["80", "90", "100"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 85f4fabe628fd6586945  seed 600  [true_false]
+      stem:    Start at 48. Count up 7 more. You land on 65. True or False?
+      answer:  False
+      hints:   ["We are adding two numbers: 48 and 7.", "Add the ones: 8 + 7 = 15. 15 ones is 1 ten and 5 ones.", "Add the tens: 4 + 0 + 1 (the ten from the ones) = 5.", "The sum is 48 + 7 = 55."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 4126b185390fd454ac61  seed 601  [read_mcq]
+      stem:    The dot is at 30 and it moves forward 5 numbers. Starting from 30, just count up 5 numbers. Which number will the dot land on?
+      answer:  35
+      options: 45 / 35 / 34 / 25
+      hints:   ["We are adding two numbers: 30 and 5.", "Add the ones: 0 + 5 = 5. Keep 5 in the ones place.", "Add the tens: 3 + 0 = 3.", "The sum is 30 + 5 = 35."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 22, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "10", "20", "30", "40", "50"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample fa918e6fa8e726278c90  seed 602  [true_false]
+      stem:    Start at 60. Count up 4 more. You land on 65. True or False?
+      answer:  False
+      hints:   ["We are adding two numbers: 60 and 4.", "Add the ones: 0 + 4 = 4. Keep 4 in the ones place.", "Add the tens: 6 + 0 = 6.", "The sum is 60 + 4 = 64."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 4ce2af6e86c1e1818ec7  seed 603  [set_fill_in_blank]
+      stem:    Show 74 + 8 on the number line.
+      answer:  82
+      hints:   ["We are adding two numbers: 74 and 8.", "Add the ones: 4 + 8 = 12. 12 ones is 1 ten and 2 ones.", "Add the tens: 7 + 0 + 1 (the ten from the ones) = 8.", "The sum is 74 + 8 = 82."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 19, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["60", "70", "80", "90", "Your answer: Position", "75", "Click track, drag dot, or use ← → arrow keys"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 49972243312881950960  seed 604  [set_fill_in_blank]
+      stem:    Show 94 + 7 on the number line.
+      answer:  101
+      hints:   ["We are adding two numbers: 94 and 7.", "Add the ones: 4 + 7 = 11. 11 ones is 1 ten and 1 one.", "Add the tens: 9 + 0 + 1 (the ten from the ones) = 10.", "The sum is 94 + 7 = 101."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 19, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["80", "90", "100", "110", "Your answer: Position", "95", "Click track, drag dot, or use ← → arrow keys"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 2dc9837043049e8d27b5  seed 605  [true_false]
+      stem:    Start at 34. Count up 1 more. You land on 33. True or False?
+      answer:  False
+      hints:   ["We are adding two numbers: 34 and 1.", "Add the ones: 4 + 1 = 5. Keep 5 in the ones place.", "Add the tens: 3 + 0 = 3.", "The sum is 34 + 1 = 35."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 74654569697ccec63f72  seed 606  [set_fill_in_blank]
+      stem:    Show 37 + 3 on the number line.
+      answer:  40
+      hints:   ["We are adding two numbers: 37 and 3.", "Add the ones: 7 + 3 = 10. 10 ones is 1 ten and 0 ones.", "Add the tens: 3 + 0 + 1 (the ten from the ones) = 4.", "The sum is 37 + 3 = 40."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 28, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "10", "20", "30", "40", "50", "60", "Your answer: Position", "30", "Click track, drag dot, or use ← → arrow keys"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 1db9871c2d1e5dc0e078  seed 607  [read_mcq]
+      stem:    The dot is at 66 and it moves forward 1 number. Starting from 66, just count up 1 number. Which number will the dot land on?
+      answer:  67
+      options: 65 / 66 / 67 / 77
+      hints:   ["We are adding two numbers: 66 and 1.", "Add the ones: 6 + 1 = 7. Keep 7 in the ones place.", "Add the tens: 6 + 0 = 6.", "The sum is 66 + 1 = 67."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 13, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["50", "60", "70"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 6639180d7726ccc43092  seed 608  [true_false]
+      stem:    Start at 83. Count up 3 more. You land on 83. True or False?
+      answer:  False
+      hints:   ["We are adding two numbers: 83 and 3.", "Add the ones: 3 + 3 = 6. Keep 6 in the ones place.", "Add the tens: 8 + 0 = 8.", "The sum is 83 + 3 = 86."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample c50126a2fff2fbe34ac8  seed 609  [read_mcq]
+      stem:    The dot is at 44 and it moves forward 1 number. Starting from 44, just count up 1 number. Which number will the dot land on?
+      answer:  45
+      options: 44 / 45 / 43 / 55
+      hints:   ["We are adding two numbers: 44 and 1.", "Add the ones: 4 + 1 = 5. Keep 5 in the ones place.", "Add the tens: 4 + 0 = 4.", "The sum is 44 + 1 = 45."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 25, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "10", "20", "30", "40", "50", "60"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 6a258c2c04129547486e  seed 610  [set_fill_in_blank]
+      stem:    Show 40 + 1 on the number line.
+      answer:  41
+      hints:   ["We are adding two numbers: 40 and 1.", "Add the ones: 0 + 1 = 1. Keep 1 in the ones place.", "Add the tens: 4 + 0 = 4.", "The sum is 40 + 1 = 41."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 28, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "10", "20", "30", "40", "50", "60", "Your answer: Position", "30", "Click track, drag dot, or use ← → arrow keys"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample b40d8a3e7bda9a13f666  seed 700  [set_fill_in_blank]
+      stem:    Show 43 + 6 on the number line.
+      answer:  49
+      hints:   ["We are adding two numbers: 43 and 6.", "Add the ones: 3 + 6 = 9. Keep 9 in the ones place.", "Add the tens: 4 + 0 = 4.", "The sum is 43 + 6 = 49."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 28, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "10", "20", "30", "40", "50", "60", "Your answer: Position", "30", "Click track, drag dot, or use ← → arrow keys"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample a170801fe68cba5c4247  seed 701  [read_mcq]
+      stem:    💃 Kuya Ton enjoys trophies. Here is a math challenge. The dot is at 70 and it moves forward 2 numbers. Starting from 70, just count up 2 numbers. Which number will the dot land on?
+      answer:  72
+      options: 72 / 82 / 71 / 68
+      hints:   ["We are adding two numbers: 70 and 2.", "Add the ones: 0 + 2 = 2. Keep 2 in the ones place.", "Add the tens: 7 + 0 = 7.", "The sum is 70 + 2 = 72."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 13, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["60", "70", "80"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample f1e7f46540a55e2322d2  seed 702  [read_mcq]
+      stem:    🏀 Isko enjoys basketballs. Here is a math challenge. The dot is at 74 and it moves forward 2 numbers. Starting from 74, just count up 2 numbers. Which number will the dot land on?
+      answer:  76
+      options: 76 / 75 / 72 / 86
+      hints:   ["We are adding two numbers: 74 and 2.", "Add the ones: 4 + 2 = 6. Keep 6 in the ones place.", "Add the tens: 7 + 0 = 7.", "The sum is 74 + 2 = 76."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 13, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["60", "70", "80"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 760fb7dfbc7156e1db28  seed 800  [true_false]
+      stem:    Start at 60. Count up 7 more. You land on 67. True or False?
+      answer:  True
+      hints:   ["We are adding two numbers: 60 and 7.", "Add the ones: 0 + 7 = 7. Keep 7 in the ones place.", "Add the tens: 6 + 0 = 6.", "The sum is 60 + 7 = 67."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 15fd58c1c0799e73a1dc  seed 801  [read_mcq]
+      stem:    The dot is at 96 and it moves forward 9 numbers. Starting from 96, just count up 9 numbers. Which number will the dot land on?
+      answer:  105
+      options: 104 / 105 / 115 / 87
+      hints:   ["We are adding two numbers: 96 and 9.", "Add the ones: 6 + 9 = 15. 15 ones is 1 ten and 5 ones.", "Add the tens: 9 + 0 + 1 (the ten from the ones) = 10.", "The sum is 96 + 9 = 105."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 16, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["80", "90", "100", "110"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 70487e9caec3d5e7ccae  seed 900  [set_fill_in_blank]
+      stem:    Show 11 + 1 on the number line.
+      answer:  12
+      hints:   ["We are adding two numbers: 11 and 1.", "Add the ones: 1 + 1 = 2. Keep 2 in the ones place.", "Add the tens: 1 + 0 = 1.", "The sum is 11 + 1 = 12."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 34, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "5", "10", "15", "20", "Your answer: Position", "10", "Click track, drag dot, or use ← → arrow keys"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 9aa9dc075677046a2b06  seed 901  [true_false]
+      stem:    Start at 10. Count up 2 more. You land on 8. True or False?
+      answer:  False
+      hints:   ["We are adding two numbers: 10 and 2.", "Add the ones: 0 + 2 = 2. Keep 2 in the ones place.", "Add the tens: 1 + 0 = 1.", "The sum is 10 + 2 = 12."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample f3bc0ac3786e6cdfebbe  seed 1000  [set_fill_in_blank]
+      stem:    Show 10 + 9 on the number line.
+      answer:  19
+      hints:   ["We are adding two numbers: 10 and 9.", "Add the ones: 0 + 9 = 9. Keep 9 in the ones place.", "Add the tens: 1 + 0 = 1.", "The sum is 10 + 9 = 19."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "hint_gated"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 34, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "5", "10", "15", "20", "Your answer: Position", "10", "Click track, drag dot, or use ← → arrow keys"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 2ecb40151ec92320ad8b  seed 1001  [read_mcq]
+      stem:    The dot is at 26 and it moves forward 4 numbers. Starting from 26, just count up 4 numbers. Which number will the dot land on?
+      answer:  30
+      options: 30 / 40 / 29 / 22
+      hints:   ["We are adding two numbers: 26 and 4.", "Add the ones: 6 + 4 = 10. 10 ones is 1 ten and 0 ones.", "Add the tens: 2 + 0 + 1 (the ten from the ones) = 3.", "The sum is 26 + 4 = 30."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "mastery_drill"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 22, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "10", "20", "30", "40", "50"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample dfae75e1c6057549433b  seed 1002  [read_mcq]
+      stem:    The dot is at 60 and it moves forward 6 numbers. Starting from 60, just count up 6 numbers. Which number will the dot land on?
+      answer:  66
+      options: 76 / 54 / 65 / 66
+      hints:   ["We are adding two numbers: 60 and 6.", "Add the ones: 0 + 6 = 6. Keep 6 in the ones place.", "Add the tens: 6 + 0 = 6.", "The sum is 60 + 6 = 66."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "scaffolded"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 13, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["50", "60", "70"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+

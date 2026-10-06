@@ -1,0 +1,256 @@
+You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  blind-reviewer-gpt-5.6-luna-medium-w2r4-mat_g2_mg_q1_0-20261006
+
+Write one JSON object to:
+  local_only/scratch/w2_refresh/mat_g2_mg_q1_0/verdicts.json
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: cognitive_capacity, competency_alignment, competency_fulfillment, comprehensive_coverage, scale_appropriateness, variant_comprehensiveness. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: ambiguity, contextual_logical_validity, learner_facing_clarity, mathematical_validity. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN: cite the sample_ids you EXAMINED and found lacking it (the list may never
+   be empty), and never cite a sample as SUPPORTING a clause it does not support.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{
+  "reviewer": "blind-reviewer-gpt-5.6-luna-medium-w2r4-mat_g2_mg_q1_0-20261006",
+  "<node_id>": {
+    "findings": {
+      "competency_fulfillment": {
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}
+      },
+      "<each other required finding>": {"verdict": "...", "rationale": "..."}
+    },
+    "sample_assessments": [
+      {"sample_id": "<opaque id>", "checks": {
+        "<each required sample check>": {"verdict": "...", "reasoning": "..."}
+      }}
+    ],
+    "clause_evidence": [
+      {"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }
+}
+
+== BLIND PACKET ==
+
+==========================================================================
+NODE: mat_g2_mg_q1_0
+PACKET DIGEST: 6859e2885c0ebce2afb34a830c56f25e7f8b9f48464954f2c02a9f2eb870b812
+COMPETENCY (Grade 2, Quarter 1, None):
+Represent and describe circles, half circles and quarter circles.
+
+REQUIREMENTS (confirm this is a lossless decomposition of the competency):
+  represent: Represent
+  describe: describe
+  circles: circles
+  half_circles: half circles
+  quarter_circles: quarter circles
+
+SAMPLES (every one of these is real rendered output):
+  sample 616776b9544c92d75d2f  seed 42  [read_mcq]
+      stem:    What shape has no corners and no straight sides?
+      answer:  circle
+      options: rectangle / circle / triangle / square
+      hints:   ["Think about the sides and corners of each shape.", "A triangle has 3 sides and 3 corners.", "A square has 4 equal sides and 4 corners.", "A rectangle has 4 sides (opposite sides are equal) and 4 corners.", "A circle has no straight sides and no corners."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ShapeBoard", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ShapeBoard
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ShapeBoard", "element_count": 14, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {}, "rendered_shapes": [{"type": "circle", "width_px": 50, "height_px": 50, "orientation_deg": 0}, {"type": "triangle", "width_px": 50, "height_px": 50, "orientation_deg": 0}, {"type": "rectangle", "width_px": 63, "height_px": 40, "orientation_deg": 0}, {"type": "square", "width_px": 50, "height_px": 50, "orientation_deg": 0}]}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 418754540117ba661714  seed 43  [mcq]
+      stem:    What shape has no corners and no straight sides?
+      answer:  circle
+      options: rectangle / circle / triangle / square
+      hints:   ["Think about the sides and corners of each shape.", "A triangle has 3 sides and 3 corners.", "A square has 4 equal sides and 4 corners.", "A rectangle has 4 sides (opposite sides are equal) and 4 corners.", "A circle has no straight sides and no corners."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample f70bc83641fe60415611  seed 44  [read_mcq]
+      stem:    A circle is divided into 2 equal parts. What is each part called?
+      answer:  half-circle
+      options: quarter-circle / whole circle / half-circle / triangle
+      hints:   ["Think about the sides and corners of each shape.", "A triangle has 3 sides and 3 corners.", "A square has 4 equal sides and 4 corners.", "A rectangle has 4 sides (opposite sides are equal) and 4 corners.", "A circle has no straight sides and no corners."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ShapeBoard", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ShapeBoard
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ShapeBoard", "element_count": 8, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {}, "rendered_shapes": [{"type": "circle", "width_px": 50, "height_px": 50, "orientation_deg": 0}, {"type": "triangle", "width_px": 50, "height_px": 50, "orientation_deg": 0}]}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample c208659b71c6e517b157  seed 45  [mcq]
+      stem:    A shape is made from exactly one quarter of a circle. What is it called?
+      answer:  quarter-circle
+      options: quarter-circle / square / half-circle / triangle
+      hints:   ["Think about the sides and corners of each shape.", "A triangle has 3 sides and 3 corners.", "A square has 4 equal sides and 4 corners.", "A rectangle has 4 sides (opposite sides are equal) and 4 corners.", "A circle has no straight sides and no corners."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample bfa13e056bbd9b643d62  seed 46  [mcq]
+      stem:    What shape has no corners and no straight sides?
+      answer:  circle
+      options: rectangle / circle / square / triangle
+      hints:   ["Think about the sides and corners of each shape.", "A triangle has 3 sides and 3 corners.", "A square has 4 equal sides and 4 corners.", "A rectangle has 4 sides (opposite sides are equal) and 4 corners.", "A circle has no straight sides and no corners."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample d5b95fae6fb7f348780a  seed 500  [read_mcq]
+      stem:    A circle is divided into 2 equal parts. What is each part called?
+      answer:  half-circle
+      options: half-circle / quarter-circle / whole circle / triangle
+      hints:   ["Think about the sides and corners of each shape.", "A triangle has 3 sides and 3 corners.", "A square has 4 equal sides and 4 corners.", "A rectangle has 4 sides (opposite sides are equal) and 4 corners.", "A circle has no straight sides and no corners."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ShapeBoard", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ShapeBoard
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ShapeBoard", "element_count": 8, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {}, "rendered_shapes": [{"type": "circle", "width_px": 50, "height_px": 50, "orientation_deg": 0}, {"type": "triangle", "width_px": 50, "height_px": 50, "orientation_deg": 0}]}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample acaeb47a4adb9f55db0f  seed 501  [read_mcq]
+      stem:    A shape is made from exactly one quarter of a circle. What is it called?
+      answer:  quarter-circle
+      options: half-circle / square / triangle / quarter-circle
+      hints:   ["Think about the sides and corners of each shape.", "A triangle has 3 sides and 3 corners.", "A square has 4 equal sides and 4 corners.", "A rectangle has 4 sides (opposite sides are equal) and 4 corners.", "A circle has no straight sides and no corners."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ShapeBoard", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ShapeBoard
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ShapeBoard", "element_count": 11, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {}, "rendered_shapes": [{"type": "circle", "width_px": 50, "height_px": 50, "orientation_deg": 0}, {"type": "triangle", "width_px": 50, "height_px": 50, "orientation_deg": 0}, {"type": "square", "width_px": 50, "height_px": 50, "orientation_deg": 0}]}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample b6fbd8d99091cc24f723  seed 502  [read_mcq]
+      stem:    A circle is divided into 4 equal parts. What is each part called?
+      answer:  quarter-circle
+      options: quarter-circle / rectangle / whole circle / half-circle
+      hints:   ["Think about the sides and corners of each shape.", "A triangle has 3 sides and 3 corners.", "A square has 4 equal sides and 4 corners.", "A rectangle has 4 sides (opposite sides are equal) and 4 corners.", "A circle has no straight sides and no corners."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ShapeBoard", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ShapeBoard
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ShapeBoard", "element_count": 8, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {}, "rendered_shapes": [{"type": "circle", "width_px": 50, "height_px": 50, "orientation_deg": 0}, {"type": "rectangle", "width_px": 63, "height_px": 40, "orientation_deg": 0}]}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 8c74708ee2485836d445  seed 600  [mcq]
+      stem:    A quarter-circle is rotated to face another direction. What shape is it?
+      answer:  quarter-circle
+      options: quarter-circle / square / circle / half-circle
+      hints:   ["Think about the sides and corners of each shape.", "A triangle has 3 sides and 3 corners.", "A square has 4 equal sides and 4 corners.", "A rectangle has 4 sides (opposite sides are equal) and 4 corners.", "A circle has no straight sides and no corners."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 8174d048104672cb35f6  seed 601  [read_mcq]
+      stem:    A shape is made from exactly half of a circle. What is it called?
+      answer:  half-circle
+      options: triangle / half-circle / rectangle / quarter-circle
+      hints:   ["Think about the sides and corners of each shape.", "A triangle has 3 sides and 3 corners.", "A square has 4 equal sides and 4 corners.", "A rectangle has 4 sides (opposite sides are equal) and 4 corners.", "A circle has no straight sides and no corners."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ShapeBoard", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ShapeBoard
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ShapeBoard", "element_count": 11, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {}, "rendered_shapes": [{"type": "circle", "width_px": 50, "height_px": 50, "orientation_deg": 0}, {"type": "triangle", "width_px": 50, "height_px": 50, "orientation_deg": 0}, {"type": "rectangle", "width_px": 63, "height_px": 40, "orientation_deg": 0}]}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 5c360fa314a630fd9e33  seed 603  [read_mcq]
+      stem:    Which has more straight edges: a half-circle or a quarter-circle?
+      answer:  quarter-circle
+      options: they are equal / neither / half-circle / quarter-circle
+      hints:   ["Think about the sides and corners of each shape.", "A triangle has 3 sides and 3 corners.", "A square has 4 equal sides and 4 corners.", "A rectangle has 4 sides (opposite sides are equal) and 4 corners.", "A circle has no straight sides and no corners."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ShapeBoard", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ShapeBoard
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ShapeBoard", "element_count": 5, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {}, "rendered_shapes": [{"type": "circle", "width_px": 50, "height_px": 50, "orientation_deg": 0}]}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 8ef0d32235f06056ec2a  seed 604  [read_mcq]
+      stem:    How many quarter-circles make 1 whole circle?
+      answer:  4
+      options: 2 / 3 / 8 / 4
+      hints:   ["Think about the sides and corners of each shape.", "A triangle has 3 sides and 3 corners.", "A square has 4 equal sides and 4 corners.", "A rectangle has 4 sides (opposite sides are equal) and 4 corners.", "A circle has no straight sides and no corners."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ShapeBoard", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ShapeBoard
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ShapeBoard", "element_count": 5, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {}, "rendered_shapes": [{"type": "circle", "width_px": 50, "height_px": 50, "orientation_deg": 0}]}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 10457aaa8d67f7a4cd37  seed 605  [read_mcq]
+      stem:    How many corners does a circle have?
+      answer:  0
+      options: 2 / 0 / 1 / 4
+      hints:   ["Think about the sides and corners of each shape.", "A triangle has 3 sides and 3 corners.", "A square has 4 equal sides and 4 corners.", "A rectangle has 4 sides (opposite sides are equal) and 4 corners.", "A circle has no straight sides and no corners."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ShapeBoard", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ShapeBoard
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ShapeBoard", "element_count": 5, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {}, "rendered_shapes": [{"type": "circle", "width_px": 50, "height_px": 50, "orientation_deg": 0}]}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 65503f01ac9b526c68ba  seed 700  [read_mcq]
+      stem:    A shape is made from exactly half of a circle. What is it called?
+      answer:  half-circle
+      options: half-circle / triangle / quarter-circle / rectangle
+      hints:   ["Think about the sides and corners of each shape.", "A triangle has 3 sides and 3 corners.", "A square has 4 equal sides and 4 corners.", "A rectangle has 4 sides (opposite sides are equal) and 4 corners.", "A circle has no straight sides and no corners."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ShapeBoard", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ShapeBoard
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ShapeBoard", "element_count": 11, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {}, "rendered_shapes": [{"type": "circle", "width_px": 50, "height_px": 50, "orientation_deg": 0}, {"type": "triangle", "width_px": 50, "height_px": 50, "orientation_deg": 0}, {"type": "rectangle", "width_px": 63, "height_px": 40, "orientation_deg": 0}]}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 773cbbf60094a2e59326  seed 701  [mcq]
+      stem:    💃 Sir Rez enjoys dance shoes. Here is a math challenge. A shape is made from exactly one quarter of a circle. What is it called?
+      answer:  quarter-circle
+      options: square / triangle / quarter-circle / half-circle
+      hints:   ["Think about the sides and corners of each shape.", "A triangle has 3 sides and 3 corners.", "A square has 4 equal sides and 4 corners.", "A rectangle has 4 sides (opposite sides are equal) and 4 corners.", "A circle has no straight sides and no corners."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 2f4bee8d4aaec415fdee  seed 702  [read_mcq]
+      stem:    🏀 Isko enjoys basketballs. Here is a math challenge. What shape has no corners and no straight sides?
+      answer:  circle
+      options: circle / triangle / rectangle / square
+      hints:   ["Think about the sides and corners of each shape.", "A triangle has 3 sides and 3 corners.", "A square has 4 equal sides and 4 corners.", "A rectangle has 4 sides (opposite sides are equal) and 4 corners.", "A circle has no straight sides and no corners."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ShapeBoard", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ShapeBoard
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ShapeBoard", "element_count": 14, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {}, "rendered_shapes": [{"type": "circle", "width_px": 50, "height_px": 50, "orientation_deg": 0}, {"type": "triangle", "width_px": 50, "height_px": 50, "orientation_deg": 0}, {"type": "rectangle", "width_px": 63, "height_px": 40, "orientation_deg": 0}, {"type": "square", "width_px": 50, "height_px": 50, "orientation_deg": 0}]}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 63d779c3fe444840d7e5  seed 800  [read_mcq]
+      stem:    A circle is divided into 2 equal parts. What is each part called?
+      answer:  half-circle
+      options: half-circle / whole circle / triangle / quarter-circle
+      hints:   ["Think about the sides and corners of each shape.", "A triangle has 3 sides and 3 corners.", "A square has 4 equal sides and 4 corners.", "A rectangle has 4 sides (opposite sides are equal) and 4 corners.", "A circle has no straight sides and no corners."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ShapeBoard", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ShapeBoard
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ShapeBoard", "element_count": 8, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {}, "rendered_shapes": [{"type": "circle", "width_px": 50, "height_px": 50, "orientation_deg": 0}, {"type": "triangle", "width_px": 50, "height_px": 50, "orientation_deg": 0}]}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 11918a32f5820bc44de4  seed 900  [mcq]
+      stem:    A circle is divided into 4 equal parts. What is each part called?
+      answer:  quarter-circle
+      options: rectangle / half-circle / quarter-circle / whole circle
+      hints:   ["Think about the sides and corners of each shape.", "A triangle has 3 sides and 3 corners.", "A square has 4 equal sides and 4 corners.", "A rectangle has 4 sides (opposite sides are equal) and 4 corners.", "A circle has no straight sides and no corners."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 82a689835cc165d843e8  seed 901  [read_mcq]
+      stem:    A circle is divided into 2 equal parts. What is each part called?
+      answer:  half-circle
+      options: half-circle / quarter-circle / triangle / whole circle
+      hints:   ["Think about the sides and corners of each shape.", "A triangle has 3 sides and 3 corners.", "A square has 4 equal sides and 4 corners.", "A rectangle has 4 sides (opposite sides are equal) and 4 corners.", "A circle has no straight sides and no corners."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ShapeBoard", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ShapeBoard
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ShapeBoard", "element_count": 8, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {}, "rendered_shapes": [{"type": "circle", "width_px": 50, "height_px": 50, "orientation_deg": 0}, {"type": "triangle", "width_px": 50, "height_px": 50, "orientation_deg": 0}]}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample a38508e0782f1db2f599  seed 1000  [read_mcq]
+      stem:    A circle is divided into 2 equal parts. What is each part called?
+      answer:  half-circle
+      options: whole circle / quarter-circle / triangle / half-circle
+      hints:   ["Think about the sides and corners of each shape.", "A triangle has 3 sides and 3 corners.", "A square has 4 equal sides and 4 corners.", "A rectangle has 4 sides (opposite sides are equal) and 4 corners.", "A circle has no straight sides and no corners."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ShapeBoard", "interaction_mode": "read", "answer_collection": "mcq", "experience": "hint_gated"}
+      visual:  ShapeBoard
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ShapeBoard", "element_count": 8, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {}, "rendered_shapes": [{"type": "circle", "width_px": 50, "height_px": 50, "orientation_deg": 0}, {"type": "triangle", "width_px": 50, "height_px": 50, "orientation_deg": 0}]}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample eda079106c54f65f4d04  seed 1001  [read_mcq]
+      stem:    What shape has no corners and no straight sides?
+      answer:  circle
+      options: circle / triangle / square / rectangle
+      hints:   ["Think about the sides and corners of each shape.", "A triangle has 3 sides and 3 corners.", "A square has 4 equal sides and 4 corners.", "A rectangle has 4 sides (opposite sides are equal) and 4 corners.", "A circle has no straight sides and no corners."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ShapeBoard", "interaction_mode": "read", "answer_collection": "mcq", "experience": "mastery_drill"}
+      visual:  ShapeBoard
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ShapeBoard", "element_count": 14, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {}, "rendered_shapes": [{"type": "circle", "width_px": 50, "height_px": 50, "orientation_deg": 0}, {"type": "triangle", "width_px": 50, "height_px": 50, "orientation_deg": 0}, {"type": "rectangle", "width_px": 63, "height_px": 40, "orientation_deg": 0}, {"type": "square", "width_px": 50, "height_px": 50, "orientation_deg": 0}]}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 56fd59331e7a4749adb5  seed 1002  [read_mcq]
+      stem:    A circle is divided into 4 equal parts. What is each part called?
+      answer:  quarter-circle
+      options: half-circle / rectangle / whole circle / quarter-circle
+      hints:   ["Think about the sides and corners of each shape.", "A triangle has 3 sides and 3 corners.", "A square has 4 equal sides and 4 corners.", "A rectangle has 4 sides (opposite sides are equal) and 4 corners.", "A circle has no straight sides and no corners."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ShapeBoard", "interaction_mode": "read", "answer_collection": "mcq", "experience": "scaffolded"}
+      visual:  ShapeBoard
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ShapeBoard", "element_count": 8, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {}, "rendered_shapes": [{"type": "circle", "width_px": 50, "height_px": 50, "orientation_deg": 0}, {"type": "rectangle", "width_px": 63, "height_px": 40, "orientation_deg": 0}]}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+
