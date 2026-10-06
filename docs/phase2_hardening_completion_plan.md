@@ -1380,6 +1380,35 @@ that points at it break every time the section is refreshed.
 >     mat_g3_na_q3_1) failed both nodes reading every factor as owing membership in the named set;
 >     this ruling is binding reviewer instruction, as ruling 14 already is for 2 x 1.
 >
+> **Owner rulings recorded 2026-10-07 (19-21), binding.** These follow a review of the W2 sessions:
+> 68 of 124 CONTRADICTED findings said the clause appears in 1-4 of 10 samples, and one late
+> single-judge record could overturn earlier majorities by last-file-wins.
+>
+> 19. **Enumerated sibling clauses are judged by design, not by share of samples** (owner,
+>     2026-10-07). A clause that is one item of a list in the competency (skip intervals, graph
+>     orientations, likelihood words, coin and bill types, named figures) is PROVIDED when the
+>     generator serves it by design and it is observed in at least 2 samples of a packet stratified
+>     so that every sibling is sampled. Design means a variant or DNA path that produces it. Ruling
+>     15's 50% standard applies to medium clauses by set composition, not to sibling items. A clause
+>     that is not part of an enumeration stays under ruling 9 as written. No dispatch prompt may state
+>     a numeric threshold that no ruling states.
+> 20. **Any model family may judge** (owner, 2026-10-07). This supersedes the 2026-09-25 decision that
+>     reviewer families must be consistent, and the host-relative model rules (4, 10, 11) as
+>     constraints on WHICH model judges. What stays absolute is that the identity names the model that
+>     actually judged, and that no existing record is renamed. **Quorum for attestations: one
+>     confirming judge.** Any attestation verdict that would clear or create a CONTRADICTED finding is
+>     confirmed by one further independent blind judge on the same packet. Where the two disagree,
+>     the confirming (later) judge's verdict stands. Named consequence: a single judge flipped 22.4% of
+>     verdicts in W2 step 2, so this quorum accepts that noise level in exchange for cost. Records are
+>     never edited; the confirming record supersedes by last-file-wins, as the validator already does.
+> 21. **A disputed reviewer claim is settled by one other reviewer** (owner, 2026-10-07). When the
+>     dispatcher believes a non-PASS claim in a review is false (for example, a render at the cited
+>     seed disproves it), the reply is not set aside on that belief. The node goes to one fresh blind
+>     reviewer that has seen none of the earlier exchange, and that reviewer's verdict settles the
+>     claim. The disproving render and the outcome are recorded in the evidence log. The existing
+>     set-aside grounds are unchanged: an overall that contradicts its own verdicts, JSON still
+>     unparseable after one repair, or a skipped sample.
+>
 > **Owner rulings recorded 2026-09-22, binding on the next session:**
 >
 > 1. **The medium test.** When a clause names a medium, decide from the competency's grammar
