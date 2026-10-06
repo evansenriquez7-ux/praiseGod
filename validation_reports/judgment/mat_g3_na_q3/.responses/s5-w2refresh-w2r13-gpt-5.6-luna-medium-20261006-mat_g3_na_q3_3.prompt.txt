@@ -1,0 +1,245 @@
+You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  blind-reviewer-gpt-5.6-luna-medium-w2r13-mat_g3_na_q3_3-20261006
+
+Write one JSON object to:
+  local_only/scratch/w2_refresh/mat_g3_na_q3_3/verdicts.json
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: cognitive_capacity, competency_alignment, competency_fulfillment, comprehensive_coverage, scale_appropriateness, variant_comprehensiveness. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: ambiguity, contextual_logical_validity, learner_facing_clarity, mathematical_validity. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN: cite the sample_ids you EXAMINED and found lacking it (the list may never
+   be empty), and never cite a sample as SUPPORTING a clause it does not support.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{
+  "reviewer": "blind-reviewer-gpt-5.6-luna-medium-w2r13-mat_g3_na_q3_3-20261006",
+  "<node_id>": {
+    "findings": {
+      "competency_fulfillment": {
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}
+      },
+      "<each other required finding>": {"verdict": "...", "rationale": "..."}
+    },
+    "sample_assessments": [
+      {"sample_id": "<opaque id>", "checks": {
+        "<each required sample check>": {"verdict": "...", "reasoning": "..."}
+      }}
+    ],
+    "clause_evidence": [
+      {"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }
+}
+
+== BLIND PACKET ==
+
+==========================================================================
+NODE: mat_g3_na_q3_3
+PACKET DIGEST: ede1c502bb50e7f7be999d81247054b18b2bd5e39c40843e8b3e01b5742621b2
+COMPETENCY (Grade 3, Quarter 3, None):
+Estimate the product of 2- to 3-digit numbers by 1- to 2-digit numbers by estimating the factors using multiples of 10.
+
+REQUIREMENTS (confirm this is a lossless decomposition of the competency):
+  estimate_product: Estimate the product
+  2_to_3_digit_factors: 2- to 3-digit numbers
+  1_to_2_digit_factors: 1- to 2-digit numbers
+  estimate_factors: estimating the factors
+  multiples_of_10: multiples of 10
+
+SAMPLES (every one of these is real rendered output):
+  sample 2acd847b0e5c169865e5  seed 42  [mcq]
+      stem:    Estimate the product: 43 × 32
+      answer:  1200
+      options: 1199 / 1201 / 1200 / 1202
+      hints:   ["We need to find the total of equal groups 30 groups of 40.", "Use the 30 times table: 30 × 40.", "Break 40 into 40 + 0: (40 × 30) + (0 × 30) = 1200 + 0 = 1200.", "The product of 40 × 30 = 1200."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample cabafb3f18117813f57b  seed 43  [true_false]
+      stem:    99 × 21 ≈ 1992. True or False?
+      answer:  False
+      hints:   ["We need to find the total of equal groups 20 groups of 100.", "Use the 20 times table: 20 × 100.", "Break 100 into 100 + 0: (100 × 20) + (0 × 20) = 2000 + 0 = 2000.", "The product of 100 × 20 = 2000."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 6bfd635c0c6baf56bee6  seed 44  [error_detect]
+      stem:    Rico solved: "345 × 15 ≈ ___". Rico says the missing number is 7000. Is Rico correct?
+      answer:  {'has_error': False, 'correct_value': 7000}
+      hints:   ["We need to find the total of equal groups 20 groups of 350.", "Use the 20 times table: 20 × 350.", "Break 350 into 350 + 0: (350 × 20) + (0 × 20) = 7000 + 0 = 7000.", "The product of 350 × 20 = 7000."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample b9a292deadaf899f8e1a  seed 45  [mcq]
+      stem:    Estimate the product: 450 × 10
+      answer:  4500
+      options: 4499 / 4501 / 4502 / 4500
+      hints:   ["We need to find the total of equal groups 10 groups of 450.", "Use the 10 times table: 10 × 450.", "Break 450 into 450 + 0: (450 × 10) + (0 × 10) = 4500 + 0 = 4500.", "The product of 450 × 10 = 4500."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 24555203aa07b649540f  seed 46  [cloze]
+      stem:    Estimate: 295 × 17 ≈ ___
+      answer:  6000
+      options: 6001 / 6002 / 6000 / 5999
+      hints:   ["We need to find the total of equal groups 20 groups of 300.", "Use the 20 times table: 20 × 300.", "Break 300 into 300 + 0: (300 × 20) + (0 × 20) = 6000 + 0 = 6000.", "The product of 300 × 20 = 6000."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample e4193f5aa284b3eb16fa  seed 500  [true_false]
+      stem:    67 × 76 ≈ 5604. True or False?
+      answer:  False
+      hints:   ["We need to find the total of equal groups 80 groups of 70.", "Use the 80 times table: 80 × 70.", "Break 70 into 70 + 0: (70 × 80) + (0 × 80) = 5600 + 0 = 5600.", "The product of 70 × 80 = 5600."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 4ff8abc06a02fad5d4c9  seed 501  [mcq]
+      stem:    Estimate the product: 930 × 13
+      answer:  9300
+      options: 9301 / 9302 / 9300 / 9299
+      hints:   ["We need to find the total of equal groups 10 groups of 930.", "Use the 10 times table: 10 × 930.", "Break 930 into 930 + 0: (930 × 10) + (0 × 10) = 9300 + 0 = 9300.", "The product of 930 × 10 = 9300."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample dda65905327afad620f0  seed 502  [error_detect]
+      stem:    Dante solved: "853 × 12 ≈ ___". Dante says the missing number is 8500. Is Dante correct?
+      answer:  {'has_error': False, 'correct_value': 8500}
+      hints:   ["We need to find the total of equal groups 10 groups of 850.", "Use the 10 times table: 10 × 850.", "Break 850 into 850 + 0: (850 × 10) + (0 × 10) = 8500 + 0 = 8500.", "The product of 850 × 10 = 8500."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample 2ff0664cf037a909f9d3  seed 600  [true_false]
+      stem:    92 × 98 ≈ 9000. True or False?
+      answer:  True
+      hints:   ["We need to find the total of equal groups 100 groups of 90.", "Use the 100 times table: 100 × 90.", "Break 90 into 90 + 0: (90 × 100) + (0 × 100) = 9000 + 0 = 9000.", "The product of 90 × 100 = 9000."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample e575468f6aebe18b3154  seed 601  [cloze]
+      stem:    Estimate: 28 × 27 ≈ ___
+      answer:  900
+      options: 902 / 899 / 900 / 901
+      hints:   ["We need to find the total of equal groups 30 groups of 30.", "Use the 30 times table: 30 × 30.", "Break 30 into 30 + 0: (30 × 30) + (0 × 30) = 900 + 0 = 900.", "The product of 30 × 30 = 900."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 84c205866b7843943c43  seed 602  [mcq]
+      stem:    Estimate the product: 330 × 14
+      answer:  3300
+      options: 3300 / 3302 / 3299 / 3301
+      hints:   ["We need to find the total of equal groups 10 groups of 330.", "Use the 10 times table: 10 × 330.", "Break 330 into 330 + 0: (330 × 10) + (0 × 10) = 3300 + 0 = 3300.", "The product of 330 × 10 = 3300."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample a08a964ca70511cf7f39  seed 603  [true_false]
+      stem:    50 × 91 ≈ 4500. True or False?
+      answer:  True
+      hints:   ["We need to find the total of equal groups 90 groups of 50.", "Use the 90 times table: 90 × 50.", "Break 50 into 50 + 0: (50 × 90) + (0 × 90) = 4500 + 0 = 4500.", "The product of 50 × 90 = 4500."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 4f68300ce9dedfc3f839  seed 604  [mcq]
+      stem:    Estimate the product: 262 × 18
+      answer:  5200
+      options: 5201 / 5200 / 5199 / 5202
+      hints:   ["We need to find the total of equal groups 20 groups of 260.", "Use the 20 times table: 20 × 260.", "Break 260 into 260 + 0: (260 × 20) + (0 × 20) = 5200 + 0 = 5200.", "The product of 260 × 20 = 5200."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 58a5b445d9d938e8cf4e  seed 605  [true_false]
+      stem:    503 × 20 ≈ 10000. True or False?
+      answer:  True
+      hints:   ["We need to find the total of equal groups 20 groups of 500.", "Use the 20 times table: 20 × 500.", "Break 500 into 500 + 0: (500 × 20) + (0 × 20) = 10000 + 0 = 10000.", "The product of 500 × 20 = 10000."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample d2cd8dab7de1ab7a6ca5  seed 606  [mcq]
+      stem:    Estimate the product: 118 × 49
+      answer:  6000
+      options: 6002 / 6001 / 5999 / 6000
+      hints:   ["We need to find the total of equal groups 50 groups of 120.", "Use the 50 times table: 50 × 120.", "Break 120 into 120 + 0: (120 × 50) + (0 × 50) = 6000 + 0 = 6000.", "The product of 120 × 50 = 6000."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 5c61feca0192e8d04951  seed 607  [error_detect]
+      stem:    Grace solved: "83 × 20 ≈ ___". Grace says the missing number is 1600. Is Grace correct?
+      answer:  {'has_error': False, 'correct_value': 1600}
+      hints:   ["We need to find the total of equal groups 20 groups of 80.", "Use the 20 times table: 20 × 80.", "Break 80 into 80 + 0: (80 × 20) + (0 × 20) = 1600 + 0 = 1600.", "The product of 80 × 20 = 1600."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample 18164fd70d2ca1cf743b  seed 608  [true_false]
+      stem:    30 × 41 ≈ 1203. True or False?
+      answer:  False
+      hints:   ["We need to find the total of equal groups 40 groups of 30.", "Use the 40 times table: 40 × 30.", "Break 30 into 30 + 0: (30 × 40) + (0 × 40) = 1200 + 0 = 1200.", "The product of 30 × 40 = 1200."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 5f07360d65da5b50f77a  seed 609  [cloze]
+      stem:    Estimate: 279 × 15 ≈ ___
+      answer:  5600
+      options: 5601 / 5600 / 5602 / 5599
+      hints:   ["We need to find the total of equal groups 20 groups of 280.", "Use the 20 times table: 20 × 280.", "Break 280 into 280 + 0: (280 × 20) + (0 × 20) = 5600 + 0 = 5600.", "The product of 280 × 20 = 5600."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 96550d0aba56165f59e1  seed 610  [mcq]
+      stem:    Estimate the product: 180 × 54
+      answer:  9000
+      options: 9002 / 8999 / 9001 / 9000
+      hints:   ["We need to find the total of equal groups 50 groups of 180.", "Use the 50 times table: 50 × 180.", "Break 180 into 180 + 0: (180 × 50) + (0 × 50) = 9000 + 0 = 9000.", "The product of 180 × 50 = 9000."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample aa5284570ce4c7e79498  seed 611  [error_detect]
+      stem:    Rosa solved: "150 × 63 ≈ ___". Rosa says the missing number is 9000. Is Rosa correct?
+      answer:  {'has_error': False, 'correct_value': 9000}
+      hints:   ["We need to find the total of equal groups 60 groups of 150.", "Use the 60 times table: 60 × 150.", "Break 150 into 150 + 0: (150 × 60) + (0 × 60) = 9000 + 0 = 9000.", "The product of 150 × 60 = 9000."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample 63280211c6574e2868c7  seed 612  [error_detect]
+      stem:    Noel solved: "331 × 14 ≈ ___". Noel says the missing number is 3300. Is Noel correct?
+      answer:  {'has_error': False, 'correct_value': 3300}
+      hints:   ["We need to find the total of equal groups 10 groups of 330.", "Use the 10 times table: 10 × 330.", "Break 330 into 330 + 0: (330 × 10) + (0 × 10) = 3300 + 0 = 3300.", "The product of 330 × 10 = 3300."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample 68c8cea2c95b10f19e1a  seed 700  [true_false]
+      stem:    67 × 85 ≈ 6300. True or False?
+      answer:  True
+      hints:   ["We need to find the total of equal groups 90 groups of 70.", "Use the 90 times table: 90 × 70.", "Break 70 into 70 + 0: (70 × 90) + (0 × 90) = 6300 + 0 = 6300.", "The product of 70 × 90 = 6300."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 9ef709267e54195c4dbf  seed 701  [cloze]
+      stem:    ✝️ Daniel enjoys baskets. Here is a math challenge. Estimate: 471 × 11 ≈ ___
+      answer:  4700
+      options: 4700 / 4702 / 4701 / 4699
+      hints:   ["We need to find the total of equal groups 10 groups of 470.", "Use the 10 times table: 10 × 470.", "Break 470 into 470 + 0: (470 × 10) + (0 × 10) = 4700 + 0 = 4700.", "The product of 470 × 10 = 4700."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 0663bf39ce2cb2c855d4  seed 702  [error_detect]
+      stem:    🏀 Isko enjoys basketballs. Here is a math challenge. Manny solved: "132 × 19 ≈ ___". Manny says the missing number is 2600. Is Manny correct?
+      answer:  {'has_error': False, 'correct_value': 2600}
+      hints:   ["We need to find the total of equal groups 20 groups of 130.", "Use the 20 times table: 20 × 130.", "Break 130 into 130 + 0: (130 × 20) + (0 × 20) = 2600 + 0 = 2600.", "The product of 130 × 20 = 2600."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample b651f9d5dfb687bec877  seed 800  [cloze]
+      stem:    Estimate: 34 × 10 ≈ ___
+      answer:  300
+      options: 300 / 299 / 301 / 302
+      hints:   ["We need to find the total of equal groups 10 groups of 30.", "Use the 10 times table: 10 × 30.", "Break 30 into 30 + 0: (30 × 10) + (0 × 10) = 300 + 0 = 300.", "The product of 30 × 10 = 300."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample efef751bb38a2a2d78c5  seed 801  [error_detect]
+      stem:    Pia solved: "835 × 11 ≈ ___". Pia says the missing number is 8400. Is Pia correct?
+      answer:  {'has_error': False, 'correct_value': 8400}
+      hints:   ["We need to find the total of equal groups 10 groups of 840.", "Use the 10 times table: 10 × 840.", "Break 840 into 840 + 0: (840 × 10) + (0 × 10) = 8400 + 0 = 8400.", "The product of 840 × 10 = 8400."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample 2fb8fb0a69c8e6e2a383  seed 900  [mcq]
+      stem:    Estimate the product: 10 × 14
+      answer:  100
+      options: 99 / 100 / 102 / 101
+      hints:   ["We need to find the total of equal groups 10 groups of 10.", "Use the 10 times table: 10 × 10.", "Break 10 into 10 + 0: (10 × 10) + (0 × 10) = 100 + 0 = 100.", "The product of 10 × 10 = 100."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 92079ed897345a9e053b  seed 901  [mcq]
+      stem:    Estimate the product: 16 × 12
+      answer:  200
+      options: 199 / 200 / 202 / 201
+      hints:   ["We need to find the total of equal groups 10 groups of 20.", "Use the 10 times table: 10 × 20.", "Break 20 into 20 + 0: (20 × 10) + (0 × 10) = 200 + 0 = 200.", "The product of 20 × 10 = 200."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 312f3b83ac5d62a13ff9  seed 1000  [true_false]
+      stem:    149 × 21 ≈ 2992. True or False?
+      answer:  False
+      hints:   ["We need to find the total of equal groups 20 groups of 150.", "Use the 20 times table: 20 × 150.", "Break 150 into 150 + 0: (150 × 20) + (0 × 20) = 3000 + 0 = 3000.", "The product of 150 × 20 = 3000."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "hint_gated"}
+  sample 28252cedb4e3dfab3613  seed 1001  [error_detect]
+      stem:    Liza solved: "297 × 25 ≈ ___". Liza says the missing number is 9000. Is Liza correct?
+      answer:  {'has_error': False, 'correct_value': 9000}
+      hints:   ["We need to find the total of equal groups 30 groups of 300.", "Use the 30 times table: 30 × 300.", "Break 300 into 300 + 0: (300 × 30) + (0 × 30) = 9000 + 0 = 9000.", "The product of 300 × 30 = 9000."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "mastery_drill"}
+  sample d2a3da843ea5f87908ba  seed 1002  [error_detect]
+      stem:    Manny solved: "430 × 22 ≈ ___". Manny says the missing number is 8600. Is Manny correct?
+      answer:  {'has_error': False, 'correct_value': 8600}
+      hints:   ["We need to find the total of equal groups 20 groups of 430.", "Use the 20 times table: 20 × 430.", "Break 430 into 430 + 0: (430 × 20) + (0 × 20) = 8600 + 0 = 8600.", "The product of 430 × 20 = 8600."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "scaffolded"}
+

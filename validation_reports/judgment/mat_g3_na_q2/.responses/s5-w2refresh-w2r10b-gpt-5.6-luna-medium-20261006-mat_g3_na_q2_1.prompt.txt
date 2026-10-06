@@ -1,0 +1,334 @@
+You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  blind-reviewer-gpt-5.6-luna-medium-w2r10b-mat_g3_na_q2_1-20261006
+
+Write one JSON object to:
+  local_only/scratch/w2_refresh/mat_g3_na_q2_1_r2/verdicts.json
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: cognitive_capacity, competency_alignment, competency_fulfillment, comprehensive_coverage, scale_appropriateness, variant_comprehensiveness. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: ambiguity, contextual_logical_validity, learner_facing_clarity, mathematical_validity. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN: cite the sample_ids you EXAMINED and found lacking it (the list may never
+   be empty), and never cite a sample as SUPPORTING a clause it does not support.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{
+  "reviewer": "blind-reviewer-gpt-5.6-luna-medium-w2r10b-mat_g3_na_q2_1-20261006",
+  "<node_id>": {
+    "findings": {
+      "competency_fulfillment": {
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}
+      },
+      "<each other required finding>": {"verdict": "...", "rationale": "..."}
+    },
+    "sample_assessments": [
+      {"sample_id": "<opaque id>", "checks": {
+        "<each required sample check>": {"verdict": "...", "reasoning": "..."}
+      }}
+    ],
+    "clause_evidence": [
+      {"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }
+}
+
+== BLIND PACKET ==
+
+==========================================================================
+NODE: mat_g3_na_q2_1
+PACKET DIGEST: 2d66f80deedc756ae7795f37a697b82690f5e46a439690bc54644fc8df96bb35
+COMPETENCY (Grade 3, Quarter 2, None):
+Add numbers with sums up to 10 000, with and without regrouping.
+
+REQUIREMENTS (confirm this is a lossless decomposition of the competency):
+  add: Add
+  numbers: numbers
+  sums_up_to_10000: sums up to 10 000
+  with_regrouping: with
+  without_regrouping: without
+  regrouping: regrouping
+
+SAMPLES (every one of these is real rendered output):
+  sample 6ea1e91bcfbf247bf0fb  seed 42  [set_fill_in_blank]
+      stem:    Show 1086 + 2067 on the number line.
+      answer:  3153
+      hints:   ["We are adding two numbers: 1086 and 2067.", "Add the ones: 6 + 7 = 13. Keep 3 in the ones place and regroup 1 ten.", "Add the tens: 8 + 6 + 1 (regrouped) = 15.", "The sum is 1086 + 2067 = 3153."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 46, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["500", "1000", "1500", "2000", "2500", "3000", "3500", "Your answer: Position", "2000", "Click track, drag dot, or use ← → arrow keys"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 3ef281afe97c55b29f36  seed 43  [read_fill_in_blank]
+      stem:    The two parts are 1620 and 2356. What is the sum?
+      answer:  3976
+      hints:   ["We are adding two numbers: 1620 and 2356.", "Add the ones: 0 + 6 = 6. Keep 6 in the ones place.", "Add the tens: 2 + 5 = 7.", "The sum is 1620 + 2356 = 3976."]
+      response: {"format": "read_fill_in_blank", "is_visual": true, "visual_type": "NumberBond", "interaction_mode": "read", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  NumberBond
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberBond", "element_count": 7, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 1, "text_labels": ["1620", "2356"], "distinct_colours": ["hsl(var(--primary)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample e652033d7dfca58f3448  seed 44  [error_detect]
+      stem:    Rico solved: "1640 + 3900 = ___". Rico says the missing number is 5540. Is Rico correct?
+      answer:  {'has_error': False, 'correct_value': 5540}
+      hints:   ["We are adding two numbers: 1640 and 3900.", "Add the ones: 0 + 0 = 0. Keep 0 in the ones place.", "Add the tens: 4 + 0 = 4.", "The sum is 1640 + 3900 = 5540."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample cb719ad566ca11af17cf  seed 45  [mcq]
+      stem:    What is 720 + 310?
+      answer:  1030
+      options: 1030 / 410 / 1029 / 1040
+      hints:   ["We are adding two numbers: 720 and 310.", "Add the ones: 0 + 0 = 0. Keep 0 in the ones place.", "Add the tens: 2 + 1 = 3.", "The sum is 720 + 310 = 1030."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 3c0e29abd08332da2355  seed 46  [cloze]
+      stem:    9997 + 2 = ___
+      answer:  9999
+      options: 9999 / 9995 / 10009 / 9998
+      hints:   ["We are adding two numbers: 9997 and 2.", "Add the ones: 7 + 2 = 9. Keep 9 in the ones place.", "Add the tens: 9 + 0 = 9.", "The sum is 9997 + 2 = 9999."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 9137b187cc320d50e742  seed 47  [read_mcq]
+      stem:    The dot is at 9090 and it moves forward 310 numbers. Starting from 9090, just count up 310 numbers. Which number will the dot land on?
+      answer:  9400
+      options: 9410 / 9399 / 8780 / 9400
+      hints:   ["We are adding two numbers: 9090 and 310.", "Add the ones: 0 + 0 = 0. Keep 0 in the ones place.", "Add the tens: 9 + 1 = 10.", "The sum is 9090 + 310 = 9400."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 25, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["8900", "9000", "9100", "9200", "9300", "9400", "9500"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 6e1c78718cb6f5ad1502  seed 61  [true_false]
+      stem:    5373 + 4080 = 9452. True or False?
+      answer:  False
+      hints:   ["We are adding two numbers: 5373 and 4080.", "Add the ones: 3 + 0 = 3. Keep 3 in the ones place.", "Add the tens: 7 + 8 = 15.", "The sum is 5373 + 4080 = 9453."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 415e2c94ef8fb549ac25  seed 500  [read_mcq]
+      stem:    The dot is at 3622 and it moves forward 5280 numbers. Starting from 3622, just count up 5280 numbers. Which number will the dot land on?
+      answer:  8902
+      options: 8903 / 8902 / 8901 / 8912
+      hints:   ["We are adding two numbers: 3622 and 5280.", "Add the ones: 2 + 0 = 2. Keep 2 in the ones place.", "Add the tens: 2 + 8 = 10.", "The sum is 3622 + 5280 = 8902."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 31, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "2500", "5000", "7500", "10000"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample f4d07b04115f8918b2a5  seed 501  [set_fill_in_blank]
+      stem:    Show 3583 + 586 on the number line.
+      answer:  4169
+      hints:   ["We are adding two numbers: 3583 and 586.", "Add the ones: 3 + 6 = 9. Keep 9 in the ones place.", "Add the tens: 8 + 8 = 16.", "The sum is 3583 + 586 = 4169."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 34, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["3400", "3500", "3600", "3700", "3800", "3900", "4000", "4100", "4200", "Your answer: Position", "3800", "Click track, drag dot, or use ← → arrow keys"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample ca5f48a6dda93cfb6d39  seed 502  [error_detect]
+      stem:    Dante solved: "6338 + 1914 = ___". Dante says the missing number is 8252. Is Dante correct?
+      answer:  {'has_error': False, 'correct_value': 8252}
+      hints:   ["We are adding two numbers: 6338 and 1914.", "Add the ones: 8 + 4 = 12. Keep 2 in the ones place and regroup 1 ten.", "Add the tens: 3 + 1 + 1 (regrouped) = 5.", "The sum is 6338 + 1914 = 8252."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample e7a9915546c39d047ceb  seed 600  [set_fill_in_blank]
+      stem:    Show 8506 + 218 on the number line.
+      answer:  8724
+      hints:   ["We are adding two numbers: 8506 and 218.", "Add the ones: 6 + 8 = 14. Keep 4 in the ones place and regroup 1 ten.", "Add the tens: 0 + 1 + 1 (regrouped) = 2.", "The sum is 8506 + 218 = 8724."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 22, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["8400", "8500", "8600", "8700", "8800", "Your answer: Position", "8600", "Click track, drag dot, or use ← → arrow keys"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 72e3283ff5e9e4a7d28b  seed 601  [cloze]
+      stem:    Pia has 4860 water bowls. A friend has 5100 water bowls. If they put all their water bowls together, how many water bowls do they have in all?
+      answer:  9960
+      options: 9959 / 9970 / 9961 / 9960
+      hints:   ["We are adding two numbers: 4860 and 5100.", "Add the ones: 0 + 0 = 0. Keep 0 in the ones place.", "Add the tens: 6 + 0 = 6.", "The sum is 4860 + 5100 = 9960."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 896fe4a902511c0c1422  seed 602  [read_mcq]
+      stem:    The dot is at 8511 and it moves forward 1489 numbers. Starting from 8511, just count up 1489 numbers. Which number will the dot land on?
+      answer:  10000
+      options: 7022 / 10010 / 10000 / 9999
+      hints:   ["We are adding two numbers: 8511 and 1489.", "Add the ones: 1 + 9 = 10. Keep 0 in the ones place and regroup 1 ten.", "Add the tens: 1 + 8 + 1 (regrouped) = 10.", "The sum is 8511 + 1489 = 10000."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 37, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["8000", "8500", "9000", "9500", "10000", "10500"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample e7aeb760b2fe1c591fae  seed 603  [read_fill_in_blank]
+      stem:    The two parts are 2285 and 3504. What is the sum?
+      answer:  5789
+      hints:   ["We are adding two numbers: 2285 and 3504.", "Add the ones: 5 + 4 = 9. Keep 9 in the ones place.", "Add the tens: 8 + 0 = 8.", "The sum is 2285 + 3504 = 5789."]
+      response: {"format": "read_fill_in_blank", "is_visual": true, "visual_type": "NumberBond", "interaction_mode": "read", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  NumberBond
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberBond", "element_count": 7, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 1, "text_labels": ["2285", "3504"], "distinct_colours": ["hsl(var(--primary)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 1af31ad7b101e5343a5f  seed 604  [true_false]
+      stem:    6392 + 215 = 6392. True or False?
+      answer:  False
+      hints:   ["We are adding two numbers: 6392 and 215.", "Add the ones: 2 + 5 = 7. Keep 7 in the ones place.", "Add the tens: 9 + 1 = 10.", "The sum is 6392 + 215 = 6607."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 4c5f1ad80bd6e7893c5a  seed 605  [read_mcq]
+      stem:    The dot is at 6459 and it moves forward 693 numbers. Starting from 6459, just count up 693 numbers. Which number will the dot land on?
+      answer:  7152
+      options: 7162 / 7151 / 7152 / 5766
+      hints:   ["We are adding two numbers: 6459 and 693.", "Add the ones: 9 + 3 = 12. Keep 2 in the ones place and regroup 1 ten.", "Add the tens: 5 + 9 + 1 (regrouped) = 15.", "The sum is 6459 + 693 = 7152."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 34, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["6300", "6400", "6500", "6600", "6700", "6800", "6900", "7000", "7100", "7200"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample a41a16b092e91d45321a  seed 606  [mcq]
+      stem:    What is 634 + 4166?
+      answer:  4800
+      options: 4801 / 4800 / 4810 / 4799
+      hints:   ["We are adding two numbers: 634 and 4166.", "Add the ones: 4 + 6 = 10. Keep 0 in the ones place and regroup 1 ten.", "Add the tens: 3 + 6 + 1 (regrouped) = 10.", "The sum is 634 + 4166 = 4800."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample bd5f72b82bb732c04a48  seed 607  [error_detect]
+      stem:    Grace solved: "168 + 9175 = ___". Grace says the missing number is 9343. Is Grace correct?
+      answer:  {'has_error': False, 'correct_value': 9343}
+      hints:   ["We are adding two numbers: 168 and 9175.", "Add the ones: 8 + 5 = 13. Keep 3 in the ones place and regroup 1 ten.", "Add the tens: 6 + 7 + 1 (regrouped) = 14.", "The sum is 168 + 9175 = 9343."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample b4eab2c96267d722c3b7  seed 608  [set_fill_in_blank]
+      stem:    Show 5515 + 3431 on the number line.
+      answer:  8946
+      hints:   ["We are adding two numbers: 5515 and 3431.", "Add the ones: 5 + 1 = 6. Keep 6 in the ones place.", "Add the tens: 1 + 3 = 4.", "The sum is 5515 + 3431 = 8946."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 58, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["5000", "5500", "6000", "6500", "7000", "7500", "8000", "8500", "9000", "Your answer: Position", "7000", "Click track, drag dot, or use ← → arrow keys"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample f0a6e7547cc99644f06d  seed 609  [cloze]
+      stem:    712 + 1695 = ___
+      answer:  2407
+      options: 2406 / 2407 / 2417 / 2408
+      hints:   ["We are adding two numbers: 712 and 1695.", "Add the ones: 2 + 5 = 7. Keep 7 in the ones place.", "Add the tens: 1 + 9 = 10.", "The sum is 712 + 1695 = 2407."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample 947111de946ecce53a91  seed 610  [mcq]
+      stem:    What is 2470 + 6450?
+      answer:  8920
+      options: 8920 / 8921 / 8919 / 8930
+      hints:   ["We are adding two numbers: 2470 and 6450.", "Add the ones: 0 + 0 = 0. Keep 0 in the ones place.", "Add the tens: 7 + 5 = 12.", "The sum is 2470 + 6450 = 8920."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample 6cbe48b5da1bdd12b45a  seed 611  [set_fill_in_blank]
+      stem:    Show 1890 + 2525 on the number line.
+      answer:  4415
+      hints:   ["We are adding two numbers: 1890 and 2525.", "Add the ones: 0 + 5 = 5. Keep 5 in the ones place.", "Add the tens: 9 + 2 = 11.", "The sum is 1890 + 2525 = 4415."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 52, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["1000", "1500", "2000", "2500", "3000", "3500", "4000", "4500", "Your answer: Position", "2700", "Click track, drag dot, or use ← → arrow keys"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample ea66081965d362670210  seed 612  [mcq]
+      stem:    Is (212 + 55) + 121 the same as 212 + (55 + 121)?
+      answer:  True
+      options: True / False / Only when both are 0 / Cannot be determined
+      hints:   ["Both sides add the same three numbers, 212, 55 and 121, grouped differently.", "(212 + 55) + 121 = 388 and 212 + (55 + 121) = 388.", "So the two sides are the same."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample b76284de641f91d1584a  seed 613  [mcq]
+      stem:    Is 783 + 111 the same as 111 + 636?
+      answer:  False
+      options: Only when both are 0 / Cannot be determined / True / False
+      hints:   ["The left side adds 783 and 111. The right side adds 111 and 636.", "783 + 111 = 894 and 111 + 636 = 747.", "So the two sides are not the same."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample aaa21687f575fa8210db  seed 614  [cloze]
+      stem:    Start at 9025. Count up 292 more. You land on ___
+      answer:  9317
+      options: 9327 / 8733 / 9317 / 9316
+      hints:   ["We are adding two numbers: 9025 and 292.", "Add the ones: 5 + 2 = 7. Keep 7 in the ones place.", "Add the tens: 2 + 9 = 11.", "The sum is 9025 + 292 = 9317."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample dbce81392f475679dbaf  seed 615  [error_detect]
+      stem:    Ana solved: "7650 is 76 hundreds, 5 tens, and 0 ones. 1110 is 11 hundreds, 1 ten, and 0 ones. Add the place values, then find the total: 7650 + 1110 = ___". Ana says the missing number is 8759. Is Ana correct?
+      answer:  {'has_error': True, 'correct_value': 8760}
+      hints:   ["We are adding two numbers: 7650 and 1110.", "Add the ones: 0 + 0 = 0. Keep 0 in the ones place.", "Add the tens: 5 + 1 = 6.", "The sum is 7650 + 1110 = 8760."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample 6f5a9dafebd123971c36  seed 616  [true_false]
+      stem:    One group has 6448 items and another group has 1253 items. Putting them together makes 7701 items in all. True or False?
+      answer:  True
+      hints:   ["We are adding two numbers: 6448 and 1253.", "Add the ones: 8 + 3 = 11. Keep 1 in the ones place and regroup 1 ten.", "Add the tens: 4 + 5 + 1 (regrouped) = 10.", "The sum is 6448 + 1253 = 7701."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample 5a340d0d7d302d604a9f  seed 617  [mcq]
+      stem:    One group has 5080 items and another group has 4452 items. If you put them together, how many items are there in all?
+      answer:  9532
+      options: 9542 / 628 / 9532 / 9531
+      hints:   ["We are adding two numbers: 5080 and 4452.", "Add the ones: 0 + 2 = 2. Keep 2 in the ones place.", "Add the tens: 8 + 5 = 13.", "The sum is 5080 + 4452 = 9532."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample dfaa7841ca685011160e  seed 618  [true_false]
+      stem:    2978 + 0 = 2978. True or False?
+      answer:  True
+      hints:   ["We are adding two numbers: 2978 and 0.", "Add the ones: 8 + 0 = 8. Keep 8 in the ones place.", "Add the tens: 7 + 0 = 7.", "The sum is 2978 + 0 = 2978."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "standard"}
+  sample b40f8ce6f30f10f0de5b  seed 700  [read_fill_in_blank]
+      stem:    The two parts are 2107 and 5172. What is the sum?
+      answer:  7279
+      hints:   ["We are adding two numbers: 2107 and 5172.", "Add the ones: 7 + 2 = 9. Keep 9 in the ones place.", "Add the tens: 0 + 7 = 7.", "The sum is 2107 + 5172 = 7279."]
+      response: {"format": "read_fill_in_blank", "is_visual": true, "visual_type": "NumberBond", "interaction_mode": "read", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  NumberBond
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberBond", "element_count": 7, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 1, "text_labels": ["2107", "5172"], "distinct_colours": ["hsl(var(--primary)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample ce1693df7fa712c82462  seed 701  [cloze]
+      stem:    💃 Sir Rez enjoys dance shoes. Here is a math challenge. 137 + 8284 = ___
+      answer:  8421
+      options: 8422 / 8421 / 8420 / 8431
+      hints:   ["We are adding two numbers: 137 and 8284.", "Add the ones: 7 + 4 = 11. Keep 1 in the ones place and regroup 1 ten.", "Add the tens: 3 + 8 + 1 (regrouped) = 12.", "The sum is 137 + 8284 = 8421."]
+      response: {"format": "cloze", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "fill_in_blank", "experience": "standard"}
+  sample c1f6f0563f87236d3271  seed 702  [error_detect]
+      stem:    ✝️ Moses enjoys olives. Here is a math challenge. Manny solved: "2025 + 6964 = ___". Manny says the missing number is 8990. Is Manny correct?
+      answer:  {'has_error': True, 'correct_value': 8989}
+      hints:   ["We are adding two numbers: 2025 and 6964.", "Add the ones: 5 + 4 = 9. Keep 9 in the ones place.", "Add the tens: 2 + 6 = 8.", "The sum is 2025 + 6964 = 8989."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample eaa4f780c616458d60da  seed 800  [read_mcq]
+      stem:    The dot is at 3870 and it moves forward 4746 numbers. Starting from 3870, just count up 4746 numbers. Which number will the dot land on?
+      answer:  8616
+      options: 8617 / 8616 / 8615 / 8626
+      hints:   ["We are adding two numbers: 3870 and 4746.", "Add the ones: 0 + 6 = 6. Keep 6 in the ones place.", "Add the tens: 7 + 4 = 11.", "The sum is 3870 + 4746 = 8616."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 31, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "2500", "5000", "7500", "10000"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 738def9a517bc89373b5  seed 801  [error_detect]
+      stem:    Pia solved: "9602 + 43 = ___". Pia says the missing number is 9645. Is Pia correct?
+      answer:  {'has_error': False, 'correct_value': 9645}
+      hints:   ["We are adding two numbers: 9602 and 43.", "Add the ones: 2 + 3 = 5. Keep 5 in the ones place.", "Add the tens: 0 + 4 = 4.", "The sum is 9602 + 43 = 9645."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "standard"}
+  sample c23998abc058050c95e1  seed 900  [mcq]
+      stem:    What is 0 + 1?
+      answer:  1
+      options: 0 / 11 / 2 / 1
+      hints:   ["We are adding two numbers: 0 and 1.", "Add the ones: 0 + 1 = 1. Keep 1 in the ones place.", "The sum is 0 + 1 = 1."]
+      response: {"format": "mcq", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "mcq", "experience": "standard"}
+  sample ea03255ae026c0f1327d  seed 901  [set_fill_in_blank]
+      stem:    Show 0 + 1 on the number line.
+      answer:  1
+      hints:   ["We are adding two numbers: 0 and 1.", "Add the ones: 0 + 1 = 1. Keep 1 in the ones place.", "The sum is 0 + 1 = 1."]
+      response: {"format": "set_fill_in_blank", "is_visual": true, "visual_type": "NumberLine", "interaction_mode": "set", "answer_collection": "fill_in_blank", "experience": "standard"}
+      visual:  NumberLine
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberLine", "element_count": 34, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": ["0", "5", "10", "15", "20", "Your answer: Position", "10", "Click track, drag dot, or use ← → arrow keys"], "distinct_colours": ["hsl(var(--border-color)", "hsl(var(--text-muted)", "hsl(var(--text)", "hsl(var(--primary)", "hsl(var(--card-bg)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample a9ae4a1c2df42919eb7b  seed 1000  [read_fill_in_blank]
+      stem:    The two parts are 2566 and 3612. What is the sum?
+      answer:  6178
+      hints:   ["We are adding two numbers: 2566 and 3612.", "Add the ones: 6 + 2 = 8. Keep 8 in the ones place.", "Add the tens: 6 + 1 = 7.", "The sum is 2566 + 3612 = 6178."]
+      response: {"format": "read_fill_in_blank", "is_visual": true, "visual_type": "NumberBond", "interaction_mode": "read", "answer_collection": "fill_in_blank", "experience": "hint_gated"}
+      visual:  NumberBond
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "NumberBond", "element_count": 7, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 1, "text_labels": ["2566", "3612"], "distinct_colours": ["hsl(var(--primary)", "hsl(var(--text)"], "role_counts": {}}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample e202eee31fb2860ce62c  seed 1001  [true_false]
+      stem:    7256 + 1600 = 8856. True or False?
+      answer:  True
+      hints:   ["We are adding two numbers: 7256 and 1600.", "Add the ones: 6 + 0 = 6. Keep 6 in the ones place.", "Add the tens: 5 + 0 = 5.", "The sum is 7256 + 1600 = 8856."]
+      response: {"format": "true_false", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "true_false", "experience": "mastery_drill"}
+  sample 68b9e06d6841e207f6e8  seed 1002  [error_detect]
+      stem:    Manny solved: "7950 + 164 = ___". Manny says the missing number is 8124. Is Manny correct?
+      answer:  {'has_error': True, 'correct_value': 8114}
+      hints:   ["We are adding two numbers: 7950 and 164.", "Add the ones: 0 + 4 = 4. Keep 4 in the ones place.", "Add the tens: 5 + 6 = 11.", "The sum is 7950 + 164 = 8114."]
+      response: {"format": "error_detect", "is_visual": false, "visual_type": null, "interaction_mode": null, "answer_collection": "error_detect", "experience": "scaffolded"}
+
