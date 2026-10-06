@@ -1,7 +1,7 @@
 # Task prompt — Phase 2 hardening: continue W2 after the first source batch (fresh Claude Code session)
 
-**State rewritten 2026-10-06 after the first W2 source batch and full re-proof. This REPLACES every
-previous state block and banner.** Figures below were executed at digest `878f0affe08d27d4`. If you
+**State rewritten 2026-10-07 after the stale-evidence refresh. This REPLACES every previous state block
+and banner.** Source remained at digest `878f0affe08d27d4`; no source changed. If you
 refresh this file, rewrite the state section rather than stacking a banner.
 
 You are working in `/Users/enrichmentcap/Documents/antigravity/ccmed` on the Adaptive K-12 Mastery
@@ -76,12 +76,12 @@ host. The fast unit suite takes ~12 minutes; pass `-m "not slow"` explicitly.
 ## 2. State
 
 ```
-HEAD                  383879af plus the re-proof/bookkeeping closeout commits
+HEAD                  7294cf69 plus the bookkeeping/intent closeout commits
 tree_state            CERTIFIED after closeout at digest 878f0affe08d27d4
-run_all               EXIT 1; scheduled=17 completed=14 failed=3 crashed=0
-§5                    runner 763 findings; module 762; 14 of 151 reviews STALE
-§6F                   137: 127 CONTRADICTED + 10 STALE attestations
-corpus                151/151 schema-v2: 80 PASS / 50 CONCERN / 21 FAIL
+run_all               not re-measured in the refresh; last EXIT 1, failed=3
+§5                    module 751 findings; 0 of 151 reviews STALE
+§6F                   124 CONTRADICTED; 0 STALE attestations
+corpus                151/151 schema-v2: 78 PASS / 49 CONCERN / 24 FAIL
 proof artifacts       201 mutation proofs (198 DETECTED + the 3 §6F INVALID), 6 release shards,
                       benchmark and frontend fresh
 obligations           420 pairs; 3,849 base; 415,692 finite; 2,078,460 executions
@@ -95,15 +95,16 @@ chain passed the unit suite, benchmark, frontend suite, 198/201 mutation control
 shards. Every Phase 1 stage now passes except the three expected §6F assertion-coverage controls, whose
 baselines remain red while capability findings remain.
 
-**Resume in this order:**
+The evidence refresh is complete: 14 fresh GPT-5.6 Luna medium judgment reviews and batches 362–369
+supersede every stale attestation winner without editing or deleting historical evidence. The residual
+queue is 124 substantive CONTRADICTED findings.
 
-1. Freshly re-review the 14 stale nodes listed in `NEXT_AGENT_PROMPT.md` §1. On a Claude host, use Claude
-   Haiku 4.5 under the existing owner ruling, and truthfully name it in every identity.
-2. Freshly supersede the 10 stale attestation records. Never edit or delete the historical blind records.
-3. Re-measure §5 and §6F, then continue the 127 majority-confirmed CONTRADICTED findings under Content
-   Rule 4 in small source batches. Every source batch quotes the MATATAG clause and owes the full chain.
+**Resume by continuing those 124 findings under Content Rule 4 in small source batches.** Every source
+batch quotes the MATATAG clause, owes the full chain, and will require fresh review/attestation for any
+digest-bound evidence it stales.
 
-The 2026-10-05/06 evidence entry holds exact commands, outputs, stale sets, and named limits. Sections
+The 2026-10-06/07 evidence-refresh entry holds exact commands, outputs, identities, set-asides, and
+named limits. Sections
 4–6's “START HERE” wording is historical. If an executed command disagrees with this section, believe
 the command.
 

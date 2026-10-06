@@ -27,21 +27,21 @@ It will not reach 0 this session. Leave it closer to 0, with every claim proven 
 
 ## 1. State at handoff (re-measure it; never quote these numbers without re-running)
 
-**Updated 2026-10-06 after commits `421c9070` and `383879af` and a full re-proof at digest
-`878f0affe08d27d4`. Re-measure before quoting.**
+**Updated 2026-10-07 after the stale-evidence refresh. The source digest remains
+`878f0affe08d27d4`; no source changed and no re-proof was owed. Re-measure before quoting.**
 
 ```
-HEAD                  383879af plus the re-proof/bookkeeping closeout commits
+HEAD                  7294cf69 plus the bookkeeping/intent closeout commits
 tree_state            CERTIFIED after closeout at digest 878f0affe08d27d4
-run_all               EXIT 1; scheduled=17 completed=14 failed=3 crashed=0
-judgment_reviews_5    runner 763 findings; module 762; 14 of 151 reviews STALE
-capability_phase2     137 = 127 CONTRADICTED + 10 STALE attestations
+run_all               not re-measured in the evidence-refresh campaign; last EXIT 1, failed=3
+judgment_reviews_5    module 751 findings; 0 of 151 reviews STALE
+capability_phase2     124 CONTRADICTED; 0 STALE attestations
 assertion_coverage_8  3: the §6F mutation cluster; clears only when capability_phase2 reaches 0
 all other Phase 1     PASS, including count_noun_1J (0 findings / 9,060 samples)
 mutation corpus       198/201 DETECTED; only the 3 expected §6F controls INVALID
 obligations           420 pairs, 3,849 base, 16,701 continuous, 415,692 finite,
                       2,078,460 executions; 6 release shards clean
-review verdicts       151/151 schema-v2: 80 PASS / 50 CONCERN / 21 FAIL
+review verdicts       151/151 schema-v2: 78 PASS / 49 CONCERN / 24 FAIL
 H-06                  status open; lock released after the closeout commit
 ```
 
@@ -53,13 +53,11 @@ PYTHONPATH=. .venv/bin/python tests/hardening_status.py
 PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_judgment --all > /tmp/vj.log 2>&1; echo "EXIT $?"
 ```
 
-**W1 was complete before this source batch; 14 reviews are now stale and must be freshly re-reviewed.**
-Never carry a verdict forward. The stale nodes are:
-
-- `mat_g1_mg_q1_0`, `mat_g1_mg_q1_1`, `mat_g1_mg_q1_2`
-- `mat_g2_mg_q1_0`, `mat_g2_mg_q1_1`
-- `mat_g2_na_q1_7`, `mat_g2_na_q1_8`, `mat_g2_na_q2_3`, `mat_g2_na_q2_7`
-- `mat_g3_na_q2_1`, `mat_g3_na_q2_3`, `mat_g3_na_q2_4`, `mat_g3_na_q3_3`, `mat_g3_na_q3_4`
+**The stale-evidence refresh is complete.** All 14 stale reviews were freshly re-reviewed by independent
+GPT-5.6 Luna medium reviewers and all ten stale attestation records were superseded by fresh blind
+attestations. Historical records were preserved. `batch369_mat_g1_na_q3_6` additionally supersedes two
+retired example-capability verdicts that the freshness validator correctly continued to treat as live
+until a later record won those exact `(node, capability)` keys.
 
 **The first W2 source batch is complete and fully re-proved.** `mat_g1_mg_q1_0` now serves the
 curriculum-required triangle, rectangle, and square at different sizes and orientations. The batch also
@@ -67,13 +65,13 @@ fixed the `1 ones` regression exposed by `run_all`; commit `383879af` clears all
 
 **Resume in this order:**
 
-1. Freshly re-review the 14 stale review nodes and freshly supersede the 10 stale attestation records.
-2. Re-run §5 and §6F and commit the judgment-only checkpoint; no source re-proof is owed.
-3. Continue the 127 majority-confirmed CONTRADICTED findings by Content Rule 4, in small source batches.
+1. Continue the 124 CONTRADICTED findings by Content Rule 4, in small source batches.
    Every source batch must quote the MATATAG clause and pay the full chain in §5.
+2. Re-review and re-attest every digest-bound record made stale by each source batch; never carry a
+   verdict forward.
 
-The complete commands, exact outputs, obligation delta, stale sets, and named limits are in the
-2026-10-05/06 entry of `validation_reports/HARDENING_EVIDENCE.md`.
+The complete commands, exact outputs, dispatch identities, set-asides, and named limits are in the
+2026-10-06/07 evidence-refresh entry of `validation_reports/HARDENING_EVIDENCE.md`.
 
 ---
 

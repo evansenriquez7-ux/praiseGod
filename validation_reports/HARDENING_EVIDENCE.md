@@ -18201,3 +18201,125 @@ NAMED LIMITS:
 - The source batch advances one curriculum-required artifact and clears the §1J regression; it does
   not settle the remaining 127 capability contradictions or the 14 stale reviews/10 stale
   attestations.
+
+## 2026-10-06/07 — stale judgment and capability evidence refresh
+
+Session `codex-h06-w2-refresh-2026-10-06` changed no source. It refreshed all 14 judgment records and
+all ten stale attestation winners against source digest `878f0affe08d27d4`; therefore the source
+re-proof chain was not owed. Every judgment and attestation was produced by a fresh blind
+**GPT-5.6 Luna, medium-reasoning** reviewer. Historical evidence was preserved.
+
+**Judgment dispatches.** Each node was built at dispatch time, audited through the real filer and
+`validate_judgment._validate_one` / `_validate_quote_provenance`, and filed with its own dispatch id.
+The identity suffix and dispatch suffix below expand to the full truthful strings
+`blind-reviewer-gpt-5.6-luna-medium-<suffix>-20261006` and
+`s5-w2refresh-<suffix>-gpt-5.6-luna-medium-20261006-<node>:<node>`:
+
+```text
+mat_g1_mg_q1_0  w2r1-mat_g1_mg_q1_0   PASS
+mat_g1_mg_q1_1  w2r2-mat_g1_mg_q1_1   CONCERN
+mat_g1_mg_q1_2  w2r3-mat_g1_mg_q1_2   CONCERN
+mat_g2_mg_q1_0  w2r4-mat_g2_mg_q1_0   FAIL
+mat_g2_mg_q1_1  w2r5-mat_g2_mg_q1_1   CONCERN
+mat_g2_na_q1_7  w2r6-mat_g2_na_q1_7   PASS
+mat_g2_na_q1_8  w2r7-mat_g2_na_q1_8   PASS
+mat_g2_na_q2_3  w2r8-mat_g2_na_q2_3   FAIL
+mat_g2_na_q2_7  w2r9e-mat_g2_na_q2_7  FAIL
+mat_g3_na_q2_1  w2r10b-mat_g3_na_q2_1 PASS
+mat_g3_na_q2_3  w2r11-mat_g3_na_q2_3  CONCERN
+mat_g3_na_q2_4  w2r12b-mat_g3_na_q2_4 CONCERN
+mat_g3_na_q3_3  w2r13-mat_g3_na_q3_3  PASS
+mat_g3_na_q3_4  w2r14-mat_g3_na_q3_4  FAIL
+```
+
+Exact seeds are retained in each record's `sample_seeds`. Every packet includes 42–46, 500–502,
+700–702, 800, 900–901 and 1000–1002; node-specific boundary seeds 47/48/61/68, 600–618 and 801 are
+also recorded where applicable. No verdict, sample id, clause, citation, or overall was edited by the
+filing session.
+
+**Set-asides and repairs.** `mat_g1_mg_q1_1` needed one syntax-only punctuation repair; its v1 response
+is preserved and the diff contains only six closing braces. `mat_g2_na_q2_3` had duplicated wording;
+its reviewer rewrote wording only, and a structural diff proved every verdict, sample id, clause,
+citation, finding and overall unchanged. Replies were set aside rather than reconciled for:
+
+- `mat_g2_na_q2_7`: duplicate/unsupported first reply; one dispatch with an identity mismatch; and two
+  fresh replies falsely claiming every regrouping hint used negative intermediate arithmetic. Live
+  renders disproved the blanket claim. The fourth clean reviewer identified the actual affected seeds
+  42, 45, 48, 500, 501, 502, 600, 607, 609, 610, 611, 701, 900 and 1002.
+- `mat_g3_na_q2_1`: the first reply's overall was FAIL while its own verdicts derived CONCERN. Its
+  non-PASS claims were harvested and it was set aside; a fresh reviewer filed the winning record.
+- `mat_g3_na_q2_4`: the first reply skipped a sample after truncating its id. Its claims were harvested
+  and it was set aside; a fresh reviewer filed the winning record.
+
+Confirmed live content claims are: ambiguous/missing triangle composition on `mat_g1_mg_q1_2`; no
+Represent activity and unrelated hints on `mat_g2_mg_q1_0`; seed 601's incomplete result visual on
+`mat_g2_mg_q1_1`; no visual number line on all 29 `mat_g2_na_q2_3` samples; grammar `3622 cat toy` at
+`mat_g3_na_q2_3` seed 500; incomplete/negative regrouping hints on `mat_g3_na_q2_4`; and effectively
+single-operation tasks plus reversed factor roles on `mat_g3_na_q3_4`. These are claims for later source
+batches, not fixes made during this campaign.
+
+Final judgment execution:
+
+```text
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_judgment --all > local_only/scratch/w2_refresh/final_judgment_rerun.log 2>&1; echo "EXIT $?"
+EXIT 1
+Verdicts over 151 reviewed nodes: PASS=78 CONCERN=49 FAIL=24 UNKNOWN=0
+Judgment review validation: 751 problem(s) found.
+STALE_COUNT 0
+```
+
+**Attestation dispatches.** Batches 362–369 use ten student-path seeds
+`[11, 23, 42, 57, 64, 78, 91, 103, 118, 127]`. Identities are the full strings shown below; every
+Attester read only its prompt and wrote only its verdict JSON (plus local JSON syntax validation):
+
+```text
+batch362 mat_g1_na_q3_6 blind-attester-gpt-5.6-luna-medium-w2a1-mat_g1_na_q3_6-20261006  2 PROVIDED
+batch363 mat_g1_mg_q1_0 blind-attester-gpt-5.6-luna-medium-w2a2-mat_g1_mg_q1_0-20261006  7 PROVIDED
+batch364 mat_g1_mg_q1_1 blind-attester-gpt-5.6-luna-medium-w2a3-mat_g1_mg_q1_1-20261006  6 PROVIDED
+batch365 mat_g1_mg_q1_2 blind-attester-gpt-5.6-luna-medium-w2a4-mat_g1_mg_q1_2-20261006  5 PROVIDED
+batch366 mat_g2_mg_q1_0 blind-attester-gpt-5.6-luna-medium-w2a5-mat_g2_mg_q1_0-20261006  2 PROVIDED / 3 NOT_PROVIDED
+batch367 mat_g2_mg_q1_1 blind-attester-gpt-5.6-luna-medium-w2a6-mat_g2_mg_q1_1-20261006  6 PROVIDED / 5 NOT_PROVIDED
+batch368 mat_g3_mg_q1_0 blind-attester-gpt-5.6-luna-medium-w2a7-mat_g3_mg_q1_0-20261006  6 PROVIDED / 1 NOT_PROVIDED
+batch369 mat_g1_na_q3_6 blind-attester-gpt-5.6-luna-medium-w2a8-mat_g1_na_q3_6-20261007  2 PROVIDED / 2 NOT_PROVIDED
+```
+
+`batch366`'s first response used the invalid key `real seeds_showing_it`; v1 is preserved and its
+reviewer made the sole key-spelling repair. Batches 366–368 freshly confirmed nine substantive
+NOT_PROVIDED clauses: `mat_g2_mg_q1_0` lacks Represent, half circles and quarter circles;
+`mat_g2_mg_q1_1` lacks decompose_figures, half_circles, quarter_circles, cut_outs and square_grids;
+`mat_g3_mg_q1_0` lacks estimate_area. They were recorded without source changes.
+
+The first capability run still found one stale record because batch362 replaced only the two current
+requirements while historical `batch113` still won the retired `numbers_example` and `letters_example`
+keys. The validator derives supersession from later real verdicts, never from a self-declared field.
+Fresh batch369 judged all four clauses and superseded those exact keys; no old record was edited or
+deleted.
+
+```text
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_capability --phase 2 > local_only/scratch/w2_attest_refresh/final_capability_after369.log 2>&1; echo "EXIT $?"
+EXIT 1
+Capability contract: 124 failure(s) (0 Phase 1 / artifact-free, floor 5; 124 Phase 2 / attestation).
+STALE_COUNT 0
+CONTRADICTED_COUNT 124
+NO REFRESHED-BATCH STALENESS
+```
+
+The §8 result remains exactly the known §6F cluster:
+
+```text
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_coverage
+EXIT 1
+FAIL mutation_proof_integrity_8 (9 in 3 families)
+PASS silent_path_disposition_8: all 17 silent handler(s) carry a recorded disposition ({'checked': 7, 'named-failure': 3, 'limitation': 7})
+FAIL assertion_coverage_8 (3 in 1 family)
+```
+
+Judgment commits: `c4a01783`, `99f06346`, `b0d07024`, `a8a5994c`, `350afe98`, `6518f9a9`,
+`3985f45a`. Attestation commits: `16034853`, `a7d38393`, `b35966c4`, `7294cf69`.
+
+NAMED LIMITS:
+- `run_all` was not re-measured in this evidence-only campaign. The two affected validators and §8 were
+  executed directly; the last full runner result remains the 2026-10-06 source-batch result.
+- Blindness is a prompt contract, not an operating-system sandbox.
+- Freshness debt is zero, but 124 substantive capability contradictions and 751 judgment findings
+  remain. This checkpoint completes the refresh; it does not claim Phase 2 or `run_all` is clean.
