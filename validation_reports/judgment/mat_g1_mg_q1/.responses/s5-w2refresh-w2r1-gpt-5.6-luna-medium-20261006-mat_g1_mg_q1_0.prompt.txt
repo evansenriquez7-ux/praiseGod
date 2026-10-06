@@ -1,0 +1,231 @@
+You are an independent curriculum reviewer for Philippine MATATAG K-12 mathematics.
+
+You are reviewing rendered output from a practice-problem generator. You have not seen the
+generator source. Do not inspect repository source, existing reviews, answer keys beyond the
+rendered packet, or any prior verdict. Read only this prompt and write only the JSON response.
+
+ASSIGNED REVIEWER IDENTITY (copy exactly into the top-level `reviewer` field):
+  blind-reviewer-gpt-5.6-luna-medium-w2r1-mat_g1_mg_q1_0-20261006
+
+Write one JSON object to:
+  local_only/scratch/w2_refresh/mat_g1_mg_q1_0/verdicts.json
+
+For every node, author all of the following:
+
+1. `findings`: exactly these six keys: cognitive_capacity, competency_alignment, competency_fulfillment, comprehensive_coverage, scale_appropriateness, variant_comprehensiveness. Each value has `verdict`
+   (PASS, CONCERN, or FAIL) and a node-specific `rationale` of at least 40 characters.
+   `competency_fulfillment` must additionally contain `decomposition` with a verdict and
+   reasoning explaining whether the printed REQUIREMENTS losslessly cover the full competency.
+2. `sample_assessments`: one entry for every printed sample, in printed order. Copy its opaque
+   `sample_id`; under `checks`, judge exactly: ambiguity, contextual_logical_validity, learner_facing_clarity, mathematical_validity. Each check has `verdict`
+   and sample-specific `reasoning` of at least 40 characters.
+3. `clause_evidence`: one entry for every printed REQUIREMENT, in printed order, with
+   `requirement_id`, the clause text copied exactly, `verdict`, reasoning of at least 40
+   characters, and one or more cited `sample_ids` from this node. A missing capability may be
+   FAIL or CONCERN: cite the sample_ids you EXAMINED and found lacking it (the list may never
+   be empty), and never cite a sample as SUPPORTING a clause it does not support.
+4. `overall`: FAIL if any node finding, sample check, clause verdict, or decomposition is FAIL;
+   otherwise CONCERN if any is CONCERN; otherwise PASS.
+
+Do not add reviewer identities or dispatch IDs inside sample/clause entries; the filing tool
+adds dispatcher-controlled attribution. Do not include or retype the samples themselves.
+If you quote text in reasoning, quote only text literally printed for that node. Avoid repeated
+sentence frames across nodes: normalized rationale skeletons shared by more than three nodes are
+rejected as templating.
+
+Response shape:
+{
+  "reviewer": "blind-reviewer-gpt-5.6-luna-medium-w2r1-mat_g1_mg_q1_0-20261006",
+  "<node_id>": {
+    "findings": {
+      "competency_fulfillment": {
+        "verdict": "PASS|CONCERN|FAIL", "rationale": "...",
+        "decomposition": {"verdict": "PASS|CONCERN|FAIL", "reasoning": "..."}
+      },
+      "<each other required finding>": {"verdict": "...", "rationale": "..."}
+    },
+    "sample_assessments": [
+      {"sample_id": "<opaque id>", "checks": {
+        "<each required sample check>": {"verdict": "...", "reasoning": "..."}
+      }}
+    ],
+    "clause_evidence": [
+      {"requirement_id": "<printed id>", "clause": "<printed clause>",
+        "verdict": "...", "reasoning": "...", "sample_ids": ["<opaque id>"]}
+    ],
+    "overall": "PASS|CONCERN|FAIL"
+  }
+}
+
+== BLIND PACKET ==
+
+==========================================================================
+NODE: mat_g1_mg_q1_0
+PACKET DIGEST: a035eeafe970fd4fe9441dfda26bd307f2947adee7eae09c32bae2e109b311fe
+COMPETENCY (Grade 1, Quarter 1, None):
+Identify simple 2-dimensional shapes (triangle, rectangle, square) of different size and in different orientation.
+
+REQUIREMENTS (confirm this is a lossless decomposition of the competency):
+  identify: Identify
+  simple_2_dimensional_shapes: simple 2-dimensional shapes
+  triangle: triangle
+  rectangle: rectangle
+  square: square
+  different_size: different size
+  different_orientation: different orientation
+
+SAMPLES (every one of these is real rendered output):
+  sample e2e32858938b24e8945b  seed 42  [read_mcq]
+      stem:    Look at the shapes in different sizes and orientations. Which shape on the board has three straight edges?
+      answer:  triangle
+      options: triangle / square / rectangle / none of these
+      hints:   ["Look at each shape and its straight edges.", "A triangle has 3 straight edges.", "A square has 4 equal straight edges.", "A rectangle has 4 straight edges (opposite straight edges are equal)."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ShapeBoard", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ShapeBoard
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ShapeBoard", "element_count": 11, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {}, "rendered_shapes": [{"type": "triangle", "width_px": 64, "height_px": 64, "orientation_deg": 45}, {"type": "rectangle", "width_px": 50, "height_px": 32, "orientation_deg": 90}, {"type": "square", "width_px": 76, "height_px": 76, "orientation_deg": 0}]}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 2b89c4c190f5a1fc71e6  seed 43  [read_mcq]
+      stem:    Look at the shapes in different sizes and orientations. Which shape on the board has three straight edges?
+      answer:  triangle
+      options: square / none of these / rectangle / triangle
+      hints:   ["Look at each shape and its straight edges.", "A triangle has 3 straight edges.", "A square has 4 equal straight edges.", "A rectangle has 4 straight edges (opposite straight edges are equal)."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ShapeBoard", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ShapeBoard
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ShapeBoard", "element_count": 11, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {}, "rendered_shapes": [{"type": "triangle", "width_px": 52, "height_px": 52, "orientation_deg": 0}, {"type": "rectangle", "width_px": 95, "height_px": 61, "orientation_deg": 45}, {"type": "square", "width_px": 64, "height_px": 64, "orientation_deg": 90}]}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 8b17314eb7b41fde3c81  seed 44  [read_mcq]
+      stem:    Look at the shapes in different sizes and orientations. Which shape on the board has three straight edges?
+      answer:  triangle
+      options: rectangle / square / triangle / none of these
+      hints:   ["Look at each shape and its straight edges.", "A triangle has 3 straight edges.", "A square has 4 equal straight edges.", "A rectangle has 4 straight edges (opposite straight edges are equal)."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ShapeBoard", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ShapeBoard
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ShapeBoard", "element_count": 11, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {}, "rendered_shapes": [{"type": "triangle", "width_px": 52, "height_px": 52, "orientation_deg": 90}, {"type": "rectangle", "width_px": 95, "height_px": 61, "orientation_deg": 0}, {"type": "square", "width_px": 40, "height_px": 40, "orientation_deg": 135}]}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 7f43230763ec26e40e32  seed 45  [read_mcq]
+      stem:    Look at the shapes in different sizes and orientations. Which shape on the board has two longer and two shorter straight edges?
+      answer:  rectangle
+      options: square / triangle / rectangle / none of these
+      hints:   ["Look at each shape and its straight edges.", "A triangle has 3 straight edges.", "A square has 4 equal straight edges.", "A rectangle has 4 straight edges (opposite straight edges are equal)."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ShapeBoard", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ShapeBoard
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ShapeBoard", "element_count": 11, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {}, "rendered_shapes": [{"type": "triangle", "width_px": 76, "height_px": 76, "orientation_deg": 90}, {"type": "rectangle", "width_px": 65, "height_px": 42, "orientation_deg": 45}, {"type": "square", "width_px": 40, "height_px": 40, "orientation_deg": 0}]}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 5a898bb4cd6f07177859  seed 46  [read_mcq]
+      stem:    Look at the shapes in different sizes and orientations. Which shape on the board has three straight edges?
+      answer:  triangle
+      options: rectangle / square / triangle / none of these
+      hints:   ["Look at each shape and its straight edges.", "A triangle has 3 straight edges.", "A square has 4 equal straight edges.", "A rectangle has 4 straight edges (opposite straight edges are equal)."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ShapeBoard", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ShapeBoard
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ShapeBoard", "element_count": 11, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {}, "rendered_shapes": [{"type": "triangle", "width_px": 40, "height_px": 40, "orientation_deg": 45}, {"type": "rectangle", "width_px": 80, "height_px": 51, "orientation_deg": 90}, {"type": "square", "width_px": 76, "height_px": 76, "orientation_deg": 0}]}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample b179988f6a354698ea47  seed 500  [read_mcq]
+      stem:    Look at the shapes in different sizes and orientations. Which shape on the board has three straight edges?
+      answer:  triangle
+      options: triangle / square / rectangle / none of these
+      hints:   ["Look at each shape and its straight edges.", "A triangle has 3 straight edges.", "A square has 4 equal straight edges.", "A rectangle has 4 straight edges (opposite straight edges are equal)."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ShapeBoard", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ShapeBoard
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ShapeBoard", "element_count": 11, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {}, "rendered_shapes": [{"type": "triangle", "width_px": 64, "height_px": 64, "orientation_deg": 45}, {"type": "rectangle", "width_px": 95, "height_px": 61, "orientation_deg": 0}, {"type": "square", "width_px": 52, "height_px": 52, "orientation_deg": 135}]}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 8b4bea5f24721a9de9a6  seed 501  [read_mcq]
+      stem:    Look at the shapes in different sizes and orientations. Which shape on the board has two longer and two shorter straight edges?
+      answer:  rectangle
+      options: triangle / none of these / square / rectangle
+      hints:   ["Look at each shape and its straight edges.", "A triangle has 3 straight edges.", "A square has 4 equal straight edges.", "A rectangle has 4 straight edges (opposite straight edges are equal)."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ShapeBoard", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ShapeBoard
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ShapeBoard", "element_count": 11, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {}, "rendered_shapes": [{"type": "triangle", "width_px": 52, "height_px": 52, "orientation_deg": 90}, {"type": "rectangle", "width_px": 80, "height_px": 51, "orientation_deg": 135}, {"type": "square", "width_px": 76, "height_px": 76, "orientation_deg": 45}]}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 1d05fa2b3c9310041921  seed 502  [read_mcq]
+      stem:    Look at the shapes in different sizes and orientations. Which shape on the board has four equal straight edges?
+      answer:  square
+      options: rectangle / square / triangle / none of these
+      hints:   ["Look at each shape and its straight edges.", "A triangle has 3 straight edges.", "A square has 4 equal straight edges.", "A rectangle has 4 straight edges (opposite straight edges are equal)."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ShapeBoard", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ShapeBoard
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ShapeBoard", "element_count": 11, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {}, "rendered_shapes": [{"type": "triangle", "width_px": 64, "height_px": 64, "orientation_deg": 135}, {"type": "rectangle", "width_px": 95, "height_px": 61, "orientation_deg": 90}, {"type": "square", "width_px": 40, "height_px": 40, "orientation_deg": 0}]}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample a0d70ede42c455acb152  seed 700  [read_mcq]
+      stem:    Look at the shapes in different sizes and orientations. Which shape on the board has four equal straight edges?
+      answer:  square
+      options: square / triangle / none of these / rectangle
+      hints:   ["Look at each shape and its straight edges.", "A triangle has 3 straight edges.", "A square has 4 equal straight edges.", "A rectangle has 4 straight edges (opposite straight edges are equal)."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ShapeBoard", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ShapeBoard
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ShapeBoard", "element_count": 11, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {}, "rendered_shapes": [{"type": "triangle", "width_px": 76, "height_px": 76, "orientation_deg": 90}, {"type": "rectangle", "width_px": 80, "height_px": 51, "orientation_deg": 0}, {"type": "square", "width_px": 40, "height_px": 40, "orientation_deg": 135}]}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 8c8992faedc418ac6f2d  seed 701  [read_mcq]
+      stem:    💃 Kuya Ton enjoys trophies. Here is a math challenge. Look at the shapes in different sizes and orientations. Which shape on the board has two longer and two shorter straight edges?
+      answer:  rectangle
+      options: rectangle / none of these / triangle / square
+      hints:   ["Look at each shape and its straight edges.", "A triangle has 3 straight edges.", "A square has 4 equal straight edges.", "A rectangle has 4 straight edges (opposite straight edges are equal)."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ShapeBoard", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ShapeBoard
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ShapeBoard", "element_count": 11, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {}, "rendered_shapes": [{"type": "triangle", "width_px": 40, "height_px": 40, "orientation_deg": 45}, {"type": "rectangle", "width_px": 95, "height_px": 61, "orientation_deg": 135}, {"type": "square", "width_px": 64, "height_px": 64, "orientation_deg": 0}]}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 1d70af45d8cbba665442  seed 702  [read_mcq]
+      stem:    🏀 Isko enjoys basketballs. Here is a math challenge. Look at the shapes in different sizes and orientations. Which shape on the board has three straight edges?
+      answer:  triangle
+      options: triangle / rectangle / none of these / square
+      hints:   ["Look at each shape and its straight edges.", "A triangle has 3 straight edges.", "A square has 4 equal straight edges.", "A rectangle has 4 straight edges (opposite straight edges are equal)."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ShapeBoard", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ShapeBoard
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ShapeBoard", "element_count": 11, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {}, "rendered_shapes": [{"type": "triangle", "width_px": 40, "height_px": 40, "orientation_deg": 90}, {"type": "rectangle", "width_px": 65, "height_px": 42, "orientation_deg": 45}, {"type": "square", "width_px": 76, "height_px": 76, "orientation_deg": 135}]}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample f8d0174535ca9acce555  seed 800  [read_mcq]
+      stem:    Look at the shapes in different sizes and orientations. Which shape on the board has three straight edges?
+      answer:  triangle
+      options: square / none of these / triangle / rectangle
+      hints:   ["Look at each shape and its straight edges.", "A triangle has 3 straight edges.", "A square has 4 equal straight edges.", "A rectangle has 4 straight edges (opposite straight edges are equal)."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ShapeBoard", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ShapeBoard
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ShapeBoard", "element_count": 11, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {}, "rendered_shapes": [{"type": "triangle", "width_px": 76, "height_px": 76, "orientation_deg": 0}, {"type": "rectangle", "width_px": 65, "height_px": 42, "orientation_deg": 45}, {"type": "square", "width_px": 64, "height_px": 64, "orientation_deg": 135}]}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample e108424323732a5aaf85  seed 900  [read_mcq]
+      stem:    Look at the shapes in different sizes and orientations. Which shape on the board has four equal straight edges?
+      answer:  square
+      options: none of these / triangle / rectangle / square
+      hints:   ["Look at each shape and its straight edges.", "A triangle has 3 straight edges.", "A square has 4 equal straight edges.", "A rectangle has 4 straight edges (opposite straight edges are equal)."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ShapeBoard", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ShapeBoard
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ShapeBoard", "element_count": 11, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {}, "rendered_shapes": [{"type": "triangle", "width_px": 40, "height_px": 40, "orientation_deg": 45}, {"type": "rectangle", "width_px": 80, "height_px": 51, "orientation_deg": 90}, {"type": "square", "width_px": 76, "height_px": 76, "orientation_deg": 135}]}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 8d29205b68c813a7014f  seed 901  [read_mcq]
+      stem:    Look at the shapes in different sizes and orientations. Which shape on the board has three straight edges?
+      answer:  triangle
+      options: triangle / square / none of these / rectangle
+      hints:   ["Look at each shape and its straight edges.", "A triangle has 3 straight edges.", "A square has 4 equal straight edges.", "A rectangle has 4 straight edges (opposite straight edges are equal)."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ShapeBoard", "interaction_mode": "read", "answer_collection": "mcq", "experience": "standard"}
+      visual:  ShapeBoard
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ShapeBoard", "element_count": 11, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {}, "rendered_shapes": [{"type": "triangle", "width_px": 40, "height_px": 40, "orientation_deg": 135}, {"type": "rectangle", "width_px": 80, "height_px": 51, "orientation_deg": 45}, {"type": "square", "width_px": 76, "height_px": 76, "orientation_deg": 90}]}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 06937ac47e5100f3b050  seed 1000  [read_mcq]
+      stem:    Look at the shapes in different sizes and orientations. Which shape on the board has three straight edges?
+      answer:  triangle
+      options: rectangle / none of these / triangle / square
+      hints:   ["Look at each shape and its straight edges.", "A triangle has 3 straight edges.", "A square has 4 equal straight edges.", "A rectangle has 4 straight edges (opposite straight edges are equal)."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ShapeBoard", "interaction_mode": "read", "answer_collection": "mcq", "experience": "hint_gated"}
+      visual:  ShapeBoard
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ShapeBoard", "element_count": 11, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {}, "rendered_shapes": [{"type": "triangle", "width_px": 76, "height_px": 76, "orientation_deg": 135}, {"type": "rectangle", "width_px": 65, "height_px": 42, "orientation_deg": 0}, {"type": "square", "width_px": 40, "height_px": 40, "orientation_deg": 45}]}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample 20deb541b3a20268b5e5  seed 1001  [read_mcq]
+      stem:    Look at the shapes in different sizes and orientations. Which shape on the board has three straight edges?
+      answer:  triangle
+      options: rectangle / none of these / square / triangle
+      hints:   ["Look at each shape and its straight edges.", "A triangle has 3 straight edges.", "A square has 4 equal straight edges.", "A rectangle has 4 straight edges (opposite straight edges are equal)."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ShapeBoard", "interaction_mode": "read", "answer_collection": "mcq", "experience": "mastery_drill"}
+      visual:  ShapeBoard
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ShapeBoard", "element_count": 11, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {}, "rendered_shapes": [{"type": "triangle", "width_px": 40, "height_px": 40, "orientation_deg": 45}, {"type": "rectangle", "width_px": 80, "height_px": 51, "orientation_deg": 135}, {"type": "square", "width_px": 52, "height_px": 52, "orientation_deg": 90}]}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+  sample c05fd98a01960e1b7e63  seed 1002  [read_mcq]
+      stem:    Look at the shapes in different sizes and orientations. Which shape on the board has four equal straight edges?
+      answer:  square
+      options: triangle / rectangle / square / none of these
+      hints:   ["Look at each shape and its straight edges.", "A triangle has 3 straight edges.", "A square has 4 equal straight edges.", "A rectangle has 4 straight edges (opposite straight edges are equal)."]
+      response: {"format": "read_mcq", "is_visual": true, "visual_type": "ShapeBoard", "interaction_mode": "read", "answer_collection": "mcq", "experience": "scaffolded"}
+      visual:  ShapeBoard
+      rendered structure: {"source": "rendered_static_markup", "visual_type": "ShapeBoard", "element_count": 11, "svg_count": 0, "table_row_count": 0, "table_cell_count": 0, "button_count": 0, "input_count": 0, "text_labels": [], "distinct_colours": ["hsl(var(--primary)"], "role_counts": {}, "rendered_shapes": [{"type": "triangle", "width_px": 52, "height_px": 52, "orientation_deg": 135}, {"type": "rectangle", "width_px": 50, "height_px": 32, "orientation_deg": 0}, {"type": "square", "width_px": 76, "height_px": 76, "orientation_deg": 90}]}
+      layout limit: this static description does not prove crowding, overlap, colour contrast, or physical touch-target size
+
