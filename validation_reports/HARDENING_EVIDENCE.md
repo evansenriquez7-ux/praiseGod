@@ -18009,6 +18009,10 @@ NAMED LIMITS:
 
 **Commits:** `80b2d770`, `0ab59915`, `945192c4`.
 
+**2026-10-07 correction:** `945192c4` is the orphaned pre-amend twin. The W2 step 2
+commit on `main` is `67df6151`; cite `67df6151` for the filed majority-of-three
+evidence. The historical line above is preserved rather than rewritten.
+
 ## 2026-10-05 — Recovery audit of interrupted W2 evidence (`codex-h06-w2-resume-2026-10-05`)
 
 The Claude-hosted continuation stopped during W2 after filing additional blind Claude Haiku 4.5
@@ -18323,3 +18327,96 @@ NAMED LIMITS:
 - Blindness is a prompt contract, not an operating-system sandbox.
 - Freshness debt is zero, but 124 substantive capability contradictions and 751 judgment findings
   remain. This checkpoint completes the refresh; it does not claim Phase 2 or `run_all` is clean.
+
+## 2026-10-07 — Phase 2 instrument baseline and owner-ruling checkpoint (`codex-h06-phase2-instrument-20261007`)
+
+The owner-supplied rulings 19–21 and rewritten handoff arrived as the only two dirty files. They were
+preserved in a dedicated checkpoint, `f5cf62c4`, before H-06 was claimed at `5e8a044e`. No generator,
+validator, attestation, or judgment record changed in either commit.
+
+**Preflight and lock.** No heavy validator process was live. The data volume had 15 GiB available.
+Before the owner handoff checkpoint, `tree_state.py` reported `INTERRUPTED` solely because those two
+files were dirty and `open_intent` was null. After the checkpoint, the worktree was clean. The H-06
+owner-only diff was proved before commit:
+
+```text
+$ git diff --numstat -- validation_reports/phase2_hardening/hardening_status.json
+1	1	validation_reports/phase2_hardening/hardening_status.json
+```
+
+**Full baseline.** `run_all` ran alone, with its complete output retained in
+`local_only/scratch/phase2_instrument/baseline_run_all.log`:
+
+```text
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.run_all > local_only/scratch/phase2_instrument/baseline_run_all.log 2>&1
+$ run_rc=$?
+$ echo "EXIT $run_rc"
+$ exit $run_rc
+EXIT 1
+  PASS       unit_tests                     phase 1  1321.2s
+  PASS       dna                            phase 1     4.6s
+  PASS       compatibility                  phase 1   100.9s
+  PASS       interest_invariance            phase 1    34.9s
+  PASS       vocabulary                     phase 1     2.3s
+  PASS       behavioural_matrix             phase 1   361.9s
+  PASS       capability_phase1              phase 1     0.5s
+  PASS       count_noun_1J                  phase 1    67.3s
+  PASS       option_degeneracy_1K           phase 1    66.6s
+  PASS       dangling_reference_1M          phase 1    66.6s
+  PASS       render_contract_9              phase 1     3.7s
+  PASS       grading_contract_10            phase 1    30.5s
+  FAIL       assertion_coverage_8           phase 1     1.1s
+  PASS       obligation_manifest_11         phase 1     1.7s
+  PASS       census_7                       phase 1     7.4s
+  FAIL       judgment_reviews_5             phase 2   365.1s
+  FAIL       capability_phase2              phase 2    36.2s
+  scheduled=17 completed=14 failed=3 crashed=0 not_run=0 incomplete=0
+```
+
+The three failures are the expected current blockers, not a newly green result. The runner reported
+752 judgment problems (the module's 751 plus the stage-level failure), 124 Phase 2 capability
+problems (all CONTRADICTED; 0 UNATTESTED, 0 STALE, 0 UNADJUDICABLE), and the same three invalid §6F
+mutation proofs under assertion coverage. The singular-after-many limitation remains live: 7,129
+constructions were observed and not judged.
+
+**Queue recounts.** Winning attestation records were intersected with the live requirement pairs and
+`CAPABILITY_PROVIDERS`; the result reproduced 124 CONTRADICTED findings over 55 nodes. The filed
+judgment records were then counted and freshness-validated against live renders:
+
+```text
+CONTRADICTED_COUNT 124
+CONTRADICTED_NODES 55
+STALE_COUNT 0 (from completed run_all capability_phase2 stage)
+
+review_nodes 151
+overall {'CONCERN': 49, 'FAIL': 24, 'PASS': 78}
+per_sample_dimension_nonpass 449 nodes 49
+stale_nodes 0 []
+validator_errors 751
+```
+
+The review that motivated rulings 19–21 was also checked against the current winning record dump:
+
+- 68 findings were classified in that review as clauses observed in only 1–4 of ten samples, while
+  52 were classified as absent and four as mixed/partial. The raw recount reproduces all 124 rows and
+  the cited sibling examples (`mat_g3_dp_q3_2`, `mat_g2_na_q1_3`, `mat_g3_dp_q3_4`). This split is a
+  manual reading of Attester prose, not a validator-emitted field; Phase 3 must measure movement from
+  the saved row list rather than infer the class from keywords.
+- A late single GPT-5.6 Luna record can replace earlier Haiku-majority keys because ownership is
+  last-file-wins. The known examples remain live on `mat_g2_mg_q1_1` and `mat_g3_mg_q1_0`. Ruling 20
+  deliberately accepts the measured 22.4% single-judge flip noise in exchange for the confirming-judge
+  cost.
+- The judgment gate has no evidence-dispute state. Ruling 21 therefore settles a disputed claim with
+  one fresh blind reviewer; it does not authorize setting a reply aside because a dispatcher believes
+  the claim is false.
+- Source work must batch by shared artifact so one batch pays one re-proof chain.
+- The W2 step 2 citation is corrected above to `67df6151`; the interrupted Claude evidence was already
+  recovered correctly at `bc041f32`; this file is now the single live handoff prompt.
+
+NAMED LIMITS:
+- The 68/52/4 classification is human review over free-form reasoning. It is not a machine schema and
+  must not become a threshold hidden in the dispatch prompt.
+- No blind reviewer or Attester was dispatched in this checkpoint. There are no new dispatch ids,
+  seeds, verdicts, set-asides, or flip-rate observations.
+- The judging model fields in historical records are unchanged. No model judged new content here;
+  GPT-5 Codex performed the engineering baseline and bookkeeping only.
