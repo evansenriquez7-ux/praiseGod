@@ -28,7 +28,7 @@ leave the tree CERTIFIED or honestly INTERRUPTED, with every number re-measured.
 ## 1. State at handoff (re-measured 2026-10-07; re-measure before quoting)
 
 ```
-HEAD                314a745a, worktree clean, H-06 lock held by codex-h06-phase2-instrument-20261007
+HEAD                1c4f6f85, worktree clean, H-06 lock held by codex-h06-phase2-instrument-20261007
 tree_state          honestly INTERRUPTED; open batch intent, source changed since certified digest
 run_all             EXIT 1 on 2026-10-07 baseline, failed=3 (before Phase 2 instrument edits)
 capability_phase2   124 CONTRADICTED over 55 nodes, 0 STALE         (validate_capability --phase 2: EXIT 1)
