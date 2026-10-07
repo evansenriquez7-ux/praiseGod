@@ -1,0 +1,1934 @@
+{
+  "batch": "batch400_mat_g2_mg_q1_0",
+  "attested_at": "2026-10-07T17:50:43Z",
+  "attested_by": "blind-attester-claude-haiku-4.5-default-p3c-mat_g2_mg_q1_0-20261008",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose, default effort; told to Read only scratchpad/p3/c_d15/prompt.txt (section A of dispatch_instructions_20261007.md followed by the verbatim render_prompt_block output of the whole node packet; directory named opaquely, no node id, no key file beside it; delivery by file approved by the owner 2026-10-08) and Write only scratchpad/p3/c_d15/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "Harness usage record (subagent transcript): 3 tool uses excluding the final hand-back; by name: 2 Read, 1 Write; paths other than this dispatch's own prompt.txt/verdicts.json: none"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g2_mg_q1_0",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127,
+      278108625,
+      278131812,
+      2930243068,
+      2931205788,
+      3350679063,
+      3351274020
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g2_mg_q1_0",
+        "seed": 11,
+        "formatter": "read_mcq",
+        "question_text": "A circle is divided into 2 equal parts. What is each part called?",
+        "correct_answer": "D",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "ShapeBoard",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "quarter-circle",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "whole circle",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "triangle",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "half-circle",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "half-circle",
+        "hints": [
+          "Think about the sides and corners of each shape.",
+          "A triangle has 3 sides and 3 corners.",
+          "A square has 4 equal sides and 4 corners.",
+          "A rectangle has 4 sides (opposite sides are equal) and 4 corners.",
+          "A circle has no straight sides and no corners."
+        ],
+        "visual_type": "ShapeBoard",
+        "visual_payload": {
+          "shapes": [
+            {
+              "id": "shape_0",
+              "type": "circle",
+              "sides": 0,
+              "corners": 0,
+              "is_regular": true,
+              "orientation_deg": 0
+            },
+            {
+              "id": "shape_1",
+              "type": "triangle",
+              "sides": 3,
+              "corners": 3,
+              "is_regular": true,
+              "orientation_deg": 0
+            }
+          ],
+          "question_type": "illustrate",
+          "highlighted_shape": null
+        },
+        "visual_render": {
+          "visual_type": "ShapeBoard",
+          "renderer_input_digest": "7f6be8cdc5aa172eb982952691abeb008e45c3be986ebe57c10e1917733b07ee",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "ShapeBoard",
+            "element_count": 8,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [],
+            "distinct_colours": [
+              "hsl(var(--primary)"
+            ],
+            "role_counts": {},
+            "rendered_shapes": [
+              {
+                "type": "circle",
+                "width_px": 50,
+                "height_px": 50,
+                "orientation_deg": 0
+              },
+              {
+                "type": "triangle",
+                "width_px": 50,
+                "height_px": 50,
+                "orientation_deg": 0
+              }
+            ]
+          }
+        },
+        "sample_id": "5e9872f4685981573798",
+        "replay_digest": "dcd6e62a20bfb1bbe5c792351d7dec1e3ff44f02237d0cfc7bba88569d620e9b"
+      },
+      {
+        "node_id": "mat_g2_mg_q1_0",
+        "seed": 23,
+        "formatter": "read_mcq",
+        "question_text": "A shape is made from exactly one quarter of a circle. What is it called?",
+        "correct_answer": "A",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "ShapeBoard",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "quarter-circle",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "square",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "triangle",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "half-circle",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "quarter-circle",
+        "hints": [
+          "Think about the sides and corners of each shape.",
+          "A triangle has 3 sides and 3 corners.",
+          "A square has 4 equal sides and 4 corners.",
+          "A rectangle has 4 sides (opposite sides are equal) and 4 corners.",
+          "A circle has no straight sides and no corners."
+        ],
+        "visual_type": "ShapeBoard",
+        "visual_payload": {
+          "shapes": [
+            {
+              "id": "shape_0",
+              "type": "circle",
+              "sides": 0,
+              "corners": 0,
+              "is_regular": true,
+              "orientation_deg": 0
+            },
+            {
+              "id": "shape_1",
+              "type": "triangle",
+              "sides": 3,
+              "corners": 3,
+              "is_regular": true,
+              "orientation_deg": 0
+            },
+            {
+              "id": "shape_2",
+              "type": "square",
+              "sides": 4,
+              "corners": 4,
+              "is_regular": true,
+              "orientation_deg": 0
+            }
+          ],
+          "question_type": "illustrate",
+          "highlighted_shape": null
+        },
+        "visual_render": {
+          "visual_type": "ShapeBoard",
+          "renderer_input_digest": "26a578e03a946f6c18da9b1e232463b2ca198ce6b6e6b7d8ff96906cd5d243ce",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "ShapeBoard",
+            "element_count": 11,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [],
+            "distinct_colours": [
+              "hsl(var(--primary)"
+            ],
+            "role_counts": {},
+            "rendered_shapes": [
+              {
+                "type": "circle",
+                "width_px": 50,
+                "height_px": 50,
+                "orientation_deg": 0
+              },
+              {
+                "type": "triangle",
+                "width_px": 50,
+                "height_px": 50,
+                "orientation_deg": 0
+              },
+              {
+                "type": "square",
+                "width_px": 50,
+                "height_px": 50,
+                "orientation_deg": 0
+              }
+            ]
+          }
+        },
+        "sample_id": "45abe5907f099e41e26f",
+        "replay_digest": "d619c00aa372795e9bdaabb609272ffdb3c37ef4b4c250ec03641bb284a7adfd"
+      },
+      {
+        "node_id": "mat_g2_mg_q1_0",
+        "seed": 42,
+        "formatter": "read_mcq",
+        "question_text": "What shape has no corners and no straight sides?",
+        "correct_answer": "B",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "ShapeBoard",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "rectangle",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "circle",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "triangle",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "square",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "circle",
+        "hints": [
+          "Think about the sides and corners of each shape.",
+          "A triangle has 3 sides and 3 corners.",
+          "A square has 4 equal sides and 4 corners.",
+          "A rectangle has 4 sides (opposite sides are equal) and 4 corners.",
+          "A circle has no straight sides and no corners."
+        ],
+        "visual_type": "ShapeBoard",
+        "visual_payload": {
+          "shapes": [
+            {
+              "id": "shape_0",
+              "type": "circle",
+              "sides": 0,
+              "corners": 0,
+              "is_regular": true,
+              "orientation_deg": 0
+            },
+            {
+              "id": "shape_1",
+              "type": "triangle",
+              "sides": 3,
+              "corners": 3,
+              "is_regular": true,
+              "orientation_deg": 0
+            },
+            {
+              "id": "shape_2",
+              "type": "rectangle",
+              "sides": 4,
+              "corners": 4,
+              "is_regular": false,
+              "orientation_deg": 0
+            },
+            {
+              "id": "shape_3",
+              "type": "square",
+              "sides": 4,
+              "corners": 4,
+              "is_regular": true,
+              "orientation_deg": 0
+            }
+          ],
+          "question_type": "illustrate",
+          "highlighted_shape": null
+        },
+        "visual_render": {
+          "visual_type": "ShapeBoard",
+          "renderer_input_digest": "3b6367ad5c2fc544eb2af6af73a113db8d85776fed588898ee389de6b3d9a0ba",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "ShapeBoard",
+            "element_count": 14,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [],
+            "distinct_colours": [
+              "hsl(var(--primary)"
+            ],
+            "role_counts": {},
+            "rendered_shapes": [
+              {
+                "type": "circle",
+                "width_px": 50,
+                "height_px": 50,
+                "orientation_deg": 0
+              },
+              {
+                "type": "triangle",
+                "width_px": 50,
+                "height_px": 50,
+                "orientation_deg": 0
+              },
+              {
+                "type": "rectangle",
+                "width_px": 63,
+                "height_px": 40,
+                "orientation_deg": 0
+              },
+              {
+                "type": "square",
+                "width_px": 50,
+                "height_px": 50,
+                "orientation_deg": 0
+              }
+            ]
+          }
+        },
+        "sample_id": "616776b9544c92d75d2f",
+        "replay_digest": "eb66e693a688c540efe8572316de28b8d1fc618d38b1e522b1a7538c4f2c5dff"
+      },
+      {
+        "node_id": "mat_g2_mg_q1_0",
+        "seed": 57,
+        "formatter": "mcq",
+        "question_text": "What shape has no corners and no straight sides?",
+        "correct_answer": "circle",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "triangle",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "rectangle",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "square",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "circle",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "circle",
+        "hints": [
+          "Think about the sides and corners of each shape.",
+          "A triangle has 3 sides and 3 corners.",
+          "A square has 4 equal sides and 4 corners.",
+          "A rectangle has 4 sides (opposite sides are equal) and 4 corners.",
+          "A circle has no straight sides and no corners."
+        ],
+        "sample_id": "c756813f27875c375159",
+        "replay_digest": "3dffd6cd2b34d9cc248a11f7220cf0db8d3f6d19d4bfc71a3b896018fd8d6cfd"
+      },
+      {
+        "node_id": "mat_g2_mg_q1_0",
+        "seed": 64,
+        "formatter": "read_mcq",
+        "question_text": "A circle is divided into 2 equal parts. What is each part called?",
+        "correct_answer": "B",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "ShapeBoard",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "whole circle",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "half-circle",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "quarter-circle",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "triangle",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "half-circle",
+        "hints": [
+          "Think about the sides and corners of each shape.",
+          "A triangle has 3 sides and 3 corners.",
+          "A square has 4 equal sides and 4 corners.",
+          "A rectangle has 4 sides (opposite sides are equal) and 4 corners.",
+          "A circle has no straight sides and no corners."
+        ],
+        "visual_type": "ShapeBoard",
+        "visual_payload": {
+          "shapes": [
+            {
+              "id": "shape_0",
+              "type": "circle",
+              "sides": 0,
+              "corners": 0,
+              "is_regular": true,
+              "orientation_deg": 0
+            },
+            {
+              "id": "shape_1",
+              "type": "triangle",
+              "sides": 3,
+              "corners": 3,
+              "is_regular": true,
+              "orientation_deg": 0
+            }
+          ],
+          "question_type": "illustrate",
+          "highlighted_shape": null
+        },
+        "visual_render": {
+          "visual_type": "ShapeBoard",
+          "renderer_input_digest": "7f6be8cdc5aa172eb982952691abeb008e45c3be986ebe57c10e1917733b07ee",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "ShapeBoard",
+            "element_count": 8,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [],
+            "distinct_colours": [
+              "hsl(var(--primary)"
+            ],
+            "role_counts": {},
+            "rendered_shapes": [
+              {
+                "type": "circle",
+                "width_px": 50,
+                "height_px": 50,
+                "orientation_deg": 0
+              },
+              {
+                "type": "triangle",
+                "width_px": 50,
+                "height_px": 50,
+                "orientation_deg": 0
+              }
+            ]
+          }
+        },
+        "sample_id": "897ee109a9db2ce4cb74",
+        "replay_digest": "964278df8a86ecff5f755014f77eeeb9dbd445eeac1480cbc36fbb65126a7a53"
+      },
+      {
+        "node_id": "mat_g2_mg_q1_0",
+        "seed": 78,
+        "formatter": "read_mcq",
+        "question_text": "A shape is made from exactly half of a circle. What is it called?",
+        "correct_answer": "B",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "ShapeBoard",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "quarter-circle",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "half-circle",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "triangle",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "rectangle",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "half-circle",
+        "hints": [
+          "Think about the sides and corners of each shape.",
+          "A triangle has 3 sides and 3 corners.",
+          "A square has 4 equal sides and 4 corners.",
+          "A rectangle has 4 sides (opposite sides are equal) and 4 corners.",
+          "A circle has no straight sides and no corners."
+        ],
+        "visual_type": "ShapeBoard",
+        "visual_payload": {
+          "shapes": [
+            {
+              "id": "shape_0",
+              "type": "circle",
+              "sides": 0,
+              "corners": 0,
+              "is_regular": true,
+              "orientation_deg": 0
+            },
+            {
+              "id": "shape_1",
+              "type": "triangle",
+              "sides": 3,
+              "corners": 3,
+              "is_regular": true,
+              "orientation_deg": 0
+            },
+            {
+              "id": "shape_2",
+              "type": "rectangle",
+              "sides": 4,
+              "corners": 4,
+              "is_regular": false,
+              "orientation_deg": 0
+            }
+          ],
+          "question_type": "illustrate",
+          "highlighted_shape": null
+        },
+        "visual_render": {
+          "visual_type": "ShapeBoard",
+          "renderer_input_digest": "af9d0035d24a9a1e6225106a607065bbc816a93f672d97bc1af8626f110ff6bc",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "ShapeBoard",
+            "element_count": 11,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [],
+            "distinct_colours": [
+              "hsl(var(--primary)"
+            ],
+            "role_counts": {},
+            "rendered_shapes": [
+              {
+                "type": "circle",
+                "width_px": 50,
+                "height_px": 50,
+                "orientation_deg": 0
+              },
+              {
+                "type": "triangle",
+                "width_px": 50,
+                "height_px": 50,
+                "orientation_deg": 0
+              },
+              {
+                "type": "rectangle",
+                "width_px": 63,
+                "height_px": 40,
+                "orientation_deg": 0
+              }
+            ]
+          }
+        },
+        "sample_id": "6d04a0c2c6f144d64731",
+        "replay_digest": "592c99a5a80c8b678f82f753c349c02432e63003a1eb952bcd69251e6d958838"
+      },
+      {
+        "node_id": "mat_g2_mg_q1_0",
+        "seed": 91,
+        "formatter": "read_mcq",
+        "question_text": "What shape has no corners and no straight sides?",
+        "correct_answer": "B",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "ShapeBoard",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "rectangle",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "circle",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "square",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "triangle",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "circle",
+        "hints": [
+          "Think about the sides and corners of each shape.",
+          "A triangle has 3 sides and 3 corners.",
+          "A square has 4 equal sides and 4 corners.",
+          "A rectangle has 4 sides (opposite sides are equal) and 4 corners.",
+          "A circle has no straight sides and no corners."
+        ],
+        "visual_type": "ShapeBoard",
+        "visual_payload": {
+          "shapes": [
+            {
+              "id": "shape_0",
+              "type": "circle",
+              "sides": 0,
+              "corners": 0,
+              "is_regular": true,
+              "orientation_deg": 0
+            },
+            {
+              "id": "shape_1",
+              "type": "triangle",
+              "sides": 3,
+              "corners": 3,
+              "is_regular": true,
+              "orientation_deg": 0
+            },
+            {
+              "id": "shape_2",
+              "type": "rectangle",
+              "sides": 4,
+              "corners": 4,
+              "is_regular": false,
+              "orientation_deg": 0
+            },
+            {
+              "id": "shape_3",
+              "type": "square",
+              "sides": 4,
+              "corners": 4,
+              "is_regular": true,
+              "orientation_deg": 0
+            }
+          ],
+          "question_type": "illustrate",
+          "highlighted_shape": null
+        },
+        "visual_render": {
+          "visual_type": "ShapeBoard",
+          "renderer_input_digest": "3b6367ad5c2fc544eb2af6af73a113db8d85776fed588898ee389de6b3d9a0ba",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "ShapeBoard",
+            "element_count": 14,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [],
+            "distinct_colours": [
+              "hsl(var(--primary)"
+            ],
+            "role_counts": {},
+            "rendered_shapes": [
+              {
+                "type": "circle",
+                "width_px": 50,
+                "height_px": 50,
+                "orientation_deg": 0
+              },
+              {
+                "type": "triangle",
+                "width_px": 50,
+                "height_px": 50,
+                "orientation_deg": 0
+              },
+              {
+                "type": "rectangle",
+                "width_px": 63,
+                "height_px": 40,
+                "orientation_deg": 0
+              },
+              {
+                "type": "square",
+                "width_px": 50,
+                "height_px": 50,
+                "orientation_deg": 0
+              }
+            ]
+          }
+        },
+        "sample_id": "560da908c626c535cbb9",
+        "replay_digest": "996901aeb690edc0505f68d76c325c01cb34f2629709d5e52e84279016637009"
+      },
+      {
+        "node_id": "mat_g2_mg_q1_0",
+        "seed": 103,
+        "formatter": "read_mcq",
+        "question_text": "A circle is divided into 2 equal parts. What is each part called?",
+        "correct_answer": "C",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "ShapeBoard",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "triangle",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "whole circle",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "half-circle",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "quarter-circle",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "half-circle",
+        "hints": [
+          "Think about the sides and corners of each shape.",
+          "A triangle has 3 sides and 3 corners.",
+          "A square has 4 equal sides and 4 corners.",
+          "A rectangle has 4 sides (opposite sides are equal) and 4 corners.",
+          "A circle has no straight sides and no corners."
+        ],
+        "visual_type": "ShapeBoard",
+        "visual_payload": {
+          "shapes": [
+            {
+              "id": "shape_0",
+              "type": "circle",
+              "sides": 0,
+              "corners": 0,
+              "is_regular": true,
+              "orientation_deg": 0
+            },
+            {
+              "id": "shape_1",
+              "type": "triangle",
+              "sides": 3,
+              "corners": 3,
+              "is_regular": true,
+              "orientation_deg": 0
+            }
+          ],
+          "question_type": "illustrate",
+          "highlighted_shape": null
+        },
+        "visual_render": {
+          "visual_type": "ShapeBoard",
+          "renderer_input_digest": "7f6be8cdc5aa172eb982952691abeb008e45c3be986ebe57c10e1917733b07ee",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "ShapeBoard",
+            "element_count": 8,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [],
+            "distinct_colours": [
+              "hsl(var(--primary)"
+            ],
+            "role_counts": {},
+            "rendered_shapes": [
+              {
+                "type": "circle",
+                "width_px": 50,
+                "height_px": 50,
+                "orientation_deg": 0
+              },
+              {
+                "type": "triangle",
+                "width_px": 50,
+                "height_px": 50,
+                "orientation_deg": 0
+              }
+            ]
+          }
+        },
+        "sample_id": "8ddfc2174eb6f3daefc2",
+        "replay_digest": "50226169a284a97a2a50c4d8df10120449a5cc42b919aaf82e0e0269e9a5d54e"
+      },
+      {
+        "node_id": "mat_g2_mg_q1_0",
+        "seed": 118,
+        "formatter": "mcq",
+        "question_text": "A shape is made from exactly half of a circle. What is it called?",
+        "correct_answer": "half-circle",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "triangle",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "half-circle",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "rectangle",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "quarter-circle",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "half-circle",
+        "hints": [
+          "Think about the sides and corners of each shape.",
+          "A triangle has 3 sides and 3 corners.",
+          "A square has 4 equal sides and 4 corners.",
+          "A rectangle has 4 sides (opposite sides are equal) and 4 corners.",
+          "A circle has no straight sides and no corners."
+        ],
+        "sample_id": "4d1cfbc89f3ad9c28c47",
+        "replay_digest": "903b6d827a7d39ee9f94182c99cae2c67c74506ea9a3308e75a389c0eef48ac7"
+      },
+      {
+        "node_id": "mat_g2_mg_q1_0",
+        "seed": 127,
+        "formatter": "read_mcq",
+        "question_text": "What shape has no corners and no straight sides?",
+        "correct_answer": "A",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "ShapeBoard",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "circle",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "square",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "rectangle",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "triangle",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "circle",
+        "hints": [
+          "Think about the sides and corners of each shape.",
+          "A triangle has 3 sides and 3 corners.",
+          "A square has 4 equal sides and 4 corners.",
+          "A rectangle has 4 sides (opposite sides are equal) and 4 corners.",
+          "A circle has no straight sides and no corners."
+        ],
+        "visual_type": "ShapeBoard",
+        "visual_payload": {
+          "shapes": [
+            {
+              "id": "shape_0",
+              "type": "circle",
+              "sides": 0,
+              "corners": 0,
+              "is_regular": true,
+              "orientation_deg": 0
+            },
+            {
+              "id": "shape_1",
+              "type": "triangle",
+              "sides": 3,
+              "corners": 3,
+              "is_regular": true,
+              "orientation_deg": 0
+            },
+            {
+              "id": "shape_2",
+              "type": "rectangle",
+              "sides": 4,
+              "corners": 4,
+              "is_regular": false,
+              "orientation_deg": 0
+            },
+            {
+              "id": "shape_3",
+              "type": "square",
+              "sides": 4,
+              "corners": 4,
+              "is_regular": true,
+              "orientation_deg": 0
+            }
+          ],
+          "question_type": "illustrate",
+          "highlighted_shape": null
+        },
+        "visual_render": {
+          "visual_type": "ShapeBoard",
+          "renderer_input_digest": "3b6367ad5c2fc544eb2af6af73a113db8d85776fed588898ee389de6b3d9a0ba",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "ShapeBoard",
+            "element_count": 14,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [],
+            "distinct_colours": [
+              "hsl(var(--primary)"
+            ],
+            "role_counts": {},
+            "rendered_shapes": [
+              {
+                "type": "circle",
+                "width_px": 50,
+                "height_px": 50,
+                "orientation_deg": 0
+              },
+              {
+                "type": "triangle",
+                "width_px": 50,
+                "height_px": 50,
+                "orientation_deg": 0
+              },
+              {
+                "type": "rectangle",
+                "width_px": 63,
+                "height_px": 40,
+                "orientation_deg": 0
+              },
+              {
+                "type": "square",
+                "width_px": 50,
+                "height_px": 50,
+                "orientation_deg": 0
+              }
+            ]
+          }
+        },
+        "sample_id": "c2e78cc6b62d93e52306",
+        "replay_digest": "3dbc3bf95965e4e10b852ca92673120e3a50bda6e65737e2fc4dc95ed69a4da6"
+      },
+      {
+        "node_id": "mat_g2_mg_q1_0",
+        "seed": 278108625,
+        "formatter": "read_mcq",
+        "question_text": "A circle is divided into 2 equal parts. What is each part called?",
+        "correct_answer": "A",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "ShapeBoard",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "half-circle",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "whole circle",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "triangle",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "quarter-circle",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "half-circle",
+        "hints": [
+          "Think about the sides and corners of each shape.",
+          "A triangle has 3 sides and 3 corners.",
+          "A square has 4 equal sides and 4 corners.",
+          "A rectangle has 4 sides (opposite sides are equal) and 4 corners.",
+          "A circle has no straight sides and no corners."
+        ],
+        "visual_type": "ShapeBoard",
+        "visual_payload": {
+          "shapes": [
+            {
+              "id": "shape_0",
+              "type": "circle",
+              "sides": 0,
+              "corners": 0,
+              "is_regular": true,
+              "orientation_deg": 0
+            },
+            {
+              "id": "shape_1",
+              "type": "triangle",
+              "sides": 3,
+              "corners": 3,
+              "is_regular": true,
+              "orientation_deg": 0
+            }
+          ],
+          "question_type": "illustrate",
+          "highlighted_shape": null
+        },
+        "visual_render": {
+          "visual_type": "ShapeBoard",
+          "renderer_input_digest": "7f6be8cdc5aa172eb982952691abeb008e45c3be986ebe57c10e1917733b07ee",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "ShapeBoard",
+            "element_count": 8,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [],
+            "distinct_colours": [
+              "hsl(var(--primary)"
+            ],
+            "role_counts": {},
+            "rendered_shapes": [
+              {
+                "type": "circle",
+                "width_px": 50,
+                "height_px": 50,
+                "orientation_deg": 0
+              },
+              {
+                "type": "triangle",
+                "width_px": 50,
+                "height_px": 50,
+                "orientation_deg": 0
+              }
+            ]
+          }
+        },
+        "sample_id": "539fda0ef5894d80146a",
+        "replay_digest": "b8732ea55932d7a841e40f9ea4edc04ecc4a10964804ee27f66ecdeb1c0779ae"
+      },
+      {
+        "node_id": "mat_g2_mg_q1_0",
+        "seed": 278131812,
+        "formatter": "read_mcq",
+        "question_text": "A circle is divided into 2 equal parts. What is each part called?",
+        "correct_answer": "A",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "ShapeBoard",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "half-circle",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "whole circle",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "quarter-circle",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "triangle",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "half-circle",
+        "hints": [
+          "Think about the sides and corners of each shape.",
+          "A triangle has 3 sides and 3 corners.",
+          "A square has 4 equal sides and 4 corners.",
+          "A rectangle has 4 sides (opposite sides are equal) and 4 corners.",
+          "A circle has no straight sides and no corners."
+        ],
+        "visual_type": "ShapeBoard",
+        "visual_payload": {
+          "shapes": [
+            {
+              "id": "shape_0",
+              "type": "circle",
+              "sides": 0,
+              "corners": 0,
+              "is_regular": true,
+              "orientation_deg": 0
+            },
+            {
+              "id": "shape_1",
+              "type": "triangle",
+              "sides": 3,
+              "corners": 3,
+              "is_regular": true,
+              "orientation_deg": 0
+            }
+          ],
+          "question_type": "illustrate",
+          "highlighted_shape": null
+        },
+        "visual_render": {
+          "visual_type": "ShapeBoard",
+          "renderer_input_digest": "7f6be8cdc5aa172eb982952691abeb008e45c3be986ebe57c10e1917733b07ee",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "ShapeBoard",
+            "element_count": 8,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [],
+            "distinct_colours": [
+              "hsl(var(--primary)"
+            ],
+            "role_counts": {},
+            "rendered_shapes": [
+              {
+                "type": "circle",
+                "width_px": 50,
+                "height_px": 50,
+                "orientation_deg": 0
+              },
+              {
+                "type": "triangle",
+                "width_px": 50,
+                "height_px": 50,
+                "orientation_deg": 0
+              }
+            ]
+          }
+        },
+        "sample_id": "c69bff6d9941f613ea22",
+        "replay_digest": "a7ec7ad7966ab630bf36525ab2febc69a9eddb52b578690a2e866cf9971df613"
+      },
+      {
+        "node_id": "mat_g2_mg_q1_0",
+        "seed": 2930243068,
+        "formatter": "read_mcq",
+        "question_text": "A shape is made from exactly one quarter of a circle. What is it called?",
+        "correct_answer": "B",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "ShapeBoard",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "triangle",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "quarter-circle",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "half-circle",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "square",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "quarter-circle",
+        "hints": [
+          "Think about the sides and corners of each shape.",
+          "A triangle has 3 sides and 3 corners.",
+          "A square has 4 equal sides and 4 corners.",
+          "A rectangle has 4 sides (opposite sides are equal) and 4 corners.",
+          "A circle has no straight sides and no corners."
+        ],
+        "visual_type": "ShapeBoard",
+        "visual_payload": {
+          "shapes": [
+            {
+              "id": "shape_0",
+              "type": "circle",
+              "sides": 0,
+              "corners": 0,
+              "is_regular": true,
+              "orientation_deg": 0
+            },
+            {
+              "id": "shape_1",
+              "type": "triangle",
+              "sides": 3,
+              "corners": 3,
+              "is_regular": true,
+              "orientation_deg": 0
+            },
+            {
+              "id": "shape_2",
+              "type": "square",
+              "sides": 4,
+              "corners": 4,
+              "is_regular": true,
+              "orientation_deg": 0
+            }
+          ],
+          "question_type": "illustrate",
+          "highlighted_shape": null
+        },
+        "visual_render": {
+          "visual_type": "ShapeBoard",
+          "renderer_input_digest": "26a578e03a946f6c18da9b1e232463b2ca198ce6b6e6b7d8ff96906cd5d243ce",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "ShapeBoard",
+            "element_count": 11,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [],
+            "distinct_colours": [
+              "hsl(var(--primary)"
+            ],
+            "role_counts": {},
+            "rendered_shapes": [
+              {
+                "type": "circle",
+                "width_px": 50,
+                "height_px": 50,
+                "orientation_deg": 0
+              },
+              {
+                "type": "triangle",
+                "width_px": 50,
+                "height_px": 50,
+                "orientation_deg": 0
+              },
+              {
+                "type": "square",
+                "width_px": 50,
+                "height_px": 50,
+                "orientation_deg": 0
+              }
+            ]
+          }
+        },
+        "sample_id": "1f5ac17f423da24bd905",
+        "replay_digest": "d8dccee6e9b90f6f69cb2ce94181427e924d2c10fe351b17c74c9537e81cb5c9"
+      },
+      {
+        "node_id": "mat_g2_mg_q1_0",
+        "seed": 2931205788,
+        "formatter": "read_mcq",
+        "question_text": "A shape is made from exactly one quarter of a circle. What is it called?",
+        "correct_answer": "D",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "ShapeBoard",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "square",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "half-circle",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "triangle",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "quarter-circle",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "quarter-circle",
+        "hints": [
+          "Think about the sides and corners of each shape.",
+          "A triangle has 3 sides and 3 corners.",
+          "A square has 4 equal sides and 4 corners.",
+          "A rectangle has 4 sides (opposite sides are equal) and 4 corners.",
+          "A circle has no straight sides and no corners."
+        ],
+        "visual_type": "ShapeBoard",
+        "visual_payload": {
+          "shapes": [
+            {
+              "id": "shape_0",
+              "type": "circle",
+              "sides": 0,
+              "corners": 0,
+              "is_regular": true,
+              "orientation_deg": 0
+            },
+            {
+              "id": "shape_1",
+              "type": "triangle",
+              "sides": 3,
+              "corners": 3,
+              "is_regular": true,
+              "orientation_deg": 0
+            },
+            {
+              "id": "shape_2",
+              "type": "square",
+              "sides": 4,
+              "corners": 4,
+              "is_regular": true,
+              "orientation_deg": 0
+            }
+          ],
+          "question_type": "illustrate",
+          "highlighted_shape": null
+        },
+        "visual_render": {
+          "visual_type": "ShapeBoard",
+          "renderer_input_digest": "26a578e03a946f6c18da9b1e232463b2ca198ce6b6e6b7d8ff96906cd5d243ce",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "ShapeBoard",
+            "element_count": 11,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [],
+            "distinct_colours": [
+              "hsl(var(--primary)"
+            ],
+            "role_counts": {},
+            "rendered_shapes": [
+              {
+                "type": "circle",
+                "width_px": 50,
+                "height_px": 50,
+                "orientation_deg": 0
+              },
+              {
+                "type": "triangle",
+                "width_px": 50,
+                "height_px": 50,
+                "orientation_deg": 0
+              },
+              {
+                "type": "square",
+                "width_px": 50,
+                "height_px": 50,
+                "orientation_deg": 0
+              }
+            ]
+          }
+        },
+        "sample_id": "dfafd30dc3b1c28e41f1",
+        "replay_digest": "60f09533a581f46003dc8825859d224f3201d852913053989b10c8ad1bbbe5f2"
+      },
+      {
+        "node_id": "mat_g2_mg_q1_0",
+        "seed": 3350679063,
+        "formatter": "read_mcq",
+        "question_text": "What shape has no corners and no straight sides?",
+        "correct_answer": "B",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "ShapeBoard",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "rectangle",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "circle",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "square",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "triangle",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "circle",
+        "hints": [
+          "Think about the sides and corners of each shape.",
+          "A triangle has 3 sides and 3 corners.",
+          "A square has 4 equal sides and 4 corners.",
+          "A rectangle has 4 sides (opposite sides are equal) and 4 corners.",
+          "A circle has no straight sides and no corners."
+        ],
+        "visual_type": "ShapeBoard",
+        "visual_payload": {
+          "shapes": [
+            {
+              "id": "shape_0",
+              "type": "circle",
+              "sides": 0,
+              "corners": 0,
+              "is_regular": true,
+              "orientation_deg": 0
+            },
+            {
+              "id": "shape_1",
+              "type": "triangle",
+              "sides": 3,
+              "corners": 3,
+              "is_regular": true,
+              "orientation_deg": 0
+            },
+            {
+              "id": "shape_2",
+              "type": "rectangle",
+              "sides": 4,
+              "corners": 4,
+              "is_regular": false,
+              "orientation_deg": 0
+            },
+            {
+              "id": "shape_3",
+              "type": "square",
+              "sides": 4,
+              "corners": 4,
+              "is_regular": true,
+              "orientation_deg": 0
+            }
+          ],
+          "question_type": "illustrate",
+          "highlighted_shape": null
+        },
+        "visual_render": {
+          "visual_type": "ShapeBoard",
+          "renderer_input_digest": "3b6367ad5c2fc544eb2af6af73a113db8d85776fed588898ee389de6b3d9a0ba",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "ShapeBoard",
+            "element_count": 14,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [],
+            "distinct_colours": [
+              "hsl(var(--primary)"
+            ],
+            "role_counts": {},
+            "rendered_shapes": [
+              {
+                "type": "circle",
+                "width_px": 50,
+                "height_px": 50,
+                "orientation_deg": 0
+              },
+              {
+                "type": "triangle",
+                "width_px": 50,
+                "height_px": 50,
+                "orientation_deg": 0
+              },
+              {
+                "type": "rectangle",
+                "width_px": 63,
+                "height_px": 40,
+                "orientation_deg": 0
+              },
+              {
+                "type": "square",
+                "width_px": 50,
+                "height_px": 50,
+                "orientation_deg": 0
+              }
+            ]
+          }
+        },
+        "sample_id": "dacc8b6e9647c1a98aac",
+        "replay_digest": "8bf83b0e3ab4bc247b7958b72e70a908c1b51a066d9ee4c10cea214f697f266e"
+      },
+      {
+        "node_id": "mat_g2_mg_q1_0",
+        "seed": 3351274020,
+        "formatter": "read_mcq",
+        "question_text": "What shape has no corners and no straight sides?",
+        "correct_answer": "C",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "ShapeBoard",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "square",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "rectangle",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "circle",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "triangle",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "circle",
+        "hints": [
+          "Think about the sides and corners of each shape.",
+          "A triangle has 3 sides and 3 corners.",
+          "A square has 4 equal sides and 4 corners.",
+          "A rectangle has 4 sides (opposite sides are equal) and 4 corners.",
+          "A circle has no straight sides and no corners."
+        ],
+        "visual_type": "ShapeBoard",
+        "visual_payload": {
+          "shapes": [
+            {
+              "id": "shape_0",
+              "type": "circle",
+              "sides": 0,
+              "corners": 0,
+              "is_regular": true,
+              "orientation_deg": 0
+            },
+            {
+              "id": "shape_1",
+              "type": "triangle",
+              "sides": 3,
+              "corners": 3,
+              "is_regular": true,
+              "orientation_deg": 0
+            },
+            {
+              "id": "shape_2",
+              "type": "rectangle",
+              "sides": 4,
+              "corners": 4,
+              "is_regular": false,
+              "orientation_deg": 0
+            },
+            {
+              "id": "shape_3",
+              "type": "square",
+              "sides": 4,
+              "corners": 4,
+              "is_regular": true,
+              "orientation_deg": 0
+            }
+          ],
+          "question_type": "illustrate",
+          "highlighted_shape": null
+        },
+        "visual_render": {
+          "visual_type": "ShapeBoard",
+          "renderer_input_digest": "3b6367ad5c2fc544eb2af6af73a113db8d85776fed588898ee389de6b3d9a0ba",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "ShapeBoard",
+            "element_count": 14,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [],
+            "distinct_colours": [
+              "hsl(var(--primary)"
+            ],
+            "role_counts": {},
+            "rendered_shapes": [
+              {
+                "type": "circle",
+                "width_px": 50,
+                "height_px": 50,
+                "orientation_deg": 0
+              },
+              {
+                "type": "triangle",
+                "width_px": 50,
+                "height_px": 50,
+                "orientation_deg": 0
+              },
+              {
+                "type": "rectangle",
+                "width_px": 63,
+                "height_px": 40,
+                "orientation_deg": 0
+              },
+              {
+                "type": "square",
+                "width_px": 50,
+                "height_px": 50,
+                "orientation_deg": 0
+              }
+            ]
+          }
+        },
+        "sample_id": "bba2c57c30b1b389c4e5",
+        "replay_digest": "d5e84b57944e30bfa835fb6a6b9814e66123afde168627418d00cfee882334c4"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "describe",
+      "node_id": "mat_g2_mg_q1_0",
+      "clause": "describe",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127,
+        278108625,
+        278131812,
+        2930243068,
+        2931205788,
+        3350679063,
+        3351274020
+      ],
+      "reasoning": "Descriptive language asking students to identify and name shape properties appears throughout all 16 samples. Questions consistently ask 'What is each part called?' or 'What is it called?' requiring students to describe shape names; additional samples require describing properties like 'no corners and no straight sides'.",
+      "action_taken": "Left registered; no change.",
+      "content_note_from_attester": "None"
+    },
+    {
+      "capability_id": "half_circles",
+      "node_id": "mat_g2_mg_q1_0",
+      "clause": "half circles",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        278108625,
+        278131812
+      ],
+      "reasoning": "Half-circles are explicitly referenced in both deliberately sampled strata seeds. Seeds 278108625 and 278131812 ask about a circle divided into 2 equal parts with half-circle as the answer option, meeting the requirement of 2 stratified samples for this list item.",
+      "action_taken": "Left registered; no change.",
+      "content_note_from_attester": "None"
+    },
+    {
+      "capability_id": "quarter_circles",
+      "node_id": "mat_g2_mg_q1_0",
+      "clause": "quarter circles",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        2930243068,
+        2931205788
+      ],
+      "reasoning": "Quarter-circles are explicitly referenced in both deliberately sampled strata seeds. Seeds 2930243068 and 2931205788 ask about shapes made from exactly one quarter of a circle with quarter-circle as the answer, satisfying the requirement for 2 stratified samples representing this list item.",
+      "action_taken": "Left registered; no change.",
+      "content_note_from_attester": "None"
+    }
+  ],
+  "supersedes": "confirming judge (ruling 20) for batch392: independent blind Haiku Attester on the same packet file; filed for the 3 verdict(s) that clear or create a CONTRADICTED finding relative to the pre-Phase-3 winner; the confirming verdict stands"
+}
