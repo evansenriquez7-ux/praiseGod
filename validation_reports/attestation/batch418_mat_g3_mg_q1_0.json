@@ -1,0 +1,1657 @@
+{
+  "batch": "batch418_mat_g3_mg_q1_0",
+  "attested_at": "2026-10-07T17:57:08Z",
+  "attested_by": "blind-attester-claude-haiku-4.5-default-p3-mat_g3_mg_q1_0-20261008",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose, default effort; told to Read only scratchpad/p3/d29/prompt.txt (section A of dispatch_instructions_20261007.md followed by the verbatim render_prompt_block output of the whole node packet; directory named opaquely, no node id, no key file beside it; delivery by file approved by the owner 2026-10-08) and Write only scratchpad/p3/d29/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "Harness usage record (subagent transcript): 3 tool uses excluding the final hand-back; by name: 2 Read, 1 Write; paths other than this dispatch's own prompt.txt/verdicts.json: none"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g3_mg_q1_0",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127,
+      1191280396,
+      1191548024,
+      1565985935,
+      1566278679,
+      3546305504,
+      3547975396
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g3_mg_q1_0",
+        "seed": 11,
+        "formatter": "read_mcq",
+        "question_text": "This square is covered by 5 rows of 5 square tiles. How many square tile units cover the square?",
+        "correct_answer": "D",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "GridArea",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 26,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 28,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 23,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 25,
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 25,
+        "hints": [
+          "The area tells us how many unit squares cover the shape.",
+          "Area of a square = side × side = 5 × 5 = 25 sq cm."
+        ],
+        "visual_type": "GridArea",
+        "visual_payload": {
+          "rows": 5,
+          "cols": 5,
+          "shaded": true,
+          "highlight_groups": [],
+          "shape_type": "square",
+          "correct_count": 25,
+          "grid_size": [
+            6,
+            6
+          ]
+        },
+        "visual_render": {
+          "visual_type": "GridArea",
+          "renderer_input_digest": "f272fcdcbbaaf5743abc17c91ba05fa80ad8ae0c75de7b2482ab0fc77cba3289",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "GridArea",
+            "element_count": 37,
+            "svg_count": 1,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 1,
+            "input_count": 0,
+            "text_labels": [
+              "Click squares to shade them. Count the area in square units.",
+              "25 square units",
+              "Clear All",
+              "Click squares to shade/unshade"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--primary)",
+              "#4b5563",
+              "#374151",
+              "hsl(var(--border-color)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {
+              "grid-cell": 25
+            }
+          }
+        },
+        "sample_id": "0fcec7dedebb314efe02",
+        "replay_digest": "5e882ed295ef33f02d9c103d3840b6f5ef1216f6232932c8cfffcd3b39ac80b2"
+      },
+      {
+        "node_id": "mat_g3_mg_q1_0",
+        "seed": 23,
+        "formatter": "read_mcq",
+        "question_text": "This square is covered by 2 rows of 2 square tiles. How many square tile units cover the square?",
+        "correct_answer": "B",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "GridArea",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 5,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 4,
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 7,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 3,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 4,
+        "hints": [
+          "The area tells us how many unit squares cover the shape.",
+          "Area of a square = side × side = 2 × 2 = 4 sq cm."
+        ],
+        "visual_type": "GridArea",
+        "visual_payload": {
+          "rows": 2,
+          "cols": 2,
+          "shaded": true,
+          "highlight_groups": [],
+          "shape_type": "square",
+          "correct_count": 4,
+          "grid_size": [
+            3,
+            3
+          ]
+        },
+        "visual_render": {
+          "visual_type": "GridArea",
+          "renderer_input_digest": "edc97f22685e7bde2ac9133d03403367b8f85a3c63d7f5295c8c13d6e9a2cd5a",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "GridArea",
+            "element_count": 16,
+            "svg_count": 1,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 1,
+            "input_count": 0,
+            "text_labels": [
+              "Click squares to shade them. Count the area in square units.",
+              "4 square units",
+              "Clear All",
+              "Click squares to shade/unshade"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--primary)",
+              "#4b5563",
+              "#374151",
+              "hsl(var(--border-color)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {
+              "grid-cell": 4
+            }
+          }
+        },
+        "sample_id": "b914b9415a5c0c1767ea",
+        "replay_digest": "203cd560762c750effa9eb0469b05f60bcf0f9f1fdaeb27abc70a7c10f2f1196"
+      },
+      {
+        "node_id": "mat_g3_mg_q1_0",
+        "seed": 42,
+        "formatter": "read_mcq",
+        "question_text": "This rectangle is covered by 2 rows of 7 square tiles. How many square tile units cover the rectangle?",
+        "correct_answer": "A",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "GridArea",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 14,
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 16,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 11,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 18,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 14,
+        "hints": [
+          "The area tells us how many unit squares cover the shape.",
+          "Area of a rectangle = length × width = 2 × 7 = 14 sq cm."
+        ],
+        "visual_type": "GridArea",
+        "visual_payload": {
+          "rows": 2,
+          "cols": 7,
+          "shaded": true,
+          "highlight_groups": [],
+          "shape_type": "rectangle",
+          "correct_count": 14,
+          "grid_size": [
+            3,
+            8
+          ]
+        },
+        "visual_render": {
+          "visual_type": "GridArea",
+          "renderer_input_digest": "ae243f1e6d7362c08cd20da7657890f9d31784128abe84eebdab5a17e407c06f",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "GridArea",
+            "element_count": 27,
+            "svg_count": 1,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 1,
+            "input_count": 0,
+            "text_labels": [
+              "Click squares to shade a",
+              "7 × 2",
+              "rectangle",
+              "14 square units",
+              "Clear All",
+              "Click squares to shade/unshade"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--primary)",
+              "#4b5563",
+              "#374151",
+              "hsl(var(--border-color)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {
+              "grid-cell": 14
+            }
+          }
+        },
+        "sample_id": "881e6842a17b88dbb720",
+        "replay_digest": "3a5ac03d0e510e606f00664cfbe57be121a0d4685a6a7c7a45e23671b6c4c7da"
+      },
+      {
+        "node_id": "mat_g3_mg_q1_0",
+        "seed": 57,
+        "formatter": "read_mcq",
+        "question_text": "This rectangle is covered by 6 rows of 4 square tiles. How many square tile units cover the rectangle?",
+        "correct_answer": "D",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "GridArea",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 20,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 27,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 21,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 24,
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 24,
+        "hints": [
+          "The area tells us how many unit squares cover the shape.",
+          "Area of a rectangle = length × width = 6 × 4 = 24 sq cm."
+        ],
+        "visual_type": "GridArea",
+        "visual_payload": {
+          "rows": 6,
+          "cols": 4,
+          "shaded": true,
+          "highlight_groups": [],
+          "shape_type": "rectangle",
+          "correct_count": 24,
+          "grid_size": [
+            7,
+            5
+          ]
+        },
+        "visual_render": {
+          "visual_type": "GridArea",
+          "renderer_input_digest": "f1ed85f6fceee95346dcfd12a1291ed71997be7c31fa6adc99ca3c90c15dbc31",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "GridArea",
+            "element_count": 37,
+            "svg_count": 1,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 1,
+            "input_count": 0,
+            "text_labels": [
+              "Click squares to shade a",
+              "4 × 6",
+              "rectangle",
+              "24 square units",
+              "Clear All",
+              "Click squares to shade/unshade"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--primary)",
+              "#4b5563",
+              "#374151",
+              "hsl(var(--border-color)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {
+              "grid-cell": 24
+            }
+          }
+        },
+        "sample_id": "7eefd89388adfc39dcf4",
+        "replay_digest": "e38de0a43b43baa261911f6ed8b2cc02d8534b55ab02e6c44f8fea382b7b1d48"
+      },
+      {
+        "node_id": "mat_g3_mg_q1_0",
+        "seed": 64,
+        "formatter": "read_mcq",
+        "question_text": "This square is covered by 2 rows of 2 square tiles. How many square tile units cover the square?",
+        "correct_answer": "A",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "GridArea",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 4,
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 1,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 5,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 7,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 4,
+        "hints": [
+          "The area tells us how many unit squares cover the shape.",
+          "Area of a square = side × side = 2 × 2 = 4 sq cm."
+        ],
+        "visual_type": "GridArea",
+        "visual_payload": {
+          "rows": 2,
+          "cols": 2,
+          "shaded": true,
+          "highlight_groups": [],
+          "shape_type": "square",
+          "correct_count": 4,
+          "grid_size": [
+            3,
+            3
+          ]
+        },
+        "visual_render": {
+          "visual_type": "GridArea",
+          "renderer_input_digest": "edc97f22685e7bde2ac9133d03403367b8f85a3c63d7f5295c8c13d6e9a2cd5a",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "GridArea",
+            "element_count": 16,
+            "svg_count": 1,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 1,
+            "input_count": 0,
+            "text_labels": [
+              "Click squares to shade them. Count the area in square units.",
+              "4 square units",
+              "Clear All",
+              "Click squares to shade/unshade"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--primary)",
+              "#4b5563",
+              "#374151",
+              "hsl(var(--border-color)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {
+              "grid-cell": 4
+            }
+          }
+        },
+        "sample_id": "f71b5dd6c023c4293e26",
+        "replay_digest": "74372274aaf8649005240aac96144451e929f28bb2052f4077e4bff8a6c88e16"
+      },
+      {
+        "node_id": "mat_g3_mg_q1_0",
+        "seed": 78,
+        "formatter": "read_mcq",
+        "question_text": "This rectangle is covered by 4 rows of 2 square tiles. How many square tile units cover the rectangle?",
+        "correct_answer": "A",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "GridArea",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 8,
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 6,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 12,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 11,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 8,
+        "hints": [
+          "The area tells us how many unit squares cover the shape.",
+          "Area of a rectangle = length × width = 4 × 2 = 8 sq cm."
+        ],
+        "visual_type": "GridArea",
+        "visual_payload": {
+          "rows": 4,
+          "cols": 2,
+          "shaded": true,
+          "highlight_groups": [],
+          "shape_type": "rectangle",
+          "correct_count": 8,
+          "grid_size": [
+            5,
+            3
+          ]
+        },
+        "visual_render": {
+          "visual_type": "GridArea",
+          "renderer_input_digest": "f109fc8ea1959d6e0c68a28a9c754cfb457a487a70030668b5fba6d58e2467ba",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "GridArea",
+            "element_count": 21,
+            "svg_count": 1,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 1,
+            "input_count": 0,
+            "text_labels": [
+              "Click squares to shade a",
+              "2 × 4",
+              "rectangle",
+              "8 square units",
+              "Clear All",
+              "Click squares to shade/unshade"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--primary)",
+              "#4b5563",
+              "#374151",
+              "hsl(var(--border-color)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {
+              "grid-cell": 8
+            }
+          }
+        },
+        "sample_id": "772a027406b70441f445",
+        "replay_digest": "3af7872214c5d7892547ebcf42650c18baf416072a7d3538515f1c31a62cabb8"
+      },
+      {
+        "node_id": "mat_g3_mg_q1_0",
+        "seed": 91,
+        "formatter": "read_mcq",
+        "question_text": "This rectangle is covered by 7 rows of 3 square tiles. How many square tile units cover the rectangle?",
+        "correct_answer": "D",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "GridArea",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 18,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 24,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 20,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 21,
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 21,
+        "hints": [
+          "The area tells us how many unit squares cover the shape.",
+          "Area of a rectangle = length × width = 7 × 3 = 21 sq cm."
+        ],
+        "visual_type": "GridArea",
+        "visual_payload": {
+          "rows": 7,
+          "cols": 3,
+          "shaded": true,
+          "highlight_groups": [],
+          "shape_type": "rectangle",
+          "correct_count": 21,
+          "grid_size": [
+            8,
+            4
+          ]
+        },
+        "visual_render": {
+          "visual_type": "GridArea",
+          "renderer_input_digest": "9b1cef3c4207f024364d8ce0a5aadda61f3a9c6cacd62e0cf0f6b75c8704d60b",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "GridArea",
+            "element_count": 34,
+            "svg_count": 1,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 1,
+            "input_count": 0,
+            "text_labels": [
+              "Click squares to shade a",
+              "3 × 7",
+              "rectangle",
+              "21 square units",
+              "Clear All",
+              "Click squares to shade/unshade"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--primary)",
+              "#4b5563",
+              "#374151",
+              "hsl(var(--border-color)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {
+              "grid-cell": 21
+            }
+          }
+        },
+        "sample_id": "572f9fde0dc8a248e02b",
+        "replay_digest": "622b17be5b29096657c04df94bde889284ddacd90c2c44a254a087a970e1a0f5"
+      },
+      {
+        "node_id": "mat_g3_mg_q1_0",
+        "seed": 103,
+        "formatter": "read_mcq",
+        "question_text": "This square is covered by 3 rows of 3 square tiles. How many square tile units cover the square?",
+        "correct_answer": "D",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "GridArea",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 11,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 10,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 6,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 9,
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 9,
+        "hints": [
+          "The area tells us how many unit squares cover the shape.",
+          "Area of a square = side × side = 3 × 3 = 9 sq cm."
+        ],
+        "visual_type": "GridArea",
+        "visual_payload": {
+          "rows": 3,
+          "cols": 3,
+          "shaded": true,
+          "highlight_groups": [],
+          "shape_type": "square",
+          "correct_count": 9,
+          "grid_size": [
+            4,
+            4
+          ]
+        },
+        "visual_render": {
+          "visual_type": "GridArea",
+          "renderer_input_digest": "4706ac2b5c1672699206d17b0d6cc9b37d5d94df86ac9663d37382af7ba54833",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "GridArea",
+            "element_count": 21,
+            "svg_count": 1,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 1,
+            "input_count": 0,
+            "text_labels": [
+              "Click squares to shade them. Count the area in square units.",
+              "9 square units",
+              "Clear All",
+              "Click squares to shade/unshade"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--primary)",
+              "#4b5563",
+              "#374151",
+              "hsl(var(--border-color)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {
+              "grid-cell": 9
+            }
+          }
+        },
+        "sample_id": "07f3a427460d068f11eb",
+        "replay_digest": "f06a65cad11b8b0ae20db560cc0c0a2e699112faaa4cf038a494f5ad1f90c475"
+      },
+      {
+        "node_id": "mat_g3_mg_q1_0",
+        "seed": 118,
+        "formatter": "read_mcq",
+        "question_text": "This rectangle is covered by 2 rows of 4 square tiles. How many square tile units cover the rectangle?",
+        "correct_answer": "A",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "GridArea",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 8,
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 12,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 7,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 11,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 8,
+        "hints": [
+          "The area tells us how many unit squares cover the shape.",
+          "Area of a rectangle = length × width = 2 × 4 = 8 sq cm."
+        ],
+        "visual_type": "GridArea",
+        "visual_payload": {
+          "rows": 2,
+          "cols": 4,
+          "shaded": true,
+          "highlight_groups": [],
+          "shape_type": "rectangle",
+          "correct_count": 8,
+          "grid_size": [
+            3,
+            5
+          ]
+        },
+        "visual_render": {
+          "visual_type": "GridArea",
+          "renderer_input_digest": "d50ea7855387601b10f2324af50f6373343b62f71ec3892222883c879aaa0231",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "GridArea",
+            "element_count": 21,
+            "svg_count": 1,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 1,
+            "input_count": 0,
+            "text_labels": [
+              "Click squares to shade a",
+              "4 × 2",
+              "rectangle",
+              "8 square units",
+              "Clear All",
+              "Click squares to shade/unshade"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--primary)",
+              "#4b5563",
+              "#374151",
+              "hsl(var(--border-color)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {
+              "grid-cell": 8
+            }
+          }
+        },
+        "sample_id": "4bc47d4c418622d1e35b",
+        "replay_digest": "b6b1d73be0b3f71f560b6163d5d6f1778377497e73775e537f4d076a061c4681"
+      },
+      {
+        "node_id": "mat_g3_mg_q1_0",
+        "seed": 127,
+        "formatter": "read_mcq",
+        "question_text": "This rectangle is covered by 2 rows of 3 square tiles. How many square tile units cover the rectangle?",
+        "correct_answer": "C",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "GridArea",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 5,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 7,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 6,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 10,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 6,
+        "hints": [
+          "The area tells us how many unit squares cover the shape.",
+          "Area of a rectangle = length × width = 2 × 3 = 6 sq cm."
+        ],
+        "visual_type": "GridArea",
+        "visual_payload": {
+          "rows": 2,
+          "cols": 3,
+          "shaded": true,
+          "highlight_groups": [],
+          "shape_type": "rectangle",
+          "correct_count": 6,
+          "grid_size": [
+            3,
+            4
+          ]
+        },
+        "visual_render": {
+          "visual_type": "GridArea",
+          "renderer_input_digest": "a13d62591cabf5b3e0d858cf642274923dd584d0d48d49a3caea679fafe40fd5",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "GridArea",
+            "element_count": 19,
+            "svg_count": 1,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 1,
+            "input_count": 0,
+            "text_labels": [
+              "Click squares to shade a",
+              "3 × 2",
+              "rectangle",
+              "6 square units",
+              "Clear All",
+              "Click squares to shade/unshade"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--primary)",
+              "#4b5563",
+              "#374151",
+              "hsl(var(--border-color)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {
+              "grid-cell": 6
+            }
+          }
+        },
+        "sample_id": "94420164a09854a71a16",
+        "replay_digest": "e8740eb66a6f894ab1ecb1316f910790b2ba72ba3cdb898dc8fe0d92b30b8344"
+      },
+      {
+        "node_id": "mat_g3_mg_q1_0",
+        "seed": 1191280396,
+        "formatter": "read_mcq",
+        "question_text": "This square is covered by 4 rows of 4 square tiles. How many square tile units cover the square?",
+        "correct_answer": "A",
+        "requested": {
+          "difficulty_profile": {
+            "shape": "square"
+          },
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "GridArea",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 16,
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 15,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 17,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 18,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 16,
+        "hints": [
+          "The area tells us how many unit squares cover the shape.",
+          "Area of a square = side × side = 4 × 4 = 16 sq cm."
+        ],
+        "visual_type": "GridArea",
+        "visual_payload": {
+          "rows": 4,
+          "cols": 4,
+          "shaded": true,
+          "highlight_groups": [],
+          "shape_type": "square",
+          "correct_count": 16,
+          "grid_size": [
+            5,
+            5
+          ]
+        },
+        "visual_render": {
+          "visual_type": "GridArea",
+          "renderer_input_digest": "b29af1471732b0b6b017f579f643d23c548ee9c8e87145842892bac3d51f415e",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "GridArea",
+            "element_count": 28,
+            "svg_count": 1,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 1,
+            "input_count": 0,
+            "text_labels": [
+              "Click squares to shade them. Count the area in square units.",
+              "16 square units",
+              "Clear All",
+              "Click squares to shade/unshade"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--primary)",
+              "#4b5563",
+              "#374151",
+              "hsl(var(--border-color)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {
+              "grid-cell": 16
+            }
+          }
+        },
+        "sample_id": "948acb2b1b17e8296e97",
+        "replay_digest": "dd76d25c863246c22da969ac2fa18e55bc4419be74fe5f9d26fcd8f7d8bdf03e"
+      },
+      {
+        "node_id": "mat_g3_mg_q1_0",
+        "seed": 1191548024,
+        "formatter": "read_mcq",
+        "question_text": "This square is covered by 5 rows of 5 square tiles. How many square tile units cover the square?",
+        "correct_answer": "C",
+        "requested": {
+          "difficulty_profile": {
+            "shape": "square"
+          },
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "GridArea",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 26,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 22,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 25,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 28,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 25,
+        "hints": [
+          "The area tells us how many unit squares cover the shape.",
+          "Area of a square = side × side = 5 × 5 = 25 sq cm."
+        ],
+        "visual_type": "GridArea",
+        "visual_payload": {
+          "rows": 5,
+          "cols": 5,
+          "shaded": true,
+          "highlight_groups": [],
+          "shape_type": "square",
+          "correct_count": 25,
+          "grid_size": [
+            6,
+            6
+          ]
+        },
+        "visual_render": {
+          "visual_type": "GridArea",
+          "renderer_input_digest": "f272fcdcbbaaf5743abc17c91ba05fa80ad8ae0c75de7b2482ab0fc77cba3289",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "GridArea",
+            "element_count": 37,
+            "svg_count": 1,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 1,
+            "input_count": 0,
+            "text_labels": [
+              "Click squares to shade them. Count the area in square units.",
+              "25 square units",
+              "Clear All",
+              "Click squares to shade/unshade"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--primary)",
+              "#4b5563",
+              "#374151",
+              "hsl(var(--border-color)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {
+              "grid-cell": 25
+            }
+          }
+        },
+        "sample_id": "0c4157730abbb2f0cf95",
+        "replay_digest": "2ed5ddb3f63bb9f26e02e86ac179e6fc11f1e214f05f64ad9dec10b22b0c5aa9"
+      },
+      {
+        "node_id": "mat_g3_mg_q1_0",
+        "seed": 1565985935,
+        "formatter": "read_mcq",
+        "question_text": "This square is covered by 5 rows of 5 square tiles. How many square tile units cover the square?",
+        "correct_answer": "C",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "GridArea",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 23,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 26,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 25,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 27,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 25,
+        "hints": [
+          "The area tells us how many unit squares cover the shape.",
+          "Area of a square = side × side = 5 × 5 = 25 sq cm."
+        ],
+        "visual_type": "GridArea",
+        "visual_payload": {
+          "rows": 5,
+          "cols": 5,
+          "shaded": true,
+          "highlight_groups": [],
+          "shape_type": "square",
+          "correct_count": 25,
+          "grid_size": [
+            6,
+            6
+          ]
+        },
+        "visual_render": {
+          "visual_type": "GridArea",
+          "renderer_input_digest": "f272fcdcbbaaf5743abc17c91ba05fa80ad8ae0c75de7b2482ab0fc77cba3289",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "GridArea",
+            "element_count": 37,
+            "svg_count": 1,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 1,
+            "input_count": 0,
+            "text_labels": [
+              "Click squares to shade them. Count the area in square units.",
+              "25 square units",
+              "Clear All",
+              "Click squares to shade/unshade"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--primary)",
+              "#4b5563",
+              "#374151",
+              "hsl(var(--border-color)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {
+              "grid-cell": 25
+            }
+          }
+        },
+        "sample_id": "c7b1c14376d2259f9ae0",
+        "replay_digest": "96e1fa8af9de12d19390a53a063b9cd847197349172991b2bb471a5a013491ec"
+      },
+      {
+        "node_id": "mat_g3_mg_q1_0",
+        "seed": 1566278679,
+        "formatter": "read_mcq",
+        "question_text": "This square is covered by 2 rows of 2 square tiles. How many square tile units cover the square?",
+        "correct_answer": "C",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "GridArea",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 7,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 3,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 4,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 5,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 4,
+        "hints": [
+          "The area tells us how many unit squares cover the shape.",
+          "Area of a square = side × side = 2 × 2 = 4 sq cm."
+        ],
+        "visual_type": "GridArea",
+        "visual_payload": {
+          "rows": 2,
+          "cols": 2,
+          "shaded": true,
+          "highlight_groups": [],
+          "shape_type": "square",
+          "correct_count": 4,
+          "grid_size": [
+            3,
+            3
+          ]
+        },
+        "visual_render": {
+          "visual_type": "GridArea",
+          "renderer_input_digest": "edc97f22685e7bde2ac9133d03403367b8f85a3c63d7f5295c8c13d6e9a2cd5a",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "GridArea",
+            "element_count": 16,
+            "svg_count": 1,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 1,
+            "input_count": 0,
+            "text_labels": [
+              "Click squares to shade them. Count the area in square units.",
+              "4 square units",
+              "Clear All",
+              "Click squares to shade/unshade"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--primary)",
+              "#4b5563",
+              "#374151",
+              "hsl(var(--border-color)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {
+              "grid-cell": 4
+            }
+          }
+        },
+        "sample_id": "c3705cada64da429e953",
+        "replay_digest": "b4c1aa461b9581dbabbaf5cd0eb26508829154099d1a8bfa4b09c370e0a51bb1"
+      },
+      {
+        "node_id": "mat_g3_mg_q1_0",
+        "seed": 3546305504,
+        "formatter": "read_mcq",
+        "question_text": "This rectangle is covered by 2 rows of 3 square tiles. How many square tile units cover the rectangle?",
+        "correct_answer": "B",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "GridArea",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 7,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 6,
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 5,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 10,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 6,
+        "hints": [
+          "The area tells us how many unit squares cover the shape.",
+          "Area of a rectangle = length × width = 2 × 3 = 6 sq cm."
+        ],
+        "visual_type": "GridArea",
+        "visual_payload": {
+          "rows": 2,
+          "cols": 3,
+          "shaded": true,
+          "highlight_groups": [],
+          "shape_type": "rectangle",
+          "correct_count": 6,
+          "grid_size": [
+            3,
+            4
+          ]
+        },
+        "visual_render": {
+          "visual_type": "GridArea",
+          "renderer_input_digest": "a13d62591cabf5b3e0d858cf642274923dd584d0d48d49a3caea679fafe40fd5",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "GridArea",
+            "element_count": 19,
+            "svg_count": 1,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 1,
+            "input_count": 0,
+            "text_labels": [
+              "Click squares to shade a",
+              "3 × 2",
+              "rectangle",
+              "6 square units",
+              "Clear All",
+              "Click squares to shade/unshade"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--primary)",
+              "#4b5563",
+              "#374151",
+              "hsl(var(--border-color)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {
+              "grid-cell": 6
+            }
+          }
+        },
+        "sample_id": "427b708ee6def11bc2a0",
+        "replay_digest": "bb8e173e51ecb5e3b1d2e6fba147bab85b164e1c018ac2986a2451d193ba2611"
+      },
+      {
+        "node_id": "mat_g3_mg_q1_0",
+        "seed": 3547975396,
+        "formatter": "read_mcq",
+        "question_text": "This rectangle is covered by 5 rows of 6 square tiles. How many square tile units cover the rectangle?",
+        "correct_answer": "B",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "GridArea",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 22,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 30,
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 32,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 28,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 30,
+        "hints": [
+          "The area tells us how many unit squares cover the shape.",
+          "Area of a rectangle = length × width = 5 × 6 = 30 sq cm."
+        ],
+        "visual_type": "GridArea",
+        "visual_payload": {
+          "rows": 5,
+          "cols": 6,
+          "shaded": true,
+          "highlight_groups": [],
+          "shape_type": "rectangle",
+          "correct_count": 30,
+          "grid_size": [
+            6,
+            7
+          ]
+        },
+        "visual_render": {
+          "visual_type": "GridArea",
+          "renderer_input_digest": "3e15a81c31886c73d9b7b4f48858634035f212c58b1411edb823cb68dd13ece2",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "GridArea",
+            "element_count": 43,
+            "svg_count": 1,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 1,
+            "input_count": 0,
+            "text_labels": [
+              "Click squares to shade a",
+              "6 × 5",
+              "rectangle",
+              "30 square units",
+              "Clear All",
+              "Click squares to shade/unshade"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--primary)",
+              "#4b5563",
+              "#374151",
+              "hsl(var(--border-color)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {
+              "grid-cell": 30
+            }
+          }
+        },
+        "sample_id": "92dd145029327bb68dce",
+        "replay_digest": "2149f2c4d029a8186c8056f847fa6548d6b3c0f8025d35ac4814d92a610f3901"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "illustrate_area_with_tiles",
+      "node_id": "mat_g3_mg_q1_0",
+      "clause": "Illustrate",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23
+      ],
+      "reasoning": "GridArea visual renders interactive square tiles in all samples, directly illustrating area. Students shade tiles to represent and show the area measurement concept explicitly.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "estimate_area",
+      "node_id": "mat_g3_mg_q1_0",
+      "clause": "estimate the area",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "All samples show complete or pre-drawn grids where students count exact tile units. Estimation requires approximation or judgment without complete information, but all grids provide full visibility for exact counting, not estimation.",
+      "action_taken": "Phase 3 re-attestation (claude-h06-phase3-reattest-20261008), no source change: stays CONTRADICTED and is queued for a Phase 4 content batch, assigned from the measured Phase 3 queue (NEXT_AGENT_PROMPT.md section 4)."
+    },
+    {
+      "capability_id": "area_attribute",
+      "node_id": "mat_g3_mg_q1_0",
+      "clause": "the area",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23
+      ],
+      "reasoning": "GridArea visual consistently renders area concept through square tiles across all samples. Students count and work with area in square units throughout.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "square_figure",
+      "node_id": "mat_g3_mg_q1_0",
+      "clause": "a square",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        1565985935,
+        1566278679
+      ],
+      "reasoning": "Stratified stratum_001 seeds both explicitly provide square format: seed 1565985935 (5x5 square) and seed 1566278679 (2x2 square) are deliberate square variants in the mapped stratum.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "rectangle_figure",
+      "node_id": "mat_g3_mg_q1_0",
+      "clause": "rectangle",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        3546305504,
+        3547975396
+      ],
+      "reasoning": "Stratified stratum_001 seeds both explicitly provide rectangle format: seed 3546305504 (2x3 rectangle) and seed 3547975396 (5x6 rectangle) are deliberate rectangle variants in the mapped stratum.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "square_tile_covering",
+      "node_id": "mat_g3_mg_q1_0",
+      "clause": "square tile units",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23
+      ],
+      "reasoning": "All samples explicitly state 'square tile units' in question text and render square-shaped tiles through GridArea visual as the measurement unit for area calculation.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "square_tile_unit",
+      "node_id": "mat_g3_mg_q1_0",
+      "clause": "tile units",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23
+      ],
+      "reasoning": "Clause tile units is satisfied through explicit reference to square tile units in all samples and through GridArea visual rendering tiles as the unit of area measurement.",
+      "action_taken": "Left registered; no change."
+    }
+  ]
+}

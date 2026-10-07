@@ -1,0 +1,2258 @@
+{
+  "batch": "batch417_mat_g3_dp_q3_2",
+  "attested_at": "2026-10-07T17:57:06Z",
+  "attested_by": "blind-attester-claude-haiku-4.5-default-p3c-mat_g3_dp_q3_2-20261008",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose, default effort; told to Read only scratchpad/p3/c_d27/prompt.txt (section A of dispatch_instructions_20261007.md followed by the verbatim render_prompt_block output of the whole node packet; directory named opaquely, no node id, no key file beside it; delivery by file approved by the owner 2026-10-08) and Write only scratchpad/p3/c_d27/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "Harness usage record (subagent transcript): 3 tool uses excluding the final hand-back; by name: 2 Read, 1 Write; paths other than this dispatch's own prompt.txt/verdicts.json: none"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g3_dp_q3_2",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127,
+      410962397,
+      412128445,
+      1521125265,
+      1521161028,
+      2727294851,
+      2729453747,
+      4133810617,
+      4134770757
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g3_dp_q3_2",
+        "seed": 11,
+        "formatter": "read_mcq",
+        "question_text": "Look at the horizontal bar graph. Which category has the most?",
+        "correct_answer": "B",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "BarChart",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "January",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "March",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "April",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "February",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "March",
+        "hints": [
+          "Look at the bar graph carefully.",
+          "The scale on the horizontal (x-axis) goes up by 5.",
+          "Look for the longest bar."
+        ],
+        "visual_type": "BarChart",
+        "visual_payload": {
+          "categories": [
+            "January",
+            "February",
+            "March",
+            "April"
+          ],
+          "values": [
+            40,
+            45,
+            70,
+            50
+          ],
+          "scale": 5,
+          "orientation": "horizontal",
+          "labels": [
+            "January",
+            "February",
+            "March",
+            "April"
+          ],
+          "max_y": 75,
+          "is_read_mode": true
+        },
+        "visual_render": {
+          "visual_type": "BarChart",
+          "renderer_input_digest": "796a76c27eceef65325dffd57ee309adde5474601aa6205e76ebe0f032bd0ff5",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "BarChart",
+            "element_count": 76,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 4,
+            "text_labels": [
+              "Read each value from the graph and enter them below.",
+              "0",
+              "5",
+              "10",
+              "15",
+              "20",
+              "25",
+              "30",
+              "35",
+              "40",
+              "45",
+              "50",
+              "55",
+              "60",
+              "65",
+              "70",
+              "75",
+              "January",
+              "February",
+              "March",
+              "April",
+              "Your answers:",
+              "January:",
+              "February:",
+              "March:",
+              "April:"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--card-bg)",
+              "hsl(var(--border-color)",
+              "hsl(var(--primary)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "b3580102125d2cd6f39e",
+        "replay_digest": "e0430bfe2b2c3c4359b93e21f65e6087087346150f9a811410440eb5eddab3de"
+      },
+      {
+        "node_id": "mat_g3_dp_q3_2",
+        "seed": 23,
+        "formatter": "read_mcq",
+        "question_text": "Look at the horizontal bar graph. What is the value for mangoes?",
+        "correct_answer": "B",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "BarChart",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 25,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 35,
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 36,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 34,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 35,
+        "hints": [
+          "Look at the bar graph carefully.",
+          "The scale on the horizontal (x-axis) goes up by 5.",
+          "Find the bar for 'mangoes' and read across to the scale.",
+          "Answer: 35"
+        ],
+        "visual_type": "BarChart",
+        "visual_payload": {
+          "categories": [
+            "apples",
+            "bananas",
+            "mangoes",
+            "grapes"
+          ],
+          "values": [
+            50,
+            25,
+            35,
+            35
+          ],
+          "scale": 5,
+          "orientation": "horizontal",
+          "labels": [
+            "apples",
+            "bananas",
+            "mangoes",
+            "grapes"
+          ],
+          "max_y": 55,
+          "is_read_mode": true,
+          "ask_category": "mangoes",
+          "ask_series": null
+        },
+        "visual_render": {
+          "visual_type": "BarChart",
+          "renderer_input_digest": "4b898430dbc7e1004381856ba21338ed45362692853bc2c6ede767903cde2464",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "BarChart",
+            "element_count": 58,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 1,
+            "text_labels": [
+              "Read the value for \"mangoes\" from the graph and enter it below.",
+              "0",
+              "5",
+              "10",
+              "15",
+              "20",
+              "25",
+              "30",
+              "35",
+              "40",
+              "45",
+              "50",
+              "55",
+              "apples",
+              "bananas",
+              "mangoes",
+              "grapes",
+              "Your answer:",
+              "mangoes:"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--card-bg)",
+              "hsl(var(--border-color)",
+              "hsl(var(--primary)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "a868266ee603f9db96c1",
+        "replay_digest": "a1ffe9d10d19d380d31453a84762f2e32ed2d2338b72839608a7d6c4452172f2"
+      },
+      {
+        "node_id": "mat_g3_dp_q3_2",
+        "seed": 42,
+        "formatter": "read_mcq",
+        "question_text": "Look at the table. What is the value for bananas?",
+        "correct_answer": "C",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "FillInTable",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 20,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 31,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 25,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 26,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 25,
+        "hints": [
+          "Look at the table carefully.",
+          "Find the row for 'bananas' and read its value.",
+          "Answer: 25"
+        ],
+        "visual_type": "FillInTable",
+        "visual_payload": {
+          "columns": [
+            "Category",
+            "Value"
+          ],
+          "rows": [
+            [
+              "apples",
+              60
+            ],
+            [
+              "bananas",
+              25
+            ],
+            [
+              "mangoes",
+              20
+            ],
+            [
+              "grapes",
+              20
+            ]
+          ],
+          "is_read_mode": true
+        },
+        "visual_render": {
+          "visual_type": "FillInTable",
+          "renderer_input_digest": "6c0b315d8fff62fbc0de95b280b946f4d72cfbea49312fc8ae263ba2a8de45b5",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "FillInTable",
+            "element_count": 25,
+            "svg_count": 0,
+            "table_row_count": 5,
+            "table_cell_count": 10,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "Category",
+              "Value",
+              "apples",
+              "60",
+              "bananas",
+              "25",
+              "mangoes",
+              "20",
+              "grapes",
+              "20",
+              "Fill in the missing values in the table"
+            ],
+            "distinct_colours": [
+              "hsl(var(--card-bg)",
+              "hsl(var(--border-color)",
+              "hsl(var(--text)",
+              "hsl(var(--primary)",
+              "hsl(var(--text-muted)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "eace5b3a23a84a85abf4",
+        "replay_digest": "283752ec408d95306598d04b34191b5cf8cdbdf3e8d2658099f2098c3c656ef7"
+      },
+      {
+        "node_id": "mat_g3_dp_q3_2",
+        "seed": 57,
+        "formatter": "read_mcq",
+        "question_text": "Look at the vertical bar graph. What is the total value of all categories?",
+        "correct_answer": "D",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "BarChart",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 132,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 140,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 155,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 135,
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 135,
+        "hints": [
+          "Look at the bar graph carefully.",
+          "The scale on the vertical (y-axis) goes up by 5.",
+          "Read each bar's value, then add them all together."
+        ],
+        "visual_type": "BarChart",
+        "visual_payload": {
+          "categories": [
+            "apples",
+            "bananas",
+            "mangoes",
+            "grapes"
+          ],
+          "values": [
+            20,
+            45,
+            30,
+            40
+          ],
+          "scale": 5,
+          "orientation": "vertical",
+          "labels": [
+            "apples",
+            "bananas",
+            "mangoes",
+            "grapes"
+          ],
+          "max_y": 50,
+          "is_read_mode": true
+        },
+        "visual_render": {
+          "visual_type": "BarChart",
+          "renderer_input_digest": "911c436ce988c883dae38fd42bd2d60641db35f14ae296a092f82a2b1aeba101",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "BarChart",
+            "element_count": 66,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 4,
+            "text_labels": [
+              "Read each value from the graph and enter them below.",
+              "0",
+              "5",
+              "10",
+              "15",
+              "20",
+              "25",
+              "30",
+              "35",
+              "40",
+              "45",
+              "50",
+              "apples",
+              "bananas",
+              "mangoes",
+              "grapes",
+              "Your answers:",
+              "apples:",
+              "bananas:",
+              "mangoes:",
+              "grapes:"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--card-bg)",
+              "hsl(var(--border-color)",
+              "hsl(var(--primary)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "009ca566da27233f5e0a",
+        "replay_digest": "3a9813c8d1204e8ec2762029e6eb60aa0c787e9212d3e7f599fcf811c87fbe5f"
+      },
+      {
+        "node_id": "mat_g3_dp_q3_2",
+        "seed": 64,
+        "formatter": "read_mcq",
+        "question_text": "Look at the horizontal bar graph. What is the value for Grade 3?",
+        "correct_answer": "C",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "BarChart",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 20,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 31,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 5,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 6,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 5,
+        "hints": [
+          "Look at the bar graph carefully.",
+          "The scale on the horizontal (x-axis) goes up by 5.",
+          "Find the bar for 'Grade 3' and read across to the scale.",
+          "Answer: 5"
+        ],
+        "visual_type": "BarChart",
+        "visual_payload": {
+          "categories": [
+            "Grade 1",
+            "Grade 2",
+            "Grade 3",
+            "Grade 4"
+          ],
+          "values": [
+            45,
+            55,
+            5,
+            20
+          ],
+          "scale": 5,
+          "orientation": "horizontal",
+          "labels": [
+            "Grade 1",
+            "Grade 2",
+            "Grade 3",
+            "Grade 4"
+          ],
+          "max_y": 60,
+          "is_read_mode": true,
+          "ask_category": "Grade 3",
+          "ask_series": null
+        },
+        "visual_render": {
+          "visual_type": "BarChart",
+          "renderer_input_digest": "a9e90328d3bc19dd6523a99224c381fabc117be2f836dfe49e11ab46b04e75eb",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "BarChart",
+            "element_count": 60,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 1,
+            "text_labels": [
+              "Read the value for \"Grade 3\" from the graph and enter it below.",
+              "0",
+              "5",
+              "10",
+              "15",
+              "20",
+              "25",
+              "30",
+              "35",
+              "40",
+              "45",
+              "50",
+              "55",
+              "60",
+              "Grade 1",
+              "Grade 2",
+              "Grade 3",
+              "Grade 4",
+              "Your answer:",
+              "Grade 3:"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--card-bg)",
+              "hsl(var(--border-color)",
+              "hsl(var(--primary)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "2fe2eeded8cd83b93760",
+        "replay_digest": "50c6fa9ee804ac57eb04519b6cbf7434625a014f001ee4f15d1efc21f83cbd82"
+      },
+      {
+        "node_id": "mat_g3_dp_q3_2",
+        "seed": 78,
+        "formatter": "read_mcq",
+        "question_text": "Look at the vertical bar graph. What is the value for running?",
+        "correct_answer": "C",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "BarChart",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 55,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 52,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 25,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 26,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 25,
+        "hints": [
+          "Look at the bar graph carefully.",
+          "The scale on the vertical (y-axis) goes up by 5.",
+          "Find the bar for 'running' and read across to the scale.",
+          "Answer: 25"
+        ],
+        "visual_type": "BarChart",
+        "visual_payload": {
+          "categories": [
+            "basketball",
+            "volleyball",
+            "swimming",
+            "running"
+          ],
+          "values": [
+            55,
+            60,
+            70,
+            25
+          ],
+          "scale": 5,
+          "orientation": "vertical",
+          "labels": [
+            "basketball",
+            "volleyball",
+            "swimming",
+            "running"
+          ],
+          "max_y": 75,
+          "is_read_mode": true,
+          "ask_category": "running",
+          "ask_series": null
+        },
+        "visual_render": {
+          "visual_type": "BarChart",
+          "renderer_input_digest": "3955c04a44519c50437dca64049d08b30295f406a7babadde07b5c7ee364e506",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "BarChart",
+            "element_count": 66,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 1,
+            "text_labels": [
+              "Read the value for \"running\" from the graph and enter it below.",
+              "0",
+              "5",
+              "10",
+              "15",
+              "20",
+              "25",
+              "30",
+              "35",
+              "40",
+              "45",
+              "50",
+              "55",
+              "60",
+              "65",
+              "70",
+              "75",
+              "basketball",
+              "volleyball",
+              "swimming",
+              "running",
+              "Your answer:",
+              "running:"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--card-bg)",
+              "hsl(var(--border-color)",
+              "hsl(var(--primary)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "95f264659eb091f47591",
+        "replay_digest": "e5e48248997321bd3aacd347e4f20bb3ba43fb19cec3fdcbf046c88e9f15b708"
+      },
+      {
+        "node_id": "mat_g3_dp_q3_2",
+        "seed": 91,
+        "formatter": "read_mcq",
+        "question_text": "Look at the vertical bar graph. Which category has the least?",
+        "correct_answer": "D",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "BarChart",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "Math",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "Science",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "Art",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "English",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "English",
+        "hints": [
+          "Look at the bar graph carefully.",
+          "The scale on the vertical (y-axis) goes up by 5.",
+          "Look for the shortest bar."
+        ],
+        "visual_type": "BarChart",
+        "visual_payload": {
+          "categories": [
+            "Math",
+            "Science",
+            "English",
+            "Art"
+          ],
+          "values": [
+            55,
+            55,
+            15,
+            35
+          ],
+          "scale": 5,
+          "orientation": "vertical",
+          "labels": [
+            "Math",
+            "Science",
+            "English",
+            "Art"
+          ],
+          "max_y": 60,
+          "is_read_mode": true
+        },
+        "visual_render": {
+          "visual_type": "BarChart",
+          "renderer_input_digest": "04d398f39608ed073eb73b05da89a1e8d8e2ec25ae70539ebebfaf85612eb7ca",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "BarChart",
+            "element_count": 70,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 4,
+            "text_labels": [
+              "Read each value from the graph and enter them below.",
+              "0",
+              "5",
+              "10",
+              "15",
+              "20",
+              "25",
+              "30",
+              "35",
+              "40",
+              "45",
+              "50",
+              "55",
+              "60",
+              "Math",
+              "Science",
+              "English",
+              "Art",
+              "Your answers:",
+              "Math:",
+              "Science:",
+              "English:",
+              "Art:"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--card-bg)",
+              "hsl(var(--border-color)",
+              "hsl(var(--primary)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "f521a6fd8e5a140640b3",
+        "replay_digest": "d4ab39aa90007837a8522fdf3fb85eb9ee6c916779dd0bcd732583db87a7abf9"
+      },
+      {
+        "node_id": "mat_g3_dp_q3_2",
+        "seed": 103,
+        "formatter": "read_mcq",
+        "question_text": "Look at the table. What is the difference between Monday and Wednesday?",
+        "correct_answer": "D",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "FillInTable",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 12,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 70,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 0,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 10,
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 10,
+        "hints": [
+          "Look at the table carefully.",
+          "Read the rows for 'Monday' and 'Wednesday'.",
+          "Subtract the smaller value from the larger value."
+        ],
+        "visual_type": "FillInTable",
+        "visual_payload": {
+          "columns": [
+            "Category",
+            "Value"
+          ],
+          "rows": [
+            [
+              "Monday",
+              60
+            ],
+            [
+              "Tuesday",
+              10
+            ],
+            [
+              "Wednesday",
+              50
+            ],
+            [
+              "Thursday",
+              60
+            ]
+          ],
+          "is_read_mode": true
+        },
+        "visual_render": {
+          "visual_type": "FillInTable",
+          "renderer_input_digest": "fd8c8e3d1bef9d1a30204b8e39220e452bd67584491ca27942774bf1c816af33",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "FillInTable",
+            "element_count": 25,
+            "svg_count": 0,
+            "table_row_count": 5,
+            "table_cell_count": 10,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "Category",
+              "Value",
+              "Monday",
+              "60",
+              "Tuesday",
+              "10",
+              "Wednesday",
+              "50",
+              "Thursday",
+              "60",
+              "Fill in the missing values in the table"
+            ],
+            "distinct_colours": [
+              "hsl(var(--card-bg)",
+              "hsl(var(--border-color)",
+              "hsl(var(--text)",
+              "hsl(var(--primary)",
+              "hsl(var(--text-muted)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "1859cb5bd6bfb372d726",
+        "replay_digest": "444eaa0fa69d8f492caace1ccdc57ff37c8418d91fc68951901aa5975847d575"
+      },
+      {
+        "node_id": "mat_g3_dp_q3_2",
+        "seed": 118,
+        "formatter": "read_mcq",
+        "question_text": "Look at the table. Which is greater: basketball or volleyball?",
+        "correct_answer": "B",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "FillInTable",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "swimming",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "volleyball",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "basketball",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "running",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "volleyball",
+        "hints": [
+          "Look at the table carefully.",
+          "Read the rows for 'basketball' and 'volleyball'.",
+          "Compare the two values."
+        ],
+        "visual_type": "FillInTable",
+        "visual_payload": {
+          "columns": [
+            "Category",
+            "Value"
+          ],
+          "rows": [
+            [
+              "basketball",
+              10
+            ],
+            [
+              "volleyball",
+              60
+            ],
+            [
+              "swimming",
+              30
+            ],
+            [
+              "running",
+              25
+            ]
+          ],
+          "is_read_mode": true
+        },
+        "visual_render": {
+          "visual_type": "FillInTable",
+          "renderer_input_digest": "6c1d9e6aa03e226c2a9e8f54bd7ac3e9655b56a0adf613b3f94751daaa09f7ef",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "FillInTable",
+            "element_count": 25,
+            "svg_count": 0,
+            "table_row_count": 5,
+            "table_cell_count": 10,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "Category",
+              "Value",
+              "basketball",
+              "10",
+              "volleyball",
+              "60",
+              "swimming",
+              "30",
+              "running",
+              "25",
+              "Fill in the missing values in the table"
+            ],
+            "distinct_colours": [
+              "hsl(var(--card-bg)",
+              "hsl(var(--border-color)",
+              "hsl(var(--text)",
+              "hsl(var(--primary)",
+              "hsl(var(--text-muted)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "4ac400c00acb12725fb5",
+        "replay_digest": "ea5becdc97c1956bd916a87b64b7a0bde538d048cac85a1164c6ea8db686a9f3"
+      },
+      {
+        "node_id": "mat_g3_dp_q3_2",
+        "seed": 127,
+        "formatter": "read_mcq",
+        "question_text": "Look at the vertical bar graph. Which category has the least?",
+        "correct_answer": "C",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "BarChart",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "dogs",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "birds",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "cats",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "fish",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "cats",
+        "hints": [
+          "Look at the bar graph carefully.",
+          "The scale on the vertical (y-axis) goes up by 5.",
+          "Look for the shortest bar."
+        ],
+        "visual_type": "BarChart",
+        "visual_payload": {
+          "categories": [
+            "cats",
+            "dogs",
+            "birds",
+            "fish"
+          ],
+          "values": [
+            0,
+            5,
+            25,
+            20
+          ],
+          "scale": 5,
+          "orientation": "vertical",
+          "labels": [
+            "cats",
+            "dogs",
+            "birds",
+            "fish"
+          ],
+          "max_y": 30,
+          "is_read_mode": true
+        },
+        "visual_render": {
+          "visual_type": "BarChart",
+          "renderer_input_digest": "b78999e418657df7b34647cc56092fd55e0730e72f02006faf755e5c5572c7f6",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "BarChart",
+            "element_count": 58,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 4,
+            "text_labels": [
+              "Read each value from the graph and enter them below.",
+              "0",
+              "5",
+              "10",
+              "15",
+              "20",
+              "25",
+              "30",
+              "cats",
+              "dogs",
+              "birds",
+              "fish",
+              "Your answers:",
+              "cats:",
+              "dogs:",
+              "birds:",
+              "fish:"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--card-bg)",
+              "hsl(var(--border-color)",
+              "hsl(var(--primary)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "86c8e743fb0bc10ed85a",
+        "replay_digest": "c72c6d524820f00fd1c2fde216ddcd8a8658a603ec5696d669976dda084fe4d5"
+      },
+      {
+        "node_id": "mat_g3_dp_q3_2",
+        "seed": 410962397,
+        "formatter": "read_mcq",
+        "question_text": "Look at the vertical bar graph. What is the difference between Grade 3 and Grade 2?",
+        "correct_answer": "D",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "BarChart",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 25,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 0,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 15,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 20,
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 20,
+        "hints": [
+          "Look at the bar graph carefully.",
+          "The scale on the vertical (y-axis) goes up by 5.",
+          "Read the bar for 'Grade 3' and the bar for 'Grade 2'.",
+          "Subtract the smaller value from the larger value."
+        ],
+        "visual_type": "BarChart",
+        "visual_payload": {
+          "categories": [
+            "Grade 1",
+            "Grade 2",
+            "Grade 3",
+            "Grade 4"
+          ],
+          "values": [
+            65,
+            65,
+            45,
+            55
+          ],
+          "scale": 5,
+          "orientation": "vertical",
+          "labels": [
+            "Grade 1",
+            "Grade 2",
+            "Grade 3",
+            "Grade 4"
+          ],
+          "max_y": 70,
+          "is_read_mode": true
+        },
+        "visual_render": {
+          "visual_type": "BarChart",
+          "renderer_input_digest": "33621b8e85f8d4b9947d678e7fd4a2240e20425e2ac38e8b1d81c30f039ffcfa",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "BarChart",
+            "element_count": 74,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 4,
+            "text_labels": [
+              "Read each value from the graph and enter them below.",
+              "0",
+              "5",
+              "10",
+              "15",
+              "20",
+              "25",
+              "30",
+              "35",
+              "40",
+              "45",
+              "50",
+              "55",
+              "60",
+              "65",
+              "70",
+              "Grade 1",
+              "Grade 2",
+              "Grade 3",
+              "Grade 4",
+              "Your answers:",
+              "Grade 1:",
+              "Grade 2:",
+              "Grade 3:",
+              "Grade 4:"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--card-bg)",
+              "hsl(var(--border-color)",
+              "hsl(var(--primary)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "1cd265be5d286f4b249a",
+        "replay_digest": "be8b8d32c13236cfec34a3b257e585411c37d8d3552d319b9536e3f410d2008f"
+      },
+      {
+        "node_id": "mat_g3_dp_q3_2",
+        "seed": 412128445,
+        "formatter": "read_mcq",
+        "question_text": "Look at the horizontal bar graph. Which is greater: Science or Math?",
+        "correct_answer": "C",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "BarChart",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "Art",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "Science",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "Math",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "English",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "Math",
+        "hints": [
+          "Look at the bar graph carefully.",
+          "The scale on the horizontal (x-axis) goes up by 5.",
+          "Read the bar for 'Science' and the bar for 'Math'.",
+          "Compare: which bar is taller (or longer)?"
+        ],
+        "visual_type": "BarChart",
+        "visual_payload": {
+          "categories": [
+            "Math",
+            "Science",
+            "English",
+            "Art"
+          ],
+          "values": [
+            50,
+            35,
+            20,
+            10
+          ],
+          "scale": 5,
+          "orientation": "horizontal",
+          "labels": [
+            "Math",
+            "Science",
+            "English",
+            "Art"
+          ],
+          "max_y": 55,
+          "is_read_mode": true
+        },
+        "visual_render": {
+          "visual_type": "BarChart",
+          "renderer_input_digest": "9047ca23f6fb8a72975e82fb31eaa088a469aae6e01bf64ce8414ae1b8e655d2",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "BarChart",
+            "element_count": 68,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 4,
+            "text_labels": [
+              "Read each value from the graph and enter them below.",
+              "0",
+              "5",
+              "10",
+              "15",
+              "20",
+              "25",
+              "30",
+              "35",
+              "40",
+              "45",
+              "50",
+              "55",
+              "Math",
+              "Science",
+              "English",
+              "Art",
+              "Your answers:",
+              "Math:",
+              "Science:",
+              "English:",
+              "Art:"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--card-bg)",
+              "hsl(var(--border-color)",
+              "hsl(var(--primary)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "3c1975b715ca220b1934",
+        "replay_digest": "83a2f4875e0c039a670c0bc3d9583084d89f6cac22ce7b524ca321794b630595"
+      },
+      {
+        "node_id": "mat_g3_dp_q3_2",
+        "seed": 1521125265,
+        "formatter": "read_mcq",
+        "question_text": "Look at the vertical bar graph. What is the total value of all categories?",
+        "correct_answer": "B",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "BarChart",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 235,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 200,
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 198,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 205,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 200,
+        "hints": [
+          "Look at the bar graph carefully.",
+          "The scale on the vertical (y-axis) goes up by 5.",
+          "Read each bar's value, then add them all together."
+        ],
+        "visual_type": "BarChart",
+        "visual_payload": {
+          "categories": [
+            "cats",
+            "dogs",
+            "birds",
+            "fish"
+          ],
+          "values": [
+            35,
+            70,
+            65,
+            30
+          ],
+          "scale": 5,
+          "orientation": "vertical",
+          "labels": [
+            "cats",
+            "dogs",
+            "birds",
+            "fish"
+          ],
+          "max_y": 75,
+          "is_read_mode": true
+        },
+        "visual_render": {
+          "visual_type": "BarChart",
+          "renderer_input_digest": "ebcb076a7cbcf0e450dfb39c2a828e2806c35defc20c9514c5f9c924e62decb6",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "BarChart",
+            "element_count": 76,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 4,
+            "text_labels": [
+              "Read each value from the graph and enter them below.",
+              "0",
+              "5",
+              "10",
+              "15",
+              "20",
+              "25",
+              "30",
+              "35",
+              "40",
+              "45",
+              "50",
+              "55",
+              "60",
+              "65",
+              "70",
+              "75",
+              "cats",
+              "dogs",
+              "birds",
+              "fish",
+              "Your answers:",
+              "cats:",
+              "dogs:",
+              "birds:",
+              "fish:"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--card-bg)",
+              "hsl(var(--border-color)",
+              "hsl(var(--primary)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "0ce2eafef457f56f1bd7",
+        "replay_digest": "bf8e47e89de2e084de1faa17019ac4fb6bdc7ac58da74a1eebf97d781958f27e"
+      },
+      {
+        "node_id": "mat_g3_dp_q3_2",
+        "seed": 1521161028,
+        "formatter": "read_mcq",
+        "question_text": "Look at the vertical bar graph. Which is greater: Thursday or Wednesday?",
+        "correct_answer": "C",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "BarChart",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "Thursday",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "Monday",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "Wednesday",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "Tuesday",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "Wednesday",
+        "hints": [
+          "Look at the bar graph carefully.",
+          "The scale on the vertical (y-axis) goes up by 5.",
+          "Read the bar for 'Thursday' and the bar for 'Wednesday'.",
+          "Compare: which bar is taller (or longer)?"
+        ],
+        "visual_type": "BarChart",
+        "visual_payload": {
+          "categories": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday"
+          ],
+          "values": [
+            50,
+            60,
+            50,
+            45
+          ],
+          "scale": 5,
+          "orientation": "vertical",
+          "labels": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday"
+          ],
+          "max_y": 65,
+          "is_read_mode": true
+        },
+        "visual_render": {
+          "visual_type": "BarChart",
+          "renderer_input_digest": "d752439dffa0ec1fce8e2eb61e1f8ed1dc35532da4b96393ecf973bc90b77606",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "BarChart",
+            "element_count": 72,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 4,
+            "text_labels": [
+              "Read each value from the graph and enter them below.",
+              "0",
+              "5",
+              "10",
+              "15",
+              "20",
+              "25",
+              "30",
+              "35",
+              "40",
+              "45",
+              "50",
+              "55",
+              "60",
+              "65",
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Your answers:",
+              "Monday:",
+              "Tuesday:",
+              "Wednesday:",
+              "Thursday:"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--card-bg)",
+              "hsl(var(--border-color)",
+              "hsl(var(--primary)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "7db389c437e2c9091356",
+        "replay_digest": "632f1b67413df7cbdcc37d212470097a64b70d595d9b3959587e7d916cecfe13"
+      },
+      {
+        "node_id": "mat_g3_dp_q3_2",
+        "seed": 2727294851,
+        "formatter": "read_mcq",
+        "question_text": "Look at the table. Which is greater: roses or sunflowers?",
+        "correct_answer": "A",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "FillInTable",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "sunflowers",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "daisies",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "tulips",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "roses",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "sunflowers",
+        "hints": [
+          "Look at the table carefully.",
+          "Read the rows for 'roses' and 'sunflowers'.",
+          "Compare the two values."
+        ],
+        "visual_type": "FillInTable",
+        "visual_payload": {
+          "columns": [
+            "Category",
+            "Value"
+          ],
+          "rows": [
+            [
+              "roses",
+              15
+            ],
+            [
+              "sunflowers",
+              55
+            ],
+            [
+              "tulips",
+              35
+            ],
+            [
+              "daisies",
+              20
+            ]
+          ],
+          "is_read_mode": true
+        },
+        "visual_render": {
+          "visual_type": "FillInTable",
+          "renderer_input_digest": "8cc6dd393336b5c7ba844dbcf653df1326d9dd2ef91bdb03fea2ee2c48324b7c",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "FillInTable",
+            "element_count": 25,
+            "svg_count": 0,
+            "table_row_count": 5,
+            "table_cell_count": 10,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "Category",
+              "Value",
+              "roses",
+              "15",
+              "sunflowers",
+              "55",
+              "tulips",
+              "35",
+              "daisies",
+              "20",
+              "Fill in the missing values in the table"
+            ],
+            "distinct_colours": [
+              "hsl(var(--card-bg)",
+              "hsl(var(--border-color)",
+              "hsl(var(--text)",
+              "hsl(var(--primary)",
+              "hsl(var(--text-muted)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "7688e80edf37f10c5399",
+        "replay_digest": "e5bf54cbfbef6ea9b49ba41536cd2d438ca042c6822ea2b4a82f4b7c8e27bc7a"
+      },
+      {
+        "node_id": "mat_g3_dp_q3_2",
+        "seed": 2729453747,
+        "formatter": "read_mcq",
+        "question_text": "Look at the table. What is the difference between Art and Science?",
+        "correct_answer": "A",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "FillInTable",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 25,
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 0,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 23,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 40,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 25,
+        "hints": [
+          "Look at the table carefully.",
+          "Read the rows for 'Art' and 'Science'.",
+          "Subtract the smaller value from the larger value."
+        ],
+        "visual_type": "FillInTable",
+        "visual_payload": {
+          "columns": [
+            "Category",
+            "Value"
+          ],
+          "rows": [
+            [
+              "Math",
+              20
+            ],
+            [
+              "Science",
+              45
+            ],
+            [
+              "English",
+              60
+            ],
+            [
+              "Art",
+              20
+            ]
+          ],
+          "is_read_mode": true
+        },
+        "visual_render": {
+          "visual_type": "FillInTable",
+          "renderer_input_digest": "72409547e896e558129e1c2b5189e7d1c6fcb0eb581f0e921361df26f5dd51cd",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "FillInTable",
+            "element_count": 25,
+            "svg_count": 0,
+            "table_row_count": 5,
+            "table_cell_count": 10,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "Category",
+              "Value",
+              "Math",
+              "20",
+              "Science",
+              "45",
+              "English",
+              "60",
+              "Art",
+              "20",
+              "Fill in the missing values in the table"
+            ],
+            "distinct_colours": [
+              "hsl(var(--card-bg)",
+              "hsl(var(--border-color)",
+              "hsl(var(--text)",
+              "hsl(var(--primary)",
+              "hsl(var(--text-muted)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "9771f70ff6b698cdbc89",
+        "replay_digest": "4957184e532d4820d3a8b5d5dadba3e2e073fe5c128e2ad7650a9fff93a7f02f"
+      },
+      {
+        "node_id": "mat_g3_dp_q3_2",
+        "seed": 4133810617,
+        "formatter": "read_mcq",
+        "question_text": "Look at the horizontal bar graph. Which is greater: Grade 3 or Grade 4?",
+        "correct_answer": "C",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "BarChart",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "Grade 2",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "Grade 1",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "Grade 4",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "Grade 3",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "Grade 4",
+        "hints": [
+          "Look at the bar graph carefully.",
+          "The scale on the horizontal (x-axis) goes up by 5.",
+          "Read the bar for 'Grade 3' and the bar for 'Grade 4'.",
+          "Compare: which bar is taller (or longer)?"
+        ],
+        "visual_type": "BarChart",
+        "visual_payload": {
+          "categories": [
+            "Grade 1",
+            "Grade 2",
+            "Grade 3",
+            "Grade 4"
+          ],
+          "values": [
+            40,
+            20,
+            20,
+            65
+          ],
+          "scale": 5,
+          "orientation": "horizontal",
+          "labels": [
+            "Grade 1",
+            "Grade 2",
+            "Grade 3",
+            "Grade 4"
+          ],
+          "max_y": 70,
+          "is_read_mode": true
+        },
+        "visual_render": {
+          "visual_type": "BarChart",
+          "renderer_input_digest": "858d27587494a45680effb7b1e5495be58b15f396729ea1f0c456035928da351",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "BarChart",
+            "element_count": 74,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 4,
+            "text_labels": [
+              "Read each value from the graph and enter them below.",
+              "0",
+              "5",
+              "10",
+              "15",
+              "20",
+              "25",
+              "30",
+              "35",
+              "40",
+              "45",
+              "50",
+              "55",
+              "60",
+              "65",
+              "70",
+              "Grade 1",
+              "Grade 2",
+              "Grade 3",
+              "Grade 4",
+              "Your answers:",
+              "Grade 1:",
+              "Grade 2:",
+              "Grade 3:",
+              "Grade 4:"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--card-bg)",
+              "hsl(var(--border-color)",
+              "hsl(var(--primary)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "def6eb4e57e24ffb208a",
+        "replay_digest": "e6524ca6d07c1d634b98ea6d22d9f13128611ca5e61c7988f2af4e0569afc227"
+      },
+      {
+        "node_id": "mat_g3_dp_q3_2",
+        "seed": 4134770757,
+        "formatter": "read_mcq",
+        "question_text": "Look at the horizontal bar graph. What is the value for fish?",
+        "correct_answer": "D",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "BarChart",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 20,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 31,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 4,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 5,
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 5,
+        "hints": [
+          "Look at the bar graph carefully.",
+          "The scale on the horizontal (x-axis) goes up by 5.",
+          "Find the bar for 'fish' and read across to the scale.",
+          "Answer: 5"
+        ],
+        "visual_type": "BarChart",
+        "visual_payload": {
+          "categories": [
+            "cats",
+            "dogs",
+            "birds",
+            "fish"
+          ],
+          "values": [
+            45,
+            55,
+            20,
+            5
+          ],
+          "scale": 5,
+          "orientation": "horizontal",
+          "labels": [
+            "cats",
+            "dogs",
+            "birds",
+            "fish"
+          ],
+          "max_y": 60,
+          "is_read_mode": true,
+          "ask_category": "fish",
+          "ask_series": null
+        },
+        "visual_render": {
+          "visual_type": "BarChart",
+          "renderer_input_digest": "6c1ccb71bb2754486b2c0beb759c23018cad440b4ad7b0e8073857a756c69259",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "BarChart",
+            "element_count": 60,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 1,
+            "text_labels": [
+              "Read the value for \"fish\" from the graph and enter it below.",
+              "0",
+              "5",
+              "10",
+              "15",
+              "20",
+              "25",
+              "30",
+              "35",
+              "40",
+              "45",
+              "50",
+              "55",
+              "60",
+              "cats",
+              "dogs",
+              "birds",
+              "fish",
+              "Your answer:",
+              "fish:"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--card-bg)",
+              "hsl(var(--border-color)",
+              "hsl(var(--primary)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "773cf9db9fd7363be125",
+        "replay_digest": "681184184a3528fc5dc8df8e1268dd3e4edda6d7cc22f171e3cc8a7f1549da5b"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "tables",
+      "node_id": "mat_g3_dp_q3_2",
+      "clause": "tables",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        2727294851,
+        2729453747
+      ],
+      "reasoning": "The provider-designated stratum_001 seeds (2727294851, 2729453747) both render FillInTable visuals. Seed 2727294851 presents a table with rows labeled Category and Value showing roses/sunflowers/tulips/daisies. Seed 2729453747 presents a table with rows labeled Category and Value showing Math/Science/English/Art. Both tables fully satisfy the tables clause from the competency.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "horizontal",
+      "node_id": "mat_g3_dp_q3_2",
+      "clause": "horizontal",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        4133810617,
+        4134770757
+      ],
+      "reasoning": "The provider-designated stratum_001 seeds (4133810617, 4134770757) both render horizontal BarChart visuals. Seed 4133810617 displays a horizontal bar graph labeled with Grade 1/Grade 2/Grade 3/Grade 4 categories. Seed 4134770757 displays a horizontal bar graph with cats/dogs/birds/fish categories. Both concretely exhibit horizontal bar graph interpretation.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "vertical",
+      "node_id": "mat_g3_dp_q3_2",
+      "clause": "vertical",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        1521125265,
+        1521161028
+      ],
+      "reasoning": "The provider-designated stratum_001 seeds (1521125265, 1521161028) both render vertical BarChart visuals. Seed 1521125265 displays a vertical bar graph for cats/dogs/birds/fish. Seed 1521161028 displays a vertical bar graph for Monday/Tuesday/Wednesday/Thursday. Both clearly demonstrate vertical bar graph interpretation, satisfying the vertical clause requirement.",
+      "action_taken": "Left registered; no change."
+    }
+  ],
+  "supersedes": "confirming judge (ruling 20) for batch412: independent blind Haiku Attester on the same packet file; filed for the 3 verdict(s) that clear or create a CONTRADICTED finding relative to the pre-Phase-3 winner; the confirming verdict stands"
+}
