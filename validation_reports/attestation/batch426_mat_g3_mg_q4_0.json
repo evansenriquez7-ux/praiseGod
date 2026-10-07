@@ -1,0 +1,721 @@
+{
+  "batch": "batch426_mat_g3_mg_q4_0",
+  "attested_at": "2026-10-07T18:01:03Z",
+  "attested_by": "blind-attester-claude-haiku-4.5-default-p3-mat_g3_mg_q4_0-20261008",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose, default effort; told to Read only scratchpad/p3/d33/prompt.txt (section A of dispatch_instructions_20261007.md followed by the verbatim render_prompt_block output of the whole node packet; directory named opaquely, no node id, no key file beside it; delivery by file approved by the owner 2026-10-08) and Write only scratchpad/p3/d33/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "Harness usage record (subagent transcript): 2 tool uses excluding the final hand-back; by name: 1 Read, 1 Write; paths other than this dispatch's own prompt.txt/verdicts.json: none"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g3_mg_q4_0",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127,
+      3845204609,
+      3845899155
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g3_mg_q4_0",
+        "seed": 11,
+        "formatter": "mcq",
+        "question_text": "A rectangle undergoes a two-direction slide: 4 units right and 2 units up. Does the orientation or shape of the rectangle change?",
+        "correct_answer": "No, only its position changes.",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "Yes, it becomes a square.",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "No, only its position changes.",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "Yes, it turns upside down.",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "Yes, it gets smaller.",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "No, only its position changes.",
+        "hints": [
+          "A slide (translation) moves a shape without turning or flipping it.",
+          "The shape looks the same — only its position changes.",
+          "Count how many spaces it moved in each direction."
+        ],
+        "sample_id": "8f9b9fcffa56d2063598",
+        "replay_digest": "ff999c801b4ede1f5b1a5441fd73873eaab4c337cf73577f267e90303edf8cc6"
+      },
+      {
+        "node_id": "mat_g3_mg_q4_0",
+        "seed": 23,
+        "formatter": "mcq",
+        "question_text": "A circle at grid coordinate (2, 4) slides 5 spaces right and 1 space down. At what grid point will the circle be drawn?",
+        "correct_answer": "(7, 3)",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "(7, 3)",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "(2, 3)",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "(3, 9)",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "(7, 5)",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "(7, 3)",
+        "hints": [
+          "A slide (translation) moves a shape without turning or flipping it.",
+          "The shape looks the same — only its position changes.",
+          "Count how many spaces it moved in each direction."
+        ],
+        "sample_id": "4053192e48e524802817",
+        "replay_digest": "ba55a2d18306d334358582f6ecb7d30569e991275e1a0fc5412488f4fe952b2f"
+      },
+      {
+        "node_id": "mat_g3_mg_q4_0",
+        "seed": 42,
+        "formatter": "mcq",
+        "question_text": "A shape slides 5 spaces to the left and 2 spaces down. What type of movement is this?",
+        "correct_answer": "two-direction slide (translation)",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "one-direction slide",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "two-direction slide (translation)",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "flip (reflection)",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "turn (rotation)",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "two-direction slide (translation)",
+        "hints": [
+          "A slide (translation) moves a shape without turning or flipping it.",
+          "The shape looks the same — only its position changes.",
+          "Count how many spaces it moved in each direction."
+        ],
+        "sample_id": "d0913bb21df9831a10a4",
+        "replay_digest": "9e0f2c92d52ed6fcaa8f49d101d2663855eafc59792088b442e107a76463fae4"
+      },
+      {
+        "node_id": "mat_g3_mg_q4_0",
+        "seed": 57,
+        "formatter": "mcq",
+        "question_text": "A shape moves 2 spaces right AND 3 spaces up. How many directions did it slide?",
+        "correct_answer": "2",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "3",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "1",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "2",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "5",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "2",
+        "hints": [
+          "A slide (translation) moves a shape without turning or flipping it.",
+          "The shape looks the same — only its position changes.",
+          "Count how many spaces it moved in each direction."
+        ],
+        "sample_id": "25d75a597f22783e4489",
+        "replay_digest": "c84fb998a5de0a183a0ad0138ae982981adba5b136f6b8bfc0b73c7b0daddd15"
+      },
+      {
+        "node_id": "mat_g3_mg_q4_0",
+        "seed": 64,
+        "formatter": "mcq",
+        "question_text": "A rectangle undergoes a two-direction slide: 4 units right and 2 units up. Does the orientation or shape of the rectangle change?",
+        "correct_answer": "No, only its position changes.",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "Yes, it turns upside down.",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "Yes, it becomes a square.",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "Yes, it gets smaller.",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "No, only its position changes.",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "No, only its position changes.",
+        "hints": [
+          "A slide (translation) moves a shape without turning or flipping it.",
+          "The shape looks the same — only its position changes.",
+          "Count how many spaces it moved in each direction."
+        ],
+        "sample_id": "54a74e5dc1e82d9df659",
+        "replay_digest": "ee9cd78266ed20abd6ef9dbdc1f7b647ce29f81bd22e8decf98618a5d830e708"
+      },
+      {
+        "node_id": "mat_g3_mg_q4_0",
+        "seed": 78,
+        "formatter": "mcq",
+        "question_text": "A shape starts at position (5, 5). It undergoes a two-direction slide: 2 spaces left and 3 spaces down. What is the new position?",
+        "correct_answer": "(3, 2)",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "(7, 8)",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "(3, 2)",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "(5, 2)",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "(3, 5)",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "(3, 2)",
+        "hints": [
+          "A slide (translation) moves a shape without turning or flipping it.",
+          "The shape looks the same — only its position changes.",
+          "Count how many spaces it moved in each direction."
+        ],
+        "sample_id": "a0479db5ab9a364d27ca",
+        "replay_digest": "08ea946fc2679477e84f26ad0640e2ad5b71720c954ac0b4eae54cc390fc608c"
+      },
+      {
+        "node_id": "mat_g3_mg_q4_0",
+        "seed": 91,
+        "formatter": "mcq",
+        "question_text": "A shape slides 5 spaces to the left and 2 spaces down. What type of movement is this?",
+        "correct_answer": "two-direction slide (translation)",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "turn (rotation)",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "flip (reflection)",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "one-direction slide",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "two-direction slide (translation)",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "two-direction slide (translation)",
+        "hints": [
+          "A slide (translation) moves a shape without turning or flipping it.",
+          "The shape looks the same — only its position changes.",
+          "Count how many spaces it moved in each direction."
+        ],
+        "sample_id": "060289bd40ee27676b54",
+        "replay_digest": "838b5d6b86c66d769056ba1f0c94119bc9c17682b20a9bfe07ce4ac54554dd7c"
+      },
+      {
+        "node_id": "mat_g3_mg_q4_0",
+        "seed": 103,
+        "formatter": "mcq",
+        "question_text": "A rectangle undergoes a two-direction slide: 4 units right and 2 units up. Does the orientation or shape of the rectangle change?",
+        "correct_answer": "No, only its position changes.",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "No, only its position changes.",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "Yes, it gets smaller.",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "Yes, it turns upside down.",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "Yes, it becomes a square.",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "No, only its position changes.",
+        "hints": [
+          "A slide (translation) moves a shape without turning or flipping it.",
+          "The shape looks the same — only its position changes.",
+          "Count how many spaces it moved in each direction."
+        ],
+        "sample_id": "541873c8e535c6e2bf29",
+        "replay_digest": "ab8a641e7f6a0799438461f2f7ab84c044fc1ce0bd7fdb203bad92f174831af9"
+      },
+      {
+        "node_id": "mat_g3_mg_q4_0",
+        "seed": 118,
+        "formatter": "mcq",
+        "question_text": "A triangle at grid mark (1, 2) slides 3 units to the right and 4 units up. Where is its new position?",
+        "correct_answer": "(4, 6)",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "(4, 2)",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "(4, 6)",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "(3, 4)",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "(1, 6)",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "(4, 6)",
+        "hints": [
+          "A slide (translation) moves a shape without turning or flipping it.",
+          "The shape looks the same — only its position changes.",
+          "Count how many spaces it moved in each direction."
+        ],
+        "sample_id": "8ec531d146c965c97c44",
+        "replay_digest": "915a0b42cbaabe561001b803712305cbe072dc053e9d45cd5f57b3b3d29eea85"
+      },
+      {
+        "node_id": "mat_g3_mg_q4_0",
+        "seed": 127,
+        "formatter": "mcq",
+        "question_text": "A shape moves 2 spaces right AND 3 spaces up. How many directions did it slide?",
+        "correct_answer": "2",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "3",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "1",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "2",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "5",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "2",
+        "hints": [
+          "A slide (translation) moves a shape without turning or flipping it.",
+          "The shape looks the same — only its position changes.",
+          "Count how many spaces it moved in each direction."
+        ],
+        "sample_id": "3a9590749a8cd2ce99d0",
+        "replay_digest": "7b45b51cdefd12385d4ce895caa60eb35fcbdfab42ce430f42f44001241d20a4"
+      },
+      {
+        "node_id": "mat_g3_mg_q4_0",
+        "seed": 3845204609,
+        "formatter": "mcq",
+        "question_text": "A point moves from (1, 1) to (4, 5). How many units right and how many units up did it slide?",
+        "correct_answer": "3 units right and 4 units up",
+        "requested": {
+          "difficulty_profile": {
+            "concept": "slide_translation"
+          },
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "3 units right and 5 units up",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "1 unit right and 1 unit up",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "4 units right and 5 units up",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "3 units right and 4 units up",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "3 units right and 4 units up",
+        "hints": [
+          "A slide (translation) moves a shape without turning or flipping it.",
+          "The shape looks the same — only its position changes.",
+          "Count how many spaces it moved in each direction."
+        ],
+        "sample_id": "651f276c81e19948abea",
+        "replay_digest": "b124544023917cf346b2021db27b6857d61422e12804362b6150b0253fe100af"
+      },
+      {
+        "node_id": "mat_g3_mg_q4_0",
+        "seed": 3845899155,
+        "formatter": "mcq",
+        "question_text": "A rectangle undergoes a two-direction slide: 4 units right and 2 units up. Does the orientation or shape of the rectangle change?",
+        "correct_answer": "No, only its position changes.",
+        "requested": {
+          "difficulty_profile": {
+            "concept": "slide_translation"
+          },
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "No, only its position changes.",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "Yes, it becomes a square.",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "Yes, it turns upside down.",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "Yes, it gets smaller.",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "No, only its position changes.",
+        "hints": [
+          "A slide (translation) moves a shape without turning or flipping it.",
+          "The shape looks the same — only its position changes.",
+          "Count how many spaces it moved in each direction."
+        ],
+        "sample_id": "7aad50110f50e975496f",
+        "replay_digest": "f0399e3fbc646f8c063f3fb333043f03fba12136fa444cc12f7b4aaae3615945"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "describe",
+      "node_id": "mat_g3_mg_q4_0",
+      "clause": "Describe",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23
+      ],
+      "reasoning": "Seeds 11, 23, 42, 57 and others require students to describe properties of the two-direction slide: what remains unchanged (seed 11), where the shape moves (seed 23), what type of movement occurs (seed 42), how many directions (seed 57). The multiple-choice format requires students to identify and describe the correct effect of the translation.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "draw",
+      "node_id": "mat_g3_mg_q4_0",
+      "clause": "draw",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "All samples are text-only multiple-choice questions with no interactive visual interface or drawing capability. Ruling 13 states: a non-interactive item, such as a multiple-choice question about drawing, does not satisfy the draw clause. The competency requires draw but rendered items provide text selection only.",
+      "action_taken": "Phase 3 re-attestation (claude-h06-phase3-reattest-20261008), no source change: stays CONTRADICTED and is queued for a Phase 4 content batch, assigned from the measured Phase 3 queue (NEXT_AGENT_PROMPT.md section 4)."
+    },
+    {
+      "capability_id": "two_direction_multi_step_slide",
+      "node_id": "mat_g3_mg_q4_0",
+      "clause": "two-direction multi-step slide",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        3845204609,
+        3845899155
+      ],
+      "reasoning": "Seeds 11, 42, 57, 78 explicitly name two-direction slides (4 right and 2 up, 5 left and 2 down, 2 right and 3 up, 2 left and 3 down). Seeds 23, 118 require calculating positions after two-direction movement. The stratified seeds 3845204609 and 3845899155 also address two-direction movement. Every sample addresses movement in multiple directions simultaneously.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "translation",
+      "node_id": "mat_g3_mg_q4_0",
+      "clause": "translation",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        91
+      ],
+      "reasoning": "Seeds 11, 64, 103, 3845899155 explicitly reference (or translation). Seeds 42 and 91 directly ask for the type of movement with translation as an answer option. The competency names translation as the formal term for the two-direction slide, and this terminology appears across multiple samples with stratified coverage.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "basic_shapes_and_figures",
+      "node_id": "mat_g3_mg_q4_0",
+      "clause": "basic shapes and figures",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23
+      ],
+      "reasoning": "Seeds 11, 64, 103, 3845899155 use rectangles. Seeds 23, 118 use a circle and triangle respectively. Seeds 42, 78, 91 reference generic shapes. All samples employ basic shapes as the objects undergoing translation, demonstrating this clause across the packet.",
+      "action_taken": "Left registered; no change."
+    }
+  ]
+}

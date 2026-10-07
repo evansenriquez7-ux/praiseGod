@@ -1,0 +1,1505 @@
+{
+  "batch": "batch434_mat_g3_mg_q1_4",
+  "attested_at": "2026-10-07T18:03:07Z",
+  "attested_by": "blind-attester-claude-haiku-4.5-default-p3c-mat_g3_mg_q1_4-20261008",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose, default effort; told to Read only scratchpad/p3/c_d31/prompt.txt (section A of dispatch_instructions_20261007.md followed by the verbatim render_prompt_block output of the whole node packet; directory named opaquely, no node id, no key file beside it; delivery by file approved by the owner 2026-10-08) and Write only scratchpad/p3/c_d31/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "Harness usage record (subagent transcript): 2 tool uses excluding the final hand-back; by name: 1 Read, 1 Write; paths other than this dispatch's own prompt.txt/verdicts.json: none"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g3_mg_q1_4",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127,
+      2222524738,
+      2222748288,
+      2301883636,
+      2303340528,
+      2414354617,
+      2428699598,
+      2454169124,
+      2467241086,
+      3624604009,
+      3633487155
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g3_mg_q1_4",
+        "seed": 11,
+        "formatter": "mcq",
+        "question_text": "How many endpoints does a ray have?",
+        "correct_answer": "1",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "2",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "1",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "3",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "0",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "1",
+        "hints": [
+          "A point is a dot — no length, no width.",
+          "A line segment has two endpoints and a measurable length.",
+          "A ray has one endpoint and goes on forever in one direction.",
+          "A line has no endpoints — it goes on forever in both directions."
+        ],
+        "sample_id": "b4dd30e179e5997557c4",
+        "replay_digest": "d63aa0e528b3adb2d2a4040dc7b6da7239f123d647ba60265ff7e79081b88158"
+      },
+      {
+        "node_id": "mat_g3_mg_q1_4",
+        "seed": 23,
+        "formatter": "mcq",
+        "question_text": "When drawing a line, what symbols are placed at both ends to show it extends forever in both directions?",
+        "correct_answer": "arrowheads",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "numbers",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "arrowheads",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "dots",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "endpoints",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "arrowheads",
+        "hints": [
+          "A point is a dot — no length, no width.",
+          "A line segment has two endpoints and a measurable length.",
+          "A ray has one endpoint and goes on forever in one direction.",
+          "A line has no endpoints — it goes on forever in both directions."
+        ],
+        "sample_id": "addc3e2570d5e078806a",
+        "replay_digest": "520b3de1af92ea64fc7fa8f9bc7d6786c3818a9876d6a29a55972cf7308856fe"
+      },
+      {
+        "node_id": "mat_g3_mg_q1_4",
+        "seed": 42,
+        "formatter": "mcq",
+        "question_text": "When drawing a line, what symbols are placed at both ends to show it extends forever in both directions?",
+        "correct_answer": "arrowheads",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "endpoints",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "numbers",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "arrowheads",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "dots",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "arrowheads",
+        "hints": [
+          "A point is a dot — no length, no width.",
+          "A line segment has two endpoints and a measurable length.",
+          "A ray has one endpoint and goes on forever in one direction.",
+          "A line has no endpoints — it goes on forever in both directions."
+        ],
+        "sample_id": "ac645f04890d10ec6ad2",
+        "replay_digest": "3b89fdd3f7826fdde17c6eee1972950a39bb5e82b7b6af36a3fc4766177fe3cd"
+      },
+      {
+        "node_id": "mat_g3_mg_q1_4",
+        "seed": 57,
+        "formatter": "read_mcq",
+        "question_text": "Look at the model. Which geometric figure is represented?",
+        "correct_answer": "A",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "GeometryFigure",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "line",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "line segment",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "ray",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "point",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "line",
+        "hints": [
+          "A point is a dot — no length, no width.",
+          "A line segment has two endpoints and a measurable length.",
+          "A ray has one endpoint and goes on forever in one direction.",
+          "A line has no endpoints — it goes on forever in both directions."
+        ],
+        "visual_type": "GeometryFigure",
+        "visual_payload": {
+          "kind": "line",
+          "labels": [
+            "A",
+            "B"
+          ],
+          "letter": null
+        },
+        "visual_render": {
+          "visual_type": "GeometryFigure",
+          "renderer_input_digest": "6992f5b2c436fdee573b1b20c8960ca1566bbcd8499f1c63c0b13bf7a0e6ca1b",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "GeometryFigure",
+            "element_count": 12,
+            "svg_count": 1,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "A",
+              "B"
+            ],
+            "distinct_colours": [],
+            "role_counts": {
+              "path": 1,
+              "arrowhead": 2,
+              "endpoint": 2,
+              "label": 2
+            }
+          }
+        },
+        "sample_id": "70a87546066ce16b31b7",
+        "replay_digest": "a76a5c91ea5c900a08677891ab4792b71bf0ff120086ccf323351da451d8e9fd"
+      },
+      {
+        "node_id": "mat_g3_mg_q1_4",
+        "seed": 64,
+        "formatter": "mcq",
+        "question_text": "What do we call an exact location in space with no length or width?",
+        "correct_answer": "point",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "ray",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "line",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "point",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "line segment",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "point",
+        "hints": [
+          "A point is a dot — no length, no width.",
+          "A line segment has two endpoints and a measurable length.",
+          "A ray has one endpoint and goes on forever in one direction.",
+          "A line has no endpoints — it goes on forever in both directions."
+        ],
+        "sample_id": "e5c40022c77cca0dc786",
+        "replay_digest": "c6e5a88635056207e7665f999fe5b62050a2744dcb38e2e0b365e385895f638c"
+      },
+      {
+        "node_id": "mat_g3_mg_q1_4",
+        "seed": 78,
+        "formatter": "mcq",
+        "question_text": "How many endpoints does a line have?",
+        "correct_answer": "0",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "1",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "2",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "0",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "infinite",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "0",
+        "hints": [
+          "A point is a dot — no length, no width.",
+          "A line segment has two endpoints and a measurable length.",
+          "A ray has one endpoint and goes on forever in one direction.",
+          "A line has no endpoints — it goes on forever in both directions."
+        ],
+        "sample_id": "94f754712bf3cd50a5c0",
+        "replay_digest": "7474ad33b4ebb1a2195276648dbad78f09617c8486f594986a0b85593b184c09"
+      },
+      {
+        "node_id": "mat_g3_mg_q1_4",
+        "seed": 91,
+        "formatter": "mcq",
+        "question_text": "When drawing a ray, what symbol is placed at one end to show that it extends forever in that direction?",
+        "correct_answer": "arrowhead",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "endpoint dot",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "circle",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "arrowhead",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "square",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "arrowhead",
+        "hints": [
+          "A point is a dot — no length, no width.",
+          "A line segment has two endpoints and a measurable length.",
+          "A ray has one endpoint and goes on forever in one direction.",
+          "A line has no endpoints — it goes on forever in both directions."
+        ],
+        "sample_id": "4258c0839cde5399ee18",
+        "replay_digest": "dacbdef82af5a2a5a187f788ebf8b1ab6359478f20bad8bb65f96ef329a991a2"
+      },
+      {
+        "node_id": "mat_g3_mg_q1_4",
+        "seed": 103,
+        "formatter": "mcq",
+        "question_text": "To draw a line segment measuring 4 cm, you start at the 0 cm mark on a ruler and draw until which mark?",
+        "correct_answer": "4 cm",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "10 cm",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "0 cm",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "4 cm",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "8 cm",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "4 cm",
+        "hints": [
+          "A point is a dot — no length, no width.",
+          "A line segment has two endpoints and a measurable length.",
+          "A ray has one endpoint and goes on forever in one direction.",
+          "A line has no endpoints — it goes on forever in both directions."
+        ],
+        "sample_id": "4dafd570b9c88d5928f1",
+        "replay_digest": "9c7a168e7ddee5a9e3f45903b1a2a8679cadfe81fa8e2499d1a8593aeab1620f"
+      },
+      {
+        "node_id": "mat_g3_mg_q1_4",
+        "seed": 118,
+        "formatter": "mcq",
+        "question_text": "When drawing a line, what symbols are placed at both ends to show it extends forever in both directions?",
+        "correct_answer": "arrowheads",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "endpoints",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "arrowheads",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "dots",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "numbers",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "arrowheads",
+        "hints": [
+          "A point is a dot — no length, no width.",
+          "A line segment has two endpoints and a measurable length.",
+          "A ray has one endpoint and goes on forever in one direction.",
+          "A line has no endpoints — it goes on forever in both directions."
+        ],
+        "sample_id": "fe7d47ee04e233750736",
+        "replay_digest": "bf23d9873e9d85c6f24f0522c2f28fc89c8d273e5602eafc289c4e27bac61998"
+      },
+      {
+        "node_id": "mat_g3_mg_q1_4",
+        "seed": 127,
+        "formatter": "mcq",
+        "question_text": "To draw a straight line segment between two points on paper, which tool should you use?",
+        "correct_answer": "ruler",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "set square only",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "ruler",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "clock",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "thermometer",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "ruler",
+        "hints": [
+          "A point is a dot — no length, no width.",
+          "A line segment has two endpoints and a measurable length.",
+          "A ray has one endpoint and goes on forever in one direction.",
+          "A line has no endpoints — it goes on forever in both directions."
+        ],
+        "sample_id": "d1fbe95b46d4182fd6b0",
+        "replay_digest": "9b9b9bf8a3682eed7f744c3f4ca40a7dcea3f08ab60bb29b3714f24de487b561"
+      },
+      {
+        "node_id": "mat_g3_mg_q1_4",
+        "seed": 2222524738,
+        "formatter": "read_mcq",
+        "question_text": "A beam of light starting from a flashlight and travelling outward in one direction is a real-world model of a ___.",
+        "correct_answer": "A",
+        "requested": {
+          "difficulty_profile": {
+            "task_type": "recognize_model"
+          },
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "GeometryFigure",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "ray",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "line",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "line segment",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "point",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "ray",
+        "hints": [
+          "A point is a dot — no length, no width.",
+          "A line segment has two endpoints and a measurable length.",
+          "A ray has one endpoint and goes on forever in one direction.",
+          "A line has no endpoints — it goes on forever in both directions."
+        ],
+        "visual_type": "GeometryFigure",
+        "visual_payload": {
+          "kind": "ray",
+          "labels": [
+            "A",
+            "B"
+          ],
+          "letter": null
+        },
+        "visual_render": {
+          "visual_type": "GeometryFigure",
+          "renderer_input_digest": "ca6f3466d4ebb873470118337f261617f871a3783949b343036c0ade31186a82",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "GeometryFigure",
+            "element_count": 11,
+            "svg_count": 1,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "A",
+              "B"
+            ],
+            "distinct_colours": [],
+            "role_counts": {
+              "path": 1,
+              "endpoint": 2,
+              "label": 2,
+              "arrowhead": 1
+            }
+          }
+        },
+        "sample_id": "9a4d23bb02de94192b0e",
+        "replay_digest": "c59dc3b6f3da2209dcb808ddee798384000102d34f56a5dd35f7c0220991dfa0"
+      },
+      {
+        "node_id": "mat_g3_mg_q1_4",
+        "seed": 2222748288,
+        "formatter": "read_mcq",
+        "question_text": "Look at the diagram of a triangle. Each of its straight sides with two endpoints is an example of a ___.",
+        "correct_answer": "D",
+        "requested": {
+          "difficulty_profile": {
+            "task_type": "recognize_model"
+          },
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "GeometryFigure",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "line",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "point",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "ray",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "line segment",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "line segment",
+        "hints": [
+          "A point is a dot — no length, no width.",
+          "A line segment has two endpoints and a measurable length.",
+          "A ray has one endpoint and goes on forever in one direction.",
+          "A line has no endpoints — it goes on forever in both directions."
+        ],
+        "visual_type": "GeometryFigure",
+        "visual_payload": {
+          "kind": "triangle",
+          "labels": [
+            "A",
+            "B",
+            "C"
+          ],
+          "letter": null
+        },
+        "visual_render": {
+          "visual_type": "GeometryFigure",
+          "renderer_input_digest": "56d57b65a7d0799e005d16a225d7be9b73b892f8634488a61a02c847bc0c95a4",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "GeometryFigure",
+            "element_count": 13,
+            "svg_count": 1,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "A",
+              "B",
+              "C"
+            ],
+            "distinct_colours": [],
+            "role_counts": {
+              "path": 1,
+              "endpoint": 3,
+              "label": 3
+            }
+          }
+        },
+        "sample_id": "60da8e8f0c1ac1347159",
+        "replay_digest": "7fa55cf9d17273b16112907f5cd805db46a746953881f7b9d847836baaddb67e"
+      },
+      {
+        "node_id": "mat_g3_mg_q1_4",
+        "seed": 2301883636,
+        "formatter": "read_mcq",
+        "question_text": "A beam of light starting from a flashlight and travelling outward in one direction is a real-world model of a ___.",
+        "correct_answer": "A",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "GeometryFigure",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "ray",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "line segment",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "line",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "point",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "ray",
+        "hints": [
+          "A point is a dot — no length, no width.",
+          "A line segment has two endpoints and a measurable length.",
+          "A ray has one endpoint and goes on forever in one direction.",
+          "A line has no endpoints — it goes on forever in both directions."
+        ],
+        "visual_type": "GeometryFigure",
+        "visual_payload": {
+          "kind": "ray",
+          "labels": [
+            "A",
+            "B"
+          ],
+          "letter": null
+        },
+        "visual_render": {
+          "visual_type": "GeometryFigure",
+          "renderer_input_digest": "ca6f3466d4ebb873470118337f261617f871a3783949b343036c0ade31186a82",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "GeometryFigure",
+            "element_count": 11,
+            "svg_count": 1,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "A",
+              "B"
+            ],
+            "distinct_colours": [],
+            "role_counts": {
+              "path": 1,
+              "endpoint": 2,
+              "label": 2,
+              "arrowhead": 1
+            }
+          }
+        },
+        "sample_id": "5e7a3af4de2e320fd548",
+        "replay_digest": "363085df7a12556a62d548284a5870088b7178786437481fa9c0195676758fc4"
+      },
+      {
+        "node_id": "mat_g3_mg_q1_4",
+        "seed": 2303340528,
+        "formatter": "read_mcq",
+        "question_text": "Look at the model. Which geometric figure is represented?",
+        "correct_answer": "D",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "GeometryFigure",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "line segment",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "line",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "point",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "ray",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "ray",
+        "hints": [
+          "A point is a dot — no length, no width.",
+          "A line segment has two endpoints and a measurable length.",
+          "A ray has one endpoint and goes on forever in one direction.",
+          "A line has no endpoints — it goes on forever in both directions."
+        ],
+        "visual_type": "GeometryFigure",
+        "visual_payload": {
+          "kind": "ray",
+          "labels": [
+            "A",
+            "B"
+          ],
+          "letter": null
+        },
+        "visual_render": {
+          "visual_type": "GeometryFigure",
+          "renderer_input_digest": "ca6f3466d4ebb873470118337f261617f871a3783949b343036c0ade31186a82",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "GeometryFigure",
+            "element_count": 11,
+            "svg_count": 1,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "A",
+              "B"
+            ],
+            "distinct_colours": [],
+            "role_counts": {
+              "path": 1,
+              "endpoint": 2,
+              "label": 2,
+              "arrowhead": 1
+            }
+          }
+        },
+        "sample_id": "43c733df9673e82316a6",
+        "replay_digest": "30cfc069fc4b909e7542c7f61356f2ba66e087e6b6edd0501382309649fa7ee3"
+      },
+      {
+        "node_id": "mat_g3_mg_q1_4",
+        "seed": 2414354617,
+        "formatter": "read_mcq",
+        "question_text": "Look at the model. Which geometric figure is represented?",
+        "correct_answer": "B",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "GeometryFigure",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "line segment",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "point",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "line",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "ray",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "point",
+        "hints": [
+          "A point is a dot — no length, no width.",
+          "A line segment has two endpoints and a measurable length.",
+          "A ray has one endpoint and goes on forever in one direction.",
+          "A line has no endpoints — it goes on forever in both directions."
+        ],
+        "visual_type": "GeometryFigure",
+        "visual_payload": {
+          "kind": "point",
+          "labels": [
+            "P"
+          ],
+          "letter": null
+        },
+        "visual_render": {
+          "visual_type": "GeometryFigure",
+          "renderer_input_digest": "a53dcf8460795dd612453943da8a947633eb075f48c6dd5b6a3a71ae3fc6a2d3",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "GeometryFigure",
+            "element_count": 6,
+            "svg_count": 1,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "P"
+            ],
+            "distinct_colours": [],
+            "role_counts": {
+              "endpoint": 1,
+              "label": 1
+            }
+          }
+        },
+        "sample_id": "184222af6bebe9f2cc0d",
+        "replay_digest": "90e99bfdfb555603f1d2d95f4c8b8fec1110fc13229efe7634362df698a49220"
+      },
+      {
+        "node_id": "mat_g3_mg_q1_4",
+        "seed": 2428699598,
+        "formatter": "read_mcq",
+        "question_text": "Look at the model. Which geometric figure is represented?",
+        "correct_answer": "A",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "GeometryFigure",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "point",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "line",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "line segment",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "ray",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "point",
+        "hints": [
+          "A point is a dot — no length, no width.",
+          "A line segment has two endpoints and a measurable length.",
+          "A ray has one endpoint and goes on forever in one direction.",
+          "A line has no endpoints — it goes on forever in both directions."
+        ],
+        "visual_type": "GeometryFigure",
+        "visual_payload": {
+          "kind": "point",
+          "labels": [
+            "P"
+          ],
+          "letter": null
+        },
+        "visual_render": {
+          "visual_type": "GeometryFigure",
+          "renderer_input_digest": "a53dcf8460795dd612453943da8a947633eb075f48c6dd5b6a3a71ae3fc6a2d3",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "GeometryFigure",
+            "element_count": 6,
+            "svg_count": 1,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "P"
+            ],
+            "distinct_colours": [],
+            "role_counts": {
+              "endpoint": 1,
+              "label": 1
+            }
+          }
+        },
+        "sample_id": "70ba282cf7d4769cbb1c",
+        "replay_digest": "175502ade4b3a95ec33ba0608fe102a77777f8ef70eee6c510e6ef329fbfb600"
+      },
+      {
+        "node_id": "mat_g3_mg_q1_4",
+        "seed": 2454169124,
+        "formatter": "read_mcq",
+        "question_text": "Look at the model. Which geometric figure is represented?",
+        "correct_answer": "B",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "GeometryFigure",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "ray",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "line",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "line segment",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "point",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "line",
+        "hints": [
+          "A point is a dot — no length, no width.",
+          "A line segment has two endpoints and a measurable length.",
+          "A ray has one endpoint and goes on forever in one direction.",
+          "A line has no endpoints — it goes on forever in both directions."
+        ],
+        "visual_type": "GeometryFigure",
+        "visual_payload": {
+          "kind": "line",
+          "labels": [
+            "A",
+            "B"
+          ],
+          "letter": null
+        },
+        "visual_render": {
+          "visual_type": "GeometryFigure",
+          "renderer_input_digest": "6992f5b2c436fdee573b1b20c8960ca1566bbcd8499f1c63c0b13bf7a0e6ca1b",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "GeometryFigure",
+            "element_count": 12,
+            "svg_count": 1,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "A",
+              "B"
+            ],
+            "distinct_colours": [],
+            "role_counts": {
+              "path": 1,
+              "arrowhead": 2,
+              "endpoint": 2,
+              "label": 2
+            }
+          }
+        },
+        "sample_id": "b16f94e14ce255ec4c55",
+        "replay_digest": "d1e5ac5ee97b75e50ae5283f6ee99467339b1fda4bd73377608ef5cf013d0895"
+      },
+      {
+        "node_id": "mat_g3_mg_q1_4",
+        "seed": 2467241086,
+        "formatter": "read_mcq",
+        "question_text": "Look at the model. Which geometric figure is represented?",
+        "correct_answer": "A",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "GeometryFigure",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "line",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "point",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "line segment",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "ray",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "line",
+        "hints": [
+          "A point is a dot — no length, no width.",
+          "A line segment has two endpoints and a measurable length.",
+          "A ray has one endpoint and goes on forever in one direction.",
+          "A line has no endpoints — it goes on forever in both directions."
+        ],
+        "visual_type": "GeometryFigure",
+        "visual_payload": {
+          "kind": "line",
+          "labels": [
+            "A",
+            "B"
+          ],
+          "letter": null
+        },
+        "visual_render": {
+          "visual_type": "GeometryFigure",
+          "renderer_input_digest": "6992f5b2c436fdee573b1b20c8960ca1566bbcd8499f1c63c0b13bf7a0e6ca1b",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "GeometryFigure",
+            "element_count": 12,
+            "svg_count": 1,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "A",
+              "B"
+            ],
+            "distinct_colours": [],
+            "role_counts": {
+              "path": 1,
+              "arrowhead": 2,
+              "endpoint": 2,
+              "label": 2
+            }
+          }
+        },
+        "sample_id": "a17a310aa699c7819e86",
+        "replay_digest": "9e0bc164505a2b735c46d7d85ea9f1fa3375f52eb78834b8319a59f16746cc5a"
+      },
+      {
+        "node_id": "mat_g3_mg_q1_4",
+        "seed": 3624604009,
+        "formatter": "read_mcq",
+        "question_text": "Look at the model. Which geometric figure is represented?",
+        "correct_answer": "B",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "GeometryFigure",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "line",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "line segment",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "ray",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "point",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "line segment",
+        "hints": [
+          "A point is a dot — no length, no width.",
+          "A line segment has two endpoints and a measurable length.",
+          "A ray has one endpoint and goes on forever in one direction.",
+          "A line has no endpoints — it goes on forever in both directions."
+        ],
+        "visual_type": "GeometryFigure",
+        "visual_payload": {
+          "kind": "segment",
+          "labels": [
+            "A",
+            "B"
+          ],
+          "letter": null
+        },
+        "visual_render": {
+          "visual_type": "GeometryFigure",
+          "renderer_input_digest": "e6e1f0090c917ecee46061fe25ae5339cb301ad4c6e28e9750d4af0847f81734",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "GeometryFigure",
+            "element_count": 10,
+            "svg_count": 1,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "A",
+              "B"
+            ],
+            "distinct_colours": [],
+            "role_counts": {
+              "path": 1,
+              "endpoint": 2,
+              "label": 2
+            }
+          }
+        },
+        "sample_id": "299f8e596d50658040a9",
+        "replay_digest": "d4ebc1805a186165341a05a3e62a43ed3cbcc2f29e34bb31d82521e07ee65427"
+      },
+      {
+        "node_id": "mat_g3_mg_q1_4",
+        "seed": 3633487155,
+        "formatter": "read_mcq",
+        "question_text": "Look at the model. Which geometric figure is represented?",
+        "correct_answer": "A",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "GeometryFigure",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "line segment",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "point",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "line",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "ray",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "line segment",
+        "hints": [
+          "A point is a dot — no length, no width.",
+          "A line segment has two endpoints and a measurable length.",
+          "A ray has one endpoint and goes on forever in one direction.",
+          "A line has no endpoints — it goes on forever in both directions."
+        ],
+        "visual_type": "GeometryFigure",
+        "visual_payload": {
+          "kind": "segment",
+          "labels": [
+            "A",
+            "B"
+          ],
+          "letter": null
+        },
+        "visual_render": {
+          "visual_type": "GeometryFigure",
+          "renderer_input_digest": "e6e1f0090c917ecee46061fe25ae5339cb301ad4c6e28e9750d4af0847f81734",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "GeometryFigure",
+            "element_count": 10,
+            "svg_count": 1,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "A",
+              "B"
+            ],
+            "distinct_colours": [],
+            "role_counts": {
+              "path": 1,
+              "endpoint": 2,
+              "label": 2
+            }
+          }
+        },
+        "sample_id": "95b96c074b0aae1b5428",
+        "replay_digest": "d3d6876ccefa0253c89f0d7a3bf1a4612e2d51cb6def7b82cc6155116ce83251"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "point",
+      "node_id": "mat_g3_mg_q1_4",
+      "clause": "a point",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        2414354617,
+        2428699598
+      ],
+      "reasoning": "Both stratum_001 seeds render a point as a single geometric element. Seed 2414354617 shows GeometryFigure with only endpoint and label; seed 2428699598 identical structure. Students recognize point from model, meeting ruling 19 requirement for list items sampled systematically.",
+      "action_taken": "Left registered; no change.",
+      "content_note_from_attester": "None"
+    },
+    {
+      "capability_id": "line_segment",
+      "node_id": "mat_g3_mg_q1_4",
+      "clause": "line segment",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        3624604009,
+        3633487155
+      ],
+      "reasoning": "Both stratum_001 seeds render a line segment with two endpoints but no arrowheads, shown in GeometryFigure visuals. Role counts show path with 2 endpoints only. Students identify line segment correctly from visual models meeting ruling 19 requirements for systematic sampling.",
+      "action_taken": "Left registered; no change.",
+      "content_note_from_attester": "None"
+    },
+    {
+      "capability_id": "ray",
+      "node_id": "mat_g3_mg_q1_4",
+      "clause": "ray",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        2301883636,
+        2303340528
+      ],
+      "reasoning": "Both stratum_001 seeds render a ray with distinguishing feature of single arrowhead, shown in GeometryFigure visuals. Role counts confirm path with 1 arrowhead and 2 endpoints. Students identify ray correctly from rendered models meeting ruling 19 requirements.",
+      "action_taken": "Left registered; no change.",
+      "content_note_from_attester": "None"
+    }
+  ],
+  "supersedes": "confirming judge (ruling 20) for batch423: independent blind Haiku Attester on the same packet file; filed for the 3 verdict(s) that clear or create a CONTRADICTED finding relative to the pre-Phase-3 winner; the confirming verdict stands"
+}
