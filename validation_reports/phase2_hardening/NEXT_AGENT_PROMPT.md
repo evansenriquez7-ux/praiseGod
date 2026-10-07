@@ -28,14 +28,14 @@ leave the tree CERTIFIED or honestly INTERRUPTED, with every number re-measured.
 ## 1. State at handoff (re-measured 2026-10-07; re-measure before quoting)
 
 ```
-HEAD                852a17c8, worktree clean, H-06 lock released
-tree_state          CERTIFIED at digest 878f0affe08d27d4
-run_all             NOT re-measured since 2026-10-06 (then: EXIT 1, failed=3)
+HEAD                314a745a, worktree clean, H-06 lock held by codex-h06-phase2-instrument-20261007
+tree_state          honestly INTERRUPTED; open batch intent, source changed since certified digest
+run_all             EXIT 1 on 2026-10-07 baseline, failed=3 (before Phase 2 instrument edits)
 capability_phase2   124 CONTRADICTED over 55 nodes, 0 STALE         (validate_capability --phase 2: EXIT 1)
 judgment_reviews_5  151 reviews: 78 PASS / 49 CONCERN / 24 FAIL, 0 STALE (validate_judgment --all: EXIT 1)
                     449 per-sample dimension findings on 49 nodes, plus node-level findings
 assertion_coverage_8  the 3 §6F mutations, INVALID until capability_phase2 reaches 0
-mutation corpus     198/201 DETECTED
+mutation corpus     full corpus not re-measured after edits; focused new mutation 1/1 DETECTED
 ```
 
 ---
@@ -141,6 +141,16 @@ production verb Phase 4 cannot map to rulings 3, 13 or 16, and anything in "Not 
 ---
 
 ## 4. Plan
+
+**Current checkpoint (314a745a, 2026-10-07):** Phase 0 is complete. Phase 2a has a committed,
+focused-test-proven implementation for *explicit reachable* `CAPABILITY_PROVIDERS.variants`, including
+private render evidence, deterministic seed allocation, an opaque seed map, freshness replay, a contract
+row, and mutation `attester_packet_drops_provider_variant_samples` (focused 1/1 DETECTED). It is not yet
+the ruled instrument: execution showed that skip-interval capabilities have no `variants`, while `certain`
+and `impossible` share the same broad `scenario_type` variant. Therefore the current code cannot guarantee
+two observations of every ruling-19 sibling. The batch intent remains open and the tree is honestly
+INTERRUPTED. Do not run the full chain or Phase 3 until the owner chooses whether the provider registry may
+gain attester-only observable selectors (or supplies another ground truth for those sibling strata).
 
 ### Phase 0: baseline and lock (always, about 1 h)
 

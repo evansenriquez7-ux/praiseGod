@@ -18420,3 +18420,45 @@ NAMED LIMITS:
   seeds, verdicts, set-asides, or flip-rate observations.
 - The judging model fields in historical records are unchanged. No model judged new content here;
   GPT-5 Codex performed the engineering baseline and bookkeeping only.
+
+## 2026-10-07 — Rate-limit recovery and honest Phase 2 instrument checkpoint
+
+The interrupted session was recovered without adopting any unproved state. No heavy validation process,
+mutation in-flight marker, or escaped planted mutation was present; `git diff --check` was empty. The open
+`batch` intent already named the in-progress Phase 2 instrument, so it remains open. Commit `314a745a`
+preserves the recovered work without claiming Phase 2 complete.
+
+Focused execution on the recovered bytes:
+
+```text
+$ PYTHONPATH=. .venv/bin/python -m pytest tests/unit/test_attester_packet_stratification.py tests/unit/test_attester_file.py tests/unit/test_attestation_freshness.py -q -p no:cacheprovider
+..............................                                           [100%]
+30 passed in 1.42s
+
+$ PYTHONPATH=. .venv/bin/python tests/mutation_harness.py --only attester_packet_drops_provider_variant_samples > local_only/scratch/phase2_instrument/stratification_mutation_recovery.log 2>&1
+$ mutation_rc=$?
+$ echo "EXIT $mutation_rc"
+EXIT 0
+  PASS  attester_packet_drops_provider_variant_samples provider_variant_stratification_6F
+1/1 mutations detected.
+Praise God — the verifier verifies.
+```
+
+The live packet probe also proved why this is a checkpoint rather than completion. The explicit graph
+orientation variants on `mat_g3_dp_q3_2` each rendered twice under deterministic allocation. In contrast,
+`CAPABILITY_PROVIDERS` gives `twos`, `fives`, `tens`, `twenties`, `fifties`, and `hundreds` no `variants`
+at all. It gives both `certain` and `impossible` the same broad
+`('scenario_type', 'certain_impossible')` variant, although the rendered private evidence distinguishes
+them as `probability_term = certain` and `probability_term = impossible`. The recovered implementation
+therefore proves explicit reachable provider variants, but it cannot yet guarantee ruling 19's two samples
+for every enumerated sibling.
+
+NAMED LIMITS:
+- The focused mutation proves that dropping mapped samples is caught. A full corpus has not run after the
+  source changes, so its proof does not yet satisfy the corpus pins.
+- The full re-proof chain has not started. All digest-bound artifacts are stale by design and the tree is
+  honestly INTERRUPTED with H-06 still held.
+- No Attester or reviewer was dispatched. There are no new verdicts, identities, dispatch ids, set-asides,
+  or flip-rate observations. GPT-5 Codex performed only engineering and recovery work.
+- Extending the provider registry with attester-only observable selectors would decide new machine ground
+  truth for sibling sampling. That choice is stopped at the owner boundary rather than inferred here.
