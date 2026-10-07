@@ -5,7 +5,7 @@
  "baseline_exit": 0,
  "baseline_markers_already_present": [],
  "baseline_must_not_contain": [
-  "no substring op"
+  "is not in the proof input digest"
  ],
  "command": [
   "pytest",
@@ -14,7 +14,7 @@
   "-p",
   "no:cacheprovider"
  ],
- "definition_digest": "08fb86a32f7631c9e8ed10357054df7abf6a9e281e9cdc643836b25a509f94cd",
+ "definition_digest": "b6b594b63c5063c12ff4aed5346d30e95a0d2a53c6cdd483ff504d9ce904018b",
  "detected": true,
  "diagnostic_line": "exit 1 — =================================== FAILURES ===================================",
  "environment": {
@@ -25,24 +25,24 @@
   "system": "Darwin"
  },
  "expect_output_contains": [
-  "test_tracked_classification_passes_the_gate",
-  "mat_g1_mg_q1_0/triangle condition op ['contains']"
+  "test_tracked_classification_is_a_proof_input",
+  "is not in the proof input digest"
  ],
- "expected_check": "clause_enumeration_22 (no substring op)",
- "finished_at": "2026-10-07T14:38:21+08:00",
+ "expected_check": "clause_enumeration_22 (classification is a proof input)",
+ "finished_at": "2026-10-07T14:38:19+08:00",
  "input_digest": "7fdccb8f4395bd7c83dc4fe4e6e38fbffa1967f4e4dd09329a691586f102e053",
  "mutated_paths": [
-  "validation_reports/phase2_hardening/clause_enumeration.json"
+  "backend/app/practice_gen/validation/mutation_proof.py"
  ],
- "mutation": "clause_enumeration_substring_condition",
+ "mutation": "clause_enumeration_outside_proof_inputs",
  "observed_markers": {
-  "mat_g1_mg_q1_0/triangle condition op ['contains']": true,
-  "test_tracked_classification_passes_the_gate": true
+  "is not in the proof input digest": true,
+  "test_tracked_classification_is_a_proof_input": true
  },
  "paths_outside_input_set": [],
  "phase1_admissible": true,
  "planted_exit": 1,
  "restored_clean": true,
  "schema_version": 1,
- "started_at": "2026-10-07T14:38:19+08:00"
+ "started_at": "2026-10-07T14:38:17+08:00"
 }

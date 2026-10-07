@@ -5240,6 +5240,28 @@ MUTATIONS: List[Mutation] = [
         expect_output_contains=["test_needs_instrumentation_member_refuses_the_node"],
         baseline_must_not_contain=["test_needs_instrumentation_member_refuses_the_node"],
     ),
+    Mutation(
+        name="clause_enumeration_outside_proof_inputs",
+        asserts=["attester_clause_enumeration"],
+        description=(
+            "Drop the clause classification from mutation_proof.INPUT_FILES. Found on "
+            "2026-10-07 by reading a filed proof: the three mutations that plant into the "
+            "file were recorded phase1_admissible=false, and an edit to the classification "
+            "staled no proof, because validation_reports/ is otherwise harness OUTPUT."
+        ),
+        edits={
+            "backend/app/practice_gen/validation/mutation_proof.py": (
+                '    "validation_reports/phase2_hardening/clause_enumeration.json",\n)\n',
+                ")\n",
+            )
+        },
+        command=["pytest", "tests/unit/test_clause_enumeration.py", "-q",
+                 "-p", "no:cacheprovider"],
+        expected_check="clause_enumeration_22 (classification is a proof input)",
+        expect_output_contains=["test_tracked_classification_is_a_proof_input",
+                                "is not in the proof input digest"],
+        baseline_must_not_contain=["is not in the proof input digest"],
+    ),
 ]
 
 # The templated-review mutation cannot be a literal find/replace: each review's

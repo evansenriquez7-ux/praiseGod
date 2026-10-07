@@ -23,6 +23,15 @@ def test_tracked_classification_passes_the_gate():
     assert errors == [], "\n".join(errors)
 
 
+def test_tracked_classification_is_a_proof_input():
+    """Mutations plant into this file; outside the digest their proofs are inadmissible."""
+    from backend.app.practice_gen.validation import mutation_proof as MP
+
+    rel = CE.PATH.relative_to(MP._REPO_ROOT).as_posix()
+    assert rel in MP.input_manifest(), f"{CE.LABEL}: {rel} is not in the proof input digest"
+    assert MP.paths_outside_input_set([rel]) == []
+
+
 # --------------------------------------------------------------------------- synthetic
 
 _COMPETENCY = "Count by 2s and 5s up to 100."

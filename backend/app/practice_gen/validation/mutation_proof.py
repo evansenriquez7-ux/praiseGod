@@ -178,6 +178,12 @@ INPUT_FILES: Tuple[str, ...] = (
     # judgment/ + attestation/ (agent-authored corpora Phase 1 may not read at all --
     # that exclusion is what `phase1_admissible` reports on rather than hides).
     "validation_reports/check_coverage_baseline.json",
+    # Owner ruling 22's clause classification (2026-10-07). An INPUT for the same reason:
+    # `tests/attester_packets.py` builds every Attester packet from it and
+    # `attester_clause_enumeration` gates it, and three mutations plant into it. Before it
+    # was listed, those three proofs were filed `phase1_admissible: false` and an edit to
+    # the classification staled nothing.
+    "validation_reports/phase2_hardening/clause_enumeration.json",
 )
 
 # Named one by one. A broad prefix here is how a consumed fixture gets silently omitted.
