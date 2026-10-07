@@ -330,7 +330,21 @@ def test_attestation_verdict_must_be_binary():
         bad.unlink(missing_ok=True)
 
 
-def test_attestation_goes_stale_when_content_drifts():
+def _attestation_copy(tmp_path, monkeypatch):
+    """Point §6F at a COPY of the attestation corpus for a test that rewrites a record.
+
+    These tests used to rewrite a live filed record and restore it in `finally`, so a run
+    killed between the two left a corrupted record in the evidence corpus.
+    """
+    import shutil
+
+    copy = tmp_path / "attestation"
+    shutil.copytree(VC._ATTESTATION_DIR, copy)
+    monkeypatch.setattr(VC, "_ATTESTATION_DIR", copy)
+    return copy
+
+
+def test_attestation_goes_stale_when_content_drifts(tmp_path, monkeypatch):
     """
     An attestation is evidence about specific rendered content and stops being evidence
     the moment that content changes. Without this, the contract has a permanent hole:
@@ -349,6 +363,7 @@ def test_attestation_goes_stale_when_content_drifts():
     import json as _json
     from pathlib import Path
 
+    _attestation_copy(tmp_path, monkeypatch)
     rec = None
     all_records = [_json.loads(p.read_text(encoding="utf-8")) for p in sorted(Path(VC._ATTESTATION_DIR).glob("*.json"))]
     winner = VC._winning_verdict_index(all_records)
@@ -369,6 +384,7 @@ def test_attestation_goes_stale_when_content_drifts():
             rec = candidate
             break
     assert rec is not None, "no currently-fresh attestation record to drift"
+    assert tmp_path in rec.parents, f"would rewrite the live record {rec}"
 
     original = rec.read_text(encoding="utf-8")
     try:
@@ -395,10 +411,12 @@ def test_attestation_goes_stale_when_content_drifts():
     ]
 
 
-def test_attestation_without_samples_cannot_be_checked_and_fails():
+def test_attestation_without_samples_cannot_be_checked_and_fails(tmp_path, monkeypatch):
     """A record that cannot be re-rendered is not evidence — and is never silently skipped."""
     import json as _json
     from pathlib import Path
+
+    _attestation_copy(tmp_path, monkeypatch)
 
     # The record must be one that currently SUPPLIES a winning verdict. This test previously
     # took `next(glob("*.json"))`, i.e. the FIRST filename, which since the 2026-09-23
@@ -424,6 +442,7 @@ def test_attestation_without_samples_cannot_be_checked_and_fails():
             rec = _candidate
             break
     assert rec is not None, "no attestation record currently supplies a winning verdict"
+    assert tmp_path in rec.parents, f"would rewrite the live record {rec}"
     original = rec.read_text(encoding="utf-8")
     try:
         d = _json.loads(original)
