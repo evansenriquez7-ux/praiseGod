@@ -1,0 +1,1948 @@
+{
+  "batch": "batch409_mat_g2_na_q3_1",
+  "attested_at": "2026-10-07T17:54:08Z",
+  "attested_by": "blind-attester-claude-haiku-4.5-default-p3-mat_g2_na_q3_1-20261008",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose, default effort; told to Read only scratchpad/p3/d22/prompt.txt (section A of dispatch_instructions_20261007.md followed by the verbatim render_prompt_block output of the whole node packet; directory named opaquely, no node id, no key file beside it; delivery by file approved by the owner 2026-10-08) and Write only scratchpad/p3/d22/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "Harness usage record (subagent transcript): 4 tool uses excluding the final hand-back; by name: 3 Read, 1 Write; paths other than this dispatch's own prompt.txt/verdicts.json: none"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g2_na_q3_1",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127,
+      291699903,
+      296602570,
+      948323263,
+      951461183,
+      1038338148,
+      1038834428,
+      1043383255,
+      1044660259,
+      2740112200,
+      2742225244
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g2_na_q3_1",
+        "seed": 11,
+        "formatter": "read_mcq",
+        "question_text": "🐕🐕\nThere is 1 group of 2 items.\nHow many items are there in all?",
+        "correct_answer": "C",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "EmojiPictorial",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 4,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 0,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 2,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 3,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 2,
+        "hints": [
+          "We need to find the total of equal groups 1 group of 2.",
+          "Think of it as 1 group of 2: 2.",
+          "The product of 2 × 1 = 2."
+        ],
+        "visual_type": "EmojiPictorial",
+        "visual_payload": {
+          "emoji": "🐕",
+          "group_a": 2,
+          "group_b": 1,
+          "operation": "multiplication",
+          "layout": "inline",
+          "display": "🐕🐕"
+        },
+        "visual_render": {
+          "visual_type": "EmojiPictorial",
+          "renderer_input_digest": "e78f89a3a1b82a85a80c2187f0c66d319c1e7f268c42b9dbf619e3b537ee55c9",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "EmojiPictorial",
+            "element_count": 6,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "🐕",
+              "🐕"
+            ],
+            "distinct_colours": [
+              "hsl(var(--card-bg)",
+              "hsl(var(--border-color)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "2aa971a8ab16bcb90361",
+        "replay_digest": "c5dd90e4f7f6ab19939d3e49862c567040589861972024abbf678570c80a29c2"
+      },
+      {
+        "node_id": "mat_g2_na_q3_1",
+        "seed": 23,
+        "formatter": "read_mcq",
+        "question_text": "Look at the 2×9 array. How many squares are shaded in all?",
+        "correct_answer": "C",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "GridArea",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 21,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 22,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 18,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 17,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 18,
+        "hints": [
+          "We need to find the total of equal groups 2 groups of 9.",
+          "Think of it as 2 groups of 9: 9 + 9.",
+          "The product of 9 × 2 = 18."
+        ],
+        "visual_type": "GridArea",
+        "visual_payload": {
+          "rows": 2,
+          "cols": 9,
+          "shaded": true,
+          "highlight_groups": [],
+          "shape_type": "rectangle",
+          "correct_count": 18,
+          "grid_size": [
+            3,
+            10
+          ]
+        },
+        "visual_render": {
+          "visual_type": "GridArea",
+          "renderer_input_digest": "ec751bce70a2bef7cbea571cd52a30c65748210f01525cfd14fc65a79cf7839c",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "GridArea",
+            "element_count": 31,
+            "svg_count": 1,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 1,
+            "input_count": 0,
+            "text_labels": [
+              "Click squares to shade a",
+              "9 × 2",
+              "rectangle",
+              "18 square units",
+              "Clear All",
+              "Click squares to shade/unshade"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--primary)",
+              "#4b5563",
+              "#374151",
+              "hsl(var(--border-color)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {
+              "grid-cell": 18
+            }
+          }
+        },
+        "sample_id": "c9f1bf81983f0fc55ffe",
+        "replay_digest": "3a5ba2723b482b3c92984697a6c381240f68173e9a080848fd944d2f8f803cbf"
+      },
+      {
+        "node_id": "mat_g2_na_q3_1",
+        "seed": 42,
+        "formatter": "read_mcq",
+        "question_text": "Start at 0 and take 2 equal jumps of 5 on the number line. Which number do you land on?",
+        "correct_answer": "B",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "NumberLine",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 3,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 10,
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 8,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 7,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 10,
+        "hints": [
+          "We need to find the total of equal groups 2 groups of 5.",
+          "Think of it as 2 groups of 5: 5 + 5.",
+          "The product of 5 × 2 = 10."
+        ],
+        "visual_type": "NumberLine",
+        "visual_payload": {
+          "start": 0,
+          "end": 15,
+          "interval": 5,
+          "minor_interval": 5,
+          "major_interval": 5,
+          "divisions": 3,
+          "dot_value": 0,
+          "value": 10,
+          "correct_position": 10,
+          "content_type": "whole_number",
+          "jump_from": 0,
+          "jump_size": 5,
+          "jump_count": 2,
+          "is_interactive": false,
+          "show_labels": true,
+          "correct_answer": 10.0,
+          "target": 10.0
+        },
+        "visual_render": {
+          "visual_type": "NumberLine",
+          "renderer_input_digest": "61f08ebc17dd093f75f7e2dfca995e0e8c47a4431b41ba06980e443a0dcbebbe",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "NumberLine",
+            "element_count": 18,
+            "svg_count": 1,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "+5",
+              "+5",
+              "0",
+              "5",
+              "10",
+              "15"
+            ],
+            "distinct_colours": [
+              "hsl(var(--border-color)",
+              "hsl(var(--primary)",
+              "hsl(var(--text-muted)",
+              "hsl(var(--text)",
+              "hsl(var(--card-bg)"
+            ],
+            "role_counts": {
+              "number-line-jump": 2
+            }
+          }
+        },
+        "sample_id": "3343720c437a17b6be55",
+        "replay_digest": "c37b84adce6656140c0fe2e6243bf1f2336c0588498cbc15b6b42cee17bcd77d"
+      },
+      {
+        "node_id": "mat_g2_na_q3_1",
+        "seed": 57,
+        "formatter": "set_fill_in_blank",
+        "question_text": "Shade 4 rows of 7 squares to show 7 + 7 + 7 + 7. How many squares did you shade in all?",
+        "correct_answer": 28,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "set_fill_in_blank",
+          "is_visual": true,
+          "visual_type": "GridArea",
+          "interaction_mode": "set",
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "resolved_answer": 28,
+        "hints": [
+          "We need to find the total of equal groups 4 groups of 7.",
+          "Think of it as 4 groups of 7: 7 + 7 + 7 + 7.",
+          "The product of 7 × 4 = 28."
+        ],
+        "visual_type": "GridArea",
+        "visual_payload": {
+          "rows": 4,
+          "cols": 7,
+          "shaded": false,
+          "highlight_groups": [],
+          "shape_type": "rectangle",
+          "correct_count": 28,
+          "grid_size": [
+            5,
+            8
+          ]
+        },
+        "visual_render": {
+          "visual_type": "GridArea",
+          "renderer_input_digest": "fd9785e51268ff8c2fff240eafd3d8bfb79aecec1c8e397f5d489449cc331f74",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "GridArea",
+            "element_count": 41,
+            "svg_count": 1,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 1,
+            "input_count": 0,
+            "text_labels": [
+              "Click squares to shade a",
+              "7 × 4",
+              "rectangle",
+              "0 square units",
+              "Clear All",
+              "Click squares to shade/unshade"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--primary)",
+              "#4b5563",
+              "#374151",
+              "#f8fafc,",
+              "#e2e8f0)",
+              "#cbd5e1",
+              "hsl(var(--border-color)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {
+              "grid-cell": 28
+            }
+          }
+        },
+        "sample_id": "9d0053f6e1c9f7ca8c76",
+        "replay_digest": "74b2090d670a34badd02b0c8753f607078500bdf6cf9f8b8ee53142a6ee2dbed"
+      },
+      {
+        "node_id": "mat_g2_na_q3_1",
+        "seed": 64,
+        "formatter": "mcq",
+        "question_text": "Count by 10s: 10, 20. What is 10 × 2?",
+        "correct_answer": 20,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 20,
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 8,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 12,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 18,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 20,
+        "hints": [
+          "We need to find the total of equal groups 2 groups of 10.",
+          "Think of it as 2 groups of 10: 10 + 10.",
+          "Break 10 into 10 + 0: (10 × 2) + (0 × 2) = 20 + 0 = 20.",
+          "The product of 10 × 2 = 20."
+        ],
+        "sample_id": "2883234068ed3ad1d9c6",
+        "replay_digest": "33b3e21ebd97a2a73cb17bd7c553b9ce25ab4bb0b8821559b213cd68684b7967"
+      },
+      {
+        "node_id": "mat_g2_na_q3_1",
+        "seed": 78,
+        "formatter": "cloze",
+        "question_text": "4 + 4 + 4 = ___",
+        "correct_answer": 12,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 1,
+            "text": "1",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 12,
+            "text": "12",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 7,
+            "text": "7",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 9,
+            "text": "9",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 12,
+        "hints": [
+          "We need to find the total of equal groups 3 groups of 4.",
+          "Think of it as 3 groups of 4: 4 + 4 + 4.",
+          "The product of 4 × 3 = 12."
+        ],
+        "sample_id": "fa90d9cbcb2c6bec0a12",
+        "replay_digest": "889d2d20e1f6eb70bf19909740bdd872a40d67d0071deb9639be8183c366439b"
+      },
+      {
+        "node_id": "mat_g2_na_q3_1",
+        "seed": 91,
+        "formatter": "read_mcq",
+        "question_text": "The arrows show 3 added 10 times on the number line. Which number do the jumps land on?",
+        "correct_answer": "A",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "NumberLine",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 30,
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 20,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 29,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 13,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 30,
+        "hints": [
+          "We need to find the total of equal groups 10 groups of 3.",
+          "Use the 10 times table: 10 × 3.",
+          "The product of 3 × 10 = 30."
+        ],
+        "visual_type": "NumberLine",
+        "visual_payload": {
+          "start": 0,
+          "end": 33,
+          "interval": 3,
+          "minor_interval": 3,
+          "major_interval": 3,
+          "divisions": 11,
+          "dot_value": 0,
+          "value": 30,
+          "correct_position": 30,
+          "content_type": "whole_number",
+          "jump_from": 0,
+          "jump_size": 3,
+          "jump_count": 10,
+          "is_interactive": false,
+          "show_labels": true,
+          "correct_answer": 30.0,
+          "target": 30.0
+        },
+        "visual_render": {
+          "visual_type": "NumberLine",
+          "renderer_input_digest": "e4785cf76e52acd66fde2dbfe1ddcd54f79fd0f054667f0d3dc395b24184e7ad",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "NumberLine",
+            "element_count": 50,
+            "svg_count": 1,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "+3",
+              "+3",
+              "+3",
+              "+3",
+              "+3",
+              "+3",
+              "+3",
+              "+3",
+              "+3",
+              "+3",
+              "0",
+              "3",
+              "6",
+              "9",
+              "12",
+              "15",
+              "18",
+              "21",
+              "24",
+              "27",
+              "30",
+              "33"
+            ],
+            "distinct_colours": [
+              "hsl(var(--border-color)",
+              "hsl(var(--primary)",
+              "hsl(var(--text-muted)",
+              "hsl(var(--text)",
+              "hsl(var(--card-bg)"
+            ],
+            "role_counts": {
+              "number-line-jump": 10
+            }
+          }
+        },
+        "sample_id": "d9500311f9b60160f66e",
+        "replay_digest": "f4f00aee568d3deb0dd353fd851d422be416e99739fabbd55c127f12f260befa"
+      },
+      {
+        "node_id": "mat_g2_na_q3_1",
+        "seed": 103,
+        "formatter": "read_mcq",
+        "question_text": "Start at 0 and take 5 equal jumps of 8 on the number line. Which number do you land on?",
+        "correct_answer": "D",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "NumberLine",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 13,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 3,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 35,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 40,
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 40,
+        "hints": [
+          "We need to find the total of equal groups 5 groups of 8.",
+          "Think of it as 5 groups of 8: 8 + 8 + 8 + 8 + 8.",
+          "The product of 8 × 5 = 40."
+        ],
+        "visual_type": "NumberLine",
+        "visual_payload": {
+          "start": 0,
+          "end": 48,
+          "interval": 8,
+          "minor_interval": 8,
+          "major_interval": 8,
+          "divisions": 6,
+          "dot_value": 0,
+          "value": 40,
+          "correct_position": 40,
+          "content_type": "whole_number",
+          "jump_from": 0,
+          "jump_size": 8,
+          "jump_count": 5,
+          "is_interactive": false,
+          "show_labels": true,
+          "correct_answer": 40.0,
+          "target": 40.0
+        },
+        "visual_render": {
+          "visual_type": "NumberLine",
+          "renderer_input_digest": "5d3e05ac36a7622d774742e516c5b90671b99adbd4ffe24af798857c217836f9",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "NumberLine",
+            "element_count": 30,
+            "svg_count": 1,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "+8",
+              "+8",
+              "+8",
+              "+8",
+              "+8",
+              "0",
+              "8",
+              "16",
+              "24",
+              "32",
+              "40",
+              "48"
+            ],
+            "distinct_colours": [
+              "hsl(var(--border-color)",
+              "hsl(var(--primary)",
+              "hsl(var(--text-muted)",
+              "hsl(var(--text)",
+              "hsl(var(--card-bg)"
+            ],
+            "role_counts": {
+              "number-line-jump": 5
+            }
+          }
+        },
+        "sample_id": "b37ea67f0c4a13956f44",
+        "replay_digest": "d7ae9ca94a7e5f821ac838f12757deea58fd15eb99589213d24065f4a10fcf65"
+      },
+      {
+        "node_id": "mat_g2_na_q3_1",
+        "seed": 118,
+        "formatter": "cloze",
+        "question_text": "Starting at 0, 3 equal jumps of 6 on the number line lands on ___",
+        "correct_answer": 18,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 9,
+            "text": "9",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 18,
+            "text": "18",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 15,
+            "text": "15",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 3,
+            "text": "3",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 18,
+        "hints": [
+          "We need to find the total of equal groups 3 groups of 6.",
+          "Think of it as 3 groups of 6: 6 + 6 + 6.",
+          "The product of 6 × 3 = 18."
+        ],
+        "sample_id": "ee1ef227d227bb9d4aad",
+        "replay_digest": "0f44973f34400457861988b2cb0ec2c62c9d6562cda4b0933e32447f14d945fb"
+      },
+      {
+        "node_id": "mat_g2_na_q3_1",
+        "seed": 127,
+        "formatter": "read_mcq",
+        "question_text": "Look at the 10×5 array. It shows 5 added 10 times. How many squares are shaded in all?",
+        "correct_answer": "A",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "GridArea",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 50,
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 49,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 30,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 52,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 50,
+        "hints": [
+          "We need to find the total of equal groups 10 groups of 5.",
+          "Use the 10 times table: 10 × 5.",
+          "The product of 5 × 10 = 50."
+        ],
+        "visual_type": "GridArea",
+        "visual_payload": {
+          "rows": 10,
+          "cols": 5,
+          "shaded": true,
+          "highlight_groups": [],
+          "shape_type": "rectangle",
+          "correct_count": 50,
+          "grid_size": [
+            11,
+            6
+          ]
+        },
+        "visual_render": {
+          "visual_type": "GridArea",
+          "renderer_input_digest": "d98ac26c9a91de94af5336f39bde227fbd78fb18ab8b34ab7ba41d347b892a3c",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "GridArea",
+            "element_count": 63,
+            "svg_count": 1,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 1,
+            "input_count": 0,
+            "text_labels": [
+              "Click squares to shade a",
+              "5 × 10",
+              "rectangle",
+              "50 square units",
+              "Clear All",
+              "Click squares to shade/unshade"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--primary)",
+              "#4b5563",
+              "#374151",
+              "hsl(var(--border-color)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {
+              "grid-cell": 50
+            }
+          }
+        },
+        "sample_id": "a38ce24e0a9e0ac5bb90",
+        "replay_digest": "9053bb59269c7bd7ca7b598bb68959a52a7dcc1e282360c62e2ce6279d5e03ce"
+      },
+      {
+        "node_id": "mat_g2_na_q3_1",
+        "seed": 291699903,
+        "formatter": "read_mcq",
+        "question_text": "Look at the 2×7 array. It shows 7 + 7. How many squares are shaded in all?",
+        "correct_answer": "C",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "GridArea",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 16,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 11,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 14,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 18,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 14,
+        "hints": [
+          "We need to find the total of equal groups 2 groups of 7.",
+          "Think of it as 2 groups of 7: 7 + 7.",
+          "The product of 7 × 2 = 14."
+        ],
+        "visual_type": "GridArea",
+        "visual_payload": {
+          "rows": 2,
+          "cols": 7,
+          "shaded": true,
+          "highlight_groups": [],
+          "shape_type": "rectangle",
+          "correct_count": 14,
+          "grid_size": [
+            3,
+            8
+          ]
+        },
+        "visual_render": {
+          "visual_type": "GridArea",
+          "renderer_input_digest": "ae243f1e6d7362c08cd20da7657890f9d31784128abe84eebdab5a17e407c06f",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "GridArea",
+            "element_count": 27,
+            "svg_count": 1,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 1,
+            "input_count": 0,
+            "text_labels": [
+              "Click squares to shade a",
+              "7 × 2",
+              "rectangle",
+              "14 square units",
+              "Clear All",
+              "Click squares to shade/unshade"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--primary)",
+              "#4b5563",
+              "#374151",
+              "hsl(var(--border-color)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {
+              "grid-cell": 14
+            }
+          }
+        },
+        "sample_id": "3617978877187ebab018",
+        "replay_digest": "038868dc68a3dc5de2a605486bf064b8fc76a1e8cca1e72443c65f8961746ffc"
+      },
+      {
+        "node_id": "mat_g2_na_q3_1",
+        "seed": 296602570,
+        "formatter": "set_fill_in_blank",
+        "question_text": "Shade 1 row of 3 squares to show 3. How many squares did you shade in all?",
+        "correct_answer": 3,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "set_fill_in_blank",
+          "is_visual": true,
+          "visual_type": "GridArea",
+          "interaction_mode": "set",
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "resolved_answer": 3,
+        "hints": [
+          "We need to find the total of equal groups 1 group of 3.",
+          "Think of it as 1 group of 3: 3.",
+          "The product of 3 × 1 = 3."
+        ],
+        "visual_type": "GridArea",
+        "visual_payload": {
+          "rows": 1,
+          "cols": 3,
+          "shaded": false,
+          "highlight_groups": [],
+          "shape_type": "rectangle",
+          "correct_count": 3,
+          "grid_size": [
+            2,
+            4
+          ]
+        },
+        "visual_render": {
+          "visual_type": "GridArea",
+          "renderer_input_digest": "0e02c13ab8749752476e21369951e2c7653c8041a344da0b8010ffcde7a34391",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "GridArea",
+            "element_count": 16,
+            "svg_count": 1,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 1,
+            "input_count": 0,
+            "text_labels": [
+              "Click squares to shade a",
+              "3 × 1",
+              "rectangle",
+              "0 square units",
+              "Clear All",
+              "Click squares to shade/unshade"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--primary)",
+              "#4b5563",
+              "#374151",
+              "#f8fafc,",
+              "#e2e8f0)",
+              "#cbd5e1",
+              "hsl(var(--border-color)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {
+              "grid-cell": 3
+            }
+          }
+        },
+        "sample_id": "8728e1579cdc62c2d0ee",
+        "replay_digest": "742bc57793d4154783eb42b86cfe05459a8d6c2a50a3841c48e0e9379fe1218a"
+      },
+      {
+        "node_id": "mat_g2_na_q3_1",
+        "seed": 948323263,
+        "formatter": "read_mcq",
+        "question_text": "Start at 0 and take 2 equal jumps of 7 on the number line. Which number do you land on?",
+        "correct_answer": "A",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "NumberLine",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 14,
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 5,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 12,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 9,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 14,
+        "hints": [
+          "We need to find the total of equal groups 2 groups of 7.",
+          "Think of it as 2 groups of 7: 7 + 7.",
+          "The product of 7 × 2 = 14."
+        ],
+        "visual_type": "NumberLine",
+        "visual_payload": {
+          "start": 0,
+          "end": 21,
+          "interval": 7,
+          "minor_interval": 7,
+          "major_interval": 7,
+          "divisions": 3,
+          "dot_value": 0,
+          "value": 14,
+          "correct_position": 14,
+          "content_type": "whole_number",
+          "jump_from": 0,
+          "jump_size": 7,
+          "jump_count": 2,
+          "is_interactive": false,
+          "show_labels": true,
+          "correct_answer": 14.0,
+          "target": 14.0
+        },
+        "visual_render": {
+          "visual_type": "NumberLine",
+          "renderer_input_digest": "68a1456b7776c4d525f6099fa816a4cfeee63efb8573637994071b8ab6dfe94e",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "NumberLine",
+            "element_count": 18,
+            "svg_count": 1,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "+7",
+              "+7",
+              "0",
+              "7",
+              "14",
+              "21"
+            ],
+            "distinct_colours": [
+              "hsl(var(--border-color)",
+              "hsl(var(--primary)",
+              "hsl(var(--text-muted)",
+              "hsl(var(--text)",
+              "hsl(var(--card-bg)"
+            ],
+            "role_counts": {
+              "number-line-jump": 2
+            }
+          }
+        },
+        "sample_id": "cb4a7d153114ab48732e",
+        "replay_digest": "f18eed5db3994c0ef823de5ca6e37619710c14215c2c44a0f98e25d8648233f6"
+      },
+      {
+        "node_id": "mat_g2_na_q3_1",
+        "seed": 951461183,
+        "formatter": "set_fill_in_blank",
+        "question_text": "Shade all the squares inside the 10×3 rectangle. How many squares did you shade in all?",
+        "correct_answer": 30,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "set_fill_in_blank",
+          "is_visual": true,
+          "visual_type": "GridArea",
+          "interaction_mode": "set",
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "resolved_answer": 30,
+        "hints": [
+          "We need to find the total of equal groups 10 groups of 3.",
+          "Use the 10 times table: 10 × 3.",
+          "The product of 3 × 10 = 30."
+        ],
+        "visual_type": "GridArea",
+        "visual_payload": {
+          "rows": 10,
+          "cols": 3,
+          "shaded": false,
+          "highlight_groups": [],
+          "shape_type": "rectangle",
+          "correct_count": 30,
+          "grid_size": [
+            11,
+            4
+          ]
+        },
+        "visual_render": {
+          "visual_type": "GridArea",
+          "renderer_input_digest": "876c4bec4a879ea0d459cf90c6aa1b7574aca8555a160487e409dc7458ba9b44",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "GridArea",
+            "element_count": 43,
+            "svg_count": 1,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 1,
+            "input_count": 0,
+            "text_labels": [
+              "Click squares to shade a",
+              "3 × 10",
+              "rectangle",
+              "0 square units",
+              "Clear All",
+              "Click squares to shade/unshade"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--primary)",
+              "#4b5563",
+              "#374151",
+              "#f8fafc,",
+              "#e2e8f0)",
+              "#cbd5e1",
+              "hsl(var(--border-color)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {
+              "grid-cell": 30
+            }
+          }
+        },
+        "sample_id": "b7817cd61b6e0609bc70",
+        "replay_digest": "c3fc2e31362e7e1624dd5f73679c4d46c654bc637b4170cbe0d238b119a385f6"
+      },
+      {
+        "node_id": "mat_g2_na_q3_1",
+        "seed": 1038338148,
+        "formatter": "cloze",
+        "question_text": "4 + 4 + 4 + 4 + 4 = ___",
+        "correct_answer": 20,
+        "requested": {
+          "difficulty_profile": {
+            "task_type": "repeated_addition"
+          },
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 15,
+            "text": "15",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 20,
+            "text": "20",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": 19,
+            "text": "19",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 9,
+            "text": "9",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 20,
+        "hints": [
+          "We need to find the total of equal groups 5 groups of 4.",
+          "Think of it as 5 groups of 4: 4 + 4 + 4 + 4 + 4.",
+          "The product of 4 × 5 = 20."
+        ],
+        "sample_id": "299792d92807663c6ea1",
+        "replay_digest": "9a02be648e35bdc09f33b4e94dcf46f90e49a37f6f1940c1f6248a4b7d1765c3"
+      },
+      {
+        "node_id": "mat_g2_na_q3_1",
+        "seed": 1038834428,
+        "formatter": "set_fill_in_blank",
+        "question_text": "Shade 5 rows of 7 squares to show 7 + 7 + 7 + 7 + 7. How many squares did you shade in all?",
+        "correct_answer": 35,
+        "requested": {
+          "difficulty_profile": {
+            "task_type": "repeated_addition"
+          },
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "set_fill_in_blank",
+          "is_visual": true,
+          "visual_type": "GridArea",
+          "interaction_mode": "set",
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "resolved_answer": 35,
+        "hints": [
+          "We need to find the total of equal groups 5 groups of 7.",
+          "Think of it as 5 groups of 7: 7 + 7 + 7 + 7 + 7.",
+          "The product of 7 × 5 = 35."
+        ],
+        "visual_type": "GridArea",
+        "visual_payload": {
+          "rows": 5,
+          "cols": 7,
+          "shaded": false,
+          "highlight_groups": [],
+          "shape_type": "rectangle",
+          "correct_count": 35,
+          "grid_size": [
+            6,
+            8
+          ]
+        },
+        "visual_render": {
+          "visual_type": "GridArea",
+          "renderer_input_digest": "c76f19a5d5df12961727e9186baf1b08d30fefb3fc59b4c781942557426c3113",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "GridArea",
+            "element_count": 48,
+            "svg_count": 1,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 1,
+            "input_count": 0,
+            "text_labels": [
+              "Click squares to shade a",
+              "7 × 5",
+              "rectangle",
+              "0 square units",
+              "Clear All",
+              "Click squares to shade/unshade"
+            ],
+            "distinct_colours": [
+              "hsl(var(--text-muted)",
+              "hsl(var(--primary)",
+              "#4b5563",
+              "#374151",
+              "#f8fafc,",
+              "#e2e8f0)",
+              "#cbd5e1",
+              "hsl(var(--border-color)",
+              "hsl(var(--text)"
+            ],
+            "role_counts": {
+              "grid-cell": 35
+            }
+          }
+        },
+        "sample_id": "cac7b9e6994db9b3d544",
+        "replay_digest": "3262c72ab475af716ed5c255dddc8903086e6dde207c88dac942cee4d93a08e4"
+      },
+      {
+        "node_id": "mat_g2_na_q3_1",
+        "seed": 1043383255,
+        "formatter": "read_mcq",
+        "question_text": "🐕🐕   🐕🐕   🐕🐕   🐕🐕   🐕🐕\nThere are 5 groups of 2 items.\nHow many items are there in all?",
+        "correct_answer": "C",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "EmojiPictorial",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 9,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 7,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 10,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 2,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 10,
+        "hints": [
+          "We need to find the total of equal groups 5 groups of 2.",
+          "Think of it as 5 groups of 2: 2 + 2 + 2 + 2 + 2.",
+          "The product of 2 × 5 = 10."
+        ],
+        "visual_type": "EmojiPictorial",
+        "visual_payload": {
+          "emoji": "🐕",
+          "group_a": 2,
+          "group_b": 5,
+          "operation": "multiplication",
+          "layout": "inline",
+          "display": "🐕🐕   🐕🐕   🐕🐕   🐕🐕   🐕🐕"
+        },
+        "visual_render": {
+          "visual_type": "EmojiPictorial",
+          "renderer_input_digest": "8ef2a4f83e149b0718e5775ef4c79b2b1147c0d452a8192d8e7009e8f4895797",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "EmojiPictorial",
+            "element_count": 18,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "🐕",
+              "🐕",
+              "🐕",
+              "🐕",
+              "🐕",
+              "🐕",
+              "🐕",
+              "🐕",
+              "🐕",
+              "🐕"
+            ],
+            "distinct_colours": [
+              "hsl(var(--card-bg)",
+              "hsl(var(--border-color)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "943029fa9c29b1cccc02",
+        "replay_digest": "c2c3cb51c34969cca8707bf029f6666be2cf0b9401fef7a3003ca1c964344c85"
+      },
+      {
+        "node_id": "mat_g2_na_q3_1",
+        "seed": 1044660259,
+        "formatter": "read_mcq",
+        "question_text": "🏀🏀🏀🏀🏀   🏀🏀🏀🏀🏀   🏀🏀🏀🏀🏀   🏀🏀🏀🏀🏀\nThere are 4 groups of 5 items.\nHow many items are there in all?",
+        "correct_answer": "D",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "EmojiPictorial",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 9,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 21,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 5,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 20,
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": 20,
+        "hints": [
+          "We need to find the total of equal groups 4 groups of 5.",
+          "Think of it as 4 groups of 5: 5 + 5 + 5 + 5.",
+          "The product of 5 × 4 = 20."
+        ],
+        "visual_type": "EmojiPictorial",
+        "visual_payload": {
+          "emoji": "🏀",
+          "group_a": 5,
+          "group_b": 4,
+          "operation": "multiplication",
+          "layout": "inline",
+          "display": "🏀🏀🏀🏀🏀   🏀🏀🏀🏀🏀   🏀🏀🏀🏀🏀   🏀🏀🏀🏀🏀"
+        },
+        "visual_render": {
+          "visual_type": "EmojiPictorial",
+          "renderer_input_digest": "5ff9a448cfcb1b116af88654a30ed1784fbd13de7cb2b6e004cdbc710ab354d2",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "EmojiPictorial",
+            "element_count": 27,
+            "svg_count": 0,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "🏀",
+              "🏀",
+              "🏀",
+              "🏀",
+              "🏀",
+              "🏀",
+              "🏀",
+              "🏀",
+              "🏀",
+              "🏀",
+              "🏀",
+              "🏀",
+              "🏀",
+              "🏀",
+              "🏀",
+              "🏀",
+              "🏀",
+              "🏀",
+              "🏀",
+              "🏀"
+            ],
+            "distinct_colours": [
+              "hsl(var(--card-bg)",
+              "hsl(var(--border-color)"
+            ],
+            "role_counts": {}
+          }
+        },
+        "sample_id": "d4cce53e1ac47c9936e1",
+        "replay_digest": "5b3108c6c98305f784f1455a2d544b419532ef60e8ec9203d4eb13510809633c"
+      },
+      {
+        "node_id": "mat_g2_na_q3_1",
+        "seed": 2740112200,
+        "formatter": "read_mcq",
+        "question_text": "The arrows show counting by 10s on the number line. After 10 jumps, which number do you land on?",
+        "correct_answer": "A",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "read_mcq",
+          "is_visual": true,
+          "visual_type": "NumberLine",
+          "interaction_mode": "read",
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 100,
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": 20,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 99,
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": 90,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 100,
+        "hints": [
+          "We need to find the total of equal groups 10 groups of 10.",
+          "Use the 10 times table: 10 × 10.",
+          "Break 10 into 10 + 0: (10 × 10) + (0 × 10) = 100 + 0 = 100.",
+          "The product of 10 × 10 = 100."
+        ],
+        "visual_type": "NumberLine",
+        "visual_payload": {
+          "start": 0,
+          "end": 110,
+          "interval": 10,
+          "minor_interval": 10,
+          "major_interval": 10,
+          "divisions": 11,
+          "dot_value": 0,
+          "value": 100,
+          "correct_position": 100,
+          "content_type": "whole_number",
+          "jump_from": 0,
+          "jump_size": 10,
+          "jump_count": 10,
+          "is_interactive": false,
+          "show_labels": true,
+          "correct_answer": 100.0,
+          "target": 100.0
+        },
+        "visual_render": {
+          "visual_type": "NumberLine",
+          "renderer_input_digest": "3ed55fbb46f1c67cd40bcca6cfdb4cd5cc73f656c0f34b5e563cac180a222bf0",
+          "description": {
+            "source": "rendered_static_markup",
+            "visual_type": "NumberLine",
+            "element_count": 50,
+            "svg_count": 1,
+            "table_row_count": 0,
+            "table_cell_count": 0,
+            "button_count": 0,
+            "input_count": 0,
+            "text_labels": [
+              "+10",
+              "+10",
+              "+10",
+              "+10",
+              "+10",
+              "+10",
+              "+10",
+              "+10",
+              "+10",
+              "+10",
+              "0",
+              "10",
+              "20",
+              "30",
+              "40",
+              "50",
+              "60",
+              "70",
+              "80",
+              "90",
+              "100",
+              "110"
+            ],
+            "distinct_colours": [
+              "hsl(var(--border-color)",
+              "hsl(var(--primary)",
+              "hsl(var(--text-muted)",
+              "hsl(var(--text)",
+              "hsl(var(--card-bg)"
+            ],
+            "role_counts": {
+              "number-line-jump": 10
+            }
+          }
+        },
+        "sample_id": "9b3781c7134b7e3f3283",
+        "replay_digest": "6ba51ee83c83c80df5959410c1ed050690be6d2142f15549c08df401ddc654d0"
+      },
+      {
+        "node_id": "mat_g2_na_q3_1",
+        "seed": 2742225244,
+        "formatter": "mcq",
+        "question_text": "Count by 8s: 8, 16, 24. What is 8 × 3?",
+        "correct_answer": 24,
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": 21,
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": 11,
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": 24,
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": 5,
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": 24,
+        "hints": [
+          "We need to find the total of equal groups 3 groups of 8.",
+          "Think of it as 3 groups of 8: 8 + 8 + 8.",
+          "The product of 8 × 3 = 24."
+        ],
+        "sample_id": "649ef46fa0027bdb6758",
+        "replay_digest": "83e47854d47168af31a94f47353d1a52ea302d553e997166a7dfd6222c087b49"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "illustrate_multiplication",
+      "node_id": "mat_g2_na_q3_1",
+      "clause": "Illustrate",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        91,
+        103,
+        127,
+        291699903,
+        296602570,
+        948323263,
+        951461183,
+        1038834428,
+        1043383255,
+        1044660259,
+        2740112200
+      ],
+      "reasoning": "Clause 'Illustrate' is exhibited across majority of samples via concrete pictorial and pictorial models. EmojiPictorial, GridArea, and NumberLine renderings show multiplication relationships visually in 15 of 20 samples. Text-only samples (64, 78, 118, 1038338148, 2742225244) do not illustrate. Frequency meets standard 9 threshold.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "write_multiplication_sentence",
+      "node_id": "mat_g2_na_q3_1",
+      "clause": "write multiplication",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [
+        78,
+        1038338148
+      ],
+      "reasoning": "Clause 'write multiplication' requires explicit written form of multiplication. Only 2 of 20 samples show repeated addition written as an equation (seeds 78: '4 + 4 + 4 = ___' and 1038338148: '4 + 4 + 4 + 4 + 4 = ___'). Most samples show multiplication via visual models (grids, arrays, number lines) or as multiplication notation (10 × 2) but not as repeated addition written form. Frequency insufficient under standard 9.",
+      "action_taken": "Phase 3 re-attestation (claude-h06-phase3-reattest-20261008), no source change: stays CONTRADICTED and is queued for a Phase 4 content batch, assigned from the measured Phase 3 queue (NEXT_AGENT_PROMPT.md section 4)."
+    },
+    {
+      "capability_id": "multiplication_as_repeated_addition",
+      "node_id": "mat_g2_na_q3_1",
+      "clause": "multiplication as repeated addition",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        78,
+        91,
+        103,
+        127,
+        291699903,
+        296602570,
+        948323263,
+        951461183,
+        1038338148,
+        1038834428,
+        1043383255,
+        1044660259,
+        2740112200,
+        2742225244
+      ],
+      "reasoning": "Clause 'multiplication as repeated addition' is represented frequently across samples. EmojiPictorial seeds (11, 1043383255, 1044660259) show repeated groups. GridArea seeds show row/column patterns representing repeated quantities. NumberLine seeds (42, 91, 103, 948323263, 2740112200) show equal jumps as repeated addition. Text samples with repeated addition notation (78, 1038338148) and counting multiples (2742225244) reinforce concept. 18 of 20 samples exhibit this. Clearly provided.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "concrete_model",
+      "node_id": "mat_g2_na_q3_1",
+      "clause": "concrete",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [
+        23,
+        57,
+        127,
+        291699903,
+        296602570,
+        951461183,
+        1038834428
+      ],
+      "reasoning": "Clause 'concrete' per ruling 12 requires interactive virtual manipulatives. GridArea samples show button_count: 1 with 'Click squares to shade/unshade' text, indicating interactive elements. 7 of 20 samples render interactive GridArea. EmojiPictorial (3 samples) and NumberLine (5 samples) are static pictorial representations, not concrete. Text-only samples (5) have no visual model. Interactive concrete is infrequent (35%). Standard 9 requires substantial frequency; not provided.",
+      "action_taken": "Phase 3 re-attestation (claude-h06-phase3-reattest-20261008), no source change: stays CONTRADICTED and is queued for a Phase 4 content batch, assigned from the measured Phase 3 queue (NEXT_AGENT_PROMPT.md section 4)."
+    },
+    {
+      "capability_id": "pictorial_model",
+      "node_id": "mat_g2_na_q3_1",
+      "clause": "pictorial models",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        91,
+        103,
+        127,
+        291699903,
+        296602570,
+        948323263,
+        951461183,
+        1038834428,
+        1043383255,
+        1044660259,
+        2740112200
+      ],
+      "reasoning": "Clause 'pictorial models' includes static visual representations. EmojiPictorial (3 samples), GridArea (7 samples), NumberLine (5 samples) all render pictorial forms. Total 15 of 20 samples display pictorial models. Text-only samples (5: seeds 64, 78, 118, 1038338148, 2742225244) lack visual models. Pictorial models exhibited in 75% of samples, exceeding standard 9 frequency threshold.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "numeral_form",
+      "node_id": "mat_g2_na_q3_1",
+      "clause": "numerals",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127,
+        291699903,
+        296602570,
+        948323263,
+        951461183,
+        1038338148,
+        1038834428,
+        1043383255,
+        1044660259,
+        2740112200,
+        2742225244
+      ],
+      "reasoning": "Clause 'numerals' appears universally across all 20 samples. Text-only samples use numerals in equations and counting sequences. Visual samples include numeric labels: GridArea shows grid dimensions ('9 × 2', '7 × 4', etc.) and counts; NumberLine shows numeric labels (0, 5, 10, 15, etc.) and jump notation (+5, +8, +10). EmojiPictorial includes numeric group descriptions. All samples exhibit numerals. Clearly provided.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "groups_of_equal_quantities",
+      "node_id": "mat_g2_na_q3_1",
+      "clause": "groups of equal quantities",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        1043383255,
+        1044660259
+      ],
+      "reasoning": "Clause 'groups of equal quantities' is one item in competency list; standard 19 applies. Stratum_001 intentionally stratified seeds: 1043383255 renders '5 groups of 2 items' via EmojiPictorial with text label and visual grouping; 1044660259 renders '4 groups of 5 items' via EmojiPictorial with explicit grouping. Both seeds serve design and render clause. Design-to-rendered path confirmed: at least 2 stratified samples exhibit clause explicitly.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "array",
+      "node_id": "mat_g2_na_q3_1",
+      "clause": "arrays",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        291699903,
+        296602570
+      ],
+      "reasoning": "Clause 'arrays' is one item in competency list; standard 19 applies. Stratum_001 seeds: 291699903 explicitly states 'Look at the 2×7 array' and renders GridArea showing rectangular arrangement; 296602570 states 'Shade 1 row of 3 squares to show 3' and renders 3×1 GridArea array structure. Both seeds render arrays by design via GridArea visual. At least 2 stratified samples exhibit arrays clearly.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "counting_by_multiples",
+      "node_id": "mat_g2_na_q3_1",
+      "clause": "counting by multiples",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        2740112200,
+        2742225244
+      ],
+      "reasoning": "Clause 'counting by multiples' is one item in competency list; standard 19 applies. Stratum_001 seeds: 2740112200 renders 'The arrows show counting by 10s on the number line. After 10 jumps' via NumberLine with '+10' labels repeated 10 times; 2742225244 states 'Count by 8s: 8, 16, 24. What is 8 × 3?' as text problem explicitly showing counting sequence by multiples of 8. Both seeds serve design and render counting by multiples. At least 2 stratified samples exhibit clause.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "equal_jumps_on_a_number_line",
+      "node_id": "mat_g2_na_q3_1",
+      "clause": "equal jumps on a number line",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        91,
+        103,
+        948323263,
+        2740112200
+      ],
+      "reasoning": "Clause 'equal jumps on a number line' is one item in competency list; standard 19 applies. Stratum_001 seed 948323263 explicitly renders 'Start at 0 and take 2 equal jumps of 7 on the number line' via NumberLine visual with '+7' jump labels. Additional samples confirm pattern: seed 42 ('2 equal jumps of 5' on NumberLine), seed 91 ('3 added 10 times' on NumberLine with +3 labels), seed 103 ('5 equal jumps of 8' on NumberLine), seed 2740112200 ('counting by 10s' on NumberLine with 10 equal jumps). At least 2 stratified samples and multiple others render equal jumps on number line.",
+      "action_taken": "Left registered; no change."
+    }
+  ]
+}
