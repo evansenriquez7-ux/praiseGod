@@ -1,7 +1,8 @@
 # Task prompt: finish Phase 2 hardening (host-neutral)
 
 **Rewritten 2026-10-07 after a review of the Claude (2026-09-30 → 10-03) and GPT (10-05 → 10-07)
-sessions. This REPLACES every earlier version of this file.** `CLAUDE_AGENT_PROMPT.md`,
+sessions; §1, §3 and §4 updated 2026-10-07 at the Claude checkpoint that ended
+`claude-h06-phase2-instrument-20261007`. This REPLACES every earlier version of this file.** `CLAUDE_AGENT_PROMPT.md`,
 `GPT_HANDOFF_PROMPT.md` and `HANDOFF_PROMPT.md` beside it are history. Their §5–§10 method notes (the
 review addendum, audit-before-filing, the heavy-run checklist) remain correct and are cited below. Their
 state sections and queue sizes (173, 127, "15 STALE", "7 content-changed + 136") are stale; ignore them.
@@ -19,24 +20,37 @@ leave the tree CERTIFIED or honestly INTERRUPTED, with every number re-measured.
 
 1. `CLAUDE.md` / `AGENTS.md`: Scaling Mandate, Engineering Protocols, Content Rules, Definition of Done.
 2. This file, completely.
-3. `validation_reports/HARDENING_EVIDENCE.md`: the last four entries (from "W2 step 1" on).
-4. `CLAUDE_AGENT_PROMPT.md` §5 (the four-part dispatch addendum and audit), §7 (heavy runs), §8 (the
+3. `validation_reports/HARDENING_EVIDENCE.md`: every entry from "W2 step 1" on. The last three matter
+   most: "Phase 2 instrument baseline", "Rate-limit recovery", and "Takeover of the interrupted
+   Phase 2a instrument; ruling 22; honest checkpoint".
+4. Owner rulings 19–22 in `docs/phase2_hardening_completion_plan.md`, verbatim.
+5. `validation_reports/phase2_hardening/ruling22_wip/build_clause_enumeration_draft.py`, the docstring
+   and the table. This is where Phase 2a resumes.
+6. `CLAUDE_AGENT_PROMPT.md` §5 (the four-part dispatch addendum and audit), §7 (heavy runs), §8 (the
    anchor one-liner), §9 (traps), §11 (not yours).
 
 ---
 
-## 1. State at handoff (re-measured 2026-10-07; re-measure before quoting)
+## 1. State at handoff (2026-10-07, Claude checkpoint; re-measure before quoting)
 
 ```
-HEAD                latest bookkeeping commit; code checkpoint 314a745a; worktree clean; H-06 lock held
-tree_state          honestly INTERRUPTED; open batch intent, source changed since certified digest
-run_all             EXIT 1 on 2026-10-07 baseline, failed=3 (before Phase 2 instrument edits)
-capability_phase2   124 CONTRADICTED over 55 nodes, 0 STALE         (validate_capability --phase 2: EXIT 1)
-judgment_reviews_5  151 reviews: 78 PASS / 49 CONCERN / 24 FAIL, 0 STALE (validate_judgment --all: EXIT 1)
-                    449 per-sample dimension findings on 49 nodes, plus node-level findings
+HEAD                the Claude checkpoint commit and its lock-release follow-up; worktree clean
+source              tests/attester_packets.py etc. at 314a745a's proven bytes (focused 30 passed)
+H-06 lock           RELEASED; claim it (owner line only, numstat 1 1) before any work
+tree_state          honestly INTERRUPTED; OPEN 'batch' intent held by claude-h06-phase2-instrument-20261007.
+                    Take it over with `tests/tree_state.py --begin batch --force --session <yours> --note ...`
+run_all             last measured 2026-10-07 at 54260249 (pre-instrument): EXIT 1, failed=3
+capability_phase2   124 CONTRADICTED over 55 nodes, 0 STALE (not re-measured this checkpoint)
+judgment_reviews_5  151 reviews: 78 PASS / 49 CONCERN / 24 FAIL, 0 STALE; module 751 findings
 assertion_coverage_8  the 3 §6F mutations, INVALID until capability_phase2 reaches 0
-mutation corpus     full corpus not re-measured after edits; focused new mutation 1/1 DETECTED
+digest-bound artifacts  ALL STALE since 314a745a (mutation_proofs, release shards, benchmark, frontend)
+ruling-22 draft     ruling22_wip/: 151 nodes, 94 enumerations, 240 members = 182 selector +
+                    56 needs_instrumentation + 2 unserved; 527 clauses not enumerated.
+                    All 182 selectors observed >=2x in seeds 1000-1039. NOT read by any harness code.
 ```
+
+Nothing in Phase 2a is proven beyond `314a745a`'s explicit-variant stratification. The ruling-22 gate,
+its unit tests, its mutations and its contract row do not exist yet.
 
 ---
 
@@ -44,7 +58,7 @@ mutation corpus     full corpus not re-measured after edits; focused new mutatio
 
 Each finding came from an executed command: `validate_capability --phase 2`, `validate_judgment --all`,
 and a per-node dump of `validation_reports/attestation/batch*_<node>.json`. Re-derive them before you
-rely on them; none is yet recorded in `HARDENING_EVIDENCE.md`. Recording them is a Phase 0 task.
+rely on them. They were recorded in the "Phase 2 instrument baseline" evidence entry (`54260249`).
 
 **F1. More than half the capability queue is partly an artifact of the measuring tool.** Of the 124
 CONTRADICTED findings, **68** have reasoning stating that the clause *does* appear, just in 1–4 of
@@ -99,7 +113,7 @@ What went well, and should be kept:
 
 ---
 
-## 3. OWNER RULINGS 19–21 (given 2026-10-07; recorded in `docs/phase2_hardening_completion_plan.md`)
+## 3. OWNER RULINGS 19–22 (given 2026-10-07; recorded in `docs/phase2_hardening_completion_plan.md`)
 
 The gates the review raised are **resolved**. Read the full text in the plan doc; in short:
 
@@ -135,51 +149,97 @@ written. **No dispatch prompt states a numeric threshold that no ruling states.*
   unparseable after one repair, or a skipped sample.
 - **No validator change is owed.** The filer already replaces the node's review in place.
 
-**Still a stop-and-ask:** any new content judgment that MATATAG and rulings 1–21 do not settle, any
+**Ruling 22 (given 2026-10-07): packet-only attester selectors are approved, on two conditions.**
+- (a) A selector observes **structured generator values only**, never a substring of learner-facing
+  question or answer text.
+- (b) **Every required clause is classified**, either as a stratum (a reachable exact variant or a
+  selector) or as explicitly not enumerated, with the competency wording cited. A clause with neither
+  classification **fails loudly by name**.
+- The ruling's text says `CAPABILITY_PROVIDERS` "may" carry selectors. Key them **per (node, member)**
+  instead, because a capability-wide selector is wrong for the 140 of 472 ids shared across DNAs. The
+  draft already does this. Record that reason in the contract row.
+
+**Still a stop-and-ask:** any new content judgment that MATATAG and rulings 1–22 do not settle, any
 production verb Phase 4 cannot map to rulings 3, 13 or 16, and anything in "Not yours" (§5).
 
 ---
 
 ## 4. Plan
 
-**Current checkpoint (314a745a, 2026-10-07):** Phase 0 is complete. Phase 2a has a committed,
-focused-test-proven implementation for *explicit reachable* `CAPABILITY_PROVIDERS.variants`, including
-private render evidence, deterministic seed allocation, an opaque seed map, freshness replay, a contract
-row, and mutation `attester_packet_drops_provider_variant_samples` (focused 1/1 DETECTED). It is not yet
-the ruled instrument: execution showed that skip-interval capabilities have no `variants`, while `certain`
-and `impossible` share the same broad `scenario_type` variant. Therefore the current code cannot guarantee
-two observations of every ruling-19 sibling. The batch intent remains open and the tree is honestly
-INTERRUPTED. Do not run the full chain or Phase 3 until the owner chooses whether the provider registry may
-gain attester-only observable selectors (or supplies another ground truth for those sibling strata).
+**Current checkpoint (2026-10-07, Claude):**
+- **Committed source is `314a745a`.** It stratifies *explicit reachable* provider variants only (focused
+  30 passed; mutation `attester_packet_drops_provider_variant_samples` 1/1 at that commit). That is not
+  yet the ruled instrument.
+- **The GPT agent's later selector table was NOT adopted.** It covered 37 of 68 "rare" findings, keyed
+  selectors per capability id, and matched question-text substrings. It is preserved byte-for-byte as
+  `ruling22_wip/gpt_uncommitted_selectors_20261007.patch`. Read it for ideas; do not apply it.
+- **The ruling-22 classification and strata are drafted** in `ruling22_wip/` and are not wired into
+  anything.
+- **The batch intent is open and the tree is honestly INTERRUPTED.** Do not run the chain or Phase 3
+  until Phase 2a below is complete.
 
-### Phase 0: baseline and lock (always, about 1 h)
+### Phase 0: baseline and lock (always, about 30 min)
 
-1. Heavy-run check (§5). Confirm CERTIFIED and a clean worktree.
+1. Heavy-run check (§5). Expect INTERRUPTED with a clean worktree and the open batch intent named in §1;
+   anything else, stop and find out why.
 2. Claim H-06: edit only its `owner` line, check that `git diff --numstat …hardening_status.json` reads
-   `1 1`, and commit.
-3. Run `run_all` alone to a log and capture `EXIT`. Record per-stage counts. It has not been measured
-   since 10-06.
-4. Fix F5's citation: add a dated correction line to the W2 step 2 entry naming `67df6151`. Do not
-   rewrite the old text.
+   `1 1`, and commit. Take over the intent (§1).
+3. Re-run the draft builder with `--check-renders` and confirm it still prints
+   `nodes=151 enumerations=94 members=240 selector=182 needs_instrumentation=56 unserved=2` and
+   `0 selector(s) observed fewer than 2 times`. If the counts moved, a node's requires or DNA changed;
+   find out why before going further.
 
-### Phase 1: owner gates. RESOLVED 2026-10-07 (rulings 19–21, §3). Nothing to do.
+The F5 citation correction (`67df6151`) was made in `54260249`.
+
+### Phase 1: owner gates. RESOLVED 2026-10-07 (rulings 19–22, §3). Nothing to do.
 
 ### Phase 2: instrument work (harness only; one `batch` intent; one chain at the end)
 
 Scaling Mandate items 1, 3 and 5 apply: these gates must be proven before they police anything.
 
-2a. **Stratified attester packets** (`tests/attester_packets.py`). For each clause, derive its provider
-variants from `CAPABILITY_PROVIDERS`. Never hard-code node lists. Guarantee at least 2 samples per
-provider variant, and choose seeds deterministically from the variant, so the same sibling always
-gets the same seeds. Print the seed map into the packet.
-- Write a contract row in `docs/pgen_contract.md`.
-- Add a mutation in `tests/mutation_harness.py` that drops one provider variant's samples. The packet
-  check must catch it by name.
-- Name the limit: stratification proves the variant *can* render the clause, not that students see it
-  often. Ruling 19 defines "by design".
+2a. **Make ruling 22 real** (`tests/attester_packets.py`; the draft in `ruling22_wip/` is the input).
+Explicit-variant stratification from `314a745a` stays for **non-enumerated** clauses. Then:
+1. **Review the draft before trusting it.** The classification is one session's curriculum reading,
+   and the builder docstring states the rule. Check each enumeration against its competency. Correct
+   the table, never the rule, unless the owner rules otherwise.
+2. **Land the data.** Write the classification as a tracked file the packet builder reads, for example
+   `validation_reports/phase2_hardening/clause_enumeration.json`. Generate it with the builder, never by
+   hand, and keep `competency_sha256` so a changed competency fails loudly.
+3. **The gate.** A function the unit suite runs, registered in `run_all.ASSERTIONS` beside
+   `attester_provider_variant_stratification`. It must fail, naming node and clause, on each of these:
+   - a node with requires missing from the file;
+   - a competency hash mismatch;
+   - a wording that is not verbatim;
+   - a required clause classified zero times or twice, or a classified id the node does not require;
+   - a member without exactly one disposition, or with an empty reason;
+   - a condition op outside `equals`/`one_of`/`lt`/`gte`/`any_of` (no substring op may exist);
+   - two siblings sharing a selector.
+4. **The packet builder.** It uses the member's selector exclusively for enumeration members. It
+   **refuses** to build a node with a `needs_instrumentation` member, naming it. It gives `unserved`
+   members no stratum, so the Attester judges them on the base samples. Allow the `visual_type` path to
+   read the rendered sample's `visual_type`. Raise `_PROVIDER_VARIANT_ATTEMPTS` only with a measured
+   reason. Never lower the 2-sample floor.
+5. **Prove it.** Unit tests for each failure direction above, on synthetic data. Add at least three
+   mutations, each caught by name: one required clause removed from the classification, two siblings
+   given the same selector, and a `contains` condition planted. Each must land on the code path the gate
+   actually executes (Mandate 1 and 2).
+6. **The contract row.** Replace `314a745a`'s row text with the ruling-22 instrument. Name the limits:
+   - the classification is a human reading;
+   - stratification proves the stratum *can* render, not how often pupils see it;
+   - the 56 `needs_instrumentation` members are refused, not judged, until their DNA emits a field;
+   - `answer` equality and `visual_type` are treated as structured;
+   - selectors live per (node, member), not in `CAPABILITY_PROVIDERS`, because ids are shared.
+7. **Do not instrument DNAs in this batch.** The 56 members on 20 nodes need generator fields: rotation
+   turn size and direction, coin vs bill, with/without regrouping, composite parts, lines vs surfaces,
+   money notation, numbers vs letters, sharing vs grouping, and fraction equal to / greater than one.
+   That is a separate source batch with its own chain. Phase 3 can proceed for every node without such
+   a member.
+8. **Separately, and not inside this batch's tests:** `tests/unit/test_capability_contract.py` lines
+   355–388 and 414–437 rewrite a live attestation record in place and restore it in `finally`. A
+   killed run corrupts a filed record. Make those tests use a copy, as their own small change.
 
 2b. **Dispatch instructions** for attesters and reviewers: rewrite them from rulings 1, 9, 12, 13, 15
-and 19–21 verbatim. They must carry no numeric threshold beyond what a ruling states. Save the exact
+and 19–22 verbatim. They must carry no numeric threshold beyond what a ruling states. Save the exact
 text under `validation_reports/phase2_hardening/` (the W2 text was never saved, a named limit).
 
 2c. Rulings 20 and 21 need **no validator change**: last-file-wins and in-place review filing

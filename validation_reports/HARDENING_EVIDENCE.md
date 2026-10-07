@@ -18462,3 +18462,112 @@ NAMED LIMITS:
   or flip-rate observations. GPT-5 Codex performed only engineering and recovery work.
 - Extending the provider registry with attester-only observable selectors would decide new machine ground
   truth for sibling sampling. That choice is stopped at the owner boundary rather than inferred here.
+
+## 2026-10-07 — Takeover of the interrupted Phase 2a instrument; ruling 22; honest checkpoint (`claude-h06-phase2-instrument-20261007`)
+
+Engineering only, by Claude Opus 5.5. No Attester or reviewer was dispatched and no verdict was
+judged, filed, edited or removed. The session ends INTERRUPTED with the batch intent open, by owner
+instruction ("stop and commit an honest checkpoint").
+
+**State found.** HEAD `ba1a2a46`; five source files carried UNCOMMITTED edits made after the GPT
+session's recorded boundary (`1c4f6f85` had written that registry selectors were "stopped at the owner
+boundary rather than inferred here"; the edits then implemented them). A pytest launched by the Codex
+app-server (PID 12926) was still running.
+
+```text
+$ PYTHONPATH=. .venv/bin/python tests/tree_state.py
+STATE tree_state: INTERRUPTED
+  live input digest : 8bf324030997cc39
+  worktree          : DIRTY
+  OPEN INTENT       : 'batch' begun 2026-10-07T02:44:37+08:00 by 'codex-h06-phase2-instrument-20261007'
+TS EXIT 1
+```
+
+**Hazard found, NOT fixed (named).** While that pytest ran, `validation_reports/attestation/
+batch083_mat_g1_na_q3_7.json` was observed modified (mtime 10:51:10) and restored 37 s later. The writer
+is pre-existing test code: `tests/unit/test_capability_contract.py` lines 355–388 and 414–437 rewrite a
+live attestation record in place and restore it in `finally`. A run killed inside that window leaves a
+filed record corrupted. Owed: make those tests operate on a copy.
+
+**The GPT agent's uncommitted selector work, measured.** Focused suite on those exact bytes, and its
+mutation:
+
+```text
+$ PYTHONPATH=. .venv/bin/python -m pytest tests/unit/test_attester_packet_stratification.py tests/unit/test_attester_file.py tests/unit/test_attestation_freshness.py tests/unit/test_capability_contract.py -q -p no:cacheprovider
+67 passed, 1 skipped in 630.68s (0:10:30)
+$ PYTHONPATH=. .venv/bin/python tests/mutation_harness.py --only attester_packet_drops_provider_variant_samples
+EXIT 0
+  PASS  attester_packet_drops_provider_variant_samples provider_variant_stratification_6F
+1/1 mutations detected.
+$ git grep -n -E "#\s*planted mutation|//\s*planted " -- backend/ frontend/src tests/attester_packets.py | grep -v mutation_harness
+plant-grep exit 1   (no escaped plant)
+```
+
+It passed its tests but is NOT adoptable, for three reasons established by execution:
+1. **Coverage.** Its 21-capability `_ATTESTER_SELECTORS` table, together with explicit variants, gave a
+   stratum to 37 of the 68 "rare" CONTRADICTED findings; nothing flagged the other 31 (e.g.
+   `mat_g1_na_q2_1` step_2s/5s/10s, the Grade 1 twin of the covered Grade 2 skip counts).
+2. **Wrong key.** Selectors were stored per capability id, but 140 of the 472 required ids are shared by
+   nodes whose DNAs emit different fields (`half_hour` is `precision` on `mat_g1_mg_q4_1` and `minute`
+   on `mat_g1_mg_q4_4`); the one `squares` selector applied to four DNAs.
+3. **Ruling 22(a).** It observed substrings of question text (`contains`/`not_contains`).
+
+It also counted siblings that share one broad variant as covered: the four rotation clauses of
+`mat_g1_mg_q4_0` all map to `('concept', 'rotation')`, which guarantees none of them its own samples.
+
+The committed `_attestation_staleness` change at `314a745a` (replay with a recorded profile) was checked
+against the corpus and changes no existing record's replay:
+
+```text
+samples in validation_reports/attestation/*.json: {'no_requested': 1660, 'null_profile': 5290}; non-null profiles: 0
+```
+
+**Owner ruling 22** (`679d9342`): selectors approved on two conditions — structured values only, and
+every required clause classified with an unclassified one failing loudly. H-06 taken over at `d703b230`
+(owner line only, `numstat 1 1`) after the owner confirmed the Codex session was stopped.
+
+**Preservation and restore.** The uncommitted work was saved byte-for-byte and the five files restored to
+`314a745a`'s proven bytes; `attester_packet_drops_provider_variant_samples.json` was restored to its
+committed proof (the `--only` run above had rewritten it from non-HEAD bytes).
+
+```text
+$ shasum -a 256 (saved patch) ; git diff -- <the five files> | shasum -a 256
+6d57a2936af36dff023b6f7577adf356ed4d48f90b6d8b52475e8db88473c306   (identical)
+$ git apply --check validation_reports/phase2_hardening/ruling22_wip/gpt_uncommitted_selectors_20261007.patch
+PATCH APPLIES CLEANLY TO HEAD
+$ PYTHONPATH=. .venv/bin/python -m pytest tests/unit/test_attester_packet_stratification.py tests/unit/test_attester_file.py tests/unit/test_attestation_freshness.py -q -p no:cacheprovider
+30 passed in 1.47s
+```
+
+**Ruling-22 DRAFT (not read by any harness code).**
+`validation_reports/phase2_hardening/ruling22_wip/build_clause_enumeration_draft.py` classifies every
+required clause and gives every enumeration member exactly one disposition. Its output is
+`clause_enumeration.draft.json`; `gv_probe.py` and `vt_probe.py` are the read-only probes it was derived
+from (seeds 1000–1039 per node).
+
+```text
+$ PYTHONPATH=. .venv/bin/python validation_reports/phase2_hardening/ruling22_wip/build_clause_enumeration_draft.py validation_reports/phase2_hardening/ruling22_wip/clause_enumeration.draft.json --check-renders
+EXIT 0
+nodes=151 enumerations=94 members=240 selector=182 needs_instrumentation=56 unserved=2 not_enumerated=527
+check_renders: 0 selector(s) observed fewer than 2 times in seeds 1000-1039
+```
+
+The builder refuses to emit if a wording is not a verbatim substring of its competency, a member is not a
+required clause, a member has other than exactly one disposition, a condition uses an op outside
+`equals`/`one_of`/`lt`/`gte`/`any_of`, or two siblings share a selector. The 56 `needs_instrumentation`
+members sit on 20 nodes where the sibling exists only in learner-facing text (rotation turn size and
+direction, coin vs bill, with/without regrouping, composite-figure parts, lines vs surfaces, money
+notation, numbers vs letters, sharing vs grouping, fraction equal to / greater than one, and others); the
+DNA must emit a structured field first. The two `unserved` members are `mat_g2_na_q4_3` fraction_charts
+and fraction_tiles (`model_type` emits only number_line, area_model, set_model).
+
+NAMED LIMITS:
+- The classification is a curriculum READING by this session, stated as a rule in the builder docstring;
+  no reviewer has checked it. `mat_g1_na_q4_1` was deliberately left unenumerated (every item shows
+  both 1/2 and 1/4).
+- `--check-renders` uses the draft's own matcher over 40 seeds; the packet builder that must enforce
+  this has NOT been written, and no gate, unit test, mutation or contract row for ruling 22 exists yet.
+- `answer` equality and the rendered `visual_type` are treated as structured values; both are exact
+  comparisons, never substrings.
+- The full corpus, release shards, benchmark and `run_all` were not run this session; all digest-bound
+  artifacts remain stale from the GPT session's `314a745a` source change.

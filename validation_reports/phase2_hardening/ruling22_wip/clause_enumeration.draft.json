@@ -1,0 +1,3723 @@
+{
+ "schema_version": 0,
+ "status": "DRAFT -- not read by any harness code",
+ "ruling": "owner rulings 19 and 22, docs/phase2_hardening_completion_plan.md",
+ "nodes": {
+  "mat_g1_dp_q3_0": {
+   "competency_sha256": "69e1069f0b3d0965d3be9db1d42d7ac73ada403d3e71d8ac86a4aeb4ae215174",
+   "enumerations": [],
+   "not_enumerated": [
+    "collect_data",
+    "one_variable",
+    "simple_interview"
+   ]
+  },
+  "mat_g1_dp_q3_1": {
+   "competency_sha256": "8e9a0713e0dc6a483fa1cd870d2b8b5faddcd9e259fc2376a99e4cbac0a97b39",
+   "enumerations": [],
+   "not_enumerated": [
+    "present_data",
+    "pictograph",
+    "without_scale"
+   ]
+  },
+  "mat_g1_dp_q3_2": {
+   "competency_sha256": "072e6bdfae32ffae13ddfc32c557cbf811dcb761fb3b6f81768a62a19e4d8de6",
+   "enumerations": [],
+   "not_enumerated": [
+    "interpret",
+    "pictograph",
+    "without_scale"
+   ]
+  },
+  "mat_g1_dp_q3_3": {
+   "competency_sha256": "42549c8eb3127b476ad11ced25dc07d07a96e841566d9b297cafa4e8b0238561",
+   "enumerations": [],
+   "not_enumerated": [
+    "organize_data",
+    "pictograph",
+    "without_scale",
+    "table"
+   ]
+  },
+  "mat_g1_mg_q1_0": {
+   "competency_sha256": "83f978e888265992613617c2ce244d7c670842eeb4f2225fa68a31ff20bbe274",
+   "enumerations": [
+    {
+     "wording": "triangle, rectangle, square",
+     "members": {
+      "triangle": {
+       "observe": [
+        {
+         "path": "answer",
+         "equals": "triangle"
+        }
+       ]
+      },
+      "rectangle": {
+       "observe": [
+        {
+         "path": "answer",
+         "equals": "rectangle"
+        }
+       ]
+      },
+      "square": {
+       "observe": [
+        {
+         "path": "answer",
+         "equals": "square"
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "not_enumerated": [
+    "identify",
+    "simple_2_dimensional_shapes",
+    "different_size",
+    "different_orientation"
+   ]
+  },
+  "mat_g1_mg_q1_1": {
+   "competency_sha256": "ab13248b51c3ddb65bdd19d55ff7f465fee4fba9fa00d9a1926241d8f028fce4",
+   "enumerations": [
+    {
+     "wording": "sides and corners",
+     "members": {
+      "sides_of_a_shape": {
+       "needs_instrumentation": "sibling identity appears only in learner-facing question/answer text; no structured field (task_type is compare_shapes for every item)"
+      },
+      "corners_of_a_shape": {
+       "needs_instrumentation": "sibling identity appears only in learner-facing question/answer text; no structured field (task_type is compare_shapes for every item)"
+      }
+     }
+    }
+   ],
+   "not_enumerated": [
+    "compare_shapes",
+    "distinguish_shapes",
+    "two_dimensional_shapes",
+    "shape_features_as_comparison_basis"
+   ]
+  },
+  "mat_g1_mg_q1_2": {
+   "competency_sha256": "a6984341f3e5fa42bffeebb8e11f33ed9b75d5a5e0a3c27094b137553bef6f26",
+   "enumerations": [
+    {
+     "wording": "triangles, squares, and rectangles",
+     "members": {
+      "triangles": {
+       "needs_instrumentation": "component shapes of a compose/decompose item appear only in text"
+      },
+      "squares": {
+       "needs_instrumentation": "component shapes of a compose/decompose item appear only in text"
+      },
+      "rectangles": {
+       "needs_instrumentation": "component shapes of a compose/decompose item appear only in text"
+      }
+     }
+    }
+   ],
+   "not_enumerated": [
+    "compose",
+    "decompose"
+   ]
+  },
+  "mat_g1_mg_q2_0": {
+   "competency_sha256": "09fa042cbba31ddf45ebfdf8acb628d5730ef4a448e18fc67f14104b8d969b93",
+   "enumerations": [
+    {
+     "wording": "the length of an object and the distance between two objects",
+     "members": {
+      "measure_length": {
+       "observe": [
+        {
+         "path": "task_type",
+         "equals": "read_measurement"
+        }
+       ]
+      },
+      "measure_distance": {
+       "observe": [
+        {
+         "path": "task_type",
+         "equals": "distance_between"
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "not_enumerated": [
+    "non_standard_units"
+   ]
+  },
+  "mat_g1_mg_q2_1": {
+   "competency_sha256": "679b08cc8e8d6206a8fec54d15e94096795dddc4f3972c056bd3d386ed9da3af",
+   "enumerations": [
+    {
+     "wording": "lengths and distances",
+     "members": {
+      "lengths": {
+       "observe": [
+        {
+         "path": "task_type",
+         "equals": "compare"
+        }
+       ]
+      },
+      "distances": {
+       "observe": [
+        {
+         "path": "task_type",
+         "equals": "compare_distance"
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "not_enumerated": [
+    "compare",
+    "non_standard_units"
+   ]
+  },
+  "mat_g1_mg_q2_2": {
+   "competency_sha256": "ef7fcb1a509a0656d0cabe3e9ace5b1e4fb04c7034744265d3a9e8a016e0a3d4",
+   "enumerations": [
+    {
+     "wording": "lengths and distances",
+     "members": {
+      "lengths": {
+       "observe": [
+        {
+         "path": "word_measure",
+         "equals": "length"
+        }
+       ]
+      },
+      "distances": {
+       "observe": [
+        {
+         "path": "word_measure",
+         "equals": "distance"
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "not_enumerated": [
+    "solve_problems",
+    "non_standard_units"
+   ]
+  },
+  "mat_g1_mg_q4_0": {
+   "competency_sha256": "96bb789742e7bb8672dd4d7588cd73aa401a47c11381faf0b46ae8b3054a2e90",
+   "enumerations": [
+    {
+     "wording": "half turn or in quarter turn",
+     "members": {
+      "half_turn": {
+       "needs_instrumentation": "turn size appears only in question text (concept=rotation for all)"
+      },
+      "quarter_turn": {
+       "needs_instrumentation": "turn size appears only in question text (concept=rotation for all)"
+      }
+     }
+    },
+    {
+     "wording": "clockwise or in counter-clockwise direction",
+     "members": {
+      "clockwise": {
+       "needs_instrumentation": "rotation direction appears only in question text"
+      },
+      "counter_clockwise": {
+       "needs_instrumentation": "rotation direction appears only in question text"
+      }
+     }
+    }
+   ],
+   "not_enumerated": [
+    "identify_position",
+    "objects",
+    "moved",
+    "initial_facing_direction"
+   ]
+  },
+  "mat_g1_mg_q4_1": {
+   "competency_sha256": "432717277b056b8951a8968f4a2ff04d90faa531fe7ca25262db178379038af3",
+   "enumerations": [
+    {
+     "wording": "hour, half hour, and quarter hour",
+     "members": {
+      "hour": {
+       "observe": [
+        {
+         "path": "precision",
+         "equals": "hour"
+        }
+       ]
+      },
+      "half_hour": {
+       "observe": [
+        {
+         "path": "precision",
+         "equals": "half_hour"
+        }
+       ]
+      },
+      "quarter_hour": {
+       "observe": [
+        {
+         "path": "precision",
+         "equals": "quarter_hour"
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "not_enumerated": [
+    "read_and_write",
+    "time",
+    "analog_clock"
+   ]
+  },
+  "mat_g1_mg_q4_2": {
+   "competency_sha256": "0a464b3fc28e62daf5867393a0ad1eab3427ece165d6230e104dc9ee4a978585",
+   "enumerations": [
+    {
+     "wording": "days of the week and months of the year",
+     "members": {
+      "days_of_the_week": {
+       "observe": [
+        {
+         "path": "unit",
+         "equals": "days"
+        }
+       ]
+      },
+      "months_of_the_year": {
+       "observe": [
+        {
+         "path": "unit",
+         "equals": "months"
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "not_enumerated": [
+    "give",
+    "correct_order"
+   ]
+  },
+  "mat_g1_mg_q4_3": {
+   "competency_sha256": "de537ecbd5ce09781d8f7cb24d0b253c595ea6549edeff3e364f1ad06aa0dea2",
+   "enumerations": [],
+   "not_enumerated": [
+    "determine",
+    "day_and_month_of_the_year",
+    "calendar"
+   ]
+  },
+  "mat_g1_mg_q4_4": {
+   "competency_sha256": "efdf179eeae8222ec6d8c8851f7bae22afa616baba8d300f52ccd8c7c6db3897",
+   "enumerations": [
+    {
+     "wording": "hour, half hour, quarter hour, days in a week, and months in a year",
+     "members": {
+      "hour": {
+       "observe": [
+        {
+         "path": "task_type",
+         "equals": "clock_reading"
+        },
+        {
+         "path": "minute",
+         "equals": 0
+        }
+       ]
+      },
+      "half_hour": {
+       "observe": [
+        {
+         "path": "task_type",
+         "equals": "clock_reading"
+        },
+        {
+         "path": "minute",
+         "equals": 30
+        }
+       ]
+      },
+      "quarter_hour": {
+       "observe": [
+        {
+         "path": "task_type",
+         "equals": "clock_reading"
+        },
+        {
+         "path": "minute",
+         "one_of": [
+          15,
+          45
+         ]
+        }
+       ]
+      },
+      "days_in_a_week": {
+       "observe": [
+        {
+         "path": "task_type",
+         "equals": "read_day"
+        }
+       ]
+      },
+      "months_in_a_year": {
+       "observe": [
+        {
+         "path": "task_type",
+         "equals": "problem_months"
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "not_enumerated": [
+    "solve_problems",
+    "time"
+   ]
+  },
+  "mat_g1_na_q1_0": {
+   "competency_sha256": "883943c08d02640b03e2a59b4449493f5dabb5d24662e152c06eb38f7ef22f08",
+   "enumerations": [
+    {
+     "wording": "counting up or down",
+     "members": {
+      "count_forward_from_a_given_number": {
+       "observe": [
+        {
+         "path": "direction",
+         "equals": "forward"
+        }
+       ]
+      },
+      "count_backward_from_a_given_number": {
+       "observe": [
+        {
+         "path": "direction",
+         "equals": "backward"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "wording": "1 more or 1 less",
+     "members": {
+      "identify_one_more_than_a_number": {
+       "observe": [
+        {
+         "path": "direction",
+         "equals": "forward"
+        }
+       ]
+      },
+      "identify_one_less_than_a_number": {
+       "observe": [
+        {
+         "path": "direction",
+         "equals": "backward"
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "not_enumerated": [
+    "count_objects_to_a_total",
+    "range_up_to_100",
+    "identify_a_number_relative_to_another"
+   ]
+  },
+  "mat_g1_na_q1_1": {
+   "competency_sha256": "5ab20abc891a83fa3100acc5adf98805c0b0229108fac3f1afe806a4304aa668",
+   "enumerations": [],
+   "not_enumerated": [
+    "read",
+    "write",
+    "numerals",
+    "up_to_100"
+   ]
+  },
+  "mat_g1_na_q1_2": {
+   "competency_sha256": "f763e8b5dfa06c6221c4c947260b7965c4957ef65b6772b0c1d8d0006766ae95",
+   "enumerations": [
+    {
+     "wording": "number line, block or bar models, and numerals",
+     "members": {
+      "number_line": {
+       "observe": [
+        {
+         "path": "task_type",
+         "equals": "number_line"
+        }
+       ]
+      },
+      "block_or_bar_models": {
+       "observe": [
+        {
+         "path": "visual_type",
+         "equals": "PlaceValueBlocks"
+        }
+       ]
+      },
+      "numerals": {
+       "needs_instrumentation": "no task represents a number as a numeral alone; numerals are the answer form of every item, so no structured value separates this sibling"
+      }
+     }
+    }
+   ],
+   "not_enumerated": [
+    "recognize",
+    "represent",
+    "numbers",
+    "up_to_100",
+    "concrete_models",
+    "pictorial_models"
+   ]
+  },
+  "mat_g1_na_q1_3": {
+   "competency_sha256": "b47a57892617e16dfe32db1bcbbfcee7f8cf8ddda40e54da5858e5c5d8e9e2df",
+   "enumerations": [],
+   "not_enumerated": [
+    "compare",
+    "two_numbers",
+    "up_to_20"
+   ]
+  },
+  "mat_g1_na_q1_4": {
+   "competency_sha256": "cc19838a4b31e70cec4f088de4f72edf8750072c059c87cb193c167c5a6ab85d",
+   "enumerations": [
+    {
+     "wording": "from smallest to largest, and vice versa",
+     "members": {
+      "smallest_to_largest": {
+       "observe": [
+        {
+         "path": "direction",
+         "equals": "ascending"
+        }
+       ]
+      },
+      "vice_versa": {
+       "observe": [
+        {
+         "path": "direction",
+         "equals": "descending"
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "not_enumerated": [
+    "order",
+    "numbers",
+    "up_to_20"
+   ]
+  },
+  "mat_g1_na_q1_5": {
+   "competency_sha256": "ac3f24f036dd4aadd1f65a7fe84b7d6c3a6c4640b3c858041fd9166eb63e954e",
+   "enumerations": [
+    {
+     "wording": "1st, 2nd, 3rd, up to 10th",
+     "members": {
+      "1st": {
+       "observe": [
+        {
+         "path": "symbol",
+         "equals": "1st"
+        }
+       ]
+      },
+      "2nd": {
+       "observe": [
+        {
+         "path": "symbol",
+         "equals": "2nd"
+        }
+       ]
+      },
+      "3rd": {
+       "observe": [
+        {
+         "path": "symbol",
+         "equals": "3rd"
+        }
+       ]
+      },
+      "up_to_10th": {
+       "observe": [
+        {
+         "path": "symbol",
+         "one_of": [
+          "4th",
+          "5th",
+          "6th",
+          "7th",
+          "8th",
+          "9th",
+          "10th"
+         ]
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "not_enumerated": [
+    "describe_position",
+    "objects",
+    "ordinal_numbers"
+   ]
+  },
+  "mat_g1_na_q1_6": {
+   "competency_sha256": "68fd5466c7a153408164fcfcac1d46fb4131926483a9aafd64e3c11aaa111e9a",
+   "enumerations": [
+    {
+     "wording": "5 is 5 and 0; 4 and 1; 3 and 2; 2 and 3; 1 and 4; 0 and 5",
+     "members": {
+      "5_is_5_and_0": {
+       "observe": [
+        {
+         "path": "pair",
+         "equals": "5 and 0"
+        }
+       ]
+      },
+      "4_and_1": {
+       "observe": [
+        {
+         "path": "pair",
+         "equals": "4 and 1"
+        }
+       ]
+      },
+      "3_and_2": {
+       "observe": [
+        {
+         "path": "pair",
+         "equals": "3 and 2"
+        }
+       ]
+      },
+      "2_and_3": {
+       "observe": [
+        {
+         "path": "pair",
+         "equals": "2 and 3"
+        }
+       ]
+      },
+      "1_and_4": {
+       "observe": [
+        {
+         "path": "pair",
+         "equals": "1 and 4"
+        }
+       ]
+      },
+      "0_and_5": {
+       "observe": [
+        {
+         "path": "pair",
+         "equals": "0 and 5"
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "not_enumerated": [
+    "compose",
+    "decompose",
+    "numbers",
+    "up_to_10",
+    "concrete_materials"
+   ]
+  },
+  "mat_g1_na_q1_7": {
+   "competency_sha256": "0025b930d78ef50e6555a4510ae5da469cda54ac159cd0bf96a0bc04f3cedf64",
+   "enumerations": [
+    {
+     "wording": "'counting up,' and 'putting together'",
+     "members": {
+      "counting_up": {
+       "observe": [
+        {
+         "path": "task_type",
+         "equals": "counting_up"
+        }
+       ]
+      },
+      "putting_together": {
+       "observe": [
+        {
+         "path": "task_type",
+         "equals": "putting_together"
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "not_enumerated": [
+    "illustrate",
+    "addition_of_numbers",
+    "sums_up_to_20",
+    "concrete",
+    "pictorial_models",
+    "describes",
+    "addition"
+   ]
+  },
+  "mat_g1_na_q1_8": {
+   "competency_sha256": "d10981bf86ccd0f6789d3541a18d1ca9a711adddeccf22065095bffafc24e0d8",
+   "enumerations": [
+    {
+     "wording": "the sum of zero and any number is equal to the number, and changing the order of the addends does not change the sum",
+     "members": {
+      "identity_property": {
+       "observe": [
+        {
+         "path": "task_type",
+         "equals": "zero_identity"
+        }
+       ]
+      },
+      "commutative_property": {
+       "observe": [
+        {
+         "path": "task_type",
+         "equals": "commutative"
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "not_enumerated": [
+    "illustrate",
+    "applying",
+    "properties_of_addition",
+    "sums_up_to_20"
+   ]
+  },
+  "mat_g1_na_q1_9": {
+   "competency_sha256": "42f92e04d6785f8d9208c3700cf0355d078845822612a27bbc2096780931457c",
+   "enumerations": [],
+   "not_enumerated": [
+    "solve",
+    "problems",
+    "pictures",
+    "addition",
+    "sums_up_to_20"
+   ]
+  },
+  "mat_g1_na_q2_0": {
+   "competency_sha256": "2b30dfe16549acc535aee69ac74c5177310e85443aea6f39a84ebb8208044794",
+   "enumerations": [
+    {
+     "wording": "from smallest to largest, and vice versa",
+     "members": {
+      "smallest_to_largest": {
+       "observe": [
+        {
+         "path": "direction",
+         "equals": "ascending"
+        }
+       ]
+      },
+      "vice_versa": {
+       "observe": [
+        {
+         "path": "direction",
+         "equals": "descending"
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "not_enumerated": [
+    "order",
+    "numbers",
+    "up_to_100"
+   ]
+  },
+  "mat_g1_na_q2_1": {
+   "competency_sha256": "ea383244dcdf4ff73c792e32e26338c875a63e5f7ef4f2d5f561ba4b5635854b",
+   "enumerations": [
+    {
+     "wording": "2s, 5s and 10s",
+     "members": {
+      "step_2s": {
+       "observe": [
+        {
+         "path": "skip_by",
+         "equals": 2
+        }
+       ]
+      },
+      "step_5s": {
+       "observe": [
+        {
+         "path": "skip_by",
+         "equals": 5
+        }
+       ]
+      },
+      "step_10s": {
+       "observe": [
+        {
+         "path": "skip_by",
+         "equals": 10
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "not_enumerated": [
+    "count",
+    "up_to_100"
+   ]
+  },
+  "mat_g1_na_q2_2": {
+   "competency_sha256": "1921228c199985155d19d814236ea9a9b0eb3003e034d752658746e7ae91fa0d",
+   "enumerations": [
+    {
+     "wording": "the place value of a digit in a 2-digit number, the value of a digit, and the digit of a number, given its place value",
+     "members": {
+      "determine_place_value": {
+       "observe": [
+        {
+         "path": "task_type",
+         "equals": "identify_place"
+        }
+       ]
+      },
+      "determine_value": {
+       "observe": [
+        {
+         "path": "task_type",
+         "equals": "identify_value"
+        }
+       ]
+      },
+      "determine_digit": {
+       "observe": [
+        {
+         "path": "task_type",
+         "equals": "identify_digit"
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "not_enumerated": [
+    "domain_2_digit"
+   ]
+  },
+  "mat_g1_na_q2_3": {
+   "competency_sha256": "fb5813befd7bc2b09d5436a12f5932b683f885697d03b16ea3013b20a194c0ee",
+   "enumerations": [],
+   "not_enumerated": [
+    "decompose",
+    "domain_2_digit",
+    "tens_ones"
+   ]
+  },
+  "mat_g1_na_q2_4": {
+   "competency_sha256": "82cfc8335f36b6032e95b6bf58b7854c78ff2eb4c1b7cc8407f72fb69670359a",
+   "enumerations": [],
+   "not_enumerated": [
+    "add",
+    "express_addends",
+    "tens_ones",
+    "expanded_form"
+   ]
+  },
+  "mat_g1_na_q2_5": {
+   "competency_sha256": "81a1540874aa7ba9c430c954d651b91497370d457218fc2213b88cdfeba16713",
+   "enumerations": [
+    {
+     "wording": "2-digit and 1-digit numbers, and 2-digit and 2-digit numbers",
+     "members": {
+      "operands_2_1_digit": {
+       "observe": [
+        {
+         "any_of": [
+          [
+           {
+            "path": "a",
+            "lt": 10
+           }
+          ],
+          [
+           {
+            "path": "b",
+            "lt": 10
+           }
+          ]
+         ]
+        }
+       ]
+      },
+      "operands_2_2_digit": {
+       "observe": [
+        {
+         "path": "a",
+         "gte": 10
+        },
+        {
+         "path": "b",
+         "gte": 10
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "not_enumerated": [
+    "add",
+    "sum_up_to_100",
+    "without_regrouping",
+    "concrete_pictorial"
+   ]
+  },
+  "mat_g1_na_q2_6": {
+   "competency_sha256": "f3ab54a4f8908b5c9822b432c055719dad40b701fa449bd68a1a43b9cb3e5618",
+   "enumerations": [],
+   "not_enumerated": [
+    "solve_problems",
+    "pictures",
+    "addition",
+    "sum_up_to_100",
+    "without_regrouping"
+   ]
+  },
+  "mat_g1_na_q3_0": {
+   "competency_sha256": "e727c47b8df7df25adf0bfb6bb3a618cdd77908d87b1f9a9c023ea8aa83ed7da",
+   "enumerations": [],
+   "not_enumerated": [
+    "illustrate_subtraction",
+    "numbers_up_to_20",
+    "concrete_pictorial",
+    "describe_subtraction",
+    "taking_away"
+   ]
+  },
+  "mat_g1_na_q3_1": {
+   "competency_sha256": "8134928b523b4b1d0754d9086b78bb550a3d301b1eda35f4be3f0f105bb19166",
+   "enumerations": [],
+   "not_enumerated": [
+    "find_missing_number",
+    "addition_subtraction_sentences",
+    "numbers_up_to_20"
+   ]
+  },
+  "mat_g1_na_q3_2": {
+   "competency_sha256": "8db14fe4fc9ea99cb1f890cda3ab13f362bd819522b9cf1372b01930318167f7",
+   "enumerations": [],
+   "not_enumerated": [
+    "write_equivalent_expression",
+    "addition_subtraction_expression"
+   ]
+  },
+  "mat_g1_na_q3_3": {
+   "competency_sha256": "9badb3e041d28bc39f8722d647342f1f6579efc1746d0cedfb32b25514453f1b",
+   "enumerations": [],
+   "not_enumerated": [
+    "solve_subtraction",
+    "in_pictures",
+    "less_than_20"
+   ]
+  },
+  "mat_g1_na_q3_4": {
+   "competency_sha256": "82921ec317f32a66ab4f62ce7995b7d2a0a75b8e50ea567335ea928374ded559",
+   "enumerations": [
+    {
+     "wording": "2-digit minus 1-digit numbers, and 2-digit minus 2-digit numbers",
+     "members": {
+      "sub_2d_1d": {
+       "observe": [
+        {
+         "path": "b",
+         "lt": 10
+        }
+       ]
+      },
+      "sub_2d_2d": {
+       "observe": [
+        {
+         "path": "b",
+         "gte": 10
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "not_enumerated": [
+    "subtract_numbers",
+    "less_than_100",
+    "concrete_models",
+    "pictorial_models",
+    "without_regrouping"
+   ]
+  },
+  "mat_g1_na_q3_5": {
+   "competency_sha256": "981517193758355a6ef779606ebe7061213b6b9807eb40ddcde5546194448c69",
+   "enumerations": [],
+   "not_enumerated": [
+    "subtract_numbers",
+    "expressing_tens_ones",
+    "expanded_form",
+    "without_regrouping"
+   ]
+  },
+  "mat_g1_na_q3_6": {
+   "competency_sha256": "751e014ec72eff8189fb50c93e1d60fc039825a757298493871644098e7d2202",
+   "enumerations": [],
+   "not_enumerated": [
+    "determine_next_term",
+    "repeating_pattern"
+   ]
+  },
+  "mat_g1_na_q3_7": {
+   "competency_sha256": "e9273a678fd9494761981cfd90e136fd756fb022c89f5de5c33643f1c0e4caf6",
+   "enumerations": [],
+   "not_enumerated": [
+    "create",
+    "repeating_patterns",
+    "objects_images_or_numbers"
+   ]
+  },
+  "mat_g1_na_q4_0": {
+   "competency_sha256": "3b95d024640f638d4df4a55566a65c175583ac08721c5d9d2d37ac29a7ed5dba",
+   "enumerations": [
+    {
+     "wording": "1/2 and 1/4",
+     "members": {
+      "half": {
+       "observe": [
+        {
+         "path": "denominator",
+         "equals": 2
+        }
+       ]
+      },
+      "quarter": {
+       "observe": [
+        {
+         "path": "denominator",
+         "equals": 4
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "not_enumerated": [
+    "illustrate",
+    "parts_of_whole"
+   ]
+  },
+  "mat_g1_na_q4_1": {
+   "competency_sha256": "beb488a5f4d1c5e0b15a137a58d077dbba86dd16e8a3918b76dc004593302337",
+   "enumerations": [],
+   "not_enumerated": [
+    "compare",
+    "half",
+    "quarter",
+    "models"
+   ]
+  },
+  "mat_g1_na_q4_2": {
+   "competency_sha256": "2ec8457f4a5151eaa602b43f766ca68ec470ac8a8a2bab2d09629ce78ed018e1",
+   "enumerations": [
+    {
+     "wording": "halves and quarters",
+     "members": {
+      "halves": {
+       "observe": [
+        {
+         "path": "denominator",
+         "equals": 2
+        }
+       ]
+      },
+      "quarters": {
+       "observe": [
+        {
+         "path": "denominator",
+         "equals": 4
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "not_enumerated": [
+    "count"
+   ]
+  },
+  "mat_g1_na_q4_3": {
+   "competency_sha256": "c200bec11e50a35361c27633e00de0b0d1f79a3ce1219e84d0156b20eb80569f",
+   "enumerations": [
+    {
+     "wording": "coins (excluding centavo coins) and bills",
+     "members": {
+      "coins": {
+       "needs_instrumentation": "no coin/bill flag in given_values; denomination values alone are ambiguous (P20 exists as both a coin and a bill)"
+      },
+      "bills": {
+       "needs_instrumentation": "no coin/bill flag in given_values; denomination values alone are ambiguous (P20 exists as both a coin and a bill)"
+      }
+     }
+    }
+   ],
+   "not_enumerated": [
+    "recognize",
+    "excluding_centavo_coins",
+    "up_to_100",
+    "notations"
+   ]
+  },
+  "mat_g1_na_q4_4": {
+   "competency_sha256": "2ea0b2cdb6386215d65434b528fa362c6109e7be7f520f0e7840633292ad521e",
+   "enumerations": [
+    {
+     "wording": "a number of bills and/or a number of coins",
+     "members": {
+      "number_of_bills": {
+       "needs_instrumentation": "no coin/bill flag in given_values; denomination values alone are ambiguous (P20 exists as both a coin and a bill)"
+      },
+      "number_of_coins": {
+       "needs_instrumentation": "no coin/bill flag in given_values; denomination values alone are ambiguous (P20 exists as both a coin and a bill)"
+      }
+     }
+    }
+   ],
+   "not_enumerated": [
+    "determine_value",
+    "excluding_centavo_coins",
+    "up_to_100"
+   ]
+  },
+  "mat_g1_na_q4_5": {
+   "competency_sha256": "fb8af823763d55d58d466d8a28ef14c09bac8324936f5bb667337555af8ee90d",
+   "enumerations": [
+    {
+     "wording": "peso coins (excluding centavo coins) and bills",
+     "members": {
+      "peso_coins": {
+       "needs_instrumentation": "no coin/bill flag in given_values; denomination values alone are ambiguous (P20 exists as both a coin and a bill)"
+      },
+      "bills": {
+       "needs_instrumentation": "no coin/bill flag in given_values; denomination values alone are ambiguous (P20 exists as both a coin and a bill)"
+      }
+     }
+    }
+   ],
+   "not_enumerated": [
+    "compare",
+    "different_denominations",
+    "excluding_centavo_coins",
+    "up_to_100"
+   ]
+  },
+  "mat_g1_na_q4_6": {
+   "competency_sha256": "75f668648922e99a4681d69a2f65058bcbb4003c863851dd2deb66fd252441f1",
+   "enumerations": [
+    {
+     "wording": "addition of money where the sum is up to ₱100, or subtraction of money",
+     "members": {
+      "addition_of_money": {
+       "observe": [
+        {
+         "path": "operation",
+         "equals": "add_amounts"
+        }
+       ]
+      },
+      "subtraction_of_money": {
+       "observe": [
+        {
+         "path": "operation",
+         "equals": "find_change"
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "not_enumerated": [
+    "solve_1_step_problems",
+    "in_pictures",
+    "sum_up_to_100",
+    "amounts_less_than_100"
+   ]
+  },
+  "mat_g2_dp_q3_0": {
+   "competency_sha256": "150c653a381755e7c0cc5f52be472933ff1784e1ec1407aa8114bbbace6446f7",
+   "enumerations": [
+    {
+     "wording": "raw data, or data in tabular form",
+     "members": {
+      "raw_data": {
+       "observe": [
+        {
+         "path": "task_type",
+         "equals": "present_data"
+        }
+       ]
+      },
+      "tabular_form": {
+       "observe": [
+        {
+         "path": "task_type",
+         "equals": "organize_table"
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "not_enumerated": [
+    "present",
+    "data",
+    "pictograph",
+    "scale",
+    "vice_versa"
+   ]
+  },
+  "mat_g2_dp_q3_1": {
+   "competency_sha256": "c9f4a3ba02210372f3b47c0320526ebc95c48acbe337aae43e1ad25b159a6857",
+   "enumerations": [
+    {
+     "wording": "in tabular form and in a pictograph",
+     "members": {
+      "tabular_form": {
+       "observe": [
+        {
+         "path": "visual_type",
+         "equals": "FillInTable"
+        }
+       ]
+      },
+      "pictograph": {
+       "observe": [
+        {
+         "path": "visual_type",
+         "equals": "BarChart"
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "not_enumerated": [
+    "interpret",
+    "data",
+    "scale"
+   ]
+  },
+  "mat_g2_mg_q1_0": {
+   "competency_sha256": "7b9fcd2c44da2646a38adcb8ba846276bf64ab5ceb3b559b73d0039cd6b50758",
+   "enumerations": [
+    {
+     "wording": "circles, half circles and quarter circles",
+     "members": {
+      "circles": {
+       "observe": [
+        {
+         "path": "answer",
+         "equals": "circle"
+        }
+       ]
+      },
+      "half_circles": {
+       "observe": [
+        {
+         "path": "answer",
+         "equals": "half-circle"
+        }
+       ]
+      },
+      "quarter_circles": {
+       "observe": [
+        {
+         "path": "answer",
+         "equals": "quarter-circle"
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "not_enumerated": [
+    "represent",
+    "describe"
+   ]
+  },
+  "mat_g2_mg_q1_1": {
+   "competency_sha256": "e1b75a2c614325e28ae0560fd4d4aa58ff770aa87a264b55d0aed20f5d2b9b51",
+   "enumerations": [
+    {
+     "wording": "squares, rectangles, triangles, circles, half circles, and quarter circles",
+     "members": {
+      "squares": {
+       "needs_instrumentation": "component shapes of a composite figure appear only in question text"
+      },
+      "rectangles": {
+       "needs_instrumentation": "component shapes of a composite figure appear only in question text"
+      },
+      "triangles": {
+       "needs_instrumentation": "component shapes of a composite figure appear only in question text"
+      },
+      "circles": {
+       "needs_instrumentation": "component shapes of a composite figure appear only in question text"
+      },
+      "half_circles": {
+       "needs_instrumentation": "component shapes of a composite figure appear only in question text"
+      },
+      "quarter_circles": {
+       "needs_instrumentation": "component shapes of a composite figure appear only in question text"
+      }
+     }
+    },
+    {
+     "wording": "cut-outs and square grids",
+     "members": {
+      "cut_outs": {
+       "needs_instrumentation": "cut-out vs square-grid setting appears only in question text"
+      },
+      "square_grids": {
+       "needs_instrumentation": "cut-out vs square-grid setting appears only in question text"
+      }
+     }
+    }
+   ],
+   "not_enumerated": [
+    "compose_figures",
+    "decompose_figures",
+    "composite_figures"
+   ]
+  },
+  "mat_g2_mg_q1_2": {
+   "competency_sha256": "47d1b1b7bd7e21ba80cb86770633e5bd4b91f00e542c8e2e8ab9e4666b7b5b1c",
+   "enumerations": [
+    {
+     "wording": "basic shapes and figures",
+     "members": {
+      "basic_shapes": {
+       "needs_instrumentation": "sibling identity appears only in learner-facing question/answer text; no structured field"
+      },
+      "basic_figures": {
+       "needs_instrumentation": "sibling identity appears only in learner-facing question/answer text; no structured field"
+      }
+     }
+    }
+   ],
+   "not_enumerated": [
+    "describe_effect",
+    "draw_effect",
+    "one_direction",
+    "multi_step",
+    "slide",
+    "translation"
+   ]
+  },
+  "mat_g2_mg_q2_0": {
+   "competency_sha256": "2a682b2083455a2d11f4d61b4f4cf008534db37a85ce3988b02e1d316bf1b991",
+   "enumerations": [
+    {
+     "wording": "lengths of objects, in meters (m) or centimeters (cm), and distance",
+     "members": {
+      "lengths": {
+       "observe": [
+        {
+         "path": "task_type",
+         "one_of": [
+          "compare",
+          "read_measurement"
+         ]
+        }
+       ]
+      },
+      "distance": {
+       "observe": [
+        {
+         "path": "task_type",
+         "equals": "compare_distance"
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "not_enumerated": [
+    "measure",
+    "compare",
+    "objects",
+    "meters_or_centimeters",
+    "measuring_tools"
+   ]
+  },
+  "mat_g2_mg_q2_1": {
+   "competency_sha256": "049b656fe5b096a36041e1ee51e744c935020f95a13fa1c8bb7aa3f6ebb58487",
+   "enumerations": [
+    {
+     "wording": "the length of an object and the distance between two locations",
+     "members": {
+      "length": {
+       "needs_instrumentation": "task_type is choose_unit for every item; object vs two-location appears only in text"
+      },
+      "distance": {
+       "needs_instrumentation": "task_type is choose_unit for every item; object vs two-location appears only in text"
+      }
+     }
+    }
+   ],
+   "not_enumerated": [
+    "identify",
+    "use",
+    "unit",
+    "m_or_cm",
+    "measure",
+    "object",
+    "between_two_locations"
+   ]
+  },
+  "mat_g2_mg_q2_2": {
+   "competency_sha256": "4ebc05b12dcd0871d83a1fc9c4c4b64273cb133b5ec15d0cda08ba07ebdf01ca",
+   "enumerations": [
+    {
+     "wording": "length using meters or centimeters, and distance",
+     "members": {
+      "length": {
+       "needs_instrumentation": "task_type is estimate for every item; length vs distance appears only in text"
+      },
+      "distance": {
+       "needs_instrumentation": "task_type is estimate for every item; length vs distance appears only in text"
+      }
+     }
+    }
+   ],
+   "not_enumerated": [
+    "estimate",
+    "meters_or_centimeters"
+   ]
+  },
+  "mat_g2_mg_q2_3": {
+   "competency_sha256": "a42a880186aac13b36140c5c41a16c08539398b613d38bfee3521a468fff5e35",
+   "enumerations": [
+    {
+     "wording": "length and distance",
+     "members": {
+      "length": {
+       "observe": [
+        {
+         "path": "word_measure",
+         "equals": "length"
+        }
+       ]
+      },
+      "distance": {
+       "observe": [
+        {
+         "path": "word_measure",
+         "equals": "distance"
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "not_enumerated": [
+    "solve_problems"
+   ]
+  },
+  "mat_g2_mg_q4_0": {
+   "competency_sha256": "87a218dd6418f3feb42d8f969cd4aa823930d1d2b25725c387a9dbce838dd19d",
+   "enumerations": [
+    {
+     "wording": "number of days and/or weeks",
+     "members": {
+      "number_of_days": {
+       "observe": [
+        {
+         "path": "task_type",
+         "equals": "elapsed_days"
+        }
+       ]
+      },
+      "number_of_weeks": {
+       "observe": [
+        {
+         "path": "task_type",
+         "equals": "elapsed_weeks"
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "not_enumerated": [
+    "describe",
+    "duration_of_an_event",
+    "calendar"
+   ]
+  },
+  "mat_g2_mg_q4_1": {
+   "competency_sha256": "aee8627982bc59f2ec9bcb6ca1d43b88874595407afeab8ea02b355baa749498",
+   "enumerations": [
+    {
+     "wording": "hours and minutes",
+     "members": {
+      "hours": {
+       "observe": [
+        {
+         "path": "precision",
+         "equals": "hour"
+        }
+       ]
+      },
+      "minutes": {
+       "observe": [
+        {
+         "path": "precision",
+         "one_of": [
+          "five_minutes",
+          "one_minute"
+         ]
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "not_enumerated": [
+    "read",
+    "write",
+    "time",
+    "am_and_pm",
+    "analog_clock"
+   ]
+  },
+  "mat_g2_mg_q4_2": {
+   "competency_sha256": "55848c9a3fde28959207447fd94d7ef1ab66a5bd2ba25df3c12e518f6f2e7114",
+   "enumerations": [
+    {
+     "wording": "minutes in an hour, hours in a day, days in a week",
+     "members": {
+      "minutes_in_an_hour": {
+       "observe": [
+        {
+         "path": "elapsed_unit",
+         "equals": "minutes"
+        }
+       ]
+      },
+      "hours_in_a_day": {
+       "observe": [
+        {
+         "path": "elapsed_unit",
+         "equals": "hours"
+        }
+       ]
+      },
+      "days_in_a_week": {
+       "observe": [
+        {
+         "path": "elapsed_unit",
+         "equals": "days"
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "not_enumerated": [
+    "solve_problems",
+    "elapsed_time",
+    "timetables"
+   ]
+  },
+  "mat_g2_mg_q4_3": {
+   "competency_sha256": "745188c8dc5b2fbd727a5c2b553fb2b2a451311af1aed724511c2e7d34cda03e",
+   "enumerations": [
+    {
+     "wording": "straight and curved lines",
+     "members": {
+      "straight_lines": {
+       "needs_instrumentation": "concept_type is straight_curved for every item; lines vs surfaces only in text"
+      },
+      "curved_lines": {
+       "needs_instrumentation": "concept_type is straight_curved for every item; lines vs surfaces only in text"
+      }
+     }
+    },
+    {
+     "wording": "flat and curved surfaces",
+     "members": {
+      "flat_surfaces": {
+       "needs_instrumentation": "concept_type is straight_curved for every item; lines vs surfaces only in text"
+      },
+      "curved_surfaces": {
+       "needs_instrumentation": "concept_type is straight_curved for every item; lines vs surfaces only in text"
+      }
+     }
+    }
+   ],
+   "not_enumerated": [
+    "identify",
+    "explain",
+    "difference_between",
+    "3_dimensional_objects"
+   ]
+  },
+  "mat_g2_mg_q4_4": {
+   "competency_sha256": "06299312c0b05c9e3e25b07be19446316f97ba964a85d57a800546370d7a7fea",
+   "enumerations": [],
+   "not_enumerated": [
+    "identify",
+    "measure",
+    "perimeter",
+    "plane_figure",
+    "tools"
+   ]
+  },
+  "mat_g2_mg_q4_5": {
+   "competency_sha256": "6596f85cf30b95e17190256bec7f6b0aea46e408a1e5e3ea65e31968c2b5867a",
+   "enumerations": [
+    {
+     "wording": "triangles, squares, and rectangles",
+     "members": {
+      "triangles": {
+       "observe": [
+        {
+         "path": "shape",
+         "equals": "triangle"
+        }
+       ]
+      },
+      "squares": {
+       "observe": [
+        {
+         "path": "shape",
+         "equals": "square"
+        }
+       ]
+      },
+      "rectangles": {
+       "observe": [
+        {
+         "path": "shape",
+         "equals": "rectangle"
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "not_enumerated": [
+    "find",
+    "perimeter"
+   ]
+  },
+  "mat_g2_mg_q4_6": {
+   "competency_sha256": "9e073041f005e1a5eb62705bb6e770a6fbc4b1b489dcf1decb8bb9128d27d9c2",
+   "enumerations": [
+    {
+     "wording": "triangles, squares, and rectangles",
+     "members": {
+      "triangles": {
+       "observe": [
+        {
+         "path": "shape",
+         "equals": "triangle"
+        }
+       ]
+      },
+      "squares": {
+       "observe": [
+        {
+         "path": "shape",
+         "equals": "square"
+        }
+       ]
+      },
+      "rectangles": {
+       "observe": [
+        {
+         "path": "shape",
+         "equals": "rectangle"
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "not_enumerated": [
+    "solve_problems",
+    "perimeter"
+   ]
+  },
+  "mat_g2_na_q1_0": {
+   "competency_sha256": "c3644ea009ee077c3647d870bf018d7f6e65e48467248580a72940c4bb23058a",
+   "enumerations": [],
+   "not_enumerated": [
+    "count",
+    "up_to_1000"
+   ]
+  },
+  "mat_g2_na_q1_1": {
+   "competency_sha256": "8b274895921b3e9511085c6955ff40abbcd603aa04b869df9a1237e36fbefbbc",
+   "enumerations": [],
+   "not_enumerated": [
+    "read_and_write",
+    "numerals",
+    "up_to_1000"
+   ]
+  },
+  "mat_g2_na_q1_10": {
+   "competency_sha256": "3588e8add96c8b897654f778e16ad467fa23272593c5ca237c92e4a23ec6f64a",
+   "enumerations": [
+    {
+     "wording": "the sum of zero and any number is equal to the number, changing the order of the addends does not change the sum, and changing the grouping of the addends does not change the sum",
+     "members": {
+      "identity_property": {
+       "observe": [
+        {
+         "path": "task_type",
+         "equals": "zero_identity"
+        }
+       ]
+      },
+      "commutative_property": {
+       "observe": [
+        {
+         "path": "task_type",
+         "equals": "commutative"
+        }
+       ]
+      },
+      "associative_property": {
+       "observe": [
+        {
+         "path": "task_type",
+         "equals": "associative"
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "not_enumerated": [
+    "illustrate_properties",
+    "apply_properties",
+    "properties_of_addition",
+    "sums_up_to_1000"
+   ]
+  },
+  "mat_g2_na_q1_2": {
+   "competency_sha256": "aa3e1b5d0dfa4dc659e8c0985a3436ef06ea54e6a4bea0fa957945834018a417",
+   "enumerations": [],
+   "not_enumerated": [
+    "recognize_and_represent",
+    "numbers",
+    "up_to_1000",
+    "concrete_models",
+    "pictorial_models",
+    "numerals"
+   ]
+  },
+  "mat_g2_na_q1_3": {
+   "competency_sha256": "9a207672de4fb658541b4c85922cb91a6f3e76dcc79396fd9ca84d773b0a0e5a",
+   "enumerations": [
+    {
+     "wording": "2s, 5s, 10s, 20s, 50s, and 100s",
+     "members": {
+      "twos": {
+       "observe": [
+        {
+         "path": "skip_by",
+         "equals": 2
+        }
+       ]
+      },
+      "fives": {
+       "observe": [
+        {
+         "path": "skip_by",
+         "equals": 5
+        }
+       ]
+      },
+      "tens": {
+       "observe": [
+        {
+         "path": "skip_by",
+         "equals": 10
+        }
+       ]
+      },
+      "twenties": {
+       "observe": [
+        {
+         "path": "skip_by",
+         "equals": 20
+        }
+       ]
+      },
+      "fifties": {
+       "observe": [
+        {
+         "path": "skip_by",
+         "equals": 50
+        }
+       ]
+      },
+      "hundreds": {
+       "observe": [
+        {
+         "path": "skip_by",
+         "equals": 100
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "not_enumerated": [
+    "count_multiples",
+    "not_beyond_1000"
+   ]
+  },
+  "mat_g2_na_q1_4": {
+   "competency_sha256": "5d1c553cf208b302a902aa077708ecd6ef6bd2087aee3cd6978c2ddad98a6c3f",
+   "enumerations": [
+    {
+     "wording": "from smallest to largest, and vice versa",
+     "members": {
+      "smallest_to_largest": {
+       "observe": [
+        {
+         "path": "direction",
+         "equals": "ascending"
+        }
+       ]
+      },
+      "largest_to_smallest": {
+       "observe": [
+        {
+         "path": "direction",
+         "equals": "descending"
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "not_enumerated": [
+    "order_numbers",
+    "up_to_1000"
+   ]
+  },
+  "mat_g2_na_q1_5": {
+   "competency_sha256": "7d35179ed648f5b5c844acdc31015c540623f7e9b77c8a2047cd724c4f249daa",
+   "enumerations": [],
+   "not_enumerated": [
+    "describe_position",
+    "objects",
+    "ordinal_numbers",
+    "up_to_20th"
+   ]
+  },
+  "mat_g2_na_q1_6": {
+   "competency_sha256": "2f6eefda2dadfe9d1cf5e911244bc16e9b2f48124f2d096931a31e8fd5c70680",
+   "enumerations": [
+    {
+     "wording": "the place value of a digit in a 3-digit number, the value of a digit, and the digit of a number, given its place value",
+     "members": {
+      "determine_place_value": {
+       "observe": [
+        {
+         "path": "task_type",
+         "equals": "identify_place"
+        }
+       ]
+      },
+      "determine_value_of_digit": {
+       "observe": [
+        {
+         "path": "task_type",
+         "equals": "identify_value"
+        }
+       ]
+      },
+      "determine_digit_given_place_value": {
+       "observe": [
+        {
+         "path": "task_type",
+         "equals": "identify_digit"
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "not_enumerated": [
+    "digit_in_3_digit_number"
+   ]
+  },
+  "mat_g2_na_q1_7": {
+   "competency_sha256": "b7ff44bfb4ccdc38060ba9017fe7b8c14ac66000653efbf00f0a0225cf28be85",
+   "enumerations": [],
+   "not_enumerated": [
+    "illustrate_addition",
+    "two_digit",
+    "one_digit_numbers",
+    "counting_up",
+    "number_line"
+   ]
+  },
+  "mat_g2_na_q1_8": {
+   "competency_sha256": "75463f0f098b6d196e48b7d955462c52369d9357fb130166df394ed44f776d7f",
+   "enumerations": [],
+   "not_enumerated": [
+    "add_numbers",
+    "sums_up_to_1000",
+    "expanded_form"
+   ]
+  },
+  "mat_g2_na_q1_9": {
+   "competency_sha256": "e426d919465bdcb9c26b7c5cf72e107b4cba2459f704cf8e07411cc07155d260",
+   "enumerations": [
+    {
+     "wording": "with or without regrouping",
+     "members": {
+      "with_regrouping": {
+       "needs_instrumentation": "no structured with/without-regrouping flag; recomputing carries in the harness would duplicate a generator rule (memory: duplicated-rule-copies-disagree)"
+      },
+      "without_regrouping": {
+       "needs_instrumentation": "no structured with/without-regrouping flag; recomputing carries in the harness would duplicate a generator rule (memory: duplicated-rule-copies-disagree)"
+      }
+     }
+    }
+   ],
+   "not_enumerated": [
+    "add_numbers",
+    "sums_up_to_1000"
+   ]
+  },
+  "mat_g2_na_q2_0": {
+   "competency_sha256": "ca881a994c8e5845dac404483e7812a4486b5b0064621af12d6f5ff5b304eec8",
+   "enumerations": [
+    {
+     "wording": "a number of bills, or a number of coins, or a combination of bills and coins",
+     "members": {
+      "number_of_bills": {
+       "needs_instrumentation": "no coin/bill flag in given_values; denomination values alone are ambiguous (P20 exists as both a coin and a bill)"
+      },
+      "number_of_coins": {
+       "needs_instrumentation": "no coin/bill flag in given_values; denomination values alone are ambiguous (P20 exists as both a coin and a bill)"
+      },
+      "combination_of_bills_and_coins": {
+       "needs_instrumentation": "no coin/bill flag in given_values; denomination values alone are ambiguous (P20 exists as both a coin and a bill)"
+      }
+     }
+    },
+    {
+     "wording": "centavo coins only, peso coins only, peso bills only, combined peso coins and peso bills",
+     "members": {
+      "centavo_coins_only": {
+       "observe": [
+        {
+         "path": "denomination_unit",
+         "equals": "centavo"
+        }
+       ]
+      },
+      "peso_coins_only": {
+       "needs_instrumentation": "no coin/bill flag in given_values; denomination values alone are ambiguous (P20 exists as both a coin and a bill)"
+      },
+      "peso_bills_only": {
+       "needs_instrumentation": "no coin/bill flag in given_values; denomination values alone are ambiguous (P20 exists as both a coin and a bill)"
+      },
+      "combined_peso_coins_and_peso_bills": {
+       "needs_instrumentation": "no coin/bill flag in given_values; denomination values alone are ambiguous (P20 exists as both a coin and a bill)"
+      }
+     }
+    }
+   ],
+   "not_enumerated": [
+    "determine",
+    "write_value",
+    "up_to_1000"
+   ]
+  },
+  "mat_g2_na_q2_1": {
+   "competency_sha256": "50b74d2bf3c5a1d07408f1d1ce55593c31a9e5a400bf6c6a332d56b9c2932c24",
+   "enumerations": [
+    {
+     "wording": "peso coins and bills",
+     "members": {
+      "peso_coins": {
+       "needs_instrumentation": "no coin/bill flag in given_values; denomination values alone are ambiguous (P20 exists as both a coin and a bill)"
+      },
+      "bills": {
+       "needs_instrumentation": "no coin/bill flag in given_values; denomination values alone are ambiguous (P20 exists as both a coin and a bill)"
+      }
+     }
+    }
+   ],
+   "not_enumerated": [
+    "compare",
+    "values",
+    "different",
+    "denominations",
+    "up_to_1000"
+   ]
+  },
+  "mat_g2_na_q2_2": {
+   "competency_sha256": "3e72675548bc378bbc5cb731b3c268ca54f0f893e1a6bc1ffc569afb16209027",
+   "enumerations": [],
+   "not_enumerated": [
+    "solve_problems",
+    "involving",
+    "addition",
+    "sums_up_to_1000",
+    "problems",
+    "money",
+    "regrouping"
+   ]
+  },
+  "mat_g2_na_q2_3": {
+   "competency_sha256": "1b5f6006b7b54c9925171c9370ec11415686ca6021a052a31f993dc6265d7431",
+   "enumerations": [
+    {
+     "wording": "on the number line and as an inverse of addition",
+     "members": {
+      "number_line": {
+       "observe": [
+        {
+         "path": "task_type",
+         "equals": "number_line_subtraction"
+        }
+       ]
+      },
+      "inverse_of_addition": {
+       "observe": [
+        {
+         "path": "task_type",
+         "equals": "inverse_of_addition"
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "not_enumerated": [
+    "illustrate_subtraction",
+    "2_digit_by_1_digit"
+   ]
+  },
+  "mat_g2_na_q2_4": {
+   "competency_sha256": "92935ee82e281714283e859d2f80350ea205cb5b4736a69ba99d3d4668a9f7f7",
+   "enumerations": [
+    {
+     "wording": "2-digit minus 1-digit numbers, and 2-digit minus 2-digit numbers",
+     "members": {
+      "2_digit_minus_1_digit": {
+       "observe": [
+        {
+         "path": "b",
+         "lt": 10
+        }
+       ]
+      },
+      "2_digit_minus_2_digit": {
+       "observe": [
+        {
+         "path": "b",
+         "gte": 10
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "not_enumerated": [
+    "subtract_numbers",
+    "less_than_100",
+    "with_regrouping"
+   ]
+  },
+  "mat_g2_na_q2_5": {
+   "competency_sha256": "28d7c5244baa99b197b878a20a3832b48fd5529c5728d6dbe942bb1a456dbf02",
+   "enumerations": [],
+   "not_enumerated": [
+    "solve_problems",
+    "in_pictures",
+    "involving_subtraction",
+    "less_than_100",
+    "regrouping"
+   ]
+  },
+  "mat_g2_na_q2_6": {
+   "competency_sha256": "0e2aeaae00ffc9d59d64b52ae8ca9ea5a26528d551554e78247cf37d4fa9dad8",
+   "enumerations": [],
+   "not_enumerated": [
+    "subtract_numbers",
+    "less_than_1000",
+    "regrouping"
+   ]
+  },
+  "mat_g2_na_q2_7": {
+   "competency_sha256": "5a4ade0fed43d91e72ed29bb3a079538b8a82f486f28fdf320111e257d3a3621",
+   "enumerations": [],
+   "not_enumerated": [
+    "solve_problems",
+    "involving_subtraction",
+    "less_than_1000",
+    "problems_money",
+    "regrouping"
+   ]
+  },
+  "mat_g2_na_q2_8": {
+   "competency_sha256": "9037efb0536fdc147aef3bcfbb4e1baecc4eac6b4f6f277c9616d611596cc64f",
+   "enumerations": [
+    {
+     "wording": "numbers, letters and rhythmic properties, visual elements in arts, and repetitions",
+     "members": {
+      "numbers": {
+       "needs_instrumentation": "number vs letter terms are distinguishable only by the term text"
+      },
+      "letters": {
+       "needs_instrumentation": "number vs letter terms are distinguishable only by the term text"
+      },
+      "repetitions": {
+       "observe": [
+        {
+         "path": "pattern_kind",
+         "equals": "repeating"
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "not_enumerated": [
+    "determine",
+    "next_term",
+    "increasing_decreasing",
+    "patterns"
+   ]
+  },
+  "mat_g2_na_q2_9": {
+   "competency_sha256": "e6eae333ddbe448b765405cea319e26e7dd5531ac1ab4ea1945fc3404ff004b9",
+   "enumerations": [],
+   "not_enumerated": [
+    "create",
+    "increasing_decreasing",
+    "patterns"
+   ]
+  },
+  "mat_g2_na_q3_0": {
+   "competency_sha256": "6e3f4dc4d8b53f02f6965679e3f30e16997a36b6bb32020a5cf57a60a7d4ab1d",
+   "enumerations": [
+    {
+     "wording": "'5 groups of 3' and '5 threes'",
+     "members": {
+      "5_groups_of_3": {
+       "observe": [
+        {
+         "path": "group_form",
+         "equals": "groups_of"
+        }
+       ]
+      },
+      "5_threes": {
+       "observe": [
+        {
+         "path": "group_form",
+         "equals": "plural_name"
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "not_enumerated": [
+    "count_number_of",
+    "concrete_objects",
+    "group",
+    "repeated_addition",
+    "create_equal_groups",
+    "language"
+   ]
+  },
+  "mat_g2_na_q3_1": {
+   "competency_sha256": "5d82a631147d7896019b01c72d086fb5e8005bf6b48ed1d504f0ce60e8b7a4cd",
+   "enumerations": [
+    {
+     "wording": "groups of equal quantities, arrays, counting by multiples, and equal jumps on a number line",
+     "members": {
+      "groups_of_equal_quantities": {
+       "observe": [
+        {
+         "path": "visual_type",
+         "equals": "EmojiPictorial"
+        }
+       ]
+      },
+      "array": {
+       "observe": [
+        {
+         "path": "visual_type",
+         "equals": "GridArea"
+        }
+       ]
+      },
+      "counting_by_multiples": {
+       "observe": [
+        {
+         "path": "task_type",
+         "equals": "skip_counting"
+        }
+       ]
+      },
+      "equal_jumps_on_a_number_line": {
+       "observe": [
+        {
+         "path": "task_type",
+         "equals": "number_line_jumps"
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "not_enumerated": [
+    "illustrate_multiplication",
+    "write_multiplication_sentence",
+    "multiplication_as_repeated_addition",
+    "concrete_model",
+    "pictorial_model",
+    "numeral_form"
+   ]
+  },
+  "mat_g2_na_q3_2": {
+   "competency_sha256": "dacb6356ff105463fc9a31fa6ebca8cf681382bd6f681aa3aae3e781a0687478",
+   "enumerations": [],
+   "not_enumerated": [
+    "multiply",
+    "numbers",
+    "tables_2_3_4_5_10"
+   ]
+  },
+  "mat_g2_na_q3_3": {
+   "competency_sha256": "d4af81f4f9e5c2456480707d6255e6bbce6fb53106030e148470573b7c9ebe62",
+   "enumerations": [],
+   "not_enumerated": [
+    "solve_multiplication_problems",
+    "tables_2_3_4_5_10",
+    "money"
+   ]
+  },
+  "mat_g2_na_q3_4": {
+   "competency_sha256": "0527986f188a35da0e1f282c3e965906fda9cbebf7b17b7dee437ea3ed64e511",
+   "enumerations": [],
+   "not_enumerated": [
+    "illustrate_division",
+    "equal_distribution",
+    "number_of",
+    "objects",
+    "several_groups"
+   ]
+  },
+  "mat_g2_na_q3_5": {
+   "competency_sha256": "9eae081d57f0b6b8ea94f70ef181e6733915ef8d45bb3ce9cce3ea2e3426dbd6",
+   "enumerations": [
+    {
+     "wording": "equal sharing or formation of equal groups of objects, and repeated subtraction",
+     "members": {
+      "equal_sharing": {
+       "needs_instrumentation": "sharing vs grouping both emit task_type=find_quotient"
+      },
+      "formation_of_equal_groups": {
+       "needs_instrumentation": "sharing vs grouping both emit task_type=find_quotient"
+      },
+      "repeated_subtraction": {
+       "observe": [
+        {
+         "path": "task_type",
+         "equals": "repeated_subtraction"
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "not_enumerated": [
+    "illustrate_and_write",
+    "division_expressions",
+    "concrete_and_pictorial_models",
+    "numerals",
+    "modelling_division",
+    "objects"
+   ]
+  },
+  "mat_g2_na_q3_6": {
+   "competency_sha256": "6dfcdb51cf725868582c2eac42ca9043d7b293b954c7ccee31bf04a3195b052a",
+   "enumerations": [],
+   "not_enumerated": [
+    "divide",
+    "numbers",
+    "tables_2_3_4_5_10"
+   ]
+  },
+  "mat_g2_na_q3_7": {
+   "competency_sha256": "efddd0f7070f6a4c2844061f1dc0940b63594501ab328b1b4e3e70d73463f911",
+   "enumerations": [
+    {
+     "wording": "multiplication or division",
+     "members": {
+      "multiplication": {
+       "observe": [
+        {
+         "path": "operation",
+         "equals": "multiplication"
+        }
+       ]
+      },
+      "division": {
+       "observe": [
+        {
+         "path": "operation",
+         "equals": "division"
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "not_enumerated": [
+    "find",
+    "missing_number",
+    "number_sentence",
+    "factors_2_3_4_5_10"
+   ]
+  },
+  "mat_g2_na_q3_8": {
+   "competency_sha256": "32ca7c58125fcdde56a753f5b25a8f49eb9907ed888472f7b7b7faac2da60f47",
+   "enumerations": [],
+   "not_enumerated": [
+    "distinguish",
+    "even_and_odd_numbers",
+    "division",
+    "divisor_2"
+   ]
+  },
+  "mat_g2_na_q3_9": {
+   "competency_sha256": "e5ca7808bd48f23f09f6423761830be8066eb2f10b973291900d71e2dd6dea11",
+   "enumerations": [],
+   "not_enumerated": [
+    "solve_division_problems",
+    "tables_2_3_4_5_10",
+    "money"
+   ]
+  },
+  "mat_g2_na_q4_0": {
+   "competency_sha256": "0b87873134c4db5a5514b06837fede2e7cff428d70b4c236664c98f8ad310913",
+   "enumerations": [],
+   "not_enumerated": [
+    "represent",
+    "identify",
+    "unit_fractions",
+    "denominators_2_3_4_5_6_8"
+   ]
+  },
+  "mat_g2_na_q4_1": {
+   "competency_sha256": "b47a089aacab1a0c3a496322442492de7b31c1d2f00815499c58df92b226b4e0",
+   "enumerations": [],
+   "not_enumerated": [
+    "read",
+    "write",
+    "unit_fractions",
+    "fraction_notation"
+   ]
+  },
+  "mat_g2_na_q4_2": {
+   "competency_sha256": "814087b869ab3588dfac8d908968c2c71e107de3171ad4ddb036ef3faaa003ba",
+   "enumerations": [
+    {
+     "wording": "from smallest to largest, and vice versa",
+     "members": {
+      "smallest_to_largest": {
+       "observe": [
+        {
+         "path": "direction",
+         "equals": "ascending"
+        }
+       ]
+      },
+      "vice_versa": {
+       "observe": [
+        {
+         "path": "direction",
+         "equals": "descending"
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "not_enumerated": [
+    "order",
+    "unit_fractions"
+   ]
+  },
+  "mat_g2_na_q4_3": {
+   "competency_sha256": "301a0da5a282d5e984c38498d1c5bfc2f10ca9e4a8d62d41c0b677e231651cb4",
+   "enumerations": [
+    {
+     "wording": "groups of objects, fraction charts, fraction tiles, and the number line",
+     "members": {
+      "groups_of_objects": {
+       "observe": [
+        {
+         "path": "model_type",
+         "equals": "set_model"
+        }
+       ]
+      },
+      "fraction_charts": {
+       "unserved": "model_type emits only number_line, area_model and set_model"
+      },
+      "fraction_tiles": {
+       "unserved": "model_type emits only number_line, area_model and set_model"
+      },
+      "number_line": {
+       "observe": [
+        {
+         "path": "model_type",
+         "equals": "number_line"
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "not_enumerated": [
+    "represent",
+    "identify",
+    "similar_fractions",
+    "denominators_2_3_4_5_6_8"
+   ]
+  },
+  "mat_g2_na_q4_4": {
+   "competency_sha256": "2717a6a5acb9d45512e9469fe3e32dc320494bca92ab9760a595153b95704962",
+   "enumerations": [],
+   "not_enumerated": [
+    "read",
+    "write",
+    "similar_fractions",
+    "fraction_notation"
+   ]
+  },
+  "mat_g2_na_q4_5": {
+   "competency_sha256": "c90bca8cd1db166b74e3a53fcc6544fa722f54096b2db5cefa32e20da263319f",
+   "enumerations": [
+    {
+     "wording": "from smallest to largest, and vice versa",
+     "members": {
+      "smallest_to_largest": {
+       "observe": [
+        {
+         "path": "direction",
+         "equals": "ascending"
+        }
+       ]
+      },
+      "vice_versa": {
+       "observe": [
+        {
+         "path": "direction",
+         "equals": "descending"
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "not_enumerated": [
+    "order",
+    "similar_fractions"
+   ]
+  },
+  "mat_g3_dp_q3_0": {
+   "competency_sha256": "5cf530fa867c29e590b11e4372e6a55c7655bf0e29a2ae067efc17ef107e68a6",
+   "enumerations": [
+    {
+     "wording": "rolling a die or tossing a coin",
+     "members": {
+      "rolling_die": {
+       "observe": [
+        {
+         "path": "experiment_type",
+         "equals": "die_roll"
+        }
+       ]
+      },
+      "tossing_coin": {
+       "observe": [
+        {
+         "path": "experiment_type",
+         "equals": "coin_toss"
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "not_enumerated": [
+    "collect_data",
+    "experiments",
+    "small_number_of_possible_outcomes"
+   ]
+  },
+  "mat_g3_dp_q3_1": {
+   "competency_sha256": "c5a48965079670eda138eb46de821cbf9c8b06bf2104fd7d383e28369ebd53e1",
+   "enumerations": [
+    {
+     "wording": "tables and single bar graphs",
+     "members": {
+      "data_table": {
+       "observe": [
+        {
+         "path": "orientation",
+         "equals": "table"
+        }
+       ]
+      },
+      "single_bar_graph": {
+       "observe": [
+        {
+         "path": "orientation",
+         "one_of": [
+          "horizontal",
+          "vertical"
+         ]
+        }
+       ]
+      }
+     }
+    },
+    {
+     "wording": "horizontal and vertical",
+     "members": {
+      "horizontal_bar_graph": {
+       "observe": [
+        {
+         "path": "orientation",
+         "equals": "horizontal"
+        }
+       ]
+      },
+      "vertical_bar_graph": {
+       "observe": [
+        {
+         "path": "orientation",
+         "equals": "vertical"
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "not_enumerated": [
+    "present_data",
+    "data_set"
+   ]
+  },
+  "mat_g3_dp_q3_2": {
+   "competency_sha256": "918004e8ea1fe1d42be6e9bd954310e156634b85d86c4eba510fca979676400b",
+   "enumerations": [
+    {
+     "wording": "tables and single bar graphs",
+     "members": {
+      "tables": {
+       "observe": [
+        {
+         "path": "orientation",
+         "equals": "table"
+        }
+       ]
+      },
+      "single_bar_graphs": {
+       "observe": [
+        {
+         "path": "orientation",
+         "one_of": [
+          "horizontal",
+          "vertical"
+         ]
+        }
+       ]
+      }
+     }
+    },
+    {
+     "wording": "horizontal and vertical",
+     "members": {
+      "horizontal": {
+       "observe": [
+        {
+         "path": "orientation",
+         "equals": "horizontal"
+        }
+       ]
+      },
+      "vertical": {
+       "observe": [
+        {
+         "path": "orientation",
+         "equals": "vertical"
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "not_enumerated": [
+    "interpret_data"
+   ]
+  },
+  "mat_g3_dp_q3_3": {
+   "competency_sha256": "177168c699cc334f97e9c87a4d7a17264f15aff9005eac7bb066165cb528fb52",
+   "enumerations": [
+    {
+     "wording": "horizontal and vertical",
+     "members": {
+      "horizontal": {
+       "observe": [
+        {
+         "path": "orientation",
+         "equals": "horizontal"
+        }
+       ]
+      },
+      "vertical": {
+       "observe": [
+        {
+         "path": "orientation",
+         "equals": "vertical"
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "not_enumerated": [
+    "solve_problems",
+    "data_presented",
+    "single_bar_graph"
+   ]
+  },
+  "mat_g3_dp_q3_4": {
+   "competency_sha256": "21da83c1319c3e48d3c0dd180eb7629f05ce25295a5d5c7c78ecccc1f68bb934",
+   "enumerations": [
+    {
+     "wording": "equally likely, less/least likely, more/most likely, certain, and impossible",
+     "members": {
+      "equally_likely": {
+       "observe": [
+        {
+         "path": "probability_term",
+         "equals": "equally likely"
+        }
+       ]
+      },
+      "less_least_likely": {
+       "observe": [
+        {
+         "path": "probability_term",
+         "one_of": [
+          "less likely",
+          "least likely"
+         ]
+        }
+       ]
+      },
+      "more_most_likely": {
+       "observe": [
+        {
+         "path": "probability_term",
+         "one_of": [
+          "more likely",
+          "most likely"
+         ]
+        }
+       ]
+      },
+      "certain": {
+       "observe": [
+        {
+         "path": "probability_term",
+         "equals": "certain"
+        }
+       ]
+      },
+      "impossible": {
+       "observe": [
+        {
+         "path": "probability_term",
+         "equals": "impossible"
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "not_enumerated": [
+    "describe",
+    "compare",
+    "outcomes",
+    "real_life_situations"
+   ]
+  },
+  "mat_g3_mg_q1_0": {
+   "competency_sha256": "cba97991505d760b75a951e6ee2d3dc06cf9f53c3447e4e7c2d29ccb6219fa97",
+   "enumerations": [
+    {
+     "wording": "a square or rectangle",
+     "members": {
+      "square_figure": {
+       "observe": [
+        {
+         "path": "shape",
+         "equals": "square"
+        }
+       ]
+      },
+      "rectangle_figure": {
+       "observe": [
+        {
+         "path": "shape",
+         "equals": "rectangle"
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "not_enumerated": [
+    "illustrate_area_with_tiles",
+    "estimate_area",
+    "area_attribute",
+    "square_tile_covering",
+    "square_tile_unit"
+   ]
+  },
+  "mat_g3_mg_q1_1": {
+   "competency_sha256": "50cee64a8491dd493108f1bac9bb09934d26622f0070a5b707bd8a322eef4707",
+   "enumerations": [
+    {
+     "wording": "a square and a rectangle",
+     "members": {
+      "square_figure": {
+       "observe": [
+        {
+         "path": "shape",
+         "equals": "square"
+        }
+       ]
+      },
+      "rectangle_figure": {
+       "observe": [
+        {
+         "path": "shape",
+         "equals": "rectangle"
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "not_enumerated": [
+    "explore_pattern_across_cases",
+    "reason_inductively_from_cases",
+    "derive_area_formula",
+    "area_formula_expression",
+    "area_attribute",
+    "square_tile_array",
+    "square_tile_unit"
+   ]
+  },
+  "mat_g3_mg_q1_2": {
+   "competency_sha256": "8388a6c44a578255df6605029b28f67b7e7ba0a96507434bec5f56aee555eb3e",
+   "enumerations": [
+    {
+     "wording": "squares and rectangles",
+     "members": {
+      "square_figure": {
+       "observe": [
+        {
+         "path": "shape",
+         "equals": "square"
+        }
+       ]
+      },
+      "rectangle_figure": {
+       "observe": [
+        {
+         "path": "shape",
+         "equals": "rectangle"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "wording": "sq. cm and sq. m",
+     "members": {
+      "square_centimeter": {
+       "observe": [
+        {
+         "path": "unit",
+         "equals": "sq cm"
+        }
+       ]
+      },
+      "square_meter": {
+       "observe": [
+        {
+         "path": "unit",
+         "equals": "sq m"
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "not_enumerated": [
+    "compute_area",
+    "area_attribute",
+    "square_unit_abbreviation"
+   ]
+  },
+  "mat_g3_mg_q1_3": {
+   "competency_sha256": "f95ba07a93e7c14bb804e61293288406fc5aa0f4055a86dd920938b7e34177e4",
+   "enumerations": [
+    {
+     "wording": "squares and rectangles",
+     "members": {
+      "square_figure": {
+       "observe": [
+        {
+         "path": "shape",
+         "equals": "square"
+        }
+       ]
+      },
+      "rectangle_figure": {
+       "observe": [
+        {
+         "path": "shape",
+         "equals": "rectangle"
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "not_enumerated": [
+    "solve_area_problem",
+    "word_problem_context",
+    "extract_area_relationship_from_context",
+    "area_attribute"
+   ]
+  },
+  "mat_g3_mg_q1_4": {
+   "competency_sha256": "815bedf80c7ae8f0add080b120d493869099154d5d71755f7286c93906917817",
+   "enumerations": [
+    {
+     "wording": "a point, line, line segment, and ray",
+     "members": {
+      "point": {
+       "observe": [
+        {
+         "path": "kind",
+         "equals": "point"
+        }
+       ]
+      },
+      "line": {
+       "observe": [
+        {
+         "path": "kind",
+         "equals": "line"
+        }
+       ]
+      },
+      "line_segment": {
+       "observe": [
+        {
+         "path": "kind",
+         "equals": "segment"
+        }
+       ]
+      },
+      "ray": {
+       "observe": [
+        {
+         "path": "kind",
+         "equals": "ray"
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "not_enumerated": [
+    "recognize_geometric_object",
+    "concrete_model_depiction",
+    "draw_geometric_object"
+   ]
+  },
+  "mat_g3_mg_q1_5": {
+   "competency_sha256": "00de0f96fd90e8babb72e61e3c3c4f122cb304ac30ca23d2c4567bf92b12f502",
+   "enumerations": [
+    {
+     "wording": "parallel, intersecting, and perpendicular lines",
+     "members": {
+      "parallel_lines": {
+       "observe": [
+        {
+         "path": "kind",
+         "equals": "parallel"
+        }
+       ]
+      },
+      "intersecting_lines": {
+       "observe": [
+        {
+         "path": "kind",
+         "equals": "intersecting"
+        }
+       ]
+      },
+      "perpendicular_lines": {
+       "observe": [
+        {
+         "path": "kind",
+         "equals": "perpendicular"
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "not_enumerated": [
+    "recognize_line_relationships",
+    "draw_line_relationships"
+   ]
+  },
+  "mat_g3_mg_q1_6": {
+   "competency_sha256": "acc281ed0eaecd451132e019e36691eaca863e53ec0267d5edd3a5d2182268a4",
+   "enumerations": [],
+   "not_enumerated": [
+    "identify_equal_length_segments",
+    "draw_segment_of_given_length",
+    "line_segment",
+    "equal_length",
+    "ruler"
+   ]
+  },
+  "mat_g3_mg_q2_0": {
+   "competency_sha256": "876398d288bc0a899745b57e172eb8da07ba4534439149c5ef88165bfe0b654a",
+   "enumerations": [],
+   "not_enumerated": [
+    "measure_mass",
+    "grams_kilograms_and_or_milligrams",
+    "measuring_tools"
+   ]
+  },
+  "mat_g3_mg_q2_1": {
+   "competency_sha256": "9aedfe8a42a5d7c6316392dd7f932e24a125ab53d86f2a47ed20462a898e205f",
+   "enumerations": [],
+   "not_enumerated": [
+    "estimate_mass",
+    "an_object",
+    "grams_kilograms_and_or_milligrams"
+   ]
+  },
+  "mat_g3_mg_q2_2": {
+   "competency_sha256": "63248a0771a050fb62ccce79f2c84276231bd5067ace2a410e7d9feb7612e6a1",
+   "enumerations": [],
+   "not_enumerated": [
+    "compare_masses",
+    "objects",
+    "balance_scale"
+   ]
+  },
+  "mat_g3_mg_q2_3": {
+   "competency_sha256": "71436c9f57733db53ec03c7a0d3148743f79b9608fc8f36f30f10ad7810cf35a",
+   "enumerations": [],
+   "not_enumerated": [
+    "measure_capacity",
+    "capacity_of_a_container",
+    "liters_and_or_milliliters",
+    "measuring_tools_for_capacity"
+   ]
+  },
+  "mat_g3_mg_q2_4": {
+   "competency_sha256": "137f33f9860d93480639bf694b5fe76d1ab28058b96fca863bba292a45b01666",
+   "enumerations": [],
+   "not_enumerated": [
+    "estimate_capacity",
+    "liters_and_or_milliliters"
+   ]
+  },
+  "mat_g3_mg_q2_5": {
+   "competency_sha256": "f5f8ff9b316603cfe966794583f0e65eebd4068ea1a8080f6cd862fd98eeb1aa",
+   "enumerations": [],
+   "not_enumerated": [
+    "compare_capacities",
+    "two_containers"
+   ]
+  },
+  "mat_g3_mg_q4_0": {
+   "competency_sha256": "c31484becf80e03a083c8553140b2d0f7f2af94b5d1ff7acf026b0515af3b580",
+   "enumerations": [],
+   "not_enumerated": [
+    "describe",
+    "draw",
+    "two_direction_multi_step_slide",
+    "translation",
+    "basic_shapes_and_figures"
+   ]
+  },
+  "mat_g3_mg_q4_1": {
+   "competency_sha256": "562f05c2680cd6f076b0e0f6d86db5956d40018c8fe051c0841385e85a0a1eb7",
+   "enumerations": [],
+   "not_enumerated": [
+    "identify",
+    "shapes_or_figures",
+    "line_symmetry",
+    "drawing_the_line_of_symmetry"
+   ]
+  },
+  "mat_g3_mg_q4_2": {
+   "competency_sha256": "3a9daa52aac53b7f47dc3591619629226c38fa2b09d34066e93cea400f9b95fd",
+   "enumerations": [],
+   "not_enumerated": [
+    "complete",
+    "figure",
+    "symmetric_with_respect_to_a_line"
+   ]
+  },
+  "mat_g3_na_q1_0": {
+   "competency_sha256": "ada25dfbb66e2e1793c0e0f56c6ca859df4eaf5e074544995a2eb868e9dbdf95",
+   "enumerations": [],
+   "not_enumerated": [
+    "represent",
+    "numbers",
+    "up_to_10000",
+    "pictorial_models",
+    "numerals"
+   ]
+  },
+  "mat_g3_na_q1_1": {
+   "competency_sha256": "dc0d43c423efb0d3b203c7966e931a04a368dfcb52a09437afd7470e09b010b3",
+   "enumerations": [
+    {
+     "wording": "in numerals and in words",
+     "members": {
+      "numerals": {
+       "observe": [
+        {
+         "path": "task_type",
+         "equals": "word_to_numeral"
+        }
+       ]
+      },
+      "words": {
+       "observe": [
+        {
+         "path": "task_type",
+         "equals": "numeral_to_word"
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "not_enumerated": [
+    "read",
+    "write",
+    "numbers",
+    "up_to_10000"
+   ]
+  },
+  "mat_g3_na_q1_2": {
+   "competency_sha256": "9360d8e370b1e11fa07e3967777f4b08b4d3e0a294ab111912389df20195ccd9",
+   "enumerations": [],
+   "not_enumerated": [
+    "describe",
+    "position",
+    "objects",
+    "ordinal_numbers",
+    "up_to_100th"
+   ]
+  },
+  "mat_g3_na_q1_3": {
+   "competency_sha256": "525e7e5269adb67314b01f5cf64285cc13622f04066b974e138a1aa9defbf8c4",
+   "enumerations": [
+    {
+     "wording": "the place value of a digit in a 4-digit number, the value of a digit, and the digit of number, given its place value",
+     "members": {
+      "place_value_of_digit": {
+       "observe": [
+        {
+         "path": "task_type",
+         "equals": "identify_place"
+        }
+       ]
+      },
+      "value_of_digit": {
+       "observe": [
+        {
+         "path": "task_type",
+         "equals": "identify_value"
+        }
+       ]
+      },
+      "digit_of_number": {
+       "observe": [
+        {
+         "path": "task_type",
+         "equals": "identify_digit"
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "not_enumerated": [
+    "determine",
+    "4_digit_number",
+    "given_place_value"
+   ]
+  },
+  "mat_g3_na_q1_4": {
+   "competency_sha256": "4fbc91667921189a7df75d6d1347a35e84a57fac8abd2fe230d125025205c1b1",
+   "enumerations": [
+    {
+     "wording": "nearest ten, hundred, or thousand",
+     "members": {
+      "nearest_ten": {
+       "observe": [
+        {
+         "path": "round_to",
+         "equals": 10
+        }
+       ]
+      },
+      "hundred": {
+       "observe": [
+        {
+         "path": "round_to",
+         "equals": 100
+        }
+       ]
+      },
+      "thousand": {
+       "observe": [
+        {
+         "path": "round_to",
+         "equals": 1000
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "not_enumerated": [
+    "round",
+    "numbers"
+   ]
+  },
+  "mat_g3_na_q1_5": {
+   "competency_sha256": "b8071bdac1a251655c43a0437db805d81a909138bd93c4d2ce648955c6478a37",
+   "enumerations": [],
+   "not_enumerated": [
+    "compare",
+    "numbers",
+    "up_to_10000",
+    "symbols"
+   ]
+  },
+  "mat_g3_na_q1_6": {
+   "competency_sha256": "c404c91fee154600141d19cbdda3c64dd3b7531c23f59d93635d072a781a9210",
+   "enumerations": [
+    {
+     "wording": "from smallest to largest, and vice versa",
+     "members": {
+      "smallest_to_largest": {
+       "observe": [
+        {
+         "path": "direction",
+         "equals": "ascending"
+        }
+       ]
+      },
+      "vice_versa": {
+       "observe": [
+        {
+         "path": "direction",
+         "equals": "descending"
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "not_enumerated": [
+    "order",
+    "numbers",
+    "up_to_10000"
+   ]
+  },
+  "mat_g3_na_q2_0": {
+   "competency_sha256": "cd4f5e1565aee80b6e3052b04a3dead531fa18318a91c07fae912f3fb4a8f62a",
+   "enumerations": [
+    {
+     "wording": "in words and using: Philippine currency symbols (₱ and PhP) up to ₱10 000, and the centavo sign",
+     "members": {
+      "words": {
+       "needs_instrumentation": "notation form (words, the peso sign, PhP, the centavo sign) appears only in text"
+      },
+      "peso_sign": {
+       "needs_instrumentation": "notation form (words, the peso sign, PhP, the centavo sign) appears only in text"
+      },
+      "php": {
+       "needs_instrumentation": "notation form (words, the peso sign, PhP, the centavo sign) appears only in text"
+      },
+      "centavo_sign": {
+       "needs_instrumentation": "notation form (words, the peso sign, PhP, the centavo sign) appears only in text"
+      }
+     }
+    }
+   ],
+   "not_enumerated": [
+    "read",
+    "write",
+    "money",
+    "philippine_currency_symbols",
+    "up_to_peso_10000"
+   ]
+  },
+  "mat_g3_na_q2_1": {
+   "competency_sha256": "66076ce006a09ce2c4aa4f5e394a3cf33007716adbd97d0470b1a9ca2e09f328",
+   "enumerations": [
+    {
+     "wording": "with and without regrouping",
+     "members": {
+      "with_regrouping": {
+       "needs_instrumentation": "no structured with/without-regrouping flag; recomputing carries in the harness would duplicate a generator rule (memory: duplicated-rule-copies-disagree)"
+      },
+      "without_regrouping": {
+       "needs_instrumentation": "no structured with/without-regrouping flag; recomputing carries in the harness would duplicate a generator rule (memory: duplicated-rule-copies-disagree)"
+      }
+     }
+    }
+   ],
+   "not_enumerated": [
+    "add",
+    "numbers",
+    "sums_up_to_10000",
+    "regrouping"
+   ]
+  },
+  "mat_g3_na_q2_2": {
+   "competency_sha256": "9a53eac9880b7d67b1e7d93ad804c279b80522f9de4c044c9ec82e2edeba1ebd",
+   "enumerations": [],
+   "not_enumerated": [
+    "estimate",
+    "sum",
+    "addends",
+    "up_to_4_digits"
+   ]
+  },
+  "mat_g3_na_q2_3": {
+   "competency_sha256": "0ee892cbb8e1b58f9f7edae32b6071d0eb029e9f68732665dd13912367a1c8c8",
+   "enumerations": [],
+   "not_enumerated": [
+    "solve_problems",
+    "addition",
+    "numbers",
+    "sums_up_to_10000",
+    "problems_involving_money"
+   ]
+  },
+  "mat_g3_na_q2_4": {
+   "competency_sha256": "61d392129e28b0c7e8282c08c52cc33291085362915be553ff79edade683227c",
+   "enumerations": [],
+   "not_enumerated": [
+    "subtract_numbers",
+    "less_than_10_000",
+    "with_and_without_regrouping"
+   ]
+  },
+  "mat_g3_na_q2_5": {
+   "competency_sha256": "3a88532ecad227cc98dce8b310d769daae9b6b78491065e16a20ab4d99eb403d",
+   "enumerations": [],
+   "not_enumerated": [
+    "estimate_difference",
+    "two_numbers",
+    "up_to_4_digits"
+   ]
+  },
+  "mat_g3_na_q2_6": {
+   "competency_sha256": "613dd68a30f475928589dbcdf70214196a83c4613d1a751e5c62333a4ef47786",
+   "enumerations": [],
+   "not_enumerated": [
+    "addition_and_subtraction",
+    "3_to_4_numbers",
+    "up_to_2_digits",
+    "observing_correct_order_of_operations"
+   ]
+  },
+  "mat_g3_na_q2_7": {
+   "competency_sha256": "e30f19de00756e38ae390bb765cab01fc3c877c4430c689e552cf80414856dbf",
+   "enumerations": [],
+   "not_enumerated": [
+    "solve_problems_involving_addition_and_subtraction",
+    "3_to_4_numbers",
+    "up_to_2_digits",
+    "problems_involving_money"
+   ]
+  },
+  "mat_g3_na_q3_0": {
+   "competency_sha256": "2e152d645e7a9f014fc4b2312dd5a0ce095e29f3961d577f7ddfa88f480ed88f",
+   "enumerations": [],
+   "not_enumerated": [
+    "multiply_numbers",
+    "6_7_8_and_9_multiplication_tables"
+   ]
+  },
+  "mat_g3_na_q3_1": {
+   "competency_sha256": "21da4cb909990721e295dc7eba9659614258b2d2bd810c817de1ea093788d1ed",
+   "enumerations": [
+    {
+     "wording": "one multiplied by any number is equal to the number; zero multiplied by any number is zero; changing the order of the numbers being multiplied does not change the product; changing the grouping of the numbers being multiplied does not change the product; and multiplying the sum of two addends by a number is the same as the sum of the products of a number by each addend",
+     "members": {
+      "one_multiplied_by_any_number": {
+       "observe": [
+        {
+         "path": "task_type",
+         "equals": "zero_identity"
+        },
+        {
+         "any_of": [
+          [
+           {
+            "path": "a",
+            "equals": 1
+           }
+          ],
+          [
+           {
+            "path": "b",
+            "equals": 1
+           }
+          ]
+         ]
+        }
+       ]
+      },
+      "zero_multiplied_by_any_number": {
+       "observe": [
+        {
+         "path": "task_type",
+         "equals": "zero_identity"
+        },
+        {
+         "any_of": [
+          [
+           {
+            "path": "a",
+            "equals": 0
+           }
+          ],
+          [
+           {
+            "path": "b",
+            "equals": 0
+           }
+          ]
+         ]
+        }
+       ]
+      },
+      "changing_the_order": {
+       "observe": [
+        {
+         "path": "task_type",
+         "equals": "commutative"
+        }
+       ]
+      },
+      "changing_the_grouping": {
+       "observe": [
+        {
+         "path": "task_type",
+         "equals": "associative"
+        }
+       ]
+      },
+      "multiplying_the_sum_of_two_addends": {
+       "observe": [
+        {
+         "path": "task_type",
+         "equals": "distributive"
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "not_enumerated": [
+    "illustrate_and_apply_properties_of_multiplication",
+    "6_7_8_and_9_multiplication_tables"
+   ]
+  },
+  "mat_g3_na_q3_2": {
+   "competency_sha256": "8772bf5633352642d49bd189668c06c0047f7bc071bf060637aa2f3440518d5c",
+   "enumerations": [
+    {
+     "wording": "2- to 3-digit numbers by a 1-digit number, and 2- to 4-digit numbers by a number whose leading digit is the only non-zero digit",
+     "members": {
+      "2_to_3_digit_by_1_digit": {
+       "observe": [
+        {
+         "path": "b",
+         "lt": 10
+        }
+       ]
+      },
+      "2_to_4_digit_by_leading_non_zero": {
+       "observe": [
+        {
+         "path": "b",
+         "gte": 10
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "not_enumerated": [
+    "multiply_numbers",
+    "with_and_without_regrouping",
+    "products_up_to_10_000"
+   ]
+  },
+  "mat_g3_na_q3_3": {
+   "competency_sha256": "aefb6bd3a1bab94324816d1f0625da9f87f32a49e03ab039b3cd082efa12dca4",
+   "enumerations": [],
+   "not_enumerated": [
+    "estimate_product",
+    "2_to_3_digit_factors",
+    "1_to_2_digit_factors",
+    "estimate_factors",
+    "multiples_of_10"
+   ]
+  },
+  "mat_g3_na_q3_4": {
+   "competency_sha256": "f6eea117e69ae8628ddbd3a4d0db977f65904f09710efbf59cd9206c2ce32414",
+   "enumerations": [],
+   "not_enumerated": [
+    "solve_multiplication_problems",
+    "1_to_2_step",
+    "multiplication_problems",
+    "problems_involving_money"
+   ]
+  },
+  "mat_g3_na_q3_5": {
+   "competency_sha256": "52b16f01b41e36b03a57845f6d5c87160a86e9f2967aeb66903cc1aca9e0d07c",
+   "enumerations": [
+    {
+     "wording": "repeating and increasing components or repeating and decreasing components",
+     "members": {
+      "repeating_and_increasing": {
+       "observe": [
+        {
+         "path": "common_difference",
+         "gte": 1
+        }
+       ]
+      },
+      "repeating_and_decreasing": {
+       "observe": [
+        {
+         "path": "common_difference",
+         "lt": 0
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "not_enumerated": [
+    "determine_missing_terms",
+    "pattern"
+   ]
+  },
+  "mat_g3_na_q3_6": {
+   "competency_sha256": "db7c3fc96b28470f0395d328b3c6f379688e154c12d05a42e99dc74238499e3d",
+   "enumerations": [
+    {
+     "wording": "repeating and increasing components or repeating and decreasing components",
+     "members": {
+      "repeating_and_increasing": {
+       "observe": [
+        {
+         "path": "common_difference",
+         "gte": 1
+        }
+       ]
+      },
+      "repeating_and_decreasing": {
+       "observe": [
+        {
+         "path": "common_difference",
+         "lt": 0
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "not_enumerated": [
+    "explain_generation",
+    "pattern"
+   ]
+  },
+  "mat_g3_na_q4_0": {
+   "competency_sha256": "fc68685af6f5749dba9782246cdfca3ee4b1a1967ba6384e1994bf1a8adf160f",
+   "enumerations": [
+    {
+     "wording": "through equal jumps on the number line and as inverse of multiplication",
+     "members": {
+      "equal_jumps": {
+       "observe": [
+        {
+         "path": "task_type",
+         "equals": "number_line_jumps"
+        }
+       ]
+      },
+      "inverse_of_multiplication": {
+       "observe": [
+        {
+         "path": "task_type",
+         "equals": "inverse_of_multiplication"
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "not_enumerated": [
+    "illustrate_division",
+    "number_line"
+   ]
+  },
+  "mat_g3_na_q4_1": {
+   "competency_sha256": "5da2ac78bfc6223b50eb775cc3e9daba9515e4606a1fddd91276b8ad8f97fc9e",
+   "enumerations": [],
+   "not_enumerated": [
+    "divide_numbers",
+    "6_7_8_9",
+    "multiplication_tables"
+   ]
+  },
+  "mat_g3_na_q4_2": {
+   "competency_sha256": "8ed5abf3384d58dd2183d30c2d9d310b5202a26c07fe6d79b91ec63d697fa157",
+   "enumerations": [
+    {
+     "wording": "multiplication or division",
+     "members": {
+      "multiplication": {
+       "observe": [
+        {
+         "path": "operation",
+         "equals": "multiplication"
+        }
+       ]
+      },
+      "division": {
+       "observe": [
+        {
+         "path": "operation",
+         "equals": "division"
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "not_enumerated": [
+    "find_missing_number",
+    "number_sentence",
+    "6_7_8_9"
+   ]
+  },
+  "mat_g3_na_q4_3": {
+   "competency_sha256": "c1b841665ab55fe15d615fde4262bbf0890f56a8df73ba130f04184d48d018a6",
+   "enumerations": [
+    {
+     "wording": "2- to 3-digit numbers by 1-digit number without remainder, 2-digit numbers by 1-digit number with remainder, and 2- to 4-digit numbers by 10,100, and 1000",
+     "members": {
+      "1_digit_number_without_remainder": {
+       "observe": [
+        {
+         "path": "b",
+         "lt": 10
+        },
+        {
+         "path": "remainder",
+         "equals": 0
+        }
+       ]
+      },
+      "1_digit_number_with_remainder": {
+       "observe": [
+        {
+         "path": "remainder",
+         "gte": 1
+        }
+       ]
+      },
+      "10_100_1000": {
+       "observe": [
+        {
+         "path": "b",
+         "one_of": [
+          10,
+          100,
+          1000
+         ]
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "not_enumerated": [
+    "divide_numbers",
+    "with_and_without_remainder",
+    "2_to_3_digit_numbers",
+    "2_digit_numbers",
+    "2_to_4_digit_numbers"
+   ]
+  },
+  "mat_g3_na_q4_4": {
+   "competency_sha256": "877926c66b40f0b54eacc0b17af75155a696150083d38ec5b4b74a274e1f8127",
+   "enumerations": [],
+   "not_enumerated": [
+    "estimate_quotient",
+    "divided_by",
+    "2_to_3_digit_numbers",
+    "1_to_2_digit_numbers",
+    "multiples_of_10_or_100"
+   ]
+  },
+  "mat_g3_na_q4_5": {
+   "competency_sha256": "586e6d9f01d2b0a6086716db4606b4f8d81746cd0a4be44ca3640f1afc911d50",
+   "enumerations": [],
+   "not_enumerated": [
+    "solve_division_problems",
+    "2_to_3_digit_numbers",
+    "1_digit_number",
+    "money"
+   ]
+  },
+  "mat_g3_na_q4_6": {
+   "competency_sha256": "2773c8b7b549f644b98afdb9f0c62cdd26459f527102567658af4f45de1561c3",
+   "enumerations": [
+    {
+     "wording": "equal to one and greater than one",
+     "members": {
+      "equal_to_one": {
+       "needs_instrumentation": "numerator==denominator is a comparison of two fields; DNA should emit a class"
+      },
+      "greater_than_one": {
+       "needs_instrumentation": "numerator>denominator is a comparison of two fields; DNA should emit a class"
+      }
+     }
+    }
+   ],
+   "not_enumerated": [
+    "represent",
+    "fractions",
+    "models"
+   ]
+  },
+  "mat_g3_na_q4_7": {
+   "competency_sha256": "b014a085ea9c4f55fc26dc3e75525f77741a18232bfb131ab3a6a7d8cbcaeab0",
+   "enumerations": [
+    {
+     "wording": "Add and subtract",
+     "members": {
+      "add": {
+       "observe": [
+        {
+         "path": "operation",
+         "equals": "add"
+        }
+       ]
+      },
+      "subtract": {
+       "observe": [
+        {
+         "path": "operation",
+         "equals": "subtract"
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "not_enumerated": [
+    "similar_fractions",
+    "models"
+   ]
+  }
+ }
+}

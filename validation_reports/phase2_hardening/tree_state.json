@@ -3,9 +3,9 @@
   "note": "Intent record for interruption safety. Written when a batch, chain or campaign STARTS and cleared when it completes; an intent left open means a session did not reach its finish line. Deliberately digest-free -- see tests/tree_state.py. Read with `PYTHONPATH=. .venv/bin/python tests/tree_state.py`.",
   "open_intent": {
     "kind": "batch",
-    "began_at": "2026-10-07T02:44:37+08:00",
-    "session": "codex-h06-phase2-instrument-20261007",
-    "note": "Phase 2 instrument: stratified provider-variant attester packets, dispatch instructions, contract enforcement, and named mutation proof.",
+    "began_at": "2026-10-07T12:19:24+08:00",
+    "session": "claude-h06-phase2-instrument-20261007",
+    "note": "INTERRUPTED at owner instruction. Source = 314a745a (explicit-variant stratification, focused 30 passed). Ruling-22 classification/strata DRAFTED in validation_reports/phase2_hardening/ruling22_wip/ (182 selector, 56 needs_instrumentation, 2 unserved); gate, tests, mutations, contract row NOT written; chain NOT run. GPT selector table preserved as a patch, not adopted. Resume at NEXT_AGENT_PROMPT.md Phase 2a.",
     "next_step": "Land every remaining source edit, then run the re-proof chain in order."
   },
   "last_completed": {
