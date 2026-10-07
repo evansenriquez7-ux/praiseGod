@@ -1,0 +1,1306 @@
+{
+  "batch": "batch378_mat_g1_na_q1_5",
+  "attested_at": "2026-10-07T16:57:03Z",
+  "attested_by": "blind-attester-claude-haiku-4.5-default-p3c-mat_g1_na_q1_5-20261008",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose, default effort; told to Read only scratchpad/p3/c_d03/prompt.txt (section A of dispatch_instructions_20261007.md followed by the verbatim render_prompt_block output of the whole node packet; directory named opaquely, no node id, no key file beside it; delivery by file approved by the owner 2026-10-08) and Write only scratchpad/p3/c_d03/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "Harness usage record (subagent transcript): 2 tool uses excluding the final hand-back; by name: 1 Read, 1 Write; paths other than this dispatch's own prompt.txt/verdicts.json: none"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g1_na_q1_5",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127,
+      1026258395,
+      1027394819,
+      1781562355,
+      1782258076,
+      2013748293,
+      2014122603,
+      2685983496,
+      2688532572,
+      2710879902,
+      2729500265,
+      3197859369,
+      3197900876
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g1_na_q1_5",
+        "seed": 11,
+        "formatter": "mcq",
+        "question_text": "The pencils are placed in a row. One pencil is number 8 in the row. Which word describes its position?",
+        "correct_answer": "eighth",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "sixth",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "eighth",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "first",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "ninth",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "eighth",
+        "hints": [
+          "Count the objects in order from the front: 1st, 2nd, 3rd, …",
+          "The 8th (eighth) place is position number 8.",
+          "Find the object standing at position 8."
+        ],
+        "sample_id": "fd5f086b4bd27421ef7a",
+        "replay_digest": "b17c6553a0c9c277189fa069d5c36167ff1a8a8ac70db235c25cf6c89ec79b93"
+      },
+      {
+        "node_id": "mat_g1_na_q1_5",
+        "seed": 23,
+        "formatter": "cloze",
+        "question_text": "Who arrived earlier: the student in 1st place or 10th place?",
+        "correct_answer": "1st",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "7th",
+            "text": "7th",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "9th",
+            "text": "9th",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "2nd",
+            "text": "2nd",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "1st",
+            "text": "1st",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "1st",
+        "hints": [
+          "Smaller ordinal numbers come earlier (closer to the start).",
+          "Compare the numbers: the smaller ordinal position is earlier.",
+          "1st means position 1."
+        ],
+        "sample_id": "b373e5351d9431d88d45",
+        "replay_digest": "fcf4c40c874fa086d02ef276afaf2d50790e2e7eb6238e57ab8376affe1920c5"
+      },
+      {
+        "node_id": "mat_g1_na_q1_5",
+        "seed": 42,
+        "formatter": "mcq",
+        "question_text": "Which word describes the 5th position?",
+        "correct_answer": "fifth",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "eighth",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "fifth",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "third",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "ninth",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "fifth",
+        "hints": [
+          "Ordinal numbers describe position in order.",
+          "The number 5 in order is called the 5th (fifth).",
+          "Remember: 1st = first, 2nd = second, 3rd = third, then add -th."
+        ],
+        "sample_id": "bce69f4c2c61801269ab",
+        "replay_digest": "6738cec2136cfa300eb4278a125b3623a22f2d6f0915718c1fdf198a423ca2c0"
+      },
+      {
+        "node_id": "mat_g1_na_q1_5",
+        "seed": 57,
+        "formatter": "cloze",
+        "question_text": "Write the symbol for the tenth position.",
+        "correct_answer": "10th",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "9th",
+            "text": "9th",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "2nd",
+            "text": "2nd",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "7th",
+            "text": "7th",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "10th",
+            "text": "10th",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "10th",
+        "hints": [
+          "Ordinal numbers describe position in order.",
+          "The number 10 in order is called the 10th (tenth).",
+          "Remember: 1st = first, 2nd = second, 3rd = third, then add -th."
+        ],
+        "sample_id": "4046bdf7ab55bfda9097",
+        "replay_digest": "8b1121e02e70de80ad189930fa10bc273675a25891709d8f04c65d0f239297b1"
+      },
+      {
+        "node_id": "mat_g1_na_q1_5",
+        "seed": 64,
+        "formatter": "cloze",
+        "question_text": "Ana, Ben, Carlo, Dina, Elena, Fidel, Gina, Hector, Iris and Jose stand in a row. Who is 10th in the row?",
+        "correct_answer": "Jose",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "Fidel",
+            "text": "Fidel",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "Jose",
+            "text": "Jose",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "Dina",
+            "text": "Dina",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "Hector",
+            "text": "Hector",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "Jose",
+        "hints": [
+          "Count the objects in order from the front: 1st, 2nd, 3rd, …",
+          "The 10th (tenth) place is position number 10.",
+          "Find the object standing at position 10."
+        ],
+        "sample_id": "83280828d3fa3a673369",
+        "replay_digest": "424161e2ae77c0ad1bb170358d254f4ce760cad7080e96c8b65e0c877d009629"
+      },
+      {
+        "node_id": "mat_g1_na_q1_5",
+        "seed": 78,
+        "formatter": "mcq",
+        "question_text": "A runner is at position number 5. In what place did the runner finish?",
+        "correct_answer": "5th",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "10th",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "5th",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "9th",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "3rd",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "5th",
+        "hints": [
+          "'Fifth' is an order word word.",
+          "Count positions from the start: 1st, 2nd, 3rd, … until you reach fifth.",
+          "Fifth = position 5, written as 5th."
+        ],
+        "sample_id": "ffae7037a76ef97a1fe6",
+        "replay_digest": "008fb73fe87a7a8228dc81dc4613db966458c360814064b880f109ec6661fc1f"
+      },
+      {
+        "node_id": "mat_g1_na_q1_5",
+        "seed": 91,
+        "formatter": "cloze",
+        "question_text": "Which word describes the 3rd position?",
+        "correct_answer": "third",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "first",
+            "text": "first",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "fourth",
+            "text": "fourth",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "third",
+            "text": "third",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "second",
+            "text": "second",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "third",
+        "hints": [
+          "Ordinal numbers describe position in order.",
+          "The number 3 in order is called the 3rd (third).",
+          "Remember: 1st = first, 2nd = second, 3rd = third, then add -th."
+        ],
+        "sample_id": "9c8b912e6e618b80339e",
+        "replay_digest": "4587a4a012fb0ea72f589fbf6f21cb9d8381723f6d4e76f60a4779266f821f90"
+      },
+      {
+        "node_id": "mat_g1_na_q1_5",
+        "seed": 103,
+        "formatter": "cloze",
+        "question_text": "The pupils stand in a row. Ben is number 2 in the row. Which word describes Ben's position?",
+        "correct_answer": "second",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "sixth",
+            "text": "sixth",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "tenth",
+            "text": "tenth",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "seventh",
+            "text": "seventh",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "second",
+            "text": "second",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "second",
+        "hints": [
+          "Count the objects in order from the front: 1st, 2nd, 3rd, …",
+          "The 2nd (second) place is position number 2.",
+          "Find the object standing at position 2."
+        ],
+        "sample_id": "a4ae9f5d5a4f1f6a3251",
+        "replay_digest": "f404e587c89a434eb2b85eb830b748031d328c40458da01495a74e36b338f7b3"
+      },
+      {
+        "node_id": "mat_g1_na_q1_5",
+        "seed": 118,
+        "formatter": "mcq",
+        "question_text": "What ordinal describes position number 2?",
+        "correct_answer": "2nd",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "10th",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "2nd",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "5th",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "3rd",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "2nd",
+        "hints": [
+          "'Second' is an order word word.",
+          "Count positions from the start: 1st, 2nd, 3rd, … until you reach second.",
+          "Second = position 2, written as 2nd."
+        ],
+        "sample_id": "83f4537a063aa1efd6d4",
+        "replay_digest": "937342a738910c344ad6659465620326dc4ad091efc51be4450454551fb36c2e"
+      },
+      {
+        "node_id": "mat_g1_na_q1_5",
+        "seed": 127,
+        "formatter": "cloze",
+        "question_text": "Which word describes the 1st position?",
+        "correct_answer": "first",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "tenth",
+            "text": "tenth",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "first",
+            "text": "first",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "seventh",
+            "text": "seventh",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "ninth",
+            "text": "ninth",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "first",
+        "hints": [
+          "Ordinal numbers describe position in order.",
+          "The number 1 in order is called the 1st (first).",
+          "Remember: 1st = first, 2nd = second, 3rd = third, then add -th."
+        ],
+        "sample_id": "68befa76e5e1cfde2c15",
+        "replay_digest": "0e367cd04e79b162606038a4e3bb20a685b8fd8ee15db1bc8aa1c6d945597022"
+      },
+      {
+        "node_id": "mat_g1_na_q1_5",
+        "seed": 1026258395,
+        "formatter": "cloze",
+        "question_text": "The stickers are placed in a row. One sticker is number 2 in the row. Which word describes its position?",
+        "correct_answer": "second",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "first",
+            "text": "first",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "tenth",
+            "text": "tenth",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "ninth",
+            "text": "ninth",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "second",
+            "text": "second",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "second",
+        "hints": [
+          "Count the objects in order from the front: 1st, 2nd, 3rd, …",
+          "The 2nd (second) place is position number 2.",
+          "Find the object standing at position 2."
+        ],
+        "sample_id": "c06f1eea3c08f6ae34c4",
+        "replay_digest": "118c430fdc79210b4ef9af4138a12aa6edffa577afa8a6eda96e9dc881d518aa"
+      },
+      {
+        "node_id": "mat_g1_na_q1_5",
+        "seed": 1027394819,
+        "formatter": "cloze",
+        "question_text": "Which word describes the 2nd position?",
+        "correct_answer": "second",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "third",
+            "text": "third",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "ninth",
+            "text": "ninth",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "first",
+            "text": "first",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "second",
+            "text": "second",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "second",
+        "hints": [
+          "Ordinal numbers describe position in order.",
+          "The number 2 in order is called the 2nd (second).",
+          "Remember: 1st = first, 2nd = second, 3rd = third, then add -th."
+        ],
+        "sample_id": "7e18ffeb3eb20defa76a",
+        "replay_digest": "8e3481d86a2b7864aee3d308237172fabbe381cc10cd4c3c6cb52e6bd962f4ff"
+      },
+      {
+        "node_id": "mat_g1_na_q1_5",
+        "seed": 1781562355,
+        "formatter": "cloze",
+        "question_text": "Which word describes the 4th position?",
+        "correct_answer": "fourth",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "fourth",
+            "text": "fourth",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "eighth",
+            "text": "eighth",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "first",
+            "text": "first",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "ninth",
+            "text": "ninth",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "fourth",
+        "hints": [
+          "Ordinal numbers describe position in order.",
+          "The number 4 in order is called the 4th (fourth).",
+          "Remember: 1st = first, 2nd = second, 3rd = third, then add -th."
+        ],
+        "sample_id": "ec0f4d22e30753a5b8c5",
+        "replay_digest": "e99bc2cf7d94f148fb51bad68585ba590268a158be59086cacc1698b654bb787"
+      },
+      {
+        "node_id": "mat_g1_na_q1_5",
+        "seed": 1782258076,
+        "formatter": "cloze",
+        "question_text": "Write the symbol for the fourth position.",
+        "correct_answer": "4th",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "10th",
+            "text": "10th",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "1st",
+            "text": "1st",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "6th",
+            "text": "6th",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "4th",
+            "text": "4th",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "4th",
+        "hints": [
+          "Ordinal numbers describe position in order.",
+          "The number 4 in order is called the 4th (fourth).",
+          "Remember: 1st = first, 2nd = second, 3rd = third, then add -th."
+        ],
+        "sample_id": "2f4341b63abd1b84ba14",
+        "replay_digest": "6d2143e41ba806fffd3cbc8edbe1f261a1074f2424a8971f125f4ff76e92318d"
+      },
+      {
+        "node_id": "mat_g1_na_q1_5",
+        "seed": 2013748293,
+        "formatter": "mcq",
+        "question_text": "The pupils stand in a row. Ben is number 2 in the row. Which word describes Ben's position?",
+        "correct_answer": "second",
+        "requested": {
+          "difficulty_profile": {
+            "task_type": "describe_position"
+          },
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "fifth",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "seventh",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "eighth",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "second",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "second",
+        "hints": [
+          "Count the objects in order from the front: 1st, 2nd, 3rd, …",
+          "The 2nd (second) place is position number 2.",
+          "Find the object standing at position 2."
+        ],
+        "sample_id": "2d696dadd3fec14175de",
+        "replay_digest": "8ec8b9d099879ef1c3f4917d702e1f3fdd68d89123be449265716f0890061f7f"
+      },
+      {
+        "node_id": "mat_g1_na_q1_5",
+        "seed": 2014122603,
+        "formatter": "mcq",
+        "question_text": "The mango, notebook, sticker, marble, egg, storybook, basket, shell, pencil and spoon are lined up on a shelf from left to right. Which one is in 10th place?",
+        "correct_answer": "spoon",
+        "requested": {
+          "difficulty_profile": {
+            "task_type": "describe_position"
+          },
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "mango",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "spoon",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "sticker",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "egg",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "spoon",
+        "hints": [
+          "Count the objects in order from the front: 1st, 2nd, 3rd, …",
+          "The 10th (tenth) place is position number 10.",
+          "Find the object standing at position 10."
+        ],
+        "sample_id": "6cc9e55010b0e1bab32c",
+        "replay_digest": "3771838e4d52fae365ba361dd5fed7ad3b1c13fa6d9ed48644ea782ade88efd4"
+      },
+      {
+        "node_id": "mat_g1_na_q1_5",
+        "seed": 2685983496,
+        "formatter": "cloze",
+        "question_text": "Which word describes the 3rd position?",
+        "correct_answer": "third",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "fourth",
+            "text": "fourth",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "tenth",
+            "text": "tenth",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "fifth",
+            "text": "fifth",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "third",
+            "text": "third",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "third",
+        "hints": [
+          "Ordinal numbers describe position in order.",
+          "The number 3 in order is called the 3rd (third).",
+          "Remember: 1st = first, 2nd = second, 3rd = third, then add -th."
+        ],
+        "sample_id": "f28ac956f87c46ec50e2",
+        "replay_digest": "b88a03898b0b504e94ab559d033ec4c810184737364b52271fcdd049a315fc7f"
+      },
+      {
+        "node_id": "mat_g1_na_q1_5",
+        "seed": 2688532572,
+        "formatter": "cloze",
+        "question_text": "What ordinal describes position number 3?",
+        "correct_answer": "3rd",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "6th",
+            "text": "6th",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "3rd",
+            "text": "3rd",
+            "is_correct": true
+          },
+          {
+            "key": "C",
+            "value": "9th",
+            "text": "9th",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "2nd",
+            "text": "2nd",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "3rd",
+        "hints": [
+          "'Third' is an order word word.",
+          "Count positions from the start: 1st, 2nd, 3rd, … until you reach third.",
+          "Third = position 3, written as 3rd."
+        ],
+        "sample_id": "881475bd3dec1f851001",
+        "replay_digest": "463be14638742e16b817a21e0f4ba7573e1004fb9aa35fdfd7434cc78904c766"
+      },
+      {
+        "node_id": "mat_g1_na_q1_5",
+        "seed": 2710879902,
+        "formatter": "mcq",
+        "question_text": "Who arrived earlier: the student in 1st place or 7th place?",
+        "correct_answer": "1st",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "9th",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "5th",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "7th",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "1st",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "1st",
+        "hints": [
+          "Smaller ordinal numbers come earlier (closer to the start).",
+          "Compare the numbers: the smaller ordinal position is earlier.",
+          "1st means position 1."
+        ],
+        "sample_id": "87f18e9ea5fffc62f5c9",
+        "replay_digest": "78d82680e03f8adb789d0d31ae386ba08d3e954e60c0591cf7ebbac5411b9bc2"
+      },
+      {
+        "node_id": "mat_g1_na_q1_5",
+        "seed": 2729500265,
+        "formatter": "cloze",
+        "question_text": "What ordinal describes position number 1?",
+        "correct_answer": "1st",
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "2nd",
+            "text": "2nd",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "3rd",
+            "text": "3rd",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "5th",
+            "text": "5th",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "1st",
+            "text": "1st",
+            "is_correct": true
+          }
+        ],
+        "resolved_answer": "1st",
+        "hints": [
+          "'First' is an order word word.",
+          "Count positions from the start: 1st, 2nd, 3rd, … until you reach first.",
+          "First = position 1, written as 1st."
+        ],
+        "sample_id": "749514b42d27e058d7de",
+        "replay_digest": "2fb3e2105428c82d0c71319dcfa294c32405fcd959fa15350a97538a688e9c19"
+      },
+      {
+        "node_id": "mat_g1_na_q1_5",
+        "seed": 3197859369,
+        "formatter": "mcq",
+        "question_text": "Write the symbol for the third position.",
+        "correct_answer": "3rd",
+        "requested": {
+          "difficulty_profile": {
+            "task_type": "identify_ordinal"
+          },
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "mcq",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "mcq",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "2nd",
+            "is_correct": false
+          },
+          {
+            "key": "B",
+            "value": "10th",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "3rd",
+            "is_correct": true
+          },
+          {
+            "key": "D",
+            "value": "6th",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "3rd",
+        "hints": [
+          "Ordinal numbers describe position in order.",
+          "The number 3 in order is called the 3rd (third).",
+          "Remember: 1st = first, 2nd = second, 3rd = third, then add -th."
+        ],
+        "sample_id": "4aab9c9b749c9e4afc85",
+        "replay_digest": "9201716f8fed311ca2c9cc3a94756e3d949d3f7771195e2168f7b39b9ea818aa"
+      },
+      {
+        "node_id": "mat_g1_na_q1_5",
+        "seed": 3197900876,
+        "formatter": "cloze",
+        "question_text": "Which word describes the 4th position?",
+        "correct_answer": "fourth",
+        "requested": {
+          "difficulty_profile": {
+            "task_type": "identify_ordinal"
+          },
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "cloze",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "fill_in_blank",
+          "experience": "standard"
+        },
+        "options": [
+          {
+            "key": "A",
+            "value": "fourth",
+            "text": "fourth",
+            "is_correct": true
+          },
+          {
+            "key": "B",
+            "value": "fifth",
+            "text": "fifth",
+            "is_correct": false
+          },
+          {
+            "key": "C",
+            "value": "second",
+            "text": "second",
+            "is_correct": false
+          },
+          {
+            "key": "D",
+            "value": "sixth",
+            "text": "sixth",
+            "is_correct": false
+          }
+        ],
+        "resolved_answer": "fourth",
+        "hints": [
+          "Ordinal numbers describe position in order.",
+          "The number 4 in order is called the 4th (fourth).",
+          "Remember: 1st = first, 2nd = second, 3rd = third, then add -th."
+        ],
+        "sample_id": "778d54cc3318ed50d0bd",
+        "replay_digest": "9aae9fcebde083f2ac06d334833c968dbd84dd1e2af40fc185cb141281a16a50"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "objects",
+      "node_id": "mat_g1_na_q1_5",
+      "clause": "objects",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        64,
+        2014122603
+      ],
+      "reasoning": "The clause 'objects' is demonstrated in multiple samples. Items reference concrete objects: pencils (seed 11), named people (seed 64), and household items—mango, notebook, sticker, marble, egg, storybook, basket, shell, pencil, spoon (seed 2014122603). Objects are used consistently as the things being positioned.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "1st",
+      "node_id": "mat_g1_na_q1_5",
+      "clause": "1st",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        2710879902,
+        2729500265
+      ],
+      "reasoning": "The clause '1st' is observed in both stratified samples. Seed 2710879902 asks 'the student in 1st place or 7th place' with key '1st'. Seed 2729500265 asks about 'position number 1' with key '1st'. Both demonstrate the first ordinal position as required.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "2nd",
+      "node_id": "mat_g1_na_q1_5",
+      "clause": "2nd",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        1026258395,
+        1027394819
+      ],
+      "reasoning": "The clause '2nd' is observed in both stratified samples. Seed 1026258395 states 'number 2 in the row' with key 'second'. Seed 1027394819 asks 'Which word describes the 2nd position?' with key 'second'. Both stratified seeds directly exhibit the second ordinal position.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "3rd",
+      "node_id": "mat_g1_na_q1_5",
+      "clause": "3rd",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        2685983496,
+        2688532572
+      ],
+      "reasoning": "The clause '3rd' is observed in both stratified samples. Seed 2685983496 asks 'Which word describes the 3rd position?' with key 'third'. Seed 2688532572 asks 'What ordinal describes position number 3?' with key '3rd'. Both stratified seeds directly exhibit the third ordinal position.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "up_to_10th",
+      "node_id": "mat_g1_na_q1_5",
+      "clause": "up to 10th",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        1781562355,
+        1782258076
+      ],
+      "reasoning": "The clause 'up to 10th' is demonstrated across the packet. Stratified seeds 1781562355 and 1782258076 show the 4th position. The full sample set spans ordinals 1st through 10th (seed 23 uses 1st and 10th; seed 57 and 64 use 10th; seed 118 uses 2nd; seed 11 uses 8th). The generator serves the full range through design.",
+      "action_taken": "Left registered; no change."
+    }
+  ],
+  "supersedes": "confirming judge (ruling 20) for batch372: independent blind Haiku Attester on the same packet file; filed for the 5 verdict(s) that clear or create a CONTRADICTED finding relative to the pre-Phase-3 winner; the confirming verdict stands"
+}
