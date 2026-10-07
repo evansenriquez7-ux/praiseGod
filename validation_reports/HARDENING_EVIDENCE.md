@@ -18707,3 +18707,203 @@ NAMED LIMITS:
   on filed records.
 - The `STANDARD` line is a new instrument variable: verdicts filed under it are not comparable with W2's
   without saying so.
+
+## 2026-10-08 — Phase 3: re-attestation of the queue under the ruled instrument (`claude-h06-phase3-reattest-20261008`)
+
+Dispatcher, auditor and filer: Claude Opus 5.5. **Every verdict was judged by Claude Haiku 4.5** (Claude Code
+Agent tool, `model=haiku`, `subagent_type=general-purpose`, default effort), first judges and confirming judges
+alike. No source, test, validator, builder, classification or dispatch-text change; no chain owed. Lock: H-06
+claimed at `f394bcb4` (owner line only, `numstat 1 1`); `campaign` intent opened. Records `batch370`–`batch440`
+(71 files), committed by name in `309e5412`, `cbb3dcc1`, `20a1858e`, `89886356`, `9fea6592`, `1997fccf`,
+`4fe84cff`.
+
+**Phase 0.** No heavy run (`ps` grep empty); 16 GiB free; `tree_state` CERTIFIED, digest `0acfacdb145cd162`,
+worktree clean. `python -m tests.clause_enumeration --check` → `clause_enumeration_22: OK`. Queue re-measured with
+the handoff snippet → `124 55 46 99` (as handed over).
+
+**Owner decisions taken this session (AskUserQuestion, 2026-10-08).**
+1. Delivery: each packet is written byte-for-byte (section A of `dispatch_instructions_20261007.md`, extracted
+   mechanically, then `render_prompt_block` output) to an opaquely named scratchpad file (`p3/dNN/prompt.txt`,
+   no node id, no key file beside it); the Attester reads only that file and writes only `verdicts.json`. The
+   packets total ~1.3M characters, so pasting inline would have meant retyping them. Recorded in every record's
+   `samples_delivery`.
+2. The ruling-20 confirmations owed by single-Luna records are built from the Luna record's own items and
+   `packet.samples_judged` ("Rebuild from the Luna record").
+
+**FOUND (blocks 8 of the 46): the packet builder refuses 8 nodes, not 0.** `tests.attester_packets --node` exits 1
+with `provider_variant_stratification_6F: <node> could not render 2 samples for provider variant …; tried 64
+deterministic seeds` on `mat_g1_mg_q4_4`, `mat_g1_na_q3_0`, `mat_g2_dp_q3_0`, `mat_g2_mg_q4_1`, `mat_g2_mg_q4_2`,
+`mat_g2_mg_q4_4`, `mat_g3_mg_q1_6`, `mat_g3_mg_q2_2` (13 of the 99 findings). Instrumented on the real path
+(`local_only/scratch/p3/diag_variants.py`, 64 seeds per variant, profile requested):
+
+```text
+mat_g1_mg_q4_4  ('context','word_problem')          hits=0/64 observed={'<key absent>': 64}
+mat_g1_na_q3_0  ('spine','taking_away')             hits=0/64 observed={'<key absent>': 64}   (evidence carries task_type=taking_away)
+mat_g2_dp_q3_0  ('scale_type','scale_2|5|10')       hits=0/64 observed={'<key absent>': 64}   (evidence carries scale: N)
+mat_g2_mg_q4_1  ('mode','read')                     hits=0/64 observed={'<key absent>': 64}
+mat_g2_mg_q4_2  ('context','word_problem')          hits=0/64 observed={'<key absent>': 64}
+mat_g2_mg_q4_4  ('task_type','identify_and_measure') hits=0/64 observed={"'find_perimeter'": 64}  (also measure_tools)
+mat_g3_mg_q1_6  ('unit_type','m')                   hits=0/64 observed={"'cm'": 64}
+mat_g3_mg_q2_2  ('unit','l')                        hits=0/64 observed={"'mg'": 30, "'kg'": 19, "'g'": 15}
+```
+
+The builder fails loudly as designed. The defect is upstream: `judgment_packets._variant_coverage_candidates`
+(a union over the node's DNAs, filtered by bounds) advertises variants the serving path either never emits under
+that name or never serves under the requested profile (`unit=l` on a compare-MASSES node). **Harness gap (Mandate
+1/5): nothing in `run_all` builds every node's attester packet, so this surfaced only at dispatch time.** Owed in
+P4-0 alongside the `needs_instrumentation` work (source change + chain); not touched here (instrument frozen
+mid-campaign, F2).
+
+**Campaign.** 38 nodes packeted (3–11 items each, 10–34 samples, no node id in any prompt). Per node: one blind
+first judge; audit; file; then, for every verdict that clears or creates a CONTRADICTED finding relative to the
+pre-Phase-3 winner (computed with the validator's own `_load_attestations` + `CAPABILITY_PROVIDERS` *before*
+filing), one further blind judge on a byte-identical copy of the same prompt (`cmp` checked), filed afterwards with
+`--supersedes` for the moved verdicts only (the filer refuses a packet item with no verdict, so the confirming
+record carries the subset; samples and item ids are unchanged). Identities:
+`blind-attester-claude-haiku-4.5-default-{p3|p3c|p3luna-confirm}-<node>-20261008`, one per node and role.
+Tool use is taken from each subagent's harness transcript (Read/Write on its own two paths only; refused
+otherwise), never from the reply.
+
+Audit (`local_only/scratch/p3/audit.py`): one verdict per item; PROVIDED cites ≥1 seed; every cited seed printed;
+reasoning ≥60 chars; every quoted span (double, curly or single quotes) found in the prompt the Attester received.
+Tolerated, and logged per item as NOTE: trailing punctuation inside the quote, case, whitespace (a stem quoted
+together with its next printed `key:` line). Elisions, placeholders and paraphrases are PROBLEMS. Two audit bugs
+found and fixed mid-campaign, both erring towards refusal (a ≥6-char single-quote pairing that mis-paired around
+`'+7'`; separate case/whitespace normalisation). A final re-audit of all 68 filed replies with the corrected audit:
+`re-audited 68 filed replies; with problems: 0`.
+
+Wording-only revisions (same Attester asked to change its own wording; never a verdict, seed or item), each proven
+by a structural diff of item/verdict/seeds against v1 (`structural identical: True` every time): d02, d11, d21 (one
+wording round plus one JSON-syntax repair), d25, d28, d32, d36, c_d21, c_d28, c_d35, L1. **Set aside, harvested, and
+re-dispatched to a fresh Attester on the identical prompt:** L2 (`mat_g2_mg_q1_1` Luna confirmation; item_007 cites
+unprinted seed 126) → L2b; c_d31 (`mat_g3_mg_q1_4`; item_002 cites unprinted seed 2248288) → fresh c_d31. Both
+harvests are in `local_only/scratch/p3/notes.md` (N9, N13).
+
+**Ruling 20 — single-Luna records.** Measured which keys each Luna record moved relative to the record before it:
+`mat_g1_na_q3_6` (batch362/369), `mat_g1_mg_q1_1` (364), `mat_g1_mg_q1_2` (365) moved **no** finding → nothing
+owed. `mat_g2_mg_q1_0` and `mat_g3_mg_q1_0` were re-attested in this campaign (their Phase 3 records now own every
+key). Confirmed from the Luna record (owner decision 2): `batch398` (`mat_g1_mg_q1_0`: rectangle, square,
+different_size, different_orientation — Haiku agreed with Luna 4/4) and `batch405` (`mat_g2_mg_q1_1`:
+decompose_figures, circles, square_grids — Haiku disagreed 2/3; the confirming verdicts stand, clearing 2
+findings on a `needs_instrumentation` node). Cross-family (GPT-5.6 Luna vs Claude Haiku 4.5) disagreement on
+those 7 verdicts: **2/7**.
+
+**Results** (`local_only/scratch/p3/measure.py`, executed after the last filing):
+
+```text
+validate_capability_attestation(): 78 findings; {'CONTRADICTED': 78} over 42 nodes
+  rare   total= 78 {'cleared': 42, 'remains CONTRADICTED': 15, 'not re-attested (needs_instrumentation)': 14, 'not re-attested (provider-variant unobservable)': 7}
+  absent total= 42 {'cleared': 4, 'cleared (Luna confirmation, refused node)': 2, 'remains CONTRADICTED': 23, 'not re-attested (needs_instrumentation)': 8, 'not re-attested (provider-variant unobservable)': 5}
+  mixed  total=  4 {'remains CONTRADICTED': 2, 'not re-attested (provider-variant unobservable)': 1, 'not re-attested (needs_instrumentation)': 1}
+findings NOT in the 124-row baseline (created): 2 [('mat_g2_na_q2_3', 'number_line'), ('mat_g2_na_q4_0', 'denominators_2_3_4_5_6_8')]
+first vs confirming (Haiku 4.5 vs Haiku 4.5, same packet): all items 23/189 = 12.2%; moved items 12/60 = 20.0%; nodes confirmed 31
+moved-item outcomes (pre, first, confirm): {('NOT_PROVIDED','PROVIDED','PROVIDED'): 46, ('NOT_PROVIDED','PROVIDED','NOT_PROVIDED'): 6, ('PROVIDED','NOT_PROVIDED','PROVIDED'): 6, ('PROVIDED','NOT_PROVIDED','NOT_PROVIDED'): 2}
+```
+
+- **124 → 78 CONTRADICTED** (55 → 42 nodes): 48 cleared, 2 created, 36 not re-attested (25 on the 9
+  `needs_instrumentation` nodes, less the 2 the Luna confirmation cleared; 13 on the 8 provider-variant nodes).
+- **Rare:** of the 57 rare findings on re-attested nodes, **42 cleared, 15 remain**. **Absent:** of the 27 on
+  re-attested nodes, **4 cleared** (`sub_2d_1d` on `mat_g1_na_q3_4`, half/quarter circles on
+  `mat_g2_mg_q1_0`, `similar_fractions` on `mat_g2_na_q4_3`) **and 23 remain**, plus 2 cleared by the Luna
+  confirmation. As predicted, most of the
+  absent group remains.
+- The rare/absent split was **re-derived by hand** from the saved pre-Phase-3 reasoning
+  (`local_only/scratch/p3/rare_absent_classification.json`: 78 rare / 42 absent / 4 mixed). It does not reproduce
+  the 68/52/4 of the 2026-10-07 entry, whose row list was never saved; this file is now the saved row list.
+- **Disagreement:** first vs confirming Haiku judge, same packet: 12.2% of all items (23/189), **20.0% of moved
+  items (12/60)**, against W2 step 2's 22.4% (also Haiku 4.5 against Haiku 4.5, but under the pre-ruling-19
+  instrument without STANDARD lines). Ruling 20's named consequence applies: the quorum is one confirming judge,
+  and every verdict here carries that ~20% single-judge noise.
+- `STANDARD (owner ruling 19|9)` is printed on every item; these verdicts are not comparable with W2's without
+  saying so.
+
+**The remaining queue, by node** (`[P3]` re-attested this session; `[NI]` refused for `needs_instrumentation`; `[PV]` refused by provider-variant stratification):
+
+```text
+REMAINING QUEUE (78):
+  mat_g1_dp_q3_1     [P3] ['without_scale']
+  mat_g1_mg_q4_0     [NI] ['counter_clockwise']
+  mat_g1_mg_q4_4     [PV] ['days_in_a_week', 'half_hour']
+  mat_g1_na_q1_7     [P3] ['concrete', 'describes']
+  mat_g1_na_q1_8     [P3] ['illustrate']
+  mat_g1_na_q2_1     [P3] ['step_10s', 'step_2s', 'step_5s', 'up_to_100']
+  mat_g1_na_q2_2     [P3] ['determine_value']
+  mat_g1_na_q2_5     [P3] ['concrete_pictorial']
+  mat_g1_na_q3_0     [PV] ['concrete_pictorial']
+  mat_g1_na_q3_4     [P3] ['concrete_models']
+  mat_g1_na_q3_7     [P3] ['create']
+  mat_g1_na_q4_0     [P3] ['illustrate']
+  mat_g1_na_q4_3     [NI] ['coins']
+  mat_g1_na_q4_4     [NI] ['number_of_bills']
+  mat_g2_dp_q3_0     [PV] ['vice_versa']
+  mat_g2_mg_q1_0     [P3] ['represent']
+  mat_g2_mg_q1_1     [NI] ['cut_outs', 'half_circles', 'quarter_circles']
+  mat_g2_mg_q1_2     [NI] ['basic_figures', 'draw_effect', 'translation']
+  mat_g2_mg_q4_1     [PV] ['write']
+  mat_g2_mg_q4_2     [PV] ['days_in_a_week', 'hours_in_a_day', 'timetables']
+  mat_g2_mg_q4_3     [NI] ['curved_lines', 'curved_surfaces', 'difference_between', 'flat_surfaces', 'straight_lines']
+  mat_g2_mg_q4_4     [PV] ['measure', 'tools']
+  mat_g2_na_q1_10    [P3] ['illustrate_properties']
+  mat_g2_na_q1_3     [P3] ['fifties', 'fives', 'hundreds', 'twos']
+  mat_g2_na_q2_0     [NI] ['peso_bills_only', 'peso_coins_only', 'write_value']
+  mat_g2_na_q2_3     [P3] ['illustrate_subtraction', 'number_line']
+  mat_g2_na_q2_9     [P3] ['create']
+  mat_g2_na_q3_0     [P3] ['5_groups_of_3', '5_threes']
+  mat_g2_na_q3_1     [P3] ['concrete_model', 'write_multiplication_sentence']
+  mat_g2_na_q3_5     [NI] ['concrete_and_pictorial_models', 'equal_sharing', 'formation_of_equal_groups', 'illustrate_and_write', 'objects']
+  mat_g2_na_q4_0     [P3] ['denominators_2_3_4_5_6_8', 'represent']
+  mat_g2_na_q4_3     [P3] ['denominators_2_3_4_5_6_8', 'fraction_charts', 'fraction_tiles', 'groups_of_objects', 'number_line']
+  mat_g2_na_q4_4     [P3] ['similar_fractions']
+  mat_g3_dp_q3_0     [P3] ['collect_data']
+  mat_g3_mg_q1_0     [P3] ['estimate_area']
+  mat_g3_mg_q1_4     [P3] ['concrete_model_depiction', 'draw_geometric_object']
+  mat_g3_mg_q1_6     [PV] ['draw_segment_of_given_length']
+  mat_g3_mg_q2_2     [PV] ['balance_scale', 'objects']
+  mat_g3_mg_q4_0     [P3] ['draw']
+  mat_g3_mg_q4_1     [P3] ['drawing_the_line_of_symmetry']
+  mat_g3_na_q2_0     [NI] ['php']
+  mat_g3_na_q3_1     [P3] ['changing_the_grouping', 'multiplying_the_sum_of_two_addends']
+```
+
+**Content defects found by the blind judges, confirmed by rendering (queued, not fixed):**
+1. `mat_g1_na_q2_1` (d08): every skip-count stratum carries the right structured `skip_by`, but `read_mcq`
+   formatters drop the sequence. Seed 2180734914 (`skip_by=2`) asks "What number is marked on the number line?"
+   (38, interval 1) while its hints read "30, 32, 34, 36, ___ … jumping by 2s"; seed 3843462922 (`skip_by=5`)
+   shows 8 bags of 10; seed 3562295039 (`skip_by=10`) marks 50 on a 40–60 line. The hints describe an item the
+   pupil is not shown. **Named ruling-22 limit:** a selector proves the generator *chose* the sibling, not that
+   the rendered item still *exhibits* it. The blind judge caught what the stratifier cannot. Owed: a P4 batch
+   for the formatter, and a check (with a mutation) that the stratum's rendered stem carries the sibling.
+2. `mat_g1_na_q2_2` (d09): seed 2853207842 (`task_type=identify_value`) asks "What is the place value of the
+   digit 5 in 15?" with answer 5. That is the digit's value; its place value is ones. → P4-8 wording.
+
+**Unit tests and tree.** The two tests that filing is known to rot (§9 trap 1) pass on the final record set, and
+they leave the attestation directory untouched (`git status --porcelain validation_reports/attestation` empty):
+
+```text
+$ PYTHONPATH=. .venv/bin/python -m pytest tests/unit/test_capability_contract.py tests/unit/test_legacy_review_queue.py -q -p no:cacheprovider
+48 passed, 1 skipped in 730.37s (0:12:10)
+EXIT 0
+$ PYTHONPATH=. .venv/bin/python tests/tree_state.py      # before closing the intent
+STATE tree_state: INTERRUPTED   live input digest : 0acfacdb145cd162 (unchanged from session start)
+  mutation_proofs fresh 207, release_shards fresh 6, obligation_benchmark fresh 1, frontend_static_render fresh 1
+  OPEN INTENT: 'campaign' ... 'Phase 3 re-attestation'
+```
+
+`run_all` was not re-run (no source change; the handoff owes no chain). Its `capability_phase2` stage reads the
+same `validate_capability_attestation()` measured above (78). The full fast unit suite was not run this session.
+
+NAMED LIMITS:
+- 8 of the 46 handed-over nodes were not re-attested (packet builder refusal above), and 9 were not re-attested
+  because they carry `needs_instrumentation` members; P4-0 owes both.
+- The confirming record carries only the moved verdicts. The confirmer's other verdicts are measured (the 12.2%)
+  but not filed: on unmoved items two judges agreeing against one is not a ruling-20 move.
+- The Luna confirmation for `mat_g2_mg_q1_1` judged ruling-19 sibling items on Luna's unstratified 10-sample
+  packet, because the node is refused by the stratifying builder. The STANDARD line printed for those items assumes
+  stratification the packet does not have.
+- **Blindness:** Agent-tool subagents inherit the project `CLAUDE.md`. One hand-back ended "Praise God.", which
+  no prompt contains. `CLAUDE.md` names no node, provider or verdict, but the blindness record's `did_not_see`
+  does not mention it, and the same was true of every W2 Agent-tool record. Owed: a dispatch path that loads no
+  project context, or a line in `samples_delivery` saying it does.
+- The quote audit is dispatcher tooling, not a validator (§6F deliberately does not check attestation quotes);
+  its tolerances are listed above.
+- Handoff error: NEXT_AGENT_PROMPT §4 step 6 shows `--supersedes '{json}'`; the filer takes a JSON *file* path.

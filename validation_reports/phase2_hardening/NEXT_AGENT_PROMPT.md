@@ -1,7 +1,8 @@
-# Task prompt: Phase 3 onward of the Phase 2 hardening (Claude host)
+# Task prompt: P4-0 onward of the Phase 2 hardening (Claude host)
 
 **Rewritten 2026-10-08 for a fresh Claude session, after `claude-h06-phase2a-gate-20261007` landed and
-proved Phase 2 (the ruling-22 attester gate). This REPLACES every earlier version of this file.**
+proved Phase 2 (the ruling-22 attester gate). §1 and §4 were updated the same day, after Phase 3
+(`claude-h06-phase3-reattest-20261008`). This REPLACES every earlier version of this file.**
 `CLAUDE_AGENT_PROMPT.md`, `GPT_HANDOFF_PROMPT.md` and `HANDOFF_PROMPT.md` beside it are history. Their
 §5–§10 method notes (the dispatch template, audit-before-filing, heavy runs, traps) remain correct and
 are cited below. Their state sections and queue sizes are stale; ignore them.
@@ -13,8 +14,9 @@ Goal: `PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.run_
 three §6F mutations DETECTED (207/207 at the current corpus size), not INVALID. This takes several
 sessions. Each session leaves the tree CERTIFIED or honestly INTERRUPTED, with every number re-measured.
 
-**Your job this session: Phase 3 (§4)**, a dispatch campaign with no source change and no chain. If it
-completes, the next step is the P4-0 instrumentation batch.
+**Your job this session: P4-0 (§4)**, the first source batch: instrument the refused nodes, and fix the
+provider-variant reachability defect that Phase 3 found on 8 more (§1). It has one `batch` intent and one chain.
+Phase 3 is DONE (2026-10-08, `claude-h06-phase3-reattest-20261008`).
 
 ---
 
@@ -24,10 +26,9 @@ completes, the next step is the P4-0 instrumentation batch.
    index (`MEMORY.md`) too, especially "Dispatch subagents on Haiku" and "Proof admissible, not just
    detected".
 2. This file, completely.
-3. `validation_reports/HARDENING_EVIDENCE.md`: the last four entries, newest first — "Phase 2a landed:
-   the ruling-22 attester gate", then "Takeover of the interrupted Phase 2a instrument", "Rate-limit
-   recovery", and "Phase 2 instrument baseline" (which defines the 68 "rare" / 52 "absent" split you
-   will measure against).
+3. `validation_reports/HARDENING_EVIDENCE.md`: the newest entries first. Start with "Phase 3:
+   re-attestation of the queue under the ruled instrument"; it holds the queue, by node, that P4 works
+   from, and what Phase 3 found. Then read "Phase 2a landed: the ruling-22 attester gate".
 4. Owner rulings 1, 9, 12–15 and 18–22 in `docs/phase2_hardening_completion_plan.md`, verbatim.
 5. `validation_reports/phase2_hardening/dispatch_instructions_20261007.md`: the Attester prompt you
    will paste, and the dispatcher rules above it. **Use it as written.**
@@ -38,47 +39,50 @@ completes, the next step is the P4-0 instrumentation batch.
 
 ---
 
-## 1. State at handoff (2026-10-08; re-measure before quoting)
+## 1. State at handoff (2026-10-08, after Phase 3; re-measure before quoting)
 
 ```
-HEAD                642f8459 (lock release), pushed to origin/main; worktree clean
-source              9c4e036e (ruling-22 gate c4fcb384 + input-digest fix 9c4e036e + a23193fc)
+HEAD                the H-06 lock-release commit after 4fe84cff (Phase 3 records); worktree clean
+source              9c4e036e, unchanged by Phase 3 (no source, test or classification edit)
 H-06 lock           RELEASED; claim it (owner line only, numstat 1 1) before any work
-tree_state          CERTIFIED (207 proofs, 6 shards, benchmark, frontend all fresh); no open intent
-run_all             2026-10-07 19:18 on 9c4e036e: EXIT 1, scheduled=17 completed=14 failed=3
+tree_state          CERTIFIED, digest 0acfacdb145cd162 (207 proofs, 6 shards, benchmark, frontend fresh)
+run_all             last full run 2026-10-07 19:18 on 9c4e036e: EXIT 1, failed=3 (not re-run in Phase 3)
                       assertion_coverage_8  the 3 §6F mutations INVALID (their baseline is red)
-                      judgment_reviews_5    752 (module 751 + the stage's one aggregate finding)
-                      capability_phase2     124 CONTRADICTED over 55 nodes, 0 STALE
-corpus              204/207 DETECTED; INVALID = contradicted_attestation, attestation_drops_options,
-                    attestation_leaks_into_phase1, until capability_phase2 reaches 0
-unit suite          1034 passed, 1 skipped (fast suite takes ~22 min now, not 35 s)
-ruling 22           tests/clause_enumeration.py -> validation_reports/phase2_hardening/clause_enumeration.json
-                    151 nodes, 94 enumerations, 240 members = 182 selector + 56 needs_instrumentation
-                    + 2 unserved; 527 clauses not enumerated. The JSON is a proof input.
-latest attestation  batch369 (next free prefix: batch370)
+                      judgment_reviews_5    752
+                      capability_phase2     124 then; NOW 78 CONTRADICTED over 42 nodes
+                                            (validate_capability_attestation(), executed 2026-10-08)
+corpus              204/207 DETECTED; INVALID = the §6F cluster until capability_phase2 reaches 0
+unit suite          1034 passed, 1 skipped (fast suite ~22 min)
+ruling 22           clause_enumeration.json: 151 nodes, 94 enumerations, 240 members (182 selector,
+                    56 needs_instrumentation, 2 unserved), 527 not enumerated. A proof input.
+latest attestation  batch440 (next free prefix: batch441)
 ```
 
-**Phase 3 scope** (`validate_capability_attestation()`, executed 2026-10-07). 124 findings on 55 nodes:
-- **46 nodes / 99 findings are attestable now:**
-  ```
-mat_g1_dp_q3_1 mat_g1_mg_q4_4 mat_g1_na_q1_0 mat_g1_na_q1_5 mat_g1_na_q1_6 mat_g1_na_q1_7
-mat_g1_na_q1_8 mat_g1_na_q2_0 mat_g1_na_q2_1 mat_g1_na_q2_2 mat_g1_na_q2_5 mat_g1_na_q3_0
-mat_g1_na_q3_4 mat_g1_na_q3_7 mat_g1_na_q4_0 mat_g2_dp_q3_0 mat_g2_dp_q3_1 mat_g2_mg_q1_0
-mat_g2_mg_q4_1 mat_g2_mg_q4_2 mat_g2_mg_q4_4 mat_g2_na_q1_10 mat_g2_na_q1_3 mat_g2_na_q1_6
-mat_g2_na_q2_3 mat_g2_na_q2_9 mat_g2_na_q3_0 mat_g2_na_q3_1 mat_g2_na_q4_0 mat_g2_na_q4_3
-mat_g2_na_q4_4 mat_g3_dp_q3_0 mat_g3_dp_q3_2 mat_g3_dp_q3_4 mat_g3_mg_q1_0 mat_g3_mg_q1_3
-mat_g3_mg_q1_4 mat_g3_mg_q1_5 mat_g3_mg_q1_6 mat_g3_mg_q2_2 mat_g3_mg_q4_0 mat_g3_mg_q4_1
-mat_g3_na_q1_3 mat_g3_na_q3_1 mat_g3_na_q3_5 mat_g3_na_q4_3
-  ```
-- **9 nodes / 25 findings are REFUSED** by the packet builder, because they carry a
-  `needs_instrumentation` member: `mat_g1_mg_q4_0`, `mat_g1_na_q4_3`, `mat_g1_na_q4_4`, `mat_g2_mg_q1_1`,
-  `mat_g2_mg_q1_2`, `mat_g2_mg_q4_3`, `mat_g2_na_q2_0`, `mat_g2_na_q3_5`, `mat_g3_na_q2_0`. They wait for
-  P4-0.
-- By the disposition of the finding's clause: 58 selector, 47 not enumerated, 17
-  needs_instrumentation, 2 unserved.
+**Phase 3 result** (evidence entry "Phase 3: re-attestation of the queue under the ruled instrument"):
+- 38 nodes re-attested by blind Claude Haiku 4.5 judges, with every move confirmed (ruling 20).
+  124 → **78 CONTRADICTED**: 48 cleared, 2 created (`mat_g2_na_q2_3` number_line,
+  `mat_g2_na_q4_0` denominators_2_3_4_5_6_8), 36 never re-attested.
+- Rare: 42 cleared, 15 remain. Absent: 4 cleared (+2 by a Luna confirmation), 23 remain.
+  The split is from the saved row list `local_only/scratch/p3/rare_absent_classification.json`
+  (78/42/4, re-derived by hand; the old 68/52/4 list was never saved).
+- First vs confirming Haiku judge on the same packet: 20.0% of moved verdicts disagreed (12/60);
+  12.2% of all items (23/189).
+- **Not re-attested, owed to P4-0:**
+  - the 9 `needs_instrumentation` nodes (23 findings; listed below);
+  - 8 nodes the packet builder REFUSES with `provider_variant_stratification_6F` (13 findings):
+    `mat_g1_mg_q4_4`, `mat_g1_na_q3_0`, `mat_g2_dp_q3_0`, `mat_g2_mg_q4_1`, `mat_g2_mg_q4_2`,
+    `mat_g2_mg_q4_4`, `mat_g3_mg_q1_6`, `mat_g3_mg_q2_2`. On these, `_variant_coverage_candidates`
+    advertises variants the serving path never emits under that name (`context`, `spine`,
+    `scale_type`, `mode`) or never serves (`identify_and_measure`, `measure_tools`, `unit_type=m`,
+    `unit=l` on a mass node). Measured 0/64 seeds each (`local_only/scratch/p3/diag_variants.py`).
+- The 9 refused nodes: `mat_g1_mg_q4_0`, `mat_g1_na_q4_3`, `mat_g1_na_q4_4`, `mat_g2_mg_q1_1`,
+  `mat_g2_mg_q1_2`, `mat_g2_mg_q4_3`, `mat_g2_na_q2_0`, `mat_g2_na_q3_5`, `mat_g3_na_q2_0`.
+- **The single-Luna confirmations owed by ruling 20 are DONE.** `batch398` and `batch405` were built from
+  the Luna records (owner decision 2026-10-08). The other five Luna nodes owed nothing, or were
+  re-attested.
 
-**Every packet item now prints `STANDARD (owner ruling 19|9)`.** This is a new instrument variable. Any
-figure comparing Phase 3 verdicts with W2's must say so.
+**Every packet item prints `STANDARD (owner ruling 19|9)`.** This is a new instrument variable, so any
+comparison with W2's figures must say so.
 
 ---
 
@@ -231,77 +235,56 @@ Phase 1 (owner gates) was resolved by rulings 19–22. Phase 2 (instrument) land
 evidence entry and in the `docs/pgen_contract.md` row for `clause_enumeration_22`. **Do not modify it
 during Phase 3.** Any edit to `tests/` or `backend/` stales the certified tree and owes a 5-hour chain.
 
-### Phase 3: re-attest the queue under the ruled instrument (no source, so no chain)
+### Phase 3: DONE (2026-10-08, `claude-h06-phase3-reattest-20261008`)
 
-Work under scratch paths such as `local_only/scratch/p3/`, which is gitignored. Per node:
+The result is in §1 and the evidence entry. Records `batch370`–`batch440`. Use the same method every time a
+batch stales a node and it must be re-attested (Phase 4 and later). The scripts are under
+`local_only/scratch/p3/` (gitignored, so copy them before relying on them):
+- `audit.py`, `pipe.py` (`first`/`confirm`), `fileit.py`;
+- `compare.py`, which feeds the disagreement rate;
+- `measure.py`.
 
-1. **Build the packet**, one node per packet file:
-   ```sh
-   PYTHONPATH=. .venv/bin/python -m tests.attester_packets --node <node> \
-       --packets local_only/scratch/p3/<node>.json --key local_only/scratch/p3/<node>.key.json
-   ```
-   A node with more than 25 items needs splitting (§6G); none in the 46 is expected to.
-2. **Render the blind half verbatim.** Never retype it:
-   ```sh
-   PYTHONPATH=. .venv/bin/python -c "import json,sys; from tests.attester_packets import render_prompt_block; print(render_prompt_block(json.load(open(sys.argv[1]))))" local_only/scratch/p3/<node>.json
-   ```
-3. **Dispatch one blind Attester per node** with the Agent tool on `model: "haiku"`. The prompt is
-   section A of `dispatch_instructions_20261007.md`, followed by the rendered packet, pasted inline.
-   - Never give the Attester the key file, the node id, `CAPABILITY_PROVIDERS`, or any path it could
-     read them from.
-   - Assign the identity yourself, one per node, naming the model that actually judged:
-     `blind-attester-claude-haiku-4.5-<level>-p3-<node>-<YYYYMMDD>`.
-   - Dispatch with modest concurrency. Memory: an Opus fan-out exhausted the session limit
-     mid-campaign.
-4. **Audit the reply before filing** (`CLAUDE_AGENT_PROMPT.md` §5):
+1. **Build** one packet per node with `tests.attester_packets --node`. A `provider_variant_stratification_6F`
+   refusal is a finding about the provider table or the DNA, not something to retry.
+2. **Deliver by file** (owner-approved 2026-10-08):
+   - write section A of `dispatch_instructions_20261007.md`, extracted mechanically, followed by the
+     verbatim `render_prompt_block` output, to an opaquely named scratchpad file (`p3/dNN/prompt.txt`);
+   - keep no node id and no key file beside it;
+   - the Agent-tool prompt only names the file to Read and the `verdicts.json` to Write;
+   - record exactly that in `--samples-delivery`.
+3. **Identity:** `blind-attester-claude-haiku-4.5-default-<role>-<node>-<YYYYMMDD>`, one per node and role.
+4. **Audit before filing:**
    - one verdict per item;
-   - PROVIDED cites seeds printed for that item;
-   - reasoning is 60+ characters and specific;
-   - quotes appear verbatim in the packet.
-   Never edit a verdict. A reply you cannot file goes to a fresh Attester, and you harvest its
-   substantive claims first.
-5. **File it**, dry run first:
-   ```sh
-   PYTHONPATH=. .venv/bin/python tests/attester_file.py --packets <p> --key <k> --verdicts <v> \
-       --batch-prefix batch370 --attested-at <ISO> --attested-by <identity> \
-       --action-provided "Left registered; no change." --actions <item->action json> \
-       --tool-uses "<what the harness record shows>" \
-       --samples-delivery "pasted inline into the subagent prompt (render_prompt_block output)" --dry-run
-   ```
-   Then run it without `--dry-run`. Increment the batch prefix per filing. Every NOT_PROVIDED needs an
-   `action_taken`; "queued for Phase 4 batch P4-n" is the honest one.
-6. **Ruling 20: confirm every move.** For every verdict that clears or creates a CONTRADICTED finding,
-   relative to the record it supersedes, dispatch ONE further fresh Haiku Attester on the **same packet
-   file**. File it afterwards with `--supersedes '{"<node>": "confirming judge (ruling 20) for <first batch>"}'`.
-   The confirming verdict stands, by last-file-wins. Never edit either record.
-7. **The 7 single-Luna nodes (§3, ruling 20)** owe a confirming judge for every verdict that moved a
-   finding relative to the record before it.
-   - `mat_g2_mg_q1_0` and `mat_g3_mg_q1_0` are in the 46. Their Phase 3 re-attestation plus its own
-     ruling-20 confirmation supersedes the Luna record.
-   - `mat_g1_na_q3_6` and `mat_g1_mg_q1_0` are not CONTRADICTED, and the new builder accepts them.
-   - `mat_g1_mg_q1_1`, `mat_g1_mg_q1_2` and `mat_g2_mg_q1_1` are refused by the new builder
-     (`needs_instrumentation`).
-   - "The same packet" means the packet the Luna judge saw. Its samples are in the record's
-     `packet.samples_judged`. Whether a confirmation may be built from that record, rather than by the
-     new builder, is **not settled by any ruling**: ask the owner before confirming the three refused
-     nodes, and say so in the evidence log.
-8. **Commit filed records by name as you go.** No uncommitted record may outlive the session (F5).
-   After filing, `tests/unit/test_capability_contract.py` and `tests/legacy_review_queue.py`'s artifact
-   test may need regenerating; see `CLAUDE_AGENT_PROMPT.md` §9 trap 1. Attestation files are not proof
-   inputs, so filing them does not stale the certified tree, but re-run `tests/tree_state.py` to confirm.
-9. **Measure and record** in the evidence log:
-   - how many of the 68 "rare" findings clear;
-   - how many of the 52 "absent" findings clear;
-   - the first-vs-confirming disagreement rate, compared with W2's 22.4%. Name the model family on
-     both sides; W2's figure was Haiku-against-Haiku.
-   - the re-measured `validate_capability_attestation()` count.
-   **The result is the true engineering queue.** Expect most of the absent group to remain.
+   - every cited seed printed;
+   - PROVIDED cites a seed;
+   - reasoning of 60+ characters;
+   - every quoted span found in the prompt the Attester received.
 
-**Stop-and-ask during Phase 3:**
-- an Attester reading that rulings 1–22 do not settle;
-- a confirmation the ruling-20 text does not cover;
-- any temptation to change the classification, the builder, or the dispatch text mid-campaign. That
-  would be an instrument change halfway through one campaign, which F2 warns against.
+   Tolerate only trailing punctuation, case and whitespace. Elisions and placeholders are failures. Take tool
+   use from the harness transcript and refuse any path outside the dispatch's own two files.
+5. **Revise wording only** by asking the same Attester to change its own wording, and prove the revision by a
+   structural diff (item, verdict and seeds) against v1. A fabricated seed means set the reply aside: harvest
+   its claims and send the identical prompt to a fresh Attester.
+6. **Compute moves before filing** against the current winner (`_load_attestations` +
+   `CAPABILITY_PROVIDERS`). For every clear or create:
+   - dispatch one confirming judge on a byte-identical copy of the prompt;
+   - file it afterwards with the moved items only;
+   - pass `--supersedes`, which takes a **JSON file path**, not inline JSON.
+7. **Commit records by name** as you go. Afterwards run `tests/tree_state.py` and the two tests that
+   filing is known to rot (§9 trap 1).
+
+**Owed from Phase 3** (none of it is fixed; each item is named in the evidence entry):
+- The 8 provider-variant refusals → P4-0. Also add a harness check that builds every node's attester
+  packet, so a refusal surfaces before dispatch. Mandate 5: add it while its finding count can be driven
+  to zero.
+- **Ruling-22 blind spot.** A selector proves the generator CHOSE the sibling, not that the rendered item
+  still EXHIBITS it.
+  - Example: `mat_g1_na_q2_1` `read_mcq` NumberLine/EmojiPictorial items drop the skip-count sequence
+    while their hints describe it.
+  - Owed: a check with its mutation, then the formatter fix.
+- `mat_g1_na_q2_2`'s `identify_value` stem reads "place value". → P4-8 wording.
+- Blindness: Agent-tool subagents inherit `CLAUDE.md`. Either remove that or record it in
+  `samples_delivery`.
 
 ### Phase 4: content batches by shared artifact (each is one `batch` intent, one chain)
 
@@ -327,6 +310,19 @@ STRUCTURED field naming its sibling:
 Then switch each member from `NI(...)` to a selector in `TABLE`, `--write`, prove each new selector with
 `--check-renders`, and run one chain. Then re-attest those nodes as in Phase 3. A field must describe
 what the generator chose; it must never be derived from learner-facing text (ruling 22a).
+
+**P4-0 also owns the 8 provider-variant refusals Phase 3 found** (§1).
+
+- **How to approach each variant.** Each advertised variant either:
+  - is emitted by the DNA under the name the provider table uses, or
+  - stops being advertised by `_variant_coverage_candidates`.
+- **Before dropping any, show from the competency that the node does not need it.** Example: `unit=l` on
+  "compare masses".
+- **Put the check in the harness in the same batch.** Build every node's attester packet, so this
+  surfaces before dispatch.
+
+Phase 3 also re-derived the batch membership below; the current queue is in §1, and the per-node list is
+in the evidence entry.
 
 Proposed content batches, from the absent group. Re-derive membership from the Phase 3 result before
 starting:
