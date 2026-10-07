@@ -1,20 +1,20 @@
 {
  "asserts": [
-  "attester_provider_variant_stratification"
+  "attester_clause_enumeration"
  ],
  "baseline_exit": 0,
  "baseline_markers_already_present": [],
  "baseline_must_not_contain": [
-  "provider_variant_stratification_6F"
+  "test_needs_instrumentation_member_refuses_the_node"
  ],
  "command": [
   "pytest",
-  "tests/unit/test_attester_packet_stratification.py",
+  "tests/unit/test_clause_enumeration.py",
   "-q",
   "-p",
   "no:cacheprovider"
  ],
- "definition_digest": "69e14e09f10da8b29241f3a9857ac1cbddde51a7f5b60022f247d19c1d5b230a",
+ "definition_digest": "ca36cce63274ebd2b87491d909894109ba2b3438f1b07a942feb778a6d629085",
  "detected": true,
  "diagnostic_line": "exit 1 — =================================== FAILURES ===================================",
  "environment": {
@@ -25,24 +25,22 @@
   "system": "Darwin"
  },
  "expect_output_contains": [
-  "test_every_provider_variant_keeps_two_samples_in_the_attester_packet",
-  "provider_variant_stratification_6F"
+  "test_needs_instrumentation_member_refuses_the_node"
  ],
- "expected_check": "provider_variant_stratification_6F",
- "finished_at": "2026-10-07T13:46:08+08:00",
+ "expected_check": "clause_enumeration_22 (needs_instrumentation refusal)",
+ "finished_at": "2026-10-07T13:46:06+08:00",
  "input_digest": "2b6599418789085a9561d2b566e3dc24b183f8d8575e40f7bf931235945463b9",
  "mutated_paths": [
   "tests/attester_packets.py"
  ],
- "mutation": "attester_packet_drops_provider_variant_samples",
+ "mutation": "attester_packet_judges_needs_instrumentation_node",
  "observed_markers": {
-  "provider_variant_stratification_6F": true,
-  "test_every_provider_variant_keeps_two_samples_in_the_attester_packet": true
+  "test_needs_instrumentation_member_refuses_the_node": true
  },
  "paths_outside_input_set": [],
  "phase1_admissible": true,
  "planted_exit": 1,
  "restored_clean": true,
  "schema_version": 1,
- "started_at": "2026-10-07T13:46:06+08:00"
+ "started_at": "2026-10-07T13:46:04+08:00"
 }

@@ -50,6 +50,7 @@ from pathlib import Path
 from typing import Any, Dict, List
 
 from backend.app.practice_gen.registry import get_node_info
+from tests import clause_enumeration as CE
 from backend.app.practice_gen.validation import validate_capability as VC
 from backend.app.practice_gen.validation.judgment_packets import (
     _render_sample,
@@ -224,6 +225,74 @@ def _assert_provider_variant_coverage(node_id: str, packets: List[Dict[str, Any]
 
 
 
+def _selector_seed_candidates(node_id: str, member: str) -> List[int]:
+    """A stable seed sequence per (node, member). Seeds >= 10 000 take no profile range."""
+    encoded = json.dumps([node_id, member], separators=(",", ":"),
+                         ensure_ascii=False).encode("utf-8")
+    digest = hashlib.sha256(encoded).digest()
+    start = 10_000 + int.from_bytes(digest[:4], "big")
+    step = 1 + int.from_bytes(digest[4:8], "big") % 1_000_003
+    return [start + step * attempt for attempt in range(_PROVIDER_VARIANT_ATTEMPTS)]
+
+
+def _render_selector_samples(node_id: str, member: str,
+                             disposition: Dict[str, Any]) -> tuple[List[int], Dict[int, Dict[str, Any]]]:
+    """Two default-path samples whose STRUCTURED values satisfy one member's selector.
+
+    Ruling 22(a): the selector reads given_values (or the rendered visual_type), never
+    question or answer text -- `CE.selector_matches` has no substring op and raises on any
+    op it does not know. No profile is requested, so the sample is exactly what a pupil
+    can receive at that seed and freshness replays it from (node, seed) alone.
+    """
+    seeds: List[int] = []
+    rendered: Dict[int, Dict[str, Any]] = {}
+    failures: List[str] = []
+    for seed in _selector_seed_candidates(node_id, member):
+        try:
+            sample = _render(node_id, seed)
+        except Exception as exc:  # noqa: BLE001 — retained in the named failure below
+            failures.append(f"seed {seed}: {type(exc).__name__}: {exc}")
+            continue
+        if sample is None:
+            failures.append(f"seed {seed}: renderer returned no sample")
+            continue
+        if not CE.selector_matches(sample, disposition):
+            continue
+        sample["_clause_selector_observation"] = member
+        seeds.append(seed)
+        rendered[seed] = sample
+        if len(seeds) == _PROVIDER_VARIANT_SAMPLES:
+            return seeds, rendered
+    raise RuntimeError(
+        f"{CE.LABEL}: {node_id}/{member} could not render {_PROVIDER_VARIANT_SAMPLES} "
+        f"samples matching selector {disposition['observe']!r}; tried "
+        f"{_PROVIDER_VARIANT_ATTEMPTS} deterministic seeds, matched {seeds}. "
+        f"First render failures: {failures[:3]}"
+    )
+
+
+def _assert_clause_selector_coverage(node_id: str, packets: List[Dict[str, Any]],
+                                     key: Dict[str, Any]) -> None:
+    """Fail by name if any enumeration member's stratum lost either of its two samples."""
+    by_item = {packet["item"]: packet for packet in packets}
+    for item, private in key.items():
+        samples_by_seed = {s["seed"]: s for s in by_item[item]["samples"]}
+        for mapping in private.get("clause_selector_seed_map") or []:
+            seeds = list(mapping["seeds"])
+            where = f"{node_id}/{mapping['member']}"
+            if len(seeds) < _PROVIDER_VARIANT_SAMPLES or len(set(seeds)) != len(seeds):
+                raise RuntimeError(f"{CE.LABEL}: {where} has selector seeds {seeds}; expected "
+                                   f"{_PROVIDER_VARIANT_SAMPLES} distinct samples")
+            missing = [seed for seed in seeds if seed not in samples_by_seed]
+            if missing:
+                raise RuntimeError(f"{CE.LABEL}: {where} lost packet sample seed(s) {missing}")
+            profiled = [seed for seed in seeds
+                        if (samples_by_seed[seed].get("requested") or {}).get("difficulty_profile")]
+            if profiled:
+                raise RuntimeError(f"{CE.LABEL}: {where} selector seed(s) {profiled} requested a "
+                                   f"profile; a selector stratum must be the default path")
+
+
 def render_prompt_block(packets: List[Dict[str, Any]]) -> str:
     """
     Emit the Attester-facing text VERBATIM from a packet.
@@ -256,6 +325,15 @@ def render_prompt_block(packets: List[Dict[str, Any]]) -> str:
         out.append(f"ITEM: {item['item']}")
         out.append(f"COMPETENCY (Grade {item['grade']}, Quarter {item['quarter']}):")
         out.append(item["competency"])
+        out.append("")
+        standard = item.get("clause_standard")
+        if standard is None:
+            raise KeyError(f"{CE.LABEL}: packet {item['item']} carries no clause_standard")
+        if standard["kind"] == "enumerated_sibling":
+            out.append(f"STANDARD (owner ruling 19): this clause is one item of the list "
+                       f"\"{standard['list']}\" in the competency.")
+        else:
+            out.append("STANDARD (owner ruling 9): this clause is not one item of a list.")
         out.append("")
         strata = item.get("provider_variant_strata") or []
         if strata:
@@ -298,10 +376,21 @@ def build(node_ids: List[str], capabilities: List[str] | None = None) -> tuple:
     packets: List[Dict[str, Any]] = []
     key: Dict[str, Any] = {}
     n = 0
+    classification = CE.load()
 
     for node_id in node_ids:
         meta = get_node_info(node_id) or {}
         requires = meta.get("requires") or []
+        # Ruling 22(b): an unclassified node fails here by name (KeyError from the loader),
+        # and a node with a sibling the DNA cannot yet expose is refused, not judged.
+        dispositions = CE.node_dispositions(node_id, classification)
+        wordings = CE.member_wordings(node_id, classification)
+        blind = sorted(m for m, d in dispositions.items() if "needs_instrumentation" in d)
+        if blind:
+            raise RuntimeError(
+                f"{CE.LABEL}: {node_id} has needs_instrumentation member(s) {blind}; its DNA "
+                f"must emit a structured field before an Attester packet can stratify them"
+            )
         samples_by_seed: Dict[int, Dict[str, Any]] = {}
         for seed in SAMPLE_SEEDS:
             s = _render(node_id, seed)
@@ -315,10 +404,28 @@ def build(node_ids: List[str], capabilities: List[str] | None = None) -> tuple:
             )
 
         variant_maps: Dict[str, List[Dict[str, Any]]] = {}
+        selector_maps: Dict[str, List[Dict[str, Any]]] = {}
         rendered_by_variant: Dict[tuple, Dict[int, Dict[str, Any]]] = {}
+        stratum_samples: Dict[int, Dict[str, Any]] = {}
         for req in requires:
             cap = str(req.get("id", ""))
             if capabilities is not None and cap not in capabilities:
+                continue
+            disposition = dispositions.get(cap)
+            if disposition is not None:
+                # An enumeration member: its selector is its ONLY stratum (ruling 19). An
+                # `unserved` member gets none and is judged on the base samples.
+                variant_maps[cap] = []
+                selector_maps[cap] = []
+                if "observe" in disposition:
+                    seeds, rendered = _render_selector_samples(node_id, cap, disposition)
+                    for seed, sample in rendered.items():
+                        if seed in stratum_samples:
+                            raise RuntimeError(f"{CE.LABEL}: {node_id} seed {seed} allocated "
+                                               f"to two strata")
+                        stratum_samples[seed] = sample
+                    selector_maps[cap].append({"member": cap, "selector": disposition["observe"],
+                                               "seeds": seeds})
                 continue
             exact_map: List[Dict[str, Any]] = []
             variants = _provider_variants_for(node_id, cap)
@@ -342,6 +449,11 @@ def build(node_ids: List[str], capabilities: List[str] | None = None) -> tuple:
                 variant = tuple(mapping["variant"])
                 for seed in mapping["seeds"]:
                     samples_by_seed[seed] = rendered_by_variant[variant][seed]
+        for seed, sample in stratum_samples.items():
+            if seed in samples_by_seed and samples_by_seed[seed] is not sample:
+                raise RuntimeError(f"{CE.LABEL}: {node_id} selector seed {seed} collides with "
+                                   f"another stratum's sample")
+            samples_by_seed[seed] = sample
 
         from tests.frontend_renderer import attach_rendered_visual_descriptions
 
@@ -350,6 +462,7 @@ def build(node_ids: List[str], capabilities: List[str] | None = None) -> tuple:
             sample = dict(samples_by_seed[seed])
             sample.pop("_provider_variant_evidence", None)
             sample.pop("_provider_variant_observation", None)
+            sample.pop("_clause_selector_observation", None)
             ordered_samples.append(sample)
         samples = finalize_samples(attach_rendered_visual_descriptions(ordered_samples))
 
@@ -369,9 +482,19 @@ def build(node_ids: List[str], capabilities: List[str] | None = None) -> tuple:
                     "Do the rendered items below exhibit what this clause names? "
                     "Answer PROVIDED or NOT_PROVIDED and name the seed(s) that show it."
                 ),
+                # Which ruling's standard applies. Without it the blind judge has to
+                # rediscover the classification, which is how W2's Attesters came to apply
+                # a 30-40% threshold no ruling states to enumerated siblings (review F1).
+                # It names a ruling and quotes competency text only: no provider, no
+                # selector, no verdict (ruling 1).
+                "clause_standard": (
+                    {"kind": "enumerated_sibling", "ruling": 19, "list": wordings[cap]}
+                    if cap in wordings else {"kind": "not_enumerated", "ruling": 9}
+                ),
                 "provider_variant_strata": [
                     {"stratum": f"stratum_{index:03d}", "seeds": list(mapping["seeds"])}
-                    for index, mapping in enumerate(variant_maps.get(cap, []), start=1)
+                    for index, mapping in enumerate(
+                        variant_maps.get(cap, []) + selector_maps.get(cap, []), start=1)
                 ],
                 "samples": samples,
             })
@@ -380,11 +503,13 @@ def build(node_ids: List[str], capabilities: List[str] | None = None) -> tuple:
                 "capability_id": cap,
                 "registered_provider": VC.CAPABILITY_PROVIDERS.get(cap),
                 "provider_variant_seed_map": variant_maps.get(cap, []),
+                "clause_selector_seed_map": selector_maps.get(cap, []),
             }
         node_items = [packet for packet in packets
                       if key[packet["item"]]["node_id"] == node_id]
         node_key = {packet["item"]: key[packet["item"]] for packet in node_items}
         _assert_provider_variant_coverage(node_id, node_items, node_key)
+        _assert_clause_selector_coverage(node_id, node_items, node_key)
     return packets, key
 
 

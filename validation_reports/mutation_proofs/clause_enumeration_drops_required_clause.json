@@ -1,0 +1,50 @@
+{
+ "asserts": [
+  "attester_clause_enumeration"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "is classified 0 times"
+ ],
+ "command": [
+  "pytest",
+  "tests/unit/test_clause_enumeration.py",
+  "-q",
+  "-p",
+  "no:cacheprovider"
+ ],
+ "definition_digest": "e8fbd167cb34d5f9d9b94fda0a5c3e980ec237c6c982537a0b9608ae4d130ad0",
+ "detected": true,
+ "diagnostic_line": "exit 1 — =================================== FAILURES ===================================",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "test_tracked_classification_passes_the_gate",
+  "mat_g1_dp_q3_0 required clause 'collect_data' is classified 0 times"
+ ],
+ "expected_check": "clause_enumeration_22 (required clause classified 0 times)",
+ "finished_at": "2026-10-07T13:46:00+08:00",
+ "input_digest": "2b6599418789085a9561d2b566e3dc24b183f8d8575e40f7bf931235945463b9",
+ "mutated_paths": [
+  "validation_reports/phase2_hardening/clause_enumeration.json"
+ ],
+ "mutation": "clause_enumeration_drops_required_clause",
+ "observed_markers": {
+  "mat_g1_dp_q3_0 required clause 'collect_data' is classified 0 times": true,
+  "test_tracked_classification_passes_the_gate": true
+ },
+ "paths_outside_input_set": [
+  "validation_reports/phase2_hardening/clause_enumeration.json"
+ ],
+ "phase1_admissible": false,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-10-07T13:45:59+08:00"
+}

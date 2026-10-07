@@ -5144,6 +5144,102 @@ MUTATIONS: List[Mutation] = [
         ],
         baseline_must_not_contain=["provider_variant_stratification_6F"],
     ),
+    # Owner ruling 22(b): every required clause is classified exactly once. These three
+    # plant into the TRACKED file the packet builder reads, because that file -- not
+    # TABLE -- is what reaches the Attester; `test_tracked_classification_passes_the_gate`
+    # runs the gate on it. Each names the one failure direction it proves, so the
+    # builder-equality finding that also fires cannot stand in for a broken direction.
+    Mutation(
+        name="clause_enumeration_drops_required_clause",
+        asserts=["attester_clause_enumeration"],
+        description=(
+            "Remove `collect_data` from mat_g1_dp_q3_0's classification. Ruling 22(b): a "
+            "required clause that is neither a stratum nor explicitly not enumerated must "
+            "fail loudly by name, or a new grade's unclassified clause would reach the "
+            "Attester with no stratum and no record that anyone looked."
+        ),
+        edits={
+            "validation_reports/phase2_hardening/clause_enumeration.json": (
+                '    "collect_data",\n    "one_variable",\n',
+                '    "one_variable",\n',
+            )
+        },
+        command=["pytest", "tests/unit/test_clause_enumeration.py", "-q",
+                 "-p", "no:cacheprovider"],
+        expected_check="clause_enumeration_22 (required clause classified 0 times)",
+        expect_output_contains=[
+            "test_tracked_classification_passes_the_gate",
+            "mat_g1_dp_q3_0 required clause 'collect_data' is classified 0 times",
+        ],
+        baseline_must_not_contain=["is classified 0 times"],
+    ),
+    Mutation(
+        name="clause_enumeration_siblings_share_selector",
+        asserts=["attester_clause_enumeration"],
+        description=(
+            "Give mat_g2_na_q1_3's `fifties` the `twenties` selector (skip_by == 20). Two "
+            "siblings on one stratum guarantee only one of them is sampled, which is the "
+            "W2 failure ruling 19 was written to end."
+        ),
+        edits={
+            "validation_reports/phase2_hardening/clause_enumeration.json": (
+                '         "path": "skip_by",\n         "equals": 50\n',
+                '         "path": "skip_by",\n         "equals": 20\n',
+            )
+        },
+        command=["pytest", "tests/unit/test_clause_enumeration.py", "-q",
+                 "-p", "no:cacheprovider"],
+        expected_check="clause_enumeration_22 (siblings share a selector)",
+        expect_output_contains=[
+            "test_tracked_classification_passes_the_gate",
+            "mat_g2_na_q1_3 siblings 'twenties' and 'fifties' share a selector",
+        ],
+        baseline_must_not_contain=["share a selector"],
+    ),
+    Mutation(
+        name="clause_enumeration_substring_condition",
+        asserts=["attester_clause_enumeration"],
+        description=(
+            "Turn mat_g1_mg_q1_0's `triangle` selector into a `contains` condition. "
+            "Ruling 22(a): a selector observes structured generator values only; a "
+            "substring op would let a stem that merely says 'triangle' count as the "
+            "stratum."
+        ),
+        edits={
+            "validation_reports/phase2_hardening/clause_enumeration.json": (
+                '         "path": "answer",\n         "equals": "triangle"\n',
+                '         "path": "answer",\n         "contains": "triangle"\n',
+            )
+        },
+        command=["pytest", "tests/unit/test_clause_enumeration.py", "-q",
+                 "-p", "no:cacheprovider"],
+        expected_check="clause_enumeration_22 (no substring op)",
+        expect_output_contains=[
+            "test_tracked_classification_passes_the_gate",
+            "mat_g1_mg_q1_0/triangle condition op ['contains']",
+        ],
+        baseline_must_not_contain=["no substring op"],
+    ),
+    Mutation(
+        name="attester_packet_judges_needs_instrumentation_node",
+        asserts=["attester_clause_enumeration"],
+        description=(
+            "Let the packet builder proceed past a needs_instrumentation member. Ruling "
+            "22 leaves no stratum for a sibling visible only in text, so such a node must "
+            "be refused rather than judged on base samples that sample it by luck."
+        ),
+        edits={
+            "tests/attester_packets.py": (
+                "        if blind:\n",
+                "        if blind and False:  # planted mutation: judge a blind sibling anyway\n",
+            )
+        },
+        command=["pytest", "tests/unit/test_clause_enumeration.py", "-q",
+                 "-p", "no:cacheprovider"],
+        expected_check="clause_enumeration_22 (needs_instrumentation refusal)",
+        expect_output_contains=["test_needs_instrumentation_member_refuses_the_node"],
+        baseline_must_not_contain=["test_needs_instrumentation_member_refuses_the_node"],
+    ),
 ]
 
 # The templated-review mutation cannot be a literal find/replace: each review's

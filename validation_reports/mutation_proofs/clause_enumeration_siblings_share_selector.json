@@ -1,0 +1,50 @@
+{
+ "asserts": [
+  "attester_clause_enumeration"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "share a selector"
+ ],
+ "command": [
+  "pytest",
+  "tests/unit/test_clause_enumeration.py",
+  "-q",
+  "-p",
+  "no:cacheprovider"
+ ],
+ "definition_digest": "26d082e0935e1e01fa520686bb6106d7a4f29af420605ce9f53bd9da3ae01bf5",
+ "detected": true,
+ "diagnostic_line": "exit 1 — =================================== FAILURES ===================================",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "test_tracked_classification_passes_the_gate",
+  "mat_g2_na_q1_3 siblings 'twenties' and 'fifties' share a selector"
+ ],
+ "expected_check": "clause_enumeration_22 (siblings share a selector)",
+ "finished_at": "2026-10-07T13:46:02+08:00",
+ "input_digest": "2b6599418789085a9561d2b566e3dc24b183f8d8575e40f7bf931235945463b9",
+ "mutated_paths": [
+  "validation_reports/phase2_hardening/clause_enumeration.json"
+ ],
+ "mutation": "clause_enumeration_siblings_share_selector",
+ "observed_markers": {
+  "mat_g2_na_q1_3 siblings 'twenties' and 'fifties' share a selector": true,
+  "test_tracked_classification_passes_the_gate": true
+ },
+ "paths_outside_input_set": [
+  "validation_reports/phase2_hardening/clause_enumeration.json"
+ ],
+ "phase1_admissible": false,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-10-07T13:46:01+08:00"
+}

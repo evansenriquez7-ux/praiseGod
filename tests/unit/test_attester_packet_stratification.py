@@ -50,6 +50,10 @@ def _build(monkeypatch):
         "quarter": 1,
         "requires": [{"id": _CAPABILITY, "clause": "counting up"}],
     })
+    # Not an enumeration member, so ruling 22's selector strata do not apply and the
+    # explicit-variant stratification under test is the clause's only stratum.
+    monkeypatch.setattr(ap.CE, "load", lambda path=None: {"nodes": {_NODE: {
+        "competency_sha256": "", "enumerations": [], "not_enumerated": [_CAPABILITY]}}})
     monkeypatch.setattr(ap, "_provider_variants_for",
                         lambda _node_id, _capability_id: [_VARIANT])
     monkeypatch.setattr(ap, "_render", _sample)

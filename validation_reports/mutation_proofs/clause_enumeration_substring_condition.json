@@ -1,20 +1,20 @@
 {
  "asserts": [
-  "attester_provider_variant_stratification"
+  "attester_clause_enumeration"
  ],
  "baseline_exit": 0,
  "baseline_markers_already_present": [],
  "baseline_must_not_contain": [
-  "provider_variant_stratification_6F"
+  "no substring op"
  ],
  "command": [
   "pytest",
-  "tests/unit/test_attester_packet_stratification.py",
+  "tests/unit/test_clause_enumeration.py",
   "-q",
   "-p",
   "no:cacheprovider"
  ],
- "definition_digest": "69e14e09f10da8b29241f3a9857ac1cbddde51a7f5b60022f247d19c1d5b230a",
+ "definition_digest": "08fb86a32f7631c9e8ed10357054df7abf6a9e281e9cdc643836b25a509f94cd",
  "detected": true,
  "diagnostic_line": "exit 1 — =================================== FAILURES ===================================",
  "environment": {
@@ -25,24 +25,26 @@
   "system": "Darwin"
  },
  "expect_output_contains": [
-  "test_every_provider_variant_keeps_two_samples_in_the_attester_packet",
-  "provider_variant_stratification_6F"
+  "test_tracked_classification_passes_the_gate",
+  "mat_g1_mg_q1_0/triangle condition op ['contains']"
  ],
- "expected_check": "provider_variant_stratification_6F",
- "finished_at": "2026-10-07T13:46:08+08:00",
+ "expected_check": "clause_enumeration_22 (no substring op)",
+ "finished_at": "2026-10-07T13:46:04+08:00",
  "input_digest": "2b6599418789085a9561d2b566e3dc24b183f8d8575e40f7bf931235945463b9",
  "mutated_paths": [
-  "tests/attester_packets.py"
+  "validation_reports/phase2_hardening/clause_enumeration.json"
  ],
- "mutation": "attester_packet_drops_provider_variant_samples",
+ "mutation": "clause_enumeration_substring_condition",
  "observed_markers": {
-  "provider_variant_stratification_6F": true,
-  "test_every_provider_variant_keeps_two_samples_in_the_attester_packet": true
+  "mat_g1_mg_q1_0/triangle condition op ['contains']": true,
+  "test_tracked_classification_passes_the_gate": true
  },
- "paths_outside_input_set": [],
- "phase1_admissible": true,
+ "paths_outside_input_set": [
+  "validation_reports/phase2_hardening/clause_enumeration.json"
+ ],
+ "phase1_admissible": false,
  "planted_exit": 1,
  "restored_clean": true,
  "schema_version": 1,
- "started_at": "2026-10-07T13:46:06+08:00"
+ "started_at": "2026-10-07T13:46:03+08:00"
 }

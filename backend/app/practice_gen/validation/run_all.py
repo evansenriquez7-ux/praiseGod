@@ -89,6 +89,10 @@ ASSERTIONS = (
     "packet_variant_coverage_uncapped",    # tests/unit/test_packet_allocation.py
     "packet_interest_pinned",              # tests/unit/test_packet_allocation.py
     "attester_provider_variant_stratification",  # tests/unit/test_attester_packet_stratification.py
+    # Owner ruling 22 (2026-10-07): every required clause classified once, selectors on
+    # structured values only, needs_instrumentation nodes refused. Its own label for the
+    # same reason as the line above -- its mutations drive ONE test file.
+    "attester_clause_enumeration",         # tests/unit/test_clause_enumeration.py
     # The three-state determination (H-10, 2026-09-21). Declared here for the same reason
     # as the two lines above: its mutation drives ONE test file, so asserting `unit_tests`
     # would make the allowlisted `unit_tests` entry read as proven. `tests/tree_state.py`
