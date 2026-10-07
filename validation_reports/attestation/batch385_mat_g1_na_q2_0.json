@@ -1,0 +1,664 @@
+{
+  "batch": "batch385_mat_g1_na_q2_0",
+  "attested_at": "2026-10-07T16:59:24Z",
+  "attested_by": "blind-attester-claude-haiku-4.5-default-p3c-mat_g1_na_q2_0-20261008",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "Claude Code Agent tool, model=haiku (Claude Haiku 4.5), subagent_type=general-purpose, default effort; told to Read only scratchpad/p3/c_d07/prompt.txt (section A of dispatch_instructions_20261007.md followed by the verbatim render_prompt_block output of the whole node packet; directory named opaquely, no node id, no key file beside it; delivery by file approved by the owner 2026-10-08) and Write only scratchpad/p3/c_d07/verdicts.json. Blindness is a prompt contract, not a sandbox.",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "Harness usage record (subagent transcript): 2 tool uses excluding the final hand-back; by name: 1 Read, 1 Write; paths other than this dispatch's own prompt.txt/verdicts.json: none"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g1_na_q2_0",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127,
+      235990504,
+      236135114,
+      2118109750,
+      2119118668,
+      4078756187,
+      4079038418
+    ],
+    "samples_judged": [
+      {
+        "node_id": "mat_g1_na_q2_0",
+        "seed": 11,
+        "formatter": "sort_order",
+        "question_text": "Arrange these numbers from smallest to largest: 51, 49, 53",
+        "correct_answer": [
+          49,
+          51,
+          53
+        ],
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "sort_order",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "drag",
+          "experience": "standard"
+        },
+        "resolved_answer": [
+          49,
+          51,
+          53
+        ],
+        "hints": [
+          "Numbers to order: 49, 51, 53.",
+          "Find the smallest number first, then the next smallest.",
+          "Ordered from least to greatest: 49, 51, 53."
+        ],
+        "sample_id": "0e89202ef4ef6ff7139b",
+        "replay_digest": "e98f32e2f42d981edd2acfae315e61afe245ad1afd11d48987b605f18a722d8e"
+      },
+      {
+        "node_id": "mat_g1_na_q2_0",
+        "seed": 23,
+        "formatter": "ordering",
+        "question_text": "Arrange these numbers from largest to smallest: 100, 82, 84",
+        "correct_answer": [
+          100,
+          84,
+          82
+        ],
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "ordering",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "drag",
+          "experience": "standard"
+        },
+        "resolved_answer": [
+          100,
+          84,
+          82
+        ],
+        "hints": [
+          "Numbers to order: 82, 84, 100.",
+          "Find the largest number first, then the next largest.",
+          "Ordered from greatest to least: 100, 84, 82."
+        ],
+        "sample_id": "bc0bb6f2960c28f2c18b",
+        "replay_digest": "c368f58d4191976b87eee3c3b0f0e54d0bd7083b12675a8bde0387cb37b0a524"
+      },
+      {
+        "node_id": "mat_g1_na_q2_0",
+        "seed": 42,
+        "formatter": "sort_order",
+        "question_text": "Arrange these numbers from largest to smallest: 61, 62, 29",
+        "correct_answer": [
+          62,
+          61,
+          29
+        ],
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "sort_order",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "drag",
+          "experience": "standard"
+        },
+        "resolved_answer": [
+          62,
+          61,
+          29
+        ],
+        "hints": [
+          "Numbers to order: 29, 61, 62.",
+          "Find the largest number first, then the next largest.",
+          "Ordered from greatest to least: 62, 61, 29."
+        ],
+        "sample_id": "72b7c700264f6ae327cf",
+        "replay_digest": "dc6de1c9d6d481d05b50822b726e82a2ff9799e3e966779e55c6f3b209ab4bd4"
+      },
+      {
+        "node_id": "mat_g1_na_q2_0",
+        "seed": 57,
+        "formatter": "ordering",
+        "question_text": "Jose counted storybooks collected by 3 friends: 1, 10, 13. Arrange the counts from largest to smallest.",
+        "correct_answer": [
+          13,
+          10,
+          1
+        ],
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "ordering",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "drag",
+          "experience": "standard"
+        },
+        "resolved_answer": [
+          13,
+          10,
+          1
+        ],
+        "hints": [
+          "Numbers to order: 1, 10, 13.",
+          "Find the largest number first, then the next largest.",
+          "Ordered from greatest to least: 13, 10, 1."
+        ],
+        "sample_id": "d9d66d1f9e5f7ca32cb4",
+        "replay_digest": "f3d1dc2c6e0e6d8bef8de7bdf8a7563aae5ab552ae081241e58f698b7af15747"
+      },
+      {
+        "node_id": "mat_g1_na_q2_0",
+        "seed": 64,
+        "formatter": "ordering",
+        "question_text": "Arrange these numbers from largest to smallest: 55, 38, 57, 50",
+        "correct_answer": [
+          57,
+          55,
+          50,
+          38
+        ],
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "ordering",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "drag",
+          "experience": "standard"
+        },
+        "resolved_answer": [
+          57,
+          55,
+          50,
+          38
+        ],
+        "hints": [
+          "Numbers to order: 38, 50, 55, 57.",
+          "Find the largest number first, then the next largest.",
+          "Ordered from greatest to least: 57, 55, 50, 38."
+        ],
+        "sample_id": "39f6383f409f38bc9379",
+        "replay_digest": "7353aa86d1a7612660bcefab2fab03fc4403bd190de150035e3e990ee2809932"
+      },
+      {
+        "node_id": "mat_g1_na_q2_0",
+        "seed": 78,
+        "formatter": "sort_order",
+        "question_text": "Arrange these numbers from largest to smallest: 79, 80, 96",
+        "correct_answer": [
+          96,
+          80,
+          79
+        ],
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "sort_order",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "drag",
+          "experience": "standard"
+        },
+        "resolved_answer": [
+          96,
+          80,
+          79
+        ],
+        "hints": [
+          "Numbers to order: 79, 80, 96.",
+          "Find the largest number first, then the next largest.",
+          "Ordered from greatest to least: 96, 80, 79."
+        ],
+        "sample_id": "50e5a1ee2efb21d721a9",
+        "replay_digest": "894bd23c38c322395a90c20a086e828000793a45f738026ee6cfcb5b28b2bac5"
+      },
+      {
+        "node_id": "mat_g1_na_q2_0",
+        "seed": 91,
+        "formatter": "ordering",
+        "question_text": "Maria counted seashells collected by 3 friends: 3, 10, 59. Arrange the counts from smallest to largest.",
+        "correct_answer": [
+          3,
+          10,
+          59
+        ],
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "ordering",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "drag",
+          "experience": "standard"
+        },
+        "resolved_answer": [
+          3,
+          10,
+          59
+        ],
+        "hints": [
+          "Numbers to order: 3, 10, 59.",
+          "Find the smallest number first, then the next smallest.",
+          "Ordered from least to greatest: 3, 10, 59."
+        ],
+        "sample_id": "89ef98ddfb396cbd91e4",
+        "replay_digest": "5c62a1b9d11f0bfdba2650753c7aa91fa399541eec8cd9851167ceef4869e4b5"
+      },
+      {
+        "node_id": "mat_g1_na_q2_0",
+        "seed": 103,
+        "formatter": "ordering",
+        "question_text": "Arrange these numbers from smallest to largest: 94, 90, 100",
+        "correct_answer": [
+          90,
+          94,
+          100
+        ],
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "ordering",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "drag",
+          "experience": "standard"
+        },
+        "resolved_answer": [
+          90,
+          94,
+          100
+        ],
+        "hints": [
+          "Numbers to order: 90, 94, 100.",
+          "Find the smallest number first, then the next smallest.",
+          "Ordered from least to greatest: 90, 94, 100."
+        ],
+        "sample_id": "47bd493ccf5369834bca",
+        "replay_digest": "92de0b8baf4f46d011fa29702e4b56476a8594aca4a638230073bb66a72b725b"
+      },
+      {
+        "node_id": "mat_g1_na_q2_0",
+        "seed": 118,
+        "formatter": "sort_order",
+        "question_text": "Arrange these numbers from largest to smallest: 64, 90, 70",
+        "correct_answer": [
+          90,
+          70,
+          64
+        ],
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "sort_order",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "drag",
+          "experience": "standard"
+        },
+        "resolved_answer": [
+          90,
+          70,
+          64
+        ],
+        "hints": [
+          "Numbers to order: 64, 70, 90.",
+          "Find the largest number first, then the next largest.",
+          "Ordered from greatest to least: 90, 70, 64."
+        ],
+        "sample_id": "8981534522d009821b50",
+        "replay_digest": "38676824beb1db390cf4035d1e5157d228b2b9b02b596c2050d9f1d1bf100769"
+      },
+      {
+        "node_id": "mat_g1_na_q2_0",
+        "seed": 127,
+        "formatter": "ordering",
+        "question_text": "Ana counted seashells collected by 3 friends: 1, 4, 12. Arrange the counts from largest to smallest.",
+        "correct_answer": [
+          12,
+          4,
+          1
+        ],
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "ordering",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "drag",
+          "experience": "standard"
+        },
+        "resolved_answer": [
+          12,
+          4,
+          1
+        ],
+        "hints": [
+          "Numbers to order: 1, 4, 12.",
+          "Find the largest number first, then the next largest.",
+          "Ordered from greatest to least: 12, 4, 1."
+        ],
+        "sample_id": "81d4cb6d0bb6e7426ff1",
+        "replay_digest": "bcf26d5a5ba0f5c9975f4925b823f2bed9a85ba9d2f0d366c7b1054037f6afdf"
+      },
+      {
+        "node_id": "mat_g1_na_q2_0",
+        "seed": 235990504,
+        "formatter": "sort_order",
+        "question_text": "Liza counted stickers collected by 3 friends: 26, 31, 35. Arrange the counts from largest to smallest.",
+        "correct_answer": [
+          35,
+          31,
+          26
+        ],
+        "requested": {
+          "difficulty_profile": {
+            "task_type": "order_sequence"
+          },
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "sort_order",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "drag",
+          "experience": "standard"
+        },
+        "resolved_answer": [
+          35,
+          31,
+          26
+        ],
+        "hints": [
+          "Numbers to order: 26, 31, 35.",
+          "Find the largest number first, then the next largest.",
+          "Ordered from greatest to least: 35, 31, 26."
+        ],
+        "sample_id": "3e50cd34a8baf0299f49",
+        "replay_digest": "cdbc15f74d2ea8fa2e48c7a239171a7fae42692c2ad4edbf50828f8ac2858b82"
+      },
+      {
+        "node_id": "mat_g1_na_q2_0",
+        "seed": 236135114,
+        "formatter": "ordering",
+        "question_text": "Ben counted marbles collected by 3 friends: 1, 2, 14. Arrange the counts from smallest to largest.",
+        "correct_answer": [
+          1,
+          2,
+          14
+        ],
+        "requested": {
+          "difficulty_profile": {
+            "task_type": "order_sequence"
+          },
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "ordering",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "drag",
+          "experience": "standard"
+        },
+        "resolved_answer": [
+          1,
+          2,
+          14
+        ],
+        "hints": [
+          "Numbers to order: 1, 2, 14.",
+          "Find the smallest number first, then the next smallest.",
+          "Ordered from least to greatest: 1, 2, 14."
+        ],
+        "sample_id": "e39b879d1d8e9336d63e",
+        "replay_digest": "d89c39bbba13c57450a7ac87f822a7b59bfb3bd11e0f00d29b9228f7fd12427b"
+      },
+      {
+        "node_id": "mat_g1_na_q2_0",
+        "seed": 2118109750,
+        "formatter": "sort_order",
+        "question_text": "Arrange these numbers from largest to smallest: 58, 97, 59",
+        "correct_answer": [
+          97,
+          59,
+          58
+        ],
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "sort_order",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "drag",
+          "experience": "standard"
+        },
+        "resolved_answer": [
+          97,
+          59,
+          58
+        ],
+        "hints": [
+          "Numbers to order: 58, 59, 97.",
+          "Find the largest number first, then the next largest.",
+          "Ordered from greatest to least: 97, 59, 58."
+        ],
+        "sample_id": "ef028b9cb36458857100",
+        "replay_digest": "5fabc6278e554b1d2f4a99081b622408f4bb19eea75127413c938f55aa798999"
+      },
+      {
+        "node_id": "mat_g1_na_q2_0",
+        "seed": 2119118668,
+        "formatter": "sort_order",
+        "question_text": "Arrange these numbers from largest to smallest: 35, 14, 46",
+        "correct_answer": [
+          46,
+          35,
+          14
+        ],
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "sort_order",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "drag",
+          "experience": "standard"
+        },
+        "resolved_answer": [
+          46,
+          35,
+          14
+        ],
+        "hints": [
+          "Numbers to order: 14, 35, 46.",
+          "Find the largest number first, then the next largest.",
+          "Ordered from greatest to least: 46, 35, 14."
+        ],
+        "sample_id": "012a4df6ff0ab84b14e6",
+        "replay_digest": "fafa0a6153d4d68047c73d98ca6b7802ed53aa19a16c741292f675b572684e1a"
+      },
+      {
+        "node_id": "mat_g1_na_q2_0",
+        "seed": 4078756187,
+        "formatter": "ordering",
+        "question_text": "Arrange these numbers from smallest to largest: 55, 54, 94",
+        "correct_answer": [
+          54,
+          55,
+          94
+        ],
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "ordering",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "drag",
+          "experience": "standard"
+        },
+        "resolved_answer": [
+          54,
+          55,
+          94
+        ],
+        "hints": [
+          "Numbers to order: 54, 55, 94.",
+          "Find the smallest number first, then the next smallest.",
+          "Ordered from least to greatest: 54, 55, 94."
+        ],
+        "sample_id": "704865deaec120adc568",
+        "replay_digest": "36e077ee42adaf58fc08e8d289bf4e20c1d67d38b1167a5fbd6dda7368f874aa"
+      },
+      {
+        "node_id": "mat_g1_na_q2_0",
+        "seed": 4079038418,
+        "formatter": "sort_order",
+        "question_text": "Jose counted storybooks collected by 3 friends: 26, 34, 44. Arrange the counts from smallest to largest.",
+        "correct_answer": [
+          26,
+          34,
+          44
+        ],
+        "requested": {
+          "difficulty_profile": null,
+          "student_interest": null,
+          "experience": "standard"
+        },
+        "serving_mode": "student_path",
+        "effective": {
+          "format": "sort_order",
+          "is_visual": false,
+          "visual_type": null,
+          "interaction_mode": null,
+          "answer_collection": "drag",
+          "experience": "standard"
+        },
+        "resolved_answer": [
+          26,
+          34,
+          44
+        ],
+        "hints": [
+          "Numbers to order: 26, 34, 44.",
+          "Find the smallest number first, then the next smallest.",
+          "Ordered from least to greatest: 26, 34, 44."
+        ],
+        "sample_id": "1aa85830df6d13b2fe10",
+        "replay_digest": "e8906e5f1b04cf8c0e6bc7bdbb9cb6d49e73f910bd8862aad377100ebe8c284d"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "smallest_to_largest",
+      "node_id": "mat_g1_na_q2_0",
+      "clause": "smallest to largest",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        4078756187,
+        4079038418
+      ],
+      "reasoning": "The clause smallest to largest appears in both seeds deliberately sampled in stratum_001. Seed 4078756187 presents Arrange these numbers from smallest to largest: 55, 54, 94 with key [54, 55, 94]. Seed 4079038418 uses the same phrasing in a story context. The generator serves this list item by design.",
+      "action_taken": "Left registered; no change.",
+      "content_note_from_attester": "None"
+    }
+  ],
+  "supersedes": "confirming judge (ruling 20) for batch382: independent blind Haiku Attester on the same packet file; filed for the 1 verdict(s) that clear or create a CONTRADICTED finding relative to the pre-Phase-3 winner; the confirming verdict stands"
+}
