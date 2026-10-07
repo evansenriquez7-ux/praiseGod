@@ -88,6 +88,7 @@ ASSERTIONS = (
     # paid debt left on the register -- an accurate complaint about an inaccurate claim.
     "packet_variant_coverage_uncapped",    # tests/unit/test_packet_allocation.py
     "packet_interest_pinned",              # tests/unit/test_packet_allocation.py
+    "attester_provider_variant_stratification",  # tests/unit/test_attester_packet_stratification.py
     # The three-state determination (H-10, 2026-09-21). Declared here for the same reason
     # as the two lines above: its mutation drives ONE test file, so asserting `unit_tests`
     # would make the allowlisted `unit_tests` entry read as proven. `tests/tree_state.py`

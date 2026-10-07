@@ -1,7 +1,13 @@
 {
   "schema_version": 1,
   "note": "Intent record for interruption safety. Written when a batch, chain or campaign STARTS and cleared when it completes; an intent left open means a session did not reach its finish line. Deliberately digest-free -- see tests/tree_state.py. Read with `PYTHONPATH=. .venv/bin/python tests/tree_state.py`.",
-  "open_intent": null,
+  "open_intent": {
+    "kind": "batch",
+    "began_at": "2026-10-07T02:44:37+08:00",
+    "session": "codex-h06-phase2-instrument-20261007",
+    "note": "Phase 2 instrument: stratified provider-variant attester packets, dispatch instructions, contract enforcement, and named mutation proof.",
+    "next_step": "Land every remaining source edit, then run the re-proof chain in order."
+  },
   "last_completed": {
     "kind": "campaign",
     "began_at": "2026-10-06T16:27:37+08:00",

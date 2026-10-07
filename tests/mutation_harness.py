@@ -5115,6 +5115,35 @@ MUTATIONS: List[Mutation] = [
         expect_output_contains=["test_the_packet_actually_allocates_interest_samples"],
         baseline_must_not_contain=["test_the_packet_actually_allocates_interest_samples"],
     ),
+    Mutation(
+        name="attester_packet_drops_provider_variant_samples",
+        asserts=["attester_provider_variant_stratification"],
+        description=(
+            "Drop every sample allocated to the first provider variant before the blind "
+            "Attester packet is assembled. Ruling 19 judges enumerated siblings by "
+            "design only when each reachable CAPABILITY_PROVIDERS variant is observed "
+            "at least twice; a seed map that names samples the packet then omits is the "
+            "silent-green failure this gate must catch."
+        ),
+        edits={
+            "tests/attester_packets.py": (
+                "            for mapping in exact_map:\n"
+                "                variant = tuple(mapping[\"variant\"])\n",
+                "            for mapping_index, mapping in enumerate(exact_map):\n"
+                "                if mapping_index == 0:  # planted mutation: drop one provider variant's samples\n"
+                "                    continue\n"
+                "                variant = tuple(mapping[\"variant\"])\n",
+            )
+        },
+        command=["pytest", "tests/unit/test_attester_packet_stratification.py", "-q",
+                 "-p", "no:cacheprovider"],
+        expected_check="provider_variant_stratification_6F",
+        expect_output_contains=[
+            "test_every_provider_variant_keeps_two_samples_in_the_attester_packet",
+            "provider_variant_stratification_6F",
+        ],
+        baseline_must_not_contain=["provider_variant_stratification_6F"],
+    ),
 ]
 
 # The templated-review mutation cannot be a literal find/replace: each review's

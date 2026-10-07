@@ -424,7 +424,8 @@ def _regrouping_fits(level: Any, max_places: Optional[int]) -> bool:
     return needed <= max_places
 
 
-def _render_sample(node_id: str, seed: int, difficulty_profile: Dict[str, Any] = None) -> Dict[str, Any]:
+def _render_sample(node_id: str, seed: int, difficulty_profile: Dict[str, Any] = None,
+                   include_private_variant_evidence: bool = False) -> Dict[str, Any]:
     """
     Generate one problem and reduce it to reviewer-facing rendered fields only.
 
@@ -492,6 +493,13 @@ def _render_sample(node_id: str, seed: int, difficulty_profile: Dict[str, Any] =
             "experience": p.get("experience"),
         },
     }
+    if include_private_variant_evidence:
+        # Attester packet allocation must prove the requested provider variant
+        # actually rendered. The student-path clamp can replace a scalar request with
+        # the node's allowed set, so `requested.difficulty_profile` is not proof. This
+        # private field is consumed and removed by tests.attester_packets before any
+        # blind packet or filed record is written.
+        sample["_provider_variant_evidence"] = p.get("given_values") or {}
     if options is not None:
         sample["options"] = options
     sample["resolved_answer"] = _resolved_answer_value(p.get("correct_answer"), options)

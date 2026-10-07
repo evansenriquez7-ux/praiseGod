@@ -1220,7 +1220,18 @@ def _attestation_staleness(records: List[Dict[str, Any]]) -> List[str]:
             if not node_id or seed is None or key in current_raw or key in current_failures:
                 continue
             try:
-                current_raw[key] = _render_sample(node_id, seed)
+                # New stratified Attester packets pin provider variants explicitly.
+                # Replay the recorded request rather than hoping a plain seed draw lands
+                # on the same sibling. Legacy records either omit `requested` or record
+                # a null profile, preserving their historical seed-only replay.
+                requested = sample.get("requested") or {}
+                profile = requested.get("difficulty_profile")
+                if profile is None:
+                    current_raw[key] = _render_sample(node_id, seed)
+                else:
+                    current_raw[key] = _render_sample(
+                        node_id, seed, difficulty_profile=profile
+                    )
             except Exception as exc:  # noqa: BLE001 — retained and attributed below
                 current_failures[key] = f"{type(exc).__name__}: {exc}"
     if current_raw:

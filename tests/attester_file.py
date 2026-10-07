@@ -85,7 +85,7 @@ _VALID = {"PROVIDED", "NOT_PROVIDED"}
 # half was delivered is unauditable in exactly the way §6F cannot detect.
 def _blindness(tool_uses: str, delivery: str) -> Dict[str, Any]:
     return {
-        "saw": ["clause", "competency text", "grade/quarter", "10 rendered student-path samples"],
+        "saw": ["clause", "competency text", "grade/quarter", "rendered student-path samples"],
         "did_not_see": [
             "CAPABILITY_PROVIDERS or that any entry was being defended",
             "the node id",

@@ -1,0 +1,48 @@
+{
+ "asserts": [
+  "attester_provider_variant_stratification"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "provider_variant_stratification_6F"
+ ],
+ "command": [
+  "pytest",
+  "tests/unit/test_attester_packet_stratification.py",
+  "-q",
+  "-p",
+  "no:cacheprovider"
+ ],
+ "definition_digest": "69e14e09f10da8b29241f3a9857ac1cbddde51a7f5b60022f247d19c1d5b230a",
+ "detected": true,
+ "diagnostic_line": "exit 1 — =================================== FAILURES ===================================",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "test_every_provider_variant_keeps_two_samples_in_the_attester_packet",
+  "provider_variant_stratification_6F"
+ ],
+ "expected_check": "provider_variant_stratification_6F",
+ "finished_at": "2026-10-07T10:24:12+08:00",
+ "input_digest": "17176d54e5931d0b2c219da9232c9329b4c1803de3ad5b77be7408c3abf7978c",
+ "mutated_paths": [
+  "tests/attester_packets.py"
+ ],
+ "mutation": "attester_packet_drops_provider_variant_samples",
+ "observed_markers": {
+  "provider_variant_stratification_6F": true,
+  "test_every_provider_variant_keeps_two_samples_in_the_attester_packet": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-10-07T10:24:11+08:00"
+}
