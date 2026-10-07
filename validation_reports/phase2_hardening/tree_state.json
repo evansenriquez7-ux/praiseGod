@@ -3,12 +3,11 @@
   "note": "Intent record for interruption safety. Written when a batch, chain or campaign STARTS and cleared when it completes; an intent left open means a session did not reach its finish line. Deliberately digest-free -- see tests/tree_state.py. Read with `PYTHONPATH=. .venv/bin/python tests/tree_state.py`.",
   "open_intent": null,
   "last_completed": {
-    "kind": "chain",
-    "began_at": "2026-10-07T15:01:40+08:00",
-    "session": "claude-h06-phase2a-gate-20261007",
-    "note": "Re-proof chain restarted after 5f? input-digest fix; source head = 9c4e036e",
-    "next_step": "Resume the chain at the first step whose artifact is still stale; shards are individually resumable, so re-run only the stale indices.",
-    "completed_at": "2026-10-07T19:20:40+08:00",
-    "completion_note": "Phase 2a landed and proven: chain complete at 4c36bc59; run_all failed=3 as baseline"
+    "kind": "campaign",
+    "began_at": "2026-10-08T00:38:49+08:00",
+    "session": "claude-h06-phase3-reattest-20261008",
+    "note": "Phase 3 re-attestation",
+    "next_step": "Resume the campaign; it touches no source, so no re-proof is owed.",
+    "completed_at": "2026-10-08T02:22:19+08:00"
   }
 }
