@@ -1408,6 +1408,19 @@ that points at it break every time the section is refreshed.
 >     claim. The disproving render and the outcome are recorded in the evidence log. The existing
 >     set-aside grounds are unchanged: an overall that contradicts its own verdicts, JSON still
 >     unparseable after one repair, or a skipped sample.
+> 22. **Packet-only attester selectors are approved, with two conditions** (owner, 2026-10-07).
+>     Ruling 19's stratification needs to know how to observe each sibling. Where a sibling has no
+>     exact provider variant, or shares a broad one (`certain` and `impossible` share
+>     `scenario_type = certain_impossible`; skip counts have none), `CAPABILITY_PROVIDERS` may carry
+>     packet-only `attester_selectors`. These take no part in Phase-1 provision. The conditions:
+>     (a) a selector observes **structured generator values only**, never a substring of learner-facing
+>     question or answer text, because a phrase match such as "square" can also match "square units";
+>     (b) **every required clause is classified**, either as a stratum (a reachable exact variant or a
+>     selector) or as explicitly not enumerated, with the competency wording cited. A clause with
+>     neither classification fails loudly by name. A hand-kept list of selectors must never let an
+>     unlisted sibling be judged the old way in silence. This was raised by the GPT session's
+>     `1c4f6f85` boundary. Its 21-capability selector table covered 37 of the 68 "rare" findings, and
+>     nothing flagged the other 31.
 >
 > **Owner rulings recorded 2026-09-22, binding on the next session:**
 >
