@@ -18571,3 +18571,139 @@ NAMED LIMITS:
   comparisons, never substrings.
 - The full corpus, release shards, benchmark and `run_all` were not run this session; all digest-bound
   artifacts remain stale from the GPT session's `314a745a` source change.
+
+## 2026-10-07 — Phase 2a landed: the ruling-22 attester gate (`claude-h06-phase2a-gate-20261007`)
+
+Model: Claude Opus 5.5 (this session; no blind judge was dispatched — Phase 2 is harness-only).
+Lock: H-06 claimed at `edfa7b5f` (owner line only, `numstat 1 1`); batch intent taken over from
+`claude-h06-phase2-instrument-20261007` with `--force`.
+
+**Phase 0 baseline.** Tree INTERRUPTED with a clean worktree and the expected open intent. The draft
+builder reproduced its counts and its output byte for byte:
+
+```text
+$ PYTHONPATH=. .venv/bin/python validation_reports/phase2_hardening/ruling22_wip/build_clause_enumeration_draft.py <scratch>/ce.json --check-renders
+EXIT 0
+nodes=151 enumerations=94 members=240 selector=182 needs_instrumentation=56 unserved=2 not_enumerated=527
+check_renders: 0 selector(s) observed fewer than 2 times in seeds 1000-1039
+$ cmp <scratch>/ce.json validation_reports/phase2_hardening/ruling22_wip/clause_enumeration.draft.json
+IDENTICAL
+```
+
+**Review of the draft (Phase 2a.1).** Every node's competency, enumerations and unenumerated clauses were
+dumped and read against the builder's stated rule. No table correction was made. Checked by execution:
+- `mat_g1_na_q1_0`'s "1 more or 1 less" reuses "counting up or down"'s `direction` selectors. The DNA
+  emits only `direction` (40 seeds: 21 backward, 19 forward); its "1 more" item is "What comes next" on a
+  forward sequence. Kept; named limit 5 (only siblings WITHIN one enumeration are barred from sharing).
+- `visual_type` selectors render the medium they name: `mat_g2_dp_q3_1` BarChart at seed 1001 is "Look at
+  the picture graph…", FillInTable at 1000 is "Look at the table…"; `mat_g2_na_q3_1` EmojiPictorial at 1000
+  is "3 groups of 3 cupcakes".
+- FOUND: the draft's render check used seeds 1000–1039, which `_render_sample` routes to the EXPERIENCE
+  wrapper range (`_EXPERIENCE_SEED_FLOOR = 1000`). Its "observed ≥2×" claim was therefore about wrapped
+  samples, not the default path. The landed `--check-renders` uses the packet builder's own seeds (≥10 000,
+  no profile range).
+
+**What landed** (`c4fcb384`, `9c4e036e`):
+- `tests/clause_enumeration.py`: the reviewed TABLE, the builder, the matcher (unknown op raises), the gate
+  `validate`/`check` (`clause_enumeration_22`), label `attester_clause_enumeration` in `run_all.ASSERTIONS`.
+- `validation_reports/phase2_hardening/clause_enumeration.json`: generated, never hand-edited; `check`
+  fails if it is not the builder's output. Listed in `mutation_proof.INPUT_FILES` (see below).
+- `tests/attester_packets.py`: an enumeration member is stratified by its selector exclusively (two
+  default-path samples from per-(node, member) seeds); a node with a `needs_instrumentation` member is
+  refused by name; an `unserved` member gets no stratum; non-enumerated clauses keep `314a745a`'s
+  explicit-variant strata. Each item prints `STANDARD (owner ruling 19|9)` with the list wording, so the
+  blind judge no longer rediscovers the classification (F1). `_PROVIDER_VARIANT_ATTEMPTS` unchanged (64);
+  the 2-sample floor unchanged.
+- Contract row replaced (`docs/pgen_contract.md`), with seven named limits.
+- `a23193fc` (item 8): the two capability tests rewrite a COPY of the attestation corpus under
+  `tmp_path`; each asserts the record it rewrites is under the copy.
+- `86d251a9` (2b): `validation_reports/phase2_hardening/dispatch_instructions_20261007.md`.
+
+```text
+$ PYTHONPATH=. .venv/bin/python -m tests.clause_enumeration --write
+wrote .../clause_enumeration.json: nodes=151 enumerations=94 members=240 observe=182 needs_instrumentation=56 unserved=2 not_enumerated=527
+$ PYTHONPATH=. .venv/bin/python -m tests.clause_enumeration --check
+clause_enumeration_22: OK (clause_enumeration.json)
+$ PYTHONPATH=. .venv/bin/python -m tests.clause_enumeration --check-renders
+check_renders: 0 selector(s) could not render 2 matching samples
+EXIT 0
+recount: NI nodes 20; capability ids 472, shared 140
+```
+
+**Found and fixed mid-session: the classification was outside the proof digest.** The first `--only` proof
+for `clause_enumeration_substring_condition` was DETECTED but recorded `"phase1_admissible": false` with
+`paths_outside_input_set: [".../clause_enumeration.json"]` — `validation_reports/` is otherwise harness
+output. Until fixed, §8 would have counted the three JSON-planted mutations unproven and an edit to the
+classification would have staled no proof. Fixed at `9c4e036e` by listing it in `INPUT_FILES`, pinned by
+`test_tracked_classification_is_a_proof_input`, proven by mutation `clause_enumeration_outside_proof_inputs`.
+The first chain attempt was stopped at the corpus boundary for this (its orphaned corpus child was
+SIGTERMed by pid; the harness's handler restored its `validate_matrix.py` plant; `git status` on
+backend/tests/docs empty; no in-flight marker).
+
+**Mutations, `--only`, each DETECTED with every named marker observed:**
+
+```text
+clause_enumeration_drops_required_clause            DETECTED  marker "mat_g1_dp_q3_0 required clause 'collect_data' is classified 0 times"
+clause_enumeration_siblings_share_selector          DETECTED  marker "mat_g2_na_q1_3 siblings 'twenties' and 'fifties' share a selector"
+clause_enumeration_substring_condition              DETECTED  marker "mat_g1_mg_q1_0/triangle condition op ['contains']"  phase1_admissible true (after 9c4e036e)
+attester_packet_judges_needs_instrumentation_node   DETECTED  marker test_needs_instrumentation_member_refuses_the_node
+clause_enumeration_outside_proof_inputs             DETECTED  marker "is not in the proof input digest"  phase1_admissible true
+attester_packet_drops_provider_variant_samples      DETECTED  (unchanged mutation, re-proved on the new builder)
+```
+
+**Unit suite** (`PYTHONPATH=. .venv/bin/python -m pytest tests/unit -m "not slow" -q -p no:cacheprovider`):
+first run 1 failed / 1032 passed — `test_the_live_ledger_claims_every_artifact_on_disk` correctly refused
+the unclaimed `clause_enumeration.json`; fixed by listing the new artifacts in H-06 `proof_artifacts`.
+Then `1033 passed, 1 skipped` (EXIT 0, 22m08s) before `c4fcb384`, and `1034 passed, 1 skipped` (EXIT 0,
+22m04s) before `9c4e036e`. Focused: `83 passed` incl. both copied-corpus tests; `git status
+validation_reports/attestation` empty afterwards.
+
+`validate_coverage()` on the new tree: 3 findings, exactly the known §6F cluster
+(`capability_attestation_options_recorded_6F`, `capability_contradicted_6F`, `capability_phase_boundary_6`);
+nothing on `attester_clause_enumeration` or the contract row.
+
+**Re-proof chain** (source `9c4e036e`; detached, each step alone; logs `local_only/scratch/chain_20261007/`;
+artifacts committed by name after the chain):
+
+```text
+2026-10-07 15:01:52 EXIT 0 regen          (275 exclusions across 111 nodes)
+2026-10-07 15:02:12 EXIT 0 benchmark      (cache_keys=1000 failures=0 recommended_shards=6)
+2026-10-07 15:02:25 EXIT 0 frontend       (PASS frontend_static_render_12: 34 real payloads; 18 production visual types)
+2026-10-07 16:05:07 EXIT 1 corpus         204/207 mutations detected; INVALID: contradicted_attestation,
+                                          attestation_drops_options, attestation_leaks_into_phase1 (the §6F cluster)
+2026-10-07 16:29–18:37 EXIT 0 shard0..shard5
+2026-10-07 18:37:26 EXIT 0 verify_release
+2026-10-07 19:18:45 EXIT 1 run_all        scheduled=17 completed=14 failed=3
+   FAIL assertion_coverage_8 (the 3 INVALID; mutation_proof_integrity_8's 9 findings are their 3 facets each)
+   FAIL judgment_reviews_5   752 problem(s)
+   FAIL capability_phase2    124 CONTRADICTED, 0 UNATTESTED, 0 STALE, 0 UNADJUDICABLE
+   PASS census: unit_tests=1035, mutations=207
+$ PYTHONPATH=. .venv/bin/python tests/tree_state.py
+PASS tree_state: CERTIFIED   (mutation_proofs 207 fresh; release_shards 6 fresh; benchmark fresh; frontend fresh)
+```
+
+The five new mutations are DETECTED in the full table with `phase1_admissible: true`. Escaped-plant check
+after the corpus: `git status --porcelain` on the source roots empty; HEAD `git grep` for plant markers empty.
+`judgment_reviews_5`'s 752 is unchanged from the baseline: the module's 751 plus the one aggregate finding
+the stage appends (as recorded in the "Phase 2 instrument baseline" entry).
+
+**Phase 3 scope under the new builder** (`validate_capability_attestation()`, executed): 124 findings on 55
+nodes. 9 nodes (25 findings) are REFUSED by the builder because they carry a `needs_instrumentation`
+member — `mat_g1_mg_q4_0`, `mat_g1_na_q4_3`, `mat_g1_na_q4_4`, `mat_g2_mg_q1_1`, `mat_g2_mg_q1_2`,
+`mat_g2_mg_q4_3`, `mat_g2_na_q2_0`, `mat_g2_na_q3_5`, `mat_g3_na_q2_0` — so Phase 3 covers **46 nodes / 99
+findings**. By disposition of the finding's clause: 58 selector, 47 not enumerated, 17
+needs_instrumentation, 2 unserved.
+
+NAMED LIMITS:
+- The classification is one session's curriculum reading, reviewed by the same model family that drafted
+  it; the gate proves it complete and well-formed, not right.
+- Stratification proves a stratum CAN render on the default path, not how often pupils see it.
+- 56 `needs_instrumentation` members on 20 nodes are refused, not judged: Phase 3 cannot re-attest those
+  20 nodes until a source batch instruments their DNAs.
+- `answer` equality and `visual_type` are treated as structured.
+- A list carried by ONE required clause (`objects_images_or_numbers`, the `regrouping` clauses) cannot be
+  stratified until `requires` splits it — not this session's to change (§5 "Not yours").
+- Neither the filer nor §6F reads the seed maps; stratification is proven at packet build, not re-checked
+  on filed records.
+- The `STANDARD` line is a new instrument variable: verdicts filed under it are not comparable with W2's
+  without saying so.

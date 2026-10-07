@@ -1,8 +1,8 @@
 # Task prompt: finish Phase 2 hardening (host-neutral)
 
 **Rewritten 2026-10-07 after a review of the Claude (2026-09-30 → 10-03) and GPT (10-05 → 10-07)
-sessions; §1, §3 and §4 updated 2026-10-07 at the Claude checkpoint that ended
-`claude-h06-phase2-instrument-20261007`. This REPLACES every earlier version of this file.** `CLAUDE_AGENT_PROMPT.md`,
+sessions; §1 and §4 updated 2026-10-07 by `claude-h06-phase2a-gate-20261007`, which landed and proved
+Phase 2. This REPLACES every earlier version of this file.** `CLAUDE_AGENT_PROMPT.md`,
 `GPT_HANDOFF_PROMPT.md` and `HANDOFF_PROMPT.md` beside it are history. Their §5–§10 method notes (the
 review addendum, audit-before-filing, the heavy-run checklist) remain correct and are cited below. Their
 state sections and queue sizes (173, 127, "15 STALE", "7 content-changed + 136") are stale; ignore them.
@@ -11,7 +11,7 @@ Trust order: a command you executed > this file > `CLAUDE_AGENT_PROMPT.md` > the
 `docs/phase2_hardening_completion_plan.md`.
 
 Goal: `PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.run_all` exits 0, with the
-three §6F mutations DETECTED (201/201), not INVALID. This will take several sessions. Each session must
+three §6F mutations DETECTED (207/207 at the current corpus size), not INVALID. This will take several sessions. Each session must
 leave the tree CERTIFIED or honestly INTERRUPTED, with every number re-measured.
 
 ---
@@ -31,26 +31,31 @@ leave the tree CERTIFIED or honestly INTERRUPTED, with every number re-measured.
 
 ---
 
-## 1. State at handoff (2026-10-07, Claude checkpoint; re-measure before quoting)
+## 1. State at handoff (2026-10-07 evening, `claude-h06-phase2a-gate-20261007`; re-measure before quoting)
 
 ```
-HEAD                the Claude checkpoint commit and its lock-release follow-up; worktree clean
-source              tests/attester_packets.py etc. at 314a745a's proven bytes (focused 30 passed)
+HEAD                the Phase 2a bookkeeping commit and its lock-release follow-up; worktree clean
+source              9c4e036e (ruling-22 gate c4fcb384 + input-digest fix 9c4e036e + a23193fc)
 H-06 lock           RELEASED; claim it (owner line only, numstat 1 1) before any work
-tree_state          honestly INTERRUPTED; OPEN 'batch' intent held by claude-h06-phase2-instrument-20261007.
-                    Take it over with `tests/tree_state.py --begin batch --force --session <yours> --note ...`
-run_all             last measured 2026-10-07 at 54260249 (pre-instrument): EXIT 1, failed=3
-capability_phase2   124 CONTRADICTED over 55 nodes, 0 STALE (not re-measured this checkpoint)
-judgment_reviews_5  151 reviews: 78 PASS / 49 CONCERN / 24 FAIL, 0 STALE; module 751 findings
-assertion_coverage_8  the 3 §6F mutations, INVALID until capability_phase2 reaches 0
-digest-bound artifacts  ALL STALE since 314a745a (mutation_proofs, release shards, benchmark, frontend)
-ruling-22 draft     ruling22_wip/: 151 nodes, 94 enumerations, 240 members = 182 selector +
-                    56 needs_instrumentation + 2 unserved; 527 clauses not enumerated.
-                    All 182 selectors observed >=2x in seeds 1000-1039. NOT read by any harness code.
+tree_state          CERTIFIED (207 proofs, 6 shards, benchmark, frontend all fresh); no open intent
+run_all             2026-10-07 19:18 on 9c4e036e: EXIT 1, failed=3 (assertion_coverage_8,
+                    judgment_reviews_5, capability_phase2) -- same three as the 54260249 baseline
+corpus              204/207 DETECTED; 3 INVALID = the §6F cluster, until capability_phase2 reaches 0
+capability_phase2   124 CONTRADICTED over 55 nodes, 0 STALE (validate_capability_attestation(), executed)
+judgment_reviews_5  752 (module 751 + the stage's one aggregate finding)
+ruling 22           LANDED: tests/clause_enumeration.py -> validation_reports/phase2_hardening/
+                    clause_enumeration.json (a proof input); 151 nodes, 94 enumerations, 240 members =
+                    182 selector + 56 needs_instrumentation + 2 unserved; 527 not enumerated.
+                    `python -m tests.clause_enumeration --check` (gate) / `--check-renders` (0 failing).
+Phase 3 scope       46 nodes / 99 findings attestable. 9 nodes / 25 findings are REFUSED by the packet
+                    builder until their DNA emits a field: mat_g1_mg_q4_0, mat_g1_na_q4_3, mat_g1_na_q4_4,
+                    mat_g2_mg_q1_1, mat_g2_mg_q1_2, mat_g2_mg_q4_3, mat_g2_na_q2_0, mat_g2_na_q3_5,
+                    mat_g3_na_q2_0.
+dispatch text       validation_reports/phase2_hardening/dispatch_instructions_20261007.md
 ```
 
-Nothing in Phase 2a is proven beyond `314a745a`'s explicit-variant stratification. The ruling-22 gate,
-its unit tests, its mutations and its contract row do not exist yet.
+Every packet item now prints `STANDARD (owner ruling 19|9)`. That is a new instrument variable: say so in
+any figure that compares Phase 3 verdicts with W2's.
 
 ---
 
@@ -166,17 +171,13 @@ production verb Phase 4 cannot map to rulings 3, 13 or 16, and anything in "Not 
 
 ## 4. Plan
 
-**Current checkpoint (2026-10-07, Claude):**
-- **Committed source is `314a745a`.** It stratifies *explicit reachable* provider variants only (focused
-  30 passed; mutation `attester_packet_drops_provider_variant_samples` 1/1 at that commit). That is not
-  yet the ruled instrument.
-- **The GPT agent's later selector table was NOT adopted.** It covered 37 of 68 "rare" findings, keyed
-  selectors per capability id, and matched question-text substrings. It is preserved byte-for-byte as
-  `ruling22_wip/gpt_uncommitted_selectors_20261007.patch`. Read it for ideas; do not apply it.
-- **The ruling-22 classification and strata are drafted** in `ruling22_wip/` and are not wired into
-  anything.
-- **The batch intent is open and the tree is honestly INTERRUPTED.** Do not run the chain or Phase 3
-  until Phase 2a below is complete.
+**Current checkpoint (2026-10-07 evening, `claude-h06-phase2a-gate-20261007`):**
+- **Phase 2 is DONE and proven.** 2a (gate, builder, tests, 5 mutations, contract row, item 8) and 2b
+  (dispatch text) are committed; the chain ran once and the tree is CERTIFIED. 2c needed nothing.
+- **The GPT selector patch was NOT adopted** and stays in `ruling22_wip/` as history; so does the draft
+  builder, which `tests/clause_enumeration.py` supersedes.
+- **Next: Phase 3**, on the 46 attestable nodes. Then the instrumentation source batch for the 9 refused
+  nodes (Phase 2a item 7's list), which needs its own chain.
 
 ### Phase 0: baseline and lock (always, about 30 min)
 
@@ -184,16 +185,15 @@ production verb Phase 4 cannot map to rulings 3, 13 or 16, and anything in "Not 
    anything else, stop and find out why.
 2. Claim H-06: edit only its `owner` line, check that `git diff --numstat …hardening_status.json` reads
    `1 1`, and commit. Take over the intent (§1).
-3. Re-run the draft builder with `--check-renders` and confirm it still prints
-   `nodes=151 enumerations=94 members=240 selector=182 needs_instrumentation=56 unserved=2` and
-   `0 selector(s) observed fewer than 2 times`. If the counts moved, a node's requires or DNA changed;
-   find out why before going further.
+3. Run `PYTHONPATH=. .venv/bin/python -m tests.clause_enumeration --check` and expect
+   `clause_enumeration_22: OK`. If it fails, a node's requires or competency changed: re-read the
+   competency, correct TABLE, and regenerate with `--write` (never by hand).
 
 The F5 citation correction (`67df6151`) was made in `54260249`.
 
 ### Phase 1: owner gates. RESOLVED 2026-10-07 (rulings 19–22, §3). Nothing to do.
 
-### Phase 2: instrument work (harness only; one `batch` intent; one chain at the end)
+### Phase 2: instrument work. DONE 2026-10-07 (c4fcb384, 9c4e036e; chain complete, CERTIFIED). Kept as the record of what it required.
 
 Scaling Mandate items 1, 3 and 5 apply: these gates must be proven before they police anything.
 
@@ -251,8 +251,8 @@ counts only once the full corpus table shows it caught by name; a `--only` run c
 
 ### Phase 3: re-attest the queue under the ruled instrument (no source, so no chain)
 
-- Re-attest all 55 CONTRADICTED nodes with stratified packets: one blind judge per node, one identity
-  per node.
+- Re-attest the 46 attestable CONTRADICTED nodes (§1) with stratified packets: one blind judge per node,
+  one identity per node. The other 9 wait for the instrumentation batch.
 - Ruling 20: every verdict that clears or creates a finding gets one confirming blind judge on the same
   packet, filed afterwards with `--supersedes`. The confirming verdict stands.
 - Give the 7 single-Luna nodes (§3) their confirming judges in the same pass.
