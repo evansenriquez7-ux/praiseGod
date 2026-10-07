@@ -1,61 +1,84 @@
-# Task prompt: finish Phase 2 hardening (host-neutral)
+# Task prompt: Phase 3 onward of the Phase 2 hardening (Claude host)
 
-**Rewritten 2026-10-07 after a review of the Claude (2026-09-30 → 10-03) and GPT (10-05 → 10-07)
-sessions; §1 and §4 updated 2026-10-07 by `claude-h06-phase2a-gate-20261007`, which landed and proved
-Phase 2. This REPLACES every earlier version of this file.** `CLAUDE_AGENT_PROMPT.md`,
-`GPT_HANDOFF_PROMPT.md` and `HANDOFF_PROMPT.md` beside it are history. Their §5–§10 method notes (the
-review addendum, audit-before-filing, the heavy-run checklist) remain correct and are cited below. Their
-state sections and queue sizes (173, 127, "15 STALE", "7 content-changed + 136") are stale; ignore them.
+**Rewritten 2026-10-08 for a fresh Claude session, after `claude-h06-phase2a-gate-20261007` landed and
+proved Phase 2 (the ruling-22 attester gate). This REPLACES every earlier version of this file.**
+`CLAUDE_AGENT_PROMPT.md`, `GPT_HANDOFF_PROMPT.md` and `HANDOFF_PROMPT.md` beside it are history. Their
+§5–§10 method notes (the dispatch template, audit-before-filing, heavy runs, traps) remain correct and
+are cited below. Their state sections and queue sizes are stale; ignore them.
 
 Trust order: a command you executed > this file > `CLAUDE_AGENT_PROMPT.md` > the dated blocks in
 `docs/phase2_hardening_completion_plan.md`.
 
 Goal: `PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.run_all` exits 0, with the
-three §6F mutations DETECTED (207/207 at the current corpus size), not INVALID. This will take several sessions. Each session must
-leave the tree CERTIFIED or honestly INTERRUPTED, with every number re-measured.
+three §6F mutations DETECTED (207/207 at the current corpus size), not INVALID. This takes several
+sessions. Each session leaves the tree CERTIFIED or honestly INTERRUPTED, with every number re-measured.
+
+**Your job this session: Phase 3 (§4)**, a dispatch campaign with no source change and no chain. If it
+completes, the next step is the P4-0 instrumentation batch.
 
 ---
 
 ## 0. Read first
 
-1. `CLAUDE.md` / `AGENTS.md`: Scaling Mandate, Engineering Protocols, Content Rules, Definition of Done.
+1. `CLAUDE.md`: Scaling Mandate, Engineering Protocols, Content Rules, Definition of Done. Your memory
+   index (`MEMORY.md`) too, especially "Dispatch subagents on Haiku" and "Proof admissible, not just
+   detected".
 2. This file, completely.
-3. `validation_reports/HARDENING_EVIDENCE.md`: every entry from "W2 step 1" on. The last three matter
-   most: "Phase 2 instrument baseline", "Rate-limit recovery", and "Takeover of the interrupted
-   Phase 2a instrument; ruling 22; honest checkpoint".
-4. Owner rulings 19–22 in `docs/phase2_hardening_completion_plan.md`, verbatim.
-5. `validation_reports/phase2_hardening/ruling22_wip/build_clause_enumeration_draft.py`, the docstring
-   and the table. This is where Phase 2a resumes.
-6. `CLAUDE_AGENT_PROMPT.md` §5 (the four-part dispatch addendum and audit), §7 (heavy runs), §8 (the
-   anchor one-liner), §9 (traps), §11 (not yours).
+3. `validation_reports/HARDENING_EVIDENCE.md`: the last four entries, newest first — "Phase 2a landed:
+   the ruling-22 attester gate", then "Takeover of the interrupted Phase 2a instrument", "Rate-limit
+   recovery", and "Phase 2 instrument baseline" (which defines the 68 "rare" / 52 "absent" split you
+   will measure against).
+4. Owner rulings 1, 9, 12–15 and 18–22 in `docs/phase2_hardening_completion_plan.md`, verbatim.
+5. `validation_reports/phase2_hardening/dispatch_instructions_20261007.md`: the Attester prompt you
+   will paste, and the dispatcher rules above it. **Use it as written.**
+6. The docstring of `tests/clause_enumeration.py` (what a stratum is, and the named limits) and of
+   `tests/attester_file.py` (what the filer refuses).
+7. `CLAUDE_AGENT_PROMPT.md` §5 (the dispatch template and the audit), §7 (heavy runs, the lock),
+   §9 (traps), §11 (not yours).
 
 ---
 
-## 1. State at handoff (2026-10-07 evening, `claude-h06-phase2a-gate-20261007`; re-measure before quoting)
+## 1. State at handoff (2026-10-08; re-measure before quoting)
 
 ```
-HEAD                the Phase 2a bookkeeping commit and its lock-release follow-up; worktree clean
+HEAD                642f8459 (lock release), pushed to origin/main; worktree clean
 source              9c4e036e (ruling-22 gate c4fcb384 + input-digest fix 9c4e036e + a23193fc)
 H-06 lock           RELEASED; claim it (owner line only, numstat 1 1) before any work
 tree_state          CERTIFIED (207 proofs, 6 shards, benchmark, frontend all fresh); no open intent
-run_all             2026-10-07 19:18 on 9c4e036e: EXIT 1, failed=3 (assertion_coverage_8,
-                    judgment_reviews_5, capability_phase2) -- same three as the 54260249 baseline
-corpus              204/207 DETECTED; 3 INVALID = the §6F cluster, until capability_phase2 reaches 0
-capability_phase2   124 CONTRADICTED over 55 nodes, 0 STALE (validate_capability_attestation(), executed)
-judgment_reviews_5  752 (module 751 + the stage's one aggregate finding)
-ruling 22           LANDED: tests/clause_enumeration.py -> validation_reports/phase2_hardening/
-                    clause_enumeration.json (a proof input); 151 nodes, 94 enumerations, 240 members =
-                    182 selector + 56 needs_instrumentation + 2 unserved; 527 not enumerated.
-                    `python -m tests.clause_enumeration --check` (gate) / `--check-renders` (0 failing).
-Phase 3 scope       46 nodes / 99 findings attestable. 9 nodes / 25 findings are REFUSED by the packet
-                    builder until their DNA emits a field: mat_g1_mg_q4_0, mat_g1_na_q4_3, mat_g1_na_q4_4,
-                    mat_g2_mg_q1_1, mat_g2_mg_q1_2, mat_g2_mg_q4_3, mat_g2_na_q2_0, mat_g2_na_q3_5,
-                    mat_g3_na_q2_0.
-dispatch text       validation_reports/phase2_hardening/dispatch_instructions_20261007.md
+run_all             2026-10-07 19:18 on 9c4e036e: EXIT 1, scheduled=17 completed=14 failed=3
+                      assertion_coverage_8  the 3 §6F mutations INVALID (their baseline is red)
+                      judgment_reviews_5    752 (module 751 + the stage's one aggregate finding)
+                      capability_phase2     124 CONTRADICTED over 55 nodes, 0 STALE
+corpus              204/207 DETECTED; INVALID = contradicted_attestation, attestation_drops_options,
+                    attestation_leaks_into_phase1, until capability_phase2 reaches 0
+unit suite          1034 passed, 1 skipped (fast suite takes ~22 min now, not 35 s)
+ruling 22           tests/clause_enumeration.py -> validation_reports/phase2_hardening/clause_enumeration.json
+                    151 nodes, 94 enumerations, 240 members = 182 selector + 56 needs_instrumentation
+                    + 2 unserved; 527 clauses not enumerated. The JSON is a proof input.
+latest attestation  batch369 (next free prefix: batch370)
 ```
 
-Every packet item now prints `STANDARD (owner ruling 19|9)`. That is a new instrument variable: say so in
-any figure that compares Phase 3 verdicts with W2's.
+**Phase 3 scope** (`validate_capability_attestation()`, executed 2026-10-07). 124 findings on 55 nodes:
+- **46 nodes / 99 findings are attestable now:**
+  ```
+mat_g1_dp_q3_1 mat_g1_mg_q4_4 mat_g1_na_q1_0 mat_g1_na_q1_5 mat_g1_na_q1_6 mat_g1_na_q1_7
+mat_g1_na_q1_8 mat_g1_na_q2_0 mat_g1_na_q2_1 mat_g1_na_q2_2 mat_g1_na_q2_5 mat_g1_na_q3_0
+mat_g1_na_q3_4 mat_g1_na_q3_7 mat_g1_na_q4_0 mat_g2_dp_q3_0 mat_g2_dp_q3_1 mat_g2_mg_q1_0
+mat_g2_mg_q4_1 mat_g2_mg_q4_2 mat_g2_mg_q4_4 mat_g2_na_q1_10 mat_g2_na_q1_3 mat_g2_na_q1_6
+mat_g2_na_q2_3 mat_g2_na_q2_9 mat_g2_na_q3_0 mat_g2_na_q3_1 mat_g2_na_q4_0 mat_g2_na_q4_3
+mat_g2_na_q4_4 mat_g3_dp_q3_0 mat_g3_dp_q3_2 mat_g3_dp_q3_4 mat_g3_mg_q1_0 mat_g3_mg_q1_3
+mat_g3_mg_q1_4 mat_g3_mg_q1_5 mat_g3_mg_q1_6 mat_g3_mg_q2_2 mat_g3_mg_q4_0 mat_g3_mg_q4_1
+mat_g3_na_q1_3 mat_g3_na_q3_1 mat_g3_na_q3_5 mat_g3_na_q4_3
+  ```
+- **9 nodes / 25 findings are REFUSED** by the packet builder, because they carry a
+  `needs_instrumentation` member: `mat_g1_mg_q4_0`, `mat_g1_na_q4_3`, `mat_g1_na_q4_4`, `mat_g2_mg_q1_1`,
+  `mat_g2_mg_q1_2`, `mat_g2_mg_q4_3`, `mat_g2_na_q2_0`, `mat_g2_na_q3_5`, `mat_g3_na_q2_0`. They wait for
+  P4-0.
+- By the disposition of the finding's clause: 58 selector, 47 not enumerated, 17
+  needs_instrumentation, 2 unserved.
+
+**Every packet item now prints `STANDARD (owner ruling 19|9)`.** This is a new instrument variable. Any
+figure comparing Phase 3 verdicts with W2's must say so.
 
 ---
 
@@ -162,7 +185,7 @@ written. **No dispatch prompt states a numeric threshold that no ruling states.*
   classification **fails loudly by name**.
 - The ruling's text says `CAPABILITY_PROVIDERS` "may" carry selectors. Key them **per (node, member)**
   instead, because a capability-wide selector is wrong for the 140 of 472 ids shared across DNAs. The
-  draft already does this. Record that reason in the contract row.
+  landed gate does this (`tests/clause_enumeration.py`), and the contract row records why.
 
 **Still a stop-and-ask:** any new content judgment that MATATAG and rulings 1–22 do not settle, any
 production verb Phase 4 cannot map to rulings 3, 13 or 16, and anything in "Not yours" (§5).
@@ -171,98 +194,114 @@ production verb Phase 4 cannot map to rulings 3, 13 or 16, and anything in "Not 
 
 ## 4. Plan
 
-**Current checkpoint (2026-10-07 evening, `claude-h06-phase2a-gate-20261007`):**
-- **Phase 2 is DONE and proven.** 2a (gate, builder, tests, 5 mutations, contract row, item 8) and 2b
-  (dispatch text) are committed; the chain ran once and the tree is CERTIFIED. 2c needed nothing.
-- **The GPT selector patch was NOT adopted** and stays in `ruling22_wip/` as history; so does the draft
-  builder, which `tests/clause_enumeration.py` supersedes.
-- **Next: Phase 3**, on the 46 attestable nodes. Then the instrumentation source batch for the 9 refused
-  nodes (Phase 2a item 7's list), which needs its own chain.
-
 ### Phase 0: baseline and lock (always, about 30 min)
 
-1. Heavy-run check (§5). Expect INTERRUPTED with a clean worktree and the open batch intent named in §1;
-   anything else, stop and find out why.
-2. Claim H-06: edit only its `owner` line, check that `git diff --numstat …hardening_status.json` reads
-   `1 1`, and commit. Take over the intent (§1).
-3. Run `PYTHONPATH=. .venv/bin/python -m tests.clause_enumeration --check` and expect
-   `clause_enumeration_22: OK`. If it fails, a node's requires or competency changed: re-read the
-   competency, correct TABLE, and regenerate with `--write` (never by hand).
+1. **Heavy-run check** (`CLAUDE_AGENT_PROMPT.md` §7). The `ps` grep must be empty, and
+   `tests/tree_state.py` must print `CERTIFIED` with a clean worktree. If it prints anything else, stop
+   and find out why.
+2. **Claim H-06.** Edit only its `owner` line, check that
+   `git diff --numstat validation_reports/phase2_hardening/hardening_status.json` reads `1 1`, and
+   commit. Then open the intent:
+   `PYTHONPATH=. .venv/bin/python tests/tree_state.py --begin campaign --session <yours> --note "Phase 3 re-attestation"`.
+3. **Run the gate:** `PYTHONPATH=. .venv/bin/python -m tests.clause_enumeration --check`, and expect
+   `clause_enumeration_22: OK`. If it fails, a node's requires or competency changed. Re-read the
+   competency, correct `TABLE`, and regenerate with `--write`, never by hand. That is a source change,
+   so it needs its own chain: stop and report.
+4. **Re-measure the queue.** Use the snippet below; expect 124 / 55 / 46 / 99. If the counts moved,
+   explain why before dispatching.
 
-The F5 citation correction (`67df6151`) was made in `54260249`.
+```sh
+PYTHONPATH=. .venv/bin/python - <<'PY'
+import re, collections
+from backend.app.practice_gen.validation import validate_capability as VC
+from tests import clause_enumeration as CE
+doc = CE.load(); by = collections.defaultdict(list)
+for e in VC.validate_capability_attestation():
+    m = re.search(r"(mat_\w+): capability '([^']+)' \(clause '[^']*'\) is CONTRADICTED", e)
+    if m: by[m.group(1)].append(m.group(2))
+blocked = {n for n in by if any("needs_instrumentation" in d for d in CE.node_dispositions(n, doc).values())}
+print(sum(map(len, by.values())), len(by), len(by) - len(blocked), sum(len(by[n]) for n in by if n not in blocked))
+PY
+```
 
-### Phase 1: owner gates. RESOLVED 2026-10-07 (rulings 19–22, §3). Nothing to do.
+### Phases 1 and 2: DONE
 
-### Phase 2: instrument work. DONE 2026-10-07 (c4fcb384, 9c4e036e; chain complete, CERTIFIED). Kept as the record of what it required.
-
-Scaling Mandate items 1, 3 and 5 apply: these gates must be proven before they police anything.
-
-2a. **Make ruling 22 real** (`tests/attester_packets.py`; the draft in `ruling22_wip/` is the input).
-Explicit-variant stratification from `314a745a` stays for **non-enumerated** clauses. Then:
-1. **Review the draft before trusting it.** The classification is one session's curriculum reading,
-   and the builder docstring states the rule. Check each enumeration against its competency. Correct
-   the table, never the rule, unless the owner rules otherwise.
-2. **Land the data.** Write the classification as a tracked file the packet builder reads, for example
-   `validation_reports/phase2_hardening/clause_enumeration.json`. Generate it with the builder, never by
-   hand, and keep `competency_sha256` so a changed competency fails loudly.
-3. **The gate.** A function the unit suite runs, registered in `run_all.ASSERTIONS` beside
-   `attester_provider_variant_stratification`. It must fail, naming node and clause, on each of these:
-   - a node with requires missing from the file;
-   - a competency hash mismatch;
-   - a wording that is not verbatim;
-   - a required clause classified zero times or twice, or a classified id the node does not require;
-   - a member without exactly one disposition, or with an empty reason;
-   - a condition op outside `equals`/`one_of`/`lt`/`gte`/`any_of` (no substring op may exist);
-   - two siblings sharing a selector.
-4. **The packet builder.** It uses the member's selector exclusively for enumeration members. It
-   **refuses** to build a node with a `needs_instrumentation` member, naming it. It gives `unserved`
-   members no stratum, so the Attester judges them on the base samples. Allow the `visual_type` path to
-   read the rendered sample's `visual_type`. Raise `_PROVIDER_VARIANT_ATTEMPTS` only with a measured
-   reason. Never lower the 2-sample floor.
-5. **Prove it.** Unit tests for each failure direction above, on synthetic data. Add at least three
-   mutations, each caught by name: one required clause removed from the classification, two siblings
-   given the same selector, and a `contains` condition planted. Each must land on the code path the gate
-   actually executes (Mandate 1 and 2).
-6. **The contract row.** Replace `314a745a`'s row text with the ruling-22 instrument. Name the limits:
-   - the classification is a human reading;
-   - stratification proves the stratum *can* render, not how often pupils see it;
-   - the 56 `needs_instrumentation` members are refused, not judged, until their DNA emits a field;
-   - `answer` equality and `visual_type` are treated as structured;
-   - selectors live per (node, member), not in `CAPABILITY_PROVIDERS`, because ids are shared.
-7. **Do not instrument DNAs in this batch.** The 56 members on 20 nodes need generator fields: rotation
-   turn size and direction, coin vs bill, with/without regrouping, composite parts, lines vs surfaces,
-   money notation, numbers vs letters, sharing vs grouping, and fraction equal to / greater than one.
-   That is a separate source batch with its own chain. Phase 3 can proceed for every node without such
-   a member.
-8. **Separately, and not inside this batch's tests:** `tests/unit/test_capability_contract.py` lines
-   355–388 and 414–437 rewrite a live attestation record in place and restore it in `finally`. A
-   killed run corrupts a filed record. Make those tests use a copy, as their own small change.
-
-2b. **Dispatch instructions** for attesters and reviewers: rewrite them from rulings 1, 9, 12, 13, 15
-and 19–22 verbatim. They must carry no numeric threshold beyond what a ruling states. Save the exact
-text under `validation_reports/phase2_hardening/` (the W2 text was never saved, a named limit).
-
-2c. Rulings 20 and 21 need **no validator change**: last-file-wins and in-place review filing
-already implement them. Do not touch supersession. If you find that either ruling cannot be carried out
-with the current validator, stop and report it; do not engineer around it.
-
-2d. Run the full re-proof chain (§6) once, after the last Phase 2 commit. Any mutation added in 2a
-counts only once the full corpus table shows it caught by name; a `--only` run cannot check the pins.
+Phase 1 (owner gates) was resolved by rulings 19–22. Phase 2 (instrument) landed in `c4fcb384` and
+`9c4e036e`: the chain completed and the tree is CERTIFIED. What it built and its named limits are in the
+evidence entry and in the `docs/pgen_contract.md` row for `clause_enumeration_22`. **Do not modify it
+during Phase 3.** Any edit to `tests/` or `backend/` stales the certified tree and owes a 5-hour chain.
 
 ### Phase 3: re-attest the queue under the ruled instrument (no source, so no chain)
 
-- Re-attest the 46 attestable CONTRADICTED nodes (§1) with stratified packets: one blind judge per node,
-  one identity per node. The other 9 wait for the instrumentation batch.
-- Ruling 20: every verdict that clears or creates a finding gets one confirming blind judge on the same
-  packet, filed afterwards with `--supersedes`. The confirming verdict stands.
-- Give the 7 single-Luna nodes (§3) their confirming judges in the same pass.
-- File through `tests/attester_file.py`, dry run first.
-- Measure and record:
-  - how many of the 68 "rare" findings clear;
-  - how many of the 52 "absent" findings clear;
-  - the first-vs-confirming disagreement rate. Compare it with W2's 22.4%, and state that it is
-    cross-family wherever the families differ.
-- **The result is the true engineering queue.** Expect most of the absent group to remain.
+Work under scratch paths such as `local_only/scratch/p3/`, which is gitignored. Per node:
+
+1. **Build the packet**, one node per packet file:
+   ```sh
+   PYTHONPATH=. .venv/bin/python -m tests.attester_packets --node <node> \
+       --packets local_only/scratch/p3/<node>.json --key local_only/scratch/p3/<node>.key.json
+   ```
+   A node with more than 25 items needs splitting (§6G); none in the 46 is expected to.
+2. **Render the blind half verbatim.** Never retype it:
+   ```sh
+   PYTHONPATH=. .venv/bin/python -c "import json,sys; from tests.attester_packets import render_prompt_block; print(render_prompt_block(json.load(open(sys.argv[1]))))" local_only/scratch/p3/<node>.json
+   ```
+3. **Dispatch one blind Attester per node** with the Agent tool on `model: "haiku"`. The prompt is
+   section A of `dispatch_instructions_20261007.md`, followed by the rendered packet, pasted inline.
+   - Never give the Attester the key file, the node id, `CAPABILITY_PROVIDERS`, or any path it could
+     read them from.
+   - Assign the identity yourself, one per node, naming the model that actually judged:
+     `blind-attester-claude-haiku-4.5-<level>-p3-<node>-<YYYYMMDD>`.
+   - Dispatch with modest concurrency. Memory: an Opus fan-out exhausted the session limit
+     mid-campaign.
+4. **Audit the reply before filing** (`CLAUDE_AGENT_PROMPT.md` §5):
+   - one verdict per item;
+   - PROVIDED cites seeds printed for that item;
+   - reasoning is 60+ characters and specific;
+   - quotes appear verbatim in the packet.
+   Never edit a verdict. A reply you cannot file goes to a fresh Attester, and you harvest its
+   substantive claims first.
+5. **File it**, dry run first:
+   ```sh
+   PYTHONPATH=. .venv/bin/python tests/attester_file.py --packets <p> --key <k> --verdicts <v> \
+       --batch-prefix batch370 --attested-at <ISO> --attested-by <identity> \
+       --action-provided "Left registered; no change." --actions <item->action json> \
+       --tool-uses "<what the harness record shows>" \
+       --samples-delivery "pasted inline into the subagent prompt (render_prompt_block output)" --dry-run
+   ```
+   Then run it without `--dry-run`. Increment the batch prefix per filing. Every NOT_PROVIDED needs an
+   `action_taken`; "queued for Phase 4 batch P4-n" is the honest one.
+6. **Ruling 20: confirm every move.** For every verdict that clears or creates a CONTRADICTED finding,
+   relative to the record it supersedes, dispatch ONE further fresh Haiku Attester on the **same packet
+   file**. File it afterwards with `--supersedes '{"<node>": "confirming judge (ruling 20) for <first batch>"}'`.
+   The confirming verdict stands, by last-file-wins. Never edit either record.
+7. **The 7 single-Luna nodes (§3, ruling 20)** owe a confirming judge for every verdict that moved a
+   finding relative to the record before it.
+   - `mat_g2_mg_q1_0` and `mat_g3_mg_q1_0` are in the 46. Their Phase 3 re-attestation plus its own
+     ruling-20 confirmation supersedes the Luna record.
+   - `mat_g1_na_q3_6` and `mat_g1_mg_q1_0` are not CONTRADICTED, and the new builder accepts them.
+   - `mat_g1_mg_q1_1`, `mat_g1_mg_q1_2` and `mat_g2_mg_q1_1` are refused by the new builder
+     (`needs_instrumentation`).
+   - "The same packet" means the packet the Luna judge saw. Its samples are in the record's
+     `packet.samples_judged`. Whether a confirmation may be built from that record, rather than by the
+     new builder, is **not settled by any ruling**: ask the owner before confirming the three refused
+     nodes, and say so in the evidence log.
+8. **Commit filed records by name as you go.** No uncommitted record may outlive the session (F5).
+   After filing, `tests/unit/test_capability_contract.py` and `tests/legacy_review_queue.py`'s artifact
+   test may need regenerating; see `CLAUDE_AGENT_PROMPT.md` §9 trap 1. Attestation files are not proof
+   inputs, so filing them does not stale the certified tree, but re-run `tests/tree_state.py` to confirm.
+9. **Measure and record** in the evidence log:
+   - how many of the 68 "rare" findings clear;
+   - how many of the 52 "absent" findings clear;
+   - the first-vs-confirming disagreement rate, compared with W2's 22.4%. Name the model family on
+     both sides; W2's figure was Haiku-against-Haiku.
+   - the re-measured `validate_capability_attestation()` count.
+   **The result is the true engineering queue.** Expect most of the absent group to remain.
+
+**Stop-and-ask during Phase 3:**
+- an Attester reading that rulings 1–22 do not settle;
+- a confirmation the ruling-20 text does not cover;
+- any temptation to change the classification, the builder, or the dispatch text mid-campaign. That
+  would be an instrument change halfway through one campaign, which F2 warns against.
 
 ### Phase 4: content batches by shared artifact (each is one `batch` intent, one chain)
 
@@ -271,7 +310,26 @@ log. Within a batch, iterate in a **dev loop**: focused unit tests, the node's v
 `mutation_harness.py --only` for new mutations. Run the **chain once** at the end of the batch. Then
 re-review and re-attest, under rulings 20 and 21, every node the batch staled.
 
-Proposed batches, from the absent group. Re-derive membership from the Phase 3 result before starting:
+**P4-0 comes first after Phase 3: instrument the DNAs of the refused nodes.** The 56
+`needs_instrumentation` members sit on 20 nodes, 9 of them in the queue. Each DNA must emit a
+STRUCTURED field naming its sibling:
+- rotation turn size and direction;
+- coin vs bill;
+- with/without regrouping;
+- composite-figure parts;
+- lines vs surfaces;
+- money notation;
+- numbers vs letters;
+- sharing vs grouping;
+- fraction equal to / greater than one;
+- the rest are listed in `TABLE`.
+
+Then switch each member from `NI(...)` to a selector in `TABLE`, `--write`, prove each new selector with
+`--check-renders`, and run one chain. Then re-attest those nodes as in Phase 3. A field must describe
+what the generator chose; it must never be derived from learner-facing text (ruling 22a).
+
+Proposed content batches, from the absent group. Re-derive membership from the Phase 3 result before
+starting:
 
 | Batch | Artifact | Findings it targets (current names) | Ruling |
 |---|---|---|---|
@@ -288,9 +346,10 @@ just to clear a finding.
 
 ### Phase 5: the judgment queue (73 non-PASS nodes)
 
-1. Bucket every non-PASS claim: **confirmed** (rendered at its seed with
-   `judgment_packets._render_sample`), **disputed** (one fresh reviewer settles it, ruling 21), or **staled** (re-review
-   after the batch that touches it).
+1. Bucket every non-PASS claim:
+   - **confirmed**: rendered at its seed with `judgment_packets._render_sample`;
+   - **disputed**: one fresh reviewer settles it (ruling 21);
+   - **staled**: re-review after the batch that touches it.
 2. Feed confirmed defects into Phase 4 batches, or a dedicated P4-8 "hint and wording" batch. Known
    confirmed items:
    - negative or incomplete regrouping hints on `mat_g2_na_q2_7` and `mat_g3_na_q2_4`;
@@ -301,15 +360,14 @@ just to clear a finding.
    - seed 601's result visual on `mat_g2_mg_q1_1`.
 3. **Harness gap first (Mandate 3):** `3622 cat toy` is exactly the "singular-after-many" case that
    `count_noun_agreement_1J` names as known limitation 1 and leaves unjudged (7,129 constructions on
-   10-06). A reviewer caught what the gate cannot.
+   2026-10-07). A reviewer caught what the gate cannot.
    - Close the limitation, or narrow it with a mutation that plants a singular-after-many and is caught.
    - Do this **before** fixing the content instance, while the instance still proves the gate.
-   - This also protects G4–10, where counts grow.
 
 ### Exit
 
 - `run_all` exits 0.
-- The full corpus reads 201/201+ DETECTED with **no INVALID**.
+- The full corpus reads 207/207 or more DETECTED with **no INVALID**.
 - `docs/pgen_judgment.md` evidence is filed.
 - The tree is CERTIFIED.
 
@@ -395,6 +453,7 @@ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.run_all > r
 - If you are interrupted, leave an accurate open intent and a **committed** checkpoint. No uncommitted
   records may outlive the session (F5).
 
-**A good session** lands and proves Phase 2's instrument work, and either completes Phase 3 or lands
-one Phase 4 batch whose artifacts a fresh attestation confirms under ruling 20. It quotes
-every number from a command run in that session.
+**A good session** completes Phase 3 for the 46 nodes with every move confirmed under ruling 20,
+records the measured queue and the disagreement rate, and leaves the tree CERTIFIED with H-06 released.
+It quotes every number from a command run in that session. If it runs out of time, it commits every filed
+record, leaves an accurate open `campaign` intent, and says exactly which nodes are done.
