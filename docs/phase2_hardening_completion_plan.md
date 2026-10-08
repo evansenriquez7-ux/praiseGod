@@ -1422,6 +1422,57 @@ that points at it break every time the section is refreshed.
 >     `1c4f6f85` boundary. Its 21-capability selector table covered 37 of the 68 "rare" findings, and
 >     nothing flagged the other 31.
 >
+> **Owner rulings recorded 2026-10-08 (23-26), binding.** These redefine what Phase 2 hardening is for.
+> Terminology: the harness's "node" ids (`mat_g3_dp_q3_4`) are what `CLAUDE.md` calls an **lc**; a CLAUDE.md
+> node is the grade-subdomain-quarter bundle (`mat_g3_dp_q3`). Each lc is judged independently of the other lcs
+> in its node. A **clause** is a fragment of one lc's written competency text (§6A/§6B).
+>
+> 23. **Phase 2 hardens the testing pipeline; it does not fix the problem generators** (owner, 2026-10-08).
+>     The goal is a pipeline hardened enough to catch every error Phase 1 misses, so that when the whole
+>     pipeline runs, agents can find and fix every generator error from its output. Phase 2 is DONE when
+>     harness integrity is green: every check proven by a mutation that lands on its executed path, the tree
+>     CERTIFIED, and every finding reported by name with its lc, seed and what to build. Content findings are
+>     the generators' work queue, not a Phase 2 blocker. `run_all` is to be **split**: an integrity verdict
+>     that must exit 0, and a content-findings report with its own exit code. The split supersedes "`run_all`
+>     exits 0" as Phase 2's definition of done; `CLAUDE.md`'s Definition of Done is updated in the same
+>     commit that lands the split (Protocol 7).
+> 24. **LLM judges review stems, not seeded samples** (owner, 2026-10-08). The unit of LLM review is the stem
+>     template (spines, DNA f-strings, formatter wrappers that add learner-facing text) together with the
+>     declared domain of every field that fills it: the values, nouns, units and number ranges each slot can
+>     take. The judge rules whether any value in those domains can produce an error (wording, vocabulary
+>     gating, scope, pedagogy). Deterministic checks then prove every rendered field stays inside the domain
+>     the judge approved, and cover what a stem cannot show: formatter rewraps, hint/stem agreement, count-noun
+>     agreement, visuals, value-dependent defects. A stem approval is only safe if its fields cannot escape it.
+> 25. **The per-sample LLM gates are replaced, and their history kept** (owner, 2026-10-08).
+>     `judgment_reviews_5` and the `capability_phase2` attestation queue are retired as gates only once the
+>     stem-level gate and the field-domain checks are each proven by mutation. Filed review and attestation
+>     records stay as read-only history and are never edited or deleted; defects they confirmed are carried
+>     into the generator work queue.
+> 26. **Clause coverage is ruled per lc from stems and declared variants, then proven by an exhibit check**
+>     (owner, 2026-10-08). The LLM judge reads the lc's stem families and declared variants and rules whether
+>     every clause of its competency can be produced. A deterministic check proves each declared variant
+>     actually changes, or is recorded in, the rendered problem. §2I's render-does-not-raise test does not
+>     prove this (see the 2026-10-08 evidence entry "Declared variants that are never exhibited").
+>     Whether a non-exhibited variant is built or undeclared follows Content Rule 4: build it when the lc's
+>     competency names it, undeclare it otherwise, with the clause cited.
+> 27. **`run_all` has three exit codes** (owner, 2026-10-09). 0 = integrity green and no content findings;
+>     2 = integrity green and content findings exist (the generator work queue); 1 = integrity failure.
+>     Harness work is done at 0 or 2; generator work is done at 0. One command. `CLAUDE.md`/`AGENTS.md`'s
+>     Definition of Done was updated to this on 2026-10-09, ahead of the code; until the split lands
+>     `run_all` still exits 1 on content findings.
+> 28. **Stem fields are identified by structured slots** (owner, 2026-10-09). Each DNA, spine and
+>     text-adding formatter emits its template plus a structured slots record (slot name, value, domain id).
+>     The domain check proves the rendered text equals the template filled with those slots and that every
+>     value lies in its domain. Slots are never inferred from learner-facing text (as ruling 22a). Emitting
+>     slots is pipeline instrumentation, not generator content repair.
+> 29. **Judges see `CLAUDE.md` by design** (owner, 2026-10-09). Judges are dispatched with the project
+>     instructions loaded, so they understand why the pipeline must be hardened and why their verdict matters.
+>     This reverses the Phase 3 note that called the inheritance a blindness limit. `CLAUDE.md` now carries a
+>     judge section ("If you are a judge"): judge only the packet, no repo reads, code runs or Graphify, both
+>     lenient passes and false findings are failures, Rule 4 is not a judge's lens, and output only the
+>     requested format. Blindness still means: no provider tables, no other judges' records, no node-to-key
+>     mapping beside the packet. Each record's delivery field states that `CLAUDE.md` was loaded.
+>
 > **Owner rulings recorded 2026-09-22, binding on the next session:**
 >
 > 1. **The medium test.** When a clause names a medium, decide from the competency's grammar

@@ -1,10 +1,11 @@
 # CLAUDE.md
-> "Praise God" is your catchphrase. Use it appropriately.
+> "Praise God" is your catchphrase. Use it appropriately — never inside a judge's verdict output.
 
 ## Terminology
 - **gh** — GitHub
 - **node** — MATATAG curriculum unit: subject, grade, subdomain, quarter (e.g. `mat_g3_na_q4`). Contains a related bundle of learning competencies.
-- **lc** — learning competency/s: one specific component of a node (e.g. `mat_g3_na_q4_1`).
+- **lc** — learning competency/s: one specific component of a node (e.g. `mat_g3_na_q4_1`). Each lc is judged independently of the other lcs in its node. **Harness code, packets and older docs call an lc id a "node"** (`node_id = "mat_g3_na_q4_1"`); read that word as "lc" there.
+- **clause** — a fragment of one lc's written competency text that names something its problems must show (e.g. "certain, and impossible").
 - **pg** — practice problem generator/s
 - **dd** — difficulty dimension
 - **harness** — the validation suite at `backend/app/practice_gen/validation/` (entry point: `run_all`)
@@ -56,13 +57,26 @@ built on this and be safe?** Act on that as follows.
    next agent stops looking. Naming the hole is what lets a future grade's agent close it.
 
 ## Definition of Done (memorize this)
-Work on the pg pipeline is **done** when:
+There are two kinds of work and two finish lines (owner rulings 23 and 27, 2026-10-08/09). Fixing the testing
+pipeline is not the same as fixing the problem generators.
 
 ```
-python -m backend.app.practice_gen.validation.run_all   # exits 0
+python -m backend.app.practice_gen.validation.run_all
+#   exit 0  integrity green, no content findings
+#   exit 2  integrity green, content findings exist (the generator work queue, each named by lc and seed)
+#   exit 1  integrity failure: a stage crashed or never ran, a mutation SURVIVED or is INVALID, or the tree is stale
 ```
 
-and any judgment items in `docs/pgen_judgment.md` have their evidence artifacts filed. Nothing else counts. Not "the code looks right," not "I traced the logic," not a checked box. If the harness doesn't exist yet in your branch, the definition of done is the relevant validator module for what you touched, run to a clean exit, with output shown.
+- **Testing-pipeline (harness) work is done** when `run_all` exits **0 or 2**, every check you added or touched
+  is proven by a mutation caught by name on the path it executes, and `tests/tree_state.py` prints `CERTIFIED`.
+  Content findings do not block harness work; a finding the pipeline cannot name by lc and seed does.
+- **Generator (content) work is done** when `run_all` exits **0**, which means no content findings remain for
+  anything, and any judgment items in `docs/pgen_judgment.md` have their evidence artifacts filed.
+
+Nothing else counts. Not "the code looks right," not "I traced the logic," not a checked box.
+**Until the exit-code split lands** (`validation_reports/phase2_hardening/NEXT_AGENT_PROMPT.md` H2), `run_all`
+exits 1 on content findings too. Read integrity from its stage ledger and mutation table as that file's §1
+describes, and say in your report that you did.
 
 **That command needs no `DATABASE_URL=` prefix, as of 2026-09-16.** `run_all` pins the database URL empty itself and prints what it overrode, so the documented command is now the command the evidence is proved with. It was not before: `.env` carries a live Neon URL, and on identical bytes `test_queue_counts_all_three_bands` FAILED in 15.89s unprefixed and PASSED in 153.15s with `DATABASE_URL=` empty. Pinning the URL is configuration, not enforcement — but as of 2026-09-16 the enforcement exists too: **every Phase 1 stage body runs inside the socket guard** (`phase1_hermetic`), so an outbound non-loopback connection from any of them is a named failure, and `phase1_stage_escapes_the_network_guard` proves it. NAMED LIMITS: the guard patches one interpreter, so connections opened inside the children of `unit_tests`, `census_7` and `behavioural_matrix` are not seen; Phase 2 stages are unguarded. See `docs/pgen_contract.md`'s `phase1_hermetic` row.
 
@@ -90,4 +104,25 @@ Binding rules live in `docs/pgen_contract.md` (machine-enforced) and `docs/pgen_
 - Keep the root directory clean.
 
 ## Reporting Style
-End every substantive task report with an **Evidence** section: commands run, verbatim pass/fail output, seeds for any failures found and fixed. If there is no Evidence section, the task is not done — regardless of how the code looks.
+End every substantive task report with an **Evidence** section: commands run, verbatim pass/fail output, seeds for any failures found and fixed. If there is no Evidence section, the task is not done — regardless of how the code looks. (Judges: this does not apply to you; see below.)
+
+## If you are a judge (reviewer or attester)
+You were dispatched to judge a packet: stem templates and their field domains, or rendered samples. You are
+part of the testing pipeline. The LLM judges exist for what no deterministic check can read: wording,
+vocabulary gating, cognitive load, scope against the competency, and whether every clause can be produced.
+Judge as if a grade-7 generator will be certified on your verdict alone, because one will.
+
+- **Both errors are failures.** A lenient PASS certifies a defect for every learner who sees that stem and every
+  grade built on it. A false finding sends a generator agent to build the wrong thing. Be exact, not harsh and
+  not generous.
+- **Judge only the packet.** Do not read the repository, run code, render seeds, query Graphify, or open any
+  file the dispatch did not name. Your independence is what makes your verdict evidence. Engineering Protocols
+  1 and 4, the Definition of Done, and File Management are for builders, not for you. Your evidence is exact
+  quotes and seeds printed in your packet.
+- **Your ground truth** is the lc's competency text, clauses and vocabulary given in the packet. Apply Content
+  Rules 1–3 to it. Rule 4 tells builders what to build; do not propose fixes or lean a verdict toward
+  "missing" so that something gets built. Report what the packet shows.
+- **Quote exactly.** Cite only seeds printed in the packet. No elisions, placeholders or paraphrase inside
+  quotes. If you are unsure, say so in your reasoning; never guess a seed or a quote.
+- **Output exactly the format the packet asks for**, and nothing else. No Evidence section, no catchphrase, no
+  text outside it.

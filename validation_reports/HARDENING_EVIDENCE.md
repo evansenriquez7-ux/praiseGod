@@ -18907,3 +18907,74 @@ NAMED LIMITS:
 - The quote audit is dispatcher tooling, not a validator (§6F deliberately does not check attestation quotes);
   its tolerances are listed above.
 - Handoff error: NEXT_AGENT_PROMPT §4 step 6 shows `--supersedes '{json}'`; the filer takes a JSON *file* path.
+
+## 2026-10-08 — Declared variants that are never exhibited (§2I blind spot), and owner rulings 23–26
+
+Author: Claude Opus 5.5. Read-only measurement; no source, test or validator change. Terminology (ruling 23
+preamble): "node" ids below are what `CLAUDE.md` calls an **lc**.
+
+**Finding.** `validate_compat.validate_declared_variants_are_producible` (§2I, `validate_compat.py:1106`)
+proves a declared discrete variant renders without raising. It does not prove the rendered problem shows that
+variant. For every lc and every `(axis, value)` pair from `judgment_packets._variant_coverage_candidates`, the
+variant was requested at 8 seeds (`10_000 + 7919*k`) on the student path with private variant evidence on, and
+checked with `tests.attester_packets._matching_variant_evidence`:
+
+```text
+$ PYTHONPATH=. .venv/bin/python local_only/scratch/p40/measure_noop_variants.py > local_only/scratch/p40/noop_rerun.log 2>&1; echo "EXIT $?"
+EXIT 0
+$ head -2 local_only/scratch/p40/noop_rerun.log
+candidates 973 not exhibited 545
+{'absent': 428, 'other-value': 117}
+```
+
+545 of 973 declared pairs, over 121 lcs and 70 (DNA, axis) groups, are never exhibited at any of the 8 seeds.
+The script is gitignored scratch; its body, so the measurement can be reproduced:
+
+```python
+from backend.app.practice_gen.registry import get_all_node_ids, get_node_dnas
+from backend.app.practice_gen.validation.judgment_packets import _variant_coverage_candidates, _render_sample
+from tests.attester_packets import _matching_variant_evidence, _variant_evidence_paths
+for n in sorted(get_all_node_ids()):
+    for (axis, val) in _variant_coverage_candidates(n):
+        for k in range(8):
+            s = _render_sample(n, 10_000 + 7919 * k, {axis: val}, include_private_variant_evidence=True)
+            if s is not None and _matching_variant_evidence(s, (axis, val)): break
+        else: print("NOT EXHIBITED", n, axis, val)   # absent vs other-value read from _variant_evidence_paths
+```
+
+Classification of the 545 (`local_only/scratch/p40/noop_classified.json`, built 2026-10-08 by `diff_absent.py`
+and `diff_direct.py`, which re-render each value and compare question text, answer, visual type and visual params;
+not re-run for this entry):
+
+| Class | Count | Meaning | Example |
+|---|---|---|---|
+| A | 1 | student-path clamp drops it; the direct path exhibits it | `mat_g2_mg_q4_4` `task_type=measure_tools` |
+| B | 116 | generator substitutes another value on both paths | `mat_g1_mg_q1_0` `shape_set=composite_figures` → `basic_triangles_rectangles_squares` |
+| C | 113 | not recorded, but the render changes (honoured, not instrumented) | `mat_g1_mg_q4_4` `precision=five_minutes` |
+| D | 277 | not recorded, and the render is identical (a true no-op) | `mat_g1_mg_q1_1` `context=word_problem` |
+| E | 38 | single declared value equal to the default; a diff cannot decide | `mat_g1_dp_q3_1` `scale_type=no_scale` |
+
+For the D and E groups, the direct path (`is_student_path=False`, 6 seeds) was also diffed per (lc, axis):
+125 of 128 IDENTICAL, 3 CHANGES (`diff_direct.json`). So the no-ops are in the DNA, not the student-path clamp.
+
+The 8 `provider_variant_stratification_6F` packet refusals in the Phase 3 entry are instances of this gap.
+
+**Why it matters (Scaling Mandate 1, 6).** §2I reports green for a variant a DNA never reads. Every grade built
+later inherits a gate that certifies declared variety the learner never sees, and clause coverage judged from
+declarations is unsound until this is closed.
+
+**Owner rulings 23–26 (2026-10-08)**, recorded verbatim in `docs/phase2_hardening_completion_plan.md`:
+- 23: Phase 2 hardens the pipeline, not the generators; `run_all` is split into an integrity verdict (exit 0 =
+  Phase 2 done) and a content-findings report.
+- 24: LLM judges review stem templates and the declared domain of every field, not seeded samples;
+  deterministic checks prove rendered fields stay inside approved domains and cover composition defects.
+- 25: the per-sample gates (`judgment_reviews_5`, `capability_phase2`) are retired once their replacements are
+  mutation-proven; filed records stay as history.
+- 26: clause coverage is ruled per lc from stems and declared variants, then proven by an exhibit check; build
+  vs undeclare follows Content Rule 4.
+
+NAMED LIMITS:
+- 8 seeds per pair; a variant exhibited only on rare seeds would be counted as not exhibited.
+- "Exhibited" means recorded in `_provider_variant_evidence`. Class C shows that an unrecorded variant can still
+  change the render, so the exhibit check must accept either recorded evidence or a proven render change.
+- The A–E classification was not re-run for this entry; only the 973/545 count was.
