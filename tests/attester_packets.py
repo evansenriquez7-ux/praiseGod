@@ -75,9 +75,12 @@ class PacketRefusal(RuntimeError):
     exception raised here is a builder defect and stays a plain error.
     """
 
-    def __init__(self, label: str, message: str) -> None:
+    def __init__(self, label: str, message: str, node_wide: bool = False) -> None:
         super().__init__(message)
         self.label = label
+        # True when the refusal is about the whole node and is raised before any
+        # capability is visited, so rebuilding per capability repeats it verbatim.
+        self.node_wide = node_wide
 
 
 def _render(node_id: str, seed: int,
@@ -407,7 +410,8 @@ def build(node_ids: List[str], capabilities: List[str] | None = None) -> tuple:
             raise PacketRefusal(
                 CE.LABEL,
                 f"{CE.LABEL}: {node_id} has needs_instrumentation member(s) {blind}; its DNA "
-                f"must emit a structured field before an Attester packet can stratify them"
+                f"must emit a structured field before an Attester packet can stratify them",
+                node_wide=True,
             )
         samples_by_seed: Dict[int, Dict[str, Any]] = {}
         for seed in SAMPLE_SEEDS:

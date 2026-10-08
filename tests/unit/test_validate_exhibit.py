@@ -117,3 +117,42 @@ def test_report_only_prints_but_does_not_fail(monkeypatch, capsys, report_only, 
     out = capsys.readouterr().out
     assert ("REPORT variant_not_exhibited_2L" in out) is report_only
     assert ("FAIL variant_not_exhibited_2L" in out) is (not report_only)
+
+
+def _install_builder(monkeypatch, requires, refuse):
+    """refuse(caps) -> PacketRefusal to raise, or None for a packet that builds."""
+    from tests import attester_packets as AP
+    import backend.app.practice_gen.registry as registry
+
+    def build(node_ids, capabilities=None):
+        refusal = refuse(capabilities)
+        if refusal is not None:
+            raise refusal
+        return [], {}
+
+    monkeypatch.setattr(AP, "build", build)
+    monkeypatch.setattr(registry, "get_node_info",
+                        lambda node_id: {"requires": [{"id": c} for c in requires]})
+    return AP
+
+
+def test_two_capabilities_refused_for_one_variant_are_both_named(monkeypatch):
+    """Same message, different capabilities: deduplicating by text dropped 7 of 41."""
+    from tests import attester_packets as AP
+    msg = "provider_variant_stratification_6F: mat_test_lc could not render ('context', 'word_problem')"
+    _install_builder(monkeypatch, ["cap_a", "cap_b", "cap_ok"],
+                     lambda caps: None if caps == ["cap_ok"]
+                     else AP.PacketRefusal(AP.PROVIDER_VARIANT_LABEL, msg))
+    out = VE.packet_findings("mat_test_lc", defaultdict(int))
+    assert len(out) == 2
+    assert any("'cap_a'" in f for f in out) and any("'cap_b'" in f for f in out)
+
+
+def test_a_node_wide_refusal_is_named_once(monkeypatch):
+    from tests import attester_packets as AP
+    _install_builder(monkeypatch, ["cap_a", "cap_b", "cap_c"],
+                     lambda caps: AP.PacketRefusal("clause_enumeration_22",
+                                                   "clause_enumeration_22: needs_instrumentation",
+                                                   node_wide=True))
+    out = VE.packet_findings("mat_test_lc", defaultdict(int))
+    assert len(out) == 1 and "[clause_enumeration_22]" in out[0]

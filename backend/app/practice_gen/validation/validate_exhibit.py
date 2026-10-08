@@ -284,18 +284,22 @@ def packet_findings(node_id: str, stats: Dict[str, int]) -> List[str]:
     except AP.PacketRefusal as refusal:
         first = refusal
     # Refused: rebuild one capability at a time so EVERY refusing capability is named,
-    # not only the first the builder met. A needs_instrumentation refusal is node-wide
-    # (raised before any capability is visited), so identical messages are reported once.
+    # not only the first the builder met. Only a NODE-WIDE refusal (needs_instrumentation,
+    # raised before any capability is visited) is reported once; two capabilities refused
+    # for the same provider variant carry the same message and are BOTH named. Keyed on
+    # the typed flag, not the text: deduplicating by message dropped 7 of 41 such
+    # capabilities on 2026-10-09 (two capabilities sharing ('context', 'word_problem')).
     out: List[str] = []
-    seen: set = set()
+    node_wide_reported = False
     for req in (get_node_info(node_id) or {}).get("requires") or []:
         cap = str(req.get("id", ""))
         try:
             AP.build([node_id], [cap])
         except AP.PacketRefusal as refusal:
-            if str(refusal) in seen:
-                continue
-            seen.add(str(refusal))
+            if refusal.node_wide:
+                if node_wide_reported:
+                    continue
+                node_wide_reported = True
             stats["packet_refusals"] += 1
             out.append(f"{node_id}: the Attester packet for capability {cap!r} is refused "
                        f"[{refusal.label}]: {refusal}. Reproduce: "

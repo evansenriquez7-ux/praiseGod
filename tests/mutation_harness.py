@@ -3616,6 +3616,29 @@ MUTATIONS: List[Mutation] = [
                                    "FAIL attester_packet_refused_2L"],
     ),
     Mutation(
+        name="refused_capability_goes_unnamed",
+        asserts=["attester_packet_refused_2L"],
+        description=(
+            "Treat every packet refusal as node-wide, so a second capability refused for "
+            "the SAME provider variant is folded into the first. That is the defect §2L "
+            "shipped with for one chain on 2026-10-09: refusals were deduplicated by "
+            "message text, and 7 of 41 refused capabilities (two sharing "
+            "('context', 'word_problem'), etc.) went unnamed while the contract row said "
+            "every refusing capability is named."
+        ),
+        edits={
+            "backend/app/practice_gen/validation/validate_exhibit.py": (
+                '            if refusal.node_wide:\n',
+                '            if True:  # planted mutation: every refusal deduplicated as node-wide\n',
+            )
+        },
+        command=["pytest", "tests/unit/test_validate_exhibit.py", "-q", "-p", "no:cacheprovider",
+                 "-k", "refused"],
+        expected_check="§2L packet fold-in (every refusing capability is named)",
+        expect_output_contains=["test_two_capabilities_refused_for_one_variant_are_both_named"],
+        baseline_must_not_contain=["test_two_capabilities_refused_for_one_variant_are_both_named"],
+    ),
+    Mutation(
         name="dna_ignores_an_unrecorded_variant",
         asserts=["variant_not_exhibited_2L"],
         description=(
