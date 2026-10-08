@@ -181,6 +181,7 @@ def stubbed_harness(monkeypatch):
     monkeypatch.setattr(ra.validate_capability, "validate_capability_provision", lambda: [])
     monkeypatch.setattr(ra.validate_language, "validate_all", lambda: True)
     monkeypatch.setattr(ra.validate_reference, "validate_all", lambda: True)
+    monkeypatch.setattr(ra.validate_exhibit, "validate_all", lambda **kw: True)
     monkeypatch.setattr(ra.validate_options, "validate_all", lambda: True)
     monkeypatch.setattr(ra.validate_render, "validate_all", lambda: True)
     monkeypatch.setattr(ra.validate_grade, "validate_all", lambda: True)
@@ -291,7 +292,8 @@ class TestCrashIsolationEndToEnd:
         out = capsys.readouterr().out.split("--- Stage Ledger ---")[1]
         for name in ("unit_tests", "dna", "compatibility", "interest_invariance",
                      "vocabulary", "behavioural_matrix", "capability_phase1",
-                     "count_noun_1J", "option_degeneracy_1K", "render_contract_9",
+                     "count_noun_1J", "option_degeneracy_1K", "dangling_reference_1M",
+                     "variant_exhibit_2L", "render_contract_9",
                      "grading_contract_10", "assertion_coverage_8", "census_7"):
             assert name in out, f"{name} is scheduled but absent from the ledger"
 
@@ -300,6 +302,52 @@ class TestCrashIsolationEndToEnd:
         out = capsys.readouterr().out.split("--- Stage Ledger ---")[1]
         assert "judgment_reviews_5" not in out
         assert "capability_phase2" not in out
+
+
+def _scheduled_stage_names(stubbed_harness, phase):
+    """The schedule run_all really declares, captured from a green stubbed run."""
+    names = []
+    original = ra.StageLedger.schedule
+
+    def recording(self, name, *args, **kwargs):
+        names.append(name)
+        return original(self, name, *args, **kwargs)
+
+    stubbed_harness.setattr(ra.StageLedger, "schedule", recording)
+    assert ra.run_all(phase=phase) == 0, "the control run must be green"
+    stubbed_harness.setattr(ra.StageLedger, "schedule", original)
+    return names
+
+
+class TestStageFailureReachesVerdict:
+    """
+    `stage_failure_reaches_verdict`: EVERY stage that runs and reports findings fails the
+    run. Until 2026-10-09 the late stages' results reached the verdict through one flag
+    per stage name, and `dangling_reference_1M` had no branch: §1M failing with every
+    other stage green returned 0. The schedule is read from run_all itself, so a stage
+    added later is covered without editing this test (an allowlist would drift).
+    """
+
+    @pytest.mark.parametrize("phase", [1, None])
+    def test_stage_failure_reaches_verdict(self, stubbed_harness, capsys, phase):
+        names = _scheduled_stage_names(stubbed_harness, phase)
+        assert "dangling_reference_1M" in names and "variant_exhibit_2L" in names
+        original_run = ra.StageLedger.run
+        missed = []
+        for target in names:
+            def run(self, name, body, _target=target):
+                return original_run(self, name, (lambda: False) if name == _target else body)
+
+            stubbed_harness.setattr(ra.StageLedger, "run", run)
+            code = ra.run_all(phase=phase)
+            capsys.readouterr()
+            if code != 1:
+                missed.append((target, code))
+        stubbed_harness.setattr(ra.StageLedger, "run", original_run)
+        assert not missed, (
+            f"stage_failure_reaches_verdict: these stages reported a failure and run_all "
+            f"(phase={phase}) still returned non-1: {missed}"
+        )
 
 
 class TestDocumentationDriftEndToEnd:

@@ -3583,6 +3583,66 @@ MUTATIONS: List[Mutation] = [
         baseline_must_not_contain=["FAIL dangling_visual_reference_1M"],
     ),
     Mutation(
+        name="dna_ignores_a_declared_variant",
+        asserts=["variant_not_exhibited_2L", "attester_packet_refused_2L"],
+        description=(
+            "Make the probability-experiment DNA ignore a REQUESTED experiment type and "
+            "always run a coin toss -- the defect shape ruling 26 measured 545 times: the "
+            "variant is still declared, §2I still renders it without raising, and no "
+            "learner ever sees it. On mat_g3_dp_q3_0 every experiment type is recorded "
+            "and rendered at baseline, and each is a provider variant of one of its own "
+            "(non-enumeration) capabilities, so §2L must name both the substituted pair "
+            "and the Attester packet the builder now refuses. Pinned to a constant, not "
+            "to the seeded random choice: a random pick records the requested value at "
+            "some seed by chance (2 of 64 attempts suffice for the builder), and the plant "
+            "would prove nothing."
+        ),
+        edits={
+            "backend/app/practice_gen/dna/dp/probability_experiment.py": (
+                '    exp_type = profile.get("experiment_type") or rng.choice(["coin_toss", "die_roll", "spinner", "colored_tiles"])\n',
+                '    exp_type = "coin_toss"  # planted mutation: a requested experiment type is ignored\n',
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_exhibit",
+                 "--node-ids", "mat_g3_dp_q3_0"],
+        expected_check="§2L (a declared variant reaches the render; its Attester packet builds)",
+        expect_output_contains=[
+            "FAIL variant_not_exhibited_2L",
+            "mat_g3_dp_q3_0 && experiment_type='die_roll' is not exhibited [class B]",
+            "FAIL attester_packet_refused_2L",
+            "mat_g3_dp_q3_0 && provider_variant_stratification_6F",
+        ],
+        baseline_must_not_contain=["FAIL variant_not_exhibited_2L",
+                                   "FAIL attester_packet_refused_2L"],
+    ),
+    Mutation(
+        name="dna_ignores_an_unrecorded_variant",
+        asserts=["variant_not_exhibited_2L"],
+        description=(
+            "Pin the bar-graph scale to 5 whatever was requested. mat_g3_dp_q3_1 records "
+            "its scale as the integer it USES (10), never the declared label "
+            "('scale_10'), so criterion (a) cannot match it at baseline: every scale "
+            "value there is exhibited by criterion (b) alone, its render differing from "
+            "each sibling's. This proves (b) does not over-accept -- with the scale "
+            "ignored, all three render alike and must be named -- on a path where "
+            "recorded evidence cannot rescue the pair."
+        ),
+        edits={
+            "backend/app/practice_gen/dna/dp/bar_graphs.py": (
+                '    scale = scale_map.get(scale_level, 5)\n',
+                '    scale = 5  # planted mutation: the requested scale is ignored\n',
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_exhibit",
+                 "--node-ids", "mat_g3_dp_q3_1"],
+        expected_check="§2L criterion (b): an unrecorded variant must still change the render",
+        expect_output_contains=[
+            "FAIL variant_not_exhibited_2L",
+            "mat_g3_dp_q3_1 && scale='scale_10' is not exhibited",
+        ],
+        baseline_must_not_contain=["FAIL variant_not_exhibited_2L"],
+    ),
+    Mutation(
         name="second_option_answers_too",
         asserts=["option_degeneracy_1K"],
         description=(
@@ -4766,6 +4826,30 @@ MUTATIONS: List[Mutation] = [
         expected_check="two-direction drift (a crash cannot delete its own expected refs)",
         expect_output_contains=["test_a_crash_cannot_delete_its_own_expected_refs"],
         baseline_must_not_contain=["test_a_crash_cannot_delete_its_own_expected_refs"],
+    ),
+    Mutation(
+        name="failed_stage_left_out_of_the_verdict",
+        asserts=["stage_failure_reaches_verdict"],
+        description=(
+            "Stop reading failed stages from the ledger when computing run_all's verdict, "
+            "which restores the hole measured on 2026-10-09: the late stages reached the "
+            "verdict through one flag per stage name, dangling_reference_1M had no "
+            "branch, and run_all(phase=1) returned 0 with §1M failing. The test fails each "
+            "scheduled stage in turn, read from run_all's own schedule, and must name the "
+            "stages whose failure no longer reaches the exit code."
+        ),
+        edits={
+            "backend/app/practice_gen/validation/run_all.py": (
+                '              and not failed_stages and not ledger_failures)\n',
+                '              and not ledger_failures)  # planted mutation: failed stages ignored\n',
+            )
+        },
+        command=["pytest", "tests/unit/test_stage_ledger.py", "-q", "-p", "no:cacheprovider",
+                 "-k", "TestStageFailureReachesVerdict"],
+        expected_check="run_all verdict (every failed stage fails the run)",
+        expect_output_contains=["stage_failure_reaches_verdict: these stages",
+                                "dangling_reference_1M"],
+        baseline_must_not_contain=["stage_failure_reaches_verdict: these stages"],
     ),
     Mutation(
         name="stage_runs_in_the_wrong_band",

@@ -63,6 +63,21 @@ from backend.app.practice_gen.validation.judgment_packets import (
 SAMPLE_SEEDS = [11, 23, 42, 57, 64, 78, 91, 103, 118, 127]
 _PROVIDER_VARIANT_SAMPLES = 2
 _PROVIDER_VARIANT_ATTEMPTS = 64
+PROVIDER_VARIANT_LABEL = "provider_variant_stratification_6F"
+
+
+class PacketRefusal(RuntimeError):
+    """
+    The builder refuses a packet because the CONTENT cannot support it, not because the
+    builder is broken: a provider variant no seed exhibits, or a clause sibling the DNA
+    cannot yet expose. Typed so §2L (`validate_exhibit`) can report it as a content
+    finding by `label` without classifying exceptions by message text; every other
+    exception raised here is a builder defect and stays a plain error.
+    """
+
+    def __init__(self, label: str, message: str) -> None:
+        super().__init__(message)
+        self.label = label
 
 
 def _render(node_id: str, seed: int,
@@ -179,7 +194,8 @@ def _render_provider_variant_samples(node_id: str, variant: tuple) -> tuple[List
         rendered[seed] = sample
         if len(seeds) == _PROVIDER_VARIANT_SAMPLES:
             return seeds, rendered
-    raise RuntimeError(
+    raise PacketRefusal(
+        PROVIDER_VARIANT_LABEL,
         "provider_variant_stratification_6F: "
         f"{node_id} could not render {_PROVIDER_VARIANT_SAMPLES} samples for provider "
         f"variant {variant!r}; tried {_PROVIDER_VARIANT_ATTEMPTS} deterministic seeds. "
@@ -263,7 +279,8 @@ def _render_selector_samples(node_id: str, member: str,
         rendered[seed] = sample
         if len(seeds) == _PROVIDER_VARIANT_SAMPLES:
             return seeds, rendered
-    raise RuntimeError(
+    raise PacketRefusal(
+        CE.LABEL,
         f"{CE.LABEL}: {node_id}/{member} could not render {_PROVIDER_VARIANT_SAMPLES} "
         f"samples matching selector {disposition['observe']!r}; tried "
         f"{_PROVIDER_VARIANT_ATTEMPTS} deterministic seeds, matched {seeds}. "
@@ -387,7 +404,8 @@ def build(node_ids: List[str], capabilities: List[str] | None = None) -> tuple:
         wordings = CE.member_wordings(node_id, classification)
         blind = sorted(m for m, d in dispositions.items() if "needs_instrumentation" in d)
         if blind:
-            raise RuntimeError(
+            raise PacketRefusal(
+                CE.LABEL,
                 f"{CE.LABEL}: {node_id} has needs_instrumentation member(s) {blind}; its DNA "
                 f"must emit a structured field before an Attester packet can stratify them"
             )

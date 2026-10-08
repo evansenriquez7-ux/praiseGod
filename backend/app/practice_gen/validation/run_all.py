@@ -62,6 +62,7 @@ from backend.app.practice_gen.validation import (
     validate_obligations,
     validate_coverage,
     validate_vocab,
+    validate_exhibit,
 )
 from backend.app.practice_gen.validation.validate_matrix import run_matrix_validation
 from backend.app.practice_gen.validation._manifest import CHECK_PHASE, refs_in_phase
@@ -175,6 +176,8 @@ ASSERTIONS = (
     "two_direction_contract_match",
     # The stage ledger (H-03, 2026-09-12). Two directions, because a stage can fail to
     # produce a verdict in two different ways and they are not the same finding:
+    "stage_failure_reaches_verdict",  # a stage that ran and reported findings fails the
+                                      # run, read from the ledger rather than a flag per name
     "stage_ledger_complete",   # a scheduled stage never reached a verdict (crashed, or
                                # never entered after a fail-fast abort)
     "stage_phase_matches_manifest",  # a stage runs in a band its own refs are not
@@ -227,6 +230,7 @@ CONTRACT_CHECKS: Dict[str, str] = {
     "§2F": "validate_compat: every node id referenced in the app must exist in the registry",
     "§2G": "validate_compat: every node's competency bounds parse to a well-formed shape — the tree-wide property behind the fixture table",
     "§2I": "validate_compat: a discrete variant a node DECLARES must be one it can actually produce — a shrinking floor; the silent packet skip that hid 65 of these is now recorded",
+    "§2L": "validate_exhibit: a discrete variant a node DECLARES must reach the render -- recorded in given_values, or changing the problem against every sibling value -- and every Attester packet must build (report-only until H2)",
     "§2J": "validate_compat: a competency naming a medium the learner works in (illustrate, represent, concrete, models, draw) is served in it on >= 50% of student-path items, every such clause classified (ruling 15)",
     "§2K": "validate_compat: the portal's batch feed (/practice/{id}/batch) serves exactly what the single-item student path serves, under the route's own default config",
     "§2H": "validate_compat: a competency naming BOTH cases of a dimension must not be bound to one of them — §2G proves bounds are well-formed, this proves they are faithful",
@@ -599,6 +603,7 @@ def run_all(fail_fast: bool = False, phase: Optional[int] = None) -> int:
         ("count_noun_1J",       1, ("§1J",), "Count/Noun Agreement (§1J)"),
         ("option_degeneracy_1K", 1, ("§1K",), "Option Degeneracy (§1K)"),
         ("dangling_reference_1M", 1, ("§1M",), "Dangling Visual Reference (§1M)"),
+        ("variant_exhibit_2L",  1, ("§2L",), "Declared Variants Reach the Render (§2L)"),
         ("render_contract_9",   1, ("§9", "§12", "§13"),  "Render Contract (§9/§12/§13)"),
         ("grading_contract_10", 1, ("§10",), "Grading Contract (§10)"),
         ("assertion_coverage_8", 1, ("§8",), "Assertion Coverage (§8)"),
@@ -1001,6 +1006,19 @@ def run_all(fail_fast: bool = False, phase: Optional[int] = None) -> int:
             executed_checks.add("§1M")
         return ok
 
+    def _stage_variant_exhibit_2L() -> bool:
+        print("\n--- Declared Variants Reach the Render (§2L) ---")
+        # Owner ruling 26: §2I proves a declared variant renders; this proves the render
+        # SHOWS it, and builds every Attester packet so a refused one is named before any
+        # dispatch. REPORT-ONLY until the exit-code split (NEXT_AGENT_PROMPT H2) lands:
+        # its baseline is the generator work queue (Mandate 5), so it prints every finding
+        # and does not turn this run red. Its own CLI exits 1 on any finding, and that is
+        # the path its mutations prove, on nodes whose baseline is clean.
+        ok = validate_exhibit.validate_all(report_only=True)
+        if ok:
+            executed_checks.add("§2L")
+        return ok
+
     def _stage_render_contract_9() -> bool:
         print("\n--- Render Contract (§9/§12) ---")
         # The first stage that looks past FormattedProblem at what the STUDENT receives.
@@ -1054,13 +1072,20 @@ def run_all(fail_fast: bool = False, phase: Optional[int] = None) -> int:
             executed_checks.add("§7")
         return ok
 
-    render_ok = grade_ok = coverage_ok = census_ok = True
-    language_ok = options_ok = obligations_ok = True
+    # These stages' results reach the verdict through the LEDGER (`failed_stages` below),
+    # not through one flag per name. Until 2026-10-09 this loop dispatched each result to
+    # a flag by an if/elif on the stage name, and its catch-all `else` was census_7's:
+    # dangling_reference_1M, added later, had no branch, so its result was written into
+    # census_ok and overwritten by census_7 a moment after. Measured that day with the
+    # unit suite's own stubbed harness: §1M failing and every other stage green ->
+    # run_all(phase=1) returned 0 while the ledger printed `FAIL dangling_reference_1M`.
+    # A name-keyed dispatch is an allowlist, and an allowlist drifts silently.
     if _runs(1):
         for _stage_name, _stage_body in (
             ("count_noun_1J", _stage_count_noun_1J),
             ("option_degeneracy_1K", _stage_option_degeneracy_1K),
             ("dangling_reference_1M", _stage_dangling_reference_1M),
+            ("variant_exhibit_2L", _stage_variant_exhibit_2L),
             ("render_contract_9", _stage_render_contract_9),
             ("grading_contract_10", _stage_grading_contract_10),
             ("assertion_coverage_8", _stage_assertion_coverage_8),
@@ -1068,20 +1093,6 @@ def run_all(fail_fast: bool = False, phase: Optional[int] = None) -> int:
             ("census_7", _stage_census_7),
         ):
             _stage_ok = ledger.run(_stage_name, _stage_body)
-            if _stage_name == "count_noun_1J":
-                language_ok = _stage_ok
-            elif _stage_name == "option_degeneracy_1K":
-                options_ok = _stage_ok
-            elif _stage_name == "render_contract_9":
-                render_ok = _stage_ok
-            elif _stage_name == "grading_contract_10":
-                grade_ok = _stage_ok
-            elif _stage_name == "assertion_coverage_8":
-                coverage_ok = _stage_ok
-            elif _stage_name == "obligation_manifest_11":
-                obligations_ok = _stage_ok
-            else:
-                census_ok = _stage_ok
             if not _stage_ok and fail_fast:
                 print(f"  ABORT after {_stage_name} (fail-fast active)")
                 _print_stage_ledger(ledger, phase)
@@ -1219,12 +1230,16 @@ def run_all(fail_fast: bool = False, phase: Optional[int] = None) -> int:
         print("  PASS stage_phase_matches_manifest: every stage's refs are registered to "
               "the band that stage runs in")
     ledger_failures = ledger_failures + phase_problems
+    # Every in-scope stage that ran and reported findings fails the run, read from the
+    # ledger itself so no stage can be left out of the verdict by name
+    # (`stage_failure_reaches_verdict`; see the late-stage loop above for the defect).
+    failed_stages = [s.name for s in ledger
+                     if (phase is None or s.phase == phase) and s.state == "failed"]
 
     print("\n======================================================================")
     all_ok = (unit_ok and dna_ok and compat_ok and interest_ok and vocab_ok and matrix_ok
               and judgment_ok and provision_ok and attestation_ok and contract_match_ok
-              and census_ok and render_ok and grade_ok and coverage_ok
-              and language_ok and options_ok and obligations_ok and not ledger_failures)
+              and not failed_stages and not ledger_failures)
     scope = "ALL TESTS" if phase is None else f"PHASE {phase}"
     if all_ok:
         print(f"{scope} PASSED SUCCESSFULLY! Praise God!")
