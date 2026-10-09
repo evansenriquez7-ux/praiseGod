@@ -1,7 +1,7 @@
 # Graph Report - ccmed  (2026-10-09)
 
 ## Corpus Check
-- 1945 files · ~6,861,759 words
+- 1945 files · ~6,862,564 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `b2550cbb`
+- Built from commit: `702588c4`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -465,8 +465,8 @@
 - [[_COMMUNITY_build_scaffold_sequence|build_scaffold_sequence]]
 - [[_COMMUNITY_silent_path_failures|silent_path_failures]]
 - [[_COMMUNITY__combined_interests|_combined_interests]]
+- [[_COMMUNITY_2026-08-20 — §5 worker death a silent unbounded wait in the last gate|2026-08-20 — §5 worker death: a silent unbounded wait in the last gate]]
 - [[_COMMUNITY_2026-08-13 — less than N was parsed as up to N|2026-08-13 — "less than N" was parsed as "up to N"]]
-- [[_COMMUNITY_2026-09-23 — lossless §5 filing repair, first genuine v2 review, and complete re-proof|2026-09-23 — lossless §5 filing repair, first genuine v2 review, and complete re-proof]]
 - [[_COMMUNITY_2026-09-23 — lossless §5 filing repair, first genuine v2 review, and complete re-proof|2026-09-23 — lossless §5 filing repair, first genuine v2 review, and complete re-proof]]
 - [[_COMMUNITY_Tick 22 — 2026-08-22 — the range fix lands, and a third zero-factor path|Tick 22 — 2026-08-22 — the range fix lands, and a third zero-factor path]]
 
@@ -705,7 +705,7 @@ Nodes (38): QuestionContext, Format-agnostic intermediate produced by the contex
 
 ### Community 51 - "Community 51"
 Cohesion: 0.03
-Nodes (123): (seed, error) pairs this module could not render for `node_id`. Never silent., render_failures(), _attestation_integrity(), _attestation_records(), _attestation_staleness(), _bound_restricts_to(), _content_words(), declaration_sync_failures() (+115 more)
+Nodes (112): _attestation_integrity(), _attestation_records(), _attestation_staleness(), _bound_restricts_to(), _content_words(), declaration_sync_failures(), _declared_nodes(), _load_attestations() (+104 more)
 
 ### Community 52 - "Community 52"
 Cohesion: 0.13
@@ -869,7 +869,7 @@ Nodes (20): 1. Architecture Overview, 2. Automated CI/CD (GitHub Actions Workflo
 
 ### Community 92 - "Community 92"
 Cohesion: 0.05
-Nodes (65): FormatterNotEligible, A formatter was asked for a combination it is not ELIGIBLE for -- as opposed to, get_all_node_ids(), get_node_competency_bounds(), get_node_dnas(), get_node_formatters(), Get competency-specific bounds for a node's difficulty dimensions.          Retu, Return the list of DNA concept names for a node.      Args:         node_id: MAT (+57 more)
+Nodes (67): FormatterNotEligible, A formatter was asked for a combination it is not ELIGIBLE for -- as opposed to, get_all_node_ids(), get_node_competency_bounds(), get_node_dnas(), get_node_formatters(), Get competency-specific bounds for a node's difficulty dimensions.          Retu, Return the list of DNA concept names for a node.      Args:         node_id: MAT (+59 more)
 
 ### Community 93 - "Community 93"
 Cohesion: 0.22
@@ -913,7 +913,7 @@ Nodes (29): _generate_addition_examples(), _generate_comparing_examples(), _gene
 
 ### Community 103 - "Community 103"
 Cohesion: 0.03
-Nodes (69): 1. Distractor Non-Determinism Fix in `place_value.py`, 1. Fractions answer-key false positive — `mat_g2_na_q4_0`/`_1`/`_2`, 2026-08-14 — "or vice versa" names two directions; the node was bound to one, 2026-08-19 — Unit 3 completion + full `run_all` verification, 2026-08-20 — §5 worker death: a silent unbounded wait in the last gate, 2026-08-20 (tick 7) — The harness now runs its own tests, 2026-08-20 (tick 8) — A dispatch-only tick: coverage 52 → 127, 2026-08-23 — §6G: an attestation must show its work (+61 more)
+Nodes (72): 1. Distractor Non-Determinism Fix in `place_value.py`, 1. Fractions answer-key false positive — `mat_g2_na_q4_0`/`_1`/`_2`, 2026-08-13 — The G1 measure items: a visual for the task, and a size model for the units, 2026-08-19 — Unit 3 completion + full `run_all` verification, 2026-08-20 (tick 6) — There is no pytest deadlock, and three tests I broke in tick 3, 2026-08-20 (tick 7) — The harness now runs its own tests, 2026-08-20 (tick 8) — A dispatch-only tick: coverage 52 → 127, 2026-08-23 — §6G: an attestation must show its work (+64 more)
 
 ### Community 104 - "Community 104"
 Cohesion: 0.13
@@ -1885,7 +1885,7 @@ Nodes (6): 2026-09-22/23 — H-06 owner-ruling-9 prevalence re-dispatch, complet
 
 ### Community 392 - ".axis_level_index"
 Cohesion: 0.06
-Nodes (62): get_variants_for_dna(), node_grade_quarter(), Return all contextual variants defined for a DNA concept.      Args:         dna, The (grade, quarter) a node sits at, parsed from its id.      One copy, because, get_pipeline_status(), Return a health-check dict for the pipeline.      Checks:       - Whether each o, _bound_allows(), build_group() (+54 more)
+Nodes (60): get_variants_for_dna(), node_grade_quarter(), Return all contextual variants defined for a DNA concept.      Args:         dna, The (grade, quarter) a node sits at, parsed from its id.      One copy, because, get_pipeline_status(), Return a health-check dict for the pipeline.      Checks:       - Whether each o, _bound_allows(), build_group() (+52 more)
 
 ### Community 393 - "TestLogScaleDeclarations"
 Cohesion: 0.40
@@ -2132,8 +2132,8 @@ Cohesion: 0.40
 Nodes (5): 2026-09-30/10-01 — PHASE E W1: every STALE review refreshed; packet-description defect found and fixed, Confirmed defects, owed to the next source batch (not fixed mid-campaign; a fix re-stales reviews), Harness defect found by the campaign, fixed before continuing (`8a8b99a4`), Result, Reviewer integrity (each event is in the filed record's `tool_uses_by_reviewer`)
 
 ### Community 460 - "2026-08-20 (tick 6) — There is no pytest deadlock, and three tests I broke in tick 3"
-Cohesion: 0.50
-Nodes (4): 2026-08-13 — The G1 measure items: a visual for the task, and a size model for the units, A regression I introduced and caught by measuring, Defect 1 — the dataless distance item, Defect 2 — object and unit drawn independently
+Cohesion: 0.27
+Nodes (11): (seed, error) pairs this module could not render for `node_id`. Never silent., render_failures(), _main(), Any, Judgment batches — the blind evidence a §5 review has to be built from.  Why thi, Build the complete blind prompt without retyping any packet evidence.      The r, A review file pre-filled with the exact samples the reviewer was shown.      The, Emit the reviewer-facing text VERBATIM from the packets.      Whatever this retu (+3 more)
 
 ### Community 461 - "test_an_unreadable_state_file_is_fatal_not_silently_empty"
 Cohesion: 0.50
@@ -2144,12 +2144,16 @@ Cohesion: 0.40
 Nodes (5): 2026-09-10 — the full-table run caught a mutation my own content work had blinded, Evidence, The lesson, stated so it is not relearned, Two fixes, because repointing alone would leave the trap set, What happened
 
 ### Community 463 - "2026-08-20 (tick 6) — There is no pytest deadlock, and three tests I broke in tick 3"
-Cohesion: 0.50
-Nodes (4): 2026-08-20 (tick 6) — There is no pytest deadlock, and three tests I broke in tick 3, New finding, quantified: the node formatter list advertises what the orchestrator refuses, The "deadlock" was a misdiagnosis, carried for five ticks, Three tests I broke in tick 3, invisible because run_all does not run pytest
+Cohesion: 0.40
+Nodes (5): 2026-08-14 — "or vice versa" names two directions; the node was bound to one, Step 1 said prove it doesn't already exist, and it did, The failing rationale, The other two pictograph FAILs, diagnosed but not fixed here, Verification
 
 ### Community 464 - "build_scaffold_sequence"
 Cohesion: 0.67
 Nodes (3): build_scaffold_sequence(), Any, Build an ordered list of difficulty profiles for a scaffold sequence.      Each
+
+### Community 467 - "2026-08-20 — §5 worker death: a silent unbounded wait in the last gate"
+Cohesion: 0.50
+Nodes (4): 2026-08-20 — §5 worker death: a silent unbounded wait in the last gate, Proved by killing a worker mid-run, The guard, Two related findings recorded while diagnosing
 
 ### Community 479 - "2026-08-13 — "less than N" was parsed as "up to N""
 Cohesion: 0.40
@@ -2158,10 +2162,6 @@ Nodes (5): 2026-08-13 — "less than N" was parsed as "up to N", PROTOCOL 5 CORR
 ### Community 493 - "2026-09-23 — lossless §5 filing repair, first genuine v2 review, and complete re-proof"
 Cohesion: 0.50
 Nodes (4): 2026-09-30 — PHASE E W1 checkpoint: 10 stale reviews refreshed on GPT-5.6 Luna medium, Baseline and measured checkpoint, Claims checked against live renders, Dispatches, model identity, and audit
-
-### Community 503 - "2026-09-23 — lossless §5 filing repair, first genuine v2 review, and complete re-proof"
-Cohesion: 0.50
-Nodes (4): 2026-09-23 — lossless §5 filing repair, first genuine v2 review, and complete re-proof, Blind dispatch outcome and named limitation, Re-proof and interruption-safe recovery, Root cause and repair
 
 ### Community 504 - "Tick 22 — 2026-08-22 — the range fix lands, and a third zero-factor path"
 Cohesion: 0.50
@@ -2179,7 +2179,7 @@ _Questions this graph is uniquely positioned to answer:_
   _High betweenness centrality (0.038) - this node is a cross-community bridge._
 - **Why does `input_digest()` connect `2026-08-13 — The G1 measure items: a visual for the task, and a size model for the units` to `Community 39`, `generate_params`, `fmt_ruler_measure.py`, `Community 26`, `Community 60`?**
   _High betweenness centrality (0.034) - this node is a cross-community bridge._
-- **Why does `get_all_node_ids()` connect `Community 92` to `RedisDict`, `generate_params`, `2026-08-13 — length_measurement: the largest FAIL cluster in the tree`, `Community 4`, `.axis_level_index`, `Community 11`, `Community 16`, `Community 17`, `2026-08-13 — The G1 measure items: a visual for the task, and a size model for the units`, `test_in_progress_may_not_be_unclaimed`, `Community 51`, `Community 59`, `Community 60`, `_provided_for_node`, `validate_capability.py`, `Community 79`, `hardening_supervisor.py`, `Community 86`, `Community 90`, `mass_capacity.py`, `fmt_numeric_input.py`, `Community 99`, `health`, `duplicate_registry_keys.py`, `_profile_echo_keys`?**
+- **Why does `get_all_node_ids()` connect `Community 92` to `RedisDict`, `generate_params`, `2026-08-13 — length_measurement: the largest FAIL cluster in the tree`, `Community 4`, `.axis_level_index`, `Community 11`, `Community 16`, `Community 17`, `2026-08-13 — The G1 measure items: a visual for the task, and a size model for the units`, `test_in_progress_may_not_be_unclaimed`, `Community 51`, `Community 59`, `Community 60`, `_provided_for_node`, `validate_capability.py`, `2026-08-20 (tick 6) — There is no pytest deadlock, and three tests I broke in tick 3`, `Community 79`, `hardening_supervisor.py`, `Community 86`, `Community 90`, `mass_capacity.py`, `fmt_numeric_input.py`, `Community 99`, `health`, `duplicate_registry_keys.py`, `_profile_echo_keys`?**
   _High betweenness centrality (0.034) - this node is a cross-community bridge._
 - **What connects `graphify`, `PackageDescription`, `Foundation` to the rest of the system?**
   _3596 weakly-connected nodes found - possible documentation gaps or missing edges._

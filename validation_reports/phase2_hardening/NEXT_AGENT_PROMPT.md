@@ -1,6 +1,7 @@
 # Task prompt: Phase 2 pipeline hardening under owner rulings 23–29 (Claude host)
 
-**Rewritten 2026-10-08 after owner rulings 23–26 redefined Phase 2; rulings 27–29 (2026-10-09) settled its open design questions. This REPLACES every earlier version of
+**Rewritten 2026-10-08 after owner rulings 23–26 redefined Phase 2; rulings 27–29 (2026-10-09) settled its open design questions.
+Updated 2026-10-09 after batch H1 landed: H2 is next. This REPLACES every earlier version of
 this file.** `CLAUDE_AGENT_PROMPT.md`, `GPT_HANDOFF_PROMPT.md` and `HANDOFF_PROMPT.md` beside it are history.
 Their §5–§10 method notes (dispatch template, audit-before-filing, heavy runs, traps) remain correct and are
 cited below. Their state sections, queue sizes and goals are stale; ignore them.
@@ -41,7 +42,8 @@ INTERRUPTED, and re-measures every number it publishes.
 3. **Owner rulings 23–29** in `docs/phase2_hardening_completion_plan.md`, verbatim (search "rulings recorded
    2026-10-08"; 27–29 follow them). Also read rulings 1, 9, 12–16 and 19–22 above them. They still govern what content must
    satisfy.
-4. `validation_reports/HARDENING_EVIDENCE.md`, newest entries first:
+4. `validation_reports/HARDENING_EVIDENCE.md`, newest entries first (newest is at the END of the file):
+   - "H1: §2L declared variants must reach the render (ruling 26), and a verdict hole in run_all";
    - "Declared variants that are never exhibited (§2I blind spot), and owner rulings 23–26";
    - "Phase 3: re-attestation of the queue under the ruled instrument";
    - "Phase 2a landed: the ruling-22 attester gate".
@@ -50,7 +52,8 @@ INTERRUPTED, and re-measures every number it publishes.
    - §1J `count_noun_agreement_1J` (its BLIND SPOTS);
    - the judgment packet allocation (the "126 no-op" MEASURED-NOT-GATED note);
    - `clause_enumeration_22` (its 7 NAMED LIMITS);
-   - `stage_ledger_complete`.
+   - `stage_ledger_complete`, and `stage_failure_reaches_verdict` beside it;
+   - §2L (`variant_exhibit_2L`; its 7 NAMED LIMITS).
 6. `CLAUDE_AGENT_PROMPT.md` §7 (heavy runs, the lock), §8 (anchor one-liner), §9 (traps) and §11 (not yours).
 
 ---
@@ -58,7 +61,8 @@ INTERRUPTED, and re-measures every number it publishes.
 ## 1. State at handoff (2026-10-09, after H1; re-measure before quoting)
 
 ```
-HEAD                origin/main at the H-06 release commit after H1 (see git log); worktree clean
+HEAD                local main at the commit that updated this file (after 702588c4, the H-06 release);
+                    worktree clean. Not pushed when written: check `git status -sb` before assuming origin has it
 source              3449378b (H1: f7723703 + the refusal-naming fix); chain artifacts b2550cbb
 H-06 lock           RELEASED; claim it (owner line only, numstat 1 1) before any work
 tree_state          CERTIFIED, digest 4d314664a4ff03b4 (211 proofs, 6 shards, benchmark, frontend fresh)
@@ -138,6 +142,20 @@ Every design choice the earlier draft left to the owner is now ruled. **Stop and
 
 ## 4. Plan: pipeline batches H1–H6
 
+**What is left to finish Phase 2** (one batch per session, in this order; each ends with the §6 chain):
+
+| batch | status | what it delivers | blocked by |
+|---|---|---|---|
+| H1 | DONE 2026-10-09 | §2L variant exhibit check; verdict reads failed stages from the ledger | — |
+| **H2** | **next** | `run_all` exits 0 / 2 / 1; every finding classified integrity or content; the 3 §6F INVALIDs re-anchored and DETECTED; §2L leaves report-only | — |
+| H3 | open | structured slots (ruling 28) and the field-domain check | H2 (its findings must land as content, exit 2) |
+| H4 | open | stem review gate: stem-family packets, blind judges, template+domain freshness | H3 (judges approve domains H3 enforces) |
+| H5 | open | composition checks: selector value survives into the payload, hint/stem agreement, §1J singular-after-many | H2 |
+| H6 | open | retire `judgment_reviews_5` and `capability_phase2` as gates; carry confirmed defects into the content report | H3, H4, H5 each mutation-proven |
+| Exit | — | the "Exit" list below holds on one chain | all of the above |
+
+H5 does not depend on H3/H4 and may run before them if a session prefers; H6 must be last.
+
 Each batch is one `batch` intent and one re-proof chain (§6). Inside a batch, use a dev loop: focused unit
 tests, the validator's own module, and `tests/mutation_harness.py --only <new mutations>`. Run the chain once,
 at the end. Every new check needs four things:
@@ -158,8 +176,10 @@ with its mutation proven on a clean lc.
 2. **Claim H-06.** Edit only its `owner` line; `git diff --numstat
    validation_reports/phase2_hardening/hardening_status.json` must read `1 1`. Commit. Then open the intent:
    `PYTHONPATH=. .venv/bin/python tests/tree_state.py --begin batch --session <yours> --note "<batch id>"`.
-3. **Re-measure.** Run both commands below and expect `78 42 33 55` and `candidates 973 not exhibited 545`.
-   If either moved, explain why before building.
+3. **Re-measure.** Run both commands below. Expect `78 42 33 55` from the first, and from the second
+   `EXIT 1` plus the summary line `973 declared pair(s) at 8 seeds; 428 recorded, 125 exhibited by render only,
+   420 not exhibited {'A': 1, 'B': 90, 'D': 291, 'E': 38}; 151 Attester packet(s) built, 61 refusal(s)`
+   (deterministic; about 5.5 min). If either moved, explain why before building.
 
 ```sh
 PYTHONPATH=. .venv/bin/python - <<'PY'
@@ -175,8 +195,10 @@ print(sum(map(len, by.values())), len(by), len(by) - len(blocked), sum(len(by[n]
 PY
 ```
 
-The variant-exhibit measurement is quoted in full in the evidence entry "Declared variants that are never
-exhibited". It takes about 55 s.
+```sh
+PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_exhibit > exhibit.log 2>&1; echo "EXIT $?"
+grep "§2L:" exhibit.log
+```
 
 ### H1: variant exhibit check (ruling 26; Mandate 3, so it comes first) -- DONE 2026-10-09
 
@@ -185,29 +207,7 @@ exhibited". It takes about 55 s.
 (measured: "any" certifies 8 recorded substitutions). Report-only until H2: H2 must route `variant_not_exhibited_2L`
 and `attester_packet_refused_2L` to exit 2. Also landed: `stage_failure_reaches_verdict` (run_all's verdict
 reads every failed stage from the ledger; `dangling_reference_1M` had been left out). Its NAMED LIMIT is H2's:
-a stage that prints FAIL but returns True (as §2L does now) is not seen. The text below is the original brief.
-
-**Build** a validator that proves every declared `(lc, axis, value)` from
-`judgment_packets._variant_coverage_candidates` reaches the render. Requesting the value at a seed must do one of
-two things:
-- (a) record the value in `_provider_variant_evidence` (matched by `tests.attester_packets._matching_variant_evidence`);
-- (b) change the rendered problem against the same seed under a sibling value (question text, answer, visual
-  type, visual params).
-
-**Then:**
-- Report non-exhibited pairs as content findings, by class: substituted (B), unrecorded no-op (D), single value
-  equal to the default (E), and clamp (A). The class names what the generator agent must do.
-- Fold in the attester-packet-build check that Phase 3 owed: build every lc's attester packet, so a
-  `provider_variant_stratification_6F` refusal surfaces as a named finding before any dispatch.
-- Mutation: undeclare-proof. Make one DNA ignore an axis it currently honours, on an lc whose baseline exhibits
-  it, and require the check to catch it by name.
-- Record in §2I's contract row that §2I proves producibility only, and point to the new row.
-
-**Not yours:** making the 545 exhibit. Each one is a generator fix under Content Rule 4: build it when the lc's
-competency names it, undeclare it otherwise, with the clause cited. Those fixes go in the content queue.
-
-**NAMED LIMIT to keep:** class C shows that an unrecorded variant can still be honoured. The check must accept
-(b), or it will report false findings.
+a stage that prints FAIL but returns True (as §2L does now) is not seen. The original brief is preserved in git history (`7a9b211a`).
 
 ### H2: split `run_all` (ruling 23)
 
@@ -229,6 +229,34 @@ competency names it, undeclare it otherwise, with the clause cited. Those fixes 
   - a content finding that leaks into the integrity verdict (exit 1 instead of 2);
   - an integrity failure hidden in the content report (exit 2 instead of 1);
   - an unclassified stage.
+
+**What H1 measured that H2 must start from (2026-10-09, on `3449378b`):**
+- **Where the verdict lives.** `run_all.py` `run_all()` ends with `all_ok = (unit_ok and dna_ok and … and not
+  failed_stages and not ledger_failures)` and returns 0 or 1 (around line 1236–1255). `failed_stages` is read from
+  the stage ledger; the per-validator `*_ok` flags are older. The ledger has 18 scheduled stages: `unit_tests`,
+  `dna`, `compatibility`, `interest_invariance`, `vocabulary`, `behavioural_matrix`, `capability_phase1`,
+  `count_noun_1J`, `option_degeneracy_1K`, `dangling_reference_1M`, `variant_exhibit_2L`, `render_contract_9`,
+  `grading_contract_10`, `assertion_coverage_8`, `obligation_manifest_11`, `census_7` (phase 1) and
+  `judgment_reviews_5`, `capability_phase2` (phase 2).
+- **Stages mix the two kinds.** A content check stage can also fail for an integrity reason (a crash, a stale
+  artifact, a floor), and `unit_tests` holds both harness tests and tree-wide content tests such as
+  `test_hint_contract.py`. So classify at the level of the **finding label** each stage prints (`FAIL <label>` /
+  `REPORT <label>`), keep a registry of labels → integrity | content, and fail integrity on any label the registry
+  does not name, in both directions. Ruling 27 and `CLAUDE.md` define integrity: a stage crashed or never ran, a
+  mutation SURVIVED or is INVALID, or the tree is stale. How to classify a failing *unit test* is not settled by
+  any ruling. Propose a rule, measure it, and **stop and ask** the owner before landing it.
+- **`stage_failure_reaches_verdict`'s NAMED LIMIT is H2's to close.** It sees only stages that return False. §2L
+  prints its findings under `REPORT` and returns True on purpose; under H2 its two labels
+  (`variant_not_exhibited_2L`, `attester_packet_refused_2L`) become content findings that set exit 2, and the
+  `report_only` path in `validate_exhibit.validate_all` goes away. Update §2L's contract row in the same commit.
+- **Why the 3 §6F mutations are INVALID.** All three (`contradicted_attestation`, `attestation_drops_options`,
+  `attestation_leaks_into_phase1`) run the whole module `-m backend.app.practice_gen.validation.validate_capability`,
+  which exits 1 at baseline on the 78 CONTRADICTED. The module's CLI has only `--phase`, no lc scope. A fix is to
+  give it an lc-scoped mode (as `validate_exhibit --node-ids` has), plant on an lc with no CONTRADICTED finding,
+  and require the planted finding by name (markers). Prove each DETECTED and `phase1_admissible` (memory: proof
+  admissible, not just detected), and check `mutation_proof_integrity_8` and `assertion_coverage_8` go green.
+- Expected result once H2 lands on today's tree: `run_all` **exit 2**, not 0. The content findings (752, 78, 420,
+  61) remain, and that is correct.
 
 ### H3: field domains and the domain check (ruling 24, deterministic half)
 
@@ -332,8 +360,9 @@ Only after H3, H4 and H5 are each mutation-proven:
 The old P4-0 to P4-7 content batches and the Phase 5 judgment queue are kept for reference in the Phase 3
 evidence entry and the plan doc. They are generator work and are owed under Content Rule 4 once the pipeline is
 hardened. This includes:
-- the 9 `needs_instrumentation` lcs;
-- the 8 refused lcs;
+- §2L's 420 non-exhibited variant values (by class: what to build or undeclare) and its 61 packet refusals:
+  20 `needs_instrumentation` lcs and 41 capabilities over 28 lcs refused by `provider_variant_stratification_6F`
+  (tree-wide counts; the old "9" and "8" were only inside the CONTRADICTED queue);
 - the interactive draw and manipulative formatters;
 - range and scope gaps.
 Do not start them in a Phase 2 session.
@@ -386,6 +415,39 @@ for i in 0 1 2 3 4 5; do PYTHONPATH=. .venv/bin/python -m tests.obligation_execu
 PYTHONPATH=. .venv/bin/python -m tests.obligation_executor --tier verify-release
 PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.run_all > run_all.log 2>&1; echo "EXIT $?"
 ```
+
+**Run it detached, not as a session background task.** In H1 the session ended mid-corpus and killed the
+chain with it (about an hour lost). Write the steps into a script under `local_only/scratch/<batch>/` and start
+it with `nohup zsh chain.sh > chain.nohup 2>&1 &`, so it survives the session. H1's script, which wrote one log per
+step and a `progress.log` of `START`/`END <step> EXIT <rc>` lines, was:
+
+```sh
+#!/bin/zsh
+cd <repo root>; L=local_only/scratch/<batch>/chain; mkdir -p $L; export PYTHONPATH=.
+step() { local name=$1; shift; echo "START $name $(date +%H:%M:%S)" >> $L/progress.log
+  "$@" > $L/$name.log 2>&1; local rc=$?; echo "END $name EXIT $rc $(date +%H:%M:%S)" >> $L/progress.log; }
+step regen .venv/bin/python -m scripts.regen_formatter_exclusions
+step benchmark .venv/bin/python -m tests.obligation_executor --tier benchmark --sample-size 1000
+step frontend env DATABASE_URL= .venv/bin/python tests/frontend_suite.py
+step corpus .venv/bin/python tests/mutation_harness.py
+git grep -n "planted mutation" -- backend scripts frontend/src data > $L/escaped_plants.log 2>&1
+echo "escaped-plant grep lines: $(wc -l < $L/escaped_plants.log)" >> $L/progress.log
+for i in 0 1 2 3 4 5; do step shard$i .venv/bin/python -m tests.obligation_executor --tier release --shard-count 6 --shard-index $i; done
+step verify .venv/bin/python -m tests.obligation_executor --tier verify-release
+step run_all .venv/bin/python -m backend.app.practice_gen.validation.run_all
+echo "CHAIN DONE $(date +%H:%M:%S)" >> $L/progress.log
+```
+
+Measured durations in H1: regen + benchmark + frontend under 1 min, corpus about 63 min (211 mutations), each
+shard 24–27 min, run_all about 48 min (its unit_tests stage alone is about 24 min), so about 4.5 h in all.
+The escaped-plant grep's one expected line is the comment at `validate_coverage.py:456`; anything else is a
+plant that escaped.
+
+**If a chain is interrupted:** check that no chain process is running (`pgrep -f chain.sh`, `pgrep -f mutation_harness`), that
+there is no `MUTATION_IN_FLIGHT` marker, that `tests.mutation_harness.recover_orphaned_mutation()` returns False, that
+`git status` shows no tracked source change and that the escaped-plant grep is at baseline. Then purge
+`__pycache__` (memory: planted bytecode outlives restore) and resume at the first step whose artifact
+`tree_state.py` reports stale.
 
 - Any edit made mid-chain stales the whole chain. Stop, commit, and restart from the benchmark.
 - Until H2 lands, expect exactly 3 INVALID. Any other INVALID means a red baseline: run that mutation's own
