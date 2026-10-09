@@ -16,7 +16,8 @@ generator agents can find and fix every generator error from its output alone. C
   lc, seed and what to build) or 1 (integrity failure) (ruling 27);
 - the tree is CERTIFIED.
 
-Content findings (the 78 CONTRADICTED, 752 judgment, 545 variant findings) are the **generators' work queue**.
+Content findings (the 78 CONTRADICTED, 752 judgment, and §2L's 420 variant + 61 packet-refusal findings) are the
+**generators' work queue**.
 They are not a Phase 2 blocker, and you do not fix them.
 
 **Terminology.** The harness calls `mat_g3_dp_q3_4` a "node". `CLAUDE.md` calls it an **lc**, and a node is
@@ -54,23 +55,37 @@ INTERRUPTED, and re-measures every number it publishes.
 
 ---
 
-## 1. State at handoff (2026-10-08; re-measure before quoting)
+## 1. State at handoff (2026-10-09, after H1; re-measure before quoting)
 
 ```
-HEAD                origin/main, the commit that records rulings 23-26 (after 3f532aee); worktree clean
-source              9c4e036e, unchanged since Phase 2a (Phase 3 and this commit changed no source or test)
+HEAD                origin/main at the H-06 release commit after H1 (see git log); worktree clean
+source              3449378b (H1: f7723703 + the refusal-naming fix); chain artifacts b2550cbb
 H-06 lock           RELEASED; claim it (owner line only, numstat 1 1) before any work
-tree_state          CERTIFIED, digest 0acfacdb145cd162 (207 proofs, 6 shards, benchmark, frontend fresh)
-run_all             last full run 2026-10-07 on 9c4e036e: EXIT 1, failed=3
+tree_state          CERTIFIED, digest 4d314664a4ff03b4 (211 proofs, 6 shards, benchmark, frontend fresh)
+run_all             2026-10-09 on 3449378b: EXIT 1, scheduled=18 completed=15 failed=3 crashed=0
                       assertion_coverage_8  the 3 §6F mutations INVALID (their baseline is red)
                       judgment_reviews_5    752   (content queue; retired as a gate by ruling 25, see H6)
                       capability_phase2     78 CONTRADICTED over 42 lcs (content queue; see H6)
-queue snippet (§4)  78 42 33 55  (measured 2026-10-08)
-variant exhibit     973 declared (lc, axis, value) pairs; 545 never exhibited at 8 seeds, over 121 lcs and
-                    70 (DNA, axis) groups (measured 2026-10-08)
-unit suite          1034 passed, 1 skipped (fast suite ~22 min)
+                      variant_exhibit_2L    PASS (report-only until H2); prints the §2L queue below
+queue snippet (§4)  78 42 33 55  (measured 2026-10-09)
+§2L (H1, landed)    973 declared pairs at 8 seeds: 428 recorded, 125 exhibited by render only, 420 not exhibited
+                    (A clamp 1, B substituted 90, D no-op/alias 291, E default-only 38, R 0);
+                    151 attester packets built, 61 refusals = 20 needs_instrumentation lcs (node-wide)
+                    + 41 capabilities over 28 lcs (provider_variant_stratification_6F)
+unit suite          1049 passed, 1 skipped (fast suite ~24 min)
+mutations           211; corpus 208/211, misses = the 3 §6F INVALIDs only
 latest attestation  batch440 (next free prefix: batch441)
 ```
+
+Corrections to the previous version of this file, measured 2026-10-09:
+- It said HEAD was "the commit that records rulings 23-26". That commit did not exist; the rulings, the new
+  Definition of Done and the 973/545 entry were uncommitted. H1 committed them as `0c8199b3`.
+- Its "9" needs_instrumentation and "8" stratification-refused counts were inside the CONTRADICTED queue only.
+  Tree-wide the counts are 20 lcs and 28 lcs (41 capabilities).
+- §2's 545 split (277 / 116 / 113 / 38 / 1) was the 2026-10-08 prototype. Its B=116 over-reported: 26 of those
+  record the value in another encoding (`scale_10` as `10`, `square_cm` as `'sq cm'`). §2L's classes above
+  replace it. The census still counts 973 variant candidates. The §4 measure script printed `not exhibited 545` at H1's
+  Phase 0; that script counts "not recorded", and 125 of those 545 change the render, so §2L counts them as exhibited.
 
 The three §6F INVALIDs exist because a content queue currently sits inside a gate's baseline. Under ruling 23
 that is a pipeline defect: a check cannot be proven while its baseline is red (Mandate 5). The run_all split
@@ -163,7 +178,14 @@ PY
 The variant-exhibit measurement is quoted in full in the evidence entry "Declared variants that are never
 exhibited". It takes about 55 s.
 
-### H1: variant exhibit check (ruling 26; Mandate 3, so it comes first)
+### H1: variant exhibit check (ruling 26; Mandate 3, so it comes first) -- DONE 2026-10-09
+
+**Landed** as §2L (`validate_exhibit.py`, stage `variant_exhibit_2L`, contract row §2L, evidence entry
+"H1: §2L declared variants must reach the render"). Criterion (b) is "differs from EVERY sibling", not any
+(measured: "any" certifies 8 recorded substitutions). Report-only until H2: H2 must route `variant_not_exhibited_2L`
+and `attester_packet_refused_2L` to exit 2. Also landed: `stage_failure_reaches_verdict` (run_all's verdict
+reads every failed stage from the ledger; `dangling_reference_1M` had been left out). Its NAMED LIMIT is H2's:
+a stage that prints FAIL but returns True (as §2L does now) is not seen. The text below is the original brief.
 
 **Build** a validator that proves every declared `(lc, axis, value)` from
 `judgment_packets._variant_coverage_candidates` reaches the render. Requesting the value at a seed must do one of
@@ -392,4 +414,4 @@ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.run_all > r
 
 **A good session** lands one H-batch completely: the check is built, its mutation is DETECTED by name, its
 contract row and NAMED LIMITS are written, and the chain has run once with the tree CERTIFIED. It quotes every
-number from a command run in that session and does not touch generator content. **H1 is the next batch.**
+number from a command run in that session and does not touch generator content. **H1 is done (2026-10-09); H2 is the next batch.**

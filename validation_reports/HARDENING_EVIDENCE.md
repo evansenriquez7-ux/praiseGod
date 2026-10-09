@@ -18978,3 +18978,178 @@ NAMED LIMITS:
 - "Exhibited" means recorded in `_provider_variant_evidence`. Class C shows that an unrecorded variant can still
   change the render, so the exhibit check must accept either recorded evidence or a proven render change.
 - The A–E classification was not re-run for this entry; only the 973/545 count was.
+
+## 2026-10-09 — H1: §2L declared variants must reach the render (ruling 26), and a verdict hole in run_all
+
+Author: Claude Opus 5.5 (no LLM judges dispatched this session). Source commits `f7723703` (H1) and `3449378b` (refusal-naming fix found by the first chain); chain artifacts `b2550cbb`. Terminology:
+"node" ids below are lcs. No generator content changed.
+
+### Phase 0
+
+The handoff's "rulings 23–26 commit" did not exist: rulings 23–29, the new Definition of Done, the judge
+section and the 973/545 entry were uncommitted. Committed by name as `0c8199b3` (docs only; the Graphify
+pre-commit hook added its `graphify-out/` refresh). Then:
+
+```text
+$ PYTHONPATH=. .venv/bin/python tests/tree_state.py
+PASS tree_state: CERTIFIED
+  live input digest : 0acfacdb145cd162
+$ git diff --numstat validation_reports/phase2_hardening/hardening_status.json
+1	1	validation_reports/phase2_hardening/hardening_status.json      (claimed, bcf2b283)
+$ PYTHONPATH=. .venv/bin/python local_only/scratch/h1/queue.py          (the §4 snippet)
+78 42 33 55
+$ PYTHONPATH=. .venv/bin/python local_only/scratch/p40/measure_noop_variants.py
+candidates 973 not exhibited 545
+{'absent': 428, 'other-value': 117}
+```
+
+### §2L — what it proves
+
+`backend/app/practice_gen/validation/validate_exhibit.py`. For every `(axis, value)` from
+`judgment_packets._variant_coverage_candidates`, requested on the student path at 8 seeds
+(`10_000 + 7919k`), the pair is exhibited when (a) `given_values` record it (matched by
+`tests.attester_packets._matching_variant_evidence`), or (b) the render (question text, answer, options, cloze
+text, visual type, visual payload) differs from the render under EVERY sibling value; for a one-value axis,
+from the unrequested default.
+
+**Every, not any — decided by measurement.** Prototype over the tree (59 s):
+
+```text
+candidates 973 evidence-exhibited 428 no evidence 545
+  ('absent', '-', '-') 312         ('other', '-', '-') 83
+  ('absent', 'any', '-') 17        ('other', 'any', '-') 8
+  ('absent', 'any', 'every') 99    ('other', 'any', 'every') 26
+```
+
+The 8 `('other', 'any', '-')` are recorded substitutions an any-rule would certify, e.g. `mat_g1_mg_q1_0`
+`shape_set='composite_figures'` records `basic_triangles_rectangles_squares` and renders identically to it.
+The 26 `('other', 'any', 'every')` are encodings, not substitutions (`scale='scale_10'` recorded as `10`,
+`unit='square_cm'` as `'sq cm'`, `blank_position='end'` as `'result'`, umbrella task types). The 2026-10-08
+classification counted them as B, so its B=116 over-reported. The 17 any-only absent pairs are aliases
+(`give_money` ≡ `make_change` on 6 money lcs; `mat_g1_mg_q4_4` precision `half_hour` ≡ `hour`,
+`five_minutes` ≡ `one_minute` ≡ `quarter_hour`).
+
+**Packet fold-in.** The same stage calls `tests.attester_packets.build` per lc. `PacketRefusal(RuntimeError)`,
+typed with a `label` and a `node_wide` flag, now marks the three content refusals: provider-variant stratification, the
+needs_instrumentation refusal, and a clause selector no seed matches. That last one was a plain `RuntimeError`
+until this session, found while diagnosing a mutation. Any other builder exception crashes the stage. A
+refused lc is rebuilt per capability, so every refusing capability is named. Only the needs_instrumentation
+refusal is `node_wide=True` (named once per lc); the other two are named per capability.
+
+### Baseline (full tree, 5 min 33 s)
+
+```text
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_exhibit > exhibit_full.log 2>&1; echo "EXIT $?"
+EXIT 1
+  FAIL variant_not_exhibited_2L (420):
+  FAIL attester_packet_refused_2L (61):
+  §2L: 973 declared pair(s) at 8 seeds; 428 recorded, 125 exhibited by render only, 420 not exhibited {'A': 1, 'B': 90, 'D': 291, 'E': 38}; 151 Attester packet(s) built, 61 refusal(s)
+```
+
+The 61 refusals are 20 needs_instrumentation lcs plus 41 capabilities over 28 lcs with
+`provider_variant_stratification_6F`. The handoff's "9" and "8" counted only lcs inside the CONTRADICTED
+queue; these are tree-wide. All 481 findings are the generator work queue. **Report-only in `run_all` until
+H2:** the stage prints them under `REPORT` and returns True; the module CLI exits 1.
+
+### A verdict hole in run_all (Mandate 3), found while wiring the stage
+
+The late-stage loop routed each result to a flag by stage name, with census_7's catch-all `else`.
+`dangling_reference_1M` had no branch. Probe, using the unit suite's own `stubbed_harness`:
+
+```text
+EXIT_CODE 0 | FAIL dangling stage in ledger: True
+E       assert 0 == 1
+```
+
+So with §1M failing and every other stage green, `run_all(phase=1)` returned 0. Fixed structurally: the
+verdict reads every in-scope `failed` stage from the ledger (`stage_failure_reaches_verdict`). The test
+captures the schedule from `run_all` itself and fails each stage in turn, at `phase=1` and `phase=None`.
+
+### Mutations (dev loop, each alone)
+
+| mutation | plant | command | result |
+|---|---|---|---|
+| `dna_ignores_a_declared_variant` | `probability_experiment` pins `exp_type = "coin_toss"` | `validate_exhibit --node-ids mat_g3_dp_q3_0` | DETECTED, exit 1, 4/4 markers (class B `die_roll`, `provider_variant_stratification_6F`), phase1_admissible true |
+| `dna_ignores_an_unrecorded_variant` | `bar_graphs` pins `scale = 5` | `validate_exhibit --node-ids mat_g3_dp_q3_1` | DETECTED, exit 1 (`FAIL variant_not_exhibited_2L (3)`) |
+| `refused_capability_goes_unnamed` | `if refusal.node_wide:` -> `if True:` | `pytest tests/unit/test_validate_exhibit.py -k refused` | DETECTED |
+| `failed_stage_left_out_of_the_verdict` | drop `and not failed_stages` | `pytest tests/unit/test_stage_ledger.py -k TestStageFailureReachesVerdict` | DETECTED |
+
+Diagnosed on the way (Mandate 2): the first anchor, `rounding` ignoring `precision`, exited 1 but SURVIVED on
+markers. Run by hand, `rounding` never records `precision` (exhibited by render only, so a plant yields class
+D, not B), and its "ten, hundred, or thousand" capability is an enumeration whose packet strata come from
+default-path selectors, which the plant does not touch. Replaced by `probability_experiment`, whose
+`experiment_type` is recorded and is a non-enumeration provider variant. Pinned to a constant, not the seeded
+random choice: a random pick records the requested value at some seed by chance.
+
+### Refusals were deduplicated by message text (found by the first chain, fixed in `3449378b`)
+
+The first chain's run_all (on `f7723703`) printed `151 Attester packet(s) built, 54 refusal(s)`; the standalone
+CLI had printed 61 before that commit added a dedup. Cause: that dedup keyed findings on message text, and a provider-variant refusal's text names the lc and the variant, not the capability. Two
+capabilities refused for the same variant (e.g. both on `('context', 'word_problem')`) collapsed into one, so 7 of
+41 refused capabilities went unnamed while the contract row said every one is named. After the fix both the CLI and run_all read 61. Fixed with
+the typed `node_wide` flag; two unit tests pin both directions, and `refused_capability_goes_unnamed` plants the
+old behaviour.
+
+### Unit suite (on `3449378b`)
+
+```text
+$ PYTHONPATH=. .venv/bin/python -m pytest tests/unit -m "not slow" -q -p no:cacheprovider
+1049 passed, 1 skipped, 2 deselected, 4 warnings in 1419.42s (0:23:39)
+(run_all's own unit_tests stage, second chain: 1049 passed, 1 skipped, 2 deselected, 4 warnings in 1413.71s (0:23:33))
+```
+
+### Chain
+
+Each step alone, detached (`nohup`), one log per step (`local_only/scratch/h1/chain*/`).
+
+- **Chain 1, on `f7723703`** (2026-10-09 01:07-05:31): regen, benchmark, frontend EXIT 0; corpus 207/210
+  (only the three §6F INVALIDs); escaped-plant grep 1 line (the benign `validate_coverage.py:456` comment); six
+  shards and verify-release EXIT 0; run_all EXIT 1, failed=3. Superseded: its run_all exposed the refusal dedup
+  above, so the source moved and the chain was owed again.
+- **Chain 2, on `3449378b`** began 06:04 (regen, benchmark `failures=0 recommended_shards=6`, frontend `34 real
+  payloads; 18 production visual types`, all EXIT 0) and was killed when the session ended during corpus mutation
+  38 (`attestation_option_drift`). Verified clean before resuming: no processes, no `MUTATION_IN_FLIGHT` marker,
+  `recover_orphaned_mutation()` returned False, no tracked source modified, escaped-plant grep baseline only,
+  pycache purged; `tree_state` honestly INTERRUPTED at digest `4d314664a4ff03b4` (benchmark and frontend fresh,
+  proofs and shards stale).
+- **Chain 2 resumed** from the corpus (12:03-16:26):
+
+```text
+END corpus EXIT 1 13:06:08          208/211 mutations detected.  (misses: contradicted_attestation,
+                                    attestation_drops_options, attestation_leaks_into_phase1 -- all INVALID,
+                                    baseline exits 1 on the 78 CONTRADICTED queue)
+                                    PASS dna_ignores_a_declared_variant / refused_capability_goes_unnamed /
+                                    dna_ignores_an_unrecorded_variant / failed_stage_left_out_of_the_verdict
+escaped-plant grep lines: 1         backend/app/practice_gen/validation/validate_coverage.py:456 (comment)
+END shard0..shard5 EXIT 0           each failures=0; worst elapsed=1629.230s
+END verify EXIT 0                   release_status=complete receipts=6 complete=True
+END run_all EXIT 1 16:26:32         scheduled=18 completed=15 failed=3 crashed=0 not_run=0 incomplete=0
+                                    PASS stage_ledger_complete
+  PASS variant_exhibit_2L phase 1 331.2s
+  §2L: 973 declared pair(s) at 8 seeds; 428 recorded, 125 exhibited by render only, 420 not exhibited
+       {'A': 1, 'B': 90, 'D': 291, 'E': 38}; 151 Attester packet(s) built, 61 refusal(s)
+  FAIL assertion_coverage_8 (3)     the 3 §6F INVALIDs (mutation_proof_integrity_8: 9 in 3 families, same cause)
+  FAIL judgment_reviews_5 (752)     content queue
+  FAIL capability_phase2 (78 CONTRADICTED)   content queue
+  PASS census: unit_tests=1050 mutations=211 variant_candidates=973
+```
+
+run_all's exit 1 is read per the Definition of Done's pre-H2 rule: integrity from the stage ledger (crashed=0,
+not_run=0, ledger complete) and the mutation table (every miss is one of the three known §6F INVALIDs); the
+other two failures are content. Artifacts committed by name as `b2550cbb`; `tree_state.py --complete` closed the
+chain intent.
+
+NAMED LIMITS (§2L; also in its docstring and contract row):
+1. 8 seeds per pair.
+2. (a) trusts `given_values`: a DNA that records a value and then ignores it passes.
+3. (b) diffs only the six signature fields. A value that changes only hints or interaction mode reads as
+   identical; one that perturbs the random stream without semantic effect reads as honoured.
+4. Class E is undecidable by construction.
+5. One class per pair, in the order A, B, E, D.
+6. The packet fold-in inherits the builder's limits, and its Node static renderer is a child process the
+   Phase 1 socket guard does not see.
+7. Report-only until H2.
+
+NAMED LIMIT (`stage_failure_reaches_verdict`): it covers stages that RETURN False. A stage that prints FAIL
+and returns True (as §2L deliberately does until H2) is not seen; H2's integrity/content classification owns
+that.
