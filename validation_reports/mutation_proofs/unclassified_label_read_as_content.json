@@ -1,0 +1,46 @@
+{
+ "asserts": [
+  "finding_label_unclassified"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "test_an_unclassified_printed_label_is_integrity"
+ ],
+ "command": [
+  "pytest",
+  "tests/unit/test_verdict.py",
+  "-q",
+  "-p",
+  "no:cacheprovider"
+ ],
+ "definition_digest": "19931017bc0fa39547118cb5a2ba4bf3dc444c4751ef794f03c0e0b05f1cb455",
+ "detected": true,
+ "diagnostic_line": "exit 1 — =================================== FAILURES ===================================",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "test_an_unclassified_printed_label_is_integrity"
+ ],
+ "expected_check": "run_all verdict (an unclassified label is integrity)",
+ "finished_at": "2026-10-10T01:24:12+08:00",
+ "input_digest": "55b2ad6dd11d37fa10eea4f0f3846c9320fee2d910978495848b2855d5399234",
+ "mutated_paths": [
+  "backend/app/practice_gen/validation/run_all.py"
+ ],
+ "mutation": "unclassified_label_read_as_content",
+ "observed_markers": {
+  "test_an_unclassified_printed_label_is_integrity": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-10-10T01:23:20+08:00"
+}

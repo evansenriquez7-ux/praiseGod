@@ -2,17 +2,21 @@
  "asserts": [
   "capability_attestation_options_recorded_6F"
  ],
- "baseline_exit": 1,
+ "baseline_exit": 0,
  "baseline_markers_already_present": [],
  "baseline_must_not_contain": [
   "mat_g2_na_q3_8 && records no 'options' at seed"
  ],
  "command": [
-  "backend.app.practice_gen.validation.validate_capability"
+  "backend.app.practice_gen.validation.validate_capability",
+  "--phase",
+  "2",
+  "--node-ids",
+  "mat_g2_na_q3_8"
  ],
- "definition_digest": "d8d31cecd36d1b151e79636565d09a3565b08bed4ca6ec64102ca37f1749d364",
- "detected": false,
- "diagnostic_line": "INVALID — the unmutated command baseline exited 1; this mutation cannot distinguish the planted bug from a pre-existing failure.",
+ "definition_digest": "05b82c685087b6cbc27be5d6b5482629f0e5d2eff70cf3b477757be5bc2a5f72",
+ "detected": true,
+ "diagnostic_line": "exit 1 — Capability contract: 1 failure(s) (0 Phase 1 / artifact-free, floor 5; 1 Phase 2 / attestation).",
  "environment": {
   "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
   "machine": "x86_64",
@@ -24,15 +28,19 @@
   "mat_g2_na_q3_8 && records no 'options' at seed"
  ],
  "expected_check": "§6F adjudicability (an attestation must carry the choices it was shown)",
- "finished_at": "2026-10-09T12:26:25+08:00",
- "input_digest": "4d314664a4ff03b40ef7a03aac3dba6003a48daf983e37aaddfd1f5a4d0b092a",
- "mutated_paths": [],
+ "finished_at": "2026-10-10T00:45:32+08:00",
+ "input_digest": "55b2ad6dd11d37fa10eea4f0f3846c9320fee2d910978495848b2855d5399234",
+ "mutated_paths": [
+  "backend/app/practice_gen/formatters/textual/fmt_true_false.py"
+ ],
  "mutation": "attestation_drops_options",
- "observed_markers": {},
+ "observed_markers": {
+  "mat_g2_na_q3_8 && records no 'options' at seed": true
+ },
  "paths_outside_input_set": [],
  "phase1_admissible": true,
- "planted_exit": null,
+ "planted_exit": 1,
  "restored_clean": true,
  "schema_version": 1,
- "started_at": "2026-10-09T12:25:43+08:00"
+ "started_at": "2026-10-10T00:45:30+08:00"
 }

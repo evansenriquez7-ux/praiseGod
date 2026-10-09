@@ -1,0 +1,48 @@
+{
+ "asserts": [
+  "verdict_integrity_exits_1"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "verdict_integrity_exits_1: these INTEGRITY labels"
+ ],
+ "command": [
+  "pytest",
+  "tests/unit/test_verdict.py",
+  "-q",
+  "-p",
+  "no:cacheprovider",
+  "-k",
+  "test_verdict_integrity_exits_1"
+ ],
+ "definition_digest": "15a3c3a2caa285b1e137b6865117e59a7781284013917d16b74e31d75522eaff",
+ "detected": true,
+ "diagnostic_line": "exit 1 — =================================== FAILURES ===================================",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "verdict_integrity_exits_1: these INTEGRITY labels"
+ ],
+ "expected_check": "run_all verdict (an integrity finding exits 1 whatever the content)",
+ "finished_at": "2026-10-10T01:23:20+08:00",
+ "input_digest": "55b2ad6dd11d37fa10eea4f0f3846c9320fee2d910978495848b2855d5399234",
+ "mutated_paths": [
+  "backend/app/practice_gen/validation/run_all.py"
+ ],
+ "mutation": "verdict_integrity_hidden_by_content",
+ "observed_markers": {
+  "verdict_integrity_exits_1: these INTEGRITY labels": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-10-10T01:23:01+08:00"
+}

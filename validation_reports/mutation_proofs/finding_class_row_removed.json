@@ -1,0 +1,50 @@
+{
+ "asserts": [
+  "finding_class_registry_complete"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "finding_class_registry_complete: FINDING_CLASS and the §8"
+ ],
+ "command": [
+  "pytest",
+  "tests/unit/test_verdict.py",
+  "-q",
+  "-p",
+  "no:cacheprovider",
+  "-k",
+  "test_finding_class_registry_complete"
+ ],
+ "definition_digest": "393e9843350d362cfed4a5437e85af3f35bc349dbf2d727d60f0c87441d39397",
+ "detected": true,
+ "diagnostic_line": "exit 1 — =================================== FAILURES ===================================",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "finding_class_registry_complete: FINDING_CLASS and the §8",
+  "attester_packet_refused_2L"
+ ],
+ "expected_check": "FINDING_CLASS covers every emitted label",
+ "finished_at": "2026-10-10T01:24:14+08:00",
+ "input_digest": "55b2ad6dd11d37fa10eea4f0f3846c9320fee2d910978495848b2855d5399234",
+ "mutated_paths": [
+  "backend/app/practice_gen/validation/_manifest.py"
+ ],
+ "mutation": "finding_class_row_removed",
+ "observed_markers": {
+  "attester_packet_refused_2L": true,
+  "finding_class_registry_complete: FINDING_CLASS and the §8": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-10-10T01:24:12+08:00"
+}
