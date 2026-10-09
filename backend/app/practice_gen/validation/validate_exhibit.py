@@ -80,10 +80,12 @@ NAMED LIMITS (Scaling Mandate 6; also in docs/pgen_contract.md §2L and the evid
 6. The packet fold-in inherits every limit of `tests.attester_packets.build`; its visual
    descriptions are produced by a Node child process the Phase 1 socket guard does not
    see.
-7. Report-only inside `run_all` until the exit-code split (NEXT_AGENT_PROMPT H2) lands:
-   the stage prints every finding but does not turn run_all red, because its baseline is
-   red (Mandate 5). This module's own CLI exits 1 on any finding, and that is the path the
-   mutations prove, on a node whose baseline is clean.
+7. CLOSED 2026-10-09 (H2, owner ruling 27): no longer report-only. Both labels are
+   CONTENT in `_manifest.FINDING_CLASS`, so a §2L finding makes `run_all` exit 2, not 1.
+   This module's own CLI still exits 1 on any finding (it has one kind), and the
+   mutations prove that path on nodes whose baseline is clean. What remains: a finding
+   here never turns `run_all` to exit 1, so a harness defect that surfaces only as §2L
+   findings would read as generator work (the registry's named limit).
 """
 
 from __future__ import annotations
@@ -326,20 +328,22 @@ def collect_findings(node_ids: Optional[List[str]] = None) -> Tuple[Dict[str, Li
     return out, dict(stats)
 
 
-def validate_all(node_ids: Optional[List[str]] = None, report_only: bool = False) -> bool:
+def validate_all(node_ids: Optional[List[str]] = None) -> bool:
     """
-    Print every finding. Returns False on any finding -- unless `report_only`, which is
-    run_all's stage until H2 lands (limitation 7): there the findings are printed under
-    REPORT rather than FAIL and the return is True.
+    Print every finding under `  FAIL <label>`. Returns False on any finding.
+
+    Both labels are CONTENT in `_manifest.FINDING_CLASS`, so in run_all a §2L finding
+    sets exit 2 (the generator work queue), not exit 1. Until H2 (owner ruling 27) the
+    stage ran this `report_only`, printing REPORT and returning True, because run_all had
+    one exit code and the §2L baseline is the queue (Mandate 5); that path is gone.
     """
     findings, stats = collect_findings(node_ids)
-    word = "REPORT" if report_only else "FAIL"
     total = 0
     for label in ASSERTIONS:
         items = findings[label]
         total += len(items)
         if items:
-            print(f"  {word} {label} ({len(items)}):")
+            print(f"  FAIL {label} ({len(items)}):")
             for item in items:
                 print(f"    - {item}")
         else:
@@ -351,10 +355,7 @@ def validate_all(node_ids: Optional[List[str]] = None, report_only: bool = False
           f"{len(findings['variant_not_exhibited_2L'])} not exhibited {classes}; "
           f"{stats.get('packet_nodes', 0)} Attester packet(s) built, "
           f"{stats.get('packet_refusals', 0)} refusal(s)")
-    if report_only and total:
-        print(f"  §2L is REPORT-ONLY until the run_all exit-code split (H2): {total} content "
-              f"finding(s) above are the generator work queue and do not turn this run red.")
-    return report_only or total == 0
+    return total == 0
 
 
 def main() -> int:

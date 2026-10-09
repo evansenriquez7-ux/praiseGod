@@ -664,6 +664,13 @@ def verify_discrete_dimension(problem: Dict[str, Any], axis_name: str, option_va
 # union rather than sharing state.
 LAST_EXECUTED_CHECKS: Set[str] = set()
 
+# Every failure the last run_matrix_validation() observed, each its finding dict plus
+# `node_id`. run_all classifies the matrix stage from these (owner ruling 27, H2): the
+# `check` field is the assertion label, read as data rather than parsed back out of the
+# printed `[dna / formatter] check (seed N)` line. Rebound, never mutated in place, at the
+# start of every run.
+LAST_FAILURES: List[Dict[str, Any]] = []
+
 # node_id -> sorted list of §-refs that node actually exercised (written to the
 # JSON report alongside the failures).
 _EXECUTED_BY_NODE: Dict[str, List[str]] = {}
@@ -2071,8 +2078,9 @@ def run_matrix_validation(node: Optional[str] = None, fail_fast: bool = False, w
     print(f"STARTING BEHAVIORAL MATRIX VALIDATION OVER {len(node_ids)} NODES")
     print("======================================================================\n")
 
-    global LAST_EXECUTED_CHECKS
+    global LAST_EXECUTED_CHECKS, LAST_FAILURES
     LAST_EXECUTED_CHECKS = set()
+    LAST_FAILURES = []
     _EXECUTED_BY_NODE.clear()
 
     report: Dict[str, list] = {}
@@ -2102,6 +2110,7 @@ def run_matrix_validation(node: Optional[str] = None, fail_fast: bool = False, w
             print(f"[{idx}/{len(node_ids)}] Checking {node_id} ...", end="", flush=True)
             node_failures, node_executed = run_matrix_for_node(node_id, fail_fast)
             LAST_EXECUTED_CHECKS |= node_executed
+            LAST_FAILURES.extend({**f, "node_id": node_id} for f in node_failures)
             _record(report, node_id, node_failures, node_executed)
             if node_failures:
                 print("  FAIL")
@@ -2157,6 +2166,7 @@ def run_matrix_validation(node: Optional[str] = None, fail_fast: bool = False, w
                 pending.discard(node_id)
                 completed += 1
                 LAST_EXECUTED_CHECKS |= node_executed
+                LAST_FAILURES.extend({**f, "node_id": node_id} for f in node_failures)
                 _record(report, node_id, node_failures, node_executed)
                 if node_failures:
                     print(f"[{completed}/{len(node_ids)}] {node_id}  FAIL ({len(node_failures)} failures)")

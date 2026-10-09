@@ -170,6 +170,7 @@ def stubbed_harness(monkeypatch):
                         {"§1A", "§1A-reach", "§1B", "§1C", "§1C-reverse", "§1C-coverage",
                          "§1D", "§1E", "§1F", "§1G", "§1I", "§4"})
     monkeypatch.setattr(ra.validate_matrix, "_EXECUTED_BY_NODE", {})
+    monkeypatch.setattr(ra.validate_matrix, "LAST_FAILURES", [])
     monkeypatch.setattr(ra.validate_matrix, "applicability_failures", lambda *a, **k: [])
     monkeypatch.setattr(ra.validate_matrix, "coverage_regressions", lambda *a, **k: [])
     monkeypatch.setattr(ra.validate_dna, "validate_all_dnas", lambda: {})
@@ -179,6 +180,9 @@ def stubbed_harness(monkeypatch):
     monkeypatch.setattr(ra.validate_vocab, "run_all_vocab_audits",
                         lambda **kw: {"n": {"pass_rate": 1.0, "violations": []}})
     monkeypatch.setattr(ra.validate_capability, "validate_capability_provision", lambda: [])
+    # run_all reads §6 through the TAGGED API since H2 (owner ruling 27).
+    monkeypatch.setattr(ra.validate_capability, "provision_findings_tagged",
+                        lambda node_ids=None: [])
     monkeypatch.setattr(ra.validate_language, "validate_all", lambda: True)
     monkeypatch.setattr(ra.validate_reference, "validate_all", lambda: True)
     monkeypatch.setattr(ra.validate_exhibit, "validate_all", lambda **kw: True)
@@ -194,6 +198,8 @@ def stubbed_harness(monkeypatch):
     monkeypatch.setattr(ra.validate_judgment, "summarize_verdicts",
                         lambda: {"reviewed": 0, "PASS": 0, "CONCERN": 0, "FAIL": 0})
     monkeypatch.setattr(ra.validate_capability, "validate_capability_attestation", lambda: [])
+    monkeypatch.setattr(ra.validate_capability, "attestation_findings_tagged",
+                        lambda node_ids=None: [])
     return monkeypatch
 
 
@@ -218,7 +224,7 @@ class TestCrashIsolationEndToEnd:
         assert "Assertion Coverage" in out, "§8 runs after the crash"
         assert "Suite Census" in out, "§7 runs after the crash"
         assert "Two-Direction Contract Verification" in out
-        assert "CHECKS FAILED" in out, "the summary must still be printed"
+        assert "INTEGRITY FAILURE (exit 1)" in out, "the summary must still be printed"
         assert "FAIL stage_crashed_render_contract_9" in out
         assert "planted stage crash" in out
 

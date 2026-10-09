@@ -108,15 +108,17 @@ def test_every_finding_names_node_value_and_a_reproducible_seed(monkeypatch):
         assert "Owed:" in f
 
 
-@pytest.mark.parametrize("report_only,expected", [(True, True), (False, False)])
-def test_report_only_prints_but_does_not_fail(monkeypatch, capsys, report_only, expected):
+def test_a_finding_prints_under_fail_and_fails(monkeypatch, capsys):
+    """The report-only path is gone (H2): a §2L finding is a FAIL line and a False
+    return, and run_all's verdict classifies its label as content (exit 2)."""
     monkeypatch.setattr(VE, "collect_findings", lambda node_ids=None: (
         {"variant_not_exhibited_2L": ["mat_x: declared variant ..."],
          "attester_packet_refused_2L": []}, {"candidates": 1}))
-    assert VE.validate_all(report_only=report_only) is expected
+    assert VE.validate_all() is False
     out = capsys.readouterr().out
-    assert ("REPORT variant_not_exhibited_2L" in out) is report_only
-    assert ("FAIL variant_not_exhibited_2L" in out) is (not report_only)
+    assert "FAIL variant_not_exhibited_2L (1):" in out
+    assert "REPORT" not in out
+    assert "PASS attester_packet_refused_2L" in out
 
 
 def _install_builder(monkeypatch, requires, refuse):

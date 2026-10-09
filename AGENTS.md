@@ -74,9 +74,6 @@ python -m backend.app.practice_gen.validation.run_all
   anything, and any judgment items in `docs/pgen_judgment.md` have their evidence artifacts filed.
 
 Nothing else counts. Not "the code looks right," not "I traced the logic," not a checked box.
-**Until the exit-code split lands** (`validation_reports/phase2_hardening/NEXT_AGENT_PROMPT.md` H2), `run_all`
-exits 1 on content findings too. Read integrity from its stage ledger and mutation table as that file's §1
-describes, and say in your report that you did.
 
 **That command needs no `DATABASE_URL=` prefix, as of 2026-09-16.** `run_all` pins the database URL empty itself and prints what it overrode, so the documented command is now the command the evidence is proved with. It was not before: `.env` carries a live Neon URL, and on identical bytes `test_queue_counts_all_three_bands` FAILED in 15.89s unprefixed and PASSED in 153.15s with `DATABASE_URL=` empty. Pinning the URL is configuration, not enforcement — but as of 2026-09-16 the enforcement exists too: **every Phase 1 stage body runs inside the socket guard** (`phase1_hermetic`), so an outbound non-loopback connection from any of them is a named failure, and `phase1_stage_escapes_the_network_guard` proves it. NAMED LIMITS: the guard patches one interpreter, so connections opened inside the children of `unit_tests`, `census_7` and `behavioural_matrix` are not seen; Phase 2 stages are unguarded. See `docs/pgen_contract.md`'s `phase1_hermetic` row.
 

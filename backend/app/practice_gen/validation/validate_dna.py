@@ -370,7 +370,10 @@ def validate_all_dnas() -> Dict[str, List[str]]:
     for concept, errs in results.items():
         hard_errs = [e for e in errs if not e.startswith("WARN")]
         if hard_errs:
-            print(f"  FAIL {concept}:")
+            # The label first, then the concept: run_all classifies a stage by the
+            # label each `  FAIL <label>` line names (owner ruling 27), and a concept
+            # name in that position read as an unclassified label (integrity).
+            print(f"  FAIL dna_structure {concept}:")
             for e in errs:
                 print(f"    - {e}")
         elif errs:
@@ -465,7 +468,7 @@ def run_all_feasibility_checks() -> Dict[str, List[str]]:
     print(f"\nDifficulty feasibility validation: {total - len(failed_concepts)}/{total} passed, {len(failed_concepts)} failed.")
     for concept, errs in results.items():
         if errs:
-            print(f"  FAIL {concept}:")
+            print(f"  FAIL dna_difficulty_feasibility {concept}:")
             for e in errs:
                 print(f"    - {e}")
         else:

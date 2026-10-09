@@ -29,7 +29,15 @@ seeds and any Phase 1 fix that changes generation invalidates it.
 validate_capability, held complete by §8's `check_phase_registry_8` -- and is reconciled
 against the phase it actually ran in by the Two-Direction block below.
 
-Exit code is 0 if and only if every check in scope passes.
+EXIT CODES (owner ruling 27, landed 2026-10-09 as batch H2):
+  0  integrity green and no content finding
+  2  integrity green and content findings exist -- the generator work queue
+  1  integrity failure: a stage crashed or never ran, a printed label is unclassified, a
+     check whose label `_manifest.FINDING_CLASS` classes INTEGRITY failed (a mutation
+     proof that does not hold, a stale artifact, registry drift, a unit test, ...)
+Every finding is classified by the assertion LABEL that reports it -- the label on each
+`  FAIL <label>` line a stage prints, and the `check` of each matrix finding -- never by
+its message text. See `_classify_verdict`.
 """
 
 from __future__ import annotations
@@ -65,7 +73,15 @@ from backend.app.practice_gen.validation import (
     validate_exhibit,
 )
 from backend.app.practice_gen.validation.validate_matrix import run_matrix_validation
-from backend.app.practice_gen.validation._manifest import CHECK_PHASE, refs_in_phase
+from backend.app.practice_gen.validation._manifest import (
+    CHECK_PHASE,
+    CONTENT,
+    FINDING_CLASS,
+    INTEGRITY,
+    finding_class,
+    finding_key,
+    refs_in_phase,
+)
 
 _PGEN_CONTRACT_PATH = Path(__file__).resolve().parents[4] / "docs" / "pgen_contract.md"
 _OPERATOR_DOC_PATH = Path(__file__).resolve().parents[4] / "docs" / "testing_pipeline.md"
@@ -185,6 +201,16 @@ ASSERTIONS = (
     "stage_crashed_",          # one named stage raised. An f-string label: §8 inventories
                                # it by family, the way validate_matrix's are, because the
                                # stage name is part of the label and there are fifteen.
+    # The exit-code split (owner ruling 27, H2, 2026-10-09). Each is its own label because
+    # each is a separate way the verdict can be wrong, proven by its own mutation in
+    # tests/unit/test_verdict.py:
+    "finding_class_registry_complete",  # FINDING_CLASS vs the §8 inventory, both directions
+    "finding_label_unclassified",       # a stage reported a label FINDING_CLASS does not
+                                        # name, or failed without reporting any label
+    "verdict_integrity_exits_1",        # an integrity finding reaches exit 1, whatever
+                                        # content findings sit beside it
+    "verdict_content_exits_2",          # content findings alone reach exit 2: not 1 (a
+                                        # content leak into integrity) and not 0
 )
 
 
@@ -230,7 +256,7 @@ CONTRACT_CHECKS: Dict[str, str] = {
     "§2F": "validate_compat: every node id referenced in the app must exist in the registry",
     "§2G": "validate_compat: every node's competency bounds parse to a well-formed shape — the tree-wide property behind the fixture table",
     "§2I": "validate_compat: a discrete variant a node DECLARES must be one it can actually produce — a shrinking floor; the silent packet skip that hid 65 of these is now recorded",
-    "§2L": "validate_exhibit: a discrete variant a node DECLARES must reach the render -- recorded in given_values, or changing the problem against every sibling value -- and every Attester packet must build (report-only until H2)",
+    "§2L": "validate_exhibit: a discrete variant a node DECLARES must reach the render -- recorded in given_values, or changing the problem against every sibling value -- and every Attester packet must build (content findings: run_all exits 2)",
     "§2J": "validate_compat: a competency naming a medium the learner works in (illustrate, represent, concrete, models, draw) is served in it on >= 50% of student-path items, every such clause classified (ruling 15)",
     "§2K": "validate_compat: the portal's batch feed (/practice/{id}/batch) serves exactly what the single-item student path serves, under the route's own default config",
     "§2H": "validate_compat: a competency naming BOTH cases of a dimension must not be bound to one of them — §2G proves bounds are well-formed, this proves they are faithful",
@@ -297,7 +323,8 @@ _LAST_UNIT_TEST_COUNT: list = [None]
 class StageResult:
     """One scheduled harness stage and what became of it."""
 
-    __slots__ = ("name", "phase", "refs", "title", "state", "ok", "detail", "seconds")
+    __slots__ = ("name", "phase", "refs", "title", "state", "ok", "detail", "seconds",
+                 "labels")
 
     def __init__(self, name: str, phase: int, refs: tuple, title: str) -> None:
         self.name = name
@@ -308,9 +335,48 @@ class StageResult:
         self.ok: Optional[bool] = None
         self.detail = ""
         self.seconds = 0.0
+        # Every assertion label this stage REPORTED as a finding, in order: each
+        # `  FAIL <label>` line its body printed, plus any a stage body appends itself
+        # (the matrix's structured findings). The verdict classifies the run from these.
+        self.labels: list = []
 
     def __repr__(self) -> str:  # pragma: no cover - diagnostics only
         return f"StageResult({self.name!r}, {self.state!r}, ok={self.ok!r})"
+
+
+# A finding line: exactly two spaces, FAIL, one space, an identifier. The identifier is
+# the assertion label; §8 (`printed_check_labels`) already requires every literal
+# `  FAIL <label>` site to be an identifier it inventories, so this reads an enforced
+# convention rather than prose. Deeper-indented lines are detail and never match.
+_FINDING_LINE = re.compile(r"^  FAIL ([A-Za-z_][A-Za-z0-9_]*)")
+
+
+class _StdoutTee:
+    """Write through to the real stdout while keeping a copy for label extraction."""
+
+    def __init__(self, target) -> None:
+        import io
+
+        self._target = target
+        self._copy = io.StringIO()
+
+    def write(self, text: str) -> int:
+        self._copy.write(text)
+        return self._target.write(text)
+
+    def flush(self) -> None:
+        self._target.flush()
+
+    def getvalue(self) -> str:
+        return self._copy.getvalue()
+
+    def __getattr__(self, name):  # fileno, isatty, encoding ... belong to the real stream
+        return getattr(self._target, name)
+
+
+def _printed_labels(text: str) -> list:
+    """Every label a stage's output reported under `  FAIL <label>`, in order."""
+    return [m.group(1) for m in map(_FINDING_LINE.match, text.splitlines()) if m]
 
 
 class StageLedger:
@@ -373,12 +439,19 @@ class StageLedger:
 
         from tests.hermetic_db import HermeticNetworkError, no_network
 
+        from contextlib import redirect_stdout
+
         stage = self.get(name)
         stage.state = "attempted"
         started = time.monotonic()
+        tee = _StdoutTee(sys.stdout)
         try:
-            with (no_network() if stage.phase == 1 else nullcontext()):
+            with (no_network() if stage.phase == 1 else nullcontext()), redirect_stdout(tee):
                 ok = bool(body())
+            # Read from what the stage PRINTED, whatever it returned: a stage that prints
+            # `FAIL <label>` and returns True (§2L did, by design, until H2) still reported
+            # a finding, and `stage_failure_reaches_verdict` could not see it.
+            stage.labels.extend(_printed_labels(tee.getvalue()))
             stage.state = "completed" if ok else "failed"
             stage.ok = ok
             return ok
@@ -781,6 +854,13 @@ def run_all(fail_fast: bool = False, phase: Optional[int] = None) -> int:
         # Run matrix validator. We set workers=0 for auto-detection.
         matrix_code = run_matrix_validation(fail_fast=fail_fast, workers=0)
         matrix_ok = matrix_code == 0
+        # The matrix prints a finding as `[dna / formatter] check (seed N)`, not as a
+        # `  FAIL <label>` line, so its labels are read from its structured findings
+        # (owner ruling 27): one label per finding, the `check` it names. A failed matrix
+        # run with NO structured finding reports no label, and the verdict reads that as
+        # integrity (`finding_label_unclassified`) rather than guessing.
+        ledger.get("behavioural_matrix").labels.extend(
+            str(f.get("check")) for f in validate_matrix.LAST_FAILURES)
         # The matrix's §-refs are *observed*, not assumed: validate_matrix records an
         # id at each check site when that site actually evaluates an assertion.
         # `.update(...)`, never `|=`: inside a stage function an augmented assignment
@@ -876,30 +956,41 @@ def run_all(fail_fast: bool = False, phase: Optional[int] = None) -> int:
     # Phase-2 backlog and nothing in the harness could tell the two bands apart. The
     # phase of each ref is read from validate_capability.CHECK_PHASE rather than
     # restated here — one registry, so a second copy cannot disagree with it.
+    def _print_tagged(tagged: list, title: str) -> None:
+        """Print §6's findings one `  FAIL <label>` group per label, CONTENT first.
+
+        The INTEGRITY labels (ground truth, declaration sync, the phase seam) print under
+        their own names so the verdict classifies them apart from the content rollup
+        `capability_contract` -- which is what makes a lock violation exit 1 and a missing
+        provider exit 2 when both sit in the same stage (owner ruling 27).
+        """
+        groups: Dict[str, list] = {}
+        for label, finding in tagged:
+            groups.setdefault(label, []).append(finding)
+        order = sorted(groups, key=lambda lb: (lb != validate_capability.CONTENT_ROLLUP, lb))
+        for label in order:
+            errs = groups[label]
+            if label == validate_capability.CONTENT_ROLLUP:
+                print(f"  FAIL {label} ({title}, {len(errs)} content finding(s)):")
+            else:
+                print(f"  FAIL {label} ({title}, {len(errs)} finding(s)):")
+            for err in errs[:10]:
+                print(f"    - {err}")
+            if len(errs) > 10:
+                print(f"    ... and {len(errs) - 10} more.")
+
     def _stage_capability_phase1() -> bool:
         print("\n--- Capability Contract Phase 1 (artifact-free — §6A–§6E) ---")
-        provision_errors = validate_capability.validate_capability_provision()
-        # A floor, at the finding count and shrink-only — see _PROVISION_FLOOR.
-        provision_ok = len(provision_errors) <= validate_capability._PROVISION_FLOOR
+        tagged = validate_capability.provision_findings_tagged()
+        # The floor tolerates CONTENT only (ruling 31 keeps its number); an integrity
+        # finding fails this stage whatever the floor -- see `provision_over_floor`.
+        provision_ok = not validate_capability.provision_over_floor(tagged)
         if provision_ok:
             _record_phase(1)
-            print("  PASS capability_contract (Phase 1: all nodes declare, cite, cover, "
-                  "and are provided for)")
+            print(f"  PASS capability_contract (Phase 1: {len(tagged)} content finding(s), "
+                  f"floor {validate_capability._PROVISION_FLOOR}; no integrity finding)")
         else:
-            undeclared = [e for e in provision_errors if "no 'requires' declaration" in e]
-            unprovided = [e for e in provision_errors if "no pipeline artifact provides it" in e]
-            wildcarded = [e for e in provision_errors if "§6D" in e]
-            print(
-                f"  FAIL capability_contract (Phase 1, {len(provision_errors)} problem(s), "
-            f"floor {validate_capability._PROVISION_FLOOR}: "
-                f"{len(undeclared)} node(s) undeclared, {len(unprovided)} capability(ies) "
-                f"with no provider, of which {len(wildcarded)} are carried only by a "
-                f"generic textual formatter (§6D)):"
-            )
-            for err in provision_errors[:10]:
-                print(f"    - {err}")
-            if len(provision_errors) > 10:
-                print(f"    ... and {len(provision_errors) - 10} more.")
+            _print_tagged(tagged, f"Phase 1, floor {validate_capability._PROVISION_FLOOR}")
             if fail_fast:
                 return provision_ok
         return provision_ok
@@ -918,40 +1009,34 @@ def run_all(fail_fast: bool = False, phase: Optional[int] = None) -> int:
     # split exists to end, not to repeat one level down.
     def _stage_capability_phase2() -> bool:
         print("\n--- Capability Contract Phase 2 (attestation — §6F–§6H) ---")
-        attestation_errors = validate_capability.validate_capability_attestation()
-        attestation_ok = len(attestation_errors) == 0
+        tagged = validate_capability.attestation_findings_tagged()
+        attestation_ok = len(tagged) == 0
         if attestation_ok:
             _record_phase(2)
             print("  PASS capability_contract (Phase 2: every declared capability carries "
                   "a fresh, non-boilerplate, attributed blind Attester verdict)")
         else:
-            unattested = [e for e in attestation_errors if "UNATTESTED" in e]
-            contradicted = [e for e in attestation_errors if "CONTRADICTED" in e]
-            stale = [e for e in attestation_errors if "is STALE" in e]
-            unadjudicable = [e for e in attestation_errors if "records no 'options'" in e]
-            # The tally must add up to the total, or a whole class of finding can be
-            # invisible in the summary line while sitting in the list below it: when
-            # §6F reached §5 parity on 2026-09-10 this line read "78 CONTRADICTED, 0
-            # UNATTESTED and 5 STALE" above 220 findings, and the 137 unadjudicable
-            # records it had just started reporting appeared nowhere. Anything this
-            # breakdown does not name is counted as `other` rather than dropped.
+            content = [f for lb, f in tagged if lb == validate_capability.CONTENT_ROLLUP]
+            unattested = [e for e in content if "UNATTESTED" in e]
+            contradicted = [e for e in content if "CONTRADICTED" in e]
+            stale = [e for e in content if "is STALE" in e]
+            unadjudicable = [e for e in content if "records no 'options'" in e]
+            # A DISPLAY tally only -- the verdict reads the labels, not these substrings.
+            # It must add up, or a class of finding is invisible in the summary line: when
+            # §6F reached §5 parity on 2026-09-10 it read "78 CONTRADICTED, 0 UNATTESTED
+            # and 5 STALE" above 220 findings. Anything unnamed is counted as `other`.
             named = len(unattested) + len(contradicted) + len(stale) + len(unadjudicable)
-            other = len(attestation_errors) - named
+            other = len(content) - named
             print(
-                f"  FAIL capability_contract (Phase 2, {len(attestation_errors)} problem(s): "
-                f"{len(contradicted)} CONTRADICTED, {len(unattested)} UNATTESTED, "
-                f"{len(stale)} STALE (§6F), {len(unadjudicable)} UNADJUDICABLE "
-                f"(no recorded options){f', {other} other' if other else ''}):"
+                f"  Phase 2 tally: {len(contradicted)} CONTRADICTED, {len(unattested)} "
+                f"UNATTESTED, {len(stale)} STALE (§6F), {len(unadjudicable)} UNADJUDICABLE "
+                f"(no recorded options){f', {other} other' if other else ''}"
             )
             # UNATTESTED dominates by volume while the backlog is open and would bury the
             # findings that name a defect. Show the ones that name a real problem first.
-            attestation_errors = (
-                [e for e in attestation_errors if "UNATTESTED" not in e] + unattested
-            )
-            for err in attestation_errors[:10]:
-                print(f"    - {err}")
-            if len(attestation_errors) > 10:
-                print(f"    ... and {len(attestation_errors) - 10} more.")
+            ordered = ([(lb, f) for lb, f in tagged if "UNATTESTED" not in f]
+                       + [(lb, f) for lb, f in tagged if "UNATTESTED" in f])
+            _print_tagged(ordered, "Phase 2")
             if fail_fast:
                 return attestation_ok
         return attestation_ok
@@ -1010,11 +1095,9 @@ def run_all(fail_fast: bool = False, phase: Optional[int] = None) -> int:
         print("\n--- Declared Variants Reach the Render (§2L) ---")
         # Owner ruling 26: §2I proves a declared variant renders; this proves the render
         # SHOWS it, and builds every Attester packet so a refused one is named before any
-        # dispatch. REPORT-ONLY until the exit-code split (NEXT_AGENT_PROMPT H2) lands:
-        # its baseline is the generator work queue (Mandate 5), so it prints every finding
-        # and does not turn this run red. Its own CLI exits 1 on any finding, and that is
-        # the path its mutations prove, on nodes whose baseline is clean.
-        ok = validate_exhibit.validate_all(report_only=True)
+        # dispatch. Its two labels are CONTENT (owner ruling 27, H2): a finding fails this
+        # stage and makes run_all exit 2 -- the generator work queue -- not 1.
+        ok = validate_exhibit.validate_all()
         if ok:
             executed_checks.add("§2L")
         return ok
@@ -1230,29 +1313,138 @@ def run_all(fail_fast: bool = False, phase: Optional[int] = None) -> int:
         print("  PASS stage_phase_matches_manifest: every stage's refs are registered to "
               "the band that stage runs in")
     ledger_failures = ledger_failures + phase_problems
-    # Every in-scope stage that ran and reported findings fails the run, read from the
-    # ledger itself so no stage can be left out of the verdict by name
-    # (`stage_failure_reaches_verdict`; see the late-stage loop above for the defect).
-    failed_stages = [s.name for s in ledger
-                     if (phase is None or s.phase == phase) and s.state == "failed"]
+    integrity, content = _classify_verdict(ledger, phase)
+    if not contract_match_ok:
+        integrity.append("the two-direction contract checks above failed "
+                         "(contract_doc_matches_registry / operator_doc_covers_registry / "
+                         "two_direction_contract_match)")
+    integrity = ledger_failures + integrity
+    return _print_verdict(integrity, content, phase)
+
+
+# ─── The verdict (owner ruling 27, batch H2) ─────────────────────────────────
+
+def finding_class_registry_failures() -> list:
+    """
+    `finding_class_registry_complete`: FINDING_CLASS names exactly the labels the harness
+    can emit -- §8's inventory -- in BOTH directions, and nothing else.
+
+    Unclassified-but-emitted is the drift an allowlist suffers silently: a new check would
+    reach the verdict as `finding_label_unclassified` only on the day it first FAILS, which
+    may be the day it matters. Classified-but-emitted-by-nothing is a stale row that would
+    classify a label nobody prints -- including a future check that reuses the name.
+    """
+    inventory = validate_coverage.harness_assertion_labels() | set(ASSERTIONS)
+    problems = []
+    for label in sorted(inventory - set(FINDING_CLASS)):
+        problems.append(
+            f"label {label!r} can be emitted (it is in the §8 inventory) but "
+            f"_manifest.FINDING_CLASS does not classify it, so the verdict cannot say "
+            f"whether its failure is integrity (exit 1) or content (exit 2). Classify it "
+            f"by the rule written above FINDING_CLASS."
+        )
+    for label in sorted(set(FINDING_CLASS) - inventory):
+        problems.append(
+            f"_manifest.FINDING_CLASS classifies {label!r}, which no validator declares "
+            f"and no check site emits. Fix the spelling against the emitting site or "
+            f"delete the row."
+        )
+    for label, cls in sorted(FINDING_CLASS.items()):
+        if cls not in (INTEGRITY, CONTENT):
+            problems.append(f"_manifest.FINDING_CLASS[{label!r}] = {cls!r}, which is "
+                            f"neither {INTEGRITY!r} nor {CONTENT!r}.")
+    return problems
+
+
+def _classify_verdict(ledger: "StageLedger", phase: Optional[int]):
+    """
+    (integrity failures, {content label: [stage, ...]}) for every in-scope stage.
+
+    The labels come from what each stage REPORTED (`StageResult.labels`), and each is
+    classified by `_manifest.FINDING_CLASS`. A stage that crashed or never ran is the
+    ledger's failure (`stage_ledger_complete`), already integrity. A stage that FAILED
+    without reporting a single label is integrity too: the verdict cannot tell what kind
+    of finding it was, and guessing content would let a harness failure exit 2.
+    """
+    integrity = []
+    content: Dict[str, list] = {}
+    for stage in ledger:
+        if phase is not None and stage.phase != phase:
+            continue
+        if stage.state not in ("completed", "failed"):
+            continue  # crashed / never run: reported by the ledger as integrity
+        family = stage.name == "behavioural_matrix"
+        for label in stage.labels:
+            cls = finding_class(label, family=family)
+            if cls is None:
+                integrity.append(
+                    f"finding_label_unclassified: stage {stage.name!r} reported "
+                    f"'FAIL {label}', a label _manifest.FINDING_CLASS does not name, so "
+                    f"whether it is integrity or content is undecided. Treated as "
+                    f"integrity until it is classified.")
+            elif cls == INTEGRITY:
+                integrity.append(f"{label} (stage {stage.name})")
+            else:
+                # Keyed by the registry row, so a matrix family's axis variants
+                # (`window_containment_0.5_range`, `..._max`) are one entry, not dozens.
+                key = finding_key(label, family=family)
+                content.setdefault(key, [])
+                if stage.name not in content[key]:
+                    content[key].append(stage.name)
+        if stage.state == "failed" and not stage.labels:
+            integrity.append(
+                f"finding_label_unclassified: stage {stage.name!r} FAILED without "
+                f"reporting any `  FAIL <label>` line or structured finding, so the "
+                f"verdict cannot tell integrity from content. Treated as integrity.")
+    registry = finding_class_registry_failures()
+    for problem in registry:
+        print(f"  FAIL finding_class_registry_complete: {problem}")
+    if not registry:
+        print(f"  PASS finding_class_registry_complete: {len(FINDING_CLASS)} label(s) "
+              f"classified, equal to the §8 inventory")
+    integrity += [f"finding_class_registry_complete: {p}" for p in registry]
+    return integrity, content
+
+
+def _print_verdict(integrity: list, content: Dict[str, list], phase: Optional[int]) -> int:
+    """Print both verdicts and return the exit code: 1, else 2, else 0 (ruling 27)."""
+    scope = "ALL TESTS" if phase is None else f"PHASE {phase}"
+    print("\n--- Verdict (owner ruling 27: 0 green / 2 content findings / 1 integrity) ---")
+    unclassified = [i for i in integrity if i.startswith("finding_label_unclassified")]
+    for line in unclassified:
+        print(f"  FAIL {line}")
+    if integrity:
+        print(f"  INTEGRITY: FAILED ({len(integrity)}):")
+        for line in integrity:
+            print(f"    - {line}")
+    else:
+        print("  INTEGRITY: GREEN (every stage ran to a verdict and no integrity label failed)")
+    if content:
+        print(f"  CONTENT: {len(content)} label(s) reported findings -- the generator work "
+              f"queue; each stage's own output above names them by lc and seed:")
+        for label in sorted(content):
+            print(f"    - {label} (stage {', '.join(content[label])})")
+    else:
+        print("  CONTENT: none")
 
     print("\n======================================================================")
-    all_ok = (unit_ok and dna_ok and compat_ok and interest_ok and vocab_ok and matrix_ok
-              and judgment_ok and provision_ok and attestation_ok and contract_match_ok
-              and not failed_stages and not ledger_failures)
-    scope = "ALL TESTS" if phase is None else f"PHASE {phase}"
-    if all_ok:
+    if integrity:
+        print(f"{scope}: INTEGRITY FAILURE (exit 1). The harness cannot vouch for this "
+              f"run; fix the integrity findings above before reading content.")
+        code = 1
+    elif content:
+        print(f"{scope}: integrity green, CONTENT FINDINGS REMAIN (exit 2). Harness work "
+              f"may stop here; generator work is not done.")
+        code = 2
+    else:
         print(f"{scope} PASSED SUCCESSFULLY! Praise God!")
         if phase == 1:
             print("Phase 1 is green: every check that needs no agent-authored artifact "
                   "passes, so Phase 2's reviews and attestations can be filed against "
                   "generation that will not move under them.")
-        print("======================================================================")
-        return 0
-    else:
-        print(f"SOME {scope} CHECKS FAILED. Please review the output above.")
-        print("======================================================================")
-        return 1
+        code = 0
+    print("======================================================================")
+    return code
 
 if __name__ == "__main__":
     import argparse

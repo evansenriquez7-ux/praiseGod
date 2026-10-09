@@ -58,7 +58,7 @@ from __future__ import annotations
 import json
 import re
 from pathlib import Path
-from typing import Any, Dict, List, Set
+from typing import Any, Dict, List, Optional, Set, Tuple
 
 from backend.app.practice_gen.compatibility import (
     COMPATIBILITY,
@@ -1580,7 +1580,7 @@ _ATTESTER_IDENTITY_REQUIRED_FROM = "2026-08-28"
 _MAX_NODES_PER_ATTESTER = 25
 
 
-def validate_attester_plurality() -> List[str]:
+def validate_attester_plurality(records: Optional[List[Dict[str, Any]]] = None) -> List[str]:
     """
     §6H -- an Attester verdict must say WHO made it, and no one may make them all.
 
@@ -1603,7 +1603,9 @@ def validate_attester_plurality() -> List[str]:
     errs: List[str] = []
     by_identity: Dict[str, Set[str]] = {}
 
-    for record in _attestation_records():
+    # `records` is the lc-scoped corpus when `_phase2_findings_tagged` runs under
+    # `--node-ids`; None is the whole corpus, which is what run_all always reads.
+    for record in (_attestation_records() if records is None else records):
         batch = record.get("batch") or "<unnamed>"
         attested_at = str(record.get("attested_at") or "")
         identity = (record.get("attested_by") or record.get("attester")
@@ -1845,29 +1847,76 @@ def declaration_sync_failures() -> List[str]:
 _PROVISION_FLOOR = 5
 
 
-def _phase1_findings(node_ids: List[str] | None) -> List[str]:
+# Owner ruling 27 (H2): run_all exits 1 on an INTEGRITY finding and 2 on a CONTENT one,
+# so every §6 finding carries the assertion label of the FUNCTION that emitted it, and
+# `_manifest.FINDING_CLASS` says which kind that label is. Tagged at the emitting call,
+# never by reading the message text back (a classifier keyed on prose is a latent bug).
+# Every CONTENT finding is tagged with the rollup `capability_contract`; the labels that
+# are INTEGRITY keep their own name so run_all can print and classify them apart:
+#   _declared_nodes guards, _validate_provenance -> capability_provenance_6A
+#   _validate_coverage                           -> capability_coverage_6B
+#   _validate_requires_ignore_lock               -> requires_ignore_locked_6B
+#   declaration_sync_failures                    -> capability_declarations_in_sync_6
+#   _phase_boundary_failures                     -> capability_phase_boundary_6
+#   _phase_partition_failures                    -> capability_phase_partition_6
+#   _validate_provision (§6C/§6D/§6E), _validate_no_orphan_providers, and every §6F-§6H
+#   producer (filed records, ruling 32)          -> capability_contract
+CONTENT_ROLLUP = "capability_contract"
+Tagged = List[Tuple[str, str]]
+
+
+def _tag(label: str, findings: List[str]) -> Tagged:
+    return [(label, f) for f in findings]
+
+
+def _phase1_findings_tagged(node_ids: List[str] | None) -> Tagged:
     """§6A/§6B/§6C/§6D/§6E over every registered node. Reads no agent-authored artifact."""
-    rows, errs = _declared_nodes(node_ids)
+    rows, guard = _declared_nodes(node_ids)
+    tagged = _tag("capability_provenance_6A", guard)
     for node_id, competency, requires, ignore in rows:
-        errs += _validate_provenance(node_id, competency, requires)
-        errs += _validate_coverage(node_id, competency, requires, ignore)
-        errs += _validate_provision(node_id, requires)
+        tagged += _tag("capability_provenance_6A",
+                       _validate_provenance(node_id, competency, requires))
+        tagged += _tag("capability_coverage_6B",
+                       _validate_coverage(node_id, competency, requires, ignore))
+        tagged += _tag(CONTENT_ROLLUP, _validate_provision(node_id, requires))
     # Tree-wide, and deliberately over EVERY declared node rather than the `node_ids`
     # subset: "no node requires this" is a statement about the whole tree, so computing
     # it from a scoped run would report every provider outside the scope as an orphan.
-    errs += _validate_requires_ignore_lock()
+    tagged += _tag("requires_ignore_locked_6B", _validate_requires_ignore_lock())
     all_rows, _ = _declared_nodes(None)
-    errs += _validate_no_orphan_providers(
+    tagged += _tag(CONTENT_ROLLUP, _validate_no_orphan_providers(
         {str(r.get("id")) for _n, _c, reqs, _i in all_rows for r in reqs}
-    )
+    ))
     # First in the list, because "the declarations you are reading are not the ones an
     # author wrote" invalidates every finding below it.
-    return declaration_sync_failures() + errs
+    return _tag("capability_declarations_in_sync_6", declaration_sync_failures()) + tagged
 
 
-def _phase2_findings(node_ids: List[str] | None) -> List[str]:
-    """§6F/§6G/§6H. Every one of these reads validation_reports/attestation/."""
+def _phase1_findings(node_ids: List[str] | None) -> List[str]:
+    return [f for _label, f in _phase1_findings_tagged(node_ids)]
+
+
+def _scoped_records(node_ids: List[str] | None) -> List[Dict[str, Any]]:
+    """
+    The attestation corpus, restricted to records whose packet is one of `node_ids`.
+
+    Exact, not approximate: measured 2026-10-09 over all 766 records, every verdict's
+    `node_id` equals its record's `packet.node_id`, so a record belongs to exactly one lc.
+    Scoping exists so a §6F-§6H mutation can be proven on an lc whose baseline is clean
+    while content debt sits on others (owner ruling 27, H2). NAMED LIMIT: under a scope,
+    the corpus-wide properties -- §6G skeleton clusters and §6H plurality -- are judged
+    over the in-scope records only, so they are weaker there. run_all never scopes.
+    """
     records = _attestation_records()
+    if node_ids is None:
+        return records
+    scope = set(node_ids)
+    return [r for r in records if (r.get("packet") or {}).get("node_id") in scope]
+
+
+def _phase2_findings_tagged(node_ids: List[str] | None) -> Tagged:
+    """§6F/§6G/§6H. Every one of these reads validation_reports/attestation/."""
+    records = _scoped_records(node_ids)
     attested = _load_attestations()
     errs = _attestation_staleness(records)
     errs += _attestation_integrity(records)
@@ -1876,9 +1925,14 @@ def _phase2_findings(node_ids: List[str] | None) -> List[str]:
     rows, _guard = _declared_nodes(node_ids)
     for node_id, _competency, requires, _ignore in rows:
         errs += _validate_attestation(node_id, requires, attested)
-    # Tree-wide, not per node: plurality is a property of the whole attestation corpus.
-    errs += validate_attester_plurality()
-    return errs
+    # Corpus-wide, not per node: plurality is a property of the attestation corpus (the
+    # in-scope corpus under `--node-ids`; see `_scoped_records`).
+    errs += validate_attester_plurality(None if node_ids is None else records)
+    return _tag(CONTENT_ROLLUP, errs)
+
+
+def _phase2_findings(node_ids: List[str] | None) -> List[str]:
+    return [f for _label, f in _phase2_findings_tagged(node_ids)]
 
 
 def _phase_boundary_failures(node_ids: List[str] | None, findings: List[str]) -> List[str]:
@@ -1990,10 +2044,29 @@ def validate_capability_provision(node_ids: List[str] | None = None) -> List[str
     validation_reports/attestation/ absent. Measured 2026-09-08 on this tree: 75
     findings in 0.1s, 74 of them §6D.
     """
-    findings = _phase1_findings(node_ids)
-    return (findings
-            + _phase_boundary_failures(node_ids, findings)
-            + _phase_partition_failures(findings, 1))
+    return [f for _label, f in provision_findings_tagged(node_ids)]
+
+
+def provision_findings_tagged(node_ids: List[str] | None = None) -> Tagged:
+    """`validate_capability_provision`, each finding paired with its assertion label."""
+    tagged = _phase1_findings_tagged(node_ids)
+    findings = [f for _label, f in tagged]
+    return (tagged
+            + _tag("capability_phase_boundary_6", _phase_boundary_failures(node_ids, findings))
+            + _tag("capability_phase_partition_6", _phase_partition_failures(findings, 1)))
+
+
+def provision_over_floor(tagged: Tagged) -> bool:
+    """
+    Whether Phase 1 fails: any INTEGRITY finding, or CONTENT findings above the floor.
+
+    `_PROVISION_FLOOR` tolerates the five named `draw` gaps (content). Until 2026-10-09 it
+    was compared against EVERY Phase 1 finding, so once those gaps were built a lock
+    violation or a declaration drift -- integrity -- could sit inside the floor and print
+    PASS. The floor's number is unchanged (owner ruling 31); it now absorbs content only.
+    """
+    content = [f for label, f in tagged if label == CONTENT_ROLLUP]
+    return len(content) > _PROVISION_FLOOR or len(content) != len(tagged)
 
 
 def validate_capability_attestation(node_ids: List[str] | None = None) -> List[str]:
@@ -2005,8 +2078,14 @@ def validate_capability_attestation(node_ids: List[str] | None = None) -> List[s
     declaration does not even cite its own competency. Measured 2026-09-08: 90 findings
     in 9.9s (7 §6F-freshness, 83 §6F-CONTRADICTED), dominated by the re-render sweep.
     """
-    findings = _phase2_findings(node_ids)
-    return findings + _phase_partition_failures(findings, 2)
+    return [f for _label, f in attestation_findings_tagged(node_ids)]
+
+
+def attestation_findings_tagged(node_ids: List[str] | None = None) -> Tagged:
+    """`validate_capability_attestation`, each finding paired with its assertion label."""
+    tagged = _phase2_findings_tagged(node_ids)
+    return tagged + _tag("capability_phase_partition_6",
+                         _phase_partition_failures([f for _l, f in tagged], 2))
 
 
 def validate_capability_declarations(node_ids: List[str] | None = None) -> List[str]:
@@ -2034,11 +2113,18 @@ if __name__ == "__main__":
     ap = argparse.ArgumentParser(description="§6 capability contract")
     ap.add_argument("--phase", type=int, choices=(1, 2), default=None,
                     help="1 = artifact-free (§6A-§6E); 2 = attestation (§6F-§6H)")
+    # lc scope (owner ruling 27, H2). A §6F-§6H mutation is proven on an lc whose
+    # baseline is clean, so the queue of CONTRADICTED verdicts on other lcs cannot make
+    # its baseline red (Mandate 5). See `_scoped_records` for what a scope weakens.
+    ap.add_argument("--node-ids", nargs="+", default=None,
+                    help="restrict to these lc ids (proof mode; run_all never scopes)")
     args = ap.parse_args()
 
-    phase1 = validate_capability_provision() if args.phase in (None, 1) else []
-    phase2 = validate_capability_attestation() if args.phase in (None, 2) else []
-    over_floor = len(phase1) > _PROVISION_FLOOR
+    tagged1 = provision_findings_tagged(args.node_ids) if args.phase in (None, 1) else []
+    phase1 = [f for _label, f in tagged1]
+    phase2 = (validate_capability_attestation(args.node_ids)
+              if args.phase in (None, 2) else [])
+    over_floor = provision_over_floor(tagged1)
     failures = phase1 + phase2
     if failures:
         print(f"Capability contract: {len(failures)} failure(s) "

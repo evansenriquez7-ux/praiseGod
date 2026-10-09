@@ -1068,17 +1068,15 @@ MUTATIONS: List[Mutation] = [
     ),
     Mutation(
         name="contradicted_attestation",
-        # STRUCTURALLY UNPROVABLE UNTIL THE ATTESTATION QUEUE CLEARS (recorded
-        # 2026-09-16, Mandate 6). This plants into a Phase 2 §6F check, so unlike
-        # `wildcard_provider` and `phase_ref_misassigned` it CANNOT be scoped to
-        # `--phase 1` -- that band never executes the check, and the mutation would
-        # SURVIVE while looking scoped. Its baseline is therefore the unscoped
-        # command, which exits 1 on the 218 genuine Phase 2 attestation findings, so
-        # `mutation_proof` rejects the proof for a red baseline (Mandate 5) and the
-        # assertion reads as unproven. That is correct and is left red: these three
-        # §6F gates were built against an already-red baseline, which is the hazard
-        # Mandate 5 names. They become provable when the attestation findings clear,
-        # not by narrowing the command and not by an allowlist entry.
+        # RE-ANCHORED 2026-10-09 (H2, owner ruling 27). From 2026-09-16 to H2 this ran the
+        # unscoped module, whose baseline was red on the CONTRADICTED queue, so it was
+        # INVALID by construction. It now runs the Phase 2 half scoped to the ONE lc the
+        # plant lands on, `mat_g3_mg_q1_5` (the only lc that requires
+        # draw_line_relationships; 0 Phase 2 findings, measured that day), through
+        # `validate_capability_attestation(node_ids)` -- the same function run_all calls
+        # unscoped. Content debt on other lcs can no longer redden its baseline; debt ON
+        # this lc would, and the fix then is to move the plant to a clean lc, never to
+        # loosen the marker. Scope limit: see `validate_capability._scoped_records`.
         asserts=['capability_contradicted_6F'],
         description=(
             "Re-register a capability a blind Attester already ruled NOT_PROVIDED -- the "
@@ -1088,7 +1086,8 @@ MUTATIONS: List[Mutation] = [
         ),
         edits={},
         apply_fn=lambda: _plant_contradicted_entry("draw_line_relationships"),
-        command=["backend.app.practice_gen.validation.validate_capability"],
+        command=["backend.app.practice_gen.validation.validate_capability",
+                 "--phase", "2", "--node-ids", "mat_g3_mg_q1_5"],
         expected_check="§6F (blind Attester verdict contradicted by the table)",
         expect_output_contains=["CONTRADICTED && draw_line_relationships"],
         baseline_must_not_contain=["CONTRADICTED && draw_line_relationships"],
@@ -1191,17 +1190,10 @@ MUTATIONS: List[Mutation] = [
     ),
     Mutation(
         name="attestation_drops_options",
-        # STRUCTURALLY UNPROVABLE UNTIL THE ATTESTATION QUEUE CLEARS (recorded
-        # 2026-09-16, Mandate 6). This plants into a Phase 2 §6F check, so unlike
-        # `wildcard_provider` and `phase_ref_misassigned` it CANNOT be scoped to
-        # `--phase 1` -- that band never executes the check, and the mutation would
-        # SURVIVE while looking scoped. Its baseline is therefore the unscoped
-        # command, which exits 1 on the 218 genuine Phase 2 attestation findings, so
-        # `mutation_proof` rejects the proof for a red baseline (Mandate 5) and the
-        # assertion reads as unproven. That is correct and is left red: these three
-        # §6F gates were built against an already-red baseline, which is the hazard
-        # Mandate 5 names. They become provable when the attestation findings clear,
-        # not by narrowing the command and not by an allowlist entry.
+        # RE-ANCHORED 2026-10-09 (H2, owner ruling 27): scoped to the lc the marker names,
+        # `_ATTEST_UNADJUDICABLE_NODE` (0 Phase 2 findings, measured that day), for the
+        # reason written on `contradicted_attestation`. The plant changes fmt_true_false
+        # for every lc; the scope only decides which lc's findings the proof reads.
         asserts=['capability_attestation_options_recorded_6F'],
         description=(
             "Make a formatter start emitting an option table on a node whose filed "
@@ -1230,7 +1222,8 @@ MUTATIONS: List[Mutation] = [
                 '    }\n',
             ),
         },
-        command=["backend.app.practice_gen.validation.validate_capability"],
+        command=["backend.app.practice_gen.validation.validate_capability",
+                 "--phase", "2", "--node-ids", _ATTEST_UNADJUDICABLE_NODE],
         expected_check="§6F adjudicability (an attestation must carry the choices it was shown)",
         expect_output_contains=[
             f"{_ATTEST_UNADJUDICABLE_NODE} && records no 'options' at seed"],
@@ -1470,17 +1463,14 @@ MUTATIONS: List[Mutation] = [
     # ------------------------------------------------------------------------
     Mutation(
         name="attestation_leaks_into_phase1",
-        # STRUCTURALLY UNPROVABLE UNTIL THE ATTESTATION QUEUE CLEARS (recorded
-        # 2026-09-16, Mandate 6). This plants into a Phase 2 §6F check, so unlike
-        # `wildcard_provider` and `phase_ref_misassigned` it CANNOT be scoped to
-        # `--phase 1` -- that band never executes the check, and the mutation would
-        # SURVIVE while looking scoped. Its baseline is therefore the unscoped
-        # command, which exits 1 on the 218 genuine Phase 2 attestation findings, so
-        # `mutation_proof` rejects the proof for a red baseline (Mandate 5) and the
-        # assertion reads as unproven. That is correct and is left red: these three
-        # §6F gates were built against an already-red baseline, which is the hazard
-        # Mandate 5 names. They become provable when the attestation findings clear,
-        # not by narrowing the command and not by an allowlist entry.
+        # RE-ANCHORED 2026-10-09 (H2, owner ruling 27). It carried the "cannot be scoped
+        # to --phase 1" comment its two siblings above carry, which was never true of THIS
+        # plant: it lands in the Phase 1 half, and `capability_phase_boundary_6` is a
+        # Phase 1 check. It ran unscoped, so the red Phase 2 queue made it INVALID. It now
+        # runs `--phase 1` on `mat_g1_na_q1_0` (0 Phase 1 findings, 8 attestation records:
+        # with the corpus absent its leaked read reports every capability UNATTESTED, so
+        # the boundary probe sees the two runs differ). The anchor moved with H2's tagging
+        # of Phase 1 findings by emitting function.
         asserts=['capability_phase_boundary_6'],
         description=(
             "Read the attestation corpus from the Phase 1 (artifact-free) half -- the "
@@ -1489,17 +1479,18 @@ MUTATIONS: List[Mutation] = [
         ),
         edits={
             "backend/app/practice_gen/validation/validate_capability.py": (
-                "    rows, errs = _declared_nodes(node_ids)\n"
+                "    rows, guard = _declared_nodes(node_ids)\n"
+                "    tagged = _tag(\"capability_provenance_6A\", guard)\n"
+                "    for node_id, competency, requires, ignore in rows:\n",
+                "    rows, guard = _declared_nodes(node_ids)\n"
+                "    tagged = _tag(\"capability_provenance_6A\", guard)\n"
+                "    _leaked = _load_attestations()  # planted mutation: Phase 1 reads the corpus\n"
                 "    for node_id, competency, requires, ignore in rows:\n"
-                "        errs += _validate_provenance(node_id, competency, requires)",
-                "    rows, errs = _declared_nodes(node_ids)\n"
-                "    _leaked = _load_attestations()\n"
-                "    for node_id, competency, requires, ignore in rows:\n"
-                "        errs += _validate_attestation(node_id, requires, _leaked)\n"
-                "        errs += _validate_provenance(node_id, competency, requires)",
+                "        tagged += _tag(CONTENT_ROLLUP, _validate_attestation(node_id, requires, _leaked))\n",
             )
         },
-        command=["backend.app.practice_gen.validation.validate_capability"],
+        command=["backend.app.practice_gen.validation.validate_capability",
+                 "--phase", "1", "--node-ids", "mat_g1_na_q1_0"],
         expected_check="§6 phase boundary (Phase 1 must run with the attestation corpus absent)",
         expect_output_contains=["capability_phase_boundary_6 && is not"],
         baseline_must_not_contain=["capability_phase_boundary_6"],
@@ -4862,9 +4853,13 @@ MUTATIONS: List[Mutation] = [
             "stages whose failure no longer reaches the exit code."
         ),
         edits={
+            # RE-ANCHORED 2026-10-09 (H2): the verdict is no longer one boolean over the
+            # ledger's failed stages but a classification of the labels each stage
+            # reported. A stage that fails WITHOUT a label (the test's stub: `lambda:
+            # False`) reaches the verdict only through this line, as integrity.
             "backend/app/practice_gen/validation/run_all.py": (
-                '              and not failed_stages and not ledger_failures)\n',
-                '              and not ledger_failures)  # planted mutation: failed stages ignored\n',
+                '        if stage.state == "failed" and not stage.labels:\n',
+                '        if False:  # planted mutation: a label-less failure reaches no verdict\n',
             )
         },
         command=["pytest", "tests/unit/test_stage_ledger.py", "-q", "-p", "no:cacheprovider",
@@ -4896,6 +4891,122 @@ MUTATIONS: List[Mutation] = [
         expected_check="the stage schedule agrees with _manifest.CHECK_PHASE on every ref",
         expect_output_contains=["test_a_ref_registered_to_the_other_band_is_caught"],
         baseline_must_not_contain=["test_a_ref_registered_to_the_other_band_is_caught"],
+    ),
+    # ── The exit-code split (owner ruling 27, batch H2, 2026-10-09) ──────────────────
+    # run_all exits 1 on integrity, else 2 on content, else 0, classifying every finding
+    # by the label that reported it. Each plant below lands on the ONE line of
+    # `_classify_verdict` / `_print_verdict` / `_manifest.FINDING_CLASS` that carries its
+    # property, and tests/unit/test_verdict.py drives the real run_all with every
+    # validator stubbed, iterating FINDING_CLASS itself, so it is caught by name in
+    # seconds. NAMED LIMIT: as for the ledger mutations above, these prove the verdict's
+    # control flow, not that each real validator prints the right label.
+    Mutation(
+        name="verdict_content_leaks_into_integrity",
+        asserts=["verdict_content_exits_2"],
+        description=(
+            "Classify CONTENT findings as integrity. run_all then exits 1 on the generator "
+            "work queue, which is exactly the state before H2 -- a check could not be "
+            "proven while content debt sat in its baseline, and harness work could not "
+            "finish while generator work remained (owner rulings 23 and 27)."
+        ),
+        edits={
+            "backend/app/practice_gen/validation/run_all.py": (
+                "            elif cls == INTEGRITY:\n",
+                "            elif cls in (INTEGRITY, CONTENT):  # planted mutation: content is integrity\n",
+            )
+        },
+        command=["pytest", "tests/unit/test_verdict.py", "-q", "-p", "no:cacheprovider",
+                 "-k", "test_verdict_content_exits_2"],
+        expected_check="run_all verdict (content findings alone exit 2)",
+        expect_output_contains=["verdict_content_exits_2: these CONTENT labels"],
+        baseline_must_not_contain=["verdict_content_exits_2: these CONTENT labels"],
+    ),
+    Mutation(
+        name="verdict_integrity_hidden_by_content",
+        asserts=["verdict_integrity_exits_1"],
+        description=(
+            "Let content findings mask an integrity failure: exit 2 whenever any content "
+            "finding exists, even beside a failed mutation proof or a stale artifact. "
+            "Harness work is done at exit 0 OR 2, so this certifies a broken harness on "
+            "every tree that still has generator work -- every tree, for the foreseeable "
+            "future."
+        ),
+        edits={
+            "backend/app/practice_gen/validation/run_all.py": (
+                "    if integrity:\n        print(f\"{scope}: INTEGRITY FAILURE",
+                "    if integrity and not content:  # planted mutation: content hides integrity\n"
+                "        print(f\"{scope}: INTEGRITY FAILURE",
+            )
+        },
+        command=["pytest", "tests/unit/test_verdict.py", "-q", "-p", "no:cacheprovider",
+                 "-k", "test_verdict_integrity_exits_1"],
+        expected_check="run_all verdict (an integrity finding exits 1 whatever the content)",
+        expect_output_contains=["verdict_integrity_exits_1: these INTEGRITY labels"],
+        baseline_must_not_contain=["verdict_integrity_exits_1: these INTEGRITY labels"],
+    ),
+    Mutation(
+        name="unclassified_label_read_as_content",
+        asserts=["finding_label_unclassified"],
+        description=(
+            "Let a label FINDING_CLASS does not name fall through to content. A new check "
+            "-- or a misspelt label on an old one -- then reaches exit 2 without anyone "
+            "having decided what kind of finding it reports, which is how an allowlist "
+            "drifts silently."
+        ),
+        edits={
+            "backend/app/practice_gen/validation/run_all.py": (
+                "            if cls is None:\n                integrity.append(\n",
+                "            if cls is None and False:  # planted mutation: unclassified is content\n"
+                "                integrity.append(\n",
+            )
+        },
+        command=["pytest", "tests/unit/test_verdict.py", "-q", "-p", "no:cacheprovider"],
+        expected_check="run_all verdict (an unclassified label is integrity)",
+        expect_output_contains=["test_an_unclassified_printed_label_is_integrity"],
+        baseline_must_not_contain=["test_an_unclassified_printed_label_is_integrity"],
+    ),
+    Mutation(
+        name="finding_class_row_removed",
+        asserts=["finding_class_registry_complete"],
+        description=(
+            "Delete one label's row from FINDING_CLASS. The label is still emitted, so the "
+            "registry no longer covers the inventory -- the direction that would let a "
+            "check reach the verdict only on the day it first fails."
+        ),
+        edits={
+            "backend/app/practice_gen/validation/_manifest.py": (
+                '    "attester_packet_refused_2L": CONTENT,\n',
+                '    # planted mutation: attester_packet_refused_2L row removed\n',
+            )
+        },
+        command=["pytest", "tests/unit/test_verdict.py", "-q", "-p", "no:cacheprovider",
+                 "-k", "test_finding_class_registry_complete"],
+        expected_check="FINDING_CLASS covers every emitted label",
+        expect_output_contains=["finding_class_registry_complete: FINDING_CLASS and the §8",
+                                "attester_packet_refused_2L"],
+        baseline_must_not_contain=["finding_class_registry_complete: FINDING_CLASS and the §8"],
+    ),
+    Mutation(
+        name="finding_class_phantom_row",
+        asserts=["finding_class_registry_complete"],
+        description=(
+            "Classify a label nothing emits. The row reads as a decided classification "
+            "while covering nothing, and would silently classify any future check that "
+            "reused the name -- the other direction of the registry's completeness."
+        ),
+        edits={
+            "backend/app/practice_gen/validation/_manifest.py": (
+                '    "worker_crash": INTEGRITY,                   # the matrix pool lost a node: harness crash\n',
+                '    "worker_crash": INTEGRITY,                   # the matrix pool lost a node: harness crash\n'
+                '    "no_check_emits_this": CONTENT,  # planted mutation: phantom row\n',
+            )
+        },
+        command=["pytest", "tests/unit/test_verdict.py", "-q", "-p", "no:cacheprovider",
+                 "-k", "test_finding_class_registry_complete"],
+        expected_check="FINDING_CLASS names nothing the harness cannot emit",
+        expect_output_contains=["finding_class_registry_complete: FINDING_CLASS and the §8",
+                                "no_check_emits_this"],
+        baseline_must_not_contain=["finding_class_registry_complete: FINDING_CLASS and the §8"],
     ),
     # ── §12's renderer-registration dispositions (H-08, 2026-09-18) ────────────────
     #
@@ -4954,8 +5065,8 @@ MUTATIONS: List[Mutation] = [
         ),
         edits={
             "backend/app/practice_gen/validation/run_all.py": (
-                "            with (no_network() if stage.phase == 1 else nullcontext()):\n",
-                "            with nullcontext():  # planted mutation: Phase 1 is unguarded\n",
+                "            with (no_network() if stage.phase == 1 else nullcontext()), redirect_stdout(tee):\n",
+                "            with nullcontext(), redirect_stdout(tee):  # planted mutation: Phase 1 is unguarded\n",
             )
         },
         command=["pytest", "tests/unit/test_phase1_hermetic.py", "-q", "-p", "no:cacheprovider"],

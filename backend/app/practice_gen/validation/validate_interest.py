@@ -172,7 +172,8 @@ def validate_all_interest_invariance() -> Dict[str, List[str]]:
     print(f"\nInterest invariance: {total - failed}/{total} node/DNA pairs passed.")
     for key, errors in results.items():
         if errors:
-            print(f"  FAIL {key}:")
+            # Label first (owner ruling 27): see validate_dna's matching comment.
+            print(f"  FAIL interest_invariance {key}:")
             for error in errors:
                 print(f"    - {error}")
     if visibility_missing:

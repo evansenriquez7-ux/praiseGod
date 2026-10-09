@@ -94,12 +94,17 @@ refusing to promote a revision whose container fails to start.
 ### Running it
 
 ```bash
-PYTHONPATH=. .venv/bin/python3 -m backend.app.practice_gen.validation.run_all   # exit 0 = done
+PYTHONPATH=. .venv/bin/python3 -m backend.app.practice_gen.validation.run_all   # 0 green / 2 content / 1 integrity
 PYTHONPATH=. .venv/bin/python3 scripts/hardening_supervisor.py --reap           # cheap queue read
 PYTHONPATH=. .venv/bin/python3 -m tests.mutation_harness                        # prove the checks fail
 ```
 
-`run_all` exiting 0 is the only completion signal. A green stage proves nothing on its own:
+`run_all` has three exit codes (owner ruling 27, since 2026-10-09): **1** integrity failure (a
+stage crashed or never ran, a mutation proof does not hold, a stale artifact, registry drift, a
+unit test, or any other label `_manifest.FINDING_CLASS` classes integrity), else **2** when content
+findings exist (the generator work queue), else **0**. Harness work is done at 0 or 2; generator
+work only at 0. Each finding is classified by the label that reported it, never by its message.
+A green stage proves nothing on its own:
 the mutation harness is what shows each check can actually fail, and a check with no
 mutation is unproven regardless of how long it has been passing.
 
@@ -160,7 +165,7 @@ display the pupil needs when the stem never mentions it.
 | `§2G` | validate_compat: every node's competency bounds parse to a well-formed shape — the tree-wide property behind the fixture table |
 | `§2H` | validate_compat: a competency naming BOTH cases of a dimension must not be bound to one of them — §2G proves bounds are well-formed, §2H proves they are faithful to the competency text |
 | `§2I` | validate_compat: a discrete variant a node declares must be one it can actually produce — a shrinking floor (65 at 2026-09-04), not a hard gate. Producibility only: it never asks whether the render shows the value (§2L) |
-| `§2L` | validate_exhibit: a discrete variant a node declares must reach the render — recorded in `given_values`, or changing the problem against every sibling value — and every Attester packet must build. Report-only in `run_all` until the exit-code split; its CLI exits 1 on any finding |
+| `§2L` | validate_exhibit: a discrete variant a node declares must reach the render — recorded in `given_values`, or changing the problem against every sibling value — and every Attester packet must build. Content findings: `run_all` exit 2 (since H2); its own CLI exits 1 on any finding |
 | `§3` | validate_dna: production-context structure at every applicable node/declared grade/five seeds, exact numeric comparison, and difficulty-profile feasibility |
 | `§4` | validate_matrix: VISUAL payload schema validation (recorded only under is_visual, so ~67 of 151 nodes; non-visual response shape rests on the Pydantic model at runtime) |
 | `§5` | validate_judgment: genuine, non-boilerplate, non-stale blind judgment reviews |

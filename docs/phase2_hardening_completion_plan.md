@@ -1472,6 +1472,22 @@ that points at it break every time the section is refreshed.
 >     lenient passes and false findings are failures, Rule 4 is not a judge's lens, and output only the
 >     requested format. Blindness still means: no provider tables, no other judges' records, no node-to-key
 >     mapping beside the packet. Each record's delivery field states that `CLAUDE.md` was loaded.
+> 30. **A failing unit test is an integrity failure, for now** (owner, 2026-10-09, asked during H2).
+>     Every failure of the §0 fast suite makes `run_all` exit 1, including the deterministic tests that
+>     render live generator output (measured at H2: 157 of 1050 collected -- 151 per-lc
+>     `test_no_served_hint_contradicts_its_item`, 6 lc-parametrized -- plus
+>     `test_invariant_holds_across_the_live_tree`). No LLM is involved in these tests. H5 (hint/stem
+>     agreement) moves the live-output sweeps into a content stage that names lc and seed and exits 2.
+> 31. **H2 changes no floor** (owner, 2026-10-09). A floor keeps absorbing the content findings it
+>     tolerates and printing PASS; each is recorded as a named limit with its count (§6 Phase 1: the 5
+>     `draw` capabilities on mat_g2_mg_q1_2, mat_g3_mg_q1_4, mat_g3_mg_q1_5, mat_g3_mg_q4_0 and
+>     mat_g3_mg_q4_1; `formatters_reachable` 6; `obligation_routes_reachable` 5), and a later batch makes
+>     them report as content. The owner restated with this ruling that an interactive visual formatter
+>     suffices for `draw` (rulings 13-18); these five lcs do not have one yet.
+> 32. **Defects in the filed §5 and §6F-§6H records are content** (owner, 2026-10-09). STALE,
+>     provenance, plurality and boilerplate findings exit 2, because their remedy is re-review or
+>     re-attestation and both gates are retired in H6 (ruling 25). The harness's own checks inside those
+>     stages stay integrity, tagged by the function that emits them, never by message text.
 >
 > **Owner rulings recorded 2026-09-22, binding on the next session:**
 >
