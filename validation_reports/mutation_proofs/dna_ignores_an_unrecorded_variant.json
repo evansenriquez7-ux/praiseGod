@@ -1,0 +1,46 @@
+{
+ "asserts": [
+  "variant_not_exhibited_2L"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "FAIL variant_not_exhibited_2L"
+ ],
+ "command": [
+  "backend.app.practice_gen.validation.validate_exhibit",
+  "--node-ids",
+  "mat_g3_dp_q3_1"
+ ],
+ "definition_digest": "578ab30b70cfaa960541379b7dc078f31c6cc85c90a0d27dabd2a34babfe89a3",
+ "detected": true,
+ "diagnostic_line": "exit 1 — FAIL variant_not_exhibited_2L (3):",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "FAIL variant_not_exhibited_2L",
+  "mat_g3_dp_q3_1 && scale='scale_10' is not exhibited"
+ ],
+ "expected_check": "§2L criterion (b): an unrecorded variant must still change the render",
+ "finished_at": "2026-10-09T12:50:34+08:00",
+ "input_digest": "4d314664a4ff03b40ef7a03aac3dba6003a48daf983e37aaddfd1f5a4d0b092a",
+ "mutated_paths": [
+  "backend/app/practice_gen/dna/dp/bar_graphs.py"
+ ],
+ "mutation": "dna_ignores_an_unrecorded_variant",
+ "observed_markers": {
+  "FAIL variant_not_exhibited_2L": true,
+  "mat_g3_dp_q3_1 && scale='scale_10' is not exhibited": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-10-09T12:50:28+08:00"
+}

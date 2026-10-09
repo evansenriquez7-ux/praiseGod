@@ -2,11 +2,11 @@
   "schema_version": 1,
   "note": "Intent record for interruption safety. Written when a batch, chain or campaign STARTS and cleared when it completes; an intent left open means a session did not reach its finish line. Deliberately digest-free -- see tests/tree_state.py. Read with `PYTHONPATH=. .venv/bin/python tests/tree_state.py`.",
   "open_intent": {
-    "kind": "batch",
-    "began_at": "2026-10-09T00:15:03+08:00",
+    "kind": "chain",
+    "began_at": "2026-10-09T06:04:06+08:00",
     "session": "h1-opus55-20261009",
-    "note": "H1: variant exhibit check (ruling 26)",
-    "next_step": "Land every remaining source edit, then run the re-proof chain in order."
+    "note": "H1 chain rerun on fix: refusal naming",
+    "next_step": "Resume the chain at the first step whose artifact is still stale; shards are individually resumable, so re-run only the stale indices."
   },
   "last_completed": {
     "kind": "campaign",

@@ -1,18 +1,22 @@
 {
  "asserts": [
-  "hint_contract_arithmetic"
+  "stage_failure_reaches_verdict"
  ],
  "baseline_exit": 0,
  "baseline_markers_already_present": [],
  "baseline_must_not_contain": [
-  "test_no_served_hint_contradicts_its_item[mat_g1_na_q1_0] && failed"
+  "stage_failure_reaches_verdict: these stages"
  ],
  "command": [
   "pytest",
-  "tests/unit/test_hint_contract.py::test_no_served_hint_contradicts_its_item[mat_g1_na_q1_0]",
-  "-q"
+  "tests/unit/test_stage_ledger.py",
+  "-q",
+  "-p",
+  "no:cacheprovider",
+  "-k",
+  "TestStageFailureReachesVerdict"
  ],
- "definition_digest": "379fade6fc99a8e21e767d663754cd902ee3da0cbd92d8c0c68d8d6b2df1c698",
+ "definition_digest": "69ecbbadfa3ceb4bc526493d6e75b5d70768ac8b062825256cd518e0d59f26aa",
  "detected": true,
  "diagnostic_line": "exit 1 — =================================== FAILURES ===================================",
  "environment": {
@@ -23,26 +27,24 @@
   "system": "Darwin"
  },
  "expect_output_contains": [
-  "test_no_served_hint_contradicts_its_item[mat_g1_na_q1_0]",
-  "failed",
-  "[arithmetic]"
+  "stage_failure_reaches_verdict: these stages",
+  "dangling_reference_1M"
  ],
- "expected_check": "§0 hint contract (hint_contract_arithmetic)",
- "finished_at": "2026-10-09T12:42:53+08:00",
+ "expected_check": "run_all verdict (every failed stage fails the run)",
+ "finished_at": "2026-10-09T13:03:42+08:00",
  "input_digest": "4d314664a4ff03b40ef7a03aac3dba6003a48daf983e37aaddfd1f5a4d0b092a",
  "mutated_paths": [
-  "backend/app/practice_gen/dna/na/counting.py"
+  "backend/app/practice_gen/validation/run_all.py"
  ],
- "mutation": "hint_counting_backward_subtracts_upward",
+ "mutation": "failed_stage_left_out_of_the_verdict",
  "observed_markers": {
-  "[arithmetic]": true,
-  "failed": true,
-  "test_no_served_hint_contradicts_its_item[mat_g1_na_q1_0]": true
+  "dangling_reference_1M": true,
+  "stage_failure_reaches_verdict: these stages": true
  },
  "paths_outside_input_set": [],
  "phase1_admissible": true,
  "planted_exit": 1,
  "restored_clean": true,
  "schema_version": 1,
- "started_at": "2026-10-09T12:42:49+08:00"
+ "started_at": "2026-10-09T13:03:40+08:00"
 }

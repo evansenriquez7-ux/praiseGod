@@ -1,0 +1,52 @@
+{
+ "asserts": [
+  "attester_packet_refused_2L",
+  "variant_not_exhibited_2L"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "FAIL variant_not_exhibited_2L",
+  "FAIL attester_packet_refused_2L"
+ ],
+ "command": [
+  "backend.app.practice_gen.validation.validate_exhibit",
+  "--node-ids",
+  "mat_g3_dp_q3_0"
+ ],
+ "definition_digest": "72dce51546f35feb927e552186f993baf804b2d66dc4830e156feed767f7d9b6",
+ "detected": true,
+ "diagnostic_line": "exit 1 — FAIL variant_not_exhibited_2L (3):",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "FAIL variant_not_exhibited_2L",
+  "mat_g3_dp_q3_0 && experiment_type='die_roll' is not exhibited [class B]",
+  "FAIL attester_packet_refused_2L",
+  "mat_g3_dp_q3_0 && provider_variant_stratification_6F"
+ ],
+ "expected_check": "§2L (a declared variant reaches the render; its Attester packet builds)",
+ "finished_at": "2026-10-09T12:50:26+08:00",
+ "input_digest": "4d314664a4ff03b40ef7a03aac3dba6003a48daf983e37aaddfd1f5a4d0b092a",
+ "mutated_paths": [
+  "backend/app/practice_gen/dna/dp/probability_experiment.py"
+ ],
+ "mutation": "dna_ignores_a_declared_variant",
+ "observed_markers": {
+  "FAIL attester_packet_refused_2L": true,
+  "FAIL variant_not_exhibited_2L": true,
+  "mat_g3_dp_q3_0 && experiment_type='die_roll' is not exhibited [class B]": true,
+  "mat_g3_dp_q3_0 && provider_variant_stratification_6F": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-10-09T12:50:25+08:00"
+}
