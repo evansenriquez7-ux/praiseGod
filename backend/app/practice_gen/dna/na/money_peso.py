@@ -17,6 +17,7 @@ from backend.app.practice_gen.dna.base import (
     ErrorPattern,
     VocabGated,
 )
+from backend.app.practice_gen.slots import S, derived, derives, fill
 
 
 # ─── Philippine currency denominations ────────────────────────────────────────
@@ -102,11 +103,11 @@ def num_to_words(n: int) -> str:
     thousands = n // 1000
     remainder = n % 1000
     if thousands:
-        parts.append(f"{_ONES[thousands]} thousand")
+        parts.append(fill("{v} thousand", v=derived(_ONES[thousands])))
     hundreds = remainder // 100
     remainder = remainder % 100
     if hundreds:
-        parts.append(f"{_ONES[hundreds]} hundred")
+        parts.append(fill("{v} hundred", v=derived(_ONES[hundreds])))
     if remainder > 0:
         if remainder < 20:
             parts.append(_ONES[remainder])
@@ -115,7 +116,7 @@ def num_to_words(n: int) -> str:
             ones = remainder % 10
             chunk = _TENS[tens]
             if ones:
-                chunk = f"{chunk}-{_ONES[ones]}"
+                chunk = fill("{chunk}-{v}", chunk=derived(chunk), v=derived(_ONES[ones]))
             parts.append(chunk)
     return " ".join(parts)
 
@@ -347,19 +348,19 @@ def generate_params(
                 # a centavo piece is always a coin and is written "50¢", so the
                 # P20 bill/coin threshold must not be applied to it.
                 if denomination_unit == "centavo":
-                    unit, face = "coin", f"{denom}¢"
+                    unit, face = "coin", fill("{denom}¢", denom=derived(denom))
                 else:
                     unit = "bill" if denom >= 20 else "coin"
-                    face = f"₱{denom}"
+                    face = fill("₱{denom}", denom=derived(denom))
                 if count > 1:
                     unit += "s"
-                parts.append(f"{count} {face} {unit}")
+                parts.append(fill("{count} {face} {unit}", count=derived(count), face=S(face, "fill"), unit=derived(unit)))
             if len(parts) == 1:
                 return parts[0]
             elif len(parts) == 2:
-                return f"{parts[0]} and {parts[1]}"
+                return fill("{v} and {v2}", v=S(parts[0], "fill"), v2=S(parts[1], "fill"))
             else:
-                return ", ".join(parts[:-1]) + f", and {parts[-1]}"
+                return fill("{join}, and {v}", join=derived(", ".join(parts[:-1])), v=S(parts[-1], "fill"))
 
         desc1 = get_desc(amounts1)
         desc2 = get_desc(amounts2)
@@ -367,21 +368,21 @@ def generate_params(
 
         ask_greater = rng.choice([True, False])
         if ask_greater:
-            question = f"Which has a greater value: {desc1} or {desc2}?"
+            question = fill("Which has a greater value: {desc1} or {desc2}?", _src=('operation',), desc1=S(desc1, "fill"), desc2=S(desc2, "fill"))
             if t1 > t2:
                 correct_ans = desc1
-                distractors = [desc2, "They are equal", desc3]
+                distractors = [desc2, fill("They are equal", _src=('operation',)), desc3]
             else:
                 correct_ans = desc2
-                distractors = [desc1, "They are equal", desc3]
+                distractors = [desc1, fill("They are equal", _src=('operation',)), desc3]
         else:
-            question = f"Which has a smaller value: {desc1} or {desc2}?"
+            question = fill("Which has a smaller value: {desc1} or {desc2}?", _src=('operation',), desc1=S(desc1, "fill"), desc2=S(desc2, "fill"))
             if t1 < t2:
                 correct_ans = desc1
-                distractors = [desc2, "They are equal", desc3]
+                distractors = [desc2, fill("They are equal", _src=('operation',)), desc3]
             else:
                 correct_ans = desc2
-                distractors = [desc1, "They are equal", desc3]
+                distractors = [desc1, fill("They are equal", _src=('operation',)), desc3]
 
         return {
             "blank_target": "answer",
@@ -407,65 +408,65 @@ def generate_params(
 
         if task == "recognize_coin":
             denom = rng.choice([1, 5, 10, 20])
-            question = f"A coin marked with the number {denom} is shown. What coin is it?"
-            correct_ans = f"₱{denom} coin"
+            question = fill("A coin marked with the number {denom} is shown. What coin is it?", _src=('operation',), denom=derived(denom))
+            correct_ans = fill("₱{denom} coin", _src=('operation',), denom=derived(denom))
             wrong_denoms = [d for d in [1, 5, 10, 20] if d != denom]
-            distractors = [f"₱{d} coin" for d in wrong_denoms[:3]]
+            distractors = [fill("₱{d} coin", _src=('operation',), d=derived(d)) for d in wrong_denoms[:3]]
         elif task == "recognize_bill":
             denom = rng.choice([20, 50, 100])
-            question = f"A bill marked with the number {denom} is shown. What bill is it?"
-            correct_ans = f"₱{denom} bill"
+            question = fill("A bill marked with the number {denom} is shown. What bill is it?", _src=('operation',), denom=derived(denom))
+            correct_ans = fill("₱{denom} bill", _src=('operation',), denom=derived(denom))
             wrong_denoms = [d for d in [20, 50, 100] if d != denom] + [10]
-            distractors = [f"₱{d} bill" if d >= 20 else f"₱{d} coin" for d in wrong_denoms[:3]]
+            distractors = [fill("₱{d} bill", _src=('operation',), d=derived(d)) if d >= 20 else fill("₱{d} coin", _src=('operation',), d=derived(d)) for d in wrong_denoms[:3]]
         elif task == "numeral_to_words":
             words = num_to_words(total_rw)
-            question = f"How is ₱{total_rw} written in words?"
-            correct_ans = f"{words} pesos"
+            question = fill("How is ₱{total_rw} written in words?", _src=('operation',), total_rw=derived(total_rw))
+            correct_ans = fill("{words} pesos", _src=('operation',), words=derived(words))
             wrong_total1 = total_rw + rng.choice([10, 5, 20, 100])
             wrong_total2 = total_rw - rng.choice([10, 5, 2, 50])
             if wrong_total2 <= 0:
                 wrong_total2 = total_rw + 50
             distractors = [
-                f"{num_to_words(wrong_total1)} pesos",
-                f"{num_to_words(wrong_total2)} pesos",
-                f"{words} centavos"
+                fill("{num_to_words} pesos", _src=('operation',), num_to_words=derived(num_to_words(wrong_total1))),
+                fill("{num_to_words} pesos", _src=('operation',), num_to_words=derived(num_to_words(wrong_total2))),
+                fill("{words} centavos", _src=('operation',), words=derived(words))
             ]
         elif task == "words_to_numeral":
             words = num_to_words(total_rw)
-            question = f"How is '{words} pesos' written using the peso symbol?"
-            correct_ans = f"₱{total_rw}"
+            question = fill("How is '{words} pesos' written using the peso symbol?", _src=('operation',), words=derived(words))
+            correct_ans = fill("₱{total_rw}", _src=('operation',), total_rw=derived(total_rw))
             distractors = [
-                f"₱{total_rw * 10}",
-                f"₱{total_rw - 5 if total_rw > 5 else total_rw + 5}",
-                f"{total_rw}¢"
+                fill("₱{v}", _src=('operation',), v=derived(total_rw * 10)),
+                fill("₱{v}", _src=('operation',), v=derived(total_rw - 5 if total_rw > 5 else total_rw + 5)),
+                fill("{total_rw}¢", _src=('operation',), total_rw=derived(total_rw))
             ]
         else: # symbols
             g3_sub = rng.choice(["peso_decimal", "centavo_sign", "php_code"]) if grade == 3 else "php_code"
             if g3_sub == "peso_decimal":
                 cent_choice = rng.choice([25, 50])
-                question = f"How is {cent_choice} centavos written as a decimal of a peso using the ₱ symbol?"
-                correct_ans = f"₱0.{cent_choice}"
+                question = fill("How is {cent_choice} centavos written as a decimal of a peso using the ₱ symbol?", _src=('operation',), cent_choice=derived(cent_choice))
+                correct_ans = fill("₱0.{cent_choice}", _src=('operation',), cent_choice=derived(cent_choice))
                 distractors = [
-                    f"₱{cent_choice}",
-                    f"₱0.0{cent_choice}",
-                    f"{cent_choice}¢"
+                    fill("₱{cent_choice}", _src=('operation',), cent_choice=derived(cent_choice)),
+                    fill("₱0.0{cent_choice}", _src=('operation',), cent_choice=derived(cent_choice)),
+                    fill("{cent_choice}¢", _src=('operation',), cent_choice=derived(cent_choice))
                 ]
             elif g3_sub == "centavo_sign":
                 cent_choice = rng.choice([25, 50])
-                question = f"How is ₱0.{cent_choice} written using the centavo sign?"
-                correct_ans = f"{cent_choice}¢"
+                question = fill("How is ₱0.{cent_choice} written using the centavo sign?", _src=('operation',), cent_choice=derived(cent_choice))
+                correct_ans = fill("{cent_choice}¢", _src=('operation',), cent_choice=derived(cent_choice))
                 distractors = [
-                    f"₱{cent_choice}",
-                    f"{cent_choice} pesos",
-                    f"₱0.0{cent_choice}",
+                    fill("₱{cent_choice}", _src=('operation',), cent_choice=derived(cent_choice)),
+                    fill("{cent_choice} pesos", _src=('operation',), cent_choice=derived(cent_choice)),
+                    fill("₱0.0{cent_choice}", _src=('operation',), cent_choice=derived(cent_choice)),
                 ]
             else:
-                question = f"How is ₱{total_rw} written using the currency code PhP?"
-                correct_ans = f"PhP {total_rw}"
+                question = fill("How is ₱{total_rw} written using the currency code PhP?", _src=('operation',), total_rw=derived(total_rw))
+                correct_ans = fill("PhP {total_rw}", _src=('operation',), total_rw=derived(total_rw))
                 distractors = [
-                    f"₱{total_rw}",
-                    f"PhP{total_rw}c",
-                    f"{total_rw} PhP"
+                    fill("₱{total_rw}", _src=('operation',), total_rw=derived(total_rw)),
+                    fill("PhP{total_rw}c", _src=('operation',), total_rw=derived(total_rw)),
+                    fill("{total_rw} PhP", _src=('operation',), total_rw=derived(total_rw))
                 ]
         return {
             "blank_target": "answer",
@@ -478,6 +479,8 @@ def generate_params(
             "distractors": distractors
         }
 
+    # Owner ruling 41: every amount is denominated in the chosen unit.
+    derives("amounts", src=("denomination_unit",))
     result_dict = {
         "blank_target": "result",
         "amounts":            amounts,
@@ -531,34 +534,34 @@ def generate_hints(
     hints: List[str] = []
     
     if operation == "compare":
-        hints.append("Find the total value of the first group of money.")
-        hints.append("Find the total value of the second group of money.")
-        hints.append("Compare the two values to see which one is greater.")
+        hints.append(fill("Find the total value of the first group of money.", _src=('operation',)))
+        hints.append(fill("Find the total value of the second group of money.", _src=('operation',)))
+        hints.append(fill("Compare the two values to see which one is greater.", _src=('operation',)))
         return hints
 
     if operation == "read_write":
-        hints.append("Read the number or words given in the question carefully.")
-        hints.append("Think about the spelling of number words or the position of the currency symbol.")
-        hints.append("Remember that pesos use ₱ or PhP, and centavos can be written as a decimal.")
+        hints.append(fill("Read the number or words given in the question carefully.", _src=('operation',)))
+        hints.append(fill("Think about the spelling of number words or the position of the currency symbol.", _src=('operation',)))
+        hints.append(fill("Remember that pesos use ₱ or PhP, and centavos can be written as a decimal.", _src=('operation',)))
         return hints
 
-    hints.append(f"You have these amounts: {[f'{peso_label}{a}' for a in amounts]}.")
+    hints.append(fill("You have these amounts: {v}.", v=derived([f'{peso_label}{a}' for a in amounts], src=('amounts',))))
 
     if operation == "add_amounts":
         running = 0
         for i, amt in enumerate(amounts):
             running += amt
-            hints.append(f"Step {i + 1}: Add {peso_label}{amt} → running total = {peso_label}{running}.")
-        hints.append(f"The total is {peso_label}{total}.")
+            hints.append(fill("Step {v}: Add {peso_label}{amt} → running total = {peso_label}{running}.", _src=('operation',), v=derived(i + 1), peso_label=S(peso_label, "fill"), amt=derived(amt), running=derived(running)))
+        hints.append(fill("The total is {peso_label}{total}.", _src=('operation',), peso_label=S(peso_label, "fill"), total=S(total, "value:total")))
     elif operation == "find_change":
         paid = amounts[0]
         cost = amounts[1] if len(amounts) > 1 else total
         chg  = paid - cost
-        hints.append(f"You paid {peso_label}{paid} for an item that costs {peso_label}{cost}.")
-        hints.append(f"{change_label.capitalize()} = {peso_label}{paid} − {peso_label}{cost} = {peso_label}{chg}.")
+        hints.append(fill("You paid {peso_label}{paid} for an item that costs {peso_label}{cost}.", _src=('operation',), peso_label=S(peso_label, "fill"), paid=derived(paid, src=('amounts',)), cost=derived(cost, src=('total', 'amounts',))))
+        hints.append(fill("{capitalize} = {peso_label}{paid} − {peso_label}{cost} = {peso_label}{chg}.", _src=('operation',), capitalize=derived(change_label.capitalize()), peso_label=S(peso_label, "fill"), paid=derived(paid, src=('amounts',)), cost=derived(cost, src=('total', 'amounts',)), chg=derived(chg, src=('amounts', 'total',))))
     else:  # identify_value
-        hints.append(f"Look at each {VOCAB_DENOMINATION.resolve(cumulative_vocab)} shown.")
-        hints.append(f"Count the total: {' + '.join(str(a) for a in amounts)} = {total}.")
+        hints.append(fill("Look at each {resolve} shown.", resolve=S(VOCAB_DENOMINATION.resolve(cumulative_vocab), "fill")))
+        hints.append(fill("Count the total: {join} = {total}.", join=derived(' + '.join(str(a) for a in amounts), src=('amounts',)), total=S(total, "value:total")))
 
     return hints
 

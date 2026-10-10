@@ -26,7 +26,8 @@ from typing import Optional
 from backend.app.practice_gen.dna.base import FormattedProblem, QuestionContext
 from backend.app.practice_gen.formatters._distractor_fallback import augment_distractors
 from backend.app.practice_gen.formatters._option_order import shuffle_options
-from backend.app.practice_gen.slots import E, S, fill
+from backend.app.practice_gen.slots import E, S, derived, fill
+from backend.app.practice_gen.formatters._answer_slots import distractors_field
 
 # Option letters, A first: `_OPTION_KEYS[i]` is `chr(ord("A") + i)` for the four options this
 # formatter offers. A module constant so the key a learner reads is a slot with a domain (H5).
@@ -233,7 +234,7 @@ def _build_visual_params(
                     "divisions": (whole_part + 1) * denominator,
                     "correct_position": numerator,
                     "content_type": "improper_fraction",
-                    "fraction_display": f"{numerator}/{denominator}",
+                    "fraction_display": fill("{numerator}/{denominator}", numerator=derived(numerator), denominator=derived(denominator)),
                     "labels": ["0", str(whole_part + 1)],
                     "is_interactive": True,
                     "marked_points": [],
@@ -252,7 +253,7 @@ def _build_visual_params(
                     "divisions": (whole_part + 1) * denominator,
                     "correct_position": whole_part * denominator + proper_num,
                     "content_type": "mixed_number",
-                    "fraction_display": f"{whole_part} {proper_num}/{denominator}",
+                    "fraction_display": fill("{whole_part} {proper_num}/{denominator}", whole_part=derived(whole_part), proper_num=derived(proper_num), denominator=derived(denominator)),
                     "labels": ["0", str(whole_part + 1)],
                     "is_interactive": True,
                     "marked_points": [],
@@ -330,14 +331,14 @@ def _stem(params: dict, interaction_mode: str, cumulative_vocab: set) -> str:
     ct = params.get("content_type", "whole_number")
     if interaction_mode == "set":
         if ct == "improper_fraction":
-            return f"Move the dot to show {params['fraction_display']}{suffix}."
+            return fill("Move the dot to show {fraction_display}{suffix}.", fraction_display=derived(params['fraction_display']), suffix=derived(suffix))
         if ct == "mixed_number":
-            return f"Move the dot to show {params['fraction_display']}{suffix}."
+            return fill("Move the dot to show {fraction_display}{suffix}.", fraction_display=derived(params['fraction_display']), suffix=derived(suffix))
         if ct == "fraction":
-            return f"Move the dot to show {params['numerator']}/{params['denominator']}{suffix}."
+            return fill("Move the dot to show {numerator}/{denominator}{suffix}.", numerator=derived(params['numerator']), denominator=derived(params['denominator']), suffix=derived(suffix))
         if ct == "decimal":
-            return f"Move the dot to show {params['decimal_value']}{suffix}."
-        return f"Move the dot to show {params['value']}{suffix}."
+            return fill("Move the dot to show {decimal_value}{suffix}.", decimal_value=derived(params['decimal_value']), suffix=derived(suffix))
+        return fill("Move the dot to show {value}{suffix}.", value=derived(params['value']), suffix=derived(suffix))
     else:  # read
         # Structured slots (H5, owner ruling 28): identical to the f-string it replaced.
         return fill("What number is marked{suffix}?",
@@ -351,7 +352,7 @@ def _stem(params: dict, interaction_mode: str, cumulative_vocab: set) -> str:
 def _correct_value(params: dict):
     ct = params.get("content_type", "whole_number")
     if ct == "fraction":
-        return f"{params['numerator']}/{params['denominator']}"
+        return fill("{numerator}/{denominator}", numerator=derived(params['numerator']), denominator=derived(params['denominator']))
     if ct == "improper_fraction":
         return params["fraction_display"]
     if ct == "mixed_number":
@@ -763,7 +764,7 @@ def format_number_line(
             ct = vp.get("content_type", "whole_number")
             if ct == "fraction":
                 d = vp["denominator"]
-                display = f"{pos}/{d}"
+                display = fill("{pos}/{d}", pos=derived(pos), d=derived(d))
             elif ct == "decimal":
                 divs = vp["divisions"]
                 display = pos / divs
@@ -789,7 +790,7 @@ def format_number_line(
                 d = vp.get("denominator", 1)
                 pos = vp.get("correct_position", 0) + offset
                 if pos < 0: pos = 0
-                display = f"{pos}/{d}"
+                display = fill("{pos}/{d}", pos=derived(pos), d=derived(d))
             elif ct == "decimal":
                 divs = vp.get("divisions", 10)
                 pos = vp.get("correct_position", 0) + offset
@@ -849,19 +850,18 @@ def format_number_line(
         elif interaction_mode == "read":
             direction = "back" if subtractive else "forward"
             question_text = (
-                f"The dot is at \u20b1{a} and it moves {direction} \u20b1{b}. "
-                f"Which amount will the dot land on?"
+                fill("The dot is at ₱{a} and it moves {direction} ₱{b}. Which amount will the dot land on?", a=S(a, "value:a"), direction=derived(direction, src=('operation',)), b=S(b, "value:b"))
             )
         else:
             sign = "\u2212" if subtractive else "+"
-            question_text = f"Show \u20b1{a} {sign} \u20b1{b} on the number line."
+            question_text = fill("Show ₱{a} {sign} ₱{b} on the number line.", a=S(a, "value:a"), sign=derived(sign, src=('operation',)), b=S(b, "value:b"))
     elif ctx.dna_concept == "addition" and "a" in values and "b" in values:
         a, b = values["a"], values["b"]
         num_word = "number" if b == 1 else "numbers"
         if interaction_mode == "read":
-            question_text = f"The dot is at {a} and it moves forward {b} {num_word}. Starting from {a}, just count up {b} {num_word}. Which number will the dot land on?"
+            question_text = fill("The dot is at {a} and it moves forward {b} {num_word}. Starting from {a}, just count up {b} {num_word}. Which number will the dot land on?", a=S(a, "value:a"), b=S(b, "value:b"), num_word=derived(num_word))
         else:
-            question_text = f"Show {a} + {b} on the number line."
+            question_text = fill("Show {a} + {b} on the number line.", a=S(a, "value:a"), b=S(b, "value:b"))
     elif ctx.dna_concept == "subtraction" and "a" in values and "b" in values:
         a, b = values["a"], values["b"]
         num_word = "number" if b == 1 else "numbers"
@@ -891,32 +891,29 @@ def format_number_line(
             jump_word = "jump" if b == 1 else "jumps"
             if _mul_task_type == "skip_counting":
                 question_text = (
-                    f"The arrows show counting by {a}s{where}. "
-                    f"After {b} {jump_word}, which number do you land on?"
+                    fill("The arrows show counting by {a}s{where}. After {b} {jump_word}, which number do you land on?", _src=('task_type',), a=S(a, "value:a"), where=derived(where), b=S(b, "value:b"), jump_word=derived(jump_word))
                 )
             elif _mul_task_type == "repeated_addition":
-                terms = " + ".join([str(a)] * b) if b <= 5 else f"{a} added {b} times"
+                terms = " + ".join([str(a)] * b) if b <= 5 else fill("{a} added {b} times", _src=('task_type',), a=S(a, "value:a"), b=S(b, "value:b"))
                 question_text = (
-                    f"The arrows show {terms}{where}. "
-                    f"Which number {'does the jump' if b == 1 else 'do the jumps'} land on?"
+                    fill("The arrows show {terms}{where}. Which number {v} land on?", _src=('task_type',), terms=derived(terms), where=derived(where), v=derived('does the jump' if b == 1 else 'do the jumps'))
                 )
             else:
                 question_text = (
-                    f"Start at 0 and take {b} equal {jump_word} of {a}{where}. "
-                    f"Which number do you land on?"
+                    fill("Start at 0 and take {b} equal {jump_word} of {a}{where}. Which number do you land on?", b=S(b, "value:b"), jump_word=derived(jump_word), a=S(a, "value:a"), where=derived(where))
                 )
         else:
             # Unreachable today (only `number_line_read` is declared for
             # multiplication) but the jumps are stripped from a "set" payload above,
             # so the pupil is placing the landing point, not reading it.
-            question_text = f"Show {b} equal {'jump' if b == 1 else 'jumps'} of {a}{where}."
+            question_text = fill("Show {b} equal {v} of {a}{where}.", b=S(b, "value:b"), v=derived('jump' if b == 1 else 'jumps'), a=S(a, "value:a"), where=derived(where))
     elif ctx.dna_concept == "rounding":
         num = values.get("number", vp.get("value"))
         precision = values.get("round_to", 10)
         if interaction_mode == "read":
-            question_text = f"The number {num} is marked on the number line. Round {num} to the nearest {precision}."
+            question_text = fill("The number {num} is marked on the number line. Round {num} to the nearest {precision}.", num=S(num, "value:number"), precision=derived(precision, src=('round_to',)))
         else:
-            question_text = f"Round {num} to the nearest {precision}."
+            question_text = fill("Round {num} to the nearest {precision}.", num=derived(num, src=('number',)), precision=derived(precision, src=('round_to',)))
     else:
         question_text = _stem(vp, interaction_mode, set(ctx.cumulative_vocab))
 
@@ -924,7 +921,7 @@ def format_number_line(
     if mcq_options is not None:
         format_data["mcq_options"] = mcq_options
 
-    fmt = f"{interaction_mode}_{answer_collection}"
+    fmt = fill("{interaction_mode}_{answer_collection}", interaction_mode=derived(interaction_mode), answer_collection=derived(answer_collection))
 
     return FormattedProblem(
         problem_id=f"{ctx.node_id}_{ctx.seed}_numberline",
@@ -934,7 +931,7 @@ def format_number_line(
         seed=ctx.seed,
         question_text=question_text,
         correct_answer=correct_answer,
-        distractors=ctx.distractors,
+        distractors=distractors_field(ctx),
         hints=ctx.hints,
         format=fmt,
         format_data=format_data,

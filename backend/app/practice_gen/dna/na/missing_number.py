@@ -20,6 +20,7 @@ from backend.app.practice_gen.dna.base import (
     ErrorPattern,
     VocabGated,
 )
+from backend.app.practice_gen.slots import S, derived, fill
 
 
 # ─── param bounds ─────────────────────────────────────────────────────────────
@@ -151,8 +152,8 @@ def generate_params(
                 pair2_candidates = [(1, target - 1)]
             c, d = rng.choice(pair2_candidates)
             symbol = "+"
-            answer_formula = f"{target} - {c}"
-            question = f"Complete the equivalent expression: {a} + {b} = {c} + ___"
+            answer_formula = fill("{target} - {c}", target=derived(target), c=derived(c))
+            question = fill("Complete the equivalent expression: {a} + {b} = {c} + ___", a=derived(a), b=derived(b), c=derived(c))
         else:
             # a - b = target and c - d = target: two different minuends,
             # both greater than the shared difference and within this
@@ -164,8 +165,8 @@ def generate_params(
             b = a - target
             d = c - target
             symbol = "−"
-            answer_formula = f"{c} - {target}"
-            question = f"Complete the equivalent expression: {a} − {b} = {c} − ___"
+            answer_formula = fill("{c} - {target}", c=derived(c), target=derived(target))
+            question = fill("Complete the equivalent expression: {a} − {b} = {c} − ___", a=derived(a), b=derived(b), c=derived(c))
         return {
             "blank_target": "d",
             "a": a, "b": b, "c": c, "d": d,
@@ -430,9 +431,9 @@ def generate_hints(
 
     if blank_pos == "result":
         return [
-            f"The {eq_lbl} is: {a} {sym} {b} = ___",
-            f"We need to find what {a} {sym} {b} equals.",
-            f"Calculate: {a} {sym} {b} = {result}.",
+            fill("The {eq_lbl} is: {a} {sym} {b} = ___", _src=('blank_position',), eq_lbl=S(eq_lbl, "fill"), a=S(a, "value:a"), sym=derived(sym, src=('operation',)), b=S(b, "value:b")),
+            fill("We need to find what {a} {sym} {b} equals.", _src=('blank_position',), a=S(a, "value:a"), sym=derived(sym, src=('operation',)), b=S(b, "value:b")),
+            fill("Calculate: {a} {sym} {b} = {result}.", _src=('blank_position',), a=S(a, "value:a"), sym=derived(sym, src=('operation',)), b=S(b, "value:b"), result=S(result, "value:result")),
         ]
 
     if blank_pos == "change":
@@ -442,24 +443,24 @@ def generate_hints(
             # inverse with the operands reversed, printing "12 + 20 = 8" and
             # "10 × 50 = 5" beside correct answers (hint contract, `arithmetic`).
             return [
-                f"The {eq_lbl} is: {a} {sym} ___ = {result}",
-                f"Think: {a} {sym} what number gives {result}?",
-                f"{a} {sym} {result} = {missing}.",
-                f"Check: {a} {sym} {missing} = {result}. ✓",
+                fill("The {eq_lbl} is: {a} {sym} ___ = {result}", _src=('operation', 'blank_position',), eq_lbl=S(eq_lbl, "fill"), a=S(a, "value:a"), sym=derived(sym, src=('operation',)), result=S(result, "value:result")),
+                fill("Think: {a} {sym} what number gives {result}?", _src=('operation', 'blank_position',), a=S(a, "value:a"), sym=derived(sym, src=('operation',)), result=S(result, "value:result")),
+                fill("{a} {sym} {result} = {missing}.", _src=('operation', 'blank_position',), a=S(a, "value:a"), sym=derived(sym, src=('operation',)), result=S(result, "value:result"), missing=S(missing, "value:missing_value")),
+                fill("Check: {a} {sym} {missing} = {result}. ✓", _src=('operation', 'blank_position',), a=S(a, "value:a"), sym=derived(sym, src=('operation',)), missing=S(missing, "value:missing_value"), result=S(result, "value:result")),
             ]
         return [
-            f"The {eq_lbl} is: {a} {sym} ___ = {result}",
-            f"To find the {miss_lbl}, use the opposite operation ({inv_op_lbl}).",
-            f"{result} {op_symbol[inv_op]} {a} = {missing}.",
-            f"Check: {a} {sym} {missing} = {result}. ✓",
+            fill("The {eq_lbl} is: {a} {sym} ___ = {result}", _src=('blank_position',), eq_lbl=S(eq_lbl, "fill"), a=S(a, "value:a"), sym=derived(sym, src=('operation',)), result=S(result, "value:result")),
+            fill("To find the {miss_lbl}, use the opposite operation ({inv_op_lbl}).", _src=('blank_position',), miss_lbl=S(miss_lbl, "fill"), inv_op_lbl=S(inv_op_lbl, "fill")),
+            fill("{result} {v} {a} = {missing}.", _src=('blank_position',), result=S(result, "value:result"), v=derived(op_symbol[inv_op], src=('operation',)), a=S(a, "value:a"), missing=S(missing, "value:missing_value")),
+            fill("Check: {a} {sym} {missing} = {result}. ✓", _src=('blank_position',), a=S(a, "value:a"), sym=derived(sym, src=('operation',)), missing=S(missing, "value:missing_value"), result=S(result, "value:result")),
         ]
 
     # start
     return [
-        f"The {eq_lbl} is: ___ {sym} {b} = {result}",
-        f"Use {inv_op_lbl} to undo the operation.",
-        f"{result} {op_symbol[inv_op]} {b} = {missing}.",
-        f"Check: {missing} {sym} {b} = {result}. ✓",
+        fill("The {eq_lbl} is: ___ {sym} {b} = {result}", eq_lbl=S(eq_lbl, "fill"), sym=derived(sym, src=('operation',)), b=S(b, "value:b"), result=S(result, "value:result")),
+        fill("Use {inv_op_lbl} to undo the operation.", inv_op_lbl=S(inv_op_lbl, "fill")),
+        fill("{result} {v} {b} = {missing}.", result=S(result, "value:result"), v=derived(op_symbol[inv_op], src=('operation',)), b=S(b, "value:b"), missing=S(missing, "value:missing_value")),
+        fill("Check: {missing} {sym} {b} = {result}. ✓", missing=S(missing, "value:missing_value"), sym=derived(sym, src=('operation',)), b=S(b, "value:b"), result=S(result, "value:result")),
     ]
 
 
@@ -468,14 +469,14 @@ def _equivalent_hints(values: Dict[str, Any]) -> List[str]:
     total, sym = values["result"], values["equivalent_symbol"]
     if sym == "+":
         return [
-            f"Work out the side you know: {a} + {b} = {total}.",
-            f"The other side must also make {total}: {c} + ___ = {total}.",
-            f"{total} − {c} = {d}, so the missing number is {d}.",
+            fill("Work out the side you know: {a} + {b} = {total}.", a=S(a, "value:a"), b=S(b, "value:b"), total=S(total, "value:result")),
+            fill("The other side must also make {total}: {c} + ___ = {total}.", total=S(total, "value:result"), c=S(c, "value:c")),
+            fill("{total} − {c} = {d}, so the missing number is {d}.", total=S(total, "value:result"), c=S(c, "value:c"), d=S(d, "value:d")),
         ]
     return [
-        f"Work out the side you know: {a} − {b} = {total}.",
-        f"The other side must also make {total}: {c} − ___ = {total}.",
-        f"{c} − {total} = {d}, so the missing number is {d}.",
+        fill("Work out the side you know: {a} − {b} = {total}.", a=S(a, "value:a"), b=S(b, "value:b"), total=S(total, "value:result")),
+        fill("The other side must also make {total}: {c} − ___ = {total}.", total=S(total, "value:result"), c=S(c, "value:c")),
+        fill("{c} − {total} = {d}, so the missing number is {d}.", c=S(c, "value:c"), total=S(total, "value:result"), d=S(d, "value:d")),
     ]
 
 

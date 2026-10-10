@@ -37,8 +37,8 @@ CLI (proof mode scopes by lc and by served formatter):
 
 NAMED LIMITS (Scaling Mandate 6; also in docs/pgen_contract.md §15 and the evidence log):
   1. `SEEDS` seeds per lc on the default student path only (as §14).
-  2. The record-based rule decides only fully-instrumented renders. On 2026-10-10 that is
-     one selector lc (mat_g1_na_q2_1); every other selector render is counted undecided.
+  2. The record-based rule decides only fully-instrumented renders. Since the H3 rollout
+     finished (H3-R2, 2026-10-11) that is every render at these seeds (1,351 of 1,351).
   3. Provenance is the generator's own statement. A slot that declares a `src` it does not
      use passes; review of the template (H4) is what catches a false declaration.
   4. A `visual_type` condition is treated as exhibited (the rendered visual IS its type).
@@ -50,6 +50,13 @@ NAMED LIMITS (Scaling Mandate 6; also in docs/pgen_contract.md §15 and the evid
      hints are mat_g3_na_q3_5/_6's "Repeat the ones [9, 1, 8]", the ones digits of shown
      terms (derived, not quoted). That they print as a Python list is a defect of its own,
      reported in the evidence log, not by this check.
+  7. The record closes over VALUE-level provenance (owner ruling 41): `slots.derives(key,
+     src)` -- a shown value chosen BECAUSE of `src` exhibits `src`; `slots.computes(key,
+     src)` -- a value that is a function of `src` is exhibited once every `src` is shown --
+     and template provenance (`fill(..., _src=...)`). Every declaration is the generator's
+     claim; a false one hides a real finding, as limit 3 says of slot `src`.
+  8. A template written for the one value of a key its own branch SETS (length's
+     `word_measure`, area's `shape`) is declared derived from that key by shared cause.
 """
 from __future__ import annotations
 
@@ -90,7 +97,7 @@ def _render(node_id: str, seed: int):
     with capture() as fills:
         problem = PracticeOrchestrator.generate_problem(
             node_id=node_id, seed=seed, is_student_path=True).model_dump()
-    return problem, list(fills)
+    return problem, fills      # a slots.Trace: the fills, plus `.derivations` (ruling 41)
 
 
 def exhibited_keys(problem: Dict[str, Any], fills) -> Optional[Set[str]]:
@@ -122,6 +129,22 @@ def exhibited_keys(problem: Dict[str, Any], fills) -> Optional[Set[str]]:
                 if not inner:
                     return None   # the nested text accounts only itself (§14 reports it)
                 stack.extend(inner)
+    # Owner ruling 41: close over VALUE-level provenance. A shown value the generator
+    # declared it chose BECAUSE of other values (`slots.derives`) exhibits those too.
+    derivations = getattr(fills, "derivations", ())
+    grew = True
+    while grew:
+        grew = False
+        for d in derivations:
+            if d.kind == "computes":
+                # a function of shown values is shown
+                if d.key not in keys and d.src and set(d.src) <= keys:
+                    keys.add(d.key)
+                    grew = True
+            elif d.key in keys and not set(d.src) <= keys:
+                # a shown value chosen BECAUSE of others exhibits them
+                keys.update(d.src)
+                grew = True
     return keys
 
 

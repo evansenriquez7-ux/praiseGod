@@ -16,6 +16,8 @@ import re
 from typing import List
 
 from backend.app.practice_gen.dna.base import FormattedProblem, QuestionContext
+from backend.app.practice_gen.slots import E, S, derived, fill
+from backend.app.practice_gen.formatters._answer_slots import distractors_field
 
 _FRACTION_STR_RE = re.compile(r"^\d+/\d+$")
 
@@ -132,7 +134,9 @@ def format_ordering(ctx: QuestionContext, rng: random.Random, format_name: str =
 
     format_data = {
         "items": items,
-        "direction": direction,
+        "direction": fill("{direction}", direction=S(direction, E(("ascending", "descending"),
+                                                                 "fmt_ordering sort directions"),
+                                                     src=("direction",))),
         "correct_order": correct_order,
     }
     format_data.pop("correct_order", None)
@@ -149,7 +153,7 @@ def format_ordering(ctx: QuestionContext, rng: random.Random, format_name: str =
         question_text = ctx.values["question"]
     else:
         direction_word = "smallest to largest" if direction == "ascending" else "largest to smallest"
-        question_text = f"Arrange these numbers from {direction_word}: {', '.join(str(x) for x in items)}"
+        question_text = fill("Arrange these numbers from {direction_word}: {join}", direction_word=derived(direction_word), join=derived(', '.join(str(x) for x in items)))
 
     return FormattedProblem(
         problem_id=f"{ctx.node_id}_{ctx.seed}_ordering",
@@ -159,7 +163,7 @@ def format_ordering(ctx: QuestionContext, rng: random.Random, format_name: str =
         seed=ctx.seed,
         question_text=question_text,
         correct_answer=correct_order,
-        distractors=ctx.distractors,
+        distractors=distractors_field(ctx),
         hints=ctx.hints,
         format=format_name,
         format_data=format_data,

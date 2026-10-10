@@ -58,6 +58,8 @@ import re
 
 from backend.app.practice_gen.dna.base import FormattedProblem, QuestionContext
 from backend.app.practice_gen.formatters._option_order import shuffle_options
+from backend.app.practice_gen.slots import S, derived, fill, transform
+from backend.app.practice_gen.formatters._answer_slots import correct_option_key
 
 
 # The pooled stems open with a deictic phrase and then show the model as ASCII plus a
@@ -133,11 +135,12 @@ def format_geometry_figure(
             {"key": chr(ord("A") + i), "value": v, "is_correct": v == correct_answer}
             for i, v in enumerate(all_opts)
         ]
-        final_answer = next(o["key"] for o in mcq_options if o["is_correct"])
+        final_answer = correct_option_key(mcq_options)
     else:
         final_answer = correct_answer
 
-    question_text = _strip_model_gloss(str(values.get("question") or ctx.question_text or ""))
+    # A registered transformation (H3-R2): the check replays this same function.
+    question_text = transform("strip_model_gloss", str(values.get("question") or ctx.question_text or ""))
 
     format_data: dict = {"visual_params": vp}
     if mcq_options:
@@ -153,7 +156,7 @@ def format_geometry_figure(
         correct_answer=final_answer,
         distractors=traps[:3],
         hints=ctx.hints,
-        format=f"{interaction_mode}_{answer_collection}",
+        format=fill("{interaction_mode}_{answer_collection}", interaction_mode=derived(interaction_mode), answer_collection=derived(answer_collection)),
         format_data=format_data,
         is_visual=True,
         visual_type="GeometryFigure",

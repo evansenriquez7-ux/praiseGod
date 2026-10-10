@@ -21,6 +21,7 @@ from backend.app.practice_gen.dna.base import (
     VocabGated,
     count_noun,
 )
+from backend.app.practice_gen.slots import S, derived, derives, fill
 
 
 # ─── param bounds ─────────────────────────────────────────────────────────────
@@ -517,6 +518,8 @@ def generate_params(
         other = rng.randint(1, max(1, max_result - 1))
         zero_first = rng.choice([True, False])
         a_val, b_val = (0, other) if zero_first else (other, 0)
+        # Owner ruling 41: the 0 operand is there BECAUSE of task_type.
+        derives("a" if zero_first else "b", src=("task_type",))
         return {
             "a": a_val, "b": b_val, "result": other,
             "task_type": "zero_identity",
@@ -541,7 +544,7 @@ def generate_params(
         holds = rng.random() < 0.5
         rhs_operands = [b_val, a_val if holds
                         else _different_addend(a_val, lo=0, hi=max(0, max_result - b_val))]
-        rhs = " + ".join(str(n) for n in rhs_operands)
+        rhs = fill("{rhs}", rhs=derived(" + ".join(str(n) for n in rhs_operands)))
         return {
             "a": a_val, "b": b_val,
             # The right-hand side the question asks about, declared so the hints
@@ -553,7 +556,7 @@ def generate_params(
             "max_sum": max_result,
             "answer": holds,
             "distractors": [not holds],
-            "question": f"Is {a_val} + {b_val} the same as {rhs}?",
+            "question": fill("Is {a_val} + {b_val} the same as {rhs}?", _src=('task_type',), a_val=derived(a_val), b_val=derived(b_val), rhs=S(rhs, "fill")),
         }
 
     if task_type == "associative" and grade >= 2:
@@ -566,7 +569,7 @@ def generate_params(
         holds = rng.random() < 0.5
         rhs_operands = [a_val, b_val, c_val if holds
                         else _different_addend(c_val, lo=0, hi=max(0, max_result - a_val - b_val))]
-        rhs = f"{rhs_operands[0]} + ({rhs_operands[1]} + {rhs_operands[2]})"
+        rhs = fill("{v} + ({v2} + {v3})", _src=('task_type',), v=S(rhs_operands[0], "value:a"), v2=derived(rhs_operands[1]), v3=derived(rhs_operands[2]))
         return {
             "a": a_val, "b": b_val, "c": c_val,
             # See the commutative branch.
@@ -577,7 +580,7 @@ def generate_params(
             "max_sum": max_result,
             "answer": holds,
             "distractors": [not holds],
-            "question": f"Is ({a_val} + {b_val}) + {c_val} the same as {rhs}?",
+            "question": fill("Is ({a_val} + {b_val}) + {c_val} the same as {rhs}?", _src=('task_type',), a_val=S(a_val, "value:a"), b_val=derived(b_val), c_val=derived(c_val), rhs=S(rhs, "fill")),
         }
 
     if task_type == "expanded_form":
@@ -669,8 +672,7 @@ def generate_params(
             "max_sum": max_result,
             "strategy": "expanded_form",
             "question": (
-                f"{decompose_to_places(a_val)} {decompose_to_places(b_val)} "
-                f"Add the place values, then find the total: what is {a_val} + {b_val}?"
+                fill("{decompose_to_places} {decompose_to_places2} Add the place values, then find the total: what is {a_val} + {b_val}?", _src=('task_type',), decompose_to_places=S(decompose_to_places(a_val), "fill"), decompose_to_places2=S(decompose_to_places(b_val), "fill"), a_val=derived(a_val), b_val=derived(b_val))
             ),
         }
 
@@ -750,7 +752,7 @@ def generate_params(
             "structure": "result_unknown",
             "max_sum": max_result,
             "strategy": "standard",
-            "question": f"Start at {start}. Count up {count_by} more. What number do you land on?",
+            "question": fill("Start at {start}. Count up {count_by} more. What number do you land on?", _src=('task_type',), start=derived(start), count_by=derived(count_by)),
         }
 
     if task_type == "putting_together":
@@ -817,8 +819,8 @@ def generate_params(
             candidates = [(1, 1)]
         from backend.app.practice_gen.generators.number_difficulty import generate_pair_by_window
         a_val, b_val = generate_pair_by_window(candidates, num_diff_scalar, d=5, rng=rng)
-        a_phrase = f"{a_val} item" if a_val == 1 else f"{a_val} items"
-        b_phrase = f"{b_val} item" if b_val == 1 else f"{b_val} items"
+        a_phrase = fill("{a_val} item", _src=('task_type',), a_val=derived(a_val)) if a_val == 1 else fill("{a_val} items", _src=('task_type',), a_val=derived(a_val))
+        b_phrase = fill("{b_val} item", _src=('task_type',), b_val=derived(b_val)) if b_val == 1 else fill("{b_val} items", _src=('task_type',), b_val=derived(b_val))
         return {
             "a": a_val, "b": b_val, "result": a_val + b_val,
             "task_type": "putting_together",
@@ -827,7 +829,7 @@ def generate_params(
             "structure": "result_unknown",
             "max_sum": max_result,
             "strategy": "putting_together",
-            "question": f"One group has {a_phrase} and another group has {b_phrase}. If you put them together, how many items are there in all?",
+            "question": fill("One group has {a_phrase} and another group has {b_phrase}. If you put them together, how many items are there in all?", _src=('task_type',), a_phrase=S(a_phrase, "fill"), b_phrase=S(b_phrase, "fill")),
         }
 
     if task_type == "estimate":
@@ -1088,7 +1090,7 @@ def generate_hints(
     knows_regrouping = bool(reg_phrase)
 
     # Step 1: identify the operation
-    hints.append(f"We are adding two numbers: {a} and {b}.")
+    hints.append(fill("We are adding two numbers: {a} and {b}.", a=S(a, "value:a"), b=S(b, "value:b")))
 
     ones_a, ones_b = a % 10, b % 10
     ones_sum = ones_a + ones_b
@@ -1100,40 +1102,35 @@ def generate_hints(
     # 20 the pupil counts up -- the node's own words ("describes addition as 'counting
     # up'"); past 20 the new ten is said in tens and ones.
     if makes_a_ten and not knows_regrouping and result <= 20:
-        hints.append(f"Start at {a} and count up {b}.")
-        hints.append(f"{sum_label.capitalize()} is {a} + {b} = {result}.")
+        hints.append(fill("Start at {a} and count up {b}.", _src=('result',), a=S(a, "value:a"), b=S(b, "value:b")))
+        hints.append(fill("{capitalize} is {a} + {b} = {result}.", _src=('result',), capitalize=derived(sum_label.capitalize()), a=S(a, "value:a"), b=S(b, "value:b"), result=S(result, "value:result")))
         return hints
 
     # Step 2: ones column (rightmost digit)
     if knows_place_value:
         if makes_a_ten and knows_regrouping:
             hints.append(
-                f"Add the ones: {ones_a} + {ones_b} = {ones_sum}. "
-                f"Keep {ones_sum % 10} in the ones place and {reg_phrase} 1 ten."
+                fill("Add the ones: {ones_a} + {ones_b} = {ones_sum}. Keep {v} in the ones place and {reg_phrase} 1 ten.", ones_a=derived(ones_a), ones_b=derived(ones_b), ones_sum=derived(ones_sum), v=derived(ones_sum % 10), reg_phrase=S(reg_phrase, "fill"))
             )
         elif makes_a_ten:
             remainder = ones_sum % 10
             hints.append(
-                f"Add the ones: {ones_a} + {ones_b} = {ones_sum}. "
-                f"{ones_sum} ones is 1 ten and {remainder} "
-                f"{count_noun(remainder, 'ones')}."
+                fill("Add the ones: {ones_a} + {ones_b} = {ones_sum}. {ones_sum} ones is 1 ten and {remainder} {count_noun}.", ones_a=derived(ones_a), ones_b=derived(ones_b), ones_sum=derived(ones_sum), remainder=derived(remainder), count_noun=derived(count_noun(remainder, 'ones')))
             )
         else:
-            hints.append(f"Add the ones: {ones_a} + {ones_b} = {ones_sum}. Keep {ones_sum} in the ones place.")
+            hints.append(fill("Add the ones: {ones_a} + {ones_b} = {ones_sum}. Keep {ones_sum} in the ones place.", ones_a=derived(ones_a), ones_b=derived(ones_b), ones_sum=derived(ones_sum)))
     else:
         # Position-neutral language for students who haven't learned place value yet
         if makes_a_ten and knows_regrouping:
             hints.append(
-                f"Add the last digits: {ones_a} + {ones_b} = {ones_sum}. "
-                f"Keep {ones_sum % 10} and {reg_phrase} 1."
+                fill("Add the last digits: {ones_a} + {ones_b} = {ones_sum}. Keep {v} and {reg_phrase} 1.", ones_a=derived(ones_a), ones_b=derived(ones_b), ones_sum=derived(ones_sum), v=derived(ones_sum % 10), reg_phrase=S(reg_phrase, "fill"))
             )
         elif makes_a_ten:
             hints.append(
-                f"Add the last digits: {ones_a} + {ones_b} = {ones_sum}. "
-                f"Keep {ones_sum % 10} and add 1 to the next digits."
+                fill("Add the last digits: {ones_a} + {ones_b} = {ones_sum}. Keep {v} and add 1 to the next digits.", ones_a=derived(ones_a), ones_b=derived(ones_b), ones_sum=derived(ones_sum), v=derived(ones_sum % 10))
             )
         else:
-            hints.append(f"Add the last digits: {ones_a} + {ones_b} = {ones_sum}.")
+            hints.append(fill("Add the last digits: {ones_a} + {ones_b} = {ones_sum}.", ones_a=derived(ones_a), ones_b=derived(ones_b), ones_sum=derived(ones_sum)))
 
     # Step 3: leading column (only shown when both numbers have more than one digit)
     if a >= 10 or b >= 10:
@@ -1143,21 +1140,19 @@ def generate_hints(
         tens_sum = tens_a + tens_b + extra
         if knows_place_value:
             if extra and knows_regrouping:
-                tail = f" + {extra} (regrouped)"
+                tail = fill(" + {extra} (regrouped)", _src=('a', 'b',), extra=derived(extra))
             elif extra:
-                tail = f" + {extra} (the ten from the ones)"
+                tail = fill(" + {extra} (the ten from the ones)", _src=('a', 'b',), extra=derived(extra))
             else:
                 tail = ""
-            hints.append(f"Add the tens: {tens_a} + {tens_b}" + tail + f" = {tens_sum}.")
+            hints.append(fill("Add the tens: {tens_a} + {tens_b}{tail} = {tens_sum}.", _src=('a', 'b',), tens_a=derived(tens_a, src=('a',)), tens_b=derived(tens_b, src=('b',)), tail=derived(tail), tens_sum=derived(tens_sum, src=('a', 'b',))))
         else:
             hints.append(
-                f"Add the first digits: {tens_a} + {tens_b}"
-                + (f" + {extra}" if extra else "")
-                + f" = {tens_sum}."
+                fill("Add the first digits: {tens_a} + {tens_b}{v} = {tens_sum}.", _src=('a', 'b',), tens_a=derived(tens_a, src=('a',)), tens_b=derived(tens_b, src=('b',)), v=S(f" + {extra}" if extra else "", "fill"), tens_sum=derived(tens_sum, src=('a', 'b',)))
             )
 
     # Step 4: final answer
-    hints.append(f"{sum_label.capitalize()} is {a} + {b} = {result}.")
+    hints.append(fill("{capitalize} is {a} + {b} = {result}.", capitalize=derived(sum_label.capitalize()), a=S(a, "value:a"), b=S(b, "value:b"), result=S(result, "value:result")))
 
     return hints
 
@@ -1168,22 +1163,21 @@ def _property_hints(values: Dict[str, Any]) -> List[str]:
     rhs = values["rhs_operands"]
     if values["task_type"] == "commutative":
         a, b = values["a"], values["b"]
-        left_text, right_text = f"{a} + {b}", f"{rhs[0]} + {rhs[1]}"
+        left_text, right_text = fill("{a} + {b}", _src=('task_type',), a=S(a, "value:a"), b=S(b, "value:b")), fill("{v} + {v2}", _src=('task_type',), v=derived(rhs[0], src=('rhs_operands',)), v2=derived(rhs[1], src=('rhs_operands',)))
         left, right = a + b, rhs[0] + rhs[1]
         if holds:
-            first = f"Both sides add the same two numbers, {a} and {b}, in a different order."
+            first = fill("Both sides add the same two numbers, {a} and {b}, in a different order.", _src=('answer', 'task_type',), a=S(a, "value:a"), b=S(b, "value:b"))
         else:
-            first = f"The left side adds {a} and {b}. The right side adds {rhs[0]} and {rhs[1]}."
+            first = fill("The left side adds {a} and {b}. The right side adds {v} and {v2}.", _src=('task_type',), a=S(a, "value:a"), b=S(b, "value:b"), v=derived(rhs[0], src=('rhs_operands',)), v2=derived(rhs[1], src=('rhs_operands',)))
     else:
         a, b, c = values["a"], values["b"], values["c"]
-        left_text = f"({a} + {b}) + {c}"
-        right_text = f"{rhs[0]} + ({rhs[1]} + {rhs[2]})"
+        left_text = fill("({a} + {b}) + {c}", a=S(a, "value:a"), b=S(b, "value:b"), c=S(c, "value:c"))
+        right_text = fill("{v} + ({v2} + {v3})", v=S(rhs[0], "value:a"), v2=derived(rhs[1], src=('rhs_operands',)), v3=derived(rhs[2], src=('rhs_operands',)))
         left, right = a + b + c, rhs[0] + rhs[1] + rhs[2]
         if holds:
-            first = f"Both sides add the same three numbers, {a}, {b} and {c}, grouped differently."
+            first = fill("Both sides add the same three numbers, {a}, {b} and {c}, grouped differently.", _src=('answer',), a=S(a, "value:a"), b=S(b, "value:b"), c=S(c, "value:c"))
         else:
-            first = (f"The left side adds {a}, {b} and {c}. "
-                     f"The right side adds {rhs[0]}, {rhs[1]} and {rhs[2]}.")
+            first = (fill("The left side adds {a}, {b} and {c}. The right side adds {v}, {v2} and {v3}.", a=S(a, "value:a"), b=S(b, "value:b"), c=S(c, "value:c"), v=S(rhs[0], "value:a"), v2=derived(rhs[1], src=('rhs_operands',)), v3=derived(rhs[2], src=('rhs_operands',))))
     if (left == right) != bool(holds):
         raise ValueError(
             f"addition.generate_hints: {left_text} = {left} and {right_text} = {right}, "
@@ -1191,8 +1185,8 @@ def _property_hints(values: Dict[str, Any]) -> List[str]:
         )
     return [
         first,
-        f"{left_text} = {left} and {right_text} = {right}.",
-        "So the two sides are the same." if holds else "So the two sides are not the same.",
+        fill("{left_text} = {left} and {right_text} = {right}.", left_text=S(left_text, "fill"), left=derived(left), right_text=S(right_text, "fill"), right=derived(right)),
+        fill("So the two sides are the same.", _src=('answer',)) if holds else fill("So the two sides are not the same."),
     ]
 
 

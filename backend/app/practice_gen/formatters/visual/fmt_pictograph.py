@@ -24,6 +24,8 @@ from typing import List, Optional
 from backend.app.practice_gen.dna.base import FormattedProblem, QuestionContext
 from backend.app.practice_gen.formatters._distractor_fallback import augment_distractors
 from backend.app.practice_gen.formatters._option_order import shuffle_options
+from backend.app.practice_gen.slots import S, derived, fill
+from backend.app.practice_gen.formatters._answer_slots import (correct_option_key, distractors_field, member_text)
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -171,16 +173,16 @@ def format_pictograph(
             cats_str = ", ".join(categories[:-1]) + " or " + categories[-1] if len(categories) > 1 else categories[0]
             subj = vp.get("subject", "items")
             correct_count = ctx.correct_answer if ctx.correct_answer is not None else (ctx.values.get("answer") if ctx.values else categories[counts.index(max(counts))])
-            question_text = f"Look at the picture graph. Which has the most {subj}: {cats_str}?"
+            question_text = fill("Look at the picture graph. Which has the most {subj}: {cats_str}?", subj=derived(subj), cats_str=derived(cats_str))
         elif task_type == "find_total":
             correct_count = ctx.correct_answer if ctx.correct_answer is not None else sum(counts)
             subj = vp.get("subject", "items")
-            question_text = f"Look at the picture graph. What is the total number of {subj} shown?"
+            question_text = fill("Look at the picture graph. What is the total number of {subj} shown?", subj=derived(subj))
         elif task_type == "find_difference":
             comp_a = ctx.values.get("compare_a", categories[0]) if ctx.values else categories[0]
             comp_b = ctx.values.get("compare_b", categories[1]) if ctx.values else categories[1]
             correct_count = ctx.correct_answer if ctx.correct_answer is not None else abs(counts[categories.index(comp_a)] - counts[categories.index(comp_b)])
-            question_text = f"Look at the picture graph. What is the difference between {comp_a} and {comp_b}?"
+            question_text = fill("Look at the picture graph. What is the difference between {comp_a} and {comp_b}?", comp_a=S(comp_a, "value:compare_a"), comp_b=S(comp_b, "value:compare_b"))
         else: # read_value
             ask_cat = ctx.values.get("question_category") if ctx.values else None
             if ask_cat in categories:
@@ -191,28 +193,28 @@ def format_pictograph(
             correct_count = counts[ask_idx]
             vp["ask_category"] = ask_cat
             stem_tpl = vp.get("stem_template") or (ctx.values.get("stem_template") if ctx.values else None)
-            sub_q = stem_tpl.format(cat=ask_cat) if stem_tpl else f"How many are in {ask_cat}?"
+            sub_q = stem_tpl.format(cat=ask_cat) if stem_tpl else fill("How many are in {ask_cat}?", ask_cat=derived(ask_cat))
             if scale > 1:
-                question_text = f"Look at the picture graph. Each {vp['symbol']} = {scale}. {sub_q}"
+                question_text = fill("Look at the picture graph. Each {symbol} = {scale}. {sub_q}", symbol=derived(vp['symbol']), scale=derived(scale), sub_q=derived(sub_q, src=('stem_template',)))
             else:
-                question_text = f"Look at the picture graph. {sub_q}"
+                question_text = fill("Look at the picture graph. {sub_q}", sub_q=derived(sub_q, src=('stem_template',)))
     else:
         vp["is_read_mode"] = False
-        data_str = ", ".join(f"{categories[i]}: {counts[i]}" for i in range(len(categories)))
+        data_str = ", ".join(fill("{v}: {v2}", v=derived(categories[i]), v2=derived(counts[i])) for i in range(len(categories)))
         if scale > 1:
             frames = [
-                f"Make a picture graph to show: {data_str}. Each {vp['symbol']} equals {scale}.",
-                f"Look at the data: {data_str}. Draw a picture graph where each {vp['symbol']} stands for {scale} items.",
-                f"The table shows: {data_str}. Create a picture graph where each {vp['symbol']} equals {scale}.",
-                f"Complete the picture graph to show: {data_str}. Each {vp['symbol']} represents {scale} items.",
+                fill("Make a picture graph to show: {data_str}. Each {symbol} equals {scale}.", data_str=derived(data_str), symbol=derived(vp['symbol']), scale=derived(scale)),
+                fill("Look at the data: {data_str}. Draw a picture graph where each {symbol} stands for {scale} items.", data_str=derived(data_str), symbol=derived(vp['symbol']), scale=derived(scale)),
+                fill("The table shows: {data_str}. Create a picture graph where each {symbol} equals {scale}.", data_str=derived(data_str), symbol=derived(vp['symbol']), scale=derived(scale)),
+                fill("Complete the picture graph to show: {data_str}. Each {symbol} represents {scale} items.", data_str=derived(data_str), symbol=derived(vp['symbol']), scale=derived(scale)),
             ]
             question_text = frames[rng.randint(0, len(frames) - 1)]
         else:
             frames = [
-                f"Make a picture graph to show: {data_str}. Draw one {vp['symbol']} for each item.",
-                f"Look at the data: {data_str}. Draw one {vp['symbol']} for each item in the picture graph.",
-                f"The survey shows: {data_str}. Make a picture graph by drawing one {vp['symbol']} for each item.",
-                f"Complete the picture graph for {data_str}. Draw one {vp['symbol']} for each item.",
+                fill("Make a picture graph to show: {data_str}. Draw one {symbol} for each item.", data_str=derived(data_str), symbol=derived(vp['symbol'])),
+                fill("Look at the data: {data_str}. Draw one {symbol} for each item in the picture graph.", data_str=derived(data_str), symbol=derived(vp['symbol'])),
+                fill("The survey shows: {data_str}. Make a picture graph by drawing one {symbol} for each item.", data_str=derived(data_str), symbol=derived(vp['symbol'])),
+                fill("Complete the picture graph for {data_str}. Draw one {symbol} for each item.", data_str=derived(data_str), symbol=derived(vp['symbol'])),
             ]
             question_text = frames[rng.randint(0, len(frames) - 1)]
 
@@ -288,12 +290,14 @@ def format_pictograph(
                     distractor_vals.append(candidate)
 
         all_opts = [correct_count] + distractor_vals[:3]
+        # Structured slots (H3-R2): a category option is one of the chart's displayed categories.
+        all_opts = [member_text(v, categories, "the chart's displayed categories") for v in all_opts]
         shuffle_options(all_opts, ctx.node_id, ctx.seed)
         mcq_options = [
             {"key": chr(ord("A") + i), "value": v, "is_correct": v == correct_count}
             for i, v in enumerate(all_opts)
         ]
-        correct_answer = next(o["key"] for o in mcq_options if o["is_correct"])
+        correct_answer = correct_option_key(mcq_options)
     else:
         if interaction_mode == "read":
             correct_answer = correct_count
@@ -315,7 +319,7 @@ def format_pictograph(
     if mcq_options is not None:
         format_data["mcq_options"] = mcq_options
 
-    fmt = f"{interaction_mode}_{answer_collection}"
+    fmt = fill("{interaction_mode}_{answer_collection}", interaction_mode=derived(interaction_mode), answer_collection=derived(answer_collection))
 
     return FormattedProblem(
         problem_id=f"{ctx.node_id}_{ctx.seed}_pictograph",
@@ -325,7 +329,7 @@ def format_pictograph(
         seed=ctx.seed,
         question_text=question_text,
         correct_answer=correct_answer,
-        distractors=ctx.distractors,
+        distractors=distractors_field(ctx),
         hints=ctx.hints,
         format=fmt,
         format_data=format_data,

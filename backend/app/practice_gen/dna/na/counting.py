@@ -21,7 +21,7 @@ from backend.app.practice_gen.dna.base import (
     ErrorPattern,
     VocabGated,
 )
-from backend.app.practice_gen.slots import E, S, fill
+from backend.app.practice_gen.slots import E, S, derived, fill
 
 
 # ─── grade-gated skip pools ───────────────────────────────────────────────────
@@ -103,7 +103,7 @@ def _to_number_word(n: int) -> str:
         tens, ones = (n // 10) * 10, n % 10
         if ones == 0:
             return _NUMBER_WORDS.get(tens, str(n))
-        return f"{_NUMBER_WORDS[tens]}-{_NUMBER_WORDS[ones]}"
+        return fill("{v}-{v2}", v=derived(_NUMBER_WORDS[tens]), v2=derived(_NUMBER_WORDS[ones]))
     return str(n)
 
 

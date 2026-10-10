@@ -24,6 +24,7 @@ from backend.app.practice_gen.dna.base import (
     count_noun,
     number_group_name,
 )
+from backend.app.practice_gen.slots import S, derived, derives, fill
 
 
 # ─── param bounds ─────────────────────────────────────────────────────────────
@@ -335,6 +336,8 @@ def generate_params(
         else:
             a_val, b_val = (1, other) if zero_first else (other, 1)
             result = other
+        # Owner ruling 41: the 0 or 1 operand is there BECAUSE of task_type.
+        derives("a" if zero_first else "b", src=("task_type",))
         return {
             "a": a_val, "b": b_val, "result": result,
             "task_type": "zero_identity",
@@ -403,11 +406,11 @@ def generate_params(
         c_val = None
         if task_type == "commutative":
             if holds:
-                question = f"Is {a_val} × {b_val} the same as {b_val} × {a_val}?"
+                question = fill("Is {a_val} × {b_val} the same as {b_val} × {a_val}?", _src=('task_type',), a_val=derived(a_val), b_val=derived(b_val))
                 rhs_factors = [b_val, a_val]
             else:
                 wrong = _other(a_val, 2, small_max)
-                question = f"Is {a_val} × {b_val} the same as {b_val} × {wrong}?"
+                question = fill("Is {a_val} × {b_val} the same as {b_val} × {wrong}?", _src=('task_type',), a_val=derived(a_val), b_val=derived(b_val), wrong=derived(wrong))
                 rhs_factors = [b_val, wrong]
             missing_val = b_val
         elif task_type == "associative":
@@ -421,13 +424,11 @@ def generate_params(
                 else:
                     break
             if holds:
-                question = (f"Is ({a_val} × {b_val}) × {c_val} the same as "
-                            f"{a_val} × ({b_val} × {c_val})?")
+                question = (fill("Is ({a_val} × {b_val}) × {c_val} the same as {a_val} × ({b_val} × {c_val})?", _src=('task_type',), a_val=derived(a_val), b_val=derived(b_val), c_val=derived(c_val)))
                 rhs_factors = [a_val, b_val, c_val]
             else:
                 wrong = _other(c_val, 2, small_max)
-                question = (f"Is ({a_val} × {b_val}) × {c_val} the same as "
-                            f"{a_val} × ({b_val} × {wrong})?")
+                question = (fill("Is ({a_val} × {b_val}) × {c_val} the same as {a_val} × ({b_val} × {wrong})?", _src=('task_type',), a_val=derived(a_val), b_val=derived(b_val), c_val=derived(c_val), wrong=derived(wrong)))
                 rhs_factors = [a_val, b_val, wrong]
             missing_val = b_val
         else:  # distributive
@@ -451,11 +452,9 @@ def generate_params(
                 if c_val == b_val and c_val > 2:
                     c_val -= 1
             if holds:
-                question = (f"Is {a_val} × ({b_val} + {c_val}) the same as "
-                            f"({a_val} × {b_val}) + ({a_val} × {c_val})?")
+                question = (fill("Is {a_val} × ({b_val} + {c_val}) the same as ({a_val} × {b_val}) + ({a_val} × {c_val})?", _src=('task_type',), a_val=derived(a_val), b_val=derived(b_val), c_val=derived(c_val)))
             else:
-                question = (f"Is {a_val} × ({b_val} + {c_val}) the same as "
-                            f"({a_val} × {b_val}) + {c_val}?")
+                question = (fill("Is {a_val} × ({b_val} + {c_val}) the same as ({a_val} × {b_val}) + {c_val}?", _src=('task_type',), a_val=derived(a_val), b_val=derived(b_val), c_val=derived(c_val)))
             missing_val = c_val
             rhs_factors = None
         return {
@@ -495,7 +494,7 @@ def generate_params(
                 "context": "pure",
                 "structure": "result_unknown",
                 "task_type": "two_step",
-                "question": f"What is ({g_val} × {n_val}) × {b_val}?",
+                "question": fill("What is ({g_val} × {n_val}) × {b_val}?", _src=('context', 'task_type',), g_val=derived(g_val), n_val=derived(n_val), b_val=derived(b_val)),
                 "groups": a_val,
                 "n": b_val,
                 "total": ans,
@@ -518,33 +517,25 @@ def generate_params(
             item_plur = rng.choice(list(items_map.keys()))
             item_sing = items_map[item_plur]
             question = (
-                f"{actor} bought {g_val} packs with {n_val} {item_plur} in each pack. "
-                f"Each {item_sing} costs ₱{b_val}. "
-                f"How much did {actor} pay in all?"
+                fill("{actor} bought {g_val} packs with {n_val} {item_plur} in each pack. Each {item_sing} costs ₱{b_val}. How much did {actor} pay in all?", _src=('task_type',), actor=derived(actor), g_val=derived(g_val), n_val=derived(n_val), item_plur=derived(item_plur), item_sing=derived(item_sing), b_val=derived(b_val))
             )
         elif step_case == "money_packs":
             items = ["biscuits", "crayons", "stickers", "envelopes", "ribbons"]
             item = rng.choice(items)
             question = (
-                f"{actor} bought {g_val} boxes of {item}. "
-                f"Each box contains {n_val} packs, and each pack costs ₱{b_val}. "
-                f"How much did {actor} spend in all?"
+                fill("{actor} bought {g_val} boxes of {item}. Each box contains {n_val} packs, and each pack costs ₱{b_val}. How much did {actor} spend in all?", _src=('task_type',), actor=derived(actor), g_val=derived(g_val), item=derived(item), n_val=derived(n_val), b_val=derived(b_val))
             )
         elif step_case == "objects_shelves":
             items = ["books", "jars", "cans", "bottles", "toy cars", "figurines"]
             item = rng.choice(items)
             question = (
-                f"{actor} arranged {g_val} shelves with {n_val} boxes on each shelf. "
-                f"Each box has {b_val} {item}. "
-                f"How many {item} are there in all?"
+                fill("{actor} arranged {g_val} shelves with {n_val} boxes on each shelf. Each box has {b_val} {item}. How many {item} are there in all?", _src=('task_type',), actor=derived(actor), g_val=derived(g_val), n_val=derived(n_val), b_val=derived(b_val), item=derived(item))
             )
         else:  # objects_trays
             items = ["eggs", "muffins", "cupcakes", "pandesal", "cookies"]
             item = rng.choice(items)
             question = (
-                f"{actor} prepared {g_val} large trays. "
-                f"Each tray holds {n_val} plates, and each plate has {b_val} {item}. "
-                f"How many {item} are there altogether?"
+                fill("{actor} prepared {g_val} large trays. Each tray holds {n_val} plates, and each plate has {b_val} {item}. How many {item} are there altogether?", _src=('task_type',), actor=derived(actor), g_val=derived(g_val), n_val=derived(n_val), b_val=derived(b_val), item=derived(item))
             )
 
         return {
@@ -852,8 +843,8 @@ def generate_hints(
     if values.get("task_type") == "two_step":
         g = values.get("g", 2)
         n = values.get("n_val", a // g if g else 2)
-        hints.append(f"Step 1: First find the total items in the groups: {g} × {n} = {a}.")
-        hints.append(f"Step 2: Multiply the total items by {b}: {a} × {b} = {result}.")
+        hints.append(fill("Step 1: First find the total items in the groups: {g} × {n} = {a}.", _src=('task_type',), g=derived(g, src=('g',)), n=derived(n, src=('n_val', 'g', 'a',)), a=S(a, "value:a")))
+        hints.append(fill("Step 2: Multiply the total items by {b}: {a} × {b} = {result}.", _src=('task_type',), b=S(b, "value:b"), a=S(a, "value:a"), result=S(result, "value:result")))
         return hints
 
     # Step 1: restate as repeated addition / groups
@@ -871,30 +862,29 @@ def generate_hints(
     # say "{a} groups of {b}" while Step 2 said "{b} groups of {a}", so the chain
     # contradicted itself and the stem (mat_g2_na_q3_1 seed 42: "2 equal jumps of 5"
     # hinted as "5 groups of 2", then "2 groups of 5").
-    hints.append(f"We need to {mul_phrase} {b} {count_noun(b, f'{times_phrase} {a}')}.")
+    hints.append(fill("We need to {mul_phrase} {b} {count_noun}.", mul_phrase=S(mul_phrase, "fill"), b=S(b, "value:b"), count_noun=derived(count_noun(b, f'{times_phrase} {a}'), src=('b', 'a',))))
 
     # Step 2: repeated addition breakdown (only practical for small b)
     if b == 0:
         # A zero factor has no repeated addition to show: this line used to render
         # "Think of it as 0 groups of 6: ." with an empty sum (mat_g3_na_q3_1 seed 44).
-        hints.append(f"Think of it as 0 groups of {a}: there are no groups, so there is nothing to add.")
+        hints.append(fill("Think of it as 0 groups of {a}: there are no groups, so there is nothing to add.", _src=('b',), a=S(a, "value:a")))
     elif b <= 5:
         groups = " + ".join(str(a) for _ in range(b))
-        hints.append(f"Think of it as {b} {count_noun(b, f'groups of {a}')}: {groups}.")
+        hints.append(fill("Think of it as {b} {count_noun}: {groups}.", _src=('b',), b=S(b, "value:b"), count_noun=derived(count_noun(b, f'groups of {a}'), src=('b', 'a',)), groups=derived(groups, src=('a', 'b',))))
     else:
-        hints.append(f"Use the {b} times table: {b} × {a}.")
+        hints.append(fill("Use the {b} times table: {b} × {a}.", b=S(b, "value:b"), a=S(a, "value:a")))
 
     # Step 3: partial products for multi-digit a
     if a >= 10:
         tens_a = (a // 10) * 10
         ones_a = a % 10
         hints.append(
-            f"Break {a} into {tens_a} + {ones_a}: "
-            f"({tens_a} × {b}) + ({ones_a} × {b}) = {tens_a * b} + {ones_a * b} = {result}."
+            fill("Break {a} into {tens_a} + {ones_a}: ({tens_a} × {b}) + ({ones_a} × {b}) = {v} + {v2} = {result}.", _src=('a',), a=S(a, "value:a"), tens_a=derived(tens_a, src=('a',)), ones_a=derived(ones_a, src=('a',)), b=S(b, "value:b"), v=derived(tens_a * b, src=('a', 'b',)), v2=derived(ones_a * b, src=('a', 'b',)), result=S(result, "value:result"))
         )
 
     # Step 4: final answer
-    hints.append(f"{product_label.capitalize()} of {a} × {b} = {result}.")
+    hints.append(fill("{capitalize} of {a} × {b} = {result}.", capitalize=derived(product_label.capitalize()), a=S(a, "value:a"), b=S(b, "value:b"), result=S(result, "value:result")))
 
     return hints
 
@@ -907,34 +897,32 @@ def _property_hints(values: Dict[str, Any]) -> List[str]:
         x, y = values["rhs_factors"]
         left, right = a * b, x * y
         steps = [
-            (f"Both sides multiply the same two numbers, {a} and {b}, in a different order."
+            (fill("Both sides multiply the same two numbers, {a} and {b}, in a different order.", _src=('task_type',), a=S(a, "value:a"), b=S(b, "value:b"))
              if holds else
-             f"The left side multiplies {a} and {b}. The right side multiplies {x} and {y}."),
-            f"{a} × {b} = {left} and {x} × {y} = {right}.",
+             fill("The left side multiplies {a} and {b}. The right side multiplies {x} and {y}.", _src=('task_type',), a=S(a, "value:a"), b=S(b, "value:b"), x=derived(x), y=derived(y))),
+            fill("{a} × {b} = {left} and {x} × {y} = {right}.", _src=('task_type',), a=S(a, "value:a"), b=S(b, "value:b"), left=S(left, "value:total"), x=derived(x), y=derived(y), right=derived(right)),
         ]
     elif task == "associative":
         x, y, z = values["rhs_factors"]
         left, right = a * b * c, x * y * z
         steps = [
-            f"Left side: first {a} × {b} = {a * b}, then {a * b} × {c} = {left}.",
-            f"Right side: first {y} × {z} = {y * z}, then {x} × {y * z} = {right}.",
+            fill("Left side: first {a} × {b} = {v}, then {v} × {c} = {left}.", _src=('task_type',), a=S(a, "value:a"), b=S(b, "value:b"), v=derived(a * b), c=S(c, "value:c"), left=derived(left)),
+            fill("Right side: first {y} × {z} = {v}, then {x} × {v} = {right}.", _src=('task_type',), y=derived(y), z=derived(z), v=derived(y * z), x=derived(x), right=derived(right)),
         ]
     else:
         left = a * (b + c)
         right = a * b + a * c if holds else a * b + c
-        steps = [f"Left side: {b} + {c} = {b + c}, then {a} × {b + c} = {left}."]
+        steps = [fill("Left side: {b} + {c} = {v}, then {a} × {v} = {left}.", b=S(b, "value:b"), c=S(c, "value:c"), v=derived(b + c), a=S(a, "value:a"), left=derived(left))]
         if holds:
-            steps.append(f"Right side: {a} × {b} = {a * b} and {a} × {c} = {a * c}; "
-                         f"{a * b} + {a * c} = {right}.")
+            steps.append(fill("Right side: {a} × {b} = {v} and {a} × {c} = {v2}; {v} + {v2} = {right}.", a=S(a, "value:a"), b=S(b, "value:b"), v=derived(a * b), c=S(c, "value:c"), v2=derived(a * c), right=derived(right)))
         else:
-            steps.append(f"Right side: {a} × {b} = {a * b}, then {a * b} + {c} = {right}. "
-                         f"Only {b} was multiplied by {a}.")
+            steps.append(fill("Right side: {a} × {b} = {v}, then {v} + {c} = {right}. Only {b} was multiplied by {a}.", a=S(a, "value:a"), b=S(b, "value:b"), v=S(a * b, "value:total"), c=S(c, "value:c"), right=derived(right)))
     if (left == right) != bool(holds):
         raise ValueError(
             f"multiplication.generate_hints: {task} sides work out to {left} and {right}, "
             f"but the item is keyed {holds!r}"
         )
-    steps.append("So the two sides are the same." if holds else "So the two sides are not the same.")
+    steps.append(fill("So the two sides are the same.") if holds else fill("So the two sides are not the same."))
     return steps
 
 # ─── DNA instance ─────────────────────────────────────────────────────────────

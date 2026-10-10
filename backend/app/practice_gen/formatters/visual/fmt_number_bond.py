@@ -45,7 +45,8 @@ import random
 from backend.app.practice_gen.dna.base import FormattedProblem, QuestionContext
 from backend.app.practice_gen.formatters._distractor_fallback import augment_distractors
 from backend.app.practice_gen.formatters._option_order import shuffle_options
-from backend.app.practice_gen.slots import E, S, fill
+from backend.app.practice_gen.slots import E, S, derived, fill
+from backend.app.practice_gen.formatters._answer_slots import correct_option_key
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -161,7 +162,7 @@ def _stem(bond: dict, interaction_mode: str, cumulative_vocab) -> str:
     keys = bond.get("_keys", {})
 
     def num(pos):
-        return S(bond[pos], f"value:{keys[pos]}") if pos in keys else S(bond[pos], "num.derived")
+        return S(bond[pos], fill("value:{v}", v=derived(keys[pos]))) if pos in keys else S(bond[pos], "num.derived")
 
     bp = bond["blank_position"]
     if interaction_mode == "set":
@@ -285,7 +286,7 @@ def format_number_bond(
             {"key": chr(ord("A") + i), "value": v, "is_correct": v == answer}
             for i, v in enumerate(all_opts)
         ]
-        final_answer = next(o["key"] for o in mcq_options if o["is_correct"])
+        final_answer = correct_option_key(mcq_options)
     else:
         final_answer = answer
 
@@ -307,16 +308,16 @@ def format_number_bond(
         # cause as the identical fix in fmt_true_false.py/fmt_cloze.py/
         # fmt_error_detect.py (see those files' comments).
         from backend.app.practice_gen.dna.na.addition import decompose_to_places
-        prefix = f"{decompose_to_places(ctx.values['a'])} {decompose_to_places(ctx.values['b'])} "
+        prefix = fill("{decompose_to_places} {decompose_to_places2} ", _src=('task_type',), decompose_to_places=S(decompose_to_places(ctx.values['a']), "fill"), decompose_to_places2=S(decompose_to_places(ctx.values['b']), "fill"))
         if ctx.dna_concept == "subtraction":
             # Structured slots (H3-R1, owner ruling 28): the same text, built as a fill.
             question_text = fill(
-                "{da} {db} Subtract the place values, then find what's left: {stem}",
+                "{da} {db} Subtract the place values, then find what's left: {stem}", _src=('task_type',),
                 da=S(decompose_to_places(ctx.values["a"], "value:a"), "fill"),
                 db=S(decompose_to_places(ctx.values["b"], "value:b"), "fill"),
                 stem=S(question_text, "fill"))
         elif bond.get("blank_position") == "whole":
-            question_text = f"{prefix}Add the place values, then find the total: {question_text}"
+            question_text = fill("{prefix}Add the place values, then find the total: {question_text}", _src=('task_type',), prefix=S(prefix, "fill"), question_text=derived(question_text))
 
     format_data: dict = {"visual_params": vp}
     if mcq_options:
@@ -332,7 +333,7 @@ def format_number_bond(
         correct_answer=final_answer,
         distractors=traps,
         hints=ctx.hints,
-        format=f"{interaction_mode}_{answer_collection}",
+        format=fill("{interaction_mode}_{answer_collection}", interaction_mode=derived(interaction_mode), answer_collection=derived(answer_collection)),
         format_data=format_data,
         is_visual=True,
         visual_type="NumberBond",

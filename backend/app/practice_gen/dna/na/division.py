@@ -18,7 +18,7 @@ from __future__ import annotations
 import random
 from typing import Any, Dict, List, Optional, Set
 
-from backend.app.practice_gen.slots import R, S, fill
+from backend.app.practice_gen.slots import R, S, computes, derived, fill
 from backend.app.practice_gen.dna.base import (
     DIFFICULTY_LEVEL_MAP,
     DNA,
@@ -157,6 +157,8 @@ def generate_params(
     }.
     Raises RuntimeError if no valid pair found in 100 attempts.
     """
+    # Owner ruling 41: on every path the remainder is a FUNCTION of the dividend and divisor.
+    computes("remainder", src=("a", "b"))
     rng = random.Random(seed)
     profile = difficulty_profile or {}
 
@@ -231,7 +233,7 @@ def generate_params(
             "blank_target": "result",
             "context": "pure",
             "structure": "result_unknown",
-            "question": f"Start at {a} on a number line and take equal jumps back of {b} to reach 0. How many jumps did you make? {a} ÷ {b} = ___",
+            "question": fill("Start at {a} on a number line and take equal jumps back of {b} to reach 0. How many jumps did you make? {a} ÷ {b} = ___", _src=('task_type',), a=derived(a), b=derived(b)),
         }
 
     if task_type == "inverse_of_multiplication":
@@ -248,7 +250,7 @@ def generate_params(
             "blank_target": "result",
             "context": "pure",
             "structure": "result_unknown",
-            "question": f"Since {b} × {q} = {a}, what is {a} ÷ {b}?",
+            "question": fill("Since {b} × {q} = {a}, what is {a} ÷ {b}?", _src=('task_type',), b=derived(b), q=derived(q), a=derived(a)),
         }
 
     if task_type == "estimate":
@@ -358,9 +360,9 @@ def generate_params(
         n = rng.randint(1, n_max)
         n_slot = S(n, R(1, n_max, "division even_odd: n = randint(1, max(20, q_max * b_max))"))
         is_even = (n % 2 == 0)
-        label = fill("{label}", label=S(EVEN_ODD_LABELS[0] if is_even else EVEN_ODD_LABELS[1],
+        label = fill("{label}", _src=('task_type',), label=S(EVEN_ODD_LABELS[0] if is_even else EVEN_ODD_LABELS[1],
                                         "enum:backend.app.practice_gen.dna.na.division.EVEN_ODD_LABELS"))
-        other = fill("{label}", label=S(EVEN_ODD_LABELS[1] if is_even else EVEN_ODD_LABELS[0],
+        other = fill("{label}", _src=('task_type',), label=S(EVEN_ODD_LABELS[1] if is_even else EVEN_ODD_LABELS[0],
                                         "enum:backend.app.practice_gen.dna.na.division.EVEN_ODD_LABELS"))
         return {
             # Deliberately NOT "a"/"b"/"result" -- those are the exact
@@ -379,7 +381,7 @@ def generate_params(
             "context": "pure",
             "answer": label,
             "distractors": [other],
-            "question": fill("Divide {n} by 2. Is {n} an even or an odd number?", n=n_slot),
+            "question": fill("Divide {n} by 2. Is {n} an even or an odd number?", _src=('task_type',), n=n_slot),
         }
 
     if table_level == "one_digit_mixed_or_power_of_ten":
@@ -466,7 +468,7 @@ def generate_params(
 
         if rem > 0 and blank_target == "result":
             q_val = a // b
-            res_str = f"{q_val} R {rem}"
+            res_str = fill("{q_val} R {rem}", _src=('blank_target',), q_val=derived(q_val), rem=derived(rem))
             alt_r = max(1, rem - 1) if rem > 1 else rem + 1
             if alt_r >= b:
                 alt_r = max(1, rem - 1)
@@ -476,9 +478,9 @@ def generate_params(
                 "result":      res_str,
                 "remainder":   rem,
                 "distractors": [
-                    f"{q_val}",
-                    f"{q_val} R {alt_r}",
-                    f"{q_val + 1} R {rem}",
+                    fill("{q_val}", _src=('blank_target',), q_val=derived(q_val)),
+                    fill("{q_val} R {alt_r}", _src=('blank_target',), q_val=derived(q_val), alt_r=derived(alt_r)),
+                    fill("{v} R {rem}", _src=('blank_target',), v=derived(q_val + 1), rem=derived(rem)),
                 ],
                 "blank_target": blank_target,
                 "context":     context,
@@ -532,7 +534,7 @@ def generate_params(
 
     if rem > 0 and blank_target == "result":
         q_val = a // b
-        res_str = f"{q_val} R {rem}"
+        res_str = fill("{q_val} R {rem}", _src=('blank_target',), q_val=derived(q_val), rem=derived(rem))
         alt_r = max(1, rem - 1) if rem > 1 else rem + 1
         if alt_r >= b:
             alt_r = max(1, rem - 1)
@@ -542,9 +544,9 @@ def generate_params(
             "result":      res_str,
             "remainder":   rem,
             "distractors": [
-                f"{q_val}",
-                f"{q_val} R {alt_r}",
-                f"{q_val + 1} R {rem}",
+                fill("{q_val}", _src=('blank_target',), q_val=derived(q_val)),
+                fill("{q_val} R {alt_r}", _src=('blank_target',), q_val=derived(q_val), alt_r=derived(alt_r)),
+                fill("{v} R {rem}", _src=('blank_target',), v=derived(q_val + 1), rem=derived(rem)),
             ],
             "blank_target": blank_target,
             "context":     context,
@@ -573,8 +575,7 @@ def generate_params(
         # as taught at this grade counts subtractions down to exactly 0,
         # not to a leftover remainder.
         result_dict["question"] = (
-            f"Start with {a}. How many times can you subtract {b} in a "
-            f"row before reaching 0?"
+            fill("Start with {a}. How many times can you subtract {b} in a row before reaching 0?", _src=('task_type', 'structure', 'a', 'b',), a=derived(a), b=derived(b))
         )
         # Must be present for the formatters' own task_type checks (fmt_
         # true_false.py etc.) to detect this case at all -- it was
@@ -617,12 +618,12 @@ def generate_hints(
         half, left = divmod(n, 2)
         n_slot = S(n, "value:dividend")
         return [
-            fill("Divide {n} by 2: how many 2s fit into {n}?", n=n_slot),
-            fill("2 × {half} = {twice}, and {n} − {twice} = {left}.",
+            fill("Divide {n} by 2: how many 2s fit into {n}?", _src=('task_type',), n=n_slot),
+            fill("2 × {half} = {twice}, and {n} − {twice} = {left}.", _src=('task_type',),
                  half=S(half, "num.derived"), twice=S(2 * half, "num.derived"),
                  n=n_slot, left=S(left, "num.derived")),
-            (fill("Nothing is left over, so {n} is an even number.", n=n_slot) if left == 0
-             else fill("1 is left over, so {n} is an odd number.", n=n_slot)),
+            (fill("Nothing is left over, so {n} is an even number.", _src=('task_type',), n=n_slot) if left == 0
+             else fill("1 is left over, so {n} is an odd number.", _src=('task_type',), n=n_slot)),
         ]
 
     # Strict reads: a missing key is a named error, never a silent 0 that prints a
@@ -639,7 +640,7 @@ def generate_hints(
     # named failure, never silently re-derived.
     if isinstance(result, str):
         q_int, r_int = divmod(a, b)
-        if result != f"{q_int} R {r_int}" or remainder != r_int:
+        if result != fill("{q_int} R {r_int}", _src=('result',), q_int=derived(q_int), r_int=derived(r_int)) or remainder != r_int:
             raise ValueError(
                 f"division.generate_hints: stored answer {result!r} (remainder "
                 f"{remainder!r}) disagrees with {a} ÷ {b} = {q_int} R {r_int}; "
@@ -651,36 +652,32 @@ def generate_hints(
 
     # Step 1: restate the problem
     hints.append(
-        f"We need to divide {a} by {b}. "
-        f"{dividend_label.capitalize()} is {a}; {divisor_label} is {b}."
+        fill("We need to divide {a} by {b}. {capitalize} is {a}; {divisor_label} is {b}.", a=S(a, "value:a"), b=S(b, "value:b"), capitalize=derived(dividend_label.capitalize()), divisor_label=S(divisor_label, "fill"))
     )
 
     # Step 2: think in terms of multiplication
     hints.append(
-        f"Ask: how many times does {b} fit into {a}? "
-        f"{b} × {result} = {b * result}."
+        fill("Ask: how many times does {b} fit into {a}? {b} × {result} = {v}.", b=S(b, "value:b"), a=S(a, "value:a"), result=derived(result), v=derived(b * result, src=('b',)))
     )
 
     # Step 3: remainder (if any)
     if remainder > 0:
         hints.append(
-            f"{a} − {b * result} = {remainder}. "
-            f"{rem_label.capitalize()} is {remainder}."
+            fill("{a} − {v} = {remainder}. {capitalize} is {remainder}.", _src=('remainder',), a=S(a, "value:a"), v=derived(b * result, src=('b',)), remainder=derived(remainder, src=('remainder', 'a', 'b',)), capitalize=derived(rem_label.capitalize()))
         )
 
     # Step 4: final answer
     if remainder > 0:
         if "remainder" in cumulative_vocab:
             hints.append(
-                f"{quotient_label.capitalize()} is {result} remainder {remainder} "
-                f"(written as {result} R {remainder})."
+                fill("{capitalize} is {result} remainder {remainder} (written as {result} R {remainder}).", _src=('remainder',), capitalize=derived(quotient_label.capitalize()), result=derived(result), remainder=derived(remainder, src=('remainder', 'a', 'b',)))
             )
         else:
             hints.append(
-                f"{quotient_label.capitalize()} is {result} with {remainder} left over."
+                fill("{capitalize} is {result} with {remainder} left over.", _src=('remainder',), capitalize=derived(quotient_label.capitalize()), result=derived(result), remainder=derived(remainder, src=('remainder', 'a', 'b',)))
             )
     else:
-        hints.append(f"{quotient_label.capitalize()} of {a} ÷ {b} = {result}.")
+        hints.append(fill("{capitalize} of {a} ÷ {b} = {result}.", capitalize=derived(quotient_label.capitalize()), a=S(a, "value:a"), b=S(b, "value:b"), result=derived(result)))
 
     return hints
 

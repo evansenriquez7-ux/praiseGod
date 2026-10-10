@@ -16,6 +16,7 @@ from backend.app.practice_gen.dna.base import (
     ErrorPattern,
     VocabGated,
 )
+from backend.app.practice_gen.slots import S, derived, fill
 
 
 # ─── param bounds ─────────────────────────────────────────────────────────────
@@ -227,17 +228,17 @@ def generate_hints(
 
     hints: List[str] = []
     if round_label.lower() == "round":
-        hints.append(f"Round {number} to the {nearest_label} {place}.")
+        hints.append(fill("Round {number} to the {nearest_label} {place}.", number=S(number, "value:number"), nearest_label=S(nearest_label, "fill"), place=derived(place, src=('round_to',))))
     else:
-        hints.append(f"Find the {nearest_label} {place} to {number}.")
+        hints.append(fill("Find the {nearest_label} {place} to {number}.", nearest_label=S(nearest_label, "fill"), place=derived(place, src=('round_to',)), number=S(number, "value:number")))
     hints.append(
-        f"Look at the digit just to the right of the {place} place: it is {check_digit}."
+        fill("Look at the digit just to the right of the {place} place: it is {check_digit}.", place=derived(place, src=('round_to',)), check_digit=derived(check_digit, src=('number', 'round_to',)))
     )
     if check_digit >= 5:
-        hints.append(f"Since {check_digit} ≥ 5, round up.")
+        hints.append(fill("Since {check_digit} ≥ 5, round up.", check_digit=derived(check_digit, src=('number', 'round_to',))))
     else:
-        hints.append(f"Since {check_digit} < 5, round down (keep the {place} digit the same).")
-    hints.append(f"{number} rounded to the {nearest_label} {place} is {answer}.")
+        hints.append(fill("Since {check_digit} < 5, round down (keep the {place} digit the same).", check_digit=derived(check_digit, src=('number', 'round_to',)), place=derived(place, src=('round_to',))))
+    hints.append(fill("{number} rounded to the {nearest_label} {place} is {answer}.", number=S(number, "value:number"), nearest_label=S(nearest_label, "fill"), place=derived(place, src=('round_to',)), answer=S(answer, "value:answer")))
 
     return hints
 

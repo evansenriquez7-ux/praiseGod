@@ -15,6 +15,7 @@ input_type detection:
 import random
 
 from backend.app.practice_gen.dna.base import FormattedProblem, QuestionContext
+from backend.app.practice_gen.formatters._answer_slots import distractors_field
 
 
 def _detect_input_type(correct_answer) -> str:
@@ -75,7 +76,7 @@ def format_numeric_input(ctx: QuestionContext, rng: random.Random) -> FormattedP
         seed=ctx.seed,
         question_text=ctx.question_text,
         correct_answer=ctx.correct_answer,
-        distractors=ctx.distractors,
+        distractors=distractors_field(ctx),
         hints=ctx.hints,
         format="numeric_input",
         format_data=format_data,

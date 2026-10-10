@@ -3,6 +3,8 @@ from typing import Any, Dict
 
 from backend.app.practice_gen.dna.base import FormattedProblem, QuestionContext
 from backend.app.practice_gen.formatters._option_order import shuffle_options
+from backend.app.practice_gen.slots import S, derived, fill
+from backend.app.practice_gen.formatters._answer_slots import correct_option_key
 
 def format_fill_in_table(
     ctx: QuestionContext,
@@ -81,20 +83,20 @@ def format_fill_in_table(
     # instruction "never says the counts are to be taken from a picture graph, never
     # names the categories being tabulated". Name the source display and the rows
     # being tabulated, and vary the phrasing per seed.
-    pg_word = "pictograph" if "pictograph" in ctx.cumulative_vocab else "picture graph"
+    pg_word = fill("pictograph") if "pictograph" in ctx.cumulative_vocab else fill("picture graph")
     cat_list = _join_categories(categories)
     question_text = rng.choice([
-        f"Look at the {pg_word}. Write the correct count for each row in the {table_word}: {cat_list}.",
-        f"The {pg_word} shows {cat_list}. Fill in the {table_word} with the correct counts.",
-        f"Count the pictures in each row of the {pg_word}, then write the counts for "
-        f"{cat_list} in the {table_word}.",
+        fill("Look at the {pg_word}. Write the correct count for each row in the {table_word}: {cat_list}.", pg_word=S(pg_word, "fill"), table_word=derived(table_word), cat_list=derived(cat_list)),
+        fill("The {pg_word} shows {cat_list}. Fill in the {table_word} with the correct counts.", pg_word=S(pg_word, "fill"), cat_list=derived(cat_list), table_word=derived(table_word)),
+        fill("Count the pictures in each row of the {pg_word}, then write the counts for {cat_list} in the {table_word}.", pg_word=S(pg_word, "fill"), cat_list=derived(cat_list), table_word=derived(table_word)),
     ])
     if "scale" in vp and vp["scale"] > 1:
         # The previous wording, "Note: Each symbol meant N items.", was past tense.
         if scale_known:
-            question_text += f" The scale is {vp['scale']}: each symbol stands for {vp['scale']} items."
+            note = fill(" The scale is {scale}: each symbol stands for {scale} items.", scale=derived(vp['scale']))
         else:
-            question_text += f" Each symbol stands for {vp['scale']} items."
+            note = fill(" Each symbol stands for {scale} items.", scale=derived(vp['scale']))
+        question_text = fill("{stem}{note}", stem=S(question_text, "fill"), note=S(note, "fill"))
 
     return FormattedProblem(
         problem_id=f"{ctx.node_id}_{ctx.seed}_table",
@@ -106,7 +108,7 @@ def format_fill_in_table(
         correct_answer=correct_answers,
         distractors=[],
         hints=ctx.hints,
-        format=f"{interaction_mode}_{answer_collection}",
+        format=fill("{interaction_mode}_{answer_collection}", interaction_mode=derived(interaction_mode), answer_collection=derived(answer_collection)),
         format_data={"visual_params": visual_params},
         is_visual=True,
         visual_type="FillInTable",
@@ -148,9 +150,9 @@ def _format_read(
     stem_tpl = ctx.values.get("stem_template") if ctx.values else None
     if stem_tpl:
         sub_q = stem_tpl.format(cat=ask_cat)
-        question_text = f"Look at the {table_word}. {sub_q}"
+        question_text = fill("Look at the {table_word}. {sub_q}", table_word=derived(table_word), sub_q=derived(sub_q, src=('stem_template',)))
     else:
-        question_text = f"Look at the {table_word}. How many are in {ask_cat}?"
+        question_text = fill("Look at the {table_word}. How many are in {ask_cat}?", table_word=derived(table_word), ask_cat=derived(ask_cat))
 
     correct_answer: Any = correct
     if answer_collection == "mcq":
@@ -183,7 +185,7 @@ def _format_read(
             {"key": chr(ord("A") + i), "value": v, "is_correct": v == correct}
             for i, v in enumerate(all_opts)
         ]
-        correct_answer = next(o["key"] for o in mcq_options if o["is_correct"])
+        correct_answer = correct_option_key(mcq_options)
 
     format_data: dict = {"visual_params": visual_params}
     if mcq_options is not None:
@@ -199,7 +201,7 @@ def _format_read(
         correct_answer=correct_answer,
         distractors=[],
         hints=ctx.hints,
-        format=f"read_{answer_collection}",
+        format=fill("read_{answer_collection}", answer_collection=derived(answer_collection)),
         format_data=format_data,
         is_visual=True,
         visual_type="FillInTable",

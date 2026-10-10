@@ -19,6 +19,7 @@ from backend.app.practice_gen.dna.base import (
     linear_interpolate,
     log_interpolate,
 )
+from backend.app.practice_gen.slots import S, derived, fill
 
 
 # ─── param bounds ─────────────────────────────────────────────────────────────
@@ -279,7 +280,7 @@ def generate_params(
                 "comparison": comp_word,
                 "answer": answer,
                 "distractors": dists,
-                "question": f"Which is {comp_word}: {val_a} {unit_a} or {val_b} {unit_b}?",
+                "question": fill("Which is {comp_word}: {val_a} {unit_a} or {val_b} {unit_b}?", _src=('task_type',), comp_word=S(comp_word, "value:comparison"), val_a=derived(val_a), unit_a=S(unit_a, "value:unit"), val_b=derived(val_b), unit_b=S(unit_b, "value:unit")),
             }
         else:
             unit = unit_mode
@@ -313,9 +314,7 @@ def generate_params(
                 "answer": ans_val,
                 "distractors": dists,
                 "question": (
-                    f"{obj_a[0].upper()}{obj_a[1:]} is {val_a} {unit} long. "
-                    f"{obj_b[0].upper()}{obj_b[1:]} is {val_b} {unit} long. "
-                    f"Which length is {comp_word} in {unit}?"
+                    fill("{upper}{v} is {val_a} {unit} long. {upper2}{v2} is {val_b} {unit} long. Which length is {comp_word} in {unit}?", _src=('task_type',), upper=derived(obj_a[0].upper()), v=derived(obj_a[1:]), val_a=derived(val_a), unit=derived(unit), upper2=derived(obj_b[0].upper()), v2=derived(obj_b[1:]), val_b=derived(val_b), comp_word=S(comp_word, "value:comparison"))
                 ),
             }
 
@@ -348,9 +347,7 @@ def generate_params(
                 "answer": answer,
                 "distractors": dists,
                 "question": (
-                    f"The distance from the bench to the tree is {val_a} {unit_a}. "
-                    f"The distance from the gate to the tree is {val_b} {unit_b}. "
-                    f"Which distance is {comp_word}?"
+                    fill("The distance from the bench to the tree is {val_a} {unit_a}. The distance from the gate to the tree is {val_b} {unit_b}. Which distance is {comp_word}?", _src=('task_type',), val_a=derived(val_a), unit_a=S(unit_a, "value:unit"), val_b=derived(val_b), unit_b=S(unit_b, "value:unit"), comp_word=S(comp_word, "value:comparison"))
                 ),
             }
         else:
@@ -379,9 +376,7 @@ def generate_params(
                 "answer": ans_val,
                 "distractors": dists,
                 "question": (
-                    f"The distance from the bench to the tree is {val_a} m. "
-                    f"The distance from the gate to the tree is {val_b} m. "
-                    f"Which distance is {comp_word} in meters?"
+                    fill("The distance from the bench to the tree is {val_a} m. The distance from the gate to the tree is {val_b} m. Which distance is {comp_word} in meters?", _src=('task_type',), val_a=derived(val_a), val_b=derived(val_b), comp_word=S(comp_word, "value:comparison"))
                 ),
             }
 
@@ -416,7 +411,7 @@ def generate_params(
                 "task_type": "choose_unit",
                 "answer": "m",
                 "distractors": ["cm", "either works", "neither works"],
-                "question": f"Which unit is best to measure the distance between {pair}: centimeters (cm) or meters (m)?",
+                "question": fill("Which unit is best to measure the distance between {pair}: centimeters (cm) or meters (m)?", _src=('task_type',), pair=S(pair, "value:item")),
             }
         elif mode == "reasonableness_dist":
             pair, dist_val = rng.choice(distance_pairs)
@@ -427,7 +422,7 @@ def generate_params(
                 "task_type": "choose_unit",
                 "answer": "m",
                 "distractors": ["cm", "either works", "neither works"],
-                "question": f"The distance between {pair} is about {dist_val} ___. Which unit makes the measurement reasonable: cm or m?",
+                "question": fill("The distance between {pair} is about {dist_val} ___. Which unit makes the measurement reasonable: cm or m?", _src=('task_type',), pair=S(pair, "value:item"), dist_val=derived(dist_val)),
             }
         elif mode == "reasonableness_item":
             use_cm = rng.random() < 0.5
@@ -441,7 +436,7 @@ def generate_params(
                 "task_type": "choose_unit",
                 "answer": ans_u,
                 "distractors": [wrong_u, "either works", "neither works"],
-                "question": f"{item.capitalize()} has a length of about {item_len} ___. Which unit is correct: cm or m?",
+                "question": fill("{capitalize} has a length of about {item_len} ___. Which unit is correct: cm or m?", _src=('task_type',), capitalize=derived(item.capitalize()), item_len=derived(item_len)),
             }
         else: # item_unit
             use_cm = rng.random() < 0.5
@@ -449,9 +444,9 @@ def generate_params(
             ans_u = "cm" if use_cm else "m"
             wrong_u = "m" if use_cm else "cm"
             q_frame = rng.choice([
-                f"Which unit would you use to measure the length of {item}: centimeters (cm) or meters (m)?",
-                f"Would you measure the length of {item} in centimeters (cm) or meters (m)?",
-                f"What is the appropriate unit to measure the length of {item}: cm or m?"
+                fill("Which unit would you use to measure the length of {item}: centimeters (cm) or meters (m)?", _src=('task_type',), item=S(item, "value:item")),
+                fill("Would you measure the length of {item} in centimeters (cm) or meters (m)?", _src=('task_type',), item=S(item, "value:item")),
+                fill("What is the appropriate unit to measure the length of {item}: cm or m?", _src=('task_type',), item=S(item, "value:item"))
             ])
             return {
                 "blank_target": "answer",
@@ -480,7 +475,7 @@ def generate_params(
             "unit_type": from_u,
             "task_type": "convert",
             "answer": answer,
-            "question": f"Convert {val} {from_u} to {to_u}.",
+            "question": fill("Convert {val} {from_u} to {to_u}.", _src=('task_type',), val=derived(val), from_u=derived(from_u), to_u=derived(to_u)),
         }
 
     if task_type == "estimate":
@@ -512,7 +507,7 @@ def generate_params(
                 "round_to": round_unit,
                 "answer": rounded,
                 "distractors": dists,
-                "question": f"The distance from {pair} is {length} m. About how many meters is that, rounded to the nearest {round_unit} m?",
+                "question": fill("The distance from {pair} is {length} m. About how many meters is that, rounded to the nearest {round_unit} m?", _src=('task_type',), pair=derived(pair), length=derived(length), round_unit=derived(round_unit)),
             }
         else:
             use_cm = (requested_unit_type == "cm") or (requested_unit_type is None and rng.random() < 0.6)
@@ -544,7 +539,7 @@ def generate_params(
                     "round_to": round_unit,
                     "answer": rounded,
                     "distractors": dists,
-                    "question": f"{obj[0].upper()}{obj[1:]} measures {length} cm. About how many centimeters is that, rounded to the nearest {round_unit} cm?",
+                    "question": fill("{upper}{v} measures {length} cm. About how many centimeters is that, rounded to the nearest {round_unit} cm?", _src=('task_type',), upper=derived(obj[0].upper()), v=derived(obj[1:]), length=S(length, "value:length"), round_unit=derived(round_unit)),
                 }
             else:
                 obj_spec = rng.choice([
@@ -571,7 +566,7 @@ def generate_params(
                     "round_to": round_unit,
                     "answer": rounded,
                     "distractors": dists,
-                    "question": f"{obj[0].upper()}{obj[1:]} measures {length} m. About how many meters is that, rounded to the nearest {round_unit} m?",
+                    "question": fill("{upper}{v} measures {length} m. About how many meters is that, rounded to the nearest {round_unit} m?", _src=('task_type',), upper=derived(obj[0].upper()), v=derived(obj[1:]), length=derived(length), round_unit=derived(round_unit)),
                 }
 
     if task_type == "distance_between":
@@ -591,8 +586,7 @@ def generate_params(
             "answer": length,
             "distractors": dists,
             "question": (
-                f"{obj_a[0].upper()}{obj_a[1:]} and {obj_b} are placed apart. "
-                f"The distance between them is ___ {unit_word}."
+                fill("{upper}{v} and {obj_b} are placed apart. The distance between them is ___ {unit_word}.", _src=('task_type',), upper=derived(obj_a[0].upper()), v=derived(obj_a[1:]), obj_b=derived(obj_b), unit_word=S(unit_word, "value:unit"))
             ),
         }
 
@@ -611,7 +605,7 @@ def generate_params(
             unit_b = unit[:-1] if len_b == 1 and unit.endswith("s") else unit
             ans = len_a - len_b
             word_operands, word_operation, word_measure = (len_a, len_b), "subtract", "length"
-            q = f"{obj_a.capitalize()} is {len_a} {unit} long. {obj_b.capitalize()} is {len_b} {unit_b} long. How many {unit} longer is {obj_a} than {obj_b}?"
+            q = fill("{capitalize} is {len_a} {unit} long. {capitalize2} is {len_b} {unit_b} long. How many {unit} longer is {obj_a} than {obj_b}?", _src=('task_type', 'word_measure',), capitalize=derived(obj_a.capitalize()), len_a=derived(len_a), unit=S(unit, "value:unit"), capitalize2=derived(obj_b.capitalize()), len_b=derived(len_b), unit_b=derived(unit_b), obj_a=derived(obj_a), obj_b=derived(obj_b))
         elif problem_mode == "length_sum":
             obj_a, obj_b = rng.choice([
                 ("a pencil", "an eraser"), ("a red ribbon", "a blue ribbon"),
@@ -622,7 +616,7 @@ def generate_params(
             len_b = rng.randint(2, 5)
             ans = len_a + len_b
             word_operands, word_operation, word_measure = (len_a, len_b), "add", "length"
-            q = f"{obj_a.capitalize()} is {len_a} {unit} long and {obj_b} is {len_b} {unit} long. If they are placed end to end, what is their total length in {unit}?"
+            q = fill("{capitalize} is {len_a} {unit} long and {obj_b} is {len_b} {unit} long. If they are placed end to end, what is their total length in {unit}?", _src=('task_type', 'word_measure',), capitalize=derived(obj_a.capitalize()), len_a=derived(len_a), unit=S(unit, "value:unit"), obj_b=derived(obj_b), len_b=derived(len_b))
         elif problem_mode == "dist_diff":
             loc_a, loc_b = rng.choice([
                 ("the door", "the window"), ("the chair", "the bookshelf"),
@@ -634,7 +628,7 @@ def generate_params(
             unit_b = "step" if len_b == 1 else "steps"
             ans = len_a - len_b
             word_operands, word_operation, word_measure = (len_a, len_b), "subtract", "distance"
-            q = f"From the teacher's desk, it is {len_a} steps to {loc_a} and {len_b} {unit_b} to {loc_b}. How many steps farther is {loc_a} than {loc_b}?"
+            q = fill("From the teacher's desk, it is {len_a} steps to {loc_a} and {len_b} {unit_b} to {loc_b}. How many steps farther is {loc_a} than {loc_b}?", _src=('task_type', 'word_measure',), len_a=derived(len_a), loc_a=derived(loc_a), len_b=derived(len_b), unit_b=derived(unit_b), loc_b=derived(loc_b))
         else:  # dist_sum
             loc_a, loc_b = rng.choice([
                 ("the desk to the door", "the door to the window"),
@@ -647,7 +641,7 @@ def generate_params(
             ans = len_a + len_b
             word_operands, word_operation, word_measure = (len_a, len_b), "add", "distance"
             name = rng.choice(["Ana", "Ben", "Carlo", "Dan", "Elena", "Mia", "Leo"])
-            q = f"{name} walked {len_a} steps from {loc_a}, and then {len_b} steps from {loc_b}. How many steps did {name} walk in all?"
+            q = fill("{name} walked {len_a} steps from {loc_a}, and then {len_b} steps from {loc_b}. How many steps did {name} walk in all?", _src=('task_type', 'word_measure',), name=derived(name), len_a=derived(len_a), loc_a=derived(loc_a), len_b=derived(len_b), loc_b=derived(loc_b))
 
         dists = [d for d in [ans + 1, max(1, ans - 1), ans + 2, ans + 3] if d != ans][:3]
         return {
@@ -698,9 +692,7 @@ def generate_params(
                     "Cannot be determined without a set square",
                 ],
                 "question": (
-                    f"On a ruler, Segment A starts at 0 cm and ends at {len_a} cm. "
-                    f"Segment B starts at {start_b} cm and ends at {end_b} cm. "
-                    f"Are Segment A and Segment B equal in length?"
+                    fill("On a ruler, Segment A starts at 0 cm and ends at {len_a} cm. Segment B starts at {start_b} cm and ends at {end_b} cm. Are Segment A and Segment B equal in length?", _src=('task_type',), len_a=derived(len_a), start_b=derived(start_b), end_b=derived(end_b))
                 ),
             }
 
@@ -717,8 +709,7 @@ def generate_params(
                 "answer": answer,
                 "distractors": dists,
                 "question": (
-                    f"Segment A has a length of {len_a} cm. To draw Segment B equal in length "
-                    f"using a ruler starting at the 0 cm mark, at which centimeter mark must Segment B end?"
+                    fill("Segment A has a length of {len_a} cm. To draw Segment B equal in length using a ruler starting at the 0 cm mark, at which centimeter mark must Segment B end?", _src=('task_type',), len_a=derived(len_a))
                 ),
             }
 
@@ -736,18 +727,17 @@ def generate_params(
                 "answer": answer,
                 "distractors": dists,
                 "question": (
-                    f"Segment A is {len_a} cm long. If you use a ruler to draw Segment B equal in length "
-                    f"starting at the {start_b} cm mark, at which centimeter mark on the ruler must Segment B end?"
+                    fill("Segment A is {len_a} cm long. If you use a ruler to draw Segment B equal in length starting at the {start_b} cm mark, at which centimeter mark on the ruler must Segment B end?", _src=('task_type',), len_a=derived(len_a), start_b=derived(start_b))
                 ),
             }
 
         # identify_matching_segment
         end_match = start_b + len_a
-        answer = f"A segment starting at {start_b} cm and ending at {end_match} cm"
+        answer = fill("A segment starting at {start_b} cm and ending at {end_match} cm", _src=('task_type',), start_b=derived(start_b), end_match=derived(end_match))
         distractors = [
-            f"A segment starting at {start_b} cm and ending at {end_match + 2} cm",
-            f"A segment starting at {start_b} cm and ending at {max(start_b + 1, end_match - 2)} cm",
-            f"A segment starting at {start_b + 1} cm and ending at {end_match + 2} cm",
+            fill("A segment starting at {start_b} cm and ending at {v} cm", _src=('task_type',), start_b=derived(start_b), v=derived(end_match + 2)),
+            fill("A segment starting at {start_b} cm and ending at {max} cm", _src=('task_type',), start_b=derived(start_b), max=derived(max(start_b + 1, end_match - 2))),
+            fill("A segment starting at {v} cm and ending at {v2} cm", _src=('task_type',), v=derived(start_b + 1), v2=derived(end_match + 2)),
         ]
         return {
             "blank_target": "answer",
@@ -759,8 +749,7 @@ def generate_params(
             "answer": answer,
             "distractors": distractors,
             "question": (
-                f"Segment A measures {len_a} cm on a ruler. Which of the following describes a line segment "
-                f"that is equal in length to Segment A?"
+                fill("Segment A measures {len_a} cm on a ruler. Which of the following describes a line segment that is equal in length to Segment A?", _src=('task_type',), len_a=derived(len_a))
             ),
         }
 
@@ -779,7 +768,7 @@ def generate_params(
             "task_type": task_type,
             "answer": length,
             "distractors": dists,
-            "question": f"How long is {obj}? Give your answer in {unit}.",
+            "question": fill("How long is {obj}? Give your answer in {unit}.", obj=S(obj, "value:item"), unit=S(unit, "value:unit")),
         }
 
     if task_type != "convert":
@@ -816,8 +805,7 @@ def generate_params(
                     ans = dist_a + dist_b
                     word_operands, word_operation = (dist_a, dist_b), "add"
                     q = (
-                        f"{name} walked {dist_a} m from {loc_a} to {loc_b}, and then walked {dist_b} m "
-                        f"from {loc_b} to {loc_c}. What is the total distance {name} walked in meters?"
+                        fill("{name} walked {dist_a} m from {loc_a} to {loc_b}, and then walked {dist_b} m from {loc_b} to {loc_c}. What is the total distance {name} walked in meters?", _src=('task_type', 'word_measure',), name=derived(name), dist_a=derived(dist_a), loc_a=derived(loc_a), loc_b=derived(loc_b), dist_b=derived(dist_b), loc_c=derived(loc_c))
                     )
                 else:
                     dest_a, dest_b = rng.sample([
@@ -831,9 +819,7 @@ def generate_params(
                     ans = longer_val - shorter_val
                     word_operands, word_operation = (longer_val, shorter_val), "subtract"
                     q = (
-                        f"The distance from the school gate to {dest_a} is {longer_val} m. "
-                        f"The distance from the school gate to {dest_b} is {shorter_val} m. "
-                        f"How many meters farther is {dest_a} than {dest_b}?"
+                        fill("The distance from the school gate to {dest_a} is {longer_val} m. The distance from the school gate to {dest_b} is {shorter_val} m. How many meters farther is {dest_a} than {dest_b}?", _src=('task_type', 'word_measure',), dest_a=derived(dest_a), longer_val=derived(longer_val), dest_b=derived(dest_b), shorter_val=derived(shorter_val))
                     )
                 dists = [ans + 5, max(1, ans - 5), ans + 10]
                 dists = [d for d in dists if d != ans][:3]
@@ -868,9 +854,7 @@ def generate_params(
                     ans = val_a + val_b
                     word_operands, word_operation = (val_a, val_b), "add"
                     q = (
-                        f"{obj_a[0].upper()}{obj_a[1:]} is {val_a} {unit_mode} long. "
-                        f"{obj_b[0].upper()}{obj_b[1:]} is {val_b} {unit_mode} long. "
-                        f"If they are placed end to end, what is their combined length in {unit_mode}?"
+                        fill("{upper}{v} is {val_a} {unit_mode} long. {upper2}{v2} is {val_b} {unit_mode} long. If they are placed end to end, what is their combined length in {unit_mode}?", _src=('task_type', 'word_measure',), upper=derived(obj_a[0].upper()), v=derived(obj_a[1:]), val_a=derived(val_a), unit_mode=derived(unit_mode), upper2=derived(obj_b[0].upper()), v2=derived(obj_b[1:]), val_b=derived(val_b))
                     )
                 else:
                     longer_obj, longer_val, shorter_obj, shorter_val = (
@@ -879,9 +863,7 @@ def generate_params(
                     ans = longer_val - shorter_val
                     word_operands, word_operation = (longer_val, shorter_val), "subtract"
                     q = (
-                        f"{longer_obj[0].upper()}{longer_obj[1:]} is {longer_val} {unit_mode} long. "
-                        f"{shorter_obj[0].upper()}{shorter_obj[1:]} is {shorter_val} {unit_mode} long. "
-                        f"How many {unit_mode} longer is {longer_obj} than {shorter_obj}?"
+                        fill("{upper}{v} is {longer_val} {unit_mode} long. {upper2}{v2} is {shorter_val} {unit_mode} long. How many {unit_mode} longer is {longer_obj} than {shorter_obj}?", _src=('task_type', 'word_measure',), upper=derived(longer_obj[0].upper()), v=derived(longer_obj[1:]), longer_val=derived(longer_val), unit_mode=derived(unit_mode), upper2=derived(shorter_obj[0].upper()), v2=derived(shorter_obj[1:]), shorter_val=derived(shorter_val), longer_obj=derived(longer_obj), shorter_obj=derived(shorter_obj))
                     )
                 dists = [ans + 5, max(1, ans - 5), ans + 10]
                 dists = [d for d in dists if d != ans][:3]
@@ -971,9 +953,9 @@ def generate_hints(
         unit_word = _unit_word(values["unit"])
         measure = "distance" if task_type == "compare_distance" else "length"
         return [
-            f"Compare {val_a} {count_noun(val_a, unit_word)} and {val_b} {count_noun(val_b, unit_word)}.",
-            f"{max(val_a, val_b)} is more than {min(val_a, val_b)}.",
-            f"The {comparison} {measure} is {answer} {count_noun(answer, unit_word)}.",
+            fill("Compare {val_a} {count_noun} and {val_b} {count_noun2}.", _src=('task_type',), val_a=S(val_a, "value:value_a"), count_noun=derived(count_noun(val_a, unit_word), src=('unit',)), val_b=S(val_b, "value:value_b"), count_noun2=derived(count_noun(val_b, unit_word), src=('unit',))),
+            fill("{max} is more than {min}.", _src=('task_type',), max=derived(max(val_a, val_b)), min=derived(min(val_a, val_b))),
+            fill("The {comparison} {measure} is {answer} {count_noun}.", _src=('task_type',), comparison=S(comparison, "value:comparison"), measure=derived(measure, src=('task_type',)), answer=S(answer, "value:answer"), count_noun=derived(count_noun(answer, unit_word), src=('unit',))),
         ]
 
     if task_type == "equal_length":
@@ -983,37 +965,36 @@ def generate_hints(
         if sub_task == "ruler_read_equality":
             val_a, val_b = values["value_a"], values["value_b"]
             return [
-                "Find how long each segment is: count the units from where it starts to where it ends.",
-                f"Segment A is {val_a} {count_noun(val_a, unit_word)} long. "
-                f"Segment B is {val_b} {count_noun(val_b, unit_word)} long.",
-                "Equal length means the same number of units, not the same start and end marks.",
-                f"{val_a} and {val_b} are {'the same' if val_a == val_b else 'not the same'}, so the answer is {answer}.",
+                fill("Find how long each segment is: count the units from where it starts to where it ends.", _src=('sub_task', 'task_type',)),
+                fill("Segment A is {val_a} {count_noun} long. Segment B is {val_b} {count_noun2} long.", _src=('sub_task', 'task_type',), val_a=S(val_a, "value:value_a"), count_noun=S(count_noun(val_a, unit_word), "fill"), val_b=S(val_b, "value:value_b"), count_noun2=S(count_noun(val_b, unit_word), "fill")),
+                fill("Equal length means the same number of units, not the same start and end marks.", _src=('sub_task', 'task_type',)),
+                fill("{val_a} and {val_b} are {v}, so the answer is {answer}.", _src=('sub_task', 'task_type',), val_a=S(val_a, "value:value_a"), val_b=S(val_b, "value:value_b"), v=derived('the same' if val_a == val_b else 'not the same'), answer=S(answer, "value:answer")),
             ]
         if sub_task == "draw_from_zero":
             return [
-                f"Segment B must be {length} {count_noun(length, unit_word)} long, like Segment A.",
-                f"Starting at the 0 mark, count {length} {count_noun(length, unit_word)}: Segment B ends at the {answer} mark.",
+                fill("Segment B must be {length} {count_noun} long, like Segment A.", _src=('sub_task', 'task_type',), length=S(length, "value:length"), count_noun=S(count_noun(length, unit_word), "fill")),
+                fill("Starting at the 0 mark, count {length} {count_noun}: Segment B ends at the {answer} mark.", _src=('sub_task', 'task_type',), length=S(length, "value:length"), count_noun=S(count_noun(length, unit_word), "fill"), answer=S(answer, "value:answer")),
             ]
         if sub_task == "draw_from_offset":
             start = answer - length
             return [
-                f"Segment B must be {length} {count_noun(length, unit_word)} long, like Segment A.",
-                f"Start at the {start} mark and count on {length}: {start} + {length} = {answer}.",
+                fill("Segment B must be {length} {count_noun} long, like Segment A.", _src=('sub_task', 'task_type',), length=S(length, "value:length"), count_noun=S(count_noun(length, unit_word), "fill")),
+                fill("Start at the {start} mark and count on {length}: {start} + {length} = {answer}.", _src=('sub_task', 'task_type',), start=derived(start), length=S(length, "value:length"), answer=S(answer, "value:answer")),
             ]
         if sub_task == "identify_matching_segment":
             return [
-                f"The matching segment must be {length} {count_noun(length, unit_word)} long, like Segment A.",
-                "For each choice, count the units from where the segment starts to where it ends.",
-                f"Choose the one that is exactly {length} {count_noun(length, unit_word)} long.",
+                fill("The matching segment must be {length} {count_noun} long, like Segment A.", _src=('sub_task', 'task_type',), length=S(length, "value:length"), count_noun=S(count_noun(length, unit_word), "fill")),
+                fill("For each choice, count the units from where the segment starts to where it ends.", _src=('sub_task', 'task_type',)),
+                fill("Choose the one that is exactly {length} {count_noun} long.", _src=('sub_task', 'task_type',), length=S(length, "value:length"), count_noun=S(count_noun(length, unit_word), "fill")),
             ]
         raise ValueError(f"length_measurement.generate_hints: unknown equal_length sub_task {sub_task!r}")
 
     if task_type == "distance_between":
         unit = values.get("unit", "units")
         return [
-            f"Count how many {unit} fit in the gap between the two objects.",
-            "Make sure no gaps or overlaps between the units.",
-            f"The distance between them is {values['answer']} {count_noun(values['answer'], unit)}.",
+            fill("Count how many {unit} fit in the gap between the two objects.", _src=('task_type',), unit=S(unit, "value:unit")),
+            fill("Make sure no gaps or overlaps between the units.", _src=('task_type',)),
+            fill("The distance between them is {answer} {count_noun}.", _src=('task_type',), answer=S(values['answer'], "value:answer"), count_noun=S(count_noun(values['answer'], unit), "value:unit")),
         ]
 
     if task_type in ("solve_problems_non_standard", "solve_word_problem"):
@@ -1023,17 +1004,15 @@ def generate_hints(
         measure = values["word_measure"]
         if values["word_operation"] == "add":
             return [
-                f"The two {measure}s join together, so add them.",
-                f"{a} + {b} = {answer}.",
-                f"The total {measure} is {answer} {count_noun(answer, unit_word)}.",
+                fill("The two {measure}s join together, so add them.", _src=('word_operation', 'task_type',), measure=S(measure, "value:word_measure")),
+                fill("{a} + {b} = {answer}.", _src=('word_operation', 'task_type',), a=derived(a), b=derived(b), answer=S(answer, "value:answer")),
+                fill("The total {measure} is {answer} {count_noun}.", _src=('word_operation', 'task_type',), measure=S(measure, "value:word_measure"), answer=S(answer, "value:answer"), count_noun=derived(count_noun(answer, unit_word), src=('answer', 'unit',))),
             ]
         return [
-            f"To find how much {'farther' if measure == 'distance' else 'longer'} one is, "
-            f"take the smaller {measure} away from the bigger one.",
-            f"{a} - {b} = {answer}.",
+            fill("To find how much {v} one is, take the smaller {measure} away from the bigger one.", _src=('task_type',), v=derived('farther' if measure == 'distance' else 'longer', src=('word_measure',)), measure=S(measure, "value:word_measure")),
+            fill("{a} - {b} = {answer}.", _src=('task_type',), a=derived(a), b=derived(b), answer=S(answer, "value:answer")),
             # Not "difference": that word is NOT_YET_KNOWN at Grade 1 (§1D).
-            f"So one is {answer} {count_noun(answer, unit_word)} "
-            f"{'farther' if measure == 'distance' else 'longer'} than the other.",
+            fill("So one is {answer} {count_noun} {v} than the other.", _src=('task_type',), answer=S(answer, "value:answer"), count_noun=derived(count_noun(answer, unit_word), src=('answer', 'unit',)), v=derived('farther' if measure == 'distance' else 'longer', src=('word_measure',))),
         ]
 
     if task_type == "estimate":
@@ -1047,21 +1026,21 @@ def generate_hints(
                 f"{step} lies between {low} and {high}, not at {answer!r}"
             )
         closer = (
-            f"{length} is exactly halfway, so it rounds up to {high}."
+            fill("{length} is exactly halfway, so it rounds up to {high}.", _src=('task_type',), length=S(length, "value:length"), high=derived(high))
             if length - low == high - length
-            else f"{length} is closer to {answer}."
+            else fill("{length} is closer to {answer}.", _src=('task_type',), length=S(length, "value:length"), answer=S(answer, "value:answer"))
         )
         return [
-            f"Count by {step}s: {length} is between {low} and {high}.",
+            fill("Count by {step}s: {length} is between {low} and {high}.", _src=('task_type',), step=S(step, "value:round_to"), length=S(length, "value:length"), low=derived(low), high=derived(high)),
             closer,
-            f"So {length} {count_noun(length, unit_word)} is about {answer} {count_noun(answer, unit_word)}.",
+            fill("So {length} {count_noun} is about {answer} {count_noun2}.", _src=('task_type',), length=S(length, "value:length"), count_noun=S(count_noun(length, unit_word), "fill"), answer=S(answer, "value:answer"), count_noun2=S(count_noun(answer, unit_word), "fill")),
         ]
 
     if task_type == "choose_unit":
         return [
-            f"Short things, like a pencil or an eraser, are measured in {cm_label}.",
-            f"Long lengths and distances, like a room or a road, are measured in {m_label}.",
-            f"So the better unit here is {_unit_word(values['answer'])}.",
+            fill("Short things, like a pencil or an eraser, are measured in {cm_label}.", _src=('task_type',), cm_label=S(cm_label, "fill")),
+            fill("Long lengths and distances, like a room or a road, are measured in {m_label}.", _src=('task_type',), m_label=S(m_label, "fill")),
+            fill("So the better unit here is {unit_word}.", _src=('task_type',), unit_word=S(_unit_word(values['answer']), "fill")),
         ]
 
     if task_type == "convert":
@@ -1069,37 +1048,35 @@ def generate_hints(
         from_word, to_word = _unit_word(values["from_unit"]), _unit_word(values["to_unit"])
         if values["from_unit"] == "m":
             return [
-                f"1 {m_label} is the same length as 100 {cm_label}.",
-                f"Each {m_label} is 100 {cm_label}, so {value} {count_noun(value, from_word)} "
-                f"is {answer} {count_noun(answer, to_word)}.",
+                fill("1 {m_label} is the same length as 100 {cm_label}.", _src=('from_unit', 'task_type',), m_label=S(m_label, "fill"), cm_label=S(cm_label, "fill")),
+                fill("Each {m_label} is 100 {cm_label}, so {value} {count_noun} is {answer} {count_noun2}.", _src=('from_unit', 'task_type',), m_label=S(m_label, "fill"), cm_label=S(cm_label, "fill"), value=S(value, "value:value"), count_noun=derived(count_noun(value, from_word)), answer=S(answer, "value:answer"), count_noun2=derived(count_noun(answer, to_word))),
             ]
         return [
-            f"100 {cm_label} make 1 {m_label}.",
-            f"Count the hundreds in {value}: {value} {count_noun(value, from_word)} "
-            f"is {answer} {count_noun(answer, to_word)}.",
+            fill("100 {cm_label} make 1 {m_label}.", _src=('task_type',), cm_label=S(cm_label, "fill"), m_label=S(m_label, "fill")),
+            fill("Count the hundreds in {value}: {value} {count_noun} is {answer} {count_noun2}.", _src=('task_type',), value=S(value, "value:value"), count_noun=derived(count_noun(value, from_word)), answer=S(answer, "value:answer"), count_noun2=derived(count_noun(answer, to_word))),
         ]
 
     if unit_type == "non_standard":
         unit = values.get("unit", "units")
         return [
-            f"Count how many {unit} fit along the object from end to end.",
-            "Make sure no gaps or overlaps between the units.",
-            f"The length is {values['answer']} {count_noun(values['answer'], unit)}.",
+            fill("Count how many {unit} fit along the object from end to end.", _src=('unit_type',), unit=S(unit, "value:unit")),
+            fill("Make sure no gaps or overlaps between the units.", _src=('unit_type',)),
+            fill("The length is {answer} {count_noun}.", _src=('unit_type',), answer=S(values['answer'], "value:answer"), count_noun=S(count_noun(values['answer'], unit), "value:unit")),
         ]
 
     if unit_type == "convert_between":
         direction = values.get("direction", "m_to_cm")
         if direction == "m_to_cm":
             return [
-                f"1 {m_label} = 100 {cm_label}.",
-                f"Multiply {values['length']} × 100 to convert {m_label} to {cm_label}.",
-                f"Answer: {values['answer']} {cm_label}.",
+                fill("1 {m_label} = 100 {cm_label}.", _src=('direction', 'unit_type',), m_label=S(m_label, "fill"), cm_label=S(cm_label, "fill")),
+                fill("Multiply {length} × 100 to convert {m_label} to {cm_label}.", _src=('direction', 'unit_type',), length=S(values['length'], "value:length"), m_label=S(m_label, "fill"), cm_label=S(cm_label, "fill")),
+                fill("Answer: {answer} {cm_label}.", _src=('direction', 'unit_type',), answer=S(values['answer'], "value:answer"), cm_label=S(cm_label, "fill")),
             ]
         else:
             return [
-                f"100 {cm_label} = 1 {m_label}.",
-                f"Divide {values['length']} ÷ 100 to convert {cm_label} to {m_label}.",
-                f"Answer: {values['answer']} {m_label}.",
+                fill("100 {cm_label} = 1 {m_label}.", _src=('unit_type',), cm_label=S(cm_label, "fill"), m_label=S(m_label, "fill")),
+                fill("Divide {length} ÷ 100 to convert {cm_label} to {m_label}.", _src=('unit_type',), length=S(values['length'], "value:length"), cm_label=S(cm_label, "fill"), m_label=S(m_label, "fill")),
+                fill("Answer: {answer} {m_label}.", _src=('unit_type',), answer=S(values['answer'], "value:answer"), m_label=S(m_label, "fill")),
             ]
 
     if task_type != "read_measurement":
@@ -1108,9 +1085,8 @@ def generate_hints(
             f"the ruler-reading chain may only explain a ruler reading"
         )
     return [
-        f"Read the measurement on the ruler carefully.",
-        f"The length is {values['answer']} "
-        f"{count_noun(values['answer'], values.get('unit', 'units'))}.",
+        fill("Read the measurement on the ruler carefully."),
+        fill("The length is {answer} {count_noun}.", answer=S(values['answer'], "value:answer"), count_noun=derived(count_noun(values['answer'], values.get('unit', 'units')), src=('answer', 'unit',))),
     ]
 
 

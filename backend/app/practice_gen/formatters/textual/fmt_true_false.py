@@ -9,7 +9,8 @@ to judge it as True or False.
 
 import random
 
-from backend.app.practice_gen.slots import E, R, S, fill, transform
+from backend.app.practice_gen.formatters._answer_slots import distractor_text
+from backend.app.practice_gen.slots import E, R, S, derived, fill, transform
 
 from backend.app.practice_gen.dna.base import (FormattedProblem, QuestionContext, count_noun,
                                                  number_group_name)
@@ -103,7 +104,7 @@ def format_true_false(ctx: QuestionContext, rng: random.Random) -> FormattedProb
                 FV = S(fill_value, R(max(0, ctx.correct_answer - 10), ctx.correct_answer + 10,
                                      "the keyed answer offset by 1-10, floored at 0"))
             else:
-                fill_value = f"not {ctx.correct_answer}"
+                fill_value = fill("not {correct_answer}", correct_answer=derived(ctx.correct_answer))
                 FV = S(fill_value, E((fill_value,), "'not' before the keyed answer"))
     
     # Get context variant
@@ -131,7 +132,7 @@ def format_true_false(ctx: QuestionContext, rng: random.Random) -> FormattedProb
                 # / distractors), which is the correct "estimate" answer.
                 real_a = values.get("real_a", a)
                 real_b = values.get("real_b", b)
-                statement = f"{real_a} + {real_b} ≈ {fill_value}"
+                statement = fill("{real_a} + {real_b} ≈ {fill_value}", _src=('task_type',), real_a=derived(real_a, src=('real_a', 'a',)), real_b=derived(real_b, src=('real_b', 'b',)), fill_value=FV)
             elif values.get("task_type") == "expanded_form" and "a_tens" in values:
                 # Bare "{a} + {b} = {fill_value}" drops the tens-and-ones
                 # decomposition this task_type exists to demonstrate --
@@ -145,25 +146,24 @@ def format_true_false(ctx: QuestionContext, rng: random.Random) -> FormattedProb
                 # mat_g2_na_q1_8 after binding task_type to expanded_form).
                 from backend.app.practice_gen.dna.na.addition import decompose_to_places
                 statement = (
-                    f"{decompose_to_places(a)} {decompose_to_places(b)} "
-                    f"Add the place values, then find the total: {a} + {b} = {fill_value}"
+                    fill("{decompose_to_places} {decompose_to_places2} Add the place values, then find the total: {a} + {b} = {fill_value}", _src=('task_type',), decompose_to_places=S(decompose_to_places(a), "fill"), decompose_to_places2=S(decompose_to_places(b), "fill"), a=S(a, "value:a"), b=S(b, "value:b"), fill_value=FV)
                 )
             elif values.get("task_type") == "putting_together" and blank_target == "result":
-                a_p = f"{a} item" if a == 1 else f"{a} items"
-                b_p = f"{b} item" if b == 1 else f"{b} items"
-                statement = f"One group has {a_p} and another group has {b_p}. Putting them together makes {fill_value} items in all."
+                a_p = fill("{a} item", _src=('a', 'task_type',), a=S(a, "value:a")) if a == 1 else fill("{a} items", _src=('task_type',), a=S(a, "value:a"))
+                b_p = fill("{b} item", _src=('b', 'task_type',), b=S(b, "value:b")) if b == 1 else fill("{b} items", _src=('task_type',), b=S(b, "value:b"))
+                statement = fill("One group has {a_p} and another group has {b_p}. Putting them together makes {fill_value} items in all.", _src=('task_type',), a_p=S(a_p, "fill"), b_p=S(b_p, "fill"), fill_value=FV)
             elif values.get("task_type") == "counting_up" and blank_target == "result":
                 # Same root cause as expanded_form above -- "{a} + {b} =
                 # {fill_value}" drops the "start at / count up" narration
                 # values["question"] states, losing the counting-up framing
                 # this task_type exists to demonstrate.
-                statement = f"Start at {a}. Count up {b} more. You land on {fill_value}."
+                statement = fill("Start at {a}. Count up {b} more. You land on {fill_value}.", _src=('task_type',), a=S(a, "value:a"), b=S(b, "value:b"), fill_value=FV)
             elif blank_target == "result":
-                statement = f"{a} + {b} = {fill_value}"
+                statement = fill("{a} + {b} = {fill_value}", a=S(a, "value:a"), b=S(b, "value:b"), fill_value=FV)
             elif blank_target == "b":
-                statement = f"{a} + {fill_value} = {result}"
+                statement = fill("{a} + {fill_value} = {result}", a=S(a, "value:a"), fill_value=FV, result=S(result, "value:result"))
             else:
-                statement = f"{fill_value} + {b} = {result}"
+                statement = fill("{fill_value} + {b} = {result}", fill_value=FV, b=S(b, "value:b"), result=S(result, "value:result"))
         elif concept == "subtraction":
             a = values.get("a")
             b = values.get("b")
@@ -177,14 +177,14 @@ def format_true_false(ctx: QuestionContext, rng: random.Random) -> FormattedProb
                 # on this duplication pattern across formatters).
                 real_a = values.get("real_a", a)
                 real_b = values.get("real_b", b)
-                statement = fill("{real_a} − {real_b} ≈ {v}", real_a=S(real_a, "value:real_a"),
+                statement = fill("{real_a} − {real_b} ≈ {v}", _src=('task_type',), real_a=S(real_a, "value:real_a"),
                                  real_b=S(real_b, "value:real_b"), v=FV)
             elif values.get("task_type") == "expanded_form" and "a_tens" in values:
                 # Same root cause as addition's identical fix (see that
                 # branch's comment).
                 from backend.app.practice_gen.dna.na.addition import decompose_to_places
                 statement = fill(
-                    "{da} {db} Subtract the place values, then find what's left: {a} − {b} = {v}",
+                    "{da} {db} Subtract the place values, then find what's left: {a} − {b} = {v}", _src=('task_type',),
                     da=S(decompose_to_places(a, "value:a"), "fill"),
                     db=S(decompose_to_places(b, "value:b"), "fill"), a=A, b=B, v=FV)
             elif values.get("task_type") in ("illustrate_number_line_or_inverse", "inverse_of_addition", "number_line_subtraction") and values.get("question"):
@@ -192,15 +192,15 @@ def format_true_false(ctx: QuestionContext, rng: random.Random) -> FormattedProb
                 if "___" in q:
                     statement = transform("fill_blank", q, value=FV)
                 else:
-                    statement = fill("{q} The answer is {v}.", q=S(q, "fill"), v=FV)
+                    statement = fill("{q} The answer is {v}.", _src=('question', 'task_type',), q=S(q, "fill"), v=FV)
             elif values.get("task_type") in ("one_or_two_step_subtraction", "one_step_subtraction", "two_step_subtraction") and values.get("question"):
-                statement = fill("{q} The answer is {v}.", q=S(values["question"], "fill"), v=FV)
+                statement = fill("{q} The answer is {v}.", _src=('question', 'task_type',), q=S(values["question"], "fill"), v=FV)
             elif values.get("task_type") == "counting_back" and blank_target == "result":
-                statement = fill("Start at {a}. Count back {b}. You land on {v}.", a=A, b=B, v=FV)
+                statement = fill("Start at {a}. Count back {b}. You land on {v}.", _src=('task_type',), a=A, b=B, v=FV)
             elif values.get("task_type") == "taking_away" and blank_target == "result":
                 item = values.get("item_name", "items")
                 forms = E((item, count_noun(1, item)), "values['item_name'] in either number")
-                statement = fill("There are {a} {n_a}. Taking away {b} {n_b} leaves {v} {n_v}.",
+                statement = fill("There are {a} {n_a}. Taking away {b} {n_b} leaves {v} {n_v}.", _src=('task_type',),
                                  a=A, n_a=S(count_noun(a, item), forms), b=B,
                                  n_b=S(count_noun(b, item), forms), v=FV,
                                  n_v=S(count_noun(fill_value, item), forms))
@@ -217,42 +217,42 @@ def format_true_false(ctx: QuestionContext, rng: random.Random) -> FormattedProb
             if values.get("task_type") == "estimate":
                 real_a = values.get("real_a", a)
                 real_b = values.get("real_b", b)
-                statement = f"{real_a} × {real_b} ≈ {fill_value}"
+                statement = fill("{real_a} × {real_b} ≈ {fill_value}", _src=('task_type',), real_a=S(real_a, "value:real_a"), real_b=derived(real_b, src=('real_b', 'b', 'n',)), fill_value=FV)
             elif values.get("task_type") == "equal_groups" and blank_target in ("result", "total"):
                 group_form = values.get("group_form")
                 plural_name = values.get("plural_name")
                 if not plural_name:
                     plural_name = number_group_name(a, b)
-                terms = " + ".join([str(a)] * b) if b <= 5 else f"{a} added {b} times"
+                terms = " + ".join([str(a)] * b) if b <= 5 else fill("{a} added {b} times", _src=('task_type',), a=derived(a, src=('a', 'groups',)), b=derived(b, src=('b', 'n',)))
                 if group_form == "plural_name":
-                    statement = f"Count {b} {count_noun(b, plural_name)} by repeated addition: {terms} = {fill_value}."
+                    statement = fill("Count {b} {count_noun} by repeated addition: {terms} = {fill_value}.", _src=('group_form', 'task_type',), b=derived(b, src=('b', 'n',)), count_noun=derived(count_noun(b, plural_name), src=('b', 'n',)), terms=derived(terms, src=('b', 'n', 'a', 'groups',)), fill_value=FV)
                 else:
                     unit = "group" if b == 1 else "groups"
                     # "There are 1 group of 1" -- the noun was pluralized and the verb was not.
                     # One sentence, four copies (doc_rem.md R2); all four say it the same way.
                     was = "is" if b == 1 else "are"
-                    statement = f"There {was} {b} {unit} of {a}. By repeated addition, {terms} = {fill_value}."
+                    statement = fill("There {was} {b} {unit} of {a}. By repeated addition, {terms} = {fill_value}.", _src=('task_type',), was=derived(was, src=('b', 'n',)), b=derived(b, src=('b', 'n',)), unit=derived(unit, src=('b', 'n',)), a=derived(a, src=('a', 'groups',)), terms=derived(terms, src=('b', 'n', 'a', 'groups',)), fill_value=FV)
             elif values.get("task_type") == "repeated_addition" and blank_target in ("result", "total"):
                 terms = " + ".join([str(a)] * b)
-                statement = f"{terms} = {fill_value}"
+                statement = fill("{terms} = {fill_value}", _src=('task_type',), terms=derived(terms, src=('b', 'n', 'a', 'groups',)), fill_value=FV)
             elif values.get("task_type") == "skip_counting" and blank_target in ("result", "total"):
-                statement = f"Counting by {a}s to {a * b} gives {a} × {b} = {fill_value}."
+                statement = fill("Counting by {a}s to {v} gives {a} × {b} = {fill_value}.", _src=('task_type',), a=derived(a, src=('a', 'groups',)), v=derived(a * b, src=('a', 'groups', 'b', 'n',)), b=derived(b, src=('b', 'n',)), fill_value=FV)
             elif values.get("task_type") == "number_line_jumps" and blank_target in ("result", "total"):
-                statement = f"Starting at 0, taking {b} equal jumps of {a} on the number line lands on {fill_value}."
+                statement = fill("Starting at 0, taking {b} equal jumps of {a} on the number line lands on {fill_value}.", _src=('task_type',), b=derived(b, src=('b', 'n',)), a=derived(a, src=('a', 'groups',)), fill_value=FV)
             elif values.get("task_type") == "commutative":
-                statement = f"{a} × {b} = {b} × {a}"
+                statement = fill("{a} × {b} = {b} × {a}", _src=('task_type',), a=derived(a, src=('a', 'groups',)), b=derived(b, src=('b', 'n',)))
             elif values.get("task_type") == "associative":
                 c = values.get("c", 3)
-                statement = f"({a} × {b}) × {c} = {a} × ({b} × {c})"
+                statement = fill("({a} × {b}) × {c} = {a} × ({b} × {c})", _src=('task_type',), a=derived(a, src=('a', 'groups',)), b=derived(b, src=('b', 'n',)), c=derived(c, src=('c',)))
             elif values.get("task_type") == "distributive":
                 c = values.get("c", 5)
-                statement = f"{a} × ({b} + {c}) = ({a} × {b}) + ({a} × {c})"
+                statement = fill("{a} × ({b} + {c}) = ({a} × {b}) + ({a} × {c})", _src=('task_type',), a=derived(a, src=('a', 'groups',)), b=derived(b, src=('b', 'n',)), c=derived(c, src=('c',)))
             elif values.get("task_type") == "two_step":
-                statement = f"({a} × {b}) + 5 = {fill_value}"
+                statement = fill("({a} × {b}) + 5 = {fill_value}", _src=('task_type',), a=derived(a, src=('a', 'groups',)), b=derived(b, src=('b', 'n',)), fill_value=FV)
             elif blank_target in ("result", "total"):
-                statement = f"{a} × {b} = {fill_value}"
+                statement = fill("{a} × {b} = {fill_value}", a=derived(a, src=('a', 'groups',)), b=derived(b, src=('b', 'n',)), fill_value=FV)
             else:
-                statement = f"{fill_value} × {b} = {result}"
+                statement = fill("{fill_value} × {b} = {result}", fill_value=FV, b=derived(b, src=('b', 'n',)), result=derived(result, src=('result', 'total',)))
         elif concept == "division":
             dividend = values.get("dividend", values.get("a"))
             divisor = values.get("divisor", values.get("b"))
@@ -260,7 +260,7 @@ def format_true_false(ctx: QuestionContext, rng: random.Random) -> FormattedProb
             if values.get("task_type") == "estimate":
                 real_a = values.get("real_a", dividend)
                 real_b = values.get("real_b", divisor)
-                statement = f"{real_a} ÷ {real_b} ≈ {fill_value}"
+                statement = fill("{real_a} ÷ {real_b} ≈ {fill_value}", _src=('task_type',), real_a=S(real_a, "value:real_a"), real_b=derived(real_b, src=('real_b', 'divisor', 'b',)), fill_value=FV)
             elif values.get("task_type") == "even_odd":
                 # fill_value is "even"/"odd" (a category, not a quotient) --
                 # "an" is grammatically correct for both ("an even number",
@@ -270,14 +270,14 @@ def format_true_false(ctx: QuestionContext, rng: random.Random) -> FormattedProb
                 # grade/quarter (caught by §1D vocabulary_gating).
                 d_slot = S(dividend, "value:dividend")
                 templates_even = [
-                    fill("{d} ÷ 2 comes out exactly, so {d} is an even number", d=d_slot),
-                    fill("Dividing {d} by 2 gives an exact whole number, so {d} is an even number", d=d_slot),
-                    fill("{d} can be divided into 2 equal parts, so {d} is an even number", d=d_slot),
+                    fill("{d} ÷ 2 comes out exactly, so {d} is an even number", _src=('task_type',), d=d_slot),
+                    fill("Dividing {d} by 2 gives an exact whole number, so {d} is an even number", _src=('task_type',), d=d_slot),
+                    fill("{d} can be divided into 2 equal parts, so {d} is an even number", _src=('task_type',), d=d_slot),
                 ]
                 templates_odd = [
-                    fill("{d} ÷ 2 does not come out exactly, so {d} is an odd number", d=d_slot),
-                    fill("Dividing {d} by 2 does not give an exact whole number, so {d} is an odd number", d=d_slot),
-                    fill("{d} cannot be divided into 2 equal whole parts, so {d} is an odd number", d=d_slot),
+                    fill("{d} ÷ 2 does not come out exactly, so {d} is an odd number", _src=('task_type',), d=d_slot),
+                    fill("Dividing {d} by 2 does not give an exact whole number, so {d} is an odd number", _src=('task_type',), d=d_slot),
+                    fill("{d} cannot be divided into 2 equal whole parts, so {d} is an odd number", _src=('task_type',), d=d_slot),
                 ]
                 t_list = templates_even if fill_value == "even" else templates_odd
                 idx = (int(dividend) + ctx.seed) % len(t_list)
@@ -294,16 +294,14 @@ def format_true_false(ctx: QuestionContext, rng: random.Random) -> FormattedProb
                 # awkwardly forced into a statement) using the same a/b
                 # this task_type's own generate_params computed.
                 statement = (
-                    f"Starting from {dividend} and subtracting {divisor} "
-                    f"repeatedly, you subtract {fill_value} times before "
-                    f"reaching 0."
+                    fill("Starting from {dividend} and subtracting {divisor} repeatedly, you subtract {fill_value} times before reaching 0.", _src=('task_type',), dividend=derived(dividend, src=('dividend', 'a',)), divisor=derived(divisor, src=('divisor', 'b',)), fill_value=FV)
                 )
             elif values.get("task_type") == "number_line_jumps":
-                statement = f"Starting at {dividend} on a number line, taking {fill_value} equal jumps back of {divisor} lands on 0."
+                statement = fill("Starting at {dividend} on a number line, taking {fill_value} equal jumps back of {divisor} lands on 0.", _src=('task_type',), dividend=S(dividend, "value:a"), fill_value=FV, divisor=derived(divisor, src=('divisor', 'b',)))
             elif values.get("task_type") == "inverse_of_multiplication":
-                statement = f"Since {divisor} × {quotient} = {dividend}, then {dividend} ÷ {divisor} = {fill_value}."
+                statement = fill("Since {divisor} × {quotient} = {dividend}, then {dividend} ÷ {divisor} = {fill_value}.", _src=('task_type',), divisor=derived(divisor, src=('divisor', 'b',)), quotient=derived(quotient, src=('quotient', 'result',)), dividend=derived(dividend, src=('dividend', 'a',)), fill_value=FV)
             elif blank_target in ("result", "quotient"):
-                statement = f"{dividend} ÷ {divisor} = {fill_value}"
+                statement = fill("{dividend} ÷ {divisor} = {fill_value}", dividend=derived(dividend, src=('dividend', 'a',)), divisor=derived(divisor, src=('divisor', 'b',)), fill_value=FV)
             else:
                 # blank_target == "b" (divisor_unknown, e.g. "Find the
                 # missing number... 54 ÷ ___ = 6"): fill_value is the
@@ -315,23 +313,23 @@ def format_true_false(ctx: QuestionContext, rng: random.Random) -> FormattedProb
                 # divisor=9, quotient=9, fill_value=9 all coincidentally
                 # equal -> "9 ÷ 9 = 9" keyed True; blind review of
                 # mat_g3_na_q4_2 seed 501, actual 9÷9=1).
-                statement = f"{dividend} ÷ {fill_value} = {quotient}"
+                statement = fill("{dividend} ÷ {fill_value} = {quotient}", dividend=derived(dividend, src=('dividend', 'a',)), fill_value=FV, quotient=derived(quotient, src=('quotient', 'result',)))
         elif concept == "number_reading":
             number = values.get("number")
             task_type = values.get("task_type", "numeral_to_word")
             if task_type == "numeral_to_word":
-                statement = f"The number {number} is written in words as '{fill_value}'"
+                statement = fill("The number {number} is written in words as '{fill_value}'", _src=('task_type',), number=S(number, "value:number"), fill_value=FV)
             elif task_type == "numeral_to_expanded":
-                statement = f"The expanded form of {number} is {fill_value}"
+                statement = fill("The expanded form of {number} is {fill_value}", _src=('task_type',), number=S(number, "value:number"), fill_value=FV)
             else:
                 word = values.get("word_form")
-                statement = f"The number written as '{word}' is {fill_value}"
+                statement = fill("The number written as '{word}' is {fill_value}", _src=('task_type',), word=S(word, "value:word_form"), fill_value=FV)
         elif concept == "comparing_ordering":
             task_type = values.get("task_type", "compare_pair")
             a = values.get("a")
             b = values.get("b")
             if task_type == "find_between":
-                statement = f"The number {fill_value} is between {a} and {b}"
+                statement = fill("The number {fill_value} is between {a} and {b}", _src=('task_type',), fill_value=FV, a=S(a, "value:a"), b=S(b, "value:b"))
             else:
                 # compare_two's own distractor set includes "cannot be
                 # determined" -- a legitimate MCQ trap option, but not a
@@ -344,7 +342,7 @@ def format_true_false(ctx: QuestionContext, rng: random.Random) -> FormattedProb
                     correct_sign = ctx.correct_answer if ctx.correct_answer in (">", "<", "=") else None
                     wrong_signs = [s for s in (">", "<", "=") if s != correct_sign]
                     sign_fill = rng.choice(wrong_signs) if wrong_signs else "="
-                statement = f"{a} {sign_fill} {b}"
+                statement = fill("{a} {sign_fill} {b}", a=S(a, "value:a"), sign_fill=derived(sign_fill), b=S(b, "value:b"))
         elif concept == "place_value" and values.get("task_type") == "identify_value":
             # Only "identify_value" has a statement worth specializing: the DNA's
             # blank_target is always value_at_position (see place_value.py), so
@@ -355,8 +353,8 @@ def format_true_false(ctx: QuestionContext, rng: random.Random) -> FormattedProb
             number = values.get("number")
             digit = values.get("digit_at_position")
             pos = values.get("target_digit_position", 0)
-            place = _place_names[pos] if pos < len(_place_names) else f"10^{pos}"
-            statement = f"In the number {number}, the value of the digit {digit} in the {place} place is {fill_value}"
+            place = _place_names[pos] if pos < len(_place_names) else fill("10^{pos}", _src=('task_type',), pos=derived(pos, src=('target_digit_position',)))
+            statement = fill("In the number {number}, the value of the digit {digit} in the {place} place is {fill_value}", _src=('task_type',), number=S(number, "value:number"), digit=S(digit, "value:digit_at_position"), place=S(place, "value:place_name"), fill_value=FV)
         elif concept == "missing_number":
             op_name = values.get("operation", "addition")
             op_symbol = {"addition": "+", "subtraction": "−",
@@ -366,23 +364,23 @@ def format_true_false(ctx: QuestionContext, rng: random.Random) -> FormattedProb
             res = values.get("result", values.get("total"))
             a_val = values.get("a")
             b_val = values.get("b")
-            miss_lbl = "missing number" if "missing number" in ctx.cumulative_vocab else "blank"
+            miss_lbl = fill("missing number") if "missing number" in ctx.cumulative_vocab else fill("blank")
             if op_name == "equivalent":
                 c_val = values.get("c", 1)
                 eq_sym = values.get("equivalent_symbol", "+")
                 if eq_sym == "+":
-                    statement = f"In {a_val} + {b_val} = {c_val} + ___, the {miss_lbl} is {fill_value}"
+                    statement = fill("In {a_val} + {b_val} = {c_val} + ___, the {miss_lbl} is {fill_value}", _src=('equivalent_symbol', 'operation',), a_val=S(a_val, "value:a"), b_val=S(b_val, "value:b"), c_val=derived(c_val, src=('c',)), miss_lbl=derived(miss_lbl), fill_value=FV)
                 else:
-                    statement = f"In {a_val} − {b_val} = {c_val} − ___, the {miss_lbl} is {fill_value}"
+                    statement = fill("In {a_val} − {b_val} = {c_val} − ___, the {miss_lbl} is {fill_value}", _src=('operation',), a_val=S(a_val, "value:a"), b_val=S(b_val, "value:b"), c_val=derived(c_val, src=('c',)), miss_lbl=derived(miss_lbl), fill_value=FV)
             elif blank_pos == "start":
-                statement = f"In ___ {op_symbol} {b_val} = {res}, the {miss_lbl} is {fill_value}"
+                statement = fill("In ___ {op_symbol} {b_val} = {res}, the {miss_lbl} is {fill_value}", _src=('blank_position',), op_symbol=derived(op_symbol, src=('operation', 'equivalent_symbol',)), b_val=S(b_val, "value:b"), res=derived(res, src=('result', 'total',)), miss_lbl=S(miss_lbl, "fill"), fill_value=FV)
             elif blank_pos == "change":
-                statement = f"In {a_val} {op_symbol} ___ = {res}, the {miss_lbl} is {fill_value}"
+                statement = fill("In {a_val} {op_symbol} ___ = {res}, the {miss_lbl} is {fill_value}", _src=('blank_position',), a_val=S(a_val, "value:a"), op_symbol=derived(op_symbol, src=('operation', 'equivalent_symbol',)), res=derived(res, src=('result', 'total',)), miss_lbl=derived(miss_lbl), fill_value=FV)
             else:
-                statement = f"In {a_val} {op_symbol} {b_val} = ___, the {miss_lbl} is {fill_value}"
+                statement = fill("In {a_val} {op_symbol} {b_val} = ___, the {miss_lbl} is {fill_value}", a_val=S(a_val, "value:a"), op_symbol=derived(op_symbol, src=('operation', 'equivalent_symbol',)), b_val=S(b_val, "value:b"), miss_lbl=S(miss_lbl, "fill"), fill_value=FV)
         elif concept == "fractions":
             if values.get("question"):
-                statement = f"{values['question']} The answer is {fill_value}."
+                statement = fill("{question} The answer is {fill_value}.", _src=('question',), question=S(values['question'], "value:question"), fill_value=FV)
             else:
                 numer = values.get("numerator", values.get("a", 1))
                 denom = values.get("denominator", values.get("b", 2))
@@ -393,23 +391,23 @@ def format_true_false(ctx: QuestionContext, rng: random.Random) -> FormattedProb
                     b_num = values.get("b_num", numer)
                     b_den = values.get("b_den", denom)
                     sign_fill = fill_value if fill_value in (">", "<", "=") else "="
-                    statement = f"\\(\\frac{{{a_num}}}{{{a_den}}}\\) {sign_fill} \\(\\frac{{{b_num}}}{{{b_den}}}\\)"
+                    statement = fill("\\(\\frac{{{a_num}}}{{{a_den}}}\\) {sign_fill} \\(\\frac{{{b_num}}}{{{b_den}}}\\)", _src=('operation',), a_num=derived(a_num, src=('a_num', 'numerator', 'a',)), a_den=derived(a_den, src=('a_den', 'denominator', 'b',)), sign_fill=derived(sign_fill), b_num=derived(b_num, src=('b_num', 'numerator', 'a',)), b_den=derived(b_den, src=('b_den', 'denominator', 'b',)))
                 elif operation in ("add_subtract", "add", "subtract"):
                     a_num = values.get("a_num", numer)
                     b_num = values.get("b_num", 0)
                     a_den = values.get("a_den", denom)
                     b_den = values.get("b_den", denom)
-                    a_part = "1 part" if a_num == 1 else f"{a_num} parts"
+                    a_part = "1 part" if a_num == 1 else fill("{a_num} parts", _src=('operation',), a_num=derived(a_num, src=('a_num', 'numerator', 'a',)))
                     if operation == "subtract":
-                        b_part = "1 shaded part" if b_num == 1 else f"{b_num} shaded parts"
-                        statement = f"A shape is divided into {a_den} equal parts. {a_part} is shaded. Taking away {b_part} leaves {fill_value}"
+                        b_part = "1 shaded part" if b_num == 1 else fill("{b_num} shaded parts", _src=('operation',), b_num=derived(b_num, src=('b_num',)))
+                        statement = fill("A shape is divided into {a_den} equal parts. {a_part} is shaded. Taking away {b_part} leaves {fill_value}", _src=('operation',), a_den=derived(a_den, src=('a_den', 'denominator', 'b',)), a_part=derived(a_part, src=('a_num', 'numerator', 'a',)), b_part=derived(b_part, src=('b_num',)), fill_value=FV)
                     else:
-                        b_part = "1 more part" if b_num == 1 else f"{b_num} more parts"
-                        statement = f"A shape is divided into {a_den} equal parts. Shading {a_part} and then {b_part} gives {fill_value} shaded in all"
+                        b_part = "1 more part" if b_num == 1 else fill("{b_num} more parts", _src=('operation',), b_num=derived(b_num, src=('b_num',)))
+                        statement = fill("A shape is divided into {a_den} equal parts. Shading {a_part} and then {b_part} gives {fill_value} shaded in all", _src=('operation',), a_den=derived(a_den, src=('a_den', 'denominator', 'b',)), a_part=derived(a_part, src=('a_num', 'numerator', 'a',)), b_part=derived(b_part, src=('b_num',)), fill_value=FV)
                 else:
-                    statement = f"A shape is divided into {denom} equal parts with {numer} parts shaded, which represents the fraction {fill_value}"
+                    statement = fill("A shape is divided into {denom} equal parts with {numer} parts shaded, which represents the fraction {fill_value}", denom=derived(denom, src=('denominator', 'b',)), numer=derived(numer, src=('numerator', 'a',)), fill_value=FV)
         else:
-            statement = f"{ctx.question_text} The answer is {fill_value}."
+            statement = fill("{question_text} The answer is {fill_value}.", question_text=S(ctx.question_text, "fill"), fill_value=FV)
 
     format_data = {
         "statement": statement,
@@ -431,7 +429,8 @@ def format_true_false(ctx: QuestionContext, rng: random.Random) -> FormattedProb
         question_text=fill("{statement}. True or False?",
                            statement=S(transform("strip_trailing_period", statement), "fill")),
         correct_answer=is_true,
-        distractors=ctx.distractors,
+        # The generator's distractors, recorded as such (H3-R2); same values.
+        distractors=[distractor_text(d, ctx) for d in ctx.distractors],
         hints=ctx.hints,
         format="true_false",
         format_data=format_data,

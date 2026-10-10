@@ -22,6 +22,8 @@ from typing import List, Optional
 
 from backend.app.practice_gen.dna.base import FormattedProblem, QuestionContext, VocabGated
 from backend.app.practice_gen.formatters._option_order import shuffle_options
+from backend.app.practice_gen.slots import S, derived, fill
+from backend.app.practice_gen.formatters._answer_slots import (correct_option_key, distractors_field, member_text)
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -262,32 +264,32 @@ def format_bar_chart(
         bg_full_lbl = "table"
         dbg_full_lbl = "table"
     else:
-        orient_lbl = f"{orientation} " if orientation in ("vertical", "horizontal") else ""
-        bg_full_lbl = f"{orient_lbl}{bg_lbl}"
-        dbg_full_lbl = f"{orient_lbl}{dbg_lbl}"
+        orient_lbl = fill("{orientation} ", _src=('orientation',), orientation=derived(orientation)) if orientation in ("vertical", "horizontal") else fill("")
+        bg_full_lbl = fill("{orient_lbl}{bg_lbl}", orient_lbl=S(orient_lbl, "fill"), bg_lbl=S(bg_lbl, "fill"))
+        dbg_full_lbl = fill("{orient_lbl}{dbg_lbl}", orient_lbl=S(orient_lbl, "fill"), dbg_lbl=S(dbg_lbl, "fill"))
 
     if interaction_mode == "read":
         vp["is_read_mode"] = True
         if task_type == "solve_problem" and ctx.values and "problem_question" in ctx.values:
             correct_value = ctx.correct_answer if ctx.correct_answer is not None else ctx.values["answer"]
-            question_text = f"Look at the {bg_full_lbl}. {ctx.values['problem_question']}"
+            question_text = fill("Look at the {bg_full_lbl}. {problem_question}", bg_full_lbl=derived(bg_full_lbl, src=("orientation",)), problem_question=S(ctx.values['problem_question'], "value:problem_question"))
         elif task_type in ("compare_bars", "compare"):
             comp_a = ctx.values.get("compare_a", categories[0])
             comp_b = ctx.values.get("compare_b", categories[1])
             correct_value = ctx.correct_answer if ctx.correct_answer is not None else (comp_a if values[categories.index(comp_a)] >= values[categories.index(comp_b)] else comp_b)
-            question_text = f"Look at the {bg_full_lbl}. Which is greater: {comp_a} or {comp_b}?"
+            question_text = fill("Look at the {bg_full_lbl}. Which is greater: {comp_a} or {comp_b}?", bg_full_lbl=derived(bg_full_lbl, src=("orientation",)), comp_a=derived(comp_a, src=("compare_a",)), comp_b=S(comp_b, "value:compare_b"))
         elif task_type == "find_total":
             correct_value = ctx.correct_answer if ctx.correct_answer is not None else sum(values)
-            question_text = f"Look at the {bg_full_lbl}. What is the total value of all categories?"
+            question_text = fill("Look at the {bg_full_lbl}. What is the total value of all categories?", bg_full_lbl=derived(bg_full_lbl, src=("orientation",)))
         elif task_type == "find_difference":
             comp_a = ctx.values.get("compare_a", categories[0])
             comp_b = ctx.values.get("compare_b", categories[1])
             correct_value = ctx.correct_answer if ctx.correct_answer is not None else abs(values[categories.index(comp_a)] - values[categories.index(comp_b)])
-            question_text = f"Look at the {bg_full_lbl}. What is the difference between {comp_a} and {comp_b}?"
+            question_text = fill("Look at the {bg_full_lbl}. What is the difference between {comp_a} and {comp_b}?", bg_full_lbl=derived(bg_full_lbl, src=("orientation",)), comp_a=S(comp_a, "value:compare_a"), comp_b=S(comp_b, "value:compare_b"))
         elif task_type == "find_most_least":
             direction = ctx.values.get("direction", "most")
             correct_value = ctx.correct_answer if ctx.correct_answer is not None else (categories[values.index(max(values))] if direction == "most" else categories[values.index(min(values))])
-            question_text = f"Look at the {bg_full_lbl}. Which category has the {direction}?"
+            question_text = fill("Look at the {bg_full_lbl}. Which category has the {direction}?", bg_full_lbl=derived(bg_full_lbl, src=("orientation",)), direction=S(direction, "value:direction"))
         else:
             if ctx.values and "question_category" in ctx.values and ctx.values["question_category"] in categories:
                 ask_cat = ctx.values["question_category"]
@@ -299,18 +301,18 @@ def format_bar_chart(
             vp["ask_series"] = ask_series
             if values2 and ask_series:
                 correct_value = values[ask_idx] if ask_series == series_labels[0] else values2[ask_idx]
-                question_text = f"Look at the {dbg_full_lbl}. What is the value for {ask_cat} in {ask_series}?"
+                question_text = fill("Look at the {dbg_full_lbl}. What is the value for {ask_cat} in {ask_series}?", dbg_full_lbl=derived(dbg_full_lbl, src=("orientation",)), ask_cat=derived(ask_cat), ask_series=derived(ask_series))
             else:
                 correct_value = values[ask_idx]
-                question_text = f"Look at the {bg_full_lbl}. What is the value for {ask_cat}?"
+                question_text = fill("Look at the {bg_full_lbl}. What is the value for {ask_cat}?", bg_full_lbl=derived(bg_full_lbl, src=("orientation",)), ask_cat=S(ask_cat, "value:question_category"))
     else:
         vp["is_read_mode"] = False
         correct_value = values if not values2 else [values, values2]
-        data_str = ", ".join(f"{categories[i]}: {values[i]}" for i in range(len(categories)))
+        data_str = ", ".join(fill("{v}: {v2}", v=derived(categories[i]), v2=derived(values[i])) for i in range(len(categories)))
         if orientation == "table":
-            question_text = f"Complete the table to show: {data_str}."
+            question_text = fill("Complete the table to show: {data_str}.", _src=('orientation',), data_str=S(data_str, "value:data_str"))
         else:
-            question_text = f"Create a {bg_full_lbl} to show: {data_str}."
+            question_text = fill("Create a {bg_full_lbl} to show: {data_str}.", bg_full_lbl=derived(bg_full_lbl, src=("orientation",)), data_str=S(data_str, "value:data_str"))
 
     # ── 4. Answer collection ──────────────────────────────────────────────────
     mcq_options = None
@@ -370,12 +372,14 @@ def format_bar_chart(
                 )
 
         all_opts = [correct_value] + distractor_vals[:3]
+        # Structured slots (H3-R2): a category option is one of the chart's displayed categories.
+        all_opts = [member_text(v, categories, "the chart's displayed categories") for v in all_opts]
         shuffle_options(all_opts, ctx.node_id, ctx.seed)
         mcq_options = [
             {"key": chr(ord("A") + i), "value": v, "is_correct": v == correct_value}
             for i, v in enumerate(all_opts)
         ]
-        correct_answer = next(o["key"] for o in mcq_options if o["is_correct"])
+        correct_answer = correct_option_key(mcq_options)
     else:
         correct_answer = correct_value
 
@@ -396,7 +400,7 @@ def format_bar_chart(
     if mcq_options is not None:
         format_data["mcq_options"] = mcq_options
 
-    fmt = f"{interaction_mode}_{answer_collection}"
+    fmt = fill("{interaction_mode}_{answer_collection}", interaction_mode=derived(interaction_mode), answer_collection=derived(answer_collection))
 
     return FormattedProblem(
         problem_id=f"{ctx.node_id}_{ctx.seed}_barchart",
@@ -406,7 +410,7 @@ def format_bar_chart(
         seed=ctx.seed,
         question_text=question_text,
         correct_answer=correct_answer,
-        distractors=ctx.distractors,
+        distractors=distractors_field(ctx),
         hints=ctx.hints,
         format=fmt,
         format_data=format_data,

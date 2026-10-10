@@ -25,6 +25,8 @@ from typing import List, Optional
 from backend.app.practice_gen.dna.base import FormattedProblem, QuestionContext
 from backend.app.practice_gen.formatters._distractor_fallback import augment_distractors
 from backend.app.practice_gen.formatters._option_order import shuffle_options
+from backend.app.practice_gen.slots import S, derived, fill
+from backend.app.practice_gen.formatters._answer_slots import (correct_option_key, distractors_field)
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -49,7 +51,7 @@ def _build_sequence(grade: int, diff_level: int, rng: random.Random) -> dict:
             seq = [start + step * i for i in range(length)]
             return {
                 "sequence": seq,
-                "rule": f"Add {step} each time",
+                "rule": fill("Add {step} each time", step=derived(step)),
                 "element_type": "number",
                 "step": step,
                 "start": start,
@@ -64,7 +66,7 @@ def _build_sequence(grade: int, diff_level: int, rng: random.Random) -> dict:
             seq = [pattern[i % period] for i in range(length)]
             return {
                 "sequence": seq,
-                "rule": f"Repeating pattern: {' → '.join(pattern)}",
+                "rule": fill("Repeating pattern: {join}", join=derived(' → '.join(pattern))),
                 "element_type": "shape_code",
                 "period": period,
                 "base_pattern": pattern,
@@ -79,7 +81,7 @@ def _build_sequence(grade: int, diff_level: int, rng: random.Random) -> dict:
             seq = [multiplier * i for i in range(1, length + 1)]
             return {
                 "sequence": seq,
-                "rule": f"Multiply by {multiplier} (×{multiplier} table)",
+                "rule": fill("Multiply by {multiplier} (×{multiplier} table)", multiplier=derived(multiplier)),
                 "element_type": "number",
                 "multiplier": multiplier,
                 "pattern_kind": "multiplication",
@@ -91,7 +93,7 @@ def _build_sequence(grade: int, diff_level: int, rng: random.Random) -> dict:
             seq = [a * n + b for n in range(1, length + 1)]
             return {
                 "sequence": seq,
-                "rule": f"Multiply position by {a}, then add {b}",
+                "rule": fill("Multiply position by {a}, then add {b}", a=derived(a), b=derived(b)),
                 "element_type": "number",
                 "a": a,
                 "b": b,
@@ -105,7 +107,7 @@ def _build_sequence(grade: int, diff_level: int, rng: random.Random) -> dict:
     seq = [a * n + b for n in range(1, length + 1)]
     return {
         "sequence": seq,
-        "rule": f"Rule: {a}n + {b}" if b >= 0 else f"Rule: {a}n {b}",
+        "rule": fill("Rule: {a}n + {b}", _src=('b',), a=derived(a), b=derived(b)) if b >= 0 else fill("Rule: {a}n {b}", a=derived(a), b=derived(b)),
         "element_type": "number",
         "a": a,
         "b": b,
@@ -190,12 +192,12 @@ def _stem(seq_info: dict, missing_indices: List[int], interaction_mode: str, cum
     rule = seq_info["rule"]
     term_word = "term" if "missing term" in cumulative_vocab else "piece"
     if interaction_mode == "set":
-        return f"Fill in the missing {term_word}s. Pattern: {rule}."
+        return fill("Fill in the missing {term_word}s. Pattern: {rule}.", term_word=derived(term_word), rule=derived(rule))
     # read mode
     if len(missing_indices) == 1:
         pos_label = missing_indices[0] + 1  # 1-indexed for students
-        return f"What is the missing {term_word} (position {pos_label}) in the pattern?"
-    return f"What are the missing {term_word}s in the pattern?"
+        return fill("What is the missing {term_word} (position {pos_label}) in the pattern?", term_word=derived(term_word), pos_label=derived(pos_label))
+    return fill("What are the missing {term_word}s in the pattern?", term_word=derived(term_word))
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -271,12 +273,10 @@ def format_pattern_sequence(
         # consecutive-term difference... would mislead students").
         if ctx.values.get("pattern_kind") == "combined":
             question_text = (
-                f"This pattern follows a rule: {seq_str}, ... Each group of numbers repeats, "
-                f"then the next group changes by the same amount. What number is added or "
-                f"subtracted from one group to the next?"
+                fill("This pattern follows a rule: {seq_str}, ... Each group of numbers repeats, then the next group changes by the same amount. What number is added or subtracted from one group to the next?", _src=('pattern_kind', 'missing_index',), seq_str=derived(seq_str, src=('sequence',)))
             )
         else:
-            question_text = f"This pattern follows a rule: {seq_str}, ... What number is added or subtracted each time to generate it?"
+            question_text = fill("This pattern follows a rule: {seq_str}, ... What number is added or subtracted each time to generate it?", _src=('missing_index',), seq_str=derived(seq_str, src=('sequence',)))
 
         traps = [d for d in (ctx.distractors or []) if d != correct_answer]
         if len(traps) < 3:
@@ -292,7 +292,7 @@ def format_pattern_sequence(
                 {"key": chr(ord("A") + i), "value": v, "is_correct": v == correct_answer}
                 for i, v in enumerate(all_opts)
             ]
-            final_answer = next(o["key"] for o in mcq_options if o["is_correct"])
+            final_answer = correct_option_key(mcq_options)
         else:
             final_answer = correct_answer
 
@@ -315,9 +315,9 @@ def format_pattern_sequence(
             seed=ctx.seed,
             question_text=question_text,
             correct_answer=final_answer,
-            distractors=ctx.distractors,
+            distractors=distractors_field(ctx),
             hints=ctx.hints,
-            format=f"{interaction_mode}_{answer_collection}",
+            format=fill("{interaction_mode}_{answer_collection}", _src=('missing_index',), interaction_mode=derived(interaction_mode), answer_collection=derived(answer_collection)),
             format_data=format_data,
             is_visual=True,
             visual_type="PatternSequence",
@@ -466,7 +466,7 @@ def format_pattern_sequence(
             {"key": chr(ord("A") + i), "value": v, "is_correct": v == correct_answer}
             for i, v in enumerate(all_opts)
         ]
-        final_answer = next(o["key"] for o in mcq_options if o["is_correct"])
+        final_answer = correct_option_key(mcq_options)
     else:
         final_answer = correct_answer
 
@@ -486,7 +486,7 @@ def format_pattern_sequence(
         correct_answer=final_answer,
         distractors=traps,
         hints=ctx.hints,
-        format=f"{interaction_mode}_{answer_collection}",
+        format=fill("{interaction_mode}_{answer_collection}", interaction_mode=derived(interaction_mode), answer_collection=derived(answer_collection)),
         format_data=format_data,
         is_visual=True,
         visual_type="PatternSequence",

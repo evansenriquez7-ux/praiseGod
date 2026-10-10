@@ -98,15 +98,19 @@ def test_the_instrumented_prototype_lcs_are_clean(node_id):
     assert not any(found.values()), found
 
 
-def test_an_uninstrumented_field_is_named_by_lc_seed_and_formatter():
-    # mat_g1_dp_q3_0 (pictographs) is un-instrumented; mat_g1_na_q1_0, used until H5, became
-    # fully instrumented when the counting DNA and its formatters were (2026-10-10).
-    found = V.collect_findings(["mat_g1_dp_q3_0"])
+def test_an_uninstrumented_field_is_named_by_lc_seed_and_formatter(monkeypatch):
+    # Since the H3 rollout finished (H3-R2, 2026-10-11) no lc carries un-instrumented text,
+    # so the text is planted: the addition DNA's hints built without `fill`.
+    from backend.app.practice_gen.dna.na import addition
+    monkeypatch.setattr(addition, "generate_hints",
+                        lambda values, cumulative_vocab: [f"Add {values['a']} and {values['b']}."])
+    found = V.collect_findings(["mat_g1_na_q2_4"])
     items = found["slot_text_unaccounted_14"]
     # A field names the formatter and DNA; a nested slot names the exact file:line site.
-    assert items and all(i.startswith("mat_g1_dp_q3_0: ") and " at seed " in i
+    assert items and all(i.startswith("mat_g1_na_q2_4: ") and " at seed " in i
                          and ("formatter " in i or "backend/app/practice_gen/" in i)
                          for i in items)
+    assert any("hints" in i and "DNA addition" in i for i in items)
 
 
 def test_a_fill_slot_is_not_accounted_by_its_own_fill():
@@ -118,3 +122,29 @@ def test_a_fill_slot_is_not_accounted_by_its_own_fill():
     f = fills[0]
     others = {g.text for g in fills} - {f.text}
     assert V.check_slot(f.slots[0][1], "fill", {}, others)[0] == "slot_text_unaccounted_14"
+
+
+def test_a_spine_replays_through_the_generator_renderer_and_chooses_its_article():
+    """H3-R2 / owner ruling 40: a spine is recorded with renderer "spine" and replayed by
+    the generator's own render_spine_text; "A {place}" agrees with the place's sound."""
+    from backend.app.practice_gen.dna.base import Spine, render_spine_text
+    sp = Spine(id="t", template="A {place} has {a} {objects}.", required_concepts=set(),
+               blank_target="a", grade_band=(1, 3))
+    with capture() as fills:
+        text = sp.render({"place": "art fair", "objects": "paintbrushes", "actor": "Mika",
+                          "item1": "pencil", "item2": "eraser"}, {"a": 1})
+    assert text == "An art fair has 1 paintbrush."
+    f = fills[-1]
+    assert f.renderer == "spine" and V.replay(f) is None
+    assert render_spine_text("A {place} is here.", place="classroom") == "A classroom is here."
+
+
+def test_bank_fields_records_the_row_as_domain_and_provenance():
+    from backend.app.practice_gen.slots import bank_fields
+    with capture() as fills:
+        out = bank_fields({"question": "Q?", "answer": "square", "distractors": ["a", "b"], "kind": "x"},
+                          "backend.app.practice_gen.dna.mg.shapes_2d._ITEM_POOL")
+    assert out["question"] == "Q?" and out["distractors"] == ["a", "b"]
+    q = next(f for f in fills if f.text == "Q?")
+    assert q.slots[0][2] == "bank:backend.app.practice_gen.dna.mg.shapes_2d._ITEM_POOL:question"
+    assert dict(q.sources)["question"] == ("question", "answer", "distractors", "kind")

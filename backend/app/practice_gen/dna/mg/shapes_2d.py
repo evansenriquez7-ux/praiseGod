@@ -18,6 +18,7 @@ from backend.app.practice_gen.dna.base import (
     ErrorPattern,
     VocabGated,
 )
+from backend.app.practice_gen.slots import S, bank_fields, derived, fill
 
 
 # ─── error patterns ───────────────────────────────────────────────────────────
@@ -796,7 +797,7 @@ def generate_params(
     if not candidates:
         candidates = _ITEM_POOL
 
-    item = dict(rng.choice(candidates))
+    item = bank_fields(dict(rng.choice(candidates)), "backend.app.practice_gen.dna.mg.shapes_2d._ITEM_POOL")  # H3-R2
     item["result"] = item["answer"]
     return item
 
@@ -810,22 +811,22 @@ def generate_hints(
     sides_label = "sides" if "side" in cumulative_vocab else "straight edges"
     if "corner" in cumulative_vocab:
         hints = [
-            f"Think about the {sides_label} and corners of each shape.",
-            f"A triangle has 3 {sides_label} and 3 corners.",
-            f"A square has 4 equal {sides_label} and 4 corners.",
-            f"A rectangle has 4 {sides_label} (opposite {sides_label} are equal) and 4 corners.",
+            fill("Think about the {sides_label} and corners of each shape.", sides_label=derived(sides_label)),
+            fill("A triangle has 3 {sides_label} and 3 corners.", sides_label=derived(sides_label)),
+            fill("A square has 4 equal {sides_label} and 4 corners.", sides_label=derived(sides_label)),
+            fill("A rectangle has 4 {sides_label} (opposite {sides_label} are equal) and 4 corners.", sides_label=derived(sides_label)),
         ]
         if "circle" in cumulative_vocab:
-            hints.append(f"A circle has no straight {sides_label} and no corners.")
+            hints.append(fill("A circle has no straight {sides_label} and no corners.", sides_label=derived(sides_label)))
         return hints
     hints = [
-        f"Look at each shape and its {sides_label}.",
-        f"A triangle has 3 {sides_label}.",
-        f"A square has 4 equal {sides_label}.",
-        f"A rectangle has 4 {sides_label} (opposite {sides_label} are equal).",
+        fill("Look at each shape and its {sides_label}.", sides_label=derived(sides_label)),
+        fill("A triangle has 3 {sides_label}.", sides_label=derived(sides_label)),
+        fill("A square has 4 equal {sides_label}.", sides_label=derived(sides_label)),
+        fill("A rectangle has 4 {sides_label} (opposite {sides_label} are equal).", sides_label=derived(sides_label)),
     ]
     if "circle" in cumulative_vocab:
-        hints.append(f"A circle has no straight {sides_label}.")
+        hints.append(fill("A circle has no straight {sides_label}.", sides_label=derived(sides_label)))
     return hints
 
 

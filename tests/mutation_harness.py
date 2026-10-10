@@ -2043,9 +2043,9 @@ MUTATIONS: List[Mutation] = [
         ),
         edits={
             'backend/app/practice_gen/dna/mg/calendar.py': (
-                '            f"{end} - {start} + 1 = {days} {count_noun(days, \'days\')}.",\n',
-                '            f"{end} - {start} = {days} {count_noun(days, \'days\')}.",  # planted mutation\n',
-            )
+                                                               '            fill("{end} - {start} + 1 = {days} {count_noun}.", _src=(\'task_type\',), end=S(end, "value:end_date"), start=S(start, "value:target_date"), days=derived(days, src=(\'end_date\', \'target_date\',)), count_noun=derived(count_noun(days, \'days\'), src=(\'end_date\', \'target_date\',))),\n',
+                                                               '            fill("{end} - {start} = {days} {count_noun}.", _src=(\'task_type\',), end=S(end, "value:end_date"), start=S(start, "value:target_date"), days=derived(days, src=(\'end_date\', \'target_date\',)), count_noun=derived(count_noun(days, \'days\'), src=(\'end_date\', \'target_date\',))),  # planted mutation\n',
+                                                           )
         },
         command=["backend.app.practice_gen.validation.validate_hint_contract", "--node-ids", "mat_g2_mg_q4_0"],
         expected_check='§16 hint contract (hint_contract_arithmetic)',
@@ -2260,9 +2260,9 @@ MUTATIONS: List[Mutation] = [
         ),
         edits={
             'backend/app/practice_gen/dna/na/multiplication.py': (
-                "    hints.append(f\"We need to {mul_phrase} {b} {count_noun(b, f'{times_phrase} {a}')}.\")\n",
-                "    hints.append(f\"We need to {mul_phrase} {a} {count_noun(a, f'{times_phrase} {b}')}.\")  # planted mutation\n",
-            )
+                                                                     '    hints.append(fill("We need to {mul_phrase} {b} {count_noun}.", mul_phrase=S(mul_phrase, "fill"), b=S(b, "value:b"), count_noun=derived(count_noun(b, f\'{times_phrase} {a}\'), src=(\'b\', \'a\',))))\n',
+                                                                     '    hints.append(fill("We need to {mul_phrase} {a} {count_noun}.", mul_phrase=S(mul_phrase, "fill"), a=S(a, "value:a"), count_noun=derived(count_noun(a, f\'{times_phrase} {b}\'), src=(\'b\', \'a\',))))  # planted mutation\n',
+                                                                 )
         },
         command=["backend.app.practice_gen.validation.validate_hint_contract", "--node-ids", "mat_g2_na_q3_1"],
         expected_check='§16 hint contract (hint_contract_roles)',
@@ -2376,9 +2376,9 @@ MUTATIONS: List[Mutation] = [
         ),
         edits={
             'backend/app/practice_gen/dna/mg/length_measurement.py': (
-                '            f"The {comparison} {measure} is {answer} {count_noun(answer, unit_word)}.",\n',
-                '            f"The longer {measure} is {answer} {count_noun(answer, unit_word)}.",  # planted mutation\n',
-            )
+                                                                         '            fill("The {comparison} {measure} is {answer} {count_noun}.", _src=(\'task_type\',), comparison=S(comparison, "value:comparison"), measure=derived(measure, src=(\'task_type\',)), answer=S(answer, "value:answer"), count_noun=derived(count_noun(answer, unit_word), src=(\'unit\',))),\n',
+                                                                         '            fill("The longer {measure} is {answer} {count_noun}.", _src=(\'task_type\',), comparison=S(comparison, "value:comparison"), measure=derived(measure, src=(\'task_type\',)), answer=S(answer, "value:answer"), count_noun=derived(count_noun(answer, unit_word), src=(\'unit\',))),  # planted mutation\n',
+                                                                     )
         },
         command=["backend.app.practice_gen.validation.validate_hint_contract", "--node-ids", "mat_g2_mg_q2_0"],
         expected_check='§16 hint contract (hint_contract_direction)',
@@ -2449,9 +2449,9 @@ MUTATIONS: List[Mutation] = [
         ),
         edits={
             'backend/app/practice_gen/dna/na/addition.py': (
-                '        hints.append(f"Add the ones: {ones_a} + {ones_b} = {ones_sum}. Keep {ones_sum} in the ones place.")\n',
-                '        hints.append(f"Add the ones: {ones_a} + {ones_b} = {ones_sum}. Write {ones_sum} in the ones place.")  # planted mutation\n',
-            )
+                                                               '            hints.append(fill("Add the ones: {ones_a} + {ones_b} = {ones_sum}. Keep {ones_sum} in the ones place.", ones_a=derived(ones_a), ones_b=derived(ones_b), ones_sum=derived(ones_sum)))\n',
+                                                               '            hints.append(fill("Add the ones: {ones_a} + {ones_b} = {ones_sum}. Write {ones_sum} in the ones place.", ones_a=derived(ones_a), ones_b=derived(ones_b), ones_sum=derived(ones_sum)))  # planted mutation\n',
+                                                           )
         },
         command=["backend.app.practice_gen.validation.validate_hint_contract", "--node-ids", "mat_g1_na_q2_6"],
         expected_check='§16 hint contract (hint_contract_response)',
@@ -2467,9 +2467,9 @@ MUTATIONS: List[Mutation] = [
         ),
         edits={
             'backend/app/practice_gen/dna/na/place_value.py': (
-                '        f"Break {number} into parts by {pv_phrase}: {exp_form}.",\n',
-                '        f"Write the {ef_phrase} of {number}: {exp_form}.",  # planted mutation\n',
-            )
+                                                                  '        fill("Break {number} into parts by {pv_phrase}: {exp_form}.", number=S(number, "value:number"), pv_phrase=S(pv_phrase, "fill"), exp_form=S(exp_form, "value:expanded_form")),\n',
+                                                                  '        fill("Write the {ef_phrase} of {number}: {exp_form}.", ef_phrase=derived(ef_phrase), number=S(number, "value:number"), exp_form=S(exp_form, "value:expanded_form")),  # planted mutation\n',
+                                                              )
         },
         command=["backend.app.practice_gen.validation.validate_hint_contract", "--node-ids", "mat_g1_na_q2_3"],
         expected_check='§16 hint contract (hint_contract_response)',
@@ -4573,12 +4573,9 @@ MUTATIONS: List[Mutation] = [
         ),
         edits={
             "backend/app/practice_gen/dna/na/comparing_ordering.py": (
-                '            result_dict["question_statement"] = (\n'
-                '                f"{actor} has {a} {a_word}. {friend} has {b} {b_word}. "\n'
-                '                f"Which statement is true?"\n'
-                "            )\n",
-                "            pass  # planted mutation: the statement wording removed\n",
-            ),
+                                                                         '            result_dict["question_statement"] = (\n                fill("{actor} has {a} {a_word}. {friend} has {b} {b_word}. Which statement is true?", _src=(\'task_type\', \'context\',), actor=derived(actor), a=derived(a), a_word=derived(a_word), friend=derived(friend), b=derived(b), b_word=derived(b_word))\n            )\n',
+                                                                         '            pass  # planted mutation: the statement wording removed\n',
+                                                                     ),
         },
         command=["backend.app.practice_gen.validation.validate_matrix",
                  "--node", "mat_g1_na_q1_3"],
@@ -5099,9 +5096,9 @@ MUTATIONS: List[Mutation] = [
         ),
         edits={
             "backend/app/practice_gen/dna/na/division.py": (
-                '            fill("Divide {n} by 2: how many 2s fit into {n}?", n=n_slot),\n',
-                '            fill("Divide {n} by 2: how many 2s fit into {n}?", n=n),  # planted mutation\n',
-            )
+                                                               '            fill("Divide {n} by 2: how many 2s fit into {n}?", _src=(\'task_type\',), n=n_slot),\n',
+                                                               '            fill("Divide {n} by 2: how many 2s fit into {n}?", _src=(\'task_type\',), n=n),  # planted mutation\n',
+                                                           )
         },
         command=["backend.app.practice_gen.validation.validate_slots", "--node-ids", "mat_g2_na_q3_8"],
         expected_check="§14 classification (every slot names a domain)",
@@ -5178,9 +5175,9 @@ MUTATIONS: List[Mutation] = [
         ),
         edits={
             "backend/app/practice_gen/formatters/textual/fmt_true_false.py": (
-                '                    fill("{d} ÷ 2 comes out exactly, so {d} is an even number", d=d_slot),\n',
-                '                    f"{dividend} ÷ 2 comes out exactly, so {dividend} is an even number",  # planted mutation\n',
-            )
+                                                                                 '                    fill("{d} ÷ 2 comes out exactly, so {d} is an even number", _src=(\'task_type\',), d=d_slot),\n',
+                                                                                 '                    f"{dividend} ÷ 2 comes out exactly, so {dividend} is an even number",  # planted mutation\n',
+                                                                             )
         },
         command=["backend.app.practice_gen.validation.validate_slots", "--node-ids", "mat_g2_na_q3_8"],
         expected_check="§14 accounting (a nested statement must be another recorded fill's text)",
@@ -5209,6 +5206,29 @@ MUTATIONS: List[Mutation] = [
                  "--node-ids", "mat_g1_na_q2_1", "--formatters", "mcq"],
         expected_check="§15 record (a selected value reaches non-hint learner-read text)",
         expect_output_contains=["FAIL selector_value_unexhibited_15 (", "skip_by"],
+        baseline_must_not_contain=["FAIL selector_value_unexhibited_15"],
+    ),
+    Mutation(
+        name="derived_value_dropped_by_formatter",
+        asserts=["selector_value_unexhibited_15"],
+        description=(
+            "Owner ruling 41: §15 credits a selector through a SHOWN value the generator "
+            "declared it chose because of that selector (addition's zero_identity: the 0 "
+            "operand derives from task_type). Let fmt_mcq drop operand `a` from the stem while "
+            "the declaration stays. On the renders where the 0 is `a`, the learner no longer "
+            "sees what the selector chose, so §15 must report it rather than credit task_type "
+            "through a value that is not on the page (mat_g1_na_q1_8, clean baseline)."
+        ),
+        edits={
+            "backend/app/practice_gen/formatters/textual/fmt_mcq.py": (
+                '            return fill("What is {a} + {b}?", a=S(a, "value:a"), b=S(b, "value:b"))\n',
+                '            return fill("What is the sum with {b}?", b=S(b, "value:b"))  # planted mutation\n',
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_composition",
+                 "--node-ids", "mat_g1_na_q1_8", "--formatters", "mcq"],
+        expected_check="§15 record (a shown value's declared derivation is credited only while it is shown)",
+        expect_output_contains=["FAIL selector_value_unexhibited_15 (", "mat_g1_na_q1_8"],
         baseline_must_not_contain=["FAIL selector_value_unexhibited_15"],
     ),
     Mutation(

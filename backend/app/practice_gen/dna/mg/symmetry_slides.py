@@ -18,6 +18,7 @@ from backend.app.practice_gen.dna.base import (
     ErrorPattern,
     VocabGated,
 )
+from backend.app.practice_gen.slots import S, bank_fields, derived, fill
 
 
 # ─── error patterns ───────────────────────────────────────────────────────────
@@ -564,7 +565,7 @@ def generate_params(
             f"concept's content for."
         )
 
-    item = dict(rng.choice(candidates))
+    item = bank_fields(dict(rng.choice(candidates)), "backend.app.practice_gen.dna.mg.symmetry_slides._ITEM_POOL")  # H3-R2
     item["result"] = item["answer"]
     return item
 
@@ -578,25 +579,25 @@ def generate_hints(
     concept = values.get("concept", "slide_translation")
     if concept == "slide_translation":
         return [
-            "A slide (translation) moves a shape without turning or flipping it.",
-            "The shape looks the same — only its position changes.",
-            "Count how many spaces it moved in each direction.",
+            fill("A slide (translation) moves a shape without turning or flipping it.", _src=('concept',)),
+            fill("The shape looks the same — only its position changes.", _src=('concept',)),
+            fill("Count how many spaces it moved in each direction.", _src=('concept',)),
         ]
     if concept == "rotation":
         return [
-            "A turn (rotation) spins a shape in place without sliding it.",
-            "A quarter turn moves it like 15 minutes on a clock.",
-            "A half turn faces it the opposite way.",
+            fill("A turn (rotation) spins a shape in place without sliding it.", _src=('concept',)),
+            fill("A quarter turn moves it like 15 minutes on a clock.", _src=('concept',)),
+            fill("A half turn faces it the opposite way.", _src=('concept',)),
         ]
     if concept == "line_symmetry":
         return [
-            "A line of symmetry splits a shape into two mirror-image halves.",
-            "Fold the shape along the line — both halves should match exactly.",
+            fill("A line of symmetry splits a shape into two mirror-image halves.", _src=('concept',)),
+            fill("Fold the shape along the line — both halves should match exactly.", _src=('concept',)),
         ]
     return [
-        "Find the line of symmetry first.",
-        "Each point on one side has a matching point the same distance on the other side.",
-        "Draw the mirror image to complete the figure.",
+        fill("Find the line of symmetry first."),
+        fill("Each point on one side has a matching point the same distance on the other side."),
+        fill("Draw the mirror image to complete the figure."),
     ]
 
 

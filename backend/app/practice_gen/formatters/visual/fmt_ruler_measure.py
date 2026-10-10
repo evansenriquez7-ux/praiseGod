@@ -34,6 +34,8 @@ import random
 from backend.app.practice_gen.dna.base import FormattedProblem, QuestionContext
 from backend.app.practice_gen.formatters._distractor_fallback import augment_distractors
 from backend.app.practice_gen.formatters._option_order import shuffle_options
+from backend.app.practice_gen.slots import S, derived, fill
+from backend.app.practice_gen.formatters._answer_slots import correct_option_key
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -149,7 +151,7 @@ def _stem(params: dict, interaction_mode: str, custom_question: str = None) -> s
     unit_name = params["unit_name"]
     length = params["length"]
     if interaction_mode == "set":
-        return f"Drag the end of the object to show a length of {length} {unit_name}."
+        return fill("Drag the end of the object to show a length of {length} {unit_name}.", length=derived(length), unit_name=derived(unit_name))
     if custom_question:
         # The DNA already computed a specific question (e.g. word-problem
         # framing for "solve problems involving lengths" nodes) -- the
@@ -159,7 +161,7 @@ def _stem(params: dict, interaction_mode: str, custom_question: str = None) -> s
         # whenever this formatter got picked (blind review of
         # mat_g1_mg_q2_2 seed 55).
         return custom_question
-    return f"How long is the object? Give your answer in {unit_name}."
+    return fill("How long is the object? Give your answer in {unit_name}.", unit_name=derived(unit_name))
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -248,7 +250,7 @@ def format_ruler_measure(
             {"key": chr(ord("A") + i), "value": v, "is_correct": v == correct_answer}
             for i, v in enumerate(all_opts)
         ]
-        final_answer = next(o["key"] for o in mcq_options if o["is_correct"])
+        final_answer = correct_option_key(mcq_options)
     else:
         final_answer = correct_answer
 
@@ -268,7 +270,7 @@ def format_ruler_measure(
         correct_answer=final_answer,
         distractors=traps,
         hints=ctx.hints,
-        format=f"{interaction_mode}_{answer_collection}",
+        format=fill("{interaction_mode}_{answer_collection}", interaction_mode=derived(interaction_mode), answer_collection=derived(answer_collection)),
         format_data=format_data,
         is_visual=True,
         visual_type="RulerMeasure",

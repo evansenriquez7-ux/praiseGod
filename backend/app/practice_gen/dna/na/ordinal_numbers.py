@@ -19,6 +19,7 @@ from backend.app.practice_gen.dna.base import (
     ErrorPattern,
     VocabGated,
 )
+from backend.app.practice_gen.slots import S, computes, derived, derives, fill
 
 
 # ─── param bounds ─────────────────────────────────────────────────────────────
@@ -35,8 +36,8 @@ _PARAM_BOUNDS: Dict[str, Dict[str, Any]] = {
 def _ordinal_suffix(n: int) -> str:
     """Return '1st', '2nd', '3rd', '4th', … for any positive integer."""
     if 11 <= (n % 100) <= 13:
-        return f"{n}th"
-    return f"{n}{['th', 'st', 'nd', 'rd', 'th'][min(n % 10, 4)]}"
+        return fill("{n}th", n=derived(n))
+    return fill("{n}{v}", n=derived(n), v=derived(['th', 'st', 'nd', 'rd', 'th'][min(n % 10, 4)]))
 
 
 _ORDINAL_WORDS = {
@@ -61,12 +62,12 @@ def _ordinal_word(n: int) -> str:
         return "one hundredth"
     tens, ones = n // 10, n % 10
     if ones == 0:
-        return _TENS_ORDINAL.get(tens, f"{n}th")
+        return _TENS_ORDINAL.get(tens, fill("{n}th", n=derived(n)))
     # e.g. twenty-first
     _tens_prefix = {2: "twenty", 3: "thirty", 4: "forty", 5: "fifty",
                     6: "sixty", 7: "seventy", 8: "eighty", 9: "ninety"}
     prefix = _tens_prefix.get(tens, "")
-    return f"{prefix}-{_ORDINAL_WORDS.get(ones, _ordinal_suffix(ones))}"
+    return fill("{prefix}-{get}", prefix=derived(prefix), get=derived(_ORDINAL_WORDS.get(ones, _ordinal_suffix(ones))))
 
 
 # ─── line-up subjects ─────────────────────────────────────────────────────────
@@ -424,6 +425,7 @@ def generate_params(
                             and t.get("lineup_pool") == _pool)
 
     symbol  = _ordinal_suffix(n)
+    computes("symbol", src=("n",))   # owner ruling 41: the symbol is a FUNCTION of n
     word    = _ordinal_word(n)
 
     # Resolve answer based on answer_key
@@ -434,6 +436,7 @@ def generate_params(
         answer = word
     elif answer_key == "symbol":
         answer = symbol
+        derives("answer", src=("symbol",))   # owner ruling 41: the keyed answer IS the symbol
     elif answer_key == "earlier_symbol":
         n2 = rng.randint(min_ord, max_ord)
         while n2 == n and max_ord > min_ord:
@@ -451,6 +454,7 @@ def generate_params(
         n2, symbol2 = None, None
     else:
         answer = symbol
+        derives("answer", src=("symbol",))   # owner ruling 41: the keyed answer IS the symbol
 
     # Render question text
     tpl = template_def["template"]
@@ -476,7 +480,10 @@ def generate_params(
             symbol2 = _ordinal_suffix(n2)
         ctx["symbol2"] = symbol2
     try:
-        question_text = tpl.format(**ctx)
+        # Structured slots (H3-R2): the bank template, filled with the slots it names.
+        import string as _string
+        used = {f for _, f, _, _ in _string.Formatter().parse(tpl) if f}
+        question_text = fill(tpl, **{k: derived(v, src=(k,)) for k, v in ctx.items() if k in used})
     except KeyError:
         question_text = tpl
 
@@ -544,24 +551,24 @@ def generate_hints(
     hints: List[str] = []
 
     if task_type == "identify_ordinal":
-        hints.append(f"Ordinal numbers describe {pos_label} in order.")
-        hints.append(f"The number {n} in order is called the {symbol} ({word}).")
-        hints.append(f"Remember: 1st = first, 2nd = second, 3rd = third, then add -th.")
+        hints.append(fill("Ordinal numbers describe {pos_label} in order.", _src=('task_type',), pos_label=S(pos_label, "fill")))
+        hints.append(fill("The number {n} in order is called the {symbol} ({word}).", _src=('task_type',), n=S(n, "value:n"), symbol=S(symbol, "value:symbol"), word=S(word, "value:word")))
+        hints.append(fill("Remember: 1st = first, 2nd = second, 3rd = third, then add -th.", _src=('task_type',)))
 
     elif task_type == "find_position":
-        hints.append(f"'{word.capitalize()}' is an {ord_label} word.")
-        hints.append(f"Count positions from the start: 1st, 2nd, 3rd, … until you reach {word}.")
-        hints.append(f"{word.capitalize()} = position {n}, written as {symbol}.")
+        hints.append(fill("'{capitalize}' is an {ord_label} word.", _src=('task_type',), capitalize=derived(word.capitalize(), src=('word',)), ord_label=S(ord_label, "fill")))
+        hints.append(fill("Count positions from the start: 1st, 2nd, 3rd, … until you reach {word}.", _src=('task_type',), word=S(word, "value:word")))
+        hints.append(fill("{capitalize} = position {n}, written as {symbol}.", _src=('task_type',), capitalize=derived(word.capitalize(), src=('word',)), n=S(n, "value:n"), symbol=S(symbol, "value:symbol")))
 
     elif task_type == "describe_position":
-        hints.append(f"Count the objects in order from the front: 1st, 2nd, 3rd, …")
-        hints.append(f"The {symbol} ({word}) place is position number {n}.")
-        hints.append(f"Find the object standing at position {n}.")
+        hints.append(fill("Count the objects in order from the front: 1st, 2nd, 3rd, …", _src=('task_type',)))
+        hints.append(fill("The {symbol} ({word}) place is position number {n}.", _src=('task_type',), symbol=S(symbol, "value:symbol"), word=S(word, "value:word"), n=S(n, "value:n")))
+        hints.append(fill("Find the object standing at position {n}.", _src=('task_type',), n=S(n, "value:n")))
 
     else:  # compare_positions
-        hints.append(f"Smaller ordinal numbers come earlier (closer to the start).")
-        hints.append(f"Compare the numbers: the smaller ordinal position is earlier.")
-        hints.append(f"{symbol} means position {n}.")
+        hints.append(fill("Smaller ordinal numbers come earlier (closer to the start)."))
+        hints.append(fill("Compare the numbers: the smaller ordinal position is earlier."))
+        hints.append(fill("{symbol} means position {n}.", symbol=S(symbol, "value:symbol"), n=S(n, "value:n")))
 
     return hints
 

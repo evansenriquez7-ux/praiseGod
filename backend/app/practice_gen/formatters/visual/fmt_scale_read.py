@@ -50,6 +50,8 @@ import random
 from backend.app.practice_gen.dna.base import FormattedProblem, QuestionContext, VocabGated
 from backend.app.practice_gen.formatters._distractor_fallback import augment_distractors
 from backend.app.practice_gen.formatters._option_order import shuffle_options
+from backend.app.practice_gen.slots import S, derived, fill
+from backend.app.practice_gen.formatters._answer_slots import correct_option_key
 
 
 # Graduations a real G3 instrument is marked in. Kitchen scales step in
@@ -179,8 +181,7 @@ def _stem(instrument: str, unit: str, object_label: str, cumulative_vocab) -> st
         ).resolve(cumulative_vocab)
         tool = "measuring cylinder"
     return (
-        f"Look at the {tool}. What is the {quantity} of {object_label}? "
-        f"Give your answer in {unit}."
+        fill("Look at the {tool}. What is the {quantity} of {object_label}? Give your answer in {unit}.", tool=derived(tool), quantity=S(quantity, "fill"), object_label=derived(object_label), unit=S(unit, "value:unit"))
     )
 
 
@@ -237,7 +238,7 @@ def format_scale_read(
             {"key": chr(ord("A") + i), "value": v, "is_correct": v == correct_answer}
             for i, v in enumerate(all_opts)
         ]
-        final_answer = next(o["key"] for o in mcq_options if o["is_correct"])
+        final_answer = correct_option_key(mcq_options)
     else:
         final_answer = correct_answer
 
@@ -257,7 +258,7 @@ def format_scale_read(
         correct_answer=final_answer,
         distractors=traps,
         hints=ctx.hints,
-        format=f"{interaction_mode}_{answer_collection}",
+        format=fill("{interaction_mode}_{answer_collection}", interaction_mode=derived(interaction_mode), answer_collection=derived(answer_collection)),
         format_data=format_data,
         is_visual=True,
         visual_type="ScaleRead",

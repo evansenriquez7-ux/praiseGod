@@ -85,6 +85,45 @@ class S:
     src: Tuple[str, ...] = ()
 
 
+def derived(value: Any, src: Tuple[str, ...] = ()) -> S:
+    """
+    A slot COMPUTED from other values, typed by what it is: "num.derived" for a number,
+    "text.derived" otherwise (batch H3-R2). Both are type-only domains (§14 limits 4 and 8):
+    use a stricter domain -- `value:<key>`, `E`, `R`, `enum:`, `fill` -- wherever the
+    generator has one. A non-string object printed into text (a list, None, a bool) is then
+    a `slot_domain_escape_14`, which is what it is: code-shaped text a learner reads.
+    """
+    if isinstance(value, (int, float)) and not isinstance(value, bool):
+        return S(value, "num.derived", src)
+    return S(value, "text.derived", src)
+
+
+BANK_FIELDS = ("question", "question_text", "answer", "distractors", "statement", "template")
+
+
+def bank_fields(item: Dict[str, Any], bank: str, fields: Tuple[str, ...] = BANK_FIELDS) -> Dict[str, Any]:
+    """
+    A copy of an item drawn from a static bank (a module-level list of dicts), with its
+    learner-text fields recorded as fills whose domain is the bank itself:
+    `bank:<bank>:<field>` (batch H3-R2). A string field becomes one fill; a list of strings
+    (`distractors`) becomes one fill per member. Values are unchanged.
+    """
+    out = dict(item)
+    # Provenance (owner rulings 35 and 41): a bank row's text was drawn together with the
+    # row's other fields, so each field derives from the whole row's keys.
+    row = tuple(item.keys())
+    for name in fields:
+        if name not in out:
+            continue
+        value, domain = out[name], f"bank:{bank}:{name}"
+        if isinstance(value, str):
+            out[name] = fill("{%s}" % name, **{name: S(value, domain, src=row)})
+        elif isinstance(value, list):
+            out[name] = [fill("{%s}" % name, **{name: S(v, domain, src=row)}) if isinstance(v, str) else v
+                         for v in value]
+    return out
+
+
 def _provenance(v: Any) -> Tuple[str, ...]:
     """The `values` keys a slot is derived from: its declared `src`, plus a `value:` key."""
     if not isinstance(v, S):
@@ -108,13 +147,58 @@ class Fill:
     extra: Dict[str, Any] = field(default_factory=dict, compare=False, hash=False)
 
 
-_TRACE: ContextVar[Optional[List[Fill]]] = ContextVar("slot_trace", default=None)
+@dataclass(frozen=True)
+class Derivation:
+    """
+    Value-level provenance (owner ruling 41). kind "derives": `values[key]` was CHOSEN because
+    of `values[src]` (showing key exhibits src). kind "computes": `values[key]` is a FUNCTION of
+    `values[src]` (showing every src exhibits key).
+    """
+    key: str
+    src: Tuple[str, ...]
+    site: str
+    kind: str = "derives"
+
+
+class Trace(list):
+    """The fills recorded inside `capture()` (a list, as before), plus `derivations`."""
+
+    def __init__(self) -> None:
+        super().__init__()
+        self.derivations: List[Derivation] = []
+
+
+_TRACE: ContextVar[Optional[Trace]] = ContextVar("slot_trace", default=None)
+
+
+def derives(key: str, src: Tuple[str, ...]) -> None:
+    """
+    Declare that the generated value `values[key]` derives from `values[k]` for k in `src`
+    (owner ruling 41, batch H3-R2): a DNA that sets `a = 0` because `task_type ==
+    "zero_identity"` declares `derives("a", src=("task_type",))`. §15 closes over these, so
+    an item that SHOWS `a` exhibits the selector that chose it. Recorded only under
+    `capture()`; nothing is returned or attached to the payload.
+    """
+    trace = _TRACE.get()
+    if trace is not None:
+        trace.derivations.append(Derivation(key=key, src=tuple(src), site=_site(2)))
+
+
+def computes(key: str, src: Tuple[str, ...]) -> None:
+    """
+    Declare that the generated value `values[key]` is a FUNCTION of `values[k]` for k in
+    `src` (owner ruling 41): division's `remainder = a % b`. An item that shows every `src`
+    therefore exhibits `key`. Recorded only under `capture()`.
+    """
+    trace = _TRACE.get()
+    if trace is not None:
+        trace.derivations.append(Derivation(key=key, src=tuple(src), site=_site(2), kind="computes"))
 
 
 @contextmanager
-def capture() -> Iterator[List[Fill]]:
-    """Record every `fill` made inside the block into the yielded list."""
-    fills: List[Fill] = []
+def capture() -> Iterator[Trace]:
+    """Record every `fill` (and every `derives` declaration) made inside the block."""
+    fills = Trace()
     token = _TRACE.set(fills)
     try:
         yield fills
@@ -132,30 +216,39 @@ def _site(depth: int) -> str:
     return f"{path}:{frame.f_lineno}"
 
 
-def fill(template: str, /, **slots: Any) -> str:
+def fill(template: str, /, _src: Tuple[str, ...] = (), **slots: Any) -> str:
     """
     `template.format(**values)`, recorded with its slots when the harness is capturing.
 
     Each keyword is a slot. Pass `S(value, domain_id)`; a bare value is formatted the same
     way but recorded with NO domain, which the domain check reports by name.
+
+    `_src` is TEMPLATE-level provenance (batch H3-R2, owner ruling 35): the `values` keys
+    whose value CHOSE this template -- a stem written under `if task_type ==
+    "zero_identity":` derives from `task_type` even though no slot prints it. It is the
+    generator's own claim, recorded as the source entry "__template__" (§15 reads it like
+    any slot's provenance; H4's judges review it).
     """
     values = {name: (v.value if isinstance(v, S) else v) for name, v in slots.items()}
     text = template.format(**values)
     trace = _TRACE.get()
     if trace is not None:
+        sources = tuple((name, _provenance(v)) for name, v in slots.items())
+        if _src:
+            sources += (("__template__", tuple(_src)),)
         trace.append(Fill(
             template=template,
             slots=tuple((name, values[name], v.domain if isinstance(v, S) else None)
                         for name, v in slots.items()),
             text=text,
             site=_site(2),
-            sources=tuple((name, _provenance(v)) for name, v in slots.items()),
+            sources=sources,
         ))
     return text
 
 
 def record(template: str, text: str, slots: Dict[str, Any], renderer: str,
-           renderer_ref: Optional[str] = None) -> str:
+           renderer_ref: Optional[str] = None, _src: Tuple[str, ...] = ()) -> str:
     """
     Record text a generator produced by a TRANSFORMATION the check must replay.
 
@@ -173,7 +266,8 @@ def record(template: str, text: str, slots: Dict[str, Any], renderer: str,
             site=_site(2),
             renderer=renderer,
             renderer_ref=renderer_ref,
-            sources=tuple((name, _provenance(v)) for name, v in slots.items()),
+            sources=tuple((name, _provenance(v)) for name, v in slots.items())
+            + ((("__template__", tuple(_src)),) if _src else ()),
         ))
     return text
 
@@ -202,10 +296,17 @@ def fill_blank(text: str, value: Any) -> str:
     return text.replace("___", str(value))
 
 
+def strip_model_gloss(text: str) -> str:
+    """fmt_geometry_figure's own `_strip_model_gloss`, called by name (one copy; H3-R2)."""
+    from backend.app.practice_gen.formatters.visual.fmt_geometry_figure import _strip_model_gloss
+    return _strip_model_gloss(text)
+
+
 TRANSFORMS = {
     "strip_trailing_period": strip_trailing_period,
     "capitalize": capitalize,
     "fill_blank": fill_blank,
+    "strip_model_gloss": strip_model_gloss,
 }
 
 

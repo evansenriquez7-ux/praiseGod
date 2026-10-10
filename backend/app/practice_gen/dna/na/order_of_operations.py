@@ -19,6 +19,7 @@ from backend.app.practice_gen.dna.base import (
     ErrorPattern,
     VocabGated,
 )
+from backend.app.practice_gen.slots import S, derived, fill
 
 
 # ─── param bounds ─────────────────────────────────────────────────────────────
@@ -114,15 +115,18 @@ _WP_VERBS = {"+": "receives", "-": "gives away"}
 
 
 def _build_word_problem(actor: str, obj: str, operands: List[int], operators: List[str], money: bool) -> str:
-    unit = f"₱{operands[0]}" if money else f"{operands[0]} {obj}"
-    parts = [f"{actor} starts with {unit}."]
+    unit = fill("₱{v}", v=derived(operands[0])) if money else fill("{v} {obj}", v=derived(operands[0]), obj=derived(obj))
+    parts = [fill("{actor} starts with {unit}.", actor=derived(actor), unit=S(unit, "fill"))]
     for op, val in zip(operators, operands[1:]):
         verb = _WP_VERBS[op]
-        amount = f"₱{val}" if money else f"{val} {obj}"
-        parts.append(f"Then {actor} {verb} {amount}.")
-    question = f"How much money does {actor} have now?" if money else f"How many {obj} does {actor} have now?"
+        amount = fill("₱{val}", val=derived(val)) if money else fill("{val} {obj}", val=derived(val), obj=derived(obj))
+        parts.append(fill("Then {actor} {verb} {amount}.", actor=derived(actor), verb=derived(verb), amount=S(amount, "fill")))
+    question = fill("How much money does {actor} have now?", actor=derived(actor)) if money else fill("How many {obj} does {actor} have now?", obj=derived(obj), actor=derived(actor))
     parts.append(question)
-    return " ".join(parts)
+    # One fill for the whole story, each sentence a nested fill (H3-R2): the same text as
+    # " ".join(parts).
+    return fill(" ".join("{p%d}" % i for i in range(len(parts))),
+                **{"p%d" % i: S(part, "fill") for i, part in enumerate(parts)})
 
 
 def generate_params(
@@ -177,7 +181,7 @@ def generate_params(
             obj = rng.choice(_WP_OBJECTS)
             question = _build_word_problem(actor, obj, operands, operators, money)
         else:
-            question = f"{expression_str} = ___"
+            question = fill("{expression_str} = ___", expression_str=S(expression_str, "value:expression_str"))
         return {
             "blank_target":   "answer",
             "operands":       operands,
@@ -237,17 +241,17 @@ def generate_hints(
     expr_label  = VOCAB_EXPR.resolve(cumulative_vocab)
 
     hints: List[str] = []
-    hints.append(f"Evaluate the {expr_label}: {expr_str}.")
-    hints.append(f"Use the {order_label}: work left to right for + and −.")
+    hints.append(fill("Evaluate the {expr_label}: {expr_str}.", expr_label=S(expr_label, "fill"), expr_str=S(expr_str, "value:expression_str")))
+    hints.append(fill("Use the {order_label}: work left to right for + and −.", order_label=S(order_label, "fill")))
 
     # Show step-by-step working
     running = operands[0]
     for i, (op, val) in enumerate(zip(operators, operands[1:]), start=1):
         prev = running
         running = running + val if op == "+" else running - val
-        hints.append(f"Step {i}: {prev} {op} {val} = {running}.")
+        hints.append(fill("Step {i}: {prev} {op} {val} = {running}.", i=derived(i), prev=derived(prev, src=('operands',)), op=derived(op), val=derived(val), running=derived(running, src=('operands',))))
 
-    hints.append(f"The answer is {answer}.")
+    hints.append(fill("The answer is {answer}.", answer=S(answer, "value:answer")))
 
     return hints
 

@@ -17,6 +17,7 @@ from backend.app.practice_gen.dna.base import (
     ErrorPattern,
     VocabGated,
 )
+from backend.app.practice_gen.slots import S, derived, derives, fill
 
 
 # ─── param bounds ─────────────────────────────────────────────────────────────
@@ -240,7 +241,7 @@ def generate_params(
             
             valid_seq = _make_repeating_sequence(0, cycle, seq_length)
             pattern_label = "repeating pattern"
-            rule = f"Repeat the group: {', '.join(map(str, cycle))}"
+            rule = fill("Repeat the group: {join}", join=S(', '.join(map(str, cycle)), "value:repeat_group"))
         else:
             increasing = pattern_type != "arithmetic_decreasing"
             if increasing:
@@ -263,7 +264,7 @@ def generate_params(
             first, step = generate_pair_by_window(pairs, num_diff_scalar, d=5, rng=rng)
             valid_seq = _make_arithmetic_sequence(first, step, seq_length, increasing=increasing)
             pattern_label = "increasing pattern" if increasing else "decreasing pattern"
-            rule = f"{'Add' if increasing else 'Subtract'} {step} each time"
+            rule = fill("{v} {step} each time", v=derived('Add' if increasing else 'Subtract'), step=derived(step))
 
         is_letter_seq = any(isinstance(v, str) for v in valid_seq)
         distractor_seqs = []
@@ -309,18 +310,18 @@ def generate_params(
         elements_str = ", ".join(map(str, cycle)) if pattern_type == "repeating" else None
         if elements_str:
             q_template = rng.choice([
-                f"You want to create a repeating pattern using: {elements_str}. Which sequence correctly creates it?",
-                f"Create a repeating pattern with the repeating group: {elements_str}. Which sequence shows this pattern?",
-                f"Use the repeating unit {elements_str} to build a repeating pattern. Which sequence correctly creates it?",
+                fill("You want to create a repeating pattern using: {elements_str}. Which sequence correctly creates it?", elements_str=S(elements_str, "value:repeat_group")),
+                fill("Create a repeating pattern with the repeating group: {elements_str}. Which sequence shows this pattern?", elements_str=S(elements_str, "value:repeat_group")),
+                fill("Use the repeating unit {elements_str} to build a repeating pattern. Which sequence correctly creates it?", elements_str=S(elements_str, "value:repeat_group")),
             ])
             question = q_template
         else:
             first_term = valid_seq[0]
             question_templates = [
-                f"You want to create {'an' if pattern_label[0] in 'aeiou' else 'a'} {pattern_label} where the rule is: {rule}. Which sequence correctly creates it?",
-                f"Start at {first_term} and create {'an' if pattern_label[0] in 'aeiou' else 'a'} {pattern_label} with the rule: {rule}. Which pattern did you create?",
-                f"Which sequence correctly shows {'an' if pattern_label[0] in 'aeiou' else 'a'} {pattern_label} starting at {first_term} and following the rule: {rule}?",
-                f"Create a pattern that starts at {first_term} and uses the rule: {rule}. Which sequence shows this pattern?",
+                fill("You want to create {v} {pattern_label} where the rule is: {rule}. Which sequence correctly creates it?", v=derived('an' if pattern_label[0] in 'aeiou' else 'a'), pattern_label=derived(pattern_label), rule=S(rule, "fill")),
+                fill("Start at {first_term} and create {v} {pattern_label} with the rule: {rule}. Which pattern did you create?", first_term=derived(first_term), v=derived('an' if pattern_label[0] in 'aeiou' else 'a'), pattern_label=derived(pattern_label), rule=S(rule, "fill")),
+                fill("Which sequence correctly shows {v} {pattern_label} starting at {first_term} and following the rule: {rule}?", v=derived('an' if pattern_label[0] in 'aeiou' else 'a'), pattern_label=derived(pattern_label), first_term=derived(first_term), rule=S(rule, "fill")),
+                fill("Create a pattern that starts at {first_term} and uses the rule: {rule}. Which sequence shows this pattern?", first_term=derived(first_term), rule=S(rule, "fill")),
             ]
             question = rng.choice(question_templates)
         return {
@@ -380,7 +381,7 @@ def generate_params(
             cycle[-1] = rng.choice(alternatives) if use_letters else generate_number_by_window(alternatives, num_diff_scalar, d=5, rng=rng)
         sequence = _make_repeating_sequence(0, cycle, seq_length + 1)
         step = 0
-        rule = f"Repeat the group: {', '.join(map(str, cycle))}"
+        rule = fill("Repeat the group: {join}", join=derived(', '.join(map(str, cycle))))
     elif (pattern_type in ("arithmetic_increasing", "arithmetic_decreasing")
           and letters_allowed and rng.random() < 0.35):
         # ASCENDING / DESCENDING ALPHABETIC PATTERNS. mat_g2_na_q2_8 reads "Determine
@@ -415,9 +416,9 @@ def generate_params(
             indices.reverse()
         sequence = [_ALPHA_RUN_WINDOW[i] for i in indices]
         step = -step if decreasing else step
-        rule = (f"Go back {abs(step)} letter{'s' if abs(step) > 1 else ''} each time"
+        rule = (fill("Go back {abs} letter{v} each time", abs=derived(abs(step)), v=derived('s' if abs(step) > 1 else ''))
                 if decreasing else
-                f"Move forward {step} letter{'s' if step > 1 else ''} each time")
+                fill("Move forward {step} letter{v} each time", step=derived(step), v=derived('s' if step > 1 else '')))
     elif pattern_type == "arithmetic_decreasing":
         pairs = []
         for s in range(step_lo, step_hi + 1):
@@ -427,7 +428,7 @@ def generate_params(
             pairs = [(max_val, step_lo)]
         first, step = generate_pair_by_window(pairs, num_diff_scalar, d=5, rng=rng)
         sequence = _make_arithmetic_sequence(first, step, seq_length + 1, increasing=False)
-        rule = f"Subtract {step} each time"
+        rule = fill("Subtract {step} each time", step=derived(step))
     elif pattern_type == "combined":
         # Create a nested pattern: an inner repeating loop + an outer
         # increasing OR decreasing step. E.g. [11, 12, 13, 21, 22, 23, 31,
@@ -466,7 +467,7 @@ def generate_params(
             sequence.append(val)
             
         step = outer_step * 10
-        rule = f"Repeat the ones {inner_cycle} and {'subtract' if decreasing else 'add'} {abs(step)} every group"
+        rule = fill("Repeat the ones {inner_cycle} and {v} {abs} every group", inner_cycle=derived(inner_cycle), v=derived('subtract' if decreasing else 'add'), abs=derived(abs(step)))
     else:  # arithmetic_increasing (default)
         pairs = []
         for s in range(step_lo, step_hi + 1):
@@ -476,7 +477,7 @@ def generate_params(
             pairs = [(1, step_lo)]
         first, step = generate_pair_by_window(pairs, num_diff_scalar, d=5, rng=rng)
         sequence = _make_arithmetic_sequence(first, step, seq_length + 1, increasing=True)
-        rule = f"Add {step} each time"
+        rule = fill("Add {step} each time", step=derived(step))
 
     if ask_type == "next_term":
         missing_index = seq_length  # last position
@@ -495,6 +496,9 @@ def generate_params(
     first_val = sequence[0]
     position = missing_index + 1 if missing_index >= 0 else seq_length + 1
 
+    # Owner ruling 41: the shown terms (and the missing one) are built from the step and kind.
+    derives("sequence", src=("common_difference", "pattern_kind"))
+    derives("answer", src=("common_difference", "pattern_kind"))
     result_dict = {
         "blank_target": "answer",
         "sequence":          visible,
@@ -505,7 +509,7 @@ def generate_params(
         "first":             first_val,
         "position":          position,
         "pattern_kind":      pattern_type,
-        "given_values":      {f"term_{i}": val for i, val in enumerate(visible)},
+        "given_values":      {fill("term_{i}", i=derived(i)): val for i, val in enumerate(visible)},
     }
     if pattern_type == "repeating":
         # fmt_pattern_sequence.py's trap builder needs the repeating unit
@@ -566,14 +570,14 @@ def generate_hints(
         group = values["repeat_group"]
         if group:
             return [
-                f"The repeating group is {group}.",
-                "Check each choice: the group must repeat in the same order, with nothing out of place.",
-                f"The sequence that does this is {answer}.",
+                fill("The repeating group is {group}.", _src=('repeat_group', 'task_type',), group=S(group, "value:repeat_group")),
+                fill("Check each choice: the group must repeat in the same order, with nothing out of place.", _src=('repeat_group', 'task_type',)),
+                fill("The sequence that does this is {answer}.", _src=('repeat_group', 'task_type',), answer=S(answer, "value:answer")),
             ]
         return [
-            f"Start at {values['first_term']} and use the rule: {values['rule_description']}.",
-            "Check every step of each choice against the rule.",
-            f"The sequence that follows the rule at every step is {answer}.",
+            fill("Start at {first_term} and use the rule: {rule_description}.", _src=('task_type',), first_term=S(values['first_term'], "value:first_term"), rule_description=S(values['rule_description'], "value:rule_description")),
+            fill("Check every step of each choice against the rule.", _src=('task_type',)),
+            fill("The sequence that follows the rule at every step is {answer}.", _src=('task_type',), answer=S(answer, "value:answer")),
         ]
 
     seq   = values["sequence"]
@@ -600,29 +604,28 @@ def generate_hints(
         shown.append("___")
 
     hints: List[str] = []
-    hints.append(f"Look at the pattern: {', '.join(str(x) for x in shown)}.")
+    hints.append(fill("Look at the pattern: {join}.", join=derived(', '.join(str(x) for x in shown))))
 
     if kind == "repeating":
         rep = VOCAB_REPEATING.resolve(cumulative_vocab)
-        hints.append(f"This is a {rep} {VOCAB_PATTERN.resolve(cumulative_vocab)}. Find the repeating group.")
+        hints.append(fill("This is a {rep} {resolve}. Find the repeating group.", _src=('pattern_kind',), rep=S(rep, "fill"), resolve=S(VOCAB_PATTERN.resolve(cumulative_vocab), "fill")))
     elif kind == "combined":
         hints.append(
-            f"A group of numbers repeats, and each new group "
-            f"{'goes down' if diff < 0 else 'goes up'} by {abs(diff)}."
+            fill("A group of numbers repeats, and each new group {v} by {abs}.", _src=('pattern_kind',), v=derived('goes down' if diff < 0 else 'goes up', src=('common_difference',)), abs=derived(abs(diff), src=('common_difference',)))
         )
     elif not any(isinstance(x, str) for x in seq):
         direction = (VOCAB_DECREASING if kind == "arithmetic_decreasing" else VOCAB_INCREASING).resolve(cumulative_vocab)
-        hints.append(f"The pattern is {direction} by {abs(diff)} each step.")
+        hints.append(fill("The pattern is {direction} by {abs} each step.", _src=('sequence',), direction=S(direction, "fill"), abs=derived(abs(diff), src=('common_difference',))))
     if any(isinstance(x, str) for x in seq):
         # A letter pattern's rule already says how it moves ("Move forward 1 letter
         # each time"); "going up by 1" and "the next number" describe numbers.
-        term_label = "letter"
+        term_label = fill("letter")
 
     if m_idx == len(seq):
-        hints.append(f"The next {term_label} is at position {m_idx + 1}.")
+        hints.append(fill("The next {term_label} is at position {v}.", _src=('sequence',), term_label=derived(term_label), v=derived(m_idx + 1)))
     elif m_idx >= 0:
-        hints.append(f"The missing {term_label} is at position {m_idx + 1}.")
-    hints.append(f"{rule}. The answer is {ans}.")
+        hints.append(fill("The missing {term_label} is at position {v}.", term_label=S(term_label, "fill"), v=derived(m_idx + 1)))
+    hints.append(fill("{rule}. The answer is {ans}.", rule=S(rule, "value:rule_description"), ans=S(ans, "value:answer")))
 
     return hints
 

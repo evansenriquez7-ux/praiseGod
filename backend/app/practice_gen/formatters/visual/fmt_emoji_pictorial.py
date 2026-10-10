@@ -42,7 +42,7 @@ import random
 from typing import List, Optional
 
 from backend.app.practice_gen.dna.base import FormattedProblem, QuestionContext
-from backend.app.practice_gen.slots import S, fill
+from backend.app.practice_gen.slots import S, derived, fill
 from backend.app.practice_gen.formatters._distractor_fallback import augment_distractors
 
 
@@ -158,19 +158,19 @@ def _build_params(
     layout = rng.choice(["inline", "stacked", "separated"]) if operation == "addition" else "inline"
     
     # Build the display strings (capped to prevent massive JSON payloads and UI clutter)
-    display = (emoji * a) if a <= 20 else f"(Large group of {a} {_pluralize(base_name, a)})"
+    display = (emoji * a) if a <= 20 else fill("(Large group of {a} {pluralize})", a=derived(a), pluralize=derived(_pluralize(base_name, a)))
     if a == 0: display = "0"
 
     if operation == "multiplication":
         # b groups of a. "5 groups of 3" is mat_g2_na_q3_0's own wording and
         # mat_g2_na_q3_1 names "groups of equal quantities" outright, so the groups --
         # not one undivided heap of a*b items -- are the model the clause asks for.
-        one_group = (emoji * a) if a <= 20 else f"(group of {a} {_pluralize(base_name, a)})"
+        one_group = (emoji * a) if a <= 20 else fill("(group of {a} {pluralize})", _src=('operation',), a=derived(a), pluralize=derived(_pluralize(base_name, a)))
         display = "   ".join([one_group] * b) if b <= 10 \
-            else f"({b} groups of {a} {_pluralize(base_name, a)})"
+            else fill("({b} groups of {a} {pluralize})", _src=('operation',), b=derived(b), a=derived(a), pluralize=derived(_pluralize(base_name, a)))
 
     if operation == "addition":
-        display_b = (emoji * b) if b <= 20 else f"(Large group of {b} {_pluralize(base_name, b)})"
+        display_b = (emoji * b) if b <= 20 else fill("(Large group of {b} {pluralize})", _src=('operation',), b=S(b, "value:b"), pluralize=derived(_pluralize(base_name, b)))
         if b == 0: display_b = "0"
     
     # For subtraction, build reveal display showing remaining items with explanation
@@ -179,10 +179,10 @@ def _build_params(
     if operation == "subtraction":
         remaining = a - b
         # Show remaining emojis
-        reveal_display = (emoji * remaining) if remaining <= 20 else f"(Large group of {remaining} {_pluralize(base_name, remaining)})"
+        reveal_display = (emoji * remaining) if remaining <= 20 else fill("(Large group of {remaining} {pluralize})", _src=('operation',), remaining=S(remaining, "value:result"), pluralize=derived(_pluralize(base_name, remaining)))
         if remaining == 0: reveal_display = "(none left)"
         # Text explanation
-        reveal_text = f"{remaining} {_pluralize(base_name, remaining) if remaining != 1 else base_name}"
+        reveal_text = fill("{remaining} {v}", _src=('operation',), remaining=derived(remaining), v=derived(_pluralize(base_name, remaining) if remaining != 1 else base_name))
     
     params = {
         "emoji": emoji,
@@ -297,18 +297,18 @@ def _build_question_text(params: dict, context_variant: str = "word_problem") ->
     if operation == "addition":
         # Line 1: Show starting amount
         if a == 0:
-            line1 = f"There are 0 {name_plural}."
+            line1 = fill("There are 0 {name_plural}.", name_plural=derived(name_plural))
         else:
-            line1 = f"{group_a_str} — There {'is' if a == 1 else 'are'} {a} {name_a}."
+            line1 = fill("{group_a_str} — There {v} {a} {name_a}.", group_a_str=derived(group_a_str), v=derived('is' if a == 1 else 'are'), a=derived(a, src=("a",)), name_a=derived(name_a))
         
         # Line 2: Show amount being added
         if b == 0:
-            line2 = f"0 more {name_plural} are added."
+            line2 = fill("0 more {name_plural} are added.", name_plural=derived(name_plural))
         else:
-            line2 = f"{group_b_str} — {b} more {name_b} {'is' if b == 1 else 'are'} added."
+            line2 = fill("{group_b_str} — {b} more {name_b} {v} added.", group_b_str=derived(group_b_str), b=derived(b, src=("b",)), name_b=derived(name_b), v=derived('is' if b == 1 else 'are'))
         
         # Line 3: Question
-        line3 = f"How many total {name_plural} are there?"
+        line3 = fill("How many total {name_plural} are there?", name_plural=derived(name_plural))
         
     elif operation == "multiplication":
         # Group language only. "multiplication", "product" and "times" are all
@@ -316,9 +316,9 @@ def _build_question_text(params: dict, context_variant: str = "word_problem") ->
         # groups ("5 groups of 3", "5 threes"), so the stem names what is drawn and
         # asks for the total.
         unit = "group" if b == 1 else "groups"
-        line1 = group_a_str
-        line2 = f"There {'is' if b == 1 else 'are'} {b} {unit} of {a} {name_a}."
-        line3 = f"How many {name_plural} are there in all?"
+        line1 = fill("{group}", group=derived(group_a_str))   # the drawn groups (H3-R2)
+        line2 = fill("There {v} {b} {unit} of {a} {name_a}.", v=derived('is' if b == 1 else 'are'), b=derived(b, src=("b",)), unit=derived(unit), a=derived(a, src=("a",)), name_a=derived(name_a))
+        line3 = fill("How many {name_plural} are there in all?", name_plural=derived(name_plural))
 
     elif operation == "subtraction":
         # Structured slots (H3, owner ruling 28); each string is identical to the f-string
@@ -456,7 +456,7 @@ def format_emoji_pictorial(
     if mcq_options:
         format_data["mcq_options"] = mcq_options
     
-    fmt = f"{interaction_mode}_{answer_collection}"
+    fmt = fill("{interaction_mode}_{answer_collection}", interaction_mode=derived(interaction_mode), answer_collection=derived(answer_collection))
     
     return FormattedProblem(
         problem_id=f"{ctx.node_id}_{ctx.seed}_emoji",

@@ -19,7 +19,9 @@ from backend.app.practice_gen.dna.base import (FormattedProblem, QuestionContext
                                                  number_group_name)
 from backend.app.practice_gen.formatters._distractor_fallback import augment_distractors
 from backend.app.practice_gen.formatters._option_order import shuffle_options
-from backend.app.practice_gen.slots import S, fill
+from backend.app.practice_gen.formatters._answer_slots import (answer_text, distractor_text,
+                                                           member_text)
+from backend.app.practice_gen.slots import S, derived, fill
 
 
 def _build_pure_question(ctx: QuestionContext) -> str:
@@ -36,15 +38,15 @@ def _build_pure_question(ctx: QuestionContext) -> str:
         if task_type == "estimate":
             real_a = values.get("real_a", a)
             real_b = values.get("real_b", b)
-            return f"Estimate the sum: {real_a} + {real_b}"
+            return fill("Estimate the sum: {real_a} + {real_b}", _src=('task_type',), real_a=S(real_a, "value:real_a"), real_b=S(real_b, "value:real_b"))
         if values.get("question"):
             return values["question"]
         if blank_target == "result":
-            return f"What is {a} + {b}?"
+            return fill("What is {a} + {b}?", a=S(a, "value:a"), b=S(b, "value:b"))
         elif blank_target == "b":
-            return f"What number plus {a} equals {result}?"
+            return fill("What number plus {a} equals {result}?", a=S(a, "value:a"), result=S(result, "value:result"))
         else:  # blank_target == "a"
-            return f"What number plus {b} equals {result}?"
+            return fill("What number plus {b} equals {result}?", b=S(b, "value:b"), result=S(result, "value:result"))
     
     elif concept == "subtraction":
         a = values.get("a")
@@ -57,7 +59,7 @@ def _build_pure_question(ctx: QuestionContext) -> str:
             # R2), so the same estimate-aware fix has to be applied here too.
             real_a = values.get("real_a", a)
             real_b = values.get("real_b", b)
-            return fill("Estimate the difference: {real_a} − {real_b}",
+            return fill("Estimate the difference: {real_a} − {real_b}", _src=('task_type',),
                         real_a=S(real_a, "value:real_a"), real_b=S(real_b, "value:real_b"))
         if values.get("task_type") in ("expanded_form", "counting_back", "taking_away", "illustrate_number_line_or_inverse", "inverse_of_addition", "number_line_subtraction", "one_or_two_step_subtraction", "one_step_subtraction", "two_step_subtraction") and values.get("question"):
             # Same root cause as addition's identical fix: this formatter
@@ -82,7 +84,7 @@ def _build_pure_question(ctx: QuestionContext) -> str:
         if mul_task_type == "estimate":
             real_a = values.get("real_a", a)
             real_b = values.get("real_b", b)
-            return f"Estimate the product: {real_a} × {real_b}"
+            return fill("Estimate the product: {real_a} × {real_b}", _src=('task_type',), real_a=S(real_a, "value:real_a"), real_b=derived(real_b, src=('real_b', 'b', 'n',)))
         if mul_task_type in ("commutative", "associative", "distributive") and values.get("question"):
             # These render a yes/no claim (blank_target="answer", no
             # "result"/"total" key set at all) -- falling through to the
@@ -96,28 +98,28 @@ def _build_pure_question(ctx: QuestionContext) -> str:
             plural_name = values.get("plural_name")
             if not plural_name:
                 plural_name = number_group_name(a, b)
-            terms = " + ".join([str(a)] * b) if b <= 5 else f"{a} added {b} times"
+            terms = " + ".join([str(a)] * b) if b <= 5 else fill("{a} added {b} times", _src=('task_type',), a=derived(a, src=('a', 'groups',)), b=derived(b, src=('b', 'n',)))
             if group_form == "plural_name":
-                return f"Count {b} {count_noun(b, plural_name)} by repeated addition ({terms}): how many in all?"
+                return fill("Count {b} {count_noun} by repeated addition ({terms}): how many in all?", _src=('group_form', 'task_type',), b=derived(b, src=('b', 'n',)), count_noun=derived(count_noun(b, plural_name), src=('b', 'n',)), terms=derived(terms, src=('b', 'n', 'a', 'groups',)))
             unit = "group" if b == 1 else "groups"
             # "There are 1 group of 1" -- the noun was pluralized and the verb was not.
             # One sentence, four copies (doc_rem.md R2); all four say it the same way.
             was = "is" if b == 1 else "are"
-            return f"There {was} {b} {unit} of {a} ({terms}). How many in all?"
+            return fill("There {was} {b} {unit} of {a} ({terms}). How many in all?", _src=('task_type', 'group_form',), was=derived(was, src=('b', 'n',)), b=derived(b, src=('b', 'n',)), unit=derived(unit, src=('b', 'n',)), a=derived(a, src=('a', 'groups',)), terms=derived(terms, src=('b', 'n', 'a', 'groups',)))
         if values.get("task_type") == "repeated_addition" and blank_target in ("result", "total"):
             terms = " + ".join([str(a)] * b)
-            return f"{terms} = ___. What is {a} × {b}?"
+            return fill("{terms} = ___. What is {a} × {b}?", _src=('task_type',), terms=derived(terms, src=('b', 'n', 'a', 'groups',)), a=derived(a, src=('a', 'groups',)), b=derived(b, src=('b', 'n',)))
         if values.get("task_type") == "skip_counting" and blank_target in ("result", "total"):
             seq = ", ".join(str(a * i) for i in range(1, b + 1))
-            return f"Count by {a}s: {seq}. What is {a} × {b}?"
+            return fill("Count by {a}s: {seq}. What is {a} × {b}?", _src=('task_type',), a=derived(a, src=('a', 'groups',)), seq=derived(seq, src=('a', 'groups', 'b', 'n',)), b=derived(b, src=('b', 'n',)))
         if values.get("task_type") == "number_line_jumps" and blank_target in ("result", "total"):
-            return f"Starting at 0, take {b} equal jumps of {a} on the number line. What is {a} × {b}?"
+            return fill("Starting at 0, take {b} equal jumps of {a} on the number line. What is {a} × {b}?", _src=('task_type',), b=derived(b, src=('b', 'n',)), a=derived(a, src=('a', 'groups',)))
         if blank_target in ("result", "total"):
-            return f"What is {a} × {b}?"
+            return fill("What is {a} × {b}?", a=derived(a, src=('a', 'groups',)), b=derived(b, src=('b', 'n',)))
         elif blank_target in ("b", "n"):
-            return f"What times {a} equals {result}?"
+            return fill("What times {a} equals {result}?", a=derived(a, src=('a', 'groups',)), result=derived(result, src=('result', 'total',)))
         else:
-            return f"What times {b} equals {result}?"
+            return fill("What times {b} equals {result}?", b=derived(b, src=('b', 'n',)), result=derived(result, src=('result', 'total',)))
     
     elif concept == "division":
         dividend = values.get("dividend", values.get("a"))
@@ -126,17 +128,17 @@ def _build_pure_question(ctx: QuestionContext) -> str:
         if values.get("task_type") == "estimate":
             real_a = values.get("real_a", dividend)
             real_b = values.get("real_b", divisor)
-            stem = "Estimate the quotient" if "quotient" in ctx.cumulative_vocab else "Estimate the answer"
-            return f"{stem}: {real_a} ÷ {real_b}"
+            stem = fill("Estimate the quotient", _src=('task_type',)) if "quotient" in ctx.cumulative_vocab else fill("Estimate the answer", _src=('task_type',))
+            return fill("{stem}: {real_a} ÷ {real_b}", _src=('task_type',), stem=S(stem, "fill"), real_a=S(real_a, "value:real_a"), real_b=derived(real_b, src=('real_b', 'divisor', 'b',)))
         if values.get("task_type") in ("even_odd", "number_line_jumps", "inverse_of_multiplication") and values.get("question"):
             # blank_target="answer" or custom narrative question doesn't fit the bare equations below.
             return values["question"]
         if blank_target in ("result", "quotient"):
-            return f"What is {dividend} ÷ {divisor}?"
+            return fill("What is {dividend} ÷ {divisor}?", dividend=derived(dividend, src=('dividend', 'a',)), divisor=derived(divisor, src=('divisor', 'b',)))
         elif blank_target in ("b", "divisor", "n"):
-            return f"{dividend} divided by what equals {quotient}?"
+            return fill("{dividend} divided by what equals {quotient}?", dividend=derived(dividend, src=('dividend', 'a',)), quotient=derived(quotient, src=('quotient', 'result',)))
         else:
-            return f"What divided by {divisor} equals {quotient}?"
+            return fill("What divided by {divisor} equals {quotient}?", divisor=derived(divisor, src=('divisor', 'b',)), quotient=derived(quotient, src=('quotient', 'result',)))
     
     elif concept == "missing_number":
         op_name = values.get("operation", "addition")
@@ -151,15 +153,15 @@ def _build_pure_question(ctx: QuestionContext) -> str:
             c_val = values.get("c", 1)
             eq_sym = values.get("equivalent_symbol", "+")
             if eq_sym == "+":
-                return f"What number completes the expression: {a_val} + {b_val} = {c_val} + ___?"
+                return fill("What number completes the expression: {a_val} + {b_val} = {c_val} + ___?", _src=('equivalent_symbol', 'operation',), a_val=S(a_val, "value:a"), b_val=S(b_val, "value:b"), c_val=derived(c_val, src=('c',)))
             else:
-                return f"What number completes the expression: {a_val} − {b_val} = {c_val} − ___?"
+                return fill("What number completes the expression: {a_val} − {b_val} = {c_val} − ___?", _src=('operation',), a_val=S(a_val, "value:a"), b_val=S(b_val, "value:b"), c_val=derived(c_val, src=('c',)))
         if blank_pos == "start":
-            return f"What number goes in the blank: ___ {op_symbol} {b_val} = {res}?"
+            return fill("What number goes in the blank: ___ {op_symbol} {b_val} = {res}?", _src=('blank_position',), op_symbol=derived(op_symbol, src=('operation', 'equivalent_symbol',)), b_val=S(b_val, "value:b"), res=derived(res, src=('result', 'total',)))
         elif blank_pos == "change":
-            return f"What number goes in the blank: {a_val} {op_symbol} ___ = {res}?"
+            return fill("What number goes in the blank: {a_val} {op_symbol} ___ = {res}?", _src=('blank_position',), a_val=S(a_val, "value:a"), op_symbol=derived(op_symbol, src=('operation', 'equivalent_symbol',)), res=derived(res, src=('result', 'total',)))
         else:
-            return f"What number goes in the blank: {a_val} {op_symbol} {b_val} = ___?"
+            return fill("What number goes in the blank: {a_val} {op_symbol} {b_val} = ___?", a_val=S(a_val, "value:a"), op_symbol=derived(op_symbol, src=('operation', 'equivalent_symbol',)), b_val=S(b_val, "value:b"))
 
     elif concept == "fractions":
         if values.get("question"):
@@ -172,20 +174,20 @@ def _build_pure_question(ctx: QuestionContext) -> str:
             a_den = values.get("a_den", denom)
             b_num = values.get("b_num", numer)
             b_den = values.get("b_den", denom)
-            return f"Compare the fractions: \\(\\frac{{{a_num}}}{{{a_den}}}\\) ___ \\(\\frac{{{b_num}}}{{{b_den}}}\\). Which sign is correct: >, <, or =?"
+            return fill("Compare the fractions: \\(\\frac{{{a_num}}}{{{a_den}}}\\) ___ \\(\\frac{{{b_num}}}{{{b_den}}}\\). Which sign is correct: >, <, or =?", _src=('operation',), a_num=derived(a_num, src=('a_num', 'numerator', 'a',)), a_den=derived(a_den, src=('a_den', 'denominator', 'b',)), b_num=derived(b_num, src=('b_num', 'numerator', 'a',)), b_den=derived(b_den, src=('b_den', 'denominator', 'b',)))
         if operation in ("add_subtract", "add", "subtract"):
             a_num = values.get("a_num", numer)
             b_num = values.get("b_num", 0)
             a_den = values.get("a_den", denom)
             b_den = values.get("b_den", denom)
-            a_part = "1 part is" if a_num == 1 else f"{a_num} parts are"
+            a_part = "1 part is" if a_num == 1 else fill("{a_num} parts are", _src=('operation',), a_num=derived(a_num, src=('a_num', 'numerator', 'a',)))
             if operation == "subtract":
-                b_part = "1 shaded part is" if b_num == 1 else f"{b_num} shaded parts are"
-                return f"A shape is divided into {a_den} equal parts. {a_part} shaded. If {b_part} taken away, what fraction of the shape remains shaded: \\(\\frac{{{a_num}}}{{{a_den}}} - \\frac{{{b_num}}}{{{b_den}}}\\)?"
-            b_part = "1 more part is" if b_num == 1 else f"{b_num} more parts are"
-            return f"A shape is divided into {a_den} equal parts. {a_part} shaded and {b_part} shaded. What fraction of the shape is shaded in all: \\(\\frac{{{a_num}}}{{{a_den}}} + \\frac{{{b_num}}}{{{b_den}}}\\)?"
+                b_part = "1 shaded part is" if b_num == 1 else fill("{b_num} shaded parts are", _src=('operation',), b_num=derived(b_num, src=('b_num',)))
+                return fill("A shape is divided into {a_den} equal parts. {a_part} shaded. If {b_part} taken away, what fraction of the shape remains shaded: \\(\\frac{{{a_num}}}{{{a_den}}} - \\frac{{{b_num}}}{{{b_den}}}\\)?", _src=('operation',), a_den=derived(a_den, src=('a_den', 'denominator', 'b',)), a_part=derived(a_part, src=('a_num', 'numerator', 'a',)), b_part=derived(b_part, src=('b_num',)), a_num=derived(a_num, src=('a_num', 'numerator', 'a',)), b_num=derived(b_num, src=('b_num',)), b_den=derived(b_den, src=('b_den', 'denominator', 'b',)))
+            b_part = "1 more part is" if b_num == 1 else fill("{b_num} more parts are", _src=('operation',), b_num=derived(b_num, src=('b_num',)))
+            return fill("A shape is divided into {a_den} equal parts. {a_part} shaded and {b_part} shaded. What fraction of the shape is shaded in all: \\(\\frac{{{a_num}}}{{{a_den}}} + \\frac{{{b_num}}}{{{b_den}}}\\)?", _src=('operation',), a_den=derived(a_den, src=('a_den', 'denominator', 'b',)), a_part=derived(a_part, src=('a_num', 'numerator', 'a',)), b_part=derived(b_part, src=('b_num',)), a_num=derived(a_num, src=('a_num', 'numerator', 'a',)), b_num=derived(b_num, src=('b_num',)), b_den=derived(b_den, src=('b_den', 'denominator', 'b',)))
         part_word = "part is" if numer == 1 else "parts are"
-        return f"A shape is divided into {denom} equal parts. {numer} {part_word} shaded. What fraction of the shape is shaded?"
+        return fill("A shape is divided into {denom} equal parts. {numer} {part_word} shaded. What fraction of the shape is shaded?", denom=derived(denom, src=('denominator', 'b',)), numer=derived(numer, src=('numerator', 'a',)), part_word=derived(part_word, src=('numerator', 'a',)))
 
     elif concept == "counting":
         seq = values.get("sequence") or []
@@ -194,7 +196,7 @@ def _build_pure_question(ctx: QuestionContext) -> str:
         # Structured slots (H5, owner rulings 28 and 35): the sequence exhibits the step.
         SEQ = S(seq_str, "text.derived", src=("sequence", "skip_by", "direction"))
         if direction == "backward":
-            return fill("What number comes next when counting backward: {seq}, ___?", seq=SEQ)
+            return fill("What number comes next when counting backward: {seq}, ___?", _src=('direction',), seq=SEQ)
         else:
             return fill("What number comes next when counting: {seq}, ___?", seq=SEQ)
     elif concept == "comparing_ordering":
@@ -216,21 +218,21 @@ def _build_pure_question(ctx: QuestionContext) -> str:
         if task_type in ("order_set", "order_sequence"):
             nums = values.get("numbers", [])
             nums_str = ", ".join(str(x) for x in nums)
-            return f"Order these numbers from least to greatest: {nums_str}"
+            return fill("Order these numbers from least to greatest: {nums_str}", _src=('task_type',), nums_str=derived(nums_str, src=('numbers',)))
         elif task_type == "find_between":
-            return f"What number is between {a} and {b}?"
+            return fill("What number is between {a} and {b}?", _src=('task_type',), a=S(a, "value:a"), b=S(b, "value:b"))
         elif values.get("statement") is not None:
             # compare_pair is offered as four whole comparison statements under MCQ
             # (owner ruling 2026-09-11, see comparing_ordering.py), so the stem asks
             # which of them is true. The numbers live in the options; repeating them
             # here would make one option a copy of the stem.
-            return "Which statement is true?"
+            return fill("Which statement is true?", _src=('statement',))
         else:
             # compare_two is keyed to a relation symbol; asking "which is
             # greater" invites a numeric answer and marks the correct one
             # wrong. Same defect and same fix as base_generator's copy of
             # this stem (three copies of one sentence — see doc_rem.md R2).
-            return f"Compare the numbers: {a} ___ {b}. Which sign is correct: >, <, or =?"
+            return fill("Compare the numbers: {a} ___ {b}. Which sign is correct: >, <, or =?", a=S(a, "value:a"), b=S(b, "value:b"))
     elif concept == "money_peso":
         if values.get("question"):
             return values["question"]
@@ -273,6 +275,15 @@ def format_mcq(ctx: QuestionContext, rng: random.Random) -> FormattedProblem:
     if use_statements:
         correct = values["statement"]
         distractor_pool = values["statement_distractors"]
+    # Structured slots (H3-R2, owner rulings 28 and 33): the option text is the generator's
+    # keyed answer and its own distractors, recorded as such. Strings only; same values.
+    if use_statements:
+        correct = fill("{statement}", statement=S(correct, "value:statement"))
+        distractor_pool = [member_text(d, values["statement_distractors"], "values['statement_distractors']")
+                           for d in distractor_pool]
+    else:
+        correct = answer_text(correct, ctx)
+        distractor_pool = [distractor_text(d, ctx) for d in distractor_pool]
 
     # Get context variant
     context_variant = values.get("context")
@@ -306,12 +317,13 @@ def format_mcq(ctx: QuestionContext, rng: random.Random) -> FormattedProblem:
 
     # Collect candidate distractors — deduplicate and exclude correct answer
     if isinstance(correct, bool):
-        distractors = [not correct, "Cannot be determined", "Only when both are 0"]
+        cannot, only_zero = fill("Cannot be determined"), fill("Only when both are 0")
+        distractors = [not correct, cannot, only_zero]
         pool = [
             {"value": True, "is_correct": correct is True},
             {"value": False, "is_correct": correct is False},
-            {"value": "Cannot be determined", "is_correct": False},
-            {"value": "Only when both are 0", "is_correct": False},
+            {"value": cannot, "is_correct": False},
+            {"value": only_zero, "is_correct": False},
         ]
         shuffle_options(pool, ctx.node_id, ctx.seed)
         keys = ["A", "B", "C", "D"]

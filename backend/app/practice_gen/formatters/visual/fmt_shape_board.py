@@ -33,6 +33,8 @@ from typing import List, Optional
 
 from backend.app.practice_gen.dna.base import FormattedProblem, QuestionContext
 from backend.app.practice_gen.formatters._option_order import shuffle_options
+from backend.app.practice_gen.slots import S, derived, fill
+from backend.app.practice_gen.formatters._answer_slots import correct_option_key
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -99,7 +101,7 @@ def _shapes_from_item(values: dict, rng: random.Random) -> List[dict]:
     found: List[str] = []
     text = str(values.get("question", "")).lower()
     for word, type_name in _SHAPE_WORDS.items():
-        if re.search(rf"\b{re.escape(word)}\b", text) and type_name not in found:
+        if re.search(fill("\\b{escape}\\b", escape=derived(re.escape(word))), text) and type_name not in found:
             found.append(type_name)
     for opt in [values.get("answer")] + list(values.get("distractors") or []):
         type_name = _SHAPE_WORDS.get(str(opt).strip().lower())
@@ -129,7 +131,7 @@ def _shapes_from_item(values: dict, rng: random.Random) -> List[dict]:
         if entry is None:
             continue
         shape = {
-            "id": f"shape_{i}",
+            "id": fill("shape_{i}", i=derived(i)),
             "type": entry["type"],
             "sides": entry["sides"],
             "corners": entry["corners"],
@@ -164,7 +166,7 @@ def _build_shapes(grade: int, diff_level: int, rng: random.Random, count: int = 
     for i, s in enumerate(chosen):
         orientation = rng.choice(_ORIENTATIONS) if diff_level >= 2 else 0
         shapes.append({
-            "id": f"shape_{i}",
+            "id": fill("shape_{i}", i=derived(i)),
             "type": s["type"],
             "sides": s["sides"],
             "corners": s["corners"],
@@ -199,7 +201,7 @@ def _correct_answer_and_traps(shapes: List[dict], question_type: str, rng: rando
         same_sides = [s["type"] for s in _SHAPE_CATALOGUE if s["sides"] == target["sides"] and s["type"] != correct]
         off_sides = [s["type"] for s in _SHAPE_CATALOGUE if abs(s["sides"] - target["sides"]) == 1]
         traps = list(dict.fromkeys(same_sides + off_sides))[:3]
-        detail = f"the highlighted shape"
+        detail = fill("the highlighted shape")
         return correct, traps, detail, target
 
     if question_type == "count_property":
@@ -208,7 +210,7 @@ def _correct_answer_and_traps(shapes: List[dict], question_type: str, rng: rando
         correct = target[property_name]
         traps = [correct - 1, correct + 1, correct + 2]
         traps = [t for t in traps if t >= 0][:3]
-        detail = f"how many {property_name} does the highlighted shape have"
+        detail = fill("how many {property_name} does the highlighted shape have", property_name=derived(property_name))
         return correct, traps, detail, target
 
     if question_type == "sort_by":
@@ -236,12 +238,12 @@ def _correct_answer_and_traps(shapes: List[dict], question_type: str, rng: rando
         a, b = shapes[0], shapes[1]
         correct = "more" if a["sides"] > b["sides"] else ("fewer" if a["sides"] < b["sides"] else "equal")
         traps = [x for x in ["more", "fewer", "equal"] if x != correct]
-        detail = f"does shape A have more, fewer, or equal sides compared to shape B"
+        detail = fill("does shape A have more, fewer, or equal sides compared to shape B")
         return correct, traps, detail, None
 
     correct = shapes[0]["type"]
     traps = []
-    return correct, traps, "identify the shape", shapes[0]
+    return correct, traps, fill("identify the shape"), shapes[0]
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -250,8 +252,8 @@ def _correct_answer_and_traps(shapes: List[dict], question_type: str, rng: rando
 
 def _stem(question_type: str, detail: str, interaction_mode: str) -> str:
     if interaction_mode == "set":
-        return "Drag each shape into the correct group."
-    return f"Look at the shapes. Tell {detail}."
+        return fill("Drag each shape into the correct group.")
+    return fill("Look at the shapes. Tell {detail}.", detail=derived(detail))
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -321,7 +323,7 @@ def format_shape_board(
                 {"key": chr(ord("A") + i), "value": v, "is_correct": v == correct_answer}
                 for i, v in enumerate(all_opts)
             ]
-            final_answer = next(o["key"] for o in mcq_options if o["is_correct"])
+            final_answer = correct_option_key(mcq_options)
         format_data: dict = {"visual_params": vp}
         if mcq_options:
             format_data["mcq_options"] = mcq_options
@@ -345,8 +347,7 @@ def format_shape_board(
                     f"{answer_type!r} (node={ctx.node_id}, seed={ctx.seed})"
                 )
             question_text = (
-                "Look at the shapes in different sizes and orientations. "
-                f"Which shape on the board has {clues[answer_type]}?"
+                fill("Look at the shapes in different sizes and orientations. Which shape on the board has {v}?", v=derived(clues[answer_type]))
             )
         return FormattedProblem(
             problem_id=f"{ctx.node_id}_{ctx.seed}_shapeboard",
@@ -358,7 +359,7 @@ def format_shape_board(
             correct_answer=final_answer,
             distractors=traps,
             hints=ctx.hints,
-            format=f"{interaction_mode}_{answer_collection}",
+            format=fill("{interaction_mode}_{answer_collection}", interaction_mode=derived(interaction_mode), answer_collection=derived(answer_collection)),
             format_data=format_data,
             is_visual=True,
             visual_type="ShapeBoard",
@@ -418,7 +419,7 @@ def format_shape_board(
             {"key": chr(ord("A") + i), "value": v, "is_correct": v == correct_answer}
             for i, v in enumerate(all_opts)
         ]
-        final_answer = next(o["key"] for o in mcq_options if o["is_correct"])
+        final_answer = correct_option_key(mcq_options)
     else:
         final_answer = correct_answer
 
@@ -438,7 +439,7 @@ def format_shape_board(
         correct_answer=final_answer,
         distractors=traps,
         hints=ctx.hints,
-        format=f"{interaction_mode}_{answer_collection}",
+        format=fill("{interaction_mode}_{answer_collection}", interaction_mode=derived(interaction_mode), answer_collection=derived(answer_collection)),
         format_data=format_data,
         is_visual=True,
         visual_type="ShapeBoard",

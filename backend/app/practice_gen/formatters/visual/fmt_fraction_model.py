@@ -35,6 +35,8 @@ import random
 from backend.app.practice_gen.dna.base import FormattedProblem, QuestionContext
 from backend.app.practice_gen.formatters._distractor_fallback import augment_distractors
 from backend.app.practice_gen.formatters._option_order import shuffle_options
+from backend.app.practice_gen.slots import S, derived, fill
+from backend.app.practice_gen.formatters._answer_slots import (answer_text, correct_option_key, member_text)
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -83,17 +85,17 @@ def _build_traps(numer: int, denom: int) -> list:
         off_by_one_num — (numer ± 1) / denom
     """
     traps = []
-    correct = f"{numer}/{denom}"
+    correct = fill("{numer}/{denom}", numer=derived(numer), denom=derived(denom))
     seen = {correct}
 
     # Swap numerator and denominator
-    swap = f"{denom}/{numer}" if numer > 0 else None
+    swap = fill("{denom}/{numer}", denom=derived(denom), numer=derived(numer)) if numer > 0 else None
     if swap not in seen and numer != denom:
         traps.append(swap)
         seen.add(swap)
 
     # Count all parts (use denom as "answer")
-    total_trap = f"{denom}/{denom}"
+    total_trap = fill("{denom}/{denom}", denom=derived(denom))
     if total_trap not in seen:
         traps.append(total_trap)
         seen.add(total_trap)
@@ -107,14 +109,14 @@ def _build_traps(numer: int, denom: int) -> list:
     # nonsensical for a Grade 3 student who hasn't met negative numbers).
     unshaded = denom - numer
     if unshaded > 0:
-        unshaded_str = f"{unshaded}/{denom}"
+        unshaded_str = fill("{unshaded}/{denom}", unshaded=derived(unshaded), denom=derived(denom))
         if unshaded_str not in seen and unshaded != numer:
             traps.append(unshaded_str)
             seen.add(unshaded_str)
 
     # Off by one in numerator
     if numer > 1:
-        ob1 = f"{numer - 1}/{denom}"
+        ob1 = fill("{v}/{denom}", v=derived(numer - 1), denom=derived(denom))
         if ob1 not in seen:
             traps.append(ob1)
             seen.add(ob1)
@@ -124,7 +126,7 @@ def _build_traps(numer: int, denom: int) -> list:
         for sign in [1, -1]:
             cand_num = numer + (offset_mult * sign)
             if cand_num > 0:
-                cand = f"{cand_num}/{denom}"
+                cand = fill("{cand_num}/{denom}", cand_num=derived(cand_num), denom=derived(denom))
                 if cand not in seen:
                     traps.append(cand)
                     seen.add(cand)
@@ -141,16 +143,16 @@ def _build_traps(numer: int, denom: int) -> list:
 
 def _stem(model_type: str, fraction_str: str, interaction_mode: str, operation: str = None) -> str:
     if interaction_mode == "set":
-        return f"Shade the model to show {fraction_str}."
+        return fill("Shade the model to show {fraction_str}.", fraction_str=derived(fraction_str))
     if operation in ("add", "subtract", "add_subtract"):
-        return "What is the result of the fraction operation shown?"
+        return fill("What is the result of the fraction operation shown?")
     if operation == "compare":
-        return f"Look at the fraction models. Compare the fractions: which sign is correct: >, <, or =?"
+        return fill("Look at the fraction models. Compare the fractions: which sign is correct: >, <, or =?")
     if operation == "count_sequence":
-        return f"Look at the fraction sequence. What comes next when counting?"
+        return fill("Look at the fraction sequence. What comes next when counting?")
     model_names = {"area": "shaded picture", "set": "set model", "number_line": "number line"}
     name = model_names.get(model_type, "model")
-    return f"What fraction does the {name} show?"
+    return fill("What fraction does the {name} show?", name=derived(name, src=("model_type",)))
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -197,7 +199,7 @@ def format_fraction_model(
         numer = 1
         model_type = "area"
 
-    fraction_str = f"{numer}/{denom}"
+    fraction_str = fill("{numer}/{denom}", numer=derived(numer), denom=derived(denom))
 
     if interaction_mode == "set":
         answer_collection = "click"
@@ -226,7 +228,7 @@ def format_fraction_model(
             numer = ctx.values["result_num"]
             denom = ctx.values["result_den"]
         correct_answer = ctx.values.get("result", fraction_str)
-        vp["fraction_str"] = f"{vp['a_numerator']}/{vp['a_denominator']} {'+' if op == 'add' else '-'} {vp['b_numerator']}/{vp['b_denominator']}"
+        vp["fraction_str"] = fill("{a_numerator}/{a_denominator} {v} {b_numerator}/{b_denominator}", _src=('operation',), a_numerator=derived(vp['a_numerator']), a_denominator=derived(vp['a_denominator']), v=derived('+' if op == 'add' else '-'), b_numerator=derived(vp['b_numerator']), b_denominator=derived(vp['b_denominator']))
         vp["numerator"] = numer
         vp["denominator"] = denom
         vp["shaded_parts"] = numer
@@ -255,7 +257,7 @@ def format_fraction_model(
     dna_distractors = (ctx.values or {}).get("distractors")
 
     if dna_ans is not None:
-        correct_answer = dna_ans
+        correct_answer = answer_text(dna_ans, ctx)   # recorded (H3-R2); same value
 
     ca_num, ca_den = numer, denom
     if isinstance(correct_answer, str) and "/" in correct_answer:
@@ -266,7 +268,8 @@ def format_fraction_model(
             pass
 
     if dna_distractors:
-        traps = [d for d in dna_distractors if d != correct_answer]
+        traps = [member_text(d, dna_distractors, "values['distractors'] (the DNA's own)")
+                 for d in dna_distractors if d != correct_answer]
     else:
         traps = _build_traps(ca_num, ca_den)
 
@@ -298,7 +301,7 @@ def format_fraction_model(
             {"key": chr(ord("A") + i), "value": v, "is_correct": str(v) == str(correct_answer)}
             for i, v in enumerate(all_opts)
         ]
-        final_answer = next(o["key"] for o in mcq_options if o["is_correct"])
+        final_answer = correct_option_key(mcq_options)
     else:
         final_answer = correct_answer
 
@@ -321,7 +324,7 @@ def format_fraction_model(
         correct_answer=final_answer,
         distractors=traps,
         hints=ctx.hints,
-        format=f"{interaction_mode}_{answer_collection}",
+        format=fill("{interaction_mode}_{answer_collection}", interaction_mode=derived(interaction_mode), answer_collection=derived(answer_collection)),
         format_data=format_data,
         is_visual=True,
         visual_type="FractionModel",

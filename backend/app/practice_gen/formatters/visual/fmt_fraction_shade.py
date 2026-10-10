@@ -31,6 +31,8 @@ import random
 from backend.app.practice_gen.dna.base import FormattedProblem, QuestionContext
 from backend.app.practice_gen.formatters._distractor_fallback import augment_distractors
 from backend.app.practice_gen.formatters._option_order import shuffle_options
+from backend.app.practice_gen.slots import S, derived, fill
+from backend.app.practice_gen.formatters._answer_slots import correct_option_key
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -58,7 +60,7 @@ def _pick_params(grade: int, diff_level: int, rng: random.Random) -> dict:
         "shape": shape,
         "total_parts": denom,
         "shaded_parts": numer,
-        "fraction_str": f"{numer}/{denom}",
+        "fraction_str": fill("{numer}/{denom}", numer=derived(numer), denom=derived(denom)),
     }
 
 
@@ -76,32 +78,32 @@ def _build_traps(numer: int, denom: int) -> list:
         count_unshaded — (denom-numer)/denom
         off_by_one_num — (numer-1)/denom
     """
-    correct = f"{numer}/{denom}"
+    correct = fill("{numer}/{denom}", numer=derived(numer), denom=derived(denom))
     traps = []
     seen = {correct}
 
     # Swap
-    swap = f"{denom}/{numer}" if numer > 0 else None
+    swap = fill("{denom}/{numer}", denom=derived(denom), numer=derived(numer)) if numer > 0 else None
     if swap not in seen and numer != denom:
         traps.append(swap)
         seen.add(swap)
 
     # Total parts
-    total_trap = f"{denom}/{denom}"
+    total_trap = fill("{denom}/{denom}", denom=derived(denom))
     if total_trap not in seen:
         traps.append(total_trap)
         seen.add(total_trap)
 
     # Unshaded
     unshaded = denom - numer
-    unshaded_str = f"{unshaded}/{denom}"
+    unshaded_str = fill("{unshaded}/{denom}", unshaded=derived(unshaded), denom=derived(denom))
     if unshaded_str not in seen and unshaded != numer and unshaded > 0:
         traps.append(unshaded_str)
         seen.add(unshaded_str)
 
     # Off by one in numerator
     if numer > 1:
-        ob1 = f"{numer - 1}/{denom}"
+        ob1 = fill("{v}/{denom}", v=derived(numer - 1), denom=derived(denom))
         if ob1 not in seen:
             traps.append(ob1)
 
@@ -115,7 +117,7 @@ def _build_traps(numer: int, denom: int) -> list:
 def _stem(ask_type: str, fraction_str: str, interaction_mode: str, operation: str = None) -> str:
     if interaction_mode == "set" or ask_type == "shade_this_fraction":
         if operation:
-            return f"Shade the shape to show the result of {fraction_str}."
+            return fill("Shade the shape to show the result of {fraction_str}.", fraction_str=derived(fraction_str, src=("fraction_str", "numerator", "denominator", "operation")))
         # An improper fraction (numerator > denominator, e.g.
         # mat_g3_na_q4_6's "equal to one and greater than one") can't be
         # shaded on a single shape -- "Shade 17/5 of the shape" has no
@@ -126,15 +128,14 @@ def _stem(ask_type: str, fraction_str: str, interaction_mode: str, operation: st
         if num_str.isdigit() and den_str.isdigit() and int(num_str) > int(den_str):
             num_wholes = -(-int(num_str) // int(den_str))  # ceiling division
             return (
-                f"Shade {fraction_str} using {num_wholes} identical shapes, "
-                f"each divided into {den_str} equal parts."
+                fill("Shade {fraction_str} using {num_wholes} identical shapes, each divided into {den_str} equal parts.", fraction_str=derived(fraction_str, src=("fraction_str", "numerator", "denominator")), num_wholes=derived(num_wholes), den_str=derived(den_str))
             )
-        return f"Shade {fraction_str} of the shape."
+        return fill("Shade {fraction_str} of the shape.", fraction_str=derived(fraction_str, src=("fraction_str", "numerator", "denominator")))
     if operation in ("add", "subtract", "add_subtract"):
-        return "What is the result of the fraction operation shown?"
+        return fill("What is the result of the fraction operation shown?")
     if ask_type == "compare":
-        return "Which fraction is larger?"
-    return "What fraction of the shape is shaded?"
+        return fill("Which fraction is larger?")
+    return fill("What fraction of the shape is shaded?")
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -186,7 +187,7 @@ def format_fraction_shade(
         ask_type = "shade_this_fraction"
         answer_collection = "click"
 
-    fraction_str = f"{numer}/{denom}"
+    fraction_str = fill("{numer}/{denom}", numer=derived(numer), denom=derived(denom))
 
     vp = {
         "shape": shape,
@@ -211,7 +212,7 @@ def format_fraction_shade(
             numer = ctx.values["result_num"]
             denom = ctx.values["result_den"]
         correct_answer = ctx.values.get("result", fraction_str)
-        vp["fraction_str"] = f"{vp['a_numerator']}/{vp['a_denominator']} {'+' if op == 'add' else '-'} {vp['b_numerator']}/{vp['b_denominator']}"
+        vp["fraction_str"] = fill("{a_numerator}/{a_denominator} {v} {b_numerator}/{b_denominator}", _src=('operation',), a_numerator=derived(vp['a_numerator']), a_denominator=derived(vp['a_denominator']), v=derived('+' if op == 'add' else '-'), b_numerator=derived(vp['b_numerator']), b_denominator=derived(vp['b_denominator']))
         vp["shaded_parts"] = numer
         vp["total_parts"] = denom
 
@@ -231,7 +232,7 @@ def format_fraction_shade(
             {"key": chr(ord("A") + i), "value": v, "is_correct": v == correct_answer}
             for i, v in enumerate(all_opts)
         ]
-        final_answer = next(o["key"] for o in mcq_options if o["is_correct"])
+        final_answer = correct_option_key(mcq_options)
     else:
         final_answer = correct_answer
 
@@ -275,7 +276,7 @@ def format_fraction_shade(
         correct_answer=final_answer,
         distractors=traps,
         hints=ctx.hints,
-        format=f"{interaction_mode}_{answer_collection}",
+        format=fill("{interaction_mode}_{answer_collection}", interaction_mode=derived(interaction_mode), answer_collection=derived(answer_collection)),
         format_data=format_data,
         is_visual=True,
         visual_type="FractionShade",

@@ -1529,6 +1529,21 @@ that points at it break every time the section is refreshed.
 >     SOUND with a named exception list ("a university", "a USB drive", "a ukulele"; "an ukay-ukay", by
 >     Filipino pronunciation). A §1J content check (exit 2) using the SAME helper reports any disagreement,
 >     proven by a mutation on a clean lc. Fixing the findings is authorised inside Phase 2.
+> 41. **Selector survival closes over VALUE-level provenance** (owner, 2026-10-11, asked when the H3
+>     rollout made every render decidable). With every learner-read field a recorded fill, §15 decided
+>     all 1,351 selector matches by record and reported 211 `selector_value_unexhibited_15` (H5: 16), most
+>     of them items that show the choice through a value the DNA picked BECAUSE of the selector (`a = 0`
+>     under `task_type == "zero_identity"`), which slot-only provenance cannot see. Generators therefore
+>     also declare, where a value is chosen, which `values` keys it derives from
+>     (`slots.derives(key, src=...)`, recorded only under capture: no rendered byte changes), and §15
+>     closes over those declarations. Declarations are the generator's own claim, reviewed by H4.
+> 42. **H4 approves an lc's stems only after that lc's type-only slots are tightened** (owner,
+>     2026-10-11, asked at the end of the H3 rollout). Measured: 63% of recorded slot-fills (1,233
+>     distinct site/slot pairs) are `num.derived`/`text.derived`, which bound the type, not the value,
+>     so a judge's approval of such a domain would not bound what the learner can read. Before H4
+>     approves an lc, every derived slot that lc reaches is tightened to `value:`/`E`/`R`/`enum:`/`bank:`/
+>     `fill`, or carries a named per-slot reason it cannot be. This rolls out lc by lc, like H3, tracked
+>     by a harness count.
 >
 > **Owner rulings recorded 2026-09-22, binding on the next session:**
 >

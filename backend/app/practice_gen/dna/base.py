@@ -186,7 +186,7 @@ class Spine:
             and self.required_vocab.issubset(cumulative_vocab)
         )
 
-    def render(self, slots: Dict[str, Any], values: Dict[str, Any]) -> str:
+    def render(self, slots: Dict[str, Any], values: Dict[str, Any], src: Tuple[str, ...] = ()) -> str:
         """
         Fill template with interest slots and numeric values.
 
@@ -224,7 +224,7 @@ class Spine:
             return S(value, SLOT_DOMAINS.get(key))
         return record(self.template, text,
                       {k: _slot(k, v) for k, v in list(fmt.items()) + list(inflect.items())},
-                      renderer="spine", renderer_ref=self.id)
+                      renderer="spine", renderer_ref=self.id, _src=src)
 
 
 _SPINE_INFLECT_KEYS = ("objects", "item1", "item2", "item")

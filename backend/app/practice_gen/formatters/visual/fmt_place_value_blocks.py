@@ -34,6 +34,8 @@ import random
 from backend.app.practice_gen.dna.base import FormattedProblem, QuestionContext
 from backend.app.practice_gen.formatters._distractor_fallback import augment_distractors
 from backend.app.practice_gen.formatters._option_order import shuffle_options
+from backend.app.practice_gen.slots import S, derived, fill
+from backend.app.practice_gen.formatters._answer_slots import correct_option_key
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -149,12 +151,12 @@ def _build_traps(blocks: dict, rng: random.Random) -> list:
 def _stem(blocks: dict, question_type: str, interaction_mode: str) -> str:
     total = blocks["total_value"]
     if interaction_mode == "set" or question_type == "build_number":
-        return f"Use base-10 blocks to show the number {total}."
+        return fill("Use base-10 blocks to show the number {total}.", total=derived(total))
     if question_type == "identify_place":
         # Ask about a specific digit's place value
-        return "What is the value of the underlined digit in the number shown by the blocks?"
+        return fill("What is the value of the underlined digit in the number shown by the blocks?")
     # read_blocks — default
-    return "What number do the blocks show?"
+    return fill("What number do the blocks show?")
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -277,7 +279,7 @@ def format_place_value_blocks(
             {"key": chr(ord("A") + i), "value": v, "is_correct": v == correct_answer}
             for i, v in enumerate(all_opts)
         ]
-        final_answer = next(o["key"] for o in mcq_options if o["is_correct"])
+        final_answer = correct_option_key(mcq_options)
     else:
         final_answer = correct_answer
 
@@ -297,7 +299,7 @@ def format_place_value_blocks(
         correct_answer=final_answer,
         distractors=traps,
         hints=ctx.hints,
-        format=f"{interaction_mode}_{answer_collection}",
+        format=fill("{interaction_mode}_{answer_collection}", interaction_mode=derived(interaction_mode), answer_collection=derived(answer_collection)),
         format_data=format_data,
         is_visual=True,
         visual_type="PlaceValueBlocks",

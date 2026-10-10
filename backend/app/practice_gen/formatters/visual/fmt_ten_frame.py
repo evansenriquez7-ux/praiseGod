@@ -40,6 +40,8 @@ import random
 from backend.app.practice_gen.dna.base import FormattedProblem, QuestionContext
 from backend.app.practice_gen.formatters._distractor_fallback import augment_distractors
 from backend.app.practice_gen.formatters._option_order import shuffle_options
+from backend.app.practice_gen.slots import S, derived, fill
+from backend.app.practice_gen.formatters._answer_slots import correct_option_key
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -163,14 +165,14 @@ def _stem(params: dict, interaction_mode: str) -> str:
     capacity = frame_count * _FRAME_CAPACITY
 
     if interaction_mode == "set" or qt == "show_number":
-        return f"Fill in the ten-frame to show {params['filled']}."
+        return fill("Fill in the ten-frame to show {filled}.", filled=derived(params['filled']))
     if qt == "count_filled":
-        return "How many circles are there?"
+        return fill("How many circles are there?")
     if qt == "count_empty":
-        return f"How many empty boxes are there? (There are {capacity} boxes total.)"
+        return fill("How many empty boxes are there? (There are {capacity} boxes total.)", capacity=derived(capacity))
     if qt == "make_ten":
-        return "How many more circles do you need to add to make 10?"
-    return "Answer the question about the ten-frame."
+        return fill("How many more circles do you need to add to make 10?")
+    return fill("Answer the question about the ten-frame.")
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -246,7 +248,7 @@ def format_ten_frame(
             {"key": chr(ord("A") + i), "value": v, "is_correct": v == correct_answer}
             for i, v in enumerate(all_opts)
         ]
-        final_answer = next(o["key"] for o in mcq_options if o["is_correct"])
+        final_answer = correct_option_key(mcq_options)
     else:
         final_answer = correct_answer
 
@@ -266,7 +268,7 @@ def format_ten_frame(
         correct_answer=final_answer,
         distractors=traps,
         hints=ctx.hints,
-        format=f"{interaction_mode}_{answer_collection}",
+        format=fill("{interaction_mode}_{answer_collection}", interaction_mode=derived(interaction_mode), answer_collection=derived(answer_collection)),
         format_data=format_data,
         is_visual=True,
         visual_type="TenFrame",

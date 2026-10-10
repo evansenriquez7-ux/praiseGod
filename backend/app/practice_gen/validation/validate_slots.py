@@ -60,6 +60,11 @@ NAMED LIMITS (Scaling Mandate 6; also in docs/pgen_contract.md §14 and the evid
      names a site, and un-instrumented text has none).
   7. §1J classifies some tags as pupil text (`format_data.context` = 'pure' on mcq), so
      those must be filled too; the classification is §1J's, inherited unchanged.
+  9. `slots.derived` slots (`num.derived`/`text.derived`) bound the TYPE only: 63% of
+     slot-fills (1,233 distinct site/slot pairs, 2026-10-11) are type-only, so for them a
+     judge-approved domain does not bound the value (an H4 prerequisite to tighten).
+ 10. Accounting covers the paths the seeds reach; a slot declared "fill" whose variable has
+     a non-fill alternative on an unreached path is found by a static audit, not here.
 """
 from __future__ import annotations
 

@@ -35,6 +35,7 @@ from ..slots import S, fill
 from ..registry import get_node_competency_bounds, get_node_dnas, get_node_info
 from .interest import get_interest_emoji, get_interest_slots, pick_interest
 from .spines import NARRATIVE_DOMAIN_DNAS, select_spine
+from backend.app.practice_gen.slots import S, derived, fill
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -408,8 +409,7 @@ def generate_context(
         emoji = get_interest_emoji(resolved_theme, grade)
         interest_visible_terms.append(emoji)
         interest_cue = (
-            f"{emoji} {slots['actor']} enjoys {slots['objects']}. "
-            "Here is a math challenge."
+            fill("{emoji} {actor} enjoys {objects}. Here is a math challenge.", emoji=derived(emoji), actor=derived(slots['actor']), objects=derived(slots['objects']))
         )
 
     # ── f. Question text ──────────────────────────────────────────────────────
@@ -421,7 +421,10 @@ def generate_context(
     # that?" — a stem asking for a word, answered with a number.
     if spine is not None:
         try:
-            question_text = spine.render(slots, values)
+            # Template provenance (owner rulings 35 and 41): a money item's spine is chosen by
+            # the concept its `operation` names (add_amounts / find_change), see select_spine above.
+            question_text = spine.render(slots, values,
+                                         src=("operation",) if dna.concept == "money_peso" else ())
         except KeyError:
             # The selected template is incompatible with the DNA payload. Preserve
             # the DNA-authored question when one exists; a symbolic reconstruction is
@@ -447,7 +450,7 @@ def generate_context(
     if interest_theme is not None:
         question_lower = question_text.lower()
         if not any(value.lower() in question_lower for value in interest_visible_terms):
-            question_text = f"{interest_cue} {question_text}"
+            question_text = fill("{interest_cue} {question_text}", interest_cue=derived(interest_cue), question_text=derived(question_text))
 
     # question_text_with_blank: replace the blank_target value with "___"
     blank_target: str = values.get("blank_target", "result")
@@ -479,7 +482,7 @@ def generate_context(
         # match ((?<!\d)…(?!\d), also guarding a trailing decimal) blanks
         # only the intended operand.
         import re as _re
-        pattern = _re.compile(rf"(?<!\d){_re.escape(str(blank_value))}(?!\d)(?!\.\d)")
+        pattern = _re.compile(fill("(?<!\\d){escape}(?!\\d)(?!\\.\\d)", escape=derived(_re.escape(str(blank_value)))))
         question_text_with_blank, _n = pattern.subn("___", question_text, count=1)
         if _n == 0:
             # The blank value is not present as a standalone number (e.g. it
@@ -768,18 +771,18 @@ def _build_symbolic_question(
         if values.get("task_type") == "estimate":
             real_a = values.get("real_a", a)
             real_b = values.get("real_b", b)
-            return f"Estimate the sum: {real_a} + {real_b}"
+            return fill("Estimate the sum: {real_a} + {real_b}", _src=('task_type',), real_a=S(real_a, "value:real_a"), real_b=S(real_b, "value:real_b"))
         strategy = values.get("strategy", "standard")
-        prefix = f"Solve using {expanded_lbl}. " if strategy == "expanded_form" else ""
+        prefix = fill("Solve using {expanded_lbl}. ", _src=('strategy',), expanded_lbl=S(expanded_lbl, "fill")) if strategy == "expanded_form" else ""
 
         if blank == "result":
-            return f"{prefix}What is {a} + {b}?"
+            return fill("{prefix}What is {a} + {b}?", _src=('blank_target',), prefix=derived(prefix, src=('strategy',)), a=derived(a, src=('a', 'start',)), b=derived(b, src=('b', 'skip_by',)))
         elif blank == "b":
             result = values.get("result")
-            return f"{prefix}{a} + ___ = {result}. What is the {missing_lbl}?"
+            return fill("{prefix}{a} + ___ = {result}. What is the {missing_lbl}?", _src=('blank_target',), prefix=derived(prefix, src=('strategy',)), a=derived(a, src=('a', 'start',)), result=S(result, "value:result"), missing_lbl=S(missing_lbl, "fill"))
         else:
             result = values.get("result")
-            return f"{prefix}___ + {b} = {result}. What is the {missing_lbl}?"
+            return fill("{prefix}___ + {b} = {result}. What is the {missing_lbl}?", prefix=derived(prefix, src=('strategy',)), b=derived(b, src=('b', 'skip_by',)), result=S(result, "value:result"), missing_lbl=S(missing_lbl, "fill"))
 
     if concept == "subtraction":
         # Structured slots (H3-R1, owner ruling 28): subtraction's values always carry
@@ -787,15 +790,15 @@ def _build_symbolic_question(
         if values.get("task_type") == "estimate":
             real_a = values.get("real_a", a)
             real_b = values.get("real_b", b)
-            return fill("Estimate the difference: {real_a} − {real_b}",
+            return fill("Estimate the difference: {real_a} − {real_b}", _src=('task_type',),
                         real_a=S(real_a, "value:real_a"), real_b=S(real_b, "value:real_b"))
         if values.get("task_type") in ("expanded_form", "counting_back", "taking_away", "illustrate_number_line_or_inverse", "inverse_of_addition", "number_line_subtraction", "one_or_two_step_subtraction", "one_step_subtraction", "two_step_subtraction") and values.get("question"):
             return values["question"]
         if blank == "result":
-            return fill("What is {a} − {b}?", a=S(a, "value:a"), b=S(b, "value:b"))
+            return fill("What is {a} − {b}?", _src=('blank_target',), a=S(a, "value:a"), b=S(b, "value:b"))
         elif blank == "b":
             result = values.get("result")
-            return fill("{a} − ___ = {result}. What is the {missing}?", a=S(a, "value:a"),
+            return fill("{a} − ___ = {result}. What is the {missing}?", _src=('blank_target',), a=S(a, "value:a"),
                         result=S(result, "value:result"), missing=S(missing_lbl, "fill"))
         else:
             result = values.get("result")
@@ -809,34 +812,34 @@ def _build_symbolic_question(
         if values.get("task_type") == "estimate":
             real_a = values.get("real_a", a)
             real_b = values.get("real_b", b)
-            return f"Estimate the product: {real_a} × {real_b}"
+            return fill("Estimate the product: {real_a} × {real_b}", _src=('task_type',), real_a=S(real_a, "value:real_a"), real_b=derived(real_b, src=('real_b', 'b', 'skip_by',)))
         if values.get("task_type") == "equal_groups" and blank in ["total", "result"]:
             group_form = values.get("group_form")
             plural_name = values.get("plural_name")
             if not plural_name:
                 plural_name = number_group_name(a, b)
-            terms = " + ".join([str(a)] * b) if b <= 5 else f"{a} added {b} times"
+            terms = " + ".join([str(a)] * b) if b <= 5 else fill("{a} added {b} times", _src=('task_type', 'blank_target',), a=derived(a, src=('a', 'start',)), b=derived(b, src=('b', 'skip_by',)))
             if group_form == "plural_name":
-                return f"Count {b} {count_noun(b, plural_name)} by repeated addition ({terms}): how many in all?"
+                return fill("Count {b} {count_noun} by repeated addition ({terms}): how many in all?", _src=('group_form', 'task_type', 'blank_target',), b=derived(b, src=('b', 'skip_by',)), count_noun=S(count_noun(b, plural_name), "value:plural_name"), terms=derived(terms, src=('b', 'skip_by', 'a', 'start',)))
             unit = "group" if b == 1 else "groups"
             # "There are 1 group of 1" -- the noun was pluralized and the verb was not.
             # One sentence, four copies (doc_rem.md R2); all four say it the same way.
             was = "is" if b == 1 else "are"
-            return f"There {was} {b} {unit} of {a} ({terms}). How many in all?"
+            return fill("There {was} {b} {unit} of {a} ({terms}). How many in all?", _src=('task_type', 'blank_target',), was=derived(was, src=('b', 'skip_by',)), b=derived(b, src=('b', 'skip_by',)), unit=derived(unit, src=('b', 'skip_by',)), a=derived(a, src=('a', 'start',)), terms=derived(terms, src=('b', 'skip_by', 'a', 'start',)))
         if values.get("task_type") == "repeated_addition" and blank in ["total", "result"]:
             terms = " + ".join([str(a)] * b)
-            return f"{terms} = ___. What is {a} × {b}?"
+            return fill("{terms} = ___. What is {a} × {b}?", _src=('task_type', 'blank_target',), terms=derived(terms, src=('b', 'skip_by', 'a', 'start',)), a=derived(a, src=('a', 'start',)), b=derived(b, src=('b', 'skip_by',)))
         if values.get("task_type") == "skip_counting" and blank in ["total", "result"]:
             seq = ", ".join(str(a * i) for i in range(1, b + 1))
-            return f"Count by {a}s: {seq}. What is {a} × {b}?"
+            return fill("Count by {a}s: {seq}. What is {a} × {b}?", _src=('task_type', 'blank_target',), a=derived(a, src=('a', 'start',)), seq=derived(seq, src=('a', 'start', 'b', 'skip_by',)), b=derived(b, src=('b', 'skip_by',)))
         if values.get("task_type") == "number_line_jumps" and blank in ["total", "result"]:
-            return f"Starting at 0, take {b} equal jumps of {a} on the number line. What is {a} × {b}?"
+            return fill("Starting at 0, take {b} equal jumps of {a} on the number line. What is {a} × {b}?", _src=('task_type', 'blank_target',), b=derived(b, src=('b', 'skip_by',)), a=derived(a, src=('a', 'start',)))
         if blank in ["total", "result"]:
-            return f"What is {groups} × {n}?"
+            return fill("What is {groups} × {n}?", _src=('blank_target',), groups=derived(groups, src=('groups', 'a', 'start',)), n=derived(n, src=('n', 'b', 'skip_by',)))
         elif blank in ["b", "n"]:
-            return f"{groups} × ___ = {total}. What is the {missing_lbl}?"
+            return fill("{groups} × ___ = {total}. What is the {missing_lbl}?", _src=('blank_target',), groups=derived(groups, src=('groups', 'a', 'start',)), total=derived(total, src=('total', 'result',)), missing_lbl=S(missing_lbl, "fill"))
         else:
-            return f"___ × {n} = {total}. What is the {missing_lbl}?"
+            return fill("___ × {n} = {total}. What is the {missing_lbl}?", n=derived(n, src=('n', 'b', 'skip_by',)), total=derived(total, src=('total', 'result',)), missing_lbl=S(missing_lbl, "fill"))
 
     if concept == "division":
         total = values.get("total", a)
@@ -845,13 +848,13 @@ def _build_symbolic_question(
         if values.get("task_type") == "estimate":
             real_a = values.get("real_a", a)
             real_b = values.get("real_b", b)
-            return f"Estimate the quotient: {real_a} ÷ {real_b}"
+            return fill("Estimate the quotient: {real_a} ÷ {real_b}", _src=('task_type',), real_a=S(real_a, "value:real_a"), real_b=derived(real_b, src=('real_b', 'b', 'skip_by',)))
         if blank in ["result", "groups"]:
-            return f"What is {total} ÷ {n}?"
+            return fill("What is {total} ÷ {n}?", _src=('blank_target',), total=derived(total, src=('total', 'a', 'start',)), n=derived(n, src=('n', 'b', 'skip_by',)))
         elif blank in ["b", "n"]:
-            return f"{total} ÷ ___ = {groups}. What is the {missing_lbl}?"
+            return fill("{total} ÷ ___ = {groups}. What is the {missing_lbl}?", _src=('blank_target',), total=derived(total, src=('total', 'a', 'start',)), groups=derived(groups, src=('groups', 'result',)), missing_lbl=S(missing_lbl, "fill"))
         else:
-            return f"___ ÷ {n} = {groups}. What is the {missing_lbl}?"
+            return fill("___ ÷ {n} = {groups}. What is the {missing_lbl}?", n=derived(n, src=('n', 'b', 'skip_by',)), groups=derived(groups, src=('groups', 'result',)), missing_lbl=S(missing_lbl, "fill"))
 
     # ── Place value ───────────────────────────────────────────────────────────
     if concept == "place_value":
@@ -864,27 +867,27 @@ def _build_symbolic_question(
             # NOT_YET_KNOWN vocabulary (the gram abbreviation, introduced
             # later in mass_capacity), so this collided every time despite
             # having nothing to do with grams.
-            return f"Write {number} as tens and ones, for example 45 = 40 + 5."
+            return fill("Write {number} as tens and ones, for example 45 = 40 + 5.", _src=('task_type',), number=derived(number, src=('number', 'a', 'start',)))
         digit = values.get("digit", values.get("digit_at_position", b))
         pv_label = VocabGated("place value", "place value", "value").resolve(cumulative_vocab)
         if task_type == "identify_place":
-            return f"What place is the digit {digit} in, in the number {number}?"
+            return fill("What place is the digit {digit} in, in the number {number}?", _src=('task_type',), digit=derived(digit, src=('digit', 'digit_at_position', 'b', 'skip_by',)), number=derived(number, src=('number', 'a', 'start',)))
         if task_type == "identify_digit":
             place_name = values.get("place_name", "tens")
-            return f"In {number}, what digit is in the {place_name} place?"
-        return f"What is the {pv_label} of the digit {digit} in {number}?"
+            return fill("In {number}, what digit is in the {place_name} place?", _src=('task_type',), number=derived(number, src=('number', 'a', 'start',)), place_name=S(place_name, "value:place_name"))
+        return fill("What is the {pv_label} of the digit {digit} in {number}?", _src=('task_type',), pv_label=S(pv_label, "fill"), digit=derived(digit, src=('digit', 'digit_at_position', 'b', 'skip_by',)), number=derived(number, src=('number', 'a', 'start',)))
 
     # ── Counting / ordinal ────────────────────────────────────────────────────
     if concept == "counting":
         direction = values.get("direction", "forward")
         if direction == "backward":
-            return f"What number comes before {a} when counting by {b}?"
+            return fill("What number comes before {a} when counting by {b}?", _src=('direction',), a=derived(a, src=('a', 'start',)), b=derived(b, src=('b', 'skip_by',)))
         else:
-            return f"What number comes after {a} when counting by {b}?"
+            return fill("What number comes after {a} when counting by {b}?", a=derived(a, src=('a', 'start',)), b=derived(b, src=('b', 'skip_by',)))
 
     if concept == "ordinal_numbers":
         n = values.get("n", a)
-        return f"What is the ordinal name for position {n}?"
+        return fill("What is the ordinal name for position {n}?", n=derived(n, src=('n', 'a', 'start',)))
 
     # ── Comparing / ordering ──────────────────────────────────────────────────
     if concept == "comparing_ordering":
@@ -892,9 +895,9 @@ def _build_symbolic_question(
         if task_type == "order_set":
             nums = values.get("numbers", [])
             nums_str = ", ".join(str(x) for x in nums)
-            return f"Order these numbers from least to greatest: {nums_str}"
+            return fill("Order these numbers from least to greatest: {nums_str}", _src=('task_type',), nums_str=derived(nums_str, src=('numbers',)))
         elif task_type == "find_between":
-            return f"What number is between {a} and {b}?"
+            return fill("What number is between {a} and {b}?", _src=('task_type',), a=derived(a, src=('a', 'start',)), b=derived(b, src=('b', 'skip_by',)))
         else:
             # compare_two's answer is a relation symbol (">", "<", "="), but this
             # stem used to ask "Which is greater: 18 or 30?" — a question whose
@@ -902,7 +905,7 @@ def _build_symbolic_question(
             # a pupil answering "30" is marked wrong, and a pupil reading the key
             # literally is taught that "<" means greater. Ask for what is
             # actually keyed.
-            return f"Compare the numbers: {a} ___ {b}. Which sign is correct: >, <, or =?"
+            return fill("Compare the numbers: {a} ___ {b}. Which sign is correct: >, <, or =?", a=derived(a, src=('a', 'start',)), b=derived(b, src=('b', 'skip_by',)))
 
     # ── Missing number ────────────────────────────────────────────────────────
     if concept == "missing_number":
@@ -912,11 +915,11 @@ def _build_symbolic_question(
         blank_pos = values.get("blank_position", "result")
         result = values.get("result", values.get("total"))
         if blank_pos == "start":
-            return f"___ {op_symbol} {b} = {result}. What is the {missing_lbl}?"
+            return fill("___ {op_symbol} {b} = {result}. What is the {missing_lbl}?", _src=('blank_position',), op_symbol=derived(op_symbol, src=('operation',)), b=derived(b, src=('b', 'skip_by',)), result=derived(result, src=('result', 'total',)), missing_lbl=S(missing_lbl, "fill"))
         elif blank_pos == "change":
-            return f"{a} {op_symbol} ___ = {result}. What is the {missing_lbl}?"
+            return fill("{a} {op_symbol} ___ = {result}. What is the {missing_lbl}?", _src=('blank_position',), a=derived(a, src=('a', 'start',)), op_symbol=derived(op_symbol, src=('operation',)), result=derived(result, src=('result', 'total',)), missing_lbl=S(missing_lbl, "fill"))
         else:
-            return f"{a} {op_symbol} {b} = ___. What is the {missing_lbl}?"
+            return fill("{a} {op_symbol} {b} = ___. What is the {missing_lbl}?", a=derived(a, src=('a', 'start',)), op_symbol=derived(op_symbol, src=('operation',)), b=derived(b, src=('b', 'skip_by',)), missing_lbl=S(missing_lbl, "fill"))
 
     # ── Patterns ─────────────────────────────────────────────────────────────
     if concept == "patterns":
@@ -932,7 +935,7 @@ def _build_symbolic_question(
             # sentinel), asking for "the next number" when the actual
             # expected answer is the rule's step size, which doesn't even
             # continue the visible sequence.
-            seq_str = ", ".join(str(x) for x in seq) if seq else f"{a}, ..."
+            seq_str = ", ".join(str(x) for x in seq) if seq else fill("{a}, ...", _src=('missing_index', 'rule_description',), a=derived(a, src=('a', 'start',)))
             # "combined" patterns (mat_g3_na_q3_6: "repeating and
             # increasing/decreasing components") answer with the BLOCK-
             # to-block step, not a per-term difference -- same root cause
@@ -947,13 +950,10 @@ def _build_symbolic_question(
             # fix, all via mcq/cloze specifically.
             if values.get("pattern_kind") == "combined":
                 return (
-                    f"This pattern follows a rule: {seq_str}, ... Each group of numbers repeats, "
-                    f"then the next group changes by the same amount. What number is added or "
-                    f"subtracted from one group to the next?"
+                    fill("This pattern follows a rule: {seq_str}, ... Each group of numbers repeats, then the next group changes by the same amount. What number is added or subtracted from one group to the next?", _src=('pattern_kind', 'missing_index', 'rule_description',), seq_str=derived(seq_str, src=('sequence', 'a', 'start',)))
                 )
             return (
-                f"This pattern follows a rule: {seq_str}, ... "
-                f"What number is added or subtracted each time to generate it?"
+                fill("This pattern follows a rule: {seq_str}, ... What number is added or subtracted each time to generate it?", _src=('missing_index', 'rule_description',), seq_str=derived(seq_str, src=('sequence', 'a', 'start',)))
             )
         if missing_index is not None and 0 <= missing_index < len(seq):
             # ask_type="missing_middle": the answer (visible[missing_index])
@@ -973,10 +973,10 @@ def _build_symbolic_question(
             # "term" is accurate for both and matches this DNA's own
             # VOCAB_TERM vocabulary.
             unit = "letter" if any(isinstance(x, str) for x in seq) else "number"
-            return f"What {unit} is missing in the pattern: {seq_str}?"
-        seq_str = ", ".join(str(x) for x in seq) if seq else f"{a}, ..."
+            return fill("What {unit} is missing in the pattern: {seq_str}?", _src=('missing_index', 'sequence',), unit=derived(unit, src=('sequence',)), seq_str=derived(seq_str, src=('missing_index', 'sequence',)))
+        seq_str = ", ".join(str(x) for x in seq) if seq else fill("{a}, ...", a=derived(a, src=('a', 'start',)))
         unit = "letter" if any(isinstance(x, str) for x in seq) else "number"
-        return f"What is the next {unit} in the pattern: {seq_str}?"
+        return fill("What is the next {unit} in the pattern: {seq_str}?", unit=derived(unit, src=('sequence',)), seq_str=derived(seq_str, src=('sequence', 'a', 'start',)))
 
     if concept == "fractions":
         if values.get("question"):
@@ -998,27 +998,22 @@ def _build_symbolic_question(
             b_num = values.get("b_num", numer)
             b_den = values.get("b_den", denom)
             return (
-                f"Compare the fractions: \\(\\frac{{{a_num}}}{{{a_den}}}\\) ___ "
-                f"\\(\\frac{{{b_num}}}{{{b_den}}}\\). Which sign is correct: >, <, or =?"
+                fill("Compare the fractions: \\(\\frac{{{a_num}}}{{{a_den}}}\\) ___ \\(\\frac{{{b_num}}}{{{b_den}}}\\). Which sign is correct: >, <, or =?", _src=('operation',), a_num=derived(a_num, src=('a_num', 'numerator', 'a', 'start',)), a_den=derived(a_den, src=('a_den', 'denominator', 'b', 'skip_by',)), b_num=derived(b_num, src=('b_num', 'numerator', 'a', 'start',)), b_den=derived(b_den, src=('b_den', 'denominator', 'b', 'skip_by',)))
             )
         if operation in ("add_subtract", "add", "subtract"):
             a_num = values.get("a_num", numer)
             b_num = values.get("b_num", 0)
             a_den = values.get("a_den", denom)
             b_den = values.get("b_den", denom)
-            a_part = "1 part is" if a_num == 1 else f"{a_num} parts are"
+            a_part = fill("1 part is") if a_num == 1 else fill("{a_num} parts are", _src=('operation',), a_num=derived(a_num, src=('a_num', 'numerator', 'a', 'start',)))
             if operation == "subtract":
-                b_part = "1 shaded part is" if b_num == 1 else f"{b_num} shaded parts are"
+                b_part = "1 shaded part is" if b_num == 1 else fill("{b_num} shaded parts are", _src=('operation',), b_num=derived(b_num, src=('b_num',)))
                 return (
-                    f"A shape is divided into {a_den} equal parts. {a_part} shaded. "
-                    f"If {b_part} taken away, what fraction of the shape remains shaded: "
-                    f"\\(\\frac{{{a_num}}}{{{a_den}}} - \\frac{{{b_num}}}{{{b_den}}}\\)?"
+                    fill("A shape is divided into {a_den} equal parts. {a_part} shaded. If {b_part} taken away, what fraction of the shape remains shaded: \\(\\frac{{{a_num}}}{{{a_den}}} - \\frac{{{b_num}}}{{{b_den}}}\\)?", _src=('operation',), a_den=derived(a_den, src=('a_den', 'denominator', 'b', 'skip_by',)), a_part=S(a_part, "fill"), b_part=derived(b_part, src=('b_num',)), a_num=derived(a_num, src=('a_num', 'numerator', 'a', 'start',)), b_num=derived(b_num, src=('b_num',)), b_den=derived(b_den, src=('b_den', 'denominator', 'b', 'skip_by',)))
                 )
-            b_part = "1 more part is" if b_num == 1 else f"{b_num} more parts are"
+            b_part = "1 more part is" if b_num == 1 else fill("{b_num} more parts are", _src=('operation',), b_num=derived(b_num, src=('b_num',)))
             return (
-                f"A shape is divided into {a_den} equal parts. {a_part} shaded and {b_part} shaded. "
-                f"What fraction of the shape is shaded in all: "
-                f"\\(\\frac{{{a_num}}}{{{a_den}}} + \\frac{{{b_num}}}{{{b_den}}}\\)?"
+                fill("A shape is divided into {a_den} equal parts. {a_part} shaded and {b_part} shaded. What fraction of the shape is shaded in all: \\(\\frac{{{a_num}}}{{{a_den}}} + \\frac{{{b_num}}}{{{b_den}}}\\)?", _src=('operation',), a_den=derived(a_den, src=('a_den', 'denominator', 'b', 'skip_by',)), a_part=derived(a_part, src=('a_num', 'numerator', 'a', 'start',)), b_part=derived(b_part, src=('b_num',)), a_num=derived(a_num, src=('a_num', 'numerator', 'a', 'start',)), b_num=derived(b_num, src=('b_num',)), b_den=derived(b_den, src=('b_den', 'denominator', 'b', 'skip_by',)))
             )
         # The previous phrasing — "What fraction does \(\frac{n}{d}\) equal parts
         # represent?" — was both ungrammatical and self-answering: it displayed
@@ -1038,12 +1033,10 @@ def _build_symbolic_question(
             # count spread across them.
             num_wholes = -(-numer // denom)  # ceiling division
             return (
-                f"There are {num_wholes} identical shapes, each divided into {denom} equal parts. "
-                f"{numer} {part_word} shaded in total. What fraction is shaded?"
+                fill("There are {num_wholes} identical shapes, each divided into {denom} equal parts. {numer} {part_word} shaded in total. What fraction is shaded?", _src=('numerator', 'denominator',), num_wholes=derived(num_wholes, src=('denominator', 'b', 'skip_by', 'numerator', 'a', 'start',)), denom=derived(denom, src=('denominator', 'b', 'skip_by',)), numer=derived(numer, src=('numerator', 'a', 'start',)), part_word=derived(part_word, src=('numerator', 'a', 'start',)))
             )
         return (
-            f"A shape is divided into {denom} equal parts. {numer} {part_word} shaded. "
-            f"What fraction of the shape is shaded?"
+            fill("A shape is divided into {denom} equal parts. {numer} {part_word} shaded. What fraction of the shape is shaded?", denom=derived(denom, src=('denominator', 'b', 'skip_by',)), numer=derived(numer, src=('numerator', 'a', 'start',)), part_word=derived(part_word, src=('numerator', 'a', 'start',)))
         )
 
     # ── Money ────────────────────────────────────────────────────────────────
@@ -1057,7 +1050,7 @@ def _build_symbolic_question(
             paid = values.get("a")
             cost = values.get("b")
             if paid is not None and cost is not None:
-                return f"You paid ₱{paid} for an item that costs ₱{cost}. How much change do you receive?"
+                return fill("You paid ₱{paid} for an item that costs ₱{cost}. How much change do you receive?", _src=('a', 'b', 'operation',), paid=S(paid, "value:a"), cost=S(cost, "value:b"))
             return "How much change do you receive?"
 
         if amounts:
@@ -1075,39 +1068,39 @@ def _build_symbolic_question(
                 count = counts[denom]
                 if is_centavo:
                     unit = "coin"
-                    face = f"{denom}¢"
+                    face = fill("{denom}¢", _src=('amounts',), denom=derived(denom))
                 else:
                     unit = "bill" if denom >= 20 else "coin"
-                    face = f"₱{denom}"
+                    face = fill("₱{denom}", _src=('amounts',), denom=derived(denom))
                 if count > 1:
                     unit += "s"
-                parts.append(f"{count} {face} {unit}")
+                parts.append(fill("{count} {face} {unit}", _src=('amounts',), count=derived(count, src=('amounts',)), face=S(face, "fill"), unit=derived(unit)))
 
             if len(parts) == 1:
                 desc = parts[0]
             elif len(parts) == 2:
-                desc = f"{parts[0]} and {parts[1]}"
+                desc = fill("{v} and {v2}", _src=('amounts',), v=S(parts[0], "fill"), v2=S(parts[1], "fill"))
             else:
-                desc = ", ".join(parts[:-1]) + f", and {parts[-1]}"
+                desc = fill("{join}, and {v}", _src=('amounts',), join=derived(", ".join(parts[:-1])), v=S(parts[-1], "fill"))
             desc_hash = int(hashlib.md5(desc.encode()).hexdigest(), 16)
             if is_centavo:
                 # Name the unit the answer is in, so the total is unambiguous.
                 templates = [
-                    f"What is the total value of {desc}, in centavos?",
-                    f"Find the total amount of {desc}, in centavos:",
-                    f"How much is {desc} altogether, in centavos?",
+                    fill("What is the total value of {desc}, in centavos?", _src=('amounts',), desc=S(desc, "fill")),
+                    fill("Find the total amount of {desc}, in centavos:", _src=('amounts',), desc=S(desc, "fill")),
+                    fill("How much is {desc} altogether, in centavos?", _src=('amounts',), desc=S(desc, "fill")),
                 ]
                 return templates[desc_hash % len(templates)]
             templates = [
-                f"What is the total value of {desc}?",
-                f"Find the total amount of {desc}:",
-                f"How much is {desc} altogether?",
-                f"Determine the total value of {desc}:",
+                fill("What is the total value of {desc}?", _src=('amounts',), desc=S(desc, "fill")),
+                fill("Find the total amount of {desc}:", _src=('amounts',), desc=S(desc, "fill")),
+                fill("How much is {desc} altogether?", _src=('amounts',), desc=S(desc, "fill")),
+                fill("Determine the total value of {desc}:", _src=('amounts',), desc=S(desc, "fill")),
             ]
             return templates[desc_hash % len(templates)]
         else:
             total = values.get("total", values.get("result", a))
-            return f"What is the total value of the money shown?"
+            return fill("What is the total value of the money shown?")
 
 
     # ── Rounding ──────────────────────────────────────────────────────────────
@@ -1122,7 +1115,7 @@ def _build_symbolic_question(
         # and "nearest thousand" never once appear in the rendered text,
         # even on samples whose own values already reflect them).
         precision = values.get("round_to", 10)
-        return f"Round {number} to the nearest {precision}."
+        return fill("Round {number} to the nearest {precision}.", number=S(number, "value:number"), precision=derived(precision, src=('round_to',)))
 
     # ── Number reading ────────────────────────────────────────────────────────
     if concept == "number_reading":
@@ -1130,11 +1123,11 @@ def _build_symbolic_question(
         word_form = values.get("word_form")
         task_type = values.get("task_type", "numeral_to_word")
         if task_type in ("word_to_numeral", "identify_value", "number_line") and word_form:
-            return f"Write the number: {word_form}."
+            return fill("Write the number: {word_form}.", _src=('word_form', 'task_type',), word_form=S(word_form, "value:word_form"))
         elif task_type == "numeral_to_expanded":
-            return f"Write {number} in expanded form."
+            return fill("Write {number} in expanded form.", _src=('task_type',), number=derived(number, src=('number', 'a', 'start',)))
         else:
-            return f"Write {number} in words."
+            return fill("Write {number} in words.", _src=('task_type',), number=S(number, "value:number"))
 
     # ── Time reading ──────────────────────────────────────────────────────────
     if concept == "time_reading":
@@ -1142,7 +1135,7 @@ def _build_symbolic_question(
             return values["question"]
         hour = values.get("hour", a)
         minute = values.get("minute", 0)
-        return f"What time does the clock show? ({hour}:{minute:02d})"
+        return fill("What time does the clock show? ({hour}:{minute:02d})", hour=derived(hour, src=('hour', 'a', 'start',)), minute=derived(minute, src=('minute',)))
 
     # ── Calendar ──────────────────────────────────────────────────────────────
     if concept == "calendar":
@@ -1159,7 +1152,7 @@ def _build_symbolic_question(
             val = values.get("value")
             from_u = values.get("from_unit")
             to_u = values.get("to_unit")
-            return f"Convert {val} {from_u} to {to_u}."
+            return fill("Convert {val} {from_u} to {to_u}.", _src=('task_type',), val=S(val, "value:value"), from_u=S(from_u, "value:from_unit"), to_u=S(to_u, "value:to_unit"))
         if task_type == "compare":
             val_a = values.get("value_a")
             val_b = values.get("value_b")
@@ -1170,11 +1163,11 @@ def _build_symbolic_question(
             # mat_g1_mg_q2_1). cm/m have no plural form to strip.
             u_a = u[:-1] if val_a == 1 and u.endswith("s") and u not in ("cm", "m") else u
             u_b = u[:-1] if val_b == 1 and u.endswith("s") and u not in ("cm", "m") else u
-            return f"Which is longer: {val_a} {u_a} or {val_b} {u_b}?"
+            return fill("Which is longer: {val_a} {u_a} or {val_b} {u_b}?", _src=('task_type',), val_a=S(val_a, "value:value_a"), u_a=derived(u_a, src=('unit', 'value_a',)), val_b=S(val_b, "value:value_b"), u_b=derived(u_b, src=('unit', 'value_b',)))
         unit = values.get("unit", "cm")
         length = values.get("length")
         unit = unit[:-1] if length == 1 and unit.endswith("s") and unit not in ("cm", "m") else unit
-        return f"Measure the object. Its length is ___ {unit}."
+        return fill("Measure the object. Its length is ___ {unit}.", unit=derived(unit, src=('unit', 'length',)))
 
     if concept == "mass_capacity":
         task_type = values.get("task_type")
@@ -1183,12 +1176,12 @@ def _build_symbolic_question(
             val = values.get("value")
             from_u = values.get("from_unit")
             to_u = values.get("to_unit")
-            return f"Convert {val} {from_u} to {to_u}."
+            return fill("Convert {val} {from_u} to {to_u}.", _src=('task_type',), val=S(val, "value:value"), from_u=S(from_u, "value:from_unit"), to_u=S(to_u, "value:to_unit"))
         if task_type == "compare":
             val_a = values.get("value_a")
             val_b = values.get("value_b")
             u = values.get("unit")
-            return f"Which is {'heavier' if mtype == 'mass' else 'more'}: {val_a} {u} or {val_b} {u}?"
+            return fill("Which is {v}: {val_a} {u} or {val_b} {u}?", _src=('task_type',), v=derived('heavier' if mtype == 'mass' else 'more', src=('measurement_type',)), val_a=S(val_a, "value:value_a"), u=S(u, "value:unit"), val_b=S(val_b, "value:value_b"))
         unit = values.get("unit", "kg")
         mtype = values.get("measurement_type", "mass")
         target_noun = "container" if mtype == "capacity" else "object"
@@ -1213,10 +1206,9 @@ def _build_symbolic_question(
             # hit for length_measurement's equivalent fix).
             article = "A" if target_noun.startswith("c") else "An"
             return (
-                f"{article} {target_noun}'s {mc_lbl} measures {val} {unit}. "
-                f"About how many {unit} is that, rounded to the nearest {round_to}?"
+                fill("{article} {target_noun}'s {mc_lbl} measures {val} {unit}. About how many {unit} is that, rounded to the nearest {round_to}?", _src=('task_type',), article=derived(article, src=('measurement_type',)), target_noun=derived(target_noun, src=('measurement_type',)), mc_lbl=S(mc_lbl, "fill"), val=derived(val, src=('value',)), unit=S(unit, "value:unit"), round_to=derived(round_to, src=('round_to',)))
             )
-        return f"What is the {mc_lbl} of the {target_noun} in {unit}?"
+        return fill("What is the {mc_lbl} of the {target_noun} in {unit}?", mc_lbl=S(mc_lbl, "fill"), target_noun=derived(target_noun, src=('measurement_type',)), unit=S(unit, "value:unit"))
 
     if concept == "perimeter":
         if values.get("question"):
@@ -1228,14 +1220,13 @@ def _build_symbolic_question(
             perimeter = values.get("perimeter", "?")
             if shape == "triangle":
                 known = values.get("known_sides", {})
-                known_str = " and ".join(f"{v} cm" for v in known.values())
-                return f"A triangle has a perimeter of {perimeter} cm. Two of its sides are {known_str}. What is the length of the third side?"
+                known_str = " and ".join(fill("{v} cm", _src=('shape', 'task_type',), v=derived(v)) for v in known.values())
+                return fill("A triangle has a perimeter of {perimeter} cm. Two of its sides are {known_str}. What is the length of the third side?", _src=('shape', 'task_type',), perimeter=derived(perimeter, src=('perimeter',)), known_str=derived(known_str, src=('known_sides',)))
             known_side = values.get("known_side", "l")
             known_value = values.get("known_value", "?")
             other = "width" if known_side == "l" else "length"
             return (
-                f"A {shape} has a perimeter of {perimeter} cm and a "
-                f"{'length' if known_side == 'l' else 'width'} of {known_value} cm. What is its {other}?"
+                fill("A {shape} has a perimeter of {perimeter} cm and a {v} of {known_value} cm. What is its {other}?", _src=('task_type',), shape=derived(shape, src=('shape',)), perimeter=derived(perimeter, src=('perimeter',)), v=derived('length' if known_side == 'l' else 'width', src=('known_side',)), known_value=derived(known_value, src=('known_value',)), other=derived(other, src=('known_side',)))
             )
         if values.get("context") == "word_problem":
             # "Solve problems involving perimeter" (mat_g2_mg_q4_6).
@@ -1251,14 +1242,11 @@ def _build_symbolic_question(
             # framings below stay in cm, where an abstract figure is what is meant.
             if shape == "square":
                 return (
-                    f"A square garden has a side of {sides.get('s', '?')} m. "
-                    f"How much fencing is needed to go all the way around it?"
+                    fill("A square garden has a side of {s} m. How much fencing is needed to go all the way around it?", _src=('shape', 'context',), s=derived(sides.get('s', '?'), src=('sides',)))
                 )
             if shape == "triangle":
                 return (
-                    f"A triangular flower bed has sides {sides.get('a', '?')} m, "
-                    f"{sides.get('b', '?')} m, and {sides.get('c', '?')} m. "
-                    f"How much edging is needed to go all the way around it?"
+                    fill("A triangular flower bed has sides {a} m, {b} m, and {c} m. How much edging is needed to go all the way around it?", _src=('shape', 'context',), a=derived(sides.get('a', '?'), src=('sides',)), b=derived(sides.get('b', '?'), src=('sides',)), c=derived(sides.get('c', '?'), src=('sides',)))
                 )
             # A garden narrower than it is long reads as an error to anyone
             # picturing it; blind review found "a garden whose width exceeds its
@@ -1268,14 +1256,13 @@ def _build_symbolic_question(
             if isinstance(l_val, int) and isinstance(w_val, int) and w_val > l_val:
                 l_val, w_val = w_val, l_val
             return (
-                f"A rectangular garden is {l_val} m long and "
-                f"{w_val} m wide. How much fencing is needed to go all the way around it?"
+                fill("A rectangular garden is {l_val} m long and {w_val} m wide. How much fencing is needed to go all the way around it?", _src=('context', 'shape',), l_val=derived(l_val), w_val=derived(w_val))
             )
         if shape == "square":
-            return f"A square has a side of {sides.get('s', '?')} cm. What is its perimeter?"
+            return fill("A square has a side of {s} cm. What is its perimeter?", _src=('shape',), s=derived(sides.get('s', '?'), src=('sides',)))
         if shape == "triangle":
-            return f"A triangle has sides {sides.get('a', '?')} cm, {sides.get('b', '?')} cm, and {sides.get('c', '?')} cm. What is its perimeter?"
-        return f"A {shape} has sides {sides.get('l', '?')} cm and {sides.get('w', '?')} cm. What is its perimeter?"
+            return fill("A triangle has sides {a} cm, {b} cm, and {c} cm. What is its perimeter?", _src=('shape',), a=derived(sides.get('a', '?'), src=('sides',)), b=derived(sides.get('b', '?'), src=('sides',)), c=derived(sides.get('c', '?'), src=('sides',)))
+        return fill("A {shape} has sides {l} cm and {w} cm. What is its perimeter?", shape=S(shape, "value:shape"), l=derived(sides.get('l', '?'), src=('sides',)), w=derived(sides.get('w', '?'), src=('sides',)))
 
     if concept == "area":
         if values.get("question"):
@@ -1293,12 +1280,12 @@ def _build_symbolic_question(
         task_type = values.get("task_type", "find_area")
         if shape == "square":
             s = sides.get("s", "?")
-            dims = f"a side of {s} {unit.replace('sq ', '')}"
-            rows_cols = f"{s} rows and {s} columns"
+            dims = fill("a side of {s} {replace}", _src=('shape',), s=derived(s, src=('sides',)), replace=S(unit.replace('sq ', ''), "value:length_unit"))
+            rows_cols = fill("{s} rows and {s} columns", _src=('shape',), s=derived(s, src=('sides',)))
         else:
             l, w = sides.get("l", "?"), sides.get("w", "?")
-            dims = f"sides {l} {unit.replace('sq ', '')} and {w} {unit.replace('sq ', '')}"
-            rows_cols = f"{l} rows and {w} columns"
+            dims = fill("sides {l} {replace} and {w} {replace}", l=derived(l), replace=S(unit.replace('sq ', ''), "value:length_unit"), w=derived(w))
+            rows_cols = fill("{l} rows and {w} columns", l=derived(l), w=derived(w))
         if task_type == "find_missing_dimension":
             # No "?" placeholders. These three fields are the whole content of the
             # item; defaulting them printed a well-formed sentence with a hole in
@@ -1319,9 +1306,7 @@ def _build_symbolic_question(
             known_val = values["known_value"]
             other = "width" if known_dim == "l" else "length"
             return (
-                f"A {shape} has an area of {area} {unit} and a "
-                f"{'length' if known_dim == 'l' else 'width'} of {known_val} "
-                f"{unit.replace('sq ', '')}. What is its {other}?"
+                fill("A {shape} has an area of {area} {unit} and a {v} of {known_val} {replace}. What is its {other}?", _src=('task_type',), shape=derived(shape, src=('shape',)), area=S(area, "value:area"), unit=derived(unit, src=('unit',)), v=derived('length' if known_dim == 'l' else 'width', src=('known_dimension',)), known_val=S(known_val, "value:known_value"), replace=derived(unit.replace('sq ', ''), src=('unit',)), other=derived(other, src=('known_dimension',)))
             )
         if task_type == "illustrate_tiles":
             # Two phrasings alternated by a value already fixed by the seed
@@ -1332,13 +1317,10 @@ def _build_symbolic_question(
             area_val = values.get("answer", 0)
             if isinstance(area_val, (int, float)) and int(area_val) % 2 == 0:
                 return (
-                    f"A {shape} is covered edge-to-edge with unit square tiles, "
-                    f"arranged in {rows_cols}. Estimate how many unit tiles cover "
-                    f"the {shape} in all."
+                    fill("A {shape} is covered edge-to-edge with unit square tiles, arranged in {rows_cols}. Estimate how many unit tiles cover the {shape} in all.", _src=('answer', 'task_type',), shape=S(shape, "value:shape"), rows_cols=S(rows_cols, "fill"))
                 )
             return (
-                f"You are laying unit square tiles over a {shape}, fitting "
-                f"{rows_cols} exactly. About how many tiles in total will you use?"
+                fill("You are laying unit square tiles over a {shape}, fitting {rows_cols} exactly. About how many tiles in total will you use?", _src=('task_type',), shape=S(shape, "value:shape"), rows_cols=S(rows_cols, "fill"))
             )
         if task_type == "derive_formula":
             # The cases are shown and the RULE is asked for. Printing the rule in
@@ -1358,10 +1340,10 @@ def _build_symbolic_question(
             # caught this in four stems.
             def _case(r, c, t):
                 article = "an" if r == 8 else "a"
-                return f"{article} {r} by {c} {shape} takes {t} tiles"
+                return fill("{article} {r} by {c} {shape} takes {t} tiles", article=derived(article), r=derived(r), c=derived(c), shape=derived(shape), t=derived(t))
 
             shown = ", ".join(_case(*case) for case in cases[:-1])
-            shown += f", and {_case(*cases[-1])}"
+            shown += fill(", and {case}", _src=('task_type',), case=S(_case(*cases[-1]), "fill"))
             # Two framings, alternated on a value the seed has already fixed (the
             # first case's total), so the choice is deterministic without threading
             # a new rng through this shared builder -- the same device the
@@ -1369,14 +1351,12 @@ def _build_symbolic_question(
             # running on one sentence frame.
             if int(cases[0][2]) % 2 == 0:
                 return (
-                    f"Cover each {shape} with unit square tiles and count them: "
-                    f"{shown}. Which rule always gives the number of tiles?"
+                    fill("Cover each {shape} with unit square tiles and count them: {shown}. Which rule always gives the number of tiles?", _src=('cases', 'task_type',), shape=derived(shape, src=('shape',)), shown=derived(shown))
                 )
             return (
-                f"Three {shape}s are tiled with unit squares: {shown}. "
-                f"Which rule works for every one of them?"
+                fill("Three {shape}s are tiled with unit squares: {shown}. Which rule works for every one of them?", _src=('task_type',), shape=derived(shape, src=('shape',)), shown=derived(shown))
             )
-        return f"A {shape} has {dims}. What is its area in {unit}?"
+        return fill("A {shape} has {dims}. What is its area in {unit}?", shape=derived(shape, src=('shape',)), dims=S(dims, "fill"), unit=derived(unit, src=('unit',)))
 
     # ── Geometry ──────────────────────────────────────────────────────────────
     if concept == "shapes_2d":
@@ -1393,7 +1373,7 @@ def _build_symbolic_question(
         if values.get("question"):
             return values["question"]
         sym_lbl = VocabGated("line of symmetry", "line of symmetry", "symmetry line").resolve(cumulative_vocab)
-        return f"Does this figure have a {sym_lbl}?"
+        return fill("Does this figure have a {sym_lbl}?", sym_lbl=S(sym_lbl, "fill"))
 
     # ── Data / probability ────────────────────────────────────────────────────
     if concept == "pictographs":
@@ -1402,24 +1382,24 @@ def _build_symbolic_question(
         category = values.get("category", "item")
         count = values.get("count", a)
         pg_lbl = VocabGated("pictograph", "pictograph", "picture graph").resolve(cumulative_vocab)
-        return f"How many {category} does the {pg_lbl} show?"
+        return fill("How many {category} does the {pg_lbl} show?", category=derived(category, src=('category',)), pg_lbl=S(pg_lbl, "fill"))
 
     if concept == "bar_graphs":
         category = values.get("category", "item")
         bg_lbl = VocabGated("bar graph", "bar graph", "graph").resolve(cumulative_vocab)
-        return f"Read the {bg_lbl}. How many {category} are shown?"
+        return fill("Read the {bg_lbl}. How many {category} are shown?", bg_lbl=S(bg_lbl, "fill"), category=derived(category, src=('category',)))
 
     if concept == "probability_language":
         event = values.get("event", "this event")
-        return f"How likely is {event} to happen?"
+        return fill("How likely is {event} to happen?", event=derived(event, src=('event',)))
 
     if concept == "order_of_operations":
-        expr = values.get("expression", f"{a} + {b}")
-        return f"What is the value of {expr}?"
+        expr = values.get("expression", fill("{a} + {b}", a=derived(a, src=('a', 'start',)), b=derived(b, src=('b', 'skip_by',))))
+        return fill("What is the value of {expr}?", expr=derived(expr, src=('expression', 'a', 'start', 'b', 'skip_by',)))
 
     # ── Generic fallback ──────────────────────────────────────────────────────
     result = values.get("result", values.get("total", "___"))
-    return f"What is the answer? ({concept}: {a}, {b} → {result})"
+    return fill("What is the answer? ({concept}: {a}, {b} → {result})", concept=derived(concept), a=derived(a, src=('a', 'start',)), b=derived(b, src=('b', 'skip_by',)), result=derived(result, src=('result', 'total',)))
 
 
 def _detect_axes_served(dna: DNA, values: Dict[str, Any]) -> Dict[str, Any]:
@@ -1486,7 +1466,7 @@ def _detect_axes_served(dna: DNA, values: Dict[str, Any]) -> Dict[str, Any]:
                 return 0
             if isinstance(v, int) or v.is_integer():
                 return 0
-            s = f"{v:.15f}".rstrip("0")
+            s = fill("{v:.15f}", v=derived(v)).rstrip("0")
             if "." in s:
                 return len(s.split(".")[1])
             return 0

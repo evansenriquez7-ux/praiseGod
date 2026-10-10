@@ -29,6 +29,8 @@ from typing import List, Optional
 
 from backend.app.practice_gen.dna.base import FormattedProblem, QuestionContext, count_noun
 from backend.app.practice_gen.formatters._option_order import shuffle_options
+from backend.app.practice_gen.slots import S, derived, fill
+from backend.app.practice_gen.formatters._answer_slots import (correct_option_key, distractors_field)
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -133,7 +135,7 @@ def _repeated_sum(terms: int, addend: int) -> str:
     """
     if terms <= 5:
         return " + ".join([str(addend)] * terms)
-    return f"{addend} added {terms} times"
+    return fill("{addend} added {terms} times", addend=derived(addend), terms=derived(terms))
 
 
 def _build_traps(params: dict, rng: random.Random) -> dict:
@@ -146,7 +148,7 @@ def _build_traps(params: dict, rng: random.Random) -> dict:
     off = rng.randint(1, 3)
     traps["off_by_few_under"] = {
         "value": max(1, correct - off),
-        "description": f"Missed {off} squares",
+        "description": fill("Missed {off} squares", off=derived(off)),
     }
     traps["off_by_few_over"] = {
         "value": correct + rng.randint(1, 3),
@@ -371,14 +373,12 @@ def format_array_grid(
         figure = "square" if shape_type == "square" or rows == cols else "rectangle"
         if interaction_mode == "read":
             question_text = (
-                f"This {figure} is covered by {rows} rows of {cols} square tiles. "
-                f"How many square tile units cover the {figure}?"
+                fill("This {figure} is covered by {rows} rows of {cols} square tiles. How many square tile units cover the {figure}?", _src=('rows', 'cols', 'shape_type',), figure=S(figure, "value:shape"), rows=derived(rows), cols=derived(cols))
             )
         else:
             vp["shaded"] = False
             question_text = (
-                f"Shade the square tiles that cover this {rows}×{cols} {figure}. "
-                f"How many square tile units cover the {figure}?"
+                fill("Shade the square tiles that cover this {rows}×{cols} {figure}. How many square tile units cover the {figure}?", _src=('rows', 'cols', 'shape_type',), rows=derived(rows), cols=derived(cols), figure=derived(figure))
             )
     elif is_division_array:
         total = rows * cols
@@ -389,8 +389,7 @@ def format_array_grid(
             # the student can see/count the same total, but the value
             # they must produce is the quotient.
             question_text = (
-                f"This array has {total} squares split into {rows} equal rows. "
-                f"How many squares are in each row?"
+                fill("This array has {total} squares split into {rows} equal rows. How many squares are in each row?", total=derived(total), rows=derived(rows))
             )
         else:
             # Same division-vs-multiplication defect as "read", in its
@@ -404,8 +403,7 @@ def format_array_grid(
             # quotient -- how many go in each row.
             vp["shaded"] = False
             question_text = (
-                f"Shade {total} squares into {rows} equal rows. "
-                f"How many squares are in each row?"
+                fill("Shade {total} squares into {rows} equal rows. How many squares are in each row?", total=derived(total), rows=derived(rows))
             )
     elif interaction_mode == "read":
         # Squares are labelled with their dimensions too. This branch tested only
@@ -423,50 +421,38 @@ def format_array_grid(
             # for the repeated sum itself; a plain product node wants neither.
             if _mul_task_type == "equal_groups":
                 question_text = (
-                    f"Look at the array. It shows {rows} groups of {cols} ({_repeated_sum(rows, cols)}). "
-                    f"How many squares are shaded in all?"
+                    fill("Look at the array. It shows {rows} groups of {cols} ({repeated_sum}). How many squares are shaded in all?", _src=('rows', 'cols', 'shape_type',), rows=derived(rows), cols=derived(cols), repeated_sum=derived(_repeated_sum(rows, cols)))
                 )
             elif _mul_task_type == "repeated_addition":
                 question_text = (
-                    f"Look at the {rows}×{cols} array. It shows "
-                    f"{_repeated_sum(rows, cols)}. "
-                    f"How many squares are shaded in all?"
+                    fill("Look at the {rows}×{cols} array. It shows {repeated_sum}. How many squares are shaded in all?", _src=('rows', 'cols', 'shape_type',), rows=derived(rows), cols=derived(cols), repeated_sum=derived(_repeated_sum(rows, cols)))
                 )
             else:
                 question_text = (
-                    f"Look at the {rows}×{cols} array. "
-                    f"How many squares are shaded in all?"
+                    fill("Look at the {rows}×{cols} array. How many squares are shaded in all?", _src=('rows', 'cols', 'shape_type',), rows=derived(rows), cols=derived(cols))
                 )
         else:
             question_text = (
-                "Look at the shaded shape. How many squares are shaded in all?"
+                fill("Look at the shaded shape. How many squares are shaded in all?")
             )
     else:
         vp["shaded"] = False
         if shape_type == "rectangle" and rows and cols:
             if _mul_task_type == "equal_groups":
                 question_text = (
-                    f"Shade {rows} {count_noun(rows, 'groups')} of "
-                    f"{cols} {count_noun(cols, 'squares')} to show "
-                    f"{_repeated_sum(rows, cols)}. "
-                    f"How many squares did you shade in all?"
+                    fill("Shade {rows} {count_noun} of {cols} {count_noun2} to show {repeated_sum}. How many squares did you shade in all?", _src=('rows', 'cols', 'shape_type',), rows=derived(rows), count_noun=derived(count_noun(rows, 'groups')), cols=derived(cols), count_noun2=derived(count_noun(cols, 'squares')), repeated_sum=derived(_repeated_sum(rows, cols)))
                 )
             elif _mul_task_type == "repeated_addition":
                 question_text = (
-                    f"Shade {rows} {count_noun(rows, 'rows')} of "
-                    f"{cols} {count_noun(cols, 'squares')} to show "
-                    f"{_repeated_sum(rows, cols)}. "
-                    f"How many squares did you shade in all?"
+                    fill("Shade {rows} {count_noun} of {cols} {count_noun2} to show {repeated_sum}. How many squares did you shade in all?", _src=('rows', 'cols', 'shape_type',), rows=derived(rows), count_noun=derived(count_noun(rows, 'rows')), cols=derived(cols), count_noun2=derived(count_noun(cols, 'squares')), repeated_sum=derived(_repeated_sum(rows, cols)))
                 )
             else:
                 question_text = (
-                    f"Shade all the squares inside the {rows}×{cols} rectangle. "
-                    f"How many squares did you shade in all?"
+                    fill("Shade all the squares inside the {rows}×{cols} rectangle. How many squares did you shade in all?", _src=('rows', 'cols', 'shape_type',), rows=derived(rows), cols=derived(cols))
                 )
         else:
             question_text = (
-                "Shade all the squares inside the shape. "
-                "How many squares did you shade in all?"
+                fill("Shade all the squares inside the shape. How many squares did you shade in all?")
             )
 
     # ── 3. Answer collection ──────────────────────────────────────────────────
@@ -496,7 +482,7 @@ def format_array_grid(
             {"key": chr(ord("A") + i), "value": v, "is_correct": v == correct_count}
             for i, v in enumerate(all_opts)
         ]
-        correct_answer = next(o["key"] for o in mcq_options if o["is_correct"])
+        correct_answer = correct_option_key(mcq_options)
     else:
         correct_answer = correct_count
 
@@ -504,7 +490,7 @@ def format_array_grid(
     if mcq_options is not None:
         format_data["mcq_options"] = mcq_options
 
-    fmt = f"{interaction_mode}_{answer_collection}"
+    fmt = fill("{interaction_mode}_{answer_collection}", interaction_mode=derived(interaction_mode), answer_collection=derived(answer_collection))
 
     return FormattedProblem(
         problem_id=f"{ctx.node_id}_{ctx.seed}_arraygrid",
@@ -514,7 +500,7 @@ def format_array_grid(
         seed=ctx.seed,
         question_text=question_text,
         correct_answer=correct_answer,
-        distractors=ctx.distractors,
+        distractors=distractors_field(ctx),
         hints=ctx.hints,
         format=fmt,
         format_data=format_data,

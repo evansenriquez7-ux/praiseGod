@@ -16,6 +16,7 @@ from backend.app.practice_gen.dna.base import (
     ErrorPattern,
     VocabGated,
 )
+from backend.app.practice_gen.slots import S, bank_fields, derived, fill
 
 
 # ─── param bounds ─────────────────────────────────────────────────────────────
@@ -289,7 +290,8 @@ def generate_params(
         task_type = rng.choice(["read_value", "compare_two", "find_total", "find_difference"])
 
     if task_type == "collect_interview":
-        item = _INTERVIEW_POOL[seed % len(_INTERVIEW_POOL)]
+        # Structured slots (H3-R2): the bank's own text, recorded with the bank as its domain.
+        item = bank_fields(_INTERVIEW_POOL[seed % len(_INTERVIEW_POOL)], "backend.app.practice_gen.dna.dp.pictographs._INTERVIEW_POOL")
         return {
             "blank_target": "answer",
             "question": item["question"],
@@ -448,7 +450,7 @@ def generate_params(
             "categories": categories,
             "values": values,
             "scale": scale,
-            "question_category": f"{categories[idx_a]} and {categories[idx_b]}",
+            "question_category": fill("{v} and {v2}", _src=('task_type',), v=S(categories[idx_a], "value:compare_a"), v2=S(categories[idx_b], "value:compare_b")),
             "compare_a": categories[idx_a],
             "compare_b": categories[idx_b],
             "answer": diff,
@@ -530,31 +532,31 @@ def generate_hints(
 
     if task_type == "collect_interview":
         return [
-            "Read the interview question or results carefully.",
-            "Find the votes or answers counted for each choice.",
-            "Answer what the interview shows.",
+            fill("Read the interview question or results carefully.", _src=('task_type',)),
+            fill("Find the votes or answers counted for each choice.", _src=('task_type',)),
+            fill("Answer what the interview shows.", _src=('task_type',)),
         ]
 
     if task_type == "read_table":
         chart_word = "table" if "table" in cumulative_vocab else "chart"
         cat = values.get("question_category", "the category")
         return [
-            f"Look at the {chart_word} carefully.",
-            f"Find the row labelled '{cat}'.",
-            f"Read the number written next to it in the Count column.",
+            fill("Look at the {chart_word} carefully.", _src=('task_type',), chart_word=derived(chart_word)),
+            fill("Find the row labelled '{cat}'.", _src=('task_type',), cat=S(cat, "value:question_category")),
+            fill("Read the number written next to it in the Count column.", _src=('task_type',)),
         ]
 
-    hints = [f"Look at the {pg_label} carefully."]
+    hints = [fill("Look at the {pg_label} carefully.", pg_label=S(pg_label, "fill"))]
 
     if scale > 1:
         if "key" in cumulative_vocab and "scale" in cumulative_vocab:
             hints.append(
-                f"Each picture in the {key_label} stands for {scale} items ({scale_label} = {scale})."
+                fill("Each picture in the {key_label} stands for {scale} items ({scale_label} = {scale}).", _src=('scale',), key_label=S(key_label, "fill"), scale=derived(scale, src=('scale',)), scale_label=S(scale_label, "fill"))
             )
         else:
-            hints.append(f"Each picture stands for {scale} items.")
+            hints.append(fill("Each picture stands for {scale} items.", _src=('scale',), scale=derived(scale, src=('scale',))))
     else:
-        hints.append("Each picture stands for 1 item.")
+        hints.append(fill("Each picture stands for 1 item."))
 
     if task_type in ("read_value", "read_single"):
         cat = values.get("question_category", "the category")
@@ -562,31 +564,31 @@ def generate_hints(
         pics = count // scale if scale > 0 else count
         if scale > 1:
             hints.append(
-                f"Count the pictures for '{cat}': there are {pics} picture(s) × {scale} = {count}."
+                fill("Count the pictures for '{cat}': there are {pics} picture(s) × {scale} = {count}.", _src=('scale', 'task_type',), cat=S(cat, "value:question_category"), pics=derived(pics, src=('answer', 'scale',)), scale=derived(scale, src=('scale',)), count=S(count, "value:answer"))
             )
         else:
             hints.append(
-                f"Count the pictures for '{cat}': there are {count} picture(s)."
+                fill("Count the pictures for '{cat}': there are {count} picture(s).", _src=('task_type',), cat=S(cat, "value:question_category"), count=S(count, "value:answer"))
             )
     elif task_type == "present_data":
         if scale > 1:
             hints.append(
-                f"For each category, divide the number of items by {scale} to find how many pictures to draw."
+                fill("For each category, divide the number of items by {scale} to find how many pictures to draw.", _src=('scale', 'task_type',), scale=derived(scale, src=('scale',)))
             )
         else:
-            hints.append("Draw 1 picture for each item in each category.")
+            hints.append(fill("Draw 1 picture for each item in each category.", _src=('task_type',)))
     elif task_type == "find_total":
-        hints.append("Add up the values for ALL categories to find the total.")
+        hints.append(fill("Add up the values for ALL categories to find the total.", _src=('task_type',)))
     elif task_type == "find_difference":
-        hints.append("Read each category's value, then subtract the smaller from the larger.")
+        hints.append(fill("Read each category's value, then subtract the smaller from the larger.", _src=('task_type',)))
     elif task_type in ("compare", "compare_two"):
-        hints.append("Compare the number of pictures in each row. The row with the most pictures has the greatest count.")
+        hints.append(fill("Compare the number of pictures in each row. The row with the most pictures has the greatest count.", _src=('task_type',)))
     elif task_type == "organize_table":
         chart_word = "table" if "table" in cumulative_vocab else "chart"
         if scale > 1:
-            hints.append(f"Count the pictures in each row and multiply by {scale} to record each count in the {chart_word}.")
+            hints.append(fill("Count the pictures in each row and multiply by {scale} to record each count in the {chart_word}.", _src=('scale', 'task_type',), scale=derived(scale, src=('scale',)), chart_word=derived(chart_word)))
         else:
-            hints.append(f"Count the items for each category and record them in the {chart_word}.")
+            hints.append(fill("Count the items for each category and record them in the {chart_word}.", _src=('task_type',), chart_word=derived(chart_word)))
 
     return hints
 

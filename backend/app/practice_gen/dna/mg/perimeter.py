@@ -18,6 +18,7 @@ from backend.app.practice_gen.dna.base import (
     count_noun,
     linear_interpolate,
 )
+from backend.app.practice_gen.slots import S, derived, fill
 
 
 # ─── param bounds ─────────────────────────────────────────────────────────────
@@ -97,7 +98,7 @@ def generate_params(
     if task_type == "identify_definition":
         item = rng.choice([
             {
-                "question": "What is the perimeter of a plane figure?",
+                "question": fill("What is the perimeter of a plane figure?", _src=('task_type',)),
                 "answer": "the total distance around the outside boundary of the figure",
                 "distractors": [
                     "the amount of flat surface covered inside the figure",
@@ -106,7 +107,7 @@ def generate_params(
                 ],
             },
             {
-                "question": "To find the perimeter of a polygon or flat shape, what should you do?",
+                "question": fill("To find the perimeter of a polygon or flat shape, what should you do?", _src=('task_type',)),
                 "answer": "add the lengths of all its sides",
                 "distractors": [
                     "multiply its length by its width",
@@ -115,7 +116,7 @@ def generate_params(
                 ],
             },
             {
-                "question": "Which statement correctly describes perimeter?",
+                "question": fill("Which statement correctly describes perimeter?", _src=('task_type',)),
                 "answer": "It is the distance all the way around the outside edge of a shape.",
                 "distractors": [
                     "It is the space occupied inside a 3D solid.",
@@ -139,17 +140,17 @@ def generate_params(
         if item_kind == "tool_choice":
             tool_q = rng.choice([
                 {
-                    "question": "Which measuring tool is most appropriate to measure the perimeter of a notebook cover?",
+                    "question": fill("Which measuring tool is most appropriate to measure the perimeter of a notebook cover?", _src=('task_type',)),
                     "answer": "a ruler",
                     "distractors": ["a thermometer", "a bathroom scale", "a clock"],
                 },
                 {
-                    "question": "Which tool is best suited to measure the perimeter of a small picture frame in centimeters?",
+                    "question": fill("Which tool is best suited to measure the perimeter of a small picture frame in centimeters?", _src=('task_type',)),
                     "answer": "a ruler",
                     "distractors": ["a kitchen scale", "a measuring cup", "a calendar"],
                 },
                 {
-                    "question": "To measure the perimeter of a classroom desk top, which tool should you use?",
+                    "question": fill("To measure the perimeter of a classroom desk top, which tool should you use?", _src=('task_type',)),
                     "answer": "a ruler or measuring tape",
                     "distractors": ["a thermometer", "a weighing scale", "a beaker"],
                 },
@@ -168,7 +169,7 @@ def generate_params(
             if meas_shape == "square":
                 s = rng.randint(3, 10)
                 perim = 4 * s
-                q = f"A student uses a ruler to measure the four sides of a square card. Each side is {s} cm. What is the perimeter?"
+                q = fill("A student uses a ruler to measure the four sides of a square card. Each side is {s} cm. What is the perimeter?", _src=('task_type',), s=derived(s))
                 return {
                     "blank_target": "answer",
                     "task_type": "measure_tools",
@@ -183,7 +184,7 @@ def generate_params(
                 l = rng.randint(4, 10)
                 w = rng.randint(2, l - 1)
                 perim = 2 * (l + w)
-                q = f"Using a ruler, a student measures a rectangular photo card as {l} cm long and {w} cm wide. What is its perimeter?"
+                q = fill("Using a ruler, a student measures a rectangular photo card as {l} cm long and {w} cm wide. What is its perimeter?", _src=('task_type',), l=derived(l), w=derived(w))
                 return {
                     "blank_target": "answer",
                     "task_type": "measure_tools",
@@ -201,7 +202,7 @@ def generate_params(
                 c_hi = min(8, a + b - 1)
                 c = rng.randint(c_lo, c_hi)
                 perim = a + b + c
-                q = f"Using a ruler, the three sides of a triangular bookmark are measured as {a} cm, {b} cm, and {c} cm. What is its perimeter?"
+                q = fill("Using a ruler, the three sides of a triangular bookmark are measured as {a} cm, {b} cm, and {c} cm. What is its perimeter?", _src=('task_type',), a=derived(a), b=derived(b), c=derived(c))
                 return {
                     "blank_target": "answer",
                     "task_type": "measure_tools",
@@ -353,10 +354,10 @@ def generate_hints(
     if task_type == "find_missing_side":
         known_sum = values["perimeter"] - values["answer"]
         return [
-            f"The {perim_label} is the total distance around the shape.",
-            f"Perimeter = sum of ALL sides. We know the perimeter is {values['perimeter']}.",
-            f"The sides we know add up to {known_sum}.",
-            f"Subtract: {values['perimeter']} - {known_sum} = {values['answer']}.",
+            fill("The {perim_label} is the total distance around the shape.", _src=('task_type',), perim_label=S(perim_label, "fill")),
+            fill("Perimeter = sum of ALL sides. We know the perimeter is {perimeter}.", _src=('task_type',), perimeter=S(values['perimeter'], "value:perimeter")),
+            fill("The sides we know add up to {known_sum}.", _src=('task_type',), known_sum=derived(known_sum, src=('perimeter', 'answer',))),
+            fill("Subtract: {perimeter} - {known_sum} = {answer}.", _src=('task_type',), perimeter=S(values['perimeter'], "value:perimeter"), known_sum=derived(known_sum, src=('perimeter', 'answer',)), answer=S(values['answer'], "value:answer")),
         ]
 
     # Concept items name no shape's sides. They used to fall through to the chain
@@ -364,32 +365,32 @@ def generate_hints(
     # `base_generator` swallowed -- so they were served with no hints.
     if task_type == "identify_definition":
         return [
-            f"The {perim_label} is the total distance around a shape.",
-            "Think of walking all the way around the outside edge and back to the start.",
-            f"The statement that says this is: {values['answer']}",
+            fill("The {perim_label} is the total distance around a shape.", _src=('task_type',), perim_label=S(perim_label, "fill")),
+            fill("Think of walking all the way around the outside edge and back to the start.", _src=('task_type',)),
+            fill("The statement that says this is: {answer}", _src=('task_type',), answer=S(values['answer'], "value:answer")),
         ]
     if task_type == "measure_tools":
         return [
-            f"To find the {perim_label}, measure each side of the shape and add the lengths.",
-            "Choose the tool that measures straight lengths of this size.",
-            f"The best tool here is {values['answer']}.",
+            fill("To find the {perim_label}, measure each side of the shape and add the lengths.", _src=('task_type',), perim_label=S(perim_label, "fill")),
+            fill("Choose the tool that measures straight lengths of this size.", _src=('task_type',)),
+            fill("The best tool here is {answer}.", _src=('task_type',), answer=S(values['answer'], "value:answer")),
         ]
 
     # Strict reads: a missing side is a named error, never a "?" shown to a pupil.
     sides = values["sides"]
-    hints = [f"The {perim_label} is the total distance around the {shape}."]
+    hints = [fill("The {perim_label} is the total distance around the {shape}.", perim_label=S(perim_label, "fill"), shape=S(shape, "value:shape"))]
 
     if shape == "square":
         s = sides["s"]
-        hints.append(f"A square has 4 equal sides, each {s} {count_noun(s, 'units')} long.")
-        hints.append(f"Perimeter = 4 × {s} = {values['answer']}.")
+        hints.append(fill("A square has 4 equal sides, each {s} {count_noun} long.", _src=('shape',), s=derived(s, src=('sides',)), count_noun=derived(count_noun(s, 'units'), src=('sides',))))
+        hints.append(fill("Perimeter = 4 × {s} = {answer}.", _src=('shape',), s=derived(s, src=('sides',)), answer=S(values['answer'], "value:answer")))
     elif shape == "rectangle":
         l, w = sides["l"], sides["w"]
-        hints.append(f"A rectangle has two sides of length {l} and two sides of width {w}.")
-        hints.append(f"Perimeter = 2 × ({l} + {w}) = 2 × {l + w} = {values['answer']}.")
+        hints.append(fill("A rectangle has two sides of length {l} and two sides of width {w}.", _src=('shape',), l=derived(l), w=derived(w)))
+        hints.append(fill("Perimeter = 2 × ({l} + {w}) = 2 × {v} = {answer}.", _src=('shape',), l=derived(l), w=derived(w), v=derived(l + w), answer=S(values['answer'], "value:answer")))
     else:
         a, b, c = sides["a"], sides["b"], sides["c"]
-        hints.append(f"Add all three sides: {a} + {b} + {c} = {values['answer']}.")
+        hints.append(fill("Add all three sides: {a} + {b} + {c} = {answer}.", a=derived(a), b=derived(b), c=derived(c), answer=S(values['answer'], "value:answer")))
 
     return hints
 

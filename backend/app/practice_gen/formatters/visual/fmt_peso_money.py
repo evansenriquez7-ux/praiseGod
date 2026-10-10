@@ -28,6 +28,8 @@ from typing import List, Optional, Tuple
 from backend.app.practice_gen.dna.base import FormattedProblem, QuestionContext
 from backend.app.practice_gen.formatters._distractor_fallback import augment_distractors
 from backend.app.practice_gen.formatters._option_order import shuffle_options
+from backend.app.practice_gen.slots import S, derived, fill
+from backend.app.practice_gen.formatters._answer_slots import (correct_option_key, distractors_field)
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -389,9 +391,9 @@ def format_peso_money(
         # word-problem nodes, so it is fixed in that commit rather than after it.
         question_text = ctx.question_text
     else:
-        stem = f"Use coins and bills to make exactly ₱{total}."
+        stem = fill("Use coins and bills to make exactly ₱{total}.", total=derived(total))
         if vp.get("require_fewest"):
-            stem += " Use the fewest pieces possible."
+            stem = fill("{stem} Use the fewest pieces possible.", stem=S(stem, "fill"))
         question_text = stem
 
     target_ans = dna_ans if dna_ans is not None else total
@@ -429,7 +431,7 @@ def format_peso_money(
             {"key": chr(ord("A") + i), "value": v, "is_correct": str(v) == str(target_ans)}
             for i, v in enumerate(all_opts)
         ]
-        correct_answer = next(o["key"] for o in mcq_options if o["is_correct"])
+        correct_answer = correct_option_key(mcq_options)
     else:
         correct_answer = target_ans
 
@@ -443,7 +445,7 @@ def format_peso_money(
     # needs to know what to build). The auditor's "answer_leak" flag is a
     # false positive for peso_money_set — the answer is not secret.
 
-    fmt = f"{interaction_mode}_{answer_collection}"
+    fmt = fill("{interaction_mode}_{answer_collection}", interaction_mode=derived(interaction_mode), answer_collection=derived(answer_collection))
 
     return FormattedProblem(
         problem_id=f"{ctx.node_id}_{ctx.seed}_pesomoney",
@@ -453,7 +455,7 @@ def format_peso_money(
         seed=ctx.seed,
         question_text=question_text,
         correct_answer=correct_answer,
-        distractors=ctx.distractors,
+        distractors=distractors_field(ctx),
         hints=ctx.hints,
         format=fmt,
         format_data=format_data,

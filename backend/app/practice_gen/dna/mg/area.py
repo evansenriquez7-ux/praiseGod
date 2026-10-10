@@ -16,6 +16,7 @@ from backend.app.practice_gen.dna.base import (
     VocabGated,
     linear_interpolate,
 )
+from backend.app.practice_gen.slots import S, derived, fill
 
 
 # ─── param bounds ─────────────────────────────────────────────────────────────
@@ -415,7 +416,7 @@ def generate_params(
                 "s": s,
                 "shape_noun": "square",
                 "surface_noun": "garden" if unit_label == "sq m" else "card",
-                "dims_phrase": f"measuring {s} {unit_label.replace('sq ', '')} on each side",
+                "dims_phrase": fill("measuring {s} {replace} on each side", _src=('shape', 'task_type',), s=derived(s), replace=S(unit_label.replace('sq ', ''), "value:length_unit")),
                 "length_unit": unit_label.replace("sq ", ""),
                 "unit": unit_label,
                 "task_type": "illustrate_tiles",
@@ -439,7 +440,7 @@ def generate_params(
                 "l": l, "w": w, "s": l,
                 "shape_noun": "rectangular",
                 "surface_noun": "garden" if unit_label == "sq m" else "card",
-                "dims_phrase": f"that is {l} {unit_label.replace('sq ', '')} long and {w} {unit_label.replace('sq ', '')} wide",
+                "dims_phrase": fill("that is {l} {replace} long and {w} {replace} wide", _src=('task_type',), l=derived(l), replace=S(unit_label.replace('sq ', ''), "value:length_unit"), w=derived(w)),
                 "length_unit": unit_label.replace("sq ", ""),
                 "unit": unit_label,
                 "task_type": "illustrate_tiles",
@@ -485,7 +486,7 @@ def generate_params(
                     item_noun = rng.choice(["picture card", "greeting card", "photo", "notebook cover"])
                 else:
                     item_noun = rng.choice(["table top", "garden bed", "patio", "mat"])
-                q = f"A square {item_noun} measures {s} {lu} on each side. What is its area in {unit_label}?"
+                q = fill("A square {item_noun} measures {s} {lu} on each side. What is its area in {unit_label}?", _src=('shape', 'context',), item_noun=derived(item_noun), s=derived(s), lu=S(lu, "value:length_unit"), unit_label=S(unit_label, "value:unit"))
                 return {
                     "blank_target": "answer",
                     "shape": "square",
@@ -504,7 +505,7 @@ def generate_params(
                     item_noun = rng.choice(["postcard", "photo", "sheet of paper", "bookmark", "index card"])
                 else:
                     item_noun = rng.choice(["classroom floor", "garden plot", "rug", "chalkboard"])
-                q = f"A rectangular {item_noun} is {l} {lu} long and {w} {lu} wide. What is the area of the {item_noun} in {unit_label}?"
+                q = fill("A rectangular {item_noun} is {l} {lu} long and {w} {lu} wide. What is the area of the {item_noun} in {unit_label}?", _src=('context', 'shape',), item_noun=derived(item_noun), l=derived(l), lu=S(lu, "value:length_unit"), w=derived(w), unit_label=S(unit_label, "value:unit"))
                 return {
                     "blank_target": "answer",
                     "shape": "rectangle",
@@ -529,7 +530,7 @@ def generate_params(
                 item_noun = rng.choice(["garden plot", "rug", "chalkboard", "wooden board"])
             other_name = "width" if known == "l" else "length"
             known_name = "length" if known == "l" else "width"
-            q = f"A rectangular {item_noun} has an area of {rect_area} {unit_label} and a {known_name} of {known_val} {lu}. What is its {other_name} in {lu}?"
+            q = fill("A rectangular {item_noun} has an area of {rect_area} {unit_label} and a {known_name} of {known_val} {lu}. What is its {other_name} in {lu}?", _src=('context', 'shape',), item_noun=derived(item_noun), rect_area=derived(rect_area), unit_label=derived(unit_label), known_name=derived(known_name), known_val=derived(known_val), lu=derived(lu), other_name=derived(other_name))
             return {
                 "blank_target": "answer",
                 "shape": "rectangle",
@@ -554,9 +555,7 @@ def generate_params(
             area2 = l2 * w2
             diff = area2 - area1
             q = (
-                f"Garden Plot A is {l1} {lu} by {w1} {lu} (area = {area1} {unit_label}). "
-                f"Garden Plot B is {l2} {lu} by {w2} {lu} (area = {area2} {unit_label}). "
-                f"How many {unit_label} larger is Plot B than Plot A?"
+                fill("Garden Plot A is {l1} {lu} by {w1} {lu} (area = {area1} {unit_label}). Garden Plot B is {l2} {lu} by {w2} {lu} (area = {area2} {unit_label}). How many {unit_label} larger is Plot B than Plot A?", _src=('context',), l1=derived(l1), lu=S(lu, "value:length_unit"), w1=derived(w1), area1=derived(area1), unit_label=S(unit_label, "value:unit"), l2=derived(l2), w2=derived(w2), area2=derived(area2))
             )
             return {
                 "blank_target": "answer",
@@ -582,8 +581,7 @@ def generate_params(
             item_noun = rng.choice(["wall", "floor", "patio"])
             action = "painting" if item_noun == "wall" else "tiling"
             q = (
-                f"A rectangular {item_noun} is {l} {lu} long and {w} {lu} wide (area = {rect_area} {unit_label}). "
-                f"If {action} costs ₱{cost_per_sq} per {unit_label}, what is the total cost to cover the {item_noun}?"
+                fill("A rectangular {item_noun} is {l} {lu} long and {w} {lu} wide (area = {rect_area} {unit_label}). If {action} costs ₱{cost_per_sq} per {unit_label}, what is the total cost to cover the {item_noun}?", _src=('context', 'shape',), item_noun=derived(item_noun), l=derived(l), lu=derived(lu), w=derived(w), rect_area=derived(rect_area), unit_label=derived(unit_label), action=derived(action), cost_per_sq=derived(cost_per_sq))
             )
             return {
                 "blank_target": "answer",
@@ -609,8 +607,7 @@ def generate_params(
             area2 = l2 * w2
             total = area1 + area2
             q = (
-                f"Ana has two rectangular flower beds: Bed 1 is {l1} {lu} by {w1} {lu} and "
-                f"Bed 2 is {l2} {lu} by {w2} {lu}. What is the combined total area of both flower beds in {unit_label}?"
+                fill("Ana has two rectangular flower beds: Bed 1 is {l1} {lu} by {w1} {lu} and Bed 2 is {l2} {lu} by {w2} {lu}. What is the combined total area of both flower beds in {unit_label}?", _src=('context',), l1=derived(l1), lu=derived(lu), w1=derived(w1), l2=derived(l2), w2=derived(w2), unit_label=derived(unit_label))
             )
             return {
                 "blank_target": "answer",
@@ -643,7 +640,7 @@ def generate_params(
             "answer_formula": "area / known_value",
             "sides": {"l": l, "w": w},
             "l": l, "w": w,
-            "question": f"A rectangle has an area of {rect_area} {unit_label} and a {'length' if known == 'l' else 'width'} of {known_val} {lu}. What is its {'width' if known == 'l' else 'length'} in {lu}?",
+            "question": fill("A rectangle has an area of {rect_area} {unit_label} and a {v} of {known_val} {lu}. What is its {v2} in {lu}?", _src=('task_type',), rect_area=derived(rect_area), unit_label=derived(unit_label), v=derived('length' if known == 'l' else 'width'), known_val=derived(known_val), lu=derived(lu), v2=derived('width' if known == 'l' else 'length')),
             "context": context,
         }
 
@@ -652,10 +649,10 @@ def generate_params(
         s = table_side
         area = s * s
         phrasings = [
-            f"A square has a side of {s} {lu}. What is its area in {unit_label}?",
-            f"What is the area of a square with a side length of {s} {lu} in {unit_label}?",
-            f"Find the area of a square measuring {s} {lu} on each side in {unit_label}.",
-            f"Calculate the area of a square with sides of {s} {lu} in {unit_label}.",
+            fill("A square has a side of {s} {lu}. What is its area in {unit_label}?", _src=('shape',), s=derived(s), lu=S(lu, "value:length_unit"), unit_label=S(unit_label, "value:unit")),
+            fill("What is the area of a square with a side length of {s} {lu} in {unit_label}?", _src=('shape',), s=derived(s), lu=S(lu, "value:length_unit"), unit_label=S(unit_label, "value:unit")),
+            fill("Find the area of a square measuring {s} {lu} on each side in {unit_label}.", _src=('shape',), s=derived(s), lu=S(lu, "value:length_unit"), unit_label=S(unit_label, "value:unit")),
+            fill("Calculate the area of a square with sides of {s} {lu} in {unit_label}.", _src=('shape',), s=derived(s), lu=S(lu, "value:length_unit"), unit_label=S(unit_label, "value:unit")),
         ]
         q = rng.choice(phrasings)
         return {
@@ -664,7 +661,7 @@ def generate_params(
             "sides": {"s": s},
             "s": s,
             "shape_noun": "square",
-            "dims_phrase": f"measuring {s} {lu} on each side",
+            "dims_phrase": fill("measuring {s} {lu} on each side", _src=('shape',), s=derived(s), lu=S(lu, "value:length_unit")),
             "length_unit": lu,
             "unit": unit_label,
             "task_type": "find_area",
@@ -676,10 +673,10 @@ def generate_params(
 
     # Direct rectangle find_area (pure, mat_g3_mg_q1_2)
     phrasings = [
-        f"A rectangle has sides {l} {lu} and {w} {lu}. What is its area in {unit_label}?",
-        f"What is the area of a rectangle with length {l} {lu} and width {w} {lu} in {unit_label}?",
-        f"Find the area of a rectangle that is {l} {lu} long and {w} {lu} wide in {unit_label}.",
-        f"Calculate the area of a rectangle with dimensions {l} {lu} by {w} {lu} in {unit_label}.",
+        fill("A rectangle has sides {l} {lu} and {w} {lu}. What is its area in {unit_label}?", _src=('shape',), l=derived(l), lu=S(lu, "value:length_unit"), w=derived(w), unit_label=S(unit_label, "value:unit")),
+        fill("What is the area of a rectangle with length {l} {lu} and width {w} {lu} in {unit_label}?", _src=('shape',), l=derived(l), lu=S(lu, "value:length_unit"), w=derived(w), unit_label=S(unit_label, "value:unit")),
+        fill("Find the area of a rectangle that is {l} {lu} long and {w} {lu} wide in {unit_label}.", _src=('shape',), l=derived(l), lu=S(lu, "value:length_unit"), w=derived(w), unit_label=S(unit_label, "value:unit")),
+        fill("Calculate the area of a rectangle with dimensions {l} {lu} by {w} {lu} in {unit_label}.", _src=('shape',), l=derived(l), lu=S(lu, "value:length_unit"), w=derived(w), unit_label=S(unit_label, "value:unit")),
     ]
     q = rng.choice(phrasings)
     return {
@@ -688,7 +685,7 @@ def generate_params(
         "sides": {"l": l, "w": w},
         "l": l, "w": w, "s": l,
         "shape_noun": "rectangular",
-        "dims_phrase": f"that is {l} {lu} long and {w} {lu} wide",
+        "dims_phrase": fill("that is {l} {lu} long and {w} {lu} wide", l=derived(l), lu=S(lu, "value:length_unit"), w=derived(w)),
         "length_unit": lu,
         "unit": unit_label,
         "task_type": "find_area",
@@ -714,9 +711,9 @@ def generate_hints(
         known_val = values["known_value"]
         area      = values["area"]
         return [
-            f"The {area_label} = length × width.",
-            f"We know the area is {area} {unit} and one side is {known_val}.",
-            f"Divide: {area} ÷ {known_val} = {values['answer']}.",
+            fill("The {area_label} = length × width.", _src=('task_type',), area_label=S(area_label, "fill")),
+            fill("We know the area is {area} {unit} and one side is {known_val}.", _src=('task_type',), area=S(area, "value:area"), unit=derived(unit, src=('unit',)), known_val=S(known_val, "value:known_value")),
+            fill("Divide: {area} ÷ {known_val} = {answer}.", _src=('task_type',), area=S(area, "value:area"), known_val=S(known_val, "value:known_value"), answer=S(values['answer'], "value:answer")),
         ]
 
     problem = values.get("area_problem")
@@ -724,46 +721,46 @@ def generate_hints(
         l1, w1, l2, w2 = values["l1"], values["w1"], values["l2"], values["w2"]
         a1, a2 = l1 * w1, l2 * w2
         return [
-            f"Plot A: {l1} × {w1} = {a1} {unit}.",
-            f"Plot B: {l2} × {w2} = {a2} {unit}.",
-            f"{a2} − {a1} = {values['answer']}, so Plot B is {values['answer']} {unit} larger.",
+            fill("Plot A: {l1} × {w1} = {a1} {unit}.", _src=('area_problem',), l1=S(l1, "value:l1"), w1=S(w1, "value:w1"), a1=derived(a1), unit=S(unit, "value:unit")),
+            fill("Plot B: {l2} × {w2} = {a2} {unit}.", _src=('area_problem',), l2=S(l2, "value:l2"), w2=S(w2, "value:w2"), a2=derived(a2), unit=S(unit, "value:unit")),
+            fill("{a2} − {a1} = {answer}, so Plot B is {answer} {unit} larger.", _src=('area_problem',), a2=derived(a2), a1=derived(a1), answer=S(values['answer'], "value:answer"), unit=S(unit, "value:unit")),
         ]
     if problem == "cost_area":
         parts = values["area_parts"]
         return [
-            f"First find the {area_label}: {parts['l']} × {parts['w']} = {parts['area']} {unit}.",
-            f"Each {unit} costs ₱{parts['cost']}: {parts['area']} × {parts['cost']} = {values['answer']}.",
-            f"The total cost is ₱{values['answer']}.",
+            fill("First find the {area_label}: {l} × {w} = {area} {unit}.", _src=('area_problem',), area_label=S(area_label, "fill"), l=derived(parts['l'], src=('area_parts',)), w=derived(parts['w'], src=('area_parts',)), area=derived(parts['area'], src=('area_parts',)), unit=derived(unit, src=('unit',))),
+            fill("Each {unit} costs ₱{cost}: {area} × {cost} = {answer}.", _src=('area_problem',), unit=derived(unit, src=('unit',)), cost=derived(parts['cost'], src=('area_parts',)), area=derived(parts['area'], src=('area_parts',)), answer=S(values['answer'], "value:answer")),
+            fill("The total cost is ₱{answer}.", _src=('area_problem',), answer=S(values['answer'], "value:answer")),
         ]
     if problem == "combined_area":
         parts = values["area_parts"]
         a1, a2 = parts["l1"] * parts["w1"], parts["l2"] * parts["w2"]
         return [
-            f"Bed 1: {parts['l1']} × {parts['w1']} = {a1} {unit}.",
-            f"Bed 2: {parts['l2']} × {parts['w2']} = {a2} {unit}.",
-            f"{a1} + {a2} = {values['answer']} {unit} in all.",
+            fill("Bed 1: {l1} × {w1} = {a1} {unit}.", _src=('area_problem',), l1=derived(parts['l1'], src=('area_parts',)), w1=derived(parts['w1'], src=('area_parts',)), a1=derived(a1), unit=derived(unit, src=('unit',))),
+            fill("Bed 2: {l2} × {w2} = {a2} {unit}.", _src=('area_problem',), l2=derived(parts['l2'], src=('area_parts',)), w2=derived(parts['w2'], src=('area_parts',)), a2=derived(a2), unit=derived(unit, src=('unit',))),
+            fill("{a1} + {a2} = {answer} {unit} in all.", _src=('area_problem',), a1=derived(a1), a2=derived(a2), answer=S(values['answer'], "value:answer"), unit=derived(unit, src=('unit',))),
         ]
 
     if task_type == "derive_formula":
         # The item shows worked cases and asks for the rule; it has no single shape's
         # sides. It used to fall through to the chain below and print "? × ?".
-        worked = ", ".join(f"{x} × {y} = {z}" for x, y, z in values["cases"])
+        worked = ", ".join(fill("{x} × {y} = {z}", _src=('task_type',), x=derived(x), y=derived(y), z=derived(z)) for x, y, z in values["cases"])
         return [
-            f"Look at each {values['shape_noun']}: {worked}.",
-            f"Each {area_label} is the {values['dims_word']} multiplied together.",
-            f"So the rule is: {area_label} = {values['answer']}.",
+            fill("Look at each {shape_noun}: {worked}.", _src=('task_type',), shape_noun=S(values['shape_noun'], "value:shape_noun"), worked=derived(worked, src=('cases',))),
+            fill("Each {area_label} is the {dims_word} multiplied together.", _src=('task_type',), area_label=S(area_label, "fill"), dims_word=S(values['dims_word'], "value:dims_word")),
+            fill("So the rule is: {area_label} = {answer}.", _src=('task_type',), area_label=S(area_label, "fill"), answer=S(values['answer'], "value:answer")),
         ]
 
     # Strict: a find_area item without its sides is a named error, never "? × ?".
     sides = values["sides"]
-    hints = [f"The {area_label} tells us how many unit squares cover the shape."]
+    hints = [fill("The {area_label} tells us how many unit squares cover the shape.", area_label=S(area_label, "fill"))]
 
     if shape == "square":
         s = sides["s"]
-        hints.append(f"Area of a square = side × side = {s} × {s} = {values['answer']} {unit}.")
+        hints.append(fill("Area of a square = side × side = {s} × {s} = {answer} {unit}.", _src=('shape',), s=derived(s, src=('sides',)), answer=S(values['answer'], "value:answer"), unit=S(unit, "value:unit")))
     else:
         l, w = sides["l"], sides["w"]
-        hints.append(f"Area of a rectangle = length × width = {l} × {w} = {values['answer']} {unit}.")
+        hints.append(fill("Area of a rectangle = length × width = {l} × {w} = {answer} {unit}.", l=derived(l), w=derived(w), answer=S(values['answer'], "value:answer"), unit=S(unit, "value:unit")))
 
     return hints
 

@@ -17,6 +17,7 @@ from backend.app.practice_gen.dna.base import (
     ErrorPattern,
     VocabGated,
 )
+from backend.app.practice_gen.slots import S, derived, fill
 
 
 # ─── param bounds ─────────────────────────────────────────────────────────────
@@ -170,12 +171,12 @@ def generate_params(
         # in that shape: fmt_cloze fills "{a} ___ {b}" with it and fmt_true_false
         # claims it. So the statements ride alongside the sign rather than replacing
         # it, and the formatter that offers four whole options (fmt_mcq) uses them.
-        statement = f"{a} {answer} {b}"
-        statement_distractors = [f"{a} {s} {b}" for s in (">", "<", "=") if s != answer]
+        statement = fill("{a} {answer} {b}", _src=('task_type',), a=derived(a), answer=S(answer, "value:answer"), b=derived(b))
+        statement_distractors = [fill("{a} {s} {b}", _src=('task_type',), a=derived(a), s=derived(s), b=derived(b)) for s in (">", "<", "=") if s != answer]
         if a != b:
             # The same comparison written the other way round is false whenever the
             # two numbers differ: 10 < 12 is true, 12 < 10 is not.
-            statement_distractors.append(f"{b} {answer} {a}")
+            statement_distractors.append(fill("{b} {answer} {a}", _src=('a', 'b', 'task_type',), b=derived(b), answer=S(answer, "value:answer"), a=derived(a)))
         else:
             # a == b collapses every statement over {a, b} onto three distinct strings
             # ("5 > 5", "5 < 5", "5 = 5"), so the fourth has to bring in a neighbouring
@@ -183,7 +184,7 @@ def generate_params(
             # two whole numbers, which is exactly what the competency names.
             neighbour = a + 1 if a + 1 <= effective_max else a - 1
             statement_distractors.append(
-                f"{a} > {neighbour}" if neighbour > a else f"{a} < {neighbour}"
+                fill("{a} > {neighbour}", _src=('a', 'task_type',), a=derived(a), neighbour=derived(neighbour)) if neighbour > a else fill("{a} < {neighbour}", _src=('task_type',), a=derived(a), neighbour=derived(neighbour))
             )
 
     elif task_type == "order_set":
@@ -231,7 +232,7 @@ def generate_params(
                 break
         shuffles_list = list(shuffles)
         while len(shuffles_list) < 2:
-            shuffles_list.append(f"{answer} (reversed)")
+            shuffles_list.append(fill("{answer} (reversed)", _src=('task_type',), answer=derived(answer)))
             
         distractors = [d1] + shuffles_list[:2]
 
@@ -320,8 +321,7 @@ def generate_params(
             item_word = singular if len(numbers) == 1 else plural
             direction_word = "smallest to largest" if result_dict["direction"] == "ascending" else "largest to smallest"
             result_dict["question"] = (
-                f"{actor} counted {item_word} collected by {len(numbers)} friends: "
-                f"{', '.join(map(str, numbers))}. Arrange the counts from {direction_word}."
+                fill("{actor} counted {item_word} collected by {len} friends: {join}. Arrange the counts from {direction_word}.", _src=('task_type', 'context',), actor=derived(actor), item_word=derived(item_word), len=derived(len(numbers)), join=derived(', '.join(map(str, numbers))), direction_word=derived(direction_word, src=("direction",)))
             )
         elif task_type != "find_between":
             singular, plural = rng.choice(item_pairs)
@@ -338,16 +338,14 @@ def generate_params(
             # options/blank separately; the narrative doesn't need to list
             # them.
             result_dict["question"] = (
-                f"{actor} has {a} {a_word}. {friend} has {b} {b_word}. "
-                f"Which sign correctly compares the two amounts?"
+                fill("{actor} has {a} {a_word}. {friend} has {b} {b_word}. Which sign correctly compares the two amounts?", _src=('task_type', 'context',), actor=derived(actor), a=derived(a), a_word=derived(a_word), friend=derived(friend), b=derived(b), b_word=derived(b_word))
             )
             # The same narrative asked the way the four-statement presentation
             # answers it. fmt_mcq offers whole statements ("10 < 12"), which do not
             # answer "which sign", so a word problem served as MCQ needs this ending
             # instead; cloze and true_false keep the sign wording above.
             result_dict["question_statement"] = (
-                f"{actor} has {a} {a_word}. {friend} has {b} {b_word}. "
-                f"Which statement is true?"
+                fill("{actor} has {a} {a_word}. {friend} has {b} {b_word}. Which statement is true?", _src=('task_type', 'context',), actor=derived(actor), a=derived(a), a_word=derived(a_word), friend=derived(friend), b=derived(b), b_word=derived(b_word))
             )
 
     return result_dict
@@ -372,17 +370,17 @@ def generate_hints(
 
     if task_type in ("compare_two", "compare_pair"):
         a, b = numbers[0], numbers[1]
-        hints.append(f"Compare {a} and {b}.")
+        hints.append(fill("Compare {a} and {b}.", _src=('task_type',), a=derived(a), b=derived(b)))
         if "place value" in cumulative_vocab and "digit" in cumulative_vocab:
-            hints.append("Start from the largest place value and compare each digit.")
+            hints.append(fill("Start from the largest place value and compare each digit.", _src=('task_type',)))
         else:
-            hints.append("Start from the leftmost number and compare one at a time.")
+            hints.append(fill("Start from the leftmost number and compare one at a time.", _src=('task_type',)))
         if a > b:
-            hints.append(f"{a} is {gt} {b}, so we write {a} > {b}.")
+            hints.append(fill("{a} is {gt} {b}, so we write {a} > {b}.", _src=('task_type',), a=derived(a), gt=S(gt, "fill"), b=derived(b)))
         elif a < b:
-            hints.append(f"{a} is {lt} {b}, so we write {a} < {b}.")
+            hints.append(fill("{a} is {lt} {b}, so we write {a} < {b}.", _src=('task_type',), a=derived(a), lt=S(lt, "fill"), b=derived(b)))
         else:
-            hints.append(f"{a} is {eq} {b}, so we write {a} = {b}.")
+            hints.append(fill("{a} is {eq} {b}, so we write {a} = {b}.", _src=('task_type',), a=derived(a), eq=S(eq, "fill"), b=derived(b)))
 
     elif task_type in ("order_set", "order_sequence"):
         # The direction is the one `generate_params` declared. Until 2026-09-25 this
@@ -393,20 +391,20 @@ def generate_hints(
         # `fmt_ordering` builds the served key from this same `direction` field, so
         # that field -- not the answer string -- is what the hint must follow.
         descending = values["direction"] == "descending"
-        listed = ", ".join(str(n) for n in sorted(numbers, reverse=descending))
-        hints.append(f"Numbers to order: {', '.join(str(n) for n in numbers)}.")
+        listed = fill("{listed}", listed=derived(", ".join(str(n) for n in sorted(numbers, reverse=descending)), src=("numbers", "direction")))
+        hints.append(fill("Numbers to order: {join}.", _src=('task_type',), join=derived(', '.join(str(n) for n in numbers), src=('numbers',))))
         if descending:
-            hints.append("Find the largest number first, then the next largest.")
-            hints.append(f"Ordered from greatest to least: {listed}.")
+            hints.append(fill("Find the largest number first, then the next largest.", _src=('task_type',)))
+            hints.append(fill("Ordered from greatest to least: {listed}.", _src=('task_type',), listed=S(listed, "fill")))
         else:
-            hints.append("Find the smallest number first, then the next smallest.")
-            hints.append(f"Ordered from least to greatest: {listed}.")
+            hints.append(fill("Find the smallest number first, then the next smallest.", _src=('task_type',)))
+            hints.append(fill("Ordered from least to greatest: {listed}.", _src=('task_type',), listed=derived(listed, src=('numbers', 'direction',))))
 
     else:  # find_between
         a, b = numbers[0], numbers[1]
-        hints.append(f"Find a number between {a} and {b}.")
-        hints.append(f"Any number {gt} {a} and {lt} {b} works.")
-        hints.append(f"One correct answer is {answer}.")
+        hints.append(fill("Find a number between {a} and {b}.", a=derived(a), b=derived(b)))
+        hints.append(fill("Any number {gt} {a} and {lt} {b} works.", gt=S(gt, "fill"), a=derived(a), lt=S(lt, "fill"), b=derived(b)))
+        hints.append(fill("One correct answer is {answer}.", answer=S(answer, "value:answer")))
 
     return hints
 

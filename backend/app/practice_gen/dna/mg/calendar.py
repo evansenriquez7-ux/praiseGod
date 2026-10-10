@@ -17,6 +17,7 @@ from backend.app.practice_gen.dna.base import (
     VocabGated,
     count_noun,
 )
+from backend.app.practice_gen.slots import S, derived, fill
 
 
 # ─── constants ────────────────────────────────────────────────────────────────
@@ -147,13 +148,13 @@ def generate_params(
             day = DAYS_OF_WEEK[idx]
             add_d = rng.randint(1, 3)
             ans = DAYS_OF_WEEK[(idx + add_d) % 7]
-            q = f"Today is {day}. What day of the week will it be in {add_d} {'day' if add_d == 1 else 'days'}?"
+            q = fill("Today is {day}. What day of the week will it be in {add_d} {v}?", _src=('task_type',), day=derived(day), add_d=derived(add_d), v=derived('day' if add_d == 1 else 'days'))
         elif mode == "before_days":
             idx = rng.randint(0, 6)
             day = DAYS_OF_WEEK[idx]
             sub_d = rng.randint(1, 2)
             ans = DAYS_OF_WEEK[(idx - sub_d) % 7]
-            q = f"If today is {day}, what day of the week was it {sub_d} {'day' if sub_d == 1 else 'days'} ago?"
+            q = fill("If today is {day}, what day of the week was it {sub_d} {v} ago?", _src=('task_type',), day=derived(day), sub_d=derived(sub_d), v=derived('day' if sub_d == 1 else 'days'))
         else:
             start_idx = rng.randint(1, 3)
             dur = rng.randint(2, 4)
@@ -161,7 +162,7 @@ def generate_params(
             s_day = DAYS_OF_WEEK[start_idx]
             e_day = DAYS_OF_WEEK[end_idx]
             ans = dur
-            q = f"A school event starts on {s_day} and finishes on {e_day} of the same week. How many days does the event run?"
+            q = fill("A school event starts on {s_day} and finishes on {e_day} of the same week. How many days does the event run?", _src=('task_type',), s_day=derived(s_day), e_day=derived(e_day))
 
         dists = [d for d in (DAYS_OF_WEEK if isinstance(ans, str) else [ans + 1, max(1, ans - 1), ans + 2]) if d != ans][:3]
         return {
@@ -183,7 +184,7 @@ def generate_params(
             m_name = MONTHS_OF_YEAR[idx]
             add_m = rng.randint(1, 3)
             ans = MONTHS_OF_YEAR[(idx + add_m) % 12]
-            q = f"This month is {m_name}. What month will it be in {add_m} {'month' if add_m == 1 else 'months'}?"
+            q = fill("This month is {m_name}. What month will it be in {add_m} {v}?", _src=('task_type',), m_name=derived(m_name), add_m=derived(add_m), v=derived('month' if add_m == 1 else 'months'))
         else:
             m1_idx = rng.randint(0, 7)
             vp["month"] = m1_idx + 1
@@ -192,7 +193,7 @@ def generate_params(
             m1_name = MONTHS_OF_YEAR[m1_idx]
             m2_name = MONTHS_OF_YEAR[m2_idx]
             ans = diff
-            q = f"The school program begins in {m1_name} and an exhibit happens in {m2_name}. How many months later is the exhibit?"
+            q = fill("The school program begins in {m1_name} and an exhibit happens in {m2_name}. How many months later is the exhibit?", _src=('task_type',), m1_name=derived(m1_name), m2_name=derived(m2_name))
 
         dists = [d for d in (MONTHS_OF_YEAR if isinstance(ans, str) else [ans + 1, max(1, ans - 1), ans + 2]) if d != ans][:3]
         return {
@@ -220,7 +221,7 @@ def generate_params(
             "target_date": target_date,
             "answer": answer,
             "task_type": task_type,
-            "question": f"Look at the {MONTHS_OF_YEAR[month - 1]} {year} calendar. What day of the week is {MONTHS_OF_YEAR[month - 1]} {target_date}?",
+            "question": fill("Look at the {v} {year} calendar. What day of the week is {v} {target_date}?", _src=('task_type',), v=derived(MONTHS_OF_YEAR[month - 1]), year=S(year, "value:year"), target_date=derived(target_date)),
         }
 
     if task_type == "read_month":
@@ -239,7 +240,7 @@ def generate_params(
             "answer": answer,
             "distractors": dists,
             "task_type": task_type,
-            "question": f"Look at the calendar page shown. What month of the year is shown on this calendar?",
+            "question": fill("Look at the calendar page shown. What month of the year is shown on this calendar?", _src=('task_type',)),
         }
 
     if task_type == "find_date":
@@ -258,8 +259,7 @@ def generate_params(
             "answer": target_date,
             "task_type": task_type,
             "question": (
-                f"In {MONTHS_OF_YEAR[month - 1]} {year}, the first day is "
-                f"{DAYS_OF_WEEK[first_dow]}. What date is the first {day_name} of the month?"
+                fill("In {v} {year}, the first day is {v2}. What date is the first {day_name} of the month?", _src=('task_type',), v=derived(MONTHS_OF_YEAR[month - 1]), year=S(year, "value:year"), v2=derived(DAYS_OF_WEEK[first_dow]), day_name=S(day_name, "value:day_name"))
             ),
         }
 
@@ -293,9 +293,7 @@ def generate_params(
             "answer": elapsed,
             "task_type": task_type,
             "question": (
-                f"Look at the {MONTHS_OF_YEAR[month - 1]} {year} calendar. "
-                f"How many days are there from {MONTHS_OF_YEAR[month - 1]} {start_date} "
-                f"to {MONTHS_OF_YEAR[month - 1]} {end_date}, inclusive?"
+                fill("Look at the {v} {year} calendar. How many days are there from {v} {start_date} to {v} {end_date}, inclusive?", _src=('task_type',), v=derived(MONTHS_OF_YEAR[month - 1]), year=S(year, "value:year"), start_date=derived(start_date), end_date=derived(end_date))
             ),
             "visual_params": {
                 "month": month,
@@ -325,10 +323,10 @@ def generate_params(
         forward = rng.random() < 0.5
         if forward:
             answer = names[(idx + 1) % len(names)]
-            question = f"What {unit_label} comes right after {names[idx]}?"
+            question = fill("What {unit_label} comes right after {v}?", _src=('task_type',), unit_label=derived(unit_label, src=("unit",)), v=S(names[idx], "value:reference_name"))
         else:
             answer = names[(idx - 1) % len(names)]
-            question = f"What {unit_label} comes right before {names[idx]}?"
+            question = fill("What {unit_label} comes right before {v}?", _src=('task_type',), unit_label=derived(unit_label, src=("unit",)), v=S(names[idx], "value:reference_name"))
         return {
             "blank_target": "answer",
             "month": month,
@@ -367,9 +365,7 @@ def generate_params(
         "answer": weeks,
         "task_type": task_type,
         "question": (
-            f"Look at the {MONTHS_OF_YEAR[month - 1]} {year} calendar. "
-            f"How many weeks are there from {MONTHS_OF_YEAR[month - 1]} {start_date} "
-            f"to {MONTHS_OF_YEAR[month - 1]} {end_date}, inclusive?"
+            fill("Look at the {v} {year} calendar. How many weeks are there from {v} {start_date} to {v} {end_date}, inclusive?", _src=('task_type',), v=derived(MONTHS_OF_YEAR[month - 1]), year=S(year, "value:year"), start_date=derived(start_date), end_date=derived(end_date))
         ),
         "visual_params": {
             "month": month,
@@ -401,15 +397,15 @@ def generate_hints(
 
     if task_type == "read_day_of_week":
         return [
-            f"The {days_label} are: Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday.",
-            f"Find the date on the {cal_label} and look at which column it is in.",
-            f"Answer: {values.get('answer', '?')}",
+            fill("The {days_label} are: Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday.", _src=('task_type',), days_label=S(days_label, "fill")),
+            fill("Find the date on the {cal_label} and look at which column it is in.", _src=('task_type',), cal_label=S(cal_label, "fill")),
+            fill("Answer: {answer}", _src=('task_type',), answer=derived(values.get('answer', '?'), src=('answer',))),
         ]
     if task_type == "read_month":
         return [
-            f"The {months_label} go from January (1st) to December (12th).",
-            f"Count to the {values.get('month', '?')}th month.",
-            f"Answer: {values.get('answer', '?')}",
+            fill("The {months_label} go from January (1st) to December (12th).", _src=('task_type',), months_label=S(months_label, "fill")),
+            fill("Count to the {month}th month.", _src=('task_type',), month=derived(values.get('month', '?'), src=('month',))),
+            fill("Answer: {answer}", _src=('task_type',), answer=S(values.get('answer', '?'), "value:answer")),
         ]
     if task_type in ("elapsed_days", "elapsed_weeks"):
         # The span is counted INCLUSIVELY (generate_params: `end - start + 1`), so
@@ -430,28 +426,27 @@ def generate_hints(
                 f"{days} days inclusive, which does not give the served answer {answer!r}"
             )
         hints = [
-            f"Find {start} and {end} on the {cal_label}. Count both of those days too.",
-            f"{end} - {start} + 1 = {days} {count_noun(days, 'days')}.",
+            fill("Find {start} and {end} on the {cal_label}. Count both of those days too.", _src=('task_type',), start=S(start, "value:target_date"), end=S(end, "value:end_date"), cal_label=S(cal_label, "fill")),
+            fill("{end} - {start} + 1 = {days} {count_noun}.", _src=('task_type',), end=S(end, "value:end_date"), start=S(start, "value:target_date"), days=derived(days, src=('end_date', 'target_date',)), count_noun=derived(count_noun(days, 'days'), src=('end_date', 'target_date',))),
         ]
         if task_type == "elapsed_weeks":
             hints.append(
-                f"7 days make 1 week, so {days} {count_noun(days, 'days')} "
-                f"{'is' if answer == 1 else 'are'} {answer} {count_noun(answer, 'weeks')}."
+                fill("7 days make 1 week, so {days} {count_noun} {v} {answer} {count_noun2}.", _src=('task_type',), days=derived(days, src=('end_date', 'target_date',)), count_noun=derived(count_noun(days, 'days'), src=('end_date', 'target_date',)), v=derived('is' if answer == 1 else 'are', src=('answer',)), answer=S(answer, "value:answer"), count_noun2=derived(count_noun(answer, 'weeks'), src=('answer',)))
             )
         return hints
     if task_type == "problem_days":
         return [
-            f"Use the order of the {days_label}: Sunday through Saturday.",
-            "Count forward or backward one day at a time as the question asks.",
+            fill("Use the order of the {days_label}: Sunday through Saturday.", _src=('task_type',), days_label=S(days_label, "fill")),
+            fill("Count forward or backward one day at a time as the question asks.", _src=('task_type',)),
         ]
     if task_type == "problem_months":
         return [
-            f"Use the order of the {months_label}: January through December.",
-            "Count forward one month at a time from the first month named in the problem.",
+            fill("Use the order of the {months_label}: January through December.", _src=('task_type',), months_label=S(months_label, "fill")),
+            fill("Count forward one month at a time from the first month named in the problem.", _src=('task_type',)),
         ]
     return [
-        f"Use the {cal_label} to find the answer.",
-        f"The {elapsed_label} is the number of days or weeks that have passed.",
+        fill("Use the {cal_label} to find the answer.", cal_label=S(cal_label, "fill")),
+        fill("The {elapsed_label} is the number of days or weeks that have passed.", elapsed_label=S(elapsed_label, "fill")),
     ]
 
 

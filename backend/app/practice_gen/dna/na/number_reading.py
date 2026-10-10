@@ -17,6 +17,7 @@ from backend.app.practice_gen.dna.base import (
     ErrorPattern,
     VocabGated,
 )
+from backend.app.practice_gen.slots import S, derived, fill
 
 
 # ─── param bounds ─────────────────────────────────────────────────────────────
@@ -74,12 +75,12 @@ def num_to_tagalog_style_english_words(n: int) -> str:
     thousands = n // 1000
     remainder = n % 1000
     if thousands:
-        parts.append(f"{_ONES[thousands]} thousand")
+        parts.append(fill("{v} thousand", v=derived(_ONES[thousands])))
 
     hundreds = remainder // 100
     remainder = remainder % 100
     if hundreds:
-        parts.append(f"{_ONES[hundreds]} hundred")
+        parts.append(fill("{v} hundred", v=derived(_ONES[hundreds])))
 
     if remainder > 0:
         if remainder < 20:
@@ -89,7 +90,7 @@ def num_to_tagalog_style_english_words(n: int) -> str:
             ones  = remainder % 10
             chunk = _TENS[tens]
             if ones:
-                chunk = f"{chunk}-{_ONES[ones]}"
+                chunk = fill("{chunk}-{v}", chunk=derived(chunk), v=derived(_ONES[ones]))
             parts.append(chunk)
 
     return " ".join(parts)
@@ -314,8 +315,8 @@ def generate_hints(
         # this task_type against a G1 node. Stay fully generic instead of
         # trying to label individual places at all.
         hints = [
-            "Count how many of each size of block there are.",
-            "Multiply each block's own value by how many there are, then add all the totals together.",
+            fill("Count how many of each size of block there are.", _src=('task_type',)),
+            fill("Multiply each block's own value by how many there are, then add all the totals together.", _src=('task_type',)),
         ]
         place_terms = [
             (number // 1000, "thousands"),
@@ -325,26 +326,26 @@ def generate_hints(
         ]
         for digit, term in place_terms:
             if digit > 0 and term in cumulative_vocab:
-                hints.append(f"{term.capitalize()}: {digit} block{'s' if digit != 1 else ''}.")
-        hints.append(f"Add the value of every block together to get the total, {number}.")
+                hints.append(fill("{capitalize}: {digit} block{v}.", _src=('task_type',), capitalize=derived(term.capitalize()), digit=derived(digit), v=derived('s' if digit != 1 else '')))
+        hints.append(fill("Add the value of every block together to get the total, {number}.", _src=('task_type',), number=S(number, "value:number")))
         return hints
 
     if task_type == "numeral_to_word":
-        hints.append(f"Read the number {number} one place at a time, starting from the largest place.")
+        hints.append(fill("Read the number {number} one place at a time, starting from the largest place.", _src=('task_type',), number=S(number, "value:number")))
         if number >= 1000:
             th = number // 1000
-            hints.append(f"Thousands: {th} → '{num_to_tagalog_style_english_words(th)} thousand'.")
+            hints.append(fill("Thousands: {th} → '{num_to_tagalog_style_english_words} thousand'.", _src=('number', 'task_type',), th=derived(th, src=('number',)), num_to_tagalog_style_english_words=derived(num_to_tagalog_style_english_words(th), src=('number',))))
         if (number % 1000) >= 100:
             hd = (number % 1000) // 100
             hundreds_label = "Hundreds" if "hundreds" in cumulative_vocab else "The 3rd part from the right"
-            hints.append(f"{hundreds_label}: {hd} → '{num_to_tagalog_style_english_words(hd)} hundred'.")
-        hints.append(f"The full word form is: '{word_form}'.")
+            hints.append(fill("{hundreds_label}: {hd} → '{num_to_tagalog_style_english_words} hundred'.", _src=('number', 'task_type',), hundreds_label=derived(hundreds_label), hd=derived(hd, src=('number',)), num_to_tagalog_style_english_words=derived(num_to_tagalog_style_english_words(hd), src=('number',))))
+        hints.append(fill("The full word form is: '{word_form}'.", _src=('task_type',), word_form=S(word_form, "value:word_form")))
     else:
         pv_label = VOCAB_PLACE_VALUE.resolve(cumulative_vocab)
-        hints.append(f"Identify each word part and its {pv_label}.")
+        hints.append(fill("Identify each word part and its {pv_label}.", pv_label=S(pv_label, "fill")))
         expanded_label = VOCAB_EXPANDED_FORM.resolve(cumulative_vocab)
-        hints.append(f"{expanded_label.capitalize()}: {expanded_form}.")
-        hints.append(f"Add the parts together to get {number}.")
+        hints.append(fill("{capitalize}: {expanded_form}.", capitalize=derived(expanded_label.capitalize()), expanded_form=S(expanded_form, "value:expanded_form")))
+        hints.append(fill("Add the parts together to get {number}.", number=S(number, "value:number")))
 
     return hints
 

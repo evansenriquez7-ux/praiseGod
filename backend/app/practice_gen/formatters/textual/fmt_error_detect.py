@@ -18,7 +18,8 @@ from typing import Any
 
 from backend.app.practice_gen.dna.base import (FormattedProblem, QuestionContext, count_noun,
                                                  number_group_name)
-from backend.app.practice_gen.slots import E, S, fill, transform
+from backend.app.practice_gen.slots import E, S, derived, fill, transform
+from backend.app.practice_gen.formatters._answer_slots import distractors_field
 
 
 # Rotating cast of Filipino student names for the "actor" role.
@@ -95,6 +96,13 @@ def _build_pure_equation(ctx: QuestionContext) -> str:
     def slot(*keys, value):
         return "___" if blank_target in keys else value
 
+    # The same position as a structured slot (H3-R2, owner ruling 35): the blank when the
+    # position is the unknown, otherwise the value with the `values` keys it shows as `src`.
+    def slot_s(*keys, value):
+        if blank_target in keys:
+            return S("___", E(("___",), "the blank for the unknown blank_target"))
+        return derived(value, src=tuple(keys))
+
     # For task_type=="estimate" (addition/subtraction/multiplication/
     # division), "a"/"b" carry the ROUNDED values used for the answer key,
     # not the numbers being estimated -- showing them directly as the
@@ -109,7 +117,7 @@ def _build_pure_equation(ctx: QuestionContext) -> str:
         a, b, r = values.get("a"), values.get("b"), values.get("result")
         if is_estimate:
             real_a, real_b = values.get("real_a", a), values.get("real_b", b)
-            return f"{real_a} + {real_b} ≈ {slot('result', value=r)}"
+            return fill("{real_a} + {real_b} ≈ {slot}", real_a=derived(real_a), real_b=derived(real_b), slot=slot_s('result', value=r))
         if values.get("task_type") == "expanded_form" and "a_tens" in values:
             # Bare "{a} + {b} = {slot}" drops the place-value decomposition
             # this task_type exists to demonstrate -- same root cause as
@@ -121,14 +129,12 @@ def _build_pure_equation(ctx: QuestionContext) -> str:
             # the decomposition rather than being rejected outright.
             from backend.app.practice_gen.dna.na.addition import decompose_to_places
             return (
-                f"{decompose_to_places(a)} {decompose_to_places(b)} "
-                f"Add the place values, then find the total: "
-                f"{slot('a', value=a)} + {slot('b', value=b)} = {slot('result', value=r)}"
+                fill("{decompose_to_places} {decompose_to_places2} Add the place values, then find the total: {slot} + {slot2} = {slot3}", _src=('task_type',), decompose_to_places=S(decompose_to_places(a), "fill"), decompose_to_places2=S(decompose_to_places(b), "fill"), slot=slot_s('a', value=a), slot2=slot_s('b', value=b), slot3=slot_s('result', value=r))
             )
         if values.get("task_type") == "counting_up" and blank_target == "result":
             # Same root cause as expanded_form above.
-            return f"Start at {slot('a', value=a)}. Count up {slot('b', value=b)} more. You land on {slot('result', value=r)}"
-        return f"{slot('a', value=a)} + {slot('b', value=b)} = {slot('result', value=r)}"
+            return fill("Start at {slot}. Count up {slot2} more. You land on {slot3}", _src=('task_type',), slot=S(slot('a', value=a), "value:a"), slot2=slot_s('b', value=b), slot3=slot_s('result', value=r))
+        return fill("{slot} + {slot2} = {slot3}", slot=slot_s('a', value=a), slot2=slot_s('b', value=b), slot3=slot_s('result', value=r))
     elif concept == "subtraction":
         a, b, r = values.get("a"), values.get("b"), values.get("result")
 
@@ -137,7 +143,7 @@ def _build_pure_equation(ctx: QuestionContext) -> str:
         def sv(key, value):
             if blank_target == key:
                 return S("___", E(("___",), "the blank for the unknown blank_target"))
-            return S(value, f"value:{key}")
+            return S(value, fill("value:{key}", key=derived(key)))
 
         if is_estimate:
             real_a, real_b = values.get("real_a", a), values.get("real_b", b)
@@ -148,7 +154,7 @@ def _build_pure_equation(ctx: QuestionContext) -> str:
             # branch's comment).
             from backend.app.practice_gen.dna.na.addition import decompose_to_places
             return fill(
-                "{da} {db} Subtract the place values, then find what's left: {a} − {b} = {r}",
+                "{da} {db} Subtract the place values, then find what's left: {a} − {b} = {r}", _src=('task_type',),
                 da=S(decompose_to_places(a, "value:a"), "fill"),
                 db=S(decompose_to_places(b, "value:b"), "fill"),
                 a=sv("a", a), b=sv("b", b), r=sv("result", r))
@@ -156,11 +162,11 @@ def _build_pure_equation(ctx: QuestionContext) -> str:
             q = values["question"]
             if "___" in q:
                 return transform("fill_blank", q, value=sv("result", r))
-            return fill("{q} (Answer: {r})", q=S(q, "fill"), r=sv("result", r))
+            return fill("{q} (Answer: {r})", _src=('question', 'task_type',), q=S(q, "fill"), r=sv("result", r))
         if values.get("task_type") in ("one_or_two_step_subtraction", "one_step_subtraction", "two_step_subtraction") and values.get("question"):
-            return fill("{q} (Answer: {r})", q=S(values["question"], "fill"), r=sv("result", r))
+            return fill("{q} (Answer: {r})", _src=('question', 'task_type',), q=S(values["question"], "fill"), r=sv("result", r))
         if values.get("task_type") == "counting_back" and blank_target == "result":
-            return fill("Start at {a}. Count back {b}. You land on {r}",
+            return fill("Start at {a}. Count back {b}. You land on {r}", _src=('task_type',),
                         a=sv("a", a), b=sv("b", b), r=sv("result", r))
         if values.get("task_type") == "taking_away" and blank_target == "result":
             item = values.get("item_name", "items")
@@ -169,7 +175,7 @@ def _build_pure_equation(ctx: QuestionContext) -> str:
             # thing the pupil has to supply and "___ cookie" would give it away.
             def noun(key, value):
                 return S(item if blank_target == key else count_noun(value, item), forms)
-            return fill("There are {a} {n_a}. Taking away {b} {n_b} leaves {r} {n_r}.",
+            return fill("There are {a} {n_a}. Taking away {b} {n_b} leaves {r} {n_r}.", _src=('task_type',),
                         a=sv("a", a), n_a=noun("a", a), b=sv("b", b), n_b=noun("b", b),
                         r=sv("result", r), n_r=noun("result", r))
         return fill("{a} − {b} = {r}", a=sv("a", a), b=sv("b", b), r=sv("result", r))
@@ -179,41 +185,40 @@ def _build_pure_equation(ctx: QuestionContext) -> str:
         r = values.get("result", values.get("total"))
         if is_estimate:
             real_a, real_b = values.get("real_a", a), values.get("real_b", b)
-            return f"{real_a} × {real_b} ≈ {slot('result', 'total', value=r)}"
+            return fill("{real_a} × {real_b} ≈ {slot}", real_a=S(real_a, "value:real_a"), real_b=derived(real_b), slot=slot_s('result', 'total', value=r))
         if values.get("task_type") == "equal_groups" and blank_target in ("result", "total"):
             group_form = values.get("group_form")
             plural_name = values.get("plural_name")
             if not plural_name:
                 plural_name = number_group_name(a, b)
-            terms = " + ".join([str(a)] * b) if b <= 5 else f"{a} added {b} times"
+            terms = " + ".join([str(a)] * b) if b <= 5 else fill("{a} added {b} times", _src=('task_type',), a=derived(a, src=('a', 'groups',)), b=derived(b, src=('b', 'n',)))
             if group_form == "plural_name":
-                return f"Count {b} {count_noun(b, plural_name)} by repeated addition: {terms} = {slot('result', 'total', value=r)}"
+                return fill("Count {b} {count_noun} by repeated addition: {terms} = {slot}", _src=('group_form', 'task_type',), b=derived(b, src=('b', 'n',)), count_noun=derived(count_noun(b, plural_name), src=('b', 'n',)), terms=derived(terms, src=('b', 'n', 'a', 'groups',)), slot=slot_s('result', 'total', value=r))
             unit = "group" if b == 1 else "groups"
             # "There are 1 group of 1" -- the noun was pluralized and the verb was not.
             # One sentence, four copies (doc_rem.md R2); all four say it the same way.
             was = "is" if b == 1 else "are"
-            return f"There {was} {b} {unit} of {a} ({terms}), so there are {slot('result', 'total', value=r)} in all."
+            return fill("There {was} {b} {unit} of {a} ({terms}), so there are {slot} in all.", _src=('task_type',), was=derived(was, src=('b', 'n',)), b=derived(b, src=('b', 'n',)), unit=derived(unit, src=('b', 'n',)), a=derived(a, src=('a', 'groups',)), terms=derived(terms, src=('b', 'n', 'a', 'groups',)), slot=slot_s('result', 'total', value=r))
         if values.get("task_type") == "repeated_addition" and blank_target in ("result", "total"):
             terms = " + ".join([str(a)] * b)
-            return f"{terms} = {slot('result', 'total', value=r)}"
+            return fill("{terms} = {slot}", _src=('task_type',), terms=derived(terms, src=('b', 'n', 'a', 'groups',)), slot=slot_s('result', 'total', value=r))
         if values.get("task_type") == "skip_counting" and blank_target in ("result", "total"):
             seq = ", ".join(str(a * i) for i in range(1, b + 1))
-            return f"Counting by {a}s: {seq}, so {a} × {b} = {slot('result', 'total', value=r)}"
+            return fill("Counting by {a}s: {seq}, so {a} × {b} = {slot}", _src=('task_type',), a=derived(a, src=('a', 'groups',)), seq=derived(seq, src=('a', 'groups', 'b', 'n',)), b=derived(b, src=('b', 'n',)), slot=slot_s('result', 'total', value=r))
         if values.get("task_type") == "number_line_jumps" and blank_target in ("result", "total"):
-            return f"Starting at 0, taking {b} equal jumps of {a} on the number line lands on {slot('result', 'total', value=r)}"
+            return fill("Starting at 0, taking {b} equal jumps of {a} on the number line lands on {slot}", _src=('task_type',), b=derived(b, src=('b', 'n',)), a=derived(a, src=('a', 'groups',)), slot=slot_s('result', 'total', value=r))
         if values.get("task_type") == "commutative":
-            return f"{a} × {b} = {slot('b', value=b)} × {a}"
+            return fill("{a} × {b} = {slot} × {a}", _src=('task_type',), a=derived(a, src=('a', 'groups',)), b=derived(b, src=('b', 'n',)), slot=slot_s('b', value=b))
         if values.get("task_type") == "associative":
             c = values.get("c", 3)
-            return f"({a} × {b}) × {c} = {a} × ({slot('b', value=b)} × {c})"
+            return fill("({a} × {b}) × {c} = {a} × ({slot} × {c})", _src=('task_type',), a=derived(a, src=('a', 'groups',)), b=derived(b, src=('b', 'n',)), c=derived(c, src=('c',)), slot=slot_s('b', value=b))
         if values.get("task_type") == "distributive":
             c = values.get("c", 5)
-            return f"{a} × ({b} + {c}) = ({a} × {b}) + ({a} × {slot('c', value=c)})"
+            return fill("{a} × ({b} + {c}) = ({a} × {b}) + ({a} × {slot})", _src=('task_type',), a=derived(a, src=('a', 'groups',)), b=derived(b, src=('b', 'n',)), c=derived(c, src=('c',)), slot=slot_s('c', value=c))
         if values.get("task_type") == "two_step":
-            return f"({a} × {b}) + 5 = {slot('result', 'total', value=r)}"
+            return fill("({a} × {b}) + 5 = {slot}", _src=('task_type',), a=derived(a, src=('a', 'groups',)), b=derived(b, src=('b', 'n',)), slot=slot_s('result', 'total', value=r))
         return (
-            f"{slot('a', 'groups', value=a)} × {slot('b', 'n', value=b)} "
-            f"= {slot('result', 'total', value=r)}"
+            fill("{slot} × {slot2} = {slot3}", slot=slot_s('a', 'groups', value=a), slot2=slot_s('b', 'n', value=b), slot3=slot_s('result', 'total', value=r))
         )
     elif concept == "division":
         dividend = values.get("dividend", values.get("a"))
@@ -222,18 +227,17 @@ def _build_pure_equation(ctx: QuestionContext) -> str:
         if is_estimate:
             real_a = values.get("real_a", dividend)
             real_b = values.get("real_b", divisor)
-            return f"{real_a} ÷ {real_b} ≈ {slot('result', 'quotient', value=quotient)}"
+            return fill("{real_a} ÷ {real_b} ≈ {slot}", real_a=S(real_a, "value:real_a"), real_b=derived(real_b, src=('real_b', 'divisor', 'b',)), slot=slot_s('result', 'quotient', value=quotient))
         if values.get("task_type") == "even_odd":
-            return f"Divide {dividend} by 2. {dividend} is an {slot('answer', value=values.get('answer'))} number."
+            return fill("Divide {dividend} by 2. {dividend} is an {slot} number.", _src=('task_type',), dividend=derived(dividend, src=('dividend', 'a',)), slot=slot_s('answer', value=values.get('answer')))
         if values.get("task_type") == "number_line_jumps":
-            return f"Starting at {dividend} on a number line, taking equal jumps back of {divisor} takes {slot('result', 'quotient', value=quotient)} jumps to reach 0"
+            return fill("Starting at {dividend} on a number line, taking equal jumps back of {divisor} takes {slot} jumps to reach 0", _src=('task_type',), dividend=derived(dividend, src=('dividend', 'a',)), divisor=derived(divisor, src=('divisor', 'b',)), slot=slot_s('result', 'quotient', value=quotient))
         if values.get("task_type") == "repeated_subtraction":
-            return f"Starting from {dividend} and subtracting {divisor} repeatedly, you subtract {slot('result', 'quotient', value=quotient)} times before reaching 0"
+            return fill("Starting from {dividend} and subtracting {divisor} repeatedly, you subtract {slot} times before reaching 0", _src=('task_type',), dividend=derived(dividend, src=('dividend', 'a',)), divisor=derived(divisor, src=('divisor', 'b',)), slot=slot_s('result', 'quotient', value=quotient))
         if values.get("task_type") == "inverse_of_multiplication":
-            return f"Since {divisor} × {quotient} = {dividend}, then {dividend} ÷ {divisor} = {slot('result', 'quotient', value=quotient)}"
+            return fill("Since {divisor} × {quotient} = {dividend}, then {dividend} ÷ {divisor} = {slot}", _src=('task_type',), divisor=derived(divisor, src=('divisor', 'b',)), quotient=derived(quotient, src=('quotient', 'result',)), dividend=derived(dividend, src=('dividend', 'a',)), slot=slot_s('result', 'quotient', value=quotient))
         return (
-            f"{slot('a', 'dividend', value=dividend)} ÷ {slot('b', 'divisor', value=divisor)} "
-            f"= {slot('result', 'quotient', value=quotient)}"
+            fill("{slot} ÷ {slot2} = {slot3}", slot=slot_s('a', 'dividend', value=dividend), slot2=slot_s('b', 'divisor', value=divisor), slot3=slot_s('result', 'quotient', value=quotient))
         )
     elif concept == "missing_number":
         op_name = values.get("operation", "addition")
@@ -248,37 +252,37 @@ def _build_pure_equation(ctx: QuestionContext) -> str:
             c_val = values.get("c", 1)
             eq_sym = values.get("equivalent_symbol", "+")
             if eq_sym == "+":
-                return f"{a_val} + {b_val} = {c_val} + ___"
+                return fill("{a_val} + {b_val} = {c_val} + ___", _src=('equivalent_symbol', 'operation',), a_val=S(a_val, "value:a"), b_val=S(b_val, "value:b"), c_val=derived(c_val, src=('c',)))
             else:
-                return f"{a_val} − {b_val} = {c_val} − ___"
+                return fill("{a_val} − {b_val} = {c_val} − ___", _src=('operation',), a_val=S(a_val, "value:a"), b_val=S(b_val, "value:b"), c_val=derived(c_val, src=('c',)))
         if blank_pos == "start":
-            return f"___ {op_symbol} {b_val} = {res}"
+            return fill("___ {op_symbol} {b_val} = {res}", _src=('blank_position',), op_symbol=derived(op_symbol, src=('operation', 'equivalent_symbol',)), b_val=S(b_val, "value:b"), res=derived(res, src=('result', 'total',)))
         elif blank_pos == "change":
-            return f"{a_val} {op_symbol} ___ = {res}"
+            return fill("{a_val} {op_symbol} ___ = {res}", _src=('blank_position',), a_val=S(a_val, "value:a"), op_symbol=derived(op_symbol, src=('operation', 'equivalent_symbol',)), res=derived(res, src=('result', 'total',)))
         else:
-            return f"{a_val} {op_symbol} {b_val} = ___"
+            return fill("{a_val} {op_symbol} {b_val} = ___", a_val=S(a_val, "value:a"), op_symbol=derived(op_symbol, src=('operation', 'equivalent_symbol',)), b_val=S(b_val, "value:b"))
     elif concept == "fractions":
         if values.get("question"):
             res_str = values.get("result", values.get("fraction_str", ""))
-            return f"{values['question']} (Answer: {slot('result', 'fraction', value=res_str)})"
+            return fill("{question} (Answer: {slot})", _src=('question',), question=S(values['question'], "value:question"), slot=slot_s('result', 'fraction', value=res_str))
         numer = values.get("numerator", values.get("a", 1))
         denom = values.get("denominator", values.get("b", 2))
         operation = values.get("operation")
-        res_str = values.get("result", f"{numer}/{denom}")
+        res_str = values.get("result", fill("{numer}/{denom}", numer=derived(numer, src=('numerator', 'a',)), denom=derived(denom, src=('denominator', 'b',))))
         if operation == "compare":
             a_num = values.get("a_num", numer)
             a_den = values.get("a_den", denom)
             b_num = values.get("b_num", numer)
             b_den = values.get("b_den", denom)
-            return f"\\(\\frac{{{a_num}}}{{{a_den}}}\\) {slot('result', 'sign', value=res_str)} \\(\\frac{{{b_num}}}{{{b_den}}}\\)"
+            return fill("\\(\\frac{{{a_num}}}{{{a_den}}}\\) {slot} \\(\\frac{{{b_num}}}{{{b_den}}}\\)", _src=('operation',), a_num=derived(a_num, src=('a_num', 'numerator', 'a',)), a_den=derived(a_den, src=('a_den', 'denominator', 'b',)), slot=slot_s('result', 'sign', value=res_str), b_num=derived(b_num, src=('b_num', 'numerator', 'a',)), b_den=derived(b_den, src=('b_den', 'denominator', 'b',)))
         if operation in ("add_subtract", "add", "subtract"):
             a_num = values.get("a_num", numer)
             b_num = values.get("b_num", 0)
             a_den = values.get("a_den", denom)
             b_den = values.get("b_den", denom)
             op_sym = "+" if operation in ("add_subtract", "add") else "−"
-            return f"\\(\\frac{{{a_num}}}{{{a_den}}} {op_sym} \\frac{{{b_num}}}{{{b_den}}} = {slot('result', 'fraction', value=res_str)}\\)"
-        return f"A shape is divided into {denom} equal parts with {numer} parts shaded, representing {slot('result', 'fraction', value=res_str)}"
+            return fill("\\(\\frac{{{a_num}}}{{{a_den}}} {op_sym} \\frac{{{b_num}}}{{{b_den}}} = {slot}\\)", _src=('operation',), a_num=derived(a_num, src=('a_num', 'numerator', 'a',)), a_den=derived(a_den, src=('a_den', 'denominator', 'b',)), op_sym=derived(op_sym, src=('operation',)), b_num=derived(b_num, src=('b_num',)), b_den=derived(b_den, src=('b_den', 'denominator', 'b',)), slot=slot_s('result', 'fraction', value=res_str))
+        return fill("A shape is divided into {denom} equal parts with {numer} parts shaded, representing {slot}", denom=derived(denom, src=('denominator', 'b',)), numer=derived(numer, src=('numerator', 'a',)), slot=slot_s('result', 'fraction', value=res_str))
     else:
         return ctx.question_text
 
@@ -392,7 +396,7 @@ def format_error_detect(ctx: QuestionContext, rng: random.Random) -> FormattedPr
         seed=ctx.seed,
         question_text=question_text,
         correct_answer=correct_answer,
-        distractors=ctx.distractors,
+        distractors=distractors_field(ctx),
         hints=ctx.hints,
         format="error_detect",
         format_data=format_data,

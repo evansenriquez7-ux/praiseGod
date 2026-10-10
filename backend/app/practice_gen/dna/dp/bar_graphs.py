@@ -16,6 +16,7 @@ from backend.app.practice_gen.dna.base import (
     VocabGated,
     linear_interpolate,
 )
+from backend.app.practice_gen.slots import S, derived, fill
 
 
 # ─── param bounds ─────────────────────────────────────────────────────────────
@@ -179,7 +180,7 @@ def generate_params(
     }
 
     if task_type == "present_data":
-        data_str = ", ".join(f"{categories[i]}: {values[i]}" for i in range(len(categories)))
+        data_str = ", ".join(fill("{v}: {v2}", _src=('task_type',), v=derived(categories[i]), v2=derived(values[i])) for i in range(len(categories)))
         return {
             "blank_target": "answer",
             **base,
@@ -197,18 +198,18 @@ def generate_params(
             diff = abs(val_a - val_b)
             more_cat = cat_a if val_a >= val_b else cat_b
             less_cat = cat_b if more_cat == cat_a else cat_a
-            p_text = f"How many more items were recorded for {more_cat} than for {less_cat}?"
+            p_text = fill("How many more items were recorded for {more_cat} than for {less_cat}?", _src=('task_type',), more_cat=derived(more_cat), less_cat=derived(less_cat))
             ans = diff
         elif prob_kind == "sum":
-            p_text = f"How many total items were recorded for {cat_a} and {cat_b} together?"
+            p_text = fill("How many total items were recorded for {cat_a} and {cat_b} together?", _src=('task_type',), cat_a=S(cat_a, "value:question_category"), cat_b=derived(cat_b))
             ans = val_a + val_b
         elif prob_kind == "mult_step":
             unit_price = rng.choice([2, 3, 5, 10])
-            p_text = f"If each item for {cat_a} costs ₱{unit_price}, what is the total cost for {cat_a}?"
+            p_text = fill("If each item for {cat_a} costs ₱{unit_price}, what is the total cost for {cat_a}?", _src=('task_type',), cat_a=S(cat_a, "value:question_category"), unit_price=derived(unit_price))
             ans = val_a * unit_price
         else: # add_step
             added = rng.choice([5, 10, 15, 20])
-            p_text = f"If {added} more items are added to {cat_a}, what will be the new total for {cat_a}?"
+            p_text = fill("If {added} more items are added to {cat_a}, what will be the new total for {cat_a}?", _src=('task_type',), added=derived(added), cat_a=S(cat_a, "value:question_category"))
             ans = val_a + added
 
         return {
@@ -308,41 +309,41 @@ def generate_hints(
     if "axis" in cumulative_vocab:
         axis = "vertical (y-axis)" if orientation == "vertical" else "horizontal (x-axis)"
     else:
-        axis = f"vertical {vocab_axis}" if orientation == "vertical" else f"horizontal {vocab_axis}"
+        axis = fill("vertical {vocab_axis}", vocab_axis=S(vocab_axis, "fill")) if orientation == "vertical" else fill("horizontal {vocab_axis}", vocab_axis=S(vocab_axis, "fill"))
 
     if orientation == "table":
-        hints = ["Look at the table carefully."]
+        hints = [fill("Look at the table carefully.")]
     else:
         hints = [
-            f"Look at the {bg_label} carefully.",
-            f"The {scale_label} on the {axis} goes up by {scale}.",
+            fill("Look at the {bg_label} carefully.", bg_label=S(bg_label, "fill")),
+            fill("The {scale_label} on the {axis} goes up by {scale}.", scale_label=S(scale_label, "fill"), axis=derived(axis), scale=derived(scale, src=('visual_params',))),
         ]
 
     if task_type == "read_value":
         cat = values.get("question_category", "the category")
         hints.append(
-            f"Find the row for '{cat}' and read its value."
+            fill("Find the row for '{cat}' and read its value.", _src=('task_type',), cat=S(cat, "value:question_category"))
             if orientation == "table"
-            else f"Find the bar for '{cat}' and read across to the scale."
+            else fill("Find the bar for '{cat}' and read across to the scale.", _src=('task_type',), cat=S(cat, "value:question_category"))
         )
-        hints.append(f"Answer: {values.get('answer', '?')}")
+        hints.append(fill("Answer: {answer}", _src=('task_type',), answer=S(values.get('answer', '?'), "value:answer")))
     elif task_type == "find_total":
-        hints.append("Read each bar's value, then add them all together.")
+        hints.append(fill("Read each bar's value, then add them all together.", _src=('task_type',)))
     elif task_type in ("compare_bars", "find_difference"):
         a = values.get("compare_a", "A")
         b = values.get("compare_b", "B")
         hints.append(
-            f"Read the rows for '{a}' and '{b}'."
+            fill("Read the rows for '{a}' and '{b}'.", _src=('task_type',), a=S(a, "value:compare_a"), b=S(b, "value:compare_b"))
             if orientation == "table"
-            else f"Read the bar for '{a}' and the bar for '{b}'."
+            else fill("Read the bar for '{a}' and the bar for '{b}'.", _src=('task_type',), a=S(a, "value:compare_a"), b=S(b, "value:compare_b"))
         )
         if task_type == "find_difference":
-            hints.append("Subtract the smaller value from the larger value.")
+            hints.append(fill("Subtract the smaller value from the larger value.", _src=('task_type',)))
         else:
             hints.append(
-                "Compare the two values."
+                fill("Compare the two values.", _src=('task_type',))
                 if orientation == "table"
-                else "Compare: which bar is taller (or longer)?"
+                else fill("Compare: which bar is taller (or longer)?", _src=('task_type',))
             )
     elif task_type == "find_most_least":
         direction = values.get("direction", "most")
@@ -350,7 +351,7 @@ def generate_hints(
             adj = "tallest" if direction == "most" else "shortest"
         else:
             adj = "longest" if direction == "most" else "shortest"
-        hints.append(f"Look for the {adj} bar.")
+        hints.append(fill("Look for the {adj} bar.", _src=('task_type',), adj=derived(adj)))
 
     return hints
 

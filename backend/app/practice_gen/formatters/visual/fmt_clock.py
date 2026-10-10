@@ -20,6 +20,8 @@ from typing import Optional
 from backend.app.practice_gen.dna.base import FormattedProblem, QuestionContext
 from backend.app.practice_gen.formatters._distractor_fallback import augment_distractors
 from backend.app.practice_gen.formatters._option_order import shuffle_options
+from backend.app.practice_gen.slots import S, derived, fill
+from backend.app.practice_gen.formatters._answer_slots import (correct_option_key, distractors_field)
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -28,9 +30,9 @@ from backend.app.practice_gen.formatters._option_order import shuffle_options
 
 def _time_str(hours: int, minutes: int, use_24: bool, period: Optional[str] = None) -> str:
     if use_24:
-        return f"{hours:02d}:{minutes:02d}"
-    base = f"{hours}:{minutes:02d}"
-    return f"{base} {period}" if period and not use_24 else base
+        return fill("{hours:02d}:{minutes:02d}", hours=derived(hours), minutes=derived(minutes))
+    base = fill("{hours}:{minutes:02d}", hours=derived(hours), minutes=derived(minutes))
+    return fill("{base} {period}", base=S(base, "fill"), period=S(period, "value:period")) if period and not use_24 else base
 
 
 def _build_traps(hours: int, minutes: int, use_24: bool, rng: random.Random) -> dict:
@@ -198,7 +200,7 @@ def format_clock(
             "hours": hours,
             "minutes": minutes,
             "display_hours": hours,
-            "target_time": f"{hours}:{minutes:02d}",
+            "target_time": fill("{hours}:{minutes:02d}", hours=S(hours, "value:hour"), minutes=derived(minutes, src=('minute',))),
             "use_24_hour": use_24,
             "minute_angle": (minutes / 60) * 360,
             "hour_angle": ((hours % 12) / 12) * 360 + (minutes / 60) * 30,
@@ -250,14 +252,15 @@ def format_clock(
                 {"key": chr(ord("A") + i), "value": opt, "is_correct": opt == target_correct}
                 for i, opt in enumerate(all_options)
             ]
-            correct_answer = next(o["key"] for o in mcq_options if o["is_correct"])
+            correct_answer = correct_option_key(mcq_options)
         else:
-            correct_answer = str(raw_ans)
+            correct_answer = fill("{answer}", _src=('question',), answer=S(raw_ans, "value:answer")
+                                  if "answer" in (ctx.values or {}) else derived(raw_ans))
     elif interaction_mode == "read":
         if use_24:
-            question_text = "What time does the clock show? Give the time in 24-hour format."
+            question_text = fill("What time does the clock show? Give the time in 24-hour format.", _src=('interaction_mode',))
         else:
-            question_text = "What time does the clock show?"
+            question_text = fill("What time does the clock show?", _src=('interaction_mode',))
         if answer_collection == "mcq":
             distractor_strings = _trap_time_strings(traps, use_24, correct_tuple, rng, period)
             all_options = [time_str] + distractor_strings[:3]
@@ -266,15 +269,15 @@ def format_clock(
                 {"key": chr(ord("A") + i), "value": opt, "is_correct": opt == time_str}
                 for i, opt in enumerate(all_options)
             ]
-            correct_answer = next(o["key"] for o in mcq_options if o["is_correct"])
+            correct_answer = correct_option_key(mcq_options)
         else:
             correct_answer = time_str
     else:  # "set"
         trailing = "" if time_str.endswith(".") else "."
         if use_24:
-            question_text = f"Set the clock to show {time_str} (24-hour time)."
+            question_text = fill("Set the clock to show {time_str} (24-hour time).", time_str=derived(time_str, src=('period',)))
         else:
-            question_text = f"Set the clock to show {time_str}{trailing}"
+            question_text = fill("Set the clock to show {time_str}{trailing}", time_str=S(time_str, "value:time_str"), trailing=derived(trailing, src=('period',)))
         correct_answer = time_str
 
     # ── 4. Assemble visual_params ─────────────────────────────────────────────
@@ -304,7 +307,7 @@ def format_clock(
     if mcq_options is not None:
         format_data["mcq_options"] = mcq_options
 
-    fmt = f"{interaction_mode}_{answer_collection}"
+    fmt = fill("{interaction_mode}_{answer_collection}", interaction_mode=derived(interaction_mode), answer_collection=derived(answer_collection))
 
     return FormattedProblem(
         problem_id=f"{ctx.node_id}_{ctx.seed}_clockset",
@@ -314,7 +317,7 @@ def format_clock(
         seed=ctx.seed,
         question_text=question_text,
         correct_answer=correct_answer,
-        distractors=ctx.distractors,
+        distractors=distractors_field(ctx),
         hints=ctx.hints,
         format=fmt,
         format_data=format_data,

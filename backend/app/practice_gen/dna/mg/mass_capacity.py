@@ -18,6 +18,7 @@ from backend.app.practice_gen.dna.base import (
     linear_interpolate,
     log_interpolate,
 )
+from backend.app.practice_gen.slots import S, derived, fill
 
 
 # ─── param bounds ─────────────────────────────────────────────────────────────
@@ -221,7 +222,7 @@ def generate_params(
     # capacity nodes rendered identical readings that differed only in the unit
     # label -- blind review found mat_g3_mg_q2_0 and mat_g3_mg_q2_3 identical
     # on all nine shared seeds.
-    rng = random.Random(f"{seed}:{mtype}")
+    rng = random.Random(fill("{seed}:{mtype}", seed=derived(seed), mtype=S(mtype, "value:measurement_type")))
 
     units = _UNITS_FOR[mtype]
     base_unit = units[0]
@@ -239,7 +240,7 @@ def generate_params(
                 "from_unit": small,
                 "to_unit": large,
                 "answer": val // 1000,
-                "answer_formula": f"value_{small} / 1000",
+                "answer_formula": fill("value_{small} / 1000", _src=('task_type',), small=derived(small)),
                 "conversion_factor": 1000,
             }
         # large -> small (multiply)
@@ -252,7 +253,7 @@ def generate_params(
             "from_unit": large,
             "to_unit": small,
             "answer": val * 1000,
-            "answer_formula": f"value_{large} * 1000",
+            "answer_formula": fill("value_{large} * 1000", _src=('task_type',), large=derived(large)),
             "conversion_factor": 1000,
         }
 
@@ -290,7 +291,7 @@ def generate_params(
             "value_b": val_b,
             "unit": unit,
             "answer": winner,
-            "answer_label": f"{winner} {unit}",
+            "answer_label": fill("{winner} {unit}", _src=('task_type',), winner=derived(winner), unit=S(unit, "value:unit")),
         }
 
     if task_type == "estimate":
@@ -365,26 +366,26 @@ def generate_hints(
         ans       = values["answer"]
         if from_unit in ("g",):
             return [
-                f"1 {kg_label} = 1000 {g_label}.",
-                f"To convert {g_label} to {kg_label}, divide by 1000.",
-                f"{val} ÷ {factor} = {ans} kg.",
+                fill("1 {kg_label} = 1000 {g_label}.", _src=('from_unit', 'task_type',), kg_label=S(kg_label, "fill"), g_label=S(g_label, "fill")),
+                fill("To convert {g_label} to {kg_label}, divide by 1000.", _src=('from_unit', 'task_type',), g_label=S(g_label, "fill"), kg_label=S(kg_label, "fill")),
+                fill("{val} ÷ {factor} = {ans} kg.", _src=('from_unit', 'task_type',), val=S(val, "value:value"), factor=derived(factor, src=('conversion_factor',)), ans=S(ans, "value:answer")),
             ]
         if from_unit in ("kg",):
             return [
-                f"1 {kg_label} = 1000 {g_label}.",
-                f"To convert {kg_label} to {g_label}, multiply by 1000.",
-                f"{val} × {factor} = {ans} g.",
+                fill("1 {kg_label} = 1000 {g_label}.", _src=('from_unit', 'task_type',), kg_label=S(kg_label, "fill"), g_label=S(g_label, "fill")),
+                fill("To convert {kg_label} to {g_label}, multiply by 1000.", _src=('from_unit', 'task_type',), kg_label=S(kg_label, "fill"), g_label=S(g_label, "fill")),
+                fill("{val} × {factor} = {ans} g.", _src=('from_unit', 'task_type',), val=S(val, "value:value"), factor=derived(factor, src=('conversion_factor',)), ans=S(ans, "value:answer")),
             ]
         if from_unit == "mL":
             return [
-                f"1 {l_label} = 1000 {ml_label}.",
-                f"To convert {ml_label} to {l_label}, divide by 1000.",
-                f"{val} ÷ {factor} = {ans} L.",
+                fill("1 {l_label} = 1000 {ml_label}.", _src=('from_unit', 'task_type',), l_label=S(l_label, "fill"), ml_label=S(ml_label, "fill")),
+                fill("To convert {ml_label} to {l_label}, divide by 1000.", _src=('from_unit', 'task_type',), ml_label=S(ml_label, "fill"), l_label=S(l_label, "fill")),
+                fill("{val} ÷ {factor} = {ans} L.", _src=('from_unit', 'task_type',), val=S(val, "value:value"), factor=derived(factor, src=('conversion_factor',)), ans=S(ans, "value:answer")),
             ]
         return [
-            f"1 {l_label} = 1000 {ml_label}.",
-            f"Multiply by 1000 to convert L to mL.",
-            f"{val} × {factor} = {ans} mL.",
+            fill("1 {l_label} = 1000 {ml_label}.", _src=('task_type',), l_label=S(l_label, "fill"), ml_label=S(ml_label, "fill")),
+            fill("Multiply by 1000 to convert L to mL.", _src=('task_type',)),
+            fill("{val} × {factor} = {ans} mL.", _src=('task_type',), val=S(val, "value:value"), factor=derived(factor, src=('conversion_factor',)), ans=S(ans, "value:answer")),
         ]
 
     if task_type == "compare":
@@ -393,8 +394,8 @@ def generate_hints(
         unit = values["unit"]
         more = "is heavier" if mtype == "mass" else "holds more"
         return [
-            f"Compare the two measurements: {a} {unit} and {b} {unit}.",
-            f"The larger number {more}: {values['answer']} {unit}.",
+            fill("Compare the two measurements: {a} {unit} and {b} {unit}.", _src=('task_type',), a=S(a, "value:value_a"), unit=S(unit, "value:unit"), b=S(b, "value:value_b")),
+            fill("The larger number {more}: {answer} {unit}.", _src=('task_type',), more=derived(more, src=('measurement_type',)), answer=S(values['answer'], "value:answer"), unit=S(unit, "value:unit")),
         ]
 
     if task_type == "estimate":
@@ -412,14 +413,14 @@ def generate_hints(
                 f"lies between {low} and {high}, not at {answer!r}"
             )
         closer = (
-            f"{value} is exactly halfway, so it rounds up to {high}."
+            fill("{value} is exactly halfway, so it rounds up to {high}.", _src=('task_type',), value=S(value, "value:value"), high=derived(high))
             if value - low == high - value
-            else f"{value} is closer to {answer}."
+            else fill("{value} is closer to {answer}.", _src=('task_type',), value=S(value, "value:value"), answer=S(answer, "value:answer"))
         )
         return [
-            f"Count by {step}s: {value} is between {low} and {high}.",
+            fill("Count by {step}s: {value} is between {low} and {high}.", _src=('task_type',), step=S(step, "value:round_to"), value=S(value, "value:value"), low=derived(low), high=derived(high)),
             closer,
-            f"So {value} {unit} is about {answer} {unit}.",
+            fill("So {value} {unit} is about {answer} {unit}.", _src=('task_type',), value=S(value, "value:value"), unit=S(unit, "value:unit"), answer=S(answer, "value:answer")),
         ]
 
     # The reading hints must name the unit the item actually used. They used to
@@ -446,12 +447,12 @@ def generate_hints(
     reading = _scale_for(int(values["value"]))[0]
     if mtype == "mass":
         return [
-            "Read the scale: find the number the pointer points to.",
-            f"The mass shown is {reading} {unit}.",
+            fill("Read the scale: find the number the pointer points to.", _src=('measurement_type',)),
+            fill("The mass shown is {reading} {unit}.", _src=('measurement_type',), reading=derived(reading, src=('value',)), unit=S(unit, "value:unit")),
         ]
     return [
-        "Read the measuring cylinder: find the mark at the top of the liquid.",
-        f"The capacity shown is {reading} {unit}.",
+        fill("Read the measuring cylinder: find the mark at the top of the liquid."),
+        fill("The capacity shown is {reading} {unit}.", reading=derived(reading, src=('value',)), unit=S(unit, "value:unit")),
     ]
 
 

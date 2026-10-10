@@ -21,6 +21,7 @@ from backend.app.practice_gen.dna.base import (
     ErrorPattern,
     VocabGated,
 )
+from backend.app.practice_gen.slots import S, derived, derives, fill
 
 
 # ─── grade-gated denominator pools ───────────────────────────────────────────
@@ -102,7 +103,7 @@ VOCAB_IMPROPER    = VocabGated(requires_vocab="improper fraction",preferred="imp
 # ─── helpers ──────────────────────────────────────────────────────────────────
 
 def _fraction_str(num: int, den: int) -> str:
-    return f"{num}/{den}"
+    return fill("{num}/{den}", num=derived(num), den=derived(den))
 
 
 _ORDINAL_WORDS = {
@@ -114,10 +115,10 @@ _CARDINAL_WORDS = {1: "one", 2: "two", 3: "three", 4: "four", 5: "five", 6: "six
 
 def _fraction_words(num: int, den: int) -> str:
     """Spell out a fraction in words, e.g. (3, 4) -> 'three fourths'."""
-    ordinal = _ORDINAL_WORDS.get(den, f"{den}th")
+    ordinal = _ORDINAL_WORDS.get(den, fill("{den}th", den=derived(den)))
     if num != 1:
         ordinal += "s"
-    return f"{_CARDINAL_WORDS.get(num, str(num))} {ordinal}"
+    return fill("{get} {ordinal}", get=derived(_CARDINAL_WORDS.get(num, str(num))), ordinal=derived(ordinal))
 
 
 # ─── parameter generator ──────────────────────────────────────────────────────
@@ -139,6 +140,10 @@ def generate_params(
         a_num, a_den, b_num, b_den, result_num, result_den: int
         operation   : str
     """
+    # Owner ruling 41: every keyed fraction (and its display string) is built from the
+    # item's own numerator and denominator.
+    derives("answer", src=("numerator", "denominator"))
+    derives("fraction_str", src=("numerator", "denominator"))
     rng = random.Random(seed)
     profile = difficulty_profile or {}
 
@@ -232,15 +237,15 @@ def generate_params(
 
         if direction == "ascending":
             q_template = rng.choice([
-                f"Which list shows these fractions ordered from smallest to largest: {display_str}?",
-                f"Arrange these fractions from least to greatest: {display_str}.",
-                f"Order these fractions from smallest to largest: {display_str}.",
+                fill("Which list shows these fractions ordered from smallest to largest: {display_str}?", _src=('direction', 'operation',), display_str=derived(display_str)),
+                fill("Arrange these fractions from least to greatest: {display_str}.", _src=('direction', 'operation',), display_str=derived(display_str)),
+                fill("Order these fractions from smallest to largest: {display_str}.", _src=('direction', 'operation',), display_str=derived(display_str)),
             ])
         else:
             q_template = rng.choice([
-                f"Which list shows these fractions ordered from largest to smallest: {display_str}?",
-                f"Arrange these fractions from greatest to least: {display_str}.",
-                f"Order these fractions from largest to smallest: {display_str}.",
+                fill("Which list shows these fractions ordered from largest to smallest: {display_str}?", _src=('operation', 'direction',), display_str=derived(display_str)),
+                fill("Arrange these fractions from greatest to least: {display_str}.", _src=('operation', 'direction',), display_str=derived(display_str)),
+                fill("Order these fractions from largest to smallest: {display_str}.", _src=('operation', 'direction',), display_str=derived(display_str)),
             ])
 
         return {
@@ -294,11 +299,11 @@ def generate_params(
             answer_str = "2/2"
             next_frac = (2, 2)
             distractors = ["1/2", "3/2", "2/4"]
-            q_template = rng.choice([
+            q_template = fill(rng.choice([
                 "What comes next when counting by halves: 1/2, ___?",
                 "Count by halves: 1/2, ___. What fraction comes next?",
                 "What is the next fraction in the pattern: 1/2, ___?",
-            ])
+            ]), _src=('operation', 'denominator'))
         else:
             # Support multiple counting sequence variations:
             # 1) full sequence: "1/4, 2/4, 3/4, ___" -> "4/4"
@@ -310,29 +315,29 @@ def generate_params(
                 answer_str = "4/4"
                 next_frac = (4, 4)
                 distractors = ["3/4", "5/4", "4/2"]
-                q_template = rng.choice([
+                q_template = fill(rng.choice([
                     "What comes next when counting by quarters: 2/4, 3/4, ___?",
                     "Count by quarters: 2/4, 3/4, ___. What fraction comes next?",
-                ])
+                ]), _src=('operation', 'denominator'))
             elif seq_mode == "missing_middle":
                 missing_num = rng.choice([2, 3])
-                answer_str = f"{missing_num}/4"
+                answer_str = fill("{missing_num}/4", _src=('operation', 'denominator'), missing_num=derived(missing_num))
                 next_frac = (missing_num, 4)
-                display = [("___" if n == missing_num else f"{n}/4") for n in range(1, 5)]
-                distractors = [f"{n}/4" for n in range(1, 5) if n != missing_num] + ["1/2"]
+                display = [("___" if n == missing_num else fill("{n}/4", _src=('operation', 'denominator'), n=derived(n))) for n in range(1, 5)]
+                distractors = [fill("{n}/4", _src=('operation', 'denominator'), n=derived(n)) for n in range(1, 5) if n != missing_num] + ["1/2"]
                 distractors = [d for d in distractors if d != answer_str][:3]
                 seq_strs = display
-                q_template = f"What fraction is missing when counting by quarters: {', '.join(display)}?"
+                q_template = fill("What fraction is missing when counting by quarters: {join}?", _src=('operation', 'denominator'), join=derived(', '.join(display)))
             else:
                 seq_strs = ["1/4", "2/4", "3/4"]
                 answer_str = "4/4"
                 next_frac = (4, 4)
                 distractors = ["3/4", "5/4", "4/2"]
-                q_template = rng.choice([
+                q_template = fill(rng.choice([
                     "What comes next when counting by quarters: 1/4, 2/4, 3/4, ___?",
                     "Count by quarters: 1/4, 2/4, 3/4, ___. What fraction comes next?",
                     "What is the next fraction in the pattern: 1/4, 2/4, 3/4, ___?",
-                ])
+                ]), _src=('operation', 'denominator'))
 
         return {
             "numerator":    next_frac[0],
@@ -412,15 +417,15 @@ def generate_params(
                         ans = ">" if (num / den) > (b_num / b_den) else "<"
                         cmp_distractors = [s for s in (">", "<", "=") if s != ans] + ["+"]
                         q_template = rng.choice([
-                            f"Look at the fraction models. Compare \\(\\frac{{{num}}}{{{den}}}\\) and \\(\\frac{{{b_num}}}{{{b_den}}}\\). Which sign makes the statement true: \\(\\frac{{{num}}}{{{den}}}\\) ___ \\(\\frac{{{b_num}}}{{{b_den}}}\\)?",
-                            f"Look at the shaded models. Which sign correctly compares the shaded parts: \\(\\frac{{{num}}}{{{den}}}\\) ___ \\(\\frac{{{b_num}}}{{{b_den}}}\\)?",
-                            f"Look at the fraction models for \\(\\frac{{{num}}}{{{den}}}\\) and \\(\\frac{{{b_num}}}{{{b_den}}}\\). Which comparison sign is correct: \\(\\frac{{{num}}}{{{den}}}\\) ___ \\(\\frac{{{b_num}}}{{{b_den}}}\\)?",
+                            fill("Look at the fraction models. Compare \\(\\frac{{{num}}}{{{den}}}\\) and \\(\\frac{{{b_num}}}{{{b_den}}}\\). Which sign makes the statement true: \\(\\frac{{{num}}}{{{den}}}\\) ___ \\(\\frac{{{b_num}}}{{{b_den}}}\\)?", _src=('operation',), num=derived(num), den=derived(den), b_num=derived(b_num), b_den=derived(b_den)),
+                            fill("Look at the shaded models. Which sign correctly compares the shaded parts: \\(\\frac{{{num}}}{{{den}}}\\) ___ \\(\\frac{{{b_num}}}{{{b_den}}}\\)?", _src=('operation',), num=derived(num), den=derived(den), b_num=derived(b_num), b_den=derived(b_den)),
+                            fill("Look at the fraction models for \\(\\frac{{{num}}}{{{den}}}\\) and \\(\\frac{{{b_num}}}{{{b_den}}}\\). Which comparison sign is correct: \\(\\frac{{{num}}}{{{den}}}\\) ___ \\(\\frac{{{b_num}}}{{{b_den}}}\\)?", _src=('operation',), num=derived(num), den=derived(den), b_num=derived(b_num), b_den=derived(b_den)),
                         ])
                         cmp_question = q_template
                     else:
                         ans = "=" if (num, den) == (b_num, b_den) else (">" if num / den > b_num / b_den else "<")
                         cmp_distractors = [s for s in (">", "<", "=") if s != ans] + ["+"]
-                        cmp_question = f"Compare the fractions: \\(\\frac{{{num}}}{{{den}}}\\) ___ \\(\\frac{{{b_num}}}{{{b_den}}}\\). Which sign is correct: >, <, or =?"
+                        cmp_question = fill("Compare the fractions: \\(\\frac{{{num}}}{{{den}}}\\) ___ \\(\\frac{{{b_num}}}{{{b_den}}}\\). Which sign is correct: >, <, or =?", _src=('operation',), num=derived(num), den=derived(den), b_num=derived(b_num), b_den=derived(b_den))
                 else:
                     ans = frac_s
 
@@ -428,29 +433,29 @@ def generate_params(
                 if operation == "identify_name" and profile.get("fraction_task_mode") == "notation":
                     task_dir = rng.choice(["write", "read"])
                     if task_dir == "write":
-                        notation_question = f"Write {_fraction_words(num, den)} in fraction notation."
+                        notation_question = fill("Write {fraction_words} in fraction notation.", _src=('operation',), fraction_words=S(_fraction_words(num, den), "fill"))
                         ans = frac_s
                         nd_dist = []
                         if num != den:
-                            nd_dist.append(f"{den}/{num}")
+                            nd_dist.append(fill("{den}/{num}", _src=('operation',), den=derived(den), num=derived(num)))
                         if num + 1 < den:
-                            nd_dist.append(f"{num + 1}/{den}")
+                            nd_dist.append(fill("{v}/{den}", _src=('operation',), v=derived(num + 1), den=derived(den)))
                         if num > 1:
-                            nd_dist.append(f"{num - 1}/{den}")
+                            nd_dist.append(fill("{v}/{den}", _src=('operation',), v=derived(num - 1), den=derived(den)))
                         for other_d in denom_pool:
-                            if other_d != den and f"{num}/{other_d}" not in nd_dist:
-                                nd_dist.append(f"{num}/{other_d}")
+                            if other_d != den and fill("{num}/{other_d}", _src=('operation',), num=derived(num), other_d=derived(other_d)) not in nd_dist:
+                                nd_dist.append(fill("{num}/{other_d}", _src=('operation',), num=derived(num), other_d=derived(other_d)))
                         cmp_distractors = nd_dist[:3]
                     else:
                         notation_question = rng.choice([
-                            f"How is \\(\\frac{{{num}}}{{{den}}}\\) read in words?",
-                            f"Which word name represents \\(\\frac{{{num}}}{{{den}}}\\)?",
-                            f"Read the fraction \\(\\frac{{{num}}}{{{den}}}\\). Which is the correct word name?",
+                            fill("How is \\(\\frac{{{num}}}{{{den}}}\\) read in words?", _src=('operation',), num=derived(num), den=derived(den)),
+                            fill("Which word name represents \\(\\frac{{{num}}}{{{den}}}\\)?", _src=('operation',), num=derived(num), den=derived(den)),
+                            fill("Read the fraction \\(\\frac{{{num}}}{{{den}}}\\). Which is the correct word name?", _src=('operation',), num=derived(num), den=derived(den)),
                         ])
                         ans = _fraction_words(num, den)
                         word_dist = []
                         if num != den and den <= 10:
-                            word_dist.append(_fraction_words(den, num) if num <= 10 and _ORDINAL_WORDS.get(num) else f"{den} {_CARDINAL_WORDS.get(num, str(num))}ths")
+                            word_dist.append(_fraction_words(den, num) if num <= 10 and _ORDINAL_WORDS.get(num) else fill("{den} {get}ths", _src=('operation',), den=derived(den), get=derived(_CARDINAL_WORDS.get(num, str(num)))))
                         if num + 1 < den:
                             word_dist.append(_fraction_words(num + 1, den))
                         if num > 1:
@@ -524,8 +529,8 @@ def generate_params(
                         "b_den":        den,
                         "result_num":   r_num,
                         "result_den":   r_den,
-                        "result":       f"{r_num}/{r_den}" if r_den != 1 else str(r_num),
-                        "answer":       f"{r_num}/{r_den}" if r_den != 1 else str(r_num),
+                        "result":       fill("{r_num}/{r_den}", r_num=derived(r_num), r_den=derived(r_den)) if r_den != 1 else str(r_num),
+                        "answer":       fill("{r_num}/{r_den}", r_num=derived(r_num), r_den=derived(r_den)) if r_den != 1 else str(r_num),
                     })
 
     if not candidate_params:
@@ -599,19 +604,19 @@ def generate_hints(
 
     if operation == "identify_name":
         return [
-            f"A {frac_lbl} shows how many equal parts are shaded out of the total.",
-            f"The {den_lbl} (bottom number) tells the total equal parts: {den}.",
-            f"The {num_lbl} (top number) tells how many parts are taken: {num}.",
-            f"So the {frac_lbl} is {num}/{den}.",
+            fill("A {frac_lbl} shows how many equal parts are shaded out of the total.", _src=('operation',), frac_lbl=S(frac_lbl, "fill")),
+            fill("The {den_lbl} (bottom number) tells the total equal parts: {den}.", _src=('operation',), den_lbl=S(den_lbl, "fill"), den=S(den, "value:denominator")),
+            fill("The {num_lbl} (top number) tells how many parts are taken: {num}.", _src=('operation',), num_lbl=S(num_lbl, "fill"), num=S(num, "value:numerator")),
+            fill("So the {frac_lbl} is {num}/{den}.", _src=('operation',), frac_lbl=S(frac_lbl, "fill"), num=S(num, "value:numerator"), den=S(den, "value:denominator")),
         ]
 
     if operation == "compare":
         other_num = values.get("b_num", num - 1 if num > 1 else num + 1)
         other_den = values.get("b_den", den)
         return [
-            f"To compare {num}/{den} and {other_num}/{other_den}, check if the {den_lbl}s are equal.",
-            f"When {den_lbl}s are the same, the {frac_lbl} with the bigger {num_lbl} is larger.",
-            f"{num} vs {other_num}: the larger top number gives the larger {frac_lbl}.",
+            fill("To compare {num}/{den} and {other_num}/{other_den}, check if the {den_lbl}s are equal.", _src=('operation',), num=S(num, "value:numerator"), den=S(den, "value:denominator"), other_num=derived(other_num, src=('b_num', 'numerator',)), other_den=derived(other_den, src=('b_den', 'denominator',)), den_lbl=S(den_lbl, "fill")),
+            fill("When {den_lbl}s are the same, the {frac_lbl} with the bigger {num_lbl} is larger.", _src=('operation',), den_lbl=S(den_lbl, "fill"), frac_lbl=S(frac_lbl, "fill"), num_lbl=S(num_lbl, "fill")),
+            fill("{num} vs {other_num}: the larger top number gives the larger {frac_lbl}.", _src=('operation',), num=S(num, "value:numerator"), other_num=derived(other_num, src=('b_num', 'numerator',)), frac_lbl=S(frac_lbl, "fill")),
         ]
 
     if operation == "order":
@@ -626,14 +631,14 @@ def generate_hints(
             "smallest to largest" if direction == "ascending" else "largest to smallest"
         )
         comparison = (
-            f"For equal bottom numbers, compare the {num_lbl}s."
+            fill("For equal bottom numbers, compare the {num_lbl}s.", _src=('operation',), num_lbl=S(num_lbl, "fill"))
             if len({str(item).split("/", 1)[1] for item in sequence if "/" in str(item)}) <= 1
-            else "For fractions with 1 on top, a larger bottom number means a smaller part."
+            else fill("For fractions with 1 on top, a larger bottom number means a smaller part.", _src=('operation',))
         )
         return [
-            f"Read the requested order: {direction_words}.",
+            fill("Read the requested order: {direction_words}.", _src=('operation',), direction_words=derived(direction_words, src=('direction',))),
             comparison,
-            f"Place all the {frac_lbl}s from {direction_words}: {values.get('answer', '?')}.",
+            fill("Place all the {frac_lbl}s from {direction_words}: {answer}.", _src=('operation',), frac_lbl=S(frac_lbl, "fill"), direction_words=derived(direction_words, src=('direction',)), answer=S(values.get('answer', '?'), "fill")),
         ]
 
     # add_subtract -- ONE branch served BOTH operations until 2026-09-23 and
@@ -670,12 +675,12 @@ def generate_hints(
         )
 
     return [
-        f"When {verb} {frac_lbl}s with the same {den_lbl}, keep the {den_lbl} the same.",
-        f"{verb.capitalize().replace('ing', '')} only the {num_lbl}s: {a_num} {sign} {b_num} = {step}.",
+        fill("When {verb} {frac_lbl}s with the same {den_lbl}, keep the {den_lbl} the same.", verb=derived(verb), frac_lbl=S(frac_lbl, "fill"), den_lbl=S(den_lbl, "fill")),
+        fill("{replace} only the {num_lbl}s: {a_num} {sign} {b_num} = {step}.", replace=derived(verb.capitalize().replace('ing', '')), num_lbl=S(num_lbl, "fill"), a_num=derived(a_num, src=('a_num', 'numerator',)), sign=derived(sign), b_num=derived(b_num, src=('b_num',)), step=derived(step)),
         # "Put", not "Write": the same chain serves shade-the-shape items, where the
         # pupil shades rather than writes (hint contract, `response`, 2026-09-25).
-        f"Put the result over the same {den_lbl}: {step}/{den}.",
-        f"The answer is {r_num}/{r_den}.",
+        fill("Put the result over the same {den_lbl}: {step}/{den}.", den_lbl=S(den_lbl, "fill"), step=derived(step), den=S(den, "value:denominator")),
+        fill("The answer is {r_num}/{r_den}.", r_num=derived(r_num, src=('result_num', 'a_num', 'numerator', 'b_num',)), r_den=derived(r_den, src=('result_den', 'denominator',))),
     ]
 
 

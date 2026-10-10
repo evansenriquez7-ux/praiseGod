@@ -36,6 +36,8 @@ from typing import List, Optional
 from backend.app.practice_gen.dna.base import FormattedProblem, QuestionContext
 from backend.app.practice_gen.formatters._distractor_fallback import augment_distractors
 from backend.app.practice_gen.formatters._option_order import shuffle_options
+from backend.app.practice_gen.slots import S, derived, fill
+from backend.app.practice_gen.formatters._answer_slots import (correct_option_key, distractors_field, member_text)
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -195,22 +197,21 @@ def format_calendar(
     month = vp["month"]
     year = vp["year"]
     month_name = datetime(year, month, 1).strftime("%B")
-    cal_word = "calendar" if "calendar" in ctx.cumulative_vocab else "date chart"
+    cal_word = fill("calendar") if "calendar" in ctx.cumulative_vocab else fill("date chart")
 
     traps = _build_traps(vp, rng)
 
     # ── 2. Compute correct answer ─────────────────────────────────────────────
     if ctx.values and ctx.values.get("task_type") == "read_month":
         raw_correct = month_name
-        question_text = f"Look at the {cal_word} page shown. What month of the year is shown on this {cal_word}?"
+        question_text = fill("Look at the {cal_word} page shown. What month of the year is shown on this {cal_word}?", _src=('task_type',), cal_word=S(cal_word, "fill"))
     elif task_type == "select_date":
         date = vp["correct_date"]
         weekday = _weekday_name(year, month, date)
 
         if interaction_mode in ("read", "set"):
             question_text = (
-                f"Look at the {month_name} {year} {cal_word}. "
-                f"What day of the week is {month_name} {date}?"
+                fill("Look at the {month_name} {year} {cal_word}. What day of the week is {month_name} {date}?", month_name=derived(month_name), year=S(year, "value:year"), cal_word=S(cal_word, "fill"), date=derived(date))
             )
         raw_correct = weekday
 
@@ -226,9 +227,7 @@ def format_calendar(
         unit_word = vp.get("unit", "days")
 
         question_text = (
-            f"Look at the {month_name} {year} {cal_word}. "
-            f"How many {unit_word} are there from {month_name} {day1} "
-            f"to {month_name} {day2}, inclusive?"
+            fill("Look at the {month_name} {year} {cal_word}. How many {unit_word} are there from {month_name} {day1} to {month_name} {day2}, inclusive?", month_name=derived(month_name), year=S(year, "value:year"), cal_word=S(cal_word, "fill"), unit_word=derived(unit_word), day1=derived(day1), day2=derived(day2))
         )
         raw_correct = duration
 
@@ -260,12 +259,15 @@ def format_calendar(
                     raise ValueError(f"Formatter 'calendar' requires at least 3 unique distractors, but got {len(distractor_vals)}")
             all_opts = [dur] + distractor_vals[:3]
 
+        # Structured slots (H3-R2): a name option is one of this formatter's month/day names.
+        all_opts = [member_text(v, tuple(_MONTH_NAMES) + tuple(_DAY_NAMES), "fmt_calendar month and day names")
+                    for v in all_opts]
         shuffle_options(all_opts, ctx.node_id, ctx.seed)
         mcq_options = [
             {"key": chr(ord("A") + i), "value": v, "is_correct": v == raw_correct}
             for i, v in enumerate(all_opts)
         ]
-        correct_answer = next(o["key"] for o in mcq_options if o["is_correct"])
+        correct_answer = correct_option_key(mcq_options)
     else:
         correct_answer = raw_correct
 
@@ -278,7 +280,7 @@ def format_calendar(
     if mcq_options is not None:
         format_data["mcq_options"] = mcq_options
 
-    fmt = f"{interaction_mode}_{answer_collection}"
+    fmt = fill("{interaction_mode}_{answer_collection}", interaction_mode=derived(interaction_mode), answer_collection=derived(answer_collection))
 
     return FormattedProblem(
         problem_id=f"{ctx.node_id}_{ctx.seed}_calendar",
@@ -288,7 +290,7 @@ def format_calendar(
         seed=ctx.seed,
         question_text=question_text,
         correct_answer=correct_answer,
-        distractors=ctx.distractors,
+        distractors=distractors_field(ctx),
         hints=ctx.hints,
         format=fmt,
         format_data=format_data,

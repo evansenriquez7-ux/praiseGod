@@ -22,6 +22,7 @@ from backend.app.practice_gen.dna.base import (
     VocabGated,
     count_noun,
 )
+from backend.app.practice_gen.slots import S, derived, fill
 
 
 # ─── constants ────────────────────────────────────────────────────────────────
@@ -269,7 +270,7 @@ def generate_params(
                 distractors.add(candidate)
         distractors_list = sorted(distractors)[:3]
         while len(distractors_list) < 3:
-            filler = f"{rng.randint(1, 9) * 10} + {rng.randint(1, 9)}"
+            filler = fill("{v} + {randint}", _src=('task_type',), v=derived(rng.randint(1, 9) * 10), randint=derived(rng.randint(1, 9)))
             if filler != exp_form and filler not in distractors_list:
                 distractors_list.append(filler)
         return {
@@ -284,7 +285,7 @@ def generate_params(
             "distractors":           distractors_list,
         }
 
-    place_name = PLACE_NAMES[target_pos] if target_pos < len(PLACE_NAMES) else f"10^{target_pos}"
+    place_name = PLACE_NAMES[target_pos] if target_pos < len(PLACE_NAMES) else fill("10^{target_pos}", target_pos=derived(target_pos))
 
     if task_type == "identify_place":
         # This competency names 3 distinct sub-skills: "the place value of
@@ -384,7 +385,7 @@ def generate_hints(
     # with no hints (mat_g1_na_q2_2, mat_g2_na_q1_6, mat_g3_na_q1_3).
     exp_form  = values.get("expanded_form")
 
-    place_name = PLACE_NAMES[pos] if pos < len(PLACE_NAMES) else f"10^{pos} place"
+    place_name = PLACE_NAMES[pos] if pos < len(PLACE_NAMES) else fill("10^{pos} place", pos=S(pos, "value:target_digit_position"))
     pv_phrase  = VOCAB_PLACE_VALUE.resolve(cumulative_vocab)
     val_phrase = VOCAB_VALUE.resolve(cumulative_vocab)
     ef_phrase  = VOCAB_EXPANDED_FORM.resolve(cumulative_vocab)
@@ -392,33 +393,33 @@ def generate_hints(
     if task == "identify_digit":
         relevant_places = ", ".join(PLACE_NAMES[:pos + 1])
         return [
-            f"Look at the digits of {number} from the right: {relevant_places}.",
-            f"Find the {place_name} {pv_phrase}.",
-            f"The digit in the {place_name} place is {digit}.",
+            fill("Look at the digits of {number} from the right: {relevant_places}.", _src=('task_type',), number=S(number, "value:number"), relevant_places=derived(relevant_places, src=('target_digit_position',))),
+            fill("Find the {place_name} {pv_phrase}.", _src=('task_type',), place_name=S(place_name, "value:place_name"), pv_phrase=S(pv_phrase, "fill")),
+            fill("The digit in the {place_name} place is {digit}.", _src=('task_type',), place_name=S(place_name, "value:place_name"), digit=S(digit, "value:digit_at_position")),
         ]
 
     if task == "identify_place":
         relevant_places = ", ".join(PLACE_NAMES[:pos + 1])
         return [
-            f"Put each digit of {number} in its own column.",
-            f"Count from the right: {relevant_places}.",
-            f"The digit in the {place_name} column is {digit}.",
+            fill("Put each digit of {number} in its own column.", _src=('task_type',), number=S(number, "value:number")),
+            fill("Count from the right: {relevant_places}.", _src=('task_type',), relevant_places=derived(relevant_places, src=('target_digit_position',))),
+            fill("The digit in the {place_name} column is {digit}.", _src=('task_type',), place_name=derived(place_name, src=('target_digit_position',)), digit=S(digit, "value:digit_at_position")),
         ]
 
     if task == "identify_value":
         return [
-            f"Find the digit in the {place_name} {pv_phrase} of {number}.",
-            f"That digit is {digit}.",
-            f"Multiply it by its place: {digit} × {PLACE_VALUES[pos]} = {value}.",
-            f"The {val_phrase} of {digit} in {number} is {value}.",
+            fill("Find the digit in the {place_name} {pv_phrase} of {number}.", _src=('task_type',), place_name=S(place_name, "value:place_name"), pv_phrase=S(pv_phrase, "fill"), number=S(number, "value:number")),
+            fill("That digit is {digit}.", _src=('task_type',), digit=S(digit, "value:digit_at_position")),
+            fill("Multiply it by its place: {digit} × {v} = {value}.", _src=('task_type',), digit=S(digit, "value:digit_at_position"), v=derived(PLACE_VALUES[pos], src=('target_digit_position',)), value=S(value, "value:value_at_position")),
+            fill("The {val_phrase} of {digit} in {number} is {value}.", _src=('task_type',), val_phrase=S(val_phrase, "fill"), digit=S(digit, "value:digit_at_position"), number=S(number, "value:number"), value=S(value, "value:value_at_position")),
         ]
 
     if task == "compose":
         parts = exp_form.split(" + ")
         return [
-            f"Look at each part: {exp_form}.",
-            f"Add all the parts together.",
-            f"{exp_form} = {number}.",
+            fill("Look at each part: {exp_form}.", _src=('task_type',), exp_form=S(exp_form, "value:expanded_form")),
+            fill("Add all the parts together.", _src=('task_type',)),
+            fill("{exp_form} = {number}.", _src=('task_type',), exp_form=S(exp_form, "value:expanded_form"), number=S(number, "value:number")),
         ]
 
     if task != "decompose":
@@ -429,14 +430,14 @@ def generate_hints(
     # mat_g1_na_q2_3; hint contract, `response`).
     digits = [int(d) for d in str(number)]
     counts = [
-        f"{d} {count_noun(d, PLACE_NAMES[len(digits) - 1 - i])}"
+        fill("{d} {count_noun}", d=derived(d), count_noun=derived(count_noun(d, PLACE_NAMES[len(digits) - 1 - i]), src=('number',)))
         for i, d in enumerate(digits)
     ]
     counted = counts[0] if len(counts) == 1 else ", ".join(counts[:-1]) + " and " + counts[-1]
     return [
-        f"Break {number} into parts by {pv_phrase}: {exp_form}.",
-        f"{number} is {counted}.",
-        f"Each part shows how much that digit is {val_phrase} in its position.",
+        fill("Break {number} into parts by {pv_phrase}: {exp_form}.", number=S(number, "value:number"), pv_phrase=S(pv_phrase, "fill"), exp_form=S(exp_form, "value:expanded_form")),
+        fill("{number} is {counted}.", number=S(number, "value:number"), counted=derived(counted, src=('number',))),
+        fill("Each part shows how much that digit is {val_phrase} in its position.", val_phrase=S(val_phrase, "fill")),
     ]
 
 

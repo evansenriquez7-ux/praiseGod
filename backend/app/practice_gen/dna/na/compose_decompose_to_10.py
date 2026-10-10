@@ -61,6 +61,7 @@ from backend.app.practice_gen.dna.base import (
     DNA,
     ErrorPattern,
 )
+from backend.app.practice_gen.slots import S, bank_fields, derived, fill
 
 
 # ─── error patterns ───────────────────────────────────────────────────────────
@@ -521,7 +522,7 @@ def generate_params(
     ordered = list(in_pair)
     random.Random(0).shuffle(ordered)
     index = _mix(seed ^ 0x9E3779B9) % len(ordered)
-    item = dict(ordered[index])
+    item = bank_fields(dict(ordered[index]), "backend.app.practice_gen.dna.na.compose_decompose_to_10._ITEM_POOL")  # H3-R2
     item["result"] = item["answer"]
     return item
 
@@ -534,12 +535,12 @@ def generate_hints(
 ) -> List[str]:
     total = values.get("target_total", 5)
     return [
-        f"Count all the objects first. There are {total} in all.",
+        fill("Count all the objects first. There are {total} in all.", total=derived(total, src=('target_total',))),
         # Not "the ones left over": `ones` is the place-value term and is in
         # this node's NOT_YET_KNOWN, which §1D caught on all 15 sampled seeds.
-        "Count the group you can see. Then count the objects left over.",
-        "A group can have 0 objects. An empty group still counts.",
-        f"The two groups always go back together to make {total}.",
+        fill("Count the group you can see. Then count the objects left over."),
+        fill("A group can have 0 objects. An empty group still counts."),
+        fill("The two groups always go back together to make {total}.", total=derived(total, src=('target_total',))),
     ]
 
 
