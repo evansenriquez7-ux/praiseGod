@@ -19652,3 +19652,162 @@ word-split, so only `tree_state.json` was committed (`403930d9`); the artifacts 
   1. every limit of the hint contract's dimensions;
   2. stratified seeds, not all seeds;
   3. serving still refuses a violating item, so other stages see that seed as a generation failure.
+
+## 2026-10-11 — H3-R1: first H3 rollout slice — subtraction and the formatter branches it reaches
+
+Author: Claude Opus 5.5 (no LLM judges dispatched). Lock claimed `30e63582`; source `5cf14b4c`; chain artifacts
+`788f4235`, tree_state `0044f5eb`. "node" ids below are lcs. **No generator content changed**: every rendered
+byte is identical (proved below). This is one slice of the H3 rollout (owner rulings 28, 33, 34), not the end of it.
+
+### Phase 0 re-measure (2026-10-11, on `011094d6`)
+
+```text
+$ (queue snippet, NEXT_AGENT_PROMPT §4 Phase 0)
+78 42 33 55
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_exhibit > exhibit.log 2>&1; echo "EXIT $?"
+EXIT 1
+  §2L: 973 declared pair(s) at 8 seeds; 428 recorded, 125 exhibited by render only, 420 not exhibited {'A': 1, 'B': 90, 'D': 291, 'E': 38}; 151 Attester packet(s) built, 61 refusal(s)
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_slots
+  FAIL slot_text_unaccounted_14 (794) | PASS slot_template_mismatch_14 | PASS slot_unclassified_14
+  PASS slot_domain_unknown_14 | FAIL slot_domain_escape_14 (20)
+  §14: 814 finding(s) over all lc(s) x 20 seed(s)
+```
+
+All three equal the handoff's numbers.
+
+### Choosing the slice (measured, not guessed)
+
+Per-render §14 findings were dumped for every lc at the 20 seeds (`local_only/scratch/h3r1/render_before.jsonl`,
+20,216 rows) and grouped by DNA. Subtraction was the one DNA whose remaining text could be finished in one session:
+its hints were already instrumented (H3), it is the only DNA serving its 8 lcs (mat_g1_na_q3_4, mat_g1_na_q3_5,
+mat_g2_na_q2_3, mat_g2_na_q2_4, mat_g2_na_q2_6, mat_g2_na_q2_7, mat_g3_na_q2_4, mat_g3_na_q2_5), and what remained
+was stems, cloze sentences, error-detect fields and true/false statements: **45 unaccounted (lc, field) families**.
+
+### Sites instrumented (`5cf14b4c`)
+
+- `dna/na/subtraction.py` `generate_params`: the number-line stems (3 templates), the inverse-of-addition stems (3),
+  the 1-/2-step stems (two-step money, two-step general, one-step money, one-step general), counting back, taking
+  away and expanded form. A template drawn by `rng.choice` is drawn together with exactly the slots it reads, from a
+  list of the same length, so the draw is unchanged. Names, items, snacks, purposes and recipients have `E` domains
+  over the lists they are drawn from; operands are `value:a` / `value:b` / `value:result`; `b1`/`b2` (the two-step
+  split) are `num.derived` with `src=("b",)`.
+- `dna/na/addition.decompose_to_places` (shared): each place and the sentence are fills; the caller may pass the
+  domain of `n` (`"value:a"`), defaulting to `num.derived`.
+- `generators/base_generator._build_symbolic_question`: the subtraction branch.
+- The subtraction branches of `fmt_mcq`, `fmt_cloze`, `fmt_error_detect._build_pure_equation`, `fmt_true_false`
+  and `fmt_number_line` (read and set stems).
+- Formatter-wide, because every subtraction item passes through them: `fmt_error_detect`'s actor name
+  (`enum:` on `_FILIPINO_NAMES`), error label (`E` over the distractor candidates' labels, or `"none"`), claimed
+  answer and its three question wrappers (the problem a nested `fill`); `fmt_true_false`'s claimed value (`E` /
+  `R` beside each assignment) and its word-problem statement; `fmt_number_bond`'s stem (a bond built from the DNA's
+  values records the `values` key each position repeats, so its slots are `value:<key>`; otherwise `num.derived`)
+  and its subtraction expanded-form prefix.
+- **Infrastructure:** `slots.transform(name, text, **args)` records each argument as a slot with its domain, and
+  `validate_slots.replay` calls the registered transformation with every recorded slot as a keyword. `fill_blank`
+  (`text.replace("___", str(value))`) is registered: `fmt_true_false` writes a claimed answer into the DNA's
+  inverse-of-addition stem ("If 7 + 5 = 12, then 12 − 5 = ___."), measured on mat_g2_na_q2_3 seed 11. The brief
+  says a post-fill transformation goes through `slots.TRANSFORMS`; replay passed a transformation only its `text`,
+  so this was required, and it is the general form a spine's inflection will need. Pinned by
+  `test_a_transform_with_an_argument_replays_and_its_argument_is_domain_checked` (replays; a forged text is a
+  mismatch; an out-of-domain value is an escape). Contract row §14 amended; `validate_slots` docstring (b) updated.
+- **Provenance (ruling 35).** mat_g2_na_q2_3 is the only lc of the slice with clause selectors (`task_type` =
+  `number_line_subtraction` / `inverse_of_addition`). Instrumenting it made its renders decidable and §15 reported
+  **7 findings that were mine** (every item visibly showed the number line or the addition fact). The slot each
+  stem shows because of `task_type` now names it: the jump `b` in the number-line stems and the addition fact
+  `diff` in the inverse stems (`src=("task_type",)`), following the counting precedent (`direction` on the
+  sequence slot). §15 on the slice afterwards: 0 findings, 60 of 60 selector matches decided by record.
+
+### Byte identity
+
+```text
+$ PYTHONPATH=. .venv/bin/python -m tests.render_snapshot --diff local_only/scratch/h3r1/before.jsonl local_only/scratch/h3r1/after2.jsonl
+render_snapshot diff: 7285 before, 7285 after, 0 changed, 0 key(s) present on one side only
+```
+
+`before.jsonl` was taken on `30e63582` before any source was edited; `after2.jsonl` after the last source edit.
+
+### §14 and §15, before and after
+
+```text
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_slots --node-ids <the 8 lcs>,mat_g1_na_q3_3
+  FAIL slot_text_unaccounted_14 (5):   all mat_g2_na_q2_7 (question_text, format_data.sentence,
+       format_data.problem_expression, fmt_error_detect 'problem', fmt_true_false 'q')
+  PASS slot_template_mismatch_14 | PASS slot_unclassified_14 | PASS slot_domain_unknown_14
+  FAIL slot_domain_escape_14 (7):      the known emoji_pictorial "items" fallback on mat_g1_na_q3_3/q3_4 (unchanged)
+full tree (dump of collect_findings):
+  before  slot_text_unaccounted_14 794, slot_domain_escape_14 20
+  after   slot_text_unaccounted_14 722, slot_domain_escape_14 20
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_composition
+  FAIL selector_value_unexhibited_15 (16) | FAIL hint_sequence_unshown_15 (6)      (H5 baseline, unchanged)
+  NOTE: 1351 selector match(es) over 3020 render(s): 140 decided by record, 1211 undecided   (H5: 96 / 1,255)
+```
+
+- **The slice: 45 -> 5 families.** The 5 left are all on mat_g2_na_q2_7, and every one of its 20 renders is a
+  spine (`money_spending`, `sub_comparing`, `sub_counting_back_story`, `money_savings_withdraw`, ...). Spines are
+  the brief's later slice (`Spine.render` inflects after filling; its renderer needs registering).
+- **Tree: 794 -> 722.** 141 families disappeared; 69 "new" ones appeared, and none is new text. They are the same
+  un-instrumented text, now named one level down. Once a wrapper became a fill, another DNA's stem inside it is
+  reported at the wrapper's nested slot (`fmt_error_detect.py:345/350 slot 'problem'`,
+  `fmt_true_false.py:118 slot 'q'`) instead of at the field. `fmt_true_false.py:420 slot 'text'` became `:432`
+  because lines were added above it.
+- No new `slot_domain_escape_14`, `slot_template_mismatch_14` or `slot_unclassified_14` anywhere in the tree, so
+  every domain declared in this slice holds over the 20 seeds.
+
+### Mutations
+
+No new check, so no new mutation (brief §4 H3 step 7). Two anchors moved because their lines were rewritten, and
+both were re-anchored to plant the SAME defect through the new code:
+- `count_noun_disagrees`: the bare plural `units` after any count is now planted through the number-line stem's
+  `units` slot (`S("units", E(("units",), ...))`), not the f-string.
+- `slot_transform_misrecorded`: `+ " "` is now planted on `TRANSFORMS[name](text, **extra)`.
+
+Dev loop: the 35 mutations that plant in a changed file, run §14/§15, or target a subtraction lc, one at a time
+with `--only` (`local_only/scratch/h3r1/devmut/progress.log`): **35/35 `1/1 mutations detected`, EXIT 0**.
+Escaped-plant grep afterwards: 1 line, the benign `validate_coverage.py:456` comment.
+
+### Unit suite and chain (on `5cf14b4c`)
+
+```text
+$ PYTHONPATH=. .venv/bin/python -m pytest tests/unit -m "not slow" -q -p no:cacheprovider
+974 passed, 1 skipped, 2 deselected, 4 warnings in 657.03s (0:10:57)      (973 + the fill_blank pin)
+$ cat local_only/scratch/h3r1/chain/progress.log
+END regen EXIT 0 00:38:17 | END benchmark EXIT 0 00:38:37 | END frontend EXIT 0 00:38:50
+END corpus EXIT 0 01:42:17          225/225 mutations detected.  (no INVALID)
+escaped-plant grep lines: 1         (the benign validate_coverage.py:456 comment)
+END shard0..shard5 EXIT 0 (02:06, 02:29, 02:54, 03:20, 03:47, 04:14); END verify EXIT 0 (release_status=complete receipts=6)
+END run_all EXIT 2 04:54:20
+  PASS unit_tests (974 passed, 1 skipped, 2 deselected, 4 warnings in 650.62s (0:10:50))
+  PASS mutation_proof_integrity_8: 225 executed mutation proof(s) verified against the current source/fixture digest
+  PASS assertion_coverage_8: 170/181 harness assertions proven BY EXECUTION (38 discovered in validate_matrix, 143 declared across 20 modules), 11 knowingly unproven (allowlist may only shrink)
+  scheduled=21 completed=15 failed=6 crashed=0 not_run=0 incomplete=0
+  PASS finding_class_registry_complete: 181 label(s) classified, equal to the §8 inventory
+  INTEGRITY: GREEN (every stage ran to a verdict and no integrity label failed)
+  CONTENT: variant_not_exhibited_2L (420), attester_packet_refused_2L (61), judgment_reviews (752),
+           capability_contract (78), count_noun_singular_after_many_1J (423), slot_text_unaccounted_14 (722),
+           slot_domain_escape_14 (20), selector_value_unexhibited_15 (16), hint_sequence_unshown_15 (6)
+ALL TESTS: integrity green, CONTENT FINDINGS REMAIN (exit 2).
+$ PYTHONPATH=. .venv/bin/python tests/tree_state.py
+PASS tree_state: CERTIFIED          live input digest : 734b7177880d103e   mutation_proofs fresh 225
+```
+
+### Found, not fixed (named so the next agent does not rediscover them)
+
+1. **`format_data.error_label` is a tag classed as learner text.** It takes two values over 7,285 renders
+   (`none` 231, `unknown_error` 135), and nothing in `frontend/src` reads it, which is the same shape as H3's
+   `format_data.context` correction. It is instrumented here as §1J classifies it (limit 7). Reclassifying it is a
+   §1J/§14 change nobody has ruled on.
+2. **Error-detect never records a misconception.** Every planted wrong answer's label is `unknown_error`, because
+   `ctx.distractors` reach the formatter as bare values with no `.label`. So `analytics.trap_triggered` never names
+   the ErrorPattern (`ar_reverse_sub`, ...) that produced the distractor. This is generator/analytics work.
+3. **Article agreement in a spine:** "A art fair has 600 paintbrushes." (mat_g2_na_q2_7 seed 17, spine
+   `sub_removes`). No check reads a/an agreement. Content, and a harness gap no batch owns.
+4. `fmt_error_detect`'s `"___" in q` branch replaces the blank with itself for subtraction (`blank_target` is
+   `result`, so the claimed value is `"___"`). It is instrumented through `fill_blank` and is harmless, but the
+   branch never shows an actor's answer in the problem. Content.
+
+### NAMED LIMITS (unchanged from §14's row, plus)
+
+- `fill_blank` replaces EVERY `___` in the text, as the code it replaced did. A stem with two blanks would get the
+  value twice; replay reproduces that faithfully and does not judge it.
+- The provenance added for `task_type` is the generator's own claim (§15 limit 3); H4's judges review it.
+- Spines are not instrumented, so mat_g2_na_q2_7 stays undecidable for §15 and keeps its 5 families.

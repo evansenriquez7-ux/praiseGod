@@ -1,7 +1,7 @@
 # Task prompt: Phase 2 pipeline hardening under owner rulings 23–36 (Claude host)
 
 **Rewritten 2026-10-08 after owner rulings 23–26 redefined Phase 2; rulings 27–29 (2026-10-09) settled its open design questions.
-Updated 2026-10-10 after batch H5 landed (H3's infrastructure and prototype before it): the H3 rollout is next. This REPLACES every earlier version
+Updated 2026-10-11 after batch H3-R1 (the first H3 rollout slice: subtraction) landed; the H3 rollout continues. This REPLACES every earlier version
 of this file.** `CLAUDE_AGENT_PROMPT.md`, `GPT_HANDOFF_PROMPT.md` and `HANDOFF_PROMPT.md` beside it are history.
 Their §5–§10 method notes (dispatch template, audit-before-filing, heavy runs, traps) remain correct and are
 cited below. Their state sections, queue sizes and goals are stale; ignore them.
@@ -23,7 +23,7 @@ generator agents can find and fix every generator error from its output alone. C
 
 Content findings are the **generators' work queue**: the 78 CONTRADICTED, 752 judgment, §2L's 420 variant + 61
 packet-refusal findings, §14's 20 domain escapes, §1J's 423 singular-after-many, and §15's 22 composition
-findings. They are not a Phase 2 blocker, and you do not fix them. The one exception: §14's 794
+findings. They are not a Phase 2 blocker, and you do not fix them. The one exception: §14's 722
 `slot_text_unaccounted_14` findings are content by ruling 34 too, but clearing them is the H3 rollout
 (instrumentation, no rendered byte changes), which IS Phase 2 work and is your task.
 
@@ -72,31 +72,33 @@ INTERRUPTED, and re-measures every number it publishes.
 
 ---
 
-## 1. State at handoff (2026-10-10, after H5; re-measure before quoting)
+## 1. State at handoff (2026-10-11, after H3-R1; re-measure before quoting)
 
 ```
 HEAD                local main at the commit that updated this file (after the H-06 release); worktree
                     clean. Not pushed when written: check `git status -sb` before assuming origin has it
-source              4c32cec1 (H5); chain artifacts 7d01a4a2, tree_state 403930d9
+source              5cf14b4c (H3-R1); chain artifacts 788f4235, tree_state 0044f5eb
 H-06 lock           RELEASED; claim it (owner line only, numstat 1 1) before any work
-tree_state          CERTIFIED (225 proofs, 6 shards, benchmark, frontend fresh; digest 8f3acdfb0fb94441)
-run_all             2026-10-10 on 4c32cec1: EXIT 2, scheduled=21 completed=15 failed=6 crashed=0
+tree_state          CERTIFIED (225 proofs, 6 shards, benchmark, frontend fresh; digest 734b7177880d103e)
+run_all             2026-10-11 on 5cf14b4c: EXIT 2, scheduled=21 completed=15 failed=6 crashed=0
                       INTEGRITY GREEN; finding_class_registry_complete 181 labels
                       CONTENT: variant_not_exhibited_2L 420, attester_packet_refused_2L 61,
                                judgment_reviews 752, capability_contract 78 (all CONTRADICTED),
-                               slot_text_unaccounted_14 794, slot_domain_escape_14 20,
+                               slot_text_unaccounted_14 722, slot_domain_escape_14 20,
                                count_noun_singular_after_many_1J 423,
                                selector_value_unexhibited_15 16, hint_sequence_unshown_15 6
                       §16 hint contract over the live tree: 0 findings
-queue snippet (§4)  78 42 33 55  (measured 2026-10-09)
+queue snippet (§4)  78 42 33 55  (re-measured 2026-10-11)
 §2L                 973 pairs: 428 recorded, 125 by render only, 420 not exhibited; 151 packets, 61 refusals
-§14                 814 = 794 unaccounted (rollout queue) + 20 escapes (fmt_emoji_pictorial's "items"
-                    fallback); H5 fixed a self-accounting hole that had hidden 46 families
-§15                 1,351 selector matches over 3,020 renders: 96 decided by record, 1,255 undecided
-unit suite          973 passed, 1 skipped (fast suite ~11 min; the 151-test hint sweep is now §16)
+                    (re-measured 2026-10-11)
+§14                 742 = 722 unaccounted (rollout queue) + 20 escapes (fmt_emoji_pictorial's "items"
+                    fallback). H3-R1 instrumented subtraction: its 8 lcs went 45 -> 5 families, all spine
+                    stems on mat_g2_na_q2_7
+§15                 1,351 selector matches over 3,020 renders: 140 decided by record, 1,211 undecided
+unit suite          974 passed, 1 skipped (fast suite ~11 min)
 mutations           225; corpus 225/225, NO INVALID
 assertions          170/181 proven by execution, 11 on the shrinking allowlist
-render snapshot     tests/render_snapshot.py: 7,285 renders; H5's baseline local_only/scratch/h5/after1.jsonl
+render snapshot     tests/render_snapshot.py: 7,285 renders; H3-R1's baseline local_only/scratch/h3r1/after2.jsonl
 latest attestation  batch440 (next free prefix: batch441)
 ```
 
@@ -116,8 +118,9 @@ luck. One copy per conversation; ask the owner to close the others before editin
   `obligation_routes_reachable` 5. A later batch makes them report as content.
 - **Unit-test failures are integrity** (ruling 30). H5 moved the 151-test hint sweep into the content stage
   §16; the 6 lc-parametrized tests and `test_invariant_holds_across_the_live_tree` are still unit tests.
-- **The H3 rollout** (see §4 H3): 794 (lc, field) families are not instrumented, so ruling 24's premise holds
-  only on the instrumented lcs (H3's prototype plus the counting lcs H5 instrumented).
+- **The H3 rollout** (see §4 H3): 722 (lc, field) families are not instrumented, so ruling 24's premise holds
+  only on the instrumented lcs (H3's prototype, the counting lcs H5 instrumented, and H3-R1's subtraction lcs
+  except mat_g2_na_q2_7, whose every render is a spine).
 - **No cross-process determinism check** (found in H3): `comparing_ordering` iterates a set when it builds
   `distractors`, so 89 of 7,285 renders on mat_g1_na_q1_4, mat_g1_na_q2_0, mat_g2_na_q1_4 and mat_g3_na_q1_6 change
   with `PYTHONHASHSEED`. Every check runs in one process with one hash seed, so none sees it. The defect is
@@ -125,9 +128,15 @@ luck. One copy per conversation; ask the owner to close the others before editin
 - **Unowned harness gaps found in H5** (each in the H5 evidence): no check reads code-shaped text in hints
   (`['peso10', 'peso5', ...]`, `[9, 1, 8]`); `roles` misses "20 items at ₱50 each" hinted as "50 groups of
   20"; a doubled word ("order word word") passes everything. Stop and ask before building any of them.
-- **§15's record decides 96 of 1,351 selector matches.** The H3 rollout makes the rest decidable; when you
+- **§15's record decides 140 of 1,351 selector matches.** The H3 rollout makes the rest decidable; when you
   instrument a site, give every slot derived from a structured value its `src=` (provenance), or §15 will
   report the selector value as unexhibited.
+
+- **Found in H3-R1, not owned by any batch** (each in the H3-R1 evidence): `format_data.error_label` is a tag
+  (`none`/`unknown_error` only, read by nothing in `frontend/src`) that §1J classes as learner text, the same shape
+  as H3's `format_data.context` correction (**stop and ask** before reclassifying); error-detect never records a
+  misconception label (distractors reach it as bare values); "A art fair" (spine `sub_removes`) and no check
+  reads a/an agreement.
 
 Corrections to the previous version of this file, measured 2026-10-10:
 - The H3 brief said "prototype on 3 lcs ... then roll out" as if the rollout fit one batch. It does not: about
@@ -198,7 +207,7 @@ Rulings 19–22 stay in force for any attestation still filed under the old gate
 |---|---|---|---|
 | H1 | DONE 2026-10-09 | §2L variant exhibit check; verdict reads failed stages from the ledger | — |
 | H2 | DONE 2026-10-10 | `run_all` exits 0 / 2 / 1; every finding classified integrity or content; the 3 §6F INVALIDs re-anchored and DETECTED; §2L leaves report-only | — |
-| **H3** | **IN PROGRESS, next** (infrastructure, §14 check and prototype landed 2026-10-10; counting lcs added in H5; rollout owed) | structured slots (ruling 28) and the field-domain check | — |
+| **H3** | **IN PROGRESS, next** (infrastructure, §14 check and prototype landed 2026-10-10; counting lcs added in H5; rollout slice 1, subtraction, landed 2026-10-11 as H3-R1; rest of the rollout owed) | structured slots (ruling 28) and the field-domain check | — |
 | H4 | open | stem review gate: stem-family packets, blind judges, template+domain freshness | H3 per lc: an lc's stems may be approved only once its `slot_text_unaccounted_14` count is 0 |
 | H5 | DONE 2026-10-10 | §1J singular-after-many; §15 selector survival (record) + hint-run stopgap; §16 hint contract as a content stage (ruling 30); §14 self-accounting fix | — |
 | H6 | open | retire `judgment_reviews_5` and `capability_phase2` as gates; carry confirmed defects into the content report | H3 (rollout done), H4 |
@@ -297,14 +306,35 @@ the counting DNA's hints and the counting branches of `fmt_mcq`, `fmt_cloze`, `f
 option key) and `fmt_emoji_pictorial` (so mat_g1_na_q1_0 and mat_g1_na_q2_1 are fully instrumented); and the
 §14 fix that a nested `fill` slot must be produced by ANOTHER fill.
 
-**Owed: the rollout.** Work down `slot_text_unaccounted_14` (794 (lc, field) families) to 0. It will not fit one
+**Rollout slice 1 landed 2026-10-11 as H3-R1** (`5cf14b4c`, chain `788f4235`; evidence "H3-R1: first H3 rollout
+slice"): every subtraction DNA stem, `_build_symbolic_question`'s subtraction branch, `decompose_to_places`, the
+subtraction branches of `fmt_mcq`/`fmt_cloze`/`fmt_error_detect`/`fmt_true_false`/`fmt_number_line`, and
+formatter-wide `fmt_error_detect`'s actor/label/question wrappers, `fmt_true_false`'s claimed value and word-problem
+statement, and `fmt_number_bond`'s stem. 794 -> 722. Infrastructure it added that later slices use:
+`slots.transform(name, text, **args)` takes arguments, recorded as slots with domains, and §14 replay passes every
+recorded slot as a keyword, so `fill_blank` (a value written into another fill's `___`) and a spine's inflection can
+be registered the same way. Its method (dump per-render §14 findings, group by DNA, pick the DNA you can finish) is
+in `local_only/scratch/h3r1/` (`per_render.py`, `dump_slots.py`). Note when you read the tree-wide delta: making a
+wrapper a fill re-names another DNA's un-instrumented stem inside it at the wrapper's nested slot
+(`fmt_error_detect.py:... slot 'problem'`, `fmt_true_false.py:... slot 'q'`) instead of at the field, so "new"
+families appear that are not new text. And instrumenting an lc with clause selectors makes it decidable for §15: in
+H3-R1 that surfaced 7 false findings from a missing `src=("task_type",)`, which was the session's own bug, fixed.
+
+**Owed: the rest of the rollout.** Work down `slot_text_unaccounted_14` (722 (lc, field) families) to 0. It will not fit one
 session. **Scope each session to one coherent slice** -- one formatter across every concept it serves, or one DNA
 with the formatter branches its lcs reach -- that you can finish, prove byte-identical and chain in one session.
 Measure the slice first: `validate_slots --node-ids <its lcs>` lists its families, and a finding names the field,
-not the line (limit 6), so find the site with `grep` on the rendered text. Good first slices by volume:
-`fmt_mcq`'s option and stem branches, then `fmt_cloze`, `fmt_true_false`'s non-even/odd statements (46 families
-at `fmt_true_false.py:420`), `fmt_error_detect`, then the `add_join`-style spines in `generators/spines.py`
-(`Spine.render` inflects after filling, so it needs `slots.record(..., renderer=...)` AND its inflection registered in `slots.TRANSFORMS` -- `validate_slots.replay` only replays registered names, and none is registered for spines yet; that is a small design step, so stop and ask if it is not obvious). The loop for each
+not the line (limit 6), so find the site with `grep` on the rendered text. Next slices, by H3-R1's
+per-DNA measurement (unaccounted families per DNA, measured 2026-10-11 after H3-R1 with
+`local_only/scratch/h3r1/per_render.py`; a nested-slot family is counted under every DNA its lc serves, so the
+figures overlap: addition 82, division 66, fractions 64, multiplication 59, money_peso 45, number_reading 36,
+patterns 35, comparing_ordering 34, place_value 33, length_measurement 33):
+the addition DNA with the same formatter branches (its sentences mirror subtraction's, and `decompose_to_places` is
+already a fill); then multiplication / division; and the spines in `generators/spines.py`, which every render of
+mat_g2_na_q2_7 and 9% of student items use (`Spine.render` inflects after filling, so it needs
+`slots.record(..., renderer=...)` AND its inflection registered in `slots.TRANSFORMS`; since H3-R1 a transformation
+may take the slots dict and spine id as keyword slots, but how `Spine.render`'s inflection and its silent
+"baskets" -> "figs" substitution are recorded is still a small design step, so stop and ask if it is not obvious). The loop for each
 DNA or formatter:
 1. `PYTHONPATH=. .venv/bin/python -m tests.render_snapshot local_only/scratch/<batch>/before.jsonl` BEFORE editing.
 2. Replace each learner-text f-string with `fill(...)`, every slot an `S(value, domain)`. Derive domains from the
@@ -537,5 +567,5 @@ there is no `MUTATION_IN_FLIGHT` marker, that `tests.mutation_harness.recover_or
 contract row and NAMED LIMITS are written, and the chain has run once with the tree CERTIFIED. It quotes every
 number from a command run in that session and does not touch generator content. For an H3 rollout session, "lands
 completely" means its slice: every family in the slice instrumented, `render_snapshot` 0 changed, the dev loop and
-chain green. **H1, H2 and H5 are done; H3's infrastructure is done and its rollout is next; then H4 (per lc, as the
-rollout completes each), then H6.**
+chain green. **H1, H2 and H5 are done; H3's infrastructure and its first rollout slice (H3-R1, subtraction) are done and the
+rest of its rollout is next; then H4 (per lc, as the rollout completes each), then H6.**
