@@ -1,0 +1,46 @@
+{
+ "asserts": [
+  "slot_domain_escape_14"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "FAIL slot_domain_escape_14"
+ ],
+ "command": [
+  "backend.app.practice_gen.validation.validate_slots",
+  "--node-ids",
+  "mat_g2_na_q3_8"
+ ],
+ "definition_digest": "57f1559dd7bef5259d61c7939b1ff7a2fb43df86b47207e20711f736524a7aa2",
+ "detected": true,
+ "diagnostic_line": "exit 1 — FAIL slot_domain_escape_14 (1):",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "slot_domain_escape_14 (",
+  "is outside its declared range"
+ ],
+ "expected_check": "§14 domain (a slot value outside its declared range)",
+ "finished_at": "2026-10-10T10:47:43+08:00",
+ "input_digest": "24205f186fa1c5b3554a77abb9a7750f5854b67882954a78433bca6e4e90eb18",
+ "mutated_paths": [
+  "backend/app/practice_gen/dna/na/division.py"
+ ],
+ "mutation": "slot_value_escapes_its_range",
+ "observed_markers": {
+  "is outside its declared range": true,
+  "slot_domain_escape_14 (": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-10-10T10:47:42+08:00"
+}

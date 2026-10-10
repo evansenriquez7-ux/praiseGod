@@ -1,0 +1,46 @@
+{
+ "asserts": [
+  "slot_text_unaccounted_14"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "FAIL slot_text_unaccounted_14"
+ ],
+ "command": [
+  "backend.app.practice_gen.validation.validate_slots",
+  "--node-ids",
+  "mat_g2_na_q3_8"
+ ],
+ "definition_digest": "d0464f3bbb91df0018660aa2a3e142ba6d360cae35a94be7bfd2b50df5f3efbd",
+ "detected": true,
+ "diagnostic_line": "exit 1 — FAIL slot_text_unaccounted_14 (1):",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "slot_text_unaccounted_14 (",
+  "question_text"
+ ],
+ "expected_check": "§14 accounting (every learner-read field is a recorded fill)",
+ "finished_at": "2026-10-10T10:47:45+08:00",
+ "input_digest": "24205f186fa1c5b3554a77abb9a7750f5854b67882954a78433bca6e4e90eb18",
+ "mutated_paths": [
+  "backend/app/practice_gen/formatters/textual/fmt_true_false.py"
+ ],
+ "mutation": "formatter_text_bypasses_slots",
+ "observed_markers": {
+  "question_text": true,
+  "slot_text_unaccounted_14 (": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-10-10T10:47:44+08:00"
+}
