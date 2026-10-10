@@ -71,37 +71,42 @@ def _build_equation_sentence(ctx: QuestionContext) -> str:
             # text independently).
             real_a = values.get("real_a", a)
             real_b = values.get("real_b", b)
-            return f"Estimate: {real_a} − {real_b} ≈ ___"
+            return fill("Estimate: {real_a} − {real_b} ≈ ___",
+                        real_a=S(real_a, "value:real_a"), real_b=S(real_b, "value:real_b"))
+        # Structured slots (H3-R1, owner ruling 28) for every subtraction sentence below.
+        A, B, RES = S(a, "value:a"), S(b, "value:b"), S(result, "value:result")
         if values.get("task_type") == "expanded_form" and "a_tens" in values:
             # Same root cause as addition's identical fix (see that
             # branch's comment).
             from backend.app.practice_gen.dna.na.addition import decompose_to_places
-            return (
-                f"{decompose_to_places(a)} {decompose_to_places(b)} "
-                f"Subtract the place values, then find what's left: {a} − {b} = ___"
-            )
+            return fill(
+                "{da} {db} Subtract the place values, then find what's left: {a} − {b} = ___",
+                da=S(decompose_to_places(a, "value:a"), "fill"),
+                db=S(decompose_to_places(b, "value:b"), "fill"), a=A, b=B)
         if values.get("task_type") in ("illustrate_number_line_or_inverse", "inverse_of_addition", "number_line_subtraction") and values.get("question"):
             q = values["question"]
             if "___" in q:
                 return q
-            return f"{q} Answer: ___"
+            return fill("{q} Answer: ___", q=S(q, "fill"))
         if values.get("task_type") in ("one_or_two_step_subtraction", "one_step_subtraction", "two_step_subtraction") and values.get("question"):
             q = values["question"]
             if "___" in q:
                 return q
-            return f"{q} Answer: ___"
+            return fill("{q} Answer: ___", q=S(q, "fill"))
         if values.get("task_type") == "counting_back" and blank_target == "result":
-            return f"Start at {a}. Count back {b}. You land on ___"
+            return fill("Start at {a}. Count back {b}. You land on ___", a=A, b=B)
         if values.get("task_type") == "taking_away" and blank_target == "result":
             item = values.get("item_name", "items")
-            return (f"There are {a} {count_noun(a, item)}. "
-                    f"Taking away {b} {count_noun(b, item)} leaves ___ {item}.")
+            forms = E((item, count_noun(1, item)), "values['item_name'] in either number")
+            return fill("There are {a} {n_a}. Taking away {b} {n_b} leaves ___ {item}.",
+                        a=A, n_a=S(count_noun(a, item), forms), b=B,
+                        n_b=S(count_noun(b, item), forms), item=S(item, "value:item_name"))
         if blank_target == "result":
-            return f"{a} − {b} = ___"
+            return fill("{a} − {b} = ___", a=A, b=B)
         elif blank_target == "b":
-            return f"{a} − ___ = {result}"
+            return fill("{a} − ___ = {result}", a=A, result=RES)
         else:
-            return f"___ − {b} = {result}"
+            return fill("___ − {b} = {result}", b=B, result=RES)
     
     elif concept == "multiplication":
         a = values.get("a", values.get("groups"))

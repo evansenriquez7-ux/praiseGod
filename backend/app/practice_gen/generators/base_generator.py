@@ -31,6 +31,7 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional, Set
 
 from ..dna.base import DNA, QuestionContext, VocabGated, count_noun, number_group_name
+from ..slots import S, fill
 from ..registry import get_node_competency_bounds, get_node_dnas, get_node_info
 from .interest import get_interest_emoji, get_interest_slots, pick_interest
 from .spines import NARRATIVE_DOMAIN_DNAS, select_spine
@@ -781,20 +782,25 @@ def _build_symbolic_question(
             return f"{prefix}___ + {b} = {result}. What is the {missing_lbl}?"
 
     if concept == "subtraction":
+        # Structured slots (H3-R1, owner ruling 28): subtraction's values always carry
+        # "a", "b" and "result" (and "real_a"/"real_b" for an estimate).
         if values.get("task_type") == "estimate":
             real_a = values.get("real_a", a)
             real_b = values.get("real_b", b)
-            return f"Estimate the difference: {real_a} − {real_b}"
+            return fill("Estimate the difference: {real_a} − {real_b}",
+                        real_a=S(real_a, "value:real_a"), real_b=S(real_b, "value:real_b"))
         if values.get("task_type") in ("expanded_form", "counting_back", "taking_away", "illustrate_number_line_or_inverse", "inverse_of_addition", "number_line_subtraction", "one_or_two_step_subtraction", "one_step_subtraction", "two_step_subtraction") and values.get("question"):
             return values["question"]
         if blank == "result":
-            return f"What is {a} − {b}?"
+            return fill("What is {a} − {b}?", a=S(a, "value:a"), b=S(b, "value:b"))
         elif blank == "b":
             result = values.get("result")
-            return f"{a} − ___ = {result}. What is the {missing_lbl}?"
+            return fill("{a} − ___ = {result}. What is the {missing}?", a=S(a, "value:a"),
+                        result=S(result, "value:result"), missing=S(missing_lbl, "fill"))
         else:
             result = values.get("result")
-            return f"___ − {b} = {result}. What is the {missing_lbl}?"
+            return fill("___ − {b} = {result}. What is the {missing}?", b=S(b, "value:b"),
+                        result=S(result, "value:result"), missing=S(missing_lbl, "fill"))
 
     if concept == "multiplication":
         n = values.get("n", b)

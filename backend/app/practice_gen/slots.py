@@ -193,17 +193,39 @@ def capitalize(text: str) -> str:
     return text.capitalize()
 
 
+def fill_blank(text: str, value: Any) -> str:
+    """
+    `text.replace("___", str(value))`: a formatter writing a claimed answer into the blank
+    of a stem another layer built (fmt_true_false's statement from subtraction's
+    "If 7 + 5 = 12, then 12 − 5 = ___." stem; batch H3-R1).
+    """
+    return text.replace("___", str(value))
+
+
 TRANSFORMS = {
     "strip_trailing_period": strip_trailing_period,
     "capitalize": capitalize,
+    "fill_blank": fill_blank,
 }
 
 
-def transform(name: str, text: str) -> str:
-    """Apply a registered transformation to a recorded fill's text, recording the result."""
-    out = TRANSFORMS[name](text)
+def transform(name: str, text: str, /, **args: Any) -> str:
+    """
+    Apply a registered transformation to a recorded fill's text, recording the result.
+
+    `text` is recorded as a `"fill"` slot (it must be another recorded fill's text). Any
+    further argument the transformation takes is passed by keyword as a slot -- pass
+    `S(value, domain)` so it is recorded with its domain -- and the check replays the
+    transformation with every recorded slot as a keyword (batch H3-R1).
+    """
+    extra = {k: (v.value if isinstance(v, S) else v) for k, v in args.items()}
+    out = TRANSFORMS[name](text, **extra)
     trace = _TRACE.get()
     if trace is not None:
-        trace.append(Fill(template="{text}", slots=(("text", text, "fill"),), text=out,
-                          site=_site(2), renderer=name))
+        trace.append(Fill(template="{text}",
+                          slots=(("text", text, "fill"),) + tuple(
+                              (k, extra[k], v.domain if isinstance(v, S) else None)
+                              for k, v in args.items()),
+                          text=out, site=_site(2), renderer=name,
+                          sources=tuple((k, _provenance(v)) for k, v in args.items())))
     return out

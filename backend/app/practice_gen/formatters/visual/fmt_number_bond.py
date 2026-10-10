@@ -45,6 +45,7 @@ import random
 from backend.app.practice_gen.dna.base import FormattedProblem, QuestionContext
 from backend.app.practice_gen.formatters._distractor_fallback import augment_distractors
 from backend.app.practice_gen.formatters._option_order import shuffle_options
+from backend.app.practice_gen.slots import E, S, fill
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -154,15 +155,24 @@ def _build_traps(bond: dict, answer: int, rng: random.Random) -> list:
 # ─────────────────────────────────────────────────────────────────────────────
 
 def _stem(bond: dict, interaction_mode: str, cumulative_vocab) -> str:
+    # Structured slots (H3-R1, owner ruling 28). A bond built from the DNA's values names
+    # the `values` key each position repeats (`_keys`), so the slot is checked against the
+    # generated value; a bond from visual_params or `_build_bond` is checked by type only.
+    keys = bond.get("_keys", {})
+
+    def num(pos):
+        return S(bond[pos], f"value:{keys[pos]}") if pos in keys else S(bond[pos], "num.derived")
+
     bp = bond["blank_position"]
     if interaction_mode == "set":
-        return "Fill in the blank in the number bond."
+        return fill("Fill in the blank in the number bond.")
     if bp == "whole":
         sum_word = "sum" if "sum" in cumulative_vocab else "total"
-        return f"The two parts are {bond['part1']} and {bond['part2']}. What is the {sum_word}?"
-    known_whole = bond["whole"]
-    known_part = bond["part2"] if bp == "part1" else bond["part1"]
-    return f"The total is {known_whole} and one part is {known_part}. What is the other part?"
+        return fill("The two parts are {p1} and {p2}. What is the {word}?", p1=num("part1"),
+                    p2=num("part2"), word=S(sum_word, E(("sum", "total"), "vocab gate 'sum'")))
+    known_pos = "part2" if bp == "part1" else "part1"
+    return fill("The total is {whole} and one part is {part}. What is the other part?",
+                whole=num("whole"), part=num(known_pos))
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -227,6 +237,9 @@ def format_number_bond(
                 "part2": None if blank_position == "part2" else result,
                 "blank_position": blank_position,
                 "_whole": a, "_part1": b, "_part2": result,
+                # The `values` key each position repeats, for the stem's slots (H3-R1).
+                "_keys": {pos: key for pos, key in (("whole", "a"), ("part1", "b"), ("part2", "result"))
+                          if key in ctx.values},
             }
         else:
             # For addition: result is whole, a is part1, b is part2
@@ -238,6 +251,9 @@ def format_number_bond(
                 "part2": None if blank_position == "part2" else b,
                 "blank_position": blank_position,
                 "_whole": result, "_part1": a, "_part2": b,
+                # The `values` key each position repeats, for the stem's slots (H3-R1).
+                "_keys": {pos: key for pos, key in (("whole", "result"), ("part1", "a"), ("part2", "b"))
+                          if key in ctx.values},
             }
     else:
         blank_position = rng.choice(["whole", "part1", "part2"])
@@ -293,7 +309,12 @@ def format_number_bond(
         from backend.app.practice_gen.dna.na.addition import decompose_to_places
         prefix = f"{decompose_to_places(ctx.values['a'])} {decompose_to_places(ctx.values['b'])} "
         if ctx.dna_concept == "subtraction":
-            question_text = f"{prefix}Subtract the place values, then find what's left: {question_text}"
+            # Structured slots (H3-R1, owner ruling 28): the same text, built as a fill.
+            question_text = fill(
+                "{da} {db} Subtract the place values, then find what's left: {stem}",
+                da=S(decompose_to_places(ctx.values["a"], "value:a"), "fill"),
+                db=S(decompose_to_places(ctx.values["b"], "value:b"), "fill"),
+                stem=S(question_text, "fill"))
         elif bond.get("blank_position") == "whole":
             question_text = f"{prefix}Add the place values, then find the total: {question_text}"
 

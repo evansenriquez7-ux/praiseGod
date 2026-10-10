@@ -74,6 +74,23 @@ def test_replay_accepts_a_true_fill_and_names_a_false_one():
     assert V.replay(fills[0]) is None and fills[0].text == "It is 7"
 
 
+def test_a_transform_with_an_argument_replays_and_its_argument_is_domain_checked():
+    """H3-R1: `fill_blank` writes a claimed value into another fill's blank; the check
+    replays it with every recorded slot and judges the value's domain like any slot."""
+    with capture() as fills:
+        stem = fill("If {d} + {b} = {a}, then {a} − {b} = ___.", d=S(7, "num.derived"),
+                    b=S(5, "num.derived"), a=S(12, "num.derived"))
+        out = transform("fill_blank", stem, value=S(8, E((7, 8), "claimed values")))
+    assert out == "If 7 + 5 = 12, then 12 − 5 = 8." == stem.replace("___", "8")
+    f = fills[-1]
+    assert f.renderer == "fill_blank" and V.replay(f) is None
+    assert f.slots[1] == ("value", 8, E((7, 8), "claimed values"))
+    forged = Fill(template=f.template, slots=f.slots, text=out.replace("8.", "9."), site=f.site,
+                  renderer=f.renderer)
+    assert "replay gives" in V.replay(forged)
+    assert V.check_slot(9, f.slots[1][2], {}, set())[0] == "slot_domain_escape_14"
+
+
 @pytest.mark.parametrize("node_id", ["mat_g2_na_q3_8", "mat_g2_mg_q4_3"])
 def test_the_instrumented_prototype_lcs_are_clean(node_id):
     """The two lcs the §14 mutations plant on: a red baseline here makes them INVALID."""

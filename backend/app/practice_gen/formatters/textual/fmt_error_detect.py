@@ -18,6 +18,7 @@ from typing import Any
 
 from backend.app.practice_gen.dna.base import (FormattedProblem, QuestionContext, count_noun,
                                                  number_group_name)
+from backend.app.practice_gen.slots import E, S, fill, transform
 
 
 # Rotating cast of Filipino student names for the "actor" role.
@@ -118,37 +119,48 @@ def _build_pure_equation(ctx: QuestionContext) -> str:
         return f"{slot('a', value=a)} + {slot('b', value=b)} = {slot('result', value=r)}"
     elif concept == "subtraction":
         a, b, r = values.get("a"), values.get("b"), values.get("result")
+
+        # Structured slots (H3-R1, owner ruling 28): a position prints the generated value
+        # ("value:<key>") or, when it is the unknown, the blank.
+        def sv(key, value):
+            if blank_target == key:
+                return S("___", E(("___",), "the blank for the unknown blank_target"))
+            return S(value, f"value:{key}")
+
         if is_estimate:
             real_a, real_b = values.get("real_a", a), values.get("real_b", b)
-            return f"{real_a} − {real_b} ≈ {slot('result', value=r)}"
+            return fill("{real_a} − {real_b} ≈ {r}", real_a=S(real_a, "value:real_a"),
+                        real_b=S(real_b, "value:real_b"), r=sv("result", r))
         if values.get("task_type") == "expanded_form" and "a_tens" in values:
             # Same root cause as addition's identical fix (see that
             # branch's comment).
             from backend.app.practice_gen.dna.na.addition import decompose_to_places
-            return (
-                f"{decompose_to_places(a)} {decompose_to_places(b)} "
-                f"Subtract the place values, then find what's left: "
-                f"{slot('a', value=a)} − {slot('b', value=b)} = {slot('result', value=r)}"
-            )
+            return fill(
+                "{da} {db} Subtract the place values, then find what's left: {a} − {b} = {r}",
+                da=S(decompose_to_places(a, "value:a"), "fill"),
+                db=S(decompose_to_places(b, "value:b"), "fill"),
+                a=sv("a", a), b=sv("b", b), r=sv("result", r))
         if values.get("task_type") in ("illustrate_number_line_or_inverse", "inverse_of_addition", "number_line_subtraction") and values.get("question"):
             q = values["question"]
             if "___" in q:
-                return q.replace("___", f"{slot('result', value=r)}")
-            return f"{q} (Answer: {slot('result', value=r)})"
+                return transform("fill_blank", q, value=sv("result", r))
+            return fill("{q} (Answer: {r})", q=S(q, "fill"), r=sv("result", r))
         if values.get("task_type") in ("one_or_two_step_subtraction", "one_step_subtraction", "two_step_subtraction") and values.get("question"):
-            return f"{values['question']} (Answer: {slot('result', value=r)})"
+            return fill("{q} (Answer: {r})", q=S(values["question"], "fill"), r=sv("result", r))
         if values.get("task_type") == "counting_back" and blank_target == "result":
-            return f"Start at {slot('a', value=a)}. Count back {slot('b', value=b)}. You land on {slot('result', value=r)}"
+            return fill("Start at {a}. Count back {b}. You land on {r}",
+                        a=sv("a", a), b=sv("b", b), r=sv("result", r))
         if values.get("task_type") == "taking_away" and blank_target == "result":
             item = values.get("item_name", "items")
+            forms = E((item, count_noun(1, item)), "values['item_name'] in either number")
             # A blanked slot prints "___", so its noun stays plural: the quantity is the
             # thing the pupil has to supply and "___ cookie" would give it away.
             def noun(key, value):
-                return item if blank_target == key else count_noun(value, item)
-            return (f"There are {slot('a', value=a)} {noun('a', a)}. "
-                    f"Taking away {slot('b', value=b)} {noun('b', b)} "
-                    f"leaves {slot('result', value=r)} {noun('result', r)}.")
-        return f"{slot('a', value=a)} − {slot('b', value=b)} = {slot('result', value=r)}"
+                return S(item if blank_target == key else count_noun(value, item), forms)
+            return fill("There are {a} {n_a}. Taking away {b} {n_b} leaves {r} {n_r}.",
+                        a=sv("a", a), n_a=noun("a", a), b=sv("b", b), n_b=noun("b", b),
+                        r=sv("result", r), n_r=noun("result", r))
+        return fill("{a} − {b} = {r}", a=sv("a", a), b=sv("b", b), r=sv("result", r))
     elif concept == "multiplication":
         a = values.get("a", values.get("groups"))
         b = values.get("b", values.get("n"))
@@ -321,25 +333,27 @@ def format_error_detect(ctx: QuestionContext, rng: random.Random) -> FormattedPr
     # with the actor's claimed answer. For a plain word_problem context (no
     # equation), _build_pure_equation returns ctx.question_text unchanged,
     # which never contains "___"; keep the old append behaviour for that case.
+    # Structured slots (H3-R1, owner ruling 28). The actor is one of this file's names;
+    # the claimed answer is the keyed answer or one of the distractor candidates it was
+    # drawn from; the label is one of those candidates' labels, or "none".
+    ACTOR = S(actor, "enum:backend.app.practice_gen.formatters.textual.fmt_error_detect._FILIPINO_NAMES")
+    ANSWER = S(actors_answer, E((ctx.correct_answer,) + tuple(_distractor_value(d) for d in ctx.distractors),
+                                "the keyed answer and the distractor candidates"))
+    PROBLEM = S(problem_text, "fill")
     if "___" in problem_text:
         miss_lbl = "missing number" if "missing number" in ctx.cumulative_vocab else "blank"
-        question_text = (
-            f'{actor} solved: "{problem_text}". '
-            f'{actor} says the {miss_lbl} is {actors_answer}. '
-            f'Is {actor} correct?'
-        )
+        question_text = fill(
+            '{actor} solved: "{problem}". {actor} says the {miss} is {answer}. Is {actor} correct?',
+            actor=ACTOR, problem=PROBLEM, answer=ANSWER,
+            miss=S(miss_lbl, E(("missing number", "blank"), "vocab gate 'missing number'")))
     elif problem_text.strip().endswith("?") or context_variant != "pure":
-        question_text = (
-            f'{actor} solved this problem: "{problem_text}" '
-            f'{actor} says the answer is {actors_answer}. '
-            f'Is {actor} correct?'
-        )
+        question_text = fill(
+            '{actor} solved this problem: "{problem}" {actor} says the answer is {answer}. '
+            'Is {actor} correct?',
+            actor=ACTOR, problem=PROBLEM, answer=ANSWER)
     else:
-        actor_statement = f"{problem_text} = {actors_answer}"
-        question_text = (
-            f"{actor} says: {actor_statement}. "
-            f"Is {actor} correct?"
-        )
+        question_text = fill("{actor} says: {problem} = {answer}. Is {actor} correct?",
+                             actor=ACTOR, problem=PROBLEM, answer=ANSWER)
 
     # correct_answer encodes both parts
     correct_answer = {
@@ -347,13 +361,15 @@ def format_error_detect(ctx: QuestionContext, rng: random.Random) -> FormattedPr
         "correct_value": ctx.correct_answer,
     }
 
+    label_members = (tuple(_distractor_label(d) for d in ctx.distractors) + ("none",))
     format_data = {
-        "actor_name": actor,
+        "actor_name": fill("{actor}", actor=ACTOR),
         "problem_expression": problem_text,
         "actors_answer": actors_answer,
         "has_error": has_error,
         "correct_value": ctx.correct_answer,
-        "error_label": error_label,
+        "error_label": fill("{label}", label=S(error_label, E(
+            label_members, "the distractor candidates' labels, or 'none' when no error is planted"))),
         "context": context_variant,
     }
 

@@ -57,18 +57,22 @@ def _build_pure_question(ctx: QuestionContext) -> str:
             # R2), so the same estimate-aware fix has to be applied here too.
             real_a = values.get("real_a", a)
             real_b = values.get("real_b", b)
-            return f"Estimate the difference: {real_a} − {real_b}"
+            return fill("Estimate the difference: {real_a} − {real_b}",
+                        real_a=S(real_a, "value:real_a"), real_b=S(real_b, "value:real_b"))
         if values.get("task_type") in ("expanded_form", "counting_back", "taking_away", "illustrate_number_line_or_inverse", "inverse_of_addition", "number_line_subtraction", "one_or_two_step_subtraction", "one_step_subtraction", "two_step_subtraction") and values.get("question"):
             # Same root cause as addition's identical fix: this formatter
             # rebuilds its own pure-context question independently of
             # base_generator's values["question"] preference.
             return values["question"]
+        # Structured slots (H3-R1, owner ruling 28).
         if blank_target == "result":
-            return f"What is {a} − {b}?"
+            return fill("What is {a} − {b}?", a=S(a, "value:a"), b=S(b, "value:b"))
         elif blank_target == "b":
-            return f"What number subtracted from {a} equals {result}?"
+            return fill("What number subtracted from {a} equals {result}?",
+                        a=S(a, "value:a"), result=S(result, "value:result"))
         else:
-            return f"What minus {b} equals {result}?"
+            return fill("What minus {b} equals {result}?",
+                        b=S(b, "value:b"), result=S(result, "value:result"))
     
     elif concept == "multiplication":
         a = values.get("a", values.get("groups"))

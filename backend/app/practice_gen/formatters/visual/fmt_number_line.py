@@ -865,10 +865,15 @@ def format_number_line(
     elif ctx.dna_concept == "subtraction" and "a" in values and "b" in values:
         a, b = values["a"], values["b"]
         num_word = "number" if b == 1 else "numbers"
+        # Structured slots (H3-R1, owner ruling 28).
+        A, B = S(a, "value:a"), S(b, "value:b")
         if interaction_mode == "read":
-            question_text = f"The dot is at {a} and it moves backward {b} {num_word}. Starting from {a}, just count back {b} {num_word}. Which number will the dot land on?"
+            question_text = fill(
+                "The dot is at {a} and it moves backward {b} {word}. Starting from {a}, just count "
+                "back {b} {word}. Which number will the dot land on?",
+                a=A, b=B, word=S(num_word, E(("number", "numbers"), "'number' agreeing with b")))
         else:
-            question_text = f"Show {a} − {b} on the number line."
+            question_text = fill("Show {a} − {b} on the number line.", a=A, b=B)
     elif ctx.dna_concept == "multiplication" and "a" in values and "b" in values:
         # A visual formatter declared for a new DNA needs a STEM branch as well as a
         # params branch, or the generic "What number is marked?" below silently

@@ -12,7 +12,9 @@ text. This module renders each lc on the student path under `slots.capture()` an
       rather than restated) equals the text of a recorded fill -- else
       `slot_text_unaccounted_14`, the site is not instrumented yet (ruling 34: content);
   (b) every recorded fill replays: `template.format(**slots)` (or the registered
-      transformation it names) reproduces its text -- else `slot_template_mismatch_14`;
+      transformation it names, called with every recorded slot as a keyword -- `text` and
+      any argument such as `fill_blank`'s `value`, H3-R1) reproduces its text -- else
+      `slot_template_mismatch_14`;
   (c) every slot names a domain -- else `slot_unclassified_14` -- that this module can
       resolve -- else `slot_domain_unknown_14`, the one INTEGRITY label here, because the
       harness then cannot judge the slot at all;
@@ -198,7 +200,9 @@ def replay(fill) -> Optional[str]:
         if fill.renderer is None:
             again = fill.template.format(**values)
         elif fill.renderer in TRANSFORMS:
-            again = TRANSFORMS[fill.renderer](values["text"])
+            # Every recorded slot is passed by keyword: `text` (the transformed fill) and any
+            # argument the transformation takes, such as `fill_blank`'s `value` (H3-R1).
+            again = TRANSFORMS[fill.renderer](**values)
         else:
             return f"renderer {fill.renderer!r} is not a registered transformation"
     except (KeyError, IndexError, ValueError) as exc:

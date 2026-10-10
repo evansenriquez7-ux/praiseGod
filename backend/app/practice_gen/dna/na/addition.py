@@ -111,7 +111,10 @@ VOCAB_REGROUP   = VocabGated(requires_vocab="regrouping", preferred="regroup",  
 
 # ─── constraint predicates ────────────────────────────────────────────────────
 
-def decompose_to_places(n: int) -> str:
+_PLACE_WORDS = ("hundreds", "tens", "ones", "hundred", "ten", "one")
+
+
+def decompose_to_places(n: int, domain: Any = "num.derived") -> str:
     """
     "N is H hundreds, T tens, and O ones." (place values whose digit is 0
     are omitted, except ones which always shows -- "23 is 2 tens and 3
@@ -119,7 +122,13 @@ def decompose_to_places(n: int) -> str:
     task_type="expanded_form" (this file) and the fmt_true_false.py/
     fmt_cloze.py formatters that independently rebuild question text for
     it, so the decomposition wording stays identical everywhere it's used.
+
+    Built with structured slots (batch H3-R1, owner ruling 28): `domain` is the
+    caller's domain for `n` ("value:a" when `n` is the generated operand); the
+    default, "num.derived", checks the type only.
     """
+    from backend.app.practice_gen.slots import E, S, fill
+
     hundreds, rem = divmod(n, 100)
     tens, ones = divmod(rem, 10)
 
@@ -127,7 +136,9 @@ def decompose_to_places(n: int) -> str:
         # "1 tens"/"1 ones" reads as a grammar error a Grade 1-2 reader
         # stumbles on -- singularize whenever the count is exactly 1
         # (blind review of mat_g2_na_q1_8).
-        return f"{count} {word if count != 1 else word[:-1]}"
+        return fill("{count} {word}", count=S(count, "num.derived"),
+                    word=S(word if count != 1 else word[:-1],
+                           E(_PLACE_WORDS, "decompose_to_places place words")))
 
     parts = []
     if hundreds:
@@ -135,11 +146,13 @@ def decompose_to_places(n: int) -> str:
     if hundreds or tens:
         parts.append(_place(tens, "tens"))
     parts.append(_place(ones, "ones"))
+    N = S(n, domain)
+    P = [S(p, "fill") for p in parts]
     if len(parts) == 1:
-        return f"{n} is {parts[0]}."
+        return fill("{n} is {p0}.", n=N, p0=P[0])
     if len(parts) == 2:
-        return f"{n} is {parts[0]} and {parts[1]}."
-    return f"{n} is {parts[0]}, {parts[1]}, and {parts[2]}."
+        return fill("{n} is {p0} and {p1}.", n=N, p0=P[0], p1=P[1])
+    return fill("{n} is {p0}, {p1}, and {p2}.", n=N, p0=P[0], p1=P[1], p2=P[2])
 
 
 def _satisfies_regrouping(a: int, b: int, level: str) -> bool:

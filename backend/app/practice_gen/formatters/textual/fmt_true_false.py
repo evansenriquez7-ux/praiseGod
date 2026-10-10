@@ -9,7 +9,7 @@ to judge it as True or False.
 
 import random
 
-from backend.app.practice_gen.slots import S, fill, transform
+from backend.app.practice_gen.slots import E, R, S, fill, transform
 
 from backend.app.practice_gen.dna.base import (FormattedProblem, QuestionContext, count_noun,
                                                  number_group_name)
@@ -59,8 +59,11 @@ def format_true_false(ctx: QuestionContext, rng: random.Random) -> FormattedProb
     # Decide if this should be a True or False statement
     is_true: bool = rng.choice([True, False])
     
+    # Structured slots (H3-R1, owner ruling 28): `FV` records the claimed value with the
+    # set it was drawn from, beside each assignment of `fill_value` below.
     if is_true:
         fill_value = ctx.correct_answer
+        FV = S(fill_value, E((ctx.correct_answer,), "the keyed answer (a true statement)"))
     else:
         # Pick a distractor -- but only one SHAPED LIKE the answer this item keys.
         #
@@ -86,6 +89,7 @@ def format_true_false(ctx: QuestionContext, rng: random.Random) -> FormattedProb
             distractors = same_shape
         if distractors:
             fill_value = rng.choice(distractors)
+            FV = S(fill_value, E(tuple(distractors), "the distractors shaped like the keyed answer"))
         else:
             if isinstance(ctx.correct_answer, (int, float)):
                 # Force a positive offset when correct_answer is small enough
@@ -96,8 +100,11 @@ def format_true_false(ctx: QuestionContext, rng: random.Random) -> FormattedProb
                 offset = rng.randint(1, 10) * sign
                 fill_value = ctx.correct_answer + offset
                 if fill_value < 0: fill_value = 0
+                FV = S(fill_value, R(max(0, ctx.correct_answer - 10), ctx.correct_answer + 10,
+                                     "the keyed answer offset by 1-10, floored at 0"))
             else:
                 fill_value = f"not {ctx.correct_answer}"
+                FV = S(fill_value, E((fill_value,), "'not' before the keyed answer"))
     
     # Get context variant
     context_variant = values.get("context")
@@ -108,7 +115,7 @@ def format_true_false(ctx: QuestionContext, rng: random.Random) -> FormattedProb
     
     # Build equation-style statement based on concept and context
     if context_variant == "word_problem":
-        statement = f"{ctx.question_text} The answer is {fill_value}."
+        statement = fill("{q} The answer is {v}.", q=S(ctx.question_text, "fill"), v=FV)
     else:
         # Pure: use symbolic/equation format
         if concept == "addition":
@@ -161,6 +168,8 @@ def format_true_false(ctx: QuestionContext, rng: random.Random) -> FormattedProb
             a = values.get("a")
             b = values.get("b")
             result = values.get("result")
+            # Structured slots (H3-R1, owner ruling 28) for every subtraction statement.
+            A, B, RES = S(a, "value:a"), S(b, "value:b"), S(result, "value:result")
             if values.get("task_type") == "estimate":
                 # Same rationale as addition's estimate branch above --
                 # this formatter had no estimate-aware branch at all before
@@ -168,36 +177,39 @@ def format_true_false(ctx: QuestionContext, rng: random.Random) -> FormattedProb
                 # on this duplication pattern across formatters).
                 real_a = values.get("real_a", a)
                 real_b = values.get("real_b", b)
-                statement = f"{real_a} − {real_b} ≈ {fill_value}"
+                statement = fill("{real_a} − {real_b} ≈ {v}", real_a=S(real_a, "value:real_a"),
+                                 real_b=S(real_b, "value:real_b"), v=FV)
             elif values.get("task_type") == "expanded_form" and "a_tens" in values:
                 # Same root cause as addition's identical fix (see that
                 # branch's comment).
                 from backend.app.practice_gen.dna.na.addition import decompose_to_places
-                statement = (
-                    f"{decompose_to_places(a)} {decompose_to_places(b)} "
-                    f"Subtract the place values, then find what's left: {a} − {b} = {fill_value}"
-                )
+                statement = fill(
+                    "{da} {db} Subtract the place values, then find what's left: {a} − {b} = {v}",
+                    da=S(decompose_to_places(a, "value:a"), "fill"),
+                    db=S(decompose_to_places(b, "value:b"), "fill"), a=A, b=B, v=FV)
             elif values.get("task_type") in ("illustrate_number_line_or_inverse", "inverse_of_addition", "number_line_subtraction") and values.get("question"):
                 q = values["question"]
                 if "___" in q:
-                    statement = q.replace("___", str(fill_value))
+                    statement = transform("fill_blank", q, value=FV)
                 else:
-                    statement = f"{q} The answer is {fill_value}."
+                    statement = fill("{q} The answer is {v}.", q=S(q, "fill"), v=FV)
             elif values.get("task_type") in ("one_or_two_step_subtraction", "one_step_subtraction", "two_step_subtraction") and values.get("question"):
-                statement = f"{values['question']} The answer is {fill_value}."
+                statement = fill("{q} The answer is {v}.", q=S(values["question"], "fill"), v=FV)
             elif values.get("task_type") == "counting_back" and blank_target == "result":
-                statement = f"Start at {a}. Count back {b}. You land on {fill_value}."
+                statement = fill("Start at {a}. Count back {b}. You land on {v}.", a=A, b=B, v=FV)
             elif values.get("task_type") == "taking_away" and blank_target == "result":
                 item = values.get("item_name", "items")
-                statement = (f"There are {a} {count_noun(a, item)}. "
-                             f"Taking away {b} {count_noun(b, item)} "
-                             f"leaves {fill_value} {count_noun(fill_value, item)}.")
+                forms = E((item, count_noun(1, item)), "values['item_name'] in either number")
+                statement = fill("There are {a} {n_a}. Taking away {b} {n_b} leaves {v} {n_v}.",
+                                 a=A, n_a=S(count_noun(a, item), forms), b=B,
+                                 n_b=S(count_noun(b, item), forms), v=FV,
+                                 n_v=S(count_noun(fill_value, item), forms))
             elif blank_target == "result":
-                statement = f"{a} − {b} = {fill_value}"
+                statement = fill("{a} − {b} = {v}", a=A, b=B, v=FV)
             elif blank_target == "b":
-                statement = f"{a} − {fill_value} = {result}"
+                statement = fill("{a} − {v} = {result}", a=A, v=FV, result=RES)
             else:
-                statement = f"{fill_value} − {b} = {result}"
+                statement = fill("{v} − {b} = {result}", v=FV, b=B, result=RES)
         elif concept == "multiplication":
             a = values.get("a", values.get("groups"))
             b = values.get("b", values.get("n"))

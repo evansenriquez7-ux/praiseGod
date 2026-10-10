@@ -3525,9 +3525,11 @@ MUTATIONS: List[Mutation] = [
             "is where 'Taking away 1 cookies' was hiding."
         ),
         edits={
+            # Re-anchored in H3-R1: the stem became a structured fill, so the same defect (the
+            # noun printed plural whatever the count) is planted through its `units` slot.
             "backend/app/practice_gen/dna/na/subtraction.py": (
-                'f"Starting at {a_val} on the number line, jump back {b_val} {count_noun(b_val, \'units\')}. What number do you land on?",',
-                'f"Starting at {a_val} on the number line, jump back {b_val} units. What number do you land on?",',
+                '                 dict(a=A, b=JUMP, units=_noun_slot(b_val, "units", ["units"], "count_noun of \'units\'"))),\n',
+                '                 dict(a=A, b=JUMP, units=S("units", E(("units",), "bare plural")))),  # planted mutation\n',
             )
         },
         command=["backend.app.practice_gen.validation.validate_language",
@@ -5112,8 +5114,8 @@ MUTATIONS: List[Mutation] = [
         ),
         edits={
             "backend/app/practice_gen/slots.py": (
-                "    out = TRANSFORMS[name](text)\n",
-                "    out = TRANSFORMS[name](text) + \" \"  # planted mutation: record disagrees with replay\n",
+                "    out = TRANSFORMS[name](text, **extra)\n",
+                "    out = TRANSFORMS[name](text, **extra) + \" \"  # planted mutation: record disagrees with replay\n",
             )
         },
         command=["backend.app.practice_gen.validation.validate_slots", "--node-ids", "mat_g2_na_q3_8"],

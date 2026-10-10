@@ -111,6 +111,13 @@ VOCAB_SUBTRAHEND   = VocabGated(requires_vocab="subtrahend",  preferred="the sub
 VOCAB_REGROUP      = VocabGated(requires_vocab="regrouping", preferred="regroup",       fallback="")
 
 
+# ─── structured-slot domains (batch H3-R1, owner ruling 28) ──────────────────
+def _noun_slot(count: Any, plural: str, pool: List[str], basis: str) -> S:
+    """`count_noun(count, plural)` as a slot whose domain is the pool's words in either number."""
+    return S(count_noun(count, plural),
+             E(tuple(pool) + tuple(count_noun(1, w) for w in pool), basis))
+
+
 
 
 
@@ -452,12 +459,23 @@ def generate_params(
         a_val, b_val = generate_pair_by_window(candidates, num_diff_scalar, d=5, rng=rng)
         diff_val = a_val - b_val
         mode = rng.choice(["number_line", "inverse_addition"])
+        # Structured slots (H3-R1, owner ruling 28): each template is drawn together with
+        # exactly the slots it reads, from a list of the same length, so the draw is unchanged.
+        # Provenance (owner ruling 35): `task_type` chose what these stems show -- `b` as a
+        # jump back on the number line, or the addition fact `diff + b = a` it inverts -- so
+        # the slot that shows it names `task_type` beside the value it repeats.
+        A, B = S(a_val, "value:a"), S(b_val, "value:b")
         if mode == "number_line":
-            q_template = rng.choice([
-                f"Starting at {a_val} on the number line, jump back {b_val} {count_noun(b_val, 'units')}. What number do you land on?",
-                f"A dot is at {a_val} on the number line. If you move back {b_val} {count_noun(b_val, 'steps')}, what number do you reach?",
-                f"Start at {a_val} on the number line and count back {b_val}. What is {a_val} − {b_val}?",
+            JUMP = S(b_val, "value:b", src=("task_type",))
+            q_tpl, q_slots = rng.choice([
+                ("Starting at {a} on the number line, jump back {b} {units}. What number do you land on?",
+                 dict(a=A, b=JUMP, units=_noun_slot(b_val, "units", ["units"], "count_noun of 'units'"))),
+                ("A dot is at {a} on the number line. If you move back {b} {steps}, what number do you reach?",
+                 dict(a=A, b=JUMP, steps=_noun_slot(b_val, "steps", ["steps"], "count_noun of 'steps'"))),
+                ("Start at {a} on the number line and count back {b}. What is {a} − {b}?",
+                 dict(a=A, b=JUMP)),
             ])
+            q_template = fill(q_tpl, **q_slots)
             return {
                 "a": a_val, "b": b_val, "result": diff_val,
                 "task_type": "number_line_subtraction",
@@ -468,11 +486,11 @@ def generate_params(
                 "question": q_template,
             }
         else: # inverse_addition
-            q_template = rng.choice([
-                f"Since {diff_val} + {b_val} = {a_val}, what is {a_val} − {b_val}?",
-                f"If {diff_val} + {b_val} = {a_val}, then {a_val} − {b_val} = ___. What is the missing number?",
-                f"What is {a_val} − {b_val}? (Hint: {diff_val} + {b_val} = {a_val})",
-            ])
+            q_template = fill(rng.choice([
+                "Since {diff} + {b} = {a}, what is {a} − {b}?",
+                "If {diff} + {b} = {a}, then {a} − {b} = ___. What is the missing number?",
+                "What is {a} − {b}? (Hint: {diff} + {b} = {a})",
+            ]), diff=S(diff_val, "value:result", src=("task_type",)), b=B, a=A)
             return {
                 "a": a_val, "b": b_val, "result": diff_val,
                 "task_type": "inverse_of_addition",
@@ -490,6 +508,9 @@ def generate_params(
         actor = rng.choice(actors)
         items_pool = ["mangoes", "stickers", "crayons", "pencils", "stamps", "erasers", "books", "loaves of bread", "tickets", "notebooks"]
         item = rng.choice(items_pool)
+        # Structured slots (H3-R1): every name and noun below is drawn from these lists.
+        ACTOR = S(actor, E(tuple(actors), "subtraction one/two-step actors"))
+        ITEM = S(item, E(tuple(items_pool), "subtraction one/two-step items_pool"))
 
         # Build candidate pairs that strictly satisfy reg_level
         min_a = max(20, int(profile.get("min_minuend", 20)))
@@ -523,8 +544,14 @@ def generate_params(
             if b2 <= 0:
                 b1 = max(1, b_total - 1)
                 b2 = 1
-            snack1, snack2 = rng.sample(["a sandwich", "a juice box", "a notebook", "a ballpen", "a pad paper", "an apple"], 2)
-            q = f"{actor} had ₱{total}. {actor} bought {snack1} for ₱{b1} and {snack2} for ₱{b2}. How much money does {actor} have left?"
+            snacks = ["a sandwich", "a juice box", "a notebook", "a ballpen", "a pad paper", "an apple"]
+            snack1, snack2 = rng.sample(snacks, 2)
+            SNACKS = E(tuple(snacks), "subtraction two-step money snacks")
+            q = fill("{actor} had ₱{total}. {actor} bought {snack1} for ₱{b1} and {snack2} for ₱{b2}. "
+                     "How much money does {actor} have left?",
+                     actor=ACTOR, total=S(total, "value:a"), snack1=S(snack1, SNACKS),
+                     b1=S(b1, "num.derived", src=("b",)), snack2=S(snack2, SNACKS),
+                     b2=S(b2, "num.derived", src=("b",)))
             dists = [ans + 10, max(1, ans - 10), ans + 20]
             dists = [d for d in dists if d != ans][:3]
             return {
@@ -543,8 +570,14 @@ def generate_params(
             if b2 <= 0:
                 b1 = max(1, b_total - 1)
                 b2 = 1
-            name1, name2 = rng.sample([n for n in actors if n != actor], 2)
-            q = f"{actor} had {total} {item}. {actor} gave {b1} {item} to {name1} and {b2} {item} to {name2}. How many {item} does {actor} have left?"
+            others = [n for n in actors if n != actor]
+            name1, name2 = rng.sample(others, 2)
+            NAMES = E(tuple(others), "subtraction two-step actors other than the first")
+            q = fill("{actor} had {total} {item}. {actor} gave {b1} {item} to {name1} and {b2} {item} "
+                     "to {name2}. How many {item} does {actor} have left?",
+                     actor=ACTOR, total=S(total, "value:a"), item=ITEM,
+                     b1=S(b1, "num.derived", src=("b",)), name1=S(name1, NAMES),
+                     b2=S(b2, "num.derived", src=("b",)), name2=S(name2, NAMES))
             dists = [ans + 10, max(1, ans - 10), ans + 20]
             dists = [d for d in dists if d != ans][:3]
             return {
@@ -559,8 +592,11 @@ def generate_params(
             }
         elif mode == "one_step_money":
             spent = b_total
-            purpose = rng.choice(["for art supplies", "for a school project", "for lunch", "at the sari-sari store"])
-            q = f"{actor} had ₱{total} and spent ₱{spent} {purpose}. How much money does {actor} have left?"
+            purposes = ["for art supplies", "for a school project", "for lunch", "at the sari-sari store"]
+            purpose = rng.choice(purposes)
+            q = fill("{actor} had ₱{total} and spent ₱{spent} {purpose}. How much money does {actor} have left?",
+                     actor=ACTOR, total=S(total, "value:a"), spent=S(spent, "value:b"),
+                     purpose=S(purpose, E(tuple(purposes), "subtraction one-step money purposes")))
             dists = [ans + 10, max(1, ans - 10), ans + 20]
             dists = [d for d in dists if d != ans][:3]
             return {
@@ -575,8 +611,12 @@ def generate_params(
             }
         else: # one_step_general
             given = b_total
-            recipient = rng.choice(["a friend", "classmates", "a sibling", "the library"])
-            q = f"{actor} had {total} {item}. {actor} gave {given} {item} to {recipient}. How many {item} does {actor} have left?"
+            recipients = ["a friend", "classmates", "a sibling", "the library"]
+            recipient = rng.choice(recipients)
+            q = fill("{actor} had {total} {item}. {actor} gave {given} {item} to {recipient}. "
+                     "How many {item} does {actor} have left?",
+                     actor=ACTOR, total=S(total, "value:a"), item=ITEM, given=S(given, "value:b"),
+                     recipient=S(recipient, E(tuple(recipients), "subtraction one-step recipients")))
             dists = [ans + 10, max(1, ans - 10), ans + 20]
             dists = [d for d in dists if d != ans][:3]
             return {
@@ -648,12 +688,18 @@ def generate_params(
         start, count_back = generate_pair_by_window(candidates, num_diff_scalar, d=5, rng=rng)
         items_pool = ["apples", "stickers", "marbles", "crayons", "blocks", "candies", "pencils", "erasers", "stars", "cookies"]
         item_name = rng.choice(items_pool)
+        # Structured slots (H3-R1, owner ruling 28).
         if task_type == "counting_back":
-            q_text = f"Start at {start}. Count back {count_back}. What number do you land on?"
+            q_text = fill("Start at {start}. Count back {back}. What number do you land on?",
+                          start=S(start, "value:a"), back=S(count_back, "value:b"))
         else:
-            q_text = (f"There are {start} {count_noun(start, item_name)}. "
-                      f"Taking away {count_back} {count_noun(count_back, item_name)} "
-                      f"leaves how many {item_name}?")
+            basis = "subtraction counting_back/taking_away items_pool"
+            q_text = fill("There are {start} {n_start}. Taking away {back} {n_back} leaves how many {item}?",
+                          start=S(start, "value:a"),
+                          n_start=_noun_slot(start, item_name, items_pool, basis),
+                          back=S(count_back, "value:b"),
+                          n_back=_noun_slot(count_back, item_name, items_pool, basis),
+                          item=S(item_name, "value:item_name"))
         return {
             "a": start, "b": count_back, "result": start - count_back,
             "task_type": task_type,
@@ -715,9 +761,12 @@ def generate_params(
             "context": "pure",
             "structure": "result_unknown",
             "max_minuend": max_minuend,
-            "question": (
-                f"{decompose_to_places(a_val)} {decompose_to_places(b_val)} "
-                f"Subtract the place values, then find what's left: what is {a_val} − {b_val}?"
+            # Structured slots (H3-R1, owner ruling 28).
+            "question": fill(
+                "{da} {db} Subtract the place values, then find what's left: what is {a} − {b}?",
+                da=S(decompose_to_places(a_val, "value:a"), "fill"),
+                db=S(decompose_to_places(b_val, "value:b"), "fill"),
+                a=S(a_val, "value:a"), b=S(b_val, "value:b"),
             ),
         }
 
