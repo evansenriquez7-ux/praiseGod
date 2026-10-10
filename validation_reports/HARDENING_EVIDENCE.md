@@ -19467,3 +19467,188 @@ ALL TESTS: integrity green, CONTENT FINDINGS REMAIN (exit 2).
 8. **The rollout is incomplete.** Ruling 24's premise ("a stem approval is safe only if its fields cannot
    escape it") holds today only on the three prototype lcs. H4 must not approve an lc's stems until its
    `slot_text_unaccounted_14` count is 0.
+
+## 2026-10-10 — H5: composition checks a stem review cannot see (§1J mirror, §15, §16) and a §14 hole
+
+Author: Claude Opus 5.5 (no LLM judges dispatched). Lock claimed `d4309b8b`; source `4c32cec1`; chain artifacts
+`7d01a4a2`, tree_state `403930d9`. "node" ids below are lcs. **No generator content changed**; byte identity is proved below. Every
+instance the brief names is still live and is now caught by name.
+
+### Owner rulings 35-36 (asked this session; recorded verbatim in the plan doc in `4c32cec1`)
+
+Two H5 items needed a definition of "survives" that rulings 1-34 do not give. Measured first:
+- Matching numbers between the hint and the item flags 1,000 of 3,020 student-path samples, mostly place-value
+  digits and intermediate steps.
+- Literal selector values are absent from 1,528 of 2,548 selector-matching samples, because selectors read enum
+  tags (`task_type`) and steps (`skip_by=2` is never printed as "2").
+
+The rulings:
+- **35:** decide survival by record (slot provenance), with a labelled text stopgap until the record can decide an lc.
+- **36:** new H5 hint checks are content stages only; serving keeps enforcing the existing hint dimensions.
+
+### 1. §1J singular-after-many (`count_noun_singular_after_many_1J`, content)
+
+The brief's instance still renders: `mat_g3_na_q2_3` seed 500 serves "Lola Caring collected 828 cat toy and 6321
+water bowl at the veterinary clinic." (The handoff quoted "3622 cat toy"; the numbers moved, the defect did not.)
+Seed 500 lies outside §1J's seeds 1-60, but seeds 34 and 56 of the same lc carry the same defect.
+
+The next token cannot decide the head of a noun phrase. Of 7,129 singular-looking words after a count ≥ 2, most
+are units, prepositions or compound modifiers ("16 milk tea cups", "4 square tiles", "a 9 by 9 array"). So
+the gate asks the generator instead:
+- **Lexicon.** Every noun in `generators.interest._INTERESTS`/`NEUTRAL_SLOTS`, reduced by `to_singular_phrase`,
+  plus the long unit names in `hint_contract._UNIT_FORMS`. `fish`-type words (their own plural) are dropped.
+- **Match.** The longest lexicon phrase, ending at a word boundary ("3 cat toys" passes) and closed
+  (punctuation, end of text or a function word; "3 cat toy boxes" is not judged).
+
+A first version trusted `item1`/`item2` to be singular. They are not: the bank lists "running shoes" and
+"crayons" there. That version produced false findings on mat_g1_na_q1_3; it was measured, corrected (every slot
+singularised by the same rule) and pinned by a unit test.
+
+**Baseline 423, audited one by one, all real:**
+- 389 measurement hints write "Compare 20 centimeter (cm) and 6 centimeter (cm).", the
+  `VocabGated("centimeter (cm)")` label after a count. Affected: mat_g2_mg_q2_0 (107), mat_g2_mg_q2_2 (120),
+  mat_g2_mg_q2_3 (56), mat_g3_mg_q1_6 (106).
+- 34 come from the `add_join` spine, "{actor} collected {a} {item1} and {b} {item2}", on mat_g2_na_q2_2 (18)
+  and mat_g3_na_q2_3 (16).
+
+Mutation `count_noun_singular_after_many` makes `Spine.render` singularise after any count. It is caught on
+`mat_g2_na_q2_7` (74 findings). The named limit: nouns that live only in a DNA or formatter, and open compounds,
+are counted (6,526) but never gated.
+
+### 2. §15 `validate_composition` (rulings 22, 35, 36)
+
+**The instance.** `mat_g1_na_q2_1` seed 4 serves "What number is marked on the number line?" with a dot at 48.
+Its hints say "Look at the list of numbers: 40, 42, 44, 46, ___". The selector `skip_by == 2` matched, the
+Attester stratum counted it, and the learner never saw a count by 2s.
+
+**Provenance.** `slots.S(value, domain, src=(...))` records which `values` keys a slot derives from;
+`value:<key>` implies it. `Fill.sources` carries it.
+
+**`selector_value_unexhibited_15`.** A matching selector's paths must be in the provenance of a non-hint
+learner-read fill, nested fills included. It decides a render only when §14 accounts for every learner-read field
+there. Undecided renders are counted, never guessed: 1,351 matches over 3,020 renders, 96 decided, 1,255
+undecided.
+
+**`hint_sequence_unshown_15`** (the stopgap). A hint quoting a run of three or more whole numbers is a finding
+when one of them appears nowhere in the stem, options, cloze, statements or visual payload. Bracketed lists are
+skipped: measured, the only ones are mat_g3_na_q3_5/_6's derived ones digits.
+
+**Making the record decide.** To prove the record rule, the lc of the instance was instrumented:
+- counting's four hints;
+- the counting stems of `fmt_mcq` and `fmt_cloze`;
+- `fmt_number_line`'s read stem and option key (`_OPTION_KEYS`);
+- `fmt_emoji_pictorial`'s counting branch.
+
+The counting DNA serves several lcs, so mat_g1_na_q1_0 became decidable too.
+
+**Baseline 16 + 6, all real.** They are number_line_read and emoji_pictorial items on mat_g1_na_q1_0,
+mat_g1_na_q2_1, mat_g2_na_q1_0 and mat_g2_na_q1_3. Each drops the count or direction the selector chose and the
+hints describe.
+
+**Mutations,** on mat_g1_na_q2_1's mcq renders (`--formatters mcq`, clean):
+- `selector_value_dropped_by_formatter`: the stem loses the sequence;
+- `hint_quotes_unshown_sequence`: the stem loses its first term, which only the stopgap can see.
+
+### 3. §16 `validate_hint_contract`: the ruling-30 move
+
+`test_no_served_hint_contradicts_its_item` (151 parametrized unit tests) swept every lc's stratified seeds, so one
+generator's hint defect made `run_all` exit 1. It is now a content stage:
+- same seeds (`judgment_packets._stratified_seeds`) and the same `hint_chain_violations`;
+- each finding labelled by its structured dimension;
+- serving enforcement is switched off for the sweep's duration (restored after), so a seed serving would refuse
+  is judged rather than dropped;
+- a seed that does not render is `hint_contract_unrendered_16`.
+
+The 11 `hint_contract_<dimension>` labels are content. The rule's own unit tests stay integrity.
+
+Before the move I measured that elsewhere a refused seed surfaces as matrix generation failures (`generate_scalar`,
+`discrete_gen`, `reach_generation`), all content. So the move does give exit 2.
+
+Baseline: 0 findings over the tree (3 min). All 21 mutations that drove the sweep were re-anchored and are
+DETECTED by their dimension label. `hint_counting_backward_subtracts_upward` needed its anchor moved onto
+counting's new slots, with the same defect planted ("19 − 20 = 1").
+
+### 4. A hole in H3's §14, found by §15 and fixed
+
+`slots.transform` records "{text}" around its input. When the transformation is the identity (no trailing period
+to strip), its output equals its input, so an un-instrumented `fmt_true_false` statement accounted for ITSELF. 46
+(lc, site) families read as instrumented in H3's 814 baseline. It surfaced as three §15 false positives on
+mat_g2_na_q2_3/q2_4 true_false items whose statement fill recorded no slots.
+
+The fix: a `fill` slot must be accounted for by a fill other than the one holding it, and §15's closure applies
+the same rule. Mutation `statement_bypasses_slots_behind_a_transform` (mat_g2_na_q3_8) is DETECTED with the fix.
+Against H3's `validate_slots` it passes with 0 findings (run by hand with the plant applied, then both files
+restored and `__pycache__` purged).
+
+§14 after H5: 814 = 794 unaccounted + 20 escapes (the `items` fallback, now also on mat_g1_na_q1_0 and
+mat_g1_na_q2_1).
+
+### Byte identity, dev loop, unit suite
+
+```text
+$ PYTHONPATH=. .venv/bin/python -m tests.render_snapshot --diff local_only/scratch/h5/before.jsonl local_only/scratch/h5/after1.jsonl
+render_snapshot diff: 7285 before, 7285 after, 0 changed, 0 key(s) present on one side only
+$ dev loop: 80 affected mutations, one at a time with --only: 80/80 "1/1 mutations detected", EXIT 0
+$ PYTHONPATH=. .venv/bin/python -m pytest tests/unit -m "not slow" -q -p no:cacheprovider
+973 passed, 1 skipped, 2 deselected, 4 warnings in 654.37s (0:10:54)    (1102 - 151 moved + 22 new)
+```
+
+### Chain (on `4c32cec1`)
+
+```text
+$ cat local_only/scratch/h5/chain/progress.log
+END regen EXIT 0 15:25:13 | END benchmark EXIT 0 15:25:33 | END frontend EXIT 0 15:25:45
+END corpus EXIT 0 16:29:17          225/225 mutations detected.  (no INVALID)
+escaped-plant grep lines: 1         (the benign validate_coverage.py:456 comment)
+END shard0..shard5 EXIT 0 (16:53, 17:17, 17:42, 18:09, 18:35, 19:02); END verify EXIT 0 (release_status=complete receipts=6)
+END run_all EXIT 2 19:42:42
+  PASS unit_tests (973 passed, 1 skipped, 2 deselected, 4 warnings in 650.77s (0:10:50))
+  PASS mutation_proof_integrity_8: 225 executed mutation proof(s) verified against the current source/fixture digest
+  PASS assertion_coverage_8: 170/181 harness assertions proven BY EXECUTION (38 discovered in validate_matrix, 143 declared across 20 modules), 11 knowingly unproven (allowlist may only shrink)
+  scheduled=21 completed=15 failed=6 crashed=0 not_run=0 incomplete=0
+  PASS finding_class_registry_complete: 181 label(s) classified, equal to the §8 inventory
+  INTEGRITY: GREEN
+  CONTENT: attester_packet_refused_2L, capability_contract, count_noun_singular_after_many_1J (423),
+           hint_sequence_unshown_15 (6), judgment_reviews, selector_value_unexhibited_15 (16),
+           slot_domain_escape_14 (20), slot_text_unaccounted_14 (794), variant_not_exhibited_2L
+  §16: every hint_contract_<dimension> PASS, hint_contract_unrendered_16 PASS
+ALL TESTS: integrity green, CONTENT FINDINGS REMAIN (exit 2).
+$ PYTHONPATH=. .venv/bin/python tests/tree_state.py
+PASS tree_state: CERTIFIED          live input digest : 8f3acdfb0fb94441   mutation_proofs fresh 225
+```
+
+A slip of my own, harmless: the first artifact commit passed six paths as one zsh variable, which zsh does not
+word-split, so only `tree_state.json` was committed (`403930d9`); the artifacts followed in `7d01a4a2`.
+
+### Found, not fixed (generator work; named so the next agent does not rediscover them)
+
+1. **Python lists printed into hints:**
+   - `You have these amounts: ['peso10', 'peso5', 'peso5', 'peso5', 'peso5'].` and
+     `Step 1: Add peso10 → running total = peso10.` (mat_g2_na_q2_0, mat_g1_na_q4_4);
+   - `Repeat the ones [9, 1, 8] and add 50 every group.` (mat_g3_na_q3_5/_6).
+
+   No check reads code-shaped text in hints (a harness gap; no batch owns it yet).
+2. **A doubled word:** `'Fifth' is an order word word.` (mat_g1_na_q1_5, mat_g2_na_q1_5, mat_g3_na_q1_2).
+3. **A group/size swap the `roles` dimension cannot see.** "Ate Gab wants to buy 20 fan accessories that cost ₱50
+   each" is hinted as "50 groups of 20" (mat_g3_na_q3_4). `roles` reads only "X groups of Y" against
+   "Y groups of X" within the chain.
+4. **Silent substitutions:**
+   - `Spine.render` turns `objects` "baskets" into "figs" (`dna/base.py:208`);
+   - `generators.interest.get_interest_slots` falls back to `NEUTRAL_SLOTS` for an unknown theme or an
+     emptied slot list (Protocol 3).
+
+### NAMED LIMITS (also in each module's docstring and its contract row)
+
+- §1J mirror: only the generator's declared count nouns are judged; open compounds and DNA-local nouns are
+  counted, not gated.
+- §15:
+  1. 20 seeds, default student path;
+  2. the record decides only fully instrumented renders (96 of 1,351 today);
+  3. provenance is the generator's own claim (H4 reviews it);
+  4. a `visual_type` condition counts as exhibited, and a visual exhibits a value only through a recorded fill;
+  5. the stopgap reads whole-number digits only and passes a run whose numbers appear anywhere;
+  6. bracketed lists are skipped.
+- §16:
+  1. every limit of the hint contract's dimensions;
+  2. stratified seeds, not all seeds;
+  3. serving still refuses a violating item, so other stages see that seed as a generation failure.

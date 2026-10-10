@@ -1,7 +1,7 @@
-# Task prompt: Phase 2 pipeline hardening under owner rulings 23–34 (Claude host)
+# Task prompt: Phase 2 pipeline hardening under owner rulings 23–36 (Claude host)
 
 **Rewritten 2026-10-08 after owner rulings 23–26 redefined Phase 2; rulings 27–29 (2026-10-09) settled its open design questions.
-Updated 2026-10-10 after batch H3's infrastructure and prototype landed: the H3 rollout or H5 is next. This REPLACES every earlier version
+Updated 2026-10-10 after batch H5 landed (H3's infrastructure and prototype before it): the H3 rollout is next. This REPLACES every earlier version
 of this file.** `CLAUDE_AGENT_PROMPT.md`, `GPT_HANDOFF_PROMPT.md` and `HANDOFF_PROMPT.md` beside it are history.
 Their §5–§10 method notes (dispatch template, audit-before-filing, heavy runs, traps) remain correct and are
 cited below. Their state sections, queue sizes and goals are stale; ignore them.
@@ -18,7 +18,7 @@ generator agents can find and fix every generator error from its output alone. C
 - the tree is CERTIFIED.
 
 Content findings (the 78 CONTRADICTED, 752 judgment, §2L's 420 variant + 61 packet-refusal findings, and §14's 14
-domain escapes) are the **generators' work queue**. §14's 800 `slot_text_unaccounted_14` findings are content by
+domain escapes, §1J's 423 singular-after-many, §15's 22 composition findings) are the **generators' work queue**. §14's 800 `slot_text_unaccounted_14` findings are content by
 ruling 34 too, but clearing them is the H3 rollout (instrumentation), which IS Phase 2 work.
 They are not a Phase 2 blocker, and you do not fix them.
 
@@ -40,8 +40,8 @@ INTERRUPTED, and re-measures every number it publishes.
    be a no-op", "Duplicated rule copies disagree", "Allowlist checks drift silently", "Mutation must land where
    behaviour changes" and "Proof admissible, not just detected".
 2. This file, completely.
-3. **Owner rulings 23–34** in `docs/phase2_hardening_completion_plan.md`, verbatim (search "rulings recorded
-   2026-10-08"; 27–34 follow them). Also read rulings 1, 9, 12–16 and 19–22 above them. They still govern what content must
+3. **Owner rulings 23–36** in `docs/phase2_hardening_completion_plan.md`, verbatim (search "rulings recorded
+   2026-10-08"; 27–36 follow them). Also read rulings 1, 9, 12–16 and 19–22 above them. They still govern what content must
    satisfy.
 4. `validation_reports/HARDENING_EVIDENCE.md`, newest entries first (newest is at the END of the file):
    - "H2: run_all exits 0 / 2 / 1 (owner ruling 27), and the three §6F INVALIDs re-anchored";
@@ -62,28 +62,31 @@ INTERRUPTED, and re-measures every number it publishes.
 
 ---
 
-## 1. State at handoff (2026-10-10, after H3's infrastructure and prototype; re-measure before quoting)
+## 1. State at handoff (2026-10-10, after H5; re-measure before quoting)
 
 ```
 HEAD                local main at the commit that updated this file (after the H-06 release); worktree
                     clean. Not pushed when written: check `git status -sb` before assuming origin has it
-source              eb3ce6cc (H3 infrastructure + prototype); chain artifacts bc6edb99, tree_state ceefda1f
+source              4c32cec1 (H5); chain artifacts 7d01a4a2, tree_state 403930d9
 H-06 lock           RELEASED; claim it (owner line only, numstat 1 1) before any work
-tree_state          CERTIFIED (221 proofs, 6 shards, benchmark, frontend fresh; digest 24205f186fa1c5b3)
-run_all             2026-10-10 on eb3ce6cc: EXIT 2, scheduled=19 completed=15 failed=4 crashed=0
-                      INTEGRITY GREEN; finding_class_registry_complete 177 labels
+tree_state          CERTIFIED (225 proofs, 6 shards, benchmark, frontend fresh; digest 8f3acdfb0fb94441)
+run_all             2026-10-10 on 4c32cec1: EXIT 2, scheduled=21 completed=15 failed=6 crashed=0
+                      INTEGRITY GREEN; finding_class_registry_complete 181 labels
                       CONTENT: variant_not_exhibited_2L 420, attester_packet_refused_2L 61,
                                judgment_reviews 752, capability_contract 78 (all CONTRADICTED),
-                               slot_text_unaccounted_14 800, slot_domain_escape_14 14
+                               slot_text_unaccounted_14 794, slot_domain_escape_14 20,
+                               count_noun_singular_after_many_1J 423,
+                               selector_value_unexhibited_15 16, hint_sequence_unshown_15 6
+                      §16 hint contract over the live tree: 0 findings
 queue snippet (§4)  78 42 33 55  (measured 2026-10-09)
-§2L                 973 pairs: 428 recorded, 125 by render only, 420 not exhibited (A 1, B 90, D 291, E 38);
-                    151 packets, 61 refusals (unchanged by H2/H3)
-§14                 814 findings = 800 unaccounted (rollout queue) + 14 escapes (one defect: fmt_emoji_pictorial's
-                    silent "items" fallback on mat_g1_na_q3_0/_3/_4, mat_g2_na_q2_5); full tree ~23 s
-unit suite          1102 passed, 1 skipped (fast suite ~14 min)
-mutations           221; corpus 221/221, NO INVALID
-assertions          166/177 proven by execution, 11 on the shrinking allowlist
-render snapshot     tests/render_snapshot.py: 7,285 renders; H3's baseline local_only/scratch/h3/after_final.jsonl
+§2L                 973 pairs: 428 recorded, 125 by render only, 420 not exhibited; 151 packets, 61 refusals
+§14                 814 = 794 unaccounted (rollout queue) + 20 escapes (fmt_emoji_pictorial's "items"
+                    fallback); H5 fixed a self-accounting hole that had hidden 46 families
+§15                 1,351 selector matches over 3,020 renders: 96 decided by record, 1,255 undecided
+unit suite          973 passed, 1 skipped (fast suite ~11 min; the 151-test hint sweep is now §16)
+mutations           225; corpus 225/225, NO INVALID
+assertions          170/181 proven by execution, 11 on the shrinking allowlist
+render snapshot     tests/render_snapshot.py: 7,285 renders; H5's baseline local_only/scratch/h5/after1.jsonl
 latest attestation  batch440 (next free prefix: batch441)
 ```
 
@@ -92,7 +95,7 @@ under `nohup` (as §6 advises), the session that started it stayed alive after t
 elsewhere, and two copies of the same agent did the end-of-chain bookkeeping 2 s apart. It did no harm only by
 luck. One copy per conversation; ask the owner to close the others before editing.
 
-**What H2 and H3 left for later batches** (each written as a named limit in its contract row):
+**What H2, H3 and H5 left for later batches** (each written as a named limit in its contract row):
 - **lc and seed naming is not enforced.** The Definition of Done says a finding the pipeline cannot name by lc
   and seed blocks harness work. Measured 2026-10-10: §5's 751 findings name an lc but 0 name a seed; §6F 49 of
   78 name a seed; §2L's 20 needs_instrumentation refusals are lc-wide (no seed); the 5 floor-hidden §6 findings
@@ -108,7 +111,13 @@ luck. One copy per conversation; ask the owner to close the others before editin
 - **No cross-process determinism check** (found in H3): `comparing_ordering` iterates a set when it builds
   `distractors`, so 89 of 7,285 renders on mat_g1_na_q1_4, mat_g1_na_q2_0, mat_g2_na_q1_4 and mat_g3_na_q1_6 change
   with `PYTHONHASHSEED`. Every check runs in one process with one hash seed, so none sees it. The defect is
-  generator work; the missing check is harness work that no batch owns yet (a natural fit for H5).
+  generator work; the missing check is harness work that no batch owns yet (H5 did not take it).
+- **Unowned harness gaps found in H5** (each in the H5 evidence): no check reads code-shaped text in hints
+  (`['peso10', 'peso5', ...]`, `[9, 1, 8]`); `roles` misses "20 items at ₱50 each" hinted as "50 groups of
+  20"; a doubled word ("order word word") passes everything. Stop and ask before building any of them.
+- **§15's record decides 96 of 1,351 selector matches.** The H3 rollout makes the rest decidable; when you
+  instrument a site, give every slot derived from a structured value its `src=` (provenance), or §15 will
+  report the selector value as unexhibited.
 
 Corrections to the previous version of this file, measured 2026-10-10:
 - The H3 brief said "prototype on 3 lcs ... then roll out" as if the rollout fit one batch. It does not: about
@@ -145,7 +154,7 @@ Corrections to the previous version of this file, measured 2026-10-10:
 
 ## 3. Rulings in force
 
-Rulings 23–34 are recorded verbatim in the plan doc. In short:
+Rulings 23–36 are recorded verbatim in the plan doc. In short:
 - 23: Phase 2 hardens the pipeline, not the generators.
 - 24: LLM judges review stems plus field domains; deterministic checks do the rest.
 - 25: the per-sample gates are retired once replaced; records are kept.
@@ -160,9 +169,12 @@ Rulings 23–34 are recorded verbatim in the plan doc. In short:
   text and hints.
 - 34: an un-instrumented site is a CONTENT finding (exit 2) that shrinks as the rollout proceeds; the check is
   proven by mutations on lcs that are already instrumented.
+- 35: a selector's value survives when a non-hint learner-read fill derives from it (slot provenance); a
+  labelled text stopgap covers lcs the record cannot decide yet.
+- 36: new H5 hint checks are content stages only; serving keeps enforcing the existing hint dimensions.
 
 Rulings 19–22 stay in force for any attestation still filed under the old gates before H6 retires them. **Stop and ask** for:
-- any content judgment that MATATAG and rulings 1–34 do not settle;
+- any content judgment that MATATAG and rulings 1–36 do not settle;
 - any design question these rulings do not answer;
 - anything in "Not yours" (§5).
 
@@ -176,14 +188,13 @@ Rulings 19–22 stay in force for any attestation still filed under the old gate
 |---|---|---|---|
 | H1 | DONE 2026-10-09 | §2L variant exhibit check; verdict reads failed stages from the ledger | — |
 | H2 | DONE 2026-10-10 | `run_all` exits 0 / 2 / 1; every finding classified integrity or content; the 3 §6F INVALIDs re-anchored and DETECTED; §2L leaves report-only | — |
-| **H3** | **IN PROGRESS** (infrastructure, §14 check and 3-lc prototype landed 2026-10-10; rollout owed) | structured slots (ruling 28) and the field-domain check | — |
+| **H3** | **IN PROGRESS, next** (infrastructure, §14 check and prototype landed 2026-10-10; counting lcs added in H5; rollout owed) | structured slots (ruling 28) and the field-domain check | — |
 | H4 | open | stem review gate: stem-family packets, blind judges, template+domain freshness | H3 per lc: an lc's stems may be approved only once its `slot_text_unaccounted_14` count is 0 |
-| H5 | **next (or the H3 rollout)** | composition checks: selector value survives into the payload, hint/stem agreement, §1J singular-after-many | H2 |
-| H6 | open | retire `judgment_reviews_5` and `capability_phase2` as gates; carry confirmed defects into the content report | H3 (rollout done), H4, H5 each mutation-proven |
+| H5 | DONE 2026-10-10 | §1J singular-after-many; §15 selector survival (record) + hint-run stopgap; §16 hint contract as a content stage (ruling 30); §14 self-accounting fix | — |
+| H6 | open | retire `judgment_reviews_5` and `capability_phase2` as gates; carry confirmed defects into the content report | H3 (rollout done), H4 |
 | Exit | — | the "Exit" list below holds on one chain | all of the above |
 
-H5 does not depend on H3/H4 and may run before them if a session prefers. The H3 rollout may span several
-sessions and may interleave with H5 (each session is still one `batch` intent and one chain). H4 can start on lcs
+The H3 rollout may span several sessions (each session is still one `batch` intent and one chain). H4 can start on lcs
 whose rollout is done. H6 must be last.
 
 Each batch is one `batch` intent and one re-proof chain (§6). Inside a batch, use a dev loop: focused unit
@@ -328,21 +339,18 @@ The original brief is preserved in git history (`87b23669`).
   - a packet missing a reachable stem family must be caught, so enumeration is complete in both directions;
   - a judged record whose verdict is removed must be caught.
 
-### H5: composition checks a stem review cannot see
+### H5: composition checks a stem review cannot see -- DONE 2026-10-10
 
-These are known blind spots, each with an instance today that proves the check.
-- **Ruling-22 blind spot.** A selector proves the generator CHOSE a sibling, not that the rendered item still
-  EXHIBITS it. Instance: `mat_g1_na_q2_1` `read_mcq` NumberLine/EmojiPictorial items drop the skip-count
-  sequence, while the hints still describe it. Build a check that the structured value the selector reads
-  survives into the rendered payload.
-- **Hint/stem agreement.** A hint must describe the problem actually rendered, after the formatter has
-  rewrapped it.
-- **`count_noun_agreement_1J` limit 1** (singular-after-many, measured but not gated). Instance:
-  `mat_g3_na_q2_3` seed 500 `3622 cat toy`. Close it, or narrow it with a mutation that plants a
-  singular-after-many and is caught. Do this **before** anyone fixes the instance, while the instance still
-  proves the gate.
-
-Each of these reports content findings. Do not fix the instances.
+**Landed** in `4c32cec1`, chain `7d01a4a2` (evidence: "H5: composition checks a stem review cannot see"; contract
+rows §1J, §14, §15, §16). Owner rulings 35-36 settled what "survives" means and where new hint checks live.
+- §1J `count_noun_singular_after_many_1J`: judged against the generator's declared count nouns (interest bank,
+  unit table), closed phrases only. 423 real findings, including the brief's mat_g3_na_q2_3 instance.
+- §15 `validate_composition`: `selector_value_unexhibited_15` by slot provenance (`S(..., src=)`), decided
+  only on fully instrumented renders; `hint_sequence_unshown_15` text stopgap. The brief's mat_g1_na_q2_1
+  instance is caught by both.
+- §16 `validate_hint_contract`: ruling 30's move of the live hint sweep out of the unit suite.
+- §14: a nested fill can no longer account for itself.
+The original brief is preserved in git history (`b88732ef`).
 
 ### H6: retire the per-sample gates (ruling 25)
 
@@ -409,7 +417,7 @@ Do not start them in a Phase 2 session.
   - `.claude/worktrees/agent-aaac714fac3fe0cc6`.
 
   Name what you find in these areas; do not fix it.
-- **Stop** at any content judgment or design question that MATATAG and rulings 1–34 do not settle.
+- **Stop** at any content judgment or design question that MATATAG and rulings 1–36 do not settle.
 
 ---
 
