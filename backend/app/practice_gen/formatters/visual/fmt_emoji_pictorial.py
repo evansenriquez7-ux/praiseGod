@@ -42,6 +42,7 @@ import random
 from typing import List, Optional
 
 from backend.app.practice_gen.dna.base import FormattedProblem, QuestionContext
+from backend.app.practice_gen.slots import S, fill
 from backend.app.practice_gen.formatters._distractor_fallback import augment_distractors
 
 
@@ -73,6 +74,15 @@ _EMOJI_NAMES = {
     "🍪": "cookie", "🍩": "donut", "🧁": "cupcake", "🍬": "candy",
     "🍫": "chocolate", "🥤": "drink", "🍕": "pizza", "🌮": "taco",
 }
+
+
+# The copula choice the stem makes ("There is 1" / "There are 5"). Named so its slot can
+# declare the generator's own two choices as its domain (H3, owner ruling 28).
+_COPULAS = ("is", "are")
+# Option letters, A first. `_OPTION_KEYS[i]` is `chr(65 + i)` for the four options this
+# formatter offers; named so the keyed letter's slot can declare it (H3).
+_OPTION_KEYS = ("A", "B", "C", "D")
+_NAMES_DOMAIN = "noun:backend.app.practice_gen.formatters.visual.fmt_emoji_pictorial._EMOJI_NAMES"
 
 
 def _pluralize(name: str, count: int) -> str:
@@ -311,20 +321,28 @@ def _build_question_text(params: dict, context_variant: str = "word_problem") ->
         line3 = f"How many {name_plural} are there in all?"
 
     elif operation == "subtraction":
+        # Structured slots (H3, owner ruling 28); each string is identical to the f-string
+        # it replaced. `a`/`b` repeat the DNA's generated operands.
+        A, B = S(a, "value:a"), S(b, "value:b")
+        plural = S(name_plural, _NAMES_DOMAIN)
         # Line 1: Show starting amount
         if a == 0:
-            line1 = f"There are 0 {name_plural}."
+            line1 = fill("There are 0 {names}.", names=plural)
         else:
-            line1 = f"{group_a_str} — There {'is' if a == 1 else 'are'} {a} {name_a}."
+            line1 = fill("{group} — There {verb} {a} {name}.",
+                         group=S(group_a_str, "text.derived"),
+                         verb=S(_COPULAS[0] if a == 1 else _COPULAS[1],
+                                "enum:backend.app.practice_gen.formatters.visual.fmt_emoji_pictorial._COPULAS"),
+                         a=A, name=S(name_a, _NAMES_DOMAIN))
         
         # Line 2: State how many taken away (no emoji display for taken items)
         if b == 0:
-            line2 = f"Taking away 0 {name_plural}."
+            line2 = fill("Taking away 0 {names}.", names=plural)
         else:
-            line2 = f"Taking away {b} {name_b}."
+            line2 = fill("Taking away {b} {name}.", b=B, name=S(name_b, _NAMES_DOMAIN))
         
         # Line 3: Question
-        line3 = f"How many {name_plural} are left?"
+        line3 = fill("How many {names} are left?", names=plural)
         
     else:  # counting
         # A COUNTING item may not state its own count. This branch printed
@@ -343,7 +361,8 @@ def _build_question_text(params: dict, context_variant: str = "word_problem") ->
         line1 = group_a_str if a else f"(no {name_plural} are shown)"
         line2 = f"Count the {name_plural}."
         line3 = f"How many {name_plural} are there in all?"
-    return f"{line1}\n{line2}\n{line3}"
+    return fill("{line1}\n{line2}\n{line3}",
+                line1=S(line1, "fill"), line2=S(line2, "fill"), line3=S(line3, "fill"))
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -417,10 +436,11 @@ def format_emoji_pictorial(
         all_options = [correct] + distractors[:3]
         rng.shuffle(all_options)
         mcq_options = [
-            {"key": chr(65 + i), "value": opt, "is_correct": opt == correct}
+            {"key": _OPTION_KEYS[i], "value": opt, "is_correct": opt == correct}
             for i, opt in enumerate(all_options)
         ]
-        final_answer = next(o["key"] for o in mcq_options if o["is_correct"])
+        final_answer = fill("{key}", key=S(next(o["key"] for o in mcq_options if o["is_correct"]),
+                                            "enum:backend.app.practice_gen.formatters.visual.fmt_emoji_pictorial._OPTION_KEYS"))
     
     # Build format data
     format_data = {"visual_params": params}

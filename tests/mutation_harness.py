@@ -5008,6 +5008,106 @@ MUTATIONS: List[Mutation] = [
                                 "no_check_emits_this"],
         baseline_must_not_contain=["finding_class_registry_complete: FINDING_CLASS and the §8"],
     ),
+    # ── §14 structured slots (owner rulings 28, 33, 34; batch H3, 2026-10-10) ───────────
+    # Every plant lands on mat_g2_na_q3_8 (division / true_false), instrumented end to end
+    # in H3 with a clean §14 baseline (0 findings at 20 seeds), through the module CLI's lc
+    # scope -- the same `render_findings` run_all's stage calls over every lc.
+    Mutation(
+        name="slot_value_escapes_its_range",
+        asserts=["slot_domain_escape_14"],
+        description=(
+            "Widen the draw past the range the generator declares for the slot. A judge "
+            "approves a stem together with the domain of every slot (ruling 24); a value "
+            "outside it is content nobody approved, which is the escape §14 exists to catch."
+        ),
+        edits={
+            "backend/app/practice_gen/dna/na/division.py": (
+                "        n = rng.randint(1, n_max)\n",
+                "        n = rng.randint(n_max + 1, n_max + 50)  # planted mutation: the draw escapes its range\n",
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_slots", "--node-ids", "mat_g2_na_q3_8"],
+        expected_check="§14 domain (a slot value outside its declared range)",
+        expect_output_contains=["slot_domain_escape_14 (", "is outside its declared range"],
+        baseline_must_not_contain=["FAIL slot_domain_escape_14"],
+    ),
+    Mutation(
+        name="slot_recorded_without_domain",
+        asserts=["slot_unclassified_14"],
+        description=(
+            "Record a slot as a bare value with no domain. The text is unchanged, so every "
+            "other gate stays green; only the classification is gone, and a slot with no "
+            "domain is one no judge can approve and no check can bound."
+        ),
+        edits={
+            "backend/app/practice_gen/dna/na/division.py": (
+                '            fill("Divide {n} by 2: how many 2s fit into {n}?", n=n_slot),\n',
+                '            fill("Divide {n} by 2: how many 2s fit into {n}?", n=n),  # planted mutation\n',
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_slots", "--node-ids", "mat_g2_na_q3_8"],
+        expected_check="§14 classification (every slot names a domain)",
+        expect_output_contains=["slot_unclassified_14 (", "recorded with no domain"],
+        baseline_must_not_contain=["FAIL slot_unclassified_14"],
+    ),
+    Mutation(
+        name="formatter_text_bypasses_slots",
+        asserts=["slot_text_unaccounted_14"],
+        description=(
+            "Build the true/false stem with a plain f-string again. The rendered text is "
+            "BYTE-IDENTICAL -- only the record is missing -- so this proves accounting works "
+            "by the generator's record, never by the text looking right (ruling 28)."
+        ),
+        edits={
+            "backend/app/practice_gen/formatters/textual/fmt_true_false.py": (
+                '        question_text=fill("{statement}. True or False?",\n'
+                '                           statement=S(transform("strip_trailing_period", statement), "fill")),\n',
+                "        question_text=f\"{transform('strip_trailing_period', statement)}. True or False?\",  # planted mutation\n",
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_slots", "--node-ids", "mat_g2_na_q3_8"],
+        expected_check="§14 accounting (every learner-read field is a recorded fill)",
+        expect_output_contains=["slot_text_unaccounted_14 (", "question_text"],
+        baseline_must_not_contain=["FAIL slot_text_unaccounted_14"],
+    ),
+    Mutation(
+        name="slot_transform_misrecorded",
+        asserts=["slot_template_mismatch_14"],
+        description=(
+            "Let a transformation record text its own replay does not reproduce. A record "
+            "that disagrees with its template is not evidence of what produced the text, and "
+            "a judge's approval of that template would then cover something else."
+        ),
+        edits={
+            "backend/app/practice_gen/slots.py": (
+                "    out = TRANSFORMS[name](text)\n",
+                "    out = TRANSFORMS[name](text) + \" \"  # planted mutation: record disagrees with replay\n",
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_slots", "--node-ids", "mat_g2_na_q3_8"],
+        expected_check="§14 replay (a recorded fill reproduces from its template and slots)",
+        expect_output_contains=["slot_template_mismatch_14 (", "replay gives"],
+        baseline_must_not_contain=["FAIL slot_template_mismatch_14"],
+    ),
+    Mutation(
+        name="slot_domain_id_unresolvable",
+        asserts=["slot_domain_unknown_14"],
+        description=(
+            "Misspell a domain id. The harness can then not judge the slot at all -- the one "
+            "§14 failure classed INTEGRITY, because it is the check that is broken, not the "
+            "content."
+        ),
+        edits={
+            "backend/app/practice_gen/dna/na/division.py": (
+                '        n_slot = S(n, "value:dividend")\n',
+                '        n_slot = S(n, "vallue:dividend")  # planted mutation\n',
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_slots", "--node-ids", "mat_g2_na_q3_8"],
+        expected_check="§14 domain resolution (every domain id resolves)",
+        expect_output_contains=["slot_domain_unknown_14 (", "vallue:dividend"],
+        baseline_must_not_contain=["FAIL slot_domain_unknown_14"],
+    ),
     # ── §12's renderer-registration dispositions (H-08, 2026-09-18) ────────────────
     #
     # An unreachable registration is not itself a defect; an UNEXPLAINED one is. "The suite

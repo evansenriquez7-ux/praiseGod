@@ -166,6 +166,7 @@ display the pupil needs when the stem never mentions it.
 | `§2H` | validate_compat: a competency naming BOTH cases of a dimension must not be bound to one of them — §2G proves bounds are well-formed, §2H proves they are faithful to the competency text |
 | `§2I` | validate_compat: a discrete variant a node declares must be one it can actually produce — a shrinking floor (65 at 2026-09-04), not a hard gate. Producibility only: it never asks whether the render shows the value (§2L) |
 | `§2L` | validate_exhibit: a discrete variant a node declares must reach the render — recorded in `given_values`, or changing the problem against every sibling value — and every Attester packet must build. Content findings: `run_all` exit 2 (since H2); its own CLI exits 1 on any finding |
+| `§14` | validate_slots: every learner-read field is the text of a recorded template fill (`slots.fill`) whose every slot lies inside its declared domain. Un-instrumented sites are content findings that shrink with the rollout (ruling 34); an unresolvable domain id is integrity |
 | `§3` | validate_dna: production-context structure at every applicable node/declared grade/five seeds, exact numeric comparison, and difficulty-profile feasibility |
 | `§4` | validate_matrix: VISUAL payload schema validation (recorded only under is_visual, so ~67 of 151 nodes; non-visual response shape rests on the Pydantic model at runtime) |
 | `§5` | validate_judgment: genuine, non-boilerplate, non-stale blind judgment reviews |

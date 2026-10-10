@@ -18,6 +18,7 @@ from __future__ import annotations
 import random
 from typing import Any, Dict, List, Optional, Set
 
+from backend.app.practice_gen.slots import R, S, fill
 from backend.app.practice_gen.dna.base import (
     DIFFICULTY_LEVEL_MAP,
     DNA,
@@ -107,6 +108,10 @@ _TABLE_SETS: Dict[str, List[int]] = {
 
 
 # ─── vocab-gated terms ────────────────────────────────────────────────────────
+# The two category words an even/odd item is keyed and distracted with. Named so a slot
+# domain can reference the generator's own list (H3, owner ruling 28) instead of a copy.
+EVEN_ODD_LABELS = ("even", "odd")
+
 VOCAB_QUOTIENT   = VocabGated(requires_vocab="quotient",   preferred="the quotient",   fallback="the answer")
 VOCAB_DIVISOR    = VocabGated(requires_vocab="divisor",    preferred="the divisor",    fallback="the number we divide by")
 VOCAB_DIVIDEND   = VocabGated(requires_vocab="dividend",   preferred="the dividend",   fallback="the number being divided")
@@ -351,9 +356,12 @@ def generate_params(
         # from a co-mapped comparing_ordering DNA).
         n_max = max(20, q_max * bounds["b"][1])
         n = rng.randint(1, n_max)
+        n_slot = S(n, R(1, n_max, "division even_odd: n = randint(1, max(20, q_max * b_max))"))
         is_even = (n % 2 == 0)
-        label = "even" if is_even else "odd"
-        other = "odd" if is_even else "even"
+        label = fill("{label}", label=S(EVEN_ODD_LABELS[0] if is_even else EVEN_ODD_LABELS[1],
+                                        "enum:backend.app.practice_gen.dna.na.division.EVEN_ODD_LABELS"))
+        other = fill("{label}", label=S(EVEN_ODD_LABELS[1] if is_even else EVEN_ODD_LABELS[0],
+                                        "enum:backend.app.practice_gen.dna.na.division.EVEN_ODD_LABELS"))
         return {
             # Deliberately NOT "a"/"b"/"result" -- those are the exact
             # variable names step (h) of generate_context's shared
@@ -371,7 +379,7 @@ def generate_params(
             "context": "pure",
             "answer": label,
             "distractors": [other],
-            "question": f"Divide {n} by 2. Is {n} an even or an odd number?",
+            "question": fill("Divide {n} by 2. Is {n} an even or an odd number?", n=n_slot),
         }
 
     if table_level == "one_digit_mixed_or_power_of_ten":
@@ -607,11 +615,14 @@ def generate_hints(
         # `arithmetic`). The halving is done here from the declared dividend.
         n = values["dividend"]
         half, left = divmod(n, 2)
+        n_slot = S(n, "value:dividend")
         return [
-            f"Divide {n} by 2: how many 2s fit into {n}?",
-            f"2 × {half} = {2 * half}, and {n} − {2 * half} = {left}.",
-            (f"Nothing is left over, so {n} is an even number." if left == 0
-             else f"1 is left over, so {n} is an odd number."),
+            fill("Divide {n} by 2: how many 2s fit into {n}?", n=n_slot),
+            fill("2 × {half} = {twice}, and {n} − {twice} = {left}.",
+                 half=S(half, "num.derived"), twice=S(2 * half, "num.derived"),
+                 n=n_slot, left=S(left, "num.derived")),
+            (fill("Nothing is left over, so {n} is an even number.", n=n_slot) if left == 0
+             else fill("1 is left over, so {n} is an odd number.", n=n_slot)),
         ]
 
     # Strict reads: a missing key is a named error, never a silent 0 that prints a

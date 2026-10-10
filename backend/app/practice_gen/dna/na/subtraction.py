@@ -17,6 +17,7 @@ from __future__ import annotations
 import random
 from typing import Any, Dict, List, Optional, Set
 
+from backend.app.practice_gen.slots import E, S, fill, transform
 from backend.app.practice_gen.dna.base import (
     count_noun,
     DIFFICULTY_LEVEL_MAP,
@@ -867,8 +868,14 @@ def generate_hints(
     hints: List[str] = []
     knows_regrouping = bool(reg_phrase)
 
+    # Structured slots (H3, owner ruling 28). Every string below is identical to the
+    # f-string it replaced; `fill` records its template and slot domains for §14.
+    A, B, RES = S(a, "value:a"), S(b, "value:b"), S(result, "value:result")
+    D = lambda v: S(v, "num.derived")  # noqa: E731 - a number computed from a and b
+    diff_cap = S(transform("capitalize", diff_label), "fill")
+
     # Step 1: identify the operation
-    hints.append(f"We are subtracting {b} from {a}.")
+    hints.append(fill("We are subtracting {b} from {a}.", b=B, a=A))
 
     ones_a, ones_b = a % 10, b % 10
     needs_a_ten = ones_a < ones_b
@@ -880,23 +887,25 @@ def generate_hints(
     # pupil counts back, which is how these nodes describe subtraction ("taking away");
     # past 20 the same ten is unpacked in tens-and-ones language.
     if needs_a_ten and not knows_regrouping and a <= 20:
-        hints.append(f"Start at {a} and count back {b}.")
-        hints.append(f"{diff_label.capitalize()} of {a} − {b} = {result}.")
+        hints.append(fill("Start at {a} and count back {b}.", a=A, b=B))
+        hints.append(fill("{label} of {a} − {b} = {result}.", label=diff_cap, a=A, b=B, result=RES))
         return hints
 
     # Step 2: ones column
     if needs_a_ten and knows_regrouping:
-        hints.append(
-            f"The ones digit {ones_a} is less than {ones_b}, so we need to {reg_phrase}. "
-            f"Regroup 1 ten as 10 ones: {ones_a + 10} − {ones_b} = {ones_a + 10 - ones_b}."
-        )
+        hints.append(fill(
+            "The ones digit {oa} is less than {ob}, so we need to {reg}. "
+            "Regroup 1 ten as 10 ones: {oa10} − {ob} = {od}.",
+            oa=D(ones_a), ob=D(ones_b), reg=S(reg_phrase, "fill"), oa10=D(ones_a + 10),
+            od=D(ones_a + 10 - ones_b)))
     elif needs_a_ten:
-        hints.append(
-            f"There are not enough ones, so take 1 ten as 10 ones: "
-            f"{ones_a + 10} − {ones_b} = {ones_a + 10 - ones_b}."
-        )
+        hints.append(fill(
+            "There are not enough ones, so take 1 ten as 10 ones: "
+            "{oa10} − {ob} = {od}.",
+            oa10=D(ones_a + 10), ob=D(ones_b), od=D(ones_a + 10 - ones_b)))
     else:
-        hints.append(f"Subtract the ones: {ones_a} − {ones_b} = {ones_a - ones_b}.")
+        hints.append(fill("Subtract the ones: {oa} − {ob} = {od}.",
+                          oa=D(ones_a), ob=D(ones_b), od=D(ones_a - ones_b)))
 
     # Step 3: tens column (only when numbers have tens)
     if a >= 10 or b >= 10:
@@ -906,10 +915,13 @@ def generate_hints(
         note = ""
         if used:
             note = " (after regrouping)" if knows_regrouping else " (1 ten became 10 ones)"
-        hints.append(f"Subtract the tens: {tens_a} − {tens_b} = {tens_a - tens_b}." + note)
+        hints.append(fill("Subtract the tens: {ta} − {tb} = {td}.{note}",
+                          ta=D(tens_a), tb=D(tens_b), td=D(tens_a - tens_b),
+                          note=S(note, E(("", " (after regrouping)", " (1 ten became 10 ones)"),
+                                         "subtraction tens-step note"))))
 
     # Step 4: final answer
-    hints.append(f"{diff_label.capitalize()} of {a} − {b} = {result}.")
+    hints.append(fill("{label} of {a} − {b} = {result}.", label=diff_cap, a=A, b=B, result=RES))
 
     return hints
 

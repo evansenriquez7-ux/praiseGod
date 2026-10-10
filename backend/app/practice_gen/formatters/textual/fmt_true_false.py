@@ -9,6 +9,8 @@ to judge it as True or False.
 
 import random
 
+from backend.app.practice_gen.slots import S, fill, transform
+
 from backend.app.practice_gen.dna.base import (FormattedProblem, QuestionContext, count_noun,
                                                  number_group_name)
 
@@ -254,15 +256,16 @@ def format_true_false(ctx: QuestionContext, rng: random.Random) -> FormattedProb
                 # out exactly" avoids the word "remainder", which this
                 # node's own NOT_YET_KNOWN vocabulary list forbids at this
                 # grade/quarter (caught by §1D vocabulary_gating).
+                d_slot = S(dividend, "value:dividend")
                 templates_even = [
-                    f"{dividend} ÷ 2 comes out exactly, so {dividend} is an even number",
-                    f"Dividing {dividend} by 2 gives an exact whole number, so {dividend} is an even number",
-                    f"{dividend} can be divided into 2 equal parts, so {dividend} is an even number",
+                    fill("{d} ÷ 2 comes out exactly, so {d} is an even number", d=d_slot),
+                    fill("Dividing {d} by 2 gives an exact whole number, so {d} is an even number", d=d_slot),
+                    fill("{d} can be divided into 2 equal parts, so {d} is an even number", d=d_slot),
                 ]
                 templates_odd = [
-                    f"{dividend} ÷ 2 does not come out exactly, so {dividend} is an odd number",
-                    f"Dividing {dividend} by 2 does not give an exact whole number, so {dividend} is an odd number",
-                    f"{dividend} cannot be divided into 2 equal whole parts, so {dividend} is an odd number",
+                    fill("{d} ÷ 2 does not come out exactly, so {d} is an odd number", d=d_slot),
+                    fill("Dividing {d} by 2 does not give an exact whole number, so {d} is an odd number", d=d_slot),
+                    fill("{d} cannot be divided into 2 equal whole parts, so {d} is an odd number", d=d_slot),
                 ]
                 t_list = templates_even if fill_value == "even" else templates_odd
                 idx = (int(dividend) + ctx.seed) % len(t_list)
@@ -413,7 +416,8 @@ def format_true_false(ctx: QuestionContext, rng: random.Random) -> FormattedProb
         # unconditionally appending ". True or False?" produced a doubled
         # period ("...700.. True or False?") -- strip any trailing
         # punctuation `statement` already supplied before adding ours.
-        question_text=f"{statement.rstrip('.')}. True or False?",
+        question_text=fill("{statement}. True or False?",
+                           statement=S(transform("strip_trailing_period", statement), "fill")),
         correct_answer=is_true,
         distractors=ctx.distractors,
         hints=ctx.hints,

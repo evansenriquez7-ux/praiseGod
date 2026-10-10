@@ -24,6 +24,7 @@ from __future__ import annotations
 import random
 from typing import Any, Dict, List, Optional, Set
 
+from backend.app.practice_gen.slots import S, fill
 from backend.app.practice_gen.dna.base import (
     DNA,
     ErrorPattern,
@@ -697,6 +698,13 @@ def generate_params(
     # Multiplicative hashing spreads nearby seeds across the pool instead.
     index = (seed * 2654435761) % len(ordered)
     item = dict(ordered[index])
+    # Structured slots (H3, owner ruling 28): every learner-read string of a bank item is
+    # recorded with the bank itself as its domain. Values are unchanged.
+    bank = "bank:backend.app.practice_gen.dna.mg.geometric_lines._ITEM_POOL:"
+    item["question"] = fill("{text}", text=S(item["question"], bank + "question"))
+    item["answer"] = fill("{text}", text=S(item["answer"], bank + "answer"))
+    item["distractors"] = [fill("{text}", text=S(d, bank + "distractors"))
+                           for d in item["distractors"]]
     item["result"] = item["answer"]
     return item
 
@@ -708,24 +716,25 @@ def generate_hints(
     cumulative_vocab: Set[str],
 ) -> List[str]:
     concept_type = values.get("concept_type", "point_line_segment_ray")
+    # Literal hints are zero-slot fills: the template IS the sentence (H3, ruling 28).
     if concept_type == "straight_curved":
         return [
-            "A straight line never bends.",
-            "A curved line bends smoothly.",
-            "A flat surface has no bumps or curves, like a tabletop.",
-            "A curved surface bends, like the outside of a ball or a can.",
+            fill("A straight line never bends."),
+            fill("A curved line bends smoothly."),
+            fill("A flat surface has no bumps or curves, like a tabletop."),
+            fill("A curved surface bends, like the outside of a ball or a can."),
         ]
     if concept_type == "parallel_intersecting_perpendicular":
         return [
-            "Parallel lines never meet — they stay the same distance apart.",
-            "Intersecting lines cross at one point.",
-            "Perpendicular lines intersect at exactly a right angle (90°).",
+            fill("Parallel lines never meet — they stay the same distance apart."),
+            fill("Intersecting lines cross at one point."),
+            fill("Perpendicular lines intersect at exactly a right angle (90°)."),
         ]
     return [
-        "A point is a dot — no length, no width.",
-        "A line segment has two endpoints and a measurable length.",
-        "A ray has one endpoint and goes on forever in one direction.",
-        "A line has no endpoints — it goes on forever in both directions.",
+        fill("A point is a dot — no length, no width."),
+        fill("A line segment has two endpoints and a measurable length."),
+        fill("A ray has one endpoint and goes on forever in one direction."),
+        fill("A line has no endpoints — it goes on forever in both directions."),
     ]
 
 

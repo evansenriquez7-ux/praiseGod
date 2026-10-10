@@ -71,6 +71,7 @@ from backend.app.practice_gen.validation import (
     validate_coverage,
     validate_vocab,
     validate_exhibit,
+    validate_slots,
 )
 from backend.app.practice_gen.validation.validate_matrix import run_matrix_validation
 from backend.app.practice_gen.validation._manifest import (
@@ -279,6 +280,7 @@ CONTRACT_CHECKS: Dict[str, str] = {
     "§11": "validate_obligations: the student-path obligation manifest is derived twice and agrees, and no registered formatter route is unreachable",
     "§12": "validate_render: current digest-bound React static-render evidence executes every production-reachable visual type and describes emitted markup",
     "§13": "validate_render: a correct interaction emitted by every production interactive visual route is accepted by the shared backend answer comparator",
+    "§14": "validate_slots: every learner-read field is the text of a recorded template fill whose every slot lies inside its declared domain (structured slots, owner rulings 28/33/34)",
 }
 
 _LAST_UNIT_TEST_COUNT: list = [None]
@@ -677,6 +679,7 @@ def run_all(fail_fast: bool = False, phase: Optional[int] = None) -> int:
         ("option_degeneracy_1K", 1, ("§1K",), "Option Degeneracy (§1K)"),
         ("dangling_reference_1M", 1, ("§1M",), "Dangling Visual Reference (§1M)"),
         ("variant_exhibit_2L",  1, ("§2L",), "Declared Variants Reach the Render (§2L)"),
+        ("slot_domains_14",     1, ("§14",), "Structured Slots and Field Domains (§14)"),
         ("render_contract_9",   1, ("§9", "§12", "§13"),  "Render Contract (§9/§12/§13)"),
         ("grading_contract_10", 1, ("§10",), "Grading Contract (§10)"),
         ("assertion_coverage_8", 1, ("§8",), "Assertion Coverage (§8)"),
@@ -1102,6 +1105,17 @@ def run_all(fail_fast: bool = False, phase: Optional[int] = None) -> int:
             executed_checks.add("§2L")
         return ok
 
+    def _stage_slot_domains_14() -> bool:
+        print("\n--- Structured Slots and Field Domains (§14) ---")
+        # Owner rulings 24/28/33/34 (H3): every learner-read field must be the text of a
+        # template fill its generator recorded, with every slot inside its declared domain.
+        # Un-instrumented sites are CONTENT findings that shrink as the rollout proceeds
+        # (ruling 34); only an unresolvable domain id is integrity.
+        ok = validate_slots.validate_all()
+        if ok:
+            executed_checks.add("§14")
+        return ok
+
     def _stage_render_contract_9() -> bool:
         print("\n--- Render Contract (§9/§12) ---")
         # The first stage that looks past FormattedProblem at what the STUDENT receives.
@@ -1169,6 +1183,7 @@ def run_all(fail_fast: bool = False, phase: Optional[int] = None) -> int:
             ("option_degeneracy_1K", _stage_option_degeneracy_1K),
             ("dangling_reference_1M", _stage_dangling_reference_1M),
             ("variant_exhibit_2L", _stage_variant_exhibit_2L),
+            ("slot_domains_14", _stage_slot_domains_14),
             ("render_contract_9", _stage_render_contract_9),
             ("grading_contract_10", _stage_grading_contract_10),
             ("assertion_coverage_8", _stage_assertion_coverage_8),

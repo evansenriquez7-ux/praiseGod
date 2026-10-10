@@ -186,7 +186,7 @@ _METADATA_KEYS: Tuple[str, ...] = (
 )
 
 _PUPIL_TEXT_FD_KEYS: Tuple[str, ...] = (
-    "prompt", "statement", "cloze_template", "context",
+    "prompt", "statement", "cloze_template",
     "sentence", "error_label", "problem_expression", "actor_name", "time_str",
     "direction", "options", "mcq_options", "items",
     # Both found by the unclassified direction on its FIRST full run, 2026-09-21, on
@@ -199,6 +199,13 @@ _PUPIL_TEXT_FD_KEYS: Tuple[str, ...] = (
 
 _METADATA_FD_KEYS: Tuple[str, ...] = (
     "correct_key",      # an option LETTER, not text
+    # The context VARIANT the formatter served (mcq / cloze / error_detect). Classified as
+    # pupil text until 2026-10-10, when H3's slot check (§14) had to account for it as
+    # learner-read: MEASURED over 7,285 renders it takes only six tag values ('pure' 3,531,
+    # 'word_problem' 572, 'colored_objects' 21, 'spinners' 12, 'coins' 9, 'weather' 1), and
+    # no file under frontend/src reads format_data.context. A tag a pupil never sees is
+    # metadata; linting it for count/noun agreement checked nothing.
+    "context",
 )
 
 

@@ -1488,6 +1488,18 @@ that points at it break every time the section is refreshed.
 >     provenance, plurality and boilerplate findings exit 2, because their remedy is re-review or
 >     re-attestation and both gates are retired in H6 (ruling 25). The harness's own checks inside those
 >     stages stay integrity, tagged by the function that emits them, never by message text.
+> 33. **Structured slots cover everything the learner reads** (owner, 2026-10-10, asked during H3).
+>     Question stem, option text, true/false statements, error-detect worked solutions, cloze text
+>     and hints all carry slots and are checked against declared domains, because H4's judges review
+>     hint templates too and a domain they approve must be enforced. Measured at H3: learner text is
+>     authored at about 1,250 sites (51 spine templates, ~729 DNA f-strings, ~458 formatter
+>     f-strings), and 43% of student-path stems are rebuilt by the formatter rather than the DNA.
+> 34. **An un-instrumented site is a shrinking content finding** (owner, 2026-10-10). Until every site
+>     is instrumented, each one is a named content finding (exit 2, by lc and seed) that shrinks as
+>     the rollout proceeds; text outside its domain or not matching its template is content too. The
+>     check is proven by mutations on already-instrumented lcs. (Ruling 28 calls emitting slots
+>     "instrumentation"; classing the gap as integrity would hold run_all at exit 1 for the whole
+>     multi-session rollout.)
 >
 > **Owner rulings recorded 2026-09-22, binding on the next session:**
 >

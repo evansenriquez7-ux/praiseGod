@@ -58,6 +58,7 @@ CHECK_PHASE: Dict[str, int] = {
     "§11": 1,           # validate_obligations: the student-path obligation manifest
     "§12": 1,           # consumed browserless React static-render evidence
     "§13": 1,           # component onAnswer value -> backend answers_match
+    "§14": 1,           # learner-read text is a recorded fill of declared slots (H3)
     # -- Phase 2: needs an agent-authored artifact on disk ------------------------------
     "§5": 2,            # validation_reports/judgment/
     "§6F": 2, "§6G": 2, "§6H": 2,   # validation_reports/attestation/
@@ -261,6 +262,12 @@ FINDING_CLASS: Dict[str, str] = {
     "rendered_visual_description_12": INTEGRITY,  # evidence derivation, not the component
     "frontend_answer_roundtrip_13": CONTENT,
     "renderer_registration_disposition_12": INTEGRITY,
+    # -- §14 validate_slots (H3, rulings 28, 33, 34) ---------------------------------
+    "slot_text_unaccounted_14": CONTENT,         # an un-instrumented site (ruling 34)
+    "slot_template_mismatch_14": CONTENT,        # a site that records the wrong template
+    "slot_unclassified_14": CONTENT,             # a slot recorded with no domain
+    "slot_domain_escape_14": CONTENT,            # a value outside its declared domain
+    "slot_domain_unknown_14": INTEGRITY,         # the harness cannot resolve the domain
     # -- §1D validate_vocab ----------------------------------------------------------
     "static_vocab_gated_lint": CONTENT,
     "vocab_audit_pass_rate": CONTENT,
