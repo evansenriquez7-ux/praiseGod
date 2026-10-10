@@ -19,6 +19,7 @@ from backend.app.practice_gen.dna.base import (FormattedProblem, QuestionContext
                                                  number_group_name)
 from backend.app.practice_gen.formatters._distractor_fallback import augment_distractors
 from backend.app.practice_gen.formatters._option_order import shuffle_options
+from backend.app.practice_gen.slots import S, fill
 
 
 def _build_pure_question(ctx: QuestionContext) -> str:
@@ -186,10 +187,12 @@ def _build_pure_question(ctx: QuestionContext) -> str:
         seq = values.get("sequence") or []
         direction = values.get("direction", "forward")
         seq_str = ", ".join(str(x) for x in seq)
+        # Structured slots (H5, owner rulings 28 and 35): the sequence exhibits the step.
+        SEQ = S(seq_str, "text.derived", src=("sequence", "skip_by", "direction"))
         if direction == "backward":
-            return f"What number comes next when counting backward: {seq_str}, ___?"
+            return fill("What number comes next when counting backward: {seq}, ___?", seq=SEQ)
         else:
-            return f"What number comes next when counting: {seq_str}, ___?"
+            return fill("What number comes next when counting: {seq}, ___?", seq=SEQ)
     elif concept == "comparing_ordering":
         task_type = values.get("task_type", "compare_pair")
         a = values.get("a")

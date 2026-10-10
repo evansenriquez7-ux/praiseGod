@@ -26,6 +26,11 @@ from typing import Optional
 from backend.app.practice_gen.dna.base import FormattedProblem, QuestionContext
 from backend.app.practice_gen.formatters._distractor_fallback import augment_distractors
 from backend.app.practice_gen.formatters._option_order import shuffle_options
+from backend.app.practice_gen.slots import E, S, fill
+
+# Option letters, A first: `_OPTION_KEYS[i]` is `chr(ord("A") + i)` for the four options this
+# formatter offers. A module constant so the key a learner reads is a slot with a domain (H5).
+_OPTION_KEYS = ("A", "B", "C", "D")
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -334,7 +339,9 @@ def _stem(params: dict, interaction_mode: str, cumulative_vocab: set) -> str:
             return f"Move the dot to show {params['decimal_value']}{suffix}."
         return f"Move the dot to show {params['value']}{suffix}."
     else:  # read
-        return f"What number is marked{suffix}?"
+        # Structured slots (H5, owner ruling 28): identical to the f-string it replaced.
+        return fill("What number is marked{suffix}?",
+                    suffix=S(suffix, E((" on the number line", ""), "vocab gate 'number line'")))
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -813,10 +820,11 @@ def format_number_line(
         all_opts = [correct_val] + distractor_vals[:3]
         shuffle_options(all_opts, ctx.node_id, ctx.seed)
         mcq_options = [
-            {"key": chr(ord("A") + i), "value": v, "is_correct": v == correct_val}
+            {"key": _OPTION_KEYS[i], "value": v, "is_correct": v == correct_val}
             for i, v in enumerate(all_opts)
         ]
-        correct_answer = next(o["key"] for o in mcq_options if o["is_correct"])
+        correct_answer = fill("{key}", key=S(next(o["key"] for o in mcq_options if o["is_correct"]),
+                                             "enum:backend.app.practice_gen.formatters.visual.fmt_number_line._OPTION_KEYS"))
     else:
         correct_answer = correct_val
 

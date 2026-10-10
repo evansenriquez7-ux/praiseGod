@@ -71,9 +71,28 @@ class E:
 
 @dataclass(frozen=True)
 class S:
-    """One slot value and its domain: a registry id (str), a runtime range (`R`) or enumeration (`E`)."""
+    """
+    One slot value and its domain: a registry id (str), a runtime range (`R`) or enumeration (`E`).
+
+    `src` is the slot's PROVENANCE (batch H5, owner ruling 35): the keys of the generator's
+    own `values` this slot is derived from, stated by the generator -- a sequence string
+    built from `start` and `skip_by` names both. A `value:<key>` domain implies `src=(key,)`.
+    §15 reads it to decide whether a structured value a clause selector chose is exhibited
+    by what the learner reads; it never infers provenance from text.
+    """
     value: Any
     domain: Any
+    src: Tuple[str, ...] = ()
+
+
+def _provenance(v: Any) -> Tuple[str, ...]:
+    """The `values` keys a slot is derived from: its declared `src`, plus a `value:` key."""
+    if not isinstance(v, S):
+        return ()
+    keys = tuple(v.src)
+    if isinstance(v.domain, str) and v.domain.startswith("value:"):
+        keys += (v.domain[len("value:"):],)
+    return keys
 
 
 @dataclass(frozen=True)
@@ -85,6 +104,7 @@ class Fill:
     site: str                                           # "path/to/module.py:LINE"
     renderer: Optional[str] = None                      # replayed by the check if set
     renderer_ref: Optional[str] = None                  # e.g. the spine id Spine.render used
+    sources: Tuple[Tuple[str, Tuple[str, ...]], ...] = ()   # (slot name, provenance keys)
     extra: Dict[str, Any] = field(default_factory=dict, compare=False, hash=False)
 
 
@@ -129,6 +149,7 @@ def fill(template: str, /, **slots: Any) -> str:
                         for name, v in slots.items()),
             text=text,
             site=_site(2),
+            sources=tuple((name, _provenance(v)) for name, v in slots.items()),
         ))
     return text
 
@@ -152,6 +173,7 @@ def record(template: str, text: str, slots: Dict[str, Any], renderer: str,
             site=_site(2),
             renderer=renderer,
             renderer_ref=renderer_ref,
+            sources=tuple((name, _provenance(v)) for name, v in slots.items()),
         ))
     return text
 

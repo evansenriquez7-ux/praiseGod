@@ -51,14 +51,38 @@ The word after a count is judged only when it is a plausible count noun:
     run summary as unclassified, so the size of the blind spot is a number and not a
     shrug.
 
+THE MIRROR DIRECTION: SINGULAR-AFTER-MANY (batch H5, 2026-10-10)
+----------------------------------------------------------------
+"828 cat toy and 6321 water bowl" (mat_g3_na_q2_3 seed 500) and "5 meter (m)" (length
+hints) are the mirror defect: a singular noun after a count of two or more. The next token
+alone cannot decide it -- "16 milk tea cups", "4 square tiles", "a 9 by 9 array" all put a
+singular-looking word after a count and are correct -- so the gate does not guess at the
+head of a noun phrase. It asks the GENERATOR which phrases are count nouns and in which
+number, and judges only those (`count_noun_singular_after_many_1J`):
+
+  * The lexicon is read from the generator's own inventories, never restated: every noun
+    in `generators.interest._INTERESTS` and `NEUTRAL_SLOTS` (`objects`, `item1`, `item2`),
+    each reduced to its singular by `to_singular_phrase` -- the slots are not uniformly
+    singular ("cat toy" sits beside "running shoes") -- plus the long unit names in
+    `hint_contract._UNIT_FORMS` whose plural differs. A word the bank lists in `objects`
+    that the rule leaves unchanged is its own plural ("fish") and is never judged.
+  * The phrase must be the LONGEST lexicon entry the text continues with, and must end at
+    a word boundary: "3 cat toys" continues "cat toy" with an "s", so it is the plural and
+    passes.
+  * The phrase must be CLOSED -- followed by punctuation, the end of the text, or a
+    `_FUNCTION_WORDS` word ("and", "at"). "3 cat toy boxes" is a compound whose head is
+    "boxes" and is not judged.
+
 KNOWN LIMITATIONS (Scaling Mandate 6)
 -------------------------------------
-1. **One direction is enforced: plural-after-one.** The mirror direction (a singular noun
-   after a count of two or more, "3 cookie") is MEASURED and reported in the summary but
-   does not gate, because deciding that a word is the head of its noun phrase — "3 score
-   cards", "2 water bottles" — needs more than the next token, and a gate that guesses
-   would fail on a grade-7 noun that does not exist yet. The measured count is printed on
-   every run so the decision to leave it open stays visible.
+1. **The mirror direction is gated only on the generator's declared count nouns.** A noun
+   outside the interest bank and the unit table (a DNA-local noun list, a formatter's own
+   nouns such as `fmt_emoji_pictorial._EMOJI_NAMES`) is MEASURED and printed as
+   "observed and NOT judged", never gated; so is an open compound ("3 cat toy boxes").
+   Measured 2026-10-10 over seeds 1-60: 7,129 singular-after-many shapes, of which the
+   lexicon judges the closed ones. A grade-7 noun is judged as soon as the bank or unit
+   table declares it; a noun that lives only in a DNA is not, until H3's slots record its
+   domain.
 2. It reads the rendered strings, not the visual payload. A picture whose label
    disagrees with its own count is §1G's and §9's territory, not this module's.
 3. Agreement between a count and a VERB ("There are 1 apple") is handled by
@@ -83,6 +107,11 @@ ASSERTIONS = (
     # other is a defect in this check's coverage, and reporting both under one label is
     # how a coverage hole gets closed by fixing a stem.
     "unclassified_pupil_text_1J",
+    # The mirror direction (batch H5, 2026-10-10): a count of two or more before a phrase
+    # the generator's own noun inventory declares singular. Its own label because it reads
+    # a different source of truth (the inventory, not the inflection rule) and has its own
+    # named limit.
+    "count_noun_singular_after_many_1J",
 )
 
 # Seeds 1..60 on every node: 9060 student-path samples, measured at ~65s for the whole
@@ -283,6 +312,81 @@ def unclassified_fields(problem: Dict[str, Any]) -> List[str]:
     return out
 
 
+def singular_count_nouns() -> Dict[str, str]:
+    """
+    {singular phrase: where the generator declares it} for the mirror direction.
+
+    Read from the generator's own inventories on every call -- the interest bank the spines
+    fill `{objects}`, `{item1}` and `{item2}` from, and the hint contract's unit table -- so a
+    noun added to either is judged without touching this module (Mandate 4). A phrase the
+    bank also lists as a plural (`objects`) that `to_singular_phrase` leaves unchanged is its
+    own plural ("fish") and is dropped: a count before it is correct in either number.
+    """
+    from backend.app.practice_gen.dna.base import to_singular_phrase
+    from backend.app.practice_gen.generators import interest
+    from backend.app.practice_gen.hint_contract import _UNIT_FORMS
+
+    lexicon: Dict[str, str] = {}
+    invariant: set = set()
+    themes = list(interest._INTERESTS.items()) + [
+        ("NEUTRAL_SLOTS", {k: [v] for k, v in interest.NEUTRAL_SLOTS.items()})]
+    for theme, data in themes:
+        for value in data.get("objects", []) or []:
+            low = value.lower()
+            singular = to_singular_phrase(low)
+            if singular == low:
+                invariant.add(low)
+            else:
+                lexicon.setdefault(singular, f"interest bank '{theme}'.objects ('{value}')")
+        # `item1`/`item2` are NOT uniformly singular in the bank ("cat toy" beside "running
+        # shoes" and "crayons", measured 2026-10-10), so each value is singularised by the
+        # same rule rather than trusted to be singular because of the slot it sits in.
+        for slot in ("item1", "item2"):
+            for value in data.get(slot, []) or []:
+                lexicon.setdefault(to_singular_phrase(value.lower()),
+                                   f"interest bank '{theme}'.{slot} ('{value}')")
+    for unit, forms in _UNIT_FORMS.items():
+        longs = [f for f in forms if len(f) > 2]
+        for singular in longs:
+            if to_singular_phrase(singular + "s") == singular and singular + "s" in longs:
+                lexicon.setdefault(singular, f"hint_contract._UNIT_FORMS['{unit}']")
+    for word in invariant:
+        lexicon.pop(word, None)
+    return lexicon
+
+
+def scan_singular_after_many(text: str, lexicon: Dict[str, str]) -> Tuple[List[Tuple[int, str, str]], int]:
+    """
+    (violations, observed_not_judged) for the mirror direction in one string.
+
+    A violation is (count, written_phrase, source): a count >= 2 whose following text is,
+    longest match first, a lexicon phrase ending at a word boundary and closed by
+    punctuation, the end of the text or a `_FUNCTION_WORDS` word. Every other
+    singular-looking word after a count >= 2 is counted, not judged (limitation 1).
+    """
+    from backend.app.practice_gen.dna.base import to_singular_phrase
+
+    violations: List[Tuple[int, str, str]] = []
+    unjudged = 0
+    for m in _COUNT_NOUN.finditer(text):
+        before, count, word = m.group(1), int(m.group(2)), m.group(3)
+        if count < 2 or (before and before.lower() in _LABEL_PRECEDERS):
+            continue
+        if word.lower() in _FUNCTION_WORDS:
+            continue
+        after = text[m.start(3):]
+        low = after.lower()
+        best = max((ph for ph in lexicon if low.startswith(ph)), key=len, default=None)
+        if best is not None and (len(low) == len(best) or not low[len(best)].isalpha()):
+            nxt = re.match(r"\s*([A-Za-z][A-Za-z']*)", after[len(best):])
+            if nxt is None or nxt.group(1).lower() in _FUNCTION_WORDS:
+                violations.append((count, after[:len(best)], lexicon[best]))
+                continue
+        if to_singular_phrase(word.lower()) == word.lower():
+            unjudged += 1
+    return violations, unjudged
+
+
 def scan_text(text: str) -> Tuple[List[Tuple[int, str, str]], int, int]:
     """
     (violations, plural_after_one_ok, singular_after_many_observed) for one string.
@@ -314,16 +418,18 @@ def scan_text(text: str) -> Tuple[List[Tuple[int, str, str]], int, int]:
     return violations, unclassified, mirror
 
 
-def collect_findings(node_ids: Optional[List[str]] = None) -> Tuple[List[str], Dict[str, int]]:
+def collect_findings(node_ids: Optional[List[str]] = None) -> Tuple[List[str], Dict[str, int], Dict[str, str], List[str]]:
     """Every (node, seed, field) whose rendered text disagrees with its own count."""
     sys.path.insert(0, str(REPO_ROOT))
     from backend.app.practice_gen.registry import get_all_node_ids
     from backend.app.services.orchestrator import PracticeOrchestrator
 
     findings: List[str] = []
+    mirror_findings: List[str] = []
+    lexicon = singular_count_nouns()
     unclassified_seen: Dict[str, str] = {}
     stats = {"samples": 0, "render_failures": 0, "singular_after_many_observed": 0,
-             "singular_words_unjudged": 0, "texts_linted": 0}
+             "singular_words_unjudged": 0, "texts_linted": 0, "mirror_lexicon": len(lexicon)}
     for node_id in (node_ids or get_all_node_ids()):
         for seed in SEEDS_PER_NODE:
             try:
@@ -347,9 +453,18 @@ def collect_findings(node_ids: Optional[List[str]] = None) -> Tuple[List[str], D
                 unclassified_seen.setdefault(field, f"{node_id} seed {seed}")
             for where, text in _texts(d):
                 stats["texts_linted"] += 1
-                bad, unclassified, mirror = scan_text(text)
+                bad, unclassified, _mirror = scan_text(text)
                 stats["singular_words_unjudged"] += unclassified
-                stats["singular_after_many_observed"] += mirror
+                many, unjudged = scan_singular_after_many(text, lexicon)
+                stats["singular_after_many_observed"] += unjudged
+                for count, written, source in many:
+                    mirror_findings.append(
+                        f"{node_id}: seed {seed} {where} writes '{count} {written}' -- a count "
+                        f"of {count} before a phrase the generator's own noun inventory "
+                        f"declares SINGULAR ({source}). Text: {text[:160]!r}. Reproduce: "
+                        f"PracticeOrchestrator.generate_problem(node_id='{node_id}', "
+                        f"seed={seed}, is_student_path=True)"
+                    )
                 for count, written, correct in bad:
                     findings.append(
                         f"{node_id}: seed {seed} {where} writes '{count} {written}' where the "
@@ -358,11 +473,11 @@ def collect_findings(node_ids: Optional[List[str]] = None) -> Tuple[List[str], D
                         f"Text: {text[:160]!r}"
                     )
     stats["unclassified_fields"] = len(unclassified_seen)
-    return findings, stats, unclassified_seen
+    return findings, stats, unclassified_seen, mirror_findings
 
 
 def validate_all(node_ids: Optional[List[str]] = None) -> bool:
-    findings, stats, unclassified = collect_findings(node_ids)
+    findings, stats, unclassified, mirror = collect_findings(node_ids)
     ok = True
     if findings:
         print(f"  FAIL count_noun_agreement_1J ({len(findings)}):")
@@ -374,10 +489,21 @@ def validate_all(node_ids: Optional[List[str]] = None) -> bool:
     else:
         print(f"  PASS count_noun_agreement_1J: 0 findings over {stats['samples']} "
               f"student-path sample(s), {stats['texts_linted']} text(s) linted; "
-              f"{stats['singular_after_many_observed']} singular-after-many "
-              f"construction(s) observed and NOT judged (known limitation 1), "
               f"{stats['singular_words_unjudged']} already-singular word(s) after a "
               f"count of 1")
+    if mirror:
+        print(f"  FAIL count_noun_singular_after_many_1J ({len(mirror)}):")
+        for f in mirror[:12]:
+            print(f"    - {f}")
+        if len(mirror) > 12:
+            print(f"    ... and {len(mirror) - 12} more.")
+        ok = False
+    else:
+        print(f"  PASS count_noun_singular_after_many_1J: 0 findings against "
+              f"{stats['mirror_lexicon']} declared singular count noun(s)")
+    print(f"  NOTE: {stats['singular_after_many_observed']} singular-looking word(s) after a "
+          f"count of 2 or more observed and NOT judged (known limitation 1: outside the "
+          f"generator's declared count nouns, or an open compound)")
     if unclassified:
         print(f"  FAIL unclassified_pupil_text_1J ({len(unclassified)}):")
         for field, where in sorted(unclassified.items()):

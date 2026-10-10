@@ -358,9 +358,18 @@ def _build_question_text(params: dict, context_variant: str = "word_problem") ->
         # The ADDITION and SUBTRACTION branches above legitimately state `a`: there it
         # is a given operand the pupil is handed, not the quantity being asked for.
         # Only the counting branch is asking for `a` itself.
-        line1 = group_a_str if a else f"(no {name_plural} are shown)"
-        line2 = f"Count the {name_plural}."
-        line3 = f"How many {name_plural} are there in all?"
+        # Structured slots (H5, owner rulings 28 and 35); identical to the f-strings they
+        # replaced. The picture is built from the count `a`, the generated answer.
+        plural = S(name_plural, _NAMES_DOMAIN)
+        if not a:
+            line1 = fill("(no {names} are shown)", names=plural)
+        elif a <= 20:
+            line1 = fill("{group}", group=S(group_a_str, "text.derived", src=("answer",)))
+        else:
+            line1 = fill("(Large group of {a} {names})", a=S(a, "value:answer"),
+                         names=S(_pluralize(base_name, a), _NAMES_DOMAIN))
+        line2 = fill("Count the {names}.", names=plural)
+        line3 = fill("How many {names} are there in all?", names=plural)
     return fill("{line1}\n{line2}\n{line3}",
                 line1=S(line1, "fill"), line2=S(line2, "fill"), line3=S(line3, "fill"))
 

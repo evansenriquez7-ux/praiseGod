@@ -2047,10 +2047,10 @@ MUTATIONS: List[Mutation] = [
                 '            f"{end} - {start} = {days} {count_noun(days, \'days\')}.",  # planted mutation\n',
             )
         },
-        command=["pytest", 'tests/unit/test_hint_contract.py::test_no_served_hint_contradicts_its_item[mat_g2_mg_q4_0]', "-q"],
-        expected_check='§0 hint contract (hint_contract_arithmetic)',
-        expect_output_contains=['test_no_served_hint_contradicts_its_item[mat_g2_mg_q4_0]', "failed", *['[arithmetic]']],
-        baseline_must_not_contain=['test_no_served_hint_contradicts_its_item[mat_g2_mg_q4_0] && failed'],
+        command=["backend.app.practice_gen.validation.validate_hint_contract", "--node-ids", "mat_g2_mg_q4_0"],
+        expected_check='§16 hint contract (hint_contract_arithmetic)',
+        expect_output_contains=['FAIL hint_contract_arithmetic (', 'mat_g2_mg_q4_0: seed'],
+        baseline_must_not_contain=['FAIL hint_contract_arithmetic'],
     ),
     Mutation(
         name='hint_counting_backward_subtracts_upward',
@@ -2060,15 +2060,21 @@ MUTATIONS: List[Mutation] = [
             'every backward count (mat_g1_na_q1_0).'
         ),
         edits={
+            # RE-ANCHORED 2026-10-10 (H5): the hint is now a slots.fill; the plant restores the
+            # same 'later − earlier = |difference|' defect through its slots.
             'backend/app/practice_gen/dna/na/counting.py': (
-                '        f"Find the rule by comparing neighbours: {bigger} − {smaller} = {bigger - smaller}.",\n',
-                '        f"Find the rule by comparing neighbours: {sequence[1]} − {sequence[0]} = {abs(sequence[1] - sequence[0])}.",  # planted mutation\n',
+                '             bigger=S(bigger, "num.derived", src=("sequence",)),\n'
+                '             smaller=S(smaller, "num.derived", src=("sequence",)),\n'
+                '             diff=S(bigger - smaller, "value:skip_by")),\n',
+                '             bigger=S(sequence[1], "num.derived", src=("sequence",)),\n'
+                '             smaller=S(sequence[0], "num.derived", src=("sequence",)),\n'
+                '             diff=S(abs(sequence[1] - sequence[0]), "value:skip_by")),  # planted mutation\n',
             )
         },
-        command=["pytest", 'tests/unit/test_hint_contract.py::test_no_served_hint_contradicts_its_item[mat_g1_na_q1_0]', "-q"],
-        expected_check='§0 hint contract (hint_contract_arithmetic)',
-        expect_output_contains=['test_no_served_hint_contradicts_its_item[mat_g1_na_q1_0]', "failed", *['[arithmetic]']],
-        baseline_must_not_contain=['test_no_served_hint_contradicts_its_item[mat_g1_na_q1_0] && failed'],
+        command=["backend.app.practice_gen.validation.validate_hint_contract", "--node-ids", "mat_g1_na_q1_0"],
+        expected_check='§16 hint contract (hint_contract_arithmetic)',
+        expect_output_contains=['FAIL hint_contract_arithmetic (', 'mat_g1_na_q1_0: seed'],
+        baseline_must_not_contain=['FAIL hint_contract_arithmetic'],
     ),
     Mutation(
         name='hint_missing_number_inverts_a_take_away',
@@ -2083,10 +2089,10 @@ MUTATIONS: List[Mutation] = [
                 '        if False:  # planted mutation\n',
             )
         },
-        command=["pytest", 'tests/unit/test_hint_contract.py::test_no_served_hint_contradicts_its_item[mat_g1_na_q3_1]', "-q"],
-        expected_check='§0 hint contract (hint_contract_arithmetic)',
-        expect_output_contains=['test_no_served_hint_contradicts_its_item[mat_g1_na_q3_1]', "failed", *['[arithmetic]']],
-        baseline_must_not_contain=['test_no_served_hint_contradicts_its_item[mat_g1_na_q3_1] && failed'],
+        command=["backend.app.practice_gen.validation.validate_hint_contract", "--node-ids", "mat_g1_na_q3_1"],
+        expected_check='§16 hint contract (hint_contract_arithmetic)',
+        expect_output_contains=['FAIL hint_contract_arithmetic (', 'mat_g1_na_q3_1: seed'],
+        baseline_must_not_contain=['FAIL hint_contract_arithmetic'],
     ),
     Mutation(
         name='hint_even_odd_quotient_is_zero',
@@ -2102,10 +2108,10 @@ MUTATIONS: List[Mutation] = [
                 '        half, left = 0, n % 2  # planted mutation\n',
             )
         },
-        command=["pytest", 'tests/unit/test_hint_contract.py::test_no_served_hint_contradicts_its_item[mat_g2_na_q3_8]', "-q"],
-        expected_check='§0 hint contract (hint_contract_arithmetic)',
-        expect_output_contains=['test_no_served_hint_contradicts_its_item[mat_g2_na_q3_8]', "failed", *['[arithmetic]']],
-        baseline_must_not_contain=['test_no_served_hint_contradicts_its_item[mat_g2_na_q3_8] && failed'],
+        command=["backend.app.practice_gen.validation.validate_hint_contract", "--node-ids", "mat_g2_na_q3_8"],
+        expected_check='§16 hint contract (hint_contract_arithmetic)',
+        expect_output_contains=['FAIL hint_contract_arithmetic (', 'mat_g2_na_q3_8: seed'],
+        baseline_must_not_contain=['FAIL hint_contract_arithmetic'],
     ),
     Mutation(
         name='hint_property_item_gets_product_chain',
@@ -2120,10 +2126,10 @@ MUTATIONS: List[Mutation] = [
                 '    if False:  # planted mutation\n        return _property_hints(values)\n',
             )
         },
-        command=["pytest", 'tests/unit/test_hint_contract.py::test_no_served_hint_contradicts_its_item[mat_g3_na_q3_1]', "-q"],
-        expected_check='§0 hint contract (hint_contract_arithmetic)',
-        expect_output_contains=['test_no_served_hint_contradicts_its_item[mat_g3_na_q3_1]', "failed", *['[arithmetic]']],
-        baseline_must_not_contain=['test_no_served_hint_contradicts_its_item[mat_g3_na_q3_1] && failed'],
+        command=["backend.app.practice_gen.validation.validate_hint_contract", "--node-ids", "mat_g3_na_q3_1"],
+        expected_check='§16 hint contract (hint_contract_arithmetic)',
+        expect_output_contains=['FAIL hint_contract_arithmetic (', 'mat_g3_na_q3_1: seed'],
+        baseline_must_not_contain=['FAIL hint_contract_arithmetic'],
     ),
     Mutation(
         name='fraction_hints_ignore_subtraction',
@@ -2142,10 +2148,10 @@ MUTATIONS: List[Mutation] = [
                 '    if True:  # planted mutation: every item gets addition guidance\n',
             )
         },
-        command=["pytest", 'tests/unit/test_hint_contract.py::test_no_served_hint_contradicts_its_item[mat_g3_na_q4_7]', "-q"],
-        expected_check='§0 hint contract (hint_contract_stated_result)',
-        expect_output_contains=['test_no_served_hint_contradicts_its_item[mat_g3_na_q4_7]', "failed", *['[stated_result]']],
-        baseline_must_not_contain=['test_no_served_hint_contradicts_its_item[mat_g3_na_q4_7] && failed'],
+        command=["backend.app.practice_gen.validation.validate_hint_contract", "--node-ids", "mat_g3_na_q4_7"],
+        expected_check='§16 hint contract (hint_contract_stated_result)',
+        expect_output_contains=['FAIL hint_contract_stated_result (', 'mat_g3_na_q4_7: seed'],
+        baseline_must_not_contain=['FAIL hint_contract_stated_result'],
     ),
     Mutation(
         name='hint_pattern_blank_ignores_declared_position',
@@ -2161,10 +2167,10 @@ MUTATIONS: List[Mutation] = [
                 '        elif False:  # planted mutation\n',
             )
         },
-        command=["pytest", 'tests/unit/test_hint_contract.py::test_no_served_hint_contradicts_its_item[mat_g1_na_q3_6]', "-q"],
-        expected_check='§0 hint contract (hint_contract_stated_answer)',
-        expect_output_contains=['test_no_served_hint_contradicts_its_item[mat_g1_na_q3_6]', "failed", *['[stated_answer]']],
-        baseline_must_not_contain=['test_no_served_hint_contradicts_its_item[mat_g1_na_q3_6] && failed'],
+        command=["backend.app.practice_gen.validation.validate_hint_contract", "--node-ids", "mat_g1_na_q3_6"],
+        expected_check='§16 hint contract (hint_contract_stated_answer)',
+        expect_output_contains=['FAIL hint_contract_stated_answer (', 'mat_g1_na_q3_6: seed'],
+        baseline_must_not_contain=['FAIL hint_contract_stated_answer'],
     ),
     Mutation(
         name='hint_scale_reading_unsnapped',
@@ -2180,10 +2186,10 @@ MUTATIONS: List[Mutation] = [
                 '    reading = values["value"]  # planted mutation\n',
             )
         },
-        command=["pytest", 'tests/unit/test_hint_contract.py::test_no_served_hint_contradicts_its_item[mat_g3_mg_q2_0]', "-q"],
-        expected_check='§0 hint contract (hint_contract_stated_answer)',
-        expect_output_contains=['test_no_served_hint_contradicts_its_item[mat_g3_mg_q2_0]', "failed", *['[stated_answer]']],
-        baseline_must_not_contain=['test_no_served_hint_contradicts_its_item[mat_g3_mg_q2_0] && failed'],
+        command=["backend.app.practice_gen.validation.validate_hint_contract", "--node-ids", "mat_g3_mg_q2_0"],
+        expected_check='§16 hint contract (hint_contract_stated_answer)',
+        expect_output_contains=['FAIL hint_contract_stated_answer (', 'mat_g3_mg_q2_0: seed'],
+        baseline_must_not_contain=['FAIL hint_contract_stated_answer'],
     ),
     Mutation(
         name='hint_balance_blank_ignores_declared_position',
@@ -2200,10 +2206,10 @@ MUTATIONS: List[Mutation] = [
                 '    if False:  # planted mutation\n',
             )
         },
-        command=["pytest", 'tests/unit/test_hint_contract.py::test_no_served_hint_contradicts_its_item[mat_g1_na_q3_1]', "-q"],
-        expected_check='§0 hint contract (hint_contract_open_equation)',
-        expect_output_contains=['test_no_served_hint_contradicts_its_item[mat_g1_na_q3_1]', "failed", *['[open_equation]']],
-        baseline_must_not_contain=['test_no_served_hint_contradicts_its_item[mat_g1_na_q3_1] && failed'],
+        command=["backend.app.practice_gen.validation.validate_hint_contract", "--node-ids", "mat_g1_na_q3_1"],
+        expected_check='§16 hint contract (hint_contract_open_equation)',
+        expect_output_contains=['FAIL hint_contract_open_equation (', 'mat_g1_na_q3_1: seed'],
+        baseline_must_not_contain=['FAIL hint_contract_open_equation'],
     ),
     Mutation(
         name='hint_ordering_always_ascending',
@@ -2218,10 +2224,10 @@ MUTATIONS: List[Mutation] = [
                 '        descending = False  # planted mutation\n',
             )
         },
-        command=["pytest", 'tests/unit/test_hint_contract.py::test_no_served_hint_contradicts_its_item[mat_g1_na_q2_0]', "-q"],
-        expected_check='§0 hint contract (hint_contract_direction)',
-        expect_output_contains=['test_no_served_hint_contradicts_its_item[mat_g1_na_q2_0]', "failed", *['[direction]']],
-        baseline_must_not_contain=['test_no_served_hint_contradicts_its_item[mat_g1_na_q2_0] && failed'],
+        command=["backend.app.practice_gen.validation.validate_hint_contract", "--node-ids", "mat_g1_na_q2_0"],
+        expected_check='§16 hint contract (hint_contract_direction)',
+        expect_output_contains=['FAIL hint_contract_direction (', 'mat_g1_na_q2_0: seed'],
+        baseline_must_not_contain=['FAIL hint_contract_direction'],
     ),
     Mutation(
         name='hint_division_multiplies_remainder_answer',
@@ -2238,10 +2244,10 @@ MUTATIONS: List[Mutation] = [
                 '    if False:  # planted mutation\n        q_int, r_int = divmod(a, b)\n',
             )
         },
-        command=["pytest", 'tests/unit/test_hint_contract.py::test_no_served_hint_contradicts_its_item[mat_g3_na_q4_3]', "-q"],
-        expected_check='§0 hint contract (hint_contract_remainder)',
-        expect_output_contains=['test_no_served_hint_contradicts_its_item[mat_g3_na_q4_3]', "failed", '[remainder]'],
-        baseline_must_not_contain=['test_no_served_hint_contradicts_its_item[mat_g3_na_q4_3] && failed'],
+        command=["backend.app.practice_gen.validation.validate_hint_contract", "--node-ids", "mat_g3_na_q4_3"],
+        expected_check='§16 hint contract (hint_contract_remainder)',
+        expect_output_contains=['FAIL hint_contract_remainder (', 'mat_g3_na_q4_3: seed'],
+        baseline_must_not_contain=['FAIL hint_contract_remainder'],
     ),
     Mutation(
         name='hint_multiplication_swaps_group_roles',
@@ -2258,10 +2264,10 @@ MUTATIONS: List[Mutation] = [
                 "    hints.append(f\"We need to {mul_phrase} {a} {count_noun(a, f'{times_phrase} {b}')}.\")  # planted mutation\n",
             )
         },
-        command=["pytest", 'tests/unit/test_hint_contract.py::test_no_served_hint_contradicts_its_item[mat_g2_na_q3_1]', "-q"],
-        expected_check='§0 hint contract (hint_contract_roles)',
-        expect_output_contains=['test_no_served_hint_contradicts_its_item[mat_g2_na_q3_1]', "failed", '[roles]'],
-        baseline_must_not_contain=['test_no_served_hint_contradicts_its_item[mat_g2_na_q3_1] && failed'],
+        command=["backend.app.practice_gen.validation.validate_hint_contract", "--node-ids", "mat_g2_na_q3_1"],
+        expected_check='§16 hint contract (hint_contract_roles)',
+        expect_output_contains=['FAIL hint_contract_roles (', 'mat_g2_na_q3_1: seed'],
+        baseline_must_not_contain=['FAIL hint_contract_roles'],
     ),
     Mutation(
         name='array_grid_swaps_group_roles',
@@ -2278,10 +2284,10 @@ MUTATIONS: List[Mutation] = [
                 '        rows = ctx.values["groups"]  # planted mutation\n        cols = ctx.values["n"]\n',
             )
         },
-        command=["pytest", 'tests/unit/test_hint_contract.py::test_no_served_hint_contradicts_its_item[mat_g2_na_q3_0]', "-q"],
-        expected_check='§0 hint contract (hint_contract_roles)',
-        expect_output_contains=['test_no_served_hint_contradicts_its_item[mat_g2_na_q3_0]', "failed", '[roles]'],
-        baseline_must_not_contain=['test_no_served_hint_contradicts_its_item[mat_g2_na_q3_0] && failed'],
+        command=["backend.app.practice_gen.validation.validate_hint_contract", "--node-ids", "mat_g2_na_q3_0"],
+        expected_check='§16 hint contract (hint_contract_roles)',
+        expect_output_contains=['FAIL hint_contract_roles (', 'mat_g2_na_q3_0: seed'],
+        baseline_must_not_contain=['FAIL hint_contract_roles'],
     ),
     Mutation(
         name='hint_fraction_order_gets_addition_chain',
@@ -2299,10 +2305,10 @@ MUTATIONS: List[Mutation] = [
                 '    if False:  # planted mutation: ordering falls into addition hints\n        sequence = values.get("sequence") or []\n',
             )
         },
-        command=["pytest", 'tests/unit/test_hint_contract.py::test_no_served_hint_contradicts_its_item[mat_g2_na_q4_5]', "-q"],
-        expected_check='§0 hint contract (hint_contract_operation)',
-        expect_output_contains=['test_no_served_hint_contradicts_its_item[mat_g2_na_q4_5]', "failed", '[operation]'],
-        baseline_must_not_contain=['test_no_served_hint_contradicts_its_item[mat_g2_na_q4_5] && failed'],
+        command=["backend.app.practice_gen.validation.validate_hint_contract", "--node-ids", "mat_g2_na_q4_5"],
+        expected_check='§16 hint contract (hint_contract_operation)',
+        expect_output_contains=['FAIL hint_contract_operation (', 'mat_g2_na_q4_5: seed'],
+        baseline_must_not_contain=['FAIL hint_contract_operation'],
     ),
     Mutation(
         name='time_options_follow_hash_seed',
@@ -2374,10 +2380,10 @@ MUTATIONS: List[Mutation] = [
                 '            f"The longer {measure} is {answer} {count_noun(answer, unit_word)}.",  # planted mutation\n',
             )
         },
-        command=["pytest", 'tests/unit/test_hint_contract.py::test_no_served_hint_contradicts_its_item[mat_g2_mg_q2_0]', "-q"],
-        expected_check='§0 hint contract (hint_contract_direction)',
-        expect_output_contains=['test_no_served_hint_contradicts_its_item[mat_g2_mg_q2_0]', "failed", *['[direction]']],
-        baseline_must_not_contain=['test_no_served_hint_contradicts_its_item[mat_g2_mg_q2_0] && failed'],
+        command=["backend.app.practice_gen.validation.validate_hint_contract", "--node-ids", "mat_g2_mg_q2_0"],
+        expected_check='§16 hint contract (hint_contract_direction)',
+        expect_output_contains=['FAIL hint_contract_direction (', 'mat_g2_mg_q2_0: seed'],
+        baseline_must_not_contain=['FAIL hint_contract_direction'],
     ),
     Mutation(
         name='hint_length_unit_ignores_item_unit',
@@ -2392,10 +2398,10 @@ MUTATIONS: List[Mutation] = [
                 '        unit_word = cm_label  # planted mutation\n        measure = "distance" if task_type == "compare_distance" else "length"\n',
             )
         },
-        command=["pytest", 'tests/unit/test_hint_contract.py::test_no_served_hint_contradicts_its_item[mat_g2_mg_q2_0]', "-q"],
-        expected_check='§0 hint contract (hint_contract_unit)',
-        expect_output_contains=['test_no_served_hint_contradicts_its_item[mat_g2_mg_q2_0]', "failed", *['[unit]']],
-        baseline_must_not_contain=['test_no_served_hint_contradicts_its_item[mat_g2_mg_q2_0] && failed'],
+        command=["backend.app.practice_gen.validation.validate_hint_contract", "--node-ids", "mat_g2_mg_q2_0"],
+        expected_check='§16 hint contract (hint_contract_unit)',
+        expect_output_contains=['FAIL hint_contract_unit (', 'mat_g2_mg_q2_0: seed'],
+        baseline_must_not_contain=['FAIL hint_contract_unit'],
     ),
     Mutation(
         name='hint_elapsed_time_gets_clock_chain',
@@ -2411,10 +2417,10 @@ MUTATIONS: List[Mutation] = [
                 '    if False:  # planted mutation\n        return _elapsed_hints(values)\n',
             )
         },
-        command=["pytest", 'tests/unit/test_hint_contract.py::test_no_served_hint_contradicts_its_item[mat_g2_mg_q4_2]', "-q"],
-        expected_check='§0 hint contract (hint_contract_medium)',
-        expect_output_contains=['test_no_served_hint_contradicts_its_item[mat_g2_mg_q4_2]', "failed", *['[medium]']],
-        baseline_must_not_contain=['test_no_served_hint_contradicts_its_item[mat_g2_mg_q4_2] && failed'],
+        command=["backend.app.practice_gen.validation.validate_hint_contract", "--node-ids", "mat_g2_mg_q4_2"],
+        expected_check='§16 hint contract (hint_contract_medium)',
+        expect_output_contains=['FAIL hint_contract_medium (', 'mat_g2_mg_q4_2: seed'],
+        baseline_must_not_contain=['FAIL hint_contract_medium'],
     ),
     Mutation(
         name='hint_mass_estimate_gets_reading_chain',
@@ -2429,10 +2435,10 @@ MUTATIONS: List[Mutation] = [
                 '    if False:  # planted mutation\n        # Until 2026-09-25 an estimate item fell through',
             )
         },
-        command=["pytest", 'tests/unit/test_hint_contract.py::test_no_served_hint_contradicts_its_item[mat_g3_mg_q2_1]', "-q"],
-        expected_check='§0 hint contract (hint_contract_medium)',
-        expect_output_contains=['test_no_served_hint_contradicts_its_item[mat_g3_mg_q2_1]', "failed", *['[medium]']],
-        baseline_must_not_contain=['test_no_served_hint_contradicts_its_item[mat_g3_mg_q2_1] && failed'],
+        command=["backend.app.practice_gen.validation.validate_hint_contract", "--node-ids", "mat_g3_mg_q2_1"],
+        expected_check='§16 hint contract (hint_contract_medium)',
+        expect_output_contains=['FAIL hint_contract_medium (', 'mat_g3_mg_q2_1: seed'],
+        baseline_must_not_contain=['FAIL hint_contract_medium'],
     ),
     Mutation(
         name='hint_ones_column_says_write',
@@ -2447,10 +2453,10 @@ MUTATIONS: List[Mutation] = [
                 '        hints.append(f"Add the ones: {ones_a} + {ones_b} = {ones_sum}. Write {ones_sum} in the ones place.")  # planted mutation\n',
             )
         },
-        command=["pytest", 'tests/unit/test_hint_contract.py::test_no_served_hint_contradicts_its_item[mat_g1_na_q2_6]', "-q"],
-        expected_check='§0 hint contract (hint_contract_response)',
-        expect_output_contains=['test_no_served_hint_contradicts_its_item[mat_g1_na_q2_6]', "failed", *['[response]']],
-        baseline_must_not_contain=['test_no_served_hint_contradicts_its_item[mat_g1_na_q2_6] && failed'],
+        command=["backend.app.practice_gen.validation.validate_hint_contract", "--node-ids", "mat_g1_na_q2_6"],
+        expected_check='§16 hint contract (hint_contract_response)',
+        expect_output_contains=['FAIL hint_contract_response (', 'mat_g1_na_q2_6: seed'],
+        baseline_must_not_contain=['FAIL hint_contract_response'],
     ),
     Mutation(
         name='hint_decompose_says_write',
@@ -2465,10 +2471,10 @@ MUTATIONS: List[Mutation] = [
                 '        f"Write the {ef_phrase} of {number}: {exp_form}.",  # planted mutation\n',
             )
         },
-        command=["pytest", 'tests/unit/test_hint_contract.py::test_no_served_hint_contradicts_its_item[mat_g1_na_q2_3]', "-q"],
-        expected_check='§0 hint contract (hint_contract_response)',
-        expect_output_contains=['test_no_served_hint_contradicts_its_item[mat_g1_na_q2_3]', "failed", *['[response]']],
-        baseline_must_not_contain=['test_no_served_hint_contradicts_its_item[mat_g1_na_q2_3] && failed'],
+        command=["backend.app.practice_gen.validation.validate_hint_contract", "--node-ids", "mat_g1_na_q2_3"],
+        expected_check='§16 hint contract (hint_contract_response)',
+        expect_output_contains=['FAIL hint_contract_response (', 'mat_g1_na_q2_3: seed'],
+        baseline_must_not_contain=['FAIL hint_contract_response'],
     ),
     Mutation(
         name='hint_contract_visual_left_unclassified',
@@ -2528,7 +2534,7 @@ MUTATIONS: List[Mutation] = [
     ),
     Mutation(
         name='hint_addition_property_reads_result',
-        asserts=['hint_generation_fails_loud'],
+        asserts=['hint_generation_fails_loud', 'hint_contract_unrendered_16'],
         description=(
             "Send commutative items back to the chain that reads values['result'], which "
             'they never set: KeyError, swallowed until 2026-09-25, so every such item was '
@@ -2540,10 +2546,12 @@ MUTATIONS: List[Mutation] = [
                 '    if False:  # planted mutation\n        return _property_hints(values)\n',
             )
         },
-        command=["pytest", 'tests/unit/test_hint_contract.py::test_no_served_hint_contradicts_its_item[mat_g1_na_q1_8]', "-q"],
-        expected_check='§0 hint contract (hint_generation_fails_loud)',
-        expect_output_contains=['test_no_served_hint_contradicts_its_item[mat_g1_na_q1_8]', "failed", *['generate_hints failed']],
-        baseline_must_not_contain=['test_no_served_hint_contradicts_its_item[mat_g1_na_q1_8] && failed'],
+        # RE-ANCHORED 2026-10-10 (H5, ruling 30) from the retired unit sweep to §16, which
+        # names a seed whose render raises as `hint_contract_unrendered_16`.
+        command=["backend.app.practice_gen.validation.validate_hint_contract", "--node-ids", "mat_g1_na_q1_8"],
+        expected_check='§16 hint contract (hint_generation_fails_loud, hint_contract_unrendered_16)',
+        expect_output_contains=['FAIL hint_contract_unrendered_16 (', 'generate_hints failed'],
+        baseline_must_not_contain=['FAIL hint_contract_unrendered_16'],
     ),
     Mutation(
         name='property_false_statement_can_be_true',
@@ -3527,6 +3535,30 @@ MUTATIONS: List[Mutation] = [
         expected_check="§1J (an explicit count and its noun agree in the rendered text)",
         expect_output_contains=["mat_g2_na_q2_3 && 1 units"],
         baseline_must_not_contain=["count_noun_agreement_1J ("],
+    ),
+    Mutation(
+        name="count_noun_singular_after_many",
+        asserts=["count_noun_singular_after_many_1J"],
+        description=(
+            "Let the spine's inflection singularise a slot phrase after ANY count instead "
+            "of after 1, so a themed stem reads '840 dog treat'. That is the shape served "
+            "on mat_g3_na_q2_3 seed 500 ('828 cat toy and 6321 water bowl'), planted on a "
+            "spine-served lc whose §1J baseline is clean. The mirror direction must catch "
+            "it from the generator's own noun inventory, never from the next token alone."
+        ),
+        edits={
+            "backend/app/practice_gen/dna/base.py": (
+                '                        rf"\\b(1)\\s+{re.escape(plural_str)}\\b",\n'
+                '                        rf"1 {sing_str}",\n',
+                '                        rf"\\b(\\d+)\\s+{re.escape(plural_str)}\\b",\n'
+                '                        rf"\\g<1> {sing_str}",  # planted mutation: any count\n',
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_language",
+                 "--node-ids", "mat_g2_na_q2_7"],
+        expected_check="§1J mirror (a count of two or more before a declared-singular count noun)",
+        expect_output_contains=["FAIL count_noun_singular_after_many_1J (", "mat_g2_na_q2_7: seed"],
+        baseline_must_not_contain=["FAIL count_noun_singular_after_many_1J"],
     ),
     Mutation(
         name="pupil_text_field_goes_unlinted",
@@ -5107,6 +5139,74 @@ MUTATIONS: List[Mutation] = [
         expected_check="§14 domain resolution (every domain id resolves)",
         expect_output_contains=["slot_domain_unknown_14 (", "vallue:dividend"],
         baseline_must_not_contain=["FAIL slot_domain_unknown_14"],
+    ),
+    Mutation(
+        name="statement_bypasses_slots_behind_a_transform",
+        asserts=["slot_text_unaccounted_14"],
+        description=(
+            "Build one even/odd statement with a plain f-string again. fmt_true_false wraps "
+            "every statement in `transform('strip_trailing_period', ...)`, which records "
+            "'{text}' around its input; when the strip is the identity the output equals the "
+            "input, and until H5 that let an un-instrumented statement account for ITSELF "
+            "(46 families on 2026-10-10). §14 must require another fill to produce it."
+        ),
+        edits={
+            "backend/app/practice_gen/formatters/textual/fmt_true_false.py": (
+                '                    fill("{d} ÷ 2 comes out exactly, so {d} is an even number", d=d_slot),\n',
+                '                    f"{dividend} ÷ 2 comes out exactly, so {dividend} is an even number",  # planted mutation\n',
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_slots", "--node-ids", "mat_g2_na_q3_8"],
+        expected_check="§14 accounting (a nested statement must be another recorded fill's text)",
+        expect_output_contains=["slot_text_unaccounted_14 (", "fmt_true_false.py"],
+        baseline_must_not_contain=["FAIL slot_text_unaccounted_14"],
+    ),
+    # ── §15 composition (H5, owner rulings 35-36). Both plants rewrap the counting stem the
+    # way number_line_read and emoji_pictorial do on mat_g1_na_q2_1 today, scoped to the mcq
+    # renders of that lc, whose baseline is clean, so the planted rewrap is the only cause.
+    Mutation(
+        name="selector_value_dropped_by_formatter",
+        asserts=["selector_value_unexhibited_15"],
+        description=(
+            "Let the mcq formatter ask 'What number comes next when counting?' without the "
+            "sequence. The selector still matches skip_by, the hints still describe the count, "
+            "and nothing the learner reads outside the hints exhibits the step -- the "
+            "mat_g1_na_q2_1 number-line instance, planted where the record can decide it."
+        ),
+        edits={
+            "backend/app/practice_gen/formatters/textual/fmt_mcq.py": (
+                '            return fill("What number comes next when counting: {seq}, ___?", seq=SEQ)\n',
+                '            return fill("What number comes next when counting?")  # planted mutation\n',
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_composition",
+                 "--node-ids", "mat_g1_na_q2_1", "--formatters", "mcq"],
+        expected_check="§15 record (a selected value reaches non-hint learner-read text)",
+        expect_output_contains=["FAIL selector_value_unexhibited_15 (", "skip_by"],
+        baseline_must_not_contain=["FAIL selector_value_unexhibited_15"],
+    ),
+    Mutation(
+        name="hint_quotes_unshown_sequence",
+        asserts=["hint_sequence_unshown_15"],
+        description=(
+            "Let the mcq stem show the sequence without its first term while the hint still "
+            "quotes all four ('Look at the list of numbers: 72, 74, 76, 78'). The record "
+            "still claims the stem derives from skip_by, so only the text stopgap can see that "
+            "the hint describes numbers the item does not show."
+        ),
+        edits={
+            "backend/app/practice_gen/formatters/textual/fmt_mcq.py": (
+                '        seq_str = ", ".join(str(x) for x in seq)\n'
+                '        # Structured slots (H5, owner rulings 28 and 35): the sequence exhibits the step.\n',
+                '        seq_str = ", ".join(str(x) for x in seq[1:])  # planted mutation\n'
+                '        # Structured slots (H5, owner rulings 28 and 35): the sequence exhibits the step.\n',
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_composition",
+                 "--node-ids", "mat_g1_na_q2_1", "--formatters", "mcq"],
+        expected_check="§15 stopgap (a hint quotes a run the item does not show)",
+        expect_output_contains=["FAIL hint_sequence_unshown_15 (", "Look at the list of numbers"],
+        baseline_must_not_contain=["FAIL hint_sequence_unshown_15"],
     ),
     # ── §12's renderer-registration dispositions (H-08, 2026-09-18) ────────────────
     #

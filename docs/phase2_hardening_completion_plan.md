@@ -1500,6 +1500,17 @@ that points at it break every time the section is refreshed.
 >     check is proven by mutations on already-instrumented lcs. (Ruling 28 calls emitting slots
 >     "instrumentation"; classing the gap as integrity would hold run_all at exit 1 for the whole
 >     multi-session rollout.)
+> 35. **Selector survival is decided by record, with a text stopgap until the record can decide**
+>     (owner, 2026-10-10, asked during H5). A value a clause selector chose survives into the item when
+>     some non-hint learner-read field is a recorded fill whose slots derive from it (slot provenance,
+>     `slots.S(..., src=...)`). The record decides only renders whose every learner-read field is a
+>     recorded fill; until the §14 rollout reaches an lc, a narrow text rule, labelled a stopgap, catches
+>     a hint quoting numbers the item does not show. Measured at H5: matching numbers between hint and
+>     item flagged 1,000 of 3,020 samples, mostly noise, and literal selector values were absent from
+>     1,528 of 2,548 matching samples, because selectors read enum tags and steps a learner never sees
+>     as literals; neither is a usable rule on its own.
+> 36. **New H5 hint checks are content stages only** (owner, 2026-10-10). They report by lc and seed
+>     (exit 2) and do not refuse serving; `hint_contract`'s existing dimensions stay enforced at serving.
 >
 > **Owner rulings recorded 2026-09-22, binding on the next session:**
 >

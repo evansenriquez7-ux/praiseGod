@@ -82,9 +82,22 @@ def test_the_instrumented_prototype_lcs_are_clean(node_id):
 
 
 def test_an_uninstrumented_field_is_named_by_lc_seed_and_formatter():
-    found = V.collect_findings(["mat_g1_na_q1_0"])
+    # mat_g1_dp_q3_0 (pictographs) is un-instrumented; mat_g1_na_q1_0, used until H5, became
+    # fully instrumented when the counting DNA and its formatters were (2026-10-10).
+    found = V.collect_findings(["mat_g1_dp_q3_0"])
     items = found["slot_text_unaccounted_14"]
     # A field names the formatter and DNA; a nested slot names the exact file:line site.
-    assert items and all(i.startswith("mat_g1_na_q1_0: ") and " at seed " in i
+    assert items and all(i.startswith("mat_g1_dp_q3_0: ") and " at seed " in i
                          and ("formatter " in i or "backend/app/practice_gen/" in i)
                          for i in items)
+
+
+def test_a_fill_slot_is_not_accounted_by_its_own_fill():
+    """H5: an identity transform must not let un-instrumented text account for itself."""
+    from backend.app.practice_gen.slots import capture, transform
+    with capture() as fills:
+        out = transform("strip_trailing_period", "90 − 2 = 87")   # no period: identity
+    assert out == "90 − 2 = 87" and len(fills) == 1
+    f = fills[0]
+    others = {g.text for g in fills} - {f.text}
+    assert V.check_slot(f.slots[0][1], "fill", {}, others)[0] == "slot_text_unaccounted_14"

@@ -233,14 +233,23 @@ def render_findings(node_id: str, seed: int) -> List[Tuple[str, str, str]]:
     finally:
         _orch.apply_formatter = real
     texts = {f.text for f in fills}
+    # How many fills produced each text. A "fill" slot must be accounted by a fill OTHER
+    # than the one holding it: `slots.transform` records "{text}" around its input, and when
+    # the transformation is the identity (no trailing period to strip) its output equals its
+    # input, so an un-instrumented statement accounted ITSELF. Found 2026-10-10 (H5) on
+    # fmt_true_false's subtraction statements, which §14 had passed as instrumented.
+    produced: Dict[str, int] = {}
+    for f in fills:
+        produced[f.text] = produced.get(f.text, 0) + 1
     given = seen
     out: List[Tuple[str, str, str]] = []
     for f in fills:
         why = replay(f)
         if why:
             out.append(("slot_template_mismatch_14", f.site, why))
+        others = texts if produced[f.text] > 1 else texts - {f.text}
         for name, value, domain in f.slots:
-            bad = check_slot(value, domain, given, texts)
+            bad = check_slot(value, domain, given, others)
             if bad:
                 out.append((bad[0], f"{f.site} slot {name!r}", bad[1]))
     for where, text in _texts(problem):

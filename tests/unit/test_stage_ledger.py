@@ -187,6 +187,8 @@ def stubbed_harness(monkeypatch):
     monkeypatch.setattr(ra.validate_reference, "validate_all", lambda: True)
     monkeypatch.setattr(ra.validate_exhibit, "validate_all", lambda **kw: True)
     monkeypatch.setattr(ra.validate_slots, "validate_all", lambda **kw: True)
+    monkeypatch.setattr(ra.validate_composition, "validate_all", lambda **kw: True)
+    monkeypatch.setattr(ra.validate_hint_contract, "validate_all", lambda **kw: True)
     monkeypatch.setattr(ra.validate_options, "validate_all", lambda: True)
     monkeypatch.setattr(ra.validate_render, "validate_all", lambda: True)
     monkeypatch.setattr(ra.validate_grade, "validate_all", lambda: True)

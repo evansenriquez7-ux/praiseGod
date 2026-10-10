@@ -21,6 +21,7 @@ from backend.app.practice_gen.dna.base import (
     ErrorPattern,
     VocabGated,
 )
+from backend.app.practice_gen.slots import E, S, fill
 
 
 # ─── grade-gated skip pools ───────────────────────────────────────────────────
@@ -296,12 +297,27 @@ def generate_hints(
     # always printed `later − earlier`, so every BACKWARD count asserted a false
     # equation such as "19 − 20 = 1" (hint contract, `arithmetic`).
     bigger, smaller = max(sequence[0], sequence[1]), min(sequence[0], sequence[1])
-    step = f"{action.capitalize()} {skip_by} {'to' if direction == 'forward' else 'from'} {sequence[3]}"
+    # Structured slots (H3/H5, owner rulings 28 and 35); every string is identical to the
+    # f-string it replaced. `start` is the last visible term (generate_params sets it so).
+    forward = direction == "forward"
+    SKIP, LAST = S(skip_by, "value:skip_by"), S(sequence[3], "value:start")
+    SEQ, ACT = S(seq_lbl, "fill"), S(action, E(("add", "subtract"), "direction forward/backward"))
+    step = fill("{action} {skip} {prep} {last}",
+                action=S(action.capitalize(), E(("Add", "Subtract"), "direction forward/backward")),
+                skip=SKIP, prep=S("to" if forward else "from", E(("to", "from"), "direction")),
+                last=LAST)
     return [
-        f"Look at the {seq_lbl}: {visible_str}, ___",
-        f"Find the rule by comparing neighbours: {bigger} − {smaller} = {bigger - smaller}.",
-        f"This {seq_lbl} shows {cnt_lbl} {skip_by}s ({action} {skip_by} each time).",
-        f"{step}: {sequence[3]} {'+ ' if direction == 'forward' else '- '}{skip_by} = {answer}.",
+        fill("Look at the {seq_lbl}: {seq}, ___", seq_lbl=SEQ,
+             seq=S(visible_str, "text.derived", src=("sequence", "skip_by", "direction"))),
+        fill("Find the rule by comparing neighbours: {bigger} − {smaller} = {diff}.",
+             bigger=S(bigger, "num.derived", src=("sequence",)),
+             smaller=S(smaller, "num.derived", src=("sequence",)),
+             diff=S(bigger - smaller, "value:skip_by")),
+        fill("This {seq_lbl} shows {cnt_lbl} {skip}s ({action} {skip} each time).",
+             seq_lbl=SEQ, cnt_lbl=S(cnt_lbl, "fill"), skip=SKIP, action=ACT),
+        fill("{step}: {last} {op}{skip} = {answer}.", step=S(step, "fill"), last=LAST,
+             op=S("+ " if forward else "- ", E(("+ ", "- "), "direction")), skip=SKIP,
+             answer=S(answer, "value:answer")),
     ]
 
 

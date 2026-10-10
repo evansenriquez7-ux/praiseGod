@@ -59,6 +59,8 @@ CHECK_PHASE: Dict[str, int] = {
     "§12": 1,           # consumed browserless React static-render evidence
     "§13": 1,           # component onAnswer value -> backend answers_match
     "§14": 1,           # learner-read text is a recorded fill of declared slots (H3)
+    "§15": 1,           # selected values and hinted runs reach the item (H5)
+    "§16": 1,           # the hint contract over the live tree, as content (H5, ruling 30)
     # -- Phase 2: needs an agent-authored artifact on disk ------------------------------
     "§5": 2,            # validation_reports/judgment/
     "§6F": 2, "§6G": 2, "§6H": 2,   # validation_reports/attestation/
@@ -124,17 +126,19 @@ FINDING_CLASS: Dict[str, str] = {
     "mutation_marker_invocation_isolation": INTEGRITY,
     "mutation_restore_purges_bytecode": INTEGRITY,
     "mutation_apply_is_all_or_nothing": INTEGRITY,
-    "hint_contract_arithmetic": INTEGRITY,
-    "hint_contract_stated_result": INTEGRITY,
-    "hint_contract_stated_answer": INTEGRITY,
-    "hint_contract_open_equation": INTEGRITY,
-    "hint_contract_operation": INTEGRITY,
-    "hint_contract_remainder": INTEGRITY,
-    "hint_contract_roles": INTEGRITY,
-    "hint_contract_direction": INTEGRITY,
-    "hint_contract_unit": INTEGRITY,
-    "hint_contract_medium": INTEGRITY,
-    "hint_contract_response": INTEGRITY,
+    # CONTENT since H5 (ruling 30): reported by §16 validate_hint_contract by lc and seed,
+    # no longer by a unit test. The two rule properties below stay integrity.
+    "hint_contract_arithmetic": CONTENT,
+    "hint_contract_stated_result": CONTENT,
+    "hint_contract_stated_answer": CONTENT,
+    "hint_contract_open_equation": CONTENT,
+    "hint_contract_operation": CONTENT,
+    "hint_contract_remainder": CONTENT,
+    "hint_contract_roles": CONTENT,
+    "hint_contract_direction": CONTENT,
+    "hint_contract_unit": CONTENT,
+    "hint_contract_medium": CONTENT,
+    "hint_contract_response": CONTENT,
     "packet_cross_process_determinism": INTEGRITY,
     "hint_contract_visuals_classified": INTEGRITY,
     "hint_contract_enforced_at_serving": INTEGRITY,
@@ -240,6 +244,7 @@ FINDING_CLASS: Dict[str, str] = {
     "judgment_reviews": CONTENT,                 # run_all's rollup print for §5
     # -- §1J validate_language -------------------------------------------------------
     "count_noun_agreement_1J": CONTENT,
+    "count_noun_singular_after_many_1J": CONTENT,  # the mirror direction (H5)
     "unclassified_pupil_text_1J": INTEGRITY,     # a payload field the lint does not reach
     # -- §1H validate_matrix (declared) ----------------------------------------------
     "per_node_applicability_1H": INTEGRITY,
@@ -268,6 +273,13 @@ FINDING_CLASS: Dict[str, str] = {
     "slot_unclassified_14": CONTENT,             # a slot recorded with no domain
     "slot_domain_escape_14": CONTENT,            # a value outside its declared domain
     "slot_domain_unknown_14": INTEGRITY,         # the harness cannot resolve the domain
+    # -- §15 validate_composition (H5, rulings 35, 36) -------------------------------
+    "selector_value_unexhibited_15": CONTENT,    # a selected value reaches only the hints
+    "hint_sequence_unshown_15": CONTENT,         # a hint quotes numbers the item lacks
+    # -- §16 validate_hint_contract (H5, ruling 30): the hint_contract_<dimension> rows
+    # above are CONTENT since the live sweep left the unit suite; a seed that does not
+    # render is content too (a generator defect named by lc and seed).
+    "hint_contract_unrendered_16": CONTENT,
     # -- §1D validate_vocab ----------------------------------------------------------
     "static_vocab_gated_lint": CONTENT,
     "vocab_audit_pass_rate": CONTENT,

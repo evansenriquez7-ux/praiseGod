@@ -16,6 +16,7 @@ from backend.app.practice_gen.dna.base import (FormattedProblem, QuestionContext
                                                  number_group_name)
 from backend.app.practice_gen.formatters._distractor_fallback import augment_distractors
 from backend.app.practice_gen.formatters._option_order import shuffle_options
+from backend.app.practice_gen.slots import E, S, fill
 
 
 def _build_equation_sentence(ctx: QuestionContext) -> str:
@@ -172,7 +173,12 @@ def _build_equation_sentence(ctx: QuestionContext) -> str:
         seq = values.get("sequence") or []
         if seq:
             stem = "Find the missing number" if "missing number" in ctx.cumulative_vocab else "What comes next"
-            return f"{stem}: {', '.join(str(x) for x in seq)}, ___"
+            # Structured slots (H5, owner rulings 28 and 35): the sequence exhibits the step.
+            return fill("{stem}: {seq}, ___",
+                        stem=S(stem, E(("Find the missing number", "What comes next"),
+                                       "vocab gate 'missing number'")),
+                        seq=S(", ".join(str(x) for x in seq), "text.derived",
+                              src=("sequence", "skip_by", "direction")))
         if ctx.question_text_with_blank:
             return ctx.question_text_with_blank
         raise ValueError("Formatter 'cloze' has no sequence for counting.")

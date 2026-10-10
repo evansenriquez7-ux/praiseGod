@@ -72,6 +72,8 @@ from backend.app.practice_gen.validation import (
     validate_vocab,
     validate_exhibit,
     validate_slots,
+    validate_composition,
+    validate_hint_contract,
 )
 from backend.app.practice_gen.validation.validate_matrix import run_matrix_validation
 from backend.app.practice_gen.validation._manifest import (
@@ -159,17 +161,8 @@ ASSERTIONS = (
     # separate way to be wrong and each is proven by its own planted defect; the rule
     # itself is `backend/app/practice_gen/hint_contract.py`, called by the gate AND by
     # `adapter.apply_formatter` on every served problem.
-    "hint_contract_arithmetic",            # tests/unit/test_hint_contract.py
-    "hint_contract_stated_result",         # tests/unit/test_hint_contract.py
-    "hint_contract_stated_answer",         # tests/unit/test_hint_contract.py
-    "hint_contract_open_equation",         # tests/unit/test_hint_contract.py
-    "hint_contract_operation",             # tests/unit/test_hint_contract.py
-    "hint_contract_remainder",             # tests/unit/test_hint_contract.py
-    "hint_contract_roles",                 # tests/unit/test_hint_contract.py
-    "hint_contract_direction",             # tests/unit/test_hint_contract.py
-    "hint_contract_unit",                  # tests/unit/test_hint_contract.py
-    "hint_contract_medium",                # tests/unit/test_hint_contract.py
-    "hint_contract_response",              # tests/unit/test_hint_contract.py
+    # MOVED 2026-10-10 (H5, ruling 30): the eleven per-dimension labels are now declared by
+    # validate_hint_contract (§16), the content stage that sweeps the live tree.
     "packet_cross_process_determinism",     # tests/unit/test_phase_d_regressions.py
     # Every visual schema is classified as a medium or unmediated -- the direction
     # that fails on a NEW visual type rather than silently not covering it.
@@ -280,6 +273,8 @@ CONTRACT_CHECKS: Dict[str, str] = {
     "§11": "validate_obligations: the student-path obligation manifest is derived twice and agrees, and no registered formatter route is unreachable",
     "§12": "validate_render: current digest-bound React static-render evidence executes every production-reachable visual type and describes emitted markup",
     "§13": "validate_render: a correct interaction emitted by every production interactive visual route is accepted by the shared backend answer comparator",
+    "§16": "validate_hint_contract: every lc's hint chains, on its stratified seeds, satisfy hint_contract.hint_chain_violations; a CONTENT stage labelled per dimension (owner ruling 30, moved from the unit suite in H5)",
+    "§15": "validate_composition: a value a clause selector chose reaches non-hint learner-read text (by slot provenance, decided on fully instrumented renders), and a hint never quotes a run of numbers the item does not show (text stopgap); owner rulings 35/36",
     "§14": "validate_slots: every learner-read field is the text of a recorded template fill whose every slot lies inside its declared domain (structured slots, owner rulings 28/33/34)",
 }
 
@@ -680,6 +675,8 @@ def run_all(fail_fast: bool = False, phase: Optional[int] = None) -> int:
         ("dangling_reference_1M", 1, ("§1M",), "Dangling Visual Reference (§1M)"),
         ("variant_exhibit_2L",  1, ("§2L",), "Declared Variants Reach the Render (§2L)"),
         ("slot_domains_14",     1, ("§14",), "Structured Slots and Field Domains (§14)"),
+        ("composition_15",      1, ("§15",), "Composition: Selected Values and Hinted Runs (§15)"),
+        ("hint_contract_16",    1, ("§16",), "Hint Contract over the Live Tree (§16)"),
         ("render_contract_9",   1, ("§9", "§12", "§13"),  "Render Contract (§9/§12/§13)"),
         ("grading_contract_10", 1, ("§10",), "Grading Contract (§10)"),
         ("assertion_coverage_8", 1, ("§8",), "Assertion Coverage (§8)"),
@@ -1116,6 +1113,27 @@ def run_all(fail_fast: bool = False, phase: Optional[int] = None) -> int:
             executed_checks.add("§14")
         return ok
 
+    def _stage_composition_15() -> bool:
+        print("\n--- Composition: Selected Values and Hinted Runs Reach the Item (§15) ---")
+        # Owner rulings 35/36 (H5): what a selector chose must reach the item, decided by
+        # slot provenance where §14 accounts every field (undecided renders are counted,
+        # never guessed), plus a labelled text stopgap for hints quoting unshown runs.
+        # Both labels are CONTENT and never refuse serving.
+        ok = validate_composition.validate_all()
+        if ok:
+            executed_checks.add("§15")
+        return ok
+
+    def _stage_hint_contract_16() -> bool:
+        print("\n--- Hint Contract over the Live Tree (§16) ---")
+        # Owner ruling 30 (H5): the live hint sweep left the unit suite, where one
+        # generator's hint defect made the run integrity-red. Same seeds, same rule,
+        # labelled by dimension; content.
+        ok = validate_hint_contract.validate_all()
+        if ok:
+            executed_checks.add("§16")
+        return ok
+
     def _stage_render_contract_9() -> bool:
         print("\n--- Render Contract (§9/§12) ---")
         # The first stage that looks past FormattedProblem at what the STUDENT receives.
@@ -1184,6 +1202,8 @@ def run_all(fail_fast: bool = False, phase: Optional[int] = None) -> int:
             ("dangling_reference_1M", _stage_dangling_reference_1M),
             ("variant_exhibit_2L", _stage_variant_exhibit_2L),
             ("slot_domains_14", _stage_slot_domains_14),
+            ("composition_15", _stage_composition_15),
+            ("hint_contract_16", _stage_hint_contract_16),
             ("render_contract_9", _stage_render_contract_9),
             ("grading_contract_10", _stage_grading_contract_10),
             ("assertion_coverage_8", _stage_assertion_coverage_8),

@@ -44,11 +44,9 @@ import importlib
 import pytest
 
 from backend.app.practice_gen import hint_contract as hc
-from backend.app.practice_gen.registry import get_all_node_ids
 from backend.app.practice_gen.schemas.visuals import VisualSchemaRegistry
 from backend.app.practice_gen.validation import judgment_packets as jp
 
-_NODES = sorted(get_all_node_ids())
 
 
 def _dimensions(**item):
@@ -189,44 +187,14 @@ def test_every_visual_schema_is_classified():
     assert mediated & set(hc.UNMEDIATED_VISUAL_TYPES) == set()
 
 
-# ── the class, gated over every node ─────────────────────────────────────────
-
-_HINT_FAILURE_TYPES = (hc.HintContractError.__name__, hc.HintGenerationError.__name__)
-
-
-@pytest.mark.parametrize("node_id", _NODES)
-def test_no_served_hint_contradicts_its_item(node_id):
-    offenders = []
-    seeds = jp._stratified_seeds(node_id)
-    # Stratification trial-renders candidate seeds and SKIPS any that raise, recording
-    # them in `render_failures`. A seed the contract refused therefore never reaches
-    # the loop below -- found 2026-09-25 when a planted "Write" on a set-the-blocks item
-    # SURVIVED: every set-mode seed was refused, dropped from the packet, and the
-    # remaining read-mode seeds passed. The recorder writes `type(exc).__name__` first,
-    # so the refusal is identified by its exception TYPE, never by message text.
-    for seed, message in jp.render_failures(node_id):
-        if message.split(":", 1)[0] in _HINT_FAILURE_TYPES:
-            offenders.append(f"stratification dropped seed {seed}: {message}")
-    for seed in seeds:
-        try:
-            sample = jp._render_sample(node_id, seed)
-        except hc.HintContractError as exc:
-            offenders.append(f"served path refused seed {seed}: {exc}")
-            continue
-        found = hc.hint_chain_violations(
-            hints=sample.get("hints"),
-            stem=sample.get("question_text") or "",
-            options=sample.get("options"),
-            visual_type=sample.get("visual_type"),
-            visual_payload=sample.get("visual_payload"),
-            interaction_mode=(sample.get("effective") or {}).get("interaction_mode"),
-            correct_answer=sample.get("correct_answer"),
-        )
-        offenders += [f"seed {seed} ({sample.get('formatter')}): [{d}] {m}" for d, m in found]
-    assert not offenders, (
-        f"{node_id}: {len(offenders)} hint chain(s) contradict the item they serve.\n  "
-        + "\n  ".join(offenders[:6])
-    )
+# ── the class, gated over every node: MOVED to §16 (H5, owner ruling 30) ───────
+#
+# `test_no_served_hint_contradicts_its_item` swept every lc's stratified seeds here, so a
+# hint defect in one generator failed the unit suite -- integrity, exit 1 -- although it is
+# content named by lc and seed. The same sweep (same seeds, same function, now labelled by
+# dimension and with serving enforcement off so a refused seed is judged, not dropped) is
+# `backend/app/practice_gen/validation/validate_hint_contract.py`, run_all stage
+# `hint_contract_16`. What stays here proves the RULE, which is a harness property.
 
 
 # ── the two properties that make the rule bind in production ─────────────────
