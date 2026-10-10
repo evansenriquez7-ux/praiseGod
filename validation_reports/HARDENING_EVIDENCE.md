@@ -19311,3 +19311,159 @@ check `ps` for other `claude` processes before resuming one.**
 6. Content findings are not yet required to name lc and seed (measured above).
 7. `--node-ids` weakens §6G skeleton clustering and §6H plurality to in-scope records; run_all never scopes.
 8. Unit-test failures are all integrity (ruling 30), including the 157 live-output sweeps.
+
+## 2026-10-10 — H3: structured slots (ruling 28) and the §14 field-domain check — infrastructure and prototype
+
+Author: Claude Opus 5.5 (no LLM judges dispatched). Lock claimed `545c1548`; source `eb3ce6cc`; chain artifacts
+`bc6edb99`, tree_state `ceefda1f`. "node" ids below are lcs. **No generator content changed**: every rendered
+byte is identical (proved below). H3 is NOT finished: the infrastructure, the check and a 3-lc prototype landed;
+the rollout to every learner-text site is owed and is counted by `slot_text_unaccounted_14`.
+
+### Owner rulings 33-34 (asked this session; recorded verbatim in the plan doc in `eb3ce6cc`)
+
+The survey below raised two scope questions rulings 1-32 did not settle. 33: structured slots cover everything
+the learner reads (stem, options, statements, worked solutions, cloze text, hints). 34: an un-instrumented site
+is a CONTENT finding (exit 2) that shrinks as the rollout proceeds; the check is proven by mutations on lcs that
+are already instrumented.
+
+### Measurements that shaped the design (2026-10-10, student path)
+
+- Learner-text authoring sites: about 1,250 (51 spine templates, ~729 DNA f-strings, ~458 formatter sites).
+- Spines produce 270 of 3,020 student-path items (9%), on 18 lcs. Most text comes from DNA f-strings and formatters.
+- What a formatter does to the DNA's `question_text`, over 3,020 items: 1,597 identical, 112 wrapped (the DNA
+  stem inside formatter text), 1,311 rebuilt (the formatter writes its own stem). A check on DNA templates
+  alone would therefore miss 43% of stems: formatter text has to be a template with slots too (the brief's
+  last H3 bullet).
+
+### What H3 built
+
+- **`backend/app/practice_gen/slots.py`.** `fill(template, **slots)` returns exactly `template.format(...)`. Only inside
+  `capture()` (a ContextVar) does it record the template, each slot's (name, value, domain) and the call site.
+  `S(value, domain)` takes a registry id, or a runtime `R(lo, hi, basis)` / `E(members, basis)` that the generator
+  computes from the bounds or object it draws with, so nothing is restated. `record(...)` handles text produced by
+  a transformation the check must replay. `TRANSFORMS` (`strip_trailing_period`, `capitalize`) is the one copy
+  that both the generator and the check call. Outside `capture()` the cost is one ContextVar read and nothing
+  is attached to the payload.
+- **`validate_slots` (§14, stage `slot_domains_14`, Phase 1, 20 seeds, `--node-ids`).** It renders each lc on
+  the student path and proves:
+  - (a) every field `validate_language._texts` classes as learner-read equals some recorded fill's text
+    (`slot_text_unaccounted_14`, content);
+  - (b) every fill replays from its template and slots (`slot_template_mismatch_14`, content);
+  - (c) every slot names a domain (`slot_unclassified_14`, content) and that domain resolves
+    (`slot_domain_unknown_14`, INTEGRITY: the harness cannot judge the slot);
+  - (d) every value lies inside its domain (`slot_domain_escape_14`, content).
+
+  Domain kinds: `R`, `E`, `enum:`, `bank:<dotted>:<field>`, `noun:` (also accepts a plural via the shared
+  `to_singular_phrase`), `value:<key>` (checked against the generator's own `QuestionContext.values`, observed at
+  `orchestrator.apply_formatter`), `num.derived` / `text.derived` (type only), and `fill` (a nested template).
+  Each kind is pinned accept/reject in `tests/unit/test_validate_slots.py`.
+- **`tests/render_snapshot.py`**: a byte-identity tool. It renders the student path for every lc at 40 seeds,
+  plus every advertised (lc, formatter) pair at 3 seeds: 7,285 renders under `PYTHONHASHSEED=0` (it re-execs
+  itself). `--diff` compares two snapshots.
+- **Instrumented (the prototype):**
+  - `mat_g2_na_q3_8` (division even/odd: the `EVEN_ODD_LABELS`, the stem with an `R` range, the hints; and
+    `fmt_true_false`'s templates and its `". True or False?"` assembly);
+  - `mat_g2_mg_q4_3` (geometric_lines bank items and hints);
+  - `mat_g1_na_q3_3` (every subtraction `generate_hints` branch; `fmt_emoji_pictorial`'s subtraction branch, the
+    line join and the option key);
+  - `VocabGated.resolve` tree-wide.
+- **§1J correction.** `format_data.context` is a tag, not learner text: six values over the 7,285 renders, and
+  nothing in `frontend/src` reads it. It is now classed as metadata. Texts linted went from 73,875 to 68,659.
+  §14 reuses the same classification table, so this changes both.
+- **Registration:** `FINDING_CLASS` rows (177 labels, equal to the §8 inventory), `CHECK_PHASE §14:1`, `CONTRACT_CHECKS
+  §14`, the contract row (8 named limits), a `testing_pipeline.md` row, and a stub in `test_stage_ledger.py`.
+
+### Byte identity
+
+```text
+$ PYTHONPATH=. .venv/bin/python -m tests.render_snapshot --diff local_only/scratch/h3/before.jsonl local_only/scratch/h3/after_final.jsonl
+render_snapshot diff: 7285 before, 7285 after, 0 changed, 0 key(s) present on one side only
+```
+
+`before.jsonl` was taken on `545c1548`'s source at 09:04, before `slots.py` existed (09:07) and before any site was instrumented.
+
+### Baseline (full tree, 23 s)
+
+```text
+  FAIL slot_text_unaccounted_14 (800) | PASS slot_template_mismatch_14 | PASS slot_unclassified_14
+  PASS slot_domain_unknown_14 | FAIL slot_domain_escape_14 (14)
+```
+
+- **800 unaccounted** is the rollout queue, one finding per (lc, field) family, each naming its lc, field,
+  seed, formatter and DNA.
+- **All 14 escapes are one real defect.** `fmt_emoji_pictorial` names any emoji missing from its own
+  `_EMOJI_NAMES` "items", through `_EMOJI_NAMES.get(emoji, "item")`, a silent default (Protocol 3). Affected:
+  mat_g1_na_q3_0, mat_g1_na_q3_3, mat_g1_na_q3_4 and mat_g2_na_q2_5, at lines 332/340/342/345. A learner sees
+  "items" where the picture shows a specific object. Not fixed (ruling 23): it is generator work, and §14 now
+  names it.
+
+### Mutations (all on `mat_g2_na_q3_8`, whose §14 baseline is clean; `--node-ids` scoped)
+
+| mutation | asserts | plant | why it matters |
+|---|---|---|---|
+| `slot_value_escapes_its_range` | `slot_domain_escape_14` | division's draw `rng.randint(1, n_max)` -> `randint(n_max + 1, n_max + 50)` | a widened domain source lets a value escape (the brief's first mutation) |
+| `slot_recorded_without_domain` | `slot_unclassified_14` | `n=n_slot` -> `n=n` (bare value) | an unclassified slot (the brief's second mutation); the text is unchanged |
+| `formatter_text_bypasses_slots` | `slot_text_unaccounted_14` | `fmt_true_false` stem back to an f-string | byte-identical text, record missing: accounting goes by the generator's record, never by how the text looks (ruling 28) |
+| `slot_transform_misrecorded` | `slot_template_mismatch_14` | `TRANSFORMS[name](text) + " "` in `slots.transform` | a record that disagrees with its replay |
+| `slot_domain_id_unresolvable` | `slot_domain_unknown_14` | `"value:dividend"` -> `"vallue:dividend"` | the one integrity label |
+
+Dev loop: the 33 mutations whose code path H3 changed (the five above plus those planted in the files H3
+edited) were run one at a time with `--only`. Result: 33/33 `1/1 mutations detected`, escaped-plant grep clean.
+
+### Unit suite and chain (on `eb3ce6cc`)
+
+```text
+$ PYTHONPATH=. .venv/bin/python -m pytest tests/unit -m "not slow" -q -p no:cacheprovider
+1102 passed, 1 skipped, 2 deselected, 4 warnings in 854.49s (0:14:14)
+$ cat local_only/scratch/h3/chain/progress.log
+END regen EXIT 0 09:46:21 | END benchmark EXIT 0 09:46:40 | END frontend EXIT 0 09:46:52
+END corpus EXIT 0 10:50:09          221/221 mutations detected.  (no INVALID)
+escaped-plant grep lines: 1         (the benign validate_coverage.py:456 comment)
+END shard0..shard5 EXIT 0 (11:13, 11:37, 12:02, 12:28, 12:55, 13:22); END verify EXIT 0 (release_status=complete receipts=6)
+END run_all EXIT 2 14:02:16
+$ PYTHONPATH=. .venv/bin/python tests/tree_state.py
+PASS tree_state: CERTIFIED          live input digest : 24205f186fa1c5b3   mutation_proofs fresh 221
+```
+
+From run_all:
+
+```text
+  PASS unit_tests (1102 passed, 1 skipped, 2 deselected, 4 warnings in 847.62s (0:14:07))
+  PASS mutation_proof_integrity_8: 221 executed mutation proof(s) verified against the current source/fixture digest
+  PASS assertion_coverage_8: 166/177 harness assertions proven BY EXECUTION (38 discovered in validate_matrix, 139 declared across 18 modules), 11 knowingly unproven (allowlist may only shrink)
+  PASS census: nodes=151 unit_tests=1103 mutations=221 variant_candidates=973
+  scheduled=19 completed=15 failed=4 crashed=0 not_run=0 incomplete=0
+  PASS finding_class_registry_complete: 177 label(s) classified, equal to the §8 inventory
+  INTEGRITY: GREEN (every stage ran to a verdict and no integrity label failed)
+  CONTENT: attester_packet_refused_2L, capability_contract, judgment_reviews, slot_domain_escape_14,
+           slot_text_unaccounted_14, variant_not_exhibited_2L
+ALL TESTS: integrity green, CONTENT FINDINGS REMAIN (exit 2).
+```
+
+### Found, not fixed (named here so the next agent does not rediscover them)
+
+1. **Distractor order depends on the process hash seed.** `comparing_ordering`'s `distractors` (and its
+   `given_values` copy) iterate a set. Unpinned, 89 of the 7,285 renders differ from run to run, on
+   mat_g1_na_q1_4, mat_g1_na_q2_0, mat_g2_na_q1_4 and mat_g3_na_q1_6. This breaks Protocol 6 (a seed does not
+   reproduce a served problem across processes), so it is generator work. It is also a **harness blind spot**:
+   no check asserts that a `FormattedProblem` is identical across processes, and every in-process check (all of
+   them) shares one hash seed. The snapshot tool pins `PYTHONHASHSEED=0` so that its proof is exact. That
+   pinning hides the defect from the tool; it does not fix it.
+2. **More silent defaults in `fmt_emoji_pictorial`:** `values.get("a", 3)` and `values.get("b", 2)`, beside the
+   `"item"` fallback that §14 already reports.
+3. **A mistake of my own, caught before the commit.** As in H2, a slice edit of `_manifest.py` deleted the
+   file's tail. It was restored from HEAD, and the committed diff of `_manifest.py` is 7 insertions, 0 deletions.
+
+### NAMED LIMITS (also in `validate_slots`'s docstring and the contract's §14 row)
+
+1. 20 seeds on the default student path only: a template reachable only through a pinned formatter, another
+   experience or another profile is not seen.
+2. Visual payload strings are not learner-read fields here (inherited from §1J's limitation 2).
+3. A field is accounted for by text EQUALITY with a recorded fill.
+4. `num.derived` and `text.derived` check type only.
+5. `value:<key>` trusts that the value's own domain was checked where it was generated.
+6. Un-instrumented text is counted by field, not by source site (the 800 findings cannot name the line to edit).
+7. The learner-read classification is §1J's (corrected here for `format_data.context`).
+8. **The rollout is incomplete.** Ruling 24's premise ("a stem approval is safe only if its fields cannot
+   escape it") holds today only on the three prototype lcs. H4 must not approve an lc's stems until its
+   `slot_text_unaccounted_14` count is 0.

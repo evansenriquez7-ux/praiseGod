@@ -1,7 +1,7 @@
-# Task prompt: Phase 2 pipeline hardening under owner rulings 23–32 (Claude host)
+# Task prompt: Phase 2 pipeline hardening under owner rulings 23–34 (Claude host)
 
 **Rewritten 2026-10-08 after owner rulings 23–26 redefined Phase 2; rulings 27–29 (2026-10-09) settled its open design questions.
-Updated 2026-10-10 after batch H2 landed: H3 or H5 is next. This REPLACES every earlier version
+Updated 2026-10-10 after batch H3's infrastructure and prototype landed: the H3 rollout or H5 is next. This REPLACES every earlier version
 of this file.** `CLAUDE_AGENT_PROMPT.md`, `GPT_HANDOFF_PROMPT.md` and `HANDOFF_PROMPT.md` beside it are history.
 Their §5–§10 method notes (dispatch template, audit-before-filing, heavy runs, traps) remain correct and are
 cited below. Their state sections, queue sizes and goals are stale; ignore them.
@@ -17,8 +17,9 @@ generator agents can find and fix every generator error from its output alone. C
   lc, seed and what to build) or 1 (integrity failure) (ruling 27);
 - the tree is CERTIFIED.
 
-Content findings (the 78 CONTRADICTED, 752 judgment, and §2L's 420 variant + 61 packet-refusal findings) are the
-**generators' work queue**.
+Content findings (the 78 CONTRADICTED, 752 judgment, §2L's 420 variant + 61 packet-refusal findings, and §14's 14
+domain escapes) are the **generators' work queue**. §14's 800 `slot_text_unaccounted_14` findings are content by
+ruling 34 too, but clearing them is the H3 rollout (instrumentation), which IS Phase 2 work.
 They are not a Phase 2 blocker, and you do not fix them.
 
 **Terminology.** The harness calls `mat_g3_dp_q3_4` a "node". `CLAUDE.md` calls it an **lc**, and a node is
@@ -39,8 +40,8 @@ INTERRUPTED, and re-measures every number it publishes.
    be a no-op", "Duplicated rule copies disagree", "Allowlist checks drift silently", "Mutation must land where
    behaviour changes" and "Proof admissible, not just detected".
 2. This file, completely.
-3. **Owner rulings 23–32** in `docs/phase2_hardening_completion_plan.md`, verbatim (search "rulings recorded
-   2026-10-08"; 27–32 follow them). Also read rulings 1, 9, 12–16 and 19–22 above them. They still govern what content must
+3. **Owner rulings 23–34** in `docs/phase2_hardening_completion_plan.md`, verbatim (search "rulings recorded
+   2026-10-08"; 27–34 follow them). Also read rulings 1, 9, 12–16 and 19–22 above them. They still govern what content must
    satisfy.
 4. `validation_reports/HARDENING_EVIDENCE.md`, newest entries first (newest is at the END of the file):
    - "H2: run_all exits 0 / 2 / 1 (owner ruling 27), and the three §6F INVALIDs re-anchored";
@@ -61,24 +62,28 @@ INTERRUPTED, and re-measures every number it publishes.
 
 ---
 
-## 1. State at handoff (2026-10-10, after H2; re-measure before quoting)
+## 1. State at handoff (2026-10-10, after H3's infrastructure and prototype; re-measure before quoting)
 
 ```
 HEAD                local main at the commit that updated this file (after the H-06 release); worktree
                     clean. Not pushed when written: check `git status -sb` before assuming origin has it
-source              36f03396 (H2); chain artifacts 64e760d1 + dccc3fb9 (see "Two copies" in the evidence)
+source              eb3ce6cc (H3 infrastructure + prototype); chain artifacts bc6edb99, tree_state ceefda1f
 H-06 lock           RELEASED; claim it (owner line only, numstat 1 1) before any work
-tree_state          CERTIFIED (216 proofs, 6 shards, benchmark, frontend fresh)
-run_all             2026-10-10 on 36f03396: EXIT 2, scheduled=18 completed=15 failed=3 crashed=0
-                      INTEGRITY GREEN; finding_class_registry_complete 172 labels
+tree_state          CERTIFIED (221 proofs, 6 shards, benchmark, frontend fresh; digest 24205f186fa1c5b3)
+run_all             2026-10-10 on eb3ce6cc: EXIT 2, scheduled=19 completed=15 failed=4 crashed=0
+                      INTEGRITY GREEN; finding_class_registry_complete 177 labels
                       CONTENT: variant_not_exhibited_2L 420, attester_packet_refused_2L 61,
-                               judgment_reviews 752, capability_contract 78 (all CONTRADICTED)
+                               judgment_reviews 752, capability_contract 78 (all CONTRADICTED),
+                               slot_text_unaccounted_14 800, slot_domain_escape_14 14
 queue snippet (§4)  78 42 33 55  (measured 2026-10-09)
 §2L                 973 pairs: 428 recorded, 125 by render only, 420 not exhibited (A 1, B 90, D 291, E 38);
-                    151 packets, 61 refusals (unchanged by H2)
-unit suite          1070 passed, 1 skipped (fast suite ~14 min)
-mutations           216; corpus 216/216, NO INVALID (first time since 2026-09-16)
-assertions          161/172 proven by execution, 11 on the shrinking allowlist
+                    151 packets, 61 refusals (unchanged by H2/H3)
+§14                 814 findings = 800 unaccounted (rollout queue) + 14 escapes (one defect: fmt_emoji_pictorial's
+                    silent "items" fallback on mat_g1_na_q3_0/_3/_4, mat_g2_na_q2_5); full tree ~23 s
+unit suite          1102 passed, 1 skipped (fast suite ~14 min)
+mutations           221; corpus 221/221, NO INVALID
+assertions          166/177 proven by execution, 11 on the shrinking allowlist
+render snapshot     tests/render_snapshot.py: 7,285 renders; H3's baseline local_only/scratch/h3/after_final.jsonl
 latest attestation  batch440 (next free prefix: batch441)
 ```
 
@@ -87,22 +92,31 @@ under `nohup` (as §6 advises), the session that started it stayed alive after t
 elsewhere, and two copies of the same agent did the end-of-chain bookkeeping 2 s apart. It did no harm only by
 luck. One copy per conversation; ask the owner to close the others before editing.
 
-**What H2 left for later batches** (each written as a named limit in the contract's verdict row):
+**What H2 and H3 left for later batches** (each written as a named limit in its contract row):
 - **lc and seed naming is not enforced.** The Definition of Done says a finding the pipeline cannot name by lc
   and seed blocks harness work. Measured 2026-10-10: §5's 751 findings name an lc but 0 name a seed; §6F 49 of
   78 name a seed; §2L's 20 needs_instrumentation refusals are lc-wide (no seed); the 5 floor-hidden §6 findings
   name no seed. §5 and §6F retire in H6; what "seed" means for an lc-wide finding is not ruled (**stop and ask**).
-  This is Phase 2's Exit item, not done.
+  This is Phase 2's Exit item, not done. (§14's findings all name lc and seed.)
 - **Floors still hide content** (ruling 31): the §6 Phase 1 floor holds the 5 `draw` gaps (mat_g2_mg_q1_2,
   mat_g3_mg_q1_4, mat_g3_mg_q1_5, mat_g3_mg_q4_0, mat_g3_mg_q4_1), `formatters_reachable` 6,
   `obligation_routes_reachable` 5. A later batch makes them report as content.
 - **Unit-test failures are all integrity** (ruling 30), including 157 live-output sweeps. H5 moves the hint sweep
   (`test_no_served_hint_contradicts_its_item`, 151 lcs) into a content stage.
+- **The H3 rollout** (see §4 H3): ~800 (lc, field) families are not instrumented, so ruling 24's premise holds
+  only on the three prototype lcs.
+- **No cross-process determinism check** (found in H3): `comparing_ordering` iterates a set when it builds
+  `distractors`, so 89 of 7,285 renders on mat_g1_na_q1_4, mat_g1_na_q2_0, mat_g2_na_q1_4 and mat_g3_na_q1_6 change
+  with `PYTHONHASHSEED`. Every check runs in one process with one hash seed, so none sees it. The defect is
+  generator work; the missing check is harness work that no batch owns yet (a natural fit for H5).
 
 Corrections to the previous version of this file, measured 2026-10-10:
-- `attestation_leaks_into_phase1` carried the comment "cannot be scoped to --phase 1". That was never true of it:
-  its plant and its check are both Phase 1. It is now scoped `--phase 1 --node-ids mat_g1_na_q1_0`.
-- The fast suite takes ~14 min, not ~24.
+- The H3 brief said "prototype on 3 lcs ... then roll out" as if the rollout fit one batch. It does not: about
+  1,250 learner-text sites author the text (51 spine templates, ~729 DNA f-strings, ~458 formatter sites), and
+  formatters rebuild 43% of stems (1,311 of 3,020 student-path items), so formatter text needs slots as much as
+  DNA text. Spines produce only 9% of items (270 of 3,020).
+- §1J classed `format_data.context` as learner text. It is a tag (six values, read by nothing in
+  `frontend/src`); corrected in `eb3ce6cc`, texts linted 73,875 -> 68,659.
 
 ---
 
@@ -131,7 +145,7 @@ Corrections to the previous version of this file, measured 2026-10-10:
 
 ## 3. Rulings in force
 
-Rulings 23–29 are recorded verbatim in the plan doc. In short:
+Rulings 23–34 are recorded verbatim in the plan doc. In short:
 - 23: Phase 2 hardens the pipeline, not the generators.
 - 24: LLM judges review stems plus field domains; deterministic checks do the rest.
 - 25: the per-sample gates are retired once replaced; records are kept.
@@ -142,9 +156,13 @@ Rulings 23–29 are recorded verbatim in the plan doc. In short:
 - 30: a failing unit test is integrity (exit 1), for now.
 - 31: H2 changes no floor; floor-hidden findings are a named limit.
 - 32: defects in the filed §5/§6F-§6H records are content.
+- 33: structured slots cover everything the learner reads: stem, options, statements, worked solutions, cloze
+  text and hints.
+- 34: an un-instrumented site is a CONTENT finding (exit 2) that shrinks as the rollout proceeds; the check is
+  proven by mutations on lcs that are already instrumented.
 
 Rulings 19–22 stay in force for any attestation still filed under the old gates before H6 retires them. **Stop and ask** for:
-- any content judgment that MATATAG and rulings 1–29 do not settle;
+- any content judgment that MATATAG and rulings 1–34 do not settle;
 - any design question these rulings do not answer;
 - anything in "Not yours" (§5).
 
@@ -158,13 +176,15 @@ Rulings 19–22 stay in force for any attestation still filed under the old gate
 |---|---|---|---|
 | H1 | DONE 2026-10-09 | §2L variant exhibit check; verdict reads failed stages from the ledger | — |
 | H2 | DONE 2026-10-10 | `run_all` exits 0 / 2 / 1; every finding classified integrity or content; the 3 §6F INVALIDs re-anchored and DETECTED; §2L leaves report-only | — |
-| **H3** | **next (or H5)** | structured slots (ruling 28) and the field-domain check | H2 (its findings must land as content, exit 2) |
-| H4 | open | stem review gate: stem-family packets, blind judges, template+domain freshness | H3 (judges approve domains H3 enforces) |
-| H5 | open | composition checks: selector value survives into the payload, hint/stem agreement, §1J singular-after-many | H2 |
-| H6 | open | retire `judgment_reviews_5` and `capability_phase2` as gates; carry confirmed defects into the content report | H3, H4, H5 each mutation-proven |
+| **H3** | **IN PROGRESS** (infrastructure, §14 check and 3-lc prototype landed 2026-10-10; rollout owed) | structured slots (ruling 28) and the field-domain check | — |
+| H4 | open | stem review gate: stem-family packets, blind judges, template+domain freshness | H3 per lc: an lc's stems may be approved only once its `slot_text_unaccounted_14` count is 0 |
+| H5 | **next (or the H3 rollout)** | composition checks: selector value survives into the payload, hint/stem agreement, §1J singular-after-many | H2 |
+| H6 | open | retire `judgment_reviews_5` and `capability_phase2` as gates; carry confirmed defects into the content report | H3 (rollout done), H4, H5 each mutation-proven |
 | Exit | — | the "Exit" list below holds on one chain | all of the above |
 
-H5 does not depend on H3/H4 and may run before them if a session prefers; H6 must be last.
+H5 does not depend on H3/H4 and may run before them if a session prefers. The H3 rollout may span several
+sessions and may interleave with H5 (each session is still one `batch` intent and one chain). H4 can start on lcs
+whose rollout is done. H6 must be last.
 
 Each batch is one `batch` intent and one re-proof chain (§6). Inside a batch, use a dev loop: focused unit
 tests, the validator's own module, and `tests/mutation_harness.py --only <new mutations>`. Run the chain once,
@@ -234,27 +254,43 @@ returns, which closes H1's limit on `stage_failure_reaches_verdict`; the matrix 
 Owner rulings 30–32 settled unit tests, floors and record defects. Evidence: "H2: run_all exits 0 / 2 / 1".
 The original brief is preserved in git history (`ddc1e120`).
 
-### H3: field domains and the domain check (ruling 24, deterministic half)
+### H3: field domains and the domain check (ruling 24, deterministic half) -- IN PROGRESS
 
-- Every learner-facing slot in a stem gets a **declared domain**. A slot is a value interpolated into a spine,
-  a DNA f-string or a formatter wrapper. Its domain is the set of nouns, names, units, the number range and the
-  enumerations it can take at that lc's bounds.
-- **Derive** the domains from the generator's own sources: imported lists, axis bounds and
-  `cumulative_vocab`. **Never restate them** (memory: duplicated rule copies disagree).
-- **Structured slots (ruling 28).** Each DNA, spine and text-adding formatter emits its template together with a
-  structured slots record: slot name, value, domain id. Never infer a slot from learner-facing text. Emitting
-  slots is instrumentation, not content repair: it must not change any rendered byte. Prove that by diffing the
-  renders before and after over the benchmark seeds.
-- A deterministic check renders the lc and proves:
-  - (a) the learner-facing text equals the template filled with the slot values;
-  - (b) every slot value lies inside its declared domain.
+**Landed 2026-10-10** in `eb3ce6cc`, chain `bc6edb99` (evidence: "H3: structured slots (ruling 28) and the §14
+field-domain check"; contract row §14):
+- `backend/app/practice_gen/slots.py`: `fill(template, **slots)` returns exactly `template.format(...)` and records
+  (template, slots, site) only inside `capture()`. `S(value, domain)`; runtime domains `R(lo, hi, basis)` and
+  `E(members, basis)`, computed by the generator from what it draws with; `record(...)` and `TRANSFORMS` for
+  text the check must replay. Read its docstring before instrumenting anything.
+- `validate_slots` (§14, stage `slot_domains_14`, `--node-ids`): (a) each learner-read field (§1J's
+  `validate_language._texts`, reused) equals a recorded fill; (b) each fill replays; (c) each slot has a domain
+  that resolves; (d) each value lies in its domain. Domain kinds and their accept/reject pins:
+  `tests/unit/test_validate_slots.py`.
+- `tests/render_snapshot.py` (byte identity, 7,285 renders, `PYTHONHASHSEED=0`): 0 changed.
+- Prototype: mat_g2_na_q3_8 (division / true_false), mat_g2_mg_q4_3 (geometric_lines / mcq), mat_g1_na_q3_3
+  (subtraction / emoji_pictorial), plus `VocabGated.resolve` and every subtraction hint. 5 mutations on
+  mat_g2_na_q3_8, all DETECTED in the corpus.
 
-  A slot that is not classified, or text not accounted for by the template, is a named finding. Classify in
-  both directions (memory: allowlist checks drift silently).
-- Prototype on 3 lcs from different DNAs, and measure how much rewriting a formatter does after the template.
-  Then roll out. Text added by a formatter after the template is filled is itself a template with slots.
-- Mutation: widen one domain source so a value escapes, and it must be caught. Also add an unclassified slot,
-  which must be caught.
+**Owed: the rollout.** Work down `slot_text_unaccounted_14` (800 (lc, field) families) to 0. The loop for each
+DNA or formatter:
+1. `PYTHONPATH=. .venv/bin/python -m tests.render_snapshot local_only/scratch/<batch>/before.jsonl` BEFORE editing.
+2. Replace each learner-text f-string with `fill(...)`, every slot an `S(value, domain)`. Derive domains from the
+   generator's own objects (`R` from its bounds, `E`/`enum:`/`bank:` from its lists, `value:<key>` for a value
+   another layer drew). Never restate a list in the harness. Text a formatter wraps around a DNA stem uses domain
+   `"fill"`. A post-fill transformation goes through `slots.TRANSFORMS` (add it there, once).
+3. `validate_slots --node-ids <the lcs it serves>`: the field disappears from (a). Any new (c)/(d) finding is either
+   a wrong domain (fix the domain) or a real escape (leave it; it is content, ruling 23), and you say which.
+4. `render_snapshot --diff before after` must read `0 changed`. Anything else means the edit changed content:
+   revert it.
+5. If a DNA or formatter you instrumented hosts an existing mutation's anchor, re-run that mutation with
+   `--only`.
+
+Prioritize by learner volume: the student-path formatters (`mcq`, `true_false`, `cloze`, `error_detect`) and the
+DNAs that rebuild stems. The 14 escapes are a real defect (fmt_emoji_pictorial's `_EMOJI_NAMES.get(emoji,
+"item")`): do not "fix" the domain to admit "items". Named limits are in the §14 contract row; limit 6 (findings
+name a field, not the source line) is the cost each rollout session pays in searching.
+
+The original brief is preserved in git history (`87b23669`).
 
 ### H4: stem review gate (ruling 24, LLM half)
 
@@ -373,7 +409,7 @@ Do not start them in a Phase 2 session.
   - `.claude/worktrees/agent-aaac714fac3fe0cc6`.
 
   Name what you find in these areas; do not fix it.
-- **Stop** at any content judgment or design question that MATATAG and rulings 1–29 do not settle.
+- **Stop** at any content judgment or design question that MATATAG and rulings 1–34 do not settle.
 
 ---
 
