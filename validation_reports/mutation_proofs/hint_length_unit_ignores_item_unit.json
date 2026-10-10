@@ -5,16 +5,16 @@
  "baseline_exit": 0,
  "baseline_markers_already_present": [],
  "baseline_must_not_contain": [
-  "test_no_served_hint_contradicts_its_item[mat_g2_mg_q2_0] && failed"
+  "FAIL hint_contract_unit"
  ],
  "command": [
-  "pytest",
-  "tests/unit/test_hint_contract.py::test_no_served_hint_contradicts_its_item[mat_g2_mg_q2_0]",
-  "-q"
+  "backend.app.practice_gen.validation.validate_hint_contract",
+  "--node-ids",
+  "mat_g2_mg_q2_0"
  ],
- "definition_digest": "8da6cda7acdd29334a16946a8e496e6cec1440c80cd480fe4144bcdb21ba3efd",
+ "definition_digest": "e9999dd6dc53acf786943590b847b1a233ddd78c6a10b40104c64f64efb1be7d",
  "detected": true,
- "diagnostic_line": "exit 1 — =================================== FAILURES ===================================",
+ "diagnostic_line": "exit 1 — FAIL hint_contract_unit (1):",
  "environment": {
   "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
   "machine": "x86_64",
@@ -23,26 +23,24 @@
   "system": "Darwin"
  },
  "expect_output_contains": [
-  "test_no_served_hint_contradicts_its_item[mat_g2_mg_q2_0]",
-  "failed",
-  "[unit]"
+  "FAIL hint_contract_unit (",
+  "mat_g2_mg_q2_0: seed"
  ],
- "expected_check": "§0 hint contract (hint_contract_unit)",
- "finished_at": "2026-10-10T10:25:31+08:00",
- "input_digest": "24205f186fa1c5b3554a77abb9a7750f5854b67882954a78433bca6e4e90eb18",
+ "expected_check": "§16 hint contract (hint_contract_unit)",
+ "finished_at": "2026-10-10T16:04:25+08:00",
+ "input_digest": "8f3acdfb0fb9444128264b00620a7757c87c1fb59c5e51f954c2d1996063d073",
  "mutated_paths": [
   "backend/app/practice_gen/dna/mg/length_measurement.py"
  ],
  "mutation": "hint_length_unit_ignores_item_unit",
  "observed_markers": {
-  "[unit]": true,
-  "failed": true,
-  "test_no_served_hint_contradicts_its_item[mat_g2_mg_q2_0]": true
+  "FAIL hint_contract_unit (": true,
+  "mat_g2_mg_q2_0: seed": true
  },
  "paths_outside_input_set": [],
  "phase1_admissible": true,
  "planted_exit": 1,
  "restored_clean": true,
  "schema_version": 1,
- "started_at": "2026-10-10T10:25:28+08:00"
+ "started_at": "2026-10-10T16:04:23+08:00"
 }

@@ -5,16 +5,16 @@
  "baseline_exit": 0,
  "baseline_markers_already_present": [],
  "baseline_must_not_contain": [
-  "test_no_served_hint_contradicts_its_item[mat_g2_na_q3_0] && failed"
+  "FAIL hint_contract_roles"
  ],
  "command": [
-  "pytest",
-  "tests/unit/test_hint_contract.py::test_no_served_hint_contradicts_its_item[mat_g2_na_q3_0]",
-  "-q"
+  "backend.app.practice_gen.validation.validate_hint_contract",
+  "--node-ids",
+  "mat_g2_na_q3_0"
  ],
- "definition_digest": "020f017cf125c5c82a455c7d8ecf6a4d02a7d2e95dbaec9a30a799e7a01adf25",
+ "definition_digest": "d67d5f0e8c06f8a627e3a06041e138785d0d2da640efd0eff1f0645940fefa4a",
  "detected": true,
- "diagnostic_line": "exit 1 — =================================== FAILURES ===================================",
+ "diagnostic_line": "exit 1 — FAIL hint_contract_roles (1):",
  "environment": {
   "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
   "machine": "x86_64",
@@ -23,26 +23,24 @@
   "system": "Darwin"
  },
  "expect_output_contains": [
-  "test_no_served_hint_contradicts_its_item[mat_g2_na_q3_0]",
-  "failed",
-  "[roles]"
+  "FAIL hint_contract_roles (",
+  "mat_g2_na_q3_0: seed"
  ],
- "expected_check": "§0 hint contract (hint_contract_roles)",
- "finished_at": "2026-10-10T10:25:13+08:00",
- "input_digest": "24205f186fa1c5b3554a77abb9a7750f5854b67882954a78433bca6e4e90eb18",
+ "expected_check": "§16 hint contract (hint_contract_roles)",
+ "finished_at": "2026-10-10T16:04:09+08:00",
+ "input_digest": "8f3acdfb0fb9444128264b00620a7757c87c1fb59c5e51f954c2d1996063d073",
  "mutated_paths": [
   "backend/app/practice_gen/formatters/visual/fmt_array_grid.py"
  ],
  "mutation": "array_grid_swaps_group_roles",
  "observed_markers": {
-  "[roles]": true,
-  "failed": true,
-  "test_no_served_hint_contradicts_its_item[mat_g2_na_q3_0]": true
+  "FAIL hint_contract_roles (": true,
+  "mat_g2_na_q3_0: seed": true
  },
  "paths_outside_input_set": [],
  "phase1_admissible": true,
  "planted_exit": 1,
  "restored_clean": true,
  "schema_version": 1,
- "started_at": "2026-10-10T10:25:09+08:00"
+ "started_at": "2026-10-10T16:04:06+08:00"
 }

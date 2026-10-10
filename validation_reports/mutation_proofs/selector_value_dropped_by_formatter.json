@@ -1,0 +1,48 @@
+{
+ "asserts": [
+  "selector_value_unexhibited_15"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "FAIL selector_value_unexhibited_15"
+ ],
+ "command": [
+  "backend.app.practice_gen.validation.validate_composition",
+  "--node-ids",
+  "mat_g1_na_q2_1",
+  "--formatters",
+  "mcq"
+ ],
+ "definition_digest": "2f500184aa43967422437d88281d760a2d38484e6ab7cf3ad7245124b6f11b76",
+ "detected": true,
+ "diagnostic_line": "exit 1 — FAIL selector_value_unexhibited_15 (3):",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "FAIL selector_value_unexhibited_15 (",
+  "skip_by"
+ ],
+ "expected_check": "§15 record (a selected value reaches non-hint learner-read text)",
+ "finished_at": "2026-10-10T16:26:52+08:00",
+ "input_digest": "8f3acdfb0fb9444128264b00620a7757c87c1fb59c5e51f954c2d1996063d073",
+ "mutated_paths": [
+  "backend/app/practice_gen/formatters/textual/fmt_mcq.py"
+ ],
+ "mutation": "selector_value_dropped_by_formatter",
+ "observed_markers": {
+  "FAIL selector_value_unexhibited_15 (": true,
+  "skip_by": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-10-10T16:26:51+08:00"
+}

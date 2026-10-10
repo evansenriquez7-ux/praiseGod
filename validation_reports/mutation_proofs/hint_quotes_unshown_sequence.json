@@ -1,0 +1,48 @@
+{
+ "asserts": [
+  "hint_sequence_unshown_15"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "FAIL hint_sequence_unshown_15"
+ ],
+ "command": [
+  "backend.app.practice_gen.validation.validate_composition",
+  "--node-ids",
+  "mat_g1_na_q2_1",
+  "--formatters",
+  "mcq"
+ ],
+ "definition_digest": "5ebeeca8786f3f2105eb44b88938194e75d6abed17d69257518a736f987c6234",
+ "detected": true,
+ "diagnostic_line": "exit 1 — FAIL hint_sequence_unshown_15 (1):",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "FAIL hint_sequence_unshown_15 (",
+  "Look at the list of numbers"
+ ],
+ "expected_check": "§15 stopgap (a hint quotes a run the item does not show)",
+ "finished_at": "2026-10-10T16:26:53+08:00",
+ "input_digest": "8f3acdfb0fb9444128264b00620a7757c87c1fb59c5e51f954c2d1996063d073",
+ "mutated_paths": [
+  "backend/app/practice_gen/formatters/textual/fmt_mcq.py"
+ ],
+ "mutation": "hint_quotes_unshown_sequence",
+ "observed_markers": {
+  "FAIL hint_sequence_unshown_15 (": true,
+  "Look at the list of numbers": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-10-10T16:26:52+08:00"
+}
