@@ -1,16 +1,16 @@
 # Graph Report - ccmed  (2026-10-10)
 
 ## Corpus Check
-- 1968 files · ~6,887,073 words
+- 1968 files · ~6,887,694 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 6927 nodes · 11186 edges · 503 communities (443 shown, 60 thin omitted)
+- 6927 nodes · 11186 edges · 504 communities (444 shown, 60 thin omitted)
 - Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 183 edges (avg confidence: 0.55)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `7d01a4a2`
+- Built from commit: `71c52098`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -501,6 +501,7 @@
 - [[_COMMUNITY_test_a_gap_in_the_row_ids_is_caught|test_a_gap_in_the_row_ids_is_caught]]
 - [[_COMMUNITY_test_a_contiguous_run_including_two_digits_is_accepted|test_a_contiguous_run_including_two_digits_is_accepted]]
 - [[_COMMUNITY_test_writing_the_state_file_does_not_move_the_input_digest|test_writing_the_state_file_does_not_move_the_input_digest]]
+- [[_COMMUNITY_Tick 22 — 2026-08-22 — the range fix lands, and a third zero-factor path|Tick 22 — 2026-08-22 — the range fix lands, and a third zero-factor path]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `Hardening ledger archive` - 414 edges
@@ -529,7 +530,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (503 total, 60 thin omitted)
+## Communities (504 total, 60 thin omitted)
 
 ### Community 0 - "Community 0"
 Cohesion: 0.12
@@ -945,7 +946,7 @@ Nodes (21): _generate_addition_examples(), _generate_comparing_examples(), _gene
 
 ### Community 103 - "Community 103"
 Cohesion: 0.03
-Nodes (74): 1. Distractor Non-Determinism Fix in `place_value.py`, 1. Fractions answer-key false positive — `mat_g2_na_q4_0`/`_1`/`_2`, 2026-08-13 — length_measurement: the largest FAIL cluster in the tree, 2026-08-13 — The G1 measure items: a visual for the task, and a size model for the units, 2026-08-19 — Unit 3 completion + full `run_all` verification, 2026-08-20 (tick 7) — The harness now runs its own tests, 2026-08-20 (tick 9) — The evidence pipeline was lying, and I had filed verdicts on it, 2026-08-23 — §6G: an attestation must show its work (+66 more)
+Nodes (74): 1. Distractor Non-Determinism Fix in `place_value.py`, 1. Fractions answer-key false positive — `mat_g2_na_q4_0`/`_1`/`_2`, 2026-08-13 — Finishing the pairing fix: the unit, not the floor, 2026-08-13 — length_measurement: the largest FAIL cluster in the tree, 2026-08-13 — "less than N" was parsed as "up to N", 2026-08-19 — Unit 3 completion + full `run_all` verification, 2026-08-23 — §6G: an attestation must show its work, 2026-08-24 — tick 25 — 177 clauses attested; §6F UNATTESTED backlog reduced from 538 to 361 (+66 more)
 
 ### Community 104 - "Community 104"
 Cohesion: 0.08
@@ -1084,8 +1085,8 @@ Cohesion: 0.29
 Nodes (7): Session, Initiates a telemetry tracking session for window defense telemetry., Updates statistics in the telemetry logs database., start_telemetry_session(), update_telemetry_session(), TelemetrySessionStartRequest, TelemetrySessionUpdateRequest
 
 ### Community 138 - "Community 138"
-Cohesion: 0.16
-Nodes (22): collect_findings(), _direct_path_records(), _distinct_from(), exhibit_findings(), main(), _NodeRenders, packet_findings(), Any (+14 more)
+Cohesion: 0.14
+Nodes (26): collect_findings(), _direct_path_records(), _distinct_from(), exhibit_findings(), main(), _NodeRenders, packet_findings(), Any (+18 more)
 
 ### Community 139 - "Community 139"
 Cohesion: 0.33
@@ -1320,8 +1321,8 @@ Cohesion: 0.15
 Nodes (24): react, BalanceScaleInteractive(), BarChartInteractive(), CalendarInteractive(), CategorizeInteractive(), ClockSetInteractive(), ConstraintSatisfactionInteractive(), EmojiPictorialInteractive() (+16 more)
 
 ### Community 221 - "mass_capacity.py"
-Cohesion: 0.11
-Nodes (32): RuntimeError, _assert_clause_selector_coverage(), _assert_provider_variant_coverage(), build(), main(), _matching_variant_evidence(), PacketRefusal, _provider_variants_for() (+24 more)
+Cohesion: 0.12
+Nodes (28): RuntimeError, _assert_clause_selector_coverage(), _assert_provider_variant_coverage(), build(), main(), PacketRefusal, _provider_variants_for(), Any (+20 more)
 
 ### Community 222 - "models.py"
 Cohesion: 0.12
@@ -2048,8 +2049,8 @@ Cohesion: 0.17
 Nodes (11): 2026-07-27 — Track 1: converting judgment debt into enforcement, Bug 1 — my own array_grid alias collided with a pre-existing, differently-scoped alias, Bug 2 — error_detect never handled a non-result blank_target, pre-existing, Correction to the review pass above, Final state (RED, itemised), Fixed, Ground Rule 2 disclosure, Phase C — formatter fabrication — 2026-07-31 (+3 more)
 
 ### Community 426 - "test_a_held_in_progress_row_and_a_released_closed_row_are_both_valid"
-Cohesion: 0.09
-Nodes (21): dependencies, dagre, @dnd-kit/core, @dnd-kit/sortable, @dnd-kit/utilities, localtunnel, lucide-react, react-dom (+13 more)
+Cohesion: 0.18
+Nodes (10): name, private, scripts, build, dev, lint, preview, test (+2 more)
 
 ### Community 427 - "test_a_lock_naming_its_own_row_is_accepted"
 Cohesion: 0.22
@@ -2184,12 +2185,12 @@ Cohesion: 0.29
 Nodes (7): 2026-07-27 (cont.) — closing the reach gaps and re-reviewing the judgment layer, A latent infinite loop, exposed by fixing a dead key, Behavioural matrix restored to green, Blind re-review: what the reviewers caught that the machine could not, Content reaching its stated ceiling, Ground Rule 2 disclosures, Known remaining debt (documented, not hidden)
 
 ### Community 466 - "_combined_interests"
-Cohesion: 0.50
-Nodes (4): 2026-08-28 — D0 (§6H) and the first D1 blind re-review batch, §6H — Attester identity and plurality (the blocker before any Attester campaign), Carried forward, D1 batch 1 — three nodes re-reviewed blind
+Cohesion: 0.18
+Nodes (11): dependencies, dagre, @dnd-kit/core, @dnd-kit/sortable, @dnd-kit/utilities, localtunnel, lucide-react, react-dom (+3 more)
 
 ### Community 467 - "2026-08-20 — §5 worker death: a silent unbounded wait in the last gate"
-Cohesion: 0.50
-Nodes (4): 2026-09-30 — PHASE E W1 checkpoint: 10 stale reviews refreshed on GPT-5.6 Luna medium, Baseline and measured checkpoint, Claims checked against live renders, Dispatches, model identity, and audit
+Cohesion: 0.40
+Nodes (5): 2026-08-20 (tick 9) — The evidence pipeline was lying, and I had filed verdicts on it, The finding the fix bought: invalid banknotes reaching pupils, The lesson, Tick 8's reported defects, re-checked, Two defects, both in the evidence pipeline, both mine
 
 ### Community 469 - "declaration_sync_failures"
 Cohesion: 0.07
@@ -2209,11 +2210,11 @@ Nodes (6): Anti-template checks, Enforcement, PG Pipeline Judgment Guide, The si
 
 ### Community 479 - "2026-08-13 — "less than N" was parsed as "up to N""
 Cohesion: 0.40
-Nodes (5): 2026-08-13 — "less than N" was parsed as "up to N", PROTOCOL 5 CORRECTION — two assertions modified, reported here as required, Root cause, The failing rationales, Verification — operands, across ~1300 items
+Nodes (5): 2026-09-22 — closeout batch: renderer evidence correction, §1M operator doc, batch116, Definition of Done — expected tracked failure, verbatim stage result, Prevalence filing (`batch116`), Re-proof evidence, Source corrections and operator coverage
 
 ### Community 480 - "2026-08-13 — Finishing the pairing fix: the unit, not the floor"
-Cohesion: 0.40
-Nodes (5): 2026-08-13 — Finishing the pairing fix: the unit, not the floor, The failing rationale, The general lesson, worth keeping, Two causes, both mine from the previous tick, Verification
+Cohesion: 0.50
+Nodes (4): 2026-08-13 — The G1 measure items: a visual for the task, and a size model for the units, A regression I introduced and caught by measuring, Defect 1 — the dataless distance item, Defect 2 — object and unit drawn independently
 
 ### Community 482 - "TestLogScaleDeclarations"
 Cohesion: 0.36
@@ -2225,7 +2226,7 @@ Nodes (4): 2026-08-14 — "2-digit by 1-digit" bounds two operands, and only one
 
 ### Community 484 - "2026-09-22 — REVIEW OF THE CLOSEOUT BATCH, and the two copies it could not have found"
 Cohesion: 0.50
-Nodes (4): 2026-09-22 — REVIEW OF THE CLOSEOUT BATCH, and the two copies it could not have found, Chain re-run after the review's two corrections — executed, nothing else running, What it missed, and why the fault is in the PROMPT, not the agent, What the closeout got right, verified by execution rather than by reading its report
+Nodes (4): 2026-08-20 (tick 7) — The harness now runs its own tests, Proved, not assumed, What shipped, Why
 
 ### Community 485 - "2026-09-23 — lossless §5 filing repair, first genuine v2 review, and complete re-proof"
 Cohesion: 0.50
@@ -2234,6 +2235,10 @@ Nodes (4): 2026-09-23 — lossless §5 filing repair, first genuine v2 review, a
 ### Community 486 - "_get_available_formats"
 Cohesion: 0.67
 Nodes (3): _get_available_formats(), get_matatag_nodes(), Return which formats are available for a node: ['mcq'], ['visual'], or ['mcq','v
+
+### Community 503 - "Tick 22 — 2026-08-22 — the range fix lands, and a third zero-factor path"
+Cohesion: 0.50
+Nodes (4): A wrong hypothesis, withdrawn rather than shipped, The sweep, Then reproduced properly, by replaying the matrix's own sweep, Tick 22 — 2026-08-22 — the range fix lands, and a third zero-factor path
 
 ## Knowledge Gaps
 - **2373 isolated node(s):** `graphify`, `PackageDescription`, `Foundation`, `PathKit`, `graphify-mcp` (+2368 more)
@@ -2247,7 +2252,7 @@ _Questions this graph is uniquely positioned to answer:_
   _High betweenness centrality (0.031) - this node is a cross-community bridge._
 - **Why does `FormattedProblem` connect `2026-08-19 — Hardening Unit 3: mutation coverage for §5 and §6` to `Community 131`, `_get_available_formats`, `Community 13`, `Community 14`, `test_attestation_without_samples_cannot_be_checked_and_fails`, `run_all.py`, `test_in_progress_may_not_be_unclaimed`, `CCMed — Adaptive K-12 Mastery Engine`, `Community 50`, `load_matatag_curriculum_endpoint`, `2026-08-14 — "2-digit by 1-digit" bounds two operands, and only one had a key`, `Spine`, `test_a_gap_in_the_row_ids_is_caught`, `Section 5: Grader-contract round-trip`, `_get_available_formats`, `Community 92`, `Any`, `RedisDict`, `_combined_interests`, `TestDifficultyIsARangeNotTwoPoints`, `2026-08-13 — length_measurement: the largest FAIL cluster in the tree`?**
   _High betweenness centrality (0.031) - this node is a cross-community bridge._
-- **Why does `Phase F — full `run_all` verification and three more regressions it caught — 2026-08-02` connect `Community 103` to `Community 36`, `Community 127`, `SKILL.md`, `Community 153`, `SKILL.md`, `generator.py`, `matatag_loader.py`, `fmt_array_grid.py`, `fmt_ordering.py`, `2026-08-12 — Tick C cluster 1c: two repeated-addition competencies bound identically`, `test_semantic_leak_guards.py`, `AuditHarnessError`, `run_audit`, `get_interest_themes`, `generate_params`, `models.py`, `get_node_competency_bounds`, `TestLogScaleDeclarations`, `2026-08-14 — The blank landed on a given, not on the unknown`, `2026-08-12 — Tick C cluster 1: mass/capacity unit axis never bound (6 nodes)`, `RedisDict`, `2026-08-12 — Tick C cluster 1d: array formatters unreachable on the node that names arrays`, `2026-08-13 — The g3_mg_q1 area cluster: four siblings, one unbound key (Tick C)`, `get_engine`, `_gen_g2_na_q1_numbers`, `Ground Rule 2: Spec Corrections & Baseline Fixes`, `2026-08-13 — The tiling word problem had no determinate answer (Tick C)`, `symmetry_slides.py`, `generate_params`, `Anti-Patterns`, `2026-08-20 — §6F: an Attester verdict that nothing enforces is not a check`, `Part 3 — Concrete restructuring of the current docs/`, `2026-08-14 — A stated width is a floor as well as a ceiling`, `2026-08-19 — Hardening Unit 1: restore two weakened tests (deliberate documented red)`, `2026-08-20 (tick 6) — There is no pytest deadlock, and three tests I broke in tick 3`, `_get_available_formats`, `.axis_level_index`, `fmt_ruler_measure.py`, `missing_number.py`, `test_attestation_goes_stale_when_content_drifts`, `test_omission_survives_provenance_but_not_coverage`, `test_6g_is_clean_on_the_real_tree`, `Mutations`, `2026-08-20 — Tick C: `mat_g2_mg_q4_3` content defects fixed at root, and `explain` built`, `get_node_capabilities`, `2026-08-20 (tick 7) — The harness now runs its own tests`, `2026-08-14 — "2-digit by 1-digit" bounds two operands, and only one had a key`, `2026-08-19 — Hardening Unit 3: mutation coverage for §5 and §6`, `_normalize_stem`, `generate_params`, `RuntimeError`, `2026-08-14 — "2-digit by 1-digit" bounds two operands, and only one had a key`, `test_generic_textual_formatter_is_not_a_provider`, `health`, `_combined_interests`, `Part 1 — Extending the pipeline`, `2026-08-23 — the mutation harness could not prove the three checks that make a new grade safe`, `Tick 23 — 2026-08-22 — the contradiction closes, and the Attester's aside was the next bug`, `socratic_chat_exchange`, `socratic_chat_exchange`, `.axis_level_index`, `2026-08-13 — Object-to-unit pairing: the numbers were right, the things were wrong`, `run_audit`, `CCMed — Adaptive K-12 Mastery Engine`, `2026-08-21 (tick 13) — §2B: a node may not advertise a formatter it cannot serve`, `2026-08-20 (tick 4) — An exploitable answer-key pattern across the whole tree, and why it cannot be fixed yet`, `H-04 (first half) — the obligation manifest, and a number that could not be re-derived`, `2026-08-13 — Content no competency asks for, and a metre wearing centimetres`, `2026-08-20 (tick 6) — There is no pytest deadlock, and three tests I broke in tick 3`, `2026-09-10 — Band B: the whole tree re-reviewed blind, and what it actually found`, `2026-08-23 — tick 24 — 90 clauses attested; the medium clauses are where the tree is thinnest`, `validate_grade.py`, `2026-08-13 — "Estimate" was only a word (mat_g3_mg_q1_0)`, `TestLogScaleDeclarations`, `2026-08-20 (tick 8) — A dispatch-only tick: coverage 52 → 127`, `test_bounds_length_is_never_the_discriminator`, `2026-09-23 — REVIEW OF THE PREVALENCE CAMPAIGN: verified genuine, but it broke §0 silently`, `2026-08-14 — "or vice versa" names two directions; the node was bound to one`, `2026-08-21 (tick 13) — §2B: a node may not advertise a formatter it cannot serve`, `answerRoundtrip.test.jsx`, `replenish_question_cache`, `TestDnasGenerateFullSpace`, `fmt_fraction_shade.py`, `2026-07-26 — Audit of the `pgen_hardening.md` / `doc_rem.md` implementations`, `test_attested_capability_is_not_reported_unattested`, `2026-08-20 (tick 4) — An exploitable answer-key pattern across the whole tree, and why it cannot be fixed yet`, `Phase C — formatter fabrication — 2026-07-31`, `fmt_numeric_input.py`, `test_contradicted_entry_is_caught_by_name`, `test_a_closed_row_may_not_still_be_held`, `test_attestation_goes_stale_when_content_drifts`, `2026-08-20 (tick 8) — A dispatch-only tick: coverage 52 → 127`, `test_a_lock_naming_its_own_row_is_accepted`, `_rationale_skeleton`, `2026-09-24 — GPT §5 Luna one-node dispatch filed; queue now 149 v1 reviews (`codex-h06-s5-luna-campaign-2026-09-24`)`, `2026-08-14 — "or vice versa" names two directions; the node was bound to one`, `H-04 — the finite release sweep, executed (2026-09-16)`, `get_engine`, `2026-08-20 — §5 worker death: a silent unbounded wait in the last gate`, `2026-08-20 (tick 8) — A dispatch-only tick: coverage 52 → 127`, `_provided_for_node`, `test_mutation_runner.py`, `2026-08-20 (tick 8) — A dispatch-only tick: coverage 52 → 127`, `TestExperienceIsVaried`, `Tick 21 — 2026-08-22 — the candidate pool was quadratic in a curriculum ceiling`, `Tick 22 — 2026-08-22 — the range fix lands, and a third zero-factor path`, `test_an_open_row_may_not_keep_a_closing_revision`, `test_a_recorded_false_matches_a_rendered_false`, `test_invention_is_caught_by_provenance`, `2026-08-20 — §5 worker death: a silent unbounded wait in the last gate`, `2026-08-20 (tick 6) — There is no pytest deadlock, and three tests I broke in tick 3`, `build_scaffold_sequence`, `_combined_interests`, `2026-08-20 — §5 worker death: a silent unbounded wait in the last gate`, `2026-08-13 — "less than N" was parsed as "up to N"`, `2026-08-13 — Finishing the pairing fix: the unit, not the floor`, `2026-08-14 — "2-digit by 1-digit" bounds two operands, and only one had a key`, `2026-09-22 — REVIEW OF THE CLOSEOUT BATCH, and the two copies it could not have found`, `2026-09-23 — lossless §5 filing repair, first genuine v2 review, and complete re-proof`?**
+- **Why does `Phase F — full `run_all` verification and three more regressions it caught — 2026-08-02` connect `Community 103` to `Community 36`, `Community 127`, `SKILL.md`, `Community 153`, `SKILL.md`, `generator.py`, `matatag_loader.py`, `fmt_array_grid.py`, `fmt_ordering.py`, `2026-08-12 — Tick C cluster 1c: two repeated-addition competencies bound identically`, `test_semantic_leak_guards.py`, `AuditHarnessError`, `run_audit`, `get_interest_themes`, `generate_params`, `models.py`, `get_node_competency_bounds`, `TestLogScaleDeclarations`, `2026-08-14 — The blank landed on a given, not on the unknown`, `2026-08-12 — Tick C cluster 1: mass/capacity unit axis never bound (6 nodes)`, `RedisDict`, `2026-08-12 — Tick C cluster 1d: array formatters unreachable on the node that names arrays`, `2026-08-13 — The g3_mg_q1 area cluster: four siblings, one unbound key (Tick C)`, `get_engine`, `_gen_g2_na_q1_numbers`, `Ground Rule 2: Spec Corrections & Baseline Fixes`, `2026-08-13 — The tiling word problem had no determinate answer (Tick C)`, `symmetry_slides.py`, `generate_params`, `Anti-Patterns`, `2026-08-20 — §6F: an Attester verdict that nothing enforces is not a check`, `Part 3 — Concrete restructuring of the current docs/`, `2026-08-14 — A stated width is a floor as well as a ceiling`, `2026-08-19 — Hardening Unit 1: restore two weakened tests (deliberate documented red)`, `2026-08-20 (tick 6) — There is no pytest deadlock, and three tests I broke in tick 3`, `_get_available_formats`, `.axis_level_index`, `fmt_ruler_measure.py`, `missing_number.py`, `test_attestation_goes_stale_when_content_drifts`, `test_omission_survives_provenance_but_not_coverage`, `test_6g_is_clean_on_the_real_tree`, `Mutations`, `2026-08-20 — Tick C: `mat_g2_mg_q4_3` content defects fixed at root, and `explain` built`, `get_node_capabilities`, `2026-08-20 (tick 7) — The harness now runs its own tests`, `2026-08-14 — "2-digit by 1-digit" bounds two operands, and only one had a key`, `2026-08-19 — Hardening Unit 3: mutation coverage for §5 and §6`, `_normalize_stem`, `generate_params`, `RuntimeError`, `2026-08-14 — "2-digit by 1-digit" bounds two operands, and only one had a key`, `test_generic_textual_formatter_is_not_a_provider`, `health`, `_combined_interests`, `Part 1 — Extending the pipeline`, `2026-08-23 — the mutation harness could not prove the three checks that make a new grade safe`, `Tick 23 — 2026-08-22 — the contradiction closes, and the Attester's aside was the next bug`, `socratic_chat_exchange`, `socratic_chat_exchange`, `.axis_level_index`, `2026-08-13 — Object-to-unit pairing: the numbers were right, the things were wrong`, `run_audit`, `CCMed — Adaptive K-12 Mastery Engine`, `2026-08-21 (tick 13) — §2B: a node may not advertise a formatter it cannot serve`, `2026-08-20 (tick 4) — An exploitable answer-key pattern across the whole tree, and why it cannot be fixed yet`, `H-04 (first half) — the obligation manifest, and a number that could not be re-derived`, `2026-08-13 — Content no competency asks for, and a metre wearing centimetres`, `2026-08-20 (tick 6) — There is no pytest deadlock, and three tests I broke in tick 3`, `2026-09-10 — Band B: the whole tree re-reviewed blind, and what it actually found`, `2026-08-23 — tick 24 — 90 clauses attested; the medium clauses are where the tree is thinnest`, `validate_grade.py`, `2026-08-13 — "Estimate" was only a word (mat_g3_mg_q1_0)`, `TestLogScaleDeclarations`, `2026-08-20 (tick 8) — A dispatch-only tick: coverage 52 → 127`, `test_bounds_length_is_never_the_discriminator`, `2026-09-23 — REVIEW OF THE PREVALENCE CAMPAIGN: verified genuine, but it broke §0 silently`, `2026-08-14 — "or vice versa" names two directions; the node was bound to one`, `2026-08-21 (tick 13) — §2B: a node may not advertise a formatter it cannot serve`, `answerRoundtrip.test.jsx`, `replenish_question_cache`, `TestDnasGenerateFullSpace`, `fmt_fraction_shade.py`, `2026-07-26 — Audit of the `pgen_hardening.md` / `doc_rem.md` implementations`, `test_attested_capability_is_not_reported_unattested`, `2026-08-20 (tick 4) — An exploitable answer-key pattern across the whole tree, and why it cannot be fixed yet`, `Phase C — formatter fabrication — 2026-07-31`, `fmt_numeric_input.py`, `test_contradicted_entry_is_caught_by_name`, `test_a_closed_row_may_not_still_be_held`, `test_attestation_goes_stale_when_content_drifts`, `2026-08-20 (tick 8) — A dispatch-only tick: coverage 52 → 127`, `test_a_lock_naming_its_own_row_is_accepted`, `_rationale_skeleton`, `2026-09-24 — GPT §5 Luna one-node dispatch filed; queue now 149 v1 reviews (`codex-h06-s5-luna-campaign-2026-09-24`)`, `2026-08-14 — "or vice versa" names two directions; the node was bound to one`, `H-04 — the finite release sweep, executed (2026-09-16)`, `get_engine`, `2026-08-20 — §5 worker death: a silent unbounded wait in the last gate`, `2026-08-20 (tick 8) — A dispatch-only tick: coverage 52 → 127`, `_provided_for_node`, `test_mutation_runner.py`, `2026-08-20 (tick 8) — A dispatch-only tick: coverage 52 → 127`, `TestExperienceIsVaried`, `Tick 21 — 2026-08-22 — the candidate pool was quadratic in a curriculum ceiling`, `Tick 22 — 2026-08-22 — the range fix lands, and a third zero-factor path`, `test_an_open_row_may_not_keep_a_closing_revision`, `test_a_recorded_false_matches_a_rendered_false`, `test_invention_is_caught_by_provenance`, `2026-08-20 — §5 worker death: a silent unbounded wait in the last gate`, `2026-08-20 (tick 6) — There is no pytest deadlock, and three tests I broke in tick 3`, `build_scaffold_sequence`, `2026-08-20 — §5 worker death: a silent unbounded wait in the last gate`, `2026-08-13 — "less than N" was parsed as "up to N"`, `2026-08-13 — Finishing the pairing fix: the unit, not the floor`, `2026-08-14 — "2-digit by 1-digit" bounds two operands, and only one had a key`, `2026-09-22 — REVIEW OF THE CLOSEOUT BATCH, and the two copies it could not have found`, `2026-09-23 — lossless §5 filing repair, first genuine v2 review, and complete re-proof`, `Tick 22 — 2026-08-22 — the range fix lands, and a third zero-factor path`?**
   _High betweenness centrality (0.031) - this node is a cross-community bridge._
 - **Are the 2 inferred relationships involving `QuestionContext` (e.g. with `E` and `S`) actually correct?**
   _`QuestionContext` has 2 INFERRED edges - model-reasoned connections that need verification._

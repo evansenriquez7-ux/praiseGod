@@ -6,6 +6,10 @@ of this file.** `CLAUDE_AGENT_PROMPT.md`, `GPT_HANDOFF_PROMPT.md` and `HANDOFF_P
 Their §5–§10 method notes (dispatch template, audit-before-filing, heavy runs, traps) remain correct and are
 cited below. Their state sections, queue sizes and goals are stale; ignore them.
 
+**If you are a fresh session given this file: your task is one batch of the H3 rollout (§4 "H3"). Read §0,
+run Phase 0, claim the lock, instrument one coherent slice of sites, prove it, run the §6 chain once, and leave the
+tree CERTIFIED with §1 and §4 of this file rewritten for the next session.** Do not start H4 or H6.
+
 Trust order: a command you executed > this file > `CLAUDE_AGENT_PROMPT.md` > the dated blocks in
 `docs/phase2_hardening_completion_plan.md`.
 
@@ -17,10 +21,11 @@ generator agents can find and fix every generator error from its output alone. C
   lc, seed and what to build) or 1 (integrity failure) (ruling 27);
 - the tree is CERTIFIED.
 
-Content findings (the 78 CONTRADICTED, 752 judgment, §2L's 420 variant + 61 packet-refusal findings, and §14's 14
-domain escapes, §1J's 423 singular-after-many, §15's 22 composition findings) are the **generators' work queue**. §14's 800 `slot_text_unaccounted_14` findings are content by
-ruling 34 too, but clearing them is the H3 rollout (instrumentation), which IS Phase 2 work.
-They are not a Phase 2 blocker, and you do not fix them.
+Content findings are the **generators' work queue**: the 78 CONTRADICTED, 752 judgment, §2L's 420 variant + 61
+packet-refusal findings, §14's 20 domain escapes, §1J's 423 singular-after-many, and §15's 22 composition
+findings. They are not a Phase 2 blocker, and you do not fix them. The one exception: §14's 794
+`slot_text_unaccounted_14` findings are content by ruling 34 too, but clearing them is the H3 rollout
+(instrumentation, no rendered byte changes), which IS Phase 2 work and is your task.
 
 **Terminology.** The harness calls `mat_g3_dp_q3_4` a "node". `CLAUDE.md` calls it an **lc**, and a node is
 the bundle `mat_g3_dp_q3`. Each lc is judged independently of the other lcs in its node. A **clause** is a fragment
@@ -44,12 +49,17 @@ INTERRUPTED, and re-measures every number it publishes.
    2026-10-08"; 27–36 follow them). Also read rulings 1, 9, 12–16 and 19–22 above them. They still govern what content must
    satisfy.
 4. `validation_reports/HARDENING_EVIDENCE.md`, newest entries first (newest is at the END of the file):
+   - "H5: composition checks a stem review cannot see (§1J mirror, §15, §16) and a §14 hole";
+   - "H3: structured slots (ruling 28) and the §14 field-domain check -- infrastructure and prototype";
    - "H2: run_all exits 0 / 2 / 1 (owner ruling 27), and the three §6F INVALIDs re-anchored";
    - "H1: §2L declared variants must reach the render (ruling 26), and a verdict hole in run_all";
    - "Declared variants that are never exhibited (§2I blind spot), and owner rulings 23–26";
    - "Phase 3: re-attestation of the queue under the ruled instrument";
    - "Phase 2a landed: the ruling-22 attester gate".
 5. `docs/pgen_contract.md` rows for:
+   - §14 (`validate_slots`; its 8 NAMED LIMITS and the H5 amendment) and §15 (`validate_composition`) -- the
+     two checks the rollout feeds;
+   - §16 (the hint contract row, "MOVED 2026-10-10");
    - §2I (line ~28);
    - §1J `count_noun_agreement_1J` (its BLIND SPOTS);
    - the judgment packet allocation (the "126 no-op" MEASURED-NOT-GATED note);
@@ -104,10 +114,10 @@ luck. One copy per conversation; ask the owner to close the others before editin
 - **Floors still hide content** (ruling 31): the §6 Phase 1 floor holds the 5 `draw` gaps (mat_g2_mg_q1_2,
   mat_g3_mg_q1_4, mat_g3_mg_q1_5, mat_g3_mg_q4_0, mat_g3_mg_q4_1), `formatters_reachable` 6,
   `obligation_routes_reachable` 5. A later batch makes them report as content.
-- **Unit-test failures are all integrity** (ruling 30), including 157 live-output sweeps. H5 moves the hint sweep
-  (`test_no_served_hint_contradicts_its_item`, 151 lcs) into a content stage.
-- **The H3 rollout** (see §4 H3): ~800 (lc, field) families are not instrumented, so ruling 24's premise holds
-  only on the three prototype lcs.
+- **Unit-test failures are integrity** (ruling 30). H5 moved the 151-test hint sweep into the content stage
+  §16; the 6 lc-parametrized tests and `test_invariant_holds_across_the_live_tree` are still unit tests.
+- **The H3 rollout** (see §4 H3): 794 (lc, field) families are not instrumented, so ruling 24's premise holds
+  only on the instrumented lcs (H3's prototype plus the counting lcs H5 instrumented).
 - **No cross-process determinism check** (found in H3): `comparing_ordering` iterates a set when it builds
   `distractors`, so 89 of 7,285 renders on mat_g1_na_q1_4, mat_g1_na_q2_0, mat_g2_na_q1_4 and mat_g3_na_q1_6 change
   with `PYTHONHASHSEED`. Every check runs in one process with one hash seed, so none sees it. The defect is
@@ -282,22 +292,44 @@ field-domain check"; contract row §14):
   (subtraction / emoji_pictorial), plus `VocabGated.resolve` and every subtraction hint. 5 mutations on
   mat_g2_na_q3_8, all DETECTED in the corpus.
 
-**Owed: the rollout.** Work down `slot_text_unaccounted_14` (800 (lc, field) families) to 0. The loop for each
+Also landed in H5: slot PROVENANCE (`S(value, domain, src=("key", ...))`, implied by `value:<key>`), read by §15;
+the counting DNA's hints and the counting branches of `fmt_mcq`, `fmt_cloze`, `fmt_number_line` (read stem,
+option key) and `fmt_emoji_pictorial` (so mat_g1_na_q1_0 and mat_g1_na_q2_1 are fully instrumented); and the
+§14 fix that a nested `fill` slot must be produced by ANOTHER fill.
+
+**Owed: the rollout.** Work down `slot_text_unaccounted_14` (794 (lc, field) families) to 0. It will not fit one
+session. **Scope each session to one coherent slice** -- one formatter across every concept it serves, or one DNA
+with the formatter branches its lcs reach -- that you can finish, prove byte-identical and chain in one session.
+Measure the slice first: `validate_slots --node-ids <its lcs>` lists its families, and a finding names the field,
+not the line (limit 6), so find the site with `grep` on the rendered text. Good first slices by volume:
+`fmt_mcq`'s option and stem branches, then `fmt_cloze`, `fmt_true_false`'s non-even/odd statements (46 families
+at `fmt_true_false.py:420`), `fmt_error_detect`, then the `add_join`-style spines in `generators/spines.py`
+(`Spine.render` inflects after filling, so it needs `slots.record(..., renderer=...)` AND its inflection registered in `slots.TRANSFORMS` -- `validate_slots.replay` only replays registered names, and none is registered for spines yet; that is a small design step, so stop and ask if it is not obvious). The loop for each
 DNA or formatter:
 1. `PYTHONPATH=. .venv/bin/python -m tests.render_snapshot local_only/scratch/<batch>/before.jsonl` BEFORE editing.
 2. Replace each learner-text f-string with `fill(...)`, every slot an `S(value, domain)`. Derive domains from the
    generator's own objects (`R` from its bounds, `E`/`enum:`/`bank:` from its lists, `value:<key>` for a value
    another layer drew). Never restate a list in the harness. Text a formatter wraps around a DNA stem uses domain
-   `"fill"`. A post-fill transformation goes through `slots.TRANSFORMS` (add it there, once).
+   `"fill"`. A post-fill transformation goes through `slots.TRANSFORMS` (add it there, once). **Give every slot
+   derived from a structured value its provenance** (`src=("skip_by", "sequence")`); without it §15 reports the
+   value as not exhibited once the lc becomes decidable. Declare only what the slot really derives from: H4's
+   judges review it, and a false `src` hides a real §15 finding (§15 limit 3).
 3. `validate_slots --node-ids <the lcs it serves>`: the field disappears from (a). Any new (c)/(d) finding is either
    a wrong domain (fix the domain) or a real escape (leave it; it is content, ruling 23), and you say which.
 4. `render_snapshot --diff before after` must read `0 changed`. Anything else means the edit changed content:
    revert it.
-5. If a DNA or formatter you instrumented hosts an existing mutation's anchor, re-run that mutation with
-   `--only`.
+5. Run the §8 anchor one-liner after every file you instrument. Instrumenting moves mutation anchors: in H5
+   `hint_counting_backward_subtracts_upward` stopped matching once counting's hints became fills. Re-anchor such a
+   mutation so it plants the SAME defect through the new slots (never delete or weaken it), then re-run every
+   mutation whose plant or command touches a file you changed, one at a time with `--only`.
+6. Re-run `validate_composition --node-ids <the lcs>`: an lc that becomes fully instrumented becomes decidable for
+   §15, and may show real `selector_value_unexhibited_15` findings (content; leave them) or a missing `src`
+   (your bug; fix it).
+7. Rollout instrumentation needs no new check, so it needs no new mutation, but the evidence entry must list the
+   sites instrumented, the before/after `slot_text_unaccounted_14` count, and the snapshot diff.
 
 Prioritize by learner volume: the student-path formatters (`mcq`, `true_false`, `cloze`, `error_detect`) and the
-DNAs that rebuild stems. The 14 escapes are a real defect (fmt_emoji_pictorial's `_EMOJI_NAMES.get(emoji,
+DNAs that rebuild stems. The 20 escapes are a real defect (fmt_emoji_pictorial's `_EMOJI_NAMES.get(emoji,
 "item")`): do not "fix" the domain to admit "items". Named limits are in the §14 contract row; limit 6 (findings
 name a field, not the source line) is the cost each rollout session pays in searching.
 
@@ -458,8 +490,8 @@ step run_all .venv/bin/python -m backend.app.practice_gen.validation.run_all
 echo "CHAIN DONE $(date +%H:%M:%S)" >> $L/progress.log
 ```
 
-Measured durations in H1: regen + benchmark + frontend under 1 min, corpus about 63 min (211 mutations), each
-shard 24–27 min, run_all about 48 min (its unit_tests stage alone is about 24 min), so about 4.5 h in all.
+Measured durations in H5: regen + benchmark + frontend under 1 min, corpus 64 min (225 mutations), each shard
+24–27 min, run_all 40 min (its unit_tests stage about 11 min), so about 4 h 20 min in all.
 The escaped-plant grep's one expected line is the comment at `validate_coverage.py:456`; anything else is a
 plant that escaped.
 
@@ -473,6 +505,13 @@ there is no `MUTATION_IN_FLIGHT` marker, that `tests.mutation_harness.recover_or
 - Expect no INVALID (H2). Any INVALID means a red baseline: run that mutation's own command and find out why.
 - Expect `run_all` EXIT 2 while content findings remain. EXIT 1 is an integrity failure: read the verdict block.
 - Use 6 shards, because `validate_obligations` hard-codes 6.
+- **Traps measured 2026-10-10:**
+  - zsh does not word-split an unquoted `$VAR`, so `git add $FILES` passes one nonexistent path. Write the paths
+    out in the command.
+  - A waiter like `until ! pgrep -f "pytest tests/unit -m"; do sleep 15; done` never exits: the pattern is in the
+    waiter's own command line, so `pgrep -f` always matches the waiter. Four such loops were found sleeping hours
+    later. Wait on a sentinel (`until grep -q "CHAIN DONE" progress.log`) or a pid, never on `pgrep -f` of a
+    string you typed in the same command.
 - When the chain completes:
   1. commit the artifacts by name;
   2. run `tree_state.py --complete`;
@@ -496,4 +535,7 @@ there is no `MUTATION_IN_FLIGHT` marker, that `tests.mutation_harness.recover_or
 
 **A good session** lands one H-batch completely: the check is built, its mutation is DETECTED by name, its
 contract row and NAMED LIMITS are written, and the chain has run once with the tree CERTIFIED. It quotes every
-number from a command run in that session and does not touch generator content. **H1 (2026-10-09) and H2 (2026-10-10) are done; H3 is next, or H5, which does not depend on H3.**
+number from a command run in that session and does not touch generator content. For an H3 rollout session, "lands
+completely" means its slice: every family in the slice instrumented, `render_snapshot` 0 changed, the dev loop and
+chain green. **H1, H2 and H5 are done; H3's infrastructure is done and its rollout is next; then H4 (per lc, as the
+rollout completes each), then H6.**
