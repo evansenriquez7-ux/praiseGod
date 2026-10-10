@@ -1511,6 +1511,24 @@ that points at it break every time the section is refreshed.
 >     as literals; neither is a usable rule on its own.
 > 36. **New H5 hint checks are content stages only** (owner, 2026-10-10). They report by lc and seed
 >     (exit 2) and do not refuse serving; `hint_contract`'s existing dimensions stay enforced at serving.
+> 37. **The H3 rollout may batch many slices under one re-proof chain** (owner, 2026-10-11, asked after
+>     H3-R1). The "one batch, one chain per session" pacing of the handoff brief is lifted for the rollout:
+>     several DNA/formatter slices may be instrumented in one session, each proven byte-identical by
+>     `render_snapshot` and its own dev loop, with ONE chain at the end over all of them.
+> 38. **`format_data.error_label` is metadata** (owner, 2026-10-11). It holds a trap identifier, never
+>     prose (measured: `none` 231 and `unknown_error` 135 over 7,285 renders; nothing in `frontend/src` reads
+>     it), so §1J and §14 class it as a tag, as H3 did for `format_data.context`.
+> 39. **Error-detect carries the misconception's ErrorPattern label** (owner, 2026-10-11). A planted wrong
+>     answer's `error_label` and `analytics.trap_triggered` name the ErrorPattern that produced it (read
+>     from the generator's own `distractors_provenance`), the same code an MCQ option carries as its `trap`;
+>     a distractor no pattern produced stays `unknown_error`. This is a content change (generator analytics),
+>     authorised by the owner inside Phase 2.
+> 40. **Indefinite articles agree with the sound of the next word, by one shared rule, gated** (owner,
+>     2026-10-11). "A art fair" (mat_g2_na_q2_7 seed 17, spine `sub_removes`) is fixed at the source, and every
+>     template that writes "a"/"A" before a slot chooses the article through one helper that decides by
+>     SOUND with a named exception list ("a university", "a USB drive", "a ukulele"; "an ukay-ukay", by
+>     Filipino pronunciation). A §1J content check (exit 2) using the SAME helper reports any disagreement,
+>     proven by a mutation on a clean lc. Fixing the findings is authorised inside Phase 2.
 >
 > **Owner rulings recorded 2026-09-22, binding on the next session:**
 >
