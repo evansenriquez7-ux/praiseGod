@@ -3549,11 +3549,13 @@ MUTATIONS: List[Mutation] = [
             "it from the generator's own noun inventory, never from the next token alone."
         ),
         edits={
+            # Re-anchored in H3-R2: the inflection moved from Spine.render into the shared
+            # render_spine_text (one indent level less); the same defect is planted there.
             "backend/app/practice_gen/dna/base.py": (
-                '                        rf"\\b(1)\\s+{re.escape(plural_str)}\\b",\n'
-                '                        rf"1 {sing_str}",\n',
-                '                        rf"\\b(\\d+)\\s+{re.escape(plural_str)}\\b",\n'
-                '                        rf"\\g<1> {sing_str}",  # planted mutation: any count\n',
+                '                    rf"\\b(1)\\s+{re.escape(plural_str)}\\b",\n'
+                '                    rf"1 {sing_str}",\n',
+                '                    rf"\\b(\\d+)\\s+{re.escape(plural_str)}\\b",\n'
+                '                    rf"\\g<1> {sing_str}",  # planted mutation: any count\n',
             )
         },
         command=["backend.app.practice_gen.validation.validate_language",
@@ -3561,6 +3563,28 @@ MUTATIONS: List[Mutation] = [
         expected_check="§1J mirror (a count of two or more before a declared-singular count noun)",
         expect_output_contains=["FAIL count_noun_singular_after_many_1J (", "mat_g2_na_q2_7: seed"],
         baseline_must_not_contain=["FAIL count_noun_singular_after_many_1J"],
+    ),
+    Mutation(
+        name="indefinite_article_ignores_next_word",
+        asserts=["indefinite_article_1J"],
+        description=(
+            "Let the spine renderer write its template's literal 'A'/'a' whatever the slot "
+            "after it, restoring the defect owner ruling 40 fixed: 'A art fair has 600 "
+            "paintbrushes' (mat_g2_na_q2_7 seed 17, spine sub_removes). The plant is in the "
+            "generator, not in the shared article rule, so §1J's check -- which asks that same "
+            "rule about the rendered text -- must catch it by name."
+        ),
+        edits={
+            "backend/app/practice_gen/dna/base.py": (
+                "    result = _SPINE_ARTICLE.sub(_article, template).format(**values)\n",
+                "    result = template.format(**values)  # planted mutation: article ignores the next word\n",
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_language",
+                 "--node-ids", "mat_g2_na_q2_7"],
+        expected_check="§1J article (an indefinite article agrees with the sound of the next word)",
+        expect_output_contains=["FAIL indefinite_article_1J (", "A art"],
+        baseline_must_not_contain=["FAIL indefinite_article_1J"],
     ),
     Mutation(
         name="pupil_text_field_goes_unlinted",

@@ -14,7 +14,8 @@ text. This module renders each lc on the student path under `slots.capture()` an
   (b) every recorded fill replays: `template.format(**slots)` (or the registered
       transformation it names, called with every recorded slot as a keyword -- `text` and
       any argument such as `fill_blank`'s `value`, H3-R1) reproduces its text -- else
-      `slot_template_mismatch_14`;
+      `slot_template_mismatch_14`. A spine is replayed through `slots.RENDERERS` (its
+      template plus every recorded slot, by the generator's own `render_spine_text`);
   (c) every slot names a domain -- else `slot_unclassified_14` -- that this module can
       resolve -- else `slot_domain_unknown_14`, the one INTEGRITY label here, because the
       harness then cannot judge the slot at all;
@@ -67,7 +68,7 @@ import sys
 from collections import OrderedDict
 from typing import Any, Dict, List, Optional, Tuple
 
-from backend.app.practice_gen.slots import E, R, TRANSFORMS, capture
+from backend.app.practice_gen.slots import E, R, RENDERERS, TRANSFORMS, capture, renderer
 
 ASSERTIONS = (
     "slot_text_unaccounted_14",   # a learner-read field no recorded fill produced
@@ -199,6 +200,9 @@ def replay(fill) -> Optional[str]:
     try:
         if fill.renderer is None:
             again = fill.template.format(**values)
+        elif fill.renderer in RENDERERS:
+            # A template-level renderer (a spine): the generator's own function, by name.
+            again = renderer(fill.renderer)(fill.template, **values)
         elif fill.renderer in TRANSFORMS:
             # Every recorded slot is passed by keyword: `text` (the transformed fill) and any
             # argument the transformation takes, such as `fill_blank`'s `value` (H3-R1).

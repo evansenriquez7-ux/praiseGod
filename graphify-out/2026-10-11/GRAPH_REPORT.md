@@ -1,16 +1,16 @@
 # Graph Report - ccmed  (2026-10-11)
 
 ## Corpus Check
-- 1968 files · ~6,891,167 words
+- 1968 files · ~6,891,448 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 6943 nodes · 11245 edges · 486 communities (436 shown, 50 thin omitted)
+- 6943 nodes · 11245 edges · 485 communities (435 shown, 50 thin omitted)
 - Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 185 edges (avg confidence: 0.55)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `0044f5eb`
+- Built from commit: `2b305ddc`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -467,7 +467,6 @@
 - [[_COMMUNITY_test_omission_survives_provenance_but_not_coverage|test_omission_survives_provenance_but_not_coverage]]
 - [[_COMMUNITY_2026-08-20 — §5 worker death a silent unbounded wait in the last gate|2026-08-20 — §5 worker death: a silent unbounded wait in the last gate]]
 - [[_COMMUNITY_test_writing_the_state_file_does_not_move_the_input_digest|test_writing_the_state_file_does_not_move_the_input_digest]]
-- [[_COMMUNITY_declaration_sync_failures|declaration_sync_failures]]
 - [[_COMMUNITY_answerRoundtrip.test.jsx|answerRoundtrip.test.jsx]]
 - [[_COMMUNITY_2026-08-13 — less than N was parsed as up to N|2026-08-13 — "less than N" was parsed as "up to N"]]
 - [[_COMMUNITY_TestLogScaleDeclarations|TestLogScaleDeclarations]]
@@ -512,7 +511,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (486 total, 50 thin omitted)
+## Communities (485 total, 50 thin omitted)
 
 ### Community 0 - "Community 0"
 Cohesion: 0.12
@@ -880,7 +879,7 @@ Nodes (20): 1. Architecture Overview, 2. Automated CI/CD (GitHub Actions Workflo
 
 ### Community 92 - "Community 92"
 Cohesion: 0.06
-Nodes (59): FormatterNotEligible, A formatter was asked for a combination it is not ELIGIBLE for -- as opposed to, get_node_competency_bounds(), get_node_dnas(), get_node_formatters(), Get competency-specific bounds for a node's difficulty dimensions.          Retu, Return the list of DNA concept names for a node.      Args:         node_id: MAT, Return the union of compatible formatters from all DNAs for a node.      Looks u (+51 more)
+Nodes (60): FormatterNotEligible, A formatter was asked for a combination it is not ELIGIBLE for -- as opposed to, get_node_competency_bounds(), get_node_dnas(), Get competency-specific bounds for a node's difficulty dimensions.          Retu, Return the list of DNA concept names for a node.      Args:         node_id: MAT, Practice Generation — Compatibility & Registry Coverage Validation  Verifies tha, Verify bidirectional coverage between the knowledge graph and NODE_TO_DNA,     a (+52 more)
 
 ### Community 93 - "Community 93"
 Cohesion: 0.11
@@ -915,8 +914,8 @@ Cohesion: 0.25
 Nodes (7): Decisions of sequencing (not curriculum, but binding on agents), Owner Rulings — curriculum decisions an agent may not make alone, R-1 · Patterns stay numerical and alphabetical (2026-09-10), R-2 · "Given orally or in pictures" is a disjunction (2026-09-10), R-3 · `mat_g1_na_q4_6`: written substitutes for oral, pictures ≥ 50% (2026-09-11), R-4 · No routing bias: uniform choice across allowed combinations (2026-09-11), R-5 · `requires_ignore` is human-authored ground truth (2026-09-11)
 
 ### Community 101 - "Community 101"
-Cohesion: 0.16
-Nodes (14): get_dnas_for_formatter(), Return all DNA concept names that support a given formatter.      Performs a rev, derive_count_independently(), enumerate_obligations(), Obligation, The student-path obligation manifest (plan step 0B, `H-04`).  WHAT AN OBLIGATION, Each variant's values that production can actually select here, in a stable orde, Every reachable (node, DNA, formatter, discrete assignment), and every rejection (+6 more)
+Cohesion: 0.12
+Nodes (19): get_dnas_for_formatter(), Return all DNA concept names that support a given formatter.      Performs a rev, get_node_formatters(), Return the union of compatible formatters from all DNAs for a node.      Looks u, derive_count_independently(), enumerate_obligations(), Obligation, The student-path obligation manifest (plan step 0B, `H-04`).  WHAT AN OBLIGATION (+11 more)
 
 ### Community 102 - "Community 102"
 Cohesion: 0.09
@@ -924,7 +923,7 @@ Nodes (29): _generate_addition_examples(), _generate_comparing_examples(), _gene
 
 ### Community 103 - "Community 103"
 Cohesion: 0.03
-Nodes (68): 1. Distractor Non-Determinism Fix in `place_value.py`, 1. Fractions answer-key false positive — `mat_g2_na_q4_0`/`_1`/`_2`, 2026-08-13 — The G1 measure items: a visual for the task, and a size model for the units, 2026-08-19 — Unit 3 completion + full `run_all` verification, 2026-08-20 (tick 6) — There is no pytest deadlock, and three tests I broke in tick 3, 2026-08-20 (tick 7) — The harness now runs its own tests, 2026-08-20 (tick 8) — A dispatch-only tick: coverage 52 → 127, 2026-08-23 — §6G: an attestation must show its work (+60 more)
+Nodes (68): 1. Distractor Non-Determinism Fix in `place_value.py`, 1. Fractions answer-key false positive — `mat_g2_na_q4_0`/`_1`/`_2`, 2026-08-13 — length_measurement: the largest FAIL cluster in the tree, 2026-08-13 — The G1 measure items: a visual for the task, and a size model for the units, 2026-08-19 — Unit 3 completion + full `run_all` verification, 2026-08-20 (tick 7) — The harness now runs its own tests, 2026-08-20 (tick 8) — A dispatch-only tick: coverage 52 → 127, 2026-08-23 — §6G: an attestation must show its work (+60 more)
 
 ### Community 104 - "Community 104"
 Cohesion: 0.08
@@ -1644,7 +1643,7 @@ Nodes (14): 2026-09-24 — §5 campaign started, and the gate that was punishing
 
 ### Community 308 - "load_matatag_curriculum_endpoint"
 Cohesion: 0.07
-Nodes (20): classification(), compose_for_node(), dropped_formatters(), Medium composition — owner ruling 15 (2026-10-02).  When a MATATAG competency na, The text formatters ruling 15 removes from this node, across all its composed cl, Apply ruling 15 to a node's candidate formatters, preserving order.      Raises, Which list classifies (node, requirement), or None if unclassified., formatter_supports_profile() (+12 more)
+Nodes (21): classification(), compose_for_node(), dropped_formatters(), Medium composition — owner ruling 15 (2026-10-02).  When a MATATAG competency na, The text formatters ruling 15 removes from this node, across all its composed cl, Apply ruling 15 to a node's candidate formatters, preserving order.      Raises, Which list classifies (node, requirement), or None if unclassified., formatter_supports_profile() (+13 more)
 
 ### Community 309 - "_combined_interests"
 Cohesion: 0.11
@@ -2112,7 +2111,7 @@ Nodes (5): A zero factor was reaching students, and §1G's seeds never landed on
 
 ### Community 452 - "2026-08-13 — length_measurement: the largest FAIL cluster in the tree"
 Cohesion: 0.50
-Nodes (4): 2026-08-13 — length_measurement: the largest FAIL cluster in the tree, Three defects, all in the `estimate` branch, Verification, Why this cluster
+Nodes (4): 2026-08-20 (tick 6) — There is no pytest deadlock, and three tests I broke in tick 3, New finding, quantified: the node formatter list advertises what the orchestrator refuses, The "deadlock" was a misdiagnosis, carried for five ticks, Three tests I broke in tick 3, invisible because run_all does not run pytest
 
 ### Community 453 - "2026-08-23 — tick 24 — 90 clauses attested; the medium clauses are where the tree is thinnest"
 Cohesion: 0.50
@@ -2165,10 +2164,6 @@ Nodes (4): 2026-08-20 — §5 worker death: a silent unbounded wait in the last 
 ### Community 467 - "2026-08-20 — §5 worker death: a silent unbounded wait in the last gate"
 Cohesion: 0.40
 Nodes (5): 2026-08-20 (tick 9) — The evidence pipeline was lying, and I had filed verdicts on it, The finding the fix bought: invalid banknotes reaching pupils, The lesson, Tick 8's reported defects, re-checked, Two defects, both in the evidence pipeline, both mine
-
-### Community 469 - "declaration_sync_failures"
-Cohesion: 0.39
-Nodes (7): _formatters(), test_emoji_formatter_range_gate.py ================================== Emoji-base, The auditor's range-filtered supported_formatters must equal the lab     config', test_emoji_dropped_on_grade3_large_range(), test_emoji_dropped_when_range_just_over_100(), test_emoji_offered_on_grade1_small_range(), test_lab_config_and_auditor_agree_on_formatters()
 
 ### Community 476 - "answerRoundtrip.test.jsx"
 Cohesion: 0.33

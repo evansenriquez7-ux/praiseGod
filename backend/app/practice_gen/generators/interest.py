@@ -74,6 +74,29 @@ NEUTRAL_SLOTS: Dict[str, str] = {
 }
 
 
+# ─── Slot pools (structured slots, batch H3-R2, owner ruling 28) ─────────────
+# Every value `get_interest_slots` can return for a slot: each theme's list for it plus the
+# neutral fallback. Derived from the bank at import, never restated, so a spine's interest
+# slot is checked by §14 against exactly what this module can pick.
+def _slot_pool(bank_key: str, slot_key: str) -> tuple:
+    values = [v for data in _INTERESTS.values() for v in (data.get(bank_key) or [])]
+    return tuple(dict.fromkeys(values + [NEUTRAL_SLOTS[slot_key]]))
+
+
+ACTOR_POOL = _slot_pool("actors", "actor")
+OBJECTS_POOL = _slot_pool("objects", "objects")
+PLACE_POOL = _slot_pool("places", "place")
+ITEM1_POOL = _slot_pool("item1", "item1")
+ITEM2_POOL = _slot_pool("item2", "item2")
+
+# The §14 domain id of each interest slot.
+SLOT_DOMAINS: Dict[str, str] = {
+    slot: f"enum:backend.app.practice_gen.generators.interest.{pool}"
+    for slot, pool in (("actor", "ACTOR_POOL"), ("objects", "OBJECTS_POOL"), ("place", "PLACE_POOL"),
+                       ("item1", "ITEM1_POOL"), ("item2", "ITEM2_POOL"))
+}
+
+
 # ---------------------------------------------------------------------------
 # get_grade_appropriate_interests
 # ---------------------------------------------------------------------------

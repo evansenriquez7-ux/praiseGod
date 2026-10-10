@@ -112,6 +112,10 @@ ASSERTIONS = (
     # a different source of truth (the inventory, not the inflection rule) and has its own
     # named limit.
     "count_noun_singular_after_many_1J",
+    # Owner ruling 40 (2026-10-11): an indefinite article that disagrees with the sound of
+    # the word after it ("A art fair"), judged by the generator's own rule
+    # (`dna.base.indefinite_article`), never a second copy of it.
+    "indefinite_article_1J",
 )
 
 # Seeds 1..60 on every node: 9060 student-path samples, measured at ~65s for the whole
@@ -216,7 +220,7 @@ _METADATA_KEYS: Tuple[str, ...] = (
 
 _PUPIL_TEXT_FD_KEYS: Tuple[str, ...] = (
     "prompt", "statement", "cloze_template",
-    "sentence", "error_label", "problem_expression", "actor_name", "time_str",
+    "sentence", "problem_expression", "actor_name", "time_str",
     "direction", "options", "mcq_options", "items",
     # Both found by the unclassified direction on its FIRST full run, 2026-09-21, on
     # `error_detect` routes the 3-seed probe never reached -- which is the direction
@@ -235,6 +239,11 @@ _METADATA_FD_KEYS: Tuple[str, ...] = (
     # no file under frontend/src reads format_data.context. A tag a pupil never sees is
     # metadata; linting it for count/noun agreement checked nothing.
     "context",
+    # error_detect's trap identifier ("none", "unknown_error", or since ruling 39 the
+    # ErrorPattern label such as "ar_off_one_high"). Classified as pupil text until
+    # 2026-10-11 (owner ruling 38): MEASURED over 7,285 renders it took two tag values
+    # ('none' 231, 'unknown_error' 135), and no file under frontend/src reads it.
+    "error_label",
 )
 
 
@@ -418,6 +427,34 @@ def scan_text(text: str) -> Tuple[List[Tuple[int, str, str]], int, int]:
     return violations, unclassified, mirror
 
 
+# An article candidate: "a"/"an" as a whole word, then the next whitespace-delimited token.
+_ARTICLE = re.compile(r"(?<![\w'’-])(a|an|A|An)\s+(\S+)")
+# What may precede a CAPITALISED "A"/"An" for it to be an article: the start of the text or of
+# a sentence, or an opening quote/bracket. Mid-sentence, "A" is a label ("Garden Plot A is",
+# "Segment A and": 75 such uses measured 2026-10-11 over seeds 1-60), not an article.
+_SENTENCE_START = (".", "!", "?", ":", "\"", "“", "‘", "(", "\n")
+
+
+def scan_articles(text: str) -> List[Tuple[str, str, str]]:
+    """(written article, next word, article the shared rule gives) for each disagreement."""
+    from backend.app.practice_gen.dna.base import indefinite_article
+
+    out: List[Tuple[str, str, str]] = []
+    for m in _ARTICLE.finditer(text):
+        written, token = m.group(1), m.group(2)
+        if written[0].isupper():
+            before = text[:m.start()].rstrip(" ")
+            if before and not before.endswith(_SENTENCE_START):
+                continue
+        core = token.lstrip("'\"‘“(")
+        if not core or not core[0].isalnum():
+            continue          # a symbol, a blank or a formula: no word to agree with
+        want = indefinite_article(core)
+        if want != written.lower():
+            out.append((written, core.rstrip(".,;:!?'\"’”)"), want))
+    return out
+
+
 def collect_findings(node_ids: Optional[List[str]] = None) -> Tuple[List[str], Dict[str, int], Dict[str, str], List[str]]:
     """Every (node, seed, field) whose rendered text disagrees with its own count."""
     sys.path.insert(0, str(REPO_ROOT))
@@ -426,6 +463,7 @@ def collect_findings(node_ids: Optional[List[str]] = None) -> Tuple[List[str], D
 
     findings: List[str] = []
     mirror_findings: List[str] = []
+    article_findings: List[str] = []
     lexicon = singular_count_nouns()
     unclassified_seen: Dict[str, str] = {}
     stats = {"samples": 0, "render_failures": 0, "singular_after_many_observed": 0,
@@ -455,6 +493,14 @@ def collect_findings(node_ids: Optional[List[str]] = None) -> Tuple[List[str], D
                 stats["texts_linted"] += 1
                 bad, unclassified, _mirror = scan_text(text)
                 stats["singular_words_unjudged"] += unclassified
+                for written, word, want in scan_articles(text):
+                    article_findings.append(
+                        f"{node_id}: seed {seed} {where} writes '{written} {word}', but the "
+                        f"pipeline's own article rule (dna.base.indefinite_article, by sound) "
+                        f"gives '{want}'. Text: {text[:160]!r}. Reproduce: "
+                        f"PracticeOrchestrator.generate_problem(node_id='{node_id}', "
+                        f"seed={seed}, is_student_path=True)"
+                    )
                 many, unjudged = scan_singular_after_many(text, lexicon)
                 stats["singular_after_many_observed"] += unjudged
                 for count, written, source in many:
@@ -473,6 +519,7 @@ def collect_findings(node_ids: Optional[List[str]] = None) -> Tuple[List[str], D
                         f"Text: {text[:160]!r}"
                     )
     stats["unclassified_fields"] = len(unclassified_seen)
+    stats["article_findings"] = article_findings
     return findings, stats, unclassified_seen, mirror_findings
 
 
@@ -501,6 +548,16 @@ def validate_all(node_ids: Optional[List[str]] = None) -> bool:
     else:
         print(f"  PASS count_noun_singular_after_many_1J: 0 findings against "
               f"{stats['mirror_lexicon']} declared singular count noun(s)")
+    articles = stats["article_findings"]
+    if articles:
+        print(f"  FAIL indefinite_article_1J ({len(articles)}):")
+        for f in articles[:12]:
+            print(f"    - {f}")
+        if len(articles) > 12:
+            print(f"    ... and {len(articles) - 12} more.")
+        ok = False
+    else:
+        print(f"  PASS indefinite_article_1J: 0 findings over {stats['texts_linted']} text(s)")
     print(f"  NOTE: {stats['singular_after_many_observed']} singular-looking word(s) after a "
           f"count of 2 or more observed and NOT judged (known limitation 1: outside the "
           f"generator's declared count nouns, or an open compound)")

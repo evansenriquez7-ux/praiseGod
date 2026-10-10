@@ -189,53 +189,101 @@ class Spine:
     def render(self, slots: Dict[str, Any], values: Dict[str, Any]) -> str:
         """
         Fill template with interest slots and numeric values.
-        
+
         Handles singular/plural automatically:
         - If {objects} is used after a number, it becomes singular when the number is 1
         - E.g., "1 basketballs" -> "1 basketball", "1 water bottles" -> "1 water bottle"
         - "There are 1" -> "There is 1", "1 more steps" -> "1 more step"
 
-        The inflection rule itself lives at module level as `to_singular_phrase` so the
-        §1J agreement lint can apply the SAME rule to the final rendered text instead of
-        carrying a second copy of it. A harness that re-derives a generator rule is a
-        harness that eventually disagrees with the generator about what the rule is.
+        The text is produced by `render_spine_text`, the ONE copy of the fill-and-inflect
+        rule, and recorded as a structured fill (owner rulings 28 and 33; batch H3-R2) whose
+        renderer §14 replays by name. Interest slots carry the pool `get_interest_slots`
+        draws from; a value the DNA generated carries `value:<key>`. The inflection rule
+        lives at module level as `to_singular_phrase`, and the article rule as
+        `indefinite_article`, so §1J judges the final text with the SAME rules.
         """
-        import re
+        import string
 
-        _to_singular_phrase = to_singular_phrase
+        from backend.app.practice_gen.generators.interest import SLOT_DOMAINS
+        from backend.app.practice_gen.slots import S, record
 
         slots_clean = dict(slots)
         if slots_clean.get("objects") in ("baskets", "basket") and "basket" in self.template:
             slots_clean["objects"] = "figs"
         ctx = {**slots_clean, **values}
-        result = self.template.format(**ctx)
-        
-        # 1. Singularize full slot phrases when preceded by 1 or 1 more
-        for slot_key in ("objects", "item1", "item2", "item"):
-            if slot_key in slots and slots[slot_key]:
-                plural_str = str(slots[slot_key])
-                sing_str = _to_singular_phrase(plural_str)
-                if sing_str != plural_str:
-                    result = re.sub(
-                        rf"\b(1)\s+{re.escape(plural_str)}\b",
-                        rf"1 {sing_str}",
-                        result,
-                    )
-        
-        # 2. Match patterns like "1 basketballs", "1 apples", etc.
-        def _singularize_word(match):
-            word = match.group(2)
-            sing = _to_singular_phrase(word)
-            return f"1 {sing}"
-            
-        result = re.sub(r'\b(1)\s+(\w+s)\b', _singularize_word, result)
+        used = list(dict.fromkeys(f for _, f, _, _ in string.Formatter().parse(self.template) if f))
+        fmt = {k: ctx[k] for k in used}       # KeyError for a missing key, as format() raised
+        # The interest phrases the inflection singularises after "1" (the raw slots, as before).
+        inflect = {f"inflect_{k}": str(slots[k]) for k in _SPINE_INFLECT_KEYS if k in slots and slots[k]}
+        text = render_spine_text(self.template, **fmt, **inflect)
 
-        # 3. Fix English agreement for existence copulas and step counts
-        result = re.sub(r'\bThere are 1\b', 'There is 1', result)
-        result = re.sub(r'\bThere were 1\b', 'There was 1', result)
-        result = re.sub(r'\b1 more steps\b', '1 more step', result)
-        
-        return result
+        def _slot(name: str, value: Any) -> S:
+            key = name[len("inflect_"):] if name.startswith("inflect_") else name
+            if not name.startswith("inflect_") and key in values:
+                return S(value, f"value:{key}")
+            return S(value, SLOT_DOMAINS.get(key))
+        return record(self.template, text,
+                      {k: _slot(k, v) for k, v in list(fmt.items()) + list(inflect.items())},
+                      renderer="spine", renderer_ref=self.id)
+
+
+_SPINE_INFLECT_KEYS = ("objects", "item1", "item2", "item")
+_SPINE_ARTICLE = None   # compiled on first use
+
+
+def render_spine_text(template: str, **values: Any) -> str:
+    """
+    A spine's text from its template and slot values: the ONE copy of the rule, called by
+    `Spine.render` and replayed by §14 under the renderer name "spine".
+
+    1. Every "a {slot}" / "A {slot}" takes the article the slot's value needs
+       (`indefinite_article`, owner ruling 40: "an art fair", "an acrylic standee").
+    2. `template.format(**values)`.
+    3. Agreement after "1": each `inflect_<key>` phrase (the interest slot as drawn) and any
+       plain "1 <word>s" are singularised, and "There are 1" / "There were 1" /
+       "1 more steps" are corrected.
+    """
+    import re
+
+    global _SPINE_ARTICLE
+    if _SPINE_ARTICLE is None:
+        _SPINE_ARTICLE = re.compile(r"(?<![\w'’-])(a|an|A|An) \{(\w+)\}")
+    inflect = {k[len("inflect_"):]: values.pop(k) for k in list(values) if k.startswith("inflect_")}
+
+    def _article(m: "re.Match") -> str:
+        art = indefinite_article(str(values[m.group(2)]))
+        if m.group(1)[0].isupper():
+            art = art.capitalize()
+        return f"{art} {{{m.group(2)}}}"
+
+    result = _SPINE_ARTICLE.sub(_article, template).format(**values)
+
+    # 1. Singularize full slot phrases when preceded by 1 or 1 more
+    for slot_key in _SPINE_INFLECT_KEYS:
+        if inflect.get(slot_key):
+            plural_str = str(inflect[slot_key])
+            sing_str = to_singular_phrase(plural_str)
+            if sing_str != plural_str:
+                result = re.sub(
+                    rf"\b(1)\s+{re.escape(plural_str)}\b",
+                    rf"1 {sing_str}",
+                    result,
+                )
+
+    # 2. Match patterns like "1 basketballs", "1 apples", etc.
+    def _singularize_word(match):
+        word = match.group(2)
+        sing = to_singular_phrase(word)
+        return f"1 {sing}"
+
+    result = re.sub(r'\b(1)\s+(\w+s)\b', _singularize_word, result)
+
+    # 3. Fix English agreement for existence copulas and step counts
+    result = re.sub(r'\bThere are 1\b', 'There is 1', result)
+    result = re.sub(r'\bThere were 1\b', 'There was 1', result)
+    result = re.sub(r'\b1 more steps\b', '1 more step', result)
+
+    return result
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -303,6 +351,68 @@ _SINGULAR_IRREGULARS = {
     "brownies": "brownie",
     "smoothies": "smoothie",
 }
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Indefinite article. ONE copy (owner ruling 40, 2026-10-11): every template that writes
+# "a"/"A" before a slot asks this, and §1J's article check judges the rendered text with the
+# SAME function, so the generator and the harness cannot disagree about the rule.
+#
+# The article follows the SOUND of the next word, not its first letter. A vowel letter that
+# is sounded as a consonant takes "a" ("a university", "a ukulele", "a one-peso coin"); a
+# silent "h" takes "an" ("an hour"); an all-capitals initialism is read letter by letter
+# ("a USB drive", "an MRT station"); a numeral is read as its spoken number ("an 8", "an 11",
+# "an 18", "an 80", "an 800", "an 8,000"). "ukay-ukay" is pronounced with the Filipino /u/,
+# so it takes "an" (owner ruling 40). A word this table does not know is judged by its letter.
+_CONSONANT_SOUND_PREFIXES = (
+    "uni", "use", "usu", "uku", "ura", "ure", "uri", "uro", "uti", "ufo", "eu", "ewe",
+    "one", "once",
+)
+_VOWEL_SOUND_PREFIXES = ("hour", "honest", "honor", "honour", "heir")
+_VOWEL_SOUND_LETTERS = set("aefhilmnorsx")   # letter NAMES that start with a vowel sound
+
+
+def _number_takes_an(n: int) -> bool:
+    """True when the spoken number begins with a vowel sound ("eight", "eleven", "eighteen", "eighty")."""
+    while n >= 1000:
+        n //= 1000
+    if n >= 100:
+        return n // 100 == 8
+    return n in (8, 11, 18) or 80 <= n <= 89
+
+
+def indefinite_article(word: str) -> str:
+    """'a' or 'an' for the word (or phrase) that follows it, decided by sound."""
+    token = word.strip().lstrip("'\"‘“(")
+    if not token:
+        raise ValueError("indefinite_article: no word to agree with")
+    if token[0].isdigit():
+        digits = ""
+        for ch in token:
+            if ch.isdigit():
+                digits += ch
+            elif ch == "," and digits:
+                continue
+            else:
+                break
+        return "an" if _number_takes_an(int(digits)) else "a"
+    first = token.split()[0].strip(".,;:!?'\"’”)")
+    letters = "".join(ch for ch in first if ch.isalpha())
+    if (len(letters) >= 2 and letters.isupper()) or len(first) == 1:
+        # An initialism, or a lone letter ("an x", "a B"): read by its letter names.
+        return "an" if letters[:1].lower() in _VOWEL_SOUND_LETTERS else "a"
+    low = first.lower()
+    if low.startswith(_CONSONANT_SOUND_PREFIXES):
+        return "a"
+    if low.startswith(_VOWEL_SOUND_PREFIXES):
+        return "an"
+    return "an" if low[:1] in "aeiou" else "a"
+
+
+def with_article(phrase: str, capitalize: bool = False) -> str:
+    """`phrase` preceded by its indefinite article ("an art fair"); `capitalize` for a sentence start."""
+    art = indefinite_article(phrase)
+    return f"{art.capitalize() if capitalize else art} {phrase}"
 
 
 def count_noun(count: Any, plural: str) -> str:

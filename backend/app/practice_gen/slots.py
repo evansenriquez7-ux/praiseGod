@@ -209,6 +209,23 @@ TRANSFORMS = {
 }
 
 
+# ─── Renderers (one copy each) ───────────────────────────────────────────────
+# Text a generator produces from a TEMPLATE by more than `str.format` (a spine's article
+# choice and its agreement after "1") is recorded with `record(..., renderer=<name>)`. The
+# check replays it as `RENDERERS[name](template, **slots)`, importing the generator's own
+# function by its dotted path, so there is never a harness-side copy (batch H3-R2).
+RENDERERS = {
+    "spine": "backend.app.practice_gen.dna.base.render_spine_text",
+}
+
+
+def renderer(name: str):
+    """The generator function a recorded renderer name refers to."""
+    import importlib
+    module_path, _, attr = RENDERERS[name].rpartition(".")
+    return getattr(importlib.import_module(module_path), attr)
+
+
 def transform(name: str, text: str, /, **args: Any) -> str:
     """
     Apply a registered transformation to a recorded fill's text, recording the result.

@@ -43,9 +43,21 @@ def _pick_actor(seed: int) -> str:
     return _FILIPINO_NAMES[seed % len(_FILIPINO_NAMES)]
 
 
-def _distractor_label(distractor: Any) -> str:
+def _distractor_label(distractor: Any, provenance: Any = None) -> str:
+    """
+    The trap identifier of a planted distractor: the ErrorPattern label that produced it.
+
+    The generator records which pattern produced each distractor VALUE in
+    `QuestionContext.distractors_provenance` (base_generator step h); distractors reach this
+    formatter as bare values, so the label is read from there (owner ruling 39, 2026-10-11).
+    Until then every planted answer was labelled "unknown_error". A value no pattern produced
+    (provenance "base": supplied by the DNA itself) has no misconception to name.
+    """
     if hasattr(distractor, "label"):
         return distractor.label
+    label = (provenance or {}).get(_distractor_value(distractor))
+    if label and label != "base":
+        return label
     return "unknown_error"
 
 
@@ -318,7 +330,7 @@ def format_error_detect(ctx: QuestionContext, rng: random.Random) -> FormattedPr
         if candidates:
             planted_distractor = rng.choice(candidates)
             actors_answer = _distractor_value(planted_distractor)
-            error_label = _distractor_label(planted_distractor)
+            error_label = _distractor_label(planted_distractor, ctx.distractors_provenance)
         else:
             # No usable distractors — force correct (no error)
             has_error = False
@@ -361,15 +373,14 @@ def format_error_detect(ctx: QuestionContext, rng: random.Random) -> FormattedPr
         "correct_value": ctx.correct_answer,
     }
 
-    label_members = (tuple(_distractor_label(d) for d in ctx.distractors) + ("none",))
     format_data = {
         "actor_name": fill("{actor}", actor=ACTOR),
         "problem_expression": problem_text,
         "actors_answer": actors_answer,
         "has_error": has_error,
         "correct_value": ctx.correct_answer,
-        "error_label": fill("{label}", label=S(error_label, E(
-            label_members, "the distractor candidates' labels, or 'none' when no error is planted"))),
+        # A trap identifier, not learner text (owner ruling 38): classed as metadata by §1J/§14.
+        "error_label": error_label,
         "context": context_variant,
     }
 

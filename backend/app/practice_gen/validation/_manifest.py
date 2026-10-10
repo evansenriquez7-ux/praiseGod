@@ -245,6 +245,7 @@ FINDING_CLASS: Dict[str, str] = {
     # -- §1J validate_language -------------------------------------------------------
     "count_noun_agreement_1J": CONTENT,
     "count_noun_singular_after_many_1J": CONTENT,  # the mirror direction (H5)
+    "indefinite_article_1J": CONTENT,  # article agrees with the next word's sound (ruling 40)
     "unclassified_pupil_text_1J": INTEGRITY,     # a payload field the lint does not reach
     # -- §1H validate_matrix (declared) ----------------------------------------------
     "per_node_applicability_1H": INTEGRITY,
