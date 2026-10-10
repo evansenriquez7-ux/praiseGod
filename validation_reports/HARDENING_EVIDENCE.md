@@ -19153,3 +19153,161 @@ NAMED LIMITS (§2L; also in its docstring and contract row):
 NAMED LIMIT (`stage_failure_reaches_verdict`): it covers stages that RETURN False. A stage that prints FAIL
 and returns True (as §2L deliberately does until H2) is not seen; H2's integrity/content classification owns
 that.
+
+## 2026-10-10 — H2: run_all exits 0 / 2 / 1 (owner ruling 27), and the three §6F INVALIDs re-anchored
+
+Author: Claude Opus 5.5 (no LLM judges dispatched this session). Lock claimed `cc225263`; source `36f03396`;
+chain artifacts `64e760d1` (plus `dccc3fb9`, see "Two copies of this session" below). Terminology: "node" ids
+below are lcs. No generator content changed.
+
+### Phase 0 (2026-10-09)
+
+```text
+$ PYTHONPATH=. .venv/bin/python tests/tree_state.py
+PASS tree_state: CERTIFIED          live input digest : 4d314664a4ff03b4
+$ (the §4 queue snippet)
+78 42 33 55
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_exhibit > exhibit_p0.log 2>&1; echo "EXIT $?"
+EXIT 1
+  §2L: 973 declared pair(s) at 8 seeds; 428 recorded, 125 exhibited by render only, 420 not exhibited {'A': 1, 'B': 90, 'D': 291, 'E': 38}; 151 Attester packet(s) built, 61 refusal(s)
+```
+
+Both match the handoff exactly.
+
+### Owner rulings 30-32 (asked this session; recorded verbatim in the plan doc)
+
+The handoff required asking how a failing unit test is classified. Two more design questions came out of the
+measurements. 30: every unit-test failure is integrity for now (157 of 1050 collected tests render live output:
+151 per-lc `test_no_served_hint_contradicts_its_item` and 6 lc-parametrized, plus
+`test_invariant_holds_across_the_live_tree`; H5 moves them into a content stage). 31: H2 changes no floor; the
+floor-hidden findings are a named limit. 32: defects in the filed §5/§6F-§6H records are content.
+
+### What H2 built
+
+- **`_manifest.FINDING_CLASS`**: one row per emittable assertion label, 172 rows (95 content, 77 integrity), with
+  the rule written above it. `run_all` holds it equal to `validate_coverage.harness_assertion_labels()` in both
+  directions (`finding_class_registry_complete`).
+- **Labels are read, not inferred.** `StageLedger.run` tees each stage body's stdout and records every
+  `^  FAIL <identifier>` line (whatever the stage returns). The matrix, which prints
+  `[dna / formatter] check (seed N)` lines instead, records each structured finding's `check`
+  (`validate_matrix.LAST_FAILURES`, new), classified by its §8 family (longest registry key with `key + "_"` as
+  prefix). Printed labels match exactly; `x_2L_typo` is unclassified, not content.
+- **The verdict** (`_classify_verdict`, `_print_verdict`): integrity = ledger failures (crash / not run), phase
+  problems, contract drift, a failed registry, an integrity label, an unclassified label
+  (`finding_label_unclassified`), or a stage that FAILED without reporting a label. Exit 1 if any, else 2 if any
+  content label, else 0.
+- **§6 tagged by emitting function** (`provision_findings_tagged`, `attestation_findings_tagged`): the
+  integrity labels are `capability_provenance_6A` (incl. the `requires` guards), `capability_coverage_6B`,
+  `requires_ignore_locked_6B`, `capability_declarations_in_sync_6`, `capability_phase_boundary_6` and
+  `capability_phase_partition_6`; every content finding carries the rollup `capability_contract`. The Phase 1
+  floor (5) now absorbs content only (`provision_over_floor`). Before, an integrity finding could sit inside the
+  floor once the five `draw` gaps were built.
+- **`validate_capability --node-ids`**: the corpus is scoped by `packet.node_id` (all 766 records: verdict lc ==
+  packet lc, measured). Every record holding an in-scope verdict is kept, so the supersession winner for each in-scope pair is unchanged.
+- **§2L leaves report-only.** Its two labels are content; the stage now FAILs and the run exits 2.
+- **Three print sites printed data in the label position** (§8's printed-label scan skips placeholder sites):
+  `validate_dna` (`FAIL {concept}:` x2) and `validate_interest` (`FAIL {key}:`). Under the runtime parser a DNA
+  defect would have read as an unclassified label (exit 1). Each now prints its registered label first.
+
+### The three §6F INVALIDs (INVALID by construction since 2026-09-16)
+
+Each ran the unscoped module, whose baseline exits 1 on the 78 CONTRADICTED. Re-anchored onto clean lcs
+(0 findings in scope, measured): `contradicted_attestation` -> `--phase 2 --node-ids mat_g3_mg_q1_5` (the only lc
+requiring `draw_line_relationships`); `attestation_drops_options` -> `--phase 2 --node-ids mat_g2_na_q3_8`;
+`attestation_leaks_into_phase1` -> `--phase 1 --node-ids mat_g1_na_q1_0`. The comment on the last one said it
+"CANNOT be scoped to --phase 1"; that was copied from its siblings and was never true of it, since its plant and
+its check are both Phase 1. Dev loop: all three DETECTED, `phase1_admissible: true`, baseline exit 0, and
+`mutation_proof.evaluate` proves `capability_contradicted_6F`, `capability_attestation_options_recorded_6F` and
+`capability_phase_boundary_6`.
+
+### Mutations
+
+| mutation | asserts | plant | caught by |
+|---|---|---|---|
+| `verdict_content_leaks_into_integrity` | `verdict_content_exits_2` | `elif cls == INTEGRITY:` -> `in (INTEGRITY, CONTENT)` | `test_verdict_content_exits_2` (iterates all 95 content labels) |
+| `verdict_integrity_hidden_by_content` | `verdict_integrity_exits_1` | `if integrity:` -> `if integrity and not content:` | `test_verdict_integrity_exits_1` (all 77 integrity labels, each beside a content finding) |
+| `unclassified_label_read_as_content` | `finding_label_unclassified` | `if cls is None:` -> `and False` | `test_an_unclassified_printed_label_is_integrity` |
+| `finding_class_row_removed` | `finding_class_registry_complete` | delete `attester_packet_refused_2L` row | `test_finding_class_registry_complete` |
+| `finding_class_phantom_row` | `finding_class_registry_complete` | add `no_check_emits_this` row | same |
+| `failed_stage_left_out_of_the_verdict` (re-anchored) | `stage_failure_reaches_verdict` | label-less failure reaches no verdict | `TestStageFailureReachesVerdict` |
+| `phase1_stage_escapes_the_network_guard` (re-anchored) | `phase1_hermetic` | unchanged plant, new `with` line | unchanged test |
+
+Dev loop: 42 mutations whose code path changed, run one by one with `--only`; 42/42 DETECTED, escaped-plant grep
+clean.
+
+A mistake of my own, caught before the commit: an edit that rewrote `finding_class` replaced from the function to
+END OF FILE, deleting `DNA_MODULE_MAP`, `KNOWN_FORMATTERS`, `load_dna` and the import-time check from
+`_manifest.py`. The anchor check caught it (`mapped_dna_module_cannot_import` anchor matched 0 times). Restored
+byte-exact from HEAD; the final diff of `_manifest.py` is 261 insertions, 0 deletions.
+
+### Unit suite and chain (on `36f03396`)
+
+```text
+$ PYTHONPATH=. .venv/bin/python -m pytest tests/unit -m "not slow" -q -p no:cacheprovider
+1070 passed, 1 skipped, 2 deselected, 4 warnings in 845.07s (0:14:05)
+$ cat local_only/scratch/h2/chain/progress.log
+END regen EXIT 0 00:23:00 | END benchmark EXIT 0 00:23:19 | END frontend EXIT 0 00:23:32
+END corpus EXIT 0 01:26:39          216/216 mutations detected.  (no INVALID, first time since 2026-09-16)
+escaped-plant grep lines: 1         (the benign validate_coverage.py:456 comment)
+END shard0..shard5 EXIT 0 (01:52, 02:17, 02:43, 03:10, 03:39, 04:07); END verify EXIT 0
+END run_all EXIT 2 04:47:08
+```
+
+run_all, the stage ledger and the verdict:
+
+```text
+  PASS unit_tests (1070 passed, 1 skipped, 2 deselected, 4 warnings in 850.66s (0:14:10))
+  PASS capability_contract (Phase 1: 5 content finding(s), floor 5; no integrity finding)
+  PASS mutation_proof_integrity_8: 216 executed mutation proof(s) verified against the current source/fixture digest
+  PASS assertion_coverage_8: 161/172 harness assertions proven BY EXECUTION (38 discovered in validate_matrix, 134 declared across 17 modules), 11 knowingly unproven (allowlist may only shrink)
+  PASS census: nodes=151 unit_tests=1071 mutations=216 variant_candidates=973
+  scheduled=18 completed=15 failed=3 crashed=0 not_run=0 incomplete=0
+  PASS finding_class_registry_complete: 172 label(s) classified, equal to the §8 inventory
+  INTEGRITY: GREEN (every stage ran to a verdict and no integrity label failed)
+  CONTENT: attester_packet_refused_2L (61), capability_contract (78 CONTRADICTED), judgment_reviews (752), variant_not_exhibited_2L (420)
+ALL TESTS: integrity green, CONTENT FINDINGS REMAIN (exit 2).
+```
+
+`assertion_coverage_8`, red at H1 on the three INVALIDs, is green.
+
+### Content findings named by lc and seed (measured 2026-10-10; the Definition of Done's "a finding the pipeline cannot name by lc and seed" clause)
+
+```text
+§5 judgment_reviews: 751 module findings: 751 name an lc, 0 name a seed (+ run_all's one rollup line, which names neither)
+§6F capability_contract: 78 findings: 78 name an lc, 49 name an lc and a seed
+§2L variant_not_exhibited_2L: 420: all name an lc and a seed
+§2L attester_packet_refused_2L: 61: 61 name an lc, 41 an lc and a seed (the 20 needs_instrumentation refusals are lc-wide)
+§6 Phase 1 (floor-hidden, ruling 31): 5: 5 name an lc, 0 a seed
+```
+
+The seed test is a regex (`seed`/`seeds` followed by a digit, or `_render_sample('lc', N`), so it is approximate.
+Naming every finding by lc, seed and owed build is Phase 2's Exit item, not H2's. The §5 and §6F shortfall is
+retired with those gates in H6; the lc-wide refusals need a rule on what "seed" means for a finding about a
+whole lc, which is not ruled.
+
+### Two copies of this session (2026-10-10)
+
+The chain ran detached (`nohup`). The session that started it (PID 7193) stayed alive after the conversation
+was resumed through Remote Control (PID 18097, later 53310), and a third copy was opened by the VS Code
+extension (`--resume` of the same conversation, PID 52896). The two that were watching the chain both did the
+bookkeeping when it finished: `64e760d1` (chain artifacts) and `dccc3fb9` (the `--complete` write of
+`tree_state.json` and a Graphify manifest), 2 s apart and consistent with each other. The other copy also
+appended its own lc/seed tally to this session's measurement log; the numbers above are from this session's
+own block. The owner killed 7193 (`kill`, then `kill -9`; plain SIGTERM was ignored) and 52896. Verified
+afterwards: only this session remained, and the worktree held nothing but this session's own H-06 line. Named
+because the handoff's detached-chain advice makes it possible: **a detached chain outlives its session, so
+check `ps` for other `claude` processes before resuming one.**
+
+### NAMED LIMITS (also in `_manifest.py`'s comment and the contract's verdict row)
+
+1. The class is per label: a new failure mode folded into an existing label inherits its class unexamined.
+2. Matrix findings are classified by family, so an axis variant shares its family's class.
+3. A harness defect that surfaces as content findings exits 2; only its volume signals it.
+4. The verdict mutations drive a stubbed `run_all`: they prove the control flow, not that each real validator
+   prints its findings under the right label. §8's printed-label scan skips placeholder sites, and three such
+   sites were wrong until H2.
+5. Floors hide the content they tolerate (ruling 31): the §6 Phase 1 floor (5 `draw` gaps),
+   `formatters_reachable` (6), `obligation_routes_reachable` (5).
+6. Content findings are not yet required to name lc and seed (measured above).
+7. `--node-ids` weakens §6G skeleton clustering and §6H plurality to in-scope records; run_all never scopes.
+8. Unit-test failures are all integrity (ruling 30), including the 157 live-output sweeps.

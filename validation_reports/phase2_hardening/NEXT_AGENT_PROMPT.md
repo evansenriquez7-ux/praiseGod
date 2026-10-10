@@ -1,8 +1,8 @@
-# Task prompt: Phase 2 pipeline hardening under owner rulings 23–29 (Claude host)
+# Task prompt: Phase 2 pipeline hardening under owner rulings 23–32 (Claude host)
 
 **Rewritten 2026-10-08 after owner rulings 23–26 redefined Phase 2; rulings 27–29 (2026-10-09) settled its open design questions.
-Updated 2026-10-09 after batch H1 landed: H2 is next. This REPLACES every earlier version of
-this file.** `CLAUDE_AGENT_PROMPT.md`, `GPT_HANDOFF_PROMPT.md` and `HANDOFF_PROMPT.md` beside it are history.
+Updated 2026-10-10 after batch H2 landed: H3 or H5 is next. This REPLACES every earlier version
+of this file.** `CLAUDE_AGENT_PROMPT.md`, `GPT_HANDOFF_PROMPT.md` and `HANDOFF_PROMPT.md` beside it are history.
 Their §5–§10 method notes (dispatch template, audit-before-filing, heavy runs, traps) remain correct and are
 cited below. Their state sections, queue sizes and goals are stale; ignore them.
 
@@ -39,10 +39,11 @@ INTERRUPTED, and re-measures every number it publishes.
    be a no-op", "Duplicated rule copies disagree", "Allowlist checks drift silently", "Mutation must land where
    behaviour changes" and "Proof admissible, not just detected".
 2. This file, completely.
-3. **Owner rulings 23–29** in `docs/phase2_hardening_completion_plan.md`, verbatim (search "rulings recorded
-   2026-10-08"; 27–29 follow them). Also read rulings 1, 9, 12–16 and 19–22 above them. They still govern what content must
+3. **Owner rulings 23–32** in `docs/phase2_hardening_completion_plan.md`, verbatim (search "rulings recorded
+   2026-10-08"; 27–32 follow them). Also read rulings 1, 9, 12–16 and 19–22 above them. They still govern what content must
    satisfy.
 4. `validation_reports/HARDENING_EVIDENCE.md`, newest entries first (newest is at the END of the file):
+   - "H2: run_all exits 0 / 2 / 1 (owner ruling 27), and the three §6F INVALIDs re-anchored";
    - "H1: §2L declared variants must reach the render (ruling 26), and a verdict hole in run_all";
    - "Declared variants that are never exhibited (§2I blind spot), and owner rulings 23–26";
    - "Phase 3: re-attestation of the queue under the ruled instrument";
@@ -53,48 +54,55 @@ INTERRUPTED, and re-measures every number it publishes.
    - the judgment packet allocation (the "126 no-op" MEASURED-NOT-GATED note);
    - `clause_enumeration_22` (its 7 NAMED LIMITS);
    - `stage_ledger_complete`, and `stage_failure_reaches_verdict` beside it;
-   - §2L (`variant_exhibit_2L`; its 7 NAMED LIMITS).
+   - §2L (`variant_exhibit_2L`; its 7 NAMED LIMITS);
+   - the verdict row (`finding_class_registry_complete` ... `verdict_content_exits_2`; its 7 NAMED LIMITS), and the
+     rule written above `_manifest.FINDING_CLASS`.
 6. `CLAUDE_AGENT_PROMPT.md` §7 (heavy runs, the lock), §8 (anchor one-liner), §9 (traps) and §11 (not yours).
 
 ---
 
-## 1. State at handoff (2026-10-09, after H1; re-measure before quoting)
+## 1. State at handoff (2026-10-10, after H2; re-measure before quoting)
 
 ```
-HEAD                local main at the commit that updated this file (after 702588c4, the H-06 release);
-                    worktree clean. Not pushed when written: check `git status -sb` before assuming origin has it
-source              3449378b (H1: f7723703 + the refusal-naming fix); chain artifacts b2550cbb
+HEAD                local main at the commit that updated this file (after the H-06 release); worktree
+                    clean. Not pushed when written: check `git status -sb` before assuming origin has it
+source              36f03396 (H2); chain artifacts 64e760d1 + dccc3fb9 (see "Two copies" in the evidence)
 H-06 lock           RELEASED; claim it (owner line only, numstat 1 1) before any work
-tree_state          CERTIFIED, digest 4d314664a4ff03b4 (211 proofs, 6 shards, benchmark, frontend fresh)
-run_all             2026-10-09 on 3449378b: EXIT 1, scheduled=18 completed=15 failed=3 crashed=0
-                      assertion_coverage_8  the 3 §6F mutations INVALID (their baseline is red)
-                      judgment_reviews_5    752   (content queue; retired as a gate by ruling 25, see H6)
-                      capability_phase2     78 CONTRADICTED over 42 lcs (content queue; see H6)
-                      variant_exhibit_2L    PASS (report-only until H2); prints the §2L queue below
+tree_state          CERTIFIED (216 proofs, 6 shards, benchmark, frontend fresh)
+run_all             2026-10-10 on 36f03396: EXIT 2, scheduled=18 completed=15 failed=3 crashed=0
+                      INTEGRITY GREEN; finding_class_registry_complete 172 labels
+                      CONTENT: variant_not_exhibited_2L 420, attester_packet_refused_2L 61,
+                               judgment_reviews 752, capability_contract 78 (all CONTRADICTED)
 queue snippet (§4)  78 42 33 55  (measured 2026-10-09)
-§2L (H1, landed)    973 declared pairs at 8 seeds: 428 recorded, 125 exhibited by render only, 420 not exhibited
-                    (A clamp 1, B substituted 90, D no-op/alias 291, E default-only 38, R 0);
-                    151 attester packets built, 61 refusals = 20 needs_instrumentation lcs (node-wide)
-                    + 41 capabilities over 28 lcs (provider_variant_stratification_6F)
-unit suite          1049 passed, 1 skipped (fast suite ~24 min)
-mutations           211; corpus 208/211, misses = the 3 §6F INVALIDs only
+§2L                 973 pairs: 428 recorded, 125 by render only, 420 not exhibited (A 1, B 90, D 291, E 38);
+                    151 packets, 61 refusals (unchanged by H2)
+unit suite          1070 passed, 1 skipped (fast suite ~14 min)
+mutations           216; corpus 216/216, NO INVALID (first time since 2026-09-16)
+assertions          161/172 proven by execution, 11 on the shrinking allowlist
 latest attestation  batch440 (next free prefix: batch441)
 ```
 
-Corrections to the previous version of this file, measured 2026-10-09:
-- It said HEAD was "the commit that records rulings 23-26". That commit did not exist; the rulings, the new
-  Definition of Done and the 973/545 entry were uncommitted. H1 committed them as `0c8199b3`.
-- Its "9" needs_instrumentation and "8" stratification-refused counts were inside the CONTRADICTED queue only.
-  Tree-wide the counts are 20 lcs and 28 lcs (41 capabilities).
-- §2's 545 split (277 / 116 / 113 / 38 / 1) was the 2026-10-08 prototype. Its B=116 over-reported: 26 of those
-  record the value in another encoding (`scale_10` as `10`, `square_cm` as `'sq cm'`). §2L's classes above
-  replace it. The census still counts 973 variant candidates. The §4 measure script printed `not exhibited 545` at H1's
-  Phase 0; that script counts "not recorded", and 125 of those 545 change the render, so §2L counts them as exhibited.
+**Before you resume anything detached, run `ps -eo pid,lstart,command | grep claude`.** In H2 the chain ran
+under `nohup` (as §6 advises), the session that started it stayed alive after the conversation was resumed
+elsewhere, and two copies of the same agent did the end-of-chain bookkeeping 2 s apart. It did no harm only by
+luck. One copy per conversation; ask the owner to close the others before editing.
 
-The three §6F INVALIDs exist because a content queue currently sits inside a gate's baseline. Under ruling 23
-that is a pipeline defect: a check cannot be proven while its baseline is red (Mandate 5). The run_all split
-(H2) must give each content check a way to be proven while content debt exists. One way is to plant the mutation
-on an lc whose baseline is clean and require it to be caught by name.
+**What H2 left for later batches** (each written as a named limit in the contract's verdict row):
+- **lc and seed naming is not enforced.** The Definition of Done says a finding the pipeline cannot name by lc
+  and seed blocks harness work. Measured 2026-10-10: §5's 751 findings name an lc but 0 name a seed; §6F 49 of
+  78 name a seed; §2L's 20 needs_instrumentation refusals are lc-wide (no seed); the 5 floor-hidden §6 findings
+  name no seed. §5 and §6F retire in H6; what "seed" means for an lc-wide finding is not ruled (**stop and ask**).
+  This is Phase 2's Exit item, not done.
+- **Floors still hide content** (ruling 31): the §6 Phase 1 floor holds the 5 `draw` gaps (mat_g2_mg_q1_2,
+  mat_g3_mg_q1_4, mat_g3_mg_q1_5, mat_g3_mg_q4_0, mat_g3_mg_q4_1), `formatters_reachable` 6,
+  `obligation_routes_reachable` 5. A later batch makes them report as content.
+- **Unit-test failures are all integrity** (ruling 30), including 157 live-output sweeps. H5 moves the hint sweep
+  (`test_no_served_hint_contradicts_its_item`, 151 lcs) into a content stage.
+
+Corrections to the previous version of this file, measured 2026-10-10:
+- `attestation_leaks_into_phase1` carried the comment "cannot be scoped to --phase 1". That was never true of it:
+  its plant and its check are both Phase 1. It is now scoped `--phase 1 --node-ids mat_g1_na_q1_0`.
+- The fast suite takes ~14 min, not ~24.
 
 ---
 
@@ -131,9 +139,11 @@ Rulings 23–29 are recorded verbatim in the plan doc. In short:
 - 27: `run_all` exits 0 / 2 / 1.
 - 28: structured slots.
 - 29: judges see `CLAUDE.md` by design.
+- 30: a failing unit test is integrity (exit 1), for now.
+- 31: H2 changes no floor; floor-hidden findings are a named limit.
+- 32: defects in the filed §5/§6F-§6H records are content.
 
-Rulings 19–22 stay in force for any attestation still filed under the old gates before H6 retires them.
-Every design choice the earlier draft left to the owner is now ruled. **Stop and ask** for:
+Rulings 19–22 stay in force for any attestation still filed under the old gates before H6 retires them. **Stop and ask** for:
 - any content judgment that MATATAG and rulings 1–29 do not settle;
 - any design question these rulings do not answer;
 - anything in "Not yours" (§5).
@@ -147,8 +157,8 @@ Every design choice the earlier draft left to the owner is now ruled. **Stop and
 | batch | status | what it delivers | blocked by |
 |---|---|---|---|
 | H1 | DONE 2026-10-09 | §2L variant exhibit check; verdict reads failed stages from the ledger | — |
-| **H2** | **next** | `run_all` exits 0 / 2 / 1; every finding classified integrity or content; the 3 §6F INVALIDs re-anchored and DETECTED; §2L leaves report-only | — |
-| H3 | open | structured slots (ruling 28) and the field-domain check | H2 (its findings must land as content, exit 2) |
+| H2 | DONE 2026-10-10 | `run_all` exits 0 / 2 / 1; every finding classified integrity or content; the 3 §6F INVALIDs re-anchored and DETECTED; §2L leaves report-only | — |
+| **H3** | **next (or H5)** | structured slots (ruling 28) and the field-domain check | H2 (its findings must land as content, exit 2) |
 | H4 | open | stem review gate: stem-family packets, blind judges, template+domain freshness | H3 (judges approve domains H3 enforces) |
 | H5 | open | composition checks: selector value survives into the payload, hint/stem agreement, §1J singular-after-many | H2 |
 | H6 | open | retire `judgment_reviews_5` and `capability_phase2` as gates; carry confirmed defects into the content report | H3, H4, H5 each mutation-proven |
@@ -158,16 +168,20 @@ H5 does not depend on H3/H4 and may run before them if a session prefers; H6 mus
 
 Each batch is one `batch` intent and one re-proof chain (§6). Inside a batch, use a dev loop: focused unit
 tests, the validator's own module, and `tests/mutation_harness.py --only <new mutations>`. Run the chain once,
-at the end. Every new check needs four things:
+at the end. Every new check needs five things:
 - a contract row in `docs/pgen_contract.md`, whose § token is a `CONTRACT_CHECKS` key (memory: contract doc
   section signs are scanned);
 - a mutation in `tests/mutation_harness.py` that is caught by name and is Phase-1 admissible;
 - its NAMED LIMITS, written in the docstring, the contract row and the evidence log;
-- no hard-coded lc lists, grades or thresholds tuned to today's tree (Mandate 4).
+- no hard-coded lc lists, grades or thresholds tuned to today's tree (Mandate 4);
+- a row in `_manifest.FINDING_CLASS` for every label it can print, classified by the rule written above that
+  table. Without one, `finding_class_registry_complete` fails (exit 1).
 
-**Content-finding checks report; they do not block integrity.** Until H2 lands, a new check whose baseline is
-red must not be added to a stage that turns `run_all` red. Land H2 first, or land the check in report-only form
-with its mutation proven on a clean lc.
+**Content-finding checks set exit 2, not 1** (H2). A new content check may land with a red baseline: its labels
+are CONTENT, so `run_all` exits 2. Its mutation must still be proven on a baseline that exits 0, so give its
+CLI an lc scope (as `validate_exhibit --node-ids` and `validate_capability --node-ids` have) and plant on a
+clean lc. Print each finding as `  FAIL <label> ...`, with the registered label first: the verdict reads that
+token, and a data value in that position (a concept, an lc id) reads as an unclassified label (exit 1).
 
 ### Phase 0: baseline and lock (always, about 30 min)
 
@@ -177,7 +191,7 @@ with its mutation proven on a clean lc.
    validation_reports/phase2_hardening/hardening_status.json` must read `1 1`. Commit. Then open the intent:
    `PYTHONPATH=. .venv/bin/python tests/tree_state.py --begin batch --session <yours> --note "<batch id>"`.
 3. **Re-measure.** Run both commands below. Expect `78 42 33 55` from the first, and from the second
-   `EXIT 1` plus the summary line `973 declared pair(s) at 8 seeds; 428 recorded, 125 exhibited by render only,
+   `EXIT 1` (the module's own CLI; in `run_all` these are content, exit 2) plus the summary line `973 declared pair(s) at 8 seeds; 428 recorded, 125 exhibited by render only,
    420 not exhibited {'A': 1, 'B': 90, 'D': 291, 'E': 38}; 151 Attester packet(s) built, 61 refusal(s)`
    (deterministic; about 5.5 min). If either moved, explain why before building.
 
@@ -204,59 +218,21 @@ grep "§2L:" exhibit.log
 
 **Landed** as §2L (`validate_exhibit.py`, stage `variant_exhibit_2L`, contract row §2L, evidence entry
 "H1: §2L declared variants must reach the render"). Criterion (b) is "differs from EVERY sibling", not any
-(measured: "any" certifies 8 recorded substitutions). Report-only until H2: H2 must route `variant_not_exhibited_2L`
-and `attester_packet_refused_2L` to exit 2. Also landed: `stage_failure_reaches_verdict` (run_all's verdict
-reads every failed stage from the ledger; `dangling_reference_1M` had been left out). Its NAMED LIMIT is H2's:
-a stage that prints FAIL but returns True (as §2L does now) is not seen. The original brief is preserved in git history (`7a9b211a`).
+(measured: "any" certifies 8 recorded substitutions). It was report-only until H2, which made its two labels content
+(exit 2). Also landed: `stage_failure_reaches_verdict` (run_all's verdict reads every failed stage from the
+ledger; `dangling_reference_1M` had been left out). Its named limit -- a stage that prints FAIL but returns True
+was not seen -- was closed by H2. The original brief is preserved in git history (`7a9b211a`).
 
-### H2: split `run_all` (ruling 23)
+### H2: split `run_all` (ruling 23) -- DONE 2026-10-10
 
-- `run_all` classifies every stage result as one of two verdicts:
-  - **integrity**: every stage ran (`stage_ledger_complete`), every mutation was DETECTED or properly proven,
-    the tree is fresh, and no harness crash;
-  - **content**: every finding by lc, seed and owed build.
-- Exit codes (ruling 27): **1** if integrity fails, whatever the content; else **2** if any content finding
-  exists; else **0**. One command, no flag. Every stage must be classified integrity or content in both
-  directions, so a new stage that is not classified is an integrity failure (memory: allowlist checks drift
-  silently).
-- Every content-guarding mutation must become provable while content debt exists. That ends the "3 §6F INVALID
-  by construction" state. Re-anchor each INVALID mutation onto an lc with a clean baseline, and prove it
-  DETECTED.
-- `CLAUDE.md`'s Definition of Done already states the three codes. When the split lands, delete its "Until the
-  exit-code split lands" sentence, and update the `stage_ledger_complete` and `phase1_hermetic` contract rows,
-  **in the same commit** (Protocol 7).
-- Mutations, each of which must be caught:
-  - a content finding that leaks into the integrity verdict (exit 1 instead of 2);
-  - an integrity failure hidden in the content report (exit 2 instead of 1);
-  - an unclassified stage.
-
-**What H1 measured that H2 must start from (2026-10-09, on `3449378b`):**
-- **Where the verdict lives.** `run_all.py` `run_all()` ends with `all_ok = (unit_ok and dna_ok and … and not
-  failed_stages and not ledger_failures)` and returns 0 or 1 (around line 1236–1255). `failed_stages` is read from
-  the stage ledger; the per-validator `*_ok` flags are older. The ledger has 18 scheduled stages: `unit_tests`,
-  `dna`, `compatibility`, `interest_invariance`, `vocabulary`, `behavioural_matrix`, `capability_phase1`,
-  `count_noun_1J`, `option_degeneracy_1K`, `dangling_reference_1M`, `variant_exhibit_2L`, `render_contract_9`,
-  `grading_contract_10`, `assertion_coverage_8`, `obligation_manifest_11`, `census_7` (phase 1) and
-  `judgment_reviews_5`, `capability_phase2` (phase 2).
-- **Stages mix the two kinds.** A content check stage can also fail for an integrity reason (a crash, a stale
-  artifact, a floor), and `unit_tests` holds both harness tests and tree-wide content tests such as
-  `test_hint_contract.py`. So classify at the level of the **finding label** each stage prints (`FAIL <label>` /
-  `REPORT <label>`), keep a registry of labels → integrity | content, and fail integrity on any label the registry
-  does not name, in both directions. Ruling 27 and `CLAUDE.md` define integrity: a stage crashed or never ran, a
-  mutation SURVIVED or is INVALID, or the tree is stale. How to classify a failing *unit test* is not settled by
-  any ruling. Propose a rule, measure it, and **stop and ask** the owner before landing it.
-- **`stage_failure_reaches_verdict`'s NAMED LIMIT is H2's to close.** It sees only stages that return False. §2L
-  prints its findings under `REPORT` and returns True on purpose; under H2 its two labels
-  (`variant_not_exhibited_2L`, `attester_packet_refused_2L`) become content findings that set exit 2, and the
-  `report_only` path in `validate_exhibit.validate_all` goes away. Update §2L's contract row in the same commit.
-- **Why the 3 §6F mutations are INVALID.** All three (`contradicted_attestation`, `attestation_drops_options`,
-  `attestation_leaks_into_phase1`) run the whole module `-m backend.app.practice_gen.validation.validate_capability`,
-  which exits 1 at baseline on the 78 CONTRADICTED. The module's CLI has only `--phase`, no lc scope. A fix is to
-  give it an lc-scoped mode (as `validate_exhibit --node-ids` has), plant on an lc with no CONTRADICTED finding,
-  and require the planted finding by name (markers). Prove each DETECTED and `phase1_admissible` (memory: proof
-  admissible, not just detected), and check `mutation_proof_integrity_8` and `assertion_coverage_8` go green.
-- Expected result once H2 lands on today's tree: `run_all` **exit 2**, not 0. The content findings (752, 78, 420,
-  61) remain, and that is correct.
+**Landed** in `36f03396`, chain `64e760d1`. `run_all` exits 1 on integrity, else 2 on content, else 0,
+classifying every finding by the label that reported it through `_manifest.FINDING_CLASS` (172 rows, held equal to
+the §8 inventory in both directions). The ledger reads each stage's printed `  FAIL <label>` lines whatever it
+returns, which closes H1's limit on `stage_failure_reaches_verdict`; the matrix is read from
+`validate_matrix.LAST_FAILURES`. §6 is tagged by emitting function and its Phase 1 floor absorbs content only.
+`validate_capability --node-ids` exists; the three §6F INVALIDs are DETECTED on clean lcs. §2L is content.
+Owner rulings 30–32 settled unit tests, floors and record defects. Evidence: "H2: run_all exits 0 / 2 / 1".
+The original brief is preserved in git history (`ddc1e120`).
 
 ### H3: field domains and the domain check (ruling 24, deterministic half)
 
@@ -450,8 +426,8 @@ there is no `MUTATION_IN_FLIGHT` marker, that `tests.mutation_harness.recover_or
 `tree_state.py` reports stale.
 
 - Any edit made mid-chain stales the whole chain. Stop, commit, and restart from the benchmark.
-- Until H2 lands, expect exactly 3 INVALID. Any other INVALID means a red baseline: run that mutation's own
-  command and find out why. After H2, expect none.
+- Expect no INVALID (H2). Any INVALID means a red baseline: run that mutation's own command and find out why.
+- Expect `run_all` EXIT 2 while content findings remain. EXIT 1 is an integrity failure: read the verdict block.
 - Use 6 shards, because `validate_obligations` hard-codes 6.
 - When the chain completes:
   1. commit the artifacts by name;
@@ -476,4 +452,4 @@ there is no `MUTATION_IN_FLIGHT` marker, that `tests.mutation_harness.recover_or
 
 **A good session** lands one H-batch completely: the check is built, its mutation is DETECTED by name, its
 contract row and NAMED LIMITS are written, and the chain has run once with the tree CERTIFIED. It quotes every
-number from a command run in that session and does not touch generator content. **H1 is done (2026-10-09); H2 is the next batch.**
+number from a command run in that session and does not touch generator content. **H1 (2026-10-09) and H2 (2026-10-10) are done; H3 is next, or H5, which does not depend on H3.**
