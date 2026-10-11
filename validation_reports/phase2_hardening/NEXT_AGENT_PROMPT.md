@@ -1,507 +1,329 @@
-# Task prompt: Phase 2 pipeline hardening under owner rulings 23–36 (Claude host)
+# Task prompt: Phase 2 pipeline hardening under owner rulings 23–42 (Claude host)
 
-**Rewritten 2026-10-08 after owner rulings 23–26 redefined Phase 2; rulings 27–29 (2026-10-09) settled its open design questions.
-Updated 2026-10-11 after batch H3-R1 (the first H3 rollout slice: subtraction) landed; the H3 rollout continues. This REPLACES every earlier version
-of this file.** `CLAUDE_AGENT_PROMPT.md`, `GPT_HANDOFF_PROMPT.md` and `HANDOFF_PROMPT.md` beside it are history.
-Their §5–§10 method notes (dispatch template, audit-before-filing, heavy runs, traps) remain correct and are
-cited below. Their state sections, queue sizes and goals are stale; ignore them.
+**Rewritten 2026-10-11 after batch H3-R2 finished the H3 rollout. This REPLACES every earlier version of this
+file.** `CLAUDE_AGENT_PROMPT.md`, `GPT_HANDOFF_PROMPT.md` and `HANDOFF_PROMPT.md` beside it are history. Their
+method notes (§7 heavy runs and the lock, §8 anchor one-liner, §9 traps, §11 not yours) remain correct and are
+cited below; their state sections are stale.
 
-**If you are a fresh session given this file: your task is one batch of the H3 rollout (§4 "H3"). Read §0,
-run Phase 0, claim the lock, instrument one coherent slice of sites, prove it, run the §6 chain once, and leave the
-tree CERTIFIED with §1 and §4 of this file rewritten for the next session.** Do not start H4 or H6.
+**If you are a fresh session given this file:** your task is batch **H4-0** (§4): build the type-only-slot count
+that owner ruling 42 requires, prove it, then tighten the type-only slots of as many lcs as you can finish, prove
+the tree byte-identical, run the §6 chain once, and leave the tree CERTIFIED with §1 and §4 of this file rewritten
+for the next session. Do not start H4's LLM review until H4-0 has reached at least one lc, and do not start H6.
 
 Trust order: a command you executed > this file > `CLAUDE_AGENT_PROMPT.md` > the dated blocks in
 `docs/phase2_hardening_completion_plan.md`.
 
-**Goal (ruling 23).** Phase 2 hardens the **testing pipeline**. It does **not** fix the problem generators.
-Phase 2 is done when the pipeline catches every error Phase 1 misses, so that when the whole pipeline runs,
-generator agents can find and fix every generator error from its output alone. Concretely:
+**Goal (ruling 23).** Phase 2 hardens the **testing pipeline**; it does not fix the problem generators. It is done
+when:
 - every check is proven by a mutation that lands on the path it executes (Scaling Mandate 1–2);
-- `run_all` exits 0 (integrity green, no content findings), 2 (integrity green, content findings, each named by
-  lc, seed and what to build) or 1 (integrity failure) (ruling 27);
+- `run_all` exits 0 or 2 (integrity green; ruling 27);
+- every finding is named by lc, seed and owed build;
 - the tree is CERTIFIED.
 
-Content findings are the **generators' work queue**: the 78 CONTRADICTED, 752 judgment, §2L's 420 variant + 61
-packet-refusal findings, §14's 20 domain escapes, §1J's 423 singular-after-many, and §15's 22 composition
-findings. They are not a Phase 2 blocker, and you do not fix them. The one exception: §14's 722
-`slot_text_unaccounted_14` findings are content by ruling 34 too, but clearing them is the H3 rollout
-(instrumentation, no rendered byte changes), which IS Phase 2 work and is your task.
+Content findings are the generators' work queue (listed in §4 "The generator work queue"). You do not fix them,
+unless the owner rules otherwise, as rulings 39–40 did.
 
-**Terminology.** The harness calls `mat_g3_dp_q3_4` a "node". `CLAUDE.md` calls it an **lc**, and a node is
-the bundle `mat_g3_dp_q3`. Each lc is judged independently of the other lcs in its node. A **clause** is a fragment
-of one lc's written competency text (`validate_capability.py` §6A/§6B). This file says "lc"; code and older
-documents say "node". Do not rename code identifiers. That is a large change nobody has ruled on.
-
-This takes several sessions. Each session works one batch (§4), leaves the tree CERTIFIED or honestly
-INTERRUPTED, and re-measures every number it publishes.
+**Terminology.** The harness calls `mat_g3_dp_q3_4` a "node"; `CLAUDE.md` calls it an **lc**. A node is the bundle
+`mat_g3_dp_q3`. A **clause** is a fragment of one lc's competency text. Do not rename code identifiers.
 
 ---
 
 ## 0. Read first
 
-1. `CLAUDE.md` (a symlink to `AGENTS.md`): the Scaling Mandate, the Engineering Protocols, the Content Rules,
-   the **Definition of Done** (already rewritten to ruling 27's three exit codes, ahead of H2's code) and
-   "If you are a judge" (ruling 29). Also read `MEMORY.md`, especially "Declared variant may
-   be a no-op", "Duplicated rule copies disagree", "Allowlist checks drift silently", "Mutation must land where
-   behaviour changes" and "Proof admissible, not just detected".
+1. `CLAUDE.md` (a symlink to `AGENTS.md`): the Scaling Mandate, Engineering Protocols, Content Rules, Definition of
+   Done (ruling 27's three exit codes) and "If you are a judge". Then `MEMORY.md`, especially:
+   - "Duplicated rule copies disagree";
+   - "Allowlist checks drift silently";
+   - "Mutation must land where behaviour changes";
+   - "Proof admissible, not just detected";
+   - "Declared variant may be a no-op".
 2. This file, completely.
-3. **Owner rulings 23–36** in `docs/phase2_hardening_completion_plan.md`, verbatim (search "rulings recorded
-   2026-10-08"; 27–36 follow them). Also read rulings 1, 9, 12–16 and 19–22 above them. They still govern what content must
-   satisfy.
-4. `validation_reports/HARDENING_EVIDENCE.md`, newest entries first (newest is at the END of the file):
-   - "H5: composition checks a stem review cannot see (§1J mirror, §15, §16) and a §14 hole";
-   - "H3: structured slots (ruling 28) and the §14 field-domain check -- infrastructure and prototype";
-   - "H2: run_all exits 0 / 2 / 1 (owner ruling 27), and the three §6F INVALIDs re-anchored";
-   - "H1: §2L declared variants must reach the render (ruling 26), and a verdict hole in run_all";
-   - "Declared variants that are never exhibited (§2I blind spot), and owner rulings 23–26";
-   - "Phase 3: re-attestation of the queue under the ruled instrument";
-   - "Phase 2a landed: the ruling-22 attester gate".
-5. `docs/pgen_contract.md` rows for:
-   - §14 (`validate_slots`; its 8 NAMED LIMITS and the H5 amendment) and §15 (`validate_composition`) -- the
-     two checks the rollout feeds;
-   - §16 (the hint contract row, "MOVED 2026-10-10");
-   - §2I (line ~28);
-   - §1J `count_noun_agreement_1J` (its BLIND SPOTS);
-   - the judgment packet allocation (the "126 no-op" MEASURED-NOT-GATED note);
-   - `clause_enumeration_22` (its 7 NAMED LIMITS);
-   - `stage_ledger_complete`, and `stage_failure_reaches_verdict` beside it;
-   - §2L (`variant_exhibit_2L`; its 7 NAMED LIMITS);
-   - the verdict row (`finding_class_registry_complete` ... `verdict_content_exits_2`; its 7 NAMED LIMITS), and the
-     rule written above `_manifest.FINDING_CLASS`.
-6. `CLAUDE_AGENT_PROMPT.md` §7 (heavy runs, the lock), §8 (anchor one-liner), §9 (traps) and §11 (not yours).
+3. **Owner rulings 23–42** in `docs/phase2_hardening_completion_plan.md`, verbatim (search "rulings recorded
+   2026-10-08"; 27–42 follow). Also rulings 1, 9, 12–16 and 19–22 above them.
+4. `validation_reports/HARDENING_EVIDENCE.md`, newest at the END:
+   - "H3-R2: the H3 rollout completed, value-level provenance (ruling 41), and owner rulings 37-42" (read fully);
+   - "H3-R1: first H3 rollout slice" (its item 4 is corrected in H3-R2);
+   - "H5: composition checks a stem review cannot see";
+   - "H3: structured slots (ruling 28) and the §14 field-domain check";
+   - "H2: run_all exits 0 / 2 / 1";
+   - "H1: §2L declared variants must reach the render".
+5. `docs/pgen_contract.md` rows:
+   - §14 (`validate_slots`: NAMED LIMITS 1–10, the H3-R1 and H3-R2 amendments);
+   - §15 (`validate_composition`: limits 1–8, the H3-R2 amendment);
+   - §1J (the H3-R2 amendment: `indefinite_article_1J`, `error_label` as metadata);
+   - §16 (the hint contract);
+   - §2L;
+   - the verdict row and the rule above `_manifest.FINDING_CLASS`.
+6. `backend/app/practice_gen/slots.py`: the whole module docstring and every function. This is the instrument you
+   will extend: `fill(_src=)`, `S(src=)`, `derived`, `derives`, `computes`, `record`, `bank_fields`, `TRANSFORMS`,
+   `RENDERERS`.
+7. `CLAUDE_AGENT_PROMPT.md` §7, §8, §9, §11.
 
 ---
 
-## 1. State at handoff (2026-10-11, after H3-R1; re-measure before quoting)
+## 1. State at handoff (2026-10-11, after H3-R2; re-measure before quoting)
 
 ```
-HEAD                local main at the commit that updated this file (after the H-06 release); worktree
-                    clean. Not pushed when written: check `git status -sb` before assuming origin has it
-source              5cf14b4c (H3-R1); chain artifacts 788f4235, tree_state 0044f5eb
+HEAD                local main at the commit that updated this file (after the H-06 release); NOT pushed
+                    (check `git status -sb`)
+source              e45915da (H3-R2), checkpoint 5f4738af (rulings 38-40); chain artifacts 035725cc,
+                    tree_state 931213d1
 H-06 lock           RELEASED; claim it (owner line only, numstat 1 1) before any work
-tree_state          CERTIFIED (225 proofs, 6 shards, benchmark, frontend fresh; digest 734b7177880d103e)
-run_all             2026-10-11 on 5cf14b4c: EXIT 2, scheduled=21 completed=15 failed=6 crashed=0
-                      INTEGRITY GREEN; finding_class_registry_complete 181 labels
-                      CONTENT: variant_not_exhibited_2L 420, attester_packet_refused_2L 61,
-                               judgment_reviews 752, capability_contract 78 (all CONTRADICTED),
-                               slot_text_unaccounted_14 722, slot_domain_escape_14 20,
-                               count_noun_singular_after_many_1J 423,
-                               selector_value_unexhibited_15 16, hint_sequence_unshown_15 6
-                      §16 hint contract over the live tree: 0 findings
-queue snippet (§4)  78 42 33 55  (re-measured 2026-10-11)
-§2L                 973 pairs: 428 recorded, 125 by render only, 420 not exhibited; 151 packets, 61 refusals
-                    (re-measured 2026-10-11)
-§14                 742 = 722 unaccounted (rollout queue) + 20 escapes (fmt_emoji_pictorial's "items"
-                    fallback). H3-R1 instrumented subtraction: its 8 lcs went 45 -> 5 families, all spine
-                    stems on mat_g2_na_q2_7
-§15                 1,351 selector matches over 3,020 renders: 140 decided by record, 1,211 undecided
-unit suite          974 passed, 1 skipped (fast suite ~11 min)
-mutations           225; corpus 225/225, NO INVALID
-assertions          170/181 proven by execution, 11 on the shrinking allowlist
-render snapshot     tests/render_snapshot.py: 7,285 renders; H3-R1's baseline local_only/scratch/h3r1/after2.jsonl
+tree_state          CERTIFIED (227 proofs, 6 shards, benchmark, frontend fresh; digest 2fad777fd91972b3)
+run_all             2026-10-11 on e45915da: EXIT 2, scheduled=21 completed=15 failed=6 crashed=0; INTEGRITY GREEN;
+                    finding_class_registry_complete 182 labels; CONTENT: variant_not_exhibited_2L 420,
+                    attester_packet_refused_2L 61, judgment_reviews 752, capability_contract 78,
+                    count_noun_singular_after_many_1J 423, slot_domain_escape_14 26,
+                    selector_value_unexhibited_15 60, hint_sequence_unshown_15 6; §16 0
+§14                 slot_text_unaccounted_14 0 (the rollout is complete); slot_domain_escape_14 26 (all real:
+                    20 `items` fallbacks + 6 Python lists printed into hints)
+                    type-only slots: 63% of slot-fills, 1,233 distinct site/slot pairs (ruling 42's queue)
+§15                 1,351 of 1,351 selector matches decided by record; 60 selector_value_unexhibited_15 (classified
+                    in the H3-R2 evidence) + 6 hint_sequence_unshown_15
+§1J                 indefinite_article_1J 0; count_noun_singular_after_many_1J 423
+render snapshot     tests/render_snapshot.py: 7,285 renders; H3-R2's baseline local_only/scratch/h3r2/s9.jsonl
+                    (gitignored: re-take your own `before` snapshot first)
+unit suite          978 passed, 1 skipped (~11 min)
+mutations           227; corpus 227/227, NO INVALID
 latest attestation  batch440 (next free prefix: batch441)
 ```
 
-**Before you resume anything detached, run `ps -eo pid,lstart,command | grep claude`.** In H2 the chain ran
-under `nohup` (as §6 advises), the session that started it stayed alive after the conversation was resumed
-elsewhere, and two copies of the same agent did the end-of-chain bookkeeping 2 s apart. It did no harm only by
-luck. One copy per conversation; ask the owner to close the others before editing.
+**Before you resume anything detached, run `ps -eo pid,lstart,command | grep claude`**: one copy of the agent per
+conversation.
 
-**What H2, H3 and H5 left for later batches** (each written as a named limit in its contract row):
-- **lc and seed naming is not enforced.** The Definition of Done says a finding the pipeline cannot name by lc
-  and seed blocks harness work. Measured 2026-10-10: §5's 751 findings name an lc but 0 name a seed; §6F 49 of
-  78 name a seed; §2L's 20 needs_instrumentation refusals are lc-wide (no seed); the 5 floor-hidden §6 findings
-  name no seed. §5 and §6F retire in H6; what "seed" means for an lc-wide finding is not ruled (**stop and ask**).
-  This is Phase 2's Exit item, not done. (§14's findings all name lc and seed.)
-- **Floors still hide content** (ruling 31): the §6 Phase 1 floor holds the 5 `draw` gaps (mat_g2_mg_q1_2,
-  mat_g3_mg_q1_4, mat_g3_mg_q1_5, mat_g3_mg_q4_0, mat_g3_mg_q4_1), `formatters_reachable` 6,
-  `obligation_routes_reachable` 5. A later batch makes them report as content.
-- **Unit-test failures are integrity** (ruling 30). H5 moved the 151-test hint sweep into the content stage
-  §16; the 6 lc-parametrized tests and `test_invariant_holds_across_the_live_tree` are still unit tests.
-- **The H3 rollout** (see §4 H3): 722 (lc, field) families are not instrumented, so ruling 24's premise holds
-  only on the instrumented lcs (H3's prototype, the counting lcs H5 instrumented, and H3-R1's subtraction lcs
-  except mat_g2_na_q2_7, whose every render is a spine).
-- **No cross-process determinism check** (found in H3): `comparing_ordering` iterates a set when it builds
-  `distractors`, so 89 of 7,285 renders on mat_g1_na_q1_4, mat_g1_na_q2_0, mat_g2_na_q1_4 and mat_g3_na_q1_6 change
-  with `PYTHONHASHSEED`. Every check runs in one process with one hash seed, so none sees it. The defect is
-  generator work; the missing check is harness work that no batch owns yet (H5 did not take it).
-- **Unowned harness gaps found in H5** (each in the H5 evidence): no check reads code-shaped text in hints
-  (`['peso10', 'peso5', ...]`, `[9, 1, 8]`); `roles` misses "20 items at ₱50 each" hinted as "50 groups of
-  20"; a doubled word ("order word word") passes everything. Stop and ask before building any of them.
-- **§15's record decides 140 of 1,351 selector matches.** The H3 rollout makes the rest decidable; when you
-  instrument a site, give every slot derived from a structured value its `src=` (provenance), or §15 will
-  report the selector value as unexhibited.
+**Rollout tools (H3-R2).** Committed as copies under `validation_reports/phase2_hardening/h3r2_tools/`, and also in
+the gitignored `local_only/scratch/h3r2/`. Promote the ones you reuse into `tests/` inside your own batch: `tests/`
+is a digest input, so moving them changes the proof digest and must happen before your chain.
+- `fstr2fill.py`: f-string to fill converter.
+- `provenance_pass.py`: slot and template provenance by data and control dependence.
+- `upgrade_value.py`: `value:`/`fill` upgrades from observation over seeds 1-40 plus pinned formatters.
+- `wide_check.py`: §14's own `check_slot`/`replay` over the same wide seeds.
+- `fill_audit.py`: static audit of `"fill"` slots.
+- `scoped_snap.py`: byte check for chosen lcs against a full snapshot.
+- `probe.py`: the fills and provenance of one render.
+- `inv.py`, `comp_run.py`, `comp_groups.py`: inventories.
 
-- **Found in H3-R1, not owned by any batch** (each in the H3-R1 evidence): `format_data.error_label` is a tag
-  (`none`/`unknown_error` only, read by nothing in `frontend/src`) that §1J classes as learner text, the same shape
-  as H3's `format_data.context` correction (**stop and ask** before reclassifying); error-detect never records a
-  misconception label (distractors reach it as bare values); "A art fair" (spine `sub_removes`) and no check
-  reads a/an agreement.
-
-Corrections to the previous version of this file, measured 2026-10-10:
-- The H3 brief said "prototype on 3 lcs ... then roll out" as if the rollout fit one batch. It does not: about
-  1,250 learner-text sites author the text (51 spine templates, ~729 DNA f-strings, ~458 formatter sites), and
-  formatters rebuild 43% of stems (1,311 of 3,020 student-path items), so formatter text needs slots as much as
-  DNA text. Spines produce only 9% of items (270 of 3,020).
-- §1J classed `format_data.context` as learner text. It is a tag (six values, read by nothing in
-  `frontend/src`); corrected in `eb3ce6cc`, texts linted 73,875 -> 68,659.
+**Open items no batch owns yet** (named in the evidence; stop and ask before building any):
+- **lc and seed naming** (Exit item): §5's findings name an lc but no seed, and §6F 49 of 78 name a seed. What
+  "seed" means for an lc-wide finding is unruled.
+- **Floors still hide content** (ruling 31): the §6 Phase 1 floor holds 5 `draw` gaps, `formatters_reachable` 6 and
+  `obligation_routes_reachable` 5.
+- **Unit-test failures are integrity** (ruling 30): 6 lc-parametrized tests and
+  `test_invariant_holds_across_the_live_tree`.
+- **No cross-process determinism check:** `comparing_ordering` iterates a set, so 89 of 7,285 renders change with
+  `PYTHONHASHSEED`.
+- **Unowned hint gaps:** a doubled word ("order word word"); `roles` misses "20 items at ₱50 each" hinted as "50 groups
+  of 20". (Code-shaped hints are now §14 escapes.)
 
 ---
 
-## 2. Why the plan changed
+## 2. Rulings in force (verbatim in the plan doc)
 
-- **Per-sample LLM judging could not converge.** The definition of done forced `capability_phase2` and
-  `judgment_reviews_5` to 0, which required fixing content. Every content fix staled reviews and owed a 5-hour
-  chain, and the judges are noisy: 22.4% of verdicts flipped in W2, and 20.0% of moved verdicts disagreed in
-  Phase 3. So Phase 2 had turned into generator repair.
-- **Stems are the better unit for LLM review (ruling 24).** Wording, vocabulary gating, scope and pedagogy live
-  in the stem template and in the domain of each field that fills it. Judging the template once covers every
-  seed, goes stale only when the template or a domain changes, and is far cheaper. What a stem cannot show is
-  deterministic work:
-  - formatter rewraps;
-  - hint/stem agreement;
-  - count-noun agreement;
-  - visuals;
-  - value-dependent defects;
-  - whether a declared variant reaches the render.
-- **A content-guarding check was found unproven (Mandate 3).** §2I proves a declared variant renders without
-  raising. It does not prove the render shows it. 545 of 973 pairs never do: 277 are true no-ops, 116 are
-  substituted, 113 change the render without recording it, 38 cannot be decided and 1 is clamped. Clause
-  coverage judged from declarations is unsound until this is closed (ruling 26).
-
----
-
-## 3. Rulings in force
-
-Rulings 23–36 are recorded verbatim in the plan doc. In short:
 - 23: Phase 2 hardens the pipeline, not the generators.
-- 24: LLM judges review stems plus field domains; deterministic checks do the rest.
-- 25: the per-sample gates are retired once replaced; records are kept.
-- 26: clause coverage is ruled from stems, then proven by an exhibit check.
+- 24: LLM judges review stems plus field domains.
+- 25: the per-sample gates are retired once replaced.
+- 26: clause coverage is ruled from stems, proven by the exhibit check.
 - 27: `run_all` exits 0 / 2 / 1.
 - 28: structured slots.
-- 29: judges see `CLAUDE.md` by design.
-- 30: a failing unit test is integrity (exit 1), for now.
-- 31: H2 changes no floor; floor-hidden findings are a named limit.
-- 32: defects in the filed §5/§6F-§6H records are content.
-- 33: structured slots cover everything the learner reads: stem, options, statements, worked solutions, cloze
-  text and hints.
-- 34: an un-instrumented site is a CONTENT finding (exit 2) that shrinks as the rollout proceeds; the check is
-  proven by mutations on lcs that are already instrumented.
-- 35: a selector's value survives when a non-hint learner-read fill derives from it (slot provenance); a
-  labelled text stopgap covers lcs the record cannot decide yet.
-- 36: new H5 hint checks are content stages only; serving keeps enforcing the existing hint dimensions.
+- 29: judges see `CLAUDE.md`.
+- 30: unit-test failures are integrity.
+- 31: floors unchanged.
+- 32: record defects are content.
+- 33: slots cover everything the learner reads.
+- 34: an un-instrumented site is a shrinking content finding.
+- 35: selector survival by slot provenance.
+- 36: H5 hint checks are content only.
+- 37: many slices may share one chain.
+- 38: `format_data.error_label` is metadata.
+- 39: error-detect names its ErrorPattern.
+- 40: indefinite articles by sound, gated by §1J.
+- 41: §15 closes over value-level provenance (`derives`, `computes`, template `_src`).
+- 42: **H4 approves an lc only after that lc's type-only slots are tightened.**
 
-Rulings 19–22 stay in force for any attestation still filed under the old gates before H6 retires them. **Stop and ask** for:
-- any content judgment that MATATAG and rulings 1–36 do not settle;
-- any design question these rulings do not answer;
-- anything in "Not yours" (§5).
+**Stop and ask** for any content judgment or design question rulings 1–42 and MATATAG do not settle, and for
+anything in "Not yours" (§5).
 
 ---
 
-## 4. Plan: pipeline batches H1–H6
+## 3. What a slot is now (the instrument, in one page)
 
-**What is left to finish Phase 2** (one batch per session, in this order; each ends with the §6 chain):
+- `fill(template, _src=(...), name=S(value, domain, src=(...)))` returns `template.format(...)`. Under
+  `slots.capture()` it records the template, every slot's value, domain and provenance, the call site, and any
+  template provenance.
+- **Domains, strongest first:**
+  - `value:<key>` (equals the generated value);
+  - `E(members, basis)`, `R(lo, hi, basis)`;
+  - `enum:<module.NAME>`, `bank:<module.NAME>:<field>`, `noun:<module.NAME>`;
+  - `fill` (another recorded fill);
+  - `num.derived` / `text.derived` (type only; written by `slots.derived(x)`).
+- **Provenance** (§15, rulings 35 and 41):
+  - slot `src` (the values keys the value derives from);
+  - `_src` (the keys whose test CHOSE the template, true branch only);
+  - `slots.derives(key, src)` (a value chosen because of `src`);
+  - `slots.computes(key, src)` (a value that is a function of `src`).
+  All are the generator's claim. H4's judges review them, and a false one hides a real finding.
+- **Option text:** `formatters/_answer_slots.py` (`answer_text`, `distractor_text`, `member_text`,
+  `correct_option_key`, `distractors_field`).
+- **Banks:** `slots.bank_fields(item, "<module>.<BANK>")`.
+- **Spines:** `Spine.render` -> `dna.base.render_spine_text`, replayed through `slots.RENDERERS["spine"]`.
+- **Articles:** `dna.base.indefinite_article` / `with_article`.
+
+---
+
+## 4. Plan
 
 | batch | status | what it delivers | blocked by |
 |---|---|---|---|
-| H1 | DONE 2026-10-09 | §2L variant exhibit check; verdict reads failed stages from the ledger | — |
-| H2 | DONE 2026-10-10 | `run_all` exits 0 / 2 / 1; every finding classified integrity or content; the 3 §6F INVALIDs re-anchored and DETECTED; §2L leaves report-only | — |
-| **H3** | **IN PROGRESS, next** (infrastructure, §14 check and prototype landed 2026-10-10; counting lcs added in H5; rollout slice 1, subtraction, landed 2026-10-11 as H3-R1; rest of the rollout owed) | structured slots (ruling 28) and the field-domain check | — |
-| H4 | open | stem review gate: stem-family packets, blind judges, template+domain freshness | H3 per lc: an lc's stems may be approved only once its `slot_text_unaccounted_14` count is 0 |
-| H5 | DONE 2026-10-10 | §1J singular-after-many; §15 selector survival (record) + hint-run stopgap; §16 hint contract as a content stage (ruling 30); §14 self-accounting fix | — |
-| H6 | open | retire `judgment_reviews_5` and `capability_phase2` as gates; carry confirmed defects into the content report | H3 (rollout done), H4 |
-| Exit | — | the "Exit" list below holds on one chain | all of the above |
+| H1 | DONE 2026-10-09 | §2L variant exhibit check | — |
+| H2 | DONE 2026-10-10 | `run_all` exits 0 / 2 / 1 | — |
+| H3 | **DONE 2026-10-11** (infrastructure H3; slices H3-R1, H3-R2) | structured slots everywhere; §14 accounting 0 | — |
+| H5 | DONE 2026-10-10 | §1J mirror, §15, §16 | — |
+| **H4-0** | **next** | ruling 42: a count of type-only slots per lc, then tightening lc by lc | — |
+| H4 | open | stem review gate (LLM), per lc once H4-0 has reached it | H4-0 per lc |
+| H6 | open | retire `judgment_reviews_5` and `capability_phase2` as gates | H4 |
+| Exit | — | the Exit list below holds on one chain | all |
 
-The H3 rollout may span several sessions (each session is still one `batch` intent and one chain). H4 can start on lcs
-whose rollout is done. H6 must be last.
+Each batch is one `batch` intent and, under ruling 37, as many slices as you can prove before ONE re-proof chain
+(§6).
 
-Each batch is one `batch` intent and one re-proof chain (§6). Inside a batch, use a dev loop: focused unit
-tests, the validator's own module, and `tests/mutation_harness.py --only <new mutations>`. Run the chain once,
-at the end. Every new check needs five things:
-- a contract row in `docs/pgen_contract.md`, whose § token is a `CONTRACT_CHECKS` key (memory: contract doc
-  section signs are scanned);
-- a mutation in `tests/mutation_harness.py` that is caught by name and is Phase-1 admissible;
-- its NAMED LIMITS, written in the docstring, the contract row and the evidence log;
-- no hard-coded lc lists, grades or thresholds tuned to today's tree (Mandate 4);
-- a row in `_manifest.FINDING_CLASS` for every label it can print, classified by the rule written above that
-  table. Without one, `finding_class_registry_complete` fails (exit 1).
+### Phase 0: baseline and lock (always)
 
-**Content-finding checks set exit 2, not 1** (H2). A new content check may land with a red baseline: its labels
-are CONTENT, so `run_all` exits 2. Its mutation must still be proven on a baseline that exits 0, so give its
-CLI an lc scope (as `validate_exhibit --node-ids` and `validate_capability --node-ids` have) and plant on a
-clean lc. Print each finding as `  FAIL <label> ...`, with the registered label first: the verdict reads that
-token, and a data value in that position (a concept, an lc id) reads as an unclassified label (exit 1).
+1. The `ps` grep is empty, `df -h /System/Volumes/Data` shows space, `tests/tree_state.py` prints CERTIFIED, and the
+   worktree is clean.
+2. Claim H-06: edit only its `owner` line (`git diff --numstat` must read `1 1`), commit, then
+   `PYTHONPATH=. .venv/bin/python tests/tree_state.py --begin batch --session <yours> --note "<batch>"`.
+3. Re-measure, and explain any move before building:
+   - `validate_slots`: expect `slot_text_unaccounted_14` PASS and `slot_domain_escape_14 (26)`;
+   - `validate_composition`: expect 60 + 6, with 1,351 of 1,351 decided;
+   - `validate_language`: expect `indefinite_article_1J` PASS and 423 mirror findings;
+   - the queue snippet from H3-R1's brief (expect `78 42 33 55`).
+4. `PYTHONPATH=. .venv/bin/python -m tests.render_snapshot local_only/scratch/<batch>/before.jsonl` BEFORE any edit.
 
-### Phase 0: baseline and lock (always, about 30 min)
+### H4-0: type-only slots (owner ruling 42)
 
-1. **Heavy-run check** (`CLAUDE_AGENT_PROMPT.md` §7). The `ps` grep must be empty, and `tests/tree_state.py` must
-   print `CERTIFIED` with a clean worktree. Otherwise stop and find out why.
-2. **Claim H-06.** Edit only its `owner` line; `git diff --numstat
-   validation_reports/phase2_hardening/hardening_status.json` must read `1 1`. Commit. Then open the intent:
-   `PYTHONPATH=. .venv/bin/python tests/tree_state.py --begin batch --session <yours> --note "<batch id>"`.
-3. **Re-measure.** Run both commands below. Expect `78 42 33 55` from the first, and from the second
-   `EXIT 1` (the module's own CLI; in `run_all` these are content, exit 2) plus the summary line `973 declared pair(s) at 8 seeds; 428 recorded, 125 exhibited by render only,
-   420 not exhibited {'A': 1, 'B': 90, 'D': 291, 'E': 38}; 151 Attester packet(s) built, 61 refusal(s)`
-   (deterministic; about 5.5 min). If either moved, explain why before building.
+1. **Build the count first (Mandate 5: a gate before its queue).** In `validate_slots`, add a label for each (lc,
+   site, slot) whose domain is `num.derived`/`text.derived` and carries no named reason. Suggested name:
+   `slot_domain_type_only_14`.
+   - Class it **content**, as ruling 34 classed the H3 rollout count (ruling 42 says it "rolls out lc by lc, like
+     H3"). If you doubt the class, stop and ask.
+   - Register it in `_manifest.FINDING_CLASS` and §14's `ASSERTIONS`.
+   - Write its contract amendment and NAMED LIMITS.
+   - Add a mutation that a clean lc catches by name: tighten one lc fully, then plant a `derived(...)` there.
+   - Measure the baseline. Expect about 1,233 site/slot pairs; count per lc.
+2. **A "named reason".** Some slots are genuinely computed, such as the sum shown in a hint or a running total. Their
+   honest domain is `R(lo, hi, basis)` from the generator's bounds, or a `computes` declaration plus the values they
+   come from. Design how a slot carries "this is derived arithmetic, checked by the hint contract" (for example
+   `S(x, "num.derived", src=(...))` with a reason string) and stop and ask if the design is not obvious. Never
+   exempt a slot by name in the harness (Mandate 4).
+3. **Tighten lc by lc,** using `upgrade_value.py`'s method (observe over seeds 1-40 plus pinned formatters; upgrade
+   only on unanimous evidence) and reading the code for the rest. After each lc:
+   - `scoped_snap.py` 0 changed;
+   - `wide_check.py` reports only the known escapes;
+   - §14 and §15 unchanged or better.
+   Full snapshot and full §14/§15 before the chain.
+4. Every changed line that a mutation anchors on must be re-anchored to plant the SAME defect: run the §8 anchor
+   one-liner after every file. H3-R2 re-anchored 8 this way.
 
-```sh
-PYTHONPATH=. .venv/bin/python - <<'PY'
-import re, collections
-from backend.app.practice_gen.validation import validate_capability as VC
-from tests import clause_enumeration as CE
-doc = CE.load(); by = collections.defaultdict(list)
-for e in VC.validate_capability_attestation():
-    m = re.search(r"(mat_\w+): capability '([^']+)' \(clause '[^']*'\) is CONTRADICTED", e)
-    if m: by[m.group(1)].append(m.group(2))
-blocked = {n for n in by if any("needs_instrumentation" in d for d in CE.node_dispositions(n, doc).values())}
-print(sum(map(len, by.values())), len(by), len(by) - len(blocked), sum(len(by[n]) for n in by if n not in blocked))
-PY
-```
+### H4: stem review gate (ruling 24, LLM half), per lc once H4-0 reaches it
 
-```sh
-PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_exhibit > exhibit.log 2>&1; echo "EXIT $?"
-grep "§2L:" exhibit.log
-```
-
-### H1: variant exhibit check (ruling 26; Mandate 3, so it comes first) -- DONE 2026-10-09
-
-**Landed** as §2L (`validate_exhibit.py`, stage `variant_exhibit_2L`, contract row §2L, evidence entry
-"H1: §2L declared variants must reach the render"). Criterion (b) is "differs from EVERY sibling", not any
-(measured: "any" certifies 8 recorded substitutions). It was report-only until H2, which made its two labels content
-(exit 2). Also landed: `stage_failure_reaches_verdict` (run_all's verdict reads every failed stage from the
-ledger; `dangling_reference_1M` had been left out). Its named limit -- a stage that prints FAIL but returns True
-was not seen -- was closed by H2. The original brief is preserved in git history (`7a9b211a`).
-
-### H2: split `run_all` (ruling 23) -- DONE 2026-10-10
-
-**Landed** in `36f03396`, chain `64e760d1`. `run_all` exits 1 on integrity, else 2 on content, else 0,
-classifying every finding by the label that reported it through `_manifest.FINDING_CLASS` (172 rows, held equal to
-the §8 inventory in both directions). The ledger reads each stage's printed `  FAIL <label>` lines whatever it
-returns, which closes H1's limit on `stage_failure_reaches_verdict`; the matrix is read from
-`validate_matrix.LAST_FAILURES`. §6 is tagged by emitting function and its Phase 1 floor absorbs content only.
-`validate_capability --node-ids` exists; the three §6F INVALIDs are DETECTED on clean lcs. §2L is content.
-Owner rulings 30–32 settled unit tests, floors and record defects. Evidence: "H2: run_all exits 0 / 2 / 1".
-The original brief is preserved in git history (`ddc1e120`).
-
-### H3: field domains and the domain check (ruling 24, deterministic half) -- IN PROGRESS
-
-**Landed 2026-10-10** in `eb3ce6cc`, chain `bc6edb99` (evidence: "H3: structured slots (ruling 28) and the §14
-field-domain check"; contract row §14):
-- `backend/app/practice_gen/slots.py`: `fill(template, **slots)` returns exactly `template.format(...)` and records
-  (template, slots, site) only inside `capture()`. `S(value, domain)`; runtime domains `R(lo, hi, basis)` and
-  `E(members, basis)`, computed by the generator from what it draws with; `record(...)` and `TRANSFORMS` for
-  text the check must replay. Read its docstring before instrumenting anything.
-- `validate_slots` (§14, stage `slot_domains_14`, `--node-ids`): (a) each learner-read field (§1J's
-  `validate_language._texts`, reused) equals a recorded fill; (b) each fill replays; (c) each slot has a domain
-  that resolves; (d) each value lies in its domain. Domain kinds and their accept/reject pins:
-  `tests/unit/test_validate_slots.py`.
-- `tests/render_snapshot.py` (byte identity, 7,285 renders, `PYTHONHASHSEED=0`): 0 changed.
-- Prototype: mat_g2_na_q3_8 (division / true_false), mat_g2_mg_q4_3 (geometric_lines / mcq), mat_g1_na_q3_3
-  (subtraction / emoji_pictorial), plus `VocabGated.resolve` and every subtraction hint. 5 mutations on
-  mat_g2_na_q3_8, all DETECTED in the corpus.
-
-Also landed in H5: slot PROVENANCE (`S(value, domain, src=("key", ...))`, implied by `value:<key>`), read by §15;
-the counting DNA's hints and the counting branches of `fmt_mcq`, `fmt_cloze`, `fmt_number_line` (read stem,
-option key) and `fmt_emoji_pictorial` (so mat_g1_na_q1_0 and mat_g1_na_q2_1 are fully instrumented); and the
-§14 fix that a nested `fill` slot must be produced by ANOTHER fill.
-
-**Rollout slice 1 landed 2026-10-11 as H3-R1** (`5cf14b4c`, chain `788f4235`; evidence "H3-R1: first H3 rollout
-slice"): every subtraction DNA stem, `_build_symbolic_question`'s subtraction branch, `decompose_to_places`, the
-subtraction branches of `fmt_mcq`/`fmt_cloze`/`fmt_error_detect`/`fmt_true_false`/`fmt_number_line`, and
-formatter-wide `fmt_error_detect`'s actor/label/question wrappers, `fmt_true_false`'s claimed value and word-problem
-statement, and `fmt_number_bond`'s stem. 794 -> 722. Infrastructure it added that later slices use:
-`slots.transform(name, text, **args)` takes arguments, recorded as slots with domains, and §14 replay passes every
-recorded slot as a keyword, so `fill_blank` (a value written into another fill's `___`) and a spine's inflection can
-be registered the same way. Its method (dump per-render §14 findings, group by DNA, pick the DNA you can finish) is
-in `local_only/scratch/h3r1/` (`per_render.py`, `dump_slots.py`). Note when you read the tree-wide delta: making a
-wrapper a fill re-names another DNA's un-instrumented stem inside it at the wrapper's nested slot
-(`fmt_error_detect.py:... slot 'problem'`, `fmt_true_false.py:... slot 'q'`) instead of at the field, so "new"
-families appear that are not new text. And instrumenting an lc with clause selectors makes it decidable for §15: in
-H3-R1 that surfaced 7 false findings from a missing `src=("task_type",)`, which was the session's own bug, fixed.
-
-**Owed: the rest of the rollout.** Work down `slot_text_unaccounted_14` (722 (lc, field) families) to 0. It will not fit one
-session. **Scope each session to one coherent slice** -- one formatter across every concept it serves, or one DNA
-with the formatter branches its lcs reach -- that you can finish, prove byte-identical and chain in one session.
-Measure the slice first: `validate_slots --node-ids <its lcs>` lists its families, and a finding names the field,
-not the line (limit 6), so find the site with `grep` on the rendered text. Next slices, by H3-R1's
-per-DNA measurement (unaccounted families per DNA, measured 2026-10-11 after H3-R1 with
-`local_only/scratch/h3r1/per_render.py`; a nested-slot family is counted under every DNA its lc serves, so the
-figures overlap: addition 82, division 66, fractions 64, multiplication 59, money_peso 45, number_reading 36,
-patterns 35, comparing_ordering 34, place_value 33, length_measurement 33):
-the addition DNA with the same formatter branches (its sentences mirror subtraction's, and `decompose_to_places` is
-already a fill); then multiplication / division; and the spines in `generators/spines.py`, which every render of
-mat_g2_na_q2_7 and 9% of student items use (`Spine.render` inflects after filling, so it needs
-`slots.record(..., renderer=...)` AND its inflection registered in `slots.TRANSFORMS`; since H3-R1 a transformation
-may take the slots dict and spine id as keyword slots, but how `Spine.render`'s inflection and its silent
-"baskets" -> "figs" substitution are recorded is still a small design step, so stop and ask if it is not obvious). The loop for each
-DNA or formatter:
-1. `PYTHONPATH=. .venv/bin/python -m tests.render_snapshot local_only/scratch/<batch>/before.jsonl` BEFORE editing.
-2. Replace each learner-text f-string with `fill(...)`, every slot an `S(value, domain)`. Derive domains from the
-   generator's own objects (`R` from its bounds, `E`/`enum:`/`bank:` from its lists, `value:<key>` for a value
-   another layer drew). Never restate a list in the harness. Text a formatter wraps around a DNA stem uses domain
-   `"fill"`. A post-fill transformation goes through `slots.TRANSFORMS` (add it there, once). **Give every slot
-   derived from a structured value its provenance** (`src=("skip_by", "sequence")`); without it §15 reports the
-   value as not exhibited once the lc becomes decidable. Declare only what the slot really derives from: H4's
-   judges review it, and a false `src` hides a real §15 finding (§15 limit 3).
-3. `validate_slots --node-ids <the lcs it serves>`: the field disappears from (a). Any new (c)/(d) finding is either
-   a wrong domain (fix the domain) or a real escape (leave it; it is content, ruling 23), and you say which.
-4. `render_snapshot --diff before after` must read `0 changed`. Anything else means the edit changed content:
-   revert it.
-5. Run the §8 anchor one-liner after every file you instrument. Instrumenting moves mutation anchors: in H5
-   `hint_counting_backward_subtracts_upward` stopped matching once counting's hints became fills. Re-anchor such a
-   mutation so it plants the SAME defect through the new slots (never delete or weaken it), then re-run every
-   mutation whose plant or command touches a file you changed, one at a time with `--only`.
-6. Re-run `validate_composition --node-ids <the lcs>`: an lc that becomes fully instrumented becomes decidable for
-   §15, and may show real `selector_value_unexhibited_15` findings (content; leave them) or a missing `src`
-   (your bug; fix it).
-7. Rollout instrumentation needs no new check, so it needs no new mutation, but the evidence entry must list the
-   sites instrumented, the before/after `slot_text_unaccounted_14` count, and the snapshot diff.
-
-Prioritize by learner volume: the student-path formatters (`mcq`, `true_false`, `cloze`, `error_detect`) and the
-DNAs that rebuild stems. The 20 escapes are a real defect (fmt_emoji_pictorial's `_EMOJI_NAMES.get(emoji,
-"item")`): do not "fix" the domain to admit "items". Named limits are in the §14 contract row; limit 6 (findings
-name a field, not the source line) is the cost each rollout session pays in searching.
-
-The original brief is preserved in git history (`87b23669`).
-
-### H4: stem review gate (ruling 24, LLM half)
-
-- **Enumerate stem families mechanically** per lc:
-  - the spines in `generators/spines.py` the lc can select;
-  - the DNA f-strings it can reach;
-  - the formatter wrappers that add learner-facing text;
-  - the hint templates.
-  Pair each with its H3 slot domains and with the lc's competency text and clauses. One packet per lc.
-- The **blind** LLM judge rules, per stem family:
-  - can any value in the declared domains produce a wording, vocabulary-gating (Content Rule 1), cognitive-load
-    (Rule 2) or scope (Rule 3) error;
-  - can the lc's stems and declared variants produce every clause (ruling 26).
-- Freshness keys on the hash of the templates plus domains, not on seeds. A record goes stale only when a stem
-  or domain it judged changes.
-- Keep the integrity rules that already apply:
+- **Enumerate stem families mechanically from the record,** not by grep: every distinct `Fill.template` (and spine
+  id) an lc's student-path renders reach, at the H4 seeds, with each slot's domain and provenance. Pair them with the
+  lc's competency text and clauses. One packet per lc.
+- A **blind** judge rules per family:
+  - can any value in the declared domains produce a wording, vocabulary-gating (Rule 1), cognitive-load (Rule 2) or
+    scope (Rule 3) error;
+  - are the `src`/`_src`/`derives`/`computes` claims true;
+  - can the lc's stems produce every clause (ruling 26).
+- Freshness keys on the hash of templates plus domains plus provenance, not on seeds.
+- Integrity rules carried over:
   - one dispatch id per lc;
   - verdicts never edited;
-  - ruling 20's confirming judge on any verdict that would clear or create a finding;
+  - ruling 20's confirming judge;
   - ruling 21 for disputed claims;
-  - the identity names the model that judged;
-  - delivery by opaque file (memory: attester dispatch gotchas).
-- **Judges see `CLAUDE.md` by design (ruling 29).** Dispatch with the Agent tool as in Phase 3. The judge
-  section of `CLAUDE.md` tells judges:
-  - to judge only the packet;
-  - not to read the repo, run code or use Graphify;
-  - that lenient passes and false findings are both failures;
-  - to output only the requested format.
+  - the identity names the model;
+  - delivery by opaque file (memory: attester dispatch gotchas);
+  - judges see `CLAUDE.md` (ruling 29);
+  - a judge that read any file other than its packet is set aside.
+- Mutations:
+  - a stem edit with no new review is stale and caught;
+  - a packet missing a reachable family is caught;
+  - a judged record whose verdict is removed is caught.
 
-  Blindness still means no provider tables, no other judges' records, and no lc-to-key mapping beside the
-  packet. Each record's delivery field states that `CLAUDE.md` was loaded. Audit tool use from the harness
-  transcript: a judge that read any file other than its packet is set aside.
-- Mutation:
-  - a stem edit with no new review must be stale and caught;
-  - a packet missing a reachable stem family must be caught, so enumeration is complete in both directions;
-  - a judged record whose verdict is removed must be caught.
+### H6: retire the per-sample gates (ruling 25), only after H4 is proven
 
-### H5: composition checks a stem review cannot see -- DONE 2026-10-10
-
-**Landed** in `4c32cec1`, chain `7d01a4a2` (evidence: "H5: composition checks a stem review cannot see"; contract
-rows §1J, §14, §15, §16). Owner rulings 35-36 settled what "survives" means and where new hint checks live.
-- §1J `count_noun_singular_after_many_1J`: judged against the generator's declared count nouns (interest bank,
-  unit table), closed phrases only. 423 real findings, including the brief's mat_g3_na_q2_3 instance.
-- §15 `validate_composition`: `selector_value_unexhibited_15` by slot provenance (`S(..., src=)`), decided
-  only on fully instrumented renders; `hint_sequence_unshown_15` text stopgap. The brief's mat_g1_na_q2_1
-  instance is caught by both.
-- §16 `validate_hint_contract`: ruling 30's move of the live hint sweep out of the unit suite.
-- §14: a nested fill can no longer account for itself.
-The original brief is preserved in git history (`b88732ef`).
-
-### H6: retire the per-sample gates (ruling 25)
-
-Only after H3, H4 and H5 are each mutation-proven:
-- Remove `judgment_reviews_5` and the `capability_phase2` attestation stage as gates. Keep their modules, if
-  other code needs them, as clearly labelled history.
-- Filed review and attestation records stay **read-only history**. Never edit or delete them.
-- Carry every defect they **confirmed** into the content-findings report, citing the record. The confirmed
-  defects are listed in the Phase 3 evidence entry:
-  - `mat_g1_na_q2_2` `identify_value` "place value";
-  - `mat_g2_na_q2_7` and `mat_g3_na_q2_4` hints;
-  - `mat_g3_na_q3_4` factor roles;
-  - `mat_g1_mg_q1_2` triangle composition;
-  - `mat_g2_mg_q1_1` seed 601.
-- Update the contract rows and `docs/pgen_judgment.md` in the same commit.
+Remove `judgment_reviews_5` and the `capability_phase2` attestation stage as gates. Keep the records as read-only
+history. Carry every confirmed defect (listed in the Phase 3 evidence) into the content report. Update the contract
+rows and `docs/pgen_judgment.md` in the same commit.
 
 ### Exit (Phase 2 DONE, per ruling 23)
 
-- `run_all` exits 0 or 2: the integrity verdict is green (ruling 27).
-- The full mutation corpus is DETECTED with **no INVALID**.
-- The content-findings report runs to completion, and every finding names its lc, seed and owed build.
-- The tree is CERTIFIED.
-- Every new check's NAMED LIMITS are written down.
+- `run_all` exits 0 or 2; the corpus is DETECTED with no INVALID; the tree is CERTIFIED.
+- Every finding names its lc, seed and owed build. This needs a ruling on lc-wide findings first.
+- Every check's NAMED LIMITS are written.
 
-### The generator work queue (NOT Phase 2; for the agents who run the pipeline afterwards)
+### The generator work queue (NOT Phase 2)
 
-The old P4-0 to P4-7 content batches and the Phase 5 judgment queue are kept for reference in the Phase 3
-evidence entry and the plan doc. They are generator work and are owed under Content Rule 4 once the pipeline is
-hardened. This includes:
-- §2L's 420 non-exhibited variant values (by class: what to build or undeclare) and its 61 packet refusals:
-  20 `needs_instrumentation` lcs and 41 capabilities over 28 lcs refused by `provider_variant_stratification_6F`
-  (tree-wide counts; the old "9" and "8" were only inside the CONTRADICTED queue);
-- the interactive draw and manipulative formatters;
-- range and scope gaps.
+- §2L: 420 non-exhibited variant values and 61 packet refusals.
+- §6: 78 CONTRADICTED capabilities.
+- §5: 752 judgment problems.
+- §1J: 423 singular-after-many.
+- §14: 26 escapes.
+- §15: 60 + 6, classified in the H3-R2 evidence.
+- The H3-R2 "Found, not fixed" list:
+  - centavo items asking for pesos;
+  - clock-reading selections served as elapsed-time stems;
+  - three silent fallbacks.
+- The interactive `draw` formatters (rulings 13–18, 31).
+
 Do not start them in a Phase 2 session.
 
 ---
 
 ## 5. Rules you may not break
 
-- **Verification is execution.** Quote every command with its verbatim output; otherwise write "not measured".
-  Re-count every number you publish.
-- **Never weaken a check.** Floors and pins move only for a documented ground-truth error, by the measured delta,
-  after a full diff (Phase D's `ac614688` is the model). Retiring a gate under ruling 25 is not weakening it, but
-  only once its replacement is proven.
-- **Invocation:** `PYTHONPATH=. .venv/bin/python …`. Write to a log and capture `EXIT $?`. Never pipe through
-  `tail`.
-- **Before any heavy run:** the `ps` grep must be empty, and `df -h /System/Volumes/Data` must show enough space.
-  Run the mutation harness **alone**. Afterwards, the escaped-plant `git grep` must be empty.
-- **Stage by name. Never `git add -A`.**
-  - Commit end lines must name **your** model truthfully.
-  - Release the lock in a follow-up commit.
-  - Never `--amend` a commit you will cite.
-- **Do not fix generator content.** Ruling 23 makes that the generators' queue, and a source change stales
-  reviews.
+- **Verification is execution.** Quote every command with its verbatim output; otherwise write "not measured". Re-count
+  every number you publish.
+- **Never weaken a check.** Floors and pins move only for a documented ground-truth error.
+- **Invocation:** `PYTHONPATH=. .venv/bin/python …`, logged, with `EXIT $?` captured; never pipe through `tail`.
+- **Heavy runs alone.** The mutation harness plants real bugs in real source: never edit source, snapshot or test
+  while it runs. Afterwards the escaped-plant `git grep` must show only `validate_coverage.py:456`.
+- **Stage by name** (an explicit path list is fine; never `git add -A`). Commit end lines name your model truthfully.
+  Release the lock in a follow-up commit. Never `--amend` a commit you will cite.
+- **Do not fix generator content** without an owner ruling. A source change stales reviews.
+- **Instrumentation must be byte-identical.** `render_snapshot --diff` reads 0 changed. A content change the owner
+  authorized is attributed field by field (H3-R2's `fielddiff.py`).
 - **Not yours:**
   - the ✝️/`bible` theme;
-  - `requires` and `requires_ignore`;
+  - `requires`/`requires_ignore`;
   - opening H-11;
   - supersession and CSI-R1–R3;
   - H-09 release promotion;
-  - renaming identities, or renaming "node" to "lc" in code;
+  - renaming identities or "node" to "lc" in code;
   - discarding filed records or the `batch117`–`batch150` corpus;
   - `.claude/worktrees/agent-aaac714fac3fe0cc6`.
 
-  Name what you find in these areas; do not fix it.
-- **Stop** at any content judgment or design question that MATATAG and rulings 1–36 do not settle.
+**Traps measured in H3-R1/H3-R2:**
+- zsh does not word-split `$VAR`: use `${=VAR}` or write the paths out.
+- A `str.rfind("    return {")` also matches deeper-indented returns. Locate insertion points by AST or by exact
+  full-line match: H3-R2 briefly put a declaration and a `return` at function level this way, and reverted it.
+- Inferring `value:<key>` from return dicts is unreliable. Use direct `values[...]` reads, or unanimous observation.
+- A template-provenance pass must count the TRUE branch only. Crediting an `else` fallback hid real §15 findings
+  until it was stripped.
+- An upgrade proven only by observation (`"fill"`, `value:`) may have an unobserved alternative. Run `fill_audit.py`.
+- `wide_check` excludes nothing but the known escapes. Read every line it prints.
 
 ---
 
-## 6. The re-proof chain (once per batch; about 5 h; each step alone, detached with one log per step)
+## 6. The re-proof chain (once per batch; about 4 h 30 min; detached)
 
 ```sh
 PYTHONPATH=. .venv/bin/python -m pytest tests/unit -m "not slow" -q -p no:cacheprovider   # before committing source
 # commit source by name; run the CLAUDE_AGENT_PROMPT.md §8 anchor one-liner; then:
 PYTHONPATH=. .venv/bin/python tests/tree_state.py --begin chain --force --session "<id>" --note "..."
-PYTHONPATH=. .venv/bin/python -m scripts.regen_formatter_exclusions
-PYTHONPATH=. .venv/bin/python -m tests.obligation_executor --tier benchmark --sample-size 1000
-DATABASE_URL= PYTHONPATH=. .venv/bin/python tests/frontend_suite.py
-PYTHONPATH=. .venv/bin/python tests/mutation_harness.py > corpus.log 2>&1; echo "EXIT $?"
-for i in 0 1 2 3 4 5; do PYTHONPATH=. .venv/bin/python -m tests.obligation_executor --tier release --shard-count 6 --shard-index $i; done
-PYTHONPATH=. .venv/bin/python -m tests.obligation_executor --tier verify-release
-PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.run_all > run_all.log 2>&1; echo "EXIT $?"
+nohup zsh local_only/scratch/<batch>/chain.sh > local_only/scratch/<batch>/chain.nohup 2>&1 &
 ```
 
-**Run it detached, not as a session background task.** In H1 the session ended mid-corpus and killed the
-chain with it (about an hour lost). Write the steps into a script under `local_only/scratch/<batch>/` and start
-it with `nohup zsh chain.sh > chain.nohup 2>&1 &`, so it survives the session. H1's script, which wrote one log per
-step and a `progress.log` of `START`/`END <step> EXIT <rc>` lines, was:
+`chain.sh` (H1's, unchanged):
 
 ```sh
 #!/bin/zsh
@@ -520,52 +342,30 @@ step run_all .venv/bin/python -m backend.app.practice_gen.validation.run_all
 echo "CHAIN DONE $(date +%H:%M:%S)" >> $L/progress.log
 ```
 
-Measured durations in H5: regen + benchmark + frontend under 1 min, corpus 64 min (225 mutations), each shard
-24–27 min, run_all 40 min (its unit_tests stage about 11 min), so about 4 h 20 min in all.
-The escaped-plant grep's one expected line is the comment at `validate_coverage.py:456`; anything else is a
-plant that escaped.
-
-**If a chain is interrupted:** check that no chain process is running (`pgrep -f chain.sh`, `pgrep -f mutation_harness`), that
-there is no `MUTATION_IN_FLIGHT` marker, that `tests.mutation_harness.recover_orphaned_mutation()` returns False, that
-`git status` shows no tracked source change and that the escaped-plant grep is at baseline. Then purge
-`__pycache__` (memory: planted bytecode outlives restore) and resume at the first step whose artifact
-`tree_state.py` reports stale.
-
-- Any edit made mid-chain stales the whole chain. Stop, commit, and restart from the benchmark.
-- Expect no INVALID (H2). Any INVALID means a red baseline: run that mutation's own command and find out why.
-- Expect `run_all` EXIT 2 while content findings remain. EXIT 1 is an integrity failure: read the verdict block.
-- Use 6 shards, because `validate_obligations` hard-codes 6.
-- **Traps measured 2026-10-10:**
-  - zsh does not word-split an unquoted `$VAR`, so `git add $FILES` passes one nonexistent path. Write the paths
-    out in the command.
-  - A waiter like `until ! pgrep -f "pytest tests/unit -m"; do sleep 15; done` never exits: the pattern is in the
-    waiter's own command line, so `pgrep -f` always matches the waiter. Four such loops were found sleeping hours
-    later. Wait on a sentinel (`until grep -q "CHAIN DONE" progress.log`) or a pid, never on `pgrep -f` of a
-    string you typed in the same command.
-- When the chain completes:
+- Measured in H3-R2: regen+benchmark+frontend 45 s, corpus 64 min (227 mutations), shards 24-27 min each, run_all 40 min; 4 h 18 min in all.
+- Wait on the sentinel (`until grep -q "CHAIN DONE" progress.log`), never on `pgrep -f` of a string in the same command.
+- **If the chain is interrupted:**
+  1. confirm no `chain.sh`/`mutation_harness` process runs, no `MUTATION_IN_FLIGHT` marker exists, and
+     `tests.mutation_harness.recover_orphaned_mutation()` returns False;
+  2. purge `__pycache__`;
+  3. resume at the first stale artifact.
+- **When it completes:**
   1. commit the artifacts by name;
   2. run `tree_state.py --complete`;
-  3. confirm CERTIFIED;
-  4. release the lock in a follow-up commit.
+  3. commit `tree_state.json`;
+  4. confirm CERTIFIED;
+  5. release the lock.
 
 ---
 
-## 7. Bookkeeping before you stop (including an interrupted stop)
+## 7. Bookkeeping before you stop
 
-- Write an evidence entry with:
+- An evidence entry with:
   - commands and verbatim output;
-  - seeds and dispatch ids;
-  - the model and reasoning level of any judge;
-  - every new check's mutation result;
-  - its NAMED LIMITS.
+  - seeds;
+  - every new check's mutation result and NAMED LIMITS;
+  - the before/after counts.
 - Append to H-06 `progress` surgically (`numstat 1 1`).
-- **Rewrite §1 and §4's status in this file.** Do not add a banner or create another prompt file.
-- Commit by name, close your intent, confirm the tree state, and release the lock in a follow-up commit.
-- If you are interrupted, leave an accurate open intent and a **committed** checkpoint.
-
-**A good session** lands one H-batch completely: the check is built, its mutation is DETECTED by name, its
-contract row and NAMED LIMITS are written, and the chain has run once with the tree CERTIFIED. It quotes every
-number from a command run in that session and does not touch generator content. For an H3 rollout session, "lands
-completely" means its slice: every family in the slice instrumented, `render_snapshot` 0 changed, the dev loop and
-chain green. **H1, H2 and H5 are done; H3's infrastructure and its first rollout slice (H3-R1, subtraction) are done and the
-rest of its rollout is next; then H4 (per lc, as the rollout completes each), then H6.**
+- **Rewrite §1 and §4's status in this file.** No banners, no new prompt files.
+- Commit by name, close the intent, confirm the tree state, release the lock in a follow-up commit.
+- If interrupted, leave an accurate open intent and a **committed** checkpoint.
