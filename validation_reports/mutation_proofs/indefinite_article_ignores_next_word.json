@@ -1,0 +1,46 @@
+{
+ "asserts": [
+  "indefinite_article_1J"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "FAIL indefinite_article_1J"
+ ],
+ "command": [
+  "backend.app.practice_gen.validation.validate_language",
+  "--node-ids",
+  "mat_g2_na_q2_7"
+ ],
+ "definition_digest": "f5b16559a0766db3c481605f55a2dbb348e24ab0ce14d8a6a9a7c08e087e47c9",
+ "detected": true,
+ "diagnostic_line": "exit 1 — FAIL indefinite_article_1J (1):",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "FAIL indefinite_article_1J (",
+  "A art"
+ ],
+ "expected_check": "§1J article (an indefinite article agrees with the sound of the next word)",
+ "finished_at": "2026-10-11T07:29:29+08:00",
+ "input_digest": "2fad777fd91972b34f2167cd247f77d5adf9a99326a3aa5ac5364a747daa7b05",
+ "mutated_paths": [
+  "backend/app/practice_gen/dna/base.py"
+ ],
+ "mutation": "indefinite_article_ignores_next_word",
+ "observed_markers": {
+  "A art": true,
+  "FAIL indefinite_article_1J (": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-10-11T07:29:26+08:00"
+}
