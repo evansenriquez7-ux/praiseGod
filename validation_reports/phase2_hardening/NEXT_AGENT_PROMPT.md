@@ -1,14 +1,15 @@
 # Task prompt: Phase 2 pipeline hardening under owner rulings 23–43 (Claude host)
 
-**Rewritten 2026-10-12 after batch H4-0 built the ruling-42 count and tightened 101 lcs. This REPLACES every
-earlier version of this file.** `CLAUDE_AGENT_PROMPT.md`, `GPT_HANDOFF_PROMPT.md` and `HANDOFF_PROMPT.md` beside it
+**Rewritten 2026-10-12 after batch H4-0-R2 tightened the last 50 lcs (ruling 42's count is 0 on all 151). This
+REPLACES every earlier version of this file.** `CLAUDE_AGENT_PROMPT.md`, `GPT_HANDOFF_PROMPT.md` and `HANDOFF_PROMPT.md` beside it
 are history. Their method notes (§7 heavy runs and the lock, §8 anchor one-liner, §9 traps, §11 not yours) remain
 correct and are cited below; their state sections are stale.
 
-**If you are a fresh session given this file:** your task is batch **H4-0-R2** (§4): tighten the type-only slots of
-the 50 lcs `slot_domain_type_only_14` still names (937 findings), lc by lc, with the H4-0 tools, prove the tree
-byte-identical, run the §6 chain once, and leave the tree CERTIFIED with §1 and §4 rewritten. The count, its
-reason form (ruling 43) and its mutations exist; you build no new check. Do not start H6.
+**If you are a fresh session given this file:** the next batch is **H4** (§4): the LLM stem review gate (ruling 24),
+built per lc now that every lc is at 0 type-only slots (ruling 42). It is a new check: design it from §4's H4
+section, prove each of its mutations by name, run the §6 chain once, and leave the tree CERTIFIED with §1 and §4
+rewritten. **Stop and ask** before dispatching any judge or fixing any design point rulings 1–43 do not settle
+(packet shape, freshness key, the confirming-judge rule). Do not start H6.
 
 Trust order: a command you executed > this file > `CLAUDE_AGENT_PROMPT.md` > the dated blocks in
 `docs/phase2_hardening_completion_plan.md`.
@@ -41,7 +42,8 @@ unless the owner rules otherwise, as rulings 39–40 did.
 3. **Owner rulings 23–43** in `docs/phase2_hardening_completion_plan.md`, verbatim (search "rulings recorded
    2026-10-08"; 27–43 follow). Also rulings 1, 9, 12–16 and 19–22 above them.
 4. `validation_reports/HARDENING_EVIDENCE.md`, newest at the END:
-   - "H4-0: the ruling-42 type-only slot count, owner ruling 43, and the first 101 lcs tightened" (read fully);
+   - "H4-0-R2: the ruling-42 rollout completed (937 -> 0; 151 of 151 lcs at 0)" (read fully);
+   - "H4-0: the ruling-42 type-only slot count, owner ruling 43, and the first 101 lcs tightened";
    - "H3-R2: the H3 rollout completed, value-level provenance (ruling 41), and owner rulings 37-42";
    - "H3-R1: first H3 rollout slice" (its item 4 is corrected in H3-R2);
    - "H5: composition checks a stem review cannot see";
@@ -62,31 +64,27 @@ unless the owner rules otherwise, as rulings 39–40 did.
 
 ---
 
-## 1. State at handoff (2026-10-12, after H4-0; re-measure before quoting)
+## 1. State at handoff (2026-10-12, after H4-0-R2; re-measure before quoting)
 
 ```
 HEAD                local main at the commit that updated this file (after the H-06 release); NOT pushed
                     (check `git status -sb`)
-source              df22a99a (H4-0); checkpoints 0488b828 (the count), 1dc6f0bc, 16001dbf, 5c98aacd;
-                    chain artifacts baf9e799, tree_state aacb674d
+source              ea3c1600 (H4-0-R2); chain artifacts `75f15cc2`, tree_state `c26fd7fb`
 H-06 lock           RELEASED; claim it (owner line only, numstat 1 1) before any work
-tree_state          CERTIFIED (230 proofs, 6 shards, benchmark, frontend fresh; digest 120c4ce201b6b1fa)
-run_all             2026-10-12 on df22a99a: EXIT 2, scheduled=21 completed=15 failed=6 crashed=0; INTEGRITY GREEN;
-                    finding_class_registry_complete 183 labels; 172/183 assertions proven by execution; CONTENT:
-                    variant_not_exhibited_2L 420, attester_packet_refused_2L 61, judgment_reviews 752,
-                    capability_contract 78, count_noun_singular_after_many_1J 423, slot_domain_escape_14 60,
-                    slot_domain_type_only_14 937, selector_value_unexhibited_15 60, hint_sequence_unshown_15 6; §16 0
-§14                 slot_domain_type_only_14 937 (ruling 42's queue): 101 of 151 lcs at 0, 50 open;
-                    slot_domain_escape_14 60 (the 26 of H3-R2, plus the known `items` fallback now caught at its 9
-                    name/plural slots, +29, and base_generator's pictograph fallback `category` default, +5);
-                    slot_text_unaccounted_14 0
-                    type-only slot-fills without a reason: 42.1% at the 20 seeds (H3-R2: 63%); 79 site/slot pairs
-                    carry `arithmetic`
-§15                 60 + 6, finding for finding identical to H3-R2 (1,351 of 1,351 decided)
-§1J                 indefinite_article_1J 0; count_noun_singular_after_many_1J 423
-render snapshot     tests/render_snapshot.py: 7,285 renders; H4-0's baseline local_only/scratch/h4_0/s8.jsonl
+tree_state          CERTIFIED (230 proofs, 6 shards, benchmark, frontend fresh; digest 8fd5dbe548788b49)
+run_all             2026-10-13 on ea3c1600: EXIT 2, scheduled=21 completed=15 failed=6 crashed=0; INTEGRITY GREEN; 172/183 assertions proven by execution;
+                    CONTENT: variant_not_exhibited_2L 420, attester_packet_refused_2L 61, judgment_reviews 752, capability_contract 78, count_noun_singular_after_many_1J 423, slot_domain_escape_14 67, selector_value_unexhibited_15 58, hint_sequence_unshown_15 6; slot_domain_type_only_14 PASSES
+§14                 slot_domain_type_only_14 0: 151 of 151 lcs at 0 (ruling 42's rollout is complete);
+                    slot_domain_escape_14 67 (H4-0's 60, plus base_generator's bar-graph `category` default +3 and
+                    the fractions add/subtract hint chain run on count_sequence items +4); slot_text_unaccounted_14 0
+                    type-only slot-fills without a reason: 0% at the 20 seeds; over seeds 1-40 + every pinned
+                    formatter only the two list-printing escapes stay type-only (H4-0: 672 site/slot pairs);
+                    61 unreasoned `derived(` lines remain in source, 60 of them reached by nothing (NAMED LIMIT 11)
+§15                 58 + 6 (1,351 of 1,351 decided); the 2 fewer are a provenance correction (H4-0-R2 evidence)
+§1J                 indefinite_article_1J 0; count_noun_singular_after_many_1J 423 (unchanged)
+render snapshot     tests/render_snapshot.py: 7,285 renders; H4-0-R2's baseline local_only/scratch/h4_0_r2/s4.jsonl
                     (gitignored: re-take your own `before` snapshot first)
-unit suite          985 passed, 1 skipped (~11 min)
+unit suite          986 passed, 1 skipped (~11 min)
 mutations           230; corpus 230/230, NO INVALID
 latest attestation  batch440 (next free prefix: batch441)
 ```
@@ -94,10 +92,8 @@ latest attestation  batch440 (next free prefix: batch441)
 **Before you resume anything detached, run `ps -eo pid,lstart,command | grep claude`**: one copy of the agent per
 conversation.
 
-**The 50 open lcs** (findings each; `PYTHONPATH=. .venv/bin/python validation_reports/phase2_hardening/h4_0_tools/tonly.py OUT.json`
-prints them): mat_g1_na_q1_8 (5), mat_g2_dp_q3_1 (6), mat_g2_mg_q2_0 (7), mat_g2_na_q1_10 (8), mat_g2_na_q2_9 (8), mat_g3_dp_q3_1 (8), mat_g3_mg_q1_0 (8), mat_g3_na_q3_2 (8), mat_g3_dp_q3_3 (9), mat_g3_na_q2_7 (9), mat_g1_dp_q3_1 (10), mat_g2_mg_q2_2 (10), mat_g2_na_q4_2 (10), mat_g2_na_q4_5 (10), mat_g3_dp_q3_2 (10), mat_g1_na_q1_5 (11), mat_g1_na_q4_2 (11), mat_g2_na_q1_5 (12), mat_g2_na_q3_2 (12), mat_g3_na_q3_0 (12), mat_g3_na_q1_2 (14), mat_g1_na_q4_3 (15), mat_g3_mg_q1_6 (15), mat_g2_mg_q4_4 (16), mat_g2_mg_q4_5 (16), mat_g2_mg_q4_6 (16), mat_g3_mg_q1_1 (17), mat_g2_dp_q3_0 (18), mat_g3_na_q4_2 (18), mat_g1_na_q4_1 (19), mat_g2_mg_q4_2 (20), mat_g3_na_q3_4 (20), mat_g2_na_q4_1 (21), mat_g3_na_q2_0 (21), mat_g3_na_q4_6 (22), mat_g1_mg_q4_4 (23), mat_g2_na_q4_4 (23), mat_g1_na_q4_0 (26), mat_g2_na_q4_0 (26), mat_g1_mg_q2_2 (27), mat_g1_na_q3_1 (28), mat_g2_na_q3_7 (28), mat_g2_na_q4_3 (28), mat_g2_mg_q2_3 (30), mat_g2_na_q3_0 (30), mat_g2_na_q3_1 (34), mat_g3_dp_q3_0 (37), mat_g3_na_q3_1 (41), mat_g3_mg_q1_3 (46), mat_g3_na_q4_7 (58).
-The open site/slot pairs concentrate in length_measurement (81), base_generator (67), fractions (61), multiplication
-(55), area (51), time_reading (38), probability_experiment (37), money_peso (27), fmt_pictograph (24), fmt_mcq (20).
+**Every lc is at 0 type-only slots** at the 20 seeds, so H4 may start on any lc. A slot a new seed, profile or
+pinned formatter reaches can still be type-only (NAMED LIMIT 11); the tools below find and tighten it.
 
 **Tools.** Promoted into `tests/` (digest inputs): `tests/slot_wide_check.py` (§14's own checks over seeds 1-40 + every
 pinned formatter; a render that raises is now printed and counted, not skipped) and `tests/scoped_snapshot.py` (byte
@@ -198,15 +194,14 @@ anything in "Not yours" (§5).
 | H2 | DONE 2026-10-10 | `run_all` exits 0 / 2 / 1 | — |
 | H3 | DONE 2026-10-11 (infrastructure H3; slices H3-R1, H3-R2) | structured slots everywhere; §14 accounting 0 | — |
 | H5 | DONE 2026-10-10 | §1J mirror, §15, §16 | — |
-| H4-0 | **count DONE 2026-10-12; rollout 101 of 151 lcs** | ruling 42's count (`slot_domain_type_only_14`), ruling 43's reason form, 3 mutations; tightening | — |
-| **H4-0-R2** | **next** | the 50 open lcs to 0 | — |
-| H4 | open | stem review gate (LLM), per lc at 0 type-only slots | H4-0 per lc (101 ready) |
+| H4-0 | DONE 2026-10-12 | ruling 42's count (`slot_domain_type_only_14`), ruling 43's reason form, 3 mutations; 101 lcs tightened | — |
+| H4-0-R2 | DONE 2026-10-12 | the last 50 lcs to 0 (937 -> 0; 151 of 151), byte-identical; `slots.carried` | — |
+| **H4** | **next** | stem review gate (LLM), per lc at 0 type-only slots | — (151 of 151 ready) |
 | H6 | open | retire `judgment_reviews_5` and `capability_phase2` as gates | H4 |
 | Exit | — | the Exit list below holds on one chain | all |
 
 Each batch is one `batch` intent and, under ruling 37, as many slices as you can prove before ONE re-proof chain
-(§6). Recommended order: finish H4-0-R2 first, so H4 is built once against a complete count; H4 may start on the
-101 ready lcs if the owner prefers.
+(§6). H4-0-R2 finished the count, so H4 is built once against a complete one.
 
 ### Phase 0: baseline and lock (always)
 
@@ -239,7 +234,7 @@ PY
    Also dump `comp_dump.py` and run `tests/slot_wide_check.py` BEFORE any edit: they are your §15 and escape baselines
    (expect `TOTAL distinct 19 | renders that raised: 2` -- the two `mat_g2_mg_q4_3` pinned-mcq refusals).
 
-### H4-0-R2: the remaining type-only slots (owner rulings 42-43)
+### H4-0-R2: the remaining type-only slots (owner rulings 42-43) -- DONE 2026-10-12; the method, for slots a new path reaches
 
 Per wave (H4-0 ran five): `obs.py` -> `plan.py N` -> read each slot's code -> tighten -> `tonly.py` -> anchors ->
 full snapshot (56 s) -> §15 dump -> wide check. Rules H4-0 paid for:
@@ -299,15 +294,19 @@ rows and `docs/pgen_judgment.md` in the same commit.
 - §6: 78 CONTRADICTED capabilities.
 - §5: 752 judgment problems.
 - §1J: 423 singular-after-many.
-- §14: 60 escapes (H3-R2's 26; the `fmt_emoji_pictorial` items fallback at its name slots, +29; base_generator's
-  pictograph fallback `category` default, +5).
-- §15: 60 + 6, classified in the H3-R2 evidence.
+- §14: 67 escapes (H3-R2's 26; the `fmt_emoji_pictorial` items fallback at its name slots, +29; base_generator's
+  pictograph fallback `category` default, +5, and its bar-graph twin, +3; the fractions add/subtract hint chain
+  served on count_sequence items, +4: "Add only the top numbers: 2 + 0 = 2." on mat_g1_na_q4_2).
+- §15: 58 + 6, classified in the H3-R2 evidence (two fewer since H4-0-R2: a provenance correction).
 - The H3-R2 "Found, not fixed" list:
   - centavo items asking for pesos;
   - clock-reading selections served as elapsed-time stems;
   - three silent fallbacks.
 - The H4-0 "Found, not fixed" list: the pictograph fallback `category` default; seven silent defaults met while
   tightening (named in the H4-0 evidence); two copies of the number-to-words builder.
+- The H4-0-R2 "Found, not fixed" list: the two escapes above; `_fraction_words`' digit fallback and "halfs";
+  fmt_fraction_model's `model_names.get(model_type, "model")` mismatch; the silent `"+"` operation-symbol defaults;
+  `num_to_words` past 10,000; two one-member answer domains (named in the H4-0-R2 evidence).
 - The interactive `draw` formatters (rulings 13–18, 31).
 
 Do not start them in a Phase 2 session.
