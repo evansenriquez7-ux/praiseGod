@@ -1,14 +1,14 @@
-# Task prompt: Phase 2 pipeline hardening under owner rulings 23–42 (Claude host)
+# Task prompt: Phase 2 pipeline hardening under owner rulings 23–43 (Claude host)
 
-**Rewritten 2026-10-11 after batch H3-R2 finished the H3 rollout. This REPLACES every earlier version of this
-file.** `CLAUDE_AGENT_PROMPT.md`, `GPT_HANDOFF_PROMPT.md` and `HANDOFF_PROMPT.md` beside it are history. Their
-method notes (§7 heavy runs and the lock, §8 anchor one-liner, §9 traps, §11 not yours) remain correct and are
-cited below; their state sections are stale.
+**Rewritten 2026-10-12 after batch H4-0 built the ruling-42 count and tightened 101 lcs. This REPLACES every
+earlier version of this file.** `CLAUDE_AGENT_PROMPT.md`, `GPT_HANDOFF_PROMPT.md` and `HANDOFF_PROMPT.md` beside it
+are history. Their method notes (§7 heavy runs and the lock, §8 anchor one-liner, §9 traps, §11 not yours) remain
+correct and are cited below; their state sections are stale.
 
-**If you are a fresh session given this file:** your task is batch **H4-0** (§4): build the type-only-slot count
-that owner ruling 42 requires, prove it, then tighten the type-only slots of as many lcs as you can finish, prove
-the tree byte-identical, run the §6 chain once, and leave the tree CERTIFIED with §1 and §4 of this file rewritten
-for the next session. Do not start H4's LLM review until H4-0 has reached at least one lc, and do not start H6.
+**If you are a fresh session given this file:** your task is batch **H4-0-R2** (§4): tighten the type-only slots of
+the 50 lcs `slot_domain_type_only_14` still names (937 findings), lc by lc, with the H4-0 tools, prove the tree
+byte-identical, run the §6 chain once, and leave the tree CERTIFIED with §1 and §4 rewritten. The count, its
+reason form (ruling 43) and its mutations exist; you build no new check. Do not start H6.
 
 Trust order: a command you executed > this file > `CLAUDE_AGENT_PROMPT.md` > the dated blocks in
 `docs/phase2_hardening_completion_plan.md`.
@@ -41,14 +41,15 @@ unless the owner rules otherwise, as rulings 39–40 did.
 3. **Owner rulings 23–42** in `docs/phase2_hardening_completion_plan.md`, verbatim (search "rulings recorded
    2026-10-08"; 27–42 follow). Also rulings 1, 9, 12–16 and 19–22 above them.
 4. `validation_reports/HARDENING_EVIDENCE.md`, newest at the END:
-   - "H3-R2: the H3 rollout completed, value-level provenance (ruling 41), and owner rulings 37-42" (read fully);
+   - "H4-0: the ruling-42 type-only slot count, owner ruling 43, and the first 101 lcs tightened" (read fully);
+   - "H3-R2: the H3 rollout completed, value-level provenance (ruling 41), and owner rulings 37-42";
    - "H3-R1: first H3 rollout slice" (its item 4 is corrected in H3-R2);
    - "H5: composition checks a stem review cannot see";
    - "H3: structured slots (ruling 28) and the §14 field-domain check";
    - "H2: run_all exits 0 / 2 / 1";
    - "H1: §2L declared variants must reach the render".
 5. `docs/pgen_contract.md` rows:
-   - §14 (`validate_slots`: NAMED LIMITS 1–10, the H3-R1 and H3-R2 amendments);
+   - §14 (`validate_slots`: NAMED LIMITS 1–12, the H3-R1, H3-R2 and H4-0 amendments);
    - §15 (`validate_composition`: limits 1–8, the H3-R2 amendment);
    - §1J (the H3-R2 amendment: `indefinite_article_1J`, `error_label` as metadata);
    - §16 (the hint contract);
@@ -61,47 +62,57 @@ unless the owner rules otherwise, as rulings 39–40 did.
 
 ---
 
-## 1. State at handoff (2026-10-11, after H3-R2; re-measure before quoting)
+## 1. State at handoff (2026-10-12, after H4-0; re-measure before quoting)
 
 ```
 HEAD                local main at the commit that updated this file (after the H-06 release); NOT pushed
                     (check `git status -sb`)
-source              e45915da (H3-R2), checkpoint 5f4738af (rulings 38-40); chain artifacts 035725cc,
-                    tree_state 931213d1
+source              df22a99a (H4-0); checkpoints 0488b828 (the count), 1dc6f0bc, 16001dbf, 5c98aacd;
+                    chain artifacts baf9e799, tree_state aacb674d
 H-06 lock           RELEASED; claim it (owner line only, numstat 1 1) before any work
-tree_state          CERTIFIED (227 proofs, 6 shards, benchmark, frontend fresh; digest 2fad777fd91972b3)
-run_all             2026-10-11 on e45915da: EXIT 2, scheduled=21 completed=15 failed=6 crashed=0; INTEGRITY GREEN;
-                    finding_class_registry_complete 182 labels; CONTENT: variant_not_exhibited_2L 420,
-                    attester_packet_refused_2L 61, judgment_reviews 752, capability_contract 78,
-                    count_noun_singular_after_many_1J 423, slot_domain_escape_14 26,
-                    selector_value_unexhibited_15 60, hint_sequence_unshown_15 6; §16 0
-§14                 slot_text_unaccounted_14 0 (the rollout is complete); slot_domain_escape_14 26 (all real:
-                    20 `items` fallbacks + 6 Python lists printed into hints)
-                    type-only slots: 63% of slot-fills, 1,233 distinct site/slot pairs (ruling 42's queue)
-§15                 1,351 of 1,351 selector matches decided by record; 60 selector_value_unexhibited_15 (classified
-                    in the H3-R2 evidence) + 6 hint_sequence_unshown_15
+tree_state          CERTIFIED (230 proofs, 6 shards, benchmark, frontend fresh; digest 120c4ce201b6b1fa)
+run_all             2026-10-12 on df22a99a: EXIT 2, scheduled=21 completed=15 failed=6 crashed=0; INTEGRITY GREEN;
+                    finding_class_registry_complete 183 labels; 172/183 assertions proven by execution; CONTENT:
+                    variant_not_exhibited_2L 420, attester_packet_refused_2L 61, judgment_reviews 752,
+                    capability_contract 78, count_noun_singular_after_many_1J 423, slot_domain_escape_14 60,
+                    slot_domain_type_only_14 937, selector_value_unexhibited_15 60, hint_sequence_unshown_15 6; §16 0
+§14                 slot_domain_type_only_14 937 (ruling 42's queue): 101 of 151 lcs at 0, 50 open;
+                    slot_domain_escape_14 60 (the 26 of H3-R2, plus the known `items` fallback now caught at its 9
+                    name/plural slots, +29, and base_generator's pictograph fallback `category` default, +5);
+                    slot_text_unaccounted_14 0
+                    type-only slot-fills without a reason: 42.1% at the 20 seeds (H3-R2: 63%); 79 site/slot pairs
+                    carry `arithmetic`
+§15                 60 + 6, finding for finding identical to H3-R2 (1,351 of 1,351 decided)
 §1J                 indefinite_article_1J 0; count_noun_singular_after_many_1J 423
-render snapshot     tests/render_snapshot.py: 7,285 renders; H3-R2's baseline local_only/scratch/h3r2/s9.jsonl
+render snapshot     tests/render_snapshot.py: 7,285 renders; H4-0's baseline local_only/scratch/h4_0/s8.jsonl
                     (gitignored: re-take your own `before` snapshot first)
-unit suite          978 passed, 1 skipped (~11 min)
-mutations           227; corpus 227/227, NO INVALID
+unit suite          985 passed, 1 skipped (~11 min)
+mutations           230; corpus 230/230, NO INVALID
 latest attestation  batch440 (next free prefix: batch441)
 ```
 
 **Before you resume anything detached, run `ps -eo pid,lstart,command | grep claude`**: one copy of the agent per
 conversation.
 
-**Rollout tools (H3-R2).** Committed as copies under `validation_reports/phase2_hardening/h3r2_tools/`, and also in
-the gitignored `local_only/scratch/h3r2/`. Promote the ones you reuse into `tests/` inside your own batch: `tests/`
-is a digest input, so moving them changes the proof digest and must happen before your chain.
-- `fstr2fill.py`: f-string to fill converter.
-- `provenance_pass.py`: slot and template provenance by data and control dependence.
-- `upgrade_value.py`: `value:`/`fill` upgrades from observation over seeds 1-40 plus pinned formatters.
-- `wide_check.py`: §14's own `check_slot`/`replay` over the same wide seeds.
-- `fill_audit.py`: static audit of `"fill"` slots.
-- `scoped_snap.py`: byte check for chosen lcs against a full snapshot.
-- `probe.py`: the fills and provenance of one render.
-- `inv.py`, `comp_run.py`, `comp_groups.py`: inventories.
+**The 50 open lcs** (findings each; `PYTHONPATH=. .venv/bin/python validation_reports/phase2_hardening/h4_0_tools/tonly.py OUT.json`
+prints them): mat_g1_na_q1_8 (5), mat_g2_dp_q3_1 (6), mat_g2_mg_q2_0 (7), mat_g2_na_q1_10 (8), mat_g2_na_q2_9 (8), mat_g3_dp_q3_1 (8), mat_g3_mg_q1_0 (8), mat_g3_na_q3_2 (8), mat_g3_dp_q3_3 (9), mat_g3_na_q2_7 (9), mat_g1_dp_q3_1 (10), mat_g2_mg_q2_2 (10), mat_g2_na_q4_2 (10), mat_g2_na_q4_5 (10), mat_g3_dp_q3_2 (10), mat_g1_na_q1_5 (11), mat_g1_na_q4_2 (11), mat_g2_na_q1_5 (12), mat_g2_na_q3_2 (12), mat_g3_na_q3_0 (12), mat_g3_na_q1_2 (14), mat_g1_na_q4_3 (15), mat_g3_mg_q1_6 (15), mat_g2_mg_q4_4 (16), mat_g2_mg_q4_5 (16), mat_g2_mg_q4_6 (16), mat_g3_mg_q1_1 (17), mat_g2_dp_q3_0 (18), mat_g3_na_q4_2 (18), mat_g1_na_q4_1 (19), mat_g2_mg_q4_2 (20), mat_g3_na_q3_4 (20), mat_g2_na_q4_1 (21), mat_g3_na_q2_0 (21), mat_g3_na_q4_6 (22), mat_g1_mg_q4_4 (23), mat_g2_na_q4_4 (23), mat_g1_na_q4_0 (26), mat_g2_na_q4_0 (26), mat_g1_mg_q2_2 (27), mat_g1_na_q3_1 (28), mat_g2_na_q3_7 (28), mat_g2_na_q4_3 (28), mat_g2_mg_q2_3 (30), mat_g2_na_q3_0 (30), mat_g2_na_q3_1 (34), mat_g3_dp_q3_0 (37), mat_g3_na_q3_1 (41), mat_g3_mg_q1_3 (46), mat_g3_na_q4_7 (58).
+The open site/slot pairs concentrate in length_measurement (81), base_generator (67), fractions (61), multiplication
+(55), area (51), time_reading (38), probability_experiment (37), money_peso (27), fmt_pictograph (24), fmt_mcq (20).
+
+**Tools.** Promoted into `tests/` (digest inputs): `tests/slot_wide_check.py` (§14's own checks over seeds 1-40 + every
+pinned formatter; a render that raises is now printed and counted, not skipped) and `tests/scoped_snapshot.py` (byte
+check for chosen lcs against a full snapshot). Committed as copies in `validation_reports/phase2_hardening/h4_0_tools/`
+(their paths say `local_only/scratch/h4_0/`; copy them there first):
+- `tonly.py`: the real `validate_slots.collect_findings`, dumped as JSON, open lcs counted.
+- `obs.py`: every type-only slot observed over seeds 1-40 + pinned formatters (values, keys equal in EVERY observation,
+  whether every value is another fill's text).
+- `plan.py`: the greedy order of lcs (fewest new site/slot pairs first) with each slot's code line and observation.
+- `propose.py` + `tighten.py`: unanimous `value:`/`fill` proposals, rewritten by AST position (dry run first, read it).
+- `rep.py`: exact replacements with asserted counts; adds slot imports (CHECK module-level imports afterwards: it
+  missed a function-level-only import once, see the evidence).
+- `cn_rewrite.py`: `derived(count_noun(n, p))` -> `E((count_noun(1, p), p))` by AST.
+- `reanchor.py`: rewrite one mutation's (old, new) literals by AST position.
+- `kinds.py`, `comp_dump.py` (§15 findings in full, to diff), `anchors.sh` (the §8 anchor one-liner).
 
 **Open items no batch owns yet** (named in the evidence; stop and ask before building any):
 - **lc and seed naming** (Exit item): §5's findings name an lc but no seed, and §6F 49 of 78 name a seed. What
@@ -113,7 +124,11 @@ is a digest input, so moving them changes the proof digest and must happen befor
 - **No cross-process determinism check:** `comparing_ordering` iterates a set, so 89 of 7,285 renders change with
   `PYTHONHASHSEED`.
 - **Unowned hint gaps:** a doubled word ("order word word"); `roles` misses "20 items at ₱50 each" hinted as "50 groups
-  of 20". (Code-shaped hints are now §14 escapes.)
+  of 20".
+- **A non-digest commit can turn the unit suite red under a CERTIFIED tree** (found in H4-0): H3-R2 committed
+  `h3r2_tools/` after its chain; `test_the_live_ledger_claims_every_artifact_on_disk` failed from then on, while
+  `tree_state` printed CERTIFIED, because `validation_reports/` is not a digest input. H4-0 fixed the instance (H-06
+  claims both tools directories); nothing gates the class.
 
 ---
 
@@ -139,8 +154,10 @@ is a digest input, so moving them changes the proof digest and must happen befor
 - 40: indefinite articles by sound, gated by §1J.
 - 41: §15 closes over value-level provenance (`derives`, `computes`, template `_src`).
 - 42: **H4 approves an lc only after that lc's type-only slots are tightened.**
+- 43: a type-only slot's named reason is a registered `slots.DERIVED_REASONS` kind plus a non-empty `src` the
+  generator's values carry; the count covers every RECORDED slot, learner-reachable or not.
 
-**Stop and ask** for any content judgment or design question rulings 1–42 and MATATAG do not settle, and for
+**Stop and ask** for any content judgment or design question rulings 1–43 and MATATAG do not settle, and for
 anything in "Not yours" (§5).
 
 ---
@@ -155,7 +172,10 @@ anything in "Not yours" (§5).
   - `E(members, basis)`, `R(lo, hi, basis)`;
   - `enum:<module.NAME>`, `bank:<module.NAME>:<field>`, `noun:<module.NAME>`;
   - `fill` (another recorded fill);
-  - `num.derived` / `text.derived` (type only; written by `slots.derived(x)`).
+  - `num.derived` / `text.derived` (type only; written by `slots.derived(x)`); counted by
+    `slot_domain_type_only_14` unless `slots.derived(x, src=(...), why="<kind>")` names a registered
+    `DERIVED_REASONS` kind (only `arithmetic` so far) and every `src` key is in the values.
+- **Joins:** `slots.join(sep, parts, domain, src)` records a variable-length list as one slot per member.
 - **Provenance** (§15, rulings 35 and 41):
   - slot `src` (the values keys the value derives from);
   - `_src` (the keys whose test CHOSE the template, true branch only);
@@ -176,15 +196,17 @@ anything in "Not yours" (§5).
 |---|---|---|---|
 | H1 | DONE 2026-10-09 | §2L variant exhibit check | — |
 | H2 | DONE 2026-10-10 | `run_all` exits 0 / 2 / 1 | — |
-| H3 | **DONE 2026-10-11** (infrastructure H3; slices H3-R1, H3-R2) | structured slots everywhere; §14 accounting 0 | — |
+| H3 | DONE 2026-10-11 (infrastructure H3; slices H3-R1, H3-R2) | structured slots everywhere; §14 accounting 0 | — |
 | H5 | DONE 2026-10-10 | §1J mirror, §15, §16 | — |
-| **H4-0** | **next** | ruling 42: a count of type-only slots per lc, then tightening lc by lc | — |
-| H4 | open | stem review gate (LLM), per lc once H4-0 has reached it | H4-0 per lc |
+| H4-0 | **count DONE 2026-10-12; rollout 101 of 151 lcs** | ruling 42's count (`slot_domain_type_only_14`), ruling 43's reason form, 3 mutations; tightening | — |
+| **H4-0-R2** | **next** | the 50 open lcs to 0 | — |
+| H4 | open | stem review gate (LLM), per lc at 0 type-only slots | H4-0 per lc (101 ready) |
 | H6 | open | retire `judgment_reviews_5` and `capability_phase2` as gates | H4 |
 | Exit | — | the Exit list below holds on one chain | all |
 
 Each batch is one `batch` intent and, under ruling 37, as many slices as you can prove before ONE re-proof chain
-(§6).
+(§6). Recommended order: finish H4-0-R2 first, so H4 is built once against a complete count; H4 may start on the
+101 ready lcs if the owner prefers.
 
 ### Phase 0: baseline and lock (always)
 
@@ -193,36 +215,29 @@ Each batch is one `batch` intent and, under ruling 37, as many slices as you can
 2. Claim H-06: edit only its `owner` line (`git diff --numstat` must read `1 1`), commit, then
    `PYTHONPATH=. .venv/bin/python tests/tree_state.py --begin batch --session <yours> --note "<batch>"`.
 3. Re-measure, and explain any move before building:
-   - `validate_slots`: expect `slot_text_unaccounted_14` PASS and `slot_domain_escape_14 (26)`;
+   - `validate_slots`: expect `slot_domain_escape_14 (60)`, `slot_domain_type_only_14 (937)`, NOTE `101 of 151`;
    - `validate_composition`: expect 60 + 6, with 1,351 of 1,351 decided;
    - `validate_language`: expect `indefinite_article_1J` PASS and 423 mirror findings;
    - the queue snippet from H3-R1's brief (expect `78 42 33 55`).
 4. `PYTHONPATH=. .venv/bin/python -m tests.render_snapshot local_only/scratch/<batch>/before.jsonl` BEFORE any edit.
+   Also dump `comp_dump.py` and the wide check BEFORE any edit: they are your §15 and escape baselines.
 
-### H4-0: type-only slots (owner ruling 42)
+### H4-0-R2: the remaining type-only slots (owner rulings 42-43)
 
-1. **Build the count first (Mandate 5: a gate before its queue).** In `validate_slots`, add a label for each (lc,
-   site, slot) whose domain is `num.derived`/`text.derived` and carries no named reason. Suggested name:
-   `slot_domain_type_only_14`.
-   - Class it **content**, as ruling 34 classed the H3 rollout count (ruling 42 says it "rolls out lc by lc, like
-     H3"). If you doubt the class, stop and ask.
-   - Register it in `_manifest.FINDING_CLASS` and §14's `ASSERTIONS`.
-   - Write its contract amendment and NAMED LIMITS.
-   - Add a mutation that a clean lc catches by name: tighten one lc fully, then plant a `derived(...)` there.
-   - Measure the baseline. Expect about 1,233 site/slot pairs; count per lc.
-2. **A "named reason".** Some slots are genuinely computed, such as the sum shown in a hint or a running total. Their
-   honest domain is `R(lo, hi, basis)` from the generator's bounds, or a `computes` declaration plus the values they
-   come from. Design how a slot carries "this is derived arithmetic, checked by the hint contract" (for example
-   `S(x, "num.derived", src=(...))` with a reason string) and stop and ask if the design is not obvious. Never
-   exempt a slot by name in the harness (Mandate 4).
-3. **Tighten lc by lc,** using `upgrade_value.py`'s method (observe over seeds 1-40 plus pinned formatters; upgrade
-   only on unanimous evidence) and reading the code for the rest. After each lc:
-   - `scoped_snap.py` 0 changed;
-   - `wide_check.py` reports only the known escapes;
-   - §14 and §15 unchanged or better.
-   Full snapshot and full §14/§15 before the chain.
-4. Every changed line that a mutation anchors on must be re-anchored to plant the SAME defect: run the §8 anchor
-   one-liner after every file. H3-R2 re-anchored 8 this way.
+Per wave (H4-0 ran five): `obs.py` -> `plan.py N` -> read each slot's code -> tighten -> `tonly.py` -> anchors ->
+full snapshot (56 s) -> §15 dump -> wide check. Rules H4-0 paid for:
+- **Strongest honest domain, in this order:** turn a non-learner string back into plain code; `value:<the key the
+  code reads>` (never a key chosen by testing equality); `enum:`/`bank:` over the generator's own module object;
+  `E` over the local list or literal pair it is drawn from (bind a literal list to a name first, same rng draw);
+  `R` over the draw bounds by name; `fill`/`slots.join`/`slots.transform`; and only then `arithmetic` with the
+  values keys it is computed from.
+- **Count nouns** use `E((count_noun(1, p), p))`, the generator's own rule, never a restated singular.
+- **Keep provenance as it was** (copy each slot's `src`), unless the dependence is plainly true; then re-diff §15.
+- **An honest domain can surface a real defect as an escape** (H4-0: the `items` fallback, the `category` default).
+  Report it by name and count; never weaken a domain to hide it.
+- **After every file:** module-level slot imports (a function-level import hid a missing `E` once); the anchor
+  one-liner (seven mutations were re-anchored in H4-0 to plant the SAME defect, with `reanchor.py`).
+- Do not use `git stash` while anything runs.
 
 ### H4: stem review gate (ruling 24, LLM half), per lc once H4-0 reaches it
 
@@ -267,7 +282,8 @@ rows and `docs/pgen_judgment.md` in the same commit.
 - §6: 78 CONTRADICTED capabilities.
 - §5: 752 judgment problems.
 - §1J: 423 singular-after-many.
-- §14: 26 escapes.
+- §14: 60 escapes (H3-R2's 26; the `fmt_emoji_pictorial` items fallback at its name slots, +29; base_generator's
+  pictograph fallback `category` default, +5).
 - §15: 60 + 6, classified in the H3-R2 evidence.
 - The H3-R2 "Found, not fixed" list:
   - centavo items asking for pesos;
@@ -342,7 +358,7 @@ step run_all .venv/bin/python -m backend.app.practice_gen.validation.run_all
 echo "CHAIN DONE $(date +%H:%M:%S)" >> $L/progress.log
 ```
 
-- Measured in H3-R2: regen+benchmark+frontend 45 s, corpus 64 min (227 mutations), shards 24-27 min each, run_all 40 min; 4 h 18 min in all.
+- Measured in H4-0: regen+benchmark+frontend 44 s, corpus 64 min (230 mutations), shards 24-27 min each, run_all 40 min; 4 h 19 min in all.
 - Wait on the sentinel (`until grep -q "CHAIN DONE" progress.log`), never on `pgrep -f` of a string in the same command.
 - **If the chain is interrupted:**
   1. confirm no `chain.sh`/`mutation_harness` process runs, no `MUTATION_IN_FLIGHT` marker exists, and

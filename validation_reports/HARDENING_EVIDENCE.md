@@ -20014,3 +20014,209 @@ DNA. New pins:
 - §1J article check:
   - a table-driven sound rule;
   - judged against the next word, an adjective included.
+
+## 2026-10-12 — H4-0: the ruling-42 type-only slot count, owner ruling 43, and the first 101 lcs tightened
+
+Author: Claude Opus 5.5 (no LLM judges dispatched). Lock claimed `e21979ef`; checkpoints `0488b828` (the count),
+`1dc6f0bc`, `16001dbf`, `5c98aacd` (tightening); source `df22a99a`; chain artifacts `baf9e799`, tree_state `aacb674d`.
+"node" ids below are lcs.
+
+### Phase 0 re-measure (2026-10-12, on `ee859d98`): every number equals the handoff
+
+```text
+$ PYTHONPATH=. .venv/bin/python tests/tree_state.py
+PASS tree_state: CERTIFIED   live input digest : 2fad777fd91972b3   worktree : clean
+$ (queue snippet, NEXT_AGENT_PROMPT §4 Phase 0)
+78 42 33 55
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_slots
+  PASS slot_text_unaccounted_14 | PASS slot_template_mismatch_14 | PASS slot_unclassified_14
+  PASS slot_domain_unknown_14   | FAIL slot_domain_escape_14 (26)      EXIT 1
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_composition
+  FAIL selector_value_unexhibited_15 (60) | FAIL hint_sequence_unshown_15 (6)
+  NOTE: 1351 selector match(es) over 3020 render(s): 1351 decided by record, 0 undecided      EXIT 1
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_language
+  PASS count_noun_agreement_1J: 0 findings over 9060 student-path sample(s), 68241 text(s) linted
+  FAIL count_noun_singular_after_many_1J (423) | PASS indefinite_article_1J: 0 findings over 68241 text(s)
+  PASS unclassified_pupil_text_1J                                        EXIT 1
+$ PYTHONPATH=. .venv/bin/python -m tests.render_snapshot local_only/scratch/h4_0/before.jsonl
+render_snapshot: wrote 7285 render(s) to local_only/scratch/h4_0/before.jsonl      (taken before any edit)
+```
+
+Type-only slots at the 20 seeds, measured before building anything: 67,861 slot-fills (exactly H3-R2's 49,652 +
+18,209), 1,227 distinct site/slot pairs, 2,487 (lc, site, slot) triples on 143 lcs; 8 lcs had none.
+
+### Owner ruling 43 (asked this session; recorded verbatim in the plan doc in `0488b828`)
+
+The brief said to stop and ask if the "named reason" design was not obvious. Two questions, each answered with the
+option the dispatcher recommended:
+- **(a) form:** `slots.derived(x, src=(...), why="<kind>")`, `why` a key of `slots.DERIVED_REASONS` (each kind with a
+  meaning that says what checks it), plus §14 requiring a non-empty `src` whose every key the generator's values
+  carry at that render. Rejected: free text; a kind without the `src` check.
+- **(b) scope:** count every RECORDED type-only slot, learner-reachable or not (ruling 42's own 1,233 measured that).
+  Rejected: counting only slots reachable from learner-read fields.
+
+### What H4-0 built (`0488b828`)
+
+- `slots.py`: `S.why`, `Fill.reasons`, `DERIVED_REASONS` (one kind, `arithmetic`), `derived(..., why=)`.
+- `validate_slots` (e): `slot_domain_type_only_14` (CONTENT, registered in `_manifest.FINDING_CLASS` and §14's
+  `ASSERTIONS`) through `type_only_reason()`: no reason, an unregistered kind, an empty `src`, or a `src` key the
+  values lack is a finding. A per-lc NOTE line counts the rollout. Type checks still come first (an escape wins).
+- Contract §14 amendment and NAMED LIMITS 11-12 (also in the module docstring).
+- Later (`1dc6f0bc`): `slots.join(sep, parts, domain, src)`, a join recorded as one slot per member.
+
+```text
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_slots      (baseline, 0488b828)
+  FAIL slot_domain_escape_14 (26) | FAIL slot_domain_type_only_14 (2481)
+  NOTE: ruling 42 rollout: 8 of 151 lc(s) reach no type-only slot without a reason; 143 still do
+```
+
+2,481 = the 2,487 triples less the 6 that already escape on their type (a printed Python list).
+
+### Mutations (all on `mat_g2_na_q3_8`, tightened first: its even/odd remainder became `E((0, 1))`, its half and
+double carry `arithmetic` with `src=("dividend",)`)
+
+| mutation | path of `type_only_reason` | plant | result (`--only`) |
+|---|---|---|---|
+| `slot_loosened_to_type_only` | no reason | `left=S(left, E((0, 1), ...))` -> `left=derived(left)` | DETECTED, admissible |
+| `type_only_reason_unregistered` | unregistered kind | `why="arithmetic"` -> `why="arithmetics"` | DETECTED, admissible |
+| `type_only_reason_cites_absent_src` | src the values lack | `src=("dividend",)` -> `src=("dividend_halved",)` | DETECTED, admissible |
+
+Unit pins: `test_a_type_only_slot_needs_a_registered_reason_and_a_real_src` (every path, both type-only kinds),
+`test_every_reason_kind_says_what_it_means`, `test_a_reason_is_recorded_with_its_slot_and_reaches_the_check`.
+
+### Tightening: 2,481 -> 937 findings; 8 -> 101 of 151 lcs at 0 (byte-identical)
+
+Method, per wave (greedy: the shared site/slot pairs that finish the most lcs):
+- **Observation** over seeds 1-40 plus every pinned formatter at 3, 17, 29 (`obs.py`); `value:<k>`/`fill` applied
+  only where every observation agreed (224 rewrites by AST position, `tighten.py`, never by text search); the rest
+  read by hand.
+- **Non-learner strings back to plain code** (ruling 43b): 25 `{interaction_mode}_{answer_collection}` format ids and
+  `value:{key}` domain ids, the mass_capacity rng key, patterns' `term_{i}` keys, fmt_shape_board's regex and
+  `shape_{i}` ids, fill_in_table's id, division's `q R r` guard string. §14 (a) stayed 0, so none was learner text.
+- **The generator's own objects as domains:** `enum:` over module lists (`MONTHS_OF_YEAR`, `_ONES`/`_TENS`,
+  `PLACE_VALUES`, `_MONTH_NAMES`, label lists); `E` over the local bank or literal pair a value is drawn from;
+  `R` over the generator's own draw bounds (bound once to names, never restated); `bank:` over
+  `pictographs._THEMES:subject`; count nouns as `E((count_noun(1, p), p))` by the generator's own `count_noun`
+  (25 sites, one AST rewrite).
+- **Capitalised VocabGated labels** through the registered `slots.transform("capitalize", label)` (12 sites).
+- **Joins** through `slots.join`: number words, sequences, money descriptions, category and place lists, emoji
+  displays (one emoji slot per picture).
+- **`arithmetic` with its `src`**: quotients and remainders, column digits and sums, partial products, step totals,
+  rounding bounds, readings, place digits. 79 site/slot pairs carry it.
+
+```text
+$ PYTHONPATH=. .venv/bin/python -m tests.render_snapshot --diff local_only/scratch/h4_0/before.jsonl local_only/scratch/h4_0/s8.jsonl
+render_snapshot diff: 7285 before, 7285 after, 0 changed, 0 key(s) present on one side only
+$ validate_composition.collect_findings() dumped in full at batch start and after the last edit: byte-identical (60 + 6)
+$ validate_slots (full tree, after the last edit)
+  PASS slot_text_unaccounted_14 | PASS slot_template_mismatch_14 | PASS slot_unclassified_14 | PASS slot_domain_unknown_14
+  FAIL slot_domain_escape_14 (60) | FAIL slot_domain_type_only_14 (937)
+  NOTE: ruling 42 rollout: 101 of 151 lc(s) reach no type-only slot without a reason; 50 still do
+```
+
+Domain kinds at the 20 seeds (109,725 slot-fills): num.derived 34.8% (375 site/slot), E 20.8% (314), value 16.5%
+(811), fill 10.6% (305), text.derived 7.4% (276), num.derived + `arithmetic` 4.3% (79), enum 2.9%, bank 1.5%,
+R 0.9%, noun 0.4%. Type-only WITHOUT a reason: 42.1% (H3-R2: 63%).
+
+**Escapes 26 -> 60, explained.** Every new one is a known defect now reported at more sites because its slot is
+bounded: the `fmt_emoji_pictorial` "items" fallback (`_EMOJI_NAMES.get(emoji, "item")`) at 9 name/plural sites
+(+29 lc findings), and `base_generator`'s pictograph fallback stem, whose `values.get("category", "item")` always
+takes the default ("How many item does the picture graph show?"; +5; not learner-read at these seeds -- the formatter
+rebuilds the stem). The wide check (seeds 1-40 + pinned) shows the 9 H3-R2 escape sites plus exactly these 10.
+
+**The 101 lcs at 0:** mat_g1_dp_q3_0, mat_g1_dp_q3_2, mat_g1_dp_q3_3, mat_g1_mg_q1_0, mat_g1_mg_q1_1, mat_g1_mg_q1_2, mat_g1_mg_q2_0, mat_g1_mg_q2_1, mat_g1_mg_q4_0, mat_g1_mg_q4_1, mat_g1_mg_q4_2, mat_g1_mg_q4_3, mat_g1_na_q1_0, mat_g1_na_q1_1, mat_g1_na_q1_2, mat_g1_na_q1_3, mat_g1_na_q1_4, mat_g1_na_q1_6, mat_g1_na_q1_7, mat_g1_na_q1_9, mat_g1_na_q2_0, mat_g1_na_q2_1, mat_g1_na_q2_2, mat_g1_na_q2_3, mat_g1_na_q2_4, mat_g1_na_q2_5, mat_g1_na_q2_6, mat_g1_na_q3_0, mat_g1_na_q3_2, mat_g1_na_q3_3, mat_g1_na_q3_4, mat_g1_na_q3_5, mat_g1_na_q3_6, mat_g1_na_q3_7, mat_g1_na_q4_4, mat_g1_na_q4_5, mat_g1_na_q4_6, mat_g2_mg_q1_0, mat_g2_mg_q1_1, mat_g2_mg_q1_2, mat_g2_mg_q2_1, mat_g2_mg_q4_0, mat_g2_mg_q4_1, mat_g2_mg_q4_3, mat_g2_na_q1_0, mat_g2_na_q1_1, mat_g2_na_q1_2, mat_g2_na_q1_3, mat_g2_na_q1_4, mat_g2_na_q1_6, mat_g2_na_q1_7, mat_g2_na_q1_8, mat_g2_na_q1_9, mat_g2_na_q2_0, mat_g2_na_q2_1, mat_g2_na_q2_2, mat_g2_na_q2_3, mat_g2_na_q2_4, mat_g2_na_q2_5, mat_g2_na_q2_6, mat_g2_na_q2_7, mat_g2_na_q2_8, mat_g2_na_q3_3, mat_g2_na_q3_4, mat_g2_na_q3_5, mat_g2_na_q3_6, mat_g2_na_q3_8, mat_g2_na_q3_9, mat_g3_dp_q3_4, mat_g3_mg_q1_2, mat_g3_mg_q1_4, mat_g3_mg_q1_5, mat_g3_mg_q2_0, mat_g3_mg_q2_1, mat_g3_mg_q2_2, mat_g3_mg_q2_3, mat_g3_mg_q2_4, mat_g3_mg_q2_5, mat_g3_mg_q4_0, mat_g3_mg_q4_1, mat_g3_mg_q4_2, mat_g3_na_q1_0, mat_g3_na_q1_1, mat_g3_na_q1_3, mat_g3_na_q1_4, mat_g3_na_q1_5, mat_g3_na_q1_6, mat_g3_na_q2_1, mat_g3_na_q2_2, mat_g3_na_q2_3, mat_g3_na_q2_4, mat_g3_na_q2_5, mat_g3_na_q2_6, mat_g3_na_q3_3, mat_g3_na_q3_5, mat_g3_na_q3_6, mat_g3_na_q4_0, mat_g3_na_q4_1, mat_g3_na_q4_3, mat_g3_na_q4_4, mat_g3_na_q4_5
+**The 50 still open (count):** mat_g1_na_q1_8 (5), mat_g2_dp_q3_1 (6), mat_g2_mg_q2_0 (7), mat_g2_na_q1_10 (8), mat_g2_na_q2_9 (8), mat_g3_dp_q3_1 (8), mat_g3_mg_q1_0 (8), mat_g3_na_q3_2 (8), mat_g3_dp_q3_3 (9), mat_g3_na_q2_7 (9), mat_g1_dp_q3_1 (10), mat_g2_mg_q2_2 (10), mat_g2_na_q4_2 (10), mat_g2_na_q4_5 (10), mat_g3_dp_q3_2 (10), mat_g1_na_q1_5 (11), mat_g1_na_q4_2 (11), mat_g2_na_q1_5 (12), mat_g2_na_q3_2 (12), mat_g3_na_q3_0 (12), mat_g3_na_q1_2 (14), mat_g1_na_q4_3 (15), mat_g3_mg_q1_6 (15), mat_g2_mg_q4_4 (16), mat_g2_mg_q4_5 (16), mat_g2_mg_q4_6 (16), mat_g3_mg_q1_1 (17), mat_g2_dp_q3_0 (18), mat_g3_na_q4_2 (18), mat_g1_na_q4_1 (19), mat_g2_mg_q4_2 (20), mat_g3_na_q3_4 (20), mat_g2_na_q4_1 (21), mat_g3_na_q2_0 (21), mat_g3_na_q4_6 (22), mat_g1_mg_q4_4 (23), mat_g2_na_q4_4 (23), mat_g1_na_q4_0 (26), mat_g2_na_q4_0 (26), mat_g1_mg_q2_2 (27), mat_g1_na_q3_1 (28), mat_g2_na_q3_7 (28), mat_g2_na_q4_3 (28), mat_g2_mg_q2_3 (30), mat_g2_na_q3_0 (30), mat_g2_na_q3_1 (34), mat_g3_dp_q3_0 (37), mat_g3_na_q3_1 (41), mat_g3_mg_q1_3 (46), mat_g3_na_q4_7 (58)
+
+### Mistakes of my own, caught before any commit
+
+1. `subtraction.py` and `addition.py` used `derived`/`E` without a module-level import (my scan counted a
+   function-level import in `decompose_to_places`). The first render raised `NameError` through
+   `HintGenerationError` and the snapshot showed 36 changed; fixed, re-scanned module-level, 0 changed.
+2. `fmt_emoji_pictorial`'s displayed count was first declared `value:a` everywhere; on counting items `a` is
+   `ctx.correct_answer`, and §14 named it at once (2 escapes, mat_g1_na_q1_0 seed 12, mat_g1_na_q2_1 seed 8). It now
+   follows the read: `value:answer` for counting.
+3. While pytest ran I issued a `git stash` for a comparison; the worktree had no tracked changes, so it was a no-op.
+
+### Mutations re-anchored (same defect, planted through the new code)
+
+`compare_pair_asks_for_a_sign_and_offers_statements`, `hint_multiplication_swaps_group_roles`,
+`hint_counting_backward_subtracts_upward`, `hint_length_compare_always_longer`, `hint_quotes_unshown_sequence`,
+`hint_calendar_counts_exclusively`, `hint_ones_column_says_write`. New: `slot_loosened_to_type_only`,
+`type_only_reason_unregistered`, `type_only_reason_cites_absent_src`. Corpus size 230.
+
+### Dev loop and unit suite (before the source commit)
+
+```text
+$ (84 mutations that plant in a changed file or run §14/§15/§16/§1J, one at a time:
+   PYTHONPATH=. .venv/bin/python tests/mutation_harness.py --only <name>)
+83 x "EXIT 0 1/1 mutations detected."
+visual_payload_drops_required_key EXIT 1 0/1 -- INVALID: the unmutated baseline exited 1
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_render
+  FAIL frontend_static_render_12: frontend render evidence is stale: source input digest is 2fad777fd919, current is b725a491a173
+$ DATABASE_URL= PYTHONPATH=. .venv/bin/python tests/frontend_suite.py   -> EXIT 0
+$ PYTHONPATH=. .venv/bin/python tests/mutation_harness.py --only visual_payload_drops_required_key
+    DETECTED: exit 1 -- FAIL render_contract_floor_9: 11 broken renders exceeds floor 0     1/1 mutations detected.
+$ git grep -n -E "#\s*planted mutation|//\s*planted " -- backend frontend/src scripts data | grep -v mutation_harness
+(no output)
+$ PYTHONPATH=. .venv/bin/python -m pytest tests/unit -m "not slow" -q -p no:cacheprovider
+985 passed, 1 skipped, 2 deselected, 4 warnings in 661.41s (0:11:01)
+```
+
+The INVALID was the environment (a digest-bound artifact stale after source edits), proven by regenerating it.
+The first suite run of this batch (before the ledger fix) failed exactly one test,
+`test_the_live_ledger_claims_every_artifact_on_disk`: the 13 `h3r2_tools/` files H3-R2 committed in `1449aa54`,
+AFTER its chain. Re-run on a worktree of `ee859d98` (the tree this batch started from): `1 failed`. So the handed-over
+tree was CERTIFIED with a red unit test -- `validation_reports/` is not a digest input, so `tree_state` could not see
+it, and `run_all` there would have exited 1 (ruling 30). Fixed by claiming both tools directories in H-06's
+`proof_artifacts` (a directory claim is the check's own mechanism); nothing gates the class (named open item).
+
+### Chain (on `df22a99a`)
+
+```text
+$ cat local_only/scratch/h4_0/chain/progress.log
+END regen EXIT 0 15:35:49 | END benchmark EXIT 0 15:36:09 | END frontend EXIT 0 15:36:21
+END corpus EXIT 0 16:40:04          230/230 mutations detected.  (no INVALID)
+escaped-plant grep lines: 1         (the benign validate_coverage.py:456 comment)
+END shard0..shard5 EXIT 0 (17:04, 17:28, 17:53, 18:19, 18:46, 19:13); END verify EXIT 0 (release_status=complete receipts=6)
+END run_all EXIT 2 19:54:11
+  PASS unit_tests (985 passed, 1 skipped, 2 deselected, 4 warnings in 655.29s (0:10:55))
+  FAIL slot_domain_escape_14 (60) | FAIL slot_domain_type_only_14 (937)
+  NOTE: ruling 42 rollout: 101 of 151 lc(s) reach no type-only slot without a reason; 50 still do
+  PASS mutation_proof_integrity_8: 230 executed mutation proof(s) verified against the current source/fixture digest
+  PASS assertion_coverage_8: 172/183 harness assertions proven BY EXECUTION (38 discovered in validate_matrix, 145 declared across 20 modules), 11 knowingly unproven (allowlist may only shrink)
+  scheduled=21 completed=15 failed=6 crashed=0 not_run=0 incomplete=0
+  PASS finding_class_registry_complete: 183 label(s) classified, equal to the §8 inventory
+  INTEGRITY: GREEN (every stage ran to a verdict and no integrity label failed)
+  CONTENT: variant_not_exhibited_2L (420), attester_packet_refused_2L (61), judgment_reviews (752),
+           capability_contract (78), count_noun_singular_after_many_1J (423), slot_domain_escape_14 (60),
+           slot_domain_type_only_14 (937), selector_value_unexhibited_15 (60), hint_sequence_unshown_15 (6)
+ALL TESTS: integrity green, CONTENT FINDINGS REMAIN (exit 2).
+$ PYTHONPATH=. .venv/bin/python tests/tree_state.py
+PASS tree_state: CERTIFIED          live input digest : 120c4ce201b6b1fa   mutation_proofs fresh 230
+```
+
+Measured: regen+benchmark+frontend 44 s, corpus 64 min (230 mutations), shards 24-27 min each, run_all 40 min;
+4 h 19 min in all.
+
+### Found, not fixed (generator content; named for the generator queue)
+
+1. `base_generator` pictograph fallback stem: `values.get("category", "item")` is always the default (now a §14
+   escape on 5 lcs). The bar-graph stem beside it has the same shape.
+2. Silent defaults met while reading (Protocol 3): `compose_decompose_to_10.generate_hints` `values.get("target_total",
+   5)`; `fmt_pictograph` `vp.get("subject", "items")` and the "🍎" symbol default; `fmt_calendar`
+   `vp.get("unit", "days")`; `rounding` `place_names.get(round_to, str(round_to))`; `calendar` `values.get('month',
+   '?')`; `fmt_emoji_pictorial` `values.get("a", 3)`/`("b", 2)`. Where the slot is now strict, taking the default would
+   be a named escape.
+3. `money_peso` and `number_reading` each carry a copy of the number-to-words builder (a duplicated rule).
+4. `base_generator`'s measurement stem chooses its article by `target_noun.startswith("c")`, not by ruling 40's
+   `indefinite_article` helper (its output is right for "object"/"container").
+
+5. The promoted wide check prints renders that raise instead of skipping them: `mat_g2_mg_q4_3` pinned to `mcq`
+   refuses at seeds 17 and 29 (`variant task_type='draw_construct' ... is not available at node`).
+
+### NAMED LIMITS (also in `validate_slots`'s docstring and the contract's §14 row)
+
+- §14 (e), 11: counted at the paths the 20 student seeds reach (an lc at 0 is 0 there, not everywhere; the wide
+  observation shows 672 site/slot pairs still type-only over seeds 1-40 and pinned formatters).
+- §14 (e), 12: a reason is the generator's claim; the check proves the kind and the src keys exist, never that the
+  value is computed from them or that no stricter domain exists. H4's judges review both.
