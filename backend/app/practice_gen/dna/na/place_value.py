@@ -22,7 +22,7 @@ from backend.app.practice_gen.dna.base import (
     VocabGated,
     count_noun,
 )
-from backend.app.practice_gen.slots import S, derived, fill, join
+from backend.app.practice_gen.slots import E, R, S, derived, fill, join
 
 
 # ─── constants ────────────────────────────────────────────────────────────────
@@ -270,7 +270,7 @@ def generate_params(
                 distractors.add(candidate)
         distractors_list = sorted(distractors)[:3]
         while len(distractors_list) < 3:
-            filler = fill("{v} + {randint}", _src=('task_type',), v=derived(rng.randint(1, 9) * 10), randint=derived(rng.randint(1, 9)))
+            filler = fill("{v} + {randint}", _src=('task_type',), v=S(rng.randint(1, 9) * 10, E(tuple(range(10, 100, 10)), "a tens multiple, 10 to 90")), randint=S(rng.randint(1, 9), R(1, 9, "a ones digit, 1 to 9")))
             if filler != exp_form and filler not in distractors_list:
                 distractors_list.append(filler)
         return {
@@ -430,13 +430,13 @@ def generate_hints(
     # mat_g1_na_q2_3; hint contract, `response`).
     digits = [int(d) for d in str(number)]
     counts = [
-        fill("{d} {count_noun}", d=derived(d), count_noun=derived(count_noun(d, PLACE_NAMES[len(digits) - 1 - i]), src=('number',)))
+        fill("{d} {count_noun}", d=derived(d, src=("number",), why="arithmetic"), count_noun=S(count_noun(d, PLACE_NAMES[len(digits) - 1 - i]), E((count_noun(1, PLACE_NAMES[len(digits) - 1 - i]), PLACE_NAMES[len(digits) - 1 - i]), "the place name or its singular (dna.base.count_noun)"), src=('number',)))
         for i, d in enumerate(digits)
     ]
-    counted = counts[0] if len(counts) == 1 else ", ".join(counts[:-1]) + " and " + counts[-1]
+    counted = counts[0] if len(counts) == 1 else fill("{join} and {v}", join=S(join(", ", counts[:-1]), "fill"), v=S(counts[-1], "fill"))
     return [
         fill("Break {number} into parts by {pv_phrase}: {exp_form}.", number=S(number, "value:number"), pv_phrase=S(pv_phrase, "fill"), exp_form=S(exp_form, "value:expanded_form")),
-        fill("{number} is {counted}.", number=S(number, "value:number"), counted=derived(counted, src=('number',))),
+        fill("{number} is {counted}.", number=S(number, "value:number"), counted=S(counted, "fill", src=('number',))),
         fill("Each part shows how much that digit is {val_phrase} in its position.", val_phrase=S(val_phrase, "fill")),
     ]
 

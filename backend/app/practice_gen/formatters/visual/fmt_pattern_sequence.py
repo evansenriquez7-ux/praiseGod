@@ -25,7 +25,7 @@ from typing import List, Optional
 from backend.app.practice_gen.dna.base import FormattedProblem, QuestionContext
 from backend.app.practice_gen.formatters._distractor_fallback import augment_distractors
 from backend.app.practice_gen.formatters._option_order import shuffle_options
-from backend.app.practice_gen.slots import S, derived, fill
+from backend.app.practice_gen.slots import E, S, derived, fill
 from backend.app.practice_gen.formatters._answer_slots import (correct_option_key, distractors_field)
 
 
@@ -192,12 +192,12 @@ def _stem(seq_info: dict, missing_indices: List[int], interaction_mode: str, cum
     rule = seq_info["rule"]
     term_word = "term" if "missing term" in cumulative_vocab else "piece"
     if interaction_mode == "set":
-        return fill("Fill in the missing {term_word}s. Pattern: {rule}.", term_word=derived(term_word), rule=derived(rule))
+        return fill("Fill in the missing {term_word}s. Pattern: {rule}.", term_word=S(term_word, E(("term", "piece"), "'missing term' gated by cumulative_vocab")), rule=derived(rule))
     # read mode
     if len(missing_indices) == 1:
         pos_label = missing_indices[0] + 1  # 1-indexed for students
-        return fill("What is the missing {term_word} (position {pos_label}) in the pattern?", term_word=derived(term_word), pos_label=S(pos_label, "value:position"))
-    return fill("What are the missing {term_word}s in the pattern?", term_word=derived(term_word))
+        return fill("What is the missing {term_word} (position {pos_label}) in the pattern?", term_word=S(term_word, E(("term", "piece"), "'missing term' gated by cumulative_vocab")), pos_label=S(pos_label, "value:position"))
+    return fill("What are the missing {term_word}s in the pattern?", term_word=S(term_word, E(("term", "piece"), "'missing term' gated by cumulative_vocab")))
 
 
 # ─────────────────────────────────────────────────────────────────────────────

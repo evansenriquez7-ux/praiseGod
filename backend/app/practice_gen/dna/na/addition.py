@@ -128,8 +128,11 @@ def decompose_to_places(n: int, domain: Any = "num.derived") -> str:
     caller's domain for `n` ("value:a" when `n` is the generated operand); the
     default, "num.derived", checks the type only.
     """
-    from backend.app.practice_gen.slots import E, S, fill
+    from backend.app.practice_gen.slots import E, S, derived, fill
 
+    # A place's count is arithmetic of the generated operand when the caller names it
+    # (`value:<key>`); without one it stays type-only (batch H4-0, ruling 42).
+    key = domain[len("value:"):] if isinstance(domain, str) and domain.startswith("value:") else None
     hundreds, rem = divmod(n, 100)
     tens, ones = divmod(rem, 10)
 
@@ -137,7 +140,7 @@ def decompose_to_places(n: int, domain: Any = "num.derived") -> str:
         # "1 tens"/"1 ones" reads as a grammar error a Grade 1-2 reader
         # stumbles on -- singularize whenever the count is exactly 1
         # (blind review of mat_g2_na_q1_8).
-        return fill("{count} {word}", count=S(count, "num.derived"),
+        return fill("{count} {word}", count=(derived(count, src=(key,), why="arithmetic") if key else S(count, "num.derived")),
                     word=S(word if count != 1 else word[:-1],
                            E(_PLACE_WORDS, "decompose_to_places place words")))
 
@@ -672,7 +675,7 @@ def generate_params(
             "max_sum": max_result,
             "strategy": "expanded_form",
             "question": (
-                fill("{decompose_to_places} {decompose_to_places2} Add the place values, then find the total: what is {a_val} + {b_val}?", _src=('task_type',), decompose_to_places=S(decompose_to_places(a_val), "fill"), decompose_to_places2=S(decompose_to_places(b_val), "fill"), a_val=S(a_val, "value:a"), b_val=S(b_val, "value:b"))
+                fill("{decompose_to_places} {decompose_to_places2} Add the place values, then find the total: what is {a_val} + {b_val}?", _src=('task_type',), decompose_to_places=S(decompose_to_places(a_val, "value:a"), "fill"), decompose_to_places2=S(decompose_to_places(b_val, "value:b"), "fill"), a_val=S(a_val, "value:a"), b_val=S(b_val, "value:b"))
             ),
         }
 

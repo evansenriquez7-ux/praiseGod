@@ -418,7 +418,7 @@ def generate_hints(
             else fill("{value} is closer to {answer}.", _src=('task_type',), value=S(value, "value:value"), answer=S(answer, "value:answer"))
         )
         return [
-            fill("Count by {step}s: {value} is between {low} and {high}.", _src=('task_type',), step=S(step, "value:round_to"), value=S(value, "value:value"), low=derived(low), high=derived(high)),
+            fill("Count by {step}s: {value} is between {low} and {high}.", _src=('task_type',), step=S(step, "value:round_to"), value=S(value, "value:value"), low=derived(low, src=("value", "round_to"), why="arithmetic"), high=derived(high, src=("value", "round_to"), why="arithmetic")),
             closer,
             fill("So {value} {unit} is about {answer} {unit}.", _src=('task_type',), value=S(value, "value:value"), unit=S(unit, "value:unit"), answer=S(answer, "value:answer")),
         ]
@@ -448,11 +448,11 @@ def generate_hints(
     if mtype == "mass":
         return [
             fill("Read the scale: find the number the pointer points to.", _src=('measurement_type',)),
-            fill("The mass shown is {reading} {unit}.", _src=('measurement_type',), reading=derived(reading, src=('value',)), unit=S(unit, "value:unit")),
+            fill("The mass shown is {reading} {unit}.", _src=('measurement_type',), reading=derived(reading, src=('value',), why="arithmetic"), unit=S(unit, "value:unit")),
         ]
     return [
         fill("Read the measuring cylinder: find the mark at the top of the liquid."),
-        fill("The capacity shown is {reading} {unit}.", reading=derived(reading, src=('value',)), unit=S(unit, "value:unit")),
+        fill("The capacity shown is {reading} {unit}.", reading=derived(reading, src=('value',), why="arithmetic"), unit=S(unit, "value:unit")),
     ]
 
 

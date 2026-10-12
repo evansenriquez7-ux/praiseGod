@@ -16,7 +16,7 @@ import re
 from typing import List
 
 from backend.app.practice_gen.dna.base import FormattedProblem, QuestionContext
-from backend.app.practice_gen.slots import E, S, derived, fill
+from backend.app.practice_gen.slots import E, S, derived, fill, join
 from backend.app.practice_gen.formatters._answer_slots import distractors_field
 
 _FRACTION_STR_RE = re.compile(r"^\d+/\d+$")
@@ -153,7 +153,7 @@ def format_ordering(ctx: QuestionContext, rng: random.Random, format_name: str =
         question_text = ctx.values["question"]
     else:
         direction_word = "smallest to largest" if direction == "ascending" else "largest to smallest"
-        question_text = fill("Arrange these numbers from {direction_word}: {join}", direction_word=derived(direction_word), join=derived(', '.join(str(x) for x in items)))
+        question_text = fill("Arrange these numbers from {direction_word}: {join}", direction_word=S(direction_word, E(("smallest to largest", "largest to smallest"), "the two orders")), join=S(join(", ", [S(x, E(tuple(sequence), "the sequence to order")) for x in items]), "fill"))
 
     return FormattedProblem(
         problem_id=f"{ctx.node_id}_{ctx.seed}_ordering",

@@ -50,7 +50,7 @@ import random
 from backend.app.practice_gen.dna.base import FormattedProblem, QuestionContext, VocabGated
 from backend.app.practice_gen.formatters._distractor_fallback import augment_distractors
 from backend.app.practice_gen.formatters._option_order import shuffle_options
-from backend.app.practice_gen.slots import S, derived, fill
+from backend.app.practice_gen.slots import E, S, derived, fill
 from backend.app.practice_gen.formatters._answer_slots import correct_option_key
 
 
@@ -164,7 +164,7 @@ def _build_traps(reading: int, tick: int, scale_max: int, rng: random.Random) ->
     return traps[:3]
 
 
-def _stem(instrument: str, unit: str, object_label: str, cumulative_vocab) -> str:
+def _stem(instrument: str, unit: str, object_label: object, cumulative_vocab) -> str:
     """
     Ask for the reading the drawing shows.
 
@@ -181,7 +181,7 @@ def _stem(instrument: str, unit: str, object_label: str, cumulative_vocab) -> st
         ).resolve(cumulative_vocab)
         tool = "measuring cylinder"
     return (
-        fill("Look at the {tool}. What is the {quantity} of {object_label}? Give your answer in {unit}.", tool=derived(tool), quantity=S(quantity, "fill"), object_label=derived(object_label), unit=S(unit, "value:unit"))
+        fill("Look at the {tool}. What is the {quantity} of {object_label}? Give your answer in {unit}.", tool=S(tool, E(("scale", "measuring cylinder"), "the two instruments")), quantity=S(quantity, "fill"), object_label=object_label, unit=S(unit, "value:unit"))
     )
 
 
@@ -242,7 +242,9 @@ def format_scale_read(
     else:
         final_answer = correct_answer
 
-    question_text = _stem(instrument, unit, object_label, ctx.cumulative_vocab)
+    # The label is passed as a slot (batch H4-0): it is drawn from this module's own list.
+    label_list = "_MASS_LABELS" if mtype == "mass" else "_CAPACITY_LABELS"
+    question_text = _stem(instrument, unit, S(object_label, f"enum:backend.app.practice_gen.formatters.visual.fmt_scale_read.{label_list}"), ctx.cumulative_vocab)
 
     format_data: dict = {"visual_params": vp}
     if mcq_options:

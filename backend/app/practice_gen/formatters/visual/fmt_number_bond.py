@@ -308,7 +308,7 @@ def format_number_bond(
         # cause as the identical fix in fmt_true_false.py/fmt_cloze.py/
         # fmt_error_detect.py (see those files' comments).
         from backend.app.practice_gen.dna.na.addition import decompose_to_places
-        prefix = fill("{decompose_to_places} {decompose_to_places2} ", _src=('task_type',), decompose_to_places=S(decompose_to_places(ctx.values['a']), "fill"), decompose_to_places2=S(decompose_to_places(ctx.values['b']), "fill"))
+        prefix = fill("{decompose_to_places} {decompose_to_places2} ", _src=('task_type',), decompose_to_places=S(decompose_to_places(ctx.values['a'], "value:a"), "fill"), decompose_to_places2=S(decompose_to_places(ctx.values['b'], "value:b"), "fill"))
         if ctx.dna_concept == "subtraction":
             # Structured slots (H3-R1, owner ruling 28): the same text, built as a fill.
             question_text = fill(

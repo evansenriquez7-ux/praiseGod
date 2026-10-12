@@ -2063,12 +2063,8 @@ MUTATIONS: List[Mutation] = [
             # RE-ANCHORED 2026-10-10 (H5): the hint is now a slots.fill; the plant restores the
             # same 'later − earlier = |difference|' defect through its slots.
             'backend/app/practice_gen/dna/na/counting.py': (
-                '             bigger=S(bigger, "num.derived", src=("sequence",)),\n'
-                '             smaller=S(smaller, "num.derived", src=("sequence",)),\n'
-                '             diff=S(bigger - smaller, "value:skip_by")),\n',
-                '             bigger=S(sequence[1], "num.derived", src=("sequence",)),\n'
-                '             smaller=S(sequence[0], "num.derived", src=("sequence",)),\n'
-                '             diff=S(abs(sequence[1] - sequence[0]), "value:skip_by")),  # planted mutation\n',
+                '             bigger=S(bigger, E((sequence[0], sequence[1]), "the first two terms"), src=("sequence",)),\n             smaller=S(smaller, E((sequence[0], sequence[1]), "the first two terms"), src=("sequence",)),\n             diff=S(bigger - smaller, "value:skip_by")),\n',
+                '             bigger=S(sequence[1], E((sequence[0], sequence[1]), "the first two terms"), src=("sequence",)),\n             smaller=S(sequence[0], E((sequence[0], sequence[1]), "the first two terms"), src=("sequence",)),\n             diff=S(abs(sequence[1] - sequence[0]), "value:skip_by")),  # planted mutation\n',
             )
         },
         command=["backend.app.practice_gen.validation.validate_hint_contract", "--node-ids", "mat_g1_na_q1_0"],
@@ -2260,8 +2256,8 @@ MUTATIONS: List[Mutation] = [
         ),
         edits={
             'backend/app/practice_gen/dna/na/multiplication.py': (
-                                                                     '    hints.append(fill("We need to {mul_phrase} {b} {count_noun}.", mul_phrase=S(mul_phrase, "fill"), b=S(b, "value:b"), count_noun=derived(count_noun(b, f\'{times_phrase} {a}\'), src=(\'b\', \'a\',))))\n',
-                                                                     '    hints.append(fill("We need to {mul_phrase} {a} {count_noun}.", mul_phrase=S(mul_phrase, "fill"), a=S(a, "value:a"), count_noun=derived(count_noun(a, f\'{times_phrase} {b}\'), src=(\'b\', \'a\',))))  # planted mutation\n',
+                                                                     '    hints.append(fill("We need to {mul_phrase} {b} {count_noun}.", mul_phrase=S(mul_phrase, "fill"), b=S(b, "value:b"), count_noun=S(count_noun(b, f\'{times_phrase} {a}\'), E((count_noun(1, f\'{times_phrase} {a}\'), f\'{times_phrase} {a}\'), "the phrase or its singular (dna.base.count_noun)"), src=(\'b\', \'a\',))))\n',
+                                                                     '    hints.append(fill("We need to {mul_phrase} {a} {count_noun}.", mul_phrase=S(mul_phrase, "fill"), a=S(a, "value:a"), count_noun=S(count_noun(a, f\'{times_phrase} {b}\'), E((count_noun(1, f\'{times_phrase} {b}\'), f\'{times_phrase} {b}\'), "the phrase or its singular (dna.base.count_noun)"), src=(\'b\', \'a\',))))  # planted mutation\n',
                                                                  )
         },
         command=["backend.app.practice_gen.validation.validate_hint_contract", "--node-ids", "mat_g2_na_q3_1"],
@@ -2376,8 +2372,8 @@ MUTATIONS: List[Mutation] = [
         ),
         edits={
             'backend/app/practice_gen/dna/mg/length_measurement.py': (
-                                                                         '            fill("The {comparison} {measure} is {answer} {count_noun}.", _src=(\'task_type\',), comparison=S(comparison, "value:comparison"), measure=derived(measure, src=(\'task_type\',)), answer=S(answer, "value:answer"), count_noun=derived(count_noun(answer, unit_word), src=(\'unit\',))),\n',
-                                                                         '            fill("The longer {measure} is {answer} {count_noun}.", _src=(\'task_type\',), comparison=S(comparison, "value:comparison"), measure=derived(measure, src=(\'task_type\',)), answer=S(answer, "value:answer"), count_noun=derived(count_noun(answer, unit_word), src=(\'unit\',))),  # planted mutation\n',
+                                                                         '            fill("The {comparison} {measure} is {answer} {count_noun}.", _src=(\'task_type\',), comparison=S(comparison, "value:comparison"), measure=S(measure, E(("distance", "length"), "the two compare measures"), src=(\'task_type\',)), answer=S(answer, "value:answer"), count_noun=S(count_noun(answer, unit_word), E((count_noun(1, unit_word), unit_word), "the unit word or its singular (dna.base.count_noun)"), src=(\'unit\',))),\n',
+                                                                         '            fill("The longer {measure} is {answer} {count_noun}.", _src=(\'task_type\',), comparison=S(comparison, "value:comparison"), measure=S(measure, E(("distance", "length"), "the two compare measures"), src=(\'task_type\',)), answer=S(answer, "value:answer"), count_noun=S(count_noun(answer, unit_word), E((count_noun(1, unit_word), unit_word), "the unit word or its singular (dna.base.count_noun)"), src=(\'unit\',))),  # planted mutation\n',
                                                                      )
         },
         command=["backend.app.practice_gen.validation.validate_hint_contract", "--node-ids", "mat_g2_mg_q2_0"],
@@ -5304,10 +5300,8 @@ MUTATIONS: List[Mutation] = [
         ),
         edits={
             "backend/app/practice_gen/formatters/textual/fmt_mcq.py": (
-                '        seq_str = ", ".join(str(x) for x in seq)\n'
-                '        # Structured slots (H5, owner rulings 28 and 35): the sequence exhibits the step.\n',
-                '        seq_str = ", ".join(str(x) for x in seq[1:])  # planted mutation\n'
-                '        # Structured slots (H5, owner rulings 28 and 35): the sequence exhibits the step.\n',
+                '        seq_str = join(", ", [S(x, E(tuple(seq), "values[\'sequence\']")) for x in seq])\n        # Structured slots (H5, owner rulings 28 and 35): the sequence exhibits the step.\n',
+                '        seq_str = join(", ", [S(x, E(tuple(seq), "values[\'sequence\']")) for x in seq[1:]])  # planted mutation\n        # Structured slots (H5, owner rulings 28 and 35): the sequence exhibits the step.\n',
             )
         },
         command=["backend.app.practice_gen.validation.validate_composition",

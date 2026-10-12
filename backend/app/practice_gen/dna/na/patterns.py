@@ -17,7 +17,7 @@ from backend.app.practice_gen.dna.base import (
     ErrorPattern,
     VocabGated,
 )
-from backend.app.practice_gen.slots import S, derived, derives, fill
+from backend.app.practice_gen.slots import E, S, derived, derives, fill, join
 
 
 # ─── param bounds ─────────────────────────────────────────────────────────────
@@ -381,7 +381,7 @@ def generate_params(
             cycle[-1] = rng.choice(alternatives) if use_letters else generate_number_by_window(alternatives, num_diff_scalar, d=5, rng=rng)
         sequence = _make_repeating_sequence(0, cycle, seq_length + 1)
         step = 0
-        rule = fill("Repeat the group: {join}", join=derived(', '.join(map(str, cycle))))
+        rule = fill("Repeat the group: {join}", join=S(join(", ", [S(c, E(tuple(cycle), "the repeating cycle")) for c in cycle]), "fill"))
     elif (pattern_type in ("arithmetic_increasing", "arithmetic_decreasing")
           and letters_allowed and rng.random() < 0.35):
         # ASCENDING / DESCENDING ALPHABETIC PATTERNS. mat_g2_na_q2_8 reads "Determine
@@ -467,7 +467,7 @@ def generate_params(
             sequence.append(val)
             
         step = outer_step * 10
-        rule = fill("Repeat the ones {inner_cycle} and {v} {abs} every group", inner_cycle=derived(inner_cycle), v=derived('subtract' if decreasing else 'add'), abs=derived(abs(step)))
+        rule = fill("Repeat the ones {inner_cycle} and {v} {abs} every group", inner_cycle=derived(inner_cycle), v=S('subtract' if decreasing else 'add', E(("subtract", "add"), "the group step's direction")), abs=derived(abs(step), src=("common_difference",), why="arithmetic"))
     else:  # arithmetic_increasing (default)
         pairs = []
         for s in range(step_lo, step_hi + 1):
@@ -604,25 +604,25 @@ def generate_hints(
         shown.append("___")
 
     hints: List[str] = []
-    hints.append(fill("Look at the pattern: {join}.", join=derived(', '.join(str(x) for x in shown))))
+    hints.append(fill("Look at the pattern: {join}.", join=S(join(", ", [S(x, E(tuple(seq) + ("___",), "the sequence, its missing term blanked")) for x in shown]), "fill")))
 
     if kind == "repeating":
         rep = VOCAB_REPEATING.resolve(cumulative_vocab)
         hints.append(fill("This is a {rep} {resolve}. Find the repeating group.", _src=('pattern_kind',), rep=S(rep, "fill"), resolve=S(VOCAB_PATTERN.resolve(cumulative_vocab), "fill")))
     elif kind == "combined":
         hints.append(
-            fill("A group of numbers repeats, and each new group {v} by {abs}.", _src=('pattern_kind',), v=derived('goes down' if diff < 0 else 'goes up', src=('common_difference',)), abs=derived(abs(diff), src=('common_difference',)))
+            fill("A group of numbers repeats, and each new group {v} by {abs}.", _src=('pattern_kind',), v=S('goes down' if diff < 0 else 'goes up', E(("goes down", "goes up"), "the group step's direction"), src=('common_difference',)), abs=derived(abs(diff), src=('common_difference',), why="arithmetic"))
         )
     elif not any(isinstance(x, str) for x in seq):
         direction = (VOCAB_DECREASING if kind == "arithmetic_decreasing" else VOCAB_INCREASING).resolve(cumulative_vocab)
-        hints.append(fill("The pattern is {direction} by {abs} each step.", _src=('sequence',), direction=S(direction, "fill"), abs=derived(abs(diff), src=('common_difference',))))
+        hints.append(fill("The pattern is {direction} by {abs} each step.", _src=('sequence',), direction=S(direction, "fill"), abs=derived(abs(diff), src=('common_difference',), why="arithmetic")))
     if any(isinstance(x, str) for x in seq):
         # A letter pattern's rule already says how it moves ("Move forward 1 letter
         # each time"); "going up by 1" and "the next number" describe numbers.
         term_label = fill("letter")
 
     if m_idx == len(seq):
-        hints.append(fill("The next {term_label} is at position {v}.", _src=('sequence',), term_label=S(term_label, "fill"), v=derived(m_idx + 1)))
+        hints.append(fill("The next {term_label} is at position {v}.", _src=('sequence',), term_label=S(term_label, "fill"), v=S(m_idx + 1, "value:position")))
     elif m_idx >= 0:
         hints.append(fill("The missing {term_label} is at position {v}.", term_label=S(term_label, "fill"), v=S(m_idx + 1, "value:position")))
     hints.append(fill("{rule}. The answer is {ans}.", rule=S(rule, "value:rule_description"), ans=S(ans, "value:answer")))

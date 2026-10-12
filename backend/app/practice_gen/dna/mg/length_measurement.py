@@ -954,9 +954,9 @@ def generate_hints(
         unit_word = _unit_word(values["unit"])
         measure = "distance" if task_type == "compare_distance" else "length"
         return [
-            fill("Compare {val_a} {count_noun} and {val_b} {count_noun2}.", _src=('task_type',), val_a=S(val_a, "value:value_a"), count_noun=derived(count_noun(val_a, unit_word), src=('unit',)), val_b=S(val_b, "value:value_b"), count_noun2=derived(count_noun(val_b, unit_word), src=('unit',))),
-            fill("{max} is more than {min}.", _src=('task_type',), max=derived(max(val_a, val_b)), min=derived(min(val_a, val_b))),
-            fill("The {comparison} {measure} is {answer} {count_noun}.", _src=('task_type',), comparison=S(comparison, "value:comparison"), measure=derived(measure, src=('task_type',)), answer=S(answer, "value:answer"), count_noun=derived(count_noun(answer, unit_word), src=('unit',))),
+            fill("Compare {val_a} {count_noun} and {val_b} {count_noun2}.", _src=('task_type',), val_a=S(val_a, "value:value_a"), count_noun=S(count_noun(val_a, unit_word), E((count_noun(1, unit_word), unit_word), "the unit word or its singular (dna.base.count_noun)"), src=('unit',)), val_b=S(val_b, "value:value_b"), count_noun2=S(count_noun(val_b, unit_word), E((count_noun(1, unit_word), unit_word), "the unit word or its singular (dna.base.count_noun)"), src=('unit',))),
+            fill("{max} is more than {min}.", _src=('task_type',), max=S(max(val_a, val_b), E((val_a, val_b), "the two compared values")), min=S(min(val_a, val_b), E((val_a, val_b), "the two compared values"))),
+            fill("The {comparison} {measure} is {answer} {count_noun}.", _src=('task_type',), comparison=S(comparison, "value:comparison"), measure=S(measure, E(("distance", "length"), "the two compare measures"), src=('task_type',)), answer=S(answer, "value:answer"), count_noun=S(count_noun(answer, unit_word), E((count_noun(1, unit_word), unit_word), "the unit word or its singular (dna.base.count_noun)"), src=('unit',))),
         ]
 
     if task_type == "equal_length":

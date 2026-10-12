@@ -19,7 +19,7 @@ from backend.app.practice_gen.dna.base import (
     ErrorPattern,
     VocabGated,
 )
-from backend.app.practice_gen.slots import S, derived, fill
+from backend.app.practice_gen.slots import E, R, S, derived, fill
 
 
 # ─── param bounds ─────────────────────────────────────────────────────────────
@@ -249,7 +249,7 @@ def generate_hints(
     for i, (op, val) in enumerate(zip(operators, operands[1:]), start=1):
         prev = running
         running = running + val if op == "+" else running - val
-        hints.append(fill("Step {i}: {prev} {op} {val} = {running}.", i=derived(i), prev=derived(prev, src=('operands',)), op=derived(op), val=derived(val), running=derived(running, src=('operands',))))
+        hints.append(fill("Step {i}: {prev} {op} {val} = {running}.", i=S(i, R(1, len(operators), "the step number, one per operator")), prev=derived(prev, src=("operands", "operators"), why="arithmetic"), op=S(op, E(tuple(operators), "values['operators']"), src=("operators",)), val=S(val, E(tuple(operands[1:]), "values['operands'] after the first"), src=("operands",)), running=derived(running, src=("operands", "operators"), why="arithmetic")))
 
     hints.append(fill("The answer is {answer}.", answer=S(answer, "value:answer")))
 

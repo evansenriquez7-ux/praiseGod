@@ -135,7 +135,7 @@ def _build_pure_equation(ctx: QuestionContext) -> str:
             # the decomposition rather than being rejected outright.
             from backend.app.practice_gen.dna.na.addition import decompose_to_places
             return (
-                fill("{decompose_to_places} {decompose_to_places2} Add the place values, then find the total: {slot} + {slot2} = {slot3}", _src=('task_type',), decompose_to_places=S(decompose_to_places(a), "fill"), decompose_to_places2=S(decompose_to_places(b), "fill"), slot=slot_s('a', value=a), slot2=slot_s('b', value=b), slot3=slot_s('result', value=r))
+                fill("{decompose_to_places} {decompose_to_places2} Add the place values, then find the total: {slot} + {slot2} = {slot3}", _src=('task_type',), decompose_to_places=S(decompose_to_places(a, "value:a"), "fill"), decompose_to_places2=S(decompose_to_places(b, "value:b"), "fill"), slot=slot_s('a', value=a), slot2=slot_s('b', value=b), slot3=slot_s('result', value=r))
             )
         if values.get("task_type") == "counting_up" and blank_target == "result":
             # Same root cause as expanded_form above.

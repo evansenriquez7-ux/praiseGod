@@ -21,7 +21,7 @@ from backend.app.practice_gen.formatters._distractor_fallback import augment_dis
 from backend.app.practice_gen.formatters._option_order import shuffle_options
 from backend.app.practice_gen.formatters._answer_slots import (answer_text, distractor_text,
                                                            member_text)
-from backend.app.practice_gen.slots import S, derived, fill
+from backend.app.practice_gen.slots import E, S, derived, fill, join
 
 
 def _build_pure_question(ctx: QuestionContext) -> str:
@@ -192,9 +192,9 @@ def _build_pure_question(ctx: QuestionContext) -> str:
     elif concept == "counting":
         seq = values.get("sequence") or []
         direction = values.get("direction", "forward")
-        seq_str = ", ".join(str(x) for x in seq)
+        seq_str = join(", ", [S(x, E(tuple(seq), "values['sequence']")) for x in seq])
         # Structured slots (H5, owner rulings 28 and 35): the sequence exhibits the step.
-        SEQ = S(seq_str, "text.derived", src=("sequence", "skip_by", "direction"))
+        SEQ = S(seq_str, "fill", src=("sequence", "skip_by", "direction"))
         if direction == "backward":
             return fill("What number comes next when counting backward: {seq}, ___?", _src=('direction',), seq=SEQ)
         else:

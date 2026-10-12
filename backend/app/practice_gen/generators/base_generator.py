@@ -35,7 +35,7 @@ from ..slots import S, fill
 from ..registry import get_node_competency_bounds, get_node_dnas, get_node_info
 from .interest import get_interest_emoji, get_interest_slots, pick_interest
 from .spines import NARRATIVE_DOMAIN_DNAS, select_spine
-from backend.app.practice_gen.slots import E, S, derived, fill
+from backend.app.practice_gen.slots import E, R, S, derived, fill, join
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -881,9 +881,9 @@ def _build_symbolic_question(
     if concept == "counting":
         direction = values.get("direction", "forward")
         if direction == "backward":
-            return fill("What number comes before {a} when counting by {b}?", _src=('direction',), a=derived(a, src=('a', 'start',)), b=derived(b, src=('b', 'skip_by',)))
+            return fill("What number comes before {a} when counting by {b}?", _src=('direction',), a=S(a, "value:start", src=('a', 'start',)), b=S(b, "value:skip_by", src=('b', 'skip_by',)))
         else:
-            return fill("What number comes after {a} when counting by {b}?", a=derived(a, src=('a', 'start',)), b=S(b, "value:skip_by", src=('b', 'skip_by',)))
+            return fill("What number comes after {a} when counting by {b}?", a=S(a, "value:start", src=('a', 'start',)), b=S(b, "value:skip_by", src=('b', 'skip_by',)))
 
     if concept == "ordinal_numbers":
         n = values.get("n", a)
@@ -935,7 +935,7 @@ def _build_symbolic_question(
             # sentinel), asking for "the next number" when the actual
             # expected answer is the rule's step size, which doesn't even
             # continue the visible sequence.
-            seq_str = ", ".join(str(x) for x in seq) if seq else fill("{a}, ...", _src=('missing_index', 'rule_description',), a=derived(a, src=('a', 'start',)))
+            seq_str = join(", ", [S(x, E(tuple(seq), "values['sequence']")) for x in seq]) if seq else fill("{a}, ...", _src=('missing_index', 'rule_description',), a=derived(a, src=('a', 'start',)))
             # "combined" patterns (mat_g3_na_q3_6: "repeating and
             # increasing/decreasing components") answer with the BLOCK-
             # to-block step, not a per-term difference -- same root cause
@@ -950,10 +950,10 @@ def _build_symbolic_question(
             # fix, all via mcq/cloze specifically.
             if values.get("pattern_kind") == "combined":
                 return (
-                    fill("This pattern follows a rule: {seq_str}, ... Each group of numbers repeats, then the next group changes by the same amount. What number is added or subtracted from one group to the next?", _src=('pattern_kind', 'missing_index', 'rule_description',), seq_str=derived(seq_str, src=('sequence', 'a', 'start',)))
+                    fill("This pattern follows a rule: {seq_str}, ... Each group of numbers repeats, then the next group changes by the same amount. What number is added or subtracted from one group to the next?", _src=('pattern_kind', 'missing_index', 'rule_description',), seq_str=S(seq_str, "fill", src=('sequence', 'a', 'start',)))
                 )
             return (
-                fill("This pattern follows a rule: {seq_str}, ... What number is added or subtracted each time to generate it?", _src=('missing_index', 'rule_description',), seq_str=derived(seq_str, src=('sequence', 'a', 'start',)))
+                fill("This pattern follows a rule: {seq_str}, ... What number is added or subtracted each time to generate it?", _src=('missing_index', 'rule_description',), seq_str=S(seq_str, "fill", src=('sequence', 'a', 'start',)))
             )
         if missing_index is not None and 0 <= missing_index < len(seq):
             # ask_type="missing_middle": the answer (visible[missing_index])
@@ -965,7 +965,7 @@ def _build_symbolic_question(
             # ("next" implies continuing past the end). Blank the masked
             # position and phrase it as finding a missing term instead.
             display = [("___" if i == missing_index else str(x)) for i, x in enumerate(seq)]
-            seq_str = ", ".join(display)
+            seq_str = join(", ", [S("___" if i == missing_index else x, E(tuple(seq) + ("___",), "values['sequence'], the missing term blanked")) for i, x in enumerate(seq)])
             # "number" was hardcoded regardless of sequence content --
             # patterns.py can now generate letter cycles too ("letters:
             # a, b, c, a, b, c...", mat_g1_na_q3_6's own worked example),
@@ -973,10 +973,10 @@ def _build_symbolic_question(
             # "term" is accurate for both and matches this DNA's own
             # VOCAB_TERM vocabulary.
             unit = "letter" if any(isinstance(x, str) for x in seq) else "number"
-            return fill("What {unit} is missing in the pattern: {seq_str}?", _src=('missing_index', 'sequence',), unit=derived(unit, src=('sequence',)), seq_str=derived(seq_str, src=('missing_index', 'sequence',)))
-        seq_str = ", ".join(str(x) for x in seq) if seq else fill("{a}, ...", a=derived(a, src=('a', 'start',)))
+            return fill("What {unit} is missing in the pattern: {seq_str}?", _src=('missing_index', 'sequence',), unit=S(unit, E(("letter", "number"), "what the pattern's terms are"), src=('sequence',)), seq_str=S(seq_str, "fill", src=('missing_index', 'sequence',)))
+        seq_str = join(", ", [S(x, E(tuple(seq), "values['sequence']")) for x in seq]) if seq else fill("{a}, ...", a=derived(a, src=('a', 'start',)))
         unit = "letter" if any(isinstance(x, str) for x in seq) else "number"
-        return fill("What is the next {unit} in the pattern: {seq_str}?", unit=derived(unit, src=('sequence',)), seq_str=derived(seq_str, src=('sequence', 'a', 'start',)))
+        return fill("What is the next {unit} in the pattern: {seq_str}?", unit=S(unit, E(("letter", "number"), "what the pattern's terms are"), src=('sequence',)), seq_str=S(seq_str, "fill", src=('sequence', 'a', 'start',)))
 
     if concept == "fractions":
         if values.get("question"):
@@ -1068,20 +1068,20 @@ def _build_symbolic_question(
                 count = counts[denom]
                 if is_centavo:
                     unit = "coin"
-                    face = fill("{denom}¢", _src=('amounts',), denom=derived(denom))
+                    face = fill("{denom}¢", _src=('amounts',), denom=S(denom, E(tuple(amounts), "values['amounts']")))
                 else:
                     unit = "bill" if denom >= 20 else "coin"
-                    face = fill("₱{denom}", _src=('amounts',), denom=derived(denom))
+                    face = fill("₱{denom}", _src=('amounts',), denom=S(denom, E(tuple(amounts), "values['amounts']")))
                 if count > 1:
                     unit += "s"
-                parts.append(fill("{count} {face} {unit}", _src=('amounts',), count=derived(count, src=('amounts',)), face=S(face, "fill"), unit=derived(unit)))
+                parts.append(fill("{count} {face} {unit}", _src=('amounts',), count=S(count, R(1, len(amounts), "how many of one denomination the pile holds"), src=('amounts',)), face=S(face, "fill"), unit=S(unit, E(("coin", "bill", "coins", "bills"), "coin/bill, singular or plural"))))
 
             if len(parts) == 1:
                 desc = parts[0]
             elif len(parts) == 2:
                 desc = fill("{v} and {v2}", _src=('amounts',), v=S(parts[0], "fill"), v2=S(parts[1], "fill"))
             else:
-                desc = fill("{join}, and {v}", _src=('amounts',), join=derived(", ".join(parts[:-1])), v=S(parts[-1], "fill"))
+                desc = fill("{join}, and {v}", _src=('amounts',), join=S(join(", ", parts[:-1]), "fill"), v=S(parts[-1], "fill"))
             desc_hash = int(hashlib.md5(desc.encode()).hexdigest(), 16)
             if is_centavo:
                 # Name the unit the answer is in, so the total is unambiguous.
@@ -1206,9 +1206,9 @@ def _build_symbolic_question(
             # hit for length_measurement's equivalent fix).
             article = "A" if target_noun.startswith("c") else "An"
             return (
-                fill("{article} {target_noun}'s {mc_lbl} measures {val} {unit}. About how many {unit} is that, rounded to the nearest {round_to}?", _src=('task_type',), article=derived(article, src=('measurement_type',)), target_noun=derived(target_noun, src=('measurement_type',)), mc_lbl=S(mc_lbl, "fill"), val=S(val, "value:value", src=('value',)), unit=S(unit, "value:unit"), round_to=derived(round_to, src=('round_to',)))
+                fill("{article} {target_noun}'s {mc_lbl} measures {val} {unit}. About how many {unit} is that, rounded to the nearest {round_to}?", _src=('task_type',), article=S(article, E(("A", "An"), "the article this stem chooses"), src=('measurement_type',)), target_noun=S(target_noun, E(("object", "container"), "the mass and capacity nouns"), src=('measurement_type',)), mc_lbl=S(mc_lbl, "fill"), val=S(val, "value:value", src=('value',)), unit=S(unit, "value:unit"), round_to=S(round_to, "value:round_to", src=('round_to',)))
             )
-        return fill("What is the {mc_lbl} of the {target_noun} in {unit}?", mc_lbl=S(mc_lbl, "fill"), target_noun=derived(target_noun, src=('measurement_type',)), unit=S(unit, "value:unit"))
+        return fill("What is the {mc_lbl} of the {target_noun} in {unit}?", mc_lbl=S(mc_lbl, "fill"), target_noun=S(target_noun, E(("object", "container"), "the mass and capacity nouns"), src=('measurement_type',)), unit=S(unit, "value:unit"))
 
     if concept == "perimeter":
         if values.get("question"):

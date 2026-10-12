@@ -673,10 +673,10 @@ def generate_params(
 
     # Direct rectangle find_area (pure, mat_g3_mg_q1_2)
     phrasings = [
-        fill("A rectangle has sides {l} {lu} and {w} {lu}. What is its area in {unit_label}?", _src=('shape',), l=derived(l), lu=S(lu, "value:length_unit"), w=S(w, "value:w"), unit_label=S(unit_label, "value:unit")),
-        fill("What is the area of a rectangle with length {l} {lu} and width {w} {lu} in {unit_label}?", _src=('shape',), l=derived(l), lu=S(lu, "value:length_unit"), w=S(w, "value:w"), unit_label=S(unit_label, "value:unit")),
-        fill("Find the area of a rectangle that is {l} {lu} long and {w} {lu} wide in {unit_label}.", _src=('shape',), l=derived(l), lu=S(lu, "value:length_unit"), w=S(w, "value:w"), unit_label=S(unit_label, "value:unit")),
-        fill("Calculate the area of a rectangle with dimensions {l} {lu} by {w} {lu} in {unit_label}.", _src=('shape',), l=derived(l), lu=S(lu, "value:length_unit"), w=S(w, "value:w"), unit_label=S(unit_label, "value:unit")),
+        fill("A rectangle has sides {l} {lu} and {w} {lu}. What is its area in {unit_label}?", _src=('shape',), l=S(l, "value:l"), lu=S(lu, "value:length_unit"), w=S(w, "value:w"), unit_label=S(unit_label, "value:unit")),
+        fill("What is the area of a rectangle with length {l} {lu} and width {w} {lu} in {unit_label}?", _src=('shape',), l=S(l, "value:l"), lu=S(lu, "value:length_unit"), w=S(w, "value:w"), unit_label=S(unit_label, "value:unit")),
+        fill("Find the area of a rectangle that is {l} {lu} long and {w} {lu} wide in {unit_label}.", _src=('shape',), l=S(l, "value:l"), lu=S(lu, "value:length_unit"), w=S(w, "value:w"), unit_label=S(unit_label, "value:unit")),
+        fill("Calculate the area of a rectangle with dimensions {l} {lu} by {w} {lu} in {unit_label}.", _src=('shape',), l=S(l, "value:l"), lu=S(lu, "value:length_unit"), w=S(w, "value:w"), unit_label=S(unit_label, "value:unit")),
     ]
     q = rng.choice(phrasings)
     return {
@@ -685,7 +685,7 @@ def generate_params(
         "sides": {"l": l, "w": w},
         "l": l, "w": w, "s": l,
         "shape_noun": "rectangular",
-        "dims_phrase": fill("that is {l} {lu} long and {w} {lu} wide", l=derived(l), lu=S(lu, "value:length_unit"), w=S(w, "value:w")),
+        "dims_phrase": fill("that is {l} {lu} long and {w} {lu} wide", l=S(l, "value:l"), lu=S(lu, "value:length_unit"), w=S(w, "value:w")),
         "length_unit": lu,
         "unit": unit_label,
         "task_type": "find_area",

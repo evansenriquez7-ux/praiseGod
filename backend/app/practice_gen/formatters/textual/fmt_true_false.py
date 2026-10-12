@@ -146,7 +146,7 @@ def format_true_false(ctx: QuestionContext, rng: random.Random) -> FormattedProb
                 # mat_g2_na_q1_8 after binding task_type to expanded_form).
                 from backend.app.practice_gen.dna.na.addition import decompose_to_places
                 statement = (
-                    fill("{decompose_to_places} {decompose_to_places2} Add the place values, then find the total: {a} + {b} = {fill_value}", _src=('task_type',), decompose_to_places=S(decompose_to_places(a), "fill"), decompose_to_places2=S(decompose_to_places(b), "fill"), a=S(a, "value:a"), b=S(b, "value:b"), fill_value=FV)
+                    fill("{decompose_to_places} {decompose_to_places2} Add the place values, then find the total: {a} + {b} = {fill_value}", _src=('task_type',), decompose_to_places=S(decompose_to_places(a, "value:a"), "fill"), decompose_to_places2=S(decompose_to_places(b, "value:b"), "fill"), a=S(a, "value:a"), b=S(b, "value:b"), fill_value=FV)
                 )
             elif values.get("task_type") == "putting_together" and blank_target == "result":
                 a_p = fill("{a} item", _src=('a', 'task_type',), a=S(a, "value:a")) if a == 1 else fill("{a} items", _src=('task_type',), a=S(a, "value:a"))
@@ -342,7 +342,7 @@ def format_true_false(ctx: QuestionContext, rng: random.Random) -> FormattedProb
                     correct_sign = ctx.correct_answer if ctx.correct_answer in (">", "<", "=") else None
                     wrong_signs = [s for s in (">", "<", "=") if s != correct_sign]
                     sign_fill = rng.choice(wrong_signs) if wrong_signs else "="
-                statement = fill("{a} {sign_fill} {b}", a=S(a, "value:a"), sign_fill=derived(sign_fill), b=S(b, "value:b"))
+                statement = fill("{a} {sign_fill} {b}", a=S(a, "value:a"), sign_fill=S(sign_fill, E((">", "<", "="), "the three comparison signs")), b=S(b, "value:b"))
         elif concept == "place_value" and values.get("task_type") == "identify_value":
             # Only "identify_value" has a statement worth specializing: the DNA's
             # blank_target is always value_at_position (see place_value.py), so
@@ -391,7 +391,7 @@ def format_true_false(ctx: QuestionContext, rng: random.Random) -> FormattedProb
                     b_num = values.get("b_num", numer)
                     b_den = values.get("b_den", denom)
                     sign_fill = fill_value if fill_value in (">", "<", "=") else "="
-                    statement = fill("\\(\\frac{{{a_num}}}{{{a_den}}}\\) {sign_fill} \\(\\frac{{{b_num}}}{{{b_den}}}\\)", _src=('operation',), a_num=derived(a_num, src=('a_num', 'numerator', 'a',)), a_den=derived(a_den, src=('a_den', 'denominator', 'b',)), sign_fill=derived(sign_fill), b_num=derived(b_num, src=('b_num', 'numerator', 'a',)), b_den=derived(b_den, src=('b_den', 'denominator', 'b',)))
+                    statement = fill("\\(\\frac{{{a_num}}}{{{a_den}}}\\) {sign_fill} \\(\\frac{{{b_num}}}{{{b_den}}}\\)", _src=('operation',), a_num=derived(a_num, src=('a_num', 'numerator', 'a',)), a_den=derived(a_den, src=('a_den', 'denominator', 'b',)), sign_fill=S(sign_fill, E((">", "<", "="), "the three comparison signs")), b_num=derived(b_num, src=('b_num', 'numerator', 'a',)), b_den=derived(b_den, src=('b_den', 'denominator', 'b',)))
                 elif operation in ("add_subtract", "add", "subtract"):
                     a_num = values.get("a_num", numer)
                     b_num = values.get("b_num", 0)

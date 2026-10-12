@@ -850,7 +850,7 @@ def format_number_line(
         elif interaction_mode == "read":
             direction = "back" if subtractive else "forward"
             question_text = (
-                fill("The dot is at ₱{a} and it moves {direction} ₱{b}. Which amount will the dot land on?", a=S(a, "value:a"), direction=derived(direction, src=('operation',)), b=S(b, "value:b"))
+                fill("The dot is at ₱{a} and it moves {direction} ₱{b}. Which amount will the dot land on?", a=S(a, "value:a"), direction=S(direction, E(("back", "forward"), "the dot's two directions"), src=('operation',)), b=S(b, "value:b"))
             )
         else:
             sign = "\u2212" if subtractive else "+"

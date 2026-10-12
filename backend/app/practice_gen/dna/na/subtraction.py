@@ -17,7 +17,7 @@ from __future__ import annotations
 import random
 from typing import Any, Dict, List, Optional, Set
 
-from backend.app.practice_gen.slots import E, S, fill, transform
+from backend.app.practice_gen.slots import E, S, derived, fill, transform
 from backend.app.practice_gen.dna.base import (
     count_noun,
     DIFFICULTY_LEVEL_MAP,
@@ -920,7 +920,7 @@ def generate_hints(
     # Structured slots (H3, owner ruling 28). Every string below is identical to the
     # f-string it replaced; `fill` records its template and slot domains for §14.
     A, B, RES = S(a, "value:a"), S(b, "value:b"), S(result, "value:result")
-    D = lambda v: S(v, "num.derived")  # noqa: E731 - a number computed from a and b
+    D = lambda v: derived(v, src=("a", "b"), why="arithmetic")  # noqa: E731 - a column digit computed from a and b
     diff_cap = S(transform("capitalize", diff_label), "fill")
 
     # Step 1: identify the operation

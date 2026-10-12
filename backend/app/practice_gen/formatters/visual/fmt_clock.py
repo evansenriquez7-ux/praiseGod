@@ -20,7 +20,7 @@ from typing import Optional
 from backend.app.practice_gen.dna.base import FormattedProblem, QuestionContext
 from backend.app.practice_gen.formatters._distractor_fallback import augment_distractors
 from backend.app.practice_gen.formatters._option_order import shuffle_options
-from backend.app.practice_gen.slots import S, derived, fill
+from backend.app.practice_gen.slots import E, R, S, derived, fill
 from backend.app.practice_gen.formatters._answer_slots import (correct_option_key, distractors_field)
 
 
@@ -30,8 +30,8 @@ from backend.app.practice_gen.formatters._answer_slots import (correct_option_ke
 
 def _time_str(hours: int, minutes: int, use_24: bool, period: Optional[str] = None) -> str:
     if use_24:
-        return fill("{hours:02d}:{minutes:02d}", hours=derived(hours), minutes=derived(minutes))
-    base = fill("{hours}:{minutes:02d}", hours=derived(hours), minutes=derived(minutes))
+        return fill("{hours:02d}:{minutes:02d}", hours=S(hours, R(0, 23, "an hour of the day")), minutes=S(minutes, R(0, 59, "a minute of the hour")))
+    base = fill("{hours}:{minutes:02d}", hours=S(hours, R(0, 23, "an hour of the day")), minutes=S(minutes, R(0, 59, "a minute of the hour")))
     return fill("{base} {period}", base=S(base, "fill"), period=S(period, "value:period")) if period and not use_24 else base
 
 
@@ -277,7 +277,7 @@ def format_clock(
         if use_24:
             question_text = fill("Set the clock to show {time_str} (24-hour time).", time_str=derived(time_str, src=('period',)))
         else:
-            question_text = fill("Set the clock to show {time_str}{trailing}", time_str=S(time_str, "value:time_str"), trailing=derived(trailing, src=('period',)))
+            question_text = fill("Set the clock to show {time_str}{trailing}", time_str=S(time_str, "value:time_str"), trailing=S(trailing, E((".", ""), "a closing period unless the time already ends with one"), src=('period',)))
         correct_answer = time_str
 
     # ── 4. Assemble visual_params ─────────────────────────────────────────────

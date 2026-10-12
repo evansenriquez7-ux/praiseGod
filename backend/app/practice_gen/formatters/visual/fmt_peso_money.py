@@ -391,7 +391,7 @@ def format_peso_money(
         # word-problem nodes, so it is fixed in that commit rather than after it.
         question_text = ctx.question_text
     else:
-        stem = fill("Use coins and bills to make exactly ₱{total}.", total=derived(total))
+        stem = fill("Use coins and bills to make exactly ₱{total}.", total=S(total, "value:total"))
         if vp.get("require_fewest"):
             stem = fill("{stem} Use the fewest pieces possible.", stem=S(stem, "fill"))
         question_text = stem

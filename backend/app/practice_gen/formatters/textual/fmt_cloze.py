@@ -17,7 +17,7 @@ from backend.app.practice_gen.dna.base import (FormattedProblem, QuestionContext
 from backend.app.practice_gen.formatters._distractor_fallback import augment_distractors
 from backend.app.practice_gen.formatters._option_order import shuffle_options
 from backend.app.practice_gen.formatters._answer_slots import answer_text, distractor_text
-from backend.app.practice_gen.slots import E, S, derived, fill
+from backend.app.practice_gen.slots import E, S, derived, fill, join
 
 
 def _build_equation_sentence(ctx: QuestionContext) -> str:
@@ -44,7 +44,7 @@ def _build_equation_sentence(ctx: QuestionContext) -> str:
             # identical fix in fmt_true_false.py (see that file's comment).
             from backend.app.practice_gen.dna.na.addition import decompose_to_places
             return (
-                fill("{decompose_to_places} {decompose_to_places2} Add the place values, then find the total: {a} + {b} = ___", _src=('task_type',), decompose_to_places=S(decompose_to_places(a), "fill"), decompose_to_places2=S(decompose_to_places(b), "fill"), a=S(a, "value:a"), b=S(b, "value:b"))
+                fill("{decompose_to_places} {decompose_to_places2} Add the place values, then find the total: {a} + {b} = ___", _src=('task_type',), decompose_to_places=S(decompose_to_places(a, "value:a"), "fill"), decompose_to_places2=S(decompose_to_places(b, "value:b"), "fill"), a=S(a, "value:a"), b=S(b, "value:b"))
             )
         if values.get("task_type") == "putting_together":
             a_p = fill("{a} item", _src=('a', 'task_type',), a=S(a, "value:a")) if a == 1 else fill("{a} items", _src=('task_type',), a=S(a, "value:a"))
@@ -182,7 +182,7 @@ def _build_equation_sentence(ctx: QuestionContext) -> str:
             return fill("{stem}: {seq}, ___",
                         stem=S(stem, E(("Find the missing number", "What comes next"),
                                        "vocab gate 'missing number'")),
-                        seq=S(", ".join(str(x) for x in seq), "text.derived",
+                        seq=S(join(", ", [S(x, E(tuple(seq), "values['sequence']")) for x in seq]), "fill",
                               src=("sequence", "skip_by", "direction")))
         if ctx.question_text_with_blank:
             return ctx.question_text_with_blank

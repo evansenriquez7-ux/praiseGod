@@ -21,7 +21,7 @@ from backend.app.practice_gen.dna.base import (
     ErrorPattern,
     VocabGated,
 )
-from backend.app.practice_gen.slots import E, S, derived, fill
+from backend.app.practice_gen.slots import E, S, derived, fill, join
 
 
 # ─── grade-gated skip pools ───────────────────────────────────────────────────
@@ -290,7 +290,7 @@ def generate_hints(
     seq_lbl  = VOCAB_SEQUENCE.resolve(cumulative_vocab)
     cnt_lbl  = VOCAB_COUNTING_BY.resolve(cumulative_vocab)
 
-    visible_str = ", ".join(str(n) for n in sequence)
+    visible_str = join(", ", [S(n, E(tuple(sequence), "values['sequence']")) for n in sequence])
     action = "add" if direction == "forward" else "subtract"
 
     # The neighbour comparison takes the smaller from the larger. Until 2026-09-25 it
@@ -308,10 +308,10 @@ def generate_hints(
                 last=LAST)
     return [
         fill("Look at the {seq_lbl}: {seq}, ___", seq_lbl=SEQ,
-             seq=S(visible_str, "text.derived", src=("sequence", "skip_by", "direction"))),
+             seq=S(visible_str, "fill", src=("sequence", "skip_by", "direction"))),
         fill("Find the rule by comparing neighbours: {bigger} − {smaller} = {diff}.",
-             bigger=S(bigger, "num.derived", src=("sequence",)),
-             smaller=S(smaller, "num.derived", src=("sequence",)),
+             bigger=S(bigger, E((sequence[0], sequence[1]), "the first two terms"), src=("sequence",)),
+             smaller=S(smaller, E((sequence[0], sequence[1]), "the first two terms"), src=("sequence",)),
              diff=S(bigger - smaller, "value:skip_by")),
         fill("This {seq_lbl} shows {cnt_lbl} {skip}s ({action} {skip} each time).",
              seq_lbl=SEQ, cnt_lbl=S(cnt_lbl, "fill"), skip=SKIP, action=ACT),

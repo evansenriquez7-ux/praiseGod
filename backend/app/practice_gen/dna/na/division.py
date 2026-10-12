@@ -468,7 +468,7 @@ def generate_params(
 
         if rem > 0 and blank_target == "result":
             q_val = a // b
-            res_str = fill("{q_val} R {rem}", _src=('blank_target',), q_val=derived(q_val), rem=S(rem, "value:remainder"))
+            res_str = fill("{q_val} R {rem}", _src=('blank_target',), q_val=derived(q_val, src=("a", "b"), why="arithmetic"), rem=S(rem, "value:remainder"))
             alt_r = max(1, rem - 1) if rem > 1 else rem + 1
             if alt_r >= b:
                 alt_r = max(1, rem - 1)
@@ -478,9 +478,9 @@ def generate_params(
                 "result":      res_str,
                 "remainder":   rem,
                 "distractors": [
-                    fill("{q_val}", _src=('blank_target',), q_val=derived(q_val)),
-                    fill("{q_val} R {alt_r}", _src=('blank_target',), q_val=derived(q_val), alt_r=derived(alt_r)),
-                    fill("{v} R {rem}", _src=('blank_target',), v=derived(q_val + 1), rem=S(rem, "value:remainder")),
+                    fill("{q_val}", _src=('blank_target',), q_val=derived(q_val, src=("a", "b"), why="arithmetic")),
+                    fill("{q_val} R {alt_r}", _src=('blank_target',), q_val=derived(q_val, src=("a", "b"), why="arithmetic"), alt_r=derived(alt_r, src=("remainder", "b"), why="arithmetic")),
+                    fill("{v} R {rem}", _src=('blank_target',), v=derived(q_val + 1, src=("a", "b"), why="arithmetic"), rem=S(rem, "value:remainder")),
                 ],
                 "blank_target": blank_target,
                 "context":     context,
@@ -534,7 +534,7 @@ def generate_params(
 
     if rem > 0 and blank_target == "result":
         q_val = a // b
-        res_str = fill("{q_val} R {rem}", _src=('blank_target',), q_val=derived(q_val), rem=derived(rem))
+        res_str = fill("{q_val} R {rem}", _src=('blank_target',), q_val=derived(q_val, src=("a", "b"), why="arithmetic"), rem=S(rem, "value:remainder"))
         alt_r = max(1, rem - 1) if rem > 1 else rem + 1
         if alt_r >= b:
             alt_r = max(1, rem - 1)
@@ -544,9 +544,9 @@ def generate_params(
             "result":      res_str,
             "remainder":   rem,
             "distractors": [
-                fill("{q_val}", _src=('blank_target',), q_val=derived(q_val)),
-                fill("{q_val} R {alt_r}", _src=('blank_target',), q_val=derived(q_val), alt_r=derived(alt_r)),
-                fill("{v} R {rem}", _src=('blank_target',), v=derived(q_val + 1), rem=derived(rem)),
+                fill("{q_val}", _src=('blank_target',), q_val=derived(q_val, src=("a", "b"), why="arithmetic")),
+                fill("{q_val} R {alt_r}", _src=('blank_target',), q_val=derived(q_val, src=("a", "b"), why="arithmetic"), alt_r=derived(alt_r, src=("remainder", "b"), why="arithmetic")),
+                fill("{v} R {rem}", _src=('blank_target',), v=derived(q_val + 1, src=("a", "b"), why="arithmetic"), rem=S(rem, "value:remainder")),
             ],
             "blank_target": blank_target,
             "context":     context,

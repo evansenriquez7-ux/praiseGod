@@ -17,7 +17,7 @@ from backend.app.practice_gen.dna.base import (
     VocabGated,
     count_noun,
 )
-from backend.app.practice_gen.slots import S, derived, derives, fill
+from backend.app.practice_gen.slots import R, S, derived, derives, fill
 
 
 # ─── param bounds ─────────────────────────────────────────────────────────────
@@ -435,9 +435,9 @@ def generate_params(
 
     # Build human-readable time string
     if minute == 0:
-        time_str = fill("{hour}:00", _src=('minute',), hour=derived(hour))
+        time_str = fill("{hour}:00", _src=('minute',), hour=S(hour, R(bounds["hour"][0], bounds["hour"][1], "bounds['hour']")))
     else:
-        time_str = fill("{hour}:{minute:02d}", hour=derived(hour), minute=derived(minute))
+        time_str = fill("{hour}:{minute:02d}", hour=S(hour, R(bounds["hour"][0], bounds["hour"][1], "bounds['hour']")), minute=S(minute, R(0, 59, "a minute of the hour")))
 
     # VARIANTS_BY_DNA declares this axis's values as "yes"/"no"
     # (compatibility.py), but this line compared against "with_ampm"/

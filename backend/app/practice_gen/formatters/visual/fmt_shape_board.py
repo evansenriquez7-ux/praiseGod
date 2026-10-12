@@ -33,7 +33,7 @@ from typing import List, Optional
 
 from backend.app.practice_gen.dna.base import FormattedProblem, QuestionContext
 from backend.app.practice_gen.formatters._option_order import shuffle_options
-from backend.app.practice_gen.slots import S, derived, fill
+from backend.app.practice_gen.slots import E, S, derived, fill
 from backend.app.practice_gen.formatters._answer_slots import correct_option_key
 
 
@@ -347,7 +347,7 @@ def format_shape_board(
                     f"{answer_type!r} (node={ctx.node_id}, seed={ctx.seed})"
                 )
             question_text = (
-                fill("Look at the shapes in different sizes and orientations. Which shape on the board has {v}?", v=derived(clues[answer_type]))
+                fill("Look at the shapes in different sizes and orientations. Which shape on the board has {v}?", v=S(clues[answer_type], E(tuple(clues.values()), "the three identification clues")))
             )
         return FormattedProblem(
             problem_id=f"{ctx.node_id}_{ctx.seed}_shapeboard",

@@ -24,7 +24,7 @@ from backend.app.practice_gen.dna.base import (
     count_noun,
     number_group_name,
 )
-from backend.app.practice_gen.slots import S, derived, derives, fill, transform
+from backend.app.practice_gen.slots import E, S, derived, derives, fill, join, transform
 
 
 # ─── param bounds ─────────────────────────────────────────────────────────────
@@ -862,7 +862,7 @@ def generate_hints(
     # say "{a} groups of {b}" while Step 2 said "{b} groups of {a}", so the chain
     # contradicted itself and the stem (mat_g2_na_q3_1 seed 42: "2 equal jumps of 5"
     # hinted as "5 groups of 2", then "2 groups of 5").
-    hints.append(fill("We need to {mul_phrase} {b} {count_noun}.", mul_phrase=S(mul_phrase, "fill"), b=S(b, "value:b"), count_noun=derived(count_noun(b, f'{times_phrase} {a}'), src=('b', 'a',))))
+    hints.append(fill("We need to {mul_phrase} {b} {count_noun}.", mul_phrase=S(mul_phrase, "fill"), b=S(b, "value:b"), count_noun=S(count_noun(b, f'{times_phrase} {a}'), E((count_noun(1, f'{times_phrase} {a}'), f'{times_phrase} {a}'), "the phrase or its singular (dna.base.count_noun)"), src=('b', 'a',))))
 
     # Step 2: repeated addition breakdown (only practical for small b)
     if b == 0:
@@ -870,8 +870,8 @@ def generate_hints(
         # "Think of it as 0 groups of 6: ." with an empty sum (mat_g3_na_q3_1 seed 44).
         hints.append(fill("Think of it as 0 groups of {a}: there are no groups, so there is nothing to add.", _src=('b',), a=S(a, "value:a")))
     elif b <= 5:
-        groups = " + ".join(str(a) for _ in range(b))
-        hints.append(fill("Think of it as {b} {count_noun}: {groups}.", _src=('b',), b=S(b, "value:b"), count_noun=derived(count_noun(b, f'groups of {a}'), src=('b', 'a',)), groups=derived(groups, src=('a', 'b',))))
+        groups = join(" + ", [S(a, "value:a") for _ in range(b)])
+        hints.append(fill("Think of it as {b} {count_noun}: {groups}.", _src=('b',), b=S(b, "value:b"), count_noun=S(count_noun(b, f'groups of {a}'), E((count_noun(1, f'groups of {a}'), f'groups of {a}'), "the phrase or its singular (dna.base.count_noun)"), src=('b', 'a',)), groups=S(groups, "fill", src=('a', 'b',))))
     else:
         hints.append(fill("Use the {b} times table: {b} × {a}.", b=S(b, "value:b"), a=S(a, "value:a")))
 
@@ -880,7 +880,7 @@ def generate_hints(
         tens_a = (a // 10) * 10
         ones_a = a % 10
         hints.append(
-            fill("Break {a} into {tens_a} + {ones_a}: ({tens_a} × {b}) + ({ones_a} × {b}) = {v} + {v2} = {result}.", _src=('a',), a=S(a, "value:a"), tens_a=derived(tens_a, src=('a',)), ones_a=derived(ones_a, src=('a',)), b=S(b, "value:b"), v=derived(tens_a * b, src=('a', 'b',)), v2=derived(ones_a * b, src=('a', 'b',)), result=S(result, "value:result"))
+            fill("Break {a} into {tens_a} + {ones_a}: ({tens_a} × {b}) + ({ones_a} × {b}) = {v} + {v2} = {result}.", _src=('a',), a=S(a, "value:a"), tens_a=derived(tens_a, src=('a',), why="arithmetic"), ones_a=derived(ones_a, src=('a',), why="arithmetic"), b=S(b, "value:b"), v=derived(tens_a * b, src=('a', 'b',), why="arithmetic"), v2=derived(ones_a * b, src=('a', 'b',), why="arithmetic"), result=S(result, "value:result"))
         )
 
     # Step 4: final answer
