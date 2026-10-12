@@ -38,8 +38,8 @@ unless the owner rules otherwise, as rulings 39–40 did.
    - "Proof admissible, not just detected";
    - "Declared variant may be a no-op".
 2. This file, completely.
-3. **Owner rulings 23–42** in `docs/phase2_hardening_completion_plan.md`, verbatim (search "rulings recorded
-   2026-10-08"; 27–42 follow). Also rulings 1, 9, 12–16 and 19–22 above them.
+3. **Owner rulings 23–43** in `docs/phase2_hardening_completion_plan.md`, verbatim (search "rulings recorded
+   2026-10-08"; 27–43 follow). Also rulings 1, 9, 12–16 and 19–22 above them.
 4. `validation_reports/HARDENING_EVIDENCE.md`, newest at the END:
    - "H4-0: the ruling-42 type-only slot count, owner ruling 43, and the first 101 lcs tightened" (read fully);
    - "H3-R2: the H3 rollout completed, value-level provenance (ruling 41), and owner rulings 37-42";
@@ -56,8 +56,8 @@ unless the owner rules otherwise, as rulings 39–40 did.
    - §2L;
    - the verdict row and the rule above `_manifest.FINDING_CLASS`.
 6. `backend/app/practice_gen/slots.py`: the whole module docstring and every function. This is the instrument you
-   will extend: `fill(_src=)`, `S(src=)`, `derived`, `derives`, `computes`, `record`, `bank_fields`, `TRANSFORMS`,
-   `RENDERERS`.
+   will extend: `fill(_src=)`, `S(src=, why=)`, `derived(why=)`, `DERIVED_REASONS`, `join`, `derives`, `computes`,
+   `record`, `bank_fields`, `TRANSFORMS`, `RENDERERS`. Then `validate_slots.py` (check (e), `type_only_reason`).
 7. `CLAUDE_AGENT_PROMPT.md` §7, §8, §9, §11.
 
 ---
@@ -101,8 +101,8 @@ The open site/slot pairs concentrate in length_measurement (81), base_generator 
 
 **Tools.** Promoted into `tests/` (digest inputs): `tests/slot_wide_check.py` (§14's own checks over seeds 1-40 + every
 pinned formatter; a render that raises is now printed and counted, not skipped) and `tests/scoped_snapshot.py` (byte
-check for chosen lcs against a full snapshot). Committed as copies in `validation_reports/phase2_hardening/h4_0_tools/`
-(their paths say `local_only/scratch/h4_0/`; copy them there first):
+check for chosen lcs against a full snapshot). Committed in `validation_reports/phase2_hardening/h4_0_tools/`; they take
+their paths as arguments and run in place (`PYTHONPATH=. .venv/bin/python validation_reports/phase2_hardening/h4_0_tools/<tool> ...`):
 - `tonly.py`: the real `validate_slots.collect_findings`, dumped as JSON, open lcs counted.
 - `obs.py`: every type-only slot observed over seeds 1-40 + pinned formatters (values, keys equal in EVERY observation,
   whether every value is another fill's text).
@@ -211,16 +211,33 @@ Each batch is one `batch` intent and, under ruling 37, as many slices as you can
 ### Phase 0: baseline and lock (always)
 
 1. The `ps` grep is empty, `df -h /System/Volumes/Data` shows space, `tests/tree_state.py` prints CERTIFIED, and the
-   worktree is clean.
+   worktree is clean. CERTIFIED does not cover `validation_reports/` (open item above), so also run
+   `PYTHONPATH=. .venv/bin/python -m pytest tests/unit -m "not slow" -q -p no:cacheprovider` (expect 985 passed).
 2. Claim H-06: edit only its `owner` line (`git diff --numstat` must read `1 1`), commit, then
    `PYTHONPATH=. .venv/bin/python tests/tree_state.py --begin batch --session <yours> --note "<batch>"`.
 3. Re-measure, and explain any move before building:
    - `validate_slots`: expect `slot_domain_escape_14 (60)`, `slot_domain_type_only_14 (937)`, NOTE `101 of 151`;
    - `validate_composition`: expect 60 + 6, with 1,351 of 1,351 decided;
    - `validate_language`: expect `indefinite_article_1J` PASS and 423 mirror findings;
-   - the queue snippet from H3-R1's brief (expect `78 42 33 55`).
+   - the capability queue snippet below (expect `78 42 33 55`; about 2 min):
+
+```sh
+PYTHONPATH=. .venv/bin/python - <<'PY'
+import re, collections
+from backend.app.practice_gen.validation import validate_capability as VC
+from tests import clause_enumeration as CE
+doc = CE.load(); by = collections.defaultdict(list)
+for e in VC.validate_capability_attestation():
+    m = re.search(r"(mat_\w+): capability '([^']+)' \(clause '[^']*'\) is CONTRADICTED", e)
+    if m: by[m.group(1)].append(m.group(2))
+blocked = {n for n in by if any("needs_instrumentation" in d for d in CE.node_dispositions(n, doc).values())}
+print(sum(map(len, by.values())), len(by), len(by) - len(blocked), sum(len(by[n]) for n in by if n not in blocked))
+PY
+```
+
 4. `PYTHONPATH=. .venv/bin/python -m tests.render_snapshot local_only/scratch/<batch>/before.jsonl` BEFORE any edit.
-   Also dump `comp_dump.py` and the wide check BEFORE any edit: they are your §15 and escape baselines.
+   Also dump `comp_dump.py` and run `tests/slot_wide_check.py` BEFORE any edit: they are your §15 and escape baselines
+   (expect `TOTAL distinct 19 | renders that raised: 2` -- the two `mat_g2_mg_q4_3` pinned-mcq refusals).
 
 ### H4-0-R2: the remaining type-only slots (owner rulings 42-43)
 
@@ -289,6 +306,8 @@ rows and `docs/pgen_judgment.md` in the same commit.
   - centavo items asking for pesos;
   - clock-reading selections served as elapsed-time stems;
   - three silent fallbacks.
+- The H4-0 "Found, not fixed" list: the pictograph fallback `category` default; seven silent defaults met while
+  tightening (named in the H4-0 evidence); two copies of the number-to-words builder.
 - The interactive `draw` formatters (rulings 13–18, 31).
 
 Do not start them in a Phase 2 session.
@@ -307,7 +326,7 @@ Do not start them in a Phase 2 session.
   Release the lock in a follow-up commit. Never `--amend` a commit you will cite.
 - **Do not fix generator content** without an owner ruling. A source change stales reviews.
 - **Instrumentation must be byte-identical.** `render_snapshot --diff` reads 0 changed. A content change the owner
-  authorized is attributed field by field (H3-R2's `fielddiff.py`).
+  authorized is attributed field by field (`validation_reports/phase2_hardening/h3r2_tools/fielddiff.py`).
 - **Not yours:**
   - the ✝️/`bible` theme;
   - `requires`/`requires_ignore`;
@@ -325,8 +344,9 @@ Do not start them in a Phase 2 session.
 - Inferring `value:<key>` from return dicts is unreliable. Use direct `values[...]` reads, or unanimous observation.
 - A template-provenance pass must count the TRUE branch only. Crediting an `else` fallback hid real §15 findings
   until it was stripped.
-- An upgrade proven only by observation (`"fill"`, `value:`) may have an unobserved alternative. Run `fill_audit.py`.
-- `wide_check` excludes nothing but the known escapes. Read every line it prints.
+- An upgrade proven only by observation (`"fill"`, `value:`) may have an unobserved alternative. Run
+  `validation_reports/phase2_hardening/h3r2_tools/fill_audit.py`.
+- `tests/slot_wide_check.py` excludes nothing but the known escapes. Read every line it prints.
 
 ---
 
