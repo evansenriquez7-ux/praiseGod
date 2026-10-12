@@ -24,7 +24,7 @@ from typing import List, Optional
 from backend.app.practice_gen.dna.base import FormattedProblem, QuestionContext
 from backend.app.practice_gen.formatters._distractor_fallback import augment_distractors
 from backend.app.practice_gen.formatters._option_order import shuffle_options
-from backend.app.practice_gen.slots import S, derived, fill
+from backend.app.practice_gen.slots import E, S, derived, fill, join
 from backend.app.practice_gen.formatters._answer_slots import (correct_option_key, distractors_field, member_text)
 
 
@@ -170,14 +170,17 @@ def format_pictograph(
     if interaction_mode == "read":
         vp["is_read_mode"] = True
         if task_type in ("compare_two", "compare"):
-            cats_str = ", ".join(categories[:-1]) + " or " + categories[-1] if len(categories) > 1 else categories[0]
+            # Batch H4-0 (ruling 42): the list is recorded as one slot per category.
+            cat_slots = [S(c, E(tuple(categories), "the graph's categories")) for c in categories]
+            cats_str = (fill("{join} or {v}", join=S(join(", ", cat_slots[:-1]), "fill"), v=cat_slots[-1])
+                        if len(categories) > 1 else join("", cat_slots))
             subj = vp.get("subject", "items")
             correct_count = ctx.correct_answer if ctx.correct_answer is not None else (ctx.values.get("answer") if ctx.values else categories[counts.index(max(counts))])
-            question_text = fill("Look at the picture graph. Which has the most {subj}: {cats_str}?", subj=derived(subj), cats_str=derived(cats_str))
+            question_text = fill("Look at the picture graph. Which has the most {subj}: {cats_str}?", subj=S(subj, "bank:backend.app.practice_gen.dna.dp.pictographs._THEMES:subject"), cats_str=S(cats_str, "fill"))
         elif task_type == "find_total":
             correct_count = ctx.correct_answer if ctx.correct_answer is not None else sum(counts)
             subj = vp.get("subject", "items")
-            question_text = fill("Look at the picture graph. What is the total number of {subj} shown?", subj=derived(subj))
+            question_text = fill("Look at the picture graph. What is the total number of {subj} shown?", subj=S(subj, "bank:backend.app.practice_gen.dna.dp.pictographs._THEMES:subject"))
         elif task_type == "find_difference":
             comp_a = ctx.values.get("compare_a", categories[0]) if ctx.values else categories[0]
             comp_b = ctx.values.get("compare_b", categories[1]) if ctx.values else categories[1]
@@ -193,11 +196,12 @@ def format_pictograph(
             correct_count = counts[ask_idx]
             vp["ask_category"] = ask_cat
             stem_tpl = vp.get("stem_template") or (ctx.values.get("stem_template") if ctx.values else None)
-            sub_q = stem_tpl.format(cat=ask_cat) if stem_tpl else fill("How many are in {ask_cat}?", ask_cat=derived(ask_cat))
+            ask_slot = S(ask_cat, E(tuple(categories), "the graph's categories"))
+            sub_q = fill(stem_tpl, cat=ask_slot) if stem_tpl else fill("How many are in {ask_cat}?", ask_cat=ask_slot)
             if scale > 1:
-                question_text = fill("Look at the picture graph. Each {symbol} = {scale}. {sub_q}", symbol=derived(vp['symbol']), scale=derived(scale), sub_q=derived(sub_q, src=('stem_template',)))
+                question_text = fill("Look at the picture graph. Each {symbol} = {scale}. {sub_q}", symbol=derived(vp['symbol']), scale=derived(scale), sub_q=S(sub_q, "fill", src=('stem_template',)))
             else:
-                question_text = fill("Look at the picture graph. {sub_q}", sub_q=derived(sub_q, src=('stem_template',)))
+                question_text = fill("Look at the picture graph. {sub_q}", sub_q=S(sub_q, "fill", src=('stem_template',)))
     else:
         vp["is_read_mode"] = False
         data_str = ", ".join(fill("{v}: {v2}", v=derived(categories[i]), v2=derived(counts[i])) for i in range(len(categories)))

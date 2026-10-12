@@ -550,8 +550,8 @@ def generate_params(
             q = fill("{actor} had ₱{total}. {actor} bought {snack1} for ₱{b1} and {snack2} for ₱{b2}. "
                      "How much money does {actor} have left?",
                      actor=ACTOR, total=S(total, "value:a"), snack1=S(snack1, SNACKS),
-                     b1=S(b1, "num.derived", src=("b",)), snack2=S(snack2, SNACKS),
-                     b2=S(b2, "num.derived", src=("b",)))
+                     b1=derived(b1, src=("b",), why="arithmetic"), snack2=S(snack2, SNACKS),
+                     b2=derived(b2, src=("b",), why="arithmetic"))
             dists = [ans + 10, max(1, ans - 10), ans + 20]
             dists = [d for d in dists if d != ans][:3]
             return {
@@ -576,8 +576,8 @@ def generate_params(
             q = fill("{actor} had {total} {item}. {actor} gave {b1} {item} to {name1} and {b2} {item} "
                      "to {name2}. How many {item} does {actor} have left?",
                      actor=ACTOR, total=S(total, "value:a"), item=ITEM,
-                     b1=S(b1, "num.derived", src=("b",)), name1=S(name1, NAMES),
-                     b2=S(b2, "num.derived", src=("b",)), name2=S(name2, NAMES))
+                     b1=derived(b1, src=("b",), why="arithmetic"), name1=S(name1, NAMES),
+                     b2=derived(b2, src=("b",), why="arithmetic"), name2=S(name2, NAMES))
             dists = [ans + 10, max(1, ans - 10), ans + 20]
             dists = [d for d in dists if d != ans][:3]
             return {

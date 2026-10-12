@@ -17,7 +17,7 @@ from backend.app.practice_gen.dna.base import (
     VocabGated,
     count_noun,
 )
-from backend.app.practice_gen.slots import R, S, derived, derives, fill
+from backend.app.practice_gen.slots import E, R, S, derived, derives, fill
 
 
 # ─── param bounds ─────────────────────────────────────────────────────────────
@@ -611,7 +611,7 @@ def _elapsed_hints(values: Dict[str, Any]) -> List[str]:
         return [
             fill("Find the row for {target} in the {timetable_kind} {v}.", _src=('elapsed_unit',), target=S(target, "value:timetable_target"), timetable_kind=S(values['timetable_kind'], "value:timetable_kind"), v=derived('timetable' if values['timetable_kind'] == 'bus' else 'schedule', src=('timetable_kind',))),
             _say(fill("It starts at {start} and ends at {end}", _src=('elapsed_unit',), start=S(row['start'], "fill"), end=S(row['end'], "fill"))),
-            fill("Count on from the start time to the end time: that is {answer} {count_noun}.", _src=('elapsed_unit',), answer=S(answer, "value:answer"), count_noun=derived(count_noun(answer, noun), src=('answer', 'question',))),
+            fill("Count on from the start time to the end time: that is {answer} {count_noun}.", _src=('elapsed_unit',), answer=S(answer, "value:answer"), count_noun=S(count_noun(answer, noun), E((count_noun(1, noun), noun), "the noun or its singular (dna.base.count_noun)"), src=('answer', 'question',))),
         ]
 
     ask = values["elapsed_ask"]
@@ -649,8 +649,8 @@ def _elapsed_hints(values: Dict[str, Any]) -> List[str]:
                 _say(fill("{n} {count_noun} after {start} is {end}", _src=('elapsed_ask', 'elapsed_unit',), n=S(n, "value:duration_hours"), count_noun=S(count_noun(n, 'hours'), "value:elapsed_unit"), start=S(start, "fill"), end=S(end, "fill"))),
             ]
         return [
-            fill("Start at {end} and count back {n} {count_noun}, one hour at a time.", _src=('elapsed_unit',), end=S(end, "fill"), n=S(n, "value:duration_hours"), count_noun=derived(count_noun(n, 'hours'), src=('duration_hours',))),
-            _say(fill("{n} {count_noun} before {end} is {start}", _src=('elapsed_unit',), n=S(n, "value:duration_hours"), count_noun=derived(count_noun(n, 'hours'), src=('duration_hours',)), end=S(end, "fill"), start=S(start, "fill"))),
+            fill("Start at {end} and count back {n} {count_noun}, one hour at a time.", _src=('elapsed_unit',), end=S(end, "fill"), n=S(n, "value:duration_hours"), count_noun=S(count_noun(n, 'hours'), E((count_noun(1, 'hours'), 'hours'), "the noun or its singular (dna.base.count_noun)"), src=('duration_hours',))),
+            _say(fill("{n} {count_noun} before {end} is {start}", _src=('elapsed_unit',), n=S(n, "value:duration_hours"), count_noun=S(count_noun(n, 'hours'), E((count_noun(1, 'hours'), 'hours'), "the noun or its singular (dna.base.count_noun)"), src=('duration_hours',)), end=S(end, "fill"), start=S(start, "fill"))),
         ]
 
     n = values["duration_minutes"]
@@ -686,7 +686,7 @@ def _clock_hints(values: Dict[str, Any], cumulative_vocab: Set[str]) -> List[str
         elif minute % 5 == 0:
             marks = minute // 5
             hints.append(
-                fill("Count by 5s from 12: the long hand has passed {marks} {count_noun}, so the minutes are {minute}.", _src=('minute',), marks=derived(marks, src=('minute',)), count_noun=derived(count_noun(marks, 'marks'), src=('minute',)), minute=S(minute, "value:minute", src=('minute',)))
+                fill("Count by 5s from 12: the long hand has passed {marks} {count_noun}, so the minutes are {minute}.", _src=('minute',), marks=derived(marks, src=('minute',), why="arithmetic"), count_noun=S(count_noun(marks, 'marks'), E((count_noun(1, 'marks'), 'marks'), "the noun or its singular (dna.base.count_noun)"), src=('minute',)), minute=S(minute, "value:minute", src=('minute',)))
             )
         else:
             # A minute that is not a multiple of 5 used to be reported as "passed 4
@@ -695,10 +695,10 @@ def _clock_hints(values: Dict[str, Any], cumulative_vocab: Set[str]) -> List[str
             # the fives, then the single minutes after them.
             marks, extra = divmod(minute, 5)
             hints.append(
-                fill("Count by 5s from 12 to the last number the long hand has passed: {marks} {count_noun} make {v} minutes.", marks=derived(marks), count_noun=derived(count_noun(marks, 'fives')), v=derived(marks * 5))
+                fill("Count by 5s from 12 to the last number the long hand has passed: {marks} {count_noun} make {v} minutes.", marks=derived(marks, src=("minute",), why="arithmetic"), count_noun=S(count_noun(marks, 'fives'), E((count_noun(1, 'fives'), 'fives'), "the noun or its singular (dna.base.count_noun)")), v=derived(marks * 5, src=("minute",), why="arithmetic"))
             )
             hints.append(
-                fill("Then count on the small marks one at a time: {v} + {extra} = {minute}, so the minutes are {minute}.", v=derived(marks * 5), extra=derived(extra), minute=S(minute, "value:minute"))
+                fill("Then count on the small marks one at a time: {v} + {extra} = {minute}, so the minutes are {minute}.", v=derived(marks * 5, src=("minute",), why="arithmetic"), extra=derived(extra, src=("minute",), why="arithmetic"), minute=S(minute, "value:minute"))
             )
     else:
         # G1: 'minute' hasn't been introduced yet — describe hand position with
@@ -718,7 +718,7 @@ def _clock_hints(values: Dict[str, Any], cumulative_vocab: Set[str]) -> List[str
         else:
             marks = minute // 5
             hints.append(
-                fill("Count by 5s from 12: the long hand has passed {marks} {count_noun}.", marks=derived(marks, src=('minute',)), count_noun=derived(count_noun(marks, 'marks'), src=('minute',)))
+                fill("Count by 5s from 12: the long hand has passed {marks} {count_noun}.", marks=derived(marks, src=('minute',), why="arithmetic"), count_noun=S(count_noun(marks, 'marks'), E((count_noun(1, 'marks'), 'marks'), "the noun or its singular (dna.base.count_noun)"), src=('minute',)))
             )
 
     hints.append(_say(fill("The time is {time_str}", time_str=S(values['time_str'], "value:time_str"))))

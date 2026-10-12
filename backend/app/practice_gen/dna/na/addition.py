@@ -21,7 +21,7 @@ from backend.app.practice_gen.dna.base import (
     VocabGated,
     count_noun,
 )
-from backend.app.practice_gen.slots import S, derived, derives, fill, transform
+from backend.app.practice_gen.slots import E, S, derived, derives, fill, transform
 
 
 # ─── param bounds ─────────────────────────────────────────────────────────────
@@ -822,8 +822,8 @@ def generate_params(
             candidates = [(1, 1)]
         from backend.app.practice_gen.generators.number_difficulty import generate_pair_by_window
         a_val, b_val = generate_pair_by_window(candidates, num_diff_scalar, d=5, rng=rng)
-        a_phrase = fill("{a_val} item", _src=('task_type',), a_val=derived(a_val)) if a_val == 1 else fill("{a_val} items", _src=('task_type',), a_val=derived(a_val))
-        b_phrase = fill("{b_val} item", _src=('task_type',), b_val=derived(b_val)) if b_val == 1 else fill("{b_val} items", _src=('task_type',), b_val=derived(b_val))
+        a_phrase = fill("{a_val} item", _src=('task_type',), a_val=S(a_val, "value:a")) if a_val == 1 else fill("{a_val} items", _src=('task_type',), a_val=S(a_val, "value:a"))
+        b_phrase = fill("{b_val} item", _src=('task_type',), b_val=S(b_val, "value:b")) if b_val == 1 else fill("{b_val} items", _src=('task_type',), b_val=S(b_val, "value:b"))
         return {
             "a": a_val, "b": b_val, "result": a_val + b_val,
             "task_type": "putting_together",
@@ -1113,27 +1113,27 @@ def generate_hints(
     if knows_place_value:
         if makes_a_ten and knows_regrouping:
             hints.append(
-                fill("Add the ones: {ones_a} + {ones_b} = {ones_sum}. Keep {v} in the ones place and {reg_phrase} 1 ten.", ones_a=derived(ones_a), ones_b=derived(ones_b), ones_sum=derived(ones_sum), v=derived(ones_sum % 10), reg_phrase=S(reg_phrase, "fill"))
+                fill("Add the ones: {ones_a} + {ones_b} = {ones_sum}. Keep {v} in the ones place and {reg_phrase} 1 ten.", ones_a=derived(ones_a, src=("a",), why="arithmetic"), ones_b=derived(ones_b, src=("b",), why="arithmetic"), ones_sum=derived(ones_sum, src=("a", "b"), why="arithmetic"), v=derived(ones_sum % 10, src=("a", "b"), why="arithmetic"), reg_phrase=S(reg_phrase, "fill"))
             )
         elif makes_a_ten:
             remainder = ones_sum % 10
             hints.append(
-                fill("Add the ones: {ones_a} + {ones_b} = {ones_sum}. {ones_sum} ones is 1 ten and {remainder} {count_noun}.", ones_a=derived(ones_a), ones_b=derived(ones_b), ones_sum=derived(ones_sum), remainder=derived(remainder), count_noun=derived(count_noun(remainder, 'ones')))
+                fill("Add the ones: {ones_a} + {ones_b} = {ones_sum}. {ones_sum} ones is 1 ten and {remainder} {count_noun}.", ones_a=derived(ones_a, src=("a",), why="arithmetic"), ones_b=derived(ones_b, src=("b",), why="arithmetic"), ones_sum=derived(ones_sum, src=("a", "b"), why="arithmetic"), remainder=derived(remainder, src=("a", "b"), why="arithmetic"), count_noun=S(count_noun(remainder, 'ones'), E((count_noun(1, 'ones'), 'ones'), "the noun or its singular (dna.base.count_noun)")))
             )
         else:
-            hints.append(fill("Add the ones: {ones_a} + {ones_b} = {ones_sum}. Keep {ones_sum} in the ones place.", ones_a=derived(ones_a), ones_b=derived(ones_b), ones_sum=derived(ones_sum)))
+            hints.append(fill("Add the ones: {ones_a} + {ones_b} = {ones_sum}. Keep {ones_sum} in the ones place.", ones_a=derived(ones_a, src=("a",), why="arithmetic"), ones_b=derived(ones_b, src=("b",), why="arithmetic"), ones_sum=derived(ones_sum, src=("a", "b"), why="arithmetic")))
     else:
         # Position-neutral language for students who haven't learned place value yet
         if makes_a_ten and knows_regrouping:
             hints.append(
-                fill("Add the last digits: {ones_a} + {ones_b} = {ones_sum}. Keep {v} and {reg_phrase} 1.", ones_a=derived(ones_a), ones_b=derived(ones_b), ones_sum=derived(ones_sum), v=derived(ones_sum % 10), reg_phrase=S(reg_phrase, "fill"))
+                fill("Add the last digits: {ones_a} + {ones_b} = {ones_sum}. Keep {v} and {reg_phrase} 1.", ones_a=derived(ones_a, src=("a",), why="arithmetic"), ones_b=derived(ones_b, src=("b",), why="arithmetic"), ones_sum=derived(ones_sum, src=("a", "b"), why="arithmetic"), v=derived(ones_sum % 10, src=("a", "b"), why="arithmetic"), reg_phrase=S(reg_phrase, "fill"))
             )
         elif makes_a_ten:
             hints.append(
-                fill("Add the last digits: {ones_a} + {ones_b} = {ones_sum}. Keep {v} and add 1 to the next digits.", ones_a=derived(ones_a), ones_b=derived(ones_b), ones_sum=derived(ones_sum), v=derived(ones_sum % 10))
+                fill("Add the last digits: {ones_a} + {ones_b} = {ones_sum}. Keep {v} and add 1 to the next digits.", ones_a=derived(ones_a, src=("a",), why="arithmetic"), ones_b=derived(ones_b, src=("b",), why="arithmetic"), ones_sum=derived(ones_sum, src=("a", "b"), why="arithmetic"), v=derived(ones_sum % 10, src=("a", "b"), why="arithmetic"))
             )
         else:
-            hints.append(fill("Add the last digits: {ones_a} + {ones_b} = {ones_sum}.", ones_a=derived(ones_a), ones_b=derived(ones_b), ones_sum=derived(ones_sum)))
+            hints.append(fill("Add the last digits: {ones_a} + {ones_b} = {ones_sum}.", ones_a=derived(ones_a, src=("a",), why="arithmetic"), ones_b=derived(ones_b, src=("b",), why="arithmetic"), ones_sum=derived(ones_sum, src=("a", "b"), why="arithmetic")))
 
     # Step 3: leading column (only shown when both numbers have more than one digit)
     if a >= 10 or b >= 10:
@@ -1143,15 +1143,15 @@ def generate_hints(
         tens_sum = tens_a + tens_b + extra
         if knows_place_value:
             if extra and knows_regrouping:
-                tail = fill(" + {extra} (regrouped)", _src=('a', 'b',), extra=derived(extra))
+                tail = fill(" + {extra} (regrouped)", _src=('a', 'b',), extra=derived(extra, src=("a", "b"), why="arithmetic"))
             elif extra:
-                tail = fill(" + {extra} (the ten from the ones)", _src=('a', 'b',), extra=derived(extra))
+                tail = fill(" + {extra} (the ten from the ones)", _src=('a', 'b',), extra=derived(extra, src=("a", "b"), why="arithmetic"))
             else:
-                tail = ""
-            hints.append(fill("Add the tens: {tens_a} + {tens_b}{tail} = {tens_sum}.", _src=('a', 'b',), tens_a=derived(tens_a, src=('a',)), tens_b=derived(tens_b, src=('b',)), tail=derived(tail), tens_sum=derived(tens_sum, src=('a', 'b',))))
+                tail = fill("")
+            hints.append(fill("Add the tens: {tens_a} + {tens_b}{tail} = {tens_sum}.", _src=('a', 'b',), tens_a=derived(tens_a, src=('a',), why="arithmetic"), tens_b=derived(tens_b, src=('b',), why="arithmetic"), tail=S(tail, "fill"), tens_sum=derived(tens_sum, src=('a', 'b',), why="arithmetic")))
         else:
             hints.append(
-                fill("Add the first digits: {tens_a} + {tens_b}{v} = {tens_sum}.", _src=('a', 'b',), tens_a=derived(tens_a, src=('a',)), tens_b=derived(tens_b, src=('b',)), v=S(f" + {extra}" if extra else "", "fill"), tens_sum=derived(tens_sum, src=('a', 'b',)))
+                fill("Add the first digits: {tens_a} + {tens_b}{v} = {tens_sum}.", _src=('a', 'b',), tens_a=derived(tens_a, src=('a',), why="arithmetic"), tens_b=derived(tens_b, src=('b',), why="arithmetic"), v=S(f" + {extra}" if extra else "", "fill"), tens_sum=derived(tens_sum, src=('a', 'b',), why="arithmetic"))
             )
 
     # Step 4: final answer

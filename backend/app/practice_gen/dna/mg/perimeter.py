@@ -18,7 +18,7 @@ from backend.app.practice_gen.dna.base import (
     count_noun,
     linear_interpolate,
 )
-from backend.app.practice_gen.slots import S, derived, fill
+from backend.app.practice_gen.slots import E, S, derived, fill
 
 
 # ─── param bounds ─────────────────────────────────────────────────────────────
@@ -382,7 +382,7 @@ def generate_hints(
 
     if shape == "square":
         s = sides["s"]
-        hints.append(fill("A square has 4 equal sides, each {s} {count_noun} long.", _src=('shape',), s=derived(s, src=('sides',)), count_noun=derived(count_noun(s, 'units'), src=('sides',))))
+        hints.append(fill("A square has 4 equal sides, each {s} {count_noun} long.", _src=('shape',), s=derived(s, src=('sides',)), count_noun=S(count_noun(s, 'units'), E((count_noun(1, 'units'), 'units'), "the noun or its singular (dna.base.count_noun)"), src=('sides',))))
         hints.append(fill("Perimeter = 4 × {s} = {answer}.", _src=('shape',), s=derived(s, src=('sides',)), answer=S(values['answer'], "value:answer")))
     elif shape == "rectangle":
         l, w = sides["l"], sides["w"]

@@ -29,7 +29,7 @@ from typing import List, Optional
 
 from backend.app.practice_gen.dna.base import FormattedProblem, QuestionContext, count_noun
 from backend.app.practice_gen.formatters._option_order import shuffle_options
-from backend.app.practice_gen.slots import R, S, derived, fill
+from backend.app.practice_gen.slots import E, R, S, derived, fill
 from backend.app.practice_gen.formatters._answer_slots import (correct_option_key, distractors_field)
 
 
@@ -441,11 +441,11 @@ def format_array_grid(
         if shape_type == "rectangle" and rows and cols:
             if _mul_task_type == "equal_groups":
                 question_text = (
-                    fill("Shade {rows} {count_noun} of {cols} {count_noun2} to show {repeated_sum}. How many squares did you shade in all?", _src=('rows', 'cols', 'shape_type',), rows=derived(rows), count_noun=derived(count_noun(rows, 'groups')), cols=derived(cols), count_noun2=derived(count_noun(cols, 'squares')), repeated_sum=derived(_repeated_sum(rows, cols)))
+                    fill("Shade {rows} {count_noun} of {cols} {count_noun2} to show {repeated_sum}. How many squares did you shade in all?", _src=('rows', 'cols', 'shape_type',), rows=derived(rows), count_noun=S(count_noun(rows, 'groups'), E((count_noun(1, 'groups'), 'groups'), "the noun or its singular (dna.base.count_noun)")), cols=derived(cols), count_noun2=S(count_noun(cols, 'squares'), E((count_noun(1, 'squares'), 'squares'), "the noun or its singular (dna.base.count_noun)")), repeated_sum=derived(_repeated_sum(rows, cols)))
                 )
             elif _mul_task_type == "repeated_addition":
                 question_text = (
-                    fill("Shade {rows} {count_noun} of {cols} {count_noun2} to show {repeated_sum}. How many squares did you shade in all?", _src=('rows', 'cols', 'shape_type',), rows=derived(rows), count_noun=derived(count_noun(rows, 'rows')), cols=derived(cols), count_noun2=derived(count_noun(cols, 'squares')), repeated_sum=derived(_repeated_sum(rows, cols)))
+                    fill("Shade {rows} {count_noun} of {cols} {count_noun2} to show {repeated_sum}. How many squares did you shade in all?", _src=('rows', 'cols', 'shape_type',), rows=derived(rows), count_noun=S(count_noun(rows, 'rows'), E((count_noun(1, 'rows'), 'rows'), "the noun or its singular (dna.base.count_noun)")), cols=derived(cols), count_noun2=S(count_noun(cols, 'squares'), E((count_noun(1, 'squares'), 'squares'), "the noun or its singular (dna.base.count_noun)")), repeated_sum=derived(_repeated_sum(rows, cols)))
                 )
             else:
                 question_text = (

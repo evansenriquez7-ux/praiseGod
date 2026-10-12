@@ -416,9 +416,9 @@ def generate_params(
             indices.reverse()
         sequence = [_ALPHA_RUN_WINDOW[i] for i in indices]
         step = -step if decreasing else step
-        rule = (fill("Go back {abs} letter{v} each time", abs=derived(abs(step)), v=derived('s' if abs(step) > 1 else ''))
+        rule = (fill("Go back {abs} letter{v} each time", abs=derived(abs(step), src=("common_difference",), why="arithmetic"), v=S('s' if abs(step) > 1 else '', E(("s", ""), "the plural suffix")))
                 if decreasing else
-                fill("Move forward {step} letter{v} each time", step=derived(step), v=derived('s' if step > 1 else '')))
+                fill("Move forward {step} letter{v} each time", step=S(step, "value:common_difference"), v=S('s' if step > 1 else '', E(("s", ""), "the plural suffix"))))
     elif pattern_type == "arithmetic_decreasing":
         pairs = []
         for s in range(step_lo, step_hi + 1):
@@ -428,7 +428,7 @@ def generate_params(
             pairs = [(max_val, step_lo)]
         first, step = generate_pair_by_window(pairs, num_diff_scalar, d=5, rng=rng)
         sequence = _make_arithmetic_sequence(first, step, seq_length + 1, increasing=False)
-        rule = fill("Subtract {step} each time", step=derived(step))
+        rule = fill("Subtract {step} each time", step=S(step, "value:common_difference"))
     elif pattern_type == "combined":
         # Create a nested pattern: an inner repeating loop + an outer
         # increasing OR decreasing step. E.g. [11, 12, 13, 21, 22, 23, 31,
@@ -477,7 +477,7 @@ def generate_params(
             pairs = [(1, step_lo)]
         first, step = generate_pair_by_window(pairs, num_diff_scalar, d=5, rng=rng)
         sequence = _make_arithmetic_sequence(first, step, seq_length + 1, increasing=True)
-        rule = fill("Add {step} each time", step=derived(step))
+        rule = fill("Add {step} each time", step=S(step, "value:common_difference"))
 
     if ask_type == "next_term":
         missing_index = seq_length  # last position

@@ -100,7 +100,7 @@ def _build_pure_question(ctx: QuestionContext) -> str:
                 plural_name = number_group_name(a, b)
             terms = " + ".join([str(a)] * b) if b <= 5 else fill("{a} added {b} times", _src=('task_type',), a=derived(a, src=('a', 'groups',)), b=derived(b, src=('b', 'n',)))
             if group_form == "plural_name":
-                return fill("Count {b} {count_noun} by repeated addition ({terms}): how many in all?", _src=('group_form', 'task_type',), b=derived(b, src=('b', 'n',)), count_noun=derived(count_noun(b, plural_name), src=('b', 'n',)), terms=derived(terms, src=('b', 'n', 'a', 'groups',)))
+                return fill("Count {b} {count_noun} by repeated addition ({terms}): how many in all?", _src=('group_form', 'task_type',), b=derived(b, src=('b', 'n',)), count_noun=S(count_noun(b, plural_name), E((count_noun(1, plural_name), plural_name), "the noun or its singular (dna.base.count_noun)"), src=('b', 'n',)), terms=derived(terms, src=('b', 'n', 'a', 'groups',)))
             unit = "group" if b == 1 else "groups"
             # "There are 1 group of 1" -- the noun was pluralized and the verb was not.
             # One sentence, four copies (doc_rem.md R2); all four say it the same way.

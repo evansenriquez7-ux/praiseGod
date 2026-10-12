@@ -427,11 +427,11 @@ def generate_hints(
             )
         hints = [
             fill("Find {start} and {end} on the {cal_label}. Count both of those days too.", _src=('task_type',), start=S(start, "value:target_date"), end=S(end, "value:end_date"), cal_label=S(cal_label, "fill")),
-            fill("{end} - {start} + 1 = {days} {count_noun}.", _src=('task_type',), end=S(end, "value:end_date"), start=S(start, "value:target_date"), days=derived(days, src=('end_date', 'target_date',)), count_noun=derived(count_noun(days, 'days'), src=('end_date', 'target_date',))),
+            fill("{end} - {start} + 1 = {days} {count_noun}.", _src=('task_type',), end=S(end, "value:end_date"), start=S(start, "value:target_date"), days=derived(days, src=('end_date', 'target_date',), why="arithmetic"), count_noun=S(count_noun(days, 'days'), E((count_noun(1, 'days'), 'days'), "the noun or its singular (dna.base.count_noun)"), src=('end_date', 'target_date',))),
         ]
         if task_type == "elapsed_weeks":
             hints.append(
-                fill("7 days make 1 week, so {days} {count_noun} {v} {answer} {count_noun2}.", _src=('task_type',), days=derived(days, src=('end_date', 'target_date',)), count_noun=derived(count_noun(days, 'days'), src=('end_date', 'target_date',)), v=derived('is' if answer == 1 else 'are', src=('answer',)), answer=S(answer, "value:answer"), count_noun2=derived(count_noun(answer, 'weeks'), src=('answer',)))
+                fill("7 days make 1 week, so {days} {count_noun} {v} {answer} {count_noun2}.", _src=('task_type',), days=derived(days, src=('end_date', 'target_date',), why="arithmetic"), count_noun=S(count_noun(days, 'days'), E((count_noun(1, 'days'), 'days'), "the noun or its singular (dna.base.count_noun)"), src=('end_date', 'target_date',)), v=S('is' if answer == 1 else 'are', E(("is", "are"), "the copula after the week count"), src=('answer',)), answer=S(answer, "value:answer"), count_noun2=S(count_noun(answer, 'weeks'), E((count_noun(1, 'weeks'), 'weeks'), "the noun or its singular (dna.base.count_noun)"), src=('answer',)))
             )
         return hints
     if task_type == "problem_days":

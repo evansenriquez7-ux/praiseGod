@@ -225,7 +225,7 @@ def format_true_false(ctx: QuestionContext, rng: random.Random) -> FormattedProb
                     plural_name = number_group_name(a, b)
                 terms = " + ".join([str(a)] * b) if b <= 5 else fill("{a} added {b} times", _src=('task_type',), a=derived(a, src=('a', 'groups',)), b=derived(b, src=('b', 'n',)))
                 if group_form == "plural_name":
-                    statement = fill("Count {b} {count_noun} by repeated addition: {terms} = {fill_value}.", _src=('group_form', 'task_type',), b=derived(b, src=('b', 'n',)), count_noun=derived(count_noun(b, plural_name), src=('b', 'n',)), terms=derived(terms, src=('b', 'n', 'a', 'groups',)), fill_value=FV)
+                    statement = fill("Count {b} {count_noun} by repeated addition: {terms} = {fill_value}.", _src=('group_form', 'task_type',), b=derived(b, src=('b', 'n',)), count_noun=S(count_noun(b, plural_name), E((count_noun(1, plural_name), plural_name), "the noun or its singular (dna.base.count_noun)"), src=('b', 'n',)), terms=derived(terms, src=('b', 'n', 'a', 'groups',)), fill_value=FV)
                 else:
                     unit = "group" if b == 1 else "groups"
                     # "There are 1 group of 1" -- the noun was pluralized and the verb was not.
@@ -299,7 +299,7 @@ def format_true_false(ctx: QuestionContext, rng: random.Random) -> FormattedProb
             elif values.get("task_type") == "number_line_jumps":
                 statement = fill("Starting at {dividend} on a number line, taking {fill_value} equal jumps back of {divisor} lands on 0.", _src=('task_type',), dividend=S(dividend, "value:a"), fill_value=FV, divisor=S(divisor, "value:b", src=('divisor', 'b',)))
             elif values.get("task_type") == "inverse_of_multiplication":
-                statement = fill("Since {divisor} × {quotient} = {dividend}, then {dividend} ÷ {divisor} = {fill_value}.", _src=('task_type',), divisor=derived(divisor, src=('divisor', 'b',)), quotient=derived(quotient, src=('quotient', 'result',)), dividend=derived(dividend, src=('dividend', 'a',)), fill_value=FV)
+                statement = fill("Since {divisor} × {quotient} = {dividend}, then {dividend} ÷ {divisor} = {fill_value}.", _src=('task_type',), divisor=S(divisor, "value:b", src=('divisor', 'b',)), quotient=S(quotient, "value:result", src=('quotient', 'result',)), dividend=S(dividend, "value:a", src=('dividend', 'a',)), fill_value=FV)
             elif blank_target in ("result", "quotient"):
                 statement = fill("{dividend} ÷ {divisor} = {fill_value}", dividend=S(dividend, "value:a", src=('dividend', 'a',)), divisor=S(divisor, "value:b", src=('divisor', 'b',)), fill_value=FV)
             else:

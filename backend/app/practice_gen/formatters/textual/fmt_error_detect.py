@@ -199,7 +199,7 @@ def _build_pure_equation(ctx: QuestionContext) -> str:
                 plural_name = number_group_name(a, b)
             terms = " + ".join([str(a)] * b) if b <= 5 else fill("{a} added {b} times", _src=('task_type',), a=derived(a, src=('a', 'groups',)), b=derived(b, src=('b', 'n',)))
             if group_form == "plural_name":
-                return fill("Count {b} {count_noun} by repeated addition: {terms} = {slot}", _src=('group_form', 'task_type',), b=derived(b, src=('b', 'n',)), count_noun=derived(count_noun(b, plural_name), src=('b', 'n',)), terms=derived(terms, src=('b', 'n', 'a', 'groups',)), slot=slot_s('result', 'total', value=r))
+                return fill("Count {b} {count_noun} by repeated addition: {terms} = {slot}", _src=('group_form', 'task_type',), b=derived(b, src=('b', 'n',)), count_noun=S(count_noun(b, plural_name), E((count_noun(1, plural_name), plural_name), "the noun or its singular (dna.base.count_noun)"), src=('b', 'n',)), terms=derived(terms, src=('b', 'n', 'a', 'groups',)), slot=slot_s('result', 'total', value=r))
             unit = "group" if b == 1 else "groups"
             # "There are 1 group of 1" -- the noun was pluralized and the verb was not.
             # One sentence, four copies (doc_rem.md R2); all four say it the same way.
@@ -241,7 +241,7 @@ def _build_pure_equation(ctx: QuestionContext) -> str:
         if values.get("task_type") == "repeated_subtraction":
             return fill("Starting from {dividend} and subtracting {divisor} repeatedly, you subtract {slot} times before reaching 0", _src=('task_type',), dividend=S(dividend, "value:a", src=('dividend', 'a',)), divisor=S(divisor, "value:b", src=('divisor', 'b',)), slot=slot_s('result', 'quotient', value=quotient))
         if values.get("task_type") == "inverse_of_multiplication":
-            return fill("Since {divisor} × {quotient} = {dividend}, then {dividend} ÷ {divisor} = {slot}", _src=('task_type',), divisor=derived(divisor, src=('divisor', 'b',)), quotient=derived(quotient, src=('quotient', 'result',)), dividend=derived(dividend, src=('dividend', 'a',)), slot=slot_s('result', 'quotient', value=quotient))
+            return fill("Since {divisor} × {quotient} = {dividend}, then {dividend} ÷ {divisor} = {slot}", _src=('task_type',), divisor=S(divisor, "value:b", src=('divisor', 'b',)), quotient=S(quotient, "value:result", src=('quotient', 'result',)), dividend=S(dividend, "value:a", src=('dividend', 'a',)), slot=slot_s('result', 'quotient', value=quotient))
         return (
             fill("{slot} ÷ {slot2} = {slot3}", slot=slot_s('a', 'dividend', value=dividend), slot2=slot_s('b', 'divisor', value=divisor), slot3=slot_s('result', 'quotient', value=quotient))
         )

@@ -320,7 +320,10 @@ def _build_visual_params(
 # Question-text builder
 # ─────────────────────────────────────────────────────────────────────────────
 
-def _stem(params: dict, interaction_mode: str, cumulative_vocab: set) -> str:
+def _stem(params: dict, interaction_mode: str, cumulative_vocab: set,
+          value_key: Optional[str] = None) -> str:
+    # `value_key` names the generated value the marked `params['value']` repeats, when
+    # the caller built params from one (batch H4-0, ruling 42); otherwise it stays type-only.
     # "number line" (and its bare substring "line") may not be introduced yet at
     # early nodes. Rather than guess a fallback phrase that could itself collide
     # with some other gated term, drop the visual's name entirely when unknown —
@@ -338,7 +341,7 @@ def _stem(params: dict, interaction_mode: str, cumulative_vocab: set) -> str:
             return fill("Move the dot to show {numerator}/{denominator}{suffix}.", numerator=derived(params['numerator']), denominator=derived(params['denominator']), suffix=S(suffix, E((" on the number line", ""), "vocab gate 'number line'")))
         if ct == "decimal":
             return fill("Move the dot to show {decimal_value}{suffix}.", decimal_value=derived(params['decimal_value']), suffix=S(suffix, E((" on the number line", ""), "vocab gate 'number line'")))
-        return fill("Move the dot to show {value}{suffix}.", value=derived(params['value']), suffix=S(suffix, E((" on the number line", ""), "vocab gate 'number line'")))
+        return fill("Move the dot to show {value}{suffix}.", value=(S(params['value'], f"value:{value_key}") if value_key else derived(params['value'])), suffix=S(suffix, E((" on the number line", ""), "vocab gate 'number line'")))
     else:  # read
         # Structured slots (H5, owner ruling 28): identical to the f-string it replaced.
         return fill("What number is marked{suffix}?",
@@ -575,15 +578,18 @@ def format_number_line(
     # exactly the message it used to, naming the offending value. Nothing is swallowed:
     # a numeric path that needs the value and cannot get it still fails loudly.
     target_num = None
+    target_key = None   # the values key target_num repeats (batch H4-0: its slot's domain)
     _unparseable_target = None
     for _key in ("number", "answer"):
         if _key in values:
             try:
                 target_num = int(values[_key])
+                target_key = _key
             except (ValueError, TypeError):
                 _unparseable_target = (_key, values[_key])
             break
 
+    value_key = None    # set by a branch whose marked value repeats one generated key
     # ── 1. Resolve visual_params ───────────────────────────────────────────────
     if ctx.visual_params and "correct_position" in ctx.visual_params:
         vp = ctx.visual_params.copy()
@@ -653,6 +659,7 @@ def format_number_line(
     elif target_num is not None:
         # Handle static number payload (e.g. from number_reading, place_value, or counting)
         value = target_num
+        value_key = target_key
         if value <= 15:
             start_val = 0
             end_val = max(10, ((value // 10) + 1) * 10)
@@ -854,12 +861,12 @@ def format_number_line(
             )
         else:
             sign = "\u2212" if subtractive else "+"
-            question_text = fill("Show ₱{a} {sign} ₱{b} on the number line.", a=S(a, "value:a"), sign=derived(sign, src=('operation',)), b=S(b, "value:b"))
+            question_text = fill("Show ₱{a} {sign} ₱{b} on the number line.", a=S(a, "value:a"), sign=S(sign, E(("\u2212", "+"), "minus or plus"), src=('operation',)), b=S(b, "value:b"))
     elif ctx.dna_concept == "addition" and "a" in values and "b" in values:
         a, b = values["a"], values["b"]
         num_word = "number" if b == 1 else "numbers"
         if interaction_mode == "read":
-            question_text = fill("The dot is at {a} and it moves forward {b} {num_word}. Starting from {a}, just count up {b} {num_word}. Which number will the dot land on?", a=S(a, "value:a"), b=S(b, "value:b"), num_word=derived(num_word))
+            question_text = fill("The dot is at {a} and it moves forward {b} {num_word}. Starting from {a}, just count up {b} {num_word}. Which number will the dot land on?", a=S(a, "value:a"), b=S(b, "value:b"), num_word=S(num_word, E(("number", "numbers"), "number, singular or plural")))
         else:
             question_text = fill("Show {a} + {b} on the number line.", a=S(a, "value:a"), b=S(b, "value:b"))
     elif ctx.dna_concept == "subtraction" and "a" in values and "b" in values:
@@ -915,7 +922,7 @@ def format_number_line(
         else:
             question_text = fill("Round {num} to the nearest {precision}.", num=derived(num, src=('number',)), precision=derived(precision, src=('round_to',)))
     else:
-        question_text = _stem(vp, interaction_mode, set(ctx.cumulative_vocab))
+        question_text = _stem(vp, interaction_mode, set(ctx.cumulative_vocab), value_key=value_key)
 
     format_data: dict = {"visual_params": vp}
     if mcq_options is not None:

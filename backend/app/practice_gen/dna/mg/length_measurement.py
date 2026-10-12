@@ -1007,13 +1007,13 @@ def generate_hints(
             return [
                 fill("The two {measure}s join together, so add them.", _src=('word_operation', 'task_type',), measure=S(measure, "value:word_measure")),
                 fill("{a} + {b} = {answer}.", _src=('word_operation', 'task_type',), a=derived(a), b=derived(b), answer=S(answer, "value:answer")),
-                fill("The total {measure} is {answer} {count_noun}.", _src=('word_operation', 'task_type',), measure=S(measure, "value:word_measure"), answer=S(answer, "value:answer"), count_noun=derived(count_noun(answer, unit_word), src=('answer', 'unit',))),
+                fill("The total {measure} is {answer} {count_noun}.", _src=('word_operation', 'task_type',), measure=S(measure, "value:word_measure"), answer=S(answer, "value:answer"), count_noun=S(count_noun(answer, unit_word), E((count_noun(1, unit_word), unit_word), "the noun or its singular (dna.base.count_noun)"), src=('answer', 'unit',))),
             ]
         return [
             fill("To find how much {v} one is, take the smaller {measure} away from the bigger one.", _src=('task_type',), v=derived('farther' if measure == 'distance' else 'longer', src=('word_measure',)), measure=S(measure, "value:word_measure")),
             fill("{a} - {b} = {answer}.", _src=('task_type',), a=derived(a), b=derived(b), answer=S(answer, "value:answer")),
             # Not "difference": that word is NOT_YET_KNOWN at Grade 1 (§1D).
-            fill("So one is {answer} {count_noun} {v} than the other.", _src=('task_type',), answer=S(answer, "value:answer"), count_noun=derived(count_noun(answer, unit_word), src=('answer', 'unit',)), v=derived('farther' if measure == 'distance' else 'longer', src=('word_measure',))),
+            fill("So one is {answer} {count_noun} {v} than the other.", _src=('task_type',), answer=S(answer, "value:answer"), count_noun=S(count_noun(answer, unit_word), E((count_noun(1, unit_word), unit_word), "the noun or its singular (dna.base.count_noun)"), src=('answer', 'unit',)), v=derived('farther' if measure == 'distance' else 'longer', src=('word_measure',))),
         ]
 
     if task_type == "estimate":
@@ -1050,11 +1050,11 @@ def generate_hints(
         if values["from_unit"] == "m":
             return [
                 fill("1 {m_label} is the same length as 100 {cm_label}.", _src=('from_unit', 'task_type',), m_label=S(m_label, "fill"), cm_label=S(cm_label, "fill")),
-                fill("Each {m_label} is 100 {cm_label}, so {value} {count_noun} is {answer} {count_noun2}.", _src=('from_unit', 'task_type',), m_label=S(m_label, "fill"), cm_label=S(cm_label, "fill"), value=S(value, "value:value"), count_noun=derived(count_noun(value, from_word)), answer=S(answer, "value:answer"), count_noun2=derived(count_noun(answer, to_word))),
+                fill("Each {m_label} is 100 {cm_label}, so {value} {count_noun} is {answer} {count_noun2}.", _src=('from_unit', 'task_type',), m_label=S(m_label, "fill"), cm_label=S(cm_label, "fill"), value=S(value, "value:value"), count_noun=S(count_noun(value, from_word), E((count_noun(1, from_word), from_word), "the noun or its singular (dna.base.count_noun)")), answer=S(answer, "value:answer"), count_noun2=S(count_noun(answer, to_word), E((count_noun(1, to_word), to_word), "the noun or its singular (dna.base.count_noun)"))),
             ]
         return [
             fill("100 {cm_label} make 1 {m_label}.", _src=('task_type',), cm_label=S(cm_label, "fill"), m_label=S(m_label, "fill")),
-            fill("Count the hundreds in {value}: {value} {count_noun} is {answer} {count_noun2}.", _src=('task_type',), value=S(value, "value:value"), count_noun=derived(count_noun(value, from_word)), answer=S(answer, "value:answer"), count_noun2=derived(count_noun(answer, to_word))),
+            fill("Count the hundreds in {value}: {value} {count_noun} is {answer} {count_noun2}.", _src=('task_type',), value=S(value, "value:value"), count_noun=S(count_noun(value, from_word), E((count_noun(1, from_word), from_word), "the noun or its singular (dna.base.count_noun)")), answer=S(answer, "value:answer"), count_noun2=S(count_noun(answer, to_word), E((count_noun(1, to_word), to_word), "the noun or its singular (dna.base.count_noun)"))),
         ]
 
     if unit_type == "non_standard":
@@ -1087,7 +1087,7 @@ def generate_hints(
         )
     return [
         fill("Read the measurement on the ruler carefully."),
-        fill("The length is {answer} {count_noun}.", answer=S(values['answer'], "value:answer"), count_noun=derived(count_noun(values['answer'], values.get('unit', 'units')), src=('answer', 'unit',))),
+        fill("The length is {answer} {count_noun}.", answer=S(values['answer'], "value:answer"), count_noun=S(count_noun(values['answer'], values.get('unit', 'units')), E((count_noun(1, values.get('unit', 'units')), values.get('unit', 'units')), "the noun or its singular (dna.base.count_noun)"), src=('answer', 'unit',))),
     ]
 
 

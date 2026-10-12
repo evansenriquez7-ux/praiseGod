@@ -773,16 +773,16 @@ def _build_symbolic_question(
             real_b = values.get("real_b", b)
             return fill("Estimate the sum: {real_a} + {real_b}", _src=('task_type',), real_a=S(real_a, "value:real_a"), real_b=S(real_b, "value:real_b"))
         strategy = values.get("strategy", "standard")
-        prefix = fill("Solve using {expanded_lbl}. ", _src=('strategy',), expanded_lbl=S(expanded_lbl, "fill")) if strategy == "expanded_form" else ""
+        prefix = fill("Solve using {expanded_lbl}. ", _src=('strategy',), expanded_lbl=S(expanded_lbl, "fill")) if strategy == "expanded_form" else fill("")
 
         if blank == "result":
-            return fill("{prefix}What is {a} + {b}?", _src=('blank_target',), prefix=derived(prefix, src=('strategy',)), a=S(a, "value:a", src=('a', 'start',)), b=S(b, "value:b", src=('b', 'skip_by',)))
+            return fill("{prefix}What is {a} + {b}?", _src=('blank_target',), prefix=S(prefix, "fill", src=('strategy',)), a=S(a, "value:a", src=('a', 'start',)), b=S(b, "value:b", src=('b', 'skip_by',)))
         elif blank == "b":
             result = values.get("result")
-            return fill("{prefix}{a} + ___ = {result}. What is the {missing_lbl}?", _src=('blank_target',), prefix=derived(prefix, src=('strategy',)), a=derived(a, src=('a', 'start',)), result=S(result, "value:result"), missing_lbl=S(missing_lbl, "fill"))
+            return fill("{prefix}{a} + ___ = {result}. What is the {missing_lbl}?", _src=('blank_target',), prefix=S(prefix, "fill", src=('strategy',)), a=derived(a, src=('a', 'start',)), result=S(result, "value:result"), missing_lbl=S(missing_lbl, "fill"))
         else:
             result = values.get("result")
-            return fill("{prefix}___ + {b} = {result}. What is the {missing_lbl}?", prefix=derived(prefix, src=('strategy',)), b=derived(b, src=('b', 'skip_by',)), result=S(result, "value:result"), missing_lbl=S(missing_lbl, "fill"))
+            return fill("{prefix}___ + {b} = {result}. What is the {missing_lbl}?", prefix=S(prefix, "fill", src=('strategy',)), b=derived(b, src=('b', 'skip_by',)), result=S(result, "value:result"), missing_lbl=S(missing_lbl, "fill"))
 
     if concept == "subtraction":
         # Structured slots (H3-R1, owner ruling 28): subtraction's values always carry
@@ -1382,7 +1382,7 @@ def _build_symbolic_question(
         category = values.get("category", "item")
         count = values.get("count", a)
         pg_lbl = VocabGated("pictograph", "pictograph", "picture graph").resolve(cumulative_vocab)
-        return fill("How many {category} does the {pg_lbl} show?", category=derived(category, src=('category',)), pg_lbl=S(pg_lbl, "fill"))
+        return fill("How many {category} does the {pg_lbl} show?", category=S(category, "value:category", src=('category',)), pg_lbl=S(pg_lbl, "fill"))
 
     if concept == "bar_graphs":
         category = values.get("category", "item")

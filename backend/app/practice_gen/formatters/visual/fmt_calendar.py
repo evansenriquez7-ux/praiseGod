@@ -36,7 +36,7 @@ from typing import List, Optional
 from backend.app.practice_gen.dna.base import FormattedProblem, QuestionContext
 from backend.app.practice_gen.formatters._distractor_fallback import augment_distractors
 from backend.app.practice_gen.formatters._option_order import shuffle_options
-from backend.app.practice_gen.slots import S, derived, fill
+from backend.app.practice_gen.slots import E, S, derived, fill
 from backend.app.practice_gen.formatters._answer_slots import (correct_option_key, distractors_field, member_text)
 
 
@@ -227,7 +227,7 @@ def format_calendar(
         unit_word = vp.get("unit", "days")
 
         question_text = (
-            fill("Look at the {month_name} {year} {cal_word}. How many {unit_word} are there from {month_name} {day1} to {month_name} {day2}, inclusive?", month_name=S(month_name, "enum:backend.app.practice_gen.formatters.visual.fmt_calendar._MONTH_NAMES"), year=S(year, "value:year"), cal_word=S(cal_word, "fill"), unit_word=derived(unit_word), day1=S(day1, "value:target_date"), day2=S(day2, "value:end_date"))
+            fill("Look at the {month_name} {year} {cal_word}. How many {unit_word} are there from {month_name} {day1} to {month_name} {day2}, inclusive?", month_name=S(month_name, "enum:backend.app.practice_gen.formatters.visual.fmt_calendar._MONTH_NAMES"), year=S(year, "value:year"), cal_word=S(cal_word, "fill"), unit_word=S(unit_word, E(("days", "weeks"), "the two elapsed-time units")), day1=S(day1, "value:target_date"), day2=S(day2, "value:end_date"))
         )
         raw_correct = duration
 

@@ -2043,8 +2043,8 @@ MUTATIONS: List[Mutation] = [
         ),
         edits={
             'backend/app/practice_gen/dna/mg/calendar.py': (
-                                                               '            fill("{end} - {start} + 1 = {days} {count_noun}.", _src=(\'task_type\',), end=S(end, "value:end_date"), start=S(start, "value:target_date"), days=derived(days, src=(\'end_date\', \'target_date\',)), count_noun=derived(count_noun(days, \'days\'), src=(\'end_date\', \'target_date\',))),\n',
-                                                               '            fill("{end} - {start} = {days} {count_noun}.", _src=(\'task_type\',), end=S(end, "value:end_date"), start=S(start, "value:target_date"), days=derived(days, src=(\'end_date\', \'target_date\',)), count_noun=derived(count_noun(days, \'days\'), src=(\'end_date\', \'target_date\',))),  # planted mutation\n',
+                                                               '            fill("{end} - {start} + 1 = {days} {count_noun}.", _src=(\'task_type\',), end=S(end, "value:end_date"), start=S(start, "value:target_date"), days=derived(days, src=(\'end_date\', \'target_date\',), why="arithmetic"), count_noun=S(count_noun(days, \'days\'), E((count_noun(1, \'days\'), \'days\'), "the noun or its singular (dna.base.count_noun)"), src=(\'end_date\', \'target_date\',))),\n',
+                                                               '            fill("{end} - {start} = {days} {count_noun}.", _src=(\'task_type\',), end=S(end, "value:end_date"), start=S(start, "value:target_date"), days=derived(days, src=(\'end_date\', \'target_date\',), why="arithmetic"), count_noun=S(count_noun(days, \'days\'), E((count_noun(1, \'days\'), \'days\'), "the noun or its singular (dna.base.count_noun)"), src=(\'end_date\', \'target_date\',))),  # planted mutation\n',
                                                            )
         },
         command=["backend.app.practice_gen.validation.validate_hint_contract", "--node-ids", "mat_g2_mg_q4_0"],
@@ -2445,8 +2445,8 @@ MUTATIONS: List[Mutation] = [
         ),
         edits={
             'backend/app/practice_gen/dna/na/addition.py': (
-                                                               '            hints.append(fill("Add the ones: {ones_a} + {ones_b} = {ones_sum}. Keep {ones_sum} in the ones place.", ones_a=derived(ones_a), ones_b=derived(ones_b), ones_sum=derived(ones_sum)))\n',
-                                                               '            hints.append(fill("Add the ones: {ones_a} + {ones_b} = {ones_sum}. Write {ones_sum} in the ones place.", ones_a=derived(ones_a), ones_b=derived(ones_b), ones_sum=derived(ones_sum)))  # planted mutation\n',
+                                                               '            hints.append(fill("Add the ones: {ones_a} + {ones_b} = {ones_sum}. Keep {ones_sum} in the ones place.", ones_a=derived(ones_a, src=("a",), why="arithmetic"), ones_b=derived(ones_b, src=("b",), why="arithmetic"), ones_sum=derived(ones_sum, src=("a", "b"), why="arithmetic")))\n',
+                                                               '            hints.append(fill("Add the ones: {ones_a} + {ones_b} = {ones_sum}. Write {ones_sum} in the ones place.", ones_a=derived(ones_a, src=("a",), why="arithmetic"), ones_b=derived(ones_b, src=("b",), why="arithmetic"), ones_sum=derived(ones_sum, src=("a", "b"), why="arithmetic")))  # planted mutation\n',
                                                            )
         },
         command=["backend.app.practice_gen.validation.validate_hint_contract", "--node-ids", "mat_g1_na_q2_6"],
