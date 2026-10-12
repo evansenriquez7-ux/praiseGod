@@ -18,7 +18,7 @@ from __future__ import annotations
 import random
 from typing import Any, Dict, List, Optional, Set
 
-from backend.app.practice_gen.slots import R, S, computes, derived, fill
+from backend.app.practice_gen.slots import E, R, S, computes, derived, fill
 from backend.app.practice_gen.dna.base import (
     DIFFICULTY_LEVEL_MAP,
     DNA,
@@ -620,8 +620,9 @@ def generate_hints(
         return [
             fill("Divide {n} by 2: how many 2s fit into {n}?", _src=('task_type',), n=n_slot),
             fill("2 × {half} = {twice}, and {n} − {twice} = {left}.", _src=('task_type',),
-                 half=S(half, "num.derived"), twice=S(2 * half, "num.derived"),
-                 n=n_slot, left=S(left, "num.derived")),
+                 half=derived(half, src=("dividend",), why="arithmetic"),
+                 twice=derived(2 * half, src=("dividend",), why="arithmetic"),
+                 n=n_slot, left=S(left, E((0, 1), "the remainder of the dividend divided by 2"))),
             (fill("Nothing is left over, so {n} is an even number.", _src=('task_type',), n=n_slot) if left == 0
              else fill("1 is left over, so {n} is an odd number.", _src=('task_type',), n=n_slot)),
         ]

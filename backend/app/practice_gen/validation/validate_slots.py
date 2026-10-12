@@ -19,7 +19,15 @@ text. This module renders each lc on the student path under `slots.capture()` an
   (c) every slot names a domain -- else `slot_unclassified_14` -- that this module can
       resolve -- else `slot_domain_unknown_14`, the one INTEGRITY label here, because the
       harness then cannot judge the slot at all;
-  (d) every slot value lies inside its domain -- else `slot_domain_escape_14`.
+  (d) every slot value lies inside its domain -- else `slot_domain_escape_14`;
+  (e) every TYPE-ONLY slot (`num.derived`/`text.derived`) carries a named reason it cannot be
+      tightened -- else `slot_domain_type_only_14` (owner rulings 42-43; batch H4-0, content).
+      A reason is a `slots.DERIVED_REASONS` kind plus a non-empty `src` whose every key is in
+      the generator's own values at that render. Ruling 42 makes this count reach 0 on an lc
+      before H4 approves that lc's stems: a judge's approval of a type-only domain bounds
+      nothing the learner reads. It counts EVERY recorded slot, learner-reachable or not
+      (ruling 43), so no closure logic can hide one; a fill that is not learner text is
+      tightened by being turned back into plain code, which (a) catches if it was.
 
 DOMAIN KINDS (the only ones; a new kind is added here, with a test):
   R(lo, hi, basis)   runtime range the generator computed from the bounds it draws with
@@ -32,8 +40,8 @@ DOMAIN KINDS (the only ones; a new kind is added here, with a test):
   "noun:<dotted>"    a noun from the generator's own list/dict values, or its plural by the
                      shared inflection rule (`dna.base.to_singular_phrase`, which §1J uses)
   "text.derived"     text a generator computes from other slots (a repeated emoji display);
-                     type-checked only
-  "num.derived"      a number computed from other slots (int/float, not bool)
+                     type-checked only, and counted by (e) unless it carries a reason
+  "num.derived"      a number computed from other slots (int/float, not bool); likewise
   "fill"             equals the text of another recorded fill (nested template)
 
 Findings are aggregated per (lc, label, field or site) and name the lc, the first seed,
@@ -65,6 +73,12 @@ NAMED LIMITS (Scaling Mandate 6; also in docs/pgen_contract.md §14 and the evid
      judge-approved domain does not bound the value (an H4 prerequisite to tighten).
  10. Accounting covers the paths the seeds reach; a slot declared "fill" whose variable has
      a non-fill alternative on an unreached path is found by a static audit, not here.
+ 11. (e) is counted at the paths the seeds reach (limit 1): a type-only slot only a pinned
+     formatter or an unvisited seed reaches is not counted, so an lc at 0 here has 0 at
+     these seeds, not everywhere.
+ 12. A reason is the generator's own claim. (e) checks that its kind is registered and its
+     `src` names keys the generator really carries; it cannot check that the slot IS computed
+     from them, or that no stricter domain exists. H4's judges review both (as §15 limit 7).
 """
 from __future__ import annotations
 
@@ -73,7 +87,7 @@ import sys
 from collections import OrderedDict
 from typing import Any, Dict, List, Optional, Tuple
 
-from backend.app.practice_gen.slots import E, R, RENDERERS, TRANSFORMS, capture, renderer
+from backend.app.practice_gen.slots import DERIVED_REASONS, E, R, RENDERERS, TRANSFORMS, capture, renderer
 
 ASSERTIONS = (
     "slot_text_unaccounted_14",   # a learner-read field no recorded fill produced
@@ -81,7 +95,10 @@ ASSERTIONS = (
     "slot_unclassified_14",       # a slot recorded with no domain
     "slot_domain_unknown_14",     # a domain id this module cannot resolve (integrity)
     "slot_domain_escape_14",      # a slot value outside its declared domain
+    "slot_domain_type_only_14",   # a type-only slot with no named reason (rulings 42-43)
 )
+
+TYPE_ONLY = ("num.derived", "text.derived")
 
 SEEDS: Tuple[int, ...] = tuple(range(1, 21))
 
@@ -127,8 +144,34 @@ def _members(obj: Any) -> List[Any]:
     return list(obj.values()) if isinstance(obj, dict) else list(obj)
 
 
-def check_slot(value: Any, domain: Any, given: Dict[str, Any], texts: set) -> Optional[Tuple[str, str]]:
-    """None if `value` lies in `domain`; else (label, reason). `given` is ctx.values."""
+def type_only_reason(domain: str, why: Optional[str], src: Tuple[str, ...],
+                     given: Dict[str, Any]) -> Optional[str]:
+    """
+    None if a type-only slot carries a valid named reason (owner rulings 42-43); else what is
+    missing. Valid = a registered `slots.DERIVED_REASONS` kind AND a non-empty `src` whose
+    every key the generator's own values carry at this render.
+    """
+    if why is None:
+        return (f"type-only domain {domain!r} bounds the type, not the value: tighten it to "
+                f"value:/E/R/enum:/bank:/fill, or name a slots.DERIVED_REASONS kind with its src "
+                f"(owner rulings 42-43)")
+    if why not in DERIVED_REASONS:
+        return f"reason {why!r} is not a registered slots.DERIVED_REASONS kind"
+    if not src:
+        return f"reason {why!r} names no src: a reason must say which generated values the slot comes from"
+    missing = [k for k in src if k not in given]
+    if missing:
+        return (f"reason {why!r} cites src {missing!r}, which the generator's values do not carry "
+                f"at this render (it carries {sorted(given)[:12]!r})")
+    return None
+
+
+def check_slot(value: Any, domain: Any, given: Dict[str, Any], texts: set,
+               why: Optional[str] = None, src: Tuple[str, ...] = ()) -> Optional[Tuple[str, str]]:
+    """
+    None if `value` lies in `domain`; else (label, reason). `given` is ctx.values; `why` and
+    `src` are the slot's recorded reason and provenance (read for type-only domains only).
+    """
     if domain is None:
         return ("slot_unclassified_14", "the slot was recorded with no domain (a bare value, not S(value, domain))")
     if isinstance(domain, R):
@@ -145,10 +188,13 @@ def check_slot(value: Any, domain: Any, given: Dict[str, Any], texts: set) -> Op
         return None
     if not isinstance(domain, str):
         return ("slot_domain_unknown_14", f"domain {domain!r} is neither a registry id nor R(...)/E(...)")
-    if domain == "text.derived":
-        if not isinstance(value, str):
+    if domain in TYPE_ONLY:
+        if domain == "text.derived" and not isinstance(value, str):
             return ("slot_domain_escape_14", f"derived text {value!r} is not a string")
-        return None
+        if domain == "num.derived" and (isinstance(value, bool) or not isinstance(value, (int, float))):
+            return ("slot_domain_escape_14", f"derived value {value!r} is not a number")
+        missing = type_only_reason(domain, why, tuple(src), given)
+        return None if missing is None else ("slot_domain_type_only_14", missing)
     if domain.startswith("noun:"):
         from backend.app.practice_gen.dna.base import to_singular_phrase
         try:
@@ -167,10 +213,6 @@ def check_slot(value: Any, domain: Any, given: Dict[str, Any], texts: set) -> Op
             return ("slot_text_unaccounted_14",
                     f"nested slot value {str(value)[:80]!r} is not the text of any recorded fill "
                     f"(the template it came from is not instrumented)")
-        return None
-    if domain == "num.derived":
-        if isinstance(value, bool) or not isinstance(value, (int, float)):
-            return ("slot_domain_escape_14", f"derived value {value!r} is not a number")
         return None
     if domain.startswith("value:"):
         key = domain[len("value:"):]
@@ -261,8 +303,9 @@ def render_findings(node_id: str, seed: int) -> List[Tuple[str, str, str]]:
         if why:
             out.append(("slot_template_mismatch_14", f.site, why))
         others = texts if produced[f.text] > 1 else texts - {f.text}
+        srcs, whys = dict(f.sources), dict(f.reasons)
         for name, value, domain in f.slots:
-            bad = check_slot(value, domain, given, others)
+            bad = check_slot(value, domain, given, others, why=whys.get(name), src=srcs.get(name, ()))
             if bad:
                 out.append((bad[0], f"{f.site} slot {name!r}", bad[1]))
     for where, text in _texts(problem):
@@ -272,6 +315,11 @@ def render_findings(node_id: str, seed: int) -> List[Tuple[str, str, str]]:
                         f"builds it is not instrumented (formatter {problem.get('formatter_name')}, "
                         f"DNA {problem.get('dna_name')})"))
     return out
+
+
+def _all_lcs() -> List[str]:
+    from backend.app.practice_gen.registry import get_all_node_ids
+    return sorted(get_all_node_ids())
 
 
 def collect_findings(node_ids: Optional[List[str]] = None) -> Dict[str, List[str]]:
@@ -294,6 +342,9 @@ def collect_findings(node_ids: Optional[List[str]] = None) -> Dict[str, List[str
                 if label == "slot_domain_escape_14"
                 else "record the template the text is really built from"
                 if label == "slot_template_mismatch_14"
+                else ("tighten the slot to value:/E/R/enum:/bank:/fill, or give it a registered "
+                      "slots.DERIVED_REASONS kind and its src (owner rulings 42-43)")
+                if label == "slot_domain_type_only_14"
                 else "register the domain kind in validate_slots or fix the id")
         out[label].append(
             f"{node_id}: {where} at seed {g['seed']} ({len(g['seeds'])} of {len(SEEDS)} seeds): "
@@ -317,6 +368,11 @@ def validate_all(node_ids: Optional[List[str]] = None) -> bool:
         else:
             print(f"  PASS {label}")
     scope = len(node_ids) if node_ids else "all"
+    # The ruling-42 rollout, lc by lc: how many lcs still reach a type-only slot.
+    lcs = list(node_ids) if node_ids else _all_lcs()
+    open_lcs = sorted({item.split(":", 1)[0] for item in findings["slot_domain_type_only_14"]})
+    print(f"  NOTE: ruling 42 rollout: {len(lcs) - len(open_lcs)} of {len(lcs)} lc(s) reach no "
+          f"type-only slot without a reason; {len(open_lcs)} still do")
     print(f"  §14: {total} finding(s) over {scope} lc(s) x {len(SEEDS)} seed(s)")
     return total == 0
 

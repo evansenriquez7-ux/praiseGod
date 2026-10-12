@@ -83,19 +83,42 @@ class S:
     value: Any
     domain: Any
     src: Tuple[str, ...] = ()
+    why: Optional[str] = None      # a DERIVED_REASONS kind, type-only domains only (ruling 42)
 
 
-def derived(value: Any, src: Tuple[str, ...] = ()) -> S:
+# ─── Why a type-only slot cannot be tightened (owner rulings 42-43; batch H4-0) ───────
+# Ruling 42: before H4 approves an lc, every `num.derived`/`text.derived` slot it reaches is
+# tightened to `value:`/`E`/`R`/`enum:`/`bank:`/`fill`, or carries a NAMED per-slot reason it
+# cannot be. Ruling 43 (owner, 2026-10-12) fixes the form: the reason is a kind registered
+# HERE, and the slot must also name its `src` -- the generator `values` keys it is computed
+# from, each present in the values of that render -- so the judge who reviews the reason (H4)
+# can bound the slot by the domains of what it came from. §14 counts every type-only slot
+# without a valid reason as `slot_domain_type_only_14`. A kind is added here, with its
+# meaning, never as a harness-side exemption of a named slot (Scaling Mandate 4).
+DERIVED_REASONS: Dict[str, str] = {
+    "arithmetic": (
+        "a number the generator computes from the generated values named in src (a half, a "
+        "sum, a difference, a running total, a place's digit). Its range is the image of those "
+        "values' own domains; whether the arithmetic is RIGHT is the hint contract's (§16) and "
+        "§1E's to check, not §14's."),
+}
+
+
+def derived(value: Any, src: Tuple[str, ...] = (), why: Optional[str] = None) -> S:
     """
     A slot COMPUTED from other values, typed by what it is: "num.derived" for a number,
     "text.derived" otherwise (batch H3-R2). Both are type-only domains (§14 limits 4 and 8):
     use a stricter domain -- `value:<key>`, `E`, `R`, `enum:`, `fill` -- wherever the
     generator has one. A non-string object printed into text (a list, None, a bool) is then
     a `slot_domain_escape_14`, which is what it is: code-shaped text a learner reads.
+
+    `why` (owner rulings 42-43) names the `DERIVED_REASONS` kind that says why no stricter
+    domain exists; it is valid only with a non-empty `src`. Without one the slot is counted
+    by `slot_domain_type_only_14`.
     """
     if isinstance(value, (int, float)) and not isinstance(value, bool):
-        return S(value, "num.derived", src)
-    return S(value, "text.derived", src)
+        return S(value, "num.derived", src, why)
+    return S(value, "text.derived", src, why)
 
 
 BANK_FIELDS = ("question", "question_text", "answer", "distractors", "statement", "template")
@@ -124,6 +147,11 @@ def bank_fields(item: Dict[str, Any], bank: str, fields: Tuple[str, ...] = BANK_
     return out
 
 
+def _reasons(slots: Dict[str, Any]) -> Tuple[Tuple[str, str], ...]:
+    """(slot name, `why`) for every slot that carries a reason (owner rulings 42-43)."""
+    return tuple((name, v.why) for name, v in slots.items() if isinstance(v, S) and v.why is not None)
+
+
 def _provenance(v: Any) -> Tuple[str, ...]:
     """The `values` keys a slot is derived from: its declared `src`, plus a `value:` key."""
     if not isinstance(v, S):
@@ -144,6 +172,7 @@ class Fill:
     renderer: Optional[str] = None                      # replayed by the check if set
     renderer_ref: Optional[str] = None                  # e.g. the spine id Spine.render used
     sources: Tuple[Tuple[str, Tuple[str, ...]], ...] = ()   # (slot name, provenance keys)
+    reasons: Tuple[Tuple[str, str], ...] = ()               # (slot name, DERIVED_REASONS kind)
     extra: Dict[str, Any] = field(default_factory=dict, compare=False, hash=False)
 
 
@@ -243,6 +272,7 @@ def fill(template: str, /, _src: Tuple[str, ...] = (), **slots: Any) -> str:
             text=text,
             site=_site(2),
             sources=sources,
+            reasons=_reasons(slots),
         ))
     return text
 
@@ -268,6 +298,7 @@ def record(template: str, text: str, slots: Dict[str, Any], renderer: str,
             renderer_ref=renderer_ref,
             sources=tuple((name, _provenance(v)) for name, v in slots.items())
             + ((("__template__", tuple(_src)),) if _src else ()),
+            reasons=_reasons(slots),
         ))
     return text
 
@@ -345,5 +376,6 @@ def transform(name: str, text: str, /, **args: Any) -> str:
                               (k, extra[k], v.domain if isinstance(v, S) else None)
                               for k, v in args.items()),
                           text=out, site=_site(2), renderer=name,
-                          sources=tuple((k, _provenance(v)) for k, v in args.items())))
+                          sources=tuple((k, _provenance(v)) for k, v in args.items()),
+                          reasons=_reasons(args)))
     return out

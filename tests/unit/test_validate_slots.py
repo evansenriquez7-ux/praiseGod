@@ -40,9 +40,9 @@ def _label(value, domain, given=None, texts=()):
     (31, "value:dividend", {"dividend": 31}, (), None),
     (32, "value:dividend", {"dividend": 31}, (), "slot_domain_escape_14"),
     (31, "value:dividend", {}, (), "slot_domain_escape_14"),
-    (3, "num.derived", {}, (), None),
-    ("3", "num.derived", {}, (), "slot_domain_escape_14"),
-    ("🏀🏀", "text.derived", {}, (), None),
+    (3, "num.derived", {}, (), "slot_domain_type_only_14"),        # no reason: counted (ruling 42)
+    ("3", "num.derived", {}, (), "slot_domain_escape_14"),          # the type check comes first
+    ("🏀🏀", "text.derived", {}, (), "slot_domain_type_only_14"),
     (7, "text.derived", {}, (), "slot_domain_escape_14"),
     ("inner", "fill", {}, ("inner",), None),
     ("inner", "fill", {}, ("other",), "slot_text_unaccounted_14"),
@@ -52,6 +52,43 @@ def _label(value, domain, given=None, texts=()):
 ])
 def test_each_domain_kind(value, domain, given, texts, expected):
     assert _label(value, domain, given, texts) == expected
+
+
+@pytest.mark.parametrize("why,src,given,expected", [
+    ("arithmetic", ("dividend",), {"dividend": 31}, None),               # a valid named reason
+    (None, ("dividend",), {"dividend": 31}, "slot_domain_type_only_14"),  # no reason
+    ("arithmetics", ("dividend",), {"dividend": 31}, "slot_domain_type_only_14"),  # unregistered
+    ("arithmetic", (), {"dividend": 31}, "slot_domain_type_only_14"),     # no src
+    ("arithmetic", ("dividend", "x"), {"dividend": 31}, "slot_domain_type_only_14"),  # absent src
+])
+def test_a_type_only_slot_needs_a_registered_reason_and_a_real_src(why, src, given, expected):
+    """Owner rulings 42-43: each path of `type_only_reason`, for both type-only kinds."""
+    for value, domain in ((15, "num.derived"), ("15 and 16", "text.derived")):
+        out = V.check_slot(value, domain, given, set(), why=why, src=src)
+        assert (None if out is None else out[0]) == expected, (domain, why, src, out)
+
+
+def test_every_reason_kind_says_what_it_means():
+    """A registered kind is a definition a judge reads (ruling 43), never an empty name."""
+    from backend.app.practice_gen.slots import DERIVED_REASONS
+    assert DERIVED_REASONS, "the registry is empty"
+    for kind, meaning in DERIVED_REASONS.items():
+        assert kind.isidentifier() and len(meaning.split()) >= 12, kind
+
+
+def test_a_reason_is_recorded_with_its_slot_and_reaches_the_check():
+    """`derived(..., why=)` is recorded on the Fill (`reasons`) and its src in `sources`."""
+    from backend.app.practice_gen.slots import derived
+    with capture() as fills:
+        fill("{a} + {b} = {t}", a=S(7, "value:a"), b=S(8, "value:b"),
+             t=derived(15, src=("a", "b"), why="arithmetic"), u=derived(3))
+    f = fills[0]
+    assert dict(f.reasons) == {"t": "arithmetic"}
+    assert dict(f.sources)["t"] == ("a", "b")
+    assert V.check_slot(15, "num.derived", {"a": 7, "b": 8}, set(),
+                        why=dict(f.reasons).get("t"), src=dict(f.sources)["t"]) is None
+    assert V.check_slot(3, "num.derived", {"a": 7, "b": 8}, set(),
+                        why=dict(f.reasons).get("u"), src=dict(f.sources)["u"])[0] == "slot_domain_type_only_14"
 
 
 def test_fill_is_byte_identical_and_records_only_when_capturing():

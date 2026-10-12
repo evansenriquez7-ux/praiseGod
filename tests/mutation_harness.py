@@ -5184,6 +5184,68 @@ MUTATIONS: List[Mutation] = [
         expect_output_contains=["slot_text_unaccounted_14 (", "fmt_true_false.py"],
         baseline_must_not_contain=["FAIL slot_text_unaccounted_14"],
     ),
+    # ── §14 (e) type-only slots (owner rulings 42-43; batch H4-0, 2026-10-12) ─────────────
+    # mat_g2_na_q3_8 reaches no type-only slot without a reason since H4-0 (its even/odd hint's
+    # remainder became E((0, 1)); its half and double carry the registered `arithmetic` reason
+    # with src=("dividend",)). One plant per path of `type_only_reason`: no reason at all, a
+    # kind the registry does not hold, and a src the generator does not carry.
+    Mutation(
+        name="slot_loosened_to_type_only",
+        asserts=["slot_domain_type_only_14"],
+        description=(
+            "Loosen the even/odd hint's remainder from E((0, 1)) back to a type-only "
+            "`derived(left)`. The text is unchanged and every other gate stays green, but a "
+            "judge approving that slot would bound nothing the learner reads (ruling 42)."
+        ),
+        edits={
+            "backend/app/practice_gen/dna/na/division.py": (
+                '                 n=n_slot, left=S(left, E((0, 1), "the remainder of the dividend divided by 2"))),\n',
+                '                 n=n_slot, left=derived(left)),  # planted mutation: loosened to type-only\n',
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_slots", "--node-ids", "mat_g2_na_q3_8"],
+        expected_check="§14 (e) a type-only slot carries a named reason (ruling 42)",
+        expect_output_contains=["slot_domain_type_only_14 (", "slot 'left'", "bounds the type, not the value"],
+        baseline_must_not_contain=["FAIL slot_domain_type_only_14"],
+    ),
+    Mutation(
+        name="type_only_reason_unregistered",
+        asserts=["slot_domain_type_only_14"],
+        description=(
+            "Give the hint's half a reason kind the registry does not hold. A reason is "
+            "named only if slots.DERIVED_REASONS defines it (ruling 43); an unregistered "
+            "word would let any slot excuse itself with text nobody defined."
+        ),
+        edits={
+            "backend/app/practice_gen/dna/na/division.py": (
+                '                 half=derived(half, src=("dividend",), why="arithmetic"),\n',
+                '                 half=derived(half, src=("dividend",), why="arithmetics"),  # planted mutation\n',
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_slots", "--node-ids", "mat_g2_na_q3_8"],
+        expected_check="§14 (e) a reason is a registered DERIVED_REASONS kind (ruling 43)",
+        expect_output_contains=["slot_domain_type_only_14 (", "slot 'half'", "'arithmetics' is not a registered"],
+        baseline_must_not_contain=["FAIL slot_domain_type_only_14"],
+    ),
+    Mutation(
+        name="type_only_reason_cites_absent_src",
+        asserts=["slot_domain_type_only_14"],
+        description=(
+            "Let the hint's double cite a src key the generator's values do not carry. "
+            "Ruling 43 anchors every reason to generated values the judge can see the "
+            "domains of; a src naming nothing real anchors the slot to nothing."
+        ),
+        edits={
+            "backend/app/practice_gen/dna/na/division.py": (
+                '                 twice=derived(2 * half, src=("dividend",), why="arithmetic"),\n',
+                '                 twice=derived(2 * half, src=("dividend_halved",), why="arithmetic"),  # planted mutation\n',
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_slots", "--node-ids", "mat_g2_na_q3_8"],
+        expected_check="§14 (e) a reason's src names keys the generator carries (ruling 43)",
+        expect_output_contains=["slot_domain_type_only_14 (", "slot 'twice'", "do not carry"],
+        baseline_must_not_contain=["FAIL slot_domain_type_only_14"],
+    ),
     # ── §15 composition (H5, owner rulings 35-36). Both plants rewrap the counting stem the
     # way number_line_read and emoji_pictorial do on mat_g1_na_q2_1 today, scoped to the mcq
     # renders of that lc, whose baseline is clean, so the planted rewrap is the only cause.

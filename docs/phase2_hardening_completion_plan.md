@@ -1544,6 +1544,21 @@ that points at it break every time the section is refreshed.
 >     approves an lc, every derived slot that lc reaches is tightened to `value:`/`E`/`R`/`enum:`/`bank:`/
 >     `fill`, or carries a named per-slot reason it cannot be. This rolls out lc by lc, like H3, tracked
 >     by a harness count.
+> 43. **A type-only slot's "named reason" is a registered kind plus its source values; the count covers
+>     every recorded slot** (owner, 2026-10-12, asked at the start of H4-0). Two choices, both the
+>     options the dispatcher recommended. (a) A reason is `slots.derived(x, src=(...), why="<kind>")`:
+>     `why` must be a key of a registry in `slots.py` (`DERIVED_REASONS`, e.g. `arithmetic`), each kind
+>     with a one-line meaning that says what checks it; and §14 also requires `src` to be non-empty with
+>     every key present in the generator's `values` at that render, or the slot still counts. Kinds are
+>     visible in the diff, countable per kind and reviewed by H4's judges; the harness never names a
+>     slot. Rejected: a free-text reason (cannot be counted or audited by kind) and a registered kind
+>     without the `src` check (anchored to nothing a judge can see). (b) `slot_domain_type_only_14`
+>     counts every type-only slot RECORDED during an lc's render, learner-reachable or not, which is what
+>     ruling 42's own 1,233 measurement counted; a fill that is not learner text (the converter's
+>     `{interaction_mode}_{answer_collection}`, a regex, `term_{i}`) is tightened by turning it back into
+>     plain code, which §14's accounting catches if it was learner text after all. Rejected: counting
+>     only slots reachable from learner-read fields (new closure logic, a new blind spot, and a number
+>     that diverges from the ruling's measurement).
 >
 > **Owner rulings recorded 2026-09-22, binding on the next session:**
 >

@@ -274,6 +274,7 @@ FINDING_CLASS: Dict[str, str] = {
     "slot_unclassified_14": CONTENT,             # a slot recorded with no domain
     "slot_domain_escape_14": CONTENT,            # a value outside its declared domain
     "slot_domain_unknown_14": INTEGRITY,         # the harness cannot resolve the domain
+    "slot_domain_type_only_14": CONTENT,         # a type-only slot with no named reason (rulings 42-43)
     # -- §15 validate_composition (H5, rulings 35, 36) -------------------------------
     "selector_value_unexhibited_15": CONTENT,    # a selected value reaches only the hints
     "hint_sequence_unshown_15": CONTENT,         # a hint quotes numbers the item lacks
