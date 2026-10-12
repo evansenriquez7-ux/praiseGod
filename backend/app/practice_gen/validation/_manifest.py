@@ -64,6 +64,7 @@ CHECK_PHASE: Dict[str, int] = {
     # -- Phase 2: needs an agent-authored artifact on disk ------------------------------
     "§5": 2,            # validation_reports/judgment/
     "§6F": 2, "§6G": 2, "§6H": 2,   # validation_reports/attestation/
+    "§17": 2,           # validation_reports/stem_review/ (the stem review gate, H4)
 }
 
 # The refs that carry no CONTRACT_CHECKS row. Named so the completeness gate can tell
@@ -275,6 +276,21 @@ FINDING_CLASS: Dict[str, str] = {
     "slot_domain_escape_14": CONTENT,            # a value outside its declared domain
     "slot_domain_unknown_14": INTEGRITY,         # the harness cannot resolve the domain
     "slot_domain_type_only_14": CONTENT,         # a type-only slot with no named reason (rulings 42-43)
+    "slot_path_refused_14": CONTENT,             # an advertised formatter, pinned, refuses (ruling 44b)
+    # -- §17 validate_stem_review (H4, rulings 24, 26, 44) ------------------------------
+    # Ruling 44f: verdicts and record defects are CONTENT (the remedy is a generator fix or a
+    # fresh review); only the harness's own failures are INTEGRITY.
+    "stem_family_unpacketed_17": INTEGRITY,      # the builder omitted a reaching family
+    "stem_review_hash_drift_17": INTEGRITY,      # the freshness code changed without a version bump
+    "stem_review_record_invalid_17": CONTENT,    # a malformed or edited record
+    "stem_review_quote_provenance_17": CONTENT,  # a reasoning quoting what its packet lacks
+    "stem_review_identity_reused_17": CONTENT,   # one judged_by identity on more than one lc
+    "stem_review_skeleton_17": CONTENT,          # one reasoning frame across too many lcs
+    "stem_review_missing_17": CONTENT,           # an lc with no valid review
+    "stem_review_stale_17": CONTENT,             # the standing review judged other stems
+    "stem_review_unconfirmed_17": CONTENT,       # no valid confirming judge (ruling 20/44e)
+    "stem_review_fail_17": CONTENT,              # the standing verdict is FAIL
+    "stem_clause_unproducible_17": CONTENT,      # a clause ruled NOT_PRODUCIBLE (ruling 44g)
     # -- §15 validate_composition (H5, rulings 35, 36) -------------------------------
     "selector_value_unexhibited_15": CONTENT,    # a selected value reaches only the hints
     "hint_sequence_unshown_15": CONTENT,         # a hint quotes numbers the item lacks

@@ -1,7 +1,8 @@
 """
-§14's own domain checks (`validate_slots.check_slot` / `replay`, unchanged) over seeds 1-40 on the
-student path plus every advertised formatter pinned at seeds 3, 17, 29 -- wider than the stage's
-20 seeds (its named limits 1, 10 and 11). Prints one line per escaping (site, slot) with its count
+§14's own domain checks (`validate_slots.check_slot` / `replay`, unchanged) over §14's own
+`validate_slots.paths` (seeds 1-40 on the student path plus every advertised formatter pinned at
+seeds 3, 17, 29). Since owner ruling 44b (batch H4) the stage renders these same paths, so this is
+a per-(site, slot) view of what the stage reports per lc, not a wider one. Prints one line per escaping (site, slot) with its count
 and first (lc, seed, formatter, reason), then the distinct total. A render that raises is printed
 and counted, never skipped silently (Protocol 3).
 
@@ -12,7 +13,7 @@ Promoted from validation_reports/phase2_hardening/h3r2_tools/wide_check.py in ba
 import collections
 
 from backend.app.practice_gen.validation import validate_slots as VS
-from backend.app.practice_gen.registry import get_all_node_ids, get_node_formatters
+from backend.app.practice_gen.registry import get_all_node_ids
 from backend.app.practice_gen.slots import capture
 from backend.app.services.orchestrator import PracticeOrchestrator
 from backend.app.services import orchestrator as _orch
@@ -20,7 +21,7 @@ from backend.app.services import orchestrator as _orch
 if __name__ == "__main__":
     bad = collections.Counter(); ex = {}; raised = []
     for n in sorted(get_all_node_ids()):
-        runs = [(s, None) for s in range(1, 41)] + [(s, f) for f in sorted(get_node_formatters(n) or []) for s in (3, 17, 29)]
+        runs = VS.paths(n)      # §14's own enumeration (owner ruling 44b): one copy
         for seed, fmt in runs:
             seen = {}; real = _orch.apply_formatter
 

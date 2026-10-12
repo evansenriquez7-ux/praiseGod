@@ -1,0 +1,476 @@
+{
+ "schema_version": 1,
+ "hash_version": 1,
+ "node_id": "mat_g3_mg_q2_2",
+ "record_id": "fixture-mat_g3_mg_q2_2-first",
+ "role": "first",
+ "confirms": null,
+ "item_id": "FIX-003",
+ "lc_hash": "86de6b32be0e93d3a28c63389ee71678417cc773fc20ffc72d5e47150deca9b3",
+ "judged_by": "fixture-not-a-judge-mat_g3_mg_q2_2-first",
+ "dispatch_id": "fixture-mat_g3_mg_q2_2-first",
+ "filed_at": "2026-10-13T00:00:00Z",
+ "delivery": "fixture written by tests/stem_review_fixture.py for §17 mutation proofs; no judge was dispatched, so no judge read the packet or CLAUDE.md",
+ "tool_uses_by_judge": "none (hand-written fixture)",
+ "dispatch_prompt_digest": "c5a35113094e5845348b89be532161162ea1525f01cd20e0a45945c2d299686a",
+ "raw_reply": "{\"item\": \"FIX-003\", \"clauses\": {\"compare_masses\": {\"verdict\": \"PRODUCIBLE\", \"template\": \"Compare the two measurements: {a} {unit} and {b} {unit}.\", \"reasoning\": \"Fixture: hand-written.\"}, \"objects\": {\"verdict\": \"PRODUCIBLE\", \"template\": \"Compare the two measurements: {a} {unit} and {b} {unit}.\", \"reasoning\": \"Fixture: hand-written.\"}, \"balance_scale\": {\"verdict\": \"PRODUCIBLE\", \"template\": \"Compare the two measurements: {a} {unit} and {b} {unit}.\", \"reasoning\": \"Fixture: hand-written.\"}}, \"failing_templates\": [], \"overall\": \"PASS\", \"reasoning\": \"Fixture, not a judgment: the template 'Compare the two measurements: {a} {unit} and {b} {unit}.' was read with its domains, and nothing in it is out of scope.\"}",
+ "raw_reply_digest": "35528df873d1d002c6a65b35ab24c76694f7b544ecef6891d5dee1aa780ed726",
+ "packet_digest": "9369e4ac973697d0c7909e60ca82b0584484381880b9b42b6dad645d6957c48e",
+ "family_keys": {
+  "F01": {
+   "source": "backend/app/practice_gen/dna/mg/mass_capacity.py",
+   "first_site": "backend/app/practice_gen/dna/mg/mass_capacity.py:397",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ]
+  },
+  "F02": {
+   "source": "backend/app/practice_gen/dna/mg/mass_capacity.py",
+   "first_site": "backend/app/practice_gen/dna/mg/mass_capacity.py:398",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ]
+  },
+  "F03": {
+   "source": "backend/app/practice_gen/generators/base_generator.py",
+   "first_site": "backend/app/practice_gen/generators/base_generator.py:1186",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ]
+  }
+ },
+ "packet": {
+  "item": "FIX-003",
+  "competency": {
+   "text": "Compare masses of objects including the use of a balance scale.",
+   "grade": 3,
+   "quarter": 2
+  },
+  "clauses": [
+   {
+    "id": "compare_masses",
+    "kind": "task",
+    "clause": "Compare masses"
+   },
+   {
+    "id": "objects",
+    "kind": "object",
+    "clause": "objects"
+   },
+   {
+    "id": "balance_scale",
+    "kind": "representation",
+    "clause": "balance scale"
+   }
+  ],
+  "vocabulary": {
+   "student_vocab": [
+    "balance scale"
+   ],
+   "curriculum_vocab": [
+    "compare masses"
+   ],
+   "introduces_vocab": [
+    "compare masses",
+    "balance scale"
+   ],
+   "cumulative_vocab": [
+    "1 less",
+    "1 more",
+    "10th",
+    "1st",
+    "2nd",
+    "3rd",
+    "4th",
+    "5th",
+    "6th",
+    "7th",
+    "8th",
+    "9th",
+    "a.m.",
+    "addition",
+    "analog clock",
+    "area",
+    "bigger",
+    "bill",
+    "calendar",
+    "centavo",
+    "centimeter",
+    "circle",
+    "clockwise",
+    "cm",
+    "coin",
+    "compare",
+    "corner",
+    "count",
+    "counter-clockwise",
+    "data",
+    "decreasing pattern",
+    "denominator",
+    "difference",
+    "digit",
+    "division",
+    "elapsed time",
+    "equal",
+    "equal groups",
+    "estimate",
+    "even",
+    "expanded form",
+    "fraction",
+    "g",
+    "gram",
+    "group",
+    "half",
+    "half hour",
+    "half turn",
+    "hour",
+    "how many",
+    "hundreds",
+    "increasing pattern",
+    "intersecting",
+    "kg",
+    "kilogram",
+    "left",
+    "length",
+    "less",
+    "line",
+    "line segment",
+    "m",
+    "mass",
+    "measure",
+    "meter",
+    "minute",
+    "missing number",
+    "more",
+    "multiplication",
+    "nearest hundred",
+    "nearest ten",
+    "nearest thousand",
+    "number",
+    "number line",
+    "numeral",
+    "numerator",
+    "odd",
+    "ones",
+    "order of operations",
+    "p.m.",
+    "parallel",
+    "pattern",
+    "perimeter",
+    "perpendicular",
+    "peso",
+    "pictograph",
+    "place value",
+    "point",
+    "product",
+    "quarter",
+    "quarter hour",
+    "quarter turn",
+    "quotient",
+    "ray",
+    "rectangle",
+    "regrouping",
+    "repeating pattern",
+    "round",
+    "ruler",
+    "same",
+    "scale",
+    "side",
+    "similar fractions",
+    "skip counting",
+    "slide",
+    "smaller",
+    "solid figure",
+    "sq. cm",
+    "square",
+    "square centimeter",
+    "subtraction",
+    "sum",
+    "table",
+    "ten thousand",
+    "ten-thousands place",
+    "tens",
+    "thousand",
+    "total",
+    "translation",
+    "triangle",
+    "whole",
+    "₱"
+   ],
+   "NOT_YET_KNOWN": [
+    "L",
+    "axis",
+    "bar graph",
+    "capacity",
+    "certain",
+    "equally likely",
+    "impossible",
+    "improper fraction",
+    "less likely",
+    "line of symmetry",
+    "liter",
+    "mL",
+    "milliliter",
+    "missing term",
+    "more likely",
+    "outcome",
+    "remainder",
+    "symmetry"
+   ],
+   "sentence_max_words": 22,
+   "number_format": "space separator for thousands (e.g. 1 000)"
+  },
+  "declared_variants": [
+   [
+    "context",
+    "pure"
+   ],
+   [
+    "context",
+    "word_problem"
+   ],
+   [
+    "direction",
+    "ascending"
+   ],
+   [
+    "direction",
+    "descending"
+   ],
+   [
+    "measurement_type",
+    "mass"
+   ],
+   [
+    "proximity",
+    "close_together"
+   ],
+   [
+    "proximity",
+    "far_apart"
+   ],
+   [
+    "task_type",
+    "compare"
+   ],
+   [
+    "unit",
+    "g"
+   ],
+   [
+    "unit",
+    "kg"
+   ],
+   [
+    "unit",
+    "l"
+   ],
+   [
+    "unit",
+    "ml"
+   ]
+  ],
+  "declared_bounds": [
+   {
+    "measurement_type": "mass",
+    "task_type": "compare"
+   },
+   {
+    "task_type": "compare_pair",
+    "max_value": [
+     1,
+     10000
+    ]
+   }
+  ],
+  "families": [
+   {
+    "id": "F01",
+    "template": "Compare the two measurements: {a} {unit} and {b} {unit}.",
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "value_a",
+        "derived_from_values": [
+         "value_a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "unit"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "unit",
+        "derived_from_values": [
+         "unit"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "value_b",
+        "derived_from_values": [
+         "value_b"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F02",
+    "template": "The larger number {more}: {answer} {unit}.",
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "more"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the mass and capacity comparatives",
+        "members": [
+         "holds more",
+         "is heavier"
+        ],
+        "derived_from_values": [
+         "measurement_type"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "answer",
+        "derived_from_values": [
+         "answer"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "unit"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "unit",
+        "derived_from_values": [
+         "unit"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F03",
+    "template": "Which is {v}: {val_a} {u} or {val_b} {u}?",
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "v"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the mass and capacity comparatives",
+        "members": [
+         "heavier",
+         "more"
+        ],
+        "derived_from_values": [
+         "measurement_type"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "val_a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "value_a",
+        "derived_from_values": [
+         "value_a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "u"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "unit",
+        "derived_from_values": [
+         "unit"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "val_b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "value_b",
+        "derived_from_values": [
+         "value_b"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   }
+  ],
+  "lists": {},
+  "value_derivations": [],
+  "reason_kinds": {}
+ }
+}

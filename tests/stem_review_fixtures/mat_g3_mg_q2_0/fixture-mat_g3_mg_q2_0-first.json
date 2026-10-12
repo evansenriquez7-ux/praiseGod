@@ -1,0 +1,459 @@
+{
+ "schema_version": 1,
+ "hash_version": 1,
+ "node_id": "mat_g3_mg_q2_0",
+ "record_id": "fixture-mat_g3_mg_q2_0-first",
+ "role": "first",
+ "confirms": null,
+ "item_id": "FIX-002",
+ "lc_hash": "fe8fea7a535838fa31fa14f02e440c562f1659aa45a1b7db8d57acebb49c61db",
+ "judged_by": "fixture-not-a-judge-mat_g3_mg_q2_0-first",
+ "dispatch_id": "fixture-mat_g3_mg_q2_0-first",
+ "filed_at": "2026-10-13T00:00:00Z",
+ "delivery": "fixture written by tests/stem_review_fixture.py for §17 mutation proofs; no judge was dispatched, so no judge read the packet or CLAUDE.md",
+ "tool_uses_by_judge": "none (hand-written fixture)",
+ "dispatch_prompt_digest": "1d753a81c416850ef064a0e415c15443f9f4d494f9d45f8d676dada5c5442f8b",
+ "raw_reply": "{\"item\": \"FIX-002\", \"clauses\": {\"measure_mass\": {\"verdict\": \"PRODUCIBLE\", \"template\": \"{term}\", \"reasoning\": \"Fixture: hand-written.\"}, \"grams_kilograms_and_or_milligrams\": {\"verdict\": \"PRODUCIBLE\", \"template\": \"{term}\", \"reasoning\": \"Fixture: hand-written.\"}, \"measuring_tools\": {\"verdict\": \"PRODUCIBLE\", \"template\": \"{term}\", \"reasoning\": \"Fixture: hand-written.\"}}, \"failing_templates\": [], \"overall\": \"PASS\", \"reasoning\": \"Fixture, not a judgment: the template '{term}' was read with its domains, and nothing in it is out of scope.\"}",
+ "raw_reply_digest": "89b3b658ee7c914d015078774fa80af16a867dc30258204747f482405373a8b6",
+ "packet_digest": "3af9d1049e7309b8034ead97fd579de12cd75328db8ea37ac6590f901295a6d7",
+ "family_keys": {
+  "F01": {
+   "source": "backend/app/practice_gen/dna/base.py",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ]
+  },
+  "F02": {
+   "source": "backend/app/practice_gen/dna/mg/mass_capacity.py",
+   "first_site": "backend/app/practice_gen/dna/mg/mass_capacity.py:450",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ]
+  },
+  "F03": {
+   "source": "backend/app/practice_gen/dna/mg/mass_capacity.py",
+   "first_site": "backend/app/practice_gen/dna/mg/mass_capacity.py:451",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ]
+  },
+  "F04": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:51",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ]
+  },
+  "F05": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_scale_read.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_scale_read.py:184",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ]
+  }
+ },
+ "packet": {
+  "item": "FIX-002",
+  "competency": {
+   "text": "Measure mass in grams (g), kilograms (kg) and/or milligrams (mg), using appropriate measuring tools.",
+   "grade": 3,
+   "quarter": 2
+  },
+  "clauses": [
+   {
+    "id": "measure_mass",
+    "kind": "task",
+    "clause": "Measure mass"
+   },
+   {
+    "id": "grams_kilograms_and_or_milligrams",
+    "kind": "object",
+    "clause": "grams (g), kilograms (kg) and/or milligrams (mg)"
+   },
+   {
+    "id": "measuring_tools",
+    "kind": "representation",
+    "clause": "measuring tools"
+   }
+  ],
+  "vocabulary": {
+   "student_vocab": [
+    "mass",
+    "gram",
+    "kilogram",
+    "g",
+    "kg"
+   ],
+   "curriculum_vocab": [
+    "milligram",
+    "mg",
+    "weighing scale",
+    "balance scale"
+   ],
+   "introduces_vocab": [
+    "mass",
+    "gram",
+    "g",
+    "kilogram",
+    "kg",
+    "milligram",
+    "mg",
+    "weighing scale",
+    "balance scale"
+   ],
+   "cumulative_vocab": [
+    "1 less",
+    "1 more",
+    "10th",
+    "1st",
+    "2nd",
+    "3rd",
+    "4th",
+    "5th",
+    "6th",
+    "7th",
+    "8th",
+    "9th",
+    "a.m.",
+    "addition",
+    "analog clock",
+    "area",
+    "bigger",
+    "bill",
+    "calendar",
+    "centavo",
+    "centimeter",
+    "circle",
+    "clockwise",
+    "cm",
+    "coin",
+    "compare",
+    "corner",
+    "count",
+    "counter-clockwise",
+    "data",
+    "decreasing pattern",
+    "denominator",
+    "difference",
+    "digit",
+    "division",
+    "elapsed time",
+    "equal",
+    "equal groups",
+    "estimate",
+    "even",
+    "expanded form",
+    "fraction",
+    "group",
+    "half",
+    "half hour",
+    "half turn",
+    "hour",
+    "how many",
+    "hundreds",
+    "increasing pattern",
+    "intersecting",
+    "left",
+    "length",
+    "less",
+    "line",
+    "line segment",
+    "m",
+    "measure",
+    "meter",
+    "minute",
+    "missing number",
+    "more",
+    "multiplication",
+    "nearest hundred",
+    "nearest ten",
+    "nearest thousand",
+    "number",
+    "number line",
+    "numeral",
+    "numerator",
+    "odd",
+    "ones",
+    "order of operations",
+    "p.m.",
+    "parallel",
+    "pattern",
+    "perimeter",
+    "perpendicular",
+    "peso",
+    "pictograph",
+    "place value",
+    "point",
+    "product",
+    "quarter",
+    "quarter hour",
+    "quarter turn",
+    "quotient",
+    "ray",
+    "rectangle",
+    "regrouping",
+    "repeating pattern",
+    "round",
+    "ruler",
+    "same",
+    "scale",
+    "side",
+    "similar fractions",
+    "skip counting",
+    "slide",
+    "smaller",
+    "solid figure",
+    "sq. cm",
+    "square",
+    "square centimeter",
+    "subtraction",
+    "sum",
+    "table",
+    "ten thousand",
+    "ten-thousands place",
+    "tens",
+    "thousand",
+    "total",
+    "translation",
+    "triangle",
+    "whole",
+    "₱"
+   ],
+   "NOT_YET_KNOWN": [
+    "L",
+    "axis",
+    "balance scale",
+    "bar graph",
+    "capacity",
+    "certain",
+    "equally likely",
+    "impossible",
+    "improper fraction",
+    "less likely",
+    "line of symmetry",
+    "liter",
+    "mL",
+    "milliliter",
+    "missing term",
+    "more likely",
+    "outcome",
+    "remainder",
+    "symmetry"
+   ],
+   "sentence_max_words": 22,
+   "number_format": "space separator for thousands (e.g. 1 000)"
+  },
+  "declared_variants": [
+   [
+    "measurement_type",
+    "mass"
+   ],
+   [
+    "task_type",
+    "read_measurement"
+   ],
+   [
+    "unit",
+    "g"
+   ],
+   [
+    "unit",
+    "kg"
+   ],
+   [
+    "unit",
+    "l"
+   ],
+   [
+    "unit",
+    "ml"
+   ]
+  ],
+  "declared_bounds": [
+   {
+    "measurement_type": "mass",
+    "task_type": "read_measurement"
+   }
+  ],
+  "families": [
+   {
+    "id": "F01",
+    "template": "{term}",
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "VocabGated(requires_vocab='mass')",
+        "members": [
+         "mass",
+         "weight"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F02",
+    "template": "Read the scale: find the number the pointer points to.",
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": [
+     "measurement_type"
+    ]
+   },
+   {
+    "id": "F03",
+    "template": "The mass shown is {reading} {unit}.",
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "reading"
+      ],
+      "domains": [
+       {
+        "domain": "a number computed by the generator",
+        "reason": "arithmetic",
+        "derived_from_values": [
+         "value"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "unit"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "unit",
+        "derived_from_values": [
+         "unit"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "measurement_type"
+    ]
+   },
+   {
+    "id": "F04",
+    "template": "{key}",
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "key"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the option keys this item shows",
+        "members": [
+         "A",
+         "B",
+         "C",
+         "D"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F05",
+    "template": "Look at the {tool}. What is the {quantity} of {object_label}? Give your answer in {unit}.",
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "tool"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the two instruments",
+        "members": [
+         "measuring cylinder",
+         "scale"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "quantity"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F01"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "_MASS_LABELS"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "_MASS_LABELS"
+       }
+      ]
+     },
+     {
+      "slots": [
+       "unit"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "unit",
+        "derived_from_values": [
+         "unit"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   }
+  ],
+  "lists": {
+   "_MASS_LABELS": [
+    "the object",
+    "the parcel",
+    "the bag"
+   ]
+  },
+  "value_derivations": [],
+  "reason_kinds": {
+   "arithmetic": "a number the generator computes from the generated values named in src (a half, a sum, a difference, a running total, a place's digit). Its range is the image of those values' own domains; whether the arithmetic is RIGHT is the hint contract's (§16) and §1E's to check, not §14's."
+  }
+ }
+}

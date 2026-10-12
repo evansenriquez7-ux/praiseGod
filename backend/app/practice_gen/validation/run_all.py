@@ -74,6 +74,7 @@ from backend.app.practice_gen.validation import (
     validate_slots,
     validate_composition,
     validate_hint_contract,
+    validate_stem_review,
 )
 from backend.app.practice_gen.validation.validate_matrix import run_matrix_validation
 from backend.app.practice_gen.validation._manifest import (
@@ -276,6 +277,7 @@ CONTRACT_CHECKS: Dict[str, str] = {
     "§16": "validate_hint_contract: every lc's hint chains, on its stratified seeds, satisfy hint_contract.hint_chain_violations; a CONTENT stage labelled per dimension (owner ruling 30, moved from the unit suite in H5)",
     "§15": "validate_composition: a value a clause selector chose reaches non-hint learner-read text (by slot provenance, decided on fully instrumented renders), and a hint never quotes a run of numbers the item does not show (text stopgap); owner rulings 35/36",
     "§14": "validate_slots: every learner-read field is the text of a recorded template fill whose every slot lies inside its declared domain (structured slots, owner rulings 28/33/34)",
+    "§17": "validate_stem_review: every lc's current stem families (validate_slots.paths) carry a fresh, valid, confirmed blind LLM approval and every clause is ruled producible (the stem review gate, owner rulings 24/26/44)",
 }
 
 _LAST_UNIT_TEST_COUNT: list = [None]
@@ -684,6 +686,7 @@ def run_all(fail_fast: bool = False, phase: Optional[int] = None) -> int:
         ("census_7",            1, ("§7",),  "Suite Census (§7)"),
         ("judgment_reviews_5",  2, ("§5",),  "Judgment Reviews (§5)"),
         ("capability_phase2",   2, (),      "Capability Contract Phase 2 (§6F-§6H)"),
+        ("stem_review_17",      2, ("§17",), "Stem Review Gate (§17)"),
     ):
         if phase is None or phase == _phase:
             ledger.schedule(_name, _phase, _refs, _title)
@@ -1048,6 +1051,23 @@ def run_all(fail_fast: bool = False, phase: Optional[int] = None) -> int:
             return 1
     else:
         attestation_ok = True
+
+    def _stage_stem_review_17() -> bool:
+        print("\n--- Stem Review Gate (§17) ---")
+        # Owner rulings 24/26/44 (H4): the LLM half of ruling 24. Every lc's stem families, on
+        # the paths §14 domain-checks, must carry a fresh, valid, confirmed blind approval, and
+        # every clause must be ruled producible. Phase 2: it reads validation_reports/stem_review/.
+        # Its labels are CONTENT except stem_family_unpacketed_17 and stem_review_hash_drift_17.
+        ok = validate_stem_review.validate_all()
+        if ok:
+            executed_checks.add("§17")
+        return ok
+
+    if _runs(2):
+        stem_ok = ledger.run("stem_review_17", _stage_stem_review_17)
+        if not stem_ok and fail_fast:
+            _print_stage_ledger(ledger, phase)
+            return 1
 
     # The six stages below are all Phase 1: each reads code, the knowledge graph or the
     # harness's own bookkeeping, and none needs an agent-authored artifact on disk. Until

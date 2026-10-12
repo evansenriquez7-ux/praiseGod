@@ -144,9 +144,16 @@ def test_a_transform_with_an_argument_replays_and_its_argument_is_domain_checked
     assert V.check_slot(9, f.slots[1][2], {}, set())[0] == "slot_domain_escape_14"
 
 
-@pytest.mark.parametrize("node_id", ["mat_g2_na_q3_8", "mat_g2_mg_q4_3"])
+@pytest.mark.parametrize("node_id", ["mat_g2_na_q3_8"])
 def test_the_instrumented_prototype_lcs_are_clean(node_id):
-    """The two lcs the §14 mutations plant on: a red baseline here makes them INVALID."""
+    """
+    The lc the §14 (and §17) mutations plant on: a red baseline here makes them INVALID.
+
+    mat_g2_mg_q4_3 was listed here from H3 (eb3ce6cc) as the second prototype lc; no mutation
+    plants on it (`grep -c mat_g2_mg_q4_3 tests/mutation_harness.py` -> 0 on 2026-10-13), and
+    since owner ruling 44b widened §14 to pinned formatters its pinned `mcq` render refuses at
+    seeds 17 and 29 -- a real content finding (`slot_path_refused_14`), not a broken baseline.
+    """
     found = V.collect_findings([node_id])
     assert not any(found.values()), found
 

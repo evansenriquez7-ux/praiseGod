@@ -6,7 +6,9 @@ Ruling 24 moves LLM review to stem templates plus the DOMAIN of every slot that 
 and makes the approval safe only "if its fields cannot escape it". Ruling 28 says how a
 slot is known: each DNA, spine and text-adding formatter emits its template with a
 structured slots record (`backend/app/practice_gen/slots.py`), never inferred from the
-text. This module renders each lc on the student path under `slots.capture()` and proves:
+text. This module renders each lc on every path of `paths()` -- the ONE enumeration §14 and
+§17 share (owner ruling 44b: student seeds 1-40 plus every advertised formatter pinned at seeds
+3, 17 and 29) -- under `slots.capture()` and proves:
 
   (a) every learner-read field (`validate_language._texts`, the §1J classification, reused
       rather than restated) equals the text of a recorded fill -- else
@@ -28,6 +30,10 @@ text. This module renders each lc on the student path under `slots.capture()` an
       nothing the learner reads. It counts EVERY recorded slot, learner-reachable or not
       (ruling 43), so no closure logic can hide one; a fill that is not learner text is
       tightened by being turned back into plain code, which (a) catches if it was.
+  (f) every pinned path renders -- else `slot_path_refused_14` (owner ruling 44b; batch H4,
+      content): an advertised formatter the lc refuses at a seed is a named finding, never a
+      skipped path. A STUDENT-path render that raises is not caught here: it crashes the
+      stage, as before (the student path must never raise).
 
 DOMAIN KINDS (the only ones; a new kind is added here, with a test):
   R(lo, hi, basis)   runtime range the generator computed from the bounds it draws with
@@ -53,8 +59,10 @@ exits 1 on any finding (it has one kind); in run_all the labels are classified b
 `_manifest.FINDING_CLASS` (content -> exit 2; `slot_domain_unknown_14` -> exit 1).
 
 NAMED LIMITS (Scaling Mandate 6; also in docs/pgen_contract.md §14 and the evidence log):
-  1. `SEEDS` seeds per lc on the default student path only; a template reachable only by
-     a pinned formatter, another experience or another difficulty profile is not seen.
+  1. `paths()` only: the student path at `SEEDS` (1-40) and each advertised formatter
+     pinned at `PINNED_SEEDS` (3, 17, 29), default experience and difficulty. A template
+     reachable only by another seed, experience or difficulty profile is not seen (widened
+     from 20 student seeds by owner ruling 44b, batch H4).
   2. Visual payload strings are not learner-read fields here: §1J's `_texts` excludes
      them (its limitation 2), and this reuses that classification.
   3. A field is accounted when its text EQUALS a recorded fill's text. Two fills that
@@ -73,9 +81,12 @@ NAMED LIMITS (Scaling Mandate 6; also in docs/pgen_contract.md §14 and the evid
      judge-approved domain does not bound the value (an H4 prerequisite to tighten).
  10. Accounting covers the paths the seeds reach; a slot declared "fill" whose variable has
      a non-fill alternative on an unreached path is found by a static audit, not here.
- 11. (e) is counted at the paths the seeds reach (limit 1): a type-only slot only a pinned
-     formatter or an unvisited seed reaches is not counted, so an lc at 0 here has 0 at
-     these seeds, not everywhere.
+ 11. (e) is counted at the paths `paths()` reaches (limit 1): a type-only slot only an
+     unvisited seed, experience or profile reaches is not counted, so an lc at 0 here has 0
+     on these paths, not everywhere.
+ 13. (f) catches a pinned refusal by exception, of any type, around the generator call only;
+     its message is quoted. It cannot tell an eligibility refusal the generator meant from a
+     crash on that path; both are named by lc, seed and formatter for the generator queue.
  12. A reason is the generator's own claim. (e) checks that its kind is registered and its
      `src` names keys the generator really carries; it cannot check that the slot IS computed
      from them, or that no stricter domain exists. H4's judges review both (as §15 limit 7).
@@ -96,11 +107,32 @@ ASSERTIONS = (
     "slot_domain_unknown_14",     # a domain id this module cannot resolve (integrity)
     "slot_domain_escape_14",      # a slot value outside its declared domain
     "slot_domain_type_only_14",   # a type-only slot with no named reason (rulings 42-43)
+    "slot_path_refused_14",       # an advertised formatter, pinned, refuses to render (ruling 44b)
 )
 
 TYPE_ONLY = ("num.derived", "text.derived")
 
-SEEDS: Tuple[int, ...] = tuple(range(1, 21))
+# The ONE path enumeration §14 and §17 render (owner ruling 44b, batch H4; until then §14
+# rendered student seeds 1-20 only). `tests/render_snapshot.py` and `tests/slot_wide_check.py`
+# import it rather than restating it, so a reviewed family (§17) is always a domain-checked
+# one (§14): an approval whose fields nothing enforces is what ruling 24 forbids.
+SEEDS: Tuple[int, ...] = tuple(range(1, 41))          # student path
+PINNED_SEEDS: Tuple[int, ...] = (3, 17, 29)           # each advertised formatter, pinned
+
+
+def paths(node_id: str) -> List[Tuple[int, Optional[str]]]:
+    """(seed, formatter) for every path of `node_id`: formatter None is the student path."""
+    from backend.app.practice_gen.registry import get_node_formatters
+    return ([(seed, None) for seed in SEEDS]
+            + [(seed, fmt) for fmt in sorted(get_node_formatters(node_id) or []) for seed in PINNED_SEEDS])
+
+
+def path_call(node_id: str, seed: int, formatter: Optional[str]) -> str:
+    """The exact call that reproduces one path (printed in every finding)."""
+    if formatter is None:
+        return f"PracticeOrchestrator.generate_problem(node_id={node_id!r}, seed={seed}, is_student_path=True)"
+    return (f"PracticeOrchestrator.generate_problem(node_id={node_id!r}, seed={seed}, "
+            f"formatter={formatter!r}, is_student_path=False)")
 
 _ENUM_CACHE: Dict[str, Any] = {}
 
@@ -263,16 +295,17 @@ def replay(fill) -> Optional[str]:
     return None
 
 
-def render_findings(node_id: str, seed: int) -> List[Tuple[str, str, str]]:
-    """(label, where, reason) for one student-path render of one lc."""
+def observe(node_id: str, seed: int, formatter: Optional[str] = None):
+    """
+    (problem, fills, values) for one path: the served payload, every recorded fill, and the
+    generator's own QuestionContext.values observed at the formatter boundary -- so a
+    "value:<key>" slot is compared with what was GENERATED (the answer included, which the
+    payload's given_values deliberately omits). Read-only; restored in `finally`. §14 and
+    §17 both render through here (one copy). An exception propagates to the caller.
+    """
     from backend.app.services.orchestrator import PracticeOrchestrator
-    from backend.app.practice_gen.validation.validate_language import _texts
-
     from backend.app.services import orchestrator as _orch
 
-    # Observe the generator's own QuestionContext.values at the formatter boundary, so a
-    # "value:<key>" slot is compared with what was GENERATED (the answer included, which
-    # the payload's given_values deliberately omits). Read-only; restored in `finally`.
     seen: Dict[str, Any] = {}
     real = _orch.apply_formatter
 
@@ -284,9 +317,22 @@ def render_findings(node_id: str, seed: int) -> List[Tuple[str, str, str]]:
     try:
         with capture() as fills:
             problem = PracticeOrchestrator.generate_problem(
-                node_id=node_id, seed=seed, is_student_path=True).model_dump()
+                node_id=node_id, seed=seed, formatter=formatter,
+                is_student_path=formatter is None).model_dump()
     finally:
         _orch.apply_formatter = real
+    return problem, fills, seen
+
+
+def render_findings(node_id: str, seed: int, formatter: Optional[str] = None) -> List[Tuple[str, str, str]]:
+    """(label, where, reason) for one render of one lc (the student path unless `formatter`)."""
+    return observed_findings(*observe(node_id, seed, formatter))
+
+
+def observed_findings(problem: Dict[str, Any], fills: List[Any], seen: Dict[str, Any]) -> List[Tuple[str, str, str]]:
+    """(label, where, reason) for one observed render (`observe`'s three results)."""
+    from backend.app.practice_gen.validation.validate_language import _texts
+
     texts = {f.text for f in fills}
     # How many fills produced each text. A "fill" slot must be accounted by a fill OTHER
     # than the one holding it: `slots.transform` records "{text}" around its input, and when
@@ -327,13 +373,30 @@ def collect_findings(node_ids: Optional[List[str]] = None) -> Dict[str, List[str
     from backend.app.practice_gen.registry import get_all_node_ids
 
     grouped: "OrderedDict[Tuple[str, str, str], Dict[str, Any]]" = OrderedDict()
+    n_paths: Dict[str, int] = {}
     for node_id in (node_ids or sorted(get_all_node_ids())):
-        for seed in SEEDS:
-            for label, where, reason in render_findings(node_id, seed):
+        lc_paths = paths(node_id)
+        n_paths[node_id] = len(lc_paths)
+        for seed, formatter in lc_paths:
+            if formatter is None:
+                found = render_findings(node_id, seed)
+            else:
+                # (f): a pinned path that refuses is a named finding (ruling 44b). Caught
+                # around the generator call only (`observe`), never around this module's own
+                # checks; the student path is never caught here.
+                try:
+                    observed = observe(node_id, seed, formatter)
+                except Exception as exc:  # noqa: BLE001 - reported by name below, never skipped
+                    # DISPOSITION: named-failure -- `slot_path_refused_14`, by lc, seed and formatter.
+                    found = [("slot_path_refused_14", f"the pinned {formatter!r} render",
+                              f"the render raised {type(exc).__name__}: {str(exc)[:200]}")]
+                else:
+                    found = observed_findings(*observed)
+            for label, where, reason in found:
                 key = (node_id, label, where)
                 if key not in grouped:
-                    grouped[key] = {"seed": seed, "reason": reason, "seeds": set()}
-                grouped[key]["seeds"].add(seed)
+                    grouped[key] = {"path": (seed, formatter), "reason": reason, "paths": set()}
+                grouped[key]["paths"].add((seed, formatter))
     out: Dict[str, List[str]] = {label: [] for label in ASSERTIONS}
     for (node_id, label, where), g in grouped.items():
         owed = ("instrument the site with slots.fill/S (ruling 28)"
@@ -345,11 +408,17 @@ def collect_findings(node_ids: Optional[List[str]] = None) -> Dict[str, List[str
                 else ("tighten the slot to value:/E/R/enum:/bank:/fill, or give it a registered "
                       "slots.DERIVED_REASONS kind and its src (owner rulings 42-43)")
                 if label == "slot_domain_type_only_14"
+                else ("make the advertised formatter serve every seed, or stop advertising it for "
+                      "this lc (owner ruling 44b)")
+                if label == "slot_path_refused_14"
                 else "register the domain kind in validate_slots or fix the id")
+        seed, formatter = g["path"]
+        # A refusal's `where` already names its formatter (one finding per refused formatter).
+        on = "" if formatter is None or label == "slot_path_refused_14" else f" formatter {formatter!r}"
         out[label].append(
-            f"{node_id}: {where} at seed {g['seed']} ({len(g['seeds'])} of {len(SEEDS)} seeds): "
-            f"{g['reason']}. Reproduce: PracticeOrchestrator.generate_problem(node_id={node_id!r}, "
-            f"seed={g['seed']}, is_student_path=True) under slots.capture(). Owed: {owed}.")
+            f"{node_id}: {where} at seed {seed}{on} ({len(g['paths'])} of {n_paths[node_id]} paths): "
+            f"{g['reason']}. Reproduce: {path_call(node_id, seed, formatter)} under slots.capture(). "
+            f"Owed: {owed}.")
     return out
 
 
@@ -373,7 +442,8 @@ def validate_all(node_ids: Optional[List[str]] = None) -> bool:
     open_lcs = sorted({item.split(":", 1)[0] for item in findings["slot_domain_type_only_14"]})
     print(f"  NOTE: ruling 42 rollout: {len(lcs) - len(open_lcs)} of {len(lcs)} lc(s) reach no "
           f"type-only slot without a reason; {len(open_lcs)} still do")
-    print(f"  §14: {total} finding(s) over {scope} lc(s) x {len(SEEDS)} seed(s)")
+    print(f"  §14: {total} finding(s) over {scope} lc(s) x paths() (student seeds {SEEDS[0]}-{SEEDS[-1]} "
+          f"plus every advertised formatter at seeds {', '.join(map(str, PINNED_SEEDS))})")
     return total == 0
 
 

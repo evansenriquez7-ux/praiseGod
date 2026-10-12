@@ -1,0 +1,717 @@
+{
+ "schema_version": 1,
+ "hash_version": 1,
+ "node_id": "mat_g2_na_q3_8",
+ "record_id": "fixture-mat_g2_na_q3_8-first",
+ "role": "first",
+ "confirms": null,
+ "item_id": "FIX-001",
+ "lc_hash": "2adb8a00d94e687bc5e5b8d32afa5519de066b568edab53a88ebea21165b0fe5",
+ "judged_by": "fixture-not-a-judge-mat_g2_na_q3_8-first",
+ "dispatch_id": "fixture-mat_g2_na_q3_8-first",
+ "filed_at": "2026-10-13T00:00:00Z",
+ "delivery": "fixture written by tests/stem_review_fixture.py for §17 mutation proofs; no judge was dispatched, so no judge read the packet or CLAUDE.md",
+ "tool_uses_by_judge": "none (hand-written fixture)",
+ "dispatch_prompt_digest": "372c66392ddbe67ac24d2bde141bf17f119502c25538b1b83abebef50bbd01d8",
+ "raw_reply": "{\"item\": \"FIX-001\", \"clauses\": {\"distinguish\": {\"verdict\": \"PRODUCIBLE\", \"template\": \"{d} ÷ 2 comes out exactly, so {d} is an even number\", \"reasoning\": \"Fixture: the template '{d} ÷ 2 comes out exactly, so {d} is an even number' addresses this clause.\"}, \"even_and_odd_numbers\": {\"verdict\": \"PRODUCIBLE\", \"template\": \"Nothing is left over, so {n} is an even number.\", \"reasoning\": \"Fixture: the template 'Nothing is left over, so {n} is an even number.' addresses this clause.\"}, \"division\": {\"verdict\": \"PRODUCIBLE\", \"template\": \"Divide {n} by 2: how many 2s fit into {n}?\", \"reasoning\": \"Fixture: the template 'Divide {n} by 2: how many 2s fit into {n}?' addresses this clause.\"}, \"divisor_2\": {\"verdict\": \"PRODUCIBLE\", \"template\": \"2 × {half} = {twice}, and {n} − {twice} = {left}.\", \"reasoning\": \"Fixture: the template '2 × {half} = {twice}, and {n} − {twice} = {left}.' addresses this clause.\"}}, \"failing_templates\": [], \"overall\": \"PASS\", \"reasoning\": \"Fixture, not a judgment: the hint 'Divide {n} by 2: how many 2s fit into {n}?' and the statements about even and odd numbers keep to division by 2.\"}",
+ "raw_reply_digest": "04a72dd3061d0792edbc5c60efa02b119c789902604ed97a20099599fd066b82",
+ "packet_digest": "a9cdf999cdb0778db9d1ed4c5b9db8e1050966e6adadac1143577a0da0820316",
+ "family_keys": {
+  "F01": {
+   "source": "backend/app/practice_gen/dna/na/division.py",
+   "first_site": "backend/app/practice_gen/dna/na/division.py:627",
+   "renderer": "",
+   "path": [
+    3,
+    null
+   ]
+  },
+  "F02": {
+   "source": "backend/app/practice_gen/dna/na/division.py",
+   "first_site": "backend/app/practice_gen/dna/na/division.py:622",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ]
+  },
+  "F03": {
+   "source": "backend/app/practice_gen/dna/na/division.py",
+   "first_site": "backend/app/practice_gen/dna/na/division.py:621",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ]
+  },
+  "F04": {
+   "source": "backend/app/practice_gen/dna/na/division.py",
+   "first_site": "backend/app/practice_gen/dna/na/division.py:626",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ]
+  },
+  "F05": {
+   "source": "backend/app/practice_gen/dna/na/division.py",
+   "first_site": "backend/app/practice_gen/dna/na/division.py:365",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ]
+  },
+  "F06": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:39",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ]
+  },
+  "F07": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_true_false.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_true_false.py:279",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ]
+  },
+  "F08": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_true_false.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_true_false.py:274",
+   "renderer": "",
+   "path": [
+    2,
+    null
+   ]
+  },
+  "F09": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_true_false.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_true_false.py:275",
+   "renderer": "",
+   "path": [
+    13,
+    null
+   ]
+  },
+  "F10": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_true_false.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_true_false.py:280",
+   "renderer": "",
+   "path": [
+    4,
+    null
+   ]
+  },
+  "F11": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_true_false.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_true_false.py:273",
+   "renderer": "",
+   "path": [
+    16,
+    null
+   ]
+  },
+  "F12": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_true_false.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_true_false.py:278",
+   "renderer": "",
+   "path": [
+    9,
+    null
+   ]
+  },
+  "F13": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_true_false.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_true_false.py:430",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ]
+  }
+ },
+ "packet": {
+  "item": "FIX-001",
+  "competency": {
+   "text": "Distinguish even and odd numbers using division by 2.",
+   "grade": 2,
+   "quarter": 3
+  },
+  "clauses": [
+   {
+    "id": "distinguish",
+    "kind": "task",
+    "clause": "Distinguish"
+   },
+   {
+    "id": "even_and_odd_numbers",
+    "kind": "object",
+    "clause": "even and odd numbers"
+   },
+   {
+    "id": "division",
+    "kind": "task",
+    "clause": "division"
+   },
+   {
+    "id": "divisor_2",
+    "kind": "range",
+    "clause": "2"
+   }
+  ],
+  "vocabulary": {
+   "student_vocab": [
+    "even",
+    "odd"
+   ],
+   "curriculum_vocab": [
+    "even number",
+    "odd number"
+   ],
+   "introduces_vocab": [
+    "even number",
+    "odd number"
+   ],
+   "cumulative_vocab": [
+    "1 less",
+    "1 more",
+    "10th",
+    "1st",
+    "2nd",
+    "3rd",
+    "4th",
+    "5th",
+    "6th",
+    "7th",
+    "8th",
+    "9th",
+    "addition",
+    "analog clock",
+    "bigger",
+    "bill",
+    "calendar",
+    "centavo",
+    "centimeter",
+    "circle",
+    "clockwise",
+    "cm",
+    "coin",
+    "compare",
+    "corner",
+    "count",
+    "counter-clockwise",
+    "data",
+    "decreasing pattern",
+    "difference",
+    "digit",
+    "division",
+    "equal",
+    "equal groups",
+    "estimate",
+    "expanded form",
+    "fraction",
+    "group",
+    "half",
+    "half hour",
+    "half turn",
+    "hour",
+    "how many",
+    "hundreds",
+    "increasing pattern",
+    "left",
+    "length",
+    "less",
+    "m",
+    "measure",
+    "meter",
+    "missing number",
+    "more",
+    "multiplication",
+    "number",
+    "number line",
+    "numeral",
+    "ones",
+    "pattern",
+    "peso",
+    "pictograph",
+    "place value",
+    "product",
+    "quarter",
+    "quarter hour",
+    "quarter turn",
+    "quotient",
+    "rectangle",
+    "regrouping",
+    "repeating pattern",
+    "ruler",
+    "same",
+    "side",
+    "skip counting",
+    "slide",
+    "smaller",
+    "square",
+    "subtraction",
+    "sum",
+    "table",
+    "tens",
+    "thousand",
+    "total",
+    "translation",
+    "triangle",
+    "whole",
+    "₱"
+   ],
+   "NOT_YET_KNOWN": [
+    "L",
+    "a.m.",
+    "area",
+    "axis",
+    "balance scale",
+    "bar graph",
+    "capacity",
+    "certain",
+    "denominator",
+    "elapsed time",
+    "equally likely",
+    "g",
+    "gram",
+    "impossible",
+    "improper fraction",
+    "intersecting",
+    "kg",
+    "kilogram",
+    "less likely",
+    "line",
+    "line of symmetry",
+    "line segment",
+    "liter",
+    "mL",
+    "mass",
+    "milliliter",
+    "minute",
+    "missing term",
+    "more likely",
+    "nearest hundred",
+    "nearest ten",
+    "nearest thousand",
+    "numerator",
+    "order of operations",
+    "outcome",
+    "p.m.",
+    "parallel",
+    "perimeter",
+    "perpendicular",
+    "point",
+    "ray",
+    "remainder",
+    "round",
+    "scale",
+    "similar fractions",
+    "solid figure",
+    "sq. cm",
+    "square centimeter",
+    "symmetry",
+    "ten thousand",
+    "ten-thousands place"
+   ],
+   "sentence_max_words": 18,
+   "number_format": "no commas for numbers up to 1000"
+  },
+  "declared_variants": [
+   [
+    "context",
+    "pure"
+   ],
+   [
+    "context",
+    "word_problem"
+   ],
+   [
+    "remainder",
+    "none"
+   ],
+   [
+    "structure",
+    "result_unknown"
+   ],
+   [
+    "table",
+    "2_3_4_5_10"
+   ]
+  ],
+  "declared_bounds": [
+   {
+    "table": "2_3_4_5_10",
+    "remainder": "none",
+    "structure": "result_unknown",
+    "task_type": "even_odd"
+   }
+  ],
+  "families": [
+   {
+    "id": "F01",
+    "template": "1 is left over, so {n} is an odd number.",
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "n"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "dividend",
+        "derived_from_values": [
+         "dividend"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F02",
+    "template": "2 × {half} = {twice}, and {n} − {twice} = {left}.",
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "half",
+       "twice"
+      ],
+      "domains": [
+       {
+        "domain": "a number computed by the generator",
+        "reason": "arithmetic",
+        "derived_from_values": [
+         "dividend"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "n"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "dividend",
+        "derived_from_values": [
+         "dividend"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "left"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the remainder of the dividend divided by 2",
+        "members": [
+         0,
+         1
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F03",
+    "template": "Divide {n} by 2: how many 2s fit into {n}?",
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "n"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "dividend",
+        "derived_from_values": [
+         "dividend"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F04",
+    "template": "Nothing is left over, so {n} is an even number.",
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "n"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "dividend",
+        "derived_from_values": [
+         "dividend"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F05",
+    "template": "{label}",
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "EVEN_ODD_LABELS"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "EVEN_ODD_LABELS"
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F06",
+    "template": "{member}",
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "member"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "QuestionContext.distractors (the generator's own)",
+        "members": [
+         "even",
+         "odd"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F07",
+    "template": "Dividing {d} by 2 does not give an exact whole number, so {d} is an odd number",
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "d"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "dividend",
+        "derived_from_values": [
+         "dividend"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F08",
+    "template": "Dividing {d} by 2 gives an exact whole number, so {d} is an even number",
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "d"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "dividend",
+        "derived_from_values": [
+         "dividend"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F09",
+    "template": "{d} can be divided into 2 equal parts, so {d} is an even number",
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "d"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "dividend",
+        "derived_from_values": [
+         "dividend"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F10",
+    "template": "{d} cannot be divided into 2 equal whole parts, so {d} is an odd number",
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "d"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "dividend",
+        "derived_from_values": [
+         "dividend"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F11",
+    "template": "{d} ÷ 2 comes out exactly, so {d} is an even number",
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "d"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "dividend",
+        "derived_from_values": [
+         "dividend"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F12",
+    "template": "{d} ÷ 2 does not come out exactly, so {d} is an odd number",
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "d"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "dividend",
+        "derived_from_values": [
+         "dividend"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F13",
+    "template": "{statement}. True or False?",
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "statement"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F07",
+         "F08",
+         "F09",
+         "F10",
+         "F11",
+         "F12"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   }
+  ],
+  "lists": {
+   "EVEN_ODD_LABELS": [
+    "even",
+    "odd"
+   ]
+  },
+  "value_derivations": [
+   {
+    "kind": "computes",
+    "key": "remainder",
+    "from": [
+     "a",
+     "b"
+    ]
+   }
+  ],
+  "reason_kinds": {
+   "arithmetic": "a number the generator computes from the generated values named in src (a half, a sum, a difference, a running total, a place's digit). Its range is the image of those values' own domains; whether the arithmetic is RIGHT is the hint contract's (§16) and §1E's to check, not §14's."
+  }
+ }
+}

@@ -19,8 +19,8 @@ from __future__ import annotations
 import json
 import sys
 
-STUDENT_SEEDS = range(1, 41)
-PINNED_SEEDS = (3, 17, 29)
+# The paths are §14's own enumeration (`validate_slots.paths`, owner ruling 44b): the student
+# path at seeds 1-40 and every advertised formatter pinned at seeds 3, 17, 29. One copy.
 
 
 def _render(node_id, seed, formatter=None):
@@ -34,20 +34,16 @@ def _render(node_id, seed, formatter=None):
 
 
 def snapshot(out_path: str) -> int:
-    from backend.app.practice_gen.registry import get_all_node_ids, get_node_formatters
+    from backend.app.practice_gen.registry import get_all_node_ids
+    from backend.app.practice_gen.validation.validate_slots import paths
     n = 0
     with open(out_path, "w", encoding="utf-8") as fh:
         for node_id in sorted(get_all_node_ids()):
-            for seed in STUDENT_SEEDS:
-                fh.write(json.dumps({"k": [node_id, seed, None], "r": _render(node_id, seed)},
+            for seed, formatter in paths(node_id):
+                fh.write(json.dumps({"k": [node_id, seed, formatter],
+                                     "r": _render(node_id, seed, formatter)},
                                     sort_keys=True, default=str, ensure_ascii=False) + "\n")
                 n += 1
-            for formatter in sorted(get_node_formatters(node_id) or []):
-                for seed in PINNED_SEEDS:
-                    fh.write(json.dumps({"k": [node_id, seed, formatter],
-                                         "r": _render(node_id, seed, formatter)},
-                                        sort_keys=True, default=str, ensure_ascii=False) + "\n")
-                    n += 1
     print(f"render_snapshot: wrote {n} render(s) to {out_path}")
     return 0
 

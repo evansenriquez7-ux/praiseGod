@@ -203,6 +203,8 @@ def stubbed_harness(monkeypatch):
     monkeypatch.setattr(ra.validate_capability, "validate_capability_attestation", lambda: [])
     monkeypatch.setattr(ra.validate_capability, "attestation_findings_tagged",
                         lambda node_ids=None: [])
+    # §17 (H4) renders every lc's stem families against validation_reports/stem_review/.
+    monkeypatch.setattr(ra.validate_stem_review, "validate_all", lambda **kw: True)
     return monkeypatch
 
 

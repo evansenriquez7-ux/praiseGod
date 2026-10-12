@@ -318,6 +318,55 @@ _ATTEST_UNADJUDICABLE_NODE = "mat_g2_na_q3_8"   # clean record, true_false on ev
 
 
 
+
+# ---------------------------------------------------------------------------------
+# §17 stem review gate plants (batch H4, owner rulings 24/44; 2026-10-13). They plant into the
+# hand-written fixture records in tests/stem_review_fixtures/ (inside the proof digest, written
+# by tests/stem_review_fixture.py), never into a judge's record, and keep each record internally
+# consistent unless the edit itself is the defect: a reply rewritten with its digest recomputed
+# is a COHERENT record whose content is the defect (a FAIL, a fabricated quote), so the check
+# that should fire is the content check, not the tamper check.
+# ---------------------------------------------------------------------------------
+_STEM_FIXTURES = REPO_ROOT / "tests" / "stem_review_fixtures"
+
+
+def _stem_fixture(lc: str, role: str) -> Path:
+    path = _STEM_FIXTURES / lc / f"fixture-{lc}-{role}.json"
+    if not path.exists():
+        raise FileNotFoundError(f"§17 fixture {path} is missing: run tests/stem_review_fixture.py")
+    return path
+
+
+def _plant_stem_reply(lc: str, role: str, change, recompute_digest: bool = True,
+                      record_change=None) -> Dict[Path, str]:
+    """Rewrite one fixture record's raw reply (and, unless told otherwise, its digest)."""
+    import hashlib
+    path = _stem_fixture(lc, role)
+    text = path.read_text(encoding="utf-8")
+    rec = json.loads(text)
+    if change is not None:
+        reply = json.loads(rec["raw_reply"])
+        change(reply)
+        rec["raw_reply"] = json.dumps(reply, ensure_ascii=False)
+        if recompute_digest:
+            rec["raw_reply_digest"] = hashlib.sha256(rec["raw_reply"].encode("utf-8")).hexdigest()
+    if record_change is not None:
+        record_change(rec)
+    path.write_text(json.dumps(rec, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+    return {path: text}
+
+
+def _remove_stem_records(lc: str, roles) -> Dict[Path, str]:
+    """Delete fixture records (restored by the harness's normal write-back)."""
+    originals = {}
+    for role in roles:
+        path = _stem_fixture(lc, role)
+        originals[path] = path.read_text(encoding="utf-8")
+    for path in originals:
+        path.unlink()
+    return originals
+
+
 MUTATIONS: List[Mutation] = [
     Mutation(
         name="node_loses_all_dna_mappings",
@@ -5781,6 +5830,271 @@ MUTATIONS: List[Mutation] = [
         expect_output_contains=["test_tracked_classification_is_a_proof_input",
                                 "is not in the proof input digest"],
         baseline_must_not_contain=["is not in the proof input digest"],
+    ),
+    # ── §14 (f) pinned paths (owner ruling 44b; batch H4, 2026-10-13) ─────────────────────
+    # §14 now renders every advertised formatter pinned at seeds 3, 17, 29. A pinned path that
+    # refuses must be a NAMED finding, never a skipped path. The plant is the orchestrator's own
+    # eligibility test, so every pinned render of the clean lc refuses the way an ineligible
+    # formatter does in production, while its student path is untouched.
+    Mutation(
+        name="pinned_formatter_refuses_to_render",
+        asserts=["slot_path_refused_14"],
+        description=(
+            "Make the orchestrator treat every pinned formatter as ineligible, so each pinned "
+            "render of mat_g2_na_q3_8 raises. A §14 that skipped refused paths would report the "
+            "lc clean while a teacher's pinned preview fails (owner ruling 44b)."
+        ),
+        edits={
+            "backend/app/services/orchestrator.py": (
+                "            if formatter and formatter not in available_for_d:\n",
+                "            if formatter:  # planted mutation: every pinned formatter refused\n",
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_slots", "--node-ids", "mat_g2_na_q3_8"],
+        expected_check="§14 (f) a pinned path that refuses is named (ruling 44b)",
+        expect_output_contains=["slot_path_refused_14 (", "mat_g2_na_q3_8: the pinned 'true_false' render at seed 3 (3 of"],
+        baseline_must_not_contain=["FAIL slot_path_refused_14"],
+    ),
+    # ── §17 the stem review gate (owner rulings 24, 26, 44; batch H4, 2026-10-13) ───────────
+    # Every plant runs §17 on mat_g2_na_q3_8 against tests/stem_review_fixtures/, whose
+    # hand-written first and confirming records approve the lc's LIVE stems (baseline: 0
+    # findings). Three plants change the generator (stale must fire for a template, a domain
+    # and a provenance claim, ruling 44c's "both directions"), two change the harness (a
+    # dropped family, drifted hash code), eight change one fixture record.
+    Mutation(
+        name="stem_template_edited_without_review",
+        asserts=["stem_review_stale_17"],
+        description=(
+            "Reword the odd-number hint template. The learner now reads a stem no judge approved; "
+            "a gate that compared anything less than the template text would keep the approval."
+        ),
+        edits={
+            "backend/app/practice_gen/dna/na/division.py": (
+                "             else fill(\"1 is left over, so {n} is an odd number.\", _src=('task_type',), n=n_slot)),\n",
+                "             else fill(\"1 is left over, so {n} must be an odd number.\", _src=('task_type',), n=n_slot)),  # planted mutation\n",
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_stem_review", "--node-ids", "mat_g2_na_q3_8",
+                 "--review-dir", "tests/stem_review_fixtures"],
+        expected_check="§17 a stem edit stales its approval (ruling 44c)",
+        expect_output_contains=["stem_review_stale_17 (", "new template(s) ['1 is left over, so {n} must be an odd number.']"],
+        baseline_must_not_contain=["FAIL stem_review_stale_17"],
+    ),
+    Mutation(
+        name="stem_domain_widened_without_review",
+        asserts=["stem_review_stale_17"],
+        description=(
+            "Add a member to the even/odd hint's remainder domain (E((0, 1)) -> E((0, 1, 2))). "
+            "Nothing the learner reads changes at these seeds, but the judge approved a domain "
+            "that no longer bounds the slot (ruling 44c: an E is hashed by its members)."
+        ),
+        edits={
+            "backend/app/practice_gen/dna/na/division.py": (
+                '                 n=n_slot, left=S(left, E((0, 1), "the remainder of the dividend divided by 2"))),\n',
+                '                 n=n_slot, left=S(left, E((0, 1, 2), "the remainder of the dividend divided by 2"))),  # planted mutation\n',
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_stem_review", "--node-ids", "mat_g2_na_q3_8",
+                 "--review-dir", "tests/stem_review_fixtures"],
+        expected_check="§17 a widened domain stales its approval (ruling 44c)",
+        expect_output_contains=["stem_review_stale_17 (", "domain/provenance changed in ['2 × {half} = {twice}, and {n} − {twice} = {left}.']"],
+        baseline_must_not_contain=["FAIL stem_review_stale_17"],
+    ),
+    Mutation(
+        name="stem_provenance_changed_without_review",
+        asserts=["stem_review_stale_17"],
+        description=(
+            "Change the division hint's template provenance (_src gains 'dividend'). §15 trusts "
+            "these claims and ruling 41 says H4's judges review them, so a changed claim must "
+            "stale the approval even though no rendered byte moves."
+        ),
+        edits={
+            "backend/app/practice_gen/dna/na/division.py": (
+                "            fill(\"Divide {n} by 2: how many 2s fit into {n}?\", _src=('task_type',), n=n_slot),\n",
+                "            fill(\"Divide {n} by 2: how many 2s fit into {n}?\", _src=('task_type', 'dividend'), n=n_slot),  # planted mutation\n",
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_stem_review", "--node-ids", "mat_g2_na_q3_8",
+                 "--review-dir", "tests/stem_review_fixtures"],
+        expected_check="§17 a changed provenance claim stales its approval (rulings 41, 44c)",
+        expect_output_contains=["stem_review_stale_17 (", "domain/provenance changed in ['Divide {n} by 2: how many 2s fit into {n}?']"],
+        baseline_must_not_contain=["FAIL stem_review_stale_17"],
+    ),
+    Mutation(
+        name="stem_packet_drops_a_family",
+        asserts=["stem_family_unpacketed_17"],
+        description=(
+            "Make the packet builder skip the first family it would print. The judge then "
+            "approves an lc without ever seeing a stem the learner reads; the top-down coverage "
+            "walk from each learner-read field must name it."
+        ),
+        edits={
+            "backend/app/practice_gen/validation/stem_packets.py": (
+                "    for k in order:\n",
+                "    for k in order[1:]:  # planted mutation: one family never packeted\n",
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_stem_review", "--node-ids", "mat_g2_na_q3_8",
+                 "--review-dir", "tests/stem_review_fixtures"],
+        expected_check="§17 every reaching family is in the packet",
+        expect_output_contains=["stem_family_unpacketed_17 (", "is produced by a family the stem packet does not contain"],
+        baseline_must_not_contain=["FAIL stem_family_unpacketed_17"],
+    ),
+    Mutation(
+        name="stem_hash_code_drifts",
+        asserts=["stem_review_hash_drift_17"],
+        description=(
+            "Change how the freshness hash canonicalises the item without bumping HASH_VERSION. "
+            "Every filed lc_hash is then compared under a rule it was not computed with; the "
+            "drift must be an integrity failure, not a wave of stale or fresh verdicts."
+        ),
+        edits={
+            "backend/app/practice_gen/validation/stem_packets.py": (
+                '    return hashlib.sha256(f"stem-v{HASH_VERSION}:{_dump(_canon(body))}".encode("utf-8")).hexdigest()\n',
+                '    return hashlib.sha256(f"stem-v{HASH_VERSION}:{_dump(_canon(body)).lower()}".encode("utf-8")).hexdigest()  # planted mutation\n',
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_stem_review", "--node-ids", "mat_g2_na_q3_8",
+                 "--review-dir", "tests/stem_review_fixtures"],
+        expected_check="§17 the freshness code is pinned against filed records",
+        expect_output_contains=["stem_review_hash_drift_17 (", "without a HASH_VERSION bump"],
+        baseline_must_not_contain=["FAIL stem_review_hash_drift_17"],
+    ),
+    Mutation(
+        name="stem_review_verdict_edited",
+        asserts=["stem_review_record_invalid_17"],
+        description=(
+            "Flip the confirming record's verdict to FAIL after filing, without the filer. A "
+            "verdict is never edited (ruling 20); the reply no longer matches its digest."
+        ),
+        edits={},
+        apply_fn=lambda: _plant_stem_reply("mat_g2_na_q3_8", "confirming",
+                                           lambda r: r.update(overall="FAIL"), recompute_digest=False),
+        command=["backend.app.practice_gen.validation.validate_stem_review", "--node-ids", "mat_g2_na_q3_8",
+                 "--review-dir", "tests/stem_review_fixtures"],
+        expected_check="§17 a filed verdict cannot be edited",
+        expect_output_contains=["stem_review_record_invalid_17 (", "does not match its raw_reply_digest (edited after filing)"],
+        baseline_must_not_contain=["FAIL stem_review_record_invalid_17"],
+    ),
+    Mutation(
+        name="stem_review_quote_fabricated",
+        asserts=["stem_review_quote_provenance_17"],
+        description=(
+            "File a confirming reply (digest coherent) whose reasoning quotes a stem the packet "
+            "never printed: the judge cited content it was not shown."
+        ),
+        edits={},
+        apply_fn=lambda: _plant_stem_reply(
+            "mat_g2_na_q3_8", "confirming",
+            lambda r: r.update(reasoning="Fixture, not a judgment: the stem 'Share 12 cookies among 3 friends.' "
+                                         "keeps to division by 2.")),
+        command=["backend.app.practice_gen.validation.validate_stem_review", "--node-ids", "mat_g2_na_q3_8",
+                 "--review-dir", "tests/stem_review_fixtures"],
+        expected_check="§17 quotes come from the record's own packet",
+        expect_output_contains=["stem_review_quote_provenance_17 (", "'Share 12 cookies among 3 friends.'"],
+        baseline_must_not_contain=["FAIL stem_review_quote_provenance_17"],
+    ),
+    Mutation(
+        name="stem_review_identity_reused",
+        asserts=["stem_review_identity_reused_17"],
+        description=(
+            "Stamp the confirming record with the identity already on another lc's record. One "
+            "dispatch judges one lc in one role (ruling 44); a shared identity is one pass "
+            "writing several verdicts."
+        ),
+        edits={},
+        apply_fn=lambda: _plant_stem_reply(
+            "mat_g2_na_q3_8", "confirming", None,
+            record_change=lambda rec: rec.update(judged_by="fixture-not-a-judge-mat_g3_mg_q2_0-first")),
+        command=["backend.app.practice_gen.validation.validate_stem_review", "--node-ids", "mat_g2_na_q3_8",
+                 "--review-dir", "tests/stem_review_fixtures"],
+        expected_check="§17 one identity per lc",
+        expect_output_contains=["stem_review_identity_reused_17 (", "fixture-not-a-judge-mat_g3_mg_q2_0-first"],
+        baseline_must_not_contain=["FAIL stem_review_identity_reused_17"],
+    ),
+    Mutation(
+        name="stem_review_frame_templated",
+        asserts=["stem_review_skeleton_17"],
+        description=(
+            "Give the confirming reply (digest coherent) the sentence frame three other lcs' "
+            "fixture records already share. Four lcs on one frame is a fill-in form, not four "
+            "judgments (validate_judgment._MAX_SKELETON_CLUSTER = 3)."
+        ),
+        edits={},
+        apply_fn=lambda: _plant_stem_reply(
+            "mat_g2_na_q3_8", "confirming",
+            lambda r: r.update(reasoning="Fixture, not a judgment: the template '1 is left over, so {n} is an odd "
+                                         "number.' was read with its domains, and nothing in it is out of scope.")),
+        command=["backend.app.practice_gen.validation.validate_stem_review", "--node-ids", "mat_g2_na_q3_8",
+                 "--review-dir", "tests/stem_review_fixtures"],
+        expected_check="§17 reasoning frames are not templated across lcs",
+        expect_output_contains=["stem_review_skeleton_17 (", "4 lcs share one overall-reasoning frame"],
+        baseline_must_not_contain=["FAIL stem_review_skeleton_17"],
+    ),
+    Mutation(
+        name="stem_review_record_removed",
+        asserts=["stem_review_missing_17"],
+        description=(
+            "Remove both of the lc's records. An lc with no approval must be a named finding, "
+            "not an lc the gate silently does not mention."
+        ),
+        edits={},
+        apply_fn=lambda: _remove_stem_records("mat_g2_na_q3_8", ("first", "confirming")),
+        command=["backend.app.practice_gen.validation.validate_stem_review", "--node-ids", "mat_g2_na_q3_8",
+                 "--review-dir", "tests/stem_review_fixtures"],
+        expected_check="§17 an unreviewed lc is named",
+        expect_output_contains=["stem_review_missing_17 (", "mat_g2_na_q3_8: no valid stem review is filed"],
+        baseline_must_not_contain=["FAIL stem_review_missing_17"],
+    ),
+    Mutation(
+        name="stem_review_confirmer_missing",
+        asserts=["stem_review_unconfirmed_17"],
+        description=(
+            "Remove the confirming record, leaving one judge's PASS. Ruling 44e confirms every "
+            "lc: a single judge's approval clears nothing."
+        ),
+        edits={},
+        apply_fn=lambda: _remove_stem_records("mat_g2_na_q3_8", ("confirming",)),
+        command=["backend.app.practice_gen.validation.validate_stem_review", "--node-ids", "mat_g2_na_q3_8",
+                 "--review-dir", "tests/stem_review_fixtures"],
+        expected_check="§17 every approval is confirmed (rulings 20, 44e)",
+        expect_output_contains=["stem_review_unconfirmed_17 (", "no confirming judge has filed after it"],
+        baseline_must_not_contain=["FAIL stem_review_unconfirmed_17"],
+    ),
+    Mutation(
+        name="stem_review_confirmed_fail",
+        asserts=["stem_review_fail_17"],
+        description=(
+            "File a coherent confirming reply that FAILs the lc on one template. The later "
+            "verdict stands (ruling 20), so the lc must be a named content finding."
+        ),
+        edits={},
+        apply_fn=lambda: _plant_stem_reply(
+            "mat_g2_na_q3_8", "confirming",
+            lambda r: r.update(overall="FAIL", failing_templates=["1 is left over, so {n} is an odd number."])),
+        command=["backend.app.practice_gen.validation.validate_stem_review", "--node-ids", "mat_g2_na_q3_8",
+                 "--review-dir", "tests/stem_review_fixtures"],
+        expected_check="§17 a confirmed FAIL is a named finding",
+        expect_output_contains=["stem_review_fail_17 (", "Failing: '1 is left over, so {n} is an odd number.' (reached at seed"],
+        baseline_must_not_contain=["FAIL stem_review_fail_17"],
+    ),
+    Mutation(
+        name="stem_review_clause_unproducible",
+        asserts=["stem_clause_unproducible_17"],
+        description=(
+            "File a coherent confirming reply that rules the clause '2' NOT_PRODUCIBLE. Ruling "
+            "44g gates clause coverage: the lc must be named by clause."
+        ),
+        edits={},
+        apply_fn=lambda: _plant_stem_reply(
+            "mat_g2_na_q3_8", "confirming",
+            lambda r: r["clauses"].update(divisor_2={"verdict": "NOT_PRODUCIBLE", "template": None,
+                                                     "reasoning": "Fixture: hand-written."})),
+        command=["backend.app.practice_gen.validation.validate_stem_review", "--node-ids", "mat_g2_na_q3_8",
+                 "--review-dir", "tests/stem_review_fixtures"],
+        expected_check="§17 an unproducible clause is a named finding (ruling 44g)",
+        expect_output_contains=["stem_clause_unproducible_17 (", "clause 'divisor_2' ('2') is ruled NOT_PRODUCIBLE"],
+        baseline_must_not_contain=["FAIL stem_clause_unproducible_17"],
     ),
 ]
 
