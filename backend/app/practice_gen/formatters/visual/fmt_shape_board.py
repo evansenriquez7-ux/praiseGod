@@ -101,7 +101,7 @@ def _shapes_from_item(values: dict, rng: random.Random) -> List[dict]:
     found: List[str] = []
     text = str(values.get("question", "")).lower()
     for word, type_name in _SHAPE_WORDS.items():
-        if re.search(fill("\\b{escape}\\b", escape=derived(re.escape(word))), text) and type_name not in found:
+        if re.search(rf"\b{re.escape(word)}\b", text) and type_name not in found:
             found.append(type_name)
     for opt in [values.get("answer")] + list(values.get("distractors") or []):
         type_name = _SHAPE_WORDS.get(str(opt).strip().lower())
@@ -131,7 +131,7 @@ def _shapes_from_item(values: dict, rng: random.Random) -> List[dict]:
         if entry is None:
             continue
         shape = {
-            "id": fill("shape_{i}", i=derived(i)),
+            "id": f"shape_{i}",
             "type": entry["type"],
             "sides": entry["sides"],
             "corners": entry["corners"],
@@ -166,7 +166,7 @@ def _build_shapes(grade: int, diff_level: int, rng: random.Random, count: int = 
     for i, s in enumerate(chosen):
         orientation = rng.choice(_ORIENTATIONS) if diff_level >= 2 else 0
         shapes.append({
-            "id": fill("shape_{i}", i=derived(i)),
+            "id": f"shape_{i}",
             "type": s["type"],
             "sides": s["sides"],
             "corners": s["corners"],
@@ -359,7 +359,7 @@ def format_shape_board(
             correct_answer=final_answer,
             distractors=traps,
             hints=ctx.hints,
-            format=fill("{interaction_mode}_{answer_collection}", interaction_mode=derived(interaction_mode), answer_collection=derived(answer_collection)),
+            format=f"{interaction_mode}_{answer_collection}",
             format_data=format_data,
             is_visual=True,
             visual_type="ShapeBoard",
@@ -439,7 +439,7 @@ def format_shape_board(
         correct_answer=final_answer,
         distractors=traps,
         hints=ctx.hints,
-        format=fill("{interaction_mode}_{answer_collection}", interaction_mode=derived(interaction_mode), answer_collection=derived(answer_collection)),
+        format=f"{interaction_mode}_{answer_collection}",
         format_data=format_data,
         is_visual=True,
         visual_type="ShapeBoard",

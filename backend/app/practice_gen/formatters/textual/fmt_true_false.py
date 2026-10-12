@@ -217,7 +217,7 @@ def format_true_false(ctx: QuestionContext, rng: random.Random) -> FormattedProb
             if values.get("task_type") == "estimate":
                 real_a = values.get("real_a", a)
                 real_b = values.get("real_b", b)
-                statement = fill("{real_a} × {real_b} ≈ {fill_value}", _src=('task_type',), real_a=S(real_a, "value:real_a"), real_b=derived(real_b, src=('real_b', 'b', 'n',)), fill_value=FV)
+                statement = fill("{real_a} × {real_b} ≈ {fill_value}", _src=('task_type',), real_a=S(real_a, "value:real_a"), real_b=S(real_b, "value:real_b", src=('real_b', 'b', 'n',)), fill_value=FV)
             elif values.get("task_type") == "equal_groups" and blank_target in ("result", "total"):
                 group_form = values.get("group_form")
                 plural_name = values.get("plural_name")
@@ -260,7 +260,7 @@ def format_true_false(ctx: QuestionContext, rng: random.Random) -> FormattedProb
             if values.get("task_type") == "estimate":
                 real_a = values.get("real_a", dividend)
                 real_b = values.get("real_b", divisor)
-                statement = fill("{real_a} ÷ {real_b} ≈ {fill_value}", _src=('task_type',), real_a=S(real_a, "value:real_a"), real_b=derived(real_b, src=('real_b', 'divisor', 'b',)), fill_value=FV)
+                statement = fill("{real_a} ÷ {real_b} ≈ {fill_value}", _src=('task_type',), real_a=S(real_a, "value:real_a"), real_b=S(real_b, "value:real_b", src=('real_b', 'divisor', 'b',)), fill_value=FV)
             elif values.get("task_type") == "even_odd":
                 # fill_value is "even"/"odd" (a category, not a quotient) --
                 # "an" is grammatically correct for both ("an even number",
@@ -294,14 +294,14 @@ def format_true_false(ctx: QuestionContext, rng: random.Random) -> FormattedProb
                 # awkwardly forced into a statement) using the same a/b
                 # this task_type's own generate_params computed.
                 statement = (
-                    fill("Starting from {dividend} and subtracting {divisor} repeatedly, you subtract {fill_value} times before reaching 0.", _src=('task_type',), dividend=derived(dividend, src=('dividend', 'a',)), divisor=derived(divisor, src=('divisor', 'b',)), fill_value=FV)
+                    fill("Starting from {dividend} and subtracting {divisor} repeatedly, you subtract {fill_value} times before reaching 0.", _src=('task_type',), dividend=S(dividend, "value:a", src=('dividend', 'a',)), divisor=S(divisor, "value:b", src=('divisor', 'b',)), fill_value=FV)
                 )
             elif values.get("task_type") == "number_line_jumps":
-                statement = fill("Starting at {dividend} on a number line, taking {fill_value} equal jumps back of {divisor} lands on 0.", _src=('task_type',), dividend=S(dividend, "value:a"), fill_value=FV, divisor=derived(divisor, src=('divisor', 'b',)))
+                statement = fill("Starting at {dividend} on a number line, taking {fill_value} equal jumps back of {divisor} lands on 0.", _src=('task_type',), dividend=S(dividend, "value:a"), fill_value=FV, divisor=S(divisor, "value:b", src=('divisor', 'b',)))
             elif values.get("task_type") == "inverse_of_multiplication":
                 statement = fill("Since {divisor} × {quotient} = {dividend}, then {dividend} ÷ {divisor} = {fill_value}.", _src=('task_type',), divisor=derived(divisor, src=('divisor', 'b',)), quotient=derived(quotient, src=('quotient', 'result',)), dividend=derived(dividend, src=('dividend', 'a',)), fill_value=FV)
             elif blank_target in ("result", "quotient"):
-                statement = fill("{dividend} ÷ {divisor} = {fill_value}", dividend=derived(dividend, src=('dividend', 'a',)), divisor=derived(divisor, src=('divisor', 'b',)), fill_value=FV)
+                statement = fill("{dividend} ÷ {divisor} = {fill_value}", dividend=S(dividend, "value:a", src=('dividend', 'a',)), divisor=S(divisor, "value:b", src=('divisor', 'b',)), fill_value=FV)
             else:
                 # blank_target == "b" (divisor_unknown, e.g. "Find the
                 # missing number... 54 ÷ ___ = 6"): fill_value is the
@@ -369,13 +369,13 @@ def format_true_false(ctx: QuestionContext, rng: random.Random) -> FormattedProb
                 c_val = values.get("c", 1)
                 eq_sym = values.get("equivalent_symbol", "+")
                 if eq_sym == "+":
-                    statement = fill("In {a_val} + {b_val} = {c_val} + ___, the {miss_lbl} is {fill_value}", _src=('equivalent_symbol', 'operation',), a_val=S(a_val, "value:a"), b_val=S(b_val, "value:b"), c_val=derived(c_val, src=('c',)), miss_lbl=derived(miss_lbl), fill_value=FV)
+                    statement = fill("In {a_val} + {b_val} = {c_val} + ___, the {miss_lbl} is {fill_value}", _src=('equivalent_symbol', 'operation',), a_val=S(a_val, "value:a"), b_val=S(b_val, "value:b"), c_val=S(c_val, "value:c", src=('c',)), miss_lbl=S(miss_lbl, "fill"), fill_value=FV)
                 else:
-                    statement = fill("In {a_val} − {b_val} = {c_val} − ___, the {miss_lbl} is {fill_value}", _src=('operation',), a_val=S(a_val, "value:a"), b_val=S(b_val, "value:b"), c_val=derived(c_val, src=('c',)), miss_lbl=derived(miss_lbl), fill_value=FV)
+                    statement = fill("In {a_val} − {b_val} = {c_val} − ___, the {miss_lbl} is {fill_value}", _src=('operation',), a_val=S(a_val, "value:a"), b_val=S(b_val, "value:b"), c_val=S(c_val, "value:c", src=('c',)), miss_lbl=S(miss_lbl, "fill"), fill_value=FV)
             elif blank_pos == "start":
-                statement = fill("In ___ {op_symbol} {b_val} = {res}, the {miss_lbl} is {fill_value}", _src=('blank_position',), op_symbol=derived(op_symbol, src=('operation', 'equivalent_symbol',)), b_val=S(b_val, "value:b"), res=derived(res, src=('result', 'total',)), miss_lbl=S(miss_lbl, "fill"), fill_value=FV)
+                statement = fill("In ___ {op_symbol} {b_val} = {res}, the {miss_lbl} is {fill_value}", _src=('blank_position',), op_symbol=derived(op_symbol, src=('operation', 'equivalent_symbol',)), b_val=S(b_val, "value:b"), res=S(res, "value:result", src=('result', 'total',)), miss_lbl=S(miss_lbl, "fill"), fill_value=FV)
             elif blank_pos == "change":
-                statement = fill("In {a_val} {op_symbol} ___ = {res}, the {miss_lbl} is {fill_value}", _src=('blank_position',), a_val=S(a_val, "value:a"), op_symbol=derived(op_symbol, src=('operation', 'equivalent_symbol',)), res=derived(res, src=('result', 'total',)), miss_lbl=derived(miss_lbl), fill_value=FV)
+                statement = fill("In {a_val} {op_symbol} ___ = {res}, the {miss_lbl} is {fill_value}", _src=('blank_position',), a_val=S(a_val, "value:a"), op_symbol=derived(op_symbol, src=('operation', 'equivalent_symbol',)), res=derived(res, src=('result', 'total',)), miss_lbl=S(miss_lbl, "fill"), fill_value=FV)
             else:
                 statement = fill("In {a_val} {op_symbol} {b_val} = ___, the {miss_lbl} is {fill_value}", a_val=S(a_val, "value:a"), op_symbol=derived(op_symbol, src=('operation', 'equivalent_symbol',)), b_val=S(b_val, "value:b"), miss_lbl=S(miss_lbl, "fill"), fill_value=FV)
         elif concept == "fractions":

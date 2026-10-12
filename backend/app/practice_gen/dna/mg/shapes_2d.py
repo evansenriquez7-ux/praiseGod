@@ -18,7 +18,7 @@ from backend.app.practice_gen.dna.base import (
     ErrorPattern,
     VocabGated,
 )
-from backend.app.practice_gen.slots import S, bank_fields, derived, fill
+from backend.app.practice_gen.slots import E, S, bank_fields, derived, fill
 
 
 # ─── error patterns ───────────────────────────────────────────────────────────
@@ -811,22 +811,22 @@ def generate_hints(
     sides_label = "sides" if "side" in cumulative_vocab else "straight edges"
     if "corner" in cumulative_vocab:
         hints = [
-            fill("Think about the {sides_label} and corners of each shape.", sides_label=derived(sides_label)),
-            fill("A triangle has 3 {sides_label} and 3 corners.", sides_label=derived(sides_label)),
-            fill("A square has 4 equal {sides_label} and 4 corners.", sides_label=derived(sides_label)),
-            fill("A rectangle has 4 {sides_label} (opposite {sides_label} are equal) and 4 corners.", sides_label=derived(sides_label)),
+            fill("Think about the {sides_label} and corners of each shape.", sides_label=S(sides_label, E(("sides", "straight edges"), "'side' gated by cumulative_vocab"))),
+            fill("A triangle has 3 {sides_label} and 3 corners.", sides_label=S(sides_label, E(("sides", "straight edges"), "'side' gated by cumulative_vocab"))),
+            fill("A square has 4 equal {sides_label} and 4 corners.", sides_label=S(sides_label, E(("sides", "straight edges"), "'side' gated by cumulative_vocab"))),
+            fill("A rectangle has 4 {sides_label} (opposite {sides_label} are equal) and 4 corners.", sides_label=S(sides_label, E(("sides", "straight edges"), "'side' gated by cumulative_vocab"))),
         ]
         if "circle" in cumulative_vocab:
-            hints.append(fill("A circle has no straight {sides_label} and no corners.", sides_label=derived(sides_label)))
+            hints.append(fill("A circle has no straight {sides_label} and no corners.", sides_label=S(sides_label, E(("sides", "straight edges"), "'side' gated by cumulative_vocab"))))
         return hints
     hints = [
-        fill("Look at each shape and its {sides_label}.", sides_label=derived(sides_label)),
-        fill("A triangle has 3 {sides_label}.", sides_label=derived(sides_label)),
-        fill("A square has 4 equal {sides_label}.", sides_label=derived(sides_label)),
-        fill("A rectangle has 4 {sides_label} (opposite {sides_label} are equal).", sides_label=derived(sides_label)),
+        fill("Look at each shape and its {sides_label}.", sides_label=S(sides_label, E(("sides", "straight edges"), "'side' gated by cumulative_vocab"))),
+        fill("A triangle has 3 {sides_label}.", sides_label=S(sides_label, E(("sides", "straight edges"), "'side' gated by cumulative_vocab"))),
+        fill("A square has 4 equal {sides_label}.", sides_label=S(sides_label, E(("sides", "straight edges"), "'side' gated by cumulative_vocab"))),
+        fill("A rectangle has 4 {sides_label} (opposite {sides_label} are equal).", sides_label=S(sides_label, E(("sides", "straight edges"), "'side' gated by cumulative_vocab"))),
     ]
     if "circle" in cumulative_vocab:
-        hints.append(fill("A circle has no straight {sides_label}.", sides_label=derived(sides_label)))
+        hints.append(fill("A circle has no straight {sides_label}.", sides_label=S(sides_label, E(("sides", "straight edges"), "'side' gated by cumulative_vocab"))))
     return hints
 
 

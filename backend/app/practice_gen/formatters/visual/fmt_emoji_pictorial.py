@@ -182,7 +182,7 @@ def _build_params(
         reveal_display = (emoji * remaining) if remaining <= 20 else fill("(Large group of {remaining} {pluralize})", _src=('operation',), remaining=S(remaining, "value:result"), pluralize=derived(_pluralize(base_name, remaining)))
         if remaining == 0: reveal_display = "(none left)"
         # Text explanation
-        reveal_text = fill("{remaining} {v}", _src=('operation',), remaining=derived(remaining), v=derived(_pluralize(base_name, remaining) if remaining != 1 else base_name))
+        reveal_text = fill("{remaining} {v}", _src=('operation',), remaining=S(remaining, "value:result"), v=derived(_pluralize(base_name, remaining) if remaining != 1 else base_name))
     
     params = {
         "emoji": emoji,
@@ -299,13 +299,13 @@ def _build_question_text(params: dict, context_variant: str = "word_problem") ->
         if a == 0:
             line1 = fill("There are 0 {name_plural}.", name_plural=derived(name_plural))
         else:
-            line1 = fill("{group_a_str} — There {v} {a} {name_a}.", group_a_str=derived(group_a_str), v=derived('is' if a == 1 else 'are'), a=derived(a, src=("a",)), name_a=derived(name_a))
+            line1 = fill("{group_a_str} — There {v} {a} {name_a}.", group_a_str=derived(group_a_str), v=derived('is' if a == 1 else 'are'), a=S(a, "value:a", src=("a",)), name_a=derived(name_a))
         
         # Line 2: Show amount being added
         if b == 0:
             line2 = fill("0 more {name_plural} are added.", name_plural=derived(name_plural))
         else:
-            line2 = fill("{group_b_str} — {b} more {name_b} {v} added.", group_b_str=derived(group_b_str), b=derived(b, src=("b",)), name_b=derived(name_b), v=derived('is' if b == 1 else 'are'))
+            line2 = fill("{group_b_str} — {b} more {name_b} {v} added.", group_b_str=derived(group_b_str), b=S(b, "value:b", src=("b",)), name_b=derived(name_b), v=derived('is' if b == 1 else 'are'))
         
         # Line 3: Question
         line3 = fill("How many total {name_plural} are there?", name_plural=derived(name_plural))
@@ -456,7 +456,7 @@ def format_emoji_pictorial(
     if mcq_options:
         format_data["mcq_options"] = mcq_options
     
-    fmt = fill("{interaction_mode}_{answer_collection}", interaction_mode=derived(interaction_mode), answer_collection=derived(answer_collection))
+    fmt = f"{interaction_mode}_{answer_collection}"
     
     return FormattedProblem(
         problem_id=f"{ctx.node_id}_{ctx.seed}_emoji",

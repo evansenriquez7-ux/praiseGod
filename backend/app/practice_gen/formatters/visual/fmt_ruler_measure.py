@@ -270,7 +270,7 @@ def format_ruler_measure(
         correct_answer=final_answer,
         distractors=traps,
         hints=ctx.hints,
-        format=fill("{interaction_mode}_{answer_collection}", interaction_mode=derived(interaction_mode), answer_collection=derived(answer_collection)),
+        format=f"{interaction_mode}_{answer_collection}",
         format_data=format_data,
         is_visual=True,
         visual_type="RulerMeasure",

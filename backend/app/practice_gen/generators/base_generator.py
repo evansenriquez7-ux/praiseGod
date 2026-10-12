@@ -35,7 +35,7 @@ from ..slots import S, fill
 from ..registry import get_node_competency_bounds, get_node_dnas, get_node_info
 from .interest import get_interest_emoji, get_interest_slots, pick_interest
 from .spines import NARRATIVE_DOMAIN_DNAS, select_spine
-from backend.app.practice_gen.slots import S, derived, fill
+from backend.app.practice_gen.slots import E, S, derived, fill
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -776,7 +776,7 @@ def _build_symbolic_question(
         prefix = fill("Solve using {expanded_lbl}. ", _src=('strategy',), expanded_lbl=S(expanded_lbl, "fill")) if strategy == "expanded_form" else ""
 
         if blank == "result":
-            return fill("{prefix}What is {a} + {b}?", _src=('blank_target',), prefix=derived(prefix, src=('strategy',)), a=derived(a, src=('a', 'start',)), b=derived(b, src=('b', 'skip_by',)))
+            return fill("{prefix}What is {a} + {b}?", _src=('blank_target',), prefix=derived(prefix, src=('strategy',)), a=S(a, "value:a", src=('a', 'start',)), b=S(b, "value:b", src=('b', 'skip_by',)))
         elif blank == "b":
             result = values.get("result")
             return fill("{prefix}{a} + ___ = {result}. What is the {missing_lbl}?", _src=('blank_target',), prefix=derived(prefix, src=('strategy',)), a=derived(a, src=('a', 'start',)), result=S(result, "value:result"), missing_lbl=S(missing_lbl, "fill"))
@@ -812,7 +812,7 @@ def _build_symbolic_question(
         if values.get("task_type") == "estimate":
             real_a = values.get("real_a", a)
             real_b = values.get("real_b", b)
-            return fill("Estimate the product: {real_a} × {real_b}", _src=('task_type',), real_a=S(real_a, "value:real_a"), real_b=derived(real_b, src=('real_b', 'b', 'skip_by',)))
+            return fill("Estimate the product: {real_a} × {real_b}", _src=('task_type',), real_a=S(real_a, "value:real_a"), real_b=S(real_b, "value:real_b", src=('real_b', 'b', 'skip_by',)))
         if values.get("task_type") == "equal_groups" and blank in ["total", "result"]:
             group_form = values.get("group_form")
             plural_name = values.get("plural_name")
@@ -848,13 +848,13 @@ def _build_symbolic_question(
         if values.get("task_type") == "estimate":
             real_a = values.get("real_a", a)
             real_b = values.get("real_b", b)
-            return fill("Estimate the quotient: {real_a} ÷ {real_b}", _src=('task_type',), real_a=S(real_a, "value:real_a"), real_b=derived(real_b, src=('real_b', 'b', 'skip_by',)))
+            return fill("Estimate the quotient: {real_a} ÷ {real_b}", _src=('task_type',), real_a=S(real_a, "value:real_a"), real_b=S(real_b, "value:real_b", src=('real_b', 'b', 'skip_by',)))
         if blank in ["result", "groups"]:
-            return fill("What is {total} ÷ {n}?", _src=('blank_target',), total=derived(total, src=('total', 'a', 'start',)), n=derived(n, src=('n', 'b', 'skip_by',)))
+            return fill("What is {total} ÷ {n}?", _src=('blank_target',), total=S(total, "value:a", src=('total', 'a', 'start',)), n=S(n, "value:b", src=('n', 'b', 'skip_by',)))
         elif blank in ["b", "n"]:
             return fill("{total} ÷ ___ = {groups}. What is the {missing_lbl}?", _src=('blank_target',), total=derived(total, src=('total', 'a', 'start',)), groups=derived(groups, src=('groups', 'result',)), missing_lbl=S(missing_lbl, "fill"))
         else:
-            return fill("___ ÷ {n} = {groups}. What is the {missing_lbl}?", n=derived(n, src=('n', 'b', 'skip_by',)), groups=derived(groups, src=('groups', 'result',)), missing_lbl=S(missing_lbl, "fill"))
+            return fill("___ ÷ {n} = {groups}. What is the {missing_lbl}?", n=S(n, "value:b", src=('n', 'b', 'skip_by',)), groups=S(groups, "value:result", src=('groups', 'result',)), missing_lbl=S(missing_lbl, "fill"))
 
     # ── Place value ───────────────────────────────────────────────────────────
     if concept == "place_value":
@@ -867,15 +867,15 @@ def _build_symbolic_question(
             # NOT_YET_KNOWN vocabulary (the gram abbreviation, introduced
             # later in mass_capacity), so this collided every time despite
             # having nothing to do with grams.
-            return fill("Write {number} as tens and ones, for example 45 = 40 + 5.", _src=('task_type',), number=derived(number, src=('number', 'a', 'start',)))
+            return fill("Write {number} as tens and ones, for example 45 = 40 + 5.", _src=('task_type',), number=S(number, "value:number", src=('number', 'a', 'start',)))
         digit = values.get("digit", values.get("digit_at_position", b))
         pv_label = VocabGated("place value", "place value", "value").resolve(cumulative_vocab)
         if task_type == "identify_place":
-            return fill("What place is the digit {digit} in, in the number {number}?", _src=('task_type',), digit=derived(digit, src=('digit', 'digit_at_position', 'b', 'skip_by',)), number=derived(number, src=('number', 'a', 'start',)))
+            return fill("What place is the digit {digit} in, in the number {number}?", _src=('task_type',), digit=S(digit, "value:digit_at_position", src=('digit', 'digit_at_position', 'b', 'skip_by',)), number=S(number, "value:number", src=('number', 'a', 'start',)))
         if task_type == "identify_digit":
             place_name = values.get("place_name", "tens")
-            return fill("In {number}, what digit is in the {place_name} place?", _src=('task_type',), number=derived(number, src=('number', 'a', 'start',)), place_name=S(place_name, "value:place_name"))
-        return fill("What is the {pv_label} of the digit {digit} in {number}?", _src=('task_type',), pv_label=S(pv_label, "fill"), digit=derived(digit, src=('digit', 'digit_at_position', 'b', 'skip_by',)), number=derived(number, src=('number', 'a', 'start',)))
+            return fill("In {number}, what digit is in the {place_name} place?", _src=('task_type',), number=S(number, "value:number", src=('number', 'a', 'start',)), place_name=S(place_name, "value:place_name"))
+        return fill("What is the {pv_label} of the digit {digit} in {number}?", _src=('task_type',), pv_label=S(pv_label, "fill"), digit=S(digit, "value:digit_at_position", src=('digit', 'digit_at_position', 'b', 'skip_by',)), number=S(number, "value:number", src=('number', 'a', 'start',)))
 
     # ── Counting / ordinal ────────────────────────────────────────────────────
     if concept == "counting":
@@ -883,7 +883,7 @@ def _build_symbolic_question(
         if direction == "backward":
             return fill("What number comes before {a} when counting by {b}?", _src=('direction',), a=derived(a, src=('a', 'start',)), b=derived(b, src=('b', 'skip_by',)))
         else:
-            return fill("What number comes after {a} when counting by {b}?", a=derived(a, src=('a', 'start',)), b=derived(b, src=('b', 'skip_by',)))
+            return fill("What number comes after {a} when counting by {b}?", a=derived(a, src=('a', 'start',)), b=S(b, "value:skip_by", src=('b', 'skip_by',)))
 
     if concept == "ordinal_numbers":
         n = values.get("n", a)
@@ -905,7 +905,7 @@ def _build_symbolic_question(
             # a pupil answering "30" is marked wrong, and a pupil reading the key
             # literally is taught that "<" means greater. Ask for what is
             # actually keyed.
-            return fill("Compare the numbers: {a} ___ {b}. Which sign is correct: >, <, or =?", a=derived(a, src=('a', 'start',)), b=derived(b, src=('b', 'skip_by',)))
+            return fill("Compare the numbers: {a} ___ {b}. Which sign is correct: >, <, or =?", a=S(a, "value:a", src=('a', 'start',)), b=S(b, "value:b", src=('b', 'skip_by',)))
 
     # ── Missing number ────────────────────────────────────────────────────────
     if concept == "missing_number":
@@ -915,11 +915,11 @@ def _build_symbolic_question(
         blank_pos = values.get("blank_position", "result")
         result = values.get("result", values.get("total"))
         if blank_pos == "start":
-            return fill("___ {op_symbol} {b} = {result}. What is the {missing_lbl}?", _src=('blank_position',), op_symbol=derived(op_symbol, src=('operation',)), b=derived(b, src=('b', 'skip_by',)), result=derived(result, src=('result', 'total',)), missing_lbl=S(missing_lbl, "fill"))
+            return fill("___ {op_symbol} {b} = {result}. What is the {missing_lbl}?", _src=('blank_position',), op_symbol=derived(op_symbol, src=('operation',)), b=S(b, "value:b", src=('b', 'skip_by',)), result=S(result, "value:result", src=('result', 'total',)), missing_lbl=S(missing_lbl, "fill"))
         elif blank_pos == "change":
-            return fill("{a} {op_symbol} ___ = {result}. What is the {missing_lbl}?", _src=('blank_position',), a=derived(a, src=('a', 'start',)), op_symbol=derived(op_symbol, src=('operation',)), result=derived(result, src=('result', 'total',)), missing_lbl=S(missing_lbl, "fill"))
+            return fill("{a} {op_symbol} ___ = {result}. What is the {missing_lbl}?", _src=('blank_position',), a=S(a, "value:a", src=('a', 'start',)), op_symbol=derived(op_symbol, src=('operation',)), result=S(result, "value:result", src=('result', 'total',)), missing_lbl=S(missing_lbl, "fill"))
         else:
-            return fill("{a} {op_symbol} {b} = ___. What is the {missing_lbl}?", a=derived(a, src=('a', 'start',)), op_symbol=derived(op_symbol, src=('operation',)), b=derived(b, src=('b', 'skip_by',)), missing_lbl=S(missing_lbl, "fill"))
+            return fill("{a} {op_symbol} {b} = ___. What is the {missing_lbl}?", a=S(a, "value:a", src=('a', 'start',)), op_symbol=derived(op_symbol, src=('operation',)), b=S(b, "value:b", src=('b', 'skip_by',)), missing_lbl=S(missing_lbl, "fill"))
 
     # ── Patterns ─────────────────────────────────────────────────────────────
     if concept == "patterns":
@@ -1013,7 +1013,7 @@ def _build_symbolic_question(
                 )
             b_part = "1 more part is" if b_num == 1 else fill("{b_num} more parts are", _src=('operation',), b_num=derived(b_num, src=('b_num',)))
             return (
-                fill("A shape is divided into {a_den} equal parts. {a_part} shaded and {b_part} shaded. What fraction of the shape is shaded in all: \\(\\frac{{{a_num}}}{{{a_den}}} + \\frac{{{b_num}}}{{{b_den}}}\\)?", _src=('operation',), a_den=derived(a_den, src=('a_den', 'denominator', 'b', 'skip_by',)), a_part=derived(a_part, src=('a_num', 'numerator', 'a', 'start',)), b_part=derived(b_part, src=('b_num',)), a_num=derived(a_num, src=('a_num', 'numerator', 'a', 'start',)), b_num=derived(b_num, src=('b_num',)), b_den=derived(b_den, src=('b_den', 'denominator', 'b', 'skip_by',)))
+                fill("A shape is divided into {a_den} equal parts. {a_part} shaded and {b_part} shaded. What fraction of the shape is shaded in all: \\(\\frac{{{a_num}}}{{{a_den}}} + \\frac{{{b_num}}}{{{b_den}}}\\)?", _src=('operation',), a_den=derived(a_den, src=('a_den', 'denominator', 'b', 'skip_by',)), a_part=S(a_part, "fill", src=('a_num', 'numerator', 'a', 'start',)), b_part=derived(b_part, src=('b_num',)), a_num=derived(a_num, src=('a_num', 'numerator', 'a', 'start',)), b_num=derived(b_num, src=('b_num',)), b_den=derived(b_den, src=('b_den', 'denominator', 'b', 'skip_by',)))
             )
         # The previous phrasing — "What fraction does \(\frac{n}{d}\) equal parts
         # represent?" — was both ungrammatical and self-answering: it displayed
@@ -1115,7 +1115,7 @@ def _build_symbolic_question(
         # and "nearest thousand" never once appear in the rendered text,
         # even on samples whose own values already reflect them).
         precision = values.get("round_to", 10)
-        return fill("Round {number} to the nearest {precision}.", number=S(number, "value:number"), precision=derived(precision, src=('round_to',)))
+        return fill("Round {number} to the nearest {precision}.", number=S(number, "value:number"), precision=S(precision, "value:round_to", src=('round_to',)))
 
     # ── Number reading ────────────────────────────────────────────────────────
     if concept == "number_reading":
@@ -1135,7 +1135,7 @@ def _build_symbolic_question(
             return values["question"]
         hour = values.get("hour", a)
         minute = values.get("minute", 0)
-        return fill("What time does the clock show? ({hour}:{minute:02d})", hour=derived(hour, src=('hour', 'a', 'start',)), minute=derived(minute, src=('minute',)))
+        return fill("What time does the clock show? ({hour}:{minute:02d})", hour=S(hour, "value:hour", src=('hour', 'a', 'start',)), minute=S(minute, "value:minute", src=('minute',)))
 
     # ── Calendar ──────────────────────────────────────────────────────────────
     if concept == "calendar":
@@ -1181,7 +1181,7 @@ def _build_symbolic_question(
             val_a = values.get("value_a")
             val_b = values.get("value_b")
             u = values.get("unit")
-            return fill("Which is {v}: {val_a} {u} or {val_b} {u}?", _src=('task_type',), v=derived('heavier' if mtype == 'mass' else 'more', src=('measurement_type',)), val_a=S(val_a, "value:value_a"), u=S(u, "value:unit"), val_b=S(val_b, "value:value_b"))
+            return fill("Which is {v}: {val_a} {u} or {val_b} {u}?", _src=('task_type',), v=S('heavier' if mtype == 'mass' else 'more', E(("heavier", "more"), "the mass and capacity comparatives"), src=('measurement_type',)), val_a=S(val_a, "value:value_a"), u=S(u, "value:unit"), val_b=S(val_b, "value:value_b"))
         unit = values.get("unit", "kg")
         mtype = values.get("measurement_type", "mass")
         target_noun = "container" if mtype == "capacity" else "object"
@@ -1206,7 +1206,7 @@ def _build_symbolic_question(
             # hit for length_measurement's equivalent fix).
             article = "A" if target_noun.startswith("c") else "An"
             return (
-                fill("{article} {target_noun}'s {mc_lbl} measures {val} {unit}. About how many {unit} is that, rounded to the nearest {round_to}?", _src=('task_type',), article=derived(article, src=('measurement_type',)), target_noun=derived(target_noun, src=('measurement_type',)), mc_lbl=S(mc_lbl, "fill"), val=derived(val, src=('value',)), unit=S(unit, "value:unit"), round_to=derived(round_to, src=('round_to',)))
+                fill("{article} {target_noun}'s {mc_lbl} measures {val} {unit}. About how many {unit} is that, rounded to the nearest {round_to}?", _src=('task_type',), article=derived(article, src=('measurement_type',)), target_noun=derived(target_noun, src=('measurement_type',)), mc_lbl=S(mc_lbl, "fill"), val=S(val, "value:value", src=('value',)), unit=S(unit, "value:unit"), round_to=derived(round_to, src=('round_to',)))
             )
         return fill("What is the {mc_lbl} of the {target_noun} in {unit}?", mc_lbl=S(mc_lbl, "fill"), target_noun=derived(target_noun, src=('measurement_type',)), unit=S(unit, "value:unit"))
 

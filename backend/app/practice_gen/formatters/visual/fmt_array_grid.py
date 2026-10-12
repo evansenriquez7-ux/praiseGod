@@ -29,7 +29,7 @@ from typing import List, Optional
 
 from backend.app.practice_gen.dna.base import FormattedProblem, QuestionContext, count_noun
 from backend.app.practice_gen.formatters._option_order import shuffle_options
-from backend.app.practice_gen.slots import S, derived, fill
+from backend.app.practice_gen.slots import R, S, derived, fill
 from backend.app.practice_gen.formatters._answer_slots import (correct_option_key, distractors_field)
 
 
@@ -145,10 +145,11 @@ def _build_traps(params: dict, rng: random.Random) -> dict:
     cols = params.get("cols")
     shape_type = params.get("shape_type")
 
-    off = rng.randint(1, 3)
+    off_lo, off_hi = 1, 3
+    off = rng.randint(off_lo, off_hi)
     traps["off_by_few_under"] = {
         "value": max(1, correct - off),
-        "description": fill("Missed {off} squares", off=derived(off)),
+        "description": fill("Missed {off} squares", off=S(off, R(off_lo, off_hi, "the miss count drawn"))),
     }
     traps["off_by_few_over"] = {
         "value": correct + rng.randint(1, 3),
@@ -373,7 +374,7 @@ def format_array_grid(
         figure = "square" if shape_type == "square" or rows == cols else "rectangle"
         if interaction_mode == "read":
             question_text = (
-                fill("This {figure} is covered by {rows} rows of {cols} square tiles. How many square tile units cover the {figure}?", _src=('rows', 'cols', 'shape_type',), figure=S(figure, "value:shape"), rows=derived(rows), cols=derived(cols))
+                fill("This {figure} is covered by {rows} rows of {cols} square tiles. How many square tile units cover the {figure}?", _src=('rows', 'cols', 'shape_type',), figure=S(figure, "value:shape"), rows=S(rows, "value:s"), cols=derived(cols))
             )
         else:
             vp["shaded"] = False
@@ -389,7 +390,7 @@ def format_array_grid(
             # the student can see/count the same total, but the value
             # they must produce is the quotient.
             question_text = (
-                fill("This array has {total} squares split into {rows} equal rows. How many squares are in each row?", total=derived(total), rows=derived(rows))
+                fill("This array has {total} squares split into {rows} equal rows. How many squares are in each row?", total=S(total, "value:a"), rows=S(rows, "value:b"))
             )
         else:
             # Same division-vs-multiplication defect as "read", in its
@@ -403,7 +404,7 @@ def format_array_grid(
             # quotient -- how many go in each row.
             vp["shaded"] = False
             question_text = (
-                fill("Shade {total} squares into {rows} equal rows. How many squares are in each row?", total=derived(total), rows=derived(rows))
+                fill("Shade {total} squares into {rows} equal rows. How many squares are in each row?", total=S(total, "value:a"), rows=S(rows, "value:b"))
             )
     elif interaction_mode == "read":
         # Squares are labelled with their dimensions too. This branch tested only
@@ -490,7 +491,7 @@ def format_array_grid(
     if mcq_options is not None:
         format_data["mcq_options"] = mcq_options
 
-    fmt = fill("{interaction_mode}_{answer_collection}", interaction_mode=derived(interaction_mode), answer_collection=derived(answer_collection))
+    fmt = f"{interaction_mode}_{answer_collection}"
 
     return FormattedProblem(
         problem_id=f"{ctx.node_id}_{ctx.seed}_arraygrid",

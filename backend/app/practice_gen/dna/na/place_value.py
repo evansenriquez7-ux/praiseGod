@@ -22,7 +22,7 @@ from backend.app.practice_gen.dna.base import (
     VocabGated,
     count_noun,
 )
-from backend.app.practice_gen.slots import S, derived, fill
+from backend.app.practice_gen.slots import S, derived, fill, join
 
 
 # ─── constants ────────────────────────────────────────────────────────────────
@@ -391,26 +391,26 @@ def generate_hints(
     ef_phrase  = VOCAB_EXPANDED_FORM.resolve(cumulative_vocab)
 
     if task == "identify_digit":
-        relevant_places = ", ".join(PLACE_NAMES[:pos + 1])
+        relevant_places = join(", ", PLACE_NAMES[:pos + 1], "enum:backend.app.practice_gen.dna.na.place_value.PLACE_NAMES")
         return [
-            fill("Look at the digits of {number} from the right: {relevant_places}.", _src=('task_type',), number=S(number, "value:number"), relevant_places=derived(relevant_places, src=('target_digit_position',))),
+            fill("Look at the digits of {number} from the right: {relevant_places}.", _src=('task_type',), number=S(number, "value:number"), relevant_places=S(relevant_places, "fill", src=('target_digit_position',))),
             fill("Find the {place_name} {pv_phrase}.", _src=('task_type',), place_name=S(place_name, "value:place_name"), pv_phrase=S(pv_phrase, "fill")),
             fill("The digit in the {place_name} place is {digit}.", _src=('task_type',), place_name=S(place_name, "value:place_name"), digit=S(digit, "value:digit_at_position")),
         ]
 
     if task == "identify_place":
-        relevant_places = ", ".join(PLACE_NAMES[:pos + 1])
+        relevant_places = join(", ", PLACE_NAMES[:pos + 1], "enum:backend.app.practice_gen.dna.na.place_value.PLACE_NAMES")
         return [
             fill("Put each digit of {number} in its own column.", _src=('task_type',), number=S(number, "value:number")),
-            fill("Count from the right: {relevant_places}.", _src=('task_type',), relevant_places=derived(relevant_places, src=('target_digit_position',))),
-            fill("The digit in the {place_name} column is {digit}.", _src=('task_type',), place_name=derived(place_name, src=('target_digit_position',)), digit=S(digit, "value:digit_at_position")),
+            fill("Count from the right: {relevant_places}.", _src=('task_type',), relevant_places=S(relevant_places, "fill", src=('target_digit_position',))),
+            fill("The digit in the {place_name} column is {digit}.", _src=('task_type',), place_name=S(place_name, "value:place_name", src=('target_digit_position',)), digit=S(digit, "value:digit_at_position")),
         ]
 
     if task == "identify_value":
         return [
             fill("Find the digit in the {place_name} {pv_phrase} of {number}.", _src=('task_type',), place_name=S(place_name, "value:place_name"), pv_phrase=S(pv_phrase, "fill"), number=S(number, "value:number")),
             fill("That digit is {digit}.", _src=('task_type',), digit=S(digit, "value:digit_at_position")),
-            fill("Multiply it by its place: {digit} × {v} = {value}.", _src=('task_type',), digit=S(digit, "value:digit_at_position"), v=derived(PLACE_VALUES[pos], src=('target_digit_position',)), value=S(value, "value:value_at_position")),
+            fill("Multiply it by its place: {digit} × {v} = {value}.", _src=('task_type',), digit=S(digit, "value:digit_at_position"), v=S(PLACE_VALUES[pos], "enum:backend.app.practice_gen.dna.na.place_value.PLACE_VALUES", src=('target_digit_position',)), value=S(value, "value:value_at_position")),
             fill("The {val_phrase} of {digit} in {number} is {value}.", _src=('task_type',), val_phrase=S(val_phrase, "fill"), digit=S(digit, "value:digit_at_position"), number=S(number, "value:number"), value=S(value, "value:value_at_position")),
         ]
 

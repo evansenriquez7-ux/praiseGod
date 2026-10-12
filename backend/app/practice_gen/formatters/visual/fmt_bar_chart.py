@@ -272,12 +272,12 @@ def format_bar_chart(
         vp["is_read_mode"] = True
         if task_type == "solve_problem" and ctx.values and "problem_question" in ctx.values:
             correct_value = ctx.correct_answer if ctx.correct_answer is not None else ctx.values["answer"]
-            question_text = fill("Look at the {bg_full_lbl}. {problem_question}", bg_full_lbl=derived(bg_full_lbl, src=("orientation",)), problem_question=S(ctx.values['problem_question'], "value:problem_question"))
+            question_text = fill("Look at the {bg_full_lbl}. {problem_question}", bg_full_lbl=S(bg_full_lbl, "fill", src=("orientation",)), problem_question=S(ctx.values['problem_question'], "value:problem_question"))
         elif task_type in ("compare_bars", "compare"):
             comp_a = ctx.values.get("compare_a", categories[0])
             comp_b = ctx.values.get("compare_b", categories[1])
             correct_value = ctx.correct_answer if ctx.correct_answer is not None else (comp_a if values[categories.index(comp_a)] >= values[categories.index(comp_b)] else comp_b)
-            question_text = fill("Look at the {bg_full_lbl}. Which is greater: {comp_a} or {comp_b}?", bg_full_lbl=derived(bg_full_lbl, src=("orientation",)), comp_a=derived(comp_a, src=("compare_a",)), comp_b=S(comp_b, "value:compare_b"))
+            question_text = fill("Look at the {bg_full_lbl}. Which is greater: {comp_a} or {comp_b}?", bg_full_lbl=derived(bg_full_lbl, src=("orientation",)), comp_a=S(comp_a, "fill", src=("compare_a",)), comp_b=S(comp_b, "value:compare_b"))
         elif task_type == "find_total":
             correct_value = ctx.correct_answer if ctx.correct_answer is not None else sum(values)
             question_text = fill("Look at the {bg_full_lbl}. What is the total value of all categories?", bg_full_lbl=derived(bg_full_lbl, src=("orientation",)))
@@ -312,7 +312,7 @@ def format_bar_chart(
         if orientation == "table":
             question_text = fill("Complete the table to show: {data_str}.", _src=('orientation',), data_str=S(data_str, "value:data_str"))
         else:
-            question_text = fill("Create a {bg_full_lbl} to show: {data_str}.", bg_full_lbl=derived(bg_full_lbl, src=("orientation",)), data_str=S(data_str, "value:data_str"))
+            question_text = fill("Create a {bg_full_lbl} to show: {data_str}.", bg_full_lbl=S(bg_full_lbl, "fill", src=("orientation",)), data_str=S(data_str, "value:data_str"))
 
     # ── 4. Answer collection ──────────────────────────────────────────────────
     mcq_options = None
@@ -400,7 +400,7 @@ def format_bar_chart(
     if mcq_options is not None:
         format_data["mcq_options"] = mcq_options
 
-    fmt = fill("{interaction_mode}_{answer_collection}", interaction_mode=derived(interaction_mode), answer_collection=derived(answer_collection))
+    fmt = f"{interaction_mode}_{answer_collection}"
 
     return FormattedProblem(
         problem_id=f"{ctx.node_id}_{ctx.seed}_barchart",

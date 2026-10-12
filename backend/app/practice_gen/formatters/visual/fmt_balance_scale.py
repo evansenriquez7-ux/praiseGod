@@ -85,17 +85,17 @@ def _build_balance_params(ctx: QuestionContext, rng: random.Random) -> dict:
 
     # Build the two sides
     if blank_target == "result":
-        left_side = fill("{a} {op_char} {b}", _src=('blank_target',), a=derived(a), op_char=derived(op_char, src=("operation",)), b=derived(b))
+        left_side = fill("{a} {op_char} {b}", _src=('blank_target',), a=S(a, "value:a"), op_char=derived(op_char, src=("operation",)), b=S(b, "value:b"))
         right_side = "?"
         blank_side = "right"
         missing_value = result
     elif blank_target == "a":
-        left_side = fill("? {op_char} {b}", _src=('blank_target',), op_char=derived(op_char, src=("operation",)), b=derived(b))
+        left_side = fill("? {op_char} {b}", _src=('blank_target',), op_char=derived(op_char, src=("operation",)), b=S(b, "value:b"))
         right_side = str(result)
         blank_side = "left"
         missing_value = a
     else:  # blank_target == "b"
-        left_side = fill("{a} {op_char} ?", a=derived(a), op_char=derived(op_char, src=("operation",)))
+        left_side = fill("{a} {op_char} ?", a=S(a, "value:a"), op_char=derived(op_char, src=("operation",)))
         right_side = str(result)
         blank_side = "left"
         missing_value = b
@@ -167,7 +167,7 @@ def _build_traps(params: dict, rng: random.Random) -> list:
 def _stem(params: dict) -> str:
     left = params["left_side"]
     right = params["right_side"]
-    return fill("Both sides balance evenly. {left} = {right}. What is the missing value?", left=derived(left, src=("a", "b", "operation")), right=derived(right, src=("a", "b", "operation")))
+    return fill("Both sides balance evenly. {left} = {right}. What is the missing value?", left=S(left, "fill", src=("a", "b", "operation")), right=derived(right, src=("a", "b", "operation")))
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -242,7 +242,7 @@ def format_balance_scale(
         correct_answer=final_answer,
         distractors=traps,
         hints=ctx.hints,
-        format=fill("{interaction_mode}_{answer_collection}", interaction_mode=derived(interaction_mode), answer_collection=derived(answer_collection)),
+        format=f"{interaction_mode}_{answer_collection}",
         format_data=format_data,
         is_visual=True,
         visual_type="BalanceScale",

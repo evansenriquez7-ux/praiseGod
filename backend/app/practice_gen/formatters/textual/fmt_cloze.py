@@ -115,7 +115,7 @@ def _build_equation_sentence(ctx: QuestionContext) -> str:
         if values.get("task_type") == "estimate":
             real_a = values.get("real_a", a)
             real_b = values.get("real_b", b)
-            return fill("Estimate: {real_a} × {real_b} ≈ ___", _src=('task_type',), real_a=S(real_a, "value:real_a"), real_b=derived(real_b, src=('real_b', 'b', 'n',)))
+            return fill("Estimate: {real_a} × {real_b} ≈ ___", _src=('task_type',), real_a=S(real_a, "value:real_a"), real_b=S(real_b, "value:real_b", src=('real_b', 'b', 'n',)))
         if values.get("task_type") == "equal_groups" and blank_target in ("result", "total"):
             group_form = values.get("group_form")
             plural_name = values.get("plural_name")
@@ -158,21 +158,21 @@ def _build_equation_sentence(ctx: QuestionContext) -> str:
         if values.get("task_type") == "estimate":
             real_a = values.get("real_a", dividend)
             real_b = values.get("real_b", divisor)
-            return fill("Estimate: {real_a} ÷ {real_b} ≈ ___", _src=('task_type',), real_a=S(real_a, "value:real_a"), real_b=derived(real_b, src=('real_b', 'divisor', 'b',)))
+            return fill("Estimate: {real_a} ÷ {real_b} ≈ ___", _src=('task_type',), real_a=S(real_a, "value:real_a"), real_b=S(real_b, "value:real_b", src=('real_b', 'divisor', 'b',)))
         if values.get("task_type") == "even_odd":
             return fill("Divide {dividend} by 2. {dividend} is an ___ number.", _src=('task_type',), dividend=derived(dividend, src=('dividend', 'a',)))
         if values.get("task_type") == "number_line_jumps":
-            return fill("Start at {dividend} on a number line and take equal jumps back of {divisor} to reach 0: {dividend} ÷ {divisor} = ___", _src=('task_type',), dividend=derived(dividend, src=('dividend', 'a',)), divisor=derived(divisor, src=('divisor', 'b',)))
+            return fill("Start at {dividend} on a number line and take equal jumps back of {divisor} to reach 0: {dividend} ÷ {divisor} = ___", _src=('task_type',), dividend=S(dividend, "value:a", src=('dividend', 'a',)), divisor=S(divisor, "value:b", src=('divisor', 'b',)))
         if values.get("task_type") == "repeated_subtraction":
-            return fill("Start with {dividend}. Subtract {divisor} repeatedly until reaching 0: you subtract ___ times.", _src=('task_type',), dividend=derived(dividend, src=('dividend', 'a',)), divisor=derived(divisor, src=('divisor', 'b',)))
+            return fill("Start with {dividend}. Subtract {divisor} repeatedly until reaching 0: you subtract ___ times.", _src=('task_type',), dividend=S(dividend, "value:a", src=('dividend', 'a',)), divisor=S(divisor, "value:b", src=('divisor', 'b',)))
         if values.get("task_type") == "inverse_of_multiplication":
-            return fill("Since {divisor} × {quotient} = {dividend}, {dividend} ÷ {divisor} = ___", _src=('task_type',), divisor=derived(divisor, src=('divisor', 'b',)), quotient=derived(quotient, src=('quotient', 'result',)), dividend=derived(dividend, src=('dividend', 'a',)))
+            return fill("Since {divisor} × {quotient} = {dividend}, {dividend} ÷ {divisor} = ___", _src=('task_type',), divisor=derived(divisor, src=('divisor', 'b',)), quotient=derived(quotient, src=('quotient', 'result',)), dividend=S(dividend, "value:a", src=('dividend', 'a',)))
         if blank_target in ("result", "quotient"):
-            return fill("{dividend} ÷ {divisor} = ___", dividend=derived(dividend, src=('dividend', 'a',)), divisor=derived(divisor, src=('divisor', 'b',)))
+            return fill("{dividend} ÷ {divisor} = ___", dividend=S(dividend, "value:a", src=('dividend', 'a',)), divisor=S(divisor, "value:b", src=('divisor', 'b',)))
         elif blank_target in ("b", "divisor", "n"):
             return fill("{dividend} ÷ ___ = {quotient}", dividend=derived(dividend, src=('dividend', 'a',)), quotient=derived(quotient, src=('quotient', 'result',)))
         else:
-            return fill("___ ÷ {divisor} = {quotient}", divisor=derived(divisor, src=('divisor', 'b',)), quotient=derived(quotient, src=('quotient', 'result',)))
+            return fill("___ ÷ {divisor} = {quotient}", divisor=derived(divisor, src=('divisor', 'b',)), quotient=S(quotient, "value:result", src=('quotient', 'result',)))
     
     elif concept == "counting":
         seq = values.get("sequence") or []
@@ -221,11 +221,11 @@ def _build_equation_sentence(ctx: QuestionContext) -> str:
             c_val = values.get("c", 1)
             eq_sym = values.get("equivalent_symbol", "+")
             if eq_sym == "+":
-                return fill("{a_val} + {b_val} = {c_val} + ___", _src=('equivalent_symbol', 'operation',), a_val=S(a_val, "value:a"), b_val=S(b_val, "value:b"), c_val=derived(c_val, src=('c',)))
+                return fill("{a_val} + {b_val} = {c_val} + ___", _src=('equivalent_symbol', 'operation',), a_val=S(a_val, "value:a"), b_val=S(b_val, "value:b"), c_val=S(c_val, "value:c", src=('c',)))
             else:
                 return fill("{a_val} − {b_val} = {c_val} − ___", _src=('operation',), a_val=S(a_val, "value:a"), b_val=S(b_val, "value:b"), c_val=derived(c_val, src=('c',)))
         if blank_pos == "start":
-            return fill("___ {op_symbol} {b_val} = {res}", _src=('blank_position',), op_symbol=derived(op_symbol, src=('operation', 'equivalent_symbol',)), b_val=S(b_val, "value:b"), res=derived(res, src=('result', 'total',)))
+            return fill("___ {op_symbol} {b_val} = {res}", _src=('blank_position',), op_symbol=derived(op_symbol, src=('operation', 'equivalent_symbol',)), b_val=S(b_val, "value:b"), res=S(res, "value:result", src=('result', 'total',)))
         elif blank_pos == "change":
             return fill("{a_val} {op_symbol} ___ = {res}", _src=('blank_position',), a_val=S(a_val, "value:a"), op_symbol=derived(op_symbol, src=('operation', 'equivalent_symbol',)), res=derived(res, src=('result', 'total',)))
         else:

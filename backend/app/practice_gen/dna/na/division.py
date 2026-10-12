@@ -18,7 +18,7 @@ from __future__ import annotations
 import random
 from typing import Any, Dict, List, Optional, Set
 
-from backend.app.practice_gen.slots import E, R, S, computes, derived, fill
+from backend.app.practice_gen.slots import E, R, S, computes, derived, fill, transform
 from backend.app.practice_gen.dna.base import (
     DIFFICULTY_LEVEL_MAP,
     DNA,
@@ -233,7 +233,7 @@ def generate_params(
             "blank_target": "result",
             "context": "pure",
             "structure": "result_unknown",
-            "question": fill("Start at {a} on a number line and take equal jumps back of {b} to reach 0. How many jumps did you make? {a} ÷ {b} = ___", _src=('task_type',), a=derived(a), b=derived(b)),
+            "question": fill("Start at {a} on a number line and take equal jumps back of {b} to reach 0. How many jumps did you make? {a} ÷ {b} = ___", _src=('task_type',), a=S(a, "value:a"), b=S(b, "value:b")),
         }
 
     if task_type == "inverse_of_multiplication":
@@ -250,7 +250,7 @@ def generate_params(
             "blank_target": "result",
             "context": "pure",
             "structure": "result_unknown",
-            "question": fill("Since {b} × {q} = {a}, what is {a} ÷ {b}?", _src=('task_type',), b=derived(b), q=derived(q), a=derived(a)),
+            "question": fill("Since {b} × {q} = {a}, what is {a} ÷ {b}?", _src=('task_type',), b=S(b, "value:b"), q=S(q, "value:result"), a=S(a, "value:a")),
         }
 
     if task_type == "estimate":
@@ -468,7 +468,7 @@ def generate_params(
 
         if rem > 0 and blank_target == "result":
             q_val = a // b
-            res_str = fill("{q_val} R {rem}", _src=('blank_target',), q_val=derived(q_val), rem=derived(rem))
+            res_str = fill("{q_val} R {rem}", _src=('blank_target',), q_val=derived(q_val), rem=S(rem, "value:remainder"))
             alt_r = max(1, rem - 1) if rem > 1 else rem + 1
             if alt_r >= b:
                 alt_r = max(1, rem - 1)
@@ -480,7 +480,7 @@ def generate_params(
                 "distractors": [
                     fill("{q_val}", _src=('blank_target',), q_val=derived(q_val)),
                     fill("{q_val} R {alt_r}", _src=('blank_target',), q_val=derived(q_val), alt_r=derived(alt_r)),
-                    fill("{v} R {rem}", _src=('blank_target',), v=derived(q_val + 1), rem=derived(rem)),
+                    fill("{v} R {rem}", _src=('blank_target',), v=derived(q_val + 1), rem=S(rem, "value:remainder")),
                 ],
                 "blank_target": blank_target,
                 "context":     context,
@@ -575,7 +575,7 @@ def generate_params(
         # as taught at this grade counts subtractions down to exactly 0,
         # not to a leftover remainder.
         result_dict["question"] = (
-            fill("Start with {a}. How many times can you subtract {b} in a row before reaching 0?", _src=('task_type', 'structure', 'a', 'b',), a=derived(a), b=derived(b))
+            fill("Start with {a}. How many times can you subtract {b} in a row before reaching 0?", _src=('task_type', 'structure', 'a', 'b',), a=S(a, "value:a"), b=S(b, "value:b"))
         )
         # Must be present for the formatters' own task_type checks (fmt_
         # true_false.py etc.) to detect this case at all -- it was
@@ -641,7 +641,7 @@ def generate_hints(
     # named failure, never silently re-derived.
     if isinstance(result, str):
         q_int, r_int = divmod(a, b)
-        if result != fill("{q_int} R {r_int}", _src=('result',), q_int=derived(q_int), r_int=derived(r_int)) or remainder != r_int:
+        if result != f"{q_int} R {r_int}" or remainder != r_int:
             raise ValueError(
                 f"division.generate_hints: stored answer {result!r} (remainder "
                 f"{remainder!r}) disagrees with {a} ÷ {b} = {q_int} R {r_int}; "
@@ -653,32 +653,32 @@ def generate_hints(
 
     # Step 1: restate the problem
     hints.append(
-        fill("We need to divide {a} by {b}. {capitalize} is {a}; {divisor_label} is {b}.", a=S(a, "value:a"), b=S(b, "value:b"), capitalize=derived(dividend_label.capitalize()), divisor_label=S(divisor_label, "fill"))
+        fill("We need to divide {a} by {b}. {capitalize} is {a}; {divisor_label} is {b}.", a=S(a, "value:a"), b=S(b, "value:b"), capitalize=S(transform("capitalize", dividend_label), "fill"), divisor_label=S(divisor_label, "fill"))
     )
 
     # Step 2: think in terms of multiplication
     hints.append(
-        fill("Ask: how many times does {b} fit into {a}? {b} × {result} = {v}.", b=S(b, "value:b"), a=S(a, "value:a"), result=derived(result), v=derived(b * result, src=('b',)))
+        fill("Ask: how many times does {b} fit into {a}? {b} × {result} = {v}.", b=S(b, "value:b"), a=S(a, "value:a"), result=derived(result, src=("a", "b"), why="arithmetic"), v=derived(b * result, src=("a", "b"), why="arithmetic"))
     )
 
     # Step 3: remainder (if any)
     if remainder > 0:
         hints.append(
-            fill("{a} − {v} = {remainder}. {capitalize} is {remainder}.", _src=('remainder',), a=S(a, "value:a"), v=derived(b * result, src=('b',)), remainder=derived(remainder, src=('remainder', 'a', 'b',)), capitalize=derived(rem_label.capitalize()))
+            fill("{a} − {v} = {remainder}. {capitalize} is {remainder}.", _src=('remainder',), a=S(a, "value:a"), v=derived(b * result, src=("a", "b"), why="arithmetic"), remainder=S(remainder, "value:remainder", src=('remainder', 'a', 'b',)), capitalize=S(transform("capitalize", rem_label), "fill"))
         )
 
     # Step 4: final answer
     if remainder > 0:
         if "remainder" in cumulative_vocab:
             hints.append(
-                fill("{capitalize} is {result} remainder {remainder} (written as {result} R {remainder}).", _src=('remainder',), capitalize=derived(quotient_label.capitalize()), result=derived(result), remainder=derived(remainder, src=('remainder', 'a', 'b',)))
+                fill("{capitalize} is {result} remainder {remainder} (written as {result} R {remainder}).", _src=('remainder',), capitalize=S(transform("capitalize", quotient_label), "fill"), result=derived(result, src=("a", "b"), why="arithmetic"), remainder=S(remainder, "value:remainder", src=('remainder', 'a', 'b',)))
             )
         else:
             hints.append(
-                fill("{capitalize} is {result} with {remainder} left over.", _src=('remainder',), capitalize=derived(quotient_label.capitalize()), result=derived(result), remainder=derived(remainder, src=('remainder', 'a', 'b',)))
+                fill("{capitalize} is {result} with {remainder} left over.", _src=('remainder',), capitalize=S(transform("capitalize", quotient_label), "fill"), result=derived(result, src=("a", "b"), why="arithmetic"), remainder=S(remainder, "value:remainder", src=('remainder', 'a', 'b',)))
             )
     else:
-        hints.append(fill("{capitalize} of {a} ÷ {b} = {result}.", capitalize=derived(quotient_label.capitalize()), a=S(a, "value:a"), b=S(b, "value:b"), result=derived(result)))
+        hints.append(fill("{capitalize} of {a} ÷ {b} = {result}.", capitalize=S(transform("capitalize", quotient_label), "fill"), a=S(a, "value:a"), b=S(b, "value:b"), result=S(result, "value:result")))
 
     return hints
 

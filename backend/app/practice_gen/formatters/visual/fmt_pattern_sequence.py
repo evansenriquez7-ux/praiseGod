@@ -196,7 +196,7 @@ def _stem(seq_info: dict, missing_indices: List[int], interaction_mode: str, cum
     # read mode
     if len(missing_indices) == 1:
         pos_label = missing_indices[0] + 1  # 1-indexed for students
-        return fill("What is the missing {term_word} (position {pos_label}) in the pattern?", term_word=derived(term_word), pos_label=derived(pos_label))
+        return fill("What is the missing {term_word} (position {pos_label}) in the pattern?", term_word=derived(term_word), pos_label=S(pos_label, "value:position"))
     return fill("What are the missing {term_word}s in the pattern?", term_word=derived(term_word))
 
 
@@ -317,7 +317,7 @@ def format_pattern_sequence(
             correct_answer=final_answer,
             distractors=distractors_field(ctx),
             hints=ctx.hints,
-            format=fill("{interaction_mode}_{answer_collection}", _src=('missing_index',), interaction_mode=derived(interaction_mode), answer_collection=derived(answer_collection)),
+            format=f"{interaction_mode}_{answer_collection}",
             format_data=format_data,
             is_visual=True,
             visual_type="PatternSequence",
@@ -486,7 +486,7 @@ def format_pattern_sequence(
         correct_answer=final_answer,
         distractors=traps,
         hints=ctx.hints,
-        format=fill("{interaction_mode}_{answer_collection}", interaction_mode=derived(interaction_mode), answer_collection=derived(answer_collection)),
+        format=f"{interaction_mode}_{answer_collection}",
         format_data=format_data,
         is_visual=True,
         visual_type="PatternSequence",

@@ -117,7 +117,7 @@ def _build_traps(numer: int, denom: int) -> list:
 def _stem(ask_type: str, fraction_str: str, interaction_mode: str, operation: str = None) -> str:
     if interaction_mode == "set" or ask_type == "shade_this_fraction":
         if operation:
-            return fill("Shade the shape to show the result of {fraction_str}.", fraction_str=derived(fraction_str, src=("fraction_str", "numerator", "denominator", "operation")))
+            return fill("Shade the shape to show the result of {fraction_str}.", fraction_str=S(fraction_str, "fill", src=("fraction_str", "numerator", "denominator", "operation")))
         # An improper fraction (numerator > denominator, e.g.
         # mat_g3_na_q4_6's "equal to one and greater than one") can't be
         # shaded on a single shape -- "Shade 17/5 of the shape" has no
@@ -128,9 +128,9 @@ def _stem(ask_type: str, fraction_str: str, interaction_mode: str, operation: st
         if num_str.isdigit() and den_str.isdigit() and int(num_str) > int(den_str):
             num_wholes = -(-int(num_str) // int(den_str))  # ceiling division
             return (
-                fill("Shade {fraction_str} using {num_wholes} identical shapes, each divided into {den_str} equal parts.", fraction_str=derived(fraction_str, src=("fraction_str", "numerator", "denominator")), num_wholes=derived(num_wholes), den_str=derived(den_str))
+                fill("Shade {fraction_str} using {num_wholes} identical shapes, each divided into {den_str} equal parts.", fraction_str=S(fraction_str, "fill", src=("fraction_str", "numerator", "denominator")), num_wholes=derived(num_wholes), den_str=derived(den_str))
             )
-        return fill("Shade {fraction_str} of the shape.", fraction_str=derived(fraction_str, src=("fraction_str", "numerator", "denominator")))
+        return fill("Shade {fraction_str} of the shape.", fraction_str=S(fraction_str, "fill", src=("fraction_str", "numerator", "denominator")))
     if operation in ("add", "subtract", "add_subtract"):
         return fill("What is the result of the fraction operation shown?")
     if ask_type == "compare":
@@ -276,7 +276,7 @@ def format_fraction_shade(
         correct_answer=final_answer,
         distractors=traps,
         hints=ctx.hints,
-        format=fill("{interaction_mode}_{answer_collection}", interaction_mode=derived(interaction_mode), answer_collection=derived(answer_collection)),
+        format=f"{interaction_mode}_{answer_collection}",
         format_data=format_data,
         is_visual=True,
         visual_type="FractionShade",

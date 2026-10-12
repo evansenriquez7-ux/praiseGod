@@ -21,7 +21,7 @@ from backend.app.practice_gen.dna.base import (
     VocabGated,
     count_noun,
 )
-from backend.app.practice_gen.slots import S, derived, derives, fill
+from backend.app.practice_gen.slots import S, derived, derives, fill, transform
 
 
 # ─── param bounds ─────────────────────────────────────────────────────────────
@@ -556,7 +556,7 @@ def generate_params(
             "max_sum": max_result,
             "answer": holds,
             "distractors": [not holds],
-            "question": fill("Is {a_val} + {b_val} the same as {rhs}?", _src=('task_type',), a_val=derived(a_val), b_val=derived(b_val), rhs=S(rhs, "fill")),
+            "question": fill("Is {a_val} + {b_val} the same as {rhs}?", _src=('task_type',), a_val=S(a_val, "value:a"), b_val=S(b_val, "value:b"), rhs=S(rhs, "fill")),
         }
 
     if task_type == "associative" and grade >= 2:
@@ -569,7 +569,7 @@ def generate_params(
         holds = rng.random() < 0.5
         rhs_operands = [a_val, b_val, c_val if holds
                         else _different_addend(c_val, lo=0, hi=max(0, max_result - a_val - b_val))]
-        rhs = fill("{v} + ({v2} + {v3})", _src=('task_type',), v=S(rhs_operands[0], "value:a"), v2=derived(rhs_operands[1]), v3=derived(rhs_operands[2]))
+        rhs = fill("{v} + ({v2} + {v3})", _src=('task_type',), v=S(rhs_operands[0], "value:a"), v2=S(rhs_operands[1], "value:b"), v3=derived(rhs_operands[2]))
         return {
             "a": a_val, "b": b_val, "c": c_val,
             # See the commutative branch.
@@ -580,7 +580,7 @@ def generate_params(
             "max_sum": max_result,
             "answer": holds,
             "distractors": [not holds],
-            "question": fill("Is ({a_val} + {b_val}) + {c_val} the same as {rhs}?", _src=('task_type',), a_val=S(a_val, "value:a"), b_val=derived(b_val), c_val=derived(c_val), rhs=S(rhs, "fill")),
+            "question": fill("Is ({a_val} + {b_val}) + {c_val} the same as {rhs}?", _src=('task_type',), a_val=S(a_val, "value:a"), b_val=S(b_val, "value:b"), c_val=S(c_val, "value:c"), rhs=S(rhs, "fill")),
         }
 
     if task_type == "expanded_form":
@@ -672,7 +672,7 @@ def generate_params(
             "max_sum": max_result,
             "strategy": "expanded_form",
             "question": (
-                fill("{decompose_to_places} {decompose_to_places2} Add the place values, then find the total: what is {a_val} + {b_val}?", _src=('task_type',), decompose_to_places=S(decompose_to_places(a_val), "fill"), decompose_to_places2=S(decompose_to_places(b_val), "fill"), a_val=derived(a_val), b_val=derived(b_val))
+                fill("{decompose_to_places} {decompose_to_places2} Add the place values, then find the total: what is {a_val} + {b_val}?", _src=('task_type',), decompose_to_places=S(decompose_to_places(a_val), "fill"), decompose_to_places2=S(decompose_to_places(b_val), "fill"), a_val=S(a_val, "value:a"), b_val=S(b_val, "value:b"))
             ),
         }
 
@@ -752,7 +752,7 @@ def generate_params(
             "structure": "result_unknown",
             "max_sum": max_result,
             "strategy": "standard",
-            "question": fill("Start at {start}. Count up {count_by} more. What number do you land on?", _src=('task_type',), start=derived(start), count_by=derived(count_by)),
+            "question": fill("Start at {start}. Count up {count_by} more. What number do you land on?", _src=('task_type',), start=S(start, "value:a"), count_by=S(count_by, "value:b")),
         }
 
     if task_type == "putting_together":
@@ -1103,7 +1103,7 @@ def generate_hints(
     # up'"); past 20 the new ten is said in tens and ones.
     if makes_a_ten and not knows_regrouping and result <= 20:
         hints.append(fill("Start at {a} and count up {b}.", _src=('result',), a=S(a, "value:a"), b=S(b, "value:b")))
-        hints.append(fill("{capitalize} is {a} + {b} = {result}.", _src=('result',), capitalize=derived(sum_label.capitalize()), a=S(a, "value:a"), b=S(b, "value:b"), result=S(result, "value:result")))
+        hints.append(fill("{capitalize} is {a} + {b} = {result}.", _src=('result',), capitalize=S(transform("capitalize", sum_label), "fill"), a=S(a, "value:a"), b=S(b, "value:b"), result=S(result, "value:result")))
         return hints
 
     # Step 2: ones column (rightmost digit)
@@ -1152,7 +1152,7 @@ def generate_hints(
             )
 
     # Step 4: final answer
-    hints.append(fill("{capitalize} is {a} + {b} = {result}.", capitalize=derived(sum_label.capitalize()), a=S(a, "value:a"), b=S(b, "value:b"), result=S(result, "value:result")))
+    hints.append(fill("{capitalize} is {a} + {b} = {result}.", capitalize=S(transform("capitalize", sum_label), "fill"), a=S(a, "value:a"), b=S(b, "value:b"), result=S(result, "value:result")))
 
     return hints
 
@@ -1163,21 +1163,21 @@ def _property_hints(values: Dict[str, Any]) -> List[str]:
     rhs = values["rhs_operands"]
     if values["task_type"] == "commutative":
         a, b = values["a"], values["b"]
-        left_text, right_text = fill("{a} + {b}", _src=('task_type',), a=S(a, "value:a"), b=S(b, "value:b")), fill("{v} + {v2}", _src=('task_type',), v=derived(rhs[0], src=('rhs_operands',)), v2=derived(rhs[1], src=('rhs_operands',)))
+        left_text, right_text = fill("{a} + {b}", _src=('task_type',), a=S(a, "value:a"), b=S(b, "value:b")), fill("{v} + {v2}", _src=('task_type',), v=S(rhs[0], "value:b", src=('rhs_operands',)), v2=derived(rhs[1], src=('rhs_operands',)))
         left, right = a + b, rhs[0] + rhs[1]
         if holds:
             first = fill("Both sides add the same two numbers, {a} and {b}, in a different order.", _src=('answer', 'task_type',), a=S(a, "value:a"), b=S(b, "value:b"))
         else:
-            first = fill("The left side adds {a} and {b}. The right side adds {v} and {v2}.", _src=('task_type',), a=S(a, "value:a"), b=S(b, "value:b"), v=derived(rhs[0], src=('rhs_operands',)), v2=derived(rhs[1], src=('rhs_operands',)))
+            first = fill("The left side adds {a} and {b}. The right side adds {v} and {v2}.", _src=('task_type',), a=S(a, "value:a"), b=S(b, "value:b"), v=S(rhs[0], "value:b", src=('rhs_operands',)), v2=derived(rhs[1], src=('rhs_operands',)))
     else:
         a, b, c = values["a"], values["b"], values["c"]
         left_text = fill("({a} + {b}) + {c}", a=S(a, "value:a"), b=S(b, "value:b"), c=S(c, "value:c"))
-        right_text = fill("{v} + ({v2} + {v3})", v=S(rhs[0], "value:a"), v2=derived(rhs[1], src=('rhs_operands',)), v3=derived(rhs[2], src=('rhs_operands',)))
+        right_text = fill("{v} + ({v2} + {v3})", v=S(rhs[0], "value:a"), v2=S(rhs[1], "value:b", src=('rhs_operands',)), v3=derived(rhs[2], src=('rhs_operands',)))
         left, right = a + b + c, rhs[0] + rhs[1] + rhs[2]
         if holds:
             first = fill("Both sides add the same three numbers, {a}, {b} and {c}, grouped differently.", _src=('answer',), a=S(a, "value:a"), b=S(b, "value:b"), c=S(c, "value:c"))
         else:
-            first = (fill("The left side adds {a}, {b} and {c}. The right side adds {v}, {v2} and {v3}.", a=S(a, "value:a"), b=S(b, "value:b"), c=S(c, "value:c"), v=S(rhs[0], "value:a"), v2=derived(rhs[1], src=('rhs_operands',)), v3=derived(rhs[2], src=('rhs_operands',))))
+            first = (fill("The left side adds {a}, {b} and {c}. The right side adds {v}, {v2} and {v3}.", a=S(a, "value:a"), b=S(b, "value:b"), c=S(c, "value:c"), v=S(rhs[0], "value:a"), v2=S(rhs[1], "value:b", src=('rhs_operands',)), v3=derived(rhs[2], src=('rhs_operands',))))
     if (left == right) != bool(holds):
         raise ValueError(
             f"addition.generate_hints: {left_text} = {left} and {right_text} = {right}, "

@@ -4573,7 +4573,7 @@ MUTATIONS: List[Mutation] = [
         ),
         edits={
             "backend/app/practice_gen/dna/na/comparing_ordering.py": (
-                                                                         '            result_dict["question_statement"] = (\n                fill("{actor} has {a} {a_word}. {friend} has {b} {b_word}. Which statement is true?", _src=(\'task_type\', \'context\',), actor=derived(actor), a=derived(a), a_word=derived(a_word), friend=derived(friend), b=derived(b), b_word=derived(b_word))\n            )\n',
+                                                                         '            result_dict["question_statement"] = (\n                fill("{actor} has {a} {a_word}. {friend} has {b} {b_word}. Which statement is true?", _src=(\'task_type\', \'context\',), actor=S(actor, E(tuple(actors), "the word-problem actors")), a=S(a, "value:a"), a_word=S(a_word, E((singular, plural), "the drawn item pair")), friend=S(friend, E(tuple(friends), "the friends other than the actor")), b=S(b, "value:b"), b_word=S(b_word, E((singular, plural), "the drawn item pair")))\n            )\n',
                                                                          '            pass  # planted mutation: the statement wording removed\n',
                                                                      ),
         },

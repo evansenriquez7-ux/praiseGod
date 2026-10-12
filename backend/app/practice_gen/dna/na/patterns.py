@@ -319,9 +319,9 @@ def generate_params(
             first_term = valid_seq[0]
             question_templates = [
                 fill("You want to create {v} {pattern_label} where the rule is: {rule}. Which sequence correctly creates it?", v=derived('an' if pattern_label[0] in 'aeiou' else 'a'), pattern_label=derived(pattern_label), rule=S(rule, "fill")),
-                fill("Start at {first_term} and create {v} {pattern_label} with the rule: {rule}. Which pattern did you create?", first_term=derived(first_term), v=derived('an' if pattern_label[0] in 'aeiou' else 'a'), pattern_label=derived(pattern_label), rule=S(rule, "fill")),
-                fill("Which sequence correctly shows {v} {pattern_label} starting at {first_term} and following the rule: {rule}?", v=derived('an' if pattern_label[0] in 'aeiou' else 'a'), pattern_label=derived(pattern_label), first_term=derived(first_term), rule=S(rule, "fill")),
-                fill("Create a pattern that starts at {first_term} and uses the rule: {rule}. Which sequence shows this pattern?", first_term=derived(first_term), rule=S(rule, "fill")),
+                fill("Start at {first_term} and create {v} {pattern_label} with the rule: {rule}. Which pattern did you create?", first_term=S(first_term, "value:first_term"), v=derived('an' if pattern_label[0] in 'aeiou' else 'a'), pattern_label=derived(pattern_label), rule=S(rule, "fill")),
+                fill("Which sequence correctly shows {v} {pattern_label} starting at {first_term} and following the rule: {rule}?", v=derived('an' if pattern_label[0] in 'aeiou' else 'a'), pattern_label=derived(pattern_label), first_term=S(first_term, "value:first_term"), rule=S(rule, "fill")),
+                fill("Create a pattern that starts at {first_term} and uses the rule: {rule}. Which sequence shows this pattern?", first_term=S(first_term, "value:first_term"), rule=S(rule, "fill")),
             ]
             question = rng.choice(question_templates)
         return {
@@ -509,7 +509,7 @@ def generate_params(
         "first":             first_val,
         "position":          position,
         "pattern_kind":      pattern_type,
-        "given_values":      {fill("term_{i}", i=derived(i)): val for i, val in enumerate(visible)},
+        "given_values":      {f"term_{i}": val for i, val in enumerate(visible)},
     }
     if pattern_type == "repeating":
         # fmt_pattern_sequence.py's trap builder needs the repeating unit
@@ -622,9 +622,9 @@ def generate_hints(
         term_label = fill("letter")
 
     if m_idx == len(seq):
-        hints.append(fill("The next {term_label} is at position {v}.", _src=('sequence',), term_label=derived(term_label), v=derived(m_idx + 1)))
+        hints.append(fill("The next {term_label} is at position {v}.", _src=('sequence',), term_label=S(term_label, "fill"), v=derived(m_idx + 1)))
     elif m_idx >= 0:
-        hints.append(fill("The missing {term_label} is at position {v}.", term_label=S(term_label, "fill"), v=derived(m_idx + 1)))
+        hints.append(fill("The missing {term_label} is at position {v}.", term_label=S(term_label, "fill"), v=S(m_idx + 1, "value:position")))
     hints.append(fill("{rule}. The answer is {ans}.", rule=S(rule, "value:rule_description"), ans=S(ans, "value:answer")))
 
     return hints

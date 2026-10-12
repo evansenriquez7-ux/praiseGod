@@ -162,7 +162,7 @@ def _stem(bond: dict, interaction_mode: str, cumulative_vocab) -> str:
     keys = bond.get("_keys", {})
 
     def num(pos):
-        return S(bond[pos], fill("value:{v}", v=derived(keys[pos]))) if pos in keys else S(bond[pos], "num.derived")
+        return S(bond[pos], f"value:{keys[pos]}") if pos in keys else S(bond[pos], "num.derived")
 
     bp = bond["blank_position"]
     if interaction_mode == "set":
@@ -333,7 +333,7 @@ def format_number_bond(
         correct_answer=final_answer,
         distractors=traps,
         hints=ctx.hints,
-        format=fill("{interaction_mode}_{answer_collection}", interaction_mode=derived(interaction_mode), answer_collection=derived(answer_collection)),
+        format=f"{interaction_mode}_{answer_collection}",
         format_data=format_data,
         is_visual=True,
         visual_type="NumberBond",

@@ -17,7 +17,7 @@ from backend.app.practice_gen.dna.base import (
     VocabGated,
     count_noun,
 )
-from backend.app.practice_gen.slots import S, derived, fill
+from backend.app.practice_gen.slots import E, S, derived, fill
 
 
 # ─── constants ────────────────────────────────────────────────────────────────
@@ -221,7 +221,7 @@ def generate_params(
             "target_date": target_date,
             "answer": answer,
             "task_type": task_type,
-            "question": fill("Look at the {v} {year} calendar. What day of the week is {v} {target_date}?", _src=('task_type',), v=derived(MONTHS_OF_YEAR[month - 1]), year=S(year, "value:year"), target_date=derived(target_date)),
+            "question": fill("Look at the {v} {year} calendar. What day of the week is {v} {target_date}?", _src=('task_type',), v=S(MONTHS_OF_YEAR[month - 1], "enum:backend.app.practice_gen.dna.mg.calendar.MONTHS_OF_YEAR"), year=S(year, "value:year"), target_date=S(target_date, "value:target_date")),
         }
 
     if task_type == "read_month":
@@ -259,7 +259,7 @@ def generate_params(
             "answer": target_date,
             "task_type": task_type,
             "question": (
-                fill("In {v} {year}, the first day is {v2}. What date is the first {day_name} of the month?", _src=('task_type',), v=derived(MONTHS_OF_YEAR[month - 1]), year=S(year, "value:year"), v2=derived(DAYS_OF_WEEK[first_dow]), day_name=S(day_name, "value:day_name"))
+                fill("In {v} {year}, the first day is {v2}. What date is the first {day_name} of the month?", _src=('task_type',), v=S(MONTHS_OF_YEAR[month - 1], "enum:backend.app.practice_gen.dna.mg.calendar.MONTHS_OF_YEAR"), year=S(year, "value:year"), v2=S(DAYS_OF_WEEK[first_dow], "enum:backend.app.practice_gen.dna.mg.calendar.DAYS_OF_WEEK"), day_name=S(day_name, "value:day_name"))
             ),
         }
 
@@ -293,7 +293,7 @@ def generate_params(
             "answer": elapsed,
             "task_type": task_type,
             "question": (
-                fill("Look at the {v} {year} calendar. How many days are there from {v} {start_date} to {v} {end_date}, inclusive?", _src=('task_type',), v=derived(MONTHS_OF_YEAR[month - 1]), year=S(year, "value:year"), start_date=derived(start_date), end_date=derived(end_date))
+                fill("Look at the {v} {year} calendar. How many days are there from {v} {start_date} to {v} {end_date}, inclusive?", _src=('task_type',), v=S(MONTHS_OF_YEAR[month - 1], "enum:backend.app.practice_gen.dna.mg.calendar.MONTHS_OF_YEAR"), year=S(year, "value:year"), start_date=S(start_date, "value:target_date"), end_date=S(end_date, "value:end_date"))
             ),
             "visual_params": {
                 "month": month,
@@ -323,10 +323,10 @@ def generate_params(
         forward = rng.random() < 0.5
         if forward:
             answer = names[(idx + 1) % len(names)]
-            question = fill("What {unit_label} comes right after {v}?", _src=('task_type',), unit_label=derived(unit_label, src=("unit",)), v=S(names[idx], "value:reference_name"))
+            question = fill("What {unit_label} comes right after {v}?", _src=('task_type',), unit_label=S(unit_label, E(("day of the week", "month of the year"), "the two sequence units"), src=("unit",)), v=S(names[idx], "value:reference_name"))
         else:
             answer = names[(idx - 1) % len(names)]
-            question = fill("What {unit_label} comes right before {v}?", _src=('task_type',), unit_label=derived(unit_label, src=("unit",)), v=S(names[idx], "value:reference_name"))
+            question = fill("What {unit_label} comes right before {v}?", _src=('task_type',), unit_label=S(unit_label, E(("day of the week", "month of the year"), "the two sequence units"), src=("unit",)), v=S(names[idx], "value:reference_name"))
         return {
             "blank_target": "answer",
             "month": month,
@@ -365,7 +365,7 @@ def generate_params(
         "answer": weeks,
         "task_type": task_type,
         "question": (
-            fill("Look at the {v} {year} calendar. How many weeks are there from {v} {start_date} to {v} {end_date}, inclusive?", _src=('task_type',), v=derived(MONTHS_OF_YEAR[month - 1]), year=S(year, "value:year"), start_date=derived(start_date), end_date=derived(end_date))
+            fill("Look at the {v} {year} calendar. How many weeks are there from {v} {start_date} to {v} {end_date}, inclusive?", _src=('task_type',), v=S(MONTHS_OF_YEAR[month - 1], "enum:backend.app.practice_gen.dna.mg.calendar.MONTHS_OF_YEAR"), year=S(year, "value:year"), start_date=S(start_date, "value:target_date"), end_date=S(end_date, "value:end_date"))
         ),
         "visual_params": {
             "month": month,
@@ -404,7 +404,7 @@ def generate_hints(
     if task_type == "read_month":
         return [
             fill("The {months_label} go from January (1st) to December (12th).", _src=('task_type',), months_label=S(months_label, "fill")),
-            fill("Count to the {month}th month.", _src=('task_type',), month=derived(values.get('month', '?'), src=('month',))),
+            fill("Count to the {month}th month.", _src=('task_type',), month=S(values.get('month', '?'), "value:month", src=('month',))),
             fill("Answer: {answer}", _src=('task_type',), answer=S(values.get('answer', '?'), "value:answer")),
         ]
     if task_type in ("elapsed_days", "elapsed_weeks"):

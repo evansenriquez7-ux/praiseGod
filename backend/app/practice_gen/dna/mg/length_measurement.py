@@ -19,7 +19,7 @@ from backend.app.practice_gen.dna.base import (
     linear_interpolate,
     log_interpolate,
 )
-from backend.app.practice_gen.slots import S, derived, fill
+from backend.app.practice_gen.slots import E, S, derived, fill
 
 
 # ─── param bounds ─────────────────────────────────────────────────────────────
@@ -280,7 +280,7 @@ def generate_params(
                 "comparison": comp_word,
                 "answer": answer,
                 "distractors": dists,
-                "question": fill("Which is {comp_word}: {val_a} {unit_a} or {val_b} {unit_b}?", _src=('task_type',), comp_word=S(comp_word, "value:comparison"), val_a=derived(val_a), unit_a=S(unit_a, "value:unit"), val_b=derived(val_b), unit_b=S(unit_b, "value:unit")),
+                "question": fill("Which is {comp_word}: {val_a} {unit_a} or {val_b} {unit_b}?", _src=('task_type',), comp_word=S(comp_word, "value:comparison"), val_a=S(val_a, "value:value_a"), unit_a=S(unit_a, "value:unit"), val_b=S(val_b, "value:value_b"), unit_b=S(unit_b, "value:unit")),
             }
         else:
             unit = unit_mode
@@ -314,7 +314,7 @@ def generate_params(
                 "answer": ans_val,
                 "distractors": dists,
                 "question": (
-                    fill("{upper}{v} is {val_a} {unit} long. {upper2}{v2} is {val_b} {unit} long. Which length is {comp_word} in {unit}?", _src=('task_type',), upper=derived(obj_a[0].upper()), v=derived(obj_a[1:]), val_a=derived(val_a), unit=derived(unit), upper2=derived(obj_b[0].upper()), v2=derived(obj_b[1:]), val_b=derived(val_b), comp_word=S(comp_word, "value:comparison"))
+                    fill("{upper}{v} is {val_a} {unit} long. {upper2}{v2} is {val_b} {unit} long. Which length is {comp_word} in {unit}?", _src=('task_type',), upper=derived(obj_a[0].upper()), v=derived(obj_a[1:]), val_a=S(val_a, "value:value_a"), unit=derived(unit), upper2=derived(obj_b[0].upper()), v2=derived(obj_b[1:]), val_b=S(val_b, "value:value_b"), comp_word=S(comp_word, "value:comparison"))
                 ),
             }
 
@@ -347,7 +347,7 @@ def generate_params(
                 "answer": answer,
                 "distractors": dists,
                 "question": (
-                    fill("The distance from the bench to the tree is {val_a} {unit_a}. The distance from the gate to the tree is {val_b} {unit_b}. Which distance is {comp_word}?", _src=('task_type',), val_a=derived(val_a), unit_a=S(unit_a, "value:unit"), val_b=derived(val_b), unit_b=S(unit_b, "value:unit"), comp_word=S(comp_word, "value:comparison"))
+                    fill("The distance from the bench to the tree is {val_a} {unit_a}. The distance from the gate to the tree is {val_b} {unit_b}. Which distance is {comp_word}?", _src=('task_type',), val_a=S(val_a, "value:value_a"), unit_a=S(unit_a, "value:unit"), val_b=S(val_b, "value:value_b"), unit_b=S(unit_b, "value:unit"), comp_word=S(comp_word, "value:comparison"))
                 ),
             }
         else:
@@ -376,7 +376,7 @@ def generate_params(
                 "answer": ans_val,
                 "distractors": dists,
                 "question": (
-                    fill("The distance from the bench to the tree is {val_a} m. The distance from the gate to the tree is {val_b} m. Which distance is {comp_word} in meters?", _src=('task_type',), val_a=derived(val_a), val_b=derived(val_b), comp_word=S(comp_word, "value:comparison"))
+                    fill("The distance from the bench to the tree is {val_a} m. The distance from the gate to the tree is {val_b} m. Which distance is {comp_word} in meters?", _src=('task_type',), val_a=S(val_a, "value:value_a"), val_b=S(val_b, "value:value_b"), comp_word=S(comp_word, "value:comparison"))
                 ),
             }
 
@@ -422,7 +422,7 @@ def generate_params(
                 "task_type": "choose_unit",
                 "answer": "m",
                 "distractors": ["cm", "either works", "neither works"],
-                "question": fill("The distance between {pair} is about {dist_val} ___. Which unit makes the measurement reasonable: cm or m?", _src=('task_type',), pair=S(pair, "value:item"), dist_val=derived(dist_val)),
+                "question": fill("The distance between {pair} is about {dist_val} ___. Which unit makes the measurement reasonable: cm or m?", _src=('task_type',), pair=S(pair, "value:item"), dist_val=S(dist_val, E(tuple(d for _p, d in distance_pairs), "the distance_pairs bank"))),
             }
         elif mode == "reasonableness_item":
             use_cm = rng.random() < 0.5
@@ -436,7 +436,7 @@ def generate_params(
                 "task_type": "choose_unit",
                 "answer": ans_u,
                 "distractors": [wrong_u, "either works", "neither works"],
-                "question": fill("{capitalize} has a length of about {item_len} ___. Which unit is correct: cm or m?", _src=('task_type',), capitalize=derived(item.capitalize()), item_len=derived(item_len)),
+                "question": fill("{capitalize} has a length of about {item_len} ___. Which unit is correct: cm or m?", _src=('task_type',), capitalize=S(item.capitalize(), E(tuple(i.capitalize() for i, _n in (cm_scale_items if use_cm else m_scale_items)), "the chosen scale-item bank, capitalized")), item_len=S(item_len, E(tuple(n for _i, n in (cm_scale_items if use_cm else m_scale_items)), "the chosen scale-item bank"))),
             }
         else: # item_unit
             use_cm = rng.random() < 0.5
@@ -507,7 +507,7 @@ def generate_params(
                 "round_to": round_unit,
                 "answer": rounded,
                 "distractors": dists,
-                "question": fill("The distance from {pair} is {length} m. About how many meters is that, rounded to the nearest {round_unit} m?", _src=('task_type',), pair=derived(pair), length=derived(length), round_unit=derived(round_unit)),
+                "question": fill("The distance from {pair} is {length} m. About how many meters is that, rounded to the nearest {round_unit} m?", _src=('task_type',), pair=derived(pair), length=S(length, "value:length"), round_unit=derived(round_unit)),
             }
         else:
             use_cm = (requested_unit_type == "cm") or (requested_unit_type is None and rng.random() < 0.6)
@@ -566,7 +566,7 @@ def generate_params(
                     "round_to": round_unit,
                     "answer": rounded,
                     "distractors": dists,
-                    "question": fill("{upper}{v} measures {length} m. About how many meters is that, rounded to the nearest {round_unit} m?", _src=('task_type',), upper=derived(obj[0].upper()), v=derived(obj[1:]), length=derived(length), round_unit=derived(round_unit)),
+                    "question": fill("{upper}{v} measures {length} m. About how many meters is that, rounded to the nearest {round_unit} m?", _src=('task_type',), upper=derived(obj[0].upper()), v=derived(obj[1:]), length=S(length, "value:length"), round_unit=derived(round_unit)),
                 }
 
     if task_type == "distance_between":
@@ -574,7 +574,8 @@ def generate_params(
         unit = rng.choice(["steps", "blocks", "hands", "paperclips"])
         max_u = {"steps": 8, "hands": 8, "blocks": 10, "paperclips": 12, "crayons": 6}.get(unit, 8)
         length = rng.randint(2, max_u)
-        obj_a, obj_b = rng.sample(["a ball", "a box", "a chair", "a bag", "a desk", "a shelf"], 2)
+        objs = ["a ball", "a box", "a chair", "a bag", "a desk", "a shelf"]
+        obj_a, obj_b = rng.sample(objs, 2)
         unit_word = unit[:-1] if length == 1 and unit.endswith("s") else unit
         dists = [d for d in [length + 1, max(1, length - 1), length + 2, length + 3] if d != length][:3]
         return {
@@ -586,7 +587,7 @@ def generate_params(
             "answer": length,
             "distractors": dists,
             "question": (
-                fill("{upper}{v} and {obj_b} are placed apart. The distance between them is ___ {unit_word}.", _src=('task_type',), upper=derived(obj_a[0].upper()), v=derived(obj_a[1:]), obj_b=derived(obj_b), unit_word=S(unit_word, "value:unit"))
+                fill("{obj_a} and {obj_b} are placed apart. The distance between them is ___ {unit_word}.", _src=('task_type',), obj_a=S(obj_a[0].upper() + obj_a[1:], E(tuple(o[0].upper() + o[1:] for o in objs), "the six objects, sentence-initial")), obj_b=S(obj_b, E(tuple(objs), "the six objects")), unit_word=S(unit_word, "value:unit"))
             ),
         }
 
@@ -727,7 +728,7 @@ def generate_params(
                 "answer": answer,
                 "distractors": dists,
                 "question": (
-                    fill("Segment A is {len_a} cm long. If you use a ruler to draw Segment B equal in length starting at the {start_b} cm mark, at which centimeter mark on the ruler must Segment B end?", _src=('task_type',), len_a=derived(len_a), start_b=derived(start_b))
+                    fill("Segment A is {len_a} cm long. If you use a ruler to draw Segment B equal in length starting at the {start_b} cm mark, at which centimeter mark on the ruler must Segment B end?", _src=('task_type',), len_a=S(len_a, "value:length"), start_b=derived(start_b))
                 ),
             }
 
@@ -749,7 +750,7 @@ def generate_params(
             "answer": answer,
             "distractors": distractors,
             "question": (
-                fill("Segment A measures {len_a} cm on a ruler. Which of the following describes a line segment that is equal in length to Segment A?", _src=('task_type',), len_a=derived(len_a))
+                fill("Segment A measures {len_a} cm on a ruler. Which of the following describes a line segment that is equal in length to Segment A?", _src=('task_type',), len_a=S(len_a, "value:length"))
             ),
         }
 
@@ -854,7 +855,7 @@ def generate_params(
                     ans = val_a + val_b
                     word_operands, word_operation = (val_a, val_b), "add"
                     q = (
-                        fill("{upper}{v} is {val_a} {unit_mode} long. {upper2}{v2} is {val_b} {unit_mode} long. If they are placed end to end, what is their combined length in {unit_mode}?", _src=('task_type', 'word_measure',), upper=derived(obj_a[0].upper()), v=derived(obj_a[1:]), val_a=derived(val_a), unit_mode=derived(unit_mode), upper2=derived(obj_b[0].upper()), v2=derived(obj_b[1:]), val_b=derived(val_b))
+                        fill("{upper}{v} is {val_a} {unit_mode} long. {upper2}{v2} is {val_b} {unit_mode} long. If they are placed end to end, what is their combined length in {unit_mode}?", _src=('task_type', 'word_measure',), upper=derived(obj_a[0].upper()), v=derived(obj_a[1:]), val_a=S(val_a, "value:length"), unit_mode=derived(unit_mode), upper2=derived(obj_b[0].upper()), v2=derived(obj_b[1:]), val_b=S(val_b, "value:length_b"))
                     )
                 else:
                     longer_obj, longer_val, shorter_obj, shorter_val = (

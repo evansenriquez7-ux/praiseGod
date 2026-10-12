@@ -18,7 +18,7 @@ from backend.app.practice_gen.dna.base import (
     linear_interpolate,
     log_interpolate,
 )
-from backend.app.practice_gen.slots import S, derived, fill
+from backend.app.practice_gen.slots import E, S, derived, fill
 
 
 # ─── param bounds ─────────────────────────────────────────────────────────────
@@ -222,7 +222,7 @@ def generate_params(
     # capacity nodes rendered identical readings that differed only in the unit
     # label -- blind review found mat_g3_mg_q2_0 and mat_g3_mg_q2_3 identical
     # on all nine shared seeds.
-    rng = random.Random(fill("{seed}:{mtype}", seed=derived(seed), mtype=S(mtype, "value:measurement_type")))
+    rng = random.Random(f"{seed}:{mtype}")
 
     units = _UNITS_FOR[mtype]
     base_unit = units[0]
@@ -291,7 +291,7 @@ def generate_params(
             "value_b": val_b,
             "unit": unit,
             "answer": winner,
-            "answer_label": fill("{winner} {unit}", _src=('task_type',), winner=derived(winner), unit=S(unit, "value:unit")),
+            "answer_label": fill("{winner} {unit}", _src=('task_type',), winner=S(winner, "value:answer"), unit=S(unit, "value:unit")),
         }
 
     if task_type == "estimate":
@@ -395,7 +395,7 @@ def generate_hints(
         more = "is heavier" if mtype == "mass" else "holds more"
         return [
             fill("Compare the two measurements: {a} {unit} and {b} {unit}.", _src=('task_type',), a=S(a, "value:value_a"), unit=S(unit, "value:unit"), b=S(b, "value:value_b")),
-            fill("The larger number {more}: {answer} {unit}.", _src=('task_type',), more=derived(more, src=('measurement_type',)), answer=S(values['answer'], "value:answer"), unit=S(unit, "value:unit")),
+            fill("The larger number {more}: {answer} {unit}.", _src=('task_type',), more=S(more, E(("is heavier", "holds more"), "the mass and capacity comparatives"), src=('measurement_type',)), answer=S(values['answer'], "value:answer"), unit=S(unit, "value:unit")),
         ]
 
     if task_type == "estimate":
@@ -413,7 +413,7 @@ def generate_hints(
                 f"lies between {low} and {high}, not at {answer!r}"
             )
         closer = (
-            fill("{value} is exactly halfway, so it rounds up to {high}.", _src=('task_type',), value=S(value, "value:value"), high=derived(high))
+            fill("{value} is exactly halfway, so it rounds up to {high}.", _src=('task_type',), value=S(value, "value:value"), high=S(high, "value:answer"))
             if value - low == high - value
             else fill("{value} is closer to {answer}.", _src=('task_type',), value=S(value, "value:value"), answer=S(answer, "value:answer"))
         )

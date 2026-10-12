@@ -101,6 +101,12 @@ def _build_pure_equation(ctx: QuestionContext) -> str:
     def slot_s(*keys, value):
         if blank_target in keys:
             return S("___", E(("___",), "the blank for the unknown blank_target"))
+        # Batch H4-0 (ruling 42): the value repeats the first of `keys` the generator's
+        # values carry (each call site reads them in that chain), so its domain is that
+        # value -- checked against `values`, so a read that took another key escapes loudly.
+        present = [k for k in keys if k in values]
+        if present:
+            return S(value, f"value:{present[0]}", src=tuple(keys))
         return derived(value, src=tuple(keys))
 
     # For task_type=="estimate" (addition/subtraction/multiplication/
@@ -143,7 +149,7 @@ def _build_pure_equation(ctx: QuestionContext) -> str:
         def sv(key, value):
             if blank_target == key:
                 return S("___", E(("___",), "the blank for the unknown blank_target"))
-            return S(value, fill("value:{key}", key=derived(key)))
+            return S(value, f"value:{key}")
 
         if is_estimate:
             real_a, real_b = values.get("real_a", a), values.get("real_b", b)
@@ -185,7 +191,7 @@ def _build_pure_equation(ctx: QuestionContext) -> str:
         r = values.get("result", values.get("total"))
         if is_estimate:
             real_a, real_b = values.get("real_a", a), values.get("real_b", b)
-            return fill("{real_a} × {real_b} ≈ {slot}", real_a=S(real_a, "value:real_a"), real_b=derived(real_b), slot=slot_s('result', 'total', value=r))
+            return fill("{real_a} × {real_b} ≈ {slot}", real_a=S(real_a, "value:real_a"), real_b=S(real_b, "value:real_b"), slot=slot_s('result', 'total', value=r))
         if values.get("task_type") == "equal_groups" and blank_target in ("result", "total"):
             group_form = values.get("group_form")
             plural_name = values.get("plural_name")
@@ -227,13 +233,13 @@ def _build_pure_equation(ctx: QuestionContext) -> str:
         if is_estimate:
             real_a = values.get("real_a", dividend)
             real_b = values.get("real_b", divisor)
-            return fill("{real_a} ÷ {real_b} ≈ {slot}", real_a=S(real_a, "value:real_a"), real_b=derived(real_b, src=('real_b', 'divisor', 'b',)), slot=slot_s('result', 'quotient', value=quotient))
+            return fill("{real_a} ÷ {real_b} ≈ {slot}", real_a=S(real_a, "value:real_a"), real_b=S(real_b, "value:real_b", src=('real_b', 'divisor', 'b',)), slot=slot_s('result', 'quotient', value=quotient))
         if values.get("task_type") == "even_odd":
             return fill("Divide {dividend} by 2. {dividend} is an {slot} number.", _src=('task_type',), dividend=derived(dividend, src=('dividend', 'a',)), slot=slot_s('answer', value=values.get('answer')))
         if values.get("task_type") == "number_line_jumps":
-            return fill("Starting at {dividend} on a number line, taking equal jumps back of {divisor} takes {slot} jumps to reach 0", _src=('task_type',), dividend=derived(dividend, src=('dividend', 'a',)), divisor=derived(divisor, src=('divisor', 'b',)), slot=slot_s('result', 'quotient', value=quotient))
+            return fill("Starting at {dividend} on a number line, taking equal jumps back of {divisor} takes {slot} jumps to reach 0", _src=('task_type',), dividend=S(dividend, "value:a", src=('dividend', 'a',)), divisor=S(divisor, "value:b", src=('divisor', 'b',)), slot=slot_s('result', 'quotient', value=quotient))
         if values.get("task_type") == "repeated_subtraction":
-            return fill("Starting from {dividend} and subtracting {divisor} repeatedly, you subtract {slot} times before reaching 0", _src=('task_type',), dividend=derived(dividend, src=('dividend', 'a',)), divisor=derived(divisor, src=('divisor', 'b',)), slot=slot_s('result', 'quotient', value=quotient))
+            return fill("Starting from {dividend} and subtracting {divisor} repeatedly, you subtract {slot} times before reaching 0", _src=('task_type',), dividend=S(dividend, "value:a", src=('dividend', 'a',)), divisor=S(divisor, "value:b", src=('divisor', 'b',)), slot=slot_s('result', 'quotient', value=quotient))
         if values.get("task_type") == "inverse_of_multiplication":
             return fill("Since {divisor} × {quotient} = {dividend}, then {dividend} ÷ {divisor} = {slot}", _src=('task_type',), divisor=derived(divisor, src=('divisor', 'b',)), quotient=derived(quotient, src=('quotient', 'result',)), dividend=derived(dividend, src=('dividend', 'a',)), slot=slot_s('result', 'quotient', value=quotient))
         return (

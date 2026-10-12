@@ -676,11 +676,11 @@ def generate_hints(
 
     return [
         fill("When {verb} {frac_lbl}s with the same {den_lbl}, keep the {den_lbl} the same.", verb=derived(verb), frac_lbl=S(frac_lbl, "fill"), den_lbl=S(den_lbl, "fill")),
-        fill("{replace} only the {num_lbl}s: {a_num} {sign} {b_num} = {step}.", replace=derived(verb.capitalize().replace('ing', '')), num_lbl=S(num_lbl, "fill"), a_num=derived(a_num, src=('a_num', 'numerator',)), sign=derived(sign), b_num=derived(b_num, src=('b_num',)), step=derived(step)),
+        fill("{replace} only the {num_lbl}s: {a_num} {sign} {b_num} = {step}.", replace=derived(verb.capitalize().replace('ing', '')), num_lbl=S(num_lbl, "fill"), a_num=S(a_num, "value:numerator", src=('a_num', 'numerator',)), sign=derived(sign), b_num=derived(b_num, src=('b_num',)), step=derived(step)),
         # "Put", not "Write": the same chain serves shade-the-shape items, where the
         # pupil shades rather than writes (hint contract, `response`, 2026-09-25).
         fill("Put the result over the same {den_lbl}: {step}/{den}.", den_lbl=S(den_lbl, "fill"), step=derived(step), den=S(den, "value:denominator")),
-        fill("The answer is {r_num}/{r_den}.", r_num=derived(r_num, src=('result_num', 'a_num', 'numerator', 'b_num',)), r_den=derived(r_den, src=('result_den', 'denominator',))),
+        fill("The answer is {r_num}/{r_den}.", r_num=derived(r_num, src=('result_num', 'a_num', 'numerator', 'b_num',)), r_den=S(r_den, "value:denominator", src=('result_den', 'denominator',))),
     ]
 
 

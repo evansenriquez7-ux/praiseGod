@@ -24,7 +24,7 @@ from backend.app.practice_gen.dna.base import (
     count_noun,
     number_group_name,
 )
-from backend.app.practice_gen.slots import S, derived, derives, fill
+from backend.app.practice_gen.slots import S, derived, derives, fill, transform
 
 
 # ─── param bounds ─────────────────────────────────────────────────────────────
@@ -523,7 +523,7 @@ def generate_params(
             items = ["biscuits", "crayons", "stickers", "envelopes", "ribbons"]
             item = rng.choice(items)
             question = (
-                fill("{actor} bought {g_val} boxes of {item}. Each box contains {n_val} packs, and each pack costs ₱{b_val}. How much did {actor} spend in all?", _src=('task_type',), actor=derived(actor), g_val=derived(g_val), item=derived(item), n_val=derived(n_val), b_val=derived(b_val))
+                fill("{actor} bought {g_val} boxes of {item}. Each box contains {n_val} packs, and each pack costs ₱{b_val}. How much did {actor} spend in all?", _src=('task_type',), actor=derived(actor), g_val=derived(g_val), item=derived(item), n_val=S(n_val, "value:n_val"), b_val=derived(b_val))
             )
         elif step_case == "objects_shelves":
             items = ["books", "jars", "cans", "bottles", "toy cars", "figurines"]
@@ -843,7 +843,7 @@ def generate_hints(
     if values.get("task_type") == "two_step":
         g = values.get("g", 2)
         n = values.get("n_val", a // g if g else 2)
-        hints.append(fill("Step 1: First find the total items in the groups: {g} × {n} = {a}.", _src=('task_type',), g=derived(g, src=('g',)), n=derived(n, src=('n_val', 'g', 'a',)), a=S(a, "value:a")))
+        hints.append(fill("Step 1: First find the total items in the groups: {g} × {n} = {a}.", _src=('task_type',), g=S(g, "value:g", src=('g',)), n=S(n, "value:n_val", src=('n_val', 'g', 'a',)), a=S(a, "value:a")))
         hints.append(fill("Step 2: Multiply the total items by {b}: {a} × {b} = {result}.", _src=('task_type',), b=S(b, "value:b"), a=S(a, "value:a"), result=S(result, "value:result")))
         return hints
 
@@ -884,7 +884,7 @@ def generate_hints(
         )
 
     # Step 4: final answer
-    hints.append(fill("{capitalize} of {a} × {b} = {result}.", capitalize=derived(product_label.capitalize()), a=S(a, "value:a"), b=S(b, "value:b"), result=S(result, "value:result")))
+    hints.append(fill("{capitalize} of {a} × {b} = {result}.", capitalize=S(transform("capitalize", product_label), "fill"), a=S(a, "value:a"), b=S(b, "value:b"), result=S(result, "value:result")))
 
     return hints
 
@@ -906,7 +906,7 @@ def _property_hints(values: Dict[str, Any]) -> List[str]:
         x, y, z = values["rhs_factors"]
         left, right = a * b * c, x * y * z
         steps = [
-            fill("Left side: first {a} × {b} = {v}, then {v} × {c} = {left}.", _src=('task_type',), a=S(a, "value:a"), b=S(b, "value:b"), v=derived(a * b), c=S(c, "value:c"), left=derived(left)),
+            fill("Left side: first {a} × {b} = {v}, then {v} × {c} = {left}.", _src=('task_type',), a=S(a, "value:a"), b=S(b, "value:b"), v=S(a * b, "value:total"), c=S(c, "value:c"), left=derived(left)),
             fill("Right side: first {y} × {z} = {v}, then {x} × {v} = {right}.", _src=('task_type',), y=derived(y), z=derived(z), v=derived(y * z), x=derived(x), right=derived(right)),
         ]
     else:

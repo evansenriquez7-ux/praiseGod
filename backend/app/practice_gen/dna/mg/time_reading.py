@@ -141,7 +141,7 @@ def generate_params(
                     ] if d != duration_hours and d > 0
                 })
             elif ask == "end_time":
-                question = fill("The {activity} started at {start_str} and lasted for {duration_hours} hours. What time did it end?", _src=('elapsed_unit',), activity=derived(activity), start_str=S(start_str, "fill"), duration_hours=derived(duration_hours))
+                question = fill("The {activity} started at {start_str} and lasted for {duration_hours} hours. What time did it end?", _src=('elapsed_unit',), activity=derived(activity), start_str=S(start_str, "fill"), duration_hours=S(duration_hours, "value:duration_hours"))
                 answer = end_str
                 off_hour1 = 12 if end_hour == 11 else (end_hour % 12) + 1
                 off_hour2 = 12 if end_hour == 1 else end_hour - 1
@@ -153,7 +153,7 @@ def generate_params(
                     } if s != end_str
                 )
             else:
-                question = fill("The {activity} ended at {end_str} after running for {duration_hours} hours. What time did it start?", _src=('elapsed_unit',), activity=derived(activity), end_str=derived(end_str), duration_hours=derived(duration_hours))
+                question = fill("The {activity} ended at {end_str} after running for {duration_hours} hours. What time did it start?", _src=('elapsed_unit',), activity=derived(activity), end_str=S(end_str, "fill"), duration_hours=derived(duration_hours))
                 answer = start_str
                 off_start1 = 12 if start_hour == 1 else start_hour - 1
                 off_start2 = (start_hour % 12) + 1
@@ -373,7 +373,7 @@ def generate_params(
                 })
             else:
                 question = (
-                    fill("{capitalize} started at {start_str} and lasted {duration_minutes} minutes. What time did it end?", _src=('elapsed_unit',), capitalize=derived(activity.capitalize()), start_str=S(start_str, "fill"), duration_minutes=derived(duration_minutes))
+                    fill("{capitalize} started at {start_str} and lasted {duration_minutes} minutes. What time did it end?", _src=('elapsed_unit',), capitalize=derived(activity.capitalize()), start_str=S(start_str, "fill"), duration_minutes=S(duration_minutes, "value:duration_minutes"))
                 )
                 answer = end_str
                 off_hour = 12 if end_hour == 11 else (end_hour % 12) + 1
@@ -560,10 +560,10 @@ def generate_params(
                     "task_type": "clock_reading",
                     "hour": start_h,
                     "minute": 30,
-                    "time_str": fill("{start_h}:30", start_h=derived(start_h)),
+                    "time_str": fill("{start_h}:30", start_h=S(start_h, "value:hour")),
                     "answer": ans_num,
                     "distractors": [15, 45, 60],
-                    "question": fill("The {activity} began at {start_h}:00 and finished at {start_h}:30. How many minutes did it last?", activity=derived(activity), start_h=derived(start_h)),
+                    "question": fill("The {activity} began at {start_h}:00 and finished at {start_h}:30. How many minutes did it last?", activity=derived(activity), start_h=S(start_h, "value:hour")),
                 }
         else:
             activity = rng.choice([
@@ -649,8 +649,8 @@ def _elapsed_hints(values: Dict[str, Any]) -> List[str]:
                 _say(fill("{n} {count_noun} after {start} is {end}", _src=('elapsed_ask', 'elapsed_unit',), n=S(n, "value:duration_hours"), count_noun=S(count_noun(n, 'hours'), "value:elapsed_unit"), start=S(start, "fill"), end=S(end, "fill"))),
             ]
         return [
-            fill("Start at {end} and count back {n} {count_noun}, one hour at a time.", _src=('elapsed_unit',), end=derived(end), n=S(n, "value:duration_hours"), count_noun=derived(count_noun(n, 'hours'), src=('duration_hours',))),
-            _say(fill("{n} {count_noun} before {end} is {start}", _src=('elapsed_unit',), n=S(n, "value:duration_hours"), count_noun=derived(count_noun(n, 'hours'), src=('duration_hours',)), end=derived(end), start=derived(start))),
+            fill("Start at {end} and count back {n} {count_noun}, one hour at a time.", _src=('elapsed_unit',), end=S(end, "fill"), n=S(n, "value:duration_hours"), count_noun=derived(count_noun(n, 'hours'), src=('duration_hours',))),
+            _say(fill("{n} {count_noun} before {end} is {start}", _src=('elapsed_unit',), n=S(n, "value:duration_hours"), count_noun=derived(count_noun(n, 'hours'), src=('duration_hours',)), end=S(end, "fill"), start=S(start, "fill"))),
         ]
 
     n = values["duration_minutes"]
@@ -686,7 +686,7 @@ def _clock_hints(values: Dict[str, Any], cumulative_vocab: Set[str]) -> List[str
         elif minute % 5 == 0:
             marks = minute // 5
             hints.append(
-                fill("Count by 5s from 12: the long hand has passed {marks} {count_noun}, so the minutes are {minute}.", _src=('minute',), marks=derived(marks, src=('minute',)), count_noun=derived(count_noun(marks, 'marks'), src=('minute',)), minute=derived(minute, src=('minute',)))
+                fill("Count by 5s from 12: the long hand has passed {marks} {count_noun}, so the minutes are {minute}.", _src=('minute',), marks=derived(marks, src=('minute',)), count_noun=derived(count_noun(marks, 'marks'), src=('minute',)), minute=S(minute, "value:minute", src=('minute',)))
             )
         else:
             # A minute that is not a multiple of 5 used to be reported as "passed 4

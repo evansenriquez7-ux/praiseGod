@@ -319,7 +319,7 @@ def format_pictograph(
     if mcq_options is not None:
         format_data["mcq_options"] = mcq_options
 
-    fmt = fill("{interaction_mode}_{answer_collection}", interaction_mode=derived(interaction_mode), answer_collection=derived(answer_collection))
+    fmt = f"{interaction_mode}_{answer_collection}"
 
     return FormattedProblem(
         problem_id=f"{ctx.node_id}_{ctx.seed}_pictograph",

@@ -331,14 +331,14 @@ def _stem(params: dict, interaction_mode: str, cumulative_vocab: set) -> str:
     ct = params.get("content_type", "whole_number")
     if interaction_mode == "set":
         if ct == "improper_fraction":
-            return fill("Move the dot to show {fraction_display}{suffix}.", fraction_display=derived(params['fraction_display']), suffix=derived(suffix))
+            return fill("Move the dot to show {fraction_display}{suffix}.", fraction_display=derived(params['fraction_display']), suffix=S(suffix, E((" on the number line", ""), "vocab gate 'number line'")))
         if ct == "mixed_number":
-            return fill("Move the dot to show {fraction_display}{suffix}.", fraction_display=derived(params['fraction_display']), suffix=derived(suffix))
+            return fill("Move the dot to show {fraction_display}{suffix}.", fraction_display=derived(params['fraction_display']), suffix=S(suffix, E((" on the number line", ""), "vocab gate 'number line'")))
         if ct == "fraction":
-            return fill("Move the dot to show {numerator}/{denominator}{suffix}.", numerator=derived(params['numerator']), denominator=derived(params['denominator']), suffix=derived(suffix))
+            return fill("Move the dot to show {numerator}/{denominator}{suffix}.", numerator=derived(params['numerator']), denominator=derived(params['denominator']), suffix=S(suffix, E((" on the number line", ""), "vocab gate 'number line'")))
         if ct == "decimal":
-            return fill("Move the dot to show {decimal_value}{suffix}.", decimal_value=derived(params['decimal_value']), suffix=derived(suffix))
-        return fill("Move the dot to show {value}{suffix}.", value=derived(params['value']), suffix=derived(suffix))
+            return fill("Move the dot to show {decimal_value}{suffix}.", decimal_value=derived(params['decimal_value']), suffix=S(suffix, E((" on the number line", ""), "vocab gate 'number line'")))
+        return fill("Move the dot to show {value}{suffix}.", value=derived(params['value']), suffix=S(suffix, E((" on the number line", ""), "vocab gate 'number line'")))
     else:  # read
         # Structured slots (H5, owner ruling 28): identical to the f-string it replaced.
         return fill("What number is marked{suffix}?",
@@ -911,7 +911,7 @@ def format_number_line(
         num = values.get("number", vp.get("value"))
         precision = values.get("round_to", 10)
         if interaction_mode == "read":
-            question_text = fill("The number {num} is marked on the number line. Round {num} to the nearest {precision}.", num=S(num, "value:number"), precision=derived(precision, src=('round_to',)))
+            question_text = fill("The number {num} is marked on the number line. Round {num} to the nearest {precision}.", num=S(num, "value:number"), precision=S(precision, "value:round_to", src=('round_to',)))
         else:
             question_text = fill("Round {num} to the nearest {precision}.", num=derived(num, src=('number',)), precision=derived(precision, src=('round_to',)))
     else:
@@ -921,7 +921,7 @@ def format_number_line(
     if mcq_options is not None:
         format_data["mcq_options"] = mcq_options
 
-    fmt = fill("{interaction_mode}_{answer_collection}", interaction_mode=derived(interaction_mode), answer_collection=derived(answer_collection))
+    fmt = f"{interaction_mode}_{answer_collection}"
 
     return FormattedProblem(
         problem_id=f"{ctx.node_id}_{ctx.seed}_numberline",

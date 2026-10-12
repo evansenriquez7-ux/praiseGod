@@ -258,6 +258,11 @@ def fill(template: str, /, _src: Tuple[str, ...] = (), **slots: Any) -> str:
     generator's own claim, recorded as the source entry "__template__" (§15 reads it like
     any slot's provenance; H4's judges review it).
     """
+    return _fill(template, _src, slots, depth=3)
+
+
+def _fill(template: str, _src: Tuple[str, ...], slots: Dict[str, Any], depth: int) -> str:
+    """`fill`'s body; `depth` frames up from `_site` is the generator's call site."""
     values = {name: (v.value if isinstance(v, S) else v) for name, v in slots.items()}
     text = template.format(**values)
     trace = _TRACE.get()
@@ -270,11 +275,26 @@ def fill(template: str, /, _src: Tuple[str, ...] = (), **slots: Any) -> str:
             slots=tuple((name, values[name], v.domain if isinstance(v, S) else None)
                         for name, v in slots.items()),
             text=text,
-            site=_site(2),
+            site=_site(depth),
             sources=sources,
             reasons=_reasons(slots),
         ))
     return text
+
+
+def join(sep: str, parts: Any, domain: Any = "fill", src: Tuple[str, ...] = ()) -> str:
+    """
+    `sep.join(parts)`, recorded as a fill whose template has one slot per member (batch H4-0,
+    owner ruling 42): `", ".join(["2 ₱20 bills", "2 ₱10 coins"])` is recorded as
+    `"{p0}, {p1}"` with each member a slot. A list of variable length has no single template,
+    so this records the one of its length; every member keeps a strict domain instead of the
+    joined text being type-only. A member passed as `S(...)` keeps its own domain; any other
+    member takes `domain` ("fill" by default: it must be another recorded fill's text) and
+    `src`. Returns exactly `sep.join(...)` of the member values.
+    """
+    slots = {f"p{i}": (v if isinstance(v, S) else S(v, domain, src)) for i, v in enumerate(parts)}
+    template = sep.replace("{", "{{").replace("}", "}}").join("{%s}" % name for name in slots)
+    return _fill(template, (), slots, depth=3)
 
 
 def record(template: str, text: str, slots: Dict[str, Any], renderer: str,

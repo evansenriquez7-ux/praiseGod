@@ -211,7 +211,7 @@ def format_calendar(
 
         if interaction_mode in ("read", "set"):
             question_text = (
-                fill("Look at the {month_name} {year} {cal_word}. What day of the week is {month_name} {date}?", month_name=derived(month_name), year=S(year, "value:year"), cal_word=S(cal_word, "fill"), date=derived(date))
+                fill("Look at the {month_name} {year} {cal_word}. What day of the week is {month_name} {date}?", month_name=S(month_name, "enum:backend.app.practice_gen.formatters.visual.fmt_calendar._MONTH_NAMES"), year=S(year, "value:year"), cal_word=S(cal_word, "fill"), date=S(date, "value:target_date"))
             )
         raw_correct = weekday
 
@@ -227,7 +227,7 @@ def format_calendar(
         unit_word = vp.get("unit", "days")
 
         question_text = (
-            fill("Look at the {month_name} {year} {cal_word}. How many {unit_word} are there from {month_name} {day1} to {month_name} {day2}, inclusive?", month_name=derived(month_name), year=S(year, "value:year"), cal_word=S(cal_word, "fill"), unit_word=derived(unit_word), day1=derived(day1), day2=derived(day2))
+            fill("Look at the {month_name} {year} {cal_word}. How many {unit_word} are there from {month_name} {day1} to {month_name} {day2}, inclusive?", month_name=S(month_name, "enum:backend.app.practice_gen.formatters.visual.fmt_calendar._MONTH_NAMES"), year=S(year, "value:year"), cal_word=S(cal_word, "fill"), unit_word=derived(unit_word), day1=S(day1, "value:target_date"), day2=S(day2, "value:end_date"))
         )
         raw_correct = duration
 
@@ -280,7 +280,7 @@ def format_calendar(
     if mcq_options is not None:
         format_data["mcq_options"] = mcq_options
 
-    fmt = fill("{interaction_mode}_{answer_collection}", interaction_mode=derived(interaction_mode), answer_collection=derived(answer_collection))
+    fmt = f"{interaction_mode}_{answer_collection}"
 
     return FormattedProblem(
         problem_id=f"{ctx.node_id}_{ctx.seed}_calendar",

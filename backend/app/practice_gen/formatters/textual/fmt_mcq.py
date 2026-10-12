@@ -84,7 +84,7 @@ def _build_pure_question(ctx: QuestionContext) -> str:
         if mul_task_type == "estimate":
             real_a = values.get("real_a", a)
             real_b = values.get("real_b", b)
-            return fill("Estimate the product: {real_a} × {real_b}", _src=('task_type',), real_a=S(real_a, "value:real_a"), real_b=derived(real_b, src=('real_b', 'b', 'n',)))
+            return fill("Estimate the product: {real_a} × {real_b}", _src=('task_type',), real_a=S(real_a, "value:real_a"), real_b=S(real_b, "value:real_b", src=('real_b', 'b', 'n',)))
         if mul_task_type in ("commutative", "associative", "distributive") and values.get("question"):
             # These render a yes/no claim (blank_target="answer", no
             # "result"/"total" key set at all) -- falling through to the
@@ -129,16 +129,16 @@ def _build_pure_question(ctx: QuestionContext) -> str:
             real_a = values.get("real_a", dividend)
             real_b = values.get("real_b", divisor)
             stem = fill("Estimate the quotient", _src=('task_type',)) if "quotient" in ctx.cumulative_vocab else fill("Estimate the answer", _src=('task_type',))
-            return fill("{stem}: {real_a} ÷ {real_b}", _src=('task_type',), stem=S(stem, "fill"), real_a=S(real_a, "value:real_a"), real_b=derived(real_b, src=('real_b', 'divisor', 'b',)))
+            return fill("{stem}: {real_a} ÷ {real_b}", _src=('task_type',), stem=S(stem, "fill"), real_a=S(real_a, "value:real_a"), real_b=S(real_b, "value:real_b", src=('real_b', 'divisor', 'b',)))
         if values.get("task_type") in ("even_odd", "number_line_jumps", "inverse_of_multiplication") and values.get("question"):
             # blank_target="answer" or custom narrative question doesn't fit the bare equations below.
             return values["question"]
         if blank_target in ("result", "quotient"):
-            return fill("What is {dividend} ÷ {divisor}?", dividend=derived(dividend, src=('dividend', 'a',)), divisor=derived(divisor, src=('divisor', 'b',)))
+            return fill("What is {dividend} ÷ {divisor}?", dividend=S(dividend, "value:a", src=('dividend', 'a',)), divisor=S(divisor, "value:b", src=('divisor', 'b',)))
         elif blank_target in ("b", "divisor", "n"):
             return fill("{dividend} divided by what equals {quotient}?", dividend=derived(dividend, src=('dividend', 'a',)), quotient=derived(quotient, src=('quotient', 'result',)))
         else:
-            return fill("What divided by {divisor} equals {quotient}?", divisor=derived(divisor, src=('divisor', 'b',)), quotient=derived(quotient, src=('quotient', 'result',)))
+            return fill("What divided by {divisor} equals {quotient}?", divisor=derived(divisor, src=('divisor', 'b',)), quotient=S(quotient, "value:result", src=('quotient', 'result',)))
     
     elif concept == "missing_number":
         op_name = values.get("operation", "addition")
@@ -153,13 +153,13 @@ def _build_pure_question(ctx: QuestionContext) -> str:
             c_val = values.get("c", 1)
             eq_sym = values.get("equivalent_symbol", "+")
             if eq_sym == "+":
-                return fill("What number completes the expression: {a_val} + {b_val} = {c_val} + ___?", _src=('equivalent_symbol', 'operation',), a_val=S(a_val, "value:a"), b_val=S(b_val, "value:b"), c_val=derived(c_val, src=('c',)))
+                return fill("What number completes the expression: {a_val} + {b_val} = {c_val} + ___?", _src=('equivalent_symbol', 'operation',), a_val=S(a_val, "value:a"), b_val=S(b_val, "value:b"), c_val=S(c_val, "value:c", src=('c',)))
             else:
-                return fill("What number completes the expression: {a_val} − {b_val} = {c_val} − ___?", _src=('operation',), a_val=S(a_val, "value:a"), b_val=S(b_val, "value:b"), c_val=derived(c_val, src=('c',)))
+                return fill("What number completes the expression: {a_val} − {b_val} = {c_val} − ___?", _src=('operation',), a_val=S(a_val, "value:a"), b_val=S(b_val, "value:b"), c_val=S(c_val, "value:c", src=('c',)))
         if blank_pos == "start":
-            return fill("What number goes in the blank: ___ {op_symbol} {b_val} = {res}?", _src=('blank_position',), op_symbol=derived(op_symbol, src=('operation', 'equivalent_symbol',)), b_val=S(b_val, "value:b"), res=derived(res, src=('result', 'total',)))
+            return fill("What number goes in the blank: ___ {op_symbol} {b_val} = {res}?", _src=('blank_position',), op_symbol=derived(op_symbol, src=('operation', 'equivalent_symbol',)), b_val=S(b_val, "value:b"), res=S(res, "value:result", src=('result', 'total',)))
         elif blank_pos == "change":
-            return fill("What number goes in the blank: {a_val} {op_symbol} ___ = {res}?", _src=('blank_position',), a_val=S(a_val, "value:a"), op_symbol=derived(op_symbol, src=('operation', 'equivalent_symbol',)), res=derived(res, src=('result', 'total',)))
+            return fill("What number goes in the blank: {a_val} {op_symbol} ___ = {res}?", _src=('blank_position',), a_val=S(a_val, "value:a"), op_symbol=derived(op_symbol, src=('operation', 'equivalent_symbol',)), res=S(res, "value:result", src=('result', 'total',)))
         else:
             return fill("What number goes in the blank: {a_val} {op_symbol} {b_val} = ___?", a_val=S(a_val, "value:a"), op_symbol=derived(op_symbol, src=('operation', 'equivalent_symbol',)), b_val=S(b_val, "value:b"))
 

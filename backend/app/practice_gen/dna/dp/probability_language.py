@@ -17,7 +17,7 @@ from backend.app.practice_gen.dna.base import (
     ErrorPattern,
     VocabGated,
 )
-from backend.app.practice_gen.slots import S, bank_fields, derived, fill
+from backend.app.practice_gen.slots import S, bank_fields, derived, fill, transform
 
 
 # ─── error patterns ───────────────────────────────────────────────────────────
@@ -434,11 +434,11 @@ def generate_hints(
     eq_label         = VOCAB_EQ_LIKELY.resolve(cumulative_vocab)
 
     return [
-        fill("{capitalize}: will always happen (probability = 1).", capitalize=derived(certain_label.capitalize())),
-        fill("{capitalize}: can never happen (probability = 0).", capitalize=derived(impossible_label.capitalize())),
-        fill("{capitalize}: happens more often than not.", capitalize=derived(likely_label.capitalize())),
-        fill("{capitalize}: does not happen often.", capitalize=derived(unlikely_label.capitalize())),
-        fill("{capitalize}: two events have the same chance.", capitalize=derived(eq_label.capitalize())),
+        fill("{capitalize}: will always happen (probability = 1).", capitalize=S(transform("capitalize", certain_label), "fill")),
+        fill("{capitalize}: can never happen (probability = 0).", capitalize=S(transform("capitalize", impossible_label), "fill")),
+        fill("{capitalize}: happens more often than not.", capitalize=S(transform("capitalize", likely_label), "fill")),
+        fill("{capitalize}: does not happen often.", capitalize=S(transform("capitalize", unlikely_label), "fill")),
+        fill("{capitalize}: two events have the same chance.", capitalize=S(transform("capitalize", eq_label), "fill")),
         fill("Count the favorable outcomes and compare to the total to decide."),
     ]
 

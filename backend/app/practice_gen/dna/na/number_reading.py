@@ -17,7 +17,7 @@ from backend.app.practice_gen.dna.base import (
     ErrorPattern,
     VocabGated,
 )
-from backend.app.practice_gen.slots import S, derived, fill
+from backend.app.practice_gen.slots import E, S, derived, fill, join, transform
 
 
 # ─── param bounds ─────────────────────────────────────────────────────────────
@@ -70,30 +70,34 @@ def num_to_tagalog_style_english_words(n: int) -> str:
     if n == 10000:
         return "ten thousand"
 
-    parts: List[str] = []
+    # Each part is a slot (`enum:` over this module's own word tables, or a nested fill) and the
+    # sentence is `slots.join`, so the words are recorded with strict domains (ruling 42).
+    ones_words = "enum:backend.app.practice_gen.dna.na.number_reading._ONES"
+    tens_words = "enum:backend.app.practice_gen.dna.na.number_reading._TENS"
+    parts: List[Any] = []
 
     thousands = n // 1000
     remainder = n % 1000
     if thousands:
-        parts.append(fill("{v} thousand", v=derived(_ONES[thousands])))
+        parts.append(S(fill("{v} thousand", v=S(_ONES[thousands], ones_words)), "fill"))
 
     hundreds = remainder // 100
     remainder = remainder % 100
     if hundreds:
-        parts.append(fill("{v} hundred", v=derived(_ONES[hundreds])))
+        parts.append(S(fill("{v} hundred", v=S(_ONES[hundreds], ones_words)), "fill"))
 
     if remainder > 0:
         if remainder < 20:
-            parts.append(_ONES[remainder])
+            parts.append(S(_ONES[remainder], ones_words))
         else:
             tens  = remainder // 10
             ones  = remainder % 10
-            chunk = _TENS[tens]
+            chunk = S(_TENS[tens], tens_words)
             if ones:
-                chunk = fill("{chunk}-{v}", chunk=derived(chunk), v=derived(_ONES[ones]))
+                chunk = S(fill("{chunk}-{v}", chunk=chunk, v=S(_ONES[ones], ones_words)), "fill")
             parts.append(chunk)
 
-    return " ".join(parts)
+    return join(" ", parts)
 
 
 def _make_expanded_form(n: int) -> str:
@@ -326,7 +330,7 @@ def generate_hints(
         ]
         for digit, term in place_terms:
             if digit > 0 and term in cumulative_vocab:
-                hints.append(fill("{capitalize}: {digit} block{v}.", _src=('task_type',), capitalize=derived(term.capitalize()), digit=derived(digit), v=derived('s' if digit != 1 else '')))
+                hints.append(fill("{capitalize}: {digit} block{v}.", _src=('task_type',), capitalize=S(term.capitalize(), E(tuple(t.capitalize() for _d, t in place_terms), "the four place names")), digit=derived(digit, src=("number",), why="arithmetic"), v=S('s' if digit != 1 else '', E(("s", ""), "the plural suffix"))))
         hints.append(fill("Add the value of every block together to get the total, {number}.", _src=('task_type',), number=S(number, "value:number")))
         return hints
 
@@ -334,17 +338,17 @@ def generate_hints(
         hints.append(fill("Read the number {number} one place at a time, starting from the largest place.", _src=('task_type',), number=S(number, "value:number")))
         if number >= 1000:
             th = number // 1000
-            hints.append(fill("Thousands: {th} → '{num_to_tagalog_style_english_words} thousand'.", _src=('number', 'task_type',), th=derived(th, src=('number',)), num_to_tagalog_style_english_words=derived(num_to_tagalog_style_english_words(th), src=('number',))))
+            hints.append(fill("Thousands: {th} → '{num_to_tagalog_style_english_words} thousand'.", _src=('number', 'task_type',), th=derived(th, src=('number',), why="arithmetic"), num_to_tagalog_style_english_words=S(num_to_tagalog_style_english_words(th), "fill", src=('number',))))
         if (number % 1000) >= 100:
             hd = (number % 1000) // 100
             hundreds_label = "Hundreds" if "hundreds" in cumulative_vocab else "The 3rd part from the right"
-            hints.append(fill("{hundreds_label}: {hd} → '{num_to_tagalog_style_english_words} hundred'.", _src=('number', 'task_type',), hundreds_label=derived(hundreds_label), hd=derived(hd, src=('number',)), num_to_tagalog_style_english_words=derived(num_to_tagalog_style_english_words(hd), src=('number',))))
+            hints.append(fill("{hundreds_label}: {hd} → '{num_to_tagalog_style_english_words} hundred'.", _src=('number', 'task_type',), hundreds_label=S(hundreds_label, E(("Hundreds", "The 3rd part from the right"), "'hundreds' gated by cumulative_vocab")), hd=derived(hd, src=('number',), why="arithmetic"), num_to_tagalog_style_english_words=S(num_to_tagalog_style_english_words(hd), "fill", src=('number',))))
         hints.append(fill("The full word form is: '{word_form}'.", _src=('task_type',), word_form=S(word_form, "value:word_form")))
     else:
         pv_label = VOCAB_PLACE_VALUE.resolve(cumulative_vocab)
         hints.append(fill("Identify each word part and its {pv_label}.", pv_label=S(pv_label, "fill")))
         expanded_label = VOCAB_EXPANDED_FORM.resolve(cumulative_vocab)
-        hints.append(fill("{capitalize}: {expanded_form}.", capitalize=derived(expanded_label.capitalize()), expanded_form=S(expanded_form, "value:expanded_form")))
+        hints.append(fill("{capitalize}: {expanded_form}.", capitalize=S(transform("capitalize", expanded_label), "fill"), expanded_form=S(expanded_form, "value:expanded_form")))
         hints.append(fill("Add the parts together to get {number}.", number=S(number, "value:number")))
 
     return hints

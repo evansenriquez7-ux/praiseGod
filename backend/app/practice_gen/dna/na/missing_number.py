@@ -152,8 +152,8 @@ def generate_params(
                 pair2_candidates = [(1, target - 1)]
             c, d = rng.choice(pair2_candidates)
             symbol = "+"
-            answer_formula = fill("{target} - {c}", target=derived(target), c=derived(c))
-            question = fill("Complete the equivalent expression: {a} + {b} = {c} + ___", a=derived(a), b=derived(b), c=derived(c))
+            answer_formula = fill("{target} - {c}", target=S(target, "value:result"), c=S(c, "value:c"))
+            question = fill("Complete the equivalent expression: {a} + {b} = {c} + ___", a=S(a, "value:a"), b=S(b, "value:b"), c=S(c, "value:c"))
         else:
             # a - b = target and c - d = target: two different minuends,
             # both greater than the shared difference and within this
@@ -165,8 +165,8 @@ def generate_params(
             b = a - target
             d = c - target
             symbol = "−"
-            answer_formula = fill("{c} - {target}", c=derived(c), target=derived(target))
-            question = fill("Complete the equivalent expression: {a} − {b} = {c} − ___", a=derived(a), b=derived(b), c=derived(c))
+            answer_formula = fill("{c} - {target}", c=S(c, "value:c"), target=S(target, "value:result"))
+            question = fill("Complete the equivalent expression: {a} − {b} = {c} − ___", a=S(a, "value:a"), b=S(b, "value:b"), c=S(c, "value:c"))
         return {
             "blank_target": "d",
             "a": a, "b": b, "c": c, "d": d,

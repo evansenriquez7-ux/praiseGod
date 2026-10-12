@@ -445,7 +445,7 @@ def format_peso_money(
     # needs to know what to build). The auditor's "answer_leak" flag is a
     # false positive for peso_money_set — the answer is not secret.
 
-    fmt = fill("{interaction_mode}_{answer_collection}", interaction_mode=derived(interaction_mode), answer_collection=derived(answer_collection))
+    fmt = f"{interaction_mode}_{answer_collection}"
 
     return FormattedProblem(
         problem_id=f"{ctx.node_id}_{ctx.seed}_pesomoney",

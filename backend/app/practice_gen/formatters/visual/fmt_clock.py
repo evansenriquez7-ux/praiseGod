@@ -200,7 +200,7 @@ def format_clock(
             "hours": hours,
             "minutes": minutes,
             "display_hours": hours,
-            "target_time": fill("{hours}:{minutes:02d}", hours=S(hours, "value:hour"), minutes=derived(minutes, src=('minute',))),
+            "target_time": fill("{hours}:{minutes:02d}", hours=S(hours, "value:hour"), minutes=S(minutes, "value:minute", src=('minute',))),
             "use_24_hour": use_24,
             "minute_angle": (minutes / 60) * 360,
             "hour_angle": ((hours % 12) / 12) * 360 + (minutes / 60) * 30,
@@ -307,7 +307,7 @@ def format_clock(
     if mcq_options is not None:
         format_data["mcq_options"] = mcq_options
 
-    fmt = fill("{interaction_mode}_{answer_collection}", interaction_mode=derived(interaction_mode), answer_collection=derived(answer_collection))
+    fmt = f"{interaction_mode}_{answer_collection}"
 
     return FormattedProblem(
         problem_id=f"{ctx.node_id}_{ctx.seed}_clockset",

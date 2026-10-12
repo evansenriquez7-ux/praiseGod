@@ -535,12 +535,12 @@ def generate_hints(
 ) -> List[str]:
     total = values.get("target_total", 5)
     return [
-        fill("Count all the objects first. There are {total} in all.", total=derived(total, src=('target_total',))),
+        fill("Count all the objects first. There are {total} in all.", total=S(total, "value:target_total", src=('target_total',))),
         # Not "the ones left over": `ones` is the place-value term and is in
         # this node's NOT_YET_KNOWN, which §1D caught on all 15 sampled seeds.
         fill("Count the group you can see. Then count the objects left over."),
         fill("A group can have 0 objects. An empty group still counts."),
-        fill("The two groups always go back together to make {total}.", total=derived(total, src=('target_total',))),
+        fill("The two groups always go back together to make {total}.", total=S(total, "value:target_total", src=('target_total',))),
     ]
 
 

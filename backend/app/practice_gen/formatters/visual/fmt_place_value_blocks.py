@@ -151,7 +151,7 @@ def _build_traps(blocks: dict, rng: random.Random) -> list:
 def _stem(blocks: dict, question_type: str, interaction_mode: str) -> str:
     total = blocks["total_value"]
     if interaction_mode == "set" or question_type == "build_number":
-        return fill("Use base-10 blocks to show the number {total}.", total=derived(total))
+        return fill("Use base-10 blocks to show the number {total}.", total=S(total, "value:number"))
     if question_type == "identify_place":
         # Ask about a specific digit's place value
         return fill("What is the value of the underlined digit in the number shown by the blocks?")
@@ -299,7 +299,7 @@ def format_place_value_blocks(
         correct_answer=final_answer,
         distractors=traps,
         hints=ctx.hints,
-        format=fill("{interaction_mode}_{answer_collection}", interaction_mode=derived(interaction_mode), answer_collection=derived(answer_collection)),
+        format=f"{interaction_mode}_{answer_collection}",
         format_data=format_data,
         is_visual=True,
         visual_type="PlaceValueBlocks",
