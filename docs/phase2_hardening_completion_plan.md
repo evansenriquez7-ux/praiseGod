@@ -1559,6 +1559,44 @@ that points at it break every time the section is refreshed.
 >     plain code, which §14's accounting catches if it was learner text after all. Rejected: counting
 >     only slots reachable from learner-read fields (new closure logic, a new blind spot, and a number
 >     that diverges from the ruling's measurement).
+> 44. **The H4 stem review gate's design** (owner, 2026-10-13, asked at the start of H4 through eight
+>     questions; the owner chose the dispatcher's recommended option for each except (d)). Measured that day at
+>     the 20 student seeds: 2,867 (lc, family) pairs over all recorded fills, 2,643 over fills that reach
+>     learner-read text.
+>     (a) **Family.** A family is (spine id or call site, template). Only fills that reach learner-read
+>     text are reviewed. A wrapper is collapsed into what it prints only when every slot is `fill` AND it
+>     adds no letters or digits (`{answer}`, `{p0}, {p1}`): 2,465 pairs. Rejected: collapsing every
+>     all-`fill` wrapper (2,267), which hides 74 wrapper templates that add words, such as
+>     `{statement}. True or False?` on 47 lcs; no collapse (2,643); every recorded fill (2,867).
+>     (b) **Paths.** §14 and H4 are widened to ONE shared enumeration, defined in one place: student seeds
+>     1-40 plus every advertised formatter pinned at seeds 3, 17 and 29. Every reviewed family is then also
+>     domain-checked. A pinned render that refuses is a named finding, never skipped. Measured: seeds 21-40
+>     reach 132 more families on 45 lcs, and pinned formatters 89 more on 23 lcs. Rejected: the 20 student
+>     seeds only; H4 wider with §14 unchanged (approved domains nothing enforces).
+>     (c) **Freshness binds resolved content.** Template, renderer, and per slot: domain kind and
+>     id/basis; `enum:`/`bank:` by the resolved member list (editing the bank stales it); a runtime `E` by
+>     the union of its members and an `R` by its lowest lo and highest hi over the enumerated renders
+>     (deterministic: fixed seeds); `value:<key>`; `src`, `_src`, reasons; and the lc's `derives`/`computes`.
+>     Both directions are proven by mutation. Rejected: kind + basis only (adding a bank entry or widening a
+>     draw would not stale an approval); per-render members (any rng-order change stales).
+>     (d) **Verdict shape: one overall verdict per lc**, no per-family verdicts. (The dispatcher had
+>     recommended per-family verdicts plus an overall.)
+>     (e) **Quorum: every lc gets a first judge and one independent blind confirmer on the same packet;
+>     the later verdict stands** (ruling 20 as written; about 302 dispatches). On a FAIL the reasoning must
+>     quote the failing template(s) verbatim from the packet, checked by quote provenance, so the finding
+>     still points at a stem. Rejected: confirming FAILs only; a single judge.
+>     (f) **Classification.** CONTENT (exit 2), named by lc and owed build: a FAIL verdict; an lc with no
+>     review; a stale review; a malformed, unconfirmed or superseded-only record (as ruling 32).
+>     INTEGRITY (exit 1) only for the harness itself: the packet builder or family enumeration raising, an
+>     unresolvable domain, a filed packet digest the builder code cannot reproduce. At landing every lc reads
+>     "no review": 151 content findings until the campaign. Rejected: missing/stale as integrity.
+>     (g) **Clause coverage (ruling 26) is ruled by the stem judge, per clause, and gated.** The packet
+>     lists each clause; the judge marks it PRODUCIBLE / NOT_PRODUCIBLE, quoting the template that produces
+>     it; NOT_PRODUCIBLE is a content finding by lc and clause. §6F attestations and §2L stay as they are
+>     until H6.
+>     (h) **Judges are Haiku, about 6 concurrent; ask again before the first dispatch.** Build and prove
+>     the gate, run the chain, then show the owner one real packet and ask for a go-ahead before batch441.
+>     Every reply is audited against its packet.
 >
 > **Owner rulings recorded 2026-09-22, binding on the next session:**
 >
