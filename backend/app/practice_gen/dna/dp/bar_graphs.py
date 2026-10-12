@@ -16,7 +16,7 @@ from backend.app.practice_gen.dna.base import (
     VocabGated,
     linear_interpolate,
 )
-from backend.app.practice_gen.slots import S, derived, fill
+from backend.app.practice_gen.slots import E, S, derived, fill, join
 
 
 # ─── param bounds ─────────────────────────────────────────────────────────────
@@ -106,6 +106,10 @@ VOCAB_AXIS = VocabGated(
 
 # ─── parameter generator ──────────────────────────────────────────────────────
 
+# The scale each discrete `scale` level draws (named so a slot can declare it; batch H4-0-R2).
+_SCALE_MAP = {"scale_5": 5, "scale_10": 10, "scale_20": 20}
+
+
 def generate_params(
     grade: int,
     difficulty_profile: Optional[Dict[str, Any]],
@@ -136,8 +140,7 @@ def generate_params(
 
     scale_level = extract_discrete_level(profile, "scale", ["scale_5", "scale_10", "scale_20"], "scale_5")
 
-    scale_map = {"scale_5": 5, "scale_10": 10, "scale_20": 20}
-    scale = scale_map.get(scale_level, 5)
+    scale = _SCALE_MAP.get(scale_level, 5)
 
     # Number of categories
     num_cats = int(profile.get("num_categories", extract_continuous_scalar(profile, "difficulty_scalar", 0.5) * (bounds["num_categories_max"] - bounds["num_categories_min"]) + bounds["num_categories_min"]))
@@ -180,7 +183,7 @@ def generate_params(
     }
 
     if task_type == "present_data":
-        data_str = ", ".join(fill("{v}: {v2}", _src=('task_type',), v=derived(categories[i]), v2=derived(values[i])) for i in range(len(categories)))
+        data_str = join(", ", [fill("{v}: {v2}", _src=('task_type',), v=S(categories[i], E(tuple(categories), "the graph's categories")), v2=S(values[i], E(tuple(values), "the graph's values"))) for i in range(len(categories))])
         return {
             "blank_target": "answer",
             **base,
@@ -198,18 +201,20 @@ def generate_params(
             diff = abs(val_a - val_b)
             more_cat = cat_a if val_a >= val_b else cat_b
             less_cat = cat_b if more_cat == cat_a else cat_a
-            p_text = fill("How many more items were recorded for {more_cat} than for {less_cat}?", _src=('task_type',), more_cat=derived(more_cat), less_cat=derived(less_cat))
+            p_text = fill("How many more items were recorded for {more_cat} than for {less_cat}?", _src=('task_type',), more_cat=S(more_cat, E(tuple(categories), "the graph's categories")), less_cat=S(less_cat, E(tuple(categories), "the graph's categories")))
             ans = diff
         elif prob_kind == "sum":
-            p_text = fill("How many total items were recorded for {cat_a} and {cat_b} together?", _src=('task_type',), cat_a=S(cat_a, "value:question_category"), cat_b=derived(cat_b))
+            p_text = fill("How many total items were recorded for {cat_a} and {cat_b} together?", _src=('task_type',), cat_a=S(cat_a, "value:question_category"), cat_b=S(cat_b, E(tuple(categories), "the graph's categories")))
             ans = val_a + val_b
         elif prob_kind == "mult_step":
-            unit_price = rng.choice([2, 3, 5, 10])
-            p_text = fill("If each item for {cat_a} costs ₱{unit_price}, what is the total cost for {cat_a}?", _src=('task_type',), cat_a=S(cat_a, "value:question_category"), unit_price=derived(unit_price))
+            unit_prices = [2, 3, 5, 10]
+            unit_price = rng.choice(unit_prices)
+            p_text = fill("If each item for {cat_a} costs ₱{unit_price}, what is the total cost for {cat_a}?", _src=('task_type',), cat_a=S(cat_a, "value:question_category"), unit_price=S(unit_price, E(tuple(unit_prices), "the unit_prices bank")))
             ans = val_a * unit_price
         else: # add_step
-            added = rng.choice([5, 10, 15, 20])
-            p_text = fill("If {added} more items are added to {cat_a}, what will be the new total for {cat_a}?", _src=('task_type',), added=derived(added), cat_a=S(cat_a, "value:question_category"))
+            addeds = [5, 10, 15, 20]
+            added = rng.choice(addeds)
+            p_text = fill("If {added} more items are added to {cat_a}, what will be the new total for {cat_a}?", _src=('task_type',), added=S(added, E(tuple(addeds), "the addeds bank")), cat_a=S(cat_a, "value:question_category"))
             ans = val_a + added
 
         return {
@@ -307,7 +312,7 @@ def generate_hints(
 
     vocab_axis = VOCAB_AXIS.resolve(cumulative_vocab)
     if "axis" in cumulative_vocab:
-        axis = "vertical (y-axis)" if orientation == "vertical" else "horizontal (x-axis)"
+        axis = fill("vertical (y-axis)") if orientation == "vertical" else fill("horizontal (x-axis)")
     else:
         axis = fill("vertical {vocab_axis}", vocab_axis=S(vocab_axis, "fill")) if orientation == "vertical" else fill("horizontal {vocab_axis}", vocab_axis=S(vocab_axis, "fill"))
 
@@ -316,7 +321,7 @@ def generate_hints(
     else:
         hints = [
             fill("Look at the {bg_label} carefully.", bg_label=S(bg_label, "fill")),
-            fill("The {scale_label} on the {axis} goes up by {scale}.", scale_label=S(scale_label, "fill"), axis=derived(axis), scale=derived(scale, src=('visual_params',))),
+            fill("The {scale_label} on the {axis} goes up by {scale}.", scale_label=S(scale_label, "fill"), axis=S(axis, "fill"), scale=S(scale, E(tuple(_SCALE_MAP.values()), "_SCALE_MAP, the scales generate_params draws"), src=('visual_params',))),
         ]
 
     if task_type == "read_value":
@@ -351,7 +356,7 @@ def generate_hints(
             adj = "tallest" if direction == "most" else "shortest"
         else:
             adj = "longest" if direction == "most" else "shortest"
-        hints.append(fill("Look for the {adj} bar.", _src=('task_type',), adj=derived(adj)))
+        hints.append(fill("Look for the {adj} bar.", _src=('task_type',), adj=S(adj, E(("tallest", "longest", "shortest"), "the bar adjectives for most and least"))))
 
     return hints
 

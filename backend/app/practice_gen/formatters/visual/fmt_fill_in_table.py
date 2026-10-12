@@ -93,9 +93,9 @@ def format_fill_in_table(
     if "scale" in vp and vp["scale"] > 1:
         # The previous wording, "Note: Each symbol meant N items.", was past tense.
         if scale_known:
-            note = fill(" The scale is {scale}: each symbol stands for {scale} items.", scale=derived(vp['scale']))
+            note = fill(" The scale is {scale}: each symbol stands for {scale} items.", scale=S(vp['scale'], "value:scale"))
         else:
-            note = fill(" Each symbol stands for {scale} items.", scale=derived(vp['scale']))
+            note = fill(" Each symbol stands for {scale} items.", scale=S(vp['scale'], "value:scale"))
         question_text = fill("{stem}{note}", stem=S(question_text, "fill"), note=S(note, "fill"))
 
     return FormattedProblem(
@@ -149,10 +149,10 @@ def _format_read(
     }
     stem_tpl = ctx.values.get("stem_template") if ctx.values else None
     if stem_tpl:
-        sub_q = stem_tpl.format(cat=ask_cat)
-        question_text = fill("Look at the {table_word}. {sub_q}", table_word=S(table_word, E(("table", "chart"), "'table' gated by cumulative_vocab")), sub_q=derived(sub_q, src=('stem_template',)))
+        sub_q = fill(stem_tpl, cat=S(ask_cat, E(tuple(categories), "the table's categories")))
+        question_text = fill("Look at the {table_word}. {sub_q}", table_word=S(table_word, E(("table", "chart"), "'table' gated by cumulative_vocab")), sub_q=S(sub_q, "fill", src=('stem_template',)))
     else:
-        question_text = fill("Look at the {table_word}. How many are in {ask_cat}?", table_word=S(table_word, E(("table", "chart"), "'table' gated by cumulative_vocab")), ask_cat=derived(ask_cat))
+        question_text = fill("Look at the {table_word}. How many are in {ask_cat}?", table_word=S(table_word, E(("table", "chart"), "'table' gated by cumulative_vocab")), ask_cat=S(ask_cat, E(tuple(categories), "the table's categories")))
 
     correct_answer: Any = correct
     if answer_collection == "mcq":

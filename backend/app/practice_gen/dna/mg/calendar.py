@@ -17,7 +17,7 @@ from backend.app.practice_gen.dna.base import (
     VocabGated,
     count_noun,
 )
-from backend.app.practice_gen.slots import E, S, derived, fill
+from backend.app.practice_gen.slots import E, R, S, derived, fill
 
 
 # ─── constants ────────────────────────────────────────────────────────────────
@@ -146,15 +146,17 @@ def generate_params(
         if mode == "after_days":
             idx = rng.randint(0, 6)
             day = DAYS_OF_WEEK[idx]
-            add_d = rng.randint(1, 3)
+            add_lo, add_hi = 1, 3
+            add_d = rng.randint(add_lo, add_hi)
             ans = DAYS_OF_WEEK[(idx + add_d) % 7]
-            q = fill("Today is {day}. What day of the week will it be in {add_d} {v}?", _src=('task_type',), day=derived(day), add_d=derived(add_d), v=derived('day' if add_d == 1 else 'days'))
+            q = fill("Today is {day}. What day of the week will it be in {add_d} {v}?", _src=('task_type',), day=S(day, "enum:backend.app.practice_gen.dna.mg.calendar.DAYS_OF_WEEK"), add_d=S(add_d, R(add_lo, add_hi, "the days-ahead draw bounds")), v=S('day' if add_d == 1 else 'days', E(("day", "days"), "day or days, by the count")))
         elif mode == "before_days":
             idx = rng.randint(0, 6)
             day = DAYS_OF_WEEK[idx]
-            sub_d = rng.randint(1, 2)
+            sub_lo, sub_hi = 1, 2
+            sub_d = rng.randint(sub_lo, sub_hi)
             ans = DAYS_OF_WEEK[(idx - sub_d) % 7]
-            q = fill("If today is {day}, what day of the week was it {sub_d} {v} ago?", _src=('task_type',), day=derived(day), sub_d=derived(sub_d), v=derived('day' if sub_d == 1 else 'days'))
+            q = fill("If today is {day}, what day of the week was it {sub_d} {v} ago?", _src=('task_type',), day=S(day, "enum:backend.app.practice_gen.dna.mg.calendar.DAYS_OF_WEEK"), sub_d=S(sub_d, R(sub_lo, sub_hi, "the days-ago draw bounds")), v=S('day' if sub_d == 1 else 'days', E(("day", "days"), "day or days, by the count")))
         else:
             start_idx = rng.randint(1, 3)
             dur = rng.randint(2, 4)
@@ -162,7 +164,7 @@ def generate_params(
             s_day = DAYS_OF_WEEK[start_idx]
             e_day = DAYS_OF_WEEK[end_idx]
             ans = dur
-            q = fill("A school event starts on {s_day} and finishes on {e_day} of the same week. How many days does the event run?", _src=('task_type',), s_day=derived(s_day), e_day=derived(e_day))
+            q = fill("A school event starts on {s_day} and finishes on {e_day} of the same week. How many days does the event run?", _src=('task_type',), s_day=S(s_day, "enum:backend.app.practice_gen.dna.mg.calendar.DAYS_OF_WEEK"), e_day=S(e_day, "enum:backend.app.practice_gen.dna.mg.calendar.DAYS_OF_WEEK"))
 
         dists = [d for d in (DAYS_OF_WEEK if isinstance(ans, str) else [ans + 1, max(1, ans - 1), ans + 2]) if d != ans][:3]
         return {
@@ -182,9 +184,10 @@ def generate_params(
             idx = rng.randint(0, 11)
             vp["month"] = idx + 1
             m_name = MONTHS_OF_YEAR[idx]
-            add_m = rng.randint(1, 3)
+            addm_lo, addm_hi = 1, 3
+            add_m = rng.randint(addm_lo, addm_hi)
             ans = MONTHS_OF_YEAR[(idx + add_m) % 12]
-            q = fill("This month is {m_name}. What month will it be in {add_m} {v}?", _src=('task_type',), m_name=derived(m_name), add_m=derived(add_m), v=derived('month' if add_m == 1 else 'months'))
+            q = fill("This month is {m_name}. What month will it be in {add_m} {v}?", _src=('task_type',), m_name=S(m_name, "enum:backend.app.practice_gen.dna.mg.calendar.MONTHS_OF_YEAR"), add_m=S(add_m, R(addm_lo, addm_hi, "the months-ahead draw bounds")), v=S('month' if add_m == 1 else 'months', E(("month", "months"), "month or months, by the count")))
         else:
             m1_idx = rng.randint(0, 7)
             vp["month"] = m1_idx + 1
@@ -193,7 +196,7 @@ def generate_params(
             m1_name = MONTHS_OF_YEAR[m1_idx]
             m2_name = MONTHS_OF_YEAR[m2_idx]
             ans = diff
-            q = fill("The school program begins in {m1_name} and an exhibit happens in {m2_name}. How many months later is the exhibit?", _src=('task_type',), m1_name=derived(m1_name), m2_name=derived(m2_name))
+            q = fill("The school program begins in {m1_name} and an exhibit happens in {m2_name}. How many months later is the exhibit?", _src=('task_type',), m1_name=S(m1_name, "enum:backend.app.practice_gen.dna.mg.calendar.MONTHS_OF_YEAR"), m2_name=S(m2_name, "enum:backend.app.practice_gen.dna.mg.calendar.MONTHS_OF_YEAR"))
 
         dists = [d for d in (MONTHS_OF_YEAR if isinstance(ans, str) else [ans + 1, max(1, ans - 1), ans + 2]) if d != ans][:3]
         return {
@@ -399,7 +402,7 @@ def generate_hints(
         return [
             fill("The {days_label} are: Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday.", _src=('task_type',), days_label=S(days_label, "fill")),
             fill("Find the date on the {cal_label} and look at which column it is in.", _src=('task_type',), cal_label=S(cal_label, "fill")),
-            fill("Answer: {answer}", _src=('task_type',), answer=derived(values.get('answer', '?'), src=('answer',))),
+            fill("Answer: {answer}", _src=('task_type',), answer=S(values.get('answer', '?'), "value:answer", src=('answer',))),
         ]
     if task_type == "read_month":
         return [

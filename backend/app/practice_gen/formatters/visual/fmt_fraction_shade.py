@@ -31,7 +31,7 @@ import random
 from backend.app.practice_gen.dna.base import FormattedProblem, QuestionContext
 from backend.app.practice_gen.formatters._distractor_fallback import augment_distractors
 from backend.app.practice_gen.formatters._option_order import shuffle_options
-from backend.app.practice_gen.slots import S, derived, fill
+from backend.app.practice_gen.slots import E, R, S, derived, fill
 from backend.app.practice_gen.formatters._answer_slots import correct_option_key
 
 
@@ -60,7 +60,7 @@ def _pick_params(grade: int, diff_level: int, rng: random.Random) -> dict:
         "shape": shape,
         "total_parts": denom,
         "shaded_parts": numer,
-        "fraction_str": fill("{numer}/{denom}", numer=derived(numer), denom=derived(denom)),
+        "fraction_str": fill("{numer}/{denom}", numer=S(numer, R(1, max(1, denom - 1), "_pick_params' numerator draw")), denom=S(denom, E(tuple(pool), "the grade's _DENOM_POOLS"))),
     }
 
 
@@ -68,7 +68,7 @@ def _pick_params(grade: int, diff_level: int, rng: random.Random) -> dict:
 # Traps
 # ─────────────────────────────────────────────────────────────────────────────
 
-def _build_traps(numer: int, denom: int) -> list:
+def _build_traps(numer: int, denom: int, src: tuple) -> list:
     """
     Return up to 3 distractor fraction strings.
 
@@ -77,33 +77,36 @@ def _build_traps(numer: int, denom: int) -> list:
         count_total    — denom/denom  (student counts all parts)
         count_unshaded — (denom-numer)/denom
         off_by_one_num — (numer-1)/denom
+
+    `src` names the values keys numer and denom are read from (batch H4-0-R2): every trap
+    numeral is computed from them.
     """
-    correct = fill("{numer}/{denom}", numer=derived(numer), denom=derived(denom))
+    correct = fill("{numer}/{denom}", numer=derived(numer, src=src, why="arithmetic"), denom=derived(denom, src=src, why="arithmetic"))
     traps = []
     seen = {correct}
 
     # Swap
-    swap = fill("{denom}/{numer}", denom=derived(denom), numer=derived(numer)) if numer > 0 else None
+    swap = fill("{denom}/{numer}", denom=derived(denom, src=src, why="arithmetic"), numer=derived(numer, src=src, why="arithmetic")) if numer > 0 else None
     if swap not in seen and numer != denom:
         traps.append(swap)
         seen.add(swap)
 
     # Total parts
-    total_trap = fill("{denom}/{denom}", denom=derived(denom))
+    total_trap = fill("{denom}/{denom}", denom=derived(denom, src=src, why="arithmetic"))
     if total_trap not in seen:
         traps.append(total_trap)
         seen.add(total_trap)
 
     # Unshaded
     unshaded = denom - numer
-    unshaded_str = fill("{unshaded}/{denom}", unshaded=derived(unshaded), denom=derived(denom))
+    unshaded_str = fill("{unshaded}/{denom}", unshaded=derived(unshaded, src=src, why="arithmetic"), denom=derived(denom, src=src, why="arithmetic"))
     if unshaded_str not in seen and unshaded != numer and unshaded > 0:
         traps.append(unshaded_str)
         seen.add(unshaded_str)
 
     # Off by one in numerator
     if numer > 1:
-        ob1 = fill("{v}/{denom}", v=derived(numer - 1), denom=derived(denom))
+        ob1 = fill("{v}/{denom}", v=derived(numer - 1, src=src, why="arithmetic"), denom=derived(denom, src=src, why="arithmetic"))
         if ob1 not in seen:
             traps.append(ob1)
 
@@ -128,7 +131,7 @@ def _stem(ask_type: str, fraction_str: str, interaction_mode: str, operation: st
         if num_str.isdigit() and den_str.isdigit() and int(num_str) > int(den_str):
             num_wholes = -(-int(num_str) // int(den_str))  # ceiling division
             return (
-                fill("Shade {fraction_str} using {num_wholes} identical shapes, each divided into {den_str} equal parts.", fraction_str=S(fraction_str, "fill", src=("fraction_str", "numerator", "denominator")), num_wholes=derived(num_wholes), den_str=derived(den_str))
+                fill("Shade {fraction_str} using {num_wholes} identical shapes, each divided into {den_str} equal parts.", fraction_str=S(fraction_str, "fill", src=("fraction_str", "numerator", "denominator")), num_wholes=derived(num_wholes, src=("numerator", "denominator"), why="arithmetic"), den_str=S(int(den_str), "value:denominator"))
             )
         return fill("Shade {fraction_str} of the shape.", fraction_str=S(fraction_str, "fill", src=("fraction_str", "numerator", "denominator")))
     if operation in ("add", "subtract", "add_subtract"):
@@ -171,15 +174,19 @@ def format_fraction_shade(
         denom = vp_in["total_parts"]
         shape = vp_in.get("shape", "bar")
         ask_type = vp_in.get("ask_type", "identify_fraction")
+        numer_dom, denom_dom = "value:numerator", "value:denominator"
     elif ctx.values and "numerator" in ctx.values:
         numer = ctx.values["numerator"]
         denom = ctx.values["denominator"]
         shape = ctx.values.get("shape", rng.choice(_SHAPES))
         ask_type = ctx.values.get("ask_type", "identify_fraction")
+        numer_dom, denom_dom = "value:numerator", "value:denominator"
     else:
         raw = _pick_params(ctx.grade, diff_level, rng)
         numer = raw["shaded_parts"]
         denom = raw["total_parts"]
+        numer_dom = R(1, max(1, denom - 1), "_pick_params' numerator draw")
+        denom_dom = E(tuple(_DENOM_POOLS.get(ctx.grade, _DENOM_POOLS[3])), "the grade's _DENOM_POOLS")
         shape = raw["shape"]
         ask_type = "identify_fraction" if interaction_mode == "read" else "shade_this_fraction"
 
@@ -187,7 +194,10 @@ def format_fraction_shade(
         ask_type = "shade_this_fraction"
         answer_collection = "click"
 
-    fraction_str = fill("{numer}/{denom}", numer=derived(numer), denom=derived(denom))
+    # The displayed fraction repeats the generated one (batch H4-0-R2): value: domains on the
+    # values and visual_params paths, so a fraction that differs from what was generated
+    # escapes; the formatter's own pools when it picked the fraction itself.
+    fraction_str = fill("{numer}/{denom}", numer=S(numer, numer_dom), denom=S(denom, denom_dom))
 
     vp = {
         "shape": shape,
@@ -212,12 +222,12 @@ def format_fraction_shade(
             numer = ctx.values["result_num"]
             denom = ctx.values["result_den"]
         correct_answer = ctx.values.get("result", fraction_str)
-        vp["fraction_str"] = fill("{a_numerator}/{a_denominator} {v} {b_numerator}/{b_denominator}", _src=('operation',), a_numerator=derived(vp['a_numerator']), a_denominator=derived(vp['a_denominator']), v=derived('+' if op == 'add' else '-'), b_numerator=derived(vp['b_numerator']), b_denominator=derived(vp['b_denominator']))
+        vp["fraction_str"] = fill("{a_numerator}/{a_denominator} {v} {b_numerator}/{b_denominator}", _src=('operation',), a_numerator=S(vp['a_numerator'], "value:a_num"), a_denominator=S(vp['a_denominator'], "value:a_den"), v=S('+' if op == 'add' else '-', E(("+", "-"), "the add and subtract signs")), b_numerator=S(vp['b_numerator'], "value:b_num"), b_denominator=S(vp['b_denominator'], "value:b_den"))
         vp["shaded_parts"] = numer
         vp["total_parts"] = denom
 
     # ── 3. Traps ──────────────────────────────────────────────────────────────
-    traps = _build_traps(numer, denom)
+    traps = _build_traps(numer, denom, ("result_num", "result_den") if "operation" in vp and "result_num" in ctx.values else ("numerator", "denominator"))
 
     # ── 4. MCQ options ────────────────────────────────────────────────────────
     mcq_options = None

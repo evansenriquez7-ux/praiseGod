@@ -29,7 +29,7 @@ from typing import List, Optional
 
 from backend.app.practice_gen.dna.base import FormattedProblem, QuestionContext, count_noun
 from backend.app.practice_gen.formatters._option_order import shuffle_options
-from backend.app.practice_gen.slots import E, R, S, derived, fill
+from backend.app.practice_gen.slots import E, R, S, derived, fill, join
 from backend.app.practice_gen.formatters._answer_slots import (correct_option_key, distractors_field)
 
 
@@ -124,18 +124,24 @@ def _build_visual_params(
 # Trap builder
 # ─────────────────────────────────────────────────────────────────────────────
 
-def _repeated_sum(terms: int, addend: int) -> str:
+def _rc(value, dom):
+    """A rows/cols slot: `dom` is a domain, or ("arithmetic", src) for a computed count."""
+    return derived(value, src=dom[1], why=dom[0]) if isinstance(dom, tuple) else S(value, dom)
+
+
+def _repeated_sum(terms: int, addend: int, terms_dom, addend_dom) -> str:
     """
     Write `terms` copies of `addend` as a repeated sum, or describe it when
     writing it out would be unwieldy.
 
     Grade-2 arrays reach 10 rows, and "3 + 3 + 3 + 3 + 3 + 3 + 3 + 3 + 3 + 3"
     stops being a readable illustration well before that, so past five terms the
-    stem states the repetition instead of spelling it out.
+    stem states the repetition instead of spelling it out. `terms_dom`/`addend_dom` are the
+    domains the caller's rows and cols come from (batch H4-0-R2).
     """
     if terms <= 5:
-        return " + ".join([str(addend)] * terms)
-    return fill("{addend} added {terms} times", addend=derived(addend), terms=derived(terms))
+        return join(" + ", [_rc(addend, addend_dom)] * terms)
+    return fill("{addend} added {terms} times", addend=_rc(addend, addend_dom), terms=_rc(terms, terms_dom))
 
 
 def _build_traps(params: dict, rng: random.Random) -> dict:
@@ -212,8 +218,12 @@ def format_array_grid(
         Student types the product or area.
     """
     # ── 1. Resolve visual_params ───────────────────────────────────────────────
+    # Each branch names the domain its rows and cols come from (batch H4-0-R2), for the
+    # stems that print them. No DNA supplies visual_params with correct_count today; if one
+    # does, "value:rows"/"value:cols" escape until it also declares them in its values.
     if ctx.visual_params and "correct_count" in ctx.visual_params:
         vp = ctx.visual_params.copy()
+        rows_dom, cols_dom = "value:rows", "value:cols"
     elif ctx.values and "sides" in ctx.values and "l" in ctx.values["sides"]:
         l = ctx.values["sides"]["l"]
         w = ctx.values["sides"]["w"]
@@ -226,6 +236,7 @@ def format_array_grid(
             "correct_count": l * w,
             "grid_size": [l + 1, w + 1],
         }
+        rows_dom = cols_dom = E(tuple(ctx.values["sides"].values()), "values['sides']")
     elif ctx.values and "sides" in ctx.values and "s" in ctx.values["sides"]:
         # Squares. Without this branch a square area item fell through to
         # _build_visual_params, which invents rows/cols from a free 2..10 draw --
@@ -243,6 +254,7 @@ def format_array_grid(
             "correct_count": s * s,
             "grid_size": [s + 1, s + 1],
         }
+        rows_dom = cols_dom = E(tuple(ctx.values["sides"].values()), "values['sides']")
     elif ctx.values and "groups" in ctx.values and "n" in ctx.values:
         # Only multiplication sets these keys, and they are factor LABELS, not roles:
         # "groups" is `a` (the size) and "n" is `b` (the count) -- the DNA prints
@@ -261,6 +273,7 @@ def format_array_grid(
             "correct_count": rows * cols,
             "grid_size": [rows + 1, cols + 1],
         }
+        rows_dom, cols_dom = "value:n", "value:groups"
     elif ctx.dna_concept == "division" and ctx.values and "a" in ctx.values and "b" in ctx.values:
         # Division's own branch, checked before the generic a/b fallback
         # below (which multiplies them together -- correct for multiplication,
@@ -288,6 +301,7 @@ def format_array_grid(
             "correct_count": ctx.values["a"],
             "grid_size": [divisor + 1, quotient + 1],
         }
+        rows_dom, cols_dom = "value:b", ("arithmetic", ("a", "b"))   # cols is a // b
     elif ctx.dna_concept == "multiplication" and ctx.values and "a" in ctx.values and "b" in ctx.values:
         # Multiplication's role convention, shared by every other stem path and by
         # its hints: `b` is the COUNT and `a` the SIZE ("{b} equal jumps of {a}",
@@ -306,6 +320,7 @@ def format_array_grid(
             "correct_count": rows * cols,
             "grid_size": [rows + 1, cols + 1],
         }
+        rows_dom, cols_dom = "value:b", "value:a"
     elif ctx.values and "a" in ctx.values and "b" in ctx.values:
         rows = ctx.values["a"]
         cols = ctx.values["b"]
@@ -318,10 +333,12 @@ def format_array_grid(
             "correct_count": rows * cols,
             "grid_size": [rows + 1, cols + 1],
         }
+        rows_dom, cols_dom = "value:a", "value:b"
     else:
         diff_profile = ctx.difficulty_profile or {}
         diff_level = min(len(diff_profile) + 1, 4) if diff_profile else 2
         vp = _build_visual_params(ctx.grade, diff_level, random.Random(ctx.seed))
+        rows_dom = cols_dom = R(2, 10, "_build_visual_params' row and column draws")
 
     rows = vp.get("rows")
     cols = vp.get("cols")
@@ -374,12 +391,12 @@ def format_array_grid(
         figure = "square" if shape_type == "square" or rows == cols else "rectangle"
         if interaction_mode == "read":
             question_text = (
-                fill("This {figure} is covered by {rows} rows of {cols} square tiles. How many square tile units cover the {figure}?", _src=('rows', 'cols', 'shape_type',), figure=S(figure, "value:shape"), rows=S(rows, "value:s"), cols=derived(cols))
+                fill("This {figure} is covered by {rows} rows of {cols} square tiles. How many square tile units cover the {figure}?", _src=('rows', 'cols', 'shape_type',), figure=S(figure, "value:shape"), rows=S(rows, "value:s"), cols=_rc(cols, cols_dom))
             )
         else:
             vp["shaded"] = False
             question_text = (
-                fill("Shade the square tiles that cover this {rows}×{cols} {figure}. How many square tile units cover the {figure}?", _src=('rows', 'cols', 'shape_type',), rows=derived(rows), cols=derived(cols), figure=derived(figure))
+                fill("Shade the square tiles that cover this {rows}×{cols} {figure}. How many square tile units cover the {figure}?", _src=('rows', 'cols', 'shape_type',), rows=_rc(rows, rows_dom), cols=_rc(cols, cols_dom), figure=S(figure, "value:shape"))
             )
     elif is_division_array:
         total = rows * cols
@@ -422,15 +439,15 @@ def format_array_grid(
             # for the repeated sum itself; a plain product node wants neither.
             if _mul_task_type == "equal_groups":
                 question_text = (
-                    fill("Look at the array. It shows {rows} groups of {cols} ({repeated_sum}). How many squares are shaded in all?", _src=('rows', 'cols', 'shape_type',), rows=derived(rows), cols=derived(cols), repeated_sum=derived(_repeated_sum(rows, cols)))
+                    fill("Look at the array. It shows {rows} groups of {cols} ({repeated_sum}). How many squares are shaded in all?", _src=('rows', 'cols', 'shape_type',), rows=_rc(rows, rows_dom), cols=_rc(cols, cols_dom), repeated_sum=S(_repeated_sum(rows, cols, rows_dom, cols_dom), "fill"))
                 )
             elif _mul_task_type == "repeated_addition":
                 question_text = (
-                    fill("Look at the {rows}×{cols} array. It shows {repeated_sum}. How many squares are shaded in all?", _src=('rows', 'cols', 'shape_type',), rows=derived(rows), cols=derived(cols), repeated_sum=derived(_repeated_sum(rows, cols)))
+                    fill("Look at the {rows}×{cols} array. It shows {repeated_sum}. How many squares are shaded in all?", _src=('rows', 'cols', 'shape_type',), rows=_rc(rows, rows_dom), cols=_rc(cols, cols_dom), repeated_sum=S(_repeated_sum(rows, cols, rows_dom, cols_dom), "fill"))
                 )
             else:
                 question_text = (
-                    fill("Look at the {rows}×{cols} array. How many squares are shaded in all?", _src=('rows', 'cols', 'shape_type',), rows=derived(rows), cols=derived(cols))
+                    fill("Look at the {rows}×{cols} array. How many squares are shaded in all?", _src=('rows', 'cols', 'shape_type',), rows=_rc(rows, rows_dom), cols=_rc(cols, cols_dom))
                 )
         else:
             question_text = (
@@ -441,15 +458,15 @@ def format_array_grid(
         if shape_type == "rectangle" and rows and cols:
             if _mul_task_type == "equal_groups":
                 question_text = (
-                    fill("Shade {rows} {count_noun} of {cols} {count_noun2} to show {repeated_sum}. How many squares did you shade in all?", _src=('rows', 'cols', 'shape_type',), rows=derived(rows), count_noun=S(count_noun(rows, 'groups'), E((count_noun(1, 'groups'), 'groups'), "the noun or its singular (dna.base.count_noun)")), cols=derived(cols), count_noun2=S(count_noun(cols, 'squares'), E((count_noun(1, 'squares'), 'squares'), "the noun or its singular (dna.base.count_noun)")), repeated_sum=derived(_repeated_sum(rows, cols)))
+                    fill("Shade {rows} {count_noun} of {cols} {count_noun2} to show {repeated_sum}. How many squares did you shade in all?", _src=('rows', 'cols', 'shape_type',), rows=_rc(rows, rows_dom), count_noun=S(count_noun(rows, 'groups'), E((count_noun(1, 'groups'), 'groups'), "the noun or its singular (dna.base.count_noun)")), cols=_rc(cols, cols_dom), count_noun2=S(count_noun(cols, 'squares'), E((count_noun(1, 'squares'), 'squares'), "the noun or its singular (dna.base.count_noun)")), repeated_sum=S(_repeated_sum(rows, cols, rows_dom, cols_dom), "fill"))
                 )
             elif _mul_task_type == "repeated_addition":
                 question_text = (
-                    fill("Shade {rows} {count_noun} of {cols} {count_noun2} to show {repeated_sum}. How many squares did you shade in all?", _src=('rows', 'cols', 'shape_type',), rows=derived(rows), count_noun=S(count_noun(rows, 'rows'), E((count_noun(1, 'rows'), 'rows'), "the noun or its singular (dna.base.count_noun)")), cols=derived(cols), count_noun2=S(count_noun(cols, 'squares'), E((count_noun(1, 'squares'), 'squares'), "the noun or its singular (dna.base.count_noun)")), repeated_sum=derived(_repeated_sum(rows, cols)))
+                    fill("Shade {rows} {count_noun} of {cols} {count_noun2} to show {repeated_sum}. How many squares did you shade in all?", _src=('rows', 'cols', 'shape_type',), rows=_rc(rows, rows_dom), count_noun=S(count_noun(rows, 'rows'), E((count_noun(1, 'rows'), 'rows'), "the noun or its singular (dna.base.count_noun)")), cols=_rc(cols, cols_dom), count_noun2=S(count_noun(cols, 'squares'), E((count_noun(1, 'squares'), 'squares'), "the noun or its singular (dna.base.count_noun)")), repeated_sum=S(_repeated_sum(rows, cols, rows_dom, cols_dom), "fill"))
                 )
             else:
                 question_text = (
-                    fill("Shade all the squares inside the {rows}×{cols} rectangle. How many squares did you shade in all?", _src=('rows', 'cols', 'shape_type',), rows=derived(rows), cols=derived(cols))
+                    fill("Shade all the squares inside the {rows}×{cols} rectangle. How many squares did you shade in all?", _src=('rows', 'cols', 'shape_type',), rows=_rc(rows, rows_dom), cols=_rc(cols, cols_dom))
                 )
         else:
             question_text = (

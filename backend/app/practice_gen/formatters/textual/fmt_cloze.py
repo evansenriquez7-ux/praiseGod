@@ -17,7 +17,7 @@ from backend.app.practice_gen.dna.base import (FormattedProblem, QuestionContext
 from backend.app.practice_gen.formatters._distractor_fallback import augment_distractors
 from backend.app.practice_gen.formatters._option_order import shuffle_options
 from backend.app.practice_gen.formatters._answer_slots import answer_text, distractor_text
-from backend.app.practice_gen.slots import E, S, derived, fill, join
+from backend.app.practice_gen.slots import E, S, carried, derived, fill, join
 
 
 def _build_equation_sentence(ctx: QuestionContext) -> str:
@@ -37,7 +37,7 @@ def _build_equation_sentence(ctx: QuestionContext) -> str:
             # text independently.
             real_a = values.get("real_a", a)
             real_b = values.get("real_b", b)
-            return fill("Estimate: {real_a} + {real_b} ≈ ___", _src=('task_type',), real_a=derived(real_a, src=('real_a', 'a',)), real_b=derived(real_b, src=('real_b', 'b',)))
+            return fill("Estimate: {real_a} + {real_b} ≈ ___", _src=('task_type',), real_a=S(real_a, f"value:{carried(values, 'real_a', 'a')}", src=('real_a', 'a',)), real_b=S(real_b, f"value:{carried(values, 'real_b', 'b')}", src=('real_b', 'b',)))
         if values.get("task_type") == "expanded_form" and "a_tens" in values:
             # Bare "{a} + {b} = ___" drops the place-value decomposition
             # this task_type exists to demonstrate -- same root cause as the
@@ -121,35 +121,35 @@ def _build_equation_sentence(ctx: QuestionContext) -> str:
             plural_name = values.get("plural_name")
             if not plural_name:
                 plural_name = number_group_name(a, b)
-            terms = " + ".join([str(a)] * b) if b <= 5 else fill("{a} added {b} times", _src=('task_type',), a=derived(a, src=('a', 'groups',)), b=derived(b, src=('b', 'n',)))
+            terms = join(" + ", [S(a, f"value:{carried(values, 'a', 'groups')}", src=('a', 'groups',))] * b) if b <= 5 else fill("{a} added {b} times", _src=('task_type',), a=S(a, f"value:{carried(values, 'a', 'groups')}", src=('a', 'groups',)), b=S(b, f"value:{carried(values, 'b', 'n')}", src=('b', 'n',)))
             if group_form == "plural_name":
-                return fill("Count {b} {count_noun} ({terms}) = ___", _src=('group_form', 'task_type',), b=derived(b, src=('b', 'n',)), count_noun=S(count_noun(b, plural_name), "value:plural_name"), terms=derived(terms, src=('b', 'n', 'a', 'groups',)))
+                return fill("Count {b} {count_noun} ({terms}) = ___", _src=('group_form', 'task_type',), b=S(b, f"value:{carried(values, 'b', 'n')}", src=('b', 'n',)), count_noun=S(count_noun(b, plural_name), "value:plural_name"), terms=S(terms, "fill", src=('b', 'n', 'a', 'groups',)))
             unit = "group" if b == 1 else "groups"
-            return fill("{b} {unit} of {a} ({terms}) makes ___ in all", _src=('task_type', 'group_form',), b=derived(b, src=('b', 'n',)), unit=derived(unit, src=('b', 'n',)), a=derived(a, src=('a', 'groups',)), terms=derived(terms, src=('b', 'n', 'a', 'groups',)))
+            return fill("{b} {unit} of {a} ({terms}) makes ___ in all", _src=('task_type', 'group_form',), b=S(b, f"value:{carried(values, 'b', 'n')}", src=('b', 'n',)), unit=S(unit, E(("group", "groups"), "group or groups, by the count"), src=('b', 'n',)), a=S(a, f"value:{carried(values, 'a', 'groups')}", src=('a', 'groups',)), terms=S(terms, "fill", src=('b', 'n', 'a', 'groups',)))
         if values.get("task_type") == "repeated_addition" and blank_target in ("result", "total"):
-            terms = " + ".join([str(a)] * b)
-            return fill("{terms} = ___", _src=('task_type',), terms=derived(terms, src=('b', 'n', 'a', 'groups',)))
+            terms = join(" + ", [S(a, f"value:{carried(values, 'a', 'groups')}", src=('a', 'groups',))] * b)
+            return fill("{terms} = ___", _src=('task_type',), terms=S(terms, "fill", src=('b', 'n', 'a', 'groups',)))
         if values.get("task_type") == "skip_counting" and blank_target in ("result", "total"):
-            seq = ", ".join(str(a * i) for i in range(1, b + 1))
-            return fill("Count by {a}s: {seq}. {a} × {b} = ___", _src=('task_type',), a=derived(a, src=('a', 'groups',)), seq=derived(seq, src=('a', 'groups', 'b', 'n',)), b=derived(b, src=('b', 'n',)))
+            seq = join(", ", [derived(a * i, src=(carried(values, 'a', 'groups'), carried(values, 'b', 'n')), why="arithmetic") for i in range(1, b + 1)])
+            return fill("Count by {a}s: {seq}. {a} × {b} = ___", _src=('task_type',), a=S(a, f"value:{carried(values, 'a', 'groups')}", src=('a', 'groups',)), seq=S(seq, "fill", src=('a', 'groups', 'b', 'n',)), b=S(b, f"value:{carried(values, 'b', 'n')}", src=('b', 'n',)))
         if values.get("task_type") == "number_line_jumps" and blank_target in ("result", "total"):
-            return fill("Starting at 0, {b} equal jumps of {a} on the number line lands on ___", _src=('task_type',), b=derived(b, src=('b', 'n',)), a=derived(a, src=('a', 'groups',)))
+            return fill("Starting at 0, {b} equal jumps of {a} on the number line lands on ___", _src=('task_type',), b=S(b, f"value:{carried(values, 'b', 'n')}", src=('b', 'n',)), a=S(a, f"value:{carried(values, 'a', 'groups')}", src=('a', 'groups',)))
         if values.get("task_type") == "commutative":
-            return fill("{a} × {b} = ___ × {a}", _src=('task_type',), a=derived(a, src=('a', 'groups',)), b=derived(b, src=('b', 'n',)))
+            return fill("{a} × {b} = ___ × {a}", _src=('task_type',), a=S(a, f"value:{carried(values, 'a', 'groups')}", src=('a', 'groups',)), b=S(b, f"value:{carried(values, 'b', 'n')}", src=('b', 'n',)))
         if values.get("task_type") == "associative":
             c = values.get("c", 3)
-            return fill("({a} × {b}) × {c} = {a} × (___ × {c})", _src=('task_type',), a=derived(a, src=('a', 'groups',)), b=derived(b, src=('b', 'n',)), c=derived(c, src=('c',)))
+            return fill("({a} × {b}) × {c} = {a} × (___ × {c})", _src=('task_type',), a=S(a, f"value:{carried(values, 'a', 'groups')}", src=('a', 'groups',)), b=S(b, f"value:{carried(values, 'b', 'n')}", src=('b', 'n',)), c=S(c, "value:c", src=('c',)))
         if values.get("task_type") == "distributive":
             c = values.get("c", 5)
-            return fill("{a} × ({b} + {c}) = ({a} × {b}) + ({a} × ___)", _src=('task_type',), a=derived(a, src=('a', 'groups',)), b=derived(b, src=('b', 'n',)), c=derived(c, src=('c',)))
+            return fill("{a} × ({b} + {c}) = ({a} × {b}) + ({a} × ___)", _src=('task_type',), a=S(a, f"value:{carried(values, 'a', 'groups')}", src=('a', 'groups',)), b=S(b, f"value:{carried(values, 'b', 'n')}", src=('b', 'n',)), c=S(c, "value:c", src=('c',)))
         if values.get("task_type") == "two_step":
-            return fill("({a} × {b}) + 5 = ___", _src=('task_type',), a=derived(a, src=('a', 'groups',)), b=derived(b, src=('b', 'n',)))
+            return fill("({a} × {b}) + 5 = ___", _src=('task_type',), a=S(a, f"value:{carried(values, 'a', 'groups')}", src=('a', 'groups',)), b=S(b, f"value:{carried(values, 'b', 'n')}", src=('b', 'n',)))
         if blank_target in ("result", "total"):
-            return fill("{a} × {b} = ___", a=derived(a, src=('a', 'groups',)), b=derived(b, src=('b', 'n',)))
+            return fill("{a} × {b} = ___", a=S(a, f"value:{carried(values, 'a', 'groups')}", src=('a', 'groups',)), b=S(b, f"value:{carried(values, 'b', 'n')}", src=('b', 'n',)))
         elif blank_target in ("b", "n"):
-            return fill("{a} × ___ = {result}", a=derived(a, src=('a', 'groups',)), result=derived(result, src=('result', 'total',)))
+            return fill("{a} × ___ = {result}", a=S(a, f"value:{carried(values, 'a', 'groups')}", src=('a', 'groups',)), result=S(result, f"value:{carried(values, 'result', 'total')}", src=('result', 'total',)))
         else:
-            return fill("___ × {b} = {result}", b=derived(b, src=('b', 'n',)), result=derived(result, src=('result', 'total',)))
+            return fill("___ × {b} = {result}", b=S(b, f"value:{carried(values, 'b', 'n')}", src=('b', 'n',)), result=S(result, f"value:{carried(values, 'result', 'total')}", src=('result', 'total',)))
     
     elif concept == "division":
         dividend = values.get("dividend", values.get("a"))
@@ -160,19 +160,19 @@ def _build_equation_sentence(ctx: QuestionContext) -> str:
             real_b = values.get("real_b", divisor)
             return fill("Estimate: {real_a} ÷ {real_b} ≈ ___", _src=('task_type',), real_a=S(real_a, "value:real_a"), real_b=S(real_b, "value:real_b", src=('real_b', 'divisor', 'b',)))
         if values.get("task_type") == "even_odd":
-            return fill("Divide {dividend} by 2. {dividend} is an ___ number.", _src=('task_type',), dividend=derived(dividend, src=('dividend', 'a',)))
+            return fill("Divide {dividend} by 2. {dividend} is an ___ number.", _src=('task_type',), dividend=S(dividend, f"value:{carried(values, 'dividend', 'a')}", src=('dividend', 'a',)))
         if values.get("task_type") == "number_line_jumps":
             return fill("Start at {dividend} on a number line and take equal jumps back of {divisor} to reach 0: {dividend} ÷ {divisor} = ___", _src=('task_type',), dividend=S(dividend, "value:a", src=('dividend', 'a',)), divisor=S(divisor, "value:b", src=('divisor', 'b',)))
         if values.get("task_type") == "repeated_subtraction":
             return fill("Start with {dividend}. Subtract {divisor} repeatedly until reaching 0: you subtract ___ times.", _src=('task_type',), dividend=S(dividend, "value:a", src=('dividend', 'a',)), divisor=S(divisor, "value:b", src=('divisor', 'b',)))
         if values.get("task_type") == "inverse_of_multiplication":
-            return fill("Since {divisor} × {quotient} = {dividend}, {dividend} ÷ {divisor} = ___", _src=('task_type',), divisor=derived(divisor, src=('divisor', 'b',)), quotient=derived(quotient, src=('quotient', 'result',)), dividend=S(dividend, "value:a", src=('dividend', 'a',)))
+            return fill("Since {divisor} × {quotient} = {dividend}, {dividend} ÷ {divisor} = ___", _src=('task_type',), divisor=S(divisor, f"value:{carried(values, 'divisor', 'b')}", src=('divisor', 'b',)), quotient=S(quotient, f"value:{carried(values, 'quotient', 'result')}", src=('quotient', 'result',)), dividend=S(dividend, "value:a", src=('dividend', 'a',)))
         if blank_target in ("result", "quotient"):
             return fill("{dividend} ÷ {divisor} = ___", dividend=S(dividend, "value:a", src=('dividend', 'a',)), divisor=S(divisor, "value:b", src=('divisor', 'b',)))
         elif blank_target in ("b", "divisor", "n"):
-            return fill("{dividend} ÷ ___ = {quotient}", dividend=derived(dividend, src=('dividend', 'a',)), quotient=derived(quotient, src=('quotient', 'result',)))
+            return fill("{dividend} ÷ ___ = {quotient}", dividend=S(dividend, f"value:{carried(values, 'dividend', 'a')}", src=('dividend', 'a',)), quotient=S(quotient, f"value:{carried(values, 'quotient', 'result')}", src=('quotient', 'result',)))
         else:
-            return fill("___ ÷ {divisor} = {quotient}", divisor=derived(divisor, src=('divisor', 'b',)), quotient=S(quotient, "value:result", src=('quotient', 'result',)))
+            return fill("___ ÷ {divisor} = {quotient}", divisor=S(divisor, f"value:{carried(values, 'divisor', 'b')}", src=('divisor', 'b',)), quotient=S(quotient, "value:result", src=('quotient', 'result',)))
     
     elif concept == "counting":
         seq = values.get("sequence") or []
@@ -198,8 +198,8 @@ def _build_equation_sentence(ctx: QuestionContext) -> str:
             return values["question"]
         if task_type in ("order_set", "order_sequence"):
             nums = values.get("numbers", [])
-            nums_str = ", ".join(str(x) for x in nums)
-            return fill("Order these numbers from least to greatest: {nums_str} ___", _src=('task_type',), nums_str=derived(nums_str, src=('numbers',)))
+            nums_str = join(", ", [S(x, E(tuple(nums), "values['numbers']")) for x in nums])
+            return fill("Order these numbers from least to greatest: {nums_str} ___", _src=('task_type',), nums_str=S(nums_str, "fill", src=('numbers',)))
         elif task_type == "find_between":
             return fill("What number is between {a} and {b}? ___", _src=('task_type',), a=S(a, "value:a"), b=S(b, "value:b"))
         else:
@@ -210,9 +210,10 @@ def _build_equation_sentence(ctx: QuestionContext) -> str:
             return fill("Compare the numbers: {a} ___ {b}. Which sign is correct: >, <, or =?", a=S(a, "value:a"), b=S(b, "value:b"))
     elif concept == "missing_number":
         op_name = values.get("operation", "addition")
-        op_symbol = {"addition": "+", "subtraction": "−",
-                     "multiplication": "×", "division": "÷",
-                     "equivalent": values.get("equivalent_symbol", "+")}.get(op_name, "+")
+        op_symbols = {"addition": "+", "subtraction": "−",
+                      "multiplication": "×", "division": "÷",
+                      "equivalent": values.get("equivalent_symbol", "+")}
+        op_symbol = op_symbols.get(op_name, "+")
         blank_pos = values.get("blank_position", "result")
         res = values.get("result", values.get("total"))
         a_val = values.get("a")
@@ -223,13 +224,13 @@ def _build_equation_sentence(ctx: QuestionContext) -> str:
             if eq_sym == "+":
                 return fill("{a_val} + {b_val} = {c_val} + ___", _src=('equivalent_symbol', 'operation',), a_val=S(a_val, "value:a"), b_val=S(b_val, "value:b"), c_val=S(c_val, "value:c", src=('c',)))
             else:
-                return fill("{a_val} − {b_val} = {c_val} − ___", _src=('operation',), a_val=S(a_val, "value:a"), b_val=S(b_val, "value:b"), c_val=derived(c_val, src=('c',)))
+                return fill("{a_val} − {b_val} = {c_val} − ___", _src=('operation',), a_val=S(a_val, "value:a"), b_val=S(b_val, "value:b"), c_val=S(c_val, "value:c", src=('c',)))
         if blank_pos == "start":
-            return fill("___ {op_symbol} {b_val} = {res}", _src=('blank_position',), op_symbol=derived(op_symbol, src=('operation', 'equivalent_symbol',)), b_val=S(b_val, "value:b"), res=S(res, "value:result", src=('result', 'total',)))
+            return fill("___ {op_symbol} {b_val} = {res}", _src=('blank_position',), op_symbol=S(op_symbol, E(tuple(op_symbols.values()), "the operation symbols"), src=('operation', 'equivalent_symbol',)), b_val=S(b_val, "value:b"), res=S(res, "value:result", src=('result', 'total',)))
         elif blank_pos == "change":
-            return fill("{a_val} {op_symbol} ___ = {res}", _src=('blank_position',), a_val=S(a_val, "value:a"), op_symbol=derived(op_symbol, src=('operation', 'equivalent_symbol',)), res=derived(res, src=('result', 'total',)))
+            return fill("{a_val} {op_symbol} ___ = {res}", _src=('blank_position',), a_val=S(a_val, "value:a"), op_symbol=S(op_symbol, E(tuple(op_symbols.values()), "the operation symbols"), src=('operation', 'equivalent_symbol',)), res=S(res, f"value:{carried(values, 'result', 'total')}", src=('result', 'total',)))
         else:
-            return fill("{a_val} {op_symbol} {b_val} = ___", a_val=S(a_val, "value:a"), op_symbol=derived(op_symbol, src=('operation', 'equivalent_symbol',)), b_val=S(b_val, "value:b"))
+            return fill("{a_val} {op_symbol} {b_val} = ___", a_val=S(a_val, "value:a"), op_symbol=S(op_symbol, E(tuple(op_symbols.values()), "the operation symbols"), src=('operation', 'equivalent_symbol',)), b_val=S(b_val, "value:b"))
     elif concept == "fractions":
         if values.get("question"):
             return values["question"]
@@ -241,25 +242,25 @@ def _build_equation_sentence(ctx: QuestionContext) -> str:
             a_den = values.get("a_den", denom)
             b_num = values.get("b_num", numer)
             b_den = values.get("b_den", denom)
-            return fill("Compare the fractions: \\(\\frac{{{a_num}}}{{{a_den}}}\\) ___ \\(\\frac{{{b_num}}}{{{b_den}}}\\). Which sign is correct: >, <, or =?", _src=('operation',), a_num=derived(a_num, src=('a_num', 'numerator', 'a',)), a_den=derived(a_den, src=('a_den', 'denominator', 'b',)), b_num=derived(b_num, src=('b_num', 'numerator', 'a',)), b_den=derived(b_den, src=('b_den', 'denominator', 'b',)))
+            return fill("Compare the fractions: \\(\\frac{{{a_num}}}{{{a_den}}}\\) ___ \\(\\frac{{{b_num}}}{{{b_den}}}\\). Which sign is correct: >, <, or =?", _src=('operation',), a_num=S(a_num, f"value:{carried(values, 'a_num', 'numerator', 'a')}", src=('a_num', 'numerator', 'a',)), a_den=S(a_den, f"value:{carried(values, 'a_den', 'denominator', 'b')}", src=('a_den', 'denominator', 'b',)), b_num=S(b_num, f"value:{carried(values, 'b_num', 'numerator', 'a')}", src=('b_num', 'numerator', 'a',)), b_den=S(b_den, f"value:{carried(values, 'b_den', 'denominator', 'b')}", src=('b_den', 'denominator', 'b',)))
         if operation in ("add_subtract", "add", "subtract"):
             a_num = values.get("a_num", numer)
             b_num = values.get("b_num", 0)
             a_den = values.get("a_den", denom)
             b_den = values.get("b_den", denom)
-            a_part = "1 part is" if a_num == 1 else fill("{a_num} parts are", _src=('operation',), a_num=derived(a_num, src=('a_num', 'numerator', 'a',)))
+            a_part = fill("1 part is") if a_num == 1 else fill("{a_num} parts are", _src=('operation',), a_num=S(a_num, f"value:{carried(values, 'a_num', 'numerator', 'a')}", src=('a_num', 'numerator', 'a',)))
             if operation == "subtract":
-                b_part = "1 shaded part is" if b_num == 1 else fill("{b_num} shaded parts are", _src=('operation',), b_num=derived(b_num, src=('b_num',)))
-                return fill("A shape is divided into {a_den} equal parts. {a_part} shaded. If {b_part} taken away: \\(\\frac{{{a_num}}}{{{a_den}}} - \\frac{{{b_num}}}{{{b_den}}} = ___\\)", _src=('operation',), a_den=derived(a_den, src=('a_den', 'denominator', 'b',)), a_part=derived(a_part, src=('a_num', 'numerator', 'a',)), b_part=derived(b_part, src=('b_num',)), a_num=derived(a_num, src=('a_num', 'numerator', 'a',)), b_num=derived(b_num, src=('b_num',)), b_den=derived(b_den, src=('b_den', 'denominator', 'b',)))
-            b_part = "1 more part is" if b_num == 1 else fill("{b_num} more parts are", _src=('operation',), b_num=derived(b_num, src=('b_num',)))
-            return fill("A shape is divided into {a_den} equal parts. {a_part} shaded and {b_part} shaded: \\(\\frac{{{a_num}}}{{{a_den}}} + \\frac{{{b_num}}}{{{b_den}}} = ___\\)", _src=('operation',), a_den=derived(a_den, src=('a_den', 'denominator', 'b',)), a_part=derived(a_part, src=('a_num', 'numerator', 'a',)), b_part=derived(b_part, src=('b_num',)), a_num=derived(a_num, src=('a_num', 'numerator', 'a',)), b_num=derived(b_num, src=('b_num',)), b_den=derived(b_den, src=('b_den', 'denominator', 'b',)))
-        return fill("A shape is divided into {denom} equal parts with {numer} parts shaded. The fraction shaded is ___.", denom=derived(denom, src=('denominator', 'b',)), numer=derived(numer, src=('numerator', 'a',)))
+                b_part = fill("1 shaded part is") if b_num == 1 else fill("{b_num} shaded parts are", _src=('operation',), b_num=S(b_num, "value:b_num", src=('b_num',)))
+                return fill("A shape is divided into {a_den} equal parts. {a_part} shaded. If {b_part} taken away: \\(\\frac{{{a_num}}}{{{a_den}}} - \\frac{{{b_num}}}{{{b_den}}} = ___\\)", _src=('operation',), a_den=S(a_den, f"value:{carried(values, 'a_den', 'denominator', 'b')}", src=('a_den', 'denominator', 'b',)), a_part=S(a_part, "fill", src=('a_num', 'numerator', 'a',)), b_part=S(b_part, "fill", src=('b_num',)), a_num=S(a_num, f"value:{carried(values, 'a_num', 'numerator', 'a')}", src=('a_num', 'numerator', 'a',)), b_num=S(b_num, "value:b_num", src=('b_num',)), b_den=S(b_den, f"value:{carried(values, 'b_den', 'denominator', 'b')}", src=('b_den', 'denominator', 'b',)))
+            b_part = fill("1 more part is") if b_num == 1 else fill("{b_num} more parts are", _src=('operation',), b_num=S(b_num, "value:b_num", src=('b_num',)))
+            return fill("A shape is divided into {a_den} equal parts. {a_part} shaded and {b_part} shaded: \\(\\frac{{{a_num}}}{{{a_den}}} + \\frac{{{b_num}}}{{{b_den}}} = ___\\)", _src=('operation',), a_den=S(a_den, f"value:{carried(values, 'a_den', 'denominator', 'b')}", src=('a_den', 'denominator', 'b',)), a_part=S(a_part, "fill", src=('a_num', 'numerator', 'a',)), b_part=S(b_part, "fill", src=('b_num',)), a_num=S(a_num, f"value:{carried(values, 'a_num', 'numerator', 'a')}", src=('a_num', 'numerator', 'a',)), b_num=S(b_num, "value:b_num", src=('b_num',)), b_den=S(b_den, f"value:{carried(values, 'b_den', 'denominator', 'b')}", src=('b_den', 'denominator', 'b',)))
+        return fill("A shape is divided into {denom} equal parts with {numer} parts shaded. The fraction shaded is ___.", denom=S(denom, f"value:{carried(values, 'denominator', 'b')}", src=('denominator', 'b',)), numer=S(numer, f"value:{carried(values, 'numerator', 'a')}", src=('numerator', 'a',)))
     elif concept == "money_peso":
         if values.get("question"):
             return values["question"]
         if ctx.question_text_with_blank:
             return ctx.question_text_with_blank
-        return fill("{question_text}", question_text=derived(values.get('question_text', ctx.question_text), src=('question_text',)))
+        return fill("{question_text}", question_text=S(values.get('question_text', ctx.question_text), "value:question_text" if "question_text" in values else "fill", src=('question_text',)))
     else:
         if ctx.question_text_with_blank:
             return ctx.question_text_with_blank

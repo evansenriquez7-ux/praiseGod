@@ -1,7 +1,13 @@
 {
   "schema_version": 1,
   "note": "Intent record for interruption safety. Written when a batch, chain or campaign STARTS and cleared when it completes; an intent left open means a session did not reach its finish line. Deliberately digest-free -- see tests/tree_state.py. Read with `PYTHONPATH=. .venv/bin/python tests/tree_state.py`.",
-  "open_intent": null,
+  "open_intent": {
+    "kind": "batch",
+    "began_at": "2026-10-12T20:23:09+08:00",
+    "session": "claude-opus-5-5-h4-0-r2-20261012",
+    "note": "H4-0-R2: tighten the type-only slots of the 50 lcs slot_domain_type_only_14 names (937), byte-identical",
+    "next_step": "Land every remaining source edit, then run the re-proof chain in order."
+  },
   "last_completed": {
     "kind": "chain",
     "began_at": "2026-10-12T15:35:37+08:00",

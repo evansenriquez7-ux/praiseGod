@@ -551,10 +551,10 @@ def generate_hints(
     if scale > 1:
         if "key" in cumulative_vocab and "scale" in cumulative_vocab:
             hints.append(
-                fill("Each picture in the {key_label} stands for {scale} items ({scale_label} = {scale}).", _src=('scale',), key_label=S(key_label, "fill"), scale=derived(scale, src=('scale',)), scale_label=S(scale_label, "fill"))
+                fill("Each picture in the {key_label} stands for {scale} items ({scale_label} = {scale}).", _src=('scale',), key_label=S(key_label, "fill"), scale=S(scale, "value:scale", src=('scale',)), scale_label=S(scale_label, "fill"))
             )
         else:
-            hints.append(fill("Each picture stands for {scale} items.", _src=('scale',), scale=derived(scale, src=('scale',))))
+            hints.append(fill("Each picture stands for {scale} items.", _src=('scale',), scale=S(scale, "value:scale", src=('scale',))))
     else:
         hints.append(fill("Each picture stands for 1 item."))
 
@@ -564,7 +564,7 @@ def generate_hints(
         pics = count // scale if scale > 0 else count
         if scale > 1:
             hints.append(
-                fill("Count the pictures for '{cat}': there are {pics} picture(s) × {scale} = {count}.", _src=('scale', 'task_type',), cat=S(cat, "value:question_category"), pics=derived(pics, src=('answer', 'scale',)), scale=derived(scale, src=('scale',)), count=S(count, "value:answer"))
+                fill("Count the pictures for '{cat}': there are {pics} picture(s) × {scale} = {count}.", _src=('scale', 'task_type',), cat=S(cat, "value:question_category"), pics=derived(pics, src=('answer', 'scale',), why="arithmetic"), scale=S(scale, "value:scale", src=('scale',)), count=S(count, "value:answer"))
             )
         else:
             hints.append(
@@ -573,7 +573,7 @@ def generate_hints(
     elif task_type == "present_data":
         if scale > 1:
             hints.append(
-                fill("For each category, divide the number of items by {scale} to find how many pictures to draw.", _src=('scale', 'task_type',), scale=derived(scale, src=('scale',)))
+                fill("For each category, divide the number of items by {scale} to find how many pictures to draw.", _src=('scale', 'task_type',), scale=S(scale, "value:scale", src=('scale',)))
             )
         else:
             hints.append(fill("Draw 1 picture for each item in each category.", _src=('task_type',)))
@@ -586,7 +586,7 @@ def generate_hints(
     elif task_type == "organize_table":
         chart_word = "table" if "table" in cumulative_vocab else "chart"
         if scale > 1:
-            hints.append(fill("Count the pictures in each row and multiply by {scale} to record each count in the {chart_word}.", _src=('scale', 'task_type',), scale=derived(scale, src=('scale',)), chart_word=S(chart_word, E(("table", "chart"), "'table' gated by cumulative_vocab"))))
+            hints.append(fill("Count the pictures in each row and multiply by {scale} to record each count in the {chart_word}.", _src=('scale', 'task_type',), scale=S(scale, "value:scale", src=('scale',)), chart_word=S(chart_word, E(("table", "chart"), "'table' gated by cumulative_vocab"))))
         else:
             hints.append(fill("Count the items for each category and record them in the {chart_word}.", _src=('task_type',), chart_word=S(chart_word, E(("table", "chart"), "'table' gated by cumulative_vocab"))))
 

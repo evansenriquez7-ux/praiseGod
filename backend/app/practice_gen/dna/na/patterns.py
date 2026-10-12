@@ -17,7 +17,7 @@ from backend.app.practice_gen.dna.base import (
     ErrorPattern,
     VocabGated,
 )
-from backend.app.practice_gen.slots import E, S, derived, derives, fill, join
+from backend.app.practice_gen.slots import E, R, S, derived, derives, fill, join
 
 
 # ─── param bounds ─────────────────────────────────────────────────────────────
@@ -264,7 +264,7 @@ def generate_params(
             first, step = generate_pair_by_window(pairs, num_diff_scalar, d=5, rng=rng)
             valid_seq = _make_arithmetic_sequence(first, step, seq_length, increasing=increasing)
             pattern_label = "increasing pattern" if increasing else "decreasing pattern"
-            rule = fill("{v} {step} each time", v=derived('Add' if increasing else 'Subtract'), step=derived(step))
+            rule = fill("{v} {step} each time", v=S('Add' if increasing else 'Subtract', E(("Add", "Subtract"), "the rule's direction")), step=S(step, R(step_lo, step_hi, "the step's range")))
 
         is_letter_seq = any(isinstance(v, str) for v in valid_seq)
         distractor_seqs = []
@@ -318,9 +318,9 @@ def generate_params(
         else:
             first_term = valid_seq[0]
             question_templates = [
-                fill("You want to create {v} {pattern_label} where the rule is: {rule}. Which sequence correctly creates it?", v=derived('an' if pattern_label[0] in 'aeiou' else 'a'), pattern_label=derived(pattern_label), rule=S(rule, "fill")),
-                fill("Start at {first_term} and create {v} {pattern_label} with the rule: {rule}. Which pattern did you create?", first_term=S(first_term, "value:first_term"), v=derived('an' if pattern_label[0] in 'aeiou' else 'a'), pattern_label=derived(pattern_label), rule=S(rule, "fill")),
-                fill("Which sequence correctly shows {v} {pattern_label} starting at {first_term} and following the rule: {rule}?", v=derived('an' if pattern_label[0] in 'aeiou' else 'a'), pattern_label=derived(pattern_label), first_term=S(first_term, "value:first_term"), rule=S(rule, "fill")),
+                fill("You want to create {v} {pattern_label} where the rule is: {rule}. Which sequence correctly creates it?", v=S('an' if pattern_label[0] in 'aeiou' else 'a', E(("a", "an"), "the article for the pattern label")), pattern_label=S(pattern_label, E(("repeating pattern", "increasing pattern", "decreasing pattern"), "the three pattern labels")), rule=S(rule, "fill")),
+                fill("Start at {first_term} and create {v} {pattern_label} with the rule: {rule}. Which pattern did you create?", first_term=S(first_term, "value:first_term"), v=S('an' if pattern_label[0] in 'aeiou' else 'a', E(("a", "an"), "the article for the pattern label")), pattern_label=S(pattern_label, E(("repeating pattern", "increasing pattern", "decreasing pattern"), "the three pattern labels")), rule=S(rule, "fill")),
+                fill("Which sequence correctly shows {v} {pattern_label} starting at {first_term} and following the rule: {rule}?", v=S('an' if pattern_label[0] in 'aeiou' else 'a', E(("a", "an"), "the article for the pattern label")), pattern_label=S(pattern_label, E(("repeating pattern", "increasing pattern", "decreasing pattern"), "the three pattern labels")), first_term=S(first_term, "value:first_term"), rule=S(rule, "fill")),
                 fill("Create a pattern that starts at {first_term} and uses the rule: {rule}. Which sequence shows this pattern?", first_term=S(first_term, "value:first_term"), rule=S(rule, "fill")),
             ]
             question = rng.choice(question_templates)

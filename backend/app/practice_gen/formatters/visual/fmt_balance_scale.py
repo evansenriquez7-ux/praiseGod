@@ -32,7 +32,7 @@ import random
 from backend.app.practice_gen.dna.base import FormattedProblem, QuestionContext
 from backend.app.practice_gen.formatters._distractor_fallback import augment_distractors
 from backend.app.practice_gen.formatters._option_order import shuffle_options
-from backend.app.practice_gen.slots import S, derived, fill
+from backend.app.practice_gen.slots import E, S, derived, fill
 from backend.app.practice_gen.formatters._answer_slots import correct_option_key
 
 
@@ -85,18 +85,18 @@ def _build_balance_params(ctx: QuestionContext, rng: random.Random) -> dict:
 
     # Build the two sides
     if blank_target == "result":
-        left_side = fill("{a} {op_char} {b}", _src=('blank_target',), a=S(a, "value:a"), op_char=derived(op_char, src=("operation",)), b=S(b, "value:b"))
-        right_side = "?"
+        left_side = fill("{a} {op_char} {b}", _src=('blank_target',), a=S(a, "value:a"), op_char=S(op_char, E(tuple(_OP_CHARS.values()), "_OP_CHARS"), src=("operation",)), b=S(b, "value:b"))
+        right_side = fill("?")
         blank_side = "right"
         missing_value = result
     elif blank_target == "a":
-        left_side = fill("? {op_char} {b}", _src=('blank_target',), op_char=derived(op_char, src=("operation",)), b=S(b, "value:b"))
-        right_side = str(result)
+        left_side = fill("? {op_char} {b}", _src=('blank_target',), op_char=S(op_char, E(tuple(_OP_CHARS.values()), "_OP_CHARS"), src=("operation",)), b=S(b, "value:b"))
+        right_side = fill("{result}", result=S(result, "value:result"))
         blank_side = "left"
         missing_value = a
     else:  # blank_target == "b"
-        left_side = fill("{a} {op_char} ?", a=S(a, "value:a"), op_char=derived(op_char, src=("operation",)))
-        right_side = str(result)
+        left_side = fill("{a} {op_char} ?", a=S(a, "value:a"), op_char=S(op_char, E(tuple(_OP_CHARS.values()), "_OP_CHARS"), src=("operation",)))
+        right_side = fill("{result}", result=S(result, "value:result"))
         blank_side = "left"
         missing_value = b
 
@@ -167,7 +167,7 @@ def _build_traps(params: dict, rng: random.Random) -> list:
 def _stem(params: dict) -> str:
     left = params["left_side"]
     right = params["right_side"]
-    return fill("Both sides balance evenly. {left} = {right}. What is the missing value?", left=S(left, "fill", src=("a", "b", "operation")), right=derived(right, src=("a", "b", "operation")))
+    return fill("Both sides balance evenly. {left} = {right}. What is the missing value?", left=S(left, "fill", src=("a", "b", "operation")), right=S(right, "fill", src=("a", "b", "operation")))
 
 
 # ─────────────────────────────────────────────────────────────────────────────

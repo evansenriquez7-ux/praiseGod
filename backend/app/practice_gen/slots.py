@@ -121,6 +121,20 @@ def derived(value: Any, src: Tuple[str, ...] = (), why: Optional[str] = None) ->
     return S(value, "text.derived", src, why)
 
 
+def carried(values: Dict[str, Any], *keys: str) -> str:
+    """
+    The key a `values.get(k1, values.get(k2, ...))` chain actually reads: the first of `keys`
+    the generator's values carry (batch H4-0-R2, owner ruling 42). A slot repeating the read
+    value declares `value:<that key>`, so §14 checks it against what was generated. If none
+    is carried the chain fell through to its literal default, and `keys[0]` is returned, so
+    the slot escapes loudly ("the generator's values carry no ...") instead of passing.
+    """
+    for key in keys:
+        if key in values:
+            return key
+    return keys[0]
+
+
 BANK_FIELDS = ("question", "question_text", "answer", "distractors", "statement", "template")
 
 

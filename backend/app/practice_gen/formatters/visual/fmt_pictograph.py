@@ -148,16 +148,22 @@ def format_pictograph(
         Student types the item count.
     """
     # ── 1. Resolve visual_params ───────────────────────────────────────────────
+    # Where the symbol and scale came from, for the slots that print them (batch H4-0-R2):
+    # the DNA's own theme bank and values, or this module's themes when it built the graph.
     if ctx.visual_params and "counts" in ctx.visual_params:
         vp = ctx.visual_params.copy()
         if "symbol" not in vp:
             vp["symbol"] = "🍎"
             vp["title"] = "Pictograph"
             vp["has_scale"] = vp.get("scale", 1) > 1
+        symbol_dom = "bank:backend.app.practice_gen.dna.dp.pictographs._THEMES:symbol"
+        scale_dom = "value:scale"
     else:
         diff_profile = ctx.difficulty_profile or {}
         diff_level = min(len(diff_profile) + 1, 4) if diff_profile else 2
         vp = _build_visual_params(ctx.grade, diff_level, random.Random(ctx.seed))
+        symbol_dom = E(tuple(t[0] for t in _PICTOGRAPH_THEMES), "_PICTOGRAPH_THEMES' symbols")
+        scale_dom = E((1, 2, 5, 10), "_build_visual_params' scale choices")
 
     categories: List[str] = vp["categories"]
     counts: List[int] = vp["counts"]
@@ -199,26 +205,26 @@ def format_pictograph(
             ask_slot = S(ask_cat, E(tuple(categories), "the graph's categories"))
             sub_q = fill(stem_tpl, cat=ask_slot) if stem_tpl else fill("How many are in {ask_cat}?", ask_cat=ask_slot)
             if scale > 1:
-                question_text = fill("Look at the picture graph. Each {symbol} = {scale}. {sub_q}", symbol=derived(vp['symbol']), scale=derived(scale), sub_q=S(sub_q, "fill", src=('stem_template',)))
+                question_text = fill("Look at the picture graph. Each {symbol} = {scale}. {sub_q}", symbol=S(vp['symbol'], symbol_dom), scale=S(scale, scale_dom), sub_q=S(sub_q, "fill", src=('stem_template',)))
             else:
                 question_text = fill("Look at the picture graph. {sub_q}", sub_q=S(sub_q, "fill", src=('stem_template',)))
     else:
         vp["is_read_mode"] = False
-        data_str = ", ".join(fill("{v}: {v2}", v=derived(categories[i]), v2=derived(counts[i])) for i in range(len(categories)))
+        data_str = join(", ", [fill("{v}: {v2}", v=S(categories[i], E(tuple(categories), "the graph's categories")), v2=S(counts[i], E(tuple(counts), "the graph's counts"))) for i in range(len(categories))])
         if scale > 1:
             frames = [
-                fill("Make a picture graph to show: {data_str}. Each {symbol} equals {scale}.", data_str=derived(data_str), symbol=derived(vp['symbol']), scale=derived(scale)),
-                fill("Look at the data: {data_str}. Draw a picture graph where each {symbol} stands for {scale} items.", data_str=derived(data_str), symbol=derived(vp['symbol']), scale=derived(scale)),
-                fill("The table shows: {data_str}. Create a picture graph where each {symbol} equals {scale}.", data_str=derived(data_str), symbol=derived(vp['symbol']), scale=derived(scale)),
-                fill("Complete the picture graph to show: {data_str}. Each {symbol} represents {scale} items.", data_str=derived(data_str), symbol=derived(vp['symbol']), scale=derived(scale)),
+                fill("Make a picture graph to show: {data_str}. Each {symbol} equals {scale}.", data_str=S(data_str, "fill"), symbol=S(vp['symbol'], symbol_dom), scale=S(scale, scale_dom)),
+                fill("Look at the data: {data_str}. Draw a picture graph where each {symbol} stands for {scale} items.", data_str=S(data_str, "fill"), symbol=S(vp['symbol'], symbol_dom), scale=S(scale, scale_dom)),
+                fill("The table shows: {data_str}. Create a picture graph where each {symbol} equals {scale}.", data_str=S(data_str, "fill"), symbol=S(vp['symbol'], symbol_dom), scale=S(scale, scale_dom)),
+                fill("Complete the picture graph to show: {data_str}. Each {symbol} represents {scale} items.", data_str=S(data_str, "fill"), symbol=S(vp['symbol'], symbol_dom), scale=S(scale, scale_dom)),
             ]
             question_text = frames[rng.randint(0, len(frames) - 1)]
         else:
             frames = [
-                fill("Make a picture graph to show: {data_str}. Draw one {symbol} for each item.", data_str=derived(data_str), symbol=derived(vp['symbol'])),
-                fill("Look at the data: {data_str}. Draw one {symbol} for each item in the picture graph.", data_str=derived(data_str), symbol=derived(vp['symbol'])),
-                fill("The survey shows: {data_str}. Make a picture graph by drawing one {symbol} for each item.", data_str=derived(data_str), symbol=derived(vp['symbol'])),
-                fill("Complete the picture graph for {data_str}. Draw one {symbol} for each item.", data_str=derived(data_str), symbol=derived(vp['symbol'])),
+                fill("Make a picture graph to show: {data_str}. Draw one {symbol} for each item.", data_str=S(data_str, "fill"), symbol=S(vp['symbol'], symbol_dom)),
+                fill("Look at the data: {data_str}. Draw one {symbol} for each item in the picture graph.", data_str=S(data_str, "fill"), symbol=S(vp['symbol'], symbol_dom)),
+                fill("The survey shows: {data_str}. Make a picture graph by drawing one {symbol} for each item.", data_str=S(data_str, "fill"), symbol=S(vp['symbol'], symbol_dom)),
+                fill("Complete the picture graph for {data_str}. Draw one {symbol} for each item.", data_str=S(data_str, "fill"), symbol=S(vp['symbol'], symbol_dom)),
             ]
             question_text = frames[rng.randint(0, len(frames) - 1)]
 

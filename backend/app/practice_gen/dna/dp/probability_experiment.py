@@ -16,7 +16,7 @@ from backend.app.practice_gen.dna.base import (
     ErrorPattern,
     VocabGated,
 )
-from backend.app.practice_gen.slots import S, derived, fill
+from backend.app.practice_gen.slots import E, R, S, derived, fill, join
 
 
 _ERROR_PATTERNS: List[ErrorPattern] = [
@@ -107,7 +107,8 @@ def generate_params(
     ])
 
     if exp_type == "coin_toss":
-        total_trials = rng.choice([10, 12, 15, 20, 25])
+        trial_choices = [10, 12, 15, 20, 25]
+        total_trials = rng.choice(trial_choices)
         heads_count = rng.randint(2, total_trials - 2)
         tails_count = total_trials - heads_count
         categories = ["Heads", "Tails"]
@@ -118,57 +119,59 @@ def generate_params(
             other = "Tails" if target == "Heads" else "Heads"
             other_val = tails_count if target == "Heads" else heads_count
             ans = heads_count if target == "Heads" else tails_count
-            stem = fill("In a coin toss experiment of {total_trials} tosses, the coin landed on {other} {other_val} times. How many times did it land on {target}?", _src=('task_subtype', 'experiment_type',), total_trials=derived(total_trials), other=derived(other), other_val=derived(other_val), target=derived(target))
+            stem = fill("In a coin toss experiment of {total_trials} tosses, the coin landed on {other} {other_val} times. How many times did it land on {target}?", _src=('task_subtype', 'experiment_type',), total_trials=S(total_trials, E(tuple(trial_choices), "the trial_choices bank")), other=S(other, E(tuple(categories), "values['categories']")), other_val=S(other_val, R(2, total_trials - 2, "the heads draw bounds (tails is the rest)")), target=S(target, E(tuple(categories), "values['categories']")))
             distractors = [max(1, ans + 2), max(1, ans - 2), total_trials, other_val]
         elif task_subtype == "find_total_trials":
-            stem = fill("A student recorded coin toss results in a table: Heads ({heads_count}), Tails ({tails_count}). How many total tosses were recorded in the experiment?", _src=('task_subtype', 'experiment_type',), heads_count=derived(heads_count), tails_count=derived(tails_count))
+            stem = fill("A student recorded coin toss results in a table: Heads ({heads_count}), Tails ({tails_count}). How many total tosses were recorded in the experiment?", _src=('task_subtype', 'experiment_type',), heads_count=S(heads_count, R(2, total_trials - 2, "the heads draw bounds (tails is the rest)")), tails_count=S(tails_count, R(2, total_trials - 2, "the heads draw bounds (tails is the rest)")))
             ans = total_trials
             distractors = [heads_count, tails_count, total_trials + 2, max(1, total_trials - 5)]
         elif task_subtype == "compare_outcomes":
             diff = abs(heads_count - tails_count)
             more_side = "Heads" if heads_count >= tails_count else "Tails"
             less_side = "Tails" if more_side == "Heads" else "Heads"
-            stem = fill("A coin was tossed {total_trials} times. Heads occurred {heads_count} times and Tails occurred {tails_count} times. How many more times did {more_side} land than {less_side}?", _src=('task_subtype', 'experiment_type',), total_trials=derived(total_trials), heads_count=derived(heads_count), tails_count=derived(tails_count), more_side=derived(more_side), less_side=derived(less_side))
+            stem = fill("A coin was tossed {total_trials} times. Heads occurred {heads_count} times and Tails occurred {tails_count} times. How many more times did {more_side} land than {less_side}?", _src=('task_subtype', 'experiment_type',), total_trials=S(total_trials, E(tuple(trial_choices), "the trial_choices bank")), heads_count=S(heads_count, R(2, total_trials - 2, "the heads draw bounds (tails is the rest)")), tails_count=S(tails_count, R(2, total_trials - 2, "the heads draw bounds (tails is the rest)")), more_side=S(more_side, E(tuple(categories), "values['categories']")), less_side=S(less_side, E(tuple(categories), "values['categories']")))
             ans = diff
             distractors = [diff + 1, max(1, diff - 1), heads_count, tails_count]
         else:
             target = rng.choice(["Heads", "Tails"])
             ans = heads_count if target == "Heads" else tails_count
-            stem = fill("A coin toss experiment was conducted with {total_trials} tosses. The results are: Heads: {heads_count}, Tails: {tails_count}. How many times did the coin land on {target}?", _src=('experiment_type',), total_trials=derived(total_trials), heads_count=derived(heads_count), tails_count=derived(tails_count), target=derived(target))
+            stem = fill("A coin toss experiment was conducted with {total_trials} tosses. The results are: Heads: {heads_count}, Tails: {tails_count}. How many times did the coin land on {target}?", _src=('experiment_type',), total_trials=S(total_trials, E(tuple(trial_choices), "the trial_choices bank")), heads_count=S(heads_count, R(2, total_trials - 2, "the heads draw bounds (tails is the rest)")), tails_count=S(tails_count, R(2, total_trials - 2, "the heads draw bounds (tails is the rest)")), target=S(target, E(tuple(categories), "values['categories']")))
             distractors = [tails_count if target == "Heads" else heads_count, total_trials, max(1, ans + 1), max(1, ans - 1)]
 
     elif exp_type == "die_roll":
         num_faces = 6
-        total_trials = rng.choice([12, 18, 20, 24, 30])
+        trial_choices = [12, 18, 20, 24, 30]
+        total_trials = rng.choice(trial_choices)
         counts = _positive_frequencies(total_trials, num_faces, rng)
         categories = ["1", "2", "3", "4", "5", "6"]
-        table_str = ", ".join(fill("Face {v}: {v2}", _src=('experiment_type',), v=derived(categories[i]), v2=derived(counts[i])) for i in range(num_faces))
+        table_str = join(", ", [fill("Face {v}: {v2}", _src=('experiment_type',), v=S(categories[i], E(tuple(categories), "values['categories']")), v2=S(counts[i], E(tuple(counts), "values['counts']"))) for i in range(num_faces)])
         
         if task_subtype == "most_least_frequent":
-            direction = rng.choice(["most", "least"])
+            directions = ["most", "least"]
+            direction = rng.choice(directions)
             if direction == "most":
                 m = max(counts)
                 best_idx = counts.index(m)
-                ans = fill("Face {v}", _src=('task_subtype', 'experiment_type',), v=derived(categories[best_idx]))
-                stem = fill("A 6-sided die was rolled {total_trials} times. The recorded tally is: {table_str}. Which face was rolled {direction} frequently?", _src=('task_subtype', 'experiment_type',), total_trials=derived(total_trials), table_str=derived(table_str), direction=derived(direction))
+                ans = fill("Face {v}", _src=('task_subtype', 'experiment_type',), v=S(categories[best_idx], E(tuple(categories), "values['categories']")))
+                stem = fill("A 6-sided die was rolled {total_trials} times. The recorded tally is: {table_str}. Which face was rolled {direction} frequently?", _src=('task_subtype', 'experiment_type',), total_trials=S(total_trials, E(tuple(trial_choices), "the trial_choices bank")), table_str=S(table_str, "fill"), direction=S(direction, E(tuple(directions), "most or least")))
                 other_indices = [i for i in range(num_faces) if i != best_idx]
-                distractors = [fill("Face {v}", _src=('task_subtype', 'experiment_type',), v=derived(categories[i])) for i in other_indices[:3]]
+                distractors = [fill("Face {v}", _src=('task_subtype', 'experiment_type',), v=S(categories[i], E(tuple(categories), "values['categories']"))) for i in other_indices[:3]]
             else:
                 m = min(counts)
                 best_idx = counts.index(m)
-                ans = fill("Face {v}", _src=('task_subtype', 'experiment_type',), v=derived(categories[best_idx]))
-                stem = fill("A 6-sided die was rolled {total_trials} times. The recorded tally is: {table_str}. Which face was rolled {direction} frequently?", _src=('task_subtype', 'experiment_type',), total_trials=derived(total_trials), table_str=derived(table_str), direction=derived(direction))
+                ans = fill("Face {v}", _src=('task_subtype', 'experiment_type',), v=S(categories[best_idx], E(tuple(categories), "values['categories']")))
+                stem = fill("A 6-sided die was rolled {total_trials} times. The recorded tally is: {table_str}. Which face was rolled {direction} frequently?", _src=('task_subtype', 'experiment_type',), total_trials=S(total_trials, E(tuple(trial_choices), "the trial_choices bank")), table_str=S(table_str, "fill"), direction=S(direction, E(tuple(directions), "most or least")))
                 other_indices = [i for i in range(num_faces) if i != best_idx]
-                distractors = [fill("Face {v}", _src=('task_subtype', 'experiment_type',), v=derived(categories[i])) for i in other_indices[:3]]
+                distractors = [fill("Face {v}", _src=('task_subtype', 'experiment_type',), v=S(categories[i], E(tuple(categories), "values['categories']"))) for i in other_indices[:3]]
         elif task_subtype == "find_total_trials":
-            stem = fill("The results of a rolling die experiment are recorded: {table_str}. How many total rolls were made in the experiment?", _src=('task_subtype', 'experiment_type',), table_str=derived(table_str))
+            stem = fill("The results of a rolling die experiment are recorded: {table_str}. How many total rolls were made in the experiment?", _src=('task_subtype', 'experiment_type',), table_str=S(table_str, "fill"))
             ans = total_trials
             distractors = [total_trials + 2, max(1, total_trials - 2), total_trials + 6, max(1, total_trials - 4)]
         else:
             q_face = rng.choice(categories)
             idx = categories.index(q_face)
             ans = counts[idx]
-            stem = fill("In a die rolling experiment of {total_trials} rolls, the results are: {table_str}. How many times did Face {q_face} appear?", _src=('experiment_type',), total_trials=derived(total_trials), table_str=derived(table_str), q_face=derived(q_face))
+            stem = fill("In a die rolling experiment of {total_trials} rolls, the results are: {table_str}. How many times did Face {q_face} appear?", _src=('experiment_type',), total_trials=S(total_trials, E(tuple(trial_choices), "the trial_choices bank")), table_str=S(table_str, "fill"), q_face=S(q_face, E(tuple(categories), "values['categories']")))
             distractor_pool = [c for i, c in enumerate(counts) if i != idx]
             distractors = list(dict.fromkeys(distractor_pool + [ans + 1, max(0, ans - 1), total_trials]))[:3]
 
@@ -176,42 +179,45 @@ def generate_params(
         colors = ["Red", "Blue", "Green", "Yellow"]
         num_colors = rng.choice([3, 4])
         selected_colors = colors[:num_colors]
-        total_spins = rng.choice([15, 20, 24, 30])
+        spin_choices = [15, 20, 24, 30]
+        total_spins = rng.choice(spin_choices)
         counts = _positive_frequencies(total_spins, num_colors, rng)
         categories = selected_colors
-        table_str = ", ".join(fill("{v}: {v2}", _src=('experiment_type',), v=derived(categories[i]), v2=derived(counts[i])) for i in range(len(categories)))
+        table_str = join(", ", [fill("{v}: {v2}", _src=('experiment_type',), v=S(categories[i], E(tuple(categories), "values['categories']")), v2=S(counts[i], E(tuple(counts), "values['counts']"))) for i in range(len(categories))])
 
         if task_subtype == "most_least_frequent":
-            direction = rng.choice(["most", "least"])
+            directions = ["most", "least"]
+            direction = rng.choice(directions)
             best_idx = counts.index(max(counts)) if direction == "most" else counts.index(min(counts))
             ans = categories[best_idx]
-            stem = fill("A spinner with colored sections was spun {total_spins} times. The outcomes recorded are: {table_str}. Which color was landed on {direction} often?", _src=('task_subtype', 'experiment_type',), total_spins=derived(total_spins), table_str=derived(table_str), direction=derived(direction))
+            stem = fill("A spinner with colored sections was spun {total_spins} times. The outcomes recorded are: {table_str}. Which color was landed on {direction} often?", _src=('task_subtype', 'experiment_type',), total_spins=S(total_spins, E(tuple(spin_choices), "the spin_choices bank")), table_str=S(table_str, "fill"), direction=S(direction, E(tuple(directions), "most or least")))
             distractors = [c for c in categories if c != ans]
             if len(distractors) < 3:
                 distractors.append("Orange")
         elif task_subtype == "find_total_trials":
-            stem = fill("A spinner experiment recorded these outcomes: {table_str}. What is the total number of spins in the experiment?", _src=('task_subtype', 'experiment_type',), table_str=derived(table_str))
+            stem = fill("A spinner experiment recorded these outcomes: {table_str}. What is the total number of spins in the experiment?", _src=('task_subtype', 'experiment_type',), table_str=S(table_str, "fill"))
             ans = total_spins
             distractors = [total_spins + 5, max(1, total_spins - 3), total_spins + 2, total_spins * 2]
         else:
             q_col = rng.choice(categories)
             idx = categories.index(q_col)
             ans = counts[idx]
-            stem = fill("A student spun a spinner {total_spins} times and recorded: {table_str}. How many times did the spinner land on {q_col}?", _src=('experiment_type',), total_spins=derived(total_spins), table_str=derived(table_str), q_col=derived(q_col))
+            stem = fill("A student spun a spinner {total_spins} times and recorded: {table_str}. How many times did the spinner land on {q_col}?", _src=('experiment_type',), total_spins=S(total_spins, E(tuple(spin_choices), "the spin_choices bank")), table_str=S(table_str, "fill"), q_col=S(q_col, E(tuple(categories), "values['categories']")))
             distractor_pool = [c for i, c in enumerate(counts) if i != idx]
             distractors = list(dict.fromkeys(distractor_pool + [ans + 2, max(0, ans - 2), total_spins]))[:3]
 
     else:
         tile_types = ["Red tile", "Blue tile", "Green tile"]
-        total_draws = rng.choice([10, 15, 20, 25])
+        draw_choices = [10, 15, 20, 25]
+        total_draws = rng.choice(draw_choices)
         counts = _positive_frequencies(total_draws, len(tile_types), rng)
         categories = tile_types
-        table_str = ", ".join(fill("{v}: {v2}", _src=('experiment_type',), v=derived(categories[i]), v2=derived(counts[i])) for i in range(len(categories)))
+        table_str = join(", ", [fill("{v}: {v2}", _src=('experiment_type',), v=S(categories[i], E(tuple(categories), "values['categories']")), v2=S(counts[i], E(tuple(counts), "values['counts']"))) for i in range(len(categories))])
         
         q_tile = rng.choice(categories)
         idx = categories.index(q_tile)
         ans = counts[idx]
-        stem = fill("In a probability experiment, a tile was picked from a bag and replaced {total_draws} times. Results: {table_str}. How many times was a {q_tile} drawn?", _src=('experiment_type',), total_draws=derived(total_draws), table_str=derived(table_str), q_tile=derived(q_tile))
+        stem = fill("In a probability experiment, a tile was picked from a bag and replaced {total_draws} times. Results: {table_str}. How many times was a {q_tile} drawn?", _src=('experiment_type',), total_draws=S(total_draws, E(tuple(draw_choices), "the draw_choices bank")), table_str=S(table_str, "fill"), q_tile=S(q_tile, E(tuple(categories), "values['categories']")))
         distractor_pool = [c for i, c in enumerate(counts) if i != idx]
         distractors = list(dict.fromkeys(distractor_pool + [ans + 1, max(0, ans - 1), total_draws]))[:3]
 

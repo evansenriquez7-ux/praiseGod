@@ -20,7 +20,7 @@ from backend.app.practice_gen.dna.base import (
     ErrorPattern,
     VocabGated,
 )
-from backend.app.practice_gen.slots import S, derived, fill
+from backend.app.practice_gen.slots import E, S, derived, fill
 
 
 # ─── param bounds ─────────────────────────────────────────────────────────────
@@ -431,9 +431,9 @@ def generate_hints(
 
     if blank_pos == "result":
         return [
-            fill("The {eq_lbl} is: {a} {sym} {b} = ___", _src=('blank_position',), eq_lbl=S(eq_lbl, "fill"), a=S(a, "value:a"), sym=derived(sym, src=('operation',)), b=S(b, "value:b")),
-            fill("We need to find what {a} {sym} {b} equals.", _src=('blank_position',), a=S(a, "value:a"), sym=derived(sym, src=('operation',)), b=S(b, "value:b")),
-            fill("Calculate: {a} {sym} {b} = {result}.", _src=('blank_position',), a=S(a, "value:a"), sym=derived(sym, src=('operation',)), b=S(b, "value:b"), result=S(result, "value:result")),
+            fill("The {eq_lbl} is: {a} {sym} {b} = ___", _src=('blank_position',), eq_lbl=S(eq_lbl, "fill"), a=S(a, "value:a"), sym=S(sym, E(tuple(op_symbol.values()), "the four operation symbols"), src=('operation',)), b=S(b, "value:b")),
+            fill("We need to find what {a} {sym} {b} equals.", _src=('blank_position',), a=S(a, "value:a"), sym=S(sym, E(tuple(op_symbol.values()), "the four operation symbols"), src=('operation',)), b=S(b, "value:b")),
+            fill("Calculate: {a} {sym} {b} = {result}.", _src=('blank_position',), a=S(a, "value:a"), sym=S(sym, E(tuple(op_symbol.values()), "the four operation symbols"), src=('operation',)), b=S(b, "value:b"), result=S(result, "value:result")),
         ]
 
     if blank_pos == "change":
@@ -443,24 +443,24 @@ def generate_hints(
             # inverse with the operands reversed, printing "12 + 20 = 8" and
             # "10 × 50 = 5" beside correct answers (hint contract, `arithmetic`).
             return [
-                fill("The {eq_lbl} is: {a} {sym} ___ = {result}", _src=('operation', 'blank_position',), eq_lbl=S(eq_lbl, "fill"), a=S(a, "value:a"), sym=derived(sym, src=('operation',)), result=S(result, "value:result")),
-                fill("Think: {a} {sym} what number gives {result}?", _src=('operation', 'blank_position',), a=S(a, "value:a"), sym=derived(sym, src=('operation',)), result=S(result, "value:result")),
-                fill("{a} {sym} {result} = {missing}.", _src=('operation', 'blank_position',), a=S(a, "value:a"), sym=derived(sym, src=('operation',)), result=S(result, "value:result"), missing=S(missing, "value:missing_value")),
-                fill("Check: {a} {sym} {missing} = {result}. ✓", _src=('operation', 'blank_position',), a=S(a, "value:a"), sym=derived(sym, src=('operation',)), missing=S(missing, "value:missing_value"), result=S(result, "value:result")),
+                fill("The {eq_lbl} is: {a} {sym} ___ = {result}", _src=('operation', 'blank_position',), eq_lbl=S(eq_lbl, "fill"), a=S(a, "value:a"), sym=S(sym, E(tuple(op_symbol.values()), "the four operation symbols"), src=('operation',)), result=S(result, "value:result")),
+                fill("Think: {a} {sym} what number gives {result}?", _src=('operation', 'blank_position',), a=S(a, "value:a"), sym=S(sym, E(tuple(op_symbol.values()), "the four operation symbols"), src=('operation',)), result=S(result, "value:result")),
+                fill("{a} {sym} {result} = {missing}.", _src=('operation', 'blank_position',), a=S(a, "value:a"), sym=S(sym, E(tuple(op_symbol.values()), "the four operation symbols"), src=('operation',)), result=S(result, "value:result"), missing=S(missing, "value:missing_value")),
+                fill("Check: {a} {sym} {missing} = {result}. ✓", _src=('operation', 'blank_position',), a=S(a, "value:a"), sym=S(sym, E(tuple(op_symbol.values()), "the four operation symbols"), src=('operation',)), missing=S(missing, "value:missing_value"), result=S(result, "value:result")),
             ]
         return [
-            fill("The {eq_lbl} is: {a} {sym} ___ = {result}", _src=('blank_position',), eq_lbl=S(eq_lbl, "fill"), a=S(a, "value:a"), sym=derived(sym, src=('operation',)), result=S(result, "value:result")),
+            fill("The {eq_lbl} is: {a} {sym} ___ = {result}", _src=('blank_position',), eq_lbl=S(eq_lbl, "fill"), a=S(a, "value:a"), sym=S(sym, E(tuple(op_symbol.values()), "the four operation symbols"), src=('operation',)), result=S(result, "value:result")),
             fill("To find the {miss_lbl}, use the opposite operation ({inv_op_lbl}).", _src=('blank_position',), miss_lbl=S(miss_lbl, "fill"), inv_op_lbl=S(inv_op_lbl, "fill")),
-            fill("{result} {v} {a} = {missing}.", _src=('blank_position',), result=S(result, "value:result"), v=derived(op_symbol[inv_op], src=('operation',)), a=S(a, "value:a"), missing=S(missing, "value:missing_value")),
-            fill("Check: {a} {sym} {missing} = {result}. ✓", _src=('blank_position',), a=S(a, "value:a"), sym=derived(sym, src=('operation',)), missing=S(missing, "value:missing_value"), result=S(result, "value:result")),
+            fill("{result} {v} {a} = {missing}.", _src=('blank_position',), result=S(result, "value:result"), v=S(op_symbol[inv_op], E(tuple(op_symbol.values()), "the four operation symbols"), src=('operation',)), a=S(a, "value:a"), missing=S(missing, "value:missing_value")),
+            fill("Check: {a} {sym} {missing} = {result}. ✓", _src=('blank_position',), a=S(a, "value:a"), sym=S(sym, E(tuple(op_symbol.values()), "the four operation symbols"), src=('operation',)), missing=S(missing, "value:missing_value"), result=S(result, "value:result")),
         ]
 
     # start
     return [
-        fill("The {eq_lbl} is: ___ {sym} {b} = {result}", eq_lbl=S(eq_lbl, "fill"), sym=derived(sym, src=('operation',)), b=S(b, "value:b"), result=S(result, "value:result")),
+        fill("The {eq_lbl} is: ___ {sym} {b} = {result}", eq_lbl=S(eq_lbl, "fill"), sym=S(sym, E(tuple(op_symbol.values()), "the four operation symbols"), src=('operation',)), b=S(b, "value:b"), result=S(result, "value:result")),
         fill("Use {inv_op_lbl} to undo the operation.", inv_op_lbl=S(inv_op_lbl, "fill")),
-        fill("{result} {v} {b} = {missing}.", result=S(result, "value:result"), v=derived(op_symbol[inv_op], src=('operation',)), b=S(b, "value:b"), missing=S(missing, "value:missing_value")),
-        fill("Check: {missing} {sym} {b} = {result}. ✓", missing=S(missing, "value:missing_value"), sym=derived(sym, src=('operation',)), b=S(b, "value:b"), result=S(result, "value:result")),
+        fill("{result} {v} {b} = {missing}.", result=S(result, "value:result"), v=S(op_symbol[inv_op], E(tuple(op_symbol.values()), "the four operation symbols"), src=('operation',)), b=S(b, "value:b"), missing=S(missing, "value:missing_value")),
+        fill("Check: {missing} {sym} {b} = {result}. ✓", missing=S(missing, "value:missing_value"), sym=S(sym, E(tuple(op_symbol.values()), "the four operation symbols"), src=('operation',)), b=S(b, "value:b"), result=S(result, "value:result")),
     ]
 
 

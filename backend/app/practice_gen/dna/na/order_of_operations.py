@@ -115,13 +115,13 @@ _WP_VERBS = {"+": "receives", "-": "gives away"}
 
 
 def _build_word_problem(actor: str, obj: str, operands: List[int], operators: List[str], money: bool) -> str:
-    unit = fill("₱{v}", v=derived(operands[0])) if money else fill("{v} {obj}", v=derived(operands[0]), obj=derived(obj))
-    parts = [fill("{actor} starts with {unit}.", actor=derived(actor), unit=S(unit, "fill"))]
+    unit = fill("₱{v}", v=S(operands[0], E(tuple(operands), "the expression's operands"))) if money else fill("{v} {obj}", v=S(operands[0], E(tuple(operands), "the expression's operands")), obj=S(obj, "enum:backend.app.practice_gen.dna.na.order_of_operations._WP_OBJECTS"))
+    parts = [fill("{actor} starts with {unit}.", actor=S(actor, "enum:backend.app.practice_gen.dna.na.order_of_operations._WP_ACTORS"), unit=S(unit, "fill"))]
     for op, val in zip(operators, operands[1:]):
         verb = _WP_VERBS[op]
-        amount = fill("₱{val}", val=derived(val)) if money else fill("{val} {obj}", val=derived(val), obj=derived(obj))
-        parts.append(fill("Then {actor} {verb} {amount}.", actor=derived(actor), verb=derived(verb), amount=S(amount, "fill")))
-    question = fill("How much money does {actor} have now?", actor=derived(actor)) if money else fill("How many {obj} does {actor} have now?", obj=derived(obj), actor=derived(actor))
+        amount = fill("₱{val}", val=S(val, E(tuple(operands), "the expression's operands"))) if money else fill("{val} {obj}", val=S(val, E(tuple(operands), "the expression's operands")), obj=S(obj, "enum:backend.app.practice_gen.dna.na.order_of_operations._WP_OBJECTS"))
+        parts.append(fill("Then {actor} {verb} {amount}.", actor=S(actor, "enum:backend.app.practice_gen.dna.na.order_of_operations._WP_ACTORS"), verb=S(verb, E(tuple(_WP_VERBS.values()), "_WP_VERBS")), amount=S(amount, "fill")))
+    question = fill("How much money does {actor} have now?", actor=S(actor, "enum:backend.app.practice_gen.dna.na.order_of_operations._WP_ACTORS")) if money else fill("How many {obj} does {actor} have now?", obj=S(obj, "enum:backend.app.practice_gen.dna.na.order_of_operations._WP_OBJECTS"), actor=S(actor, "enum:backend.app.practice_gen.dna.na.order_of_operations._WP_ACTORS"))
     parts.append(question)
     # One fill for the whole story, each sentence a nested fill (H3-R2): the same text as
     # " ".join(parts).

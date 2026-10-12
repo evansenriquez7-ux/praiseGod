@@ -21,7 +21,7 @@ from backend.app.practice_gen.formatters._distractor_fallback import augment_dis
 from backend.app.practice_gen.formatters._option_order import shuffle_options
 from backend.app.practice_gen.formatters._answer_slots import (answer_text, distractor_text,
                                                            member_text)
-from backend.app.practice_gen.slots import E, S, derived, fill, join
+from backend.app.practice_gen.slots import E, S, carried, derived, fill, join
 
 
 def _build_pure_question(ctx: QuestionContext) -> str:
@@ -98,28 +98,28 @@ def _build_pure_question(ctx: QuestionContext) -> str:
             plural_name = values.get("plural_name")
             if not plural_name:
                 plural_name = number_group_name(a, b)
-            terms = " + ".join([str(a)] * b) if b <= 5 else fill("{a} added {b} times", _src=('task_type',), a=derived(a, src=('a', 'groups',)), b=derived(b, src=('b', 'n',)))
+            terms = join(" + ", [S(a, f"value:{carried(values, 'a', 'groups')}", src=('a', 'groups',))] * b) if b <= 5 else fill("{a} added {b} times", _src=('task_type',), a=S(a, f"value:{carried(values, 'a', 'groups')}", src=('a', 'groups',)), b=S(b, f"value:{carried(values, 'b', 'n')}", src=('b', 'n',)))
             if group_form == "plural_name":
-                return fill("Count {b} {count_noun} by repeated addition ({terms}): how many in all?", _src=('group_form', 'task_type',), b=derived(b, src=('b', 'n',)), count_noun=S(count_noun(b, plural_name), E((count_noun(1, plural_name), plural_name), "the noun or its singular (dna.base.count_noun)"), src=('b', 'n',)), terms=derived(terms, src=('b', 'n', 'a', 'groups',)))
+                return fill("Count {b} {count_noun} by repeated addition ({terms}): how many in all?", _src=('group_form', 'task_type',), b=S(b, f"value:{carried(values, 'b', 'n')}", src=('b', 'n',)), count_noun=S(count_noun(b, plural_name), E((count_noun(1, plural_name), plural_name), "the noun or its singular (dna.base.count_noun)"), src=('b', 'n',)), terms=S(terms, "fill", src=('b', 'n', 'a', 'groups',)))
             unit = "group" if b == 1 else "groups"
             # "There are 1 group of 1" -- the noun was pluralized and the verb was not.
             # One sentence, four copies (doc_rem.md R2); all four say it the same way.
             was = "is" if b == 1 else "are"
-            return fill("There {was} {b} {unit} of {a} ({terms}). How many in all?", _src=('task_type', 'group_form',), was=derived(was, src=('b', 'n',)), b=derived(b, src=('b', 'n',)), unit=derived(unit, src=('b', 'n',)), a=derived(a, src=('a', 'groups',)), terms=derived(terms, src=('b', 'n', 'a', 'groups',)))
+            return fill("There {was} {b} {unit} of {a} ({terms}). How many in all?", _src=('task_type', 'group_form',), was=S(was, E(("is", "are"), "the verb for one group or more"), src=('b', 'n',)), b=S(b, f"value:{carried(values, 'b', 'n')}", src=('b', 'n',)), unit=S(unit, E(("group", "groups"), "group or groups, by the count"), src=('b', 'n',)), a=S(a, f"value:{carried(values, 'a', 'groups')}", src=('a', 'groups',)), terms=S(terms, "fill", src=('b', 'n', 'a', 'groups',)))
         if values.get("task_type") == "repeated_addition" and blank_target in ("result", "total"):
-            terms = " + ".join([str(a)] * b)
-            return fill("{terms} = ___. What is {a} × {b}?", _src=('task_type',), terms=derived(terms, src=('b', 'n', 'a', 'groups',)), a=derived(a, src=('a', 'groups',)), b=derived(b, src=('b', 'n',)))
+            terms = join(" + ", [S(a, f"value:{carried(values, 'a', 'groups')}", src=('a', 'groups',))] * b)
+            return fill("{terms} = ___. What is {a} × {b}?", _src=('task_type',), terms=S(terms, "fill", src=('b', 'n', 'a', 'groups',)), a=S(a, f"value:{carried(values, 'a', 'groups')}", src=('a', 'groups',)), b=S(b, f"value:{carried(values, 'b', 'n')}", src=('b', 'n',)))
         if values.get("task_type") == "skip_counting" and blank_target in ("result", "total"):
-            seq = ", ".join(str(a * i) for i in range(1, b + 1))
-            return fill("Count by {a}s: {seq}. What is {a} × {b}?", _src=('task_type',), a=derived(a, src=('a', 'groups',)), seq=derived(seq, src=('a', 'groups', 'b', 'n',)), b=derived(b, src=('b', 'n',)))
+            seq = join(", ", [derived(a * i, src=(carried(values, 'a', 'groups'), carried(values, 'b', 'n')), why="arithmetic") for i in range(1, b + 1)])
+            return fill("Count by {a}s: {seq}. What is {a} × {b}?", _src=('task_type',), a=S(a, f"value:{carried(values, 'a', 'groups')}", src=('a', 'groups',)), seq=S(seq, "fill", src=('a', 'groups', 'b', 'n',)), b=S(b, f"value:{carried(values, 'b', 'n')}", src=('b', 'n',)))
         if values.get("task_type") == "number_line_jumps" and blank_target in ("result", "total"):
-            return fill("Starting at 0, take {b} equal jumps of {a} on the number line. What is {a} × {b}?", _src=('task_type',), b=derived(b, src=('b', 'n',)), a=derived(a, src=('a', 'groups',)))
+            return fill("Starting at 0, take {b} equal jumps of {a} on the number line. What is {a} × {b}?", _src=('task_type',), b=S(b, f"value:{carried(values, 'b', 'n')}", src=('b', 'n',)), a=S(a, f"value:{carried(values, 'a', 'groups')}", src=('a', 'groups',)))
         if blank_target in ("result", "total"):
-            return fill("What is {a} × {b}?", a=derived(a, src=('a', 'groups',)), b=derived(b, src=('b', 'n',)))
+            return fill("What is {a} × {b}?", a=S(a, f"value:{carried(values, 'a', 'groups')}", src=('a', 'groups',)), b=S(b, f"value:{carried(values, 'b', 'n')}", src=('b', 'n',)))
         elif blank_target in ("b", "n"):
-            return fill("What times {a} equals {result}?", a=derived(a, src=('a', 'groups',)), result=derived(result, src=('result', 'total',)))
+            return fill("What times {a} equals {result}?", a=S(a, f"value:{carried(values, 'a', 'groups')}", src=('a', 'groups',)), result=S(result, f"value:{carried(values, 'result', 'total')}", src=('result', 'total',)))
         else:
-            return fill("What times {b} equals {result}?", b=derived(b, src=('b', 'n',)), result=derived(result, src=('result', 'total',)))
+            return fill("What times {b} equals {result}?", b=S(b, f"value:{carried(values, 'b', 'n')}", src=('b', 'n',)), result=S(result, f"value:{carried(values, 'result', 'total')}", src=('result', 'total',)))
     
     elif concept == "division":
         dividend = values.get("dividend", values.get("a"))
@@ -136,15 +136,16 @@ def _build_pure_question(ctx: QuestionContext) -> str:
         if blank_target in ("result", "quotient"):
             return fill("What is {dividend} ÷ {divisor}?", dividend=S(dividend, "value:a", src=('dividend', 'a',)), divisor=S(divisor, "value:b", src=('divisor', 'b',)))
         elif blank_target in ("b", "divisor", "n"):
-            return fill("{dividend} divided by what equals {quotient}?", dividend=derived(dividend, src=('dividend', 'a',)), quotient=derived(quotient, src=('quotient', 'result',)))
+            return fill("{dividend} divided by what equals {quotient}?", dividend=S(dividend, f"value:{carried(values, 'dividend', 'a')}", src=('dividend', 'a',)), quotient=S(quotient, f"value:{carried(values, 'quotient', 'result')}", src=('quotient', 'result',)))
         else:
-            return fill("What divided by {divisor} equals {quotient}?", divisor=derived(divisor, src=('divisor', 'b',)), quotient=S(quotient, "value:result", src=('quotient', 'result',)))
+            return fill("What divided by {divisor} equals {quotient}?", divisor=S(divisor, f"value:{carried(values, 'divisor', 'b')}", src=('divisor', 'b',)), quotient=S(quotient, "value:result", src=('quotient', 'result',)))
     
     elif concept == "missing_number":
         op_name = values.get("operation", "addition")
-        op_symbol = {"addition": "+", "subtraction": "−",
-                     "multiplication": "×", "division": "÷",
-                     "equivalent": values.get("equivalent_symbol", "+")}.get(op_name, "+")
+        op_symbols = {"addition": "+", "subtraction": "−",
+                      "multiplication": "×", "division": "÷",
+                      "equivalent": values.get("equivalent_symbol", "+")}
+        op_symbol = op_symbols.get(op_name, "+")
         blank_pos = values.get("blank_position", "result")
         res = values.get("result", values.get("total"))
         a_val = values.get("a")
@@ -157,11 +158,11 @@ def _build_pure_question(ctx: QuestionContext) -> str:
             else:
                 return fill("What number completes the expression: {a_val} − {b_val} = {c_val} − ___?", _src=('operation',), a_val=S(a_val, "value:a"), b_val=S(b_val, "value:b"), c_val=S(c_val, "value:c", src=('c',)))
         if blank_pos == "start":
-            return fill("What number goes in the blank: ___ {op_symbol} {b_val} = {res}?", _src=('blank_position',), op_symbol=derived(op_symbol, src=('operation', 'equivalent_symbol',)), b_val=S(b_val, "value:b"), res=S(res, "value:result", src=('result', 'total',)))
+            return fill("What number goes in the blank: ___ {op_symbol} {b_val} = {res}?", _src=('blank_position',), op_symbol=S(op_symbol, E(tuple(op_symbols.values()), "the operation symbols"), src=('operation', 'equivalent_symbol',)), b_val=S(b_val, "value:b"), res=S(res, "value:result", src=('result', 'total',)))
         elif blank_pos == "change":
-            return fill("What number goes in the blank: {a_val} {op_symbol} ___ = {res}?", _src=('blank_position',), a_val=S(a_val, "value:a"), op_symbol=derived(op_symbol, src=('operation', 'equivalent_symbol',)), res=S(res, "value:result", src=('result', 'total',)))
+            return fill("What number goes in the blank: {a_val} {op_symbol} ___ = {res}?", _src=('blank_position',), a_val=S(a_val, "value:a"), op_symbol=S(op_symbol, E(tuple(op_symbols.values()), "the operation symbols"), src=('operation', 'equivalent_symbol',)), res=S(res, "value:result", src=('result', 'total',)))
         else:
-            return fill("What number goes in the blank: {a_val} {op_symbol} {b_val} = ___?", a_val=S(a_val, "value:a"), op_symbol=derived(op_symbol, src=('operation', 'equivalent_symbol',)), b_val=S(b_val, "value:b"))
+            return fill("What number goes in the blank: {a_val} {op_symbol} {b_val} = ___?", a_val=S(a_val, "value:a"), op_symbol=S(op_symbol, E(tuple(op_symbols.values()), "the operation symbols"), src=('operation', 'equivalent_symbol',)), b_val=S(b_val, "value:b"))
 
     elif concept == "fractions":
         if values.get("question"):
@@ -174,20 +175,20 @@ def _build_pure_question(ctx: QuestionContext) -> str:
             a_den = values.get("a_den", denom)
             b_num = values.get("b_num", numer)
             b_den = values.get("b_den", denom)
-            return fill("Compare the fractions: \\(\\frac{{{a_num}}}{{{a_den}}}\\) ___ \\(\\frac{{{b_num}}}{{{b_den}}}\\). Which sign is correct: >, <, or =?", _src=('operation',), a_num=derived(a_num, src=('a_num', 'numerator', 'a',)), a_den=derived(a_den, src=('a_den', 'denominator', 'b',)), b_num=derived(b_num, src=('b_num', 'numerator', 'a',)), b_den=derived(b_den, src=('b_den', 'denominator', 'b',)))
+            return fill("Compare the fractions: \\(\\frac{{{a_num}}}{{{a_den}}}\\) ___ \\(\\frac{{{b_num}}}{{{b_den}}}\\). Which sign is correct: >, <, or =?", _src=('operation',), a_num=S(a_num, f"value:{carried(values, 'a_num', 'numerator', 'a')}", src=('a_num', 'numerator', 'a',)), a_den=S(a_den, f"value:{carried(values, 'a_den', 'denominator', 'b')}", src=('a_den', 'denominator', 'b',)), b_num=S(b_num, f"value:{carried(values, 'b_num', 'numerator', 'a')}", src=('b_num', 'numerator', 'a',)), b_den=S(b_den, f"value:{carried(values, 'b_den', 'denominator', 'b')}", src=('b_den', 'denominator', 'b',)))
         if operation in ("add_subtract", "add", "subtract"):
             a_num = values.get("a_num", numer)
             b_num = values.get("b_num", 0)
             a_den = values.get("a_den", denom)
             b_den = values.get("b_den", denom)
-            a_part = "1 part is" if a_num == 1 else fill("{a_num} parts are", _src=('operation',), a_num=derived(a_num, src=('a_num', 'numerator', 'a',)))
+            a_part = fill("1 part is") if a_num == 1 else fill("{a_num} parts are", _src=('operation',), a_num=S(a_num, f"value:{carried(values, 'a_num', 'numerator', 'a')}", src=('a_num', 'numerator', 'a',)))
             if operation == "subtract":
-                b_part = "1 shaded part is" if b_num == 1 else fill("{b_num} shaded parts are", _src=('operation',), b_num=derived(b_num, src=('b_num',)))
-                return fill("A shape is divided into {a_den} equal parts. {a_part} shaded. If {b_part} taken away, what fraction of the shape remains shaded: \\(\\frac{{{a_num}}}{{{a_den}}} - \\frac{{{b_num}}}{{{b_den}}}\\)?", _src=('operation',), a_den=derived(a_den, src=('a_den', 'denominator', 'b',)), a_part=derived(a_part, src=('a_num', 'numerator', 'a',)), b_part=derived(b_part, src=('b_num',)), a_num=derived(a_num, src=('a_num', 'numerator', 'a',)), b_num=derived(b_num, src=('b_num',)), b_den=derived(b_den, src=('b_den', 'denominator', 'b',)))
-            b_part = "1 more part is" if b_num == 1 else fill("{b_num} more parts are", _src=('operation',), b_num=derived(b_num, src=('b_num',)))
-            return fill("A shape is divided into {a_den} equal parts. {a_part} shaded and {b_part} shaded. What fraction of the shape is shaded in all: \\(\\frac{{{a_num}}}{{{a_den}}} + \\frac{{{b_num}}}{{{b_den}}}\\)?", _src=('operation',), a_den=derived(a_den, src=('a_den', 'denominator', 'b',)), a_part=derived(a_part, src=('a_num', 'numerator', 'a',)), b_part=derived(b_part, src=('b_num',)), a_num=derived(a_num, src=('a_num', 'numerator', 'a',)), b_num=derived(b_num, src=('b_num',)), b_den=derived(b_den, src=('b_den', 'denominator', 'b',)))
+                b_part = fill("1 shaded part is") if b_num == 1 else fill("{b_num} shaded parts are", _src=('operation',), b_num=S(b_num, "value:b_num", src=('b_num',)))
+                return fill("A shape is divided into {a_den} equal parts. {a_part} shaded. If {b_part} taken away, what fraction of the shape remains shaded: \\(\\frac{{{a_num}}}{{{a_den}}} - \\frac{{{b_num}}}{{{b_den}}}\\)?", _src=('operation',), a_den=S(a_den, f"value:{carried(values, 'a_den', 'denominator', 'b')}", src=('a_den', 'denominator', 'b',)), a_part=S(a_part, "fill", src=('a_num', 'numerator', 'a',)), b_part=S(b_part, "fill", src=('b_num',)), a_num=S(a_num, f"value:{carried(values, 'a_num', 'numerator', 'a')}", src=('a_num', 'numerator', 'a',)), b_num=S(b_num, "value:b_num", src=('b_num',)), b_den=S(b_den, f"value:{carried(values, 'b_den', 'denominator', 'b')}", src=('b_den', 'denominator', 'b',)))
+            b_part = fill("1 more part is") if b_num == 1 else fill("{b_num} more parts are", _src=('operation',), b_num=S(b_num, "value:b_num", src=('b_num',)))
+            return fill("A shape is divided into {a_den} equal parts. {a_part} shaded and {b_part} shaded. What fraction of the shape is shaded in all: \\(\\frac{{{a_num}}}{{{a_den}}} + \\frac{{{b_num}}}{{{b_den}}}\\)?", _src=('operation',), a_den=S(a_den, f"value:{carried(values, 'a_den', 'denominator', 'b')}", src=('a_den', 'denominator', 'b',)), a_part=S(a_part, "fill", src=('a_num', 'numerator', 'a',)), b_part=S(b_part, "fill", src=('b_num',)), a_num=S(a_num, f"value:{carried(values, 'a_num', 'numerator', 'a')}", src=('a_num', 'numerator', 'a',)), b_num=S(b_num, "value:b_num", src=('b_num',)), b_den=S(b_den, f"value:{carried(values, 'b_den', 'denominator', 'b')}", src=('b_den', 'denominator', 'b',)))
         part_word = "part is" if numer == 1 else "parts are"
-        return fill("A shape is divided into {denom} equal parts. {numer} {part_word} shaded. What fraction of the shape is shaded?", denom=derived(denom, src=('denominator', 'b',)), numer=derived(numer, src=('numerator', 'a',)), part_word=derived(part_word, src=('numerator', 'a',)))
+        return fill("A shape is divided into {denom} equal parts. {numer} {part_word} shaded. What fraction of the shape is shaded?", denom=S(denom, f"value:{carried(values, 'denominator', 'b')}", src=('denominator', 'b',)), numer=S(numer, f"value:{carried(values, 'numerator', 'a')}", src=('numerator', 'a',)), part_word=S(part_word, E(("part is", "parts are"), "one part or more"), src=('numerator', 'a',)))
 
     elif concept == "counting":
         seq = values.get("sequence") or []
@@ -217,8 +218,8 @@ def _build_pure_question(ctx: QuestionContext) -> str:
             return values["question"]
         if task_type in ("order_set", "order_sequence"):
             nums = values.get("numbers", [])
-            nums_str = ", ".join(str(x) for x in nums)
-            return fill("Order these numbers from least to greatest: {nums_str}", _src=('task_type',), nums_str=derived(nums_str, src=('numbers',)))
+            nums_str = join(", ", [S(x, E(tuple(nums), "values['numbers']")) for x in nums])
+            return fill("Order these numbers from least to greatest: {nums_str}", _src=('task_type',), nums_str=S(nums_str, "fill", src=('numbers',)))
         elif task_type == "find_between":
             return fill("What number is between {a} and {b}?", _src=('task_type',), a=S(a, "value:a"), b=S(b, "value:b"))
         elif values.get("statement") is not None:

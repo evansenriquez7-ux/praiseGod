@@ -26,7 +26,7 @@ from typing import Optional
 from backend.app.practice_gen.dna.base import FormattedProblem, QuestionContext
 from backend.app.practice_gen.formatters._distractor_fallback import augment_distractors
 from backend.app.practice_gen.formatters._option_order import shuffle_options
-from backend.app.practice_gen.slots import E, S, derived, fill
+from backend.app.practice_gen.slots import E, S, derived, fill, join
 from backend.app.practice_gen.formatters._answer_slots import distractors_field
 
 # Option letters, A first: `_OPTION_KEYS[i]` is `chr(ord("A") + i)` for the four options this
@@ -898,29 +898,29 @@ def format_number_line(
             jump_word = "jump" if b == 1 else "jumps"
             if _mul_task_type == "skip_counting":
                 question_text = (
-                    fill("The arrows show counting by {a}s{where}. After {b} {jump_word}, which number do you land on?", _src=('task_type',), a=S(a, "value:a"), where=derived(where), b=S(b, "value:b"), jump_word=derived(jump_word))
+                    fill("The arrows show counting by {a}s{where}. After {b} {jump_word}, which number do you land on?", _src=('task_type',), a=S(a, "value:a"), where=S(where, E((" on the number line", ""), "vocab gate 'number line'")), b=S(b, "value:b"), jump_word=S(jump_word, E(("jump", "jumps"), "jump or jumps, by the count")))
                 )
             elif _mul_task_type == "repeated_addition":
-                terms = " + ".join([str(a)] * b) if b <= 5 else fill("{a} added {b} times", _src=('task_type',), a=S(a, "value:a"), b=S(b, "value:b"))
+                terms = join(" + ", [S(a, "value:a")] * b) if b <= 5 else fill("{a} added {b} times", _src=('task_type',), a=S(a, "value:a"), b=S(b, "value:b"))
                 question_text = (
-                    fill("The arrows show {terms}{where}. Which number {v} land on?", _src=('task_type',), terms=derived(terms), where=derived(where), v=derived('does the jump' if b == 1 else 'do the jumps'))
+                    fill("The arrows show {terms}{where}. Which number {v} land on?", _src=('task_type',), terms=S(terms, "fill"), where=S(where, E((" on the number line", ""), "vocab gate 'number line'")), v=S('does the jump' if b == 1 else 'do the jumps', E(("does the jump", "do the jumps"), "the verb phrase, by the count")))
                 )
             else:
                 question_text = (
-                    fill("Start at 0 and take {b} equal {jump_word} of {a}{where}. Which number do you land on?", b=S(b, "value:b"), jump_word=derived(jump_word), a=S(a, "value:a"), where=derived(where))
+                    fill("Start at 0 and take {b} equal {jump_word} of {a}{where}. Which number do you land on?", b=S(b, "value:b"), jump_word=S(jump_word, E(("jump", "jumps"), "jump or jumps, by the count")), a=S(a, "value:a"), where=S(where, E((" on the number line", ""), "vocab gate 'number line'")))
                 )
         else:
             # Unreachable today (only `number_line_read` is declared for
             # multiplication) but the jumps are stripped from a "set" payload above,
             # so the pupil is placing the landing point, not reading it.
-            question_text = fill("Show {b} equal {v} of {a}{where}.", b=S(b, "value:b"), v=derived('jump' if b == 1 else 'jumps'), a=S(a, "value:a"), where=derived(where))
+            question_text = fill("Show {b} equal {v} of {a}{where}.", b=S(b, "value:b"), v=S('jump' if b == 1 else 'jumps', E(("jump", "jumps"), "jump or jumps, by the count")), a=S(a, "value:a"), where=S(where, E((" on the number line", ""), "vocab gate 'number line'")))
     elif ctx.dna_concept == "rounding":
         num = values.get("number", vp.get("value"))
         precision = values.get("round_to", 10)
         if interaction_mode == "read":
             question_text = fill("The number {num} is marked on the number line. Round {num} to the nearest {precision}.", num=S(num, "value:number"), precision=S(precision, "value:round_to", src=('round_to',)))
         else:
-            question_text = fill("Round {num} to the nearest {precision}.", num=derived(num, src=('number',)), precision=derived(precision, src=('round_to',)))
+            question_text = fill("Round {num} to the nearest {precision}.", num=S(num, "value:number", src=('number',)), precision=S(precision, "value:round_to", src=('round_to',)))
     else:
         question_text = _stem(vp, interaction_mode, set(ctx.cumulative_vocab), value_key=value_key)
 

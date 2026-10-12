@@ -3697,7 +3697,7 @@ MUTATIONS: List[Mutation] = [
         ),
         edits={
             "backend/app/practice_gen/dna/dp/bar_graphs.py": (
-                '    scale = scale_map.get(scale_level, 5)\n',
+                '    scale = _SCALE_MAP.get(scale_level, 5)\n',
                 '    scale = 5  # planted mutation: the requested scale is ignored\n',
             )
         },

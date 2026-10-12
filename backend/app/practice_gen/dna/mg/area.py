@@ -16,7 +16,7 @@ from backend.app.practice_gen.dna.base import (
     VocabGated,
     linear_interpolate,
 )
-from backend.app.practice_gen.slots import S, derived, fill
+from backend.app.practice_gen.slots import E, R, S, derived, fill, join
 
 
 # ─── param bounds ─────────────────────────────────────────────────────────────
@@ -440,7 +440,7 @@ def generate_params(
                 "l": l, "w": w, "s": l,
                 "shape_noun": "rectangular",
                 "surface_noun": "garden" if unit_label == "sq m" else "card",
-                "dims_phrase": fill("that is {l} {replace} long and {w} {replace} wide", _src=('task_type',), l=derived(l), replace=S(unit_label.replace('sq ', ''), "value:length_unit"), w=S(w, "value:w")),
+                "dims_phrase": fill("that is {l} {replace} long and {w} {replace} wide", _src=('task_type',), l=S(l, "value:l"), replace=S(unit_label.replace('sq ', ''), "value:length_unit"), w=S(w, "value:w")),
                 "length_unit": unit_label.replace("sq ", ""),
                 "unit": unit_label,
                 "task_type": "illustrate_tiles",
@@ -483,10 +483,11 @@ def generate_params(
                 s = table_side
                 area = s * s
                 if unit_label == "sq cm":
-                    item_noun = rng.choice(["picture card", "greeting card", "photo", "notebook cover"])
+                    item_nouns = ["picture card", "greeting card", "photo", "notebook cover"]
                 else:
-                    item_noun = rng.choice(["table top", "garden bed", "patio", "mat"])
-                q = fill("A square {item_noun} measures {s} {lu} on each side. What is its area in {unit_label}?", _src=('shape', 'context',), item_noun=derived(item_noun), s=derived(s), lu=S(lu, "value:length_unit"), unit_label=S(unit_label, "value:unit"))
+                    item_nouns = ["table top", "garden bed", "patio", "mat"]
+                item_noun = rng.choice(item_nouns)
+                q = fill("A square {item_noun} measures {s} {lu} on each side. What is its area in {unit_label}?", _src=('shape', 'context',), item_noun=S(item_noun, E(tuple(item_nouns), "the item_nouns bank for the unit")), s=S(s, "value:s"), lu=S(lu, "value:length_unit"), unit_label=S(unit_label, "value:unit"))
                 return {
                     "blank_target": "answer",
                     "shape": "square",
@@ -502,10 +503,11 @@ def generate_params(
                 }
             else:
                 if unit_label == "sq cm":
-                    item_noun = rng.choice(["postcard", "photo", "sheet of paper", "bookmark", "index card"])
+                    item_nouns = ["postcard", "photo", "sheet of paper", "bookmark", "index card"]
                 else:
-                    item_noun = rng.choice(["classroom floor", "garden plot", "rug", "chalkboard"])
-                q = fill("A rectangular {item_noun} is {l} {lu} long and {w} {lu} wide. What is the area of the {item_noun} in {unit_label}?", _src=('context', 'shape',), item_noun=derived(item_noun), l=S(l, "value:l"), lu=S(lu, "value:length_unit"), w=S(w, "value:w"), unit_label=S(unit_label, "value:unit"))
+                    item_nouns = ["classroom floor", "garden plot", "rug", "chalkboard"]
+                item_noun = rng.choice(item_nouns)
+                q = fill("A rectangular {item_noun} is {l} {lu} long and {w} {lu} wide. What is the area of the {item_noun} in {unit_label}?", _src=('context', 'shape',), item_noun=S(item_noun, E(tuple(item_nouns), "the item_nouns bank for the unit")), l=S(l, "value:l"), lu=S(lu, "value:length_unit"), w=S(w, "value:w"), unit_label=S(unit_label, "value:unit"))
                 return {
                     "blank_target": "answer",
                     "shape": "rectangle",
@@ -525,12 +527,13 @@ def generate_params(
             known_val = l if known == "l" else w
             missing_val = w if known == "l" else l
             if unit_label == "sq cm":
-                item_noun = rng.choice(["poster", "photo", "postcard", "drawing sheet", "card"])
+                item_nouns = ["poster", "photo", "postcard", "drawing sheet", "card"]
             else:
-                item_noun = rng.choice(["garden plot", "rug", "chalkboard", "wooden board"])
+                item_nouns = ["garden plot", "rug", "chalkboard", "wooden board"]
+            item_noun = rng.choice(item_nouns)
             other_name = "width" if known == "l" else "length"
             known_name = "length" if known == "l" else "width"
-            q = fill("A rectangular {item_noun} has an area of {rect_area} {unit_label} and a {known_name} of {known_val} {lu}. What is its {other_name} in {lu}?", _src=('context', 'shape',), item_noun=derived(item_noun), rect_area=derived(rect_area), unit_label=derived(unit_label), known_name=derived(known_name), known_val=derived(known_val), lu=derived(lu), other_name=derived(other_name))
+            q = fill("A rectangular {item_noun} has an area of {rect_area} {unit_label} and a {known_name} of {known_val} {lu}. What is its {other_name} in {lu}?", _src=('context', 'shape',), item_noun=S(item_noun, E(tuple(item_nouns), "the item_nouns bank for the unit")), rect_area=S(rect_area, "value:area"), unit_label=S(unit_label, "value:unit"), known_name=S(known_name, E(("length", "width"), "the known dimension's name")), known_val=S(known_val, "value:known_value"), lu=S(lu, E(("cm", "m"), "the length units of the two unit_labels, sq cm and sq m")), other_name=S(other_name, E(("width", "length"), "the other dimension's name")))
             return {
                 "blank_target": "answer",
                 "shape": "rectangle",
@@ -555,7 +558,7 @@ def generate_params(
             area2 = l2 * w2
             diff = area2 - area1
             q = (
-                fill("Garden Plot A is {l1} {lu} by {w1} {lu} (area = {area1} {unit_label}). Garden Plot B is {l2} {lu} by {w2} {lu} (area = {area2} {unit_label}). How many {unit_label} larger is Plot B than Plot A?", _src=('context',), l1=derived(l1), lu=S(lu, "value:length_unit"), w1=derived(w1), area1=S(area1, "value:area1"), unit_label=S(unit_label, "value:unit"), l2=derived(l2), w2=S(w2, "value:w2"), area2=S(area2, "value:area2"))
+                fill("Garden Plot A is {l1} {lu} by {w1} {lu} (area = {area1} {unit_label}). Garden Plot B is {l2} {lu} by {w2} {lu} (area = {area2} {unit_label}). How many {unit_label} larger is Plot B than Plot A?", _src=('context',), l1=S(l1, "value:l1"), lu=S(lu, "value:length_unit"), w1=S(w1, "value:w1"), area1=S(area1, "value:area1"), unit_label=S(unit_label, "value:unit"), l2=S(l2, "value:l2"), w2=S(w2, "value:w2"), area2=S(area2, "value:area2"))
             )
             return {
                 "blank_target": "answer",
@@ -576,12 +579,14 @@ def generate_params(
             }
 
         if wp_type == "cost_area":
-            cost_per_sq = rng.choice([2, 5, 10])
+            costs = [2, 5, 10]
+            cost_per_sq = rng.choice(costs)
             total_cost = rect_area * cost_per_sq
-            item_noun = rng.choice(["wall", "floor", "patio"])
+            item_nouns = ["wall", "floor", "patio"]
+            item_noun = rng.choice(item_nouns)
             action = "painting" if item_noun == "wall" else "tiling"
             q = (
-                fill("A rectangular {item_noun} is {l} {lu} long and {w} {lu} wide (area = {rect_area} {unit_label}). If {action} costs ₱{cost_per_sq} per {unit_label}, what is the total cost to cover the {item_noun}?", _src=('context', 'shape',), item_noun=derived(item_noun), l=derived(l), lu=derived(lu), w=derived(w), rect_area=derived(rect_area), unit_label=derived(unit_label), action=derived(action), cost_per_sq=derived(cost_per_sq))
+                fill("A rectangular {item_noun} is {l} {lu} long and {w} {lu} wide (area = {rect_area} {unit_label}). If {action} costs ₱{cost_per_sq} per {unit_label}, what is the total cost to cover the {item_noun}?", _src=('context', 'shape',), item_noun=S(item_noun, E(tuple(item_nouns), "the item_nouns bank")), l=S(l, R(2, max(max(_KNOWN_TABLES), _OTHER_SIDE_MAX), "a known-table side or its co-factor (_table_and_cofactor)")), lu=S(lu, "value:length_unit"), w=S(w, R(2, max(max(_KNOWN_TABLES), _OTHER_SIDE_MAX), "a known-table side or its co-factor (_table_and_cofactor)")), rect_area=derived(rect_area, src=('area_parts',), why="arithmetic"), unit_label=S(unit_label, "value:unit"), action=S(action, E(("painting", "tiling"), "the two cover actions")), cost_per_sq=S(cost_per_sq, E(tuple(costs), "the costs bank")))
             )
             return {
                 "blank_target": "answer",
@@ -603,11 +608,12 @@ def generate_params(
         if wp_type == "combined_area":
             l1, w1 = table_side, other_side
             area1 = l1 * w1
-            l2, w2 = rng.choice([2, 3, 4, 5]), rng.randint(2, 6)
+            l2_choices, w2_lo, w2_hi = [2, 3, 4, 5], 2, 6
+            l2, w2 = rng.choice(l2_choices), rng.randint(w2_lo, w2_hi)
             area2 = l2 * w2
             total = area1 + area2
             q = (
-                fill("Ana has two rectangular flower beds: Bed 1 is {l1} {lu} by {w1} {lu} and Bed 2 is {l2} {lu} by {w2} {lu}. What is the combined total area of both flower beds in {unit_label}?", _src=('context',), l1=derived(l1), lu=derived(lu), w1=derived(w1), l2=derived(l2), w2=derived(w2), unit_label=derived(unit_label))
+                fill("Ana has two rectangular flower beds: Bed 1 is {l1} {lu} by {w1} {lu} and Bed 2 is {l2} {lu} by {w2} {lu}. What is the combined total area of both flower beds in {unit_label}?", _src=('context',), l1=S(l1, R(2, max(max(_KNOWN_TABLES), _OTHER_SIDE_MAX), "a known-table side or its co-factor (_table_and_cofactor)")), lu=S(lu, "value:length_unit"), w1=S(w1, R(2, max(max(_KNOWN_TABLES), _OTHER_SIDE_MAX), "a known-table side or its co-factor (_table_and_cofactor)")), l2=S(l2, E(tuple(l2_choices), "Bed 2's length choices")), w2=S(w2, R(w2_lo, w2_hi, "Bed 2's width draw bounds")), unit_label=S(unit_label, "value:unit"))
             )
             return {
                 "blank_target": "answer",
@@ -640,7 +646,7 @@ def generate_params(
             "answer_formula": "area / known_value",
             "sides": {"l": l, "w": w},
             "l": l, "w": w,
-            "question": fill("A rectangle has an area of {rect_area} {unit_label} and a {v} of {known_val} {lu}. What is its {v2} in {lu}?", _src=('task_type',), rect_area=derived(rect_area), unit_label=derived(unit_label), v=derived('length' if known == 'l' else 'width'), known_val=derived(known_val), lu=derived(lu), v2=derived('width' if known == 'l' else 'length')),
+            "question": fill("A rectangle has an area of {rect_area} {unit_label} and a {v} of {known_val} {lu}. What is its {v2} in {lu}?", _src=('task_type',), rect_area=S(rect_area, "value:area"), unit_label=S(unit_label, "value:unit"), v=S('length' if known == 'l' else 'width', E(("length", "width"), "the known dimension's name")), known_val=S(known_val, "value:known_value"), lu=S(lu, E(("cm", "m"), "the length units of the two unit_labels, sq cm and sq m")), v2=S('width' if known == 'l' else 'length', E(("width", "length"), "the other dimension's name"))),
             "context": context,
         }
 
@@ -712,7 +718,7 @@ def generate_hints(
         area      = values["area"]
         return [
             fill("The {area_label} = length × width.", _src=('task_type',), area_label=S(area_label, "fill")),
-            fill("We know the area is {area} {unit} and one side is {known_val}.", _src=('task_type',), area=S(area, "value:area"), unit=derived(unit, src=('unit',)), known_val=S(known_val, "value:known_value")),
+            fill("We know the area is {area} {unit} and one side is {known_val}.", _src=('task_type',), area=S(area, "value:area"), unit=S(unit, "value:unit", src=('unit',)), known_val=S(known_val, "value:known_value")),
             fill("Divide: {area} ÷ {known_val} = {answer}.", _src=('task_type',), area=S(area, "value:area"), known_val=S(known_val, "value:known_value"), answer=S(values['answer'], "value:answer")),
         ]
 
@@ -728,25 +734,26 @@ def generate_hints(
     if problem == "cost_area":
         parts = values["area_parts"]
         return [
-            fill("First find the {area_label}: {l} × {w} = {area} {unit}.", _src=('area_problem',), area_label=S(area_label, "fill"), l=derived(parts['l'], src=('area_parts',)), w=derived(parts['w'], src=('area_parts',)), area=derived(parts['area'], src=('area_parts',)), unit=derived(unit, src=('unit',))),
-            fill("Each {unit} costs ₱{cost}: {area} × {cost} = {answer}.", _src=('area_problem',), unit=derived(unit, src=('unit',)), cost=derived(parts['cost'], src=('area_parts',)), area=derived(parts['area'], src=('area_parts',)), answer=S(values['answer'], "value:answer")),
+            fill("First find the {area_label}: {l} × {w} = {area} {unit}.", _src=('area_problem',), area_label=S(area_label, "fill"), l=S(parts['l'], E(tuple(parts.values()), "values['area_parts']"), src=('area_parts',)), w=S(parts['w'], E(tuple(parts.values()), "values['area_parts']"), src=('area_parts',)), area=S(parts['area'], E(tuple(parts.values()), "values['area_parts']"), src=('area_parts',)), unit=S(unit, "value:unit", src=('unit',))),
+            fill("Each {unit} costs ₱{cost}: {area} × {cost} = {answer}.", _src=('area_problem',), unit=S(unit, "value:unit", src=('unit',)), cost=S(parts['cost'], E(tuple(parts.values()), "values['area_parts']"), src=('area_parts',)), area=S(parts['area'], E(tuple(parts.values()), "values['area_parts']"), src=('area_parts',)), answer=S(values['answer'], "value:answer")),
             fill("The total cost is ₱{answer}.", _src=('area_problem',), answer=S(values['answer'], "value:answer")),
         ]
     if problem == "combined_area":
         parts = values["area_parts"]
         a1, a2 = parts["l1"] * parts["w1"], parts["l2"] * parts["w2"]
         return [
-            fill("Bed 1: {l1} × {w1} = {a1} {unit}.", _src=('area_problem',), l1=derived(parts['l1'], src=('area_parts',)), w1=derived(parts['w1'], src=('area_parts',)), a1=derived(a1), unit=derived(unit, src=('unit',))),
-            fill("Bed 2: {l2} × {w2} = {a2} {unit}.", _src=('area_problem',), l2=derived(parts['l2'], src=('area_parts',)), w2=derived(parts['w2'], src=('area_parts',)), a2=derived(a2), unit=derived(unit, src=('unit',))),
-            fill("{a1} + {a2} = {answer} {unit} in all.", _src=('area_problem',), a1=derived(a1), a2=derived(a2), answer=S(values['answer'], "value:answer"), unit=derived(unit, src=('unit',))),
+            fill("Bed 1: {l1} × {w1} = {a1} {unit}.", _src=('area_problem',), l1=S(parts['l1'], E(tuple(parts.values()), "values['area_parts']"), src=('area_parts',)), w1=S(parts['w1'], E(tuple(parts.values()), "values['area_parts']"), src=('area_parts',)), a1=derived(a1, src=('area_parts',), why="arithmetic"), unit=S(unit, "value:unit", src=('unit',))),
+            fill("Bed 2: {l2} × {w2} = {a2} {unit}.", _src=('area_problem',), l2=S(parts['l2'], E(tuple(parts.values()), "values['area_parts']"), src=('area_parts',)), w2=S(parts['w2'], E(tuple(parts.values()), "values['area_parts']"), src=('area_parts',)), a2=derived(a2, src=('area_parts',), why="arithmetic"), unit=S(unit, "value:unit", src=('unit',))),
+            fill("{a1} + {a2} = {answer} {unit} in all.", _src=('area_problem',), a1=derived(a1, src=('area_parts',), why="arithmetic"), a2=derived(a2, src=('area_parts',), why="arithmetic"), answer=S(values['answer'], "value:answer"), unit=S(unit, "value:unit", src=('unit',))),
         ]
 
     if task_type == "derive_formula":
         # The item shows worked cases and asks for the rule; it has no single shape's
         # sides. It used to fall through to the chain below and print "? × ?".
-        worked = ", ".join(fill("{x} × {y} = {z}", _src=('task_type',), x=derived(x), y=derived(y), z=derived(z)) for x, y, z in values["cases"])
+        cases = values["cases"]
+        worked = join(", ", [fill("{x} × {y} = {z}", _src=('task_type',), x=S(x, E(tuple(c[0] for c in cases), "values['cases'] rows")), y=S(y, E(tuple(c[1] for c in cases), "values['cases'] columns")), z=S(z, E(tuple(c[2] for c in cases), "values['cases'] tile totals"))) for x, y, z in cases])
         return [
-            fill("Look at each {shape_noun}: {worked}.", _src=('task_type',), shape_noun=S(values['shape_noun'], "value:shape_noun"), worked=derived(worked, src=('cases',))),
+            fill("Look at each {shape_noun}: {worked}.", _src=('task_type',), shape_noun=S(values['shape_noun'], "value:shape_noun"), worked=S(worked, "fill", src=('cases',))),
             fill("Each {area_label} is the {dims_word} multiplied together.", _src=('task_type',), area_label=S(area_label, "fill"), dims_word=S(values['dims_word'], "value:dims_word")),
             fill("So the rule is: {area_label} = {answer}.", _src=('task_type',), area_label=S(area_label, "fill"), answer=S(values['answer'], "value:answer")),
         ]

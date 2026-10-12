@@ -21,7 +21,7 @@ from backend.app.practice_gen.dna.base import (
     VocabGated,
     count_noun,
 )
-from backend.app.practice_gen.slots import E, S, derived, derives, fill, transform
+from backend.app.practice_gen.slots import E, S, derived, derives, fill, join, transform
 
 
 # ─── param bounds ─────────────────────────────────────────────────────────────
@@ -547,7 +547,7 @@ def generate_params(
         holds = rng.random() < 0.5
         rhs_operands = [b_val, a_val if holds
                         else _different_addend(a_val, lo=0, hi=max(0, max_result - b_val))]
-        rhs = fill("{rhs}", rhs=derived(" + ".join(str(n) for n in rhs_operands)))
+        rhs = join(" + ", [S(n, E(tuple(rhs_operands), "the rhs_operands the question shows")) for n in rhs_operands])
         return {
             "a": a_val, "b": b_val,
             # The right-hand side the question asks about, declared so the hints
@@ -572,7 +572,7 @@ def generate_params(
         holds = rng.random() < 0.5
         rhs_operands = [a_val, b_val, c_val if holds
                         else _different_addend(c_val, lo=0, hi=max(0, max_result - a_val - b_val))]
-        rhs = fill("{v} + ({v2} + {v3})", _src=('task_type',), v=S(rhs_operands[0], "value:a"), v2=S(rhs_operands[1], "value:b"), v3=derived(rhs_operands[2]))
+        rhs = fill("{v} + ({v2} + {v3})", _src=('task_type',), v=S(rhs_operands[0], "value:a"), v2=S(rhs_operands[1], "value:b"), v3=S(rhs_operands[2], E(tuple(rhs_operands), "the rhs_operands the question shows")))
         return {
             "a": a_val, "b": b_val, "c": c_val,
             # See the commutative branch.
@@ -1166,21 +1166,21 @@ def _property_hints(values: Dict[str, Any]) -> List[str]:
     rhs = values["rhs_operands"]
     if values["task_type"] == "commutative":
         a, b = values["a"], values["b"]
-        left_text, right_text = fill("{a} + {b}", _src=('task_type',), a=S(a, "value:a"), b=S(b, "value:b")), fill("{v} + {v2}", _src=('task_type',), v=S(rhs[0], "value:b", src=('rhs_operands',)), v2=derived(rhs[1], src=('rhs_operands',)))
+        left_text, right_text = fill("{a} + {b}", _src=('task_type',), a=S(a, "value:a"), b=S(b, "value:b")), fill("{v} + {v2}", _src=('task_type',), v=S(rhs[0], "value:b", src=('rhs_operands',)), v2=S(rhs[1], E(tuple(rhs), "values['rhs_operands']"), src=('rhs_operands',)))
         left, right = a + b, rhs[0] + rhs[1]
         if holds:
             first = fill("Both sides add the same two numbers, {a} and {b}, in a different order.", _src=('answer', 'task_type',), a=S(a, "value:a"), b=S(b, "value:b"))
         else:
-            first = fill("The left side adds {a} and {b}. The right side adds {v} and {v2}.", _src=('task_type',), a=S(a, "value:a"), b=S(b, "value:b"), v=S(rhs[0], "value:b", src=('rhs_operands',)), v2=derived(rhs[1], src=('rhs_operands',)))
+            first = fill("The left side adds {a} and {b}. The right side adds {v} and {v2}.", _src=('task_type',), a=S(a, "value:a"), b=S(b, "value:b"), v=S(rhs[0], "value:b", src=('rhs_operands',)), v2=S(rhs[1], E(tuple(rhs), "values['rhs_operands']"), src=('rhs_operands',)))
     else:
         a, b, c = values["a"], values["b"], values["c"]
         left_text = fill("({a} + {b}) + {c}", a=S(a, "value:a"), b=S(b, "value:b"), c=S(c, "value:c"))
-        right_text = fill("{v} + ({v2} + {v3})", v=S(rhs[0], "value:a"), v2=S(rhs[1], "value:b", src=('rhs_operands',)), v3=derived(rhs[2], src=('rhs_operands',)))
+        right_text = fill("{v} + ({v2} + {v3})", v=S(rhs[0], "value:a"), v2=S(rhs[1], "value:b", src=('rhs_operands',)), v3=S(rhs[2], E(tuple(rhs), "values['rhs_operands']"), src=('rhs_operands',)))
         left, right = a + b + c, rhs[0] + rhs[1] + rhs[2]
         if holds:
             first = fill("Both sides add the same three numbers, {a}, {b} and {c}, grouped differently.", _src=('answer',), a=S(a, "value:a"), b=S(b, "value:b"), c=S(c, "value:c"))
         else:
-            first = (fill("The left side adds {a}, {b} and {c}. The right side adds {v}, {v2} and {v3}.", a=S(a, "value:a"), b=S(b, "value:b"), c=S(c, "value:c"), v=S(rhs[0], "value:a"), v2=S(rhs[1], "value:b", src=('rhs_operands',)), v3=derived(rhs[2], src=('rhs_operands',))))
+            first = (fill("The left side adds {a}, {b} and {c}. The right side adds {v}, {v2} and {v3}.", a=S(a, "value:a"), b=S(b, "value:b"), c=S(c, "value:c"), v=S(rhs[0], "value:a"), v2=S(rhs[1], "value:b", src=('rhs_operands',)), v3=S(rhs[2], E(tuple(rhs), "values['rhs_operands']"), src=('rhs_operands',))))
     if (left == right) != bool(holds):
         raise ValueError(
             f"addition.generate_hints: {left_text} = {left} and {right_text} = {right}, "
@@ -1188,7 +1188,7 @@ def _property_hints(values: Dict[str, Any]) -> List[str]:
         )
     return [
         first,
-        fill("{left_text} = {left} and {right_text} = {right}.", left_text=S(left_text, "fill"), left=derived(left), right_text=S(right_text, "fill"), right=derived(right)),
+        fill("{left_text} = {left} and {right_text} = {right}.", left_text=S(left_text, "fill"), left=derived(left, src=('a', 'b') if values["task_type"] == "commutative" else ('a', 'b', 'c'), why="arithmetic"), right_text=S(right_text, "fill"), right=derived(right, src=('rhs_operands',), why="arithmetic")),
         fill("So the two sides are the same.", _src=('answer',)) if holds else fill("So the two sides are not the same."),
     ]
 

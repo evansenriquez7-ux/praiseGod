@@ -91,6 +91,22 @@ def test_a_reason_is_recorded_with_its_slot_and_reaches_the_check():
                         why=dict(f.reasons).get("u"), src=dict(f.sources)["u"])[0] == "slot_domain_type_only_14"
 
 
+def test_carried_names_the_key_a_get_chain_reads_and_a_default_escapes():
+    """`slots.carried` (batch H4-0-R2): the first key the values carry, so a `value:` slot is
+    checked against what a `values.get(k1, values.get(k2, default))` chain read; when the
+    chain fell through to its literal default it names the first key, so the slot escapes."""
+    from backend.app.practice_gen.slots import carried
+    assert carried({"a": 4, "start": 9}, "a", "start") == "a"
+    assert carried({"start": 9}, "a", "start") == "start"
+    values = {"start": 9}
+    assert V.check_slot(values.get("a", values.get("start")),
+                        f"value:{carried(values, 'a', 'start')}", values, set()) is None
+    values = {"b": 3}
+    read = values.get("a", values.get("start", 1))          # the literal default
+    out = V.check_slot(read, f"value:{carried(values, 'a', 'start')}", values, set())
+    assert out is not None and out[0] == "slot_domain_escape_14" and "'a'" in out[1], out
+
+
 def test_fill_is_byte_identical_and_records_only_when_capturing():
     n = 31
     assert fill("Divide {n} by 2: how many 2s fit into {n}?", n=S(n, "num.derived")) \

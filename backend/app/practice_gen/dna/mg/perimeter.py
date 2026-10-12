@@ -18,7 +18,7 @@ from backend.app.practice_gen.dna.base import (
     count_noun,
     linear_interpolate,
 )
-from backend.app.practice_gen.slots import E, S, derived, fill
+from backend.app.practice_gen.slots import E, R, S, derived, fill
 
 
 # ─── param bounds ─────────────────────────────────────────────────────────────
@@ -167,9 +167,10 @@ def generate_params(
         else:
             meas_shape = rng.choice(["square", "rectangle", "triangle"])
             if meas_shape == "square":
-                s = rng.randint(3, 10)
+                s_lo, s_hi = 3, 10
+                s = rng.randint(s_lo, s_hi)
                 perim = 4 * s
-                q = fill("A student uses a ruler to measure the four sides of a square card. Each side is {s} cm. What is the perimeter?", _src=('task_type',), s=derived(s))
+                q = fill("A student uses a ruler to measure the four sides of a square card. Each side is {s} cm. What is the perimeter?", _src=('task_type',), s=S(s, R(s_lo, s_hi, "the side's draw bounds")))
                 return {
                     "blank_target": "answer",
                     "task_type": "measure_tools",
@@ -181,10 +182,11 @@ def generate_params(
                     "context": "word_problem",
                 }
             elif meas_shape == "rectangle":
-                l = rng.randint(4, 10)
+                l_lo, l_hi = 4, 10
+                l = rng.randint(l_lo, l_hi)
                 w = rng.randint(2, l - 1)
                 perim = 2 * (l + w)
-                q = fill("Using a ruler, a student measures a rectangular photo card as {l} cm long and {w} cm wide. What is its perimeter?", _src=('task_type',), l=derived(l), w=derived(w))
+                q = fill("Using a ruler, a student measures a rectangular photo card as {l} cm long and {w} cm wide. What is its perimeter?", _src=('task_type',), l=S(l, R(l_lo, l_hi, "the length's draw bounds")), w=S(w, R(2, l - 1, "the width's draw bounds, below the length")))
                 return {
                     "blank_target": "answer",
                     "task_type": "measure_tools",
@@ -196,13 +198,14 @@ def generate_params(
                     "context": "word_problem",
                 }
             else:
-                a = rng.randint(3, 6)
-                b = rng.randint(3, 6)
+                ab_lo, ab_hi = 3, 6
+                a = rng.randint(ab_lo, ab_hi)
+                b = rng.randint(ab_lo, ab_hi)
                 c_lo = max(2, abs(a - b) + 1)
                 c_hi = min(8, a + b - 1)
                 c = rng.randint(c_lo, c_hi)
                 perim = a + b + c
-                q = fill("Using a ruler, the three sides of a triangular bookmark are measured as {a} cm, {b} cm, and {c} cm. What is its perimeter?", _src=('task_type',), a=derived(a), b=derived(b), c=derived(c))
+                q = fill("Using a ruler, the three sides of a triangular bookmark are measured as {a} cm, {b} cm, and {c} cm. What is its perimeter?", _src=('task_type',), a=S(a, R(ab_lo, ab_hi, "the first two sides' draw bounds")), b=S(b, R(ab_lo, ab_hi, "the first two sides' draw bounds")), c=S(c, R(c_lo, c_hi, "the third side's draw bounds (triangle inequality)")))
                 return {
                     "blank_target": "answer",
                     "task_type": "measure_tools",
@@ -356,8 +359,8 @@ def generate_hints(
         return [
             fill("The {perim_label} is the total distance around the shape.", _src=('task_type',), perim_label=S(perim_label, "fill")),
             fill("Perimeter = sum of ALL sides. We know the perimeter is {perimeter}.", _src=('task_type',), perimeter=S(values['perimeter'], "value:perimeter")),
-            fill("The sides we know add up to {known_sum}.", _src=('task_type',), known_sum=derived(known_sum, src=('perimeter', 'answer',))),
-            fill("Subtract: {perimeter} - {known_sum} = {answer}.", _src=('task_type',), perimeter=S(values['perimeter'], "value:perimeter"), known_sum=derived(known_sum, src=('perimeter', 'answer',)), answer=S(values['answer'], "value:answer")),
+            fill("The sides we know add up to {known_sum}.", _src=('task_type',), known_sum=derived(known_sum, src=('perimeter', 'answer',), why="arithmetic")),
+            fill("Subtract: {perimeter} - {known_sum} = {answer}.", _src=('task_type',), perimeter=S(values['perimeter'], "value:perimeter"), known_sum=derived(known_sum, src=('perimeter', 'answer',), why="arithmetic"), answer=S(values['answer'], "value:answer")),
         ]
 
     # Concept items name no shape's sides. They used to fall through to the chain
@@ -382,15 +385,15 @@ def generate_hints(
 
     if shape == "square":
         s = sides["s"]
-        hints.append(fill("A square has 4 equal sides, each {s} {count_noun} long.", _src=('shape',), s=derived(s, src=('sides',)), count_noun=S(count_noun(s, 'units'), E((count_noun(1, 'units'), 'units'), "the noun or its singular (dna.base.count_noun)"), src=('sides',))))
-        hints.append(fill("Perimeter = 4 × {s} = {answer}.", _src=('shape',), s=derived(s, src=('sides',)), answer=S(values['answer'], "value:answer")))
+        hints.append(fill("A square has 4 equal sides, each {s} {count_noun} long.", _src=('shape',), s=S(s, E(tuple(sides.values()), "values['sides']"), src=('sides',)), count_noun=S(count_noun(s, 'units'), E((count_noun(1, 'units'), 'units'), "the noun or its singular (dna.base.count_noun)"), src=('sides',))))
+        hints.append(fill("Perimeter = 4 × {s} = {answer}.", _src=('shape',), s=S(s, E(tuple(sides.values()), "values['sides']"), src=('sides',)), answer=S(values['answer'], "value:answer")))
     elif shape == "rectangle":
         l, w = sides["l"], sides["w"]
-        hints.append(fill("A rectangle has two sides of length {l} and two sides of width {w}.", _src=('shape',), l=derived(l), w=derived(w)))
-        hints.append(fill("Perimeter = 2 × ({l} + {w}) = 2 × {v} = {answer}.", _src=('shape',), l=derived(l), w=derived(w), v=derived(l + w), answer=S(values['answer'], "value:answer")))
+        hints.append(fill("A rectangle has two sides of length {l} and two sides of width {w}.", _src=('shape',), l=S(l, E(tuple(sides.values()), "values['sides']")), w=S(w, E(tuple(sides.values()), "values['sides']"))))
+        hints.append(fill("Perimeter = 2 × ({l} + {w}) = 2 × {v} = {answer}.", _src=('shape',), l=S(l, E(tuple(sides.values()), "values['sides']")), w=S(w, E(tuple(sides.values()), "values['sides']")), v=derived(l + w, src=('sides',), why="arithmetic"), answer=S(values['answer'], "value:answer")))
     else:
         a, b, c = sides["a"], sides["b"], sides["c"]
-        hints.append(fill("Add all three sides: {a} + {b} + {c} = {answer}.", a=derived(a), b=derived(b), c=derived(c), answer=S(values['answer'], "value:answer")))
+        hints.append(fill("Add all three sides: {a} + {b} + {c} = {answer}.", a=S(a, E(tuple(sides.values()), "values['sides']")), b=S(b, E(tuple(sides.values()), "values['sides']")), c=S(c, E(tuple(sides.values()), "values['sides']")), answer=S(values['answer'], "value:answer")))
 
     return hints
 

@@ -34,7 +34,7 @@ import random
 from backend.app.practice_gen.dna.base import FormattedProblem, QuestionContext
 from backend.app.practice_gen.formatters._distractor_fallback import augment_distractors
 from backend.app.practice_gen.formatters._option_order import shuffle_options
-from backend.app.practice_gen.slots import S, derived, fill
+from backend.app.practice_gen.slots import E, R, S, carried, derived, fill
 from backend.app.practice_gen.formatters._answer_slots import correct_option_key
 
 
@@ -147,11 +147,13 @@ def _build_traps(params: dict, rng: random.Random) -> list:
 # Question text
 # ─────────────────────────────────────────────────────────────────────────────
 
-def _stem(params: dict, interaction_mode: str, custom_question: str = None) -> str:
+def _stem(params: dict, interaction_mode: str, custom_question: str = None, *, doms: tuple) -> str:
+    """`doms` is (length domain, unit_name domain): where the caller's params came from."""
     unit_name = params["unit_name"]
     length = params["length"]
+    length_dom, unit_dom = doms
     if interaction_mode == "set":
-        return fill("Drag the end of the object to show a length of {length} {unit_name}.", length=derived(length), unit_name=derived(unit_name))
+        return fill("Drag the end of the object to show a length of {length} {unit_name}.", length=S(length, length_dom), unit_name=S(unit_name, unit_dom))
     if custom_question:
         # The DNA already computed a specific question (e.g. word-problem
         # framing for "solve problems involving lengths" nodes) -- the
@@ -161,7 +163,7 @@ def _stem(params: dict, interaction_mode: str, custom_question: str = None) -> s
         # whenever this formatter got picked (blind review of
         # mat_g1_mg_q2_2 seed 55).
         return custom_question
-    return fill("How long is the object? Give your answer in {unit_name}.", unit_name=derived(unit_name))
+    return fill("How long is the object? Give your answer in {unit_name}.", unit_name=S(unit_name, unit_dom))
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -190,6 +192,11 @@ def format_ruler_measure(
         diff_level = min(len(ctx.difficulty_profile) + 1, 4)
 
     # ── 1. Resolve params ─────────────────────────────────────────────────────
+    # Where the length and unit name the stem prints come from (batch H4-0-R2): the
+    # generated values (visual_params repeat them, so a mismatch escapes), or this module's
+    # own ruler builder.
+    values = ctx.values or {}
+    doms = ("value:length", f"value:{carried(values, 'unit_name', 'unit')}")
     if ctx.visual_params and "length" in ctx.visual_params:
         params = ctx.visual_params.copy()
     elif ctx.values and "length" in ctx.values:
@@ -209,6 +216,8 @@ def format_ruler_measure(
         }
     else:
         params = _build_ruler_params(ctx.grade, diff_level, rng)
+        doms = (R(1, params["ruler_end"] - 1, "a length that fits on the ruler"),
+                E(tuple(_NON_STANDARD_UNITS) + ("cm", "m"), "_build_ruler_params' unit names"))
 
     vp = {k: params[k] for k in ("ruler_start", "ruler_end", "unit", "object_start", "object_end", "length", "unit_name")}
 
@@ -254,7 +263,7 @@ def format_ruler_measure(
     else:
         final_answer = correct_answer
 
-    question_text = _stem(params, interaction_mode, custom_question=custom_question)
+    question_text = _stem(params, interaction_mode, custom_question=custom_question, doms=doms)
 
     format_data: dict = {"visual_params": vp}
     if mcq_options:

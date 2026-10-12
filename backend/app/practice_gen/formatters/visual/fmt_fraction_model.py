@@ -35,13 +35,17 @@ import random
 from backend.app.practice_gen.dna.base import FormattedProblem, QuestionContext
 from backend.app.practice_gen.formatters._distractor_fallback import augment_distractors
 from backend.app.practice_gen.formatters._option_order import shuffle_options
-from backend.app.practice_gen.slots import S, derived, fill
+from backend.app.practice_gen.slots import E, R, S, derived, fill
 from backend.app.practice_gen.formatters._answer_slots import (answer_text, correct_option_key, member_text)
 
 
 # ─────────────────────────────────────────────────────────────────────────────
 # Grade-gated fraction pools
 # ─────────────────────────────────────────────────────────────────────────────
+
+# The denominators _pick_fraction draws from, by grade (named so a slot can declare them).
+_PICK_DENOMS = {1: [2, 4], 2: [2, 3, 4, 5, 6, 8], 3: [2, 3, 4, 5, 6, 8, 10]}
+
 
 def _pick_fraction(grade: int, rng: random.Random) -> tuple:
     """
@@ -52,14 +56,14 @@ def _pick_fraction(grade: int, rng: random.Random) -> tuple:
     G3+: any proper fraction, denominator 2–10.
     """
     if grade <= 1:
-        denom = rng.choice([2, 4])
+        denom = rng.choice(_PICK_DENOMS[1])
         return 1, denom
 
     if grade == 2:
-        denom = rng.choice([2, 3, 4, 5, 6, 8])
+        denom = rng.choice(_PICK_DENOMS[2])
         return 1, denom
 
-    denom = rng.choice([2, 3, 4, 5, 6, 8, 10])
+    denom = rng.choice(_PICK_DENOMS[3])
     numer = rng.randint(1, denom - 1)
     return numer, denom
 
@@ -74,7 +78,7 @@ def _pick_model_type(grade: int, rng: random.Random) -> str:
 # Traps
 # ─────────────────────────────────────────────────────────────────────────────
 
-def _build_traps(numer: int, denom: int) -> list:
+def _build_traps(numer: int, denom: int, src: tuple) -> list:
     """
     Return up to 3 pedagogically meaningful wrong answers (fraction strings).
 
@@ -83,19 +87,22 @@ def _build_traps(numer: int, denom: int) -> list:
         count_total    — total parts = denominator (ignores shading)
         count_unshaded — unshaded parts / denominator
         off_by_one_num — (numer ± 1) / denom
+
+    `src` names the values keys numer and denom are read from (batch H4-0-R2): every trap
+    numeral is computed from them.
     """
     traps = []
-    correct = fill("{numer}/{denom}", numer=derived(numer), denom=derived(denom))
+    correct = fill("{numer}/{denom}", numer=derived(numer, src=src, why="arithmetic"), denom=derived(denom, src=src, why="arithmetic"))
     seen = {correct}
 
     # Swap numerator and denominator
-    swap = fill("{denom}/{numer}", denom=derived(denom), numer=derived(numer)) if numer > 0 else None
+    swap = fill("{denom}/{numer}", denom=derived(denom, src=src, why="arithmetic"), numer=derived(numer, src=src, why="arithmetic")) if numer > 0 else None
     if swap not in seen and numer != denom:
         traps.append(swap)
         seen.add(swap)
 
     # Count all parts (use denom as "answer")
-    total_trap = fill("{denom}/{denom}", denom=derived(denom))
+    total_trap = fill("{denom}/{denom}", denom=derived(denom, src=src, why="arithmetic"))
     if total_trap not in seen:
         traps.append(total_trap)
         seen.add(total_trap)
@@ -109,14 +116,14 @@ def _build_traps(numer: int, denom: int) -> list:
     # nonsensical for a Grade 3 student who hasn't met negative numbers).
     unshaded = denom - numer
     if unshaded > 0:
-        unshaded_str = fill("{unshaded}/{denom}", unshaded=derived(unshaded), denom=derived(denom))
+        unshaded_str = fill("{unshaded}/{denom}", unshaded=derived(unshaded, src=src, why="arithmetic"), denom=derived(denom, src=src, why="arithmetic"))
         if unshaded_str not in seen and unshaded != numer:
             traps.append(unshaded_str)
             seen.add(unshaded_str)
 
     # Off by one in numerator
     if numer > 1:
-        ob1 = fill("{v}/{denom}", v=derived(numer - 1), denom=derived(denom))
+        ob1 = fill("{v}/{denom}", v=derived(numer - 1, src=src, why="arithmetic"), denom=derived(denom, src=src, why="arithmetic"))
         if ob1 not in seen:
             traps.append(ob1)
             seen.add(ob1)
@@ -126,7 +133,7 @@ def _build_traps(numer: int, denom: int) -> list:
         for sign in [1, -1]:
             cand_num = numer + (offset_mult * sign)
             if cand_num > 0:
-                cand = fill("{cand_num}/{denom}", cand_num=derived(cand_num), denom=derived(denom))
+                cand = fill("{cand_num}/{denom}", cand_num=derived(cand_num, src=src, why="arithmetic"), denom=derived(denom, src=src, why="arithmetic"))
                 if cand not in seen:
                     traps.append(cand)
                     seen.add(cand)
@@ -143,7 +150,7 @@ def _build_traps(numer: int, denom: int) -> list:
 
 def _stem(model_type: str, fraction_str: str, interaction_mode: str, operation: str = None) -> str:
     if interaction_mode == "set":
-        return fill("Shade the model to show {fraction_str}.", fraction_str=derived(fraction_str))
+        return fill("Shade the model to show {fraction_str}.", fraction_str=S(fraction_str, "fill"))
     if operation in ("add", "subtract", "add_subtract"):
         return fill("What is the result of the fraction operation shown?")
     if operation == "compare":
@@ -152,7 +159,7 @@ def _stem(model_type: str, fraction_str: str, interaction_mode: str, operation: 
         return fill("Look at the fraction sequence. What comes next when counting?")
     model_names = {"area": "shaded picture", "set": "set model", "number_line": "number line"}
     name = model_names.get(model_type, "model")
-    return fill("What fraction does the {name} show?", name=derived(name, src=("model_type",)))
+    return fill("What fraction does the {name} show?", name=S(name, E(tuple(model_names.values()) + ("model",), "model_names, or 'model' for any other model_type"), src=("model_type",)))
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -185,13 +192,17 @@ def format_fraction_model(
         numer = ctx.visual_params["numerator"]
         denom = ctx.visual_params["denominator"]
         model_type = ctx.visual_params.get("model_type", "area")
+        numer_dom, denom_dom = "value:numerator", "value:denominator"
     elif ctx.values and "numerator" in ctx.values:
         numer = ctx.values["numerator"]
         denom = ctx.values["denominator"]
         model_type = ctx.values.get("model_type") or _pick_model_type(ctx.grade, rng)
+        numer_dom, denom_dom = "value:numerator", "value:denominator"
     else:
         numer, denom = _pick_fraction(ctx.grade, rng)
         model_type = _pick_model_type(ctx.grade, rng)
+        numer_dom = R(1, max(1, denom - 1), "_pick_fraction's numerator draw")
+        denom_dom = E(tuple(_PICK_DENOMS[1 if ctx.grade <= 1 else 2 if ctx.grade == 2 else 3]), "_PICK_DENOMS for the grade")
 
     # Enforce grade limits
     if ctx.grade <= 1:
@@ -199,7 +210,9 @@ def format_fraction_model(
         numer = 1
         model_type = "area"
 
-    fraction_str = fill("{numer}/{denom}", numer=derived(numer), denom=derived(denom))
+    # The displayed fraction repeats the generated one (batch H4-0-R2): value: domains on the
+    # values and visual_params paths, so a fraction the grade clamp above changed escapes.
+    fraction_str = fill("{numer}/{denom}", numer=S(numer, numer_dom), denom=S(denom, denom_dom))
 
     if interaction_mode == "set":
         answer_collection = "click"
@@ -228,7 +241,7 @@ def format_fraction_model(
             numer = ctx.values["result_num"]
             denom = ctx.values["result_den"]
         correct_answer = ctx.values.get("result", fraction_str)
-        vp["fraction_str"] = fill("{a_numerator}/{a_denominator} {v} {b_numerator}/{b_denominator}", _src=('operation',), a_numerator=derived(vp['a_numerator']), a_denominator=derived(vp['a_denominator']), v=derived('+' if op == 'add' else '-'), b_numerator=derived(vp['b_numerator']), b_denominator=derived(vp['b_denominator']))
+        vp["fraction_str"] = fill("{a_numerator}/{a_denominator} {v} {b_numerator}/{b_denominator}", _src=('operation',), a_numerator=S(vp['a_numerator'], "value:a_num"), a_denominator=S(vp['a_denominator'], "value:a_den"), v=S('+' if op == 'add' else '-', E(("+", "-"), "the add and subtract signs")), b_numerator=S(vp['b_numerator'], "value:b_num"), b_denominator=S(vp['b_denominator'], "value:b_den"))
         vp["numerator"] = numer
         vp["denominator"] = denom
         vp["shaded_parts"] = numer
@@ -260,10 +273,14 @@ def format_fraction_model(
         correct_answer = answer_text(dna_ans, ctx)   # recorded (H3-R2); same value
 
     ca_num, ca_den = numer, denom
+    # The values keys the trap numerals are computed from (batch H4-0-R2).
+    ca_src = ("result_num", "result_den") if "operation" in vp and "result_num" in ctx.values else ("numerator", "denominator")
     if isinstance(correct_answer, str) and "/" in correct_answer:
         try:
             parts = correct_answer.split("/")
             ca_num, ca_den = int(parts[0]), int(parts[1])
+            if dna_ans is not None:
+                ca_src = ("answer",) if (ctx.values or {}).get("answer") else ("result",)
         except Exception:
             pass
 
@@ -271,7 +288,7 @@ def format_fraction_model(
         traps = [member_text(d, dna_distractors, "values['distractors'] (the DNA's own)")
                  for d in dna_distractors if d != correct_answer]
     else:
-        traps = _build_traps(ca_num, ca_den)
+        traps = _build_traps(ca_num, ca_den, ca_src)
 
     seen = {str(correct_answer)}
     unique_traps = []

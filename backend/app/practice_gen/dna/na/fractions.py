@@ -21,7 +21,7 @@ from backend.app.practice_gen.dna.base import (
     ErrorPattern,
     VocabGated,
 )
-from backend.app.practice_gen.slots import S, derived, derives, fill
+from backend.app.practice_gen.slots import E, R, S, derived, derives, fill, join
 
 
 # ─── grade-gated denominator pools ───────────────────────────────────────────
@@ -102,8 +102,9 @@ VOCAB_IMPROPER    = VocabGated(requires_vocab="improper fraction",preferred="imp
 
 # ─── helpers ──────────────────────────────────────────────────────────────────
 
-def _fraction_str(num: int, den: int) -> str:
-    return fill("{num}/{den}", num=derived(num), den=derived(den))
+def _fraction_str(num: int, den: int, num_dom: Any, den_dom: Any) -> str:
+    """'num/den'; each caller names the domains its numerator and denominator come from."""
+    return fill("{num}/{den}", num=S(num, num_dom), den=S(den, den_dom))
 
 
 _ORDINAL_WORDS = {
@@ -113,12 +114,15 @@ _ORDINAL_WORDS = {
 _CARDINAL_WORDS = {1: "one", 2: "two", 3: "three", 4: "four", 5: "five", 6: "six", 7: "seven"}
 
 
-def _fraction_words(num: int, den: int) -> str:
+def _fraction_words(num: int, den: int, num_dom: Any, den_dom: Any) -> str:
     """Spell out a fraction in words, e.g. (3, 4) -> 'three fourths'."""
-    ordinal = _ORDINAL_WORDS.get(den, fill("{den}th", den=derived(den)))
+    ordinal = _ORDINAL_WORDS[den] if den in _ORDINAL_WORDS else fill("{den}th", den=S(den, den_dom))
     if num != 1:
         ordinal += "s"
-    return fill("{get} {ordinal}", get=derived(_CARDINAL_WORDS.get(num, str(num))), ordinal=derived(ordinal))
+    # A numerator past _CARDINAL_WORDS is printed as its digits (the generator's own rule).
+    get = (S(_CARDINAL_WORDS[num], E(tuple(_CARDINAL_WORDS.values()), "_CARDINAL_WORDS"))
+           if num in _CARDINAL_WORDS else S(num, num_dom))
+    return fill("{get} {ordinal}", get=get, ordinal=S(ordinal, E(tuple(w + s for w in _ORDINAL_WORDS.values() for s in ("", "s")), "_ORDINAL_WORDS, singular or with s")))
 
 
 # ─── parameter generator ──────────────────────────────────────────────────────
@@ -214,16 +218,18 @@ def generate_params(
         if display_pairs == sorted_pairs:
             display_pairs.reverse()
 
-        display_str = ", ".join(_fraction_str(n, d) for n, d in display_pairs)
-        correct_answer = ", ".join(_fraction_str(n, d) for n, d in sorted_pairs)
+        nd = E(tuple(n for n, _d in pairs), "the order set's numerators")
+        dd = E(tuple(d for _n, d in pairs), "the order set's denominators")
+        display_str = join(", ", [_fraction_str(n, d, nd, dd) for n, d in display_pairs])
+        correct_answer = ", ".join(_fraction_str(n, d, nd, dd) for n, d in sorted_pairs)
 
         distractors = []
-        rev_answer = ", ".join(_fraction_str(n, d) for n, d in reversed(sorted_pairs))
+        rev_answer = ", ".join(_fraction_str(n, d, nd, dd) for n, d in reversed(sorted_pairs))
         if rev_answer != correct_answer:
             distractors.append(rev_answer)
         if frac_type in ("unit_fraction", "unit"):
             den_sorted = sorted(pairs, key=lambda p: p[1], reverse=(direction == "descending"))
-            cand = ", ".join(_fraction_str(n, d) for n, d in den_sorted)
+            cand = ", ".join(_fraction_str(n, d, nd, dd) for n, d in den_sorted)
             if cand != correct_answer and cand not in distractors:
                 distractors.append(cand)
         attempts = 0
@@ -231,21 +237,21 @@ def generate_params(
             attempts += 1
             shuffled = list(pairs)
             rng.shuffle(shuffled)
-            cand = ", ".join(_fraction_str(n, d) for n, d in shuffled)
+            cand = ", ".join(_fraction_str(n, d, nd, dd) for n, d in shuffled)
             if cand != correct_answer and cand not in distractors:
                 distractors.append(cand)
 
         if direction == "ascending":
             q_template = rng.choice([
-                fill("Which list shows these fractions ordered from smallest to largest: {display_str}?", _src=('direction', 'operation',), display_str=derived(display_str)),
-                fill("Arrange these fractions from least to greatest: {display_str}.", _src=('direction', 'operation',), display_str=derived(display_str)),
-                fill("Order these fractions from smallest to largest: {display_str}.", _src=('direction', 'operation',), display_str=derived(display_str)),
+                fill("Which list shows these fractions ordered from smallest to largest: {display_str}?", _src=('direction', 'operation',), display_str=S(display_str, "fill")),
+                fill("Arrange these fractions from least to greatest: {display_str}.", _src=('direction', 'operation',), display_str=S(display_str, "fill")),
+                fill("Order these fractions from smallest to largest: {display_str}.", _src=('direction', 'operation',), display_str=S(display_str, "fill")),
             ])
         else:
             q_template = rng.choice([
-                fill("Which list shows these fractions ordered from largest to smallest: {display_str}?", _src=('operation', 'direction',), display_str=derived(display_str)),
-                fill("Arrange these fractions from greatest to least: {display_str}.", _src=('operation', 'direction',), display_str=derived(display_str)),
-                fill("Order these fractions from largest to smallest: {display_str}.", _src=('operation', 'direction',), display_str=derived(display_str)),
+                fill("Which list shows these fractions ordered from largest to smallest: {display_str}?", _src=('operation', 'direction',), display_str=S(display_str, "fill")),
+                fill("Arrange these fractions from greatest to least: {display_str}.", _src=('operation', 'direction',), display_str=S(display_str, "fill")),
+                fill("Order these fractions from largest to smallest: {display_str}.", _src=('operation', 'direction',), display_str=S(display_str, "fill")),
             ])
 
         return {
@@ -254,7 +260,7 @@ def generate_params(
             "fraction_str": correct_answer,
             "model_type":   model_type,
             "operation":    "order",
-            "sequence":     [_fraction_str(n, d) for n, d in display_pairs],
+            "sequence":     [_fraction_str(n, d, nd, dd) for n, d in display_pairs],
             "direction":    direction,
             "question":     q_template,
             "answer":       correct_answer,
@@ -320,14 +326,15 @@ def generate_params(
                     "Count by quarters: 2/4, 3/4, ___. What fraction comes next?",
                 ]), _src=('operation', 'denominator'))
             elif seq_mode == "missing_middle":
-                missing_num = rng.choice([2, 3])
-                answer_str = fill("{missing_num}/4", _src=('operation', 'denominator'), missing_num=derived(missing_num))
+                missing_nums = [2, 3]
+                missing_num = rng.choice(missing_nums)
+                answer_str = fill("{missing_num}/4", _src=('operation', 'denominator'), missing_num=S(missing_num, E(tuple(missing_nums), "the missing_nums choices")))
                 next_frac = (missing_num, 4)
-                display = [("___" if n == missing_num else fill("{n}/4", _src=('operation', 'denominator'), n=derived(n))) for n in range(1, 5)]
-                distractors = [fill("{n}/4", _src=('operation', 'denominator'), n=derived(n)) for n in range(1, 5) if n != missing_num] + ["1/2"]
+                display = [("___" if n == missing_num else fill("{n}/4", _src=('operation', 'denominator'), n=S(n, R(1, 4, "the quarters 1/4 to 4/4")))) for n in range(1, 5)]
+                distractors = [fill("{n}/4", _src=('operation', 'denominator'), n=S(n, R(1, 4, "the quarters 1/4 to 4/4"))) for n in range(1, 5) if n != missing_num] + ["1/2"]
                 distractors = [d for d in distractors if d != answer_str][:3]
                 seq_strs = display
-                q_template = fill("What fraction is missing when counting by quarters: {join}?", _src=('operation', 'denominator'), join=derived(', '.join(display)))
+                q_template = fill("What fraction is missing when counting by quarters: {join}?", _src=('operation', 'denominator'), join=S(join(", ", [S(d, E(("___",), "the missing term's blank")) if d == "___" else d for d in display]), "fill"))
             else:
                 seq_strs = ["1/4", "2/4", "3/4"]
                 answer_str = "4/4"
@@ -381,7 +388,7 @@ def generate_params(
             if num == 0:
                 continue
 
-            frac_s = _fraction_str(num, den)
+            frac_s = _fraction_str(num, den, E(tuple(num_choices), "the candidate numerators at this denominator"), E(tuple(denom_pool), "the grade's denom_pool"))
 
             if operation not in ("add", "subtract", "add_subtract"):
                 b_num = min(den - 1, num + 1) if den > 1 else num + 1
@@ -412,20 +419,21 @@ def generate_params(
                     if grade == 1:
                         # Grade 1 MATATAG: "Compare 1/2 and 1/4 using models."
                         # Strictly compare 1/2 and 1/4 (or 1/4 and 1/2) using visual models.
-                        order_pair = rng.choice([(1, 2, 1, 4), (1, 4, 1, 2)])
+                        g1_pairs = [(1, 2, 1, 4), (1, 4, 1, 2)]
+                        order_pair = rng.choice(g1_pairs)
                         num, den, b_num, b_den = order_pair
                         ans = ">" if (num / den) > (b_num / b_den) else "<"
                         cmp_distractors = [s for s in (">", "<", "=") if s != ans] + ["+"]
                         q_template = rng.choice([
-                            fill("Look at the fraction models. Compare \\(\\frac{{{num}}}{{{den}}}\\) and \\(\\frac{{{b_num}}}{{{b_den}}}\\). Which sign makes the statement true: \\(\\frac{{{num}}}{{{den}}}\\) ___ \\(\\frac{{{b_num}}}{{{b_den}}}\\)?", _src=('operation',), num=derived(num), den=derived(den), b_num=derived(b_num), b_den=derived(b_den)),
-                            fill("Look at the shaded models. Which sign correctly compares the shaded parts: \\(\\frac{{{num}}}{{{den}}}\\) ___ \\(\\frac{{{b_num}}}{{{b_den}}}\\)?", _src=('operation',), num=derived(num), den=derived(den), b_num=derived(b_num), b_den=derived(b_den)),
-                            fill("Look at the fraction models for \\(\\frac{{{num}}}{{{den}}}\\) and \\(\\frac{{{b_num}}}{{{b_den}}}\\). Which comparison sign is correct: \\(\\frac{{{num}}}{{{den}}}\\) ___ \\(\\frac{{{b_num}}}{{{b_den}}}\\)?", _src=('operation',), num=derived(num), den=derived(den), b_num=derived(b_num), b_den=derived(b_den)),
+                            fill("Look at the fraction models. Compare \\(\\frac{{{num}}}{{{den}}}\\) and \\(\\frac{{{b_num}}}{{{b_den}}}\\). Which sign makes the statement true: \\(\\frac{{{num}}}{{{den}}}\\) ___ \\(\\frac{{{b_num}}}{{{b_den}}}\\)?", _src=('operation',), num=S(num, E(tuple(q[0] for q in g1_pairs), "the g1_pairs numerators")), den=S(den, E(tuple(q[1] for q in g1_pairs), "the g1_pairs denominators")), b_num=S(b_num, E(tuple(q[2] for q in g1_pairs), "the g1_pairs numerators")), b_den=S(b_den, E(tuple(q[3] for q in g1_pairs), "the g1_pairs denominators"))),
+                            fill("Look at the shaded models. Which sign correctly compares the shaded parts: \\(\\frac{{{num}}}{{{den}}}\\) ___ \\(\\frac{{{b_num}}}{{{b_den}}}\\)?", _src=('operation',), num=S(num, E(tuple(q[0] for q in g1_pairs), "the g1_pairs numerators")), den=S(den, E(tuple(q[1] for q in g1_pairs), "the g1_pairs denominators")), b_num=S(b_num, E(tuple(q[2] for q in g1_pairs), "the g1_pairs numerators")), b_den=S(b_den, E(tuple(q[3] for q in g1_pairs), "the g1_pairs denominators"))),
+                            fill("Look at the fraction models for \\(\\frac{{{num}}}{{{den}}}\\) and \\(\\frac{{{b_num}}}{{{b_den}}}\\). Which comparison sign is correct: \\(\\frac{{{num}}}{{{den}}}\\) ___ \\(\\frac{{{b_num}}}{{{b_den}}}\\)?", _src=('operation',), num=S(num, E(tuple(q[0] for q in g1_pairs), "the g1_pairs numerators")), den=S(den, E(tuple(q[1] for q in g1_pairs), "the g1_pairs denominators")), b_num=S(b_num, E(tuple(q[2] for q in g1_pairs), "the g1_pairs numerators")), b_den=S(b_den, E(tuple(q[3] for q in g1_pairs), "the g1_pairs denominators"))),
                         ])
                         cmp_question = q_template
                     else:
                         ans = "=" if (num, den) == (b_num, b_den) else (">" if num / den > b_num / b_den else "<")
                         cmp_distractors = [s for s in (">", "<", "=") if s != ans] + ["+"]
-                        cmp_question = fill("Compare the fractions: \\(\\frac{{{num}}}{{{den}}}\\) ___ \\(\\frac{{{b_num}}}{{{b_den}}}\\). Which sign is correct: >, <, or =?", _src=('operation',), num=derived(num), den=derived(den), b_num=derived(b_num), b_den=derived(b_den))
+                        cmp_question = fill("Compare the fractions: \\(\\frac{{{num}}}{{{den}}}\\) ___ \\(\\frac{{{b_num}}}{{{b_den}}}\\). Which sign is correct: >, <, or =?", _src=('operation',), num=S(num, E(tuple(num_choices), "the candidate numerators at this denominator")), den=S(den, E(tuple(denom_pool), "the grade's denom_pool")), b_num=S(b_num, R(1, den - 1, "a numerator below the denominator")), b_den=S(b_den, E(tuple(denom_pool), "the grade's denom_pool")))
                 else:
                     ans = frac_s
 
@@ -433,36 +441,36 @@ def generate_params(
                 if operation == "identify_name" and profile.get("fraction_task_mode") == "notation":
                     task_dir = rng.choice(["write", "read"])
                     if task_dir == "write":
-                        notation_question = fill("Write {fraction_words} in fraction notation.", _src=('operation',), fraction_words=S(_fraction_words(num, den), "fill"))
+                        notation_question = fill("Write {fraction_words} in fraction notation.", _src=('operation',), fraction_words=S(_fraction_words(num, den, E(tuple(num_choices), "the candidate numerators at this denominator"), E(tuple(denom_pool), "the grade's denom_pool")), "fill"))
                         ans = frac_s
                         nd_dist = []
                         if num != den:
-                            nd_dist.append(fill("{den}/{num}", _src=('operation',), den=derived(den), num=derived(num)))
+                            nd_dist.append(fill("{den}/{num}", _src=('operation',), den=S(den, E(tuple(denom_pool), "the grade's denom_pool")), num=S(num, E(tuple(num_choices), "the candidate numerators at this denominator"))))
                         if num + 1 < den:
-                            nd_dist.append(fill("{v}/{den}", _src=('operation',), v=derived(num + 1), den=derived(den)))
+                            nd_dist.append(fill("{v}/{den}", _src=('operation',), v=S(num + 1, R(2, den - 1, "a numerator one more, still below the denominator")), den=S(den, E(tuple(denom_pool), "the grade's denom_pool"))))
                         if num > 1:
-                            nd_dist.append(fill("{v}/{den}", _src=('operation',), v=derived(num - 1), den=derived(den)))
+                            nd_dist.append(fill("{v}/{den}", _src=('operation',), v=S(num - 1, R(1, max(num_choices) - 1, "a candidate numerator less one")), den=S(den, E(tuple(denom_pool), "the grade's denom_pool"))))
                         for other_d in denom_pool:
-                            if other_d != den and fill("{num}/{other_d}", _src=('operation',), num=derived(num), other_d=derived(other_d)) not in nd_dist:
-                                nd_dist.append(fill("{num}/{other_d}", _src=('operation',), num=derived(num), other_d=derived(other_d)))
+                            if other_d != den and fill("{num}/{other_d}", _src=('operation',), num=S(num, E(tuple(num_choices), "the candidate numerators at this denominator")), other_d=S(other_d, E(tuple(denom_pool), "the grade's denom_pool"))) not in nd_dist:
+                                nd_dist.append(fill("{num}/{other_d}", _src=('operation',), num=S(num, E(tuple(num_choices), "the candidate numerators at this denominator")), other_d=S(other_d, E(tuple(denom_pool), "the grade's denom_pool"))))
                         cmp_distractors = nd_dist[:3]
                     else:
                         notation_question = rng.choice([
-                            fill("How is \\(\\frac{{{num}}}{{{den}}}\\) read in words?", _src=('operation',), num=derived(num), den=derived(den)),
-                            fill("Which word name represents \\(\\frac{{{num}}}{{{den}}}\\)?", _src=('operation',), num=derived(num), den=derived(den)),
-                            fill("Read the fraction \\(\\frac{{{num}}}{{{den}}}\\). Which is the correct word name?", _src=('operation',), num=derived(num), den=derived(den)),
+                            fill("How is \\(\\frac{{{num}}}{{{den}}}\\) read in words?", _src=('operation',), num=S(num, E(tuple(num_choices), "the candidate numerators at this denominator")), den=S(den, E(tuple(denom_pool), "the grade's denom_pool"))),
+                            fill("Which word name represents \\(\\frac{{{num}}}{{{den}}}\\)?", _src=('operation',), num=S(num, E(tuple(num_choices), "the candidate numerators at this denominator")), den=S(den, E(tuple(denom_pool), "the grade's denom_pool"))),
+                            fill("Read the fraction \\(\\frac{{{num}}}{{{den}}}\\). Which is the correct word name?", _src=('operation',), num=S(num, E(tuple(num_choices), "the candidate numerators at this denominator")), den=S(den, E(tuple(denom_pool), "the grade's denom_pool"))),
                         ])
-                        ans = _fraction_words(num, den)
+                        ans = _fraction_words(num, den, E(tuple(num_choices), "the candidate numerators at this denominator"), E(tuple(denom_pool), "the grade's denom_pool"))
                         word_dist = []
                         if num != den and den <= 10:
-                            word_dist.append(_fraction_words(den, num) if num <= 10 and _ORDINAL_WORDS.get(num) else fill("{den} {get}ths", _src=('operation',), den=derived(den), get=derived(_CARDINAL_WORDS.get(num, str(num)))))
+                            word_dist.append(_fraction_words(den, num, E(tuple(denom_pool), "the grade's denom_pool"), E(tuple(num_choices), "the candidate numerators at this denominator")) if num <= 10 and _ORDINAL_WORDS.get(num) else fill("{den} {get}ths", _src=('operation',), den=S(den, E(tuple(denom_pool), "the grade's denom_pool")), get=(S(_CARDINAL_WORDS[num], E(tuple(_CARDINAL_WORDS.values()), "_CARDINAL_WORDS")) if num in _CARDINAL_WORDS else S(num, E(tuple(num_choices), "the candidate numerators at this denominator")))))
                         if num + 1 < den:
-                            word_dist.append(_fraction_words(num + 1, den))
+                            word_dist.append(_fraction_words(num + 1, den, R(2, den - 1, "a numerator one more, still below the denominator"), E(tuple(denom_pool), "the grade's denom_pool")))
                         if num > 1:
-                            word_dist.append(_fraction_words(num - 1, den))
+                            word_dist.append(_fraction_words(num - 1, den, R(1, max(num_choices) - 1, "a candidate numerator less one"), E(tuple(denom_pool), "the grade's denom_pool")))
                         for other_d in denom_pool:
                             if other_d != den:
-                                w = _fraction_words(num, other_d)
+                                w = _fraction_words(num, other_d, E(tuple(num_choices), "the candidate numerators at this denominator"), E(tuple(denom_pool), "the grade's denom_pool"))
                                 if w not in word_dist and w != ans:
                                     word_dist.append(w)
                         cmp_distractors = [w for w in word_dist if w != ans][:3]
@@ -529,8 +537,8 @@ def generate_params(
                         "b_den":        den,
                         "result_num":   r_num,
                         "result_den":   r_den,
-                        "result":       fill("{r_num}/{r_den}", r_num=derived(r_num), r_den=derived(r_den)) if r_den != 1 else str(r_num),
-                        "answer":       fill("{r_num}/{r_den}", r_num=derived(r_num), r_den=derived(r_den)) if r_den != 1 else str(r_num),
+                        "result":       fill("{r_num}/{r_den}", r_num=S(r_num, R(1, max(num_choices) + den - 1, "a candidate numerator plus or minus one below the denominator")), r_den=S(r_den, E(tuple(denom_pool), "the grade's denom_pool"))) if r_den != 1 else str(r_num),
+                        "answer":       fill("{r_num}/{r_den}", r_num=S(r_num, R(1, max(num_choices) + den - 1, "a candidate numerator plus or minus one below the denominator")), r_den=S(r_den, E(tuple(denom_pool), "the grade's denom_pool"))) if r_den != 1 else str(r_num),
                     })
 
     if not candidate_params:
@@ -614,9 +622,9 @@ def generate_hints(
         other_num = values.get("b_num", num - 1 if num > 1 else num + 1)
         other_den = values.get("b_den", den)
         return [
-            fill("To compare {num}/{den} and {other_num}/{other_den}, check if the {den_lbl}s are equal.", _src=('operation',), num=S(num, "value:numerator"), den=S(den, "value:denominator"), other_num=derived(other_num, src=('b_num', 'numerator',)), other_den=derived(other_den, src=('b_den', 'denominator',)), den_lbl=S(den_lbl, "fill")),
+            fill("To compare {num}/{den} and {other_num}/{other_den}, check if the {den_lbl}s are equal.", _src=('operation',), num=S(num, "value:numerator"), den=S(den, "value:denominator"), other_num=S(other_num, "value:b_num", src=('b_num', 'numerator',)), other_den=S(other_den, "value:b_den", src=('b_den', 'denominator',)), den_lbl=S(den_lbl, "fill")),
             fill("When {den_lbl}s are the same, the {frac_lbl} with the bigger {num_lbl} is larger.", _src=('operation',), den_lbl=S(den_lbl, "fill"), frac_lbl=S(frac_lbl, "fill"), num_lbl=S(num_lbl, "fill")),
-            fill("{num} vs {other_num}: the larger top number gives the larger {frac_lbl}.", _src=('operation',), num=S(num, "value:numerator"), other_num=derived(other_num, src=('b_num', 'numerator',)), frac_lbl=S(frac_lbl, "fill")),
+            fill("{num} vs {other_num}: the larger top number gives the larger {frac_lbl}.", _src=('operation',), num=S(num, "value:numerator"), other_num=S(other_num, "value:b_num", src=('b_num', 'numerator',)), frac_lbl=S(frac_lbl, "fill")),
         ]
 
     if operation == "order":
@@ -636,9 +644,9 @@ def generate_hints(
             else fill("For fractions with 1 on top, a larger bottom number means a smaller part.", _src=('operation',))
         )
         return [
-            fill("Read the requested order: {direction_words}.", _src=('operation',), direction_words=derived(direction_words, src=('direction',))),
+            fill("Read the requested order: {direction_words}.", _src=('operation',), direction_words=S(direction_words, E(("smallest to largest", "largest to smallest"), "the two order directions"), src=('direction',))),
             comparison,
-            fill("Place all the {frac_lbl}s from {direction_words}: {answer}.", _src=('operation',), frac_lbl=S(frac_lbl, "fill"), direction_words=derived(direction_words, src=('direction',)), answer=S(values.get('answer', '?'), "fill")),
+            fill("Place all the {frac_lbl}s from {direction_words}: {answer}.", _src=('operation',), frac_lbl=S(frac_lbl, "fill"), direction_words=S(direction_words, E(("smallest to largest", "largest to smallest"), "the two order directions"), src=('direction',)), answer=S(values.get('answer', '?'), "fill")),
         ]
 
     # add_subtract -- ONE branch served BOTH operations until 2026-09-23 and
@@ -675,12 +683,12 @@ def generate_hints(
         )
 
     return [
-        fill("When {verb} {frac_lbl}s with the same {den_lbl}, keep the {den_lbl} the same.", verb=derived(verb), frac_lbl=S(frac_lbl, "fill"), den_lbl=S(den_lbl, "fill")),
-        fill("{replace} only the {num_lbl}s: {a_num} {sign} {b_num} = {step}.", replace=derived(verb.capitalize().replace('ing', '')), num_lbl=S(num_lbl, "fill"), a_num=S(a_num, "value:numerator", src=('a_num', 'numerator',)), sign=derived(sign), b_num=derived(b_num, src=('b_num',)), step=derived(step)),
+        fill("When {verb} {frac_lbl}s with the same {den_lbl}, keep the {den_lbl} the same.", verb=S(verb, E(("adding", "subtracting"), "the two operation verbs")), frac_lbl=S(frac_lbl, "fill"), den_lbl=S(den_lbl, "fill")),
+        fill("{replace} only the {num_lbl}s: {a_num} {sign} {b_num} = {step}.", replace=S(verb.capitalize().replace('ing', ''), E(("Add", "Subtract"), "the two operation verbs, imperative")), num_lbl=S(num_lbl, "fill"), a_num=S(a_num, "value:numerator", src=('a_num', 'numerator',)), sign=S(sign, E(("+", "-"), "the two operation signs")), b_num=S(b_num, "value:b_num", src=('b_num',)), step=S(step, "value:result_num")),
         # "Put", not "Write": the same chain serves shade-the-shape items, where the
         # pupil shades rather than writes (hint contract, `response`, 2026-09-25).
-        fill("Put the result over the same {den_lbl}: {step}/{den}.", den_lbl=S(den_lbl, "fill"), step=derived(step), den=S(den, "value:denominator")),
-        fill("The answer is {r_num}/{r_den}.", r_num=derived(r_num, src=('result_num', 'a_num', 'numerator', 'b_num',)), r_den=S(r_den, "value:denominator", src=('result_den', 'denominator',))),
+        fill("Put the result over the same {den_lbl}: {step}/{den}.", den_lbl=S(den_lbl, "fill"), step=S(step, "value:result_num"), den=S(den, "value:denominator")),
+        fill("The answer is {r_num}/{r_den}.", r_num=S(r_num, "value:result_num", src=('result_num', 'a_num', 'numerator', 'b_num',)), r_den=S(r_den, "value:denominator", src=('result_den', 'denominator',))),
     ]
 
 
