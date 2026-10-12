@@ -1,0 +1,48 @@
+{
+ "asserts": [
+  "slot_domain_type_only_14"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "FAIL slot_domain_type_only_14"
+ ],
+ "command": [
+  "backend.app.practice_gen.validation.validate_slots",
+  "--node-ids",
+  "mat_g2_na_q3_8"
+ ],
+ "definition_digest": "0f5242cd2e1085322e46119f242c4875a100a26232450ee8d38e6a4f43ce0cba",
+ "detected": true,
+ "diagnostic_line": "exit 1 — FAIL slot_domain_type_only_14 (1):",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "slot_domain_type_only_14 (",
+  "slot 'half'",
+  "'arithmetics' is not a registered"
+ ],
+ "expected_check": "§14 (e) a reason is a registered DERIVED_REASONS kind (ruling 43)",
+ "finished_at": "2026-10-12T16:37:36+08:00",
+ "input_digest": "120c4ce201b6b1fabd10294dd5c31873c3df77b3549e678cef21742fc302220f",
+ "mutated_paths": [
+  "backend/app/practice_gen/dna/na/division.py"
+ ],
+ "mutation": "type_only_reason_unregistered",
+ "observed_markers": {
+  "'arithmetics' is not a registered": true,
+  "slot 'half'": true,
+  "slot_domain_type_only_14 (": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-10-12T16:37:35+08:00"
+}

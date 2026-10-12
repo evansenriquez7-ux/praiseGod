@@ -1,0 +1,48 @@
+{
+ "asserts": [
+  "slot_domain_type_only_14"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "FAIL slot_domain_type_only_14"
+ ],
+ "command": [
+  "backend.app.practice_gen.validation.validate_slots",
+  "--node-ids",
+  "mat_g2_na_q3_8"
+ ],
+ "definition_digest": "79a4ff396a32fbedeb18bd9d6512f134d6fca85f666c3748e678fcdec9f51076",
+ "detected": true,
+ "diagnostic_line": "exit 1 — FAIL slot_domain_type_only_14 (1):",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "slot_domain_type_only_14 (",
+  "slot 'left'",
+  "bounds the type, not the value"
+ ],
+ "expected_check": "§14 (e) a type-only slot carries a named reason (ruling 42)",
+ "finished_at": "2026-10-12T16:37:35+08:00",
+ "input_digest": "120c4ce201b6b1fabd10294dd5c31873c3df77b3549e678cef21742fc302220f",
+ "mutated_paths": [
+  "backend/app/practice_gen/dna/na/division.py"
+ ],
+ "mutation": "slot_loosened_to_type_only",
+ "observed_markers": {
+  "bounds the type, not the value": true,
+  "slot 'left'": true,
+  "slot_domain_type_only_14 (": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-10-12T16:37:34+08:00"
+}
