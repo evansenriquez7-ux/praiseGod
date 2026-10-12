@@ -1,19 +1,14 @@
 {
   "schema_version": 1,
   "note": "Intent record for interruption safety. Written when a batch, chain or campaign STARTS and cleared when it completes; an intent left open means a session did not reach its finish line. Deliberately digest-free -- see tests/tree_state.py. Read with `PYTHONPATH=. .venv/bin/python tests/tree_state.py`.",
-  "open_intent": {
-    "kind": "batch",
-    "began_at": "2026-10-12T13:35:45+08:00",
-    "session": "claude-opus-5-5-h4-0-20261012",
-    "note": "H4-0: ruling 42 type-only slot count (slot_domain_type_only_14), then lc-by-lc tightening",
-    "next_step": "Land every remaining source edit, then run the re-proof chain in order."
-  },
+  "open_intent": null,
   "last_completed": {
     "kind": "chain",
-    "began_at": "2026-10-11T06:43:11+08:00",
-    "session": "claude-opus-5-5-h3r2-20261011",
-    "note": "H3-R2 re-proof chain on e45915da",
+    "began_at": "2026-10-12T15:35:37+08:00",
+    "session": "claude-opus-5-5-h4-0-20261012",
+    "note": "H4-0 re-proof chain on df22a99a",
     "next_step": "Resume the chain at the first step whose artifact is still stale; shards are individually resumable, so re-run only the stale indices.",
-    "completed_at": "2026-10-11T11:02:45+08:00"
+    "completed_at": "2026-10-12T19:55:14+08:00",
+    "completion_note": "H4-0 chain on df22a99a: 230/230, 6 shards, run_all exit 2 (integrity green)"
   }
 }
