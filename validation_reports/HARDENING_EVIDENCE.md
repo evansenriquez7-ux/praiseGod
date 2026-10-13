@@ -20436,3 +20436,207 @@ PASS tree_state: CERTIFIED          live input digest : 8fd5dbe548788b49   mutat
   the only one reached, which escapes on type). The other 60 count the moment a render reaches them.
 - §14 (e), 12 (unchanged): a reason and an `E`/`R` basis are the generator's claim; §14 proves membership, never that
   the basis is the object the value was really drawn from. H4's judges review both.
+
+## 2026-10-13 — H4: the stem review gate (§17, owner rulings 24/26/44) and §14 widened to the shared paths
+
+Author: Claude Opus 5.5. No LLM judge was dispatched (owner ruling 44h: build, prove and chain first, then ask
+again with one real packet; the owner then approved the campaign for a fresh session, ruling 45). Lock claimed
+`f050781e`; rulings 44 `769f6e3c` and 45 (with this entry); source `27761ea1` and fix `dfc151ea`; chain 1 artifacts
+`73c90424`, tree_state `1cb671c4` (superseded by the fix); chain 2 artifacts `4360860a`, tree_state `ff48377c`.
+"node" ids below are lcs.
+
+### Phase 0 re-measure (2026-10-13, on `f71a1f8f`): every number equals the handoff
+
+```text
+$ PYTHONPATH=. .venv/bin/python tests/tree_state.py
+PASS tree_state: CERTIFIED   live input digest : 8fd5dbe548788b49   worktree : clean
+$ PYTHONPATH=. .venv/bin/python -m pytest tests/unit -m "not slow" -q -p no:cacheprovider
+986 passed, 1 skipped, 2 deselected, 4 warnings in 666.48s (0:11:06)
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_slots
+  PASS slot_text_unaccounted_14 | PASS slot_template_mismatch_14 | PASS slot_unclassified_14 | PASS slot_domain_unknown_14
+  FAIL slot_domain_escape_14 (67) | PASS slot_domain_type_only_14
+  NOTE: ruling 42 rollout: 151 of 151 lc(s) reach no type-only slot without a reason; 0 still do      EXIT 1
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_composition
+  FAIL selector_value_unexhibited_15 (58) | FAIL hint_sequence_unshown_15 (6)
+  NOTE: 1351 selector match(es) over 3020 render(s): 1351 decided by record, 0 undecided      EXIT 1
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_language
+  PASS count_noun_agreement_1J | FAIL count_noun_singular_after_many_1J (423) | PASS indefinite_article_1J: 0 findings over 68241 text(s)      EXIT 1
+$ (capability queue snippet, NEXT_AGENT_PROMPT §4 Phase 0)
+78 42 33 55
+$ PYTHONPATH=. .venv/bin/python -m tests.render_snapshot local_only/scratch/h4/before.jsonl
+render_snapshot: wrote 7285 render(s) to local_only/scratch/h4/before.jsonl      (taken before any edit)
+$ PYTHONPATH=. .venv/bin/python tests/slot_wide_check.py
+TOTAL distinct 24 | renders that raised: 2      (the two mat_g2_mg_q4_3 pinned-mcq refusals)
+$ validate_composition.collect_findings() dumped (comp_dump.py): {'selector_value_unexhibited_15': 58, 'hint_sequence_unshown_15': 6}
+```
+
+### Owner ruling 44 (asked this session; recorded verbatim in the plan doc in `769f6e3c`)
+
+The handoff's seven design questions (§5.2) plus a quorum follow-up, asked through AskUserQuestion with numbers measured
+first (`local_only/scratch/h4/families.py`, `families_wide.py`). Every answer was the recommended option except (d):
+- (a) family = (spine id or call site, template); only fills that reach learner-read text; collapse a wrapper only if every
+  slot is `fill` AND it adds no letter or digit -> 2,465 pairs at the 20 seeds. Measured before asking: the handoff's
+  "collapse every all-`fill` wrapper" would have hidden 74 word-adding templates (`{statement}. True or False?` on 47 lcs).
+- (b) ONE shared enumeration for §14 and H4: student seeds 1-40 + every advertised formatter pinned at 3/17/29. Measured:
+  seeds 21-40 reach 132 more families on 45 lcs, pinned formatters 89 more on 23 lcs.
+- (c) freshness binds resolved content (members of lists/banks, union of `E` members, `R` envelope, `value:` key,
+  provenance, reasons, derivations).
+- (d) one overall verdict per lc (I had recommended per-family verdicts plus an overall).
+- (e) every lc gets a first judge and a blind confirmer; the later verdict stands; a FAIL quotes its failing templates.
+- (f) verdicts and record defects are CONTENT; only harness failures are INTEGRITY.
+- (g) the judge rules every clause PRODUCIBLE / NOT_PRODUCIBLE; NOT_PRODUCIBLE is a content finding.
+- (h) Haiku judges, ~6 concurrent; build, prove, chain, then show one real packet and ask again before the first dispatch.
+
+### What H4 built (`27761ea1`, fixed in `dfc151ea`)
+
+- `validate_slots.paths()` / `observe()` / `path_call()`: the one enumeration and render function §14 and §17 share;
+  `tests/render_snapshot.py` and `tests/slot_wide_check.py` import it. §14 (f) `slot_path_refused_14` (CONTENT).
+- `validation/stem_packets.py`: the blind per-lc item, key, `item_hash` (HASH_VERSION 1), `coverage_gaps` (an
+  independent top-down walk from every learner-read field), CLI writing packets + key.
+- `validation/validate_stem_review.py` (§17, Phase 2): 11 labels, 9 CONTENT and 2 INTEGRITY (`stem_family_unpacketed_17`,
+  `stem_review_hash_drift_17`); registered in `CONTRACT_CHECKS`, `CHECK_PHASE`, `FINDING_CLASS`, `ASSERTIONS`, the stage
+  table and a Phase-2 `ledger.run`.
+- `tests/stem_file.py` (`prompt`, `file`): the judge's instructions (how to read each domain kind; no answer, no
+  threshold), and a filer that copies the dispatch-time packet, takes identity from the dispatcher, stores the reply
+  verbatim with its digest (the verdict is the parsed reply, never a separate field) and refuses whatever §17 rejects.
+- `tests/stem_review_fixture.py` + `tests/stem_review_fixtures/`: hand-written records (identity prefix
+  `fixture-not-a-judge`, refused outside a fixture directory) approving mat_g2_na_q3_8's live stems.
+- 14 mutations; `tests/unit/test_stem_review.py` (14 tests); contract §14 amendment and §17 row; operator doc.
+
+```text
+$ (whole-tree build, local_only/scratch/h4/hashes.py, after dfc151ea)
+lcs 151 families 2561 min 3 median 15 max 56 | gaps 0 refused 2 | packet chars min 6410 median 16012 max 47919
+(identical item hashes under PYTHONHASHSEED=0 and =1 on all 151 lcs, measured before the fix; ~62 s for the tree)
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_stem_review
+  FAIL stem_review_missing_17 (151) | every other §17 label PASS
+  NOTE: 0 of 151 lc(s) carry a confirmed, fresh PASS ...; 2561 stem families packeted; 2 pinned path(s) refused
+```
+
+### §14 widened: 67 -> 79 findings, 0 gone, 12 new (diffed by (lc, label, where); `local_only/scratch/h4/slots_diff.py`)
+
+```text
+old 67 new 79 gone []
++7 slot_domain_escape_14: fmt_emoji_pictorial's "items" fallback (noun 'items' is not in _EMOJI_NAMES) -- mat_g2_na_q2_4
+   on the STUDENT path at seed 22 (fmt_emoji_pictorial.py:174/198/345/355/358), and pinned emoji_pictorial at seed 29 on
+   mat_g1_na_q2_5 (:186) and mat_g2_na_q2_4 (:195)
++4 slot_text_unaccounted_14: pattern_sequence pinned at seed 29 serves the single letters 'n' / 'p' as options
+   (distractors, format_data.mcq_options) on mat_g1_na_q3_6 and mat_g2_na_q2_8
++1 slot_path_refused_14: mat_g2_mg_q4_3 pinned 'mcq' at seeds 17 and 29: "ValueError: generate_context: variant
+   task_type='draw_construct' for DNA 'geometric_lines' is not available at node 'mat_g2_mg_q4_3' (grade=2, quarter=4)."
+slot_domain_type_only_14: PASS, 151 of 151 lcs, over the wider paths
+$ PYTHONPATH=. .venv/bin/python -m tests.render_snapshot --diff local_only/scratch/h4/before.jsonl local_only/scratch/h4/after.jsonl
+render_snapshot diff: 7285 before, 7285 after, 0 changed, 0 key(s) present on one side only
+```
+
+`test_the_instrumented_prototype_lcs_are_clean` no longer lists mat_g2_mg_q4_3: no mutation plants on it (`grep -c
+mat_g2_mg_q4_3 tests/mutation_harness.py` -> 0) and its pinned refusal is now a real content finding, not a broken
+baseline. This removes an lc from a precondition test; it weakens no check (stated here per Protocol 5).
+
+### Mutations (14 new; corpus 230 -> 244)
+
+`pinned_formatter_refuses_to_render` (§14 f; the orchestrator's eligibility test planted to refuse every pinned
+formatter); `stem_template_edited_without_review`, `stem_domain_widened_without_review`,
+`stem_provenance_changed_without_review` (stale, each planted in division.py); `stem_packet_drops_a_family`,
+`stem_hash_code_drifts` (planted in stem_packets.py); `stem_review_verdict_edited`, `stem_review_quote_fabricated`,
+`stem_review_identity_reused`, `stem_review_frame_templated`, `stem_review_record_removed`,
+`stem_review_confirmer_missing`, `stem_review_confirmed_fail`, `stem_review_clause_unproducible` (one fixture record,
+through `apply_fn`; a coherent rewrite recomputes the digest so the CONTENT check, not the tamper check, must fire).
+Every one DETECTED by name with all its markers observed, `phase1_admissible: true`, `restored_clean: true`.
+
+```text
+$ (dev loop, one at a time: PYTHONPATH=. .venv/bin/python tests/mutation_harness.py --only <name>)
+run 1 (41 mutations: 14 new + 27 that plant in a changed file or run a changed check): 7 DETECTED, then 5 INVALID
+  ("the unmutated command baseline exited 1") -- cause below (mistake 8); loop stopped, fixture fixed
+run 2 (the remaining 34): 34 DETECTED
+run 3 (after the slot-name fix, dfc151ea: 21 affected): 21 DETECTED
+$ git grep -n "planted mutation" -- backend scripts frontend/src data | grep -v mutation_harness
+backend/app/practice_gen/validation/validate_coverage.py:456:    # bury the finding a planted mutation is meant to surface.
+```
+
+### Mistakes of my own, caught before any chain counted them
+
+1. My first pinned-refusal `try` wrapped `render_findings`, i.e. the harness's own checks too; narrowed to `observe()`
+   so a harness bug cannot become a content finding.
+2. The builder's `None`-domain branch left `d` unset, and a leftover no-op line stood beside it; fixed before any run.
+3. `observe_lc`'s handler ended in `continue` (a silent path for `silent_path_disposition_8`); restructured, with a
+   `DISPOSITION: named-failure` marker.
+4. The filer's skeleton helper returned `""` on an unparseable reply (a silent default); replaced by comparing only
+   records §17 counts as valid.
+5. The refusal finding first grouped every formatter into one line and printed the formatter twice; now one finding per
+   (lc, formatter).
+6. My refusal mutation's marker named `mcq`; mat_g2_na_q3_8's only advertised formatter is `true_false`.
+7. The eight `apply_fn` mutations lacked `edits={}` (TypeError at import of the harness).
+8. `test_stage_ledger.stubbed_harness` did not stub the new §17 stage, so every `phase=None` control ran the real
+   stage: 5 stage-ledger mutations INVALID and a verdict mutation's baseline ran >20 min. Fixed in the fixture (the
+   established pattern for Phase-2 validators); memory saved.
+9. Packets first inlined every fixed list per slot (one packet 173,763 characters); lists now print once in a table and
+   identical slot domains once per family (max 47,919).
+10. **The one that reached a chain:** reading the real sample packet I was about to show the owner, bank slots were
+    printed under their LIST's name (`{answer}` with a slot '_ITEM_POOL.answer'), on 94 of 151 lcs: a reused loop
+    variable. Chain 1 (on `27761ea1`, 244/244, run_all exit 2, CERTIFIED as `1cb671c4`) had proven every gate, but no
+    check looked at slot names. Fixed in `dfc151ea` with a builder guard (printed names = recorded names, every template
+    field present, else raise) and a regression test that fails with the defect restored; chain re-run.
+
+### Unit suite and chains
+
+```text
+$ PYTHONPATH=. .venv/bin/python -m pytest tests/unit -m "not slow" -q -p no:cacheprovider      (before 27761ea1)
+998 passed, 1 skipped, 2 deselected, 4 warnings in 664.13s (0:11:04)
+$ (same, before dfc151ea)
+999 passed, 1 skipped, 2 deselected, 4 warnings in 662.33s (0:11:02)
+$ cat local_only/scratch/h4/chain1/progress.log      (on 27761ea1)
+END corpus EXIT 0 04:55:53   244/244 mutations detected. | escaped-plant grep lines: 1 (validate_coverage.py:456)
+END shard0..5 EXIT 0 | END verify EXIT 0 | END run_all EXIT 2 08:10:35
+$ cat local_only/scratch/h4/chain/progress.log       (chain 2, on dfc151ea)
+END regen EXIT 0 08:30:32 | END benchmark EXIT 0 08:30:52 | END frontend EXIT 0 08:31:04
+END corpus EXIT 0 09:35:21   244/244 mutations detected. (no INVALID)
+escaped-plant grep lines: 1  (backend/app/practice_gen/validation/validate_coverage.py:456, the benign comment)
+END shard0..shard5 EXIT 0 (09:59, 10:23, 10:47, 11:14, 11:41, 12:08); END verify EXIT 0 (release_status=complete receipts=6)
+END run_all EXIT 2 12:50:05
+  PASS unit_tests (999 passed, 1 skipped, 2 deselected, 4 warnings in 656.56s (0:10:56))
+  FAIL slot_text_unaccounted_14 (4) | FAIL slot_domain_escape_14 (74) | PASS slot_domain_type_only_14 | FAIL slot_path_refused_14 (1)
+  FAIL stem_review_missing_17 (151) | every other §17 label PASS
+  NOTE: 0 of 151 lc(s) carry a confirmed, fresh PASS with every clause PRODUCIBLE; 2561 stem families packeted; 2 pinned path(s) refused
+  PASS mutation_proof_integrity_8: 244 executed mutation proof(s) verified against the current source/fixture digest
+  PASS assertion_coverage_8: 184/195 harness assertions proven BY EXECUTION (38 discovered in validate_matrix, 157 declared across 21 modules), 11 knowingly unproven
+  scheduled=22 completed=15 failed=7 crashed=0 not_run=0 incomplete=0
+  PASS finding_class_registry_complete: 195 label(s) classified, equal to the §8 inventory
+  INTEGRITY: GREEN
+  CONTENT: variant_not_exhibited_2L (420), attester_packet_refused_2L (61), judgment_reviews (752), capability_contract (78),
+           count_noun_singular_after_many_1J (423), slot_domain_escape_14 (74), slot_text_unaccounted_14 (4),
+           slot_path_refused_14 (1), selector_value_unexhibited_15 (58), hint_sequence_unshown_15 (6), stem_review_missing_17 (151)
+ALL TESTS: integrity green, CONTENT FINDINGS REMAIN (exit 2).
+$ PYTHONPATH=. .venv/bin/python tests/tree_state.py
+PASS tree_state: CERTIFIED   live input digest : e5f87c8fd8859e34   worktree : clean   mutation_proofs fresh 244
+```
+
+Chain 2 timing: regen+benchmark+frontend 44 s, corpus 64 min (244 mutations), shards 24-27 min each, run_all 42 min.
+
+### Owner ruling 45 (asked at the end of this session; recorded verbatim in the plan doc)
+
+Under ruling 44h, with the tree CERTIFIED at `ff48377c` and the real packet for mat_g3_dp_q3_4 shown
+(`local_only/scratch/h4/sample/prompt.txt`, 19,199 characters, 12 families, 9 clauses): the campaign is APPROVED as
+designed (151 lcs x 2 Haiku judges, ~302 dispatches, ~6 concurrent, from batch441), to start in a fresh session.
+Rejected: a 5-lc pilot first; starting in this session; not yet.
+
+### Found, not fixed (generator content; named for the generator queue)
+
+1. `pattern_sequence` pinned at seed 29 serves single letters as options: 'n' on mat_g1_na_q3_6, 'n'/'p' on
+   mat_g2_na_q2_8 (looks like a string iterated as characters; not diagnosed further -- content, ruling 23).
+2. `fmt_emoji_pictorial`'s "items" fallback is reached on the STUDENT path (mat_g2_na_q2_4 seed 22), not only pinned.
+3. mat_g2_mg_q4_3 advertises `mcq` but refuses it at seeds 17 and 29 (`draw_construct` is not available at the node).
+4. A `fill` slot's nested families are matched by text, so packets list extra families where two families can print the
+   same word (stem_packets limit 6; e.g. mat_g3_dp_q3_4's F03 lists F01 and F08-F11).
+
+### NAMED LIMITS (also in stem_packets' and validate_stem_review's docstrings and the contract's §14/§17 rows)
+
+- §14 1 / §17 1: `validate_slots.paths()` only (student seeds 1-40, advertised formatters pinned at 3/17/29, default
+  experience and difficulty); a family reached elsewhere is neither reviewed nor domain-checked.
+- §14 13: a pinned refusal is caught by exception around the generator call; eligibility and crash are not told apart.
+- §17: runtime `E`/`R` resolved from observed renders; `value:<key>` shown by key only; un-instrumented text has no
+  family; one-member domains shown as observed (the prompt says to treat them as unbounded; nothing checks the judge
+  did); a verdict is a reading by one model (ruling 20's ~22% flip rate; every lc confirmed, later stands); blindness
+  and the CLAUDE.md delivery are testified, not verified (substring check); a coherent rewrite of reply and digest is
+  undetectable here; quote provenance checks quoted spans only; per-lc verdicts name only the templates quoted; nested
+  families matched by text; the fixture lc's stems are pinned by the proofs (a generator change to mat_g2_na_q3_8 makes
+  every §17 proof INVALID until `tests/stem_review_fixture.py` is re-run).

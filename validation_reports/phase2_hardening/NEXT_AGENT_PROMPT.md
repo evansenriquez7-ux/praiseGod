@@ -1,9 +1,10 @@
-# Task prompt: Phase 2 pipeline hardening under owner rulings 23–43 (Claude host)
+# Task prompt: Phase 2 pipeline hardening under owner rulings 23–45 (Claude host)
 
-**Rewritten 2026-10-13 after batch H4-0-R2 (ruling 42's type-only count is 0 on all 151 lcs; tree CERTIFIED).
-This REPLACES every earlier version of this file.** `CLAUDE_AGENT_PROMPT.md`, `GPT_HANDOFF_PROMPT.md` and
-`HANDOFF_PROMPT.md` beside it are history: their method notes (§7 heavy runs and the lock, §8 anchor one-liner, §9
-traps, §11 not yours) are still correct and cited below; their state sections are stale.
+**Rewritten 2026-10-13 after batch H4 (the §17 stem review gate is built, proven and CERTIFIED; owner ruling 45
+approved its judge campaign for THIS session). This REPLACES every earlier version of this file.**
+`CLAUDE_AGENT_PROMPT.md`, `GPT_HANDOFF_PROMPT.md` and `HANDOFF_PROMPT.md` beside it are history: their method notes
+(§7 heavy runs and the lock, §8 anchor one-liner, §9 traps, §11 not yours) are still correct and cited below; their
+state sections are stale.
 
 Trust order: a command you executed > this file > `CLAUDE_AGENT_PROMPT.md` > the dated blocks in
 `docs/phase2_hardening_completion_plan.md`.
@@ -12,22 +13,24 @@ Trust order: a command you executed > this file > `CLAUDE_AGENT_PROMPT.md` > the
 
 ## 0. Your task, in one paragraph
 
-Build batch **H4**: the LLM **stem review gate** of owner ruling 24. Every lc is now at 0 type-only slots (ruling
-42's precondition), so every lc's stems can be reviewed. H4 is a **new check**: a packet builder that enumerates each
-lc's stem families from the slot record, a filed-verdict format, and a `run_all` stage that fails when an lc's
-current stems are not covered by a fresh, valid, blind approval. You prove each of its failure paths with a
-mutation caught by name, run the §8 re-proof chain once, and leave the tree CERTIFIED with this file's §0, §2 and §5
-rewritten. **H4 has open design questions (§5.2): ask the owner before you build past them, and ask before you
-dispatch any judge.** Do not start H6. Do not fix generator content.
+Run batch **H4-C**: the §17 **stem judge campaign** that owner ruling 45 approved. The gate (`validate_stem_review`,
+§17) is built and proven; today it reports `stem_review_missing_17 (151)`, one per lc. For every lc, build its
+blind stem packet, dispatch a **first** Haiku judge and then an independent blind **confirming** Haiku judge on the
+SAME packet (ruling 44e; about 302 dispatches, about 6 concurrent), audit every reply against the packet it was
+shown, and file both through `tests/stem_file.py` from **batch441**. Disputed non-PASS claims go to ruling 21. The
+campaign files records into `validation_reports/stem_review/` only: it changes no source, so the tree stays
+CERTIFIED and no chain is owed unless you change code. Do not fix generator content (a confirmed FAIL or
+NOT_PRODUCIBLE is a content finding for the generator queue, ruling 23). Do not start H6 (§6.2) until the owner says
+so. Leave this file's §0, §2 and §5 rewritten.
 
 **Goal of Phase 2 (ruling 23).** It hardens the **testing pipeline**, not the generators. It is done when every
 check is proven by a mutation on the path it executes (Scaling Mandate 1–2), `run_all` exits 0 or 2 (integrity
 green; ruling 27), every finding is named by lc, seed and owed build, and the tree is CERTIFIED. Content findings
-are the generators' work queue (§6.4); you do not fix them unless the owner rules otherwise (as rulings 39–40 did).
+are the generators' work queue (§6.4).
 
 **Terminology.** The harness calls `mat_g3_dp_q3_4` a "node"; `CLAUDE.md` calls it an **lc**. A node is the bundle
-`mat_g3_dp_q3`. A **clause** is a fragment of one lc's competency text. A **stem family** (this file's term) is one
-distinct recorded template an lc's renders reach. Do not rename code identifiers.
+`mat_g3_dp_q3`. A **clause** is a fragment of one lc's competency text. A **stem family** is (spine id or call-site
+module, template, renderer) as `stem_packets.family_key` defines it (ruling 44a). Do not rename code identifiers.
 
 ---
 
@@ -37,16 +40,18 @@ distinct recorded template an lc's renders reach. Do not rename code identifiers
    Done and **"If you are a judge"** (your judges will read it; ruling 29). Then `MEMORY.md`, especially:
    "Attester dispatch gotchas", "Dispatch subagents on Haiku", "Judgment reviews go stale", "Reviewer evidence must
    be lossless", "Duplicated rule copies disagree", "Allowlist checks drift silently", "Mutation must land where
-   behaviour changes", "Proof admissible, not just detected", "CERTIFIED can hide a red unit test".
+   behaviour changes", "Proof admissible, not just detected", "CERTIFIED can hide a red unit test", "New run_all
+   stage needs a stub".
 2. This file, completely.
 3. **Owner rulings** in `docs/phase2_hardening_completion_plan.md`, verbatim: 19–22 (search "rulings recorded
-   2026-10-07") and 23–43 (search "rulings recorded 2026-10-08"; 27–43 follow). Rulings 20, 21, 24, 26, 29, 41, 42
-   and 43 are H4's core.
-4. `validation_reports/HARDENING_EVIDENCE.md`, newest at the END: "H4-0-R2" and "H4-0" fully; then "H3-R2", "H5",
-   "H3", "H2", "H1" (headings and NAMED LIMITS).
-5. `docs/pgen_contract.md` rows §14 (all amendments and NAMED LIMITS 1–12), §15, §16, §5 (`validate_judgment`), §2L,
-   the verdict row, and the rule above `_manifest.FINDING_CLASS`.
-6. Code (§5.1 says what each gives H4): `backend/app/practice_gen/slots.py` (whole file);
+   2026-10-07") and 23–45 (search "rulings recorded 2026-10-08"; 27–45 follow). Rulings 20, 21, 24, 26, 29, 44 and
+   45 are the campaign's core.
+4. `validation_reports/HARDENING_EVIDENCE.md`, newest at the END: "H4" fully; then "H4-0-R2", "H4-0", "H3-R2"
+   (headings and NAMED LIMITS).
+5. `docs/pgen_contract.md` rows §17 (the stem review gate, NAMED LIMITS 1–12), §14 (its H4 amendment), §5
+   (`validate_judgment`), §2L, the verdict row, and the rule above `_manifest.FINDING_CLASS`.
+6. Code: `validation/stem_packets.py`, `validation/validate_stem_review.py` and `tests/stem_file.py` (whole
+   files: the packet, the gate and the filer the campaign uses); then, as background, `backend/app/practice_gen/slots.py`;
    `validation/validate_slots.py` (`render_findings`, `collect_findings`); `validation/judgment_packets.py`;
    `validation/validate_judgment.py` (its docstring: why freshness, quote provenance, plurality and skeleton checks
    exist); `tests/file_reviews.py`, `tests/attester_packets.py`, `tests/attester_file.py` (docstrings);
@@ -57,31 +62,29 @@ distinct recorded template an lc's renders reach. Do not rename code identifiers
 
 ---
 
-## 2. State at handoff (2026-10-13, after H4-0-R2; re-measure before quoting)
+## 2. State at handoff (2026-10-13, after H4; re-measure before quoting)
 
 ```
 HEAD                local main, NOT pushed (git status -sb: ahead of origin)
-source              ea3c1600 (H4-0-R2); chain artifacts 75f15cc2; tree_state c26fd7fb; docs 2b976ce6
-H-06 lock           RELEASED (5c0594fe); claim it before any work (§4 Phase 0)
-tree_state          CERTIFIED (230 proofs, 6 shards, benchmark, frontend fresh; digest 8fd5dbe548788b49)
-run_all             2026-10-13 on ea3c1600: EXIT 2; scheduled=21 completed=15 failed=6 crashed=0; INTEGRITY GREEN;
-                    172/183 assertions proven by execution; finding_class_registry_complete 183 labels
+source              27761ea1 (H4) + dfc151ea (packet slot-name fix); chain 2 artifacts 4360860a; tree_state ff48377c;
+                    docs/evidence/rulings 44-45 in the bookkeeping commit after it
+H-06 lock           RELEASED (follow-up commit); claim it before any work (§4 Phase 0)
+tree_state          CERTIFIED (244 proofs, 6 shards, benchmark, frontend fresh; digest e5f87c8fd8859e34)
+run_all             2026-10-13 on dfc151ea: EXIT 2; scheduled=22 completed=15 failed=7 crashed=0; INTEGRITY GREEN;
+                    184/195 assertions proven by execution; finding_class_registry_complete 195 labels
   CONTENT           variant_not_exhibited_2L 420, attester_packet_refused_2L 61, judgment_reviews 752,
-                    capability_contract 78, count_noun_singular_after_many_1J 423, slot_domain_escape_14 67,
-                    selector_value_unexhibited_15 58, hint_sequence_unshown_15 6   (slot_domain_type_only_14 PASSES)
-§14                 type_only 0 (151 of 151 lcs); escape 67; unaccounted 0. Wide (seeds 1-40 + every pinned
-                    formatter): only 2 type-only site/slot pairs, both list-printing escapes. 61 unreasoned
-                    `derived(` lines remain in source, 60 of them reached by nothing (NAMED LIMIT 11)
-§15                 58 + 6; 1,351 of 1,351 selector matches decided by record
-§1J                 indefinite_article_1J 0; count_noun_singular_after_many_1J 423
-stem families       measured 2026-10-13 at the 20 student seeds, keyed (spine id or call site, template):
-                    151 lcs; per lc min 5, median 18, max 59 (mat_g2_na_q3_1; mat_g2_na_q3_0 55); 2,867 (lc, family)
-                    pairs; 955 distinct templates tree-wide. These include structural wrappers ("{answer}", a
-                    join's "{p0}, {p1}") that a packet may collapse (§5.2 question 1)
-unit suite          986 passed, 1 skipped (~11 min)
-mutations           230; corpus 230/230, no INVALID
-latest attestation  batch440 (next free prefix: batch441); §5 review records in validation_reports/judgment/
-                    (24 node-group dirs); attestation records in validation_reports/attestation/
+                    capability_contract 78, count_noun_singular_after_many_1J 423, slot_domain_escape_14 74,
+                    slot_text_unaccounted_14 4, slot_path_refused_14 1, selector_value_unexhibited_15 58,
+                    hint_sequence_unshown_15 6, stem_review_missing_17 151
+§14                 over validate_slots.paths() (student seeds 1-40 + every advertised formatter pinned at 3/17/29,
+                    7,285 renders; ruling 44b): 79 findings (67 at the old 20 seeds; 12 new real defects, H4 evidence);
+                    type_only 0 on 151 of 151 lcs
+§17                 0 of 151 lcs approved; 2,561 stem families packeted (median 15 per lc, max 56); packets
+                    6,410-47,919 characters (median 16,012); validation_reports/stem_review/ does not exist yet
+§15 / §1J           58 + 6 (1,351 of 1,351 decided) / indefinite_article_1J 0, count_noun_singular_after_many_1J 423
+unit suite          999 passed, 1 skipped (~11 min)
+mutations           244 (230 + 14 for §17 and §14 f); corpus 244/244, no INVALID
+latest attestation  batch440 (next free prefix: batch441); §17 records go to validation_reports/stem_review/<lc>/
 ```
 
 **Before you resume anything detached, run `ps -eo pid,lstart,command | grep claude`**: one copy of the agent per
@@ -110,8 +113,14 @@ conversation.
 - 39: error-detect names its ErrorPattern.  40: indefinite articles by sound, gated by §1J.
 - 42: **H4 approves an lc only after that lc's type-only slots are tightened** (now true for all 151).
 - 43: a type-only slot's reason is a registered `slots.DERIVED_REASONS` kind plus a `src` the values carry.
+- 44: **the stem gate's design**: (a) families keep only fills that reach learner text, wordless all-`fill` wrappers
+  collapse; (b) §14 and §17 share `validate_slots.paths()`; (c) freshness binds resolved content; (d) ONE overall
+  verdict per lc; (e) **every lc gets a first judge and a blind confirmer; the later verdict stands**; a FAIL quotes
+  its failing templates; (f) verdicts and record defects are content; (g) the judge rules every clause
+  PRODUCIBLE / NOT_PRODUCIBLE (gated); (h) Haiku judges, about 6 concurrent.
+- 45: **the campaign is approved**, as designed, from batch441, in a fresh session.
 
-**Stop and ask** for any content judgment or design question that rulings 1–43 and MATATAG do not settle, and for
+**Stop and ask** for any content judgment or design question that rulings 1–45 and MATATAG do not settle, and for
 anything in "Not yours" (§7).
 
 ---
@@ -120,19 +129,21 @@ anything in "Not yours" (§7).
 
 1. `ps` grep empty; `df -h /System/Volumes/Data` shows space; `PYTHONPATH=. .venv/bin/python tests/tree_state.py`
    prints CERTIFIED; worktree clean. CERTIFIED does not cover `validation_reports/`, so also run
-   `PYTHONPATH=. .venv/bin/python -m pytest tests/unit -m "not slow" -q -p no:cacheprovider` (expect 986 passed,
+   `PYTHONPATH=. .venv/bin/python -m pytest tests/unit -m "not slow" -q -p no:cacheprovider` (expect 999 passed,
    1 skipped; ~11 min; run it in the background and read while it runs).
 2. Claim H-06: in `validation_reports/phase2_hardening/hardening_status.json` edit ONLY its `owner` line with
    `sed` (`git diff --numstat` must read `1 1`), commit by name, then
-   `PYTHONPATH=. .venv/bin/python tests/tree_state.py --begin batch --session <yours> --note "H4: ..."`.
+   `PYTHONPATH=. .venv/bin/python tests/tree_state.py --begin batch --session <yours> --note "H4-C: ..."`.
 3. Re-measure, and explain any move before building:
-   - `validate_slots`: `slot_domain_escape_14 (67)`, `slot_domain_type_only_14` PASS, NOTE `151 of 151`;
+   - `validate_slots`: `slot_domain_escape_14 (74)`, `slot_text_unaccounted_14 (4)`, `slot_path_refused_14 (1)`,
+     `slot_domain_type_only_14` PASS, NOTE `151 of 151`;
+   - `validate_stem_review`: `stem_review_missing_17 (151)`, every other §17 label PASS, `2561 stem families`;
    - `validate_composition`: 58 + 6, with 1,351 of 1,351 decided;
    - `validate_language`: `indefinite_article_1J` PASS and 423 mirror findings;
    - the capability queue snippet below (`78 42 33 55` at H4-0-R2's Phase 0; ~2 min).
 4. If you will touch any source: `PYTHONPATH=. .venv/bin/python -m tests.render_snapshot local_only/scratch/<batch>/before.jsonl`
    BEFORE the first edit, and keep `tests/slot_wide_check.py` (expect `TOTAL distinct 24 | renders that raised: 2`,
-   the two `mat_g2_mg_q4_3` pinned-mcq refusals) and the §15 dump
+   the two `mat_g2_mg_q4_3` pinned-mcq refusals; it now walks §14's own paths) and the §15 dump
    (`validation_reports/phase2_hardening/h4_0_tools/comp_dump.py OUT.json`) as baselines.
 
 ```sh
@@ -153,71 +164,70 @@ PY
 
 ## 5. H4: the stem review gate (ruling 24, LLM half)
 
-### 5.1 What already exists for you to reuse (do not write a second copy of any of it)
+### 5.0 Status
 
-| need | existing piece | what it gives you |
-|---|---|---|
-| the record of what an lc renders | `slots.capture()` + `validate_slots.render_findings` | every `Fill`: template, slots (value, domain), `sources` (provenance), `reasons`, `site`, `renderer_ref` (spine id); `Trace.derivations` (`derives`/`computes`) |
-| learner-read fields | `validate_language._texts` | the §1J classification that §14 and §15 already share |
-| seeds | `validate_slots.SEEDS` (1–20, student path) | the paths §14's count was proven on |
-| a blind packet + skeleton written at dispatch time | `judgment_packets.build_packet`, `tests/file_reviews.py` (skeleton at dispatch, filer copies the evidence, dispatcher-assigned identity) | the pattern that stopped fabricated reviews: reuse its rules, not its per-sample content |
-| opaque delivery, a key file the judge never sees, filing without retyping | `tests/attester_packets.py --packets/--key`, `tests/attester_file.py` (refuses unknown items, empty reasoning, uncited seeds, templated skeletons; `--supersedes` takes a FILE path) | the ruling-20 confirming-judge mechanics |
-| anti-fabrication checks on a filed review | `validate_judgment.py`: freshness, quote provenance, reviewer plurality, skeleton clustering | the checks a stem verdict also needs (adapted to stems, not seeds) |
-| a stage in `run_all` | the stage table (~line 670: `("slot_domains_14", 1, ("§14",), "...")`), a `_stage_<name>()` function (~line 1105) that adds its § to `executed_checks`, and the stage list (~line 1204) | where H4 plugs in |
-| finding classes | `_manifest.FINDING_CLASS` (every label is CONTENT or INTEGRITY; `finding_class_registry_complete` fails on an unclassified one) and each module's `ASSERTIONS` tuple (counted by `assertion_coverage_8`) | how a new label is registered |
-| contract keys | `run_all.CONTRACT_CHECKS`: every `§` token in `docs/pgen_contract.md`, prose included, must be a key | a new § number is registered there before the contract row uses it |
-| mutations | `Mutation(name, asserts, description, edits={path: (old, new)}, command, expected_check, expect_output_contains, baseline_must_not_contain)` | the plant must land on the path the check executes; `--only <name>` runs one |
+**Built, proven and CERTIFIED (batch H4, 2026-10-13); the judge campaign (H4-C) is approved (ruling 45) and is
+this session's work.** The design questions the old §5.2 listed were answered as owner ruling 44 (plan doc,
+verbatim). What exists:
+- `validate_slots.paths()` / `observe()`: the ONE path enumeration and render §14 and §17 share.
+- `validation/stem_packets.py`: `observe_lc`, `build_item` (blind item: competency, clauses, vocabulary gates,
+  declared variants and bounds, families with resolved slot domains, a `lists` table, provenance, derivations),
+  `item_hash` (HASH_VERSION 1), `coverage_gaps`; CLI `--nodes a,b --prefix S441 --packets P.json --key K.json`
+  (refuses to write a packet with a coverage gap).
+- `validation/validate_stem_review.py` (§17, Phase 2): reads `validation_reports/stem_review/<lc>/*.json`.
+- `tests/stem_file.py prompt|file`: the judge's instructions + item, and the filer.
+- Proofs: 14 mutations against hand-written fixtures in `tests/stem_review_fixtures/` (`tests/stem_review_fixture.py`).
+  **A generator change to mat_g2_na_q3_8 stales the fixture and makes every §17 proof INVALID: re-run the fixture
+  script then** (contract §17 limit 12).
 
-### 5.2 Design questions to settle with the owner FIRST (use AskUserQuestion; recommend an option for each)
+### 5.1 The campaign, step by step (H4-C)
 
-Rulings 24, 26, 29 and 42 fix what H4 is for; they do not fix these, and each changes what you build:
-1. **Family granularity.** Is a family (spine id or call site, template)? Do structural wrappers (`{answer}`, a
-   join's `{p0}, {p1}`, `{text}` transforms) collapse into the family that prints them? (2,867 (lc, family) pairs
-   raw; median 18 per lc, max 59.) Recommended: collapse wrappers whose every slot is `fill`; keep everything else.
-2. **Which paths enumerate an lc.** The 20 student seeds only (what §14 proved), or also pinned formatters, other
-   experiences and difficulty profiles (§14 NAMED LIMIT 1)? A family reached only off those paths goes unreviewed.
-   Recommended: student seeds plus every advertised formatter, with the remaining gap named as a limit.
-3. **Freshness key.** Ruling 24 says the hash of templates + domains + provenance. Domains include runtime `E`/`R`
-   objects whose members vary per render: hash the domain's members, or its kind and basis? Recommended: kind +
-   basis + members for static banks; kind + basis + bounds for runtime ones; prove both directions by mutation.
-4. **Verdict shape and quorum.** Per family or per lc? Which verdicts need ruling 20's confirming judge (a FAIL
-   that creates a finding? a PASS that clears an lc?) Recommended: per-family verdicts plus one overall per lc;
-   a confirming judge on every non-PASS and on a sample of PASS.
-5. **What a FAIL becomes.** A content finding by lc and family (exit 2; owed: fix the stem or its domain), or
-   integrity? Ruling 32 classes record defects as content, and a missing or stale review is presumably content too
-   (as `judgment_reviews` is), but ask.
-6. **Clause coverage (ruling 26).** Does the stem judge also rule "can these stems produce every clause", and how
-   does that interact with §6F attestations and §2L? Recommended: the judge rules it per clause; the existing
-   records stay until H6.
-7. **Judge model and budget.** Memory says fan-out on Haiku (`model: "haiku"`), about 6 concurrent; 151 packets
-   plus confirmers. Confirm before the first dispatch.
+1. Build every packet FIRST, in groups (e.g. 25 lcs per packets file; prefix `S441`, `S442`, ...; ids
+   `S441-001`...): `PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.stem_packets --nodes
+   <lcs> --prefix S441 --packets local_only/scratch/h4c/S441.json --key local_only/scratch/h4c/S441.key.json`.
+   Every lc must build (the builder raises on a coverage gap or a slot-name mismatch: that is harness work; stop).
+2. For each item write its prompt: `tests/stem_file.py prompt --packets ... --item S441-001 --out
+   local_only/scratch/h4c/S441-001.prompt.txt`. Keep the key files out of every judge's reach.
+3. Dispatch the FIRST judge per item with the Agent tool, `model: "haiku"` (memory "Dispatch subagents on Haiku"),
+   about 6 concurrent. The agent prompt only says: read that one prompt file and reply with exactly what it asks.
+   Judges inherit `CLAUDE.md` by design (ruling 29). Save each reply byte for byte to a file.
+4. **Audit every reply against its prompt before filing** (memory "Attester dispatch gotchas"): it parses as one
+   JSON object; every quoted span appears in the prompt; `failing_templates` and each PRODUCIBLE `template` are
+   templates the packet prints EXACTLY; every clause id is answered. The filer refuses most of these itself, but
+   a refused or doubtful reply is set aside (never edited) and the item re-dispatched to a fresh judge. If the agent
+   read any file other than its prompt, set it aside.
+5. File: `tests/stem_file.py file --packets ... --key ... --item S441-001 --reply <reply file> --role first
+   --judged-by blind-stem-judge-claude-haiku-<batch>-<item>-first --dispatch-id stem-<batch>-<item>-first
+   --filed-at <ISO time> --delivery "judge read only <prompt path>; dispatched with CLAUDE.md loaded (ruling 29)"
+   --tool-uses "<what the agent did>" --prompt <prompt path>`. The identity must name the model that judged; the
+   Agent tool exposes only `haiku`, so say that, not a version you did not see.
+6. Dispatch the CONFIRMING judge per item on the SAME prompt file, a new agent that has seen nothing of the first
+   reply; audit; file with `--role confirming --confirms stem-<batch>-<item>-first` and its own identity and
+   dispatch id. The later verdict stands (ruling 20).
+7. **Disputes (ruling 21):** if you believe a FAIL or NOT_PRODUCIBLE claim is false, do not set it aside on that
+   belief: dispatch one more fresh blind judge as a confirming record on the same first record, and log the
+   disproving evidence and the outcome in the evidence entry. That record is the latest and stands.
+8. After each group: `PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_stem_review
+   --node-ids <group>`; at the end, the whole gate. Expect `stem_review_missing_17` to fall to 0 and
+   `stem_review_fail_17` / `stem_clause_unproducible_17` to name real generator work by lc and template.
+9. Records are FILES under `validation_reports/` (not a digest input): commit them by name per group, claim the
+   directory in H-06's `proof_artifacts` in the same commit (memory "CERTIFIED can hide a red unit test"), and run
+   the unit suite after the last commit. No chain is owed unless you changed source.
+10. If a generator changes while you dispatch, packets filed before it go STALE by design (the filer copies the
+    dispatch-time packet); re-dispatch those lcs on fresh packets.
 
-### 5.3 What to build (after the answers), in slices under one chain (ruling 37)
+### 5.2 Known limits a judge's verdict inherits (contract §17 NAMED LIMITS)
 
-1. **Packet builder** (e.g. `validation/stem_packets.py`): from the record, per lc, every family with its template
-   text; each slot's domain rendered for a reader (the members of an `E`, the bounds and basis of an `R`, the list an
-   `enum:`/`bank:` names, which fill a `fill` slot nests); the provenance claims (`src`, `_src`, `derives`,
-   `computes`) and `arithmetic` reasons; and the lc's competency text, clauses and vocabulary gates. No node id and
-   no source paths in the blind half (opaque item ids; a key file the judge never sees).
-2. **Freshness hash** per family and per lc, computed from the live record, never from the filed packet.
-3. **Filer** that copies the packet's evidence, takes only verdicts and reasoning from the judge, assigns the
-   dispatcher's identity, and refuses everything `attester_file.py` refuses.
-4. **Validator stage** (a new §, registered in `CONTRACT_CHECKS`, `FINDING_CLASS`, its module's `ASSERTIONS`, the
-   stage table and the stage list): for every lc, every current family has a valid, fresh, non-superseded verdict.
-   FAILs are reported by lc, family, a seed that reaches it, and owed build.
-5. **Mutations, each caught by name on a real lc** (run `--only` until each is DETECTED, then the chain):
-   - a stem edit with no new review is stale (template change → hash change);
-   - a domain loosened with no new review is stale (e.g. an `E` member added);
-   - a packet missing a reachable family is caught (drop one family from the builder);
-   - a filed record whose verdict is removed or edited is caught;
-   - a provenance claim changed with no new review is stale.
-   Proofs must not depend on an LLM: build fixture records by hand under a fixture directory that the proof lists in
-   `mutation_proof.INPUT_FILES` (memory: "Proof admissible, not just detected").
-6. **Contract row and NAMED LIMITS** in `docs/pgen_contract.md` (at least: the paths enumerated; a verdict is a
-   reading, not a proof; families reached only by unvisited paths; the judge's model and noise rate under ruling 20).
-7. **Only then, with the owner's go-ahead, the dispatch campaign** (batch441 onward): filed through the filer,
-   confirmers per the answer to question 4, disputes per ruling 21, and every reply audited against the packet it
-   was shown (Haiku quotes badly: an unprinted seed or an elided quote means set the reply aside and re-dispatch).
+Paths are `validate_slots.paths()` only; runtime `E`/`R` domains show the members/bounds observed there; a
+`value:<key>` slot shows its key, not its range (the item lists the declared bounds); a `fill` slot's families are
+matched by text (over-inclusive); one-member domains of the value itself (e.g. `answer_text`, fmt_true_false's
+"not" statement) are shown as observed and the prompt tells the judge to treat them as unbounded.
+
+### 5.3 Open design points (ask the owner before building any)
+
+- `stem_review_fail_17` names the templates a judge quoted, not seeds (ruling 44d); the lc-and-seed naming question
+  of §6.3 applies to it too.
+- After the campaign, H6 (§6.2) retires `judgment_reviews_5` and `capability_phase2` as gates; the owner rules when.
 
 ### 5.4 Integrity rules carried over from §5/§6 (non-negotiable)
 
@@ -274,6 +284,10 @@ build (this needs a ruling on lc-wide findings first); every check's NAMED LIMIT
 
 - §2L: 420 non-exhibited variant values; 61 packet refusals. §6: 78 CONTRADICTED capabilities. §5: 752 judgment
   problems. §1J: 423 singular-after-many.
+- §14 since H4's wider paths (79): +7 escapes from `fmt_emoji_pictorial`'s "items" fallback (now also on the
+  STUDENT path, mat_g2_na_q2_4 seed 22); `pattern_sequence` pinned at seed 29 serving the single letters 'n'/'p' as
+  options (4 `slot_text_unaccounted_14`, mat_g1_na_q3_6, mat_g2_na_q2_8); mat_g2_mg_q4_3 refusing its advertised
+  `mcq` at seeds 17 and 29 (`slot_path_refused_14`). The 67 at the old 20 seeds were:
 - §14: 67 escapes: H3-R2's 26 (incl. money_peso's `['peso5', ...]` and patterns' `[8, 8]` printed into hints); the
   `fmt_emoji_pictorial` "items" fallback, +29; base_generator's pictograph fallback `category` default, +5, and its
   bar-graph twin, +3 (neither learner-read at the 20 seeds); the fractions add/subtract hint chain served on

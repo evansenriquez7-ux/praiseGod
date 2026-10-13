@@ -1597,6 +1597,12 @@ that points at it break every time the section is refreshed.
 >     (h) **Judges are Haiku, about 6 concurrent; ask again before the first dispatch.** Build and prove
 >     the gate, run the chain, then show the owner one real packet and ask for a go-ahead before batch441.
 >     Every reply is audited against its packet.
+> 45. **The §17 judge campaign is approved, to start in a fresh session** (owner, 2026-10-13, asked at the end of
+>     H4 under ruling 44h after the gate was proven and the tree CERTIFIED at `ff48377c`, with the real sample packet
+>     for mat_g3_dp_q3_4 shown: `local_only/scratch/h4/sample/prompt.txt`, 19,199 characters, 12 families, 9
+>     clauses). The campaign as designed: 151 lcs x 2 Haiku judges (a first judge and a blind confirmer) = about 302
+>     dispatches, about 6 concurrent, filed through `tests/stem_file.py` from batch441, every reply audited against
+>     its packet. Rejected: a 5-lc pilot first; starting in the H4 session; not yet.
 >
 > **Owner rulings recorded 2026-09-22, binding on the next session:**
 >
