@@ -1,0 +1,49 @@
+{
+ "asserts": [
+  "stem_review_missing_17"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "FAIL stem_review_missing_17"
+ ],
+ "command": [
+  "backend.app.practice_gen.validation.validate_stem_review",
+  "--node-ids",
+  "mat_g2_na_q3_8",
+  "--review-dir",
+  "tests/stem_review_fixtures"
+ ],
+ "definition_digest": "bb53c9f75b7303cbd6ecd9a09f027c5374f640bcc8a4c4e1aeadc8e0ca802c1a",
+ "detected": true,
+ "diagnostic_line": "exit 1 — PASS stem_review_hash_drift_17",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "stem_review_missing_17 (",
+  "mat_g2_na_q3_8: no valid stem review is filed"
+ ],
+ "expected_check": "§17 an unreviewed lc is named",
+ "finished_at": "2026-10-13T04:55:50+08:00",
+ "input_digest": "352bb87af92732c1c0b67fc0892d2e808ec87f9cceb00a66b344a1e5b32ca4d9",
+ "mutated_paths": [
+  "tests/stem_review_fixtures/mat_g2_na_q3_8/fixture-mat_g2_na_q3_8-confirming.json",
+  "tests/stem_review_fixtures/mat_g2_na_q3_8/fixture-mat_g2_na_q3_8-first.json"
+ ],
+ "mutation": "stem_review_record_removed",
+ "observed_markers": {
+  "mat_g2_na_q3_8: no valid stem review is filed": true,
+  "stem_review_missing_17 (": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-10-13T04:55:48+08:00"
+}

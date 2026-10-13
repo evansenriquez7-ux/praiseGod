@@ -1,0 +1,48 @@
+{
+ "asserts": [
+  "stem_review_quote_provenance_17"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "FAIL stem_review_quote_provenance_17"
+ ],
+ "command": [
+  "backend.app.practice_gen.validation.validate_stem_review",
+  "--node-ids",
+  "mat_g2_na_q3_8",
+  "--review-dir",
+  "tests/stem_review_fixtures"
+ ],
+ "definition_digest": "e7896f3503c04e07f1d3b36c38e52cacc5b3c9e79d878eae13186f298d50b104",
+ "detected": true,
+ "diagnostic_line": "exit 1 — PASS stem_review_hash_drift_17",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "stem_review_quote_provenance_17 (",
+  "'Share 12 cookies among 3 friends.'"
+ ],
+ "expected_check": "§17 quotes come from the record's own packet",
+ "finished_at": "2026-10-13T04:55:46+08:00",
+ "input_digest": "352bb87af92732c1c0b67fc0892d2e808ec87f9cceb00a66b344a1e5b32ca4d9",
+ "mutated_paths": [
+  "tests/stem_review_fixtures/mat_g2_na_q3_8/fixture-mat_g2_na_q3_8-confirming.json"
+ ],
+ "mutation": "stem_review_quote_fabricated",
+ "observed_markers": {
+  "'Share 12 cookies among 3 friends.'": true,
+  "stem_review_quote_provenance_17 (": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-10-13T04:55:45+08:00"
+}

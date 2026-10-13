@@ -1,0 +1,46 @@
+{
+ "asserts": [
+  "slot_path_refused_14"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "FAIL slot_path_refused_14"
+ ],
+ "command": [
+  "backend.app.practice_gen.validation.validate_slots",
+  "--node-ids",
+  "mat_g2_na_q3_8"
+ ],
+ "definition_digest": "27fba17518f66a6af85af3a088ac1ddfa58950692c6bcc338be9836977d44107",
+ "detected": true,
+ "diagnostic_line": "exit 1 — FAIL slot_path_refused_14 (1):",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "slot_path_refused_14 (",
+  "mat_g2_na_q3_8: the pinned 'true_false' render at seed 3 (3 of"
+ ],
+ "expected_check": "§14 (f) a pinned path that refuses is named (ruling 44b)",
+ "finished_at": "2026-10-13T04:55:37+08:00",
+ "input_digest": "352bb87af92732c1c0b67fc0892d2e808ec87f9cceb00a66b344a1e5b32ca4d9",
+ "mutated_paths": [
+  "backend/app/services/orchestrator.py"
+ ],
+ "mutation": "pinned_formatter_refuses_to_render",
+ "observed_markers": {
+  "mat_g2_na_q3_8: the pinned 'true_false' render at seed 3 (3 of": true,
+  "slot_path_refused_14 (": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-10-13T04:55:36+08:00"
+}

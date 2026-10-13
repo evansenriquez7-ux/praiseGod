@@ -1,0 +1,48 @@
+{
+ "asserts": [
+  "stem_family_unpacketed_17"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "FAIL stem_family_unpacketed_17"
+ ],
+ "command": [
+  "backend.app.practice_gen.validation.validate_stem_review",
+  "--node-ids",
+  "mat_g2_na_q3_8",
+  "--review-dir",
+  "tests/stem_review_fixtures"
+ ],
+ "definition_digest": "b0aab0dc3bcfb6f231c5028997f11dee2cbe32b9beb907307b9b4c4d15828e45",
+ "detected": true,
+ "diagnostic_line": "exit 1 — FAIL stem_family_unpacketed_17 (17):",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "stem_family_unpacketed_17 (",
+  "is produced by a family the stem packet does not contain"
+ ],
+ "expected_check": "§17 every reaching family is in the packet",
+ "finished_at": "2026-10-13T04:55:42+08:00",
+ "input_digest": "352bb87af92732c1c0b67fc0892d2e808ec87f9cceb00a66b344a1e5b32ca4d9",
+ "mutated_paths": [
+  "backend/app/practice_gen/validation/stem_packets.py"
+ ],
+ "mutation": "stem_packet_drops_a_family",
+ "observed_markers": {
+  "is produced by a family the stem packet does not contain": true,
+  "stem_family_unpacketed_17 (": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-10-13T04:55:41+08:00"
+}

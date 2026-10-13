@@ -1,0 +1,48 @@
+{
+ "asserts": [
+  "stem_review_hash_drift_17"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "FAIL stem_review_hash_drift_17"
+ ],
+ "command": [
+  "backend.app.practice_gen.validation.validate_stem_review",
+  "--node-ids",
+  "mat_g2_na_q3_8",
+  "--review-dir",
+  "tests/stem_review_fixtures"
+ ],
+ "definition_digest": "94fff38caac214fcbe6c747f064336635c29f6017966b8cd53ccb2df01d10146",
+ "detected": true,
+ "diagnostic_line": "exit 1 — FAIL stem_review_hash_drift_17 (5):",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "stem_review_hash_drift_17 (",
+  "without a HASH_VERSION bump"
+ ],
+ "expected_check": "§17 the freshness code is pinned against filed records",
+ "finished_at": "2026-10-13T04:55:43+08:00",
+ "input_digest": "352bb87af92732c1c0b67fc0892d2e808ec87f9cceb00a66b344a1e5b32ca4d9",
+ "mutated_paths": [
+  "backend/app/practice_gen/validation/stem_packets.py"
+ ],
+ "mutation": "stem_hash_code_drifts",
+ "observed_markers": {
+  "stem_review_hash_drift_17 (": true,
+  "without a HASH_VERSION bump": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-10-13T04:55:42+08:00"
+}

@@ -1,0 +1,48 @@
+{
+ "asserts": [
+  "stem_review_stale_17"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "FAIL stem_review_stale_17"
+ ],
+ "command": [
+  "backend.app.practice_gen.validation.validate_stem_review",
+  "--node-ids",
+  "mat_g2_na_q3_8",
+  "--review-dir",
+  "tests/stem_review_fixtures"
+ ],
+ "definition_digest": "f934cabbdb266bbbb5cfc18bd7868dbc0ed750efbac9c21d929c642814ecafab",
+ "detected": true,
+ "diagnostic_line": "exit 1 — PASS stem_review_hash_drift_17",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "stem_review_stale_17 (",
+  "domain/provenance changed in ['Divide {n} by 2: how many 2s fit into {n}?']"
+ ],
+ "expected_check": "§17 a changed provenance claim stales its approval (rulings 41, 44c)",
+ "finished_at": "2026-10-13T04:55:41+08:00",
+ "input_digest": "352bb87af92732c1c0b67fc0892d2e808ec87f9cceb00a66b344a1e5b32ca4d9",
+ "mutated_paths": [
+  "backend/app/practice_gen/dna/na/division.py"
+ ],
+ "mutation": "stem_provenance_changed_without_review",
+ "observed_markers": {
+  "domain/provenance changed in ['Divide {n} by 2: how many 2s fit into {n}?']": true,
+  "stem_review_stale_17 (": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-10-13T04:55:40+08:00"
+}

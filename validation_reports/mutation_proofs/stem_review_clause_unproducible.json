@@ -1,0 +1,48 @@
+{
+ "asserts": [
+  "stem_clause_unproducible_17"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "FAIL stem_clause_unproducible_17"
+ ],
+ "command": [
+  "backend.app.practice_gen.validation.validate_stem_review",
+  "--node-ids",
+  "mat_g2_na_q3_8",
+  "--review-dir",
+  "tests/stem_review_fixtures"
+ ],
+ "definition_digest": "63793646f7f684ff0f17abeae0e5c72a4f32b750771c828bc6a6df46a19d5bac",
+ "detected": true,
+ "diagnostic_line": "exit 1 — PASS stem_review_hash_drift_17",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "stem_clause_unproducible_17 (",
+  "clause 'divisor_2' ('2') is ruled NOT_PRODUCIBLE"
+ ],
+ "expected_check": "§17 an unproducible clause is a named finding (ruling 44g)",
+ "finished_at": "2026-10-13T04:55:53+08:00",
+ "input_digest": "352bb87af92732c1c0b67fc0892d2e808ec87f9cceb00a66b344a1e5b32ca4d9",
+ "mutated_paths": [
+  "tests/stem_review_fixtures/mat_g2_na_q3_8/fixture-mat_g2_na_q3_8-confirming.json"
+ ],
+ "mutation": "stem_review_clause_unproducible",
+ "observed_markers": {
+  "clause 'divisor_2' ('2') is ruled NOT_PRODUCIBLE": true,
+  "stem_clause_unproducible_17 (": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-10-13T04:55:52+08:00"
+}

@@ -1,0 +1,48 @@
+{
+ "asserts": [
+  "stem_review_record_invalid_17"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "FAIL stem_review_record_invalid_17"
+ ],
+ "command": [
+  "backend.app.practice_gen.validation.validate_stem_review",
+  "--node-ids",
+  "mat_g2_na_q3_8",
+  "--review-dir",
+  "tests/stem_review_fixtures"
+ ],
+ "definition_digest": "ab08f6e127db55261a1fcd54a2cfbba87b41f68fcac7e075850f65fb831015fb",
+ "detected": true,
+ "diagnostic_line": "exit 1 — PASS stem_review_hash_drift_17",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "stem_review_record_invalid_17 (",
+  "does not match its raw_reply_digest (edited after filing)"
+ ],
+ "expected_check": "§17 a filed verdict cannot be edited",
+ "finished_at": "2026-10-13T04:55:45+08:00",
+ "input_digest": "352bb87af92732c1c0b67fc0892d2e808ec87f9cceb00a66b344a1e5b32ca4d9",
+ "mutated_paths": [
+  "tests/stem_review_fixtures/mat_g2_na_q3_8/fixture-mat_g2_na_q3_8-confirming.json"
+ ],
+ "mutation": "stem_review_verdict_edited",
+ "observed_markers": {
+  "does not match its raw_reply_digest (edited after filing)": true,
+  "stem_review_record_invalid_17 (": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-10-13T04:55:43+08:00"
+}
