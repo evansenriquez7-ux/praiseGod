@@ -6,16 +6,16 @@
  "role": "first",
  "confirms": null,
  "item_id": "FIX-002",
- "lc_hash": "fe8fea7a535838fa31fa14f02e440c562f1659aa45a1b7db8d57acebb49c61db",
+ "lc_hash": "442205911ea50d4cb5f29003b61012525e9100c4cf1f7f9b25b941616de7aeac",
  "judged_by": "fixture-not-a-judge-mat_g3_mg_q2_0-first",
  "dispatch_id": "fixture-mat_g3_mg_q2_0-first",
  "filed_at": "2026-10-13T00:00:00Z",
  "delivery": "fixture written by tests/stem_review_fixture.py for §17 mutation proofs; no judge was dispatched, so no judge read the packet or CLAUDE.md",
  "tool_uses_by_judge": "none (hand-written fixture)",
- "dispatch_prompt_digest": "1d753a81c416850ef064a0e415c15443f9f4d494f9d45f8d676dada5c5442f8b",
+ "dispatch_prompt_digest": "907bc41911a0eccc5bee09b39faf8e4e8fbe1c54844960d60affa5ea3cb78e30",
  "raw_reply": "{\"item\": \"FIX-002\", \"clauses\": {\"measure_mass\": {\"verdict\": \"PRODUCIBLE\", \"template\": \"{term}\", \"reasoning\": \"Fixture: hand-written.\"}, \"grams_kilograms_and_or_milligrams\": {\"verdict\": \"PRODUCIBLE\", \"template\": \"{term}\", \"reasoning\": \"Fixture: hand-written.\"}, \"measuring_tools\": {\"verdict\": \"PRODUCIBLE\", \"template\": \"{term}\", \"reasoning\": \"Fixture: hand-written.\"}}, \"failing_templates\": [], \"overall\": \"PASS\", \"reasoning\": \"Fixture, not a judgment: the template '{term}' was read with its domains, and nothing in it is out of scope.\"}",
  "raw_reply_digest": "89b3b658ee7c914d015078774fa80af16a867dc30258204747f482405373a8b6",
- "packet_digest": "3af9d1049e7309b8034ead97fd579de12cd75328db8ea37ac6590f901295a6d7",
+ "packet_digest": "19f391b6ca10910d99b8dcdce56d4e55a3066998b58d8e705ebc9a49f0f87354",
  "family_keys": {
   "F01": {
    "source": "backend/app/practice_gen/dna/base.py",
@@ -417,7 +417,7 @@
      },
      {
       "slots": [
-       "_MASS_LABELS"
+       "object_label"
       ],
       "domains": [
        {

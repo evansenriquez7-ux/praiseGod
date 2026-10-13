@@ -45,6 +45,9 @@ NAMED LIMITS (Scaling Mandate 6; also in docs/pgen_contract.md §17):
      not in the packet; §14 names it.
   5. One-member domains of the value itself (`E((x,), ...)`) are shown as written; they bound
      nothing, and the judge is told so only by reading them.
+  6. A `fill` slot's families are matched by TEXT (the record has no pointer from a fill to the
+     fill it nests): when two families can print the same string ("impossible" as a term and
+     as a bank answer), both are listed. Over-inclusive, never lossy.
 """
 from __future__ import annotations
 
@@ -52,6 +55,7 @@ import argparse
 import hashlib
 import json
 import re
+import string
 import sys
 from collections import OrderedDict
 from typing import Any, Dict, List, Optional, Tuple
@@ -289,6 +293,14 @@ def build_item(node_id: str, renders=None) -> Tuple[Dict[str, Any], Dict[str, An
     lists: "OrderedDict[str, Any]" = OrderedDict()
 
     def _table(name: str, members: Any) -> str:
+        # Each distinct member once, in the list's own order (a bank repeats answers across rows;
+        # membership is what the slot is checked against, not multiplicity).
+        unique, seen_m = [], set()
+        for m in members:
+            if _dump(m) not in seen_m:
+                seen_m.add(_dump(m))
+                unique.append(m)
+        members = unique
         label, n = name, 1
         while label in lists and lists[label] != members:
             n += 1
@@ -306,8 +318,8 @@ def build_item(node_id: str, renders=None) -> Tuple[Dict[str, Any], Dict[str, An
                 if "members" in d and isinstance(d["members"], set):
                     d["members"] = [json.loads(m) for m in sorted(d["members"])]
                 elif "members" in d:
-                    name = d.pop("list", None) or f"{d.pop('bank')}.{d.pop('field')}"
-                    d["members_in_list"] = _table(name, d.pop("members"))
+                    table = d.pop("list", None) or f"{d.pop('bank')}.{d.pop('field')}"
+                    d["members_in_list"] = _table(table, d.pop("members"))
                 if "_families" in d:
                     d["families"] = sorted(ids[x] for x in d.pop("_families") if x in ids)
                 if "_from" in d:
@@ -319,6 +331,14 @@ def build_item(node_id: str, renders=None) -> Tuple[Dict[str, Any], Dict[str, An
         # Slots with IDENTICAL domains are printed once with all their names (a join's p0..pN
         # share one domain: measured 2026-10-13, printing it per member made one packet
         # 127,927 characters). Lossless: every name and every domain is still printed.
+        # Guard (found 2026-10-13 in a real packet: a slot was printed under its LIST's name,
+        # because a loop variable was reused): the slot names printed are exactly the names the
+        # generator recorded, and every field of the template is among them (a renderer such as
+        # the spine may record more: its inflection arguments). Otherwise the builder raises.
+        fields = {f for _lit, f, _spec, _conv in string.Formatter().parse(k[1]) if f is not None}
+        if set(slots_out) != set(fam["slots"]) or not fields <= set(slots_out):
+            raise ValueError(f"stem packet: family {k[1]!r} at {fam['site']} prints slots {sorted(slots_out)}; "
+                             f"recorded {sorted(fam['slots'])}; template fields {sorted(fields)}")
         grouped: "OrderedDict[str, Dict[str, Any]]" = OrderedDict()
         for name, descs in slots_out.items():
             grouped.setdefault(_dump(_canon(descs)), {"slots": [], "domains": descs})["slots"].append(name)

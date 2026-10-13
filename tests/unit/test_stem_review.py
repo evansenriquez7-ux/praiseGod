@@ -91,3 +91,21 @@ def test_the_filer_refuses_an_identity_already_used_on_another_lc():
     rec["judged_by"] = "fixture-not-a-judge-mat_g3_mg_q2_0-first"
     problems = stem_file.refusals(rec, FIXTURES)
     assert any("is already on records of ['mat_g3_mg_q2_0']" in p for p in problems)
+
+
+def test_a_slot_is_printed_under_its_own_name_not_its_lists():
+    """
+    Found 2026-10-13 in a real packet: moving a bank field into the `lists` table reused the slot
+    loop's variable, so `{answer}` was printed with a slot named '_ITEM_POOL.answer' (94 of 151
+    packets). mat_g3_dp_q3_4 draws its stems from a bank and has no renderer extras, so every
+    family's printed slot names must equal its template's fields exactly.
+    """
+    import string
+    item, _key = SP.build_item("mat_g3_dp_q3_4")
+    assert item["lists"], "the lc's bank fields must be printed in the lists table"
+    for fam in item["families"]:
+        fields = {f for _l, f, _s, _c in string.Formatter().parse(fam["template"]) if f is not None}
+        printed = {name for group in fam["slots"] for name in group["slots"]}
+        assert printed == fields, (fam["id"], fam["template"], printed)
+    members = item["lists"]["_ITEM_POOL.answer"]
+    assert len(members) == len({json.dumps(m) for m in members}), "a list prints each member once"
