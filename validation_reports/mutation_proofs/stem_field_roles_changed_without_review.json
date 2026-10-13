@@ -1,0 +1,48 @@
+{
+ "asserts": [
+  "stem_review_stale_17"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "FAIL stem_review_stale_17"
+ ],
+ "command": [
+  "backend.app.practice_gen.validation.validate_stem_review",
+  "--node-ids",
+  "mat_g2_na_q3_8",
+  "--review-dir",
+  "tests/stem_review_fixtures"
+ ],
+ "definition_digest": "a714a6cdc6280ee3b3a3689fcc3c2ec1be4df69228d719502c417ef1bf2f990c",
+ "detected": true,
+ "diagnostic_line": "exit 1 — PASS stem_review_hash_drift_17",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "stem_review_stale_17 (",
+  "domain/provenance changed in ['1 is left over, so {n} is an odd number.'"
+ ],
+ "expected_check": "§17 a family's learner-read fields are bound by freshness (ruling 46a)",
+ "finished_at": "2026-10-14T02:34:59+08:00",
+ "input_digest": "b48a48064755f92c5f323a7b973ffbf937dcee6fb72e94925fefe8943a229f24",
+ "mutated_paths": [
+  "backend/app/practice_gen/validation/stem_packets.py"
+ ],
+ "mutation": "stem_field_roles_changed_without_review",
+ "observed_markers": {
+  "domain/provenance changed in ['1 is left over, so {n} is an odd number.'": true,
+  "stem_review_stale_17 (": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-10-14T02:34:57+08:00"
+}

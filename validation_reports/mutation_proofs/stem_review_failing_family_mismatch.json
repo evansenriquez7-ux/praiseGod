@@ -1,0 +1,48 @@
+{
+ "asserts": [
+  "stem_review_record_invalid_17"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "FAIL stem_review_record_invalid_17"
+ ],
+ "command": [
+  "backend.app.practice_gen.validation.validate_stem_review",
+  "--node-ids",
+  "mat_g2_na_q3_8",
+  "--review-dir",
+  "tests/stem_review_fixtures"
+ ],
+ "definition_digest": "6a2084661bd7a2233f2e5f85673731298dd8194460bf5e26dd90d2b60de6e683",
+ "detected": true,
+ "diagnostic_line": "exit 1 — PASS stem_review_hash_drift_17",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "stem_review_record_invalid_17 (",
+  "failing_families ['F04'] print the template(s)"
+ ],
+ "expected_check": "§17 failing family ids print exactly the quoted failing templates (ruling 46b)",
+ "finished_at": "2026-10-14T02:35:00+08:00",
+ "input_digest": "b48a48064755f92c5f323a7b973ffbf937dcee6fb72e94925fefe8943a229f24",
+ "mutated_paths": [
+  "tests/stem_review_fixtures/mat_g2_na_q3_8/fixture-mat_g2_na_q3_8-confirming.json"
+ ],
+ "mutation": "stem_review_failing_family_mismatch",
+ "observed_markers": {
+  "failing_families ['F04'] print the template(s)": true,
+  "stem_review_record_invalid_17 (": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-10-14T02:34:59+08:00"
+}
