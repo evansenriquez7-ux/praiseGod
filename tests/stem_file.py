@@ -64,8 +64,15 @@ Read ONLY this file. Do not open any other file, run code, or search.
 This file is one item. It describes ONE learning competency (lc) of the MATATAG curriculum:
 its competency text, its clauses, the vocabulary it may use (cumulative_vocab, the vocabulary
 introduced here, and NOT_YET_KNOWN terms it must never use), its declared variants and bounds,
-and EVERY stem family its problem generator prints. A family is a template; each {slot} in it
-is filled from a declared domain:
+and EVERY family of learner-facing text its problem generator prints. A family has an id
+(F01, F02, ...) and a template; two families may print the same template. "appears_in" names
+the fields of the problem where the learner reads that family's text: "question_text" is the
+question; "hints" are hints; "correct_answer" is the keyed answer; "distractors",
+"format_data.options" and "format_data.mcq_options" are answer choices; other "format_data.*"
+fields are text shown with the item (a sentence, statement, expression, name, time or
+direction). "nested_in" names the families whose text this family's text is printed inside.
+Judge each family where it appears: an answer choice is one choice, not a whole question.
+Each {slot} in a template is filled from a declared domain:
   - "one of a fixed list": a member of the named list in "lists";
   - "a field of a fixed item bank": a member of the named list in "lists";
   - "a noun from a fixed list, or its plural": a member of the named list, or its plural;
@@ -87,20 +94,23 @@ Rule 1 (overall): could ANY value in these domains, filled into these templates,
 that is wrong for a learner of this lc: an incorrect or misleading statement, wording a learner
 of this grade and quarter cannot read, vocabulary or a concept beyond the lc's gates, a context
 or load beyond the grade and quarter, or content outside or short of the competency's scope?
-PASS if none can. FAIL if any can, and list EVERY template at fault in failing_templates,
-copied exactly as printed.
+PASS if none can. FAIL if any can: list the id of EVERY family at fault in failing_families,
+and each of their templates, copied exactly as printed, in failing_templates.
 
 Rule 2 (clauses): for EVERY clause id, PRODUCIBLE if these families and declared variants can
-produce problems that address that clause, quoting in "template" the one template, copied
-exactly as printed, that best produces it; otherwise NOT_PRODUCIBLE with "template": null.
+produce problems that address that clause, giving in "family" the id of the one family that
+best produces it and in "template" its template, copied exactly as printed; otherwise
+NOT_PRODUCIBLE with "family": null and "template": null.
 
 Quote exactly. Any text you put in quotation marks must appear in this file. Do not guess.
 
 Reply with exactly ONE JSON object and nothing else:
 {"item": "<this item's id>",
  "clauses": {"<clause id>": {"verdict": "PRODUCIBLE" or "NOT_PRODUCIBLE",
-                             "template": "<exact template, or null>",
+                             "family": "<family id, or null>",
+                             "template": "<its exact template, or null>",
                              "reasoning": "<why>"}, ...one entry per clause id...},
+ "failing_families": ["<family id>", ...],
  "failing_templates": ["<exact template>", ...],
  "overall": "PASS" or "FAIL",
  "reasoning": "<why, citing the templates and domains you relied on>"}

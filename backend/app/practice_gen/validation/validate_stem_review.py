@@ -15,8 +15,10 @@ rebuilds the stem packet from the live record (`stem_packets.build_item`, over t
                               stored `lc_hash` under the same HASH_VERSION: the freshness code
                               changed, so every verdict it compares is suspect
   stem_review_record_invalid_17  a record that is malformed, edited (its verdict is not what its
-                              raw reply says, or a digest does not hold), cites a template the
-                              packet does not print, or omits a clause verdict
+                              raw reply says, or a digest does not hold), cites a template or
+                              family id the packet does not print, names family ids that do not
+                              print exactly the templates it quotes (ruling 46b), or omits a
+                              clause verdict
   stem_review_quote_provenance_17  a reasoning that quotes text its own packet does not contain
   stem_review_identity_reused_17   one `judged_by` identity on records of more than one lc
                               (ruling 44: one dispatch per lc and role)
@@ -31,7 +33,8 @@ rebuilds the stem packet from the live record (`stem_packets.build_item`, over t
                               valid first record on the same hash by a different identity
                               (ruling 20 as ruling 44e applies it: every lc, PASS or FAIL)
   stem_review_fail_17         the standing (later, confirming) verdict is FAIL; named by the
-                              failing templates the judge quoted and a path that reaches each
+                              failing family ids and templates the judge gave and a path that
+                              reaches each
   stem_clause_unproducible_17 the standing verdict rules a clause NOT_PRODUCIBLE (ruling 44g)
 
 Everything but the two INTEGRITY labels is CONTENT (ruling 44f): its remedy is a generator fix
@@ -54,8 +57,9 @@ NAMED LIMITS (Scaling Mandate 6; also in docs/pgen_contract.md §17 and the evid
      is bound to its digest inside the record. An edit that rewrites reply and digest together is
      not detectable here (as §5's dispatch provenance); git history is the only witness.
   5. Quote provenance checks quoted spans only; an unquoted false claim about the packet passes.
-  6. The per-lc verdict names failing TEMPLATES (ruling 44d: no per-family verdicts), so a FAIL
-     names the families the judge quoted, not necessarily every family at fault.
+  6. The per-lc verdict names failing TEMPLATES and their family ids (ruling 44d: no per-family
+     verdicts; ruling 46b: ids beside quotes), so a FAIL names the families the judge named, not
+     necessarily every family at fault.
 """
 from __future__ import annotations
 
@@ -93,7 +97,8 @@ ASSERTIONS = (
 _REPO_ROOT = Path(__file__).resolve().parents[4]
 REVIEW_DIR = _REPO_ROOT / "validation_reports" / "stem_review"
 
-SCHEMA_VERSION = 1
+# 2 (2026-10-14, owner ruling 46b): a reply names family IDS beside the templates it quotes.
+SCHEMA_VERSION = 2
 ROLES = ("first", "confirming")
 OVERALL = ("PASS", "FAIL")
 CLAUSE_VERDICTS = ("PRODUCIBLE", "NOT_PRODUCIBLE")
@@ -135,13 +140,25 @@ def verdict_problems(verdict: Any, packet: Dict[str, Any]) -> List[str]:
     if not isinstance(reasoning, str) or len(reasoning.strip()) < _MIN_REASONING:
         out.append(f"the overall reasoning is missing or shorter than {_MIN_REASONING} characters")
     templates = {f["template"] for f in packet.get("families", [])}
+    # Ruling 46b: two families can print the identical template ('{answer}' from the options
+    # and from a bank, measured on 54 of 151 lcs), so a quoted template alone cannot say which
+    # family a verdict means. The reply names family ids too, and ids and quotes must agree.
+    template_of = {f["id"]: f["template"] for f in packet.get("families", [])}
     failing = verdict.get("failing_templates")
+    fam_ids = verdict.get("failing_families")
     if not isinstance(failing, list):
         out.append("failing_templates is not a list")
+    elif not isinstance(fam_ids, list):
+        out.append("failing_families is not a list (ruling 46b: a reply names the failing family ids)")
     else:
-        if verdict.get("overall") == "FAIL" and not failing:
-            out.append("a FAIL names no failing template (ruling 44e: it must quote the template)")
+        if verdict.get("overall") == "FAIL" and not (failing and fam_ids):
+            out.append("a FAIL names no failing template or family (rulings 44e, 46b: it must quote both)")
         out += [f"failing template {t!r} is not a template the packet prints" for t in failing if t not in templates]
+        out += [f"failing family {i!r} is not a family id the packet prints" for i in fam_ids if i not in template_of]
+        named = {template_of[i] for i in fam_ids if i in template_of}
+        if all(i in template_of for i in fam_ids) and named != set(failing):
+            out.append(f"failing_families {sorted(fam_ids)} print the template(s) {sorted(named)}, not exactly the "
+                       f"failing_templates {sorted(set(failing))} (ruling 46b)")
     clauses = verdict.get("clauses")
     want = [c["id"] for c in packet.get("clauses", [])]
     if not isinstance(clauses, dict):
@@ -157,6 +174,11 @@ def verdict_problems(verdict: Any, packet: Dict[str, Any]) -> List[str]:
                 out.append(f"clause {cid!r}: empty reasoning")
             if c["verdict"] == "PRODUCIBLE" and c.get("template") not in templates:
                 out.append(f"clause {cid!r}: PRODUCIBLE must quote a template the packet prints, got {c.get('template')!r}")
+            elif c["verdict"] == "PRODUCIBLE" and template_of.get(c.get("family")) != c.get("template"):
+                out.append(f"clause {cid!r}: family {c.get('family')!r} is not a packet family printing the quoted "
+                           f"template {c.get('template')!r} (ruling 46b)")
+            elif c["verdict"] == "NOT_PRODUCIBLE" and (c.get("template") is not None or c.get("family") is not None):
+                out.append(f"clause {cid!r}: NOT_PRODUCIBLE quotes no template and no family")
     return out
 
 
@@ -362,13 +384,16 @@ def collect_findings(node_ids: Optional[List[str]] = None,
             continue
         verdict = last["_verdict"]
         if verdict["overall"] == "FAIL":
-            fams = {f["template"]: f["id"] for f in item["families"]}
+            # Named by the family ids the judge gave (ruling 46b), never by looking a template up:
+            # a template printed by two families would name one of them arbitrarily.
+            template_of = {f["id"]: f["template"] for f in item["families"]}
             named = []
-            for t in verdict["failing_templates"]:
-                k = key["families"].get(fams.get(t, ""), {})
+            for fid in verdict["failing_families"]:
+                k = key["families"].get(fid, {})
                 p = k.get("path")
-                named.append(f"{t!r} (reached at seed {p[0]}{'' if p[1] is None else f' formatter {p[1]!r}'}, "
-                             f"{k.get('first_site')})" if p else repr(t))
+                named.append(f"{fid} {template_of.get(fid)!r} (reached at seed {p[0]}"
+                             f"{'' if p[1] is None else f' formatter {p[1]!r}'}, {k.get('first_site')})" if p
+                             else f"{fid} {template_of.get(fid)!r}")
             out["stem_review_fail_17"].append(
                 f"{node_id}: the confirmed stem review {rel(path)} is FAIL ({last['judged_by']}): "
                 f"{verdict['reasoning'][:300]!r}. Failing: {'; '.join(named)}. Owed: fix the stem or its "

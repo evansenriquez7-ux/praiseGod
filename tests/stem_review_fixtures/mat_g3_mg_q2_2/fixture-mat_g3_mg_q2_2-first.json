@@ -1,21 +1,21 @@
 {
- "schema_version": 1,
- "hash_version": 1,
+ "schema_version": 2,
+ "hash_version": 2,
  "node_id": "mat_g3_mg_q2_2",
  "record_id": "fixture-mat_g3_mg_q2_2-first",
  "role": "first",
  "confirms": null,
  "item_id": "FIX-003",
- "lc_hash": "86de6b32be0e93d3a28c63389ee71678417cc773fc20ffc72d5e47150deca9b3",
+ "lc_hash": "b2e7b6049f2ad00bec08ad8a3b8551121beb1079ea272d3d3b6e0f5c61e19e0a",
  "judged_by": "fixture-not-a-judge-mat_g3_mg_q2_2-first",
  "dispatch_id": "fixture-mat_g3_mg_q2_2-first",
  "filed_at": "2026-10-13T00:00:00Z",
  "delivery": "fixture written by tests/stem_review_fixture.py for §17 mutation proofs; no judge was dispatched, so no judge read the packet or CLAUDE.md",
  "tool_uses_by_judge": "none (hand-written fixture)",
- "dispatch_prompt_digest": "c5a35113094e5845348b89be532161162ea1525f01cd20e0a45945c2d299686a",
- "raw_reply": "{\"item\": \"FIX-003\", \"clauses\": {\"compare_masses\": {\"verdict\": \"PRODUCIBLE\", \"template\": \"Compare the two measurements: {a} {unit} and {b} {unit}.\", \"reasoning\": \"Fixture: hand-written.\"}, \"objects\": {\"verdict\": \"PRODUCIBLE\", \"template\": \"Compare the two measurements: {a} {unit} and {b} {unit}.\", \"reasoning\": \"Fixture: hand-written.\"}, \"balance_scale\": {\"verdict\": \"PRODUCIBLE\", \"template\": \"Compare the two measurements: {a} {unit} and {b} {unit}.\", \"reasoning\": \"Fixture: hand-written.\"}}, \"failing_templates\": [], \"overall\": \"PASS\", \"reasoning\": \"Fixture, not a judgment: the template 'Compare the two measurements: {a} {unit} and {b} {unit}.' was read with its domains, and nothing in it is out of scope.\"}",
- "raw_reply_digest": "35528df873d1d002c6a65b35ab24c76694f7b544ecef6891d5dee1aa780ed726",
- "packet_digest": "9369e4ac973697d0c7909e60ca82b0584484381880b9b42b6dad645d6957c48e",
+ "dispatch_prompt_digest": "163cac4be1c9a72b082d39e7a0f3e1d3eb2f0112d7bb136607d1f6ad81b41667",
+ "raw_reply": "{\"item\": \"FIX-003\", \"clauses\": {\"compare_masses\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F01\", \"template\": \"Compare the two measurements: {a} {unit} and {b} {unit}.\", \"reasoning\": \"Fixture: hand-written.\"}, \"objects\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F01\", \"template\": \"Compare the two measurements: {a} {unit} and {b} {unit}.\", \"reasoning\": \"Fixture: hand-written.\"}, \"balance_scale\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F01\", \"template\": \"Compare the two measurements: {a} {unit} and {b} {unit}.\", \"reasoning\": \"Fixture: hand-written.\"}}, \"failing_families\": [], \"failing_templates\": [], \"overall\": \"PASS\", \"reasoning\": \"Fixture, not a judgment: the template 'Compare the two measurements: {a} {unit} and {b} {unit}.' was read with its domains, and nothing in it is out of scope.\"}",
+ "raw_reply_digest": "c48932c8d162bd108b1adf46f19c8862e5d26a8ae0c78d9394eeaa6921d1cf53",
+ "packet_digest": "7404f03d2268869368d0161c5398e360abd41f65560a9c774936c697d2b06539",
  "family_keys": {
   "F01": {
    "source": "backend/app/practice_gen/dna/mg/mass_capacity.py",
@@ -293,6 +293,10 @@
    {
     "id": "F01",
     "template": "Compare the two measurements: {a} {unit} and {b} {unit}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
     "transformation": null,
     "slots": [
      {
@@ -345,6 +349,10 @@
    {
     "id": "F02",
     "template": "The larger number {more}: {answer} {unit}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
     "transformation": null,
     "slots": [
      {
@@ -401,6 +409,11 @@
    {
     "id": "F03",
     "template": "Which is {v}: {val_a} {u} or {val_b} {u}?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
     "transformation": null,
     "slots": [
      {

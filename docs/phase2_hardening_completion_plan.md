@@ -1603,6 +1603,27 @@ that points at it break every time the section is refreshed.
 >     clauses). The campaign as designed: 151 lcs x 2 Haiku judges (a first judge and a blind confirmer) = about 302
 >     dispatches, about 6 concurrent, filed through `tests/stem_file.py` from batch441, every reply audited against
 >     its packet. Rejected: a 5-lc pilot first; starting in the H4 session; not yet.
+> 46. **The §17 packet says where the learner reads each family, and a reply names family ids** (owner,
+>     2026-10-14, asked in the H4-C session after the first real dispatch; the owner chose the dispatcher's
+>     recommended option for both questions). The first judge (S441-001, mat_g1_dp_q3_0) FAILed the family
+>     `{member}` as "printed alone as the whole stem"; measured over that lc's 43 renders, it is only ever an
+>     answer choice (`distractors`, `format_data.options`), F01-F03 only hints and F08 the only `question_text`.
+>     The packet printed none of this: 436 of 2,561 families are bare one-slot templates such as `{answer}` or
+>     `{member}`, on 145 of 151 lcs. The reply was not filed.
+>     (a) **Fix the packet, then run the campaign.** Each family carries the learner-read fields its text was
+>     observed in (`appears_in`: `question_text`, `hints`, `correct_answer`, `distractors`, `format_data.*`)
+>     and the families it is printed inside (`nested_in`); both are part of the freshness hash
+>     (`HASH_VERSION` 2); the judge's instructions say what the fields are. A harness batch first: regression
+>     test, mutation, fixture re-run, one chain to CERTIFIED; then the campaign on fresh packets. Rejected: an
+>     instructions-only change (a judge still cannot tell which bare family is which field); running the
+>     campaign as built (many false FAILs on option and hint families expected).
+>     (b) **A reply quotes family ids too.** On 54 of 151 lcs two families print the identical template (e.g.
+>     `{answer}` from the options and from an item bank), so a quoted template cannot say which family it
+>     means, and `stem_review_fail_17` mapped a quote to one family arbitrarily. A reply names
+>     `failing_families` beside `failing_templates`, and each clause a `family` beside its `template`; ids
+>     and quotes must agree exactly; the finding names every family the judge named. Ruling 44e's template
+>     quote is kept. Rejected: naming every family that prints a quoted template (over-inclusive); leaving it
+>     as a named limit.
 >
 > **Owner rulings recorded 2026-09-22, binding on the next session:**
 >

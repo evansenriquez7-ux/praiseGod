@@ -57,10 +57,19 @@ MAIN_REASONING = {
 SHARED_FRAME = "Fixture, not a judgment: the template '{t}' was read with its domains, and nothing in it is out of scope."
 
 
-def _reply(item_id, clauses, overall, reasoning, failing=()):
-    """A reply in the key order the mutations rely on: item, clauses, failing_templates, overall, reasoning."""
-    return json.dumps({"item": item_id, "clauses": clauses, "failing_templates": list(failing),
+def _reply(item_id, clauses, overall, reasoning):
+    """A reply in the key order the mutations rely on: item, clauses, failing_families,
+    failing_templates, overall, reasoning (schema 2, owner ruling 46b)."""
+    return json.dumps({"item": item_id, "clauses": clauses, "failing_families": [], "failing_templates": [],
                        "overall": overall, "reasoning": reasoning}, ensure_ascii=False)
+
+
+def _family_of(body, template):
+    """The one family printing `template`; a fixture never guesses between two (ruling 46b)."""
+    ids = [f["id"] for f in body["families"] if f["template"] == template]
+    if len(ids) != 1:
+        raise SystemExit(f"fixture: template {template!r} is printed by {len(ids)} families {ids}, not one")
+    return ids[0]
 
 
 def _file(item, key, raw, role, confirms, stamp, prompt_path):
@@ -93,7 +102,7 @@ def main() -> int:
         key = {**key, "item_hash": SP.item_hash(body)}
         scratch.write_text(stem_file.prompt_text(item), encoding="utf-8")
         if node_id == MAIN:
-            clauses = {cid: {"verdict": "PRODUCIBLE", "template": t,
+            clauses = {cid: {"verdict": "PRODUCIBLE", "family": _family_of(body, t), "template": t,
                              "reasoning": f"Fixture: the template '{t}' addresses this clause."}
                        for cid, t in MAIN_CLAUSES.items()}
             first = _file(item, key, _reply(item_id, clauses, "PASS", MAIN_REASONING["first"]),
@@ -102,8 +111,9 @@ def main() -> int:
             written.append(_file(item, key, _reply(item_id, clauses, "PASS", MAIN_REASONING["confirming"]),
                                  "confirming", f"fixture-{MAIN}-first", "2026-10-13T01:00:00Z", scratch))
         else:
-            t = body["families"][0]["template"]
-            clauses = {c["id"]: {"verdict": "PRODUCIBLE", "template": t, "reasoning": "Fixture: hand-written."}
+            t, fid = body["families"][0]["template"], body["families"][0]["id"]
+            clauses = {c["id"]: {"verdict": "PRODUCIBLE", "family": fid, "template": t,
+                                 "reasoning": "Fixture: hand-written."}
                        for c in body["clauses"]}
             written.append(_file(item, key, _reply(item_id, clauses, "PASS", SHARED_FRAME.format(t=t)),
                                  "first", None, "2026-10-13T00:00:00Z", scratch))

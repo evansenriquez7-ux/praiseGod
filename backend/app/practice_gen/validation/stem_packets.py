@@ -24,6 +24,13 @@ structured record (`slots.capture()`, ruling 28), never from learner-facing text
     `fill` slot by the families whose text filled it, a type-only slot by its registered reason
     and `src`. Provenance (`src`, template `_src`) and the lc's `derives`/`computes` declarations
     (ruling 41) are listed, because §15 trusts them and ruling 41 says H4 reviews them;
+  * each family says WHERE the learner reads it (owner ruling 46a, 2026-10-14): `appears_in`
+    lists the learner-read fields (`validate_language._texts`' names, index dropped:
+    `question_text`, `hints`, `format_data.options`, `distractors`, ...) its text was observed
+    in, through wordless wrappers; `nested_in` lists the families it is printed inside. Found
+    on the first real dispatch: a judge read the option family `{member}` as "the whole stem",
+    because nothing in the packet said it is only ever an answer choice. The builder raises on
+    a family with neither;
   * the lc's competency text, clauses (`requires`), vocabulary gates and declared variants
     (ruling 26) and declared bounds complete the item.
 
@@ -48,6 +55,9 @@ NAMED LIMITS (Scaling Mandate 6; also in docs/pgen_contract.md §17):
   6. A `fill` slot's families are matched by TEXT (the record has no pointer from a fill to the
      fill it nests): when two families can print the same string ("impossible" as a term and
      as a bank answer), both are listed. Over-inclusive, never lossy.
+  7. `appears_in` / `nested_in` are matched by text the same way (limit 6): a family whose text
+     happens to equal another field's text (an option "5" and a hint "5") is listed in both.
+     Over-inclusive, never lossy. They are observed over `paths()` only (limit 1).
 """
 from __future__ import annotations
 
@@ -64,8 +74,9 @@ from backend.app.practice_gen.slots import DERIVED_REASONS, RENDERERS, TRANSFORM
 
 # Bumped only when the item's SHAPE changes on purpose; it is part of every hash, so a bump
 # stales every review (which is what a shape change must do). `stem_review_hash_drift_17`
-# catches a hash that changes WITHOUT a bump.
-HASH_VERSION = 1
+# catches a hash that changes WITHOUT a bump. 2 (2026-10-14, owner ruling 46a): every family
+# carries `appears_in` / `nested_in`, the learner-read fields its text was observed in.
+HASH_VERSION = 2
 
 _ALNUM = re.compile(r"[^\W_]")            # a letter or digit, in any script
 
@@ -142,6 +153,50 @@ def reaching(problem: Dict[str, Any], fills: List[Any]) -> List[Any]:
             if domain == "fill":
                 stack.extend(g for g in by_text.get(str(value), []) if g is not f)
     return [f for f in fills if id(f) in seen]
+
+
+def field_roles(problem: Dict[str, Any], reach: List[Any]) -> Dict[int, Tuple[set, set]]:
+    """
+    {id(fill): (fields, parents)} for every reaching fill (owner ruling 46a). `fields` are the
+    learner-read fields (`validate_language._texts`' names, list index dropped: `hints`, not
+    `hints[2]`) whose text IS the fill's text, or the text of a wordless wrapper it fills, since
+    such a wrapper adds nothing; `parents` are the family keys of the non-wrapper fills whose
+    `fill` slot it fills (it is read inside them). Matched by text, as `reaching` is.
+    """
+    from backend.app.practice_gen.validation.validate_language import _texts
+
+    direct: Dict[str, set] = {}
+    for where, text in _texts(problem):
+        direct.setdefault(text, set()).add(where.split("[", 1)[0])
+    holders: Dict[str, List[Any]] = {}
+    for g in reach:
+        for _n, v, d in g.slots:
+            if d == "fill":
+                holders.setdefault(str(v), []).append(g)
+    memo: Dict[int, Tuple[set, set]] = {}
+    visiting: set = set()
+
+    def roles(f: Any) -> Tuple[set, set]:
+        if id(f) in memo:
+            return memo[id(f)]
+        if id(f) in visiting:          # two wrappers printing the same text fill each other
+            return set(), set()
+        visiting.add(id(f))
+        fields, parents = set(direct.get(f.text, ())), set()
+        for g in holders.get(f.text, []):
+            if g is f:
+                continue
+            if is_wordless_wrapper(g):
+                up_fields, up_parents = roles(g)
+                fields |= up_fields
+                parents |= up_parents
+            else:
+                parents.add(family_key(g))
+        visiting.discard(id(f))
+        memo[id(f)] = (fields, parents)
+        return memo[id(f)]
+
+    return {id(f): roles(f) for f in reach}
 
 
 def observe_lc(node_id: str) -> Tuple[List[Tuple[int, Optional[str], Dict[str, Any], List[Any], Dict[str, Any]]],
@@ -231,6 +286,7 @@ def build_item(node_id: str, renders=None) -> Tuple[Dict[str, Any], Dict[str, An
         by_text: Dict[str, List[Any]] = {}
         for f in reach:
             by_text.setdefault(f.text, []).append(f)
+        roles = field_roles(problem, reach)
 
         def sources(value: str, holder: Any, depth: int = 0) -> set:
             """Family keys whose text fills a `fill` slot, looking through wordless wrappers."""
@@ -252,7 +308,10 @@ def build_item(node_id: str, renders=None) -> Tuple[Dict[str, Any], Dict[str, An
                 continue
             key = family_key(f)
             fam = fams.setdefault(key, {"site": f.site, "path": (seed, formatter), "slots": OrderedDict(),
-                                        "chosen_by": set()})
+                                        "chosen_by": set(), "fields": set(), "nested_in": set()})
+            fields, parents = roles[id(f)]
+            fam["fields"] |= fields
+            fam["nested_in"] |= parents
             srcs, whys = dict(f.sources), dict(f.reasons)
             fam["chosen_by"] |= set(srcs.get("__template__", ()))
             for name, value, domain in f.slots:
@@ -342,9 +401,17 @@ def build_item(node_id: str, renders=None) -> Tuple[Dict[str, Any], Dict[str, An
         grouped: "OrderedDict[str, Dict[str, Any]]" = OrderedDict()
         for name, descs in slots_out.items():
             grouped.setdefault(_dump(_canon(descs)), {"slots": [], "domains": descs})["slots"].append(name)
+        # Ruling 46a: where the learner reads this family's text. A family seen in no field and
+        # nested in no other family reached learner text by no path this builder can name.
+        nested = sorted(ids[p] for p in fam["nested_in"] if p in ids and p != k)
+        if not fam["fields"] and not nested:
+            raise ValueError(f"stem packet: family {k[1]!r} at {fam['site']} reaches learner text, yet is in no "
+                             f"learner-read field and nested in no packeted family")
         families.append({
             "id": ids[k],
             "template": k[1],
+            "appears_in": sorted(fam["fields"]),
+            "nested_in": nested,
             "transformation": _transformation(k[2]),
             "slots": list(grouped.values()),
             "template_chosen_by_values": sorted(fam["chosen_by"]),

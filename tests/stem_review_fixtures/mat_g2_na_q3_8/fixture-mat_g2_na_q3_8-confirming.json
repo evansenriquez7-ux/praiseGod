@@ -1,21 +1,21 @@
 {
- "schema_version": 1,
- "hash_version": 1,
+ "schema_version": 2,
+ "hash_version": 2,
  "node_id": "mat_g2_na_q3_8",
  "record_id": "fixture-mat_g2_na_q3_8-confirming",
  "role": "confirming",
  "confirms": "fixture-mat_g2_na_q3_8-first",
  "item_id": "FIX-001",
- "lc_hash": "7a8a21e07fc9830542233d7c72e5632d2f3391a8a785dd40990eb6974322d734",
+ "lc_hash": "a04e1781318f4ec9120f6bea880e3a5b1b35dc471ac2cd2d073463ece15c0f46",
  "judged_by": "fixture-not-a-judge-mat_g2_na_q3_8-confirming",
  "dispatch_id": "fixture-mat_g2_na_q3_8-confirming",
  "filed_at": "2026-10-13T01:00:00Z",
  "delivery": "fixture written by tests/stem_review_fixture.py for §17 mutation proofs; no judge was dispatched, so no judge read the packet or CLAUDE.md",
  "tool_uses_by_judge": "none (hand-written fixture)",
- "dispatch_prompt_digest": "df2b06994194477d4b7d0c02943ce46f09da7b05357c264044b067e7287dfffb",
- "raw_reply": "{\"item\": \"FIX-001\", \"clauses\": {\"distinguish\": {\"verdict\": \"PRODUCIBLE\", \"template\": \"{d} ÷ 2 comes out exactly, so {d} is an even number\", \"reasoning\": \"Fixture: the template '{d} ÷ 2 comes out exactly, so {d} is an even number' addresses this clause.\"}, \"even_and_odd_numbers\": {\"verdict\": \"PRODUCIBLE\", \"template\": \"Nothing is left over, so {n} is an even number.\", \"reasoning\": \"Fixture: the template 'Nothing is left over, so {n} is an even number.' addresses this clause.\"}, \"division\": {\"verdict\": \"PRODUCIBLE\", \"template\": \"Divide {n} by 2: how many 2s fit into {n}?\", \"reasoning\": \"Fixture: the template 'Divide {n} by 2: how many 2s fit into {n}?' addresses this clause.\"}, \"divisor_2\": {\"verdict\": \"PRODUCIBLE\", \"template\": \"2 × {half} = {twice}, and {n} − {twice} = {left}.\", \"reasoning\": \"Fixture: the template '2 × {half} = {twice}, and {n} − {twice} = {left}.' addresses this clause.\"}}, \"failing_templates\": [], \"overall\": \"PASS\", \"reasoning\": \"Fixture, not a judgment: each template names the remainder of a division by 2, e.g. '1 is left over, so {n} is an odd number.', and uses no gated word.\"}",
- "raw_reply_digest": "08db9b780d566d05f87a883260af8bf90ca87ea113bc903ce8112955373c32c0",
- "packet_digest": "5122579c126341d6f6bd898eae0a736d1c6c07aef0a1a917f125654f3999b472",
+ "dispatch_prompt_digest": "61a552388a95607d26346cb86823249eab09ad4fb3fcdedb6a296df57ba31e7b",
+ "raw_reply": "{\"item\": \"FIX-001\", \"clauses\": {\"distinguish\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F11\", \"template\": \"{d} ÷ 2 comes out exactly, so {d} is an even number\", \"reasoning\": \"Fixture: the template '{d} ÷ 2 comes out exactly, so {d} is an even number' addresses this clause.\"}, \"even_and_odd_numbers\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F04\", \"template\": \"Nothing is left over, so {n} is an even number.\", \"reasoning\": \"Fixture: the template 'Nothing is left over, so {n} is an even number.' addresses this clause.\"}, \"division\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F03\", \"template\": \"Divide {n} by 2: how many 2s fit into {n}?\", \"reasoning\": \"Fixture: the template 'Divide {n} by 2: how many 2s fit into {n}?' addresses this clause.\"}, \"divisor_2\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F02\", \"template\": \"2 × {half} = {twice}, and {n} − {twice} = {left}.\", \"reasoning\": \"Fixture: the template '2 × {half} = {twice}, and {n} − {twice} = {left}.' addresses this clause.\"}}, \"failing_families\": [], \"failing_templates\": [], \"overall\": \"PASS\", \"reasoning\": \"Fixture, not a judgment: each template names the remainder of a division by 2, e.g. '1 is left over, so {n} is an odd number.', and uses no gated word.\"}",
+ "raw_reply_digest": "c05a443b9bd5530a3e4e5a0c4db9cd33a2dc93a09c508214e9e10e739f55ff11",
+ "packet_digest": "848a15008fd6eeb008bc4358b2496d4a1357694618ff13bba5cf5eb5c8137804",
  "family_keys": {
   "F01": {
    "source": "backend/app/practice_gen/dna/na/division.py",
@@ -356,6 +356,10 @@
    {
     "id": "F01",
     "template": "1 is left over, so {n} is an odd number.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
     "transformation": null,
     "slots": [
      {
@@ -380,6 +384,10 @@
    {
     "id": "F02",
     "template": "2 × {half} = {twice}, and {n} − {twice} = {left}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
     "transformation": null,
     "slots": [
      {
@@ -434,6 +442,10 @@
    {
     "id": "F03",
     "template": "Divide {n} by 2: how many 2s fit into {n}?",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
     "transformation": null,
     "slots": [
      {
@@ -458,6 +470,10 @@
    {
     "id": "F04",
     "template": "Nothing is left over, so {n} is an even number.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
     "transformation": null,
     "slots": [
      {
@@ -482,6 +498,10 @@
    {
     "id": "F05",
     "template": "{label}",
+    "appears_in": [
+     "distractors"
+    ],
+    "nested_in": [],
     "transformation": null,
     "slots": [
      {
@@ -503,6 +523,10 @@
    {
     "id": "F06",
     "template": "{member}",
+    "appears_in": [
+     "distractors"
+    ],
+    "nested_in": [],
     "transformation": null,
     "slots": [
      {
@@ -526,6 +550,12 @@
    {
     "id": "F07",
     "template": "Dividing {d} by 2 does not give an exact whole number, so {d} is an odd number",
+    "appears_in": [
+     "format_data.statement"
+    ],
+    "nested_in": [
+     "F13"
+    ],
     "transformation": null,
     "slots": [
      {
@@ -550,6 +580,12 @@
    {
     "id": "F08",
     "template": "Dividing {d} by 2 gives an exact whole number, so {d} is an even number",
+    "appears_in": [
+     "format_data.statement"
+    ],
+    "nested_in": [
+     "F13"
+    ],
     "transformation": null,
     "slots": [
      {
@@ -574,6 +610,12 @@
    {
     "id": "F09",
     "template": "{d} can be divided into 2 equal parts, so {d} is an even number",
+    "appears_in": [
+     "format_data.statement"
+    ],
+    "nested_in": [
+     "F13"
+    ],
     "transformation": null,
     "slots": [
      {
@@ -598,6 +640,12 @@
    {
     "id": "F10",
     "template": "{d} cannot be divided into 2 equal whole parts, so {d} is an odd number",
+    "appears_in": [
+     "format_data.statement"
+    ],
+    "nested_in": [
+     "F13"
+    ],
     "transformation": null,
     "slots": [
      {
@@ -622,6 +670,12 @@
    {
     "id": "F11",
     "template": "{d} ÷ 2 comes out exactly, so {d} is an even number",
+    "appears_in": [
+     "format_data.statement"
+    ],
+    "nested_in": [
+     "F13"
+    ],
     "transformation": null,
     "slots": [
      {
@@ -646,6 +700,12 @@
    {
     "id": "F12",
     "template": "{d} ÷ 2 does not come out exactly, so {d} is an odd number",
+    "appears_in": [
+     "format_data.statement"
+    ],
+    "nested_in": [
+     "F13"
+    ],
     "transformation": null,
     "slots": [
      {
@@ -670,6 +730,10 @@
    {
     "id": "F13",
     "template": "{statement}. True or False?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
     "transformation": null,
     "slots": [
      {

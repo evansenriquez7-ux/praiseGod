@@ -1,21 +1,21 @@
 {
- "schema_version": 1,
- "hash_version": 1,
+ "schema_version": 2,
+ "hash_version": 2,
  "node_id": "mat_g3_mg_q2_0",
  "record_id": "fixture-mat_g3_mg_q2_0-first",
  "role": "first",
  "confirms": null,
  "item_id": "FIX-002",
- "lc_hash": "442205911ea50d4cb5f29003b61012525e9100c4cf1f7f9b25b941616de7aeac",
+ "lc_hash": "823507b5cdf82e25c1625e042552b3f588c9d4736477d203a95c9872385a294b",
  "judged_by": "fixture-not-a-judge-mat_g3_mg_q2_0-first",
  "dispatch_id": "fixture-mat_g3_mg_q2_0-first",
  "filed_at": "2026-10-13T00:00:00Z",
  "delivery": "fixture written by tests/stem_review_fixture.py for §17 mutation proofs; no judge was dispatched, so no judge read the packet or CLAUDE.md",
  "tool_uses_by_judge": "none (hand-written fixture)",
- "dispatch_prompt_digest": "907bc41911a0eccc5bee09b39faf8e4e8fbe1c54844960d60affa5ea3cb78e30",
- "raw_reply": "{\"item\": \"FIX-002\", \"clauses\": {\"measure_mass\": {\"verdict\": \"PRODUCIBLE\", \"template\": \"{term}\", \"reasoning\": \"Fixture: hand-written.\"}, \"grams_kilograms_and_or_milligrams\": {\"verdict\": \"PRODUCIBLE\", \"template\": \"{term}\", \"reasoning\": \"Fixture: hand-written.\"}, \"measuring_tools\": {\"verdict\": \"PRODUCIBLE\", \"template\": \"{term}\", \"reasoning\": \"Fixture: hand-written.\"}}, \"failing_templates\": [], \"overall\": \"PASS\", \"reasoning\": \"Fixture, not a judgment: the template '{term}' was read with its domains, and nothing in it is out of scope.\"}",
- "raw_reply_digest": "89b3b658ee7c914d015078774fa80af16a867dc30258204747f482405373a8b6",
- "packet_digest": "19f391b6ca10910d99b8dcdce56d4e55a3066998b58d8e705ebc9a49f0f87354",
+ "dispatch_prompt_digest": "a5dda90b6e817e40dee08c9350ee66111425064f250d33cd4fde230d75210b61",
+ "raw_reply": "{\"item\": \"FIX-002\", \"clauses\": {\"measure_mass\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F01\", \"template\": \"{term}\", \"reasoning\": \"Fixture: hand-written.\"}, \"grams_kilograms_and_or_milligrams\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F01\", \"template\": \"{term}\", \"reasoning\": \"Fixture: hand-written.\"}, \"measuring_tools\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F01\", \"template\": \"{term}\", \"reasoning\": \"Fixture: hand-written.\"}}, \"failing_families\": [], \"failing_templates\": [], \"overall\": \"PASS\", \"reasoning\": \"Fixture, not a judgment: the template '{term}' was read with its domains, and nothing in it is out of scope.\"}",
+ "raw_reply_digest": "848f9264d9c494db2c8257dde88a15ec0024ced43cd7048649ac1d0e64086c75",
+ "packet_digest": "429f1a3ce6c7116219ebf4908eec06679166a43b63a58ea85687851650883d59",
  "family_keys": {
   "F01": {
    "source": "backend/app/practice_gen/dna/base.py",
@@ -290,6 +290,10 @@
    {
     "id": "F01",
     "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F05"
+    ],
     "transformation": null,
     "slots": [
      {
@@ -313,6 +317,10 @@
    {
     "id": "F02",
     "template": "Read the scale: find the number the pointer points to.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
     "transformation": null,
     "slots": [],
     "template_chosen_by_values": [
@@ -322,6 +330,10 @@
    {
     "id": "F03",
     "template": "The mass shown is {reading} {unit}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
     "transformation": null,
     "slots": [
      {
@@ -360,6 +372,10 @@
    {
     "id": "F04",
     "template": "{key}",
+    "appears_in": [
+     "correct_answer"
+    ],
+    "nested_in": [],
     "transformation": null,
     "slots": [
      {
@@ -385,6 +401,10 @@
    {
     "id": "F05",
     "template": "Look at the {tool}. What is the {quantity} of {object_label}? Give your answer in {unit}.",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
     "transformation": null,
     "slots": [
      {

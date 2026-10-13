@@ -6071,11 +6071,12 @@ MUTATIONS: List[Mutation] = [
         edits={},
         apply_fn=lambda: _plant_stem_reply(
             "mat_g2_na_q3_8", "confirming",
-            lambda r: r.update(overall="FAIL", failing_templates=["1 is left over, so {n} is an odd number."])),
+            lambda r: r.update(overall="FAIL", failing_families=["F01"],
+                               failing_templates=["1 is left over, so {n} is an odd number."])),
         command=["backend.app.practice_gen.validation.validate_stem_review", "--node-ids", "mat_g2_na_q3_8",
                  "--review-dir", "tests/stem_review_fixtures"],
-        expected_check="§17 a confirmed FAIL is a named finding",
-        expect_output_contains=["stem_review_fail_17 (", "Failing: '1 is left over, so {n} is an odd number.' (reached at seed"],
+        expected_check="§17 a confirmed FAIL is a named finding, by family id (rulings 44e, 46b)",
+        expect_output_contains=["stem_review_fail_17 (", "Failing: F01 '1 is left over, so {n} is an odd number.' (reached at seed"],
         baseline_must_not_contain=["FAIL stem_review_fail_17"],
     ),
     Mutation(
@@ -6088,13 +6089,71 @@ MUTATIONS: List[Mutation] = [
         edits={},
         apply_fn=lambda: _plant_stem_reply(
             "mat_g2_na_q3_8", "confirming",
-            lambda r: r["clauses"].update(divisor_2={"verdict": "NOT_PRODUCIBLE", "template": None,
+            lambda r: r["clauses"].update(divisor_2={"verdict": "NOT_PRODUCIBLE", "family": None, "template": None,
                                                      "reasoning": "Fixture: hand-written."})),
         command=["backend.app.practice_gen.validation.validate_stem_review", "--node-ids", "mat_g2_na_q3_8",
                  "--review-dir", "tests/stem_review_fixtures"],
         expected_check="§17 an unproducible clause is a named finding (ruling 44g)",
         expect_output_contains=["stem_clause_unproducible_17 (", "clause 'divisor_2' ('2') is ruled NOT_PRODUCIBLE"],
         baseline_must_not_contain=["FAIL stem_clause_unproducible_17"],
+    ),
+    # Owner ruling 46 (2026-10-14): every family says where the learner reads it, and a reply
+    # names family ids beside the templates it quotes.
+    Mutation(
+        name="stem_field_roles_changed_without_review",
+        asserts=["stem_review_stale_17"],
+        description=(
+            "Make the packet builder keep each field's list index (`hints[0]` instead of `hints`). "
+            "What a judge reads about WHERE a family appears changed (ruling 46a), so every "
+            "approval of it must go stale; a hash that left the roles out would keep it."
+        ),
+        edits={
+            "backend/app/practice_gen/validation/stem_packets.py": (
+                '        direct.setdefault(text, set()).add(where.split("[", 1)[0])\n',
+                '        direct.setdefault(text, set()).add(where)  # planted mutation\n',
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_stem_review", "--node-ids", "mat_g2_na_q3_8",
+                 "--review-dir", "tests/stem_review_fixtures"],
+        expected_check="§17 a family's learner-read fields are bound by freshness (ruling 46a)",
+        expect_output_contains=["stem_review_stale_17 (", "domain/provenance changed in ['1 is left over, so {n} is an odd number.'"],
+        baseline_must_not_contain=["FAIL stem_review_stale_17"],
+    ),
+    Mutation(
+        name="stem_review_failing_family_mismatch",
+        asserts=["stem_review_record_invalid_17"],
+        description=(
+            "File a coherent confirming FAIL whose failing_families name F04 while its "
+            "failing_templates quote F01's template. Ids and quotes must agree (ruling 46b), or "
+            "the finding names a family the judge did not mean."
+        ),
+        edits={},
+        apply_fn=lambda: _plant_stem_reply(
+            "mat_g2_na_q3_8", "confirming",
+            lambda r: r.update(overall="FAIL", failing_families=["F04"],
+                               failing_templates=["1 is left over, so {n} is an odd number."])),
+        command=["backend.app.practice_gen.validation.validate_stem_review", "--node-ids", "mat_g2_na_q3_8",
+                 "--review-dir", "tests/stem_review_fixtures"],
+        expected_check="§17 failing family ids print exactly the quoted failing templates (ruling 46b)",
+        expect_output_contains=["stem_review_record_invalid_17 (", "failing_families ['F04'] print the template(s)"],
+        baseline_must_not_contain=["FAIL stem_review_record_invalid_17"],
+    ),
+    Mutation(
+        name="stem_review_clause_family_mismatch",
+        asserts=["stem_review_record_invalid_17"],
+        description=(
+            "File a coherent confirming reply whose 'division' clause names family F01 while "
+            "quoting F03's template. A clause's producing family is the id, and it must print "
+            "the template quoted (ruling 46b)."
+        ),
+        edits={},
+        apply_fn=lambda: _plant_stem_reply(
+            "mat_g2_na_q3_8", "confirming", lambda r: r["clauses"]["division"].update(family="F01")),
+        command=["backend.app.practice_gen.validation.validate_stem_review", "--node-ids", "mat_g2_na_q3_8",
+                 "--review-dir", "tests/stem_review_fixtures"],
+        expected_check="§17 a clause's family id prints the quoted template (ruling 46b)",
+        expect_output_contains=["stem_review_record_invalid_17 (", "clause 'division': family 'F01' is not a packet family printing"],
+        baseline_must_not_contain=["FAIL stem_review_record_invalid_17"],
     ),
 ]
 
