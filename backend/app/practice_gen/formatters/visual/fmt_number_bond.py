@@ -45,7 +45,7 @@ import random
 from backend.app.practice_gen.dna.base import FormattedProblem, QuestionContext
 from backend.app.practice_gen.formatters._distractor_fallback import augment_distractors
 from backend.app.practice_gen.formatters._option_order import shuffle_options
-from backend.app.practice_gen.slots import E, S, derived, fill
+from backend.app.practice_gen.slots import E, G, S, derived, fill
 from backend.app.practice_gen.formatters._answer_slots import correct_option_key
 
 
@@ -170,7 +170,7 @@ def _stem(bond: dict, interaction_mode: str, cumulative_vocab) -> str:
     if bp == "whole":
         sum_word = "sum" if "sum" in cumulative_vocab else "total"
         return fill("The two parts are {p1} and {p2}. What is the {word}?", p1=num("part1"),
-                    p2=num("part2"), word=S(sum_word, E(("sum", "total"), "vocab gate 'sum'")))
+                    p2=num("part2"), word=S(sum_word, G(("sum", "total"), "vocab gate 'sum'", "sum")))
     known_pos = "part2" if bp == "part1" else "part1"
     return fill("The total is {whole} and one part is {part}. What is the other part?",
                 whole=num("whole"), part=num(known_pos))

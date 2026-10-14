@@ -19,7 +19,8 @@ structured record (`slots.capture()`, ruling 28), never from learner-facing text
     text adds no letter or digit (`{answer}`, `{p0}, {p1}`): ruling 44a. A wrapper that adds words
     (`{statement}. True or False?`) is a family of its own;
   * each slot's domain is rendered for a reader by RESOLVING it (ruling 44c): an `enum:`/`noun:`
-    list by its members and a `bank:` field by its bank's rows (ruling 47, below), a runtime `E` by the union of its members and an
+    list by its members and a `bank:` field by its bank's rows (ruling 47, below), a runtime `E` by the union of its members (a
+    vocabulary gate `G` by the ONE word it gives the lc, ruling 48, below) and an
     `R` by its lowest lo and highest hi over the enumerated renders, `value:<key>` by its key, a
     `fill` slot by the families whose text filled it, a type-only slot by its registered reason
     and `src`. Provenance (`src`, template `_src`) and the lc's `derives`/`computes` declarations
@@ -36,6 +37,13 @@ structured record (`slots.capture()`, ruling 28), never from learner-facing text
     enumerated printed its fields of the bank from ONE row. Found on the second real dispatch:
     printed as one flat list per field, a bank lost which answer each question is keyed to, and
     a judge FAILed a correctly keyed bank as "questions and answers can be mismatched";
+  * only text the pg can print is shown (owner ruling 48, 2026-10-14): a vocabulary gate `G` shows
+    the one word the generator's own vocabulary rule gives the lc (`prints`); a bank shows only
+    the rows a render drew -- on `paths()` or on the student path at `SWEEP_SEEDS` -- with
+    `rows_left_out`; and a runtime `E` whose declared members, at every render that fills it, lie
+    in one unprinted field of the row that render drew is shown as that row's field (`read_from`).
+    Found on the first fan-out: judges FAILed on "chart" (a gate's other word), on shape rows the
+    lc never draws, and on categories shown apart from the subject row they belong to;
   * the lc's competency text, clauses (`requires`), vocabulary gates and declared variants
     (ruling 26) and declared bounds complete the item.
 
@@ -63,11 +71,18 @@ NAMED LIMITS (Scaling Mandate 6; also in docs/pgen_contract.md §17):
   7. `appears_in` / `nested_in` are matched by text the same way (limit 6): a family whose text
      happens to equal another field's text (an option "5" and a hint "5") is listed in both.
      Over-inclusive, never lossy. They are observed over `paths()` only (limit 1).
-  8. `banks` prints EVERY row of a bank that carries a field this lc prints, including rows the
-     lc's generator filters out (a bank shared by several lcs): over-inclusive, as §14's own
-     membership check is. `one_row_per_problem` is observed over `paths()` only (limit 1), and
-     rows are matched by value: a render whose values all occur together in some row counts as
-     one-row even if the generator took them from two rows that happen to share them.
+  8. `banks` prints the rows drawn on `paths()` or on the student path at `SWEEP_SEEDS` (41-240;
+     ruling 48b, superseding ruling 47's every-row printing): a row first drawn only later, or
+     only by a pinned formatter or another profile, is not shown (measured 2026-10-14 on 46 lcs:
+     none). `one_row_per_problem` is observed over `paths()` only (limit 1), and rows are matched
+     by value: a render whose values all occur together in some row counts as one-row even if the
+     generator took them from two rows that happen to share them, and both rows count as drawn.
+  9. A runtime `E` keeps every DECLARED member: sampling cannot tell a rare member from one the lc
+     can never print (measured 2026-10-14: no saturation at 1,000 seeds), so only a gate `G`
+     (decided by its declared rule) and bank rows are narrowed. A vocabulary-conditioned word
+     recorded as a plain `E` is shown with both its words.
+ 10. The pairing of a runtime `E` with the drawn row (ruling 48c) is observed only on renders that
+     also print a field of that bank; a slot filled where none is printed stays a runtime list.
 """
 from __future__ import annotations
 
@@ -81,7 +96,7 @@ import sys
 from collections import OrderedDict
 from typing import Any, Dict, List, Optional, Tuple
 
-from backend.app.practice_gen.slots import DERIVED_REASONS, RENDERERS, TRANSFORMS, E, R
+from backend.app.practice_gen.slots import DERIVED_REASONS, RENDERERS, TRANSFORMS, E, G, R
 
 # Bumped only when the item's SHAPE changes on purpose; it is part of every hash, so a bump
 # stales every review (which is what a shape change must do). `stem_review_hash_drift_17`
@@ -89,7 +104,16 @@ from backend.app.practice_gen.slots import DERIVED_REASONS, RENDERERS, TRANSFORM
 # carries `appears_in` / `nested_in`, the learner-read fields its text was observed in.
 # 3 (2026-10-14, owner ruling 47): an item bank is printed as its rows in `banks`, not as one
 # flat list per field, with whether each problem printed its fields from one row.
-HASH_VERSION = 3
+# 4 (2026-10-14, owner ruling 48): only text the pg can print -- a vocabulary gate shows the one
+# word it gives the lc, a bank only the rows a render drew (enumerated paths plus SWEEP_SEEDS),
+# and a runtime slot read from the drawn row is shown as that row's field.
+HASH_VERSION = 4
+
+# Owner ruling 48b: extra STUDENT-path seeds rendered only to learn which bank rows the lc draws
+# (never judged, never a family source). Measured 2026-10-14 on 46 lcs (seeds 41-1040 and every
+# advertised formatter pinned at 41-240): every bank row first drawn outside the 43 enumerated
+# renders was drawn by seed 240, and none later.
+SWEEP_SEEDS = tuple(range(41, 241))
 
 _ALNUM = re.compile(r"[^\W_]")            # a letter or digit, in any script
 
@@ -247,6 +271,33 @@ def _bank_rows(dotted: str) -> List[Dict[str, Any]]:
     return list(rows)
 
 
+def _bank_sweep(node_id: str, dotteds: List[str]) -> Dict[str, set]:
+    """
+    {bank: row indices} drawn on the STUDENT path at `SWEEP_SEEDS` (owner ruling 48b), for the
+    banks the enumerated renders already print. Rows are matched by value, as on those renders.
+    Only which rows are drawn is read here: these renders are never judged, and a family or a
+    bank only they reach is not in the packet (limit 1). A student-path raise propagates.
+    """
+    from backend.app.practice_gen.validation import validate_slots as VS
+
+    out: Dict[str, set] = {d: set() for d in dotteds}
+    if not dotteds:
+        return out
+    for seed in SWEEP_SEEDS:
+        problem, fills, _values = VS.observe(node_id, seed)
+        drawn: Dict[str, set] = {}
+        for f in reaching(problem, fills):
+            for _n, v, d in f.slots:
+                if isinstance(d, str) and d.startswith("bank:"):
+                    dotted, _, fld = d[len("bank:"):].rpartition(":")
+                    drawn.setdefault(dotted, set()).add((fld, _dump(_canon(v))))
+        for dotted, pairs in drawn.items():
+            if dotted in out:
+                flds = {fld for fld, _v in pairs}
+                out[dotted] |= {i for i, r in enumerate(_bank_rows(dotted)) if pairs <= _row_pairs(r, flds)}
+    return out
+
+
 def _row_pairs(row: Dict[str, Any], fields: set) -> set:
     """(field, canonical member) for every value a row offers in `fields` (a list field: each member)."""
     out = set()
@@ -316,8 +367,15 @@ def build_item(node_id: str, renders=None) -> Tuple[Dict[str, Any], Dict[str, An
     # Ruling 47: per bank (module path), the fields this lc prints from it and the first render
     # whose printed fields of it are found together in NO single row (None: every render's are).
     bank_seen: Dict[str, Dict[str, Any]] = {}
+    # Ruling 48: the vocabulary a gate is resolved against (the generator's own rule); per
+    # render, the bank rows it drew; per (family, slot, basis) of a runtime E, the members it
+    # declared at each render -- to find a slot that is really a field of the drawn row.
+    from backend.app.practice_gen.validation.validate_slots import lc_vocab
+    vocab = lc_vocab(node_id)
+    render_rows: List[Dict[str, set]] = []
+    e_seen: Dict[Tuple[Any, ...], List[Tuple[int, frozenset]]] = {}
 
-    for seed, formatter, problem, fills, values in renders:
+    for ri, (seed, formatter, problem, fills, values) in enumerate(renders):
         drawn: Dict[str, set] = {}
         reach = reaching(problem, fills)
         by_text: Dict[str, List[Any]] = {}
@@ -360,10 +418,18 @@ def build_item(node_id: str, renders=None) -> Tuple[Dict[str, Any], Dict[str, An
                     d = slot.setdefault(("R", domain.basis), {"domain": "a number in a range", "basis": domain.basis,
                                                              "lo": domain.lo, "hi": domain.hi})
                     d["lo"], d["hi"] = min(d["lo"], domain.lo), max(d["hi"], domain.hi)
+                elif isinstance(domain, G):
+                    # Ruling 48a: for this lc the gate prints ONE word; the other is left out.
+                    d = slot.setdefault(("G", domain.basis, domain.requires), {
+                        "domain": "the one word a vocabulary gate gives this lc", "basis": domain.basis,
+                        "requires_vocab": domain.requires, "prints": _canon(domain.for_vocab(vocab)),
+                        "words_left_out": 1})
                 elif isinstance(domain, E):
                     d = slot.setdefault(("E", domain.basis), {"domain": "one of the generator's own choices",
                                                              "basis": domain.basis, "members": set()})
                     d["members"] |= {_dump(_canon(m)) for m in domain.members}
+                    e_seen.setdefault((key, name, domain.basis), []).append(
+                        (ri, frozenset(_dump(_canon(m)) for m in domain.members)))
                 elif domain is None:
                     d = slot.setdefault(("none",), {"domain": "UNCLASSIFIED (no domain recorded)"})
                 elif isinstance(domain, str):
@@ -381,12 +447,49 @@ def build_item(node_id: str, renders=None) -> Tuple[Dict[str, Any], Dict[str, An
                     d["reason"] = whys[name]
         for dv in getattr(fills, "derivations", []):
             derivations.add((dv.kind, dv.key, tuple(dv.src)))
+        rows_here: Dict[str, set] = {}
         for dotted, pairs in drawn.items():
             seen_b = bank_seen.setdefault(dotted, {"fields": set(), "mixed_at": None})
             flds = {fld for fld, _v in pairs}
             seen_b["fields"] |= flds
-            if seen_b["mixed_at"] is None and not any(pairs <= _row_pairs(r, flds) for r in _bank_rows(dotted)):
+            rows_here[dotted] = {i for i, r in enumerate(_bank_rows(dotted)) if pairs <= _row_pairs(r, flds)}
+            if seen_b["mixed_at"] is None and not rows_here[dotted]:
                 seen_b["mixed_at"] = [seed, formatter]
+        render_rows.append(rows_here)
+
+    # Ruling 48c: a runtime E whose declared members, at EVERY render that fills it, lie in one
+    # field this lc does not otherwise print of a row that render drew, is that row's field (the
+    # pictograph's categories are its `_THEMES` row's own). Observed, never predicted; two
+    # candidate fields for one slot raise rather than choose.
+    paired: Dict[Tuple[Any, ...], Tuple[str, str]] = {}
+    for occ_key, occ in e_seen.items():
+        cands: Optional[set] = None
+        for ri, members in occ:
+            here = set()
+            for dotted, idxs in render_rows[ri].items():
+                rows = _bank_rows(dotted)
+                for i in idxs:
+                    for fld, v in rows[i].items():
+                        if fld in bank_seen[dotted]["fields"]:
+                            continue
+                        if members <= {_dump(_canon(m)) for m in (v if isinstance(v, (list, tuple)) else [v])}:
+                            here.add((dotted, fld))
+            cands = here if cands is None else cands & here
+            if not cands:
+                break
+        if cands:
+            if len(cands) > 1:
+                raise ValueError(f"stem packet: slot {occ_key[1]!r} ({occ_key[2]}) at {fams[occ_key[0]]['site']} "
+                                 f"matches {len(cands)} bank fields {sorted(cands)}; refusing to choose one")
+            paired[occ_key] = next(iter(cands))
+    paired_fields: Dict[str, set] = {}
+    for (k, name, basis), (dotted, fld) in paired.items():
+        slot = fams[k]["slots"][name]
+        del slot[("E", basis)]
+        slot[("id", f"bank:{dotted}:{fld}")] = {"domain": "a field of a fixed item bank", "_bank": dotted,
+                                                "field": fld, "read_from": "the row drawn for the problem"}
+        paired_fields.setdefault(dotted, set()).add(fld)
+    sweep = _bank_sweep(node_id, sorted(bank_seen))
 
     order = sorted(fams, key=lambda k: (k[0], k[1], k[2]))
     ids = {k: f"F{i + 1:02d}" for i, k in enumerate(order)}
@@ -412,12 +515,18 @@ def build_item(node_id: str, renders=None) -> Tuple[Dict[str, Any], Dict[str, An
         while label in banks:
             n += 1
             label = f"{name}#{n}"
-        flds = sorted(bank_seen[dotted]["fields"])
+        flds = sorted(bank_seen[dotted]["fields"] | paired_fields.get(dotted, set()))
+        # Ruling 48b: only the rows a render drew -- on the enumerated paths or the sweep.
+        drawn_rows = set().union(*(rr.get(dotted, set()) for rr in render_rows)) | sweep[dotted]
+        carrying = [i for i, r in enumerate(_bank_rows(dotted)) if any(f in r for f in flds)]
+        shown = [i for i in carrying if i in drawn_rows]
         banks[label] = {"fields": flds, "one_row_per_problem": bank_seen[dotted]["mixed_at"] is None,
-                        "rows": [{f: r[f] for f in flds if f in r} for r in _bank_rows(dotted)
-                                 if any(f in r for f in flds)]}
+                        "rows": [{f: _bank_rows(dotted)[i][f] for f in flds if f in _bank_rows(dotted)[i]}
+                                 for i in shown],
+                        "rows_left_out": len(carrying) - len(shown)}
         bank_label[dotted] = label
-        key_banks[label] = {"module": dotted, "first_render_not_from_one_row": bank_seen[dotted]["mixed_at"]}
+        key_banks[label] = {"module": dotted, "first_render_not_from_one_row": bank_seen[dotted]["mixed_at"],
+                            "rows_drawn": shown, "sweep_seeds": [SWEEP_SEEDS[0], SWEEP_SEEDS[-1]]}
 
     def _table(name: str, members: Any) -> str:
         # Each distinct member once, in the list's own order (a bank repeats answers across rows;

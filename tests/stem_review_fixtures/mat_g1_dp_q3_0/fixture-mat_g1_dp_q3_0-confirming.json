@@ -1,21 +1,21 @@
 {
  "schema_version": 2,
- "hash_version": 3,
+ "hash_version": 4,
  "node_id": "mat_g1_dp_q3_0",
  "record_id": "fixture-mat_g1_dp_q3_0-confirming",
  "role": "confirming",
  "confirms": "fixture-mat_g1_dp_q3_0-first",
  "item_id": "FIX-002",
- "lc_hash": "f658dca19f49d1d0c3ac16e51ac95f14aca675e67bd2fde882e9949262e1aaa4",
+ "lc_hash": "68731bb9d48139874be68889dfe55429622354405dc1dc05f64c7e35f99b35e9",
  "judged_by": "fixture-not-a-judge-mat_g1_dp_q3_0-confirming",
  "dispatch_id": "fixture-mat_g1_dp_q3_0-confirming",
  "filed_at": "2026-10-13T01:00:00Z",
  "delivery": "fixture written by tests/stem_review_fixture.py for §17 mutation proofs; no judge was dispatched, so no judge read the packet or CLAUDE.md",
  "tool_uses_by_judge": "none (hand-written fixture)",
- "dispatch_prompt_digest": "9002466dbbc8c9710e84f4a60a23c8fa3b5b5fa147831db8ddec79f5f2869b5b",
+ "dispatch_prompt_digest": "ee4d7710a6b5d1eaff7395ab7ff3141c05fad98f1b44ca5e7ecbaa0ba808862d",
  "raw_reply": "{\"item\": \"FIX-002\", \"clauses\": {\"collect_data\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F08\", \"template\": \"{question}\", \"reasoning\": \"Fixture: the template '{question}' addresses this clause.\"}, \"one_variable\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F08\", \"template\": \"{question}\", \"reasoning\": \"Fixture: the template '{question}' addresses this clause.\"}, \"simple_interview\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F08\", \"template\": \"{question}\", \"reasoning\": \"Fixture: the template '{question}' addresses this clause.\"}}, \"failing_families\": [], \"failing_templates\": [], \"overall\": \"PASS\", \"reasoning\": \"Fixture, not a judgment: the bank rows and the hints were read for the bank lc's gate words.\"}",
  "raw_reply_digest": "ad6f665d1a5d833e1ca0b7f6d79bdee8a7af62fd6f6c843b1c631c37dfb3698e",
- "packet_digest": "6d6e811eabb237985f95cbf3f6bf3a63813cddbda0767069d5f440710b100e25",
+ "packet_digest": "1e4caaab027915cf4fc7936efe3e0d2d94090dca7c66da3e2e135a8b05659ac1",
  "family_keys": {
   "F01": {
    "source": "backend/app/practice_gen/dna/dp/pictographs.py",
@@ -64,7 +64,7 @@
   },
   "F06": {
    "source": "backend/app/practice_gen/slots.py",
-   "first_site": "backend/app/practice_gen/slots.py:157",
+   "first_site": "backend/app/practice_gen/slots.py:180",
    "renderer": "",
    "path": [
     1,
@@ -73,7 +73,7 @@
   },
   "F07": {
    "source": "backend/app/practice_gen/slots.py",
-   "first_site": "backend/app/practice_gen/slots.py:159",
+   "first_site": "backend/app/practice_gen/slots.py:182",
    "renderer": "",
    "path": [
     1,
@@ -82,7 +82,7 @@
   },
   "F08": {
    "source": "backend/app/practice_gen/slots.py",
-   "first_site": "backend/app/practice_gen/slots.py:157",
+   "first_site": "backend/app/practice_gen/slots.py:180",
    "renderer": "",
    "path": [
     1,
@@ -672,7 +672,8 @@
       ],
       "question": "Paul asks 4 pupils for their favorite fruit. Which of these is a response collected from this interview?"
      }
-    ]
+    ],
+    "rows_left_out": 0
    }
   },
   "value_derivations": [],

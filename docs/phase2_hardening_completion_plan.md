@@ -1645,6 +1645,40 @@ that points at it break every time the section is refreshed.
 >     on cross-row pairing (no judge could check a bank's keys on those 20 lcs; the gap would stand as a
 >     named limit).
 >
+> 48. **A §17 judge judges only what the pg can print** (owner, 2026-10-14, asked in the H4-C session after
+>     the first fan-out on ruling 47's packets; the owner stated the principle -- "should judge based only on
+>     what is possible for the pg output to output" -- then chose the dispatcher's recommended option on each of
+>     three questions, the third after the dispatcher reported that its second recommendation did not work).
+>     Seven first judges ran (S441-001..006, one re-dispatch). Checked against real renders, three FAILs rested
+>     on text the lc never prints: S441-004 (mat_g1_dp_q3_3) FAILed four templates on "chart", a member of
+>     `E(("table", "chart"), "'table' gated by cumulative_vocab")`, though the lc introduces "table" and none
+>     of its 43 renders prints "chart"; S441-005 (mat_g1_mg_q1_0) FAILed on 'circle'/'corner' rows of a shared
+>     `_ITEM_POOL` the lc's filter never draws (its 43 renders offer only triangle, square, rectangle, "none
+>     of these") and on the gated 'sides'; S441-003 (mat_g1_dp_q3_2) FAILed {subj} as printable with another
+>     theme's categories, though the categories are the drawn `_THEMES` row's own (13/13 compare renders
+>     paired; the packet showed them as a separate runtime list).
+>     (a) **The packet shows only text the pg can print**, with a count of what it leaves out; freshness binds
+>     what is shown. This departs from ruling 44c's "union of its members" on the owner's authority.
+>     Rejected: every declared member shown, marked printed / not seen (a judge still reads "chart" and must
+>     reason about the gate, which is how S441-004 went wrong).
+>     (b) **"Can print" is decided by sampling only where sampling settles it: bank rows.** The dispatcher
+>     first recommended deciding every member by a wider sample, and the owner chose it; measured before
+>     building, on 46 lcs (student seeds 41-1040 and every advertised formatter pinned at 41-240): every bank
+>     row first drawn outside the enumerated renders was drawn by seed 240 and none later, but other runtime
+>     domains never saturate (about 2,000 new members per 100 seeds at seeds 641-1040; 57 of 178 unprinted
+>     members of 3-6-member domains print later), while every gate's other word never printed. The owner then
+>     chose: **bank rows** are shown when drawn on the enumerated paths or on student seeds 41-240;
+>     **vocabulary gates** are recorded as gates (`slots.G`) at their 36 sites -- an instrumentation edit to
+>     generator files, byte-identical, approved by the owner although the batch's orders keep it out of
+>     generator content -- so the packet shows the one word the gate gives the lc and §14 checks that word is
+>     the one printed; **other runtime domains** keep every declared member (sampling cannot tell rare from
+>     impossible), a named limit. Rejected: sampling everything (lenient by measurement: possible text a judge
+>     never sees); bank rows only, gates left as they were (judges keep FAILing on "chart"-type words).
+>     (c) **A runtime slot read from the drawn bank row is shown as that row's field**, observed per render
+>     (never predicted), with no generator edit. Not asked separately: the dispatcher's question on it was
+>     withdrawn when the owner stated the principle, which it follows from (a subject printed with another
+>     theme's categories is not something the pg can print).
+>
 > **Owner rulings recorded 2026-09-22, binding on the next session:**
 >
 > 1. **The medium test.** When a clause names a medium, decide from the competency's grammar

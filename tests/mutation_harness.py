@@ -6167,10 +6167,10 @@ MUTATIONS: List[Mutation] = [
         ),
         edits={
             "backend/app/practice_gen/validation/stem_packets.py": (
-                '                        "rows": [{f: r[f] for f in flds if f in r} for r in _bank_rows(dotted)\n'
-                '                                 if any(f in r for f in flds)]}\n',
-                '                        "rows": [{f: r[f]} for f in flds for r in _bank_rows(dotted)  # planted mutation\n'
-                '                                 if f in r]}\n',
+                '                        "rows": [{f: _bank_rows(dotted)[i][f] for f in flds if f in _bank_rows(dotted)[i]}\n'
+                '                                 for i in shown],\n',
+                '                        "rows": [{f: _bank_rows(dotted)[i][f]} for f in flds for i in shown  # planted mutation\n'
+                '                                 if f in _bank_rows(dotted)[i]],\n',
             )
         },
         command=["backend.app.practice_gen.validation.validate_stem_review", "--node-ids", "mat_g1_dp_q3_0",
@@ -6199,6 +6199,129 @@ MUTATIONS: List[Mutation] = [
                  "--review-dir", "tests/stem_review_fixtures"],
         expected_check="§17 a problem's bank fields are observed to come from one row (ruling 47)",
         expect_output_contains=["stem_review_stale_17 (", "changed section(s) ['banks']"],
+        baseline_must_not_contain=["FAIL stem_review_stale_17"],
+    ),
+    # Owner ruling 48 (2026-10-14): a judge judges only what the pg can print. A vocabulary gate shows
+    # the one word it gives the lc (and §14 checks that word is what prints); a bank shows only the
+    # rows the lc draws; a runtime slot read from the drawn row is shown as that row's field.
+    # mat_g1_mg_q1_0 (gates, a shared bank) and mat_g1_dp_q3_2 (categories) are the fixture lcs.
+    Mutation(
+        name="gate_prints_its_other_word",
+        asserts=["slot_domain_escape_14"],
+        description=(
+            "Swap the shape hints' 'side' gate so an lc that may not say 'sides' prints it. The §17 "
+            "packet shows only the word the gate gives the lc (ruling 48), so a gate that prints its "
+            "OTHER word is text no judge saw; §14 must name it."
+        ),
+        edits={
+            "backend/app/practice_gen/dna/mg/shapes_2d.py": (
+                '    sides_label = "sides" if "side" in cumulative_vocab else "straight edges"\n',
+                '    sides_label = "straight edges" if "side" in cumulative_vocab else "sides"  # planted mutation\n',
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_slots", "--node-ids", "mat_g1_mg_q1_0"],
+        expected_check="§14 a vocabulary gate prints the one word it gives the lc (ruling 48)",
+        expect_output_contains=["slot_domain_escape_14 (", "is the gate's other word"],
+        baseline_must_not_contain=["FAIL slot_domain_escape_14"],
+    ),
+    Mutation(
+        name="stem_gate_word_changed_without_review",
+        asserts=["stem_review_stale_17"],
+        description=(
+            "Make the packet builder show both of a gate's words instead of the one it gives the lc. "
+            "What a judge reads changed, so every approval of the gate lc must go stale."
+        ),
+        edits={
+            "backend/app/practice_gen/validation/stem_packets.py": (
+                '                        "requires_vocab": domain.requires, "prints": _canon(domain.for_vocab(vocab)),\n',
+                '                        "requires_vocab": domain.requires, "prints": _canon(list(domain.members)),  # planted mutation\n',
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_stem_review", "--node-ids", "mat_g1_mg_q1_0",
+                 "--review-dir", "tests/stem_review_fixtures"],
+        expected_check="§17 a gate's one word is bound by freshness (ruling 48)",
+        expect_output_contains=["stem_review_stale_17 (", "domain/provenance changed in"],
+        baseline_must_not_contain=["FAIL stem_review_stale_17"],
+    ),
+    Mutation(
+        name="stem_bank_undrawn_rows_shown_without_review",
+        asserts=["stem_review_stale_17"],
+        description=(
+            "Make the packet builder print every row of a shared bank again, drawn or not -- the "
+            "over-wide packet on which a judge FAILed mat_g1_mg_q1_0 for circle rows it never draws. "
+            "What a judge reads changed, so the approval must go stale."
+        ),
+        edits={
+            "backend/app/practice_gen/validation/stem_packets.py": (
+                '        shown = [i for i in carrying if i in drawn_rows]\n',
+                '        shown = list(carrying)  # planted mutation\n',
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_stem_review", "--node-ids", "mat_g1_mg_q1_0",
+                 "--review-dir", "tests/stem_review_fixtures"],
+        expected_check="§17 a bank shows only the rows the lc draws (ruling 48)",
+        expect_output_contains=["stem_review_stale_17 (", "changed section(s) ['banks']"],
+        baseline_must_not_contain=["FAIL stem_review_stale_17"],
+    ),
+    Mutation(
+        name="stem_bank_filter_widened_unseen",
+        asserts=["stem_review_stale_17"],
+        description=(
+            "Widen the 2-D shapes filter so the lc also draws compare-shapes rows. The packet must "
+            "observe the newly drawn rows, so the approval goes stale; a builder that kept the rows "
+            "it printed before would let unjudged rows reach learners."
+        ),
+        edits={
+            "backend/app/practice_gen/dna/mg/shapes_2d.py": (
+                '        and item["task_type"] == task_type\n        and item["orientation"] == orientation\n',
+                '        and (item["task_type"] == task_type or (item["task_type"] == "compare_shapes" and item["answer"] in ("triangle", "square", "rectangle")))  # planted mutation\n        and item["orientation"] == orientation\n',
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_stem_review", "--node-ids", "mat_g1_mg_q1_0",
+                 "--review-dir", "tests/stem_review_fixtures"],
+        expected_check="§17 the rows a bank lc draws are observed (ruling 48)",
+        expect_output_contains=["stem_review_stale_17 (", "changed section(s) ['banks']"],
+        baseline_must_not_contain=["FAIL stem_review_stale_17"],
+    ),
+    Mutation(
+        name="stem_row_pairing_dropped_without_review",
+        asserts=["stem_review_stale_17"],
+        description=(
+            "Make the packet builder stop showing a category slot as the drawn row's field, so the "
+            "subject and its categories look independent again -- the packet on which a judge FAILed "
+            "mat_g1_dp_q3_2. What a judge reads changed, so the approval must go stale."
+        ),
+        edits={
+            "backend/app/practice_gen/validation/stem_packets.py": (
+                '            paired[occ_key] = next(iter(cands))\n',
+                '            pass  # planted mutation\n',
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_stem_review", "--node-ids", "mat_g1_dp_q3_2",
+                 "--review-dir", "tests/stem_review_fixtures"],
+        expected_check="§17 a slot read from the drawn row is bound by freshness (ruling 48)",
+        expect_output_contains=["stem_review_stale_17 (", "domain/provenance changed in"],
+        baseline_must_not_contain=["FAIL stem_review_stale_17"],
+    ),
+    Mutation(
+        name="stem_row_pairing_broken_unseen",
+        asserts=["stem_review_stale_17"],
+        description=(
+            "Make the pictograph generator draw a graph's categories from the NEXT theme row, so the "
+            "subject printed no longer names its categories. The packet must observe that the slot is "
+            "no longer the drawn row's field, so the approval goes stale; a builder that assumed the "
+            "pairing would keep it."
+        ),
+        edits={
+            "backend/app/practice_gen/dna/dp/pictographs.py": (
+                '    cat_set = theme["categories"]\n',
+                '    cat_set = _THEMES[(_THEMES.index(theme) + 1) % len(_THEMES)]["categories"]  # planted mutation\n',
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_stem_review", "--node-ids", "mat_g1_dp_q3_2",
+                 "--review-dir", "tests/stem_review_fixtures"],
+        expected_check="§17 a slot read from the drawn row is observed per render (ruling 48)",
+        expect_output_contains=["stem_review_stale_17 (", "domain/provenance changed in"],
         baseline_must_not_contain=["FAIL stem_review_stale_17"],
     ),
 ]

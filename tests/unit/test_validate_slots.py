@@ -208,3 +208,25 @@ def test_bank_fields_records_the_row_as_domain_and_provenance():
     q = next(f for f in fills if f.text == "Q?")
     assert q.slots[0][2] == "bank:backend.app.practice_gen.dna.mg.shapes_2d._ITEM_POOL:question"
     assert dict(q.sources)["question"] == ("question", "answer", "distractors", "kind")
+
+
+def test_a_vocabulary_gate_prints_only_the_word_it_gives_the_lc():
+    """
+    Ruling 48a: a gate `G` is an E of two words, but for one lc only `for_vocab(vocab)` may
+    print; the other word escapes, and a gate checked without the lc's vocabulary is unknown.
+    The vocabulary is the generator's own (`generator_vocabulary`: an lc may use what it
+    introduces -- mat_g1_dp_q3_3 introduces 'table').
+    """
+    from backend.app.practice_gen.slots import G
+
+    gate = G(("table", "chart"), "'table' gated", "table")
+    assert V.check_slot("table", gate, {}, set(), vocab=frozenset({"table"})) is None
+    assert V.check_slot("chart", gate, {}, set(), vocab=frozenset({"table"}))[0] == "slot_domain_escape_14"
+    assert V.check_slot("table", gate, {}, set(), vocab=frozenset())[0] == "slot_domain_escape_14"
+    assert V.check_slot("chart", gate, {}, set(), vocab=frozenset()) is None
+    assert V.check_slot("table", gate, {}, set())[0] == "slot_domain_unknown_14"
+    assert "table" in V.lc_vocab("mat_g1_dp_q3_3")
+    with pytest.raises(ValueError):
+        G(("a", "b", "c"), "three words", "x")
+    with pytest.raises(ValueError):
+        G(("a", "b"), "no term", "")

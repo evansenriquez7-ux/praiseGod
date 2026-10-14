@@ -1,21 +1,21 @@
 {
  "schema_version": 2,
- "hash_version": 3,
+ "hash_version": 4,
  "node_id": "mat_g3_mg_q2_0",
  "record_id": "fixture-mat_g3_mg_q2_0-first",
  "role": "first",
  "confirms": null,
  "item_id": "FIX-003",
- "lc_hash": "b9ba61729128c8cb32786ffc05adec0171f2892e019cd6ce3f63d4269cfebf42",
+ "lc_hash": "1c1b8fe9fc143bedd5e24389ba40cefce66c80b8e9cbf7c0a9f391cb90ea2574",
  "judged_by": "fixture-not-a-judge-mat_g3_mg_q2_0-first",
  "dispatch_id": "fixture-mat_g3_mg_q2_0-first",
  "filed_at": "2026-10-13T00:00:00Z",
  "delivery": "fixture written by tests/stem_review_fixture.py for §17 mutation proofs; no judge was dispatched, so no judge read the packet or CLAUDE.md",
  "tool_uses_by_judge": "none (hand-written fixture)",
- "dispatch_prompt_digest": "627f05b321c84d64a846ad40129433bb3ed23934d55b59d32e58d2162b5ed470",
+ "dispatch_prompt_digest": "7124dd8cb20b5f1e323d426afd00a6099a87e79dbd15acafe77017811ebc1dab",
  "raw_reply": "{\"item\": \"FIX-003\", \"clauses\": {\"measure_mass\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F01\", \"template\": \"{term}\", \"reasoning\": \"Fixture: hand-written.\"}, \"grams_kilograms_and_or_milligrams\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F01\", \"template\": \"{term}\", \"reasoning\": \"Fixture: hand-written.\"}, \"measuring_tools\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F01\", \"template\": \"{term}\", \"reasoning\": \"Fixture: hand-written.\"}}, \"failing_families\": [], \"failing_templates\": [], \"overall\": \"PASS\", \"reasoning\": \"Fixture, not a judgment: the template '{term}' was read with its domains, and nothing in it is out of scope.\"}",
  "raw_reply_digest": "0460041f0adc98d0159e44264a9b48683c5f5d3d9f5a1edf0fe3c46ad761b0af",
- "packet_digest": "165f79cd0780763b4ba78d2cceea257810bd71a6777c2fd0c12f97330f8963b3",
+ "packet_digest": "8e5e40c596a0061be1b1fb8952e71f15a1e480ad2ff2146129904ad3f444f713",
  "family_keys": {
   "F01": {
    "source": "backend/app/practice_gen/dna/base.py",
@@ -302,12 +302,11 @@
       ],
       "domains": [
        {
-        "domain": "one of the generator's own choices",
+        "domain": "the one word a vocabulary gate gives this lc",
         "basis": "VocabGated(requires_vocab='mass')",
-        "members": [
-         "mass",
-         "weight"
-        ]
+        "requires_vocab": "mass",
+        "prints": "mass",
+        "words_left_out": 1
        }
       ]
      }

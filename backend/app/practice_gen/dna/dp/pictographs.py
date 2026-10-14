@@ -16,7 +16,7 @@ from backend.app.practice_gen.dna.base import (
     ErrorPattern,
     VocabGated,
 )
-from backend.app.practice_gen.slots import E, S, bank_fields, derived, fill
+from backend.app.practice_gen.slots import E, G, S, bank_fields, derived, fill
 
 
 # ─── param bounds ─────────────────────────────────────────────────────────────
@@ -541,7 +541,7 @@ def generate_hints(
         chart_word = "table" if "table" in cumulative_vocab else "chart"
         cat = values.get("question_category", "the category")
         return [
-            fill("Look at the {chart_word} carefully.", _src=('task_type',), chart_word=S(chart_word, E(("table", "chart"), "'table' gated by cumulative_vocab"))),
+            fill("Look at the {chart_word} carefully.", _src=('task_type',), chart_word=S(chart_word, G(("table", "chart"), "'table' gated by cumulative_vocab", "table"))),
             fill("Find the row labelled '{cat}'.", _src=('task_type',), cat=S(cat, "value:question_category")),
             fill("Read the number written next to it in the Count column.", _src=('task_type',)),
         ]
@@ -586,9 +586,9 @@ def generate_hints(
     elif task_type == "organize_table":
         chart_word = "table" if "table" in cumulative_vocab else "chart"
         if scale > 1:
-            hints.append(fill("Count the pictures in each row and multiply by {scale} to record each count in the {chart_word}.", _src=('scale', 'task_type',), scale=S(scale, "value:scale", src=('scale',)), chart_word=S(chart_word, E(("table", "chart"), "'table' gated by cumulative_vocab"))))
+            hints.append(fill("Count the pictures in each row and multiply by {scale} to record each count in the {chart_word}.", _src=('scale', 'task_type',), scale=S(scale, "value:scale", src=('scale',)), chart_word=S(chart_word, G(("table", "chart"), "'table' gated by cumulative_vocab", "table"))))
         else:
-            hints.append(fill("Count the items for each category and record them in the {chart_word}.", _src=('task_type',), chart_word=S(chart_word, E(("table", "chart"), "'table' gated by cumulative_vocab"))))
+            hints.append(fill("Count the items for each category and record them in the {chart_word}.", _src=('task_type',), chart_word=S(chart_word, G(("table", "chart"), "'table' gated by cumulative_vocab", "table"))))
 
     return hints
 

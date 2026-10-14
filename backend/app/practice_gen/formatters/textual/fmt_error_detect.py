@@ -18,7 +18,7 @@ from typing import Any
 
 from backend.app.practice_gen.dna.base import (FormattedProblem, QuestionContext, count_noun,
                                                  number_group_name)
-from backend.app.practice_gen.slots import E, S, derived, fill, transform
+from backend.app.practice_gen.slots import E, G, S, derived, fill, transform
 from backend.app.practice_gen.formatters._answer_slots import distractors_field
 
 
@@ -367,7 +367,7 @@ def format_error_detect(ctx: QuestionContext, rng: random.Random) -> FormattedPr
         question_text = fill(
             '{actor} solved: "{problem}". {actor} says the {miss} is {answer}. Is {actor} correct?',
             actor=ACTOR, problem=PROBLEM, answer=ANSWER,
-            miss=S(miss_lbl, E(("missing number", "blank"), "vocab gate 'missing number'")))
+            miss=S(miss_lbl, G(("missing number", "blank"), "vocab gate 'missing number'", "missing number")))
     elif problem_text.strip().endswith("?") or context_variant != "pure":
         question_text = fill(
             '{actor} solved this problem: "{problem}" {actor} says the answer is {answer}. '

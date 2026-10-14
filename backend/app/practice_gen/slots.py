@@ -70,6 +70,29 @@ class E:
 
 
 @dataclass(frozen=True)
+class G(E):
+    """
+    A VOCABULARY GATE (owner ruling 48, 2026-10-14): one of exactly two words, `members[0]`
+    printed when `requires` is in the lc's cumulative vocabulary and `members[1]` when it is
+    not. It is an `E` (both words are the generator's own choices), but for ONE lc only one of
+    them can print: the §17 packet shows only that one (`for_vocab`), and §14 checks that the
+    printed word IS that one, against the lc's vocabulary in the knowledge graph. Found on the
+    first H4-C fan-out: recorded as a plain `E`, the gate's other word ("chart" on an lc that
+    knows "table") was shown to a judge, who FAILed four templates on a word no render prints.
+    """
+    requires: str
+
+    def __post_init__(self) -> None:
+        if len(self.members) != 2 or not self.requires:
+            raise ValueError(f"G({self.members!r}, {self.basis!r}, {self.requires!r}): a vocabulary gate "
+                             f"has exactly two words (preferred, fallback) and names the term it requires")
+
+    def for_vocab(self, vocab: Any) -> Any:
+        """The one word this gate prints for an lc whose cumulative vocabulary is `vocab`."""
+        return self.members[0] if self.requires in vocab else self.members[1]
+
+
+@dataclass(frozen=True)
 class S:
     """
     One slot value and its domain: a registry id (str), a runtime range (`R`) or enumeration (`E`).

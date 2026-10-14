@@ -13,6 +13,10 @@ They are not reviews and judge nothing.
   * mat_g1_dp_q3_0 (owner ruling 47): the same pair on an lc whose stems draw from an ITEM
     BANK, which mat_g2_na_q3_8 does not, so a mutation of how a bank is packeted reaches a
     record whose freshness is checked.
+  * mat_g1_mg_q1_0 and mat_g1_dp_q3_2 (owner ruling 48): the same pair on an lc with VOCABULARY
+    GATES and a shared bank its filter draws only some rows of, and on an lc whose runtime
+    category slots are shown as a field of the drawn bank row -- so a mutation of how a gate, the
+    drawn rows or that pairing is packeted reaches a record whose freshness is checked.
   * mat_g3_mg_q2_0, mat_g3_mg_q2_2, mat_g3_mg_q2_5: one first record each, out of the proof's
     scope, whose overall reasoning shares ONE sentence frame (3 lcs: the most §17 allows), so a
     mutation that gives mat_g2_na_q3_8 that frame makes 4; and whose identities a mutation can
@@ -45,6 +49,21 @@ BANK_CLAUSES = {"collect_data": "{question}", "one_variable": "{question}", "sim
 BANK_REASONING = {
     "first": "Fixture, not a judgment: each interview row is read as one problem with its own keyed answer.",
     "confirming": "Fixture, not a judgment: the bank rows and the hints were read for the bank lc's gate words.",
+}
+GATE_LC = "mat_g1_mg_q1_0"
+GATE_TEMPLATE = "Look at the shapes in different sizes and orientations. Which shape on the board has {v}?"
+GATE_CLAUSES = {c: GATE_TEMPLATE for c in ("identify", "simple_2_dimensional_shapes", "triangle", "rectangle",
+                                           "square", "different_size", "different_orientation")}
+GATE_REASONING = {
+    "first": "Fixture, not a judgment: the gated hint word and the drawn shape rows were read for this lc.",
+    "confirming": "Fixture, not a judgment: the board question was read with the clue it names.",
+}
+PAIR_LC = "mat_g1_dp_q3_2"
+PAIR_CLAUSES = {"interpret": "Look at the picture graph. {sub_q}", "pictograph": "Look at the {pg_label} carefully.",
+                "without_scale": "Each picture stands for 1 item."}
+PAIR_REASONING = {
+    "first": "Fixture, not a judgment: each theme row was read with its own subject and categories.",
+    "confirming": "Fixture, not a judgment: the reading questions were read against one picture graph each.",
 }
 OTHERS = ("mat_g3_mg_q2_0", "mat_g3_mg_q2_2", "mat_g3_mg_q2_5")
 DELIVERY = ("fixture written by tests/stem_review_fixture.py for §17 mutation proofs; no judge was "
@@ -103,15 +122,17 @@ def main() -> int:
     FIXTURE_DIR.mkdir(parents=True)
     scratch = FIXTURE_DIR / "_prompt.txt"
     written = []
-    for i, node_id in enumerate((MAIN, BANK_LC) + OTHERS):
+    specs = {MAIN: (MAIN_CLAUSES, MAIN_REASONING), BANK_LC: (BANK_CLAUSES, BANK_REASONING),
+             GATE_LC: (GATE_CLAUSES, GATE_REASONING), PAIR_LC: (PAIR_CLAUSES, PAIR_REASONING)}
+    for i, node_id in enumerate((MAIN, BANK_LC) + OTHERS + (GATE_LC, PAIR_LC)):
         renders, _refused = SP.observe_lc(node_id)
         body, key = SP.build_item(node_id, renders)
         item_id = f"FIX-{i + 1:03d}"
         item = {"item": item_id, **body}
         key = {**key, "item_hash": SP.item_hash(body)}
         scratch.write_text(stem_file.prompt_text(item), encoding="utf-8")
-        if node_id in (MAIN, BANK_LC):
-            spec, why = (MAIN_CLAUSES, MAIN_REASONING) if node_id == MAIN else (BANK_CLAUSES, BANK_REASONING)
+        if node_id in specs:
+            spec, why = specs[node_id]
             clauses = {cid: {"verdict": "PRODUCIBLE", "family": _family_of(body, t), "template": t,
                              "reasoning": f"Fixture: the template '{t}' addresses this clause."}
                        for cid, t in spec.items()}

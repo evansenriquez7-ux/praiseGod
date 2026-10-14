@@ -43,7 +43,8 @@ if __name__ == "__main__":
                 others = texts if produced[f.text] > 1 else texts - {f.text}
                 srcs, whys = dict(f.sources), dict(f.reasons)
                 for name, value, domain in f.slots:
-                    r = VS.check_slot(value, domain, seen, others, why=whys.get(name), src=srcs.get(name, ()))
+                    r = VS.check_slot(value, domain, seen, others, why=whys.get(name), src=srcs.get(name, ()),
+                                      vocab=VS.lc_vocab(n))
                     if r and r[0] in ("slot_domain_escape_14", "slot_text_unaccounted_14"):
                         k = (f.site, name); bad[k] += 1; ex.setdefault(k, (n, seed, fmt, r[1][:120]))
     for k, v in bad.most_common():

@@ -313,10 +313,10 @@ class VocabGated:
     def resolve(self, cumulative_vocab: Set[str]) -> str:
         # Recorded as a structured slot (H3, owner ruling 28): the term is one of this
         # object's own two choices. Identical string either way.
-        from backend.app.practice_gen.slots import E, S, fill
+        from backend.app.practice_gen.slots import G, S, fill
         term = self.preferred if self.requires_vocab in cumulative_vocab else self.fallback
-        return fill("{term}", term=S(term, E((self.preferred, self.fallback),
-                                             f"VocabGated(requires_vocab={self.requires_vocab!r})")))
+        return fill("{term}", term=S(term, G((self.preferred, self.fallback),
+                                             f"VocabGated(requires_vocab={self.requires_vocab!r})", self.requires_vocab)))
 
 
 # ═══════════════════════════════════════════════════════════════════════════════

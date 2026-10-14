@@ -192,3 +192,98 @@ def test_every_family_says_where_the_learner_reads_it():
     assert by["{member}"] == [{"distractors", "format_data.options"}]
     assert all(roles == {"correct_answer", "format_data.options"} for roles in by["{answer}"])
     assert len(by["{answer}"]) == 2, "two families print '{answer}': the case ruling 46b's ids exist for"
+
+
+def _domains(item):
+    for fam in item["families"]:
+        for group in fam["slots"]:
+            for d in group["domains"]:
+                yield fam, group["slots"], d
+
+
+def test_a_vocabulary_gate_shows_only_the_word_it_gives_the_lc():
+    """
+    Ruling 48a. Found on the first H4-C fan-out (2026-10-14): S441-004's judge FAILed four
+    templates of mat_g1_dp_q3_3 on "chart", the other word of a `'table'` gate, though the lc
+    knows "table" and none of its 43 renders prints "chart". The packet must show only the word
+    the gate gives this lc, resolved by the generator's own vocabulary rule.
+    """
+    from backend.app.practice_gen.generators.base_generator import generator_vocabulary, get_node
+
+    assert "table" in generator_vocabulary(get_node("mat_g1_dp_q3_3"))
+    renders, _refused = SP.observe_lc("mat_g1_dp_q3_3")
+    printed = {f.slots[i][1] for _s, _f, _p, fills, _v in renders for f in fills
+               for i, (n, _val, _d) in enumerate(f.slots) if n in ("table_word", "chart_word")}
+    assert printed == {"table"}, "measured independently of the builder: only 'table' is printed"
+    item, _key = SP.build_item("mat_g1_dp_q3_3", renders)
+    gates = [d for _f, names, d in _domains(item) if set(names) & {"table_word", "chart_word"}]
+    assert gates and all(d == {"domain": "the one word a vocabulary gate gives this lc",
+                               "basis": "'table' gated by cumulative_vocab", "requires_vocab": "table",
+                               "prints": "table", "words_left_out": 1} for d in gates), gates
+    assert "chart" not in json.dumps(item["families"], ensure_ascii=False).replace("chart_word", "")
+
+
+def test_a_bank_shows_only_the_rows_the_lc_draws():
+    """
+    Ruling 48b. S441-005's judge FAILed mat_g1_mg_q1_0 on 'circle' and 'corner' rows of a shared
+    `_ITEM_POOL` its filter never draws (74 rows printed; its 43 renders offer only triangle,
+    square, rectangle and "none of these"). The packet shows the rows drawn on the enumerated
+    paths or the SWEEP_SEEDS student renders, and how many it leaves out; computed here from the
+    renders by value, independently of the builder's loop.
+    """
+    from backend.app.practice_gen.dna.mg.shapes_2d import _ITEM_POOL
+    from backend.app.practice_gen.validation import validate_slots as VS
+
+    dotted = "backend.app.practice_gen.dna.mg.shapes_2d._ITEM_POOL"
+    renders, _refused = SP.observe_lc("mat_g1_mg_q1_0")
+    item, key = SP.build_item("mat_g1_mg_q1_0", renders)
+    bank = item["banks"]["_ITEM_POOL"]
+    seen_answers = set()
+    for p, fills in [(r[2], r[3]) for r in renders] + [VS.observe("mat_g1_mg_q1_0", s)[:2] for s in SP.SWEEP_SEEDS]:
+        seen_answers |= {v for f in SP.reaching(p, fills) for _n, v, d in f.slots if d == f"bank:{dotted}:answer"}
+    assert {r["answer"] for r in bank["rows"]} == seen_answers
+    assert not any("circle" in json.dumps(r) or "corner" in json.dumps(r) for r in bank["rows"])
+    carrying = [r for r in _ITEM_POOL if any(f in r for f in bank["fields"])]
+    assert bank["rows_left_out"] == len(carrying) - len(bank["rows"]) > 0
+    assert key["banks"]["_ITEM_POOL"]["sweep_seeds"] == [SP.SWEEP_SEEDS[0], SP.SWEEP_SEEDS[-1]]
+
+
+def test_a_runtime_list_read_from_the_drawn_row_is_shown_as_that_rows_field():
+    """
+    Ruling 48c. S441-003's judge FAILed mat_g1_dp_q3_2's {subj} as printable with another
+    theme's categories; its 13 compare renders all pair them, because the categories are the
+    drawn `_THEMES` row's own -- but the packet showed them as a separate list. Observed per
+    render: the slot is shown as the row's `categories` field. A render whose categories come
+    from ANOTHER row must undo that (and change the hash).
+    """
+    from backend.app.practice_gen.dna.dp.pictographs import _THEMES
+    from backend.app.practice_gen.slots import E, Trace
+
+    renders, _refused = SP.observe_lc("mat_g1_dp_q3_2")
+    item, _key = SP.build_item("mat_g1_dp_q3_2", renders)
+    assert "categories" in item["banks"]["_THEMES"]["fields"]
+    paired = [(names, d) for _f, names, d in _domains(item) if d.get("read_from")]
+    assert paired and all(d["bank"] == "_THEMES" and d["field"] == "categories" for _n, d in paired)
+    assert {f["template"] for f, _n, d in _domains(item) if d.get("read_from")} >= {"{p0}, {p1}, {p2}", "{join} or {v}"}
+    # A categories slot stays a runtime list only where some render filling it prints NO field of
+    # the bank (the reading questions, each a theme's own `question_stem`): no row to observe.
+    left = {f["template"] for f, _n, d in _domains(item) if d.get("basis") == "the graph's categories"}
+    for tpl in left:
+        assert any(not any(isinstance(d, str) and "_THEMES" in d for g in SP.reaching(p, fl) for _n, _v, d in g.slots)
+                   for _s, _f, p, fl, _v in renders if any(g.template == tpl for g in fl)), tpl
+
+    i, (seed, fmt, problem, fills, values) = next(
+        (i, r) for i, r in enumerate(renders)
+        if any(f.template == "{p0}, {p1}, {p2}" and isinstance(d, E) and d.basis == "the graph's categories"
+               for f in r[3] for _n, _v, d in f.slots))
+    foreign = tuple(c for t in _THEMES for c in t["categories"])        # every theme's categories
+    moved = Trace()
+    for f in fills:
+        moved.append(dataclasses.replace(f, slots=tuple(
+            (n, v, E(foreign, d.basis) if isinstance(d, E) and d.basis == "the graph's categories" else d)
+            for n, v, d in f.slots)))
+    moved.derivations = fills.derivations
+    item2, _k2 = SP.build_item("mat_g1_dp_q3_2", renders[:i] + [(seed, fmt, problem, moved, values)] + renders[i + 1:])
+    p012 = [d for f, _n, d in _domains(item2) if f["template"] == "{p0}, {p1}, {p2}"]
+    assert p012 and all(d.get("basis") == "the graph's categories" and not d.get("read_from") for d in p012), p012
+    assert SP.item_hash(item2) != SP.item_hash(item)

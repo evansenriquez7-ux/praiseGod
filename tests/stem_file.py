@@ -79,7 +79,13 @@ Each {slot} in a template is filled from a declared domain:
     prints from that bank comes from ONE row: judge each row as one problem (its question, its
     own keyed answer, its own distractors). Where it is false, one problem may print fields of
     the bank from different rows. A field whose value is a list (such as "distractors") gives
-    one answer choice per member;
+    one answer choice per member. Only the rows this lc draws are printed; "rows_left_out"
+    counts the bank's other rows, which this lc never prints. Where a slot's domain says
+    "read_from": "the row drawn for the problem", the slot prints a member of that field of the
+    SAME row the problem's other fields of that bank come from;
+  - "the one word a vocabulary gate gives this lc": the word in "prints". The generator picks it
+    by whether this lc may use "requires_vocab"; for this lc it is always that word, and the
+    gate's other word is never printed (it is left out, "words_left_out");
   - "a noun from a fixed list, or its plural": a member of the named list, or its plural;
   - "a number in a range": any number from lo to hi;
   - "one of the generator's own choices": every member the generator offered across the renders

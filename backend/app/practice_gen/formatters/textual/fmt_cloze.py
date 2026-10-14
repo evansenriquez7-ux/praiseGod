@@ -17,7 +17,7 @@ from backend.app.practice_gen.dna.base import (FormattedProblem, QuestionContext
 from backend.app.practice_gen.formatters._distractor_fallback import augment_distractors
 from backend.app.practice_gen.formatters._option_order import shuffle_options
 from backend.app.practice_gen.formatters._answer_slots import answer_text, distractor_text
-from backend.app.practice_gen.slots import E, S, carried, derived, fill, join
+from backend.app.practice_gen.slots import E, G, S, carried, derived, fill, join
 
 
 def _build_equation_sentence(ctx: QuestionContext) -> str:
@@ -180,8 +180,8 @@ def _build_equation_sentence(ctx: QuestionContext) -> str:
             stem = fill("Find the missing number") if "missing number" in ctx.cumulative_vocab else fill("What comes next")
             # Structured slots (H5, owner rulings 28 and 35): the sequence exhibits the step.
             return fill("{stem}: {seq}, ___",
-                        stem=S(stem, E(("Find the missing number", "What comes next"),
-                                       "vocab gate 'missing number'")),
+                        stem=S(stem, G(("Find the missing number", "What comes next"),
+                                       "vocab gate 'missing number'", "missing number")),
                         seq=S(join(", ", [S(x, E(tuple(seq), "values['sequence']")) for x in seq]), "fill",
                               src=("sequence", "skip_by", "direction")))
         if ctx.question_text_with_blank:

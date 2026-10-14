@@ -17,7 +17,7 @@ from backend.app.practice_gen.dna.base import (
     ErrorPattern,
     VocabGated,
 )
-from backend.app.practice_gen.slots import E, S, derived, fill, join, transform
+from backend.app.practice_gen.slots import E, G, S, derived, fill, join, transform
 
 
 # ─── param bounds ─────────────────────────────────────────────────────────────
@@ -342,7 +342,7 @@ def generate_hints(
         if (number % 1000) >= 100:
             hd = (number % 1000) // 100
             hundreds_label = "Hundreds" if "hundreds" in cumulative_vocab else "The 3rd part from the right"
-            hints.append(fill("{hundreds_label}: {hd} → '{num_to_tagalog_style_english_words} hundred'.", _src=('number', 'task_type',), hundreds_label=S(hundreds_label, E(("Hundreds", "The 3rd part from the right"), "'hundreds' gated by cumulative_vocab")), hd=derived(hd, src=('number',), why="arithmetic"), num_to_tagalog_style_english_words=S(num_to_tagalog_style_english_words(hd), "fill", src=('number',))))
+            hints.append(fill("{hundreds_label}: {hd} → '{num_to_tagalog_style_english_words} hundred'.", _src=('number', 'task_type',), hundreds_label=S(hundreds_label, G(("Hundreds", "The 3rd part from the right"), "'hundreds' gated by cumulative_vocab", "hundreds")), hd=derived(hd, src=('number',), why="arithmetic"), num_to_tagalog_style_english_words=S(num_to_tagalog_style_english_words(hd), "fill", src=('number',))))
         hints.append(fill("The full word form is: '{word_form}'.", _src=('task_type',), word_form=S(word_form, "value:word_form")))
     else:
         pv_label = VOCAB_PLACE_VALUE.resolve(cumulative_vocab)

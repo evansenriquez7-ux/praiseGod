@@ -117,6 +117,20 @@ def get_node(node_id: str) -> Optional[Dict]:
     return _KG_NODES.get(node_id)
 
 
+def generator_vocabulary(node: Dict) -> Set[str]:
+    """
+    The vocabulary a generator may print for `node`: its cumulative_vocab, plus its
+    student_vocab and the vocabulary it introduces (an lc may use the terms it teaches).
+    ONE copy (owner ruling 48): `generate_context` builds `QuestionContext.cumulative_vocab`
+    with it, and §14 checks every vocabulary gate (`slots.G`) against it, so the harness asks
+    the generator's own rule instead of restating it.
+    """
+    vocab = set(node.get("cumulative_vocab", []))
+    vocab.update(node.get("student_vocab", []))
+    vocab.update(node.get("introduces_vocab", []))
+    return vocab
+
+
 def generate_context(
     dna: DNA,
     node_id: str,
@@ -172,9 +186,7 @@ def generate_context(
         cumulative_concepts: Set[str] = set()
         competency_text: str = ""
     else:
-        cumulative_vocab = set(node.get("cumulative_vocab", []))
-        cumulative_vocab.update(node.get("student_vocab", []))
-        cumulative_vocab.update(node.get("introduces_vocab", []))
+        cumulative_vocab = generator_vocabulary(node)
         cumulative_concepts = set(node.get("cumulative_concepts", []))
         competency_text = node.get("competency", "")
 
