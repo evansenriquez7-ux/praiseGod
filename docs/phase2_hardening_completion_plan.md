@@ -1678,6 +1678,17 @@ that points at it break every time the section is refreshed.
 >     (never predicted), with no generator edit. Not asked separately: the dispatcher's question on it was
 >     withdrawn when the owner stated the principle, which it follows from (a subject printed with another
 >     theme's categories is not something the pg can print).
+>     (d) **Slots sharing a domain say whether a render repeated a value** (asked the same day, after the
+>     ruling-48 pilot; the owner chose the dispatcher's recommended option). Built on (a)-(c), three pilots:
+>     S441-005 PASSed with none of its old grounds; S441-004 FAILed on two templates over sentence_max_words
+>     15 -- real (renders of 22-26 and up to 19 words); S441-003 FAILed `{p0}, {p1}, {p2}` as able to
+>     print one category twice, which no render does (243 renders, 0 repeats) -- the packet printed the
+>     three slots under one domain and said nothing about repeats (409 families on 101 lcs print such
+>     groups). Each group now carries `distinct_in_every_render`, observed over the enumerated renders and
+>     student seeds 41-240 (as ruling 47 observes one row), never assumed: measured, 237 groups on 58 lcs
+>     DO repeat. The chain launched on (a)-(c) was stopped 30 minutes in (in the mutation corpus; no plant
+>     left, source unchanged) and re-run once on (d). Rejected: running as built and settling each such
+>     FAIL by confirmer and ruling 21.
 >
 > **Owner rulings recorded 2026-09-22, binding on the next session:**
 >

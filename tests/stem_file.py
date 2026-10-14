@@ -72,7 +72,10 @@ question; "hints" are hints; "correct_answer" is the keyed answer; "distractors"
 fields are text shown with the item (a sentence, statement, expression, name, time or
 direction). "nested_in" names the families whose text this family's text is printed inside.
 Judge each family where it appears: an answer choice is one choice, not a whole question.
-Each {slot} in a template is filled from a declared domain:
+Each {slot} in a template is filled from a declared domain. Slots listed together under one
+domain share it; their "distinct_in_every_render" says whether, on every render observed (the
+enumerated renders and 200 more), they printed different values in one problem (true), or some
+problem printed one value twice (false). The domain kinds:
   - "one of a fixed list": a member of the named list in "lists";
   - "a field of a fixed item bank": the named field of a row of the named bank in "banks". A
     bank is printed row by row. Where its "one_row_per_problem" is true, every field a problem

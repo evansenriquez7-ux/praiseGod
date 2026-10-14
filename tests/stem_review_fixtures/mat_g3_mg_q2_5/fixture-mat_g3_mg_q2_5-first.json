@@ -1,18 +1,18 @@
 {
  "schema_version": 2,
- "hash_version": 4,
+ "hash_version": 5,
  "node_id": "mat_g3_mg_q2_5",
  "record_id": "fixture-mat_g3_mg_q2_5-first",
  "role": "first",
  "confirms": null,
  "item_id": "FIX-005",
- "lc_hash": "23c8b44b9202f95f81fcbaddd1c36a09f5e3dda7fd6858271228955ff4e77056",
+ "lc_hash": "5262c446ccefe0db70df3efb193c9608c4b727fe32989c8ddd76630f699316da",
  "judged_by": "fixture-not-a-judge-mat_g3_mg_q2_5-first",
  "dispatch_id": "fixture-mat_g3_mg_q2_5-first",
  "filed_at": "2026-10-13T00:00:00Z",
  "delivery": "fixture written by tests/stem_review_fixture.py for §17 mutation proofs; no judge was dispatched, so no judge read the packet or CLAUDE.md",
  "tool_uses_by_judge": "none (hand-written fixture)",
- "dispatch_prompt_digest": "19338124f290f0ed293c4a90928c482569e2d522706b813c7354ec219084a0fa",
+ "dispatch_prompt_digest": "916c092d092e2398dbc3ade410d0bbdbbf576f48c0288512bc1b5fb663a8a52e",
  "raw_reply": "{\"item\": \"FIX-005\", \"clauses\": {\"compare_capacities\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F01\", \"template\": \"Compare the two measurements: {a} {unit} and {b} {unit}.\", \"reasoning\": \"Fixture: hand-written.\"}, \"two_containers\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F01\", \"template\": \"Compare the two measurements: {a} {unit} and {b} {unit}.\", \"reasoning\": \"Fixture: hand-written.\"}}, \"failing_families\": [], \"failing_templates\": [], \"overall\": \"PASS\", \"reasoning\": \"Fixture, not a judgment: the template 'Compare the two measurements: {a} {unit} and {b} {unit}.' was read with its domains, and nothing in it is out of scope.\"}",
  "raw_reply_digest": "c71ec381732cc24d3955e38d1e6d63fb55ca3ff32f2c7086fe4aa34805a3e7a3",
  "packet_digest": "95b465357e2f02b8acd8477bcfec072065982172a49f1c187c5c5adcc2e6914d",
@@ -24,7 +24,8 @@
    "path": [
     1,
     null
-   ]
+   ],
+   "first_render_repeating": {}
   },
   "F02": {
    "source": "backend/app/practice_gen/dna/mg/mass_capacity.py",
@@ -33,7 +34,8 @@
    "path": [
     1,
     null
-   ]
+   ],
+   "first_render_repeating": {}
   },
   "F03": {
    "source": "backend/app/practice_gen/generators/base_generator.py",
@@ -42,7 +44,8 @@
    "path": [
     1,
     null
-   ]
+   ],
+   "first_render_repeating": {}
   }
  },
  "packet": {

@@ -1,21 +1,21 @@
 {
  "schema_version": 2,
- "hash_version": 4,
+ "hash_version": 5,
  "node_id": "mat_g2_na_q3_8",
  "record_id": "fixture-mat_g2_na_q3_8-first",
  "role": "first",
  "confirms": null,
  "item_id": "FIX-001",
- "lc_hash": "84230fd0a20625d1211224f733d572196c82b097cdf1d14a4541c3e9b7bf419f",
+ "lc_hash": "586c4737ab2fcac4a60b0ebbd8e2cacaf2c1663ce0150aac4262e2cf52417d96",
  "judged_by": "fixture-not-a-judge-mat_g2_na_q3_8-first",
  "dispatch_id": "fixture-mat_g2_na_q3_8-first",
  "filed_at": "2026-10-13T00:00:00Z",
  "delivery": "fixture written by tests/stem_review_fixture.py for §17 mutation proofs; no judge was dispatched, so no judge read the packet or CLAUDE.md",
  "tool_uses_by_judge": "none (hand-written fixture)",
- "dispatch_prompt_digest": "19ba27501533cdfc4d1a5282d7d8dfc00d321a65026bf7956245db23d950dc2b",
+ "dispatch_prompt_digest": "cf2f277da1c40eb2a715267e6508e0fa6db7493e2fe8aca78264f24500f71463",
  "raw_reply": "{\"item\": \"FIX-001\", \"clauses\": {\"distinguish\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F11\", \"template\": \"{d} ÷ 2 comes out exactly, so {d} is an even number\", \"reasoning\": \"Fixture: the template '{d} ÷ 2 comes out exactly, so {d} is an even number' addresses this clause.\"}, \"even_and_odd_numbers\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F04\", \"template\": \"Nothing is left over, so {n} is an even number.\", \"reasoning\": \"Fixture: the template 'Nothing is left over, so {n} is an even number.' addresses this clause.\"}, \"division\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F03\", \"template\": \"Divide {n} by 2: how many 2s fit into {n}?\", \"reasoning\": \"Fixture: the template 'Divide {n} by 2: how many 2s fit into {n}?' addresses this clause.\"}, \"divisor_2\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F02\", \"template\": \"2 × {half} = {twice}, and {n} − {twice} = {left}.\", \"reasoning\": \"Fixture: the template '2 × {half} = {twice}, and {n} − {twice} = {left}.' addresses this clause.\"}}, \"failing_families\": [], \"failing_templates\": [], \"overall\": \"PASS\", \"reasoning\": \"Fixture, not a judgment: the hint 'Divide {n} by 2: how many 2s fit into {n}?' and the statements about even and odd numbers keep to division by 2.\"}",
  "raw_reply_digest": "f142e60b6370fa413b1062a126d8828a5c38735d35081334ed9820383aa0a4ee",
- "packet_digest": "a54b0355230ae8c9e5311ec27918fe0547a2f4a9518fef95e25dc9d45b868c00",
+ "packet_digest": "7d9faecd2f9a82276506c564593a1b4e65cb4173ebabef3d0ffd3806fe90700c",
  "family_keys": {
   "F01": {
    "source": "backend/app/practice_gen/dna/na/division.py",
@@ -24,7 +24,8 @@
    "path": [
     3,
     null
-   ]
+   ],
+   "first_render_repeating": {}
   },
   "F02": {
    "source": "backend/app/practice_gen/dna/na/division.py",
@@ -33,7 +34,13 @@
    "path": [
     1,
     null
-   ]
+   ],
+   "first_render_repeating": {
+    "half,twice": [
+     139,
+     null
+    ]
+   }
   },
   "F03": {
    "source": "backend/app/practice_gen/dna/na/division.py",
@@ -42,7 +49,8 @@
    "path": [
     1,
     null
-   ]
+   ],
+   "first_render_repeating": {}
   },
   "F04": {
    "source": "backend/app/practice_gen/dna/na/division.py",
@@ -51,7 +59,8 @@
    "path": [
     1,
     null
-   ]
+   ],
+   "first_render_repeating": {}
   },
   "F05": {
    "source": "backend/app/practice_gen/dna/na/division.py",
@@ -60,7 +69,8 @@
    "path": [
     1,
     null
-   ]
+   ],
+   "first_render_repeating": {}
   },
   "F06": {
    "source": "backend/app/practice_gen/formatters/_answer_slots.py",
@@ -69,7 +79,8 @@
    "path": [
     1,
     null
-   ]
+   ],
+   "first_render_repeating": {}
   },
   "F07": {
    "source": "backend/app/practice_gen/formatters/textual/fmt_true_false.py",
@@ -78,7 +89,8 @@
    "path": [
     1,
     null
-   ]
+   ],
+   "first_render_repeating": {}
   },
   "F08": {
    "source": "backend/app/practice_gen/formatters/textual/fmt_true_false.py",
@@ -87,7 +99,8 @@
    "path": [
     2,
     null
-   ]
+   ],
+   "first_render_repeating": {}
   },
   "F09": {
    "source": "backend/app/practice_gen/formatters/textual/fmt_true_false.py",
@@ -96,7 +109,8 @@
    "path": [
     13,
     null
-   ]
+   ],
+   "first_render_repeating": {}
   },
   "F10": {
    "source": "backend/app/practice_gen/formatters/textual/fmt_true_false.py",
@@ -105,7 +119,8 @@
    "path": [
     4,
     null
-   ]
+   ],
+   "first_render_repeating": {}
   },
   "F11": {
    "source": "backend/app/practice_gen/formatters/textual/fmt_true_false.py",
@@ -114,7 +129,8 @@
    "path": [
     16,
     null
-   ]
+   ],
+   "first_render_repeating": {}
   },
   "F12": {
    "source": "backend/app/practice_gen/formatters/textual/fmt_true_false.py",
@@ -123,7 +139,8 @@
    "path": [
     9,
     null
-   ]
+   ],
+   "first_render_repeating": {}
   },
   "F13": {
    "source": "backend/app/practice_gen/formatters/textual/fmt_true_false.py",
@@ -132,7 +149,8 @@
    "path": [
     1,
     null
-   ]
+   ],
+   "first_render_repeating": {}
   }
  },
  "packet": {
@@ -403,7 +421,8 @@
          "dividend"
         ]
        }
-      ]
+      ],
+      "distinct_in_every_render": false
      },
      {
       "slots": [

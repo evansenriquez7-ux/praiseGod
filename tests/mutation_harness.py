@@ -6304,6 +6304,46 @@ MUTATIONS: List[Mutation] = [
         baseline_must_not_contain=["FAIL stem_review_stale_17"],
     ),
     Mutation(
+        name="stem_slot_distinctness_changed_without_review",
+        asserts=["stem_review_stale_17"],
+        description=(
+            "Make the packet builder say that slots sharing a domain repeated a value, though no "
+            "render did (ruling 48d) -- the gap on which a judge FAILed mat_g1_dp_q3_2's category "
+            "list. What a judge reads changed, so the approval must go stale."
+        ),
+        edits={
+            "backend/app/practice_gen/validation/stem_packets.py": (
+                '                g["distinct_in_every_render"] = first is None\n',
+                '                g["distinct_in_every_render"] = False  # planted mutation\n',
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_stem_review", "--node-ids", "mat_g1_dp_q3_2",
+                 "--review-dir", "tests/stem_review_fixtures"],
+        expected_check="§17 whether shared slots repeat a value is bound by freshness (ruling 48d)",
+        expect_output_contains=["stem_review_stale_17 (", "domain/provenance changed in"],
+        baseline_must_not_contain=["FAIL stem_review_stale_17"],
+    ),
+    Mutation(
+        name="stem_slot_repeat_unseen",
+        asserts=["stem_review_stale_17"],
+        description=(
+            "Make the pictograph generator print a graph's first category twice. The packet must "
+            "observe that its category slots now repeat a value, so the approval goes stale; a "
+            "builder that assumed distinct slots would keep it."
+        ),
+        edits={
+            "backend/app/practice_gen/dna/dp/pictographs.py": (
+                '    categories = cat_set[:num_cats] if len(cat_set) >= num_cats else (cat_set * 2)[:num_cats]\n',
+                '    categories = (cat_set[:1] * 2 + cat_set[1:])[:num_cats]  # planted mutation\n',
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_stem_review", "--node-ids", "mat_g1_dp_q3_2",
+                 "--review-dir", "tests/stem_review_fixtures"],
+        expected_check="§17 shared slots are observed per render to print different values (ruling 48d)",
+        expect_output_contains=["stem_review_stale_17 (", "domain/provenance changed in"],
+        baseline_must_not_contain=["FAIL stem_review_stale_17"],
+    ),
+    Mutation(
         name="stem_row_pairing_broken_unseen",
         asserts=["stem_review_stale_17"],
         description=(

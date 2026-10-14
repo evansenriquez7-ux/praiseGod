@@ -1,21 +1,21 @@
 {
  "schema_version": 2,
- "hash_version": 4,
+ "hash_version": 5,
  "node_id": "mat_g1_dp_q3_2",
  "record_id": "fixture-mat_g1_dp_q3_2-first",
  "role": "first",
  "confirms": null,
  "item_id": "FIX-007",
- "lc_hash": "d48b509ece5adeecfa23cfadb26263f1c98adf23ce177989cfbff5b3e9c88a81",
+ "lc_hash": "9254de49e466e7809446a06c4f61f5174a7818f0272f0b9fb83ba20f7d15d34c",
  "judged_by": "fixture-not-a-judge-mat_g1_dp_q3_2-first",
  "dispatch_id": "fixture-mat_g1_dp_q3_2-first",
  "filed_at": "2026-10-13T00:00:00Z",
  "delivery": "fixture written by tests/stem_review_fixture.py for §17 mutation proofs; no judge was dispatched, so no judge read the packet or CLAUDE.md",
  "tool_uses_by_judge": "none (hand-written fixture)",
- "dispatch_prompt_digest": "b9a7f483dce22aea24c59d407b348b25371f37af708321731a9f951f68459697",
+ "dispatch_prompt_digest": "4f7f64e4305db83b0844e0fea4b5bdbe3bfe2986db335af7610103f21db91a11",
  "raw_reply": "{\"item\": \"FIX-007\", \"clauses\": {\"interpret\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F19\", \"template\": \"Look at the picture graph. {sub_q}\", \"reasoning\": \"Fixture: the template 'Look at the picture graph. {sub_q}' addresses this clause.\"}, \"pictograph\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F06\", \"template\": \"Look at the {pg_label} carefully.\", \"reasoning\": \"Fixture: the template 'Look at the {pg_label} carefully.' addresses this clause.\"}, \"without_scale\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F05\", \"template\": \"Each picture stands for 1 item.\", \"reasoning\": \"Fixture: the template 'Each picture stands for 1 item.' addresses this clause.\"}}, \"failing_families\": [], \"failing_templates\": [], \"overall\": \"PASS\", \"reasoning\": \"Fixture, not a judgment: each theme row was read with its own subject and categories.\"}",
  "raw_reply_digest": "287fea838813872ed2776b5052a11cacada488fde1b4472f70a66f1c018c2347",
- "packet_digest": "e3f2c408d067eef5a494301e13e1f4bd597282d24f2d97bfb8518923fb1cd909",
+ "packet_digest": "26aadd61873f912ae40d2af3f9fec6de9b908a9e5da61f25979f7249d4348460",
  "family_keys": {
   "F01": {
    "source": "backend/app/practice_gen/dna/base.py",
@@ -24,7 +24,8 @@
    "path": [
     1,
     null
-   ]
+   ],
+   "first_render_repeating": {}
   },
   "F02": {
    "source": "backend/app/practice_gen/dna/dp/pictographs.py",
@@ -33,7 +34,8 @@
    "path": [
     5,
     null
-   ]
+   ],
+   "first_render_repeating": {}
   },
   "F03": {
    "source": "backend/app/practice_gen/dna/dp/pictographs.py",
@@ -42,7 +44,8 @@
    "path": [
     1,
     null
-   ]
+   ],
+   "first_render_repeating": {}
   },
   "F04": {
    "source": "backend/app/practice_gen/dna/dp/pictographs.py",
@@ -51,7 +54,8 @@
    "path": [
     2,
     null
-   ]
+   ],
+   "first_render_repeating": {}
   },
   "F05": {
    "source": "backend/app/practice_gen/dna/dp/pictographs.py",
@@ -60,7 +64,8 @@
    "path": [
     1,
     null
-   ]
+   ],
+   "first_render_repeating": {}
   },
   "F06": {
    "source": "backend/app/practice_gen/dna/dp/pictographs.py",
@@ -69,7 +74,8 @@
    "path": [
     1,
     null
-   ]
+   ],
+   "first_render_repeating": {}
   },
   "F07": {
    "source": "backend/app/practice_gen/dna/dp/pictographs.py",
@@ -78,7 +84,8 @@
    "path": [
     9,
     null
-   ]
+   ],
+   "first_render_repeating": {}
   },
   "F08": {
    "source": "backend/app/practice_gen/formatters/_answer_slots.py",
@@ -87,7 +94,8 @@
    "path": [
     1,
     null
-   ]
+   ],
+   "first_render_repeating": {}
   },
   "F09": {
    "source": "backend/app/practice_gen/formatters/_answer_slots.py",
@@ -96,7 +104,8 @@
    "path": [
     1,
     null
-   ]
+   ],
+   "first_render_repeating": {}
   },
   "F10": {
    "source": "backend/app/practice_gen/formatters/visual/fmt_pictograph.py",
@@ -105,7 +114,8 @@
    "path": [
     2,
     null
-   ]
+   ],
+   "first_render_repeating": {}
   },
   "F11": {
    "source": "backend/app/practice_gen/formatters/visual/fmt_pictograph.py",
@@ -114,7 +124,8 @@
    "path": [
     29,
     null
-   ]
+   ],
+   "first_render_repeating": {}
   },
   "F12": {
    "source": "backend/app/practice_gen/formatters/visual/fmt_pictograph.py",
@@ -123,7 +134,8 @@
    "path": [
     14,
     null
-   ]
+   ],
+   "first_render_repeating": {}
   },
   "F13": {
    "source": "backend/app/practice_gen/formatters/visual/fmt_pictograph.py",
@@ -132,7 +144,8 @@
    "path": [
     6,
     null
-   ]
+   ],
+   "first_render_repeating": {}
   },
   "F14": {
    "source": "backend/app/practice_gen/formatters/visual/fmt_pictograph.py",
@@ -141,7 +154,8 @@
    "path": [
     10,
     null
-   ]
+   ],
+   "first_render_repeating": {}
   },
   "F15": {
    "source": "backend/app/practice_gen/formatters/visual/fmt_pictograph.py",
@@ -150,7 +164,8 @@
    "path": [
     37,
     null
-   ]
+   ],
+   "first_render_repeating": {}
   },
   "F16": {
    "source": "backend/app/practice_gen/formatters/visual/fmt_pictograph.py",
@@ -159,7 +174,8 @@
    "path": [
     9,
     null
-   ]
+   ],
+   "first_render_repeating": {}
   },
   "F17": {
    "source": "backend/app/practice_gen/formatters/visual/fmt_pictograph.py",
@@ -168,7 +184,8 @@
    "path": [
     5,
     null
-   ]
+   ],
+   "first_render_repeating": {}
   },
   "F18": {
    "source": "backend/app/practice_gen/formatters/visual/fmt_pictograph.py",
@@ -177,7 +194,8 @@
    "path": [
     1,
     null
-   ]
+   ],
+   "first_render_repeating": {}
   },
   "F19": {
    "source": "backend/app/practice_gen/formatters/visual/fmt_pictograph.py",
@@ -186,7 +204,8 @@
    "path": [
     2,
     null
-   ]
+   ],
+   "first_render_repeating": {}
   },
   "F20": {
    "source": "backend/app/practice_gen/formatters/visual/fmt_pictograph.py",
@@ -195,7 +214,8 @@
    "path": [
     1,
     null
-   ]
+   ],
+   "first_render_repeating": {}
   },
   "F21": {
    "source": "backend/app/practice_gen/formatters/visual/fmt_pictograph.py",
@@ -204,7 +224,8 @@
    "path": [
     1,
     null
-   ]
+   ],
+   "first_render_repeating": {}
   }
  },
  "packet": {
@@ -968,7 +989,8 @@
         "read_from": "the row drawn for the problem",
         "bank": "_THEMES"
        }
-      ]
+      ],
+      "distinct_in_every_render": true
      }
     ],
     "template_chosen_by_values": []

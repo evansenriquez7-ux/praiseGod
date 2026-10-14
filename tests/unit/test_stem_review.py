@@ -287,3 +287,39 @@ def test_a_runtime_list_read_from_the_drawn_row_is_shown_as_that_rows_field():
     p012 = [d for f, _n, d in _domains(item2) if f["template"] == "{p0}, {p1}, {p2}"]
     assert p012 and all(d.get("basis") == "the graph's categories" and not d.get("read_from") for d in p012), p012
     assert SP.item_hash(item2) != SP.item_hash(item)
+
+
+def test_slots_sharing_a_domain_say_whether_a_render_repeated_a_value():
+    """
+    Ruling 48d. Found on the ruling-48 pilot (2026-10-14): S441-003's judge FAILed
+    mat_g1_dp_q3_2's `{p0}, {p1}, {p2}` as able to print one category twice, which no render
+    does (each theme has six distinct categories, printed as a prefix). Slots printed under one
+    domain say whether any render observed printed one value twice among them; measured here from
+    the renders independently of the builder. A render that repeats one must turn it false.
+    """
+    from backend.app.practice_gen.slots import Trace
+
+    renders, _refused = SP.observe_lc("mat_g1_dp_q3_2")
+    item, key = SP.build_item("mat_g1_dp_q3_2", renders)
+    fam = next(f for f in item["families"] if f["template"] == "{p0}, {p1}, {p2}")
+    group = next(g for g in fam["slots"] if g["slots"] == ["p0", "p1", "p2"])
+    assert group["distinct_in_every_render"] is True
+    assert key["families"][fam["id"]]["first_render_repeating"] == {}
+    seen = [[v for _n, v, _d in f.slots] for _s, _f, _p, fills, _v in renders for f in fills
+            if f.template == "{p0}, {p1}, {p2}"]
+    assert seen and all(len(set(vals)) == len(vals) for vals in seen)
+
+    i, (seed, fmt, problem, fills, values) = next(
+        (i, r) for i, r in enumerate(renders) if any(f.template == "{p0}, {p1}, {p2}" for f in r[3]))
+    repeated = Trace()
+    for f in fills:
+        if f.template == "{p0}, {p1}, {p2}":
+            (n0, v0, d0), (n1, _v1, d1), rest = f.slots[0], f.slots[1], f.slots[2:]
+            f = dataclasses.replace(f, slots=((n0, v0, d0), (n1, v0, d1)) + tuple(rest))
+        repeated.append(f)
+    repeated.derivations = fills.derivations
+    item2, key2 = SP.build_item("mat_g1_dp_q3_2", renders[:i] + [(seed, fmt, problem, repeated, values)] + renders[i + 1:])
+    fam2 = next(f for f in item2["families"] if f["template"] == "{p0}, {p1}, {p2}")
+    assert next(g for g in fam2["slots"] if g["slots"] == ["p0", "p1", "p2"])["distinct_in_every_render"] is False
+    assert key2["families"][fam2["id"]]["first_render_repeating"] == {"p0,p1,p2": [seed, fmt]}
+    assert SP.item_hash(item2) != SP.item_hash(item)

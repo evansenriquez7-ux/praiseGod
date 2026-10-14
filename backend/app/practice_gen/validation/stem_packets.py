@@ -44,6 +44,11 @@ structured record (`slots.capture()`, ruling 28), never from learner-facing text
     in one unprinted field of the row that render drew is shown as that row's field (`read_from`).
     Found on the first fan-out: judges FAILed on "chart" (a gate's other word), on shape rows the
     lc never draws, and on categories shown apart from the subject row they belong to;
+  * slots printed under ONE shared domain (`{p0}, {p1}, {p2}`) say whether every render observed
+    -- `paths()` and the `SWEEP_SEEDS` student renders -- printed them as different values
+    (`distinct_in_every_render`, owner ruling 48d; the key names the first render that repeated
+    one). Found on the ruling-48 pilot: a judge FAILed a category list as able to repeat a member,
+    which no render does;
   * the lc's competency text, clauses (`requires`), vocabulary gates and declared variants
     (ruling 26) and declared bounds complete the item.
 
@@ -83,6 +88,10 @@ NAMED LIMITS (Scaling Mandate 6; also in docs/pgen_contract.md §17):
      recorded as a plain `E` is shown with both its words.
  10. The pairing of a runtime `E` with the drawn row (ruling 48c) is observed only on renders that
      also print a field of that bank; a slot filled where none is printed stays a runtime list.
+ 11. `distinct_in_every_render` is OBSERVED over `paths()` and the `SWEEP_SEEDS` student renders
+     only: a repeat that only another seed, a pinned formatter at another seed or another profile
+     produces is not seen, so `true` means no observed render repeated a value, not that none can
+     (sampling, as limit 9). `false` is always a real render, named in the key.
 """
 from __future__ import annotations
 
@@ -107,10 +116,13 @@ from backend.app.practice_gen.slots import DERIVED_REASONS, RENDERERS, TRANSFORM
 # 4 (2026-10-14, owner ruling 48): only text the pg can print -- a vocabulary gate shows the one
 # word it gives the lc, a bank only the rows a render drew (enumerated paths plus SWEEP_SEEDS),
 # and a runtime slot read from the drawn row is shown as that row's field.
-HASH_VERSION = 4
+# 5 (2026-10-14, owner ruling 48d): slots printed under one shared domain say whether every
+# render observed printed them as different values (`distinct_in_every_render`).
+HASH_VERSION = 5
 
-# Owner ruling 48b: extra STUDENT-path seeds rendered only to learn which bank rows the lc draws
-# (never judged, never a family source). Measured 2026-10-14 on 46 lcs (seeds 41-1040 and every
+# Owner ruling 48b/d: extra STUDENT-path seeds rendered only to learn which bank rows the lc draws
+# and whether slots sharing a domain ever print one value twice (never judged, never a family
+# source). Measured 2026-10-14 on 46 lcs (seeds 41-1040 and every
 # advertised formatter pinned at 41-240): every bank row first drawn outside the 43 enumerated
 # renders was drawn by seed 240, and none later.
 SWEEP_SEEDS = tuple(range(41, 241))
@@ -271,18 +283,18 @@ def _bank_rows(dotted: str) -> List[Dict[str, Any]]:
     return list(rows)
 
 
-def _bank_sweep(node_id: str, dotteds: List[str]) -> Dict[str, set]:
+def _sweep(node_id: str, dotteds: List[str]) -> Tuple[Dict[str, set], Dict[Tuple[str, str, str], List[Any]]]:
     """
-    {bank: row indices} drawn on the STUDENT path at `SWEEP_SEEDS` (owner ruling 48b), for the
-    banks the enumerated renders already print. Rows are matched by value, as on those renders.
-    Only which rows are drawn is read here: these renders are never judged, and a family or a
-    bank only they reach is not in the packet (limit 1). A student-path raise propagates.
+    (rows, occurrences) observed on the STUDENT path at `SWEEP_SEEDS` (owner ruling 48b/d):
+    {bank: row indices drawn}, for the banks the enumerated renders already print, matched by
+    value as on those renders; and {family key: [((seed, None), {slot: value}), ...]}, one entry
+    per reaching fill. Only these two things are read: the renders are never judged, and a family
+    or a bank only they reach is not in the packet (limit 1). A student-path raise propagates.
     """
     from backend.app.practice_gen.validation import validate_slots as VS
 
-    out: Dict[str, set] = {d: set() for d in dotteds}
-    if not dotteds:
-        return out
+    rows: Dict[str, set] = {d: set() for d in dotteds}
+    occ: Dict[Tuple[str, str, str], List[Any]] = {}
     for seed in SWEEP_SEEDS:
         problem, fills, _values = VS.observe(node_id, seed)
         drawn: Dict[str, set] = {}
@@ -291,11 +303,13 @@ def _bank_sweep(node_id: str, dotteds: List[str]) -> Dict[str, set]:
                 if isinstance(d, str) and d.startswith("bank:"):
                     dotted, _, fld = d[len("bank:"):].rpartition(":")
                     drawn.setdefault(dotted, set()).add((fld, _dump(_canon(v))))
+            if not is_wordless_wrapper(f):
+                occ.setdefault(family_key(f), []).append(((seed, None), {n: _dump(_canon(v)) for n, v, _d in f.slots}))
         for dotted, pairs in drawn.items():
-            if dotted in out:
+            if dotted in rows:
                 flds = {fld for fld, _v in pairs}
-                out[dotted] |= {i for i, r in enumerate(_bank_rows(dotted)) if pairs <= _row_pairs(r, flds)}
-    return out
+                rows[dotted] |= {i for i, r in enumerate(_bank_rows(dotted)) if pairs <= _row_pairs(r, flds)}
+    return rows, occ
 
 
 def _row_pairs(row: Dict[str, Any], fields: set) -> set:
@@ -403,7 +417,8 @@ def build_item(node_id: str, renders=None) -> Tuple[Dict[str, Any], Dict[str, An
                 continue
             key = family_key(f)
             fam = fams.setdefault(key, {"site": f.site, "path": (seed, formatter), "slots": OrderedDict(),
-                                        "chosen_by": set(), "fields": set(), "nested_in": set()})
+                                        "chosen_by": set(), "fields": set(), "nested_in": set(), "occ": []})
+            fam["occ"].append(((seed, formatter), {n: _dump(_canon(v)) for n, v, _d in f.slots}))
             fields, parents = roles[id(f)]
             fam["fields"] |= fields
             fam["nested_in"] |= parents
@@ -489,7 +504,7 @@ def build_item(node_id: str, renders=None) -> Tuple[Dict[str, Any], Dict[str, An
         slot[("id", f"bank:{dotted}:{fld}")] = {"domain": "a field of a fixed item bank", "_bank": dotted,
                                                 "field": fld, "read_from": "the row drawn for the problem"}
         paired_fields.setdefault(dotted, set()).add(fld)
-    sweep = _bank_sweep(node_id, sorted(bank_seen))
+    sweep, sweep_occ = _sweep(node_id, sorted(bank_seen))
 
     order = sorted(fams, key=lambda k: (k[0], k[1], k[2]))
     ids = {k: f"F{i + 1:02d}" for i, k in enumerate(order)}
@@ -579,6 +594,22 @@ def build_item(node_id: str, renders=None) -> Tuple[Dict[str, Any], Dict[str, An
         grouped: "OrderedDict[str, Dict[str, Any]]" = OrderedDict()
         for name, descs in slots_out.items():
             grouped.setdefault(_dump(_canon(descs)), {"slots": [], "domains": descs})["slots"].append(name)
+        # Ruling 48d: slots printed under ONE domain say whether any render observed (enumerated
+        # paths and the SWEEP_SEEDS student renders) printed one value twice among them. Found on
+        # the ruling-48 pilot: a judge FAILed `{p0}, {p1}, {p2}` as able to repeat a category,
+        # which no render does (a theme's six distinct categories, printed as a prefix).
+        repeats: Dict[str, Any] = {}
+        for g in grouped.values():
+            if len(g["slots"]) > 1:
+                first = None
+                for where, vals in fam["occ"] + sweep_occ.get(k, []):
+                    got = [vals[n] for n in g["slots"] if n in vals]
+                    if len(set(got)) < len(got):
+                        first = list(where)
+                        break
+                g["distinct_in_every_render"] = first is None
+                if first is not None:
+                    repeats[",".join(g["slots"])] = first
         # Ruling 46a: where the learner reads this family's text. A family seen in no field and
         # nested in no other family reached learner text by no path this builder can name.
         nested = sorted(ids[p] for p in fam["nested_in"] if p in ids and p != k)
@@ -595,7 +626,7 @@ def build_item(node_id: str, renders=None) -> Tuple[Dict[str, Any], Dict[str, An
             "template_chosen_by_values": sorted(fam["chosen_by"]),
         })
         key_families[ids[k]] = {"source": k[0], "first_site": fam["site"], "renderer": k[2],
-                                "path": list(fam["path"])}
+                                "path": list(fam["path"]), "first_render_repeating": repeats}
 
     bounds = []
     for dna in get_node_dnas(node_id):
