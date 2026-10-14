@@ -44,6 +44,9 @@ structured record (`slots.capture()`, ruling 28), never from learner-facing text
     in one unprinted field of the row that render drew is shown as that row's field (`read_from`).
     Found on the first fan-out: judges FAILed on "chart" (a gate's other word), on shape rows the
     lc never draws, and on categories shown apart from the subject row they belong to;
+  * a fill whose every slot is a vocabulary gate (`{term}`) is one family PER GATE (owner ruling
+    48e), so each gate word is shown nested only in the parents it fills; found on the first
+    ruling-48 fan-out, where judges dropped any of an lc's gate words into any gate slot;
   * slots printed under ONE shared domain (`{p0}, {p1}, {p2}`) say whether every render observed
     -- `paths()` and the `SWEEP_SEEDS` student renders -- printed them as different values
     (`distinct_in_every_render`, owner ruling 48d; the key names the first render that repeated
@@ -118,7 +121,9 @@ from backend.app.practice_gen.slots import DERIVED_REASONS, RENDERERS, TRANSFORM
 # and a runtime slot read from the drawn row is shown as that row's field.
 # 5 (2026-10-14, owner ruling 48d): slots printed under one shared domain say whether every
 # render observed printed them as different values (`distinct_in_every_render`).
-HASH_VERSION = 5
+# 6 (2026-10-14, owner ruling 48e): a pure vocabulary-gate fill (`{term}`) is one family per gate,
+# nested only in the parents its own word fills.
+HASH_VERSION = 6
 
 # Owner ruling 48b/d: extra STUDENT-path seeds rendered only to learn which bank rows the lc draws
 # and whether slots sharing a domain ever print one value twice (never judged, never a family
@@ -179,8 +184,18 @@ def _module(site: str) -> str:
 
 
 def family_key(fill: Any) -> Tuple[str, str, str]:
-    """(spine id or call-site module, template, renderer name or '')."""
-    return (fill.renderer_ref or _module(fill.site), fill.template, fill.renderer or "")
+    """
+    (spine id or call-site module, template, renderer name or ''). A fill whose every slot is a
+    vocabulary gate (`VocabGated.resolve`'s `{term}`) is keyed by its gate(s) too (owner ruling
+    48e): keyed by module and template alone, every gate word an lc prints was ONE family nested
+    in every parent any of them fills, so a judge read each word as able to fill each slot
+    ("Use the how much time has passed to find the answer"). Measured 2026-10-14: 83 of 151 lcs
+    print more than one gate word through that one family.
+    """
+    source = fill.renderer_ref or _module(fill.site)
+    if fill.slots and all(isinstance(d, G) for _n, _v, d in fill.slots):
+        source = f"{source} [gate {', '.join(sorted({d.requires for _n, _v, d in fill.slots}))}]"
+    return (source, fill.template, fill.renderer or "")
 
 
 def reaching(problem: Dict[str, Any], fills: List[Any]) -> List[Any]:

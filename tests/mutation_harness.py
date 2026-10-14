@@ -6304,6 +6304,27 @@ MUTATIONS: List[Mutation] = [
         baseline_must_not_contain=["FAIL stem_review_stale_17"],
     ),
     Mutation(
+        name="stem_gate_words_merged_without_review",
+        asserts=["stem_review_stale_17"],
+        description=(
+            "Make the packet builder key every vocabulary-gate word as ONE `{term}` family again "
+            "(ruling 48e), so each gate word looks able to fill every gate slot -- the merge on which "
+            "judges FAILed S441-013, S441-014 and S442-017. What a judge reads changed, so the approval "
+            "of the multi-gate fixture lc must go stale."
+        ),
+        edits={
+            "backend/app/practice_gen/validation/stem_packets.py": (
+                '    if fill.slots and all(isinstance(d, G) for _n, _v, d in fill.slots):\n',
+                '    if False and fill.slots and all(isinstance(d, G) for _n, _v, d in fill.slots):  # planted mutation\n',
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_stem_review", "--node-ids", "mat_g2_na_q4_0",
+                 "--review-dir", "tests/stem_review_fixtures"],
+        expected_check="§17 each vocabulary-gate word is its own family (ruling 48e)",
+        expect_output_contains=["stem_review_stale_17 (", "mat_g2_na_q4_0"],
+        baseline_must_not_contain=["FAIL stem_review_stale_17"],
+    ),
+    Mutation(
         name="stem_slot_distinctness_changed_without_review",
         asserts=["stem_review_stale_17"],
         description=(

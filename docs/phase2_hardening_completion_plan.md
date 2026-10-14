@@ -1689,6 +1689,34 @@ that points at it break every time the section is refreshed.
 >     DO repeat. The chain launched on (a)-(c) was stopped 30 minutes in (in the mutation corpus; no plant
 >     left, source unchanged) and re-run once on (d). Rejected: running as built and settling each such
 >     FAIL by confirmer and ruling 21.
+>     (e) **Each vocabulary-gate word is its own family** (asked the same day, during the first fan-out on
+>     (d); the owner chose the dispatcher's recommended option, after ruling 49 below). Every gate word an lc
+>     prints through `VocabGated.resolve`'s `{term}` was one family nested in every parent any of its words
+>     fills; judges dropped any gate word into any gate slot (S441-013, S441-014, S441-015, S442-017). 83 of
+>     151 lcs print more than one gate word through it. Unlike ruling 49's open-ended joint facts, this is one
+>     observable keying artifact: a fill whose every slot is a gate is keyed by its gate too. The chain on (d)
+>     was stopped in its mutation corpus (no plant left, source unchanged); the 46 first replies taken on (d)'s
+>     packets were set aside unfiled and re-dispatched. Rejected: continuing under ruling 49.
+>
+> 49. **The campaign runs on ruling 48's packets; a standing FAIL is settled by real renders** (owner,
+>     2026-10-14, asked in the H4-C session after the ruling-48d pilot; the owner chose the dispatcher's
+>     recommended option). Six pilots on HASH_VERSION 4/5 packets: two PASS (S441-002, S441-005), two FAILs on
+>     real grounds (S441-001: '20 pesos' with peso NOT_YET_KNOWN, 19-23-word sentences; S441-004: 22-26-word
+>     sentences), and two FAILs on combinations the packet does not rule out and no render prints: S441-003
+>     (the `{v}` of `{join} or {v}` repeating one of `{p0}, {p1}, {p2}`, across two nested families; 0 in the
+>     renders) and S441-006 (`{answer}` repeating `values['result']` "could be a number 1-100" -- it prints only
+>     the bank answer, 74/74; and duplicate answer choices -- 0 of 249 renders). A template-plus-domain
+>     packet cannot state every joint fact (which slots combine across families, which value a key copies,
+>     which choices cannot coincide); each fix closed one shape and the next pilot found another.
+>     **Run the campaign as designed** (first + blind confirmer; the later verdict stands). The dispatcher
+>     checks every ground of every standing non-PASS against real renders; where a ground is false, ruling 21
+>     applies (one more fresh blind judge, the disproof logged). NAMED LIMIT: the packet states joint facts
+>     only within one template (ruling 48d), not across families or answer choices. Rejected: one more packet
+>     batch for problem-level facts (answer choices distinct, a list distinct across nested templates, the
+>     values a `value:<key>` slot printed) -- judges may still find other shapes; adding rendered examples to
+>     packets (a change to ruling 24's design).
+>     (Ruling 48e, a specific keying artifact found after this ruling, was fixed under its own question; ruling
+>     49 governs every other joint fact.)
 >
 > **Owner rulings recorded 2026-09-22, binding on the next session:**
 >

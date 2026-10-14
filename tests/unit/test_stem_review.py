@@ -323,3 +323,30 @@ def test_slots_sharing_a_domain_say_whether_a_render_repeated_a_value():
     assert next(g for g in fam2["slots"] if g["slots"] == ["p0", "p1", "p2"])["distinct_in_every_render"] is False
     assert key2["families"][fam2["id"]]["first_render_repeating"] == {"p0,p1,p2": [seed, fmt]}
     assert SP.item_hash(item2) != SP.item_hash(item)
+
+
+def test_each_vocabulary_gate_word_is_its_own_family():
+    """
+    Ruling 48e. On the first ruling-48 fan-out, judges read an lc's gate words (S442-017:
+    "bottom number", "fraction", "top number") as able to fill any gate slot, because
+    `VocabGated.resolve`'s `{term}` was ONE family nested in every parent any word fills. Each
+    gate is its own family now, nested only where its word is printed -- measured here from the
+    renders, independently of the builder: which parent slots each gate word's text fills.
+    """
+    from backend.app.practice_gen.slots import G
+
+    renders, _refused = SP.observe_lc("mat_g2_na_q4_0")
+    item, key = SP.build_item("mat_g2_na_q4_0", renders)
+    terms = [f for f in item["families"] if f["template"] == "{term}"]
+    words = {f["id"]: [d["prints"] for g in f["slots"] for d in g["domains"] if "prints" in d] for f in terms}
+    assert len(terms) >= 3 and all(len(w) == 1 for w in words.values()), words
+    tpl = {f["id"]: f["template"] for f in item["families"]}
+    observed = {}
+    for _s, _f, problem, fills, _v in renders:
+        for f in fills:
+            if f.template == "{term}" and all(isinstance(d, G) for _n, _v2, d in f.slots):
+                parents = {g.template for g in fills for _n, v, d in g.slots if d == "fill" and str(v) == f.text}
+                observed.setdefault(f.text, set()).update(parents)
+    for fid, (word,) in words.items():
+        assert {tpl[p] for p in next(f for f in terms if f["id"] == fid)["nested_in"]} == observed[word], (word, fid)
+        assert "[gate " in key["families"][fid]["source"]

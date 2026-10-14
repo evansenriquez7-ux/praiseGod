@@ -17,6 +17,9 @@ They are not reviews and judge nothing.
     GATES and a shared bank its filter draws only some rows of, and on an lc whose runtime
     category slots are shown as a field of the drawn bank row -- so a mutation of how a gate, the
     drawn rows or that pairing is packeted reaches a record whose freshness is checked.
+  * mat_g2_na_q4_0 (owner ruling 48e): the same pair on an lc that prints several vocabulary-gate
+    words through `{term}` (fraction, numerator, denominator), so a mutation of how gate words
+    are split into families reaches a record whose freshness is checked.
   * mat_g3_mg_q2_0, mat_g3_mg_q2_2, mat_g3_mg_q2_5: one first record each, out of the proof's
     scope, whose overall reasoning shares ONE sentence frame (3 lcs: the most §17 allows), so a
     mutation that gives mat_g2_na_q3_8 that frame makes 4; and whose identities a mutation can
@@ -64,6 +67,14 @@ PAIR_CLAUSES = {"interpret": "Look at the picture graph. {sub_q}", "pictograph":
 PAIR_REASONING = {
     "first": "Fixture, not a judgment: each theme row was read with its own subject and categories.",
     "confirming": "Fixture, not a judgment: the reading questions were read against one picture graph each.",
+}
+TERM_LC = "mat_g2_na_q4_0"
+TERM_CLAUSES = {"represent": "Shade {fraction_str} of the shape.", "identify": "What fraction does the {name} show?",
+                "unit_fractions": "What fraction does the {name} show?",
+                "denominators_2_3_4_5_6_8": "What fraction does the {name} show?"}
+TERM_REASONING = {
+    "first": "Fixture, not a judgment: each gate word was read in the hint it is printed in.",
+    "confirming": "Fixture, not a judgment: the shading and naming questions were read for unit fractions.",
 }
 OTHERS = ("mat_g3_mg_q2_0", "mat_g3_mg_q2_2", "mat_g3_mg_q2_5")
 DELIVERY = ("fixture written by tests/stem_review_fixture.py for §17 mutation proofs; no judge was "
@@ -123,8 +134,9 @@ def main() -> int:
     scratch = FIXTURE_DIR / "_prompt.txt"
     written = []
     specs = {MAIN: (MAIN_CLAUSES, MAIN_REASONING), BANK_LC: (BANK_CLAUSES, BANK_REASONING),
-             GATE_LC: (GATE_CLAUSES, GATE_REASONING), PAIR_LC: (PAIR_CLAUSES, PAIR_REASONING)}
-    for i, node_id in enumerate((MAIN, BANK_LC) + OTHERS + (GATE_LC, PAIR_LC)):
+             GATE_LC: (GATE_CLAUSES, GATE_REASONING), PAIR_LC: (PAIR_CLAUSES, PAIR_REASONING),
+             TERM_LC: (TERM_CLAUSES, TERM_REASONING)}
+    for i, node_id in enumerate((MAIN, BANK_LC) + OTHERS + (GATE_LC, PAIR_LC, TERM_LC)):
         renders, _refused = SP.observe_lc(node_id)
         body, key = SP.build_item(node_id, renders)
         item_id = f"FIX-{i + 1:03d}"
