@@ -6385,6 +6385,84 @@ MUTATIONS: List[Mutation] = [
         expect_output_contains=["stem_review_stale_17 (", "domain/provenance changed in"],
         baseline_must_not_contain=["FAIL stem_review_stale_17"],
     ),
+    Mutation(
+        name="stem_value_printed_range_changed_without_review",
+        asserts=["stem_review_stale_17"],
+        description=(
+            "Make the packet builder print a generated number's highest printed value as its lowest "
+            "(ruling 50). What a judge reads about a value slot changed, so the approval must go stale."
+        ),
+        edits={
+            "backend/app/practice_gen/validation/stem_packets.py": (
+                '                        d["printed_hi"] = max(v for _k, v in seen_v)\n',
+                '                        d["printed_hi"] = min(v for _k, v in seen_v)  # planted mutation\n',
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_stem_review", "--node-ids", "mat_g2_na_q3_8",
+                 "--review-dir", "tests/stem_review_fixtures"],
+        expected_check="§17 what a generated number printed is bound by freshness (ruling 50)",
+        expect_output_contains=["stem_review_stale_17 (", "domain/provenance changed in"],
+        baseline_must_not_contain=["FAIL stem_review_stale_17"],
+    ),
+    Mutation(
+        name="stem_value_printed_words_dropped_without_review",
+        asserts=["stem_review_stale_17"],
+        description=(
+            "Make the packet builder show only the first word a generated value printed (ruling 50) -- "
+            "the gap in which judges guessed what {comparison} prints. The approval must go stale."
+        ),
+        edits={
+            "backend/app/practice_gen/validation/stem_packets.py": (
+                '                                        for kind, v in sorted(seen_v, key=lambda kv: (kv[0], _dump(kv[1])))]\n',
+                '                                        for kind, v in sorted(seen_v, key=lambda kv: (kv[0], _dump(kv[1])))][:1]  # planted mutation\n',
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_stem_review", "--node-ids", "mat_g1_dp_q3_2",
+                 "--review-dir", "tests/stem_review_fixtures"],
+        expected_check="§17 every word a generated value printed is bound by freshness (ruling 50)",
+        expect_output_contains=["stem_review_stale_17 (", "domain/provenance changed in"],
+        baseline_must_not_contain=["FAIL stem_review_stale_17"],
+    ),
+    Mutation(
+        name="stem_value_sweep_prints_dropped_without_review",
+        asserts=["stem_review_stale_17"],
+        description=(
+            "Make the packet builder ignore what the student-path sweep renders printed for a generated "
+            "value (ruling 50), so it shows the enumerated renders' values only. The approval must go stale."
+        ),
+        edits={
+            "backend/app/practice_gen/validation/stem_packets.py": (
+                '            d["_printed"] |= seen_v\n',
+                '            pass  # planted mutation\n',
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_stem_review", "--node-ids", "mat_g2_na_q3_8",
+                 "--review-dir", "tests/stem_review_fixtures"],
+        expected_check="§17 a generated value's sweep prints reach the packet (ruling 50)",
+        expect_output_contains=["stem_review_stale_17 (", "domain/provenance changed in"],
+        baseline_must_not_contain=["FAIL stem_review_stale_17"],
+    ),
+    Mutation(
+        name="stem_value_range_moved_unseen",
+        asserts=["stem_review_stale_17"],
+        description=(
+            "Make the even/odd generator cap the number it classifies at 85, leaving every template, "
+            "domain id and family as it was (measured: a key-only builder, before ruling 50, builds a "
+            "byte-identical packet). The packet must observe the new printed values, so the approval "
+            "goes stale."
+        ),
+        edits={
+            "backend/app/practice_gen/dna/na/division.py": (
+                '        n = rng.randint(1, n_max)\n',
+                '        n = min(rng.randint(1, n_max), 85)  # planted mutation\n',
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_stem_review", "--node-ids", "mat_g2_na_q3_8",
+                 "--review-dir", "tests/stem_review_fixtures"],
+        expected_check="§17 a generated value's printed values are observed per render (ruling 50)",
+        expect_output_contains=["stem_review_stale_17 (", "domain/provenance changed in"],
+        baseline_must_not_contain=["FAIL stem_review_stale_17"],
+    ),
 ]
 
 # The templated-review mutation cannot be a literal find/replace: each review's

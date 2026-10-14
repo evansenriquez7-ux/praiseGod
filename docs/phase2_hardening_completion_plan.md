@@ -1717,6 +1717,26 @@ that points at it break every time the section is refreshed.
 >     packets (a change to ruling 24's design).
 >     (Ruling 48e, a specific keying artifact found after this ruling, was fixed under its own question; ruling
 >     49 governs every other joint fact.)
+> 50. **A §17 packet shows what a generated value prints** (owner, 2026-10-15, asked in the H4-C session after the
+>     audit of the 151 first judges on HASH_VERSION 6 packets). 81 of 151 replies could not be filed: 213 quoted
+>     spans their packet does not contain (mostly example renders the judge composed: "has 1 marbles", "There is 2
+>     group of 3 apple", "nineteen hundred", "Start at Friday and count on ..."), 13 read 2,000 lines of a longer
+>     prompt, 2 called a Claude Docs MCP tool. Measured: all 2,122 "repeats a generated value" slots on 144 of 151
+>     lcs name a key `declared_bounds` never states (it holds only task_type/context selectors), while the judge's
+>     instructions said the range "is set by the declared bounds" -- named limit 3 -- so a judge cannot see what
+>     {comparison}, {unit}, {word_form} print and guesses. The owner chose the dispatcher's recommendation: close
+>     limit 3 -- each value slot shows what renders printed for it (numbers as observed lo-hi, other values as their
+>     observed members, sampled like other runtime domains), and the instructions say never to put an example render
+>     in quotation marks -- then rebuild, pilot one judge, re-chain, and rerun all 151 firsts. This reverses part
+>     of ruling 49, which rejected "the values a `value:<key>` slot printed" in one more packet batch; the
+>     question put to the owner gave the measured cost (81 of 151 unfileable) but did not cite that rejection,
+>     an omission by the dispatcher reported to the owner afterwards. Rejected: proceed as designed (redo the
+>     81 under the gap); prompt wording only (judges still cannot see generated words). Built: 2,122 of 2,122
+>     value slots show printed values (1,812 numeric lo-hi, 310 lists, longest 240), prompts over 2,000 lines
+>     14 -> 19. Pilot S441-009 (mat_g1_mg_q2_1, HASH_VERSION 7): audit clean, no span outside its packet; it
+>     cited `longer`/`shorter` and 2-9 from the packet; its FAIL (a singular count noun after 2-9 in F01/F03)
+>     is false on real renders (729 number-noun pairs over paths() and seeds 41-240, all agree), the
+>     cross-slot joint fact ruling 49 settles by a fresh blind judge.
 >
 > **Owner rulings recorded 2026-09-22, binding on the next session:**
 >

@@ -1,21 +1,21 @@
 {
  "schema_version": 2,
- "hash_version": 6,
+ "hash_version": 7,
  "node_id": "mat_g1_dp_q3_2",
  "record_id": "fixture-mat_g1_dp_q3_2-first",
  "role": "first",
  "confirms": null,
  "item_id": "FIX-007",
- "lc_hash": "581d6451100a77a09bcaa19523a6fbddcc27ee95ecf93ee63b9046555cf3dd14",
+ "lc_hash": "49ae21714440a0b32723a948d7d465479d6cd2737615bfca7fee01e5d3454d70",
  "judged_by": "fixture-not-a-judge-mat_g1_dp_q3_2-first",
  "dispatch_id": "fixture-mat_g1_dp_q3_2-first",
  "filed_at": "2026-10-13T00:00:00Z",
  "delivery": "fixture written by tests/stem_review_fixture.py for §17 mutation proofs; no judge was dispatched, so no judge read the packet or CLAUDE.md",
  "tool_uses_by_judge": "none (hand-written fixture)",
- "dispatch_prompt_digest": "4f7f64e4305db83b0844e0fea4b5bdbe3bfe2986db335af7610103f21db91a11",
+ "dispatch_prompt_digest": "136ffde5b9e9edfe0527d748f0099848abc0608acada987f11489cbbd8055d7c",
  "raw_reply": "{\"item\": \"FIX-007\", \"clauses\": {\"interpret\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F19\", \"template\": \"Look at the picture graph. {sub_q}\", \"reasoning\": \"Fixture: the template 'Look at the picture graph. {sub_q}' addresses this clause.\"}, \"pictograph\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F06\", \"template\": \"Look at the {pg_label} carefully.\", \"reasoning\": \"Fixture: the template 'Look at the {pg_label} carefully.' addresses this clause.\"}, \"without_scale\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F05\", \"template\": \"Each picture stands for 1 item.\", \"reasoning\": \"Fixture: the template 'Each picture stands for 1 item.' addresses this clause.\"}}, \"failing_families\": [], \"failing_templates\": [], \"overall\": \"PASS\", \"reasoning\": \"Fixture, not a judgment: each theme row was read with its own subject and categories.\"}",
  "raw_reply_digest": "287fea838813872ed2776b5052a11cacada488fde1b4472f70a66f1c018c2347",
- "packet_digest": "26aadd61873f912ae40d2af3f9fec6de9b908a9e5da61f25979f7249d4348460",
+ "packet_digest": "f933b3e63b3549c740cb75dfe3f184cc014b2bf4013b5b280b08583880b11096",
  "family_keys": {
   "F01": {
    "source": "backend/app/practice_gen/dna/base.py [gate pictograph]",
@@ -489,6 +489,37 @@
        {
         "domain": "repeats a generated value",
         "key": "question_category",
+        "printed": [
+         "Art",
+         "English",
+         "Grade 2",
+         "Grade 3",
+         "Grade 4",
+         "Math",
+         "Monday",
+         "Science",
+         "Thursday",
+         "Tuesday",
+         "Wednesday",
+         "apples",
+         "bananas",
+         "basketball",
+         "birds",
+         "blue",
+         "cats",
+         "daisies",
+         "dogs",
+         "fish",
+         "grapes",
+         "green",
+         "mangoes",
+         "red",
+         "running",
+         "sunflowers",
+         "swimming",
+         "volleyball",
+         "yellow"
+        ],
         "derived_from_values": [
          "question_category"
         ]
@@ -503,6 +534,8 @@
        {
         "domain": "repeats a generated value",
         "key": "answer",
+        "printed_lo": 1,
+        "printed_hi": 5,
         "derived_from_values": [
          "answer"
         ]
@@ -812,6 +845,27 @@
        {
         "domain": "repeats a generated value",
         "key": "compare_a",
+        "printed": [
+         "English",
+         "Grade 1",
+         "Grade 2",
+         "Math",
+         "Monday",
+         "Science",
+         "Tuesday",
+         "apples",
+         "bananas",
+         "basketball",
+         "cats",
+         "dogs",
+         "green",
+         "mangoes",
+         "red",
+         "roses",
+         "sunflowers",
+         "swimming",
+         "volleyball"
+        ],
         "derived_from_values": [
          "compare_a"
         ]
@@ -826,6 +880,29 @@
        {
         "domain": "repeats a generated value",
         "key": "compare_b",
+        "printed": [
+         "Art",
+         "English",
+         "Grade 2",
+         "Grade 3",
+         "Grade 4",
+         "Science",
+         "Thursday",
+         "Tuesday",
+         "Wednesday",
+         "bananas",
+         "blue",
+         "dogs",
+         "fish",
+         "grapes",
+         "green",
+         "mangoes",
+         "running",
+         "sunflowers",
+         "swimming",
+         "tulips",
+         "yellow"
+        ],
         "derived_from_values": [
          "compare_b"
         ]

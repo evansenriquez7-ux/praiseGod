@@ -21,7 +21,8 @@ structured record (`slots.capture()`, ruling 28), never from learner-facing text
   * each slot's domain is rendered for a reader by RESOLVING it (ruling 44c): an `enum:`/`noun:`
     list by its members and a `bank:` field by its bank's rows (ruling 47, below), a runtime `E` by the union of its members (a
     vocabulary gate `G` by the ONE word it gives the lc, ruling 48, below) and an
-    `R` by its lowest lo and highest hi over the enumerated renders, `value:<key>` by its key, a
+    `R` by its lowest lo and highest hi over the enumerated renders, `value:<key>` by its key and
+    what renders printed for it (ruling 50, below), a
     `fill` slot by the families whose text filled it, a type-only slot by its registered reason
     and `src`. Provenance (`src`, template `_src`) and the lc's `derives`/`computes` declarations
     (ruling 41) are listed, because §15 trusts them and ruling 41 says H4 reviews them;
@@ -52,6 +53,12 @@ structured record (`slots.capture()`, ruling 28), never from learner-facing text
     (`distinct_in_every_render`, owner ruling 48d; the key names the first render that repeated
     one). Found on the ruling-48 pilot: a judge FAILed a category list as able to repeat a member,
     which no render does;
+  * a `value:<key>` slot shows what renders printed for it (owner ruling 50, 2026-10-15): over
+    `paths()` and the `SWEEP_SEEDS` student renders, the lowest and highest where every value was
+    a number (`printed_lo`/`printed_hi`), else every value (`printed`). Found on the first fan-out
+    on ruling 48e: all 2,122 such slots on 144 of 151 lcs showed only a key that the declared
+    bounds never state, so judges guessed what `{comparison}` or `{word_form}` prints and quoted
+    the guesses (213 quoted spans no packet contains, 81 of 151 replies unfileable);
   * the lc's competency text, clauses (`requires`), vocabulary gates and declared variants
     (ruling 26) and declared bounds complete the item.
 
@@ -67,8 +74,12 @@ NAMED LIMITS (Scaling Mandate 6; also in docs/pgen_contract.md §17):
      contributes nothing here and is §14's `slot_path_refused_14`.
   2. A runtime `E`/`R` is resolved from the renders observed: a member or bound only an
      unvisited path produces is not shown (and §14 does not check it there either).
-  3. A `value:<key>` slot is shown by its key, not its range; the key's range is bounded where it
-     is generated (§14 limit 5, and the declared bounds the item lists).
+  3. A `value:<key>` slot shows what the renders observed printed for it (ruling 50), not its
+     range: a value only another seed, a pinned formatter at another seed or another profile
+     prints is not shown (sampling, as limit 9; measured 2026-10-14, runtime values do not
+     saturate by 1,000 seeds), and a value printed only on a sweep render under a domain the
+     enumerated renders never recorded for that slot is not shown. Its range is bounded where it
+     is generated (§14 limit 5); the judge is told the values are observed, not a bound.
   4. Text no fill produced (un-instrumented, §14 `slot_text_unaccounted_14`) has no family and is
      not in the packet; §14 names it.
   5. One-member domains of the value itself (`E((x,), ...)`) are shown as written; they bound
@@ -123,7 +134,8 @@ from backend.app.practice_gen.slots import DERIVED_REASONS, RENDERERS, TRANSFORM
 # render observed printed them as different values (`distinct_in_every_render`).
 # 6 (2026-10-14, owner ruling 48e): a pure vocabulary-gate fill (`{term}`) is one family per gate,
 # nested only in the parents its own word fills.
-HASH_VERSION = 6
+# 7 (2026-10-15, owner ruling 50): a `value:<key>` slot shows what renders printed for it.
+HASH_VERSION = 7
 
 # Owner ruling 48b/d: extra STUDENT-path seeds rendered only to learn which bank rows the lc draws
 # and whether slots sharing a domain ever print one value twice (never judged, never a family
@@ -298,18 +310,21 @@ def _bank_rows(dotted: str) -> List[Dict[str, Any]]:
     return list(rows)
 
 
-def _sweep(node_id: str, dotteds: List[str]) -> Tuple[Dict[str, set], Dict[Tuple[str, str, str], List[Any]]]:
+def _sweep(node_id: str, dotteds: List[str]) -> Tuple[Dict[str, set], Dict[Tuple[str, str, str], List[Any]],
+                                                       Dict[Tuple[Any, ...], set]]:
     """
-    (rows, occurrences) observed on the STUDENT path at `SWEEP_SEEDS` (owner ruling 48b/d):
-    {bank: row indices drawn}, for the banks the enumerated renders already print, matched by
-    value as on those renders; and {family key: [((seed, None), {slot: value}), ...]}, one entry
-    per reaching fill. Only these two things are read: the renders are never judged, and a family
-    or a bank only they reach is not in the packet (limit 1). A student-path raise propagates.
+    (rows, occurrences, printed) observed on the STUDENT path at `SWEEP_SEEDS` (owner rulings
+    48b/d, 50): {bank: row indices drawn}, for the banks the enumerated renders already print,
+    matched by value as on those renders; {family key: [((seed, None), {slot: value}), ...]}, one
+    entry per reaching fill; and {(family key, slot, `value:<key>` domain): {`_printed` value}}.
+    Only these three things are read: the renders are never judged, and a family or a bank only
+    they reach is not in the packet (limit 1). A student-path raise propagates.
     """
     from backend.app.practice_gen.validation import validate_slots as VS
 
     rows: Dict[str, set] = {d: set() for d in dotteds}
     occ: Dict[Tuple[str, str, str], List[Any]] = {}
+    printed: Dict[Tuple[Any, ...], set] = {}
     for seed in SWEEP_SEEDS:
         problem, fills, _values = VS.observe(node_id, seed)
         drawn: Dict[str, set] = {}
@@ -320,11 +335,21 @@ def _sweep(node_id: str, dotteds: List[str]) -> Tuple[Dict[str, set], Dict[Tuple
                     drawn.setdefault(dotted, set()).add((fld, _dump(_canon(v))))
             if not is_wordless_wrapper(f):
                 occ.setdefault(family_key(f), []).append(((seed, None), {n: _dump(_canon(v)) for n, v, _d in f.slots}))
+                for n, v, d in f.slots:
+                    if isinstance(d, str) and d.startswith("value:"):
+                        printed.setdefault((family_key(f), n, d), set()).add(_printed(v))
         for dotted, pairs in drawn.items():
             if dotted in rows:
                 flds = {fld for fld, _v in pairs}
                 rows[dotted] |= {i for i, r in enumerate(_bank_rows(dotted)) if pairs <= _row_pairs(r, flds)}
-    return rows, occ
+    return rows, occ, printed
+
+
+def _printed(value: Any) -> Tuple[str, Any]:
+    """Ruling 50: one printed value of a `value:<key>` slot -- ("n", the number) or ("t", its canonical JSON)."""
+    if isinstance(value, (int, float)) and not isinstance(value, bool):
+        return ("n", value)
+    return ("t", _dump(_canon(value)))
 
 
 def _row_pairs(row: Dict[str, Any], fields: set) -> set:
@@ -469,6 +494,8 @@ def build_item(node_id: str, renders=None) -> Tuple[Dict[str, Any], Dict[str, An
                     elif domain.startswith("bank:"):
                         dotted, _, fld = domain[len("bank:"):].rpartition(":")
                         drawn.setdefault(dotted, set()).add((fld, _dump(_canon(value))))
+                    elif domain.startswith("value:"):
+                        d.setdefault("_printed", set()).add(_printed(value))
                 else:
                     raise TypeError(f"stem packet: domain {domain!r} at {f.site} is not a str, R or E")
                 if srcs.get(name):
@@ -519,7 +546,13 @@ def build_item(node_id: str, renders=None) -> Tuple[Dict[str, Any], Dict[str, An
         slot[("id", f"bank:{dotted}:{fld}")] = {"domain": "a field of a fixed item bank", "_bank": dotted,
                                                 "field": fld, "read_from": "the row drawn for the problem"}
         paired_fields.setdefault(dotted, set()).add(fld)
-    sweep, sweep_occ = _sweep(node_id, sorted(bank_seen))
+    sweep, sweep_occ, sweep_printed = _sweep(node_id, sorted(bank_seen))
+    # Ruling 50: a generated value's sweep prints join the slot's own, where the enumerated renders
+    # recorded that slot under that same `value:` domain (limit 3).
+    for (k, name, domain), seen_v in sweep_printed.items():
+        d = fams.get(k, {}).get("slots", {}).get(name, {}).get(("id", domain))
+        if d is not None:
+            d["_printed"] |= seen_v
 
     order = sorted(fams, key=lambda k: (k[0], k[1], k[2]))
     ids = {k: f"F{i + 1:02d}" for i, k in enumerate(order)}
@@ -587,6 +620,16 @@ def build_item(node_id: str, renders=None) -> Tuple[Dict[str, Any], Dict[str, An
                     d["members_in_list"] = _table(d.pop("list"), d.pop("members"))
                 if "_bank" in d:
                     d["bank"] = bank_label[d.pop("_bank")]
+                if "_printed" in d:
+                    # Ruling 50: what renders printed for a generated value -- the lowest and highest
+                    # where every one was a number, else every one (observed, not a bound: limit 3).
+                    seen_v = d.pop("_printed")
+                    if all(kind == "n" for kind, _v in seen_v):
+                        d["printed_lo"] = min(v for _k, v in seen_v)
+                        d["printed_hi"] = max(v for _k, v in seen_v)
+                    else:
+                        d["printed"] = [v if kind == "n" else json.loads(v)
+                                        for kind, v in sorted(seen_v, key=lambda kv: (kv[0], _dump(kv[1])))]
                 if "_families" in d:
                     d["families"] = sorted(ids[x] for x in d.pop("_families") if x in ids)
                 if "_from" in d:

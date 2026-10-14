@@ -1,21 +1,21 @@
 {
  "schema_version": 2,
- "hash_version": 6,
+ "hash_version": 7,
  "node_id": "mat_g3_mg_q2_0",
  "record_id": "fixture-mat_g3_mg_q2_0-first",
  "role": "first",
  "confirms": null,
  "item_id": "FIX-003",
- "lc_hash": "1d3c5d94c3412c58699b589aa5a865bda3a0a8a29ba3538d4b5ec50d7387183d",
+ "lc_hash": "129790934a93283cde89f0f628970f76968b2344e64ba9b5b8031f240e2c4e6e",
  "judged_by": "fixture-not-a-judge-mat_g3_mg_q2_0-first",
  "dispatch_id": "fixture-mat_g3_mg_q2_0-first",
  "filed_at": "2026-10-13T00:00:00Z",
  "delivery": "fixture written by tests/stem_review_fixture.py for §17 mutation proofs; no judge was dispatched, so no judge read the packet or CLAUDE.md",
  "tool_uses_by_judge": "none (hand-written fixture)",
- "dispatch_prompt_digest": "9ddb0b8516b178b7017f0d3cda94ddb598383ff2676074b15535fa872839b55f",
+ "dispatch_prompt_digest": "b4b8d9f31f48d5711b310ebbf8b4f8bbb011c6fb87fbd7ccd4ce81051d8ba20a",
  "raw_reply": "{\"item\": \"FIX-003\", \"clauses\": {\"measure_mass\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F01\", \"template\": \"{term}\", \"reasoning\": \"Fixture: hand-written.\"}, \"grams_kilograms_and_or_milligrams\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F01\", \"template\": \"{term}\", \"reasoning\": \"Fixture: hand-written.\"}, \"measuring_tools\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F01\", \"template\": \"{term}\", \"reasoning\": \"Fixture: hand-written.\"}}, \"failing_families\": [], \"failing_templates\": [], \"overall\": \"PASS\", \"reasoning\": \"Fixture, not a judgment: the template '{term}' was read with its domains, and nothing in it is out of scope.\"}",
  "raw_reply_digest": "0460041f0adc98d0159e44264a9b48683c5f5d3d9f5a1edf0fe3c46ad761b0af",
- "packet_digest": "8e5e40c596a0061be1b1fb8952e71f15a1e480ad2ff2146129904ad3f444f713",
+ "packet_digest": "9171b34650d01dae2bd7c41f22d8bd44a00630a8324b78e10e34ee7adbb9f328",
  "family_keys": {
   "F01": {
    "source": "backend/app/practice_gen/dna/base.py [gate mass]",
@@ -362,6 +362,11 @@
        {
         "domain": "repeats a generated value",
         "key": "unit",
+        "printed": [
+         "g",
+         "kg",
+         "mg"
+        ],
         "derived_from_values": [
          "unit"
         ]
@@ -458,6 +463,11 @@
        {
         "domain": "repeats a generated value",
         "key": "unit",
+        "printed": [
+         "g",
+         "kg",
+         "mg"
+        ],
         "derived_from_values": [
          "unit"
         ]

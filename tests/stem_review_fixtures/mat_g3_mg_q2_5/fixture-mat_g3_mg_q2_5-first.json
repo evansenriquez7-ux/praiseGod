@@ -1,21 +1,21 @@
 {
  "schema_version": 2,
- "hash_version": 6,
+ "hash_version": 7,
  "node_id": "mat_g3_mg_q2_5",
  "record_id": "fixture-mat_g3_mg_q2_5-first",
  "role": "first",
  "confirms": null,
  "item_id": "FIX-005",
- "lc_hash": "f0d3d2ca21ca5abe4e8622a8fd2ae9c3411eaa7abc2cf74ab7f6c1731bbffee3",
+ "lc_hash": "b4e9370736ddbdd76288ce10e0b3e8ecfe7e7ac4947f0fe9fc5415097615bd32",
  "judged_by": "fixture-not-a-judge-mat_g3_mg_q2_5-first",
  "dispatch_id": "fixture-mat_g3_mg_q2_5-first",
  "filed_at": "2026-10-13T00:00:00Z",
  "delivery": "fixture written by tests/stem_review_fixture.py for §17 mutation proofs; no judge was dispatched, so no judge read the packet or CLAUDE.md",
  "tool_uses_by_judge": "none (hand-written fixture)",
- "dispatch_prompt_digest": "916c092d092e2398dbc3ade410d0bbdbbf576f48c0288512bc1b5fb663a8a52e",
+ "dispatch_prompt_digest": "c560d682a9d038ce1d1186c82a812a966fa3284dcc86c56f5c77a9b60d04e790",
  "raw_reply": "{\"item\": \"FIX-005\", \"clauses\": {\"compare_capacities\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F01\", \"template\": \"Compare the two measurements: {a} {unit} and {b} {unit}.\", \"reasoning\": \"Fixture: hand-written.\"}, \"two_containers\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F01\", \"template\": \"Compare the two measurements: {a} {unit} and {b} {unit}.\", \"reasoning\": \"Fixture: hand-written.\"}}, \"failing_families\": [], \"failing_templates\": [], \"overall\": \"PASS\", \"reasoning\": \"Fixture, not a judgment: the template 'Compare the two measurements: {a} {unit} and {b} {unit}.' was read with its domains, and nothing in it is out of scope.\"}",
  "raw_reply_digest": "c71ec381732cc24d3955e38d1e6d63fb55ca3ff32f2c7086fe4aa34805a3e7a3",
- "packet_digest": "95b465357e2f02b8acd8477bcfec072065982172a49f1c187c5c5adcc2e6914d",
+ "packet_digest": "057e2dd7c5b2abe2239cbdda398280170550ea7279868101c3fe8e27c886b175",
  "family_keys": {
   "F01": {
    "source": "backend/app/practice_gen/dna/mg/mass_capacity.py",
@@ -305,6 +305,8 @@
        {
         "domain": "repeats a generated value",
         "key": "value_a",
+        "printed_lo": 1,
+        "printed_hi": 70,
         "derived_from_values": [
          "value_a"
         ]
@@ -319,6 +321,10 @@
        {
         "domain": "repeats a generated value",
         "key": "unit",
+        "printed": [
+         "L",
+         "mL"
+        ],
         "derived_from_values": [
          "unit"
         ]
@@ -333,6 +339,8 @@
        {
         "domain": "repeats a generated value",
         "key": "value_b",
+        "printed_lo": 1,
+        "printed_hi": 70,
         "derived_from_values": [
          "value_b"
         ]
@@ -379,6 +387,8 @@
        {
         "domain": "repeats a generated value",
         "key": "answer",
+        "printed_lo": 4,
+        "printed_hi": 70,
         "derived_from_values": [
          "answer"
         ]
@@ -393,6 +403,10 @@
        {
         "domain": "repeats a generated value",
         "key": "unit",
+        "printed": [
+         "L",
+         "mL"
+        ],
         "derived_from_values": [
          "unit"
         ]
@@ -440,6 +454,8 @@
        {
         "domain": "repeats a generated value",
         "key": "value_a",
+        "printed_lo": 1,
+        "printed_hi": 70,
         "derived_from_values": [
          "value_a"
         ]
@@ -454,6 +470,10 @@
        {
         "domain": "repeats a generated value",
         "key": "unit",
+        "printed": [
+         "L",
+         "mL"
+        ],
         "derived_from_values": [
          "unit"
         ]
@@ -468,6 +488,8 @@
        {
         "domain": "repeats a generated value",
         "key": "value_b",
+        "printed_lo": 1,
+        "printed_hi": 70,
         "derived_from_values": [
          "value_b"
         ]

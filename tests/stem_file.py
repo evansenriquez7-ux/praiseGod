@@ -94,15 +94,19 @@ problem printed one value twice (false). The domain kinds:
   - "one of the generator's own choices": every member the generator offered across the renders
     enumerated. Where its basis says it is the value itself (for example "the keyed answer"),
     the list shows what was observed and does not bound the slot: treat it as unbounded;
-  - "repeats a generated value": the generated value named by "key" (its range is set by the
-    declared bounds);
+  - "repeats a generated value": the generated value named by "key". What renders printed for
+    it, on every render observed (the enumerated renders and 200 more): where every value was a
+    number, the lowest and highest ("printed_lo", "printed_hi"); otherwise every value, in
+    "printed". These are observed, not a bound: judge each value shown, and judge the slot by
+    the kind of value they show;
   - "nested learner text": the text of the listed families;
   - "a number computed by the generator" / "text computed by the generator": a value computed
     from the generated values in derived_from_values, for the reason given in reason_kinds.
 "derived_from_values", "template_chosen_by_values" and "value_derivations" are the generator's
 own claims about which generated values a slot, a template choice or a value comes from.
 A separate deterministic check proves every value a learner sees stays inside these domains,
-so judge the domains as the full set of what can appear.
+so judge the domains as the full set of what can appear (except what a generated value
+"printed", which is observed).
 
 Rule 1 (overall): could ANY value in these domains, filled into these templates, produce text
 that is wrong for a learner of this lc: an incorrect or misleading statement, wording a learner
@@ -116,7 +120,9 @@ produce problems that address that clause, giving in "family" the id of the one 
 best produces it and in "template" its template, copied exactly as printed; otherwise
 NOT_PRODUCIBLE with "family": null and "template": null.
 
-Quote exactly. Any text you put in quotation marks must appear in this file. Do not guess.
+Quote exactly. Any text you put in quotation marks must appear in this file. Never put an
+example of a filled-in template in quotation marks, even to show a fault: name the family, the
+template and the slot values instead. Do not guess.
 
 Reply with exactly ONE JSON object and nothing else:
 {"item": "<this item's id>",

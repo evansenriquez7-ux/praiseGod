@@ -350,3 +350,38 @@ def test_each_vocabulary_gate_word_is_its_own_family():
     for fid, (word,) in words.items():
         assert {tpl[p] for p in next(f for f in terms if f["id"] == fid)["nested_in"]} == observed[word], (word, fid)
         assert "[gate " in key["families"][fid]["source"]
+
+
+def test_a_generated_value_shows_what_renders_printed_for_it():
+    """
+    Ruling 50. Found on the first fan-out on HASH_VERSION 6 (2026-10-15): every `value:<key>` slot
+    showed only its key, which the declared bounds never state, so judges guessed what
+    `{comparison}` prints and quoted the guesses (213 spans no packet contains). Each such slot now
+    shows what the renders observed -- `paths()` and the `SWEEP_SEEDS` student renders -- printed:
+    lowest and highest for numbers, else every value. Measured here from the renders, independently
+    of the builder.
+    """
+    from backend.app.practice_gen.validation import validate_slots as VS
+
+    lc = "mat_g1_mg_q2_1"
+    renders, _refused = SP.observe_lc(lc)
+    item, _key = SP.build_item(lc, renders)
+    seen = {}
+    sweep = [VS.observe(lc, s) for s in SP.SWEEP_SEEDS]
+    for fills in [r[3] for r in renders] + [s[1] for s in sweep]:
+        for f in fills:
+            for _n, v, d in f.slots:
+                if d == "value:comparison" or d == "value:answer":
+                    seen.setdefault(d, set()).add(v)
+    by_key = {}
+    for fam in item["families"]:
+        for g in fam["slots"]:
+            for d in g["domains"]:
+                if d["domain"] == "repeats a generated value":
+                    by_key.setdefault(d["key"], []).append(d)
+    assert seen["value:comparison"] == {"longer", "shorter"}
+    assert by_key["comparison"] and all(d["printed"] == ["longer", "shorter"] for d in by_key["comparison"])
+    nums = seen["value:answer"]
+    assert by_key["answer"] and all((d["printed_lo"], d["printed_hi"]) == (min(nums), max(nums))
+                                    for d in by_key["answer"])
+    assert all("printed" in d or "printed_lo" in d for ds in by_key.values() for d in ds)
