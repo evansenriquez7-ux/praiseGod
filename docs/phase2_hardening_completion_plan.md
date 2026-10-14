@@ -1624,6 +1624,26 @@ that points at it break every time the section is refreshed.
 >     and quotes must agree exactly; the finding names every family the judge named. Ruling 44e's template
 >     quote is kept. Rejected: naming every family that prints a quoted template (over-inclusive); leaving it
 >     as a named limit.
+> 47. **The §17 packet prints an item bank row by row** (owner, 2026-10-14, asked in the H4-C session after
+>     the second real dispatch; the owner chose the dispatcher's recommended option). Rebuilt on ruling 46's
+>     packets, the S441-001 judge (mat_g1_dp_q3_0) FAILed on three grounds: '20 pesos' among the options
+>     while "peso" is NOT_YET_KNOWN, and 15+-word questions under sentence_max_words 15, both shown by the
+>     packet; and "keyed answers are unbounded in coherence" -- a question could be keyed to another row's
+>     answer -- which is false: pictographs.py draws one `_INTERVIEW_POOL` row whole, and measured over the
+>     lc's 43 renders independently of the builder, every question is printed with its own row's answer and
+>     options. The packet printed each bank field as its own flat, de-duplicated list, so no judge could
+>     tell which answer a question is keyed to -- or check that a bank's keyed answers are right. 20 of 151
+>     lcs (55 families, 3 banks) draw from a bank. The reply audited clean and was not filed.
+>     **Fix the packet, then run the campaign.** A bank is printed once, in `banks`, as its rows (each with
+>     the fields the lc prints from it); a bank slot names its bank and field; `one_row_per_problem` says
+>     whether every render enumerated printed its fields of that bank from one row -- OBSERVED per render,
+>     never assumed (`fmt_pictograph` fills a bank's symbol and subject at different call sites). All part
+>     of the freshness hash (`HASH_VERSION` 3); the judge's instructions say a one-row bank is judged row by
+>     row. A harness batch first, as ruling 46: regression test, mutations, fixture re-run (with a bank lc
+>     added, so a bank mutation reaches a freshness-checked record), one chain to CERTIFIED; then the
+>     campaign on fresh packets. Rejected: running the campaign as built and setting aside replies that rest
+>     on cross-row pairing (no judge could check a bank's keys on those 20 lcs; the gap would stand as a
+>     named limit).
 >
 > **Owner rulings recorded 2026-09-22, binding on the next session:**
 >

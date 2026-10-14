@@ -1,5 +1,6 @@
 """§17 stem review gate (batch H4, owner rulings 24, 44): the packet rules and the record rules."""
 import copy
+import dataclasses
 import json
 from pathlib import Path
 
@@ -102,13 +103,52 @@ def test_a_slot_is_printed_under_its_own_name_not_its_lists():
     """
     import string
     item, _key = SP.build_item("mat_g3_dp_q3_4")
-    assert item["lists"], "the lc's bank fields must be printed in the lists table"
+    assert item["banks"], "the lc's bank fields must be printed in the banks table (ruling 47)"
     for fam in item["families"]:
         fields = {f for _l, f, _s, _c in string.Formatter().parse(fam["template"]) if f is not None}
         printed = {name for group in fam["slots"] for name in group["slots"]}
         assert printed == fields, (fam["id"], fam["template"], printed)
-    members = item["lists"]["_ITEM_POOL.answer"]
-    assert len(members) == len({json.dumps(m) for m in members}), "a list prints each member once"
+
+
+def test_an_item_bank_is_printed_row_by_row():
+    """
+    Ruling 47. Found on the second real dispatch (2026-10-14): each bank field printed as its own
+    flat list, so a judge FAILed mat_g1_dp_q3_0's correctly keyed interview bank as "questions
+    and answers can be mismatched". Measured over its 43 renders independently of the builder,
+    every question is printed with its own row's answer and options; the packet must show the
+    rows and say so. A render that prints fields of two rows must turn the flag false.
+    """
+    from backend.app.practice_gen.dna.dp.pictographs import _INTERVIEW_POOL
+    from backend.app.practice_gen.slots import Trace
+
+    renders, _refused = SP.observe_lc("mat_g1_dp_q3_0")
+    item, key = SP.build_item("mat_g1_dp_q3_0", renders)
+    bank = item["banks"]["_INTERVIEW_POOL"]
+    assert bank["fields"] == ["answer", "distractors", "question"]
+    assert bank["one_row_per_problem"] is True
+    assert bank["rows"] == [{f: r[f] for f in bank["fields"]} for r in _INTERVIEW_POOL]
+    assert key["banks"]["_INTERVIEW_POOL"]["first_render_not_from_one_row"] is None
+    assert not any(k.startswith("_INTERVIEW_POOL") for k in item["lists"]), "a bank is not flattened into lists"
+    for fam in item["families"]:
+        for group in fam["slots"]:
+            for d in group["domains"]:
+                if d["domain"] == "a field of a fixed item bank":
+                    assert d["bank"] == "_INTERVIEW_POOL" and "members_in_list" not in d, d
+
+    seed, fmt, problem, fills, values = renders[0]
+    own = next(r for r in _INTERVIEW_POOL if r["question"] == problem["question_text"])
+    other = next(r for r in _INTERVIEW_POOL if r["answer"] != own["answer"] and r["question"] != own["question"])
+    mixed = Trace()
+    for f in fills:
+        if f.slots and f.slots[0][2] == "bank:backend.app.practice_gen.dna.dp.pictographs._INTERVIEW_POOL:question":
+            f = dataclasses.replace(f, text=other["question"], slots=((f.slots[0][0], other["question"], f.slots[0][2]),))
+        mixed.append(f)
+    mixed.derivations = fills.derivations
+    swapped = (seed, fmt, {**problem, "question_text": other["question"]}, mixed, values)
+    item2, key2 = SP.build_item("mat_g1_dp_q3_0", [swapped] + renders[1:])
+    assert item2["banks"]["_INTERVIEW_POOL"]["one_row_per_problem"] is False
+    assert key2["banks"]["_INTERVIEW_POOL"]["first_render_not_from_one_row"] == [seed, fmt]
+    assert SP.item_hash(item2) != SP.item_hash(item)
 
 
 def test_a_family_id_must_print_exactly_the_template_quoted_beside_it():

@@ -1,21 +1,21 @@
 {
  "schema_version": 2,
- "hash_version": 2,
+ "hash_version": 3,
  "node_id": "mat_g2_na_q3_8",
  "record_id": "fixture-mat_g2_na_q3_8-first",
  "role": "first",
  "confirms": null,
  "item_id": "FIX-001",
- "lc_hash": "a04e1781318f4ec9120f6bea880e3a5b1b35dc471ac2cd2d073463ece15c0f46",
+ "lc_hash": "6af1b4792bc0bb3e4d1115066098a8da85004e884b2572b9fdb0de48b4016569",
  "judged_by": "fixture-not-a-judge-mat_g2_na_q3_8-first",
  "dispatch_id": "fixture-mat_g2_na_q3_8-first",
  "filed_at": "2026-10-13T00:00:00Z",
  "delivery": "fixture written by tests/stem_review_fixture.py for §17 mutation proofs; no judge was dispatched, so no judge read the packet or CLAUDE.md",
  "tool_uses_by_judge": "none (hand-written fixture)",
- "dispatch_prompt_digest": "61a552388a95607d26346cb86823249eab09ad4fb3fcdedb6a296df57ba31e7b",
+ "dispatch_prompt_digest": "19ba27501533cdfc4d1a5282d7d8dfc00d321a65026bf7956245db23d950dc2b",
  "raw_reply": "{\"item\": \"FIX-001\", \"clauses\": {\"distinguish\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F11\", \"template\": \"{d} ÷ 2 comes out exactly, so {d} is an even number\", \"reasoning\": \"Fixture: the template '{d} ÷ 2 comes out exactly, so {d} is an even number' addresses this clause.\"}, \"even_and_odd_numbers\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F04\", \"template\": \"Nothing is left over, so {n} is an even number.\", \"reasoning\": \"Fixture: the template 'Nothing is left over, so {n} is an even number.' addresses this clause.\"}, \"division\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F03\", \"template\": \"Divide {n} by 2: how many 2s fit into {n}?\", \"reasoning\": \"Fixture: the template 'Divide {n} by 2: how many 2s fit into {n}?' addresses this clause.\"}, \"divisor_2\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F02\", \"template\": \"2 × {half} = {twice}, and {n} − {twice} = {left}.\", \"reasoning\": \"Fixture: the template '2 × {half} = {twice}, and {n} − {twice} = {left}.' addresses this clause.\"}}, \"failing_families\": [], \"failing_templates\": [], \"overall\": \"PASS\", \"reasoning\": \"Fixture, not a judgment: the hint 'Divide {n} by 2: how many 2s fit into {n}?' and the statements about even and odd numbers keep to division by 2.\"}",
  "raw_reply_digest": "f142e60b6370fa413b1062a126d8828a5c38735d35081334ed9820383aa0a4ee",
- "packet_digest": "848a15008fd6eeb008bc4358b2496d4a1357694618ff13bba5cf5eb5c8137804",
+ "packet_digest": "a54b0355230ae8c9e5311ec27918fe0547a2f4a9518fef95e25dc9d45b868c00",
  "family_keys": {
   "F01": {
    "source": "backend/app/practice_gen/dna/na/division.py",
@@ -764,6 +764,7 @@
     "odd"
    ]
   },
+  "banks": {},
   "value_derivations": [
    {
     "kind": "computes",

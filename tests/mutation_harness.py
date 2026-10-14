@@ -6155,6 +6155,52 @@ MUTATIONS: List[Mutation] = [
         expect_output_contains=["stem_review_record_invalid_17 (", "clause 'division': family 'F01' is not a packet family printing"],
         baseline_must_not_contain=["FAIL stem_review_record_invalid_17"],
     ),
+    # Owner ruling 47 (2026-10-14): an item bank is packeted row by row, with whether each problem
+    # printed its fields from one row. mat_g1_dp_q3_0 is the fixture lc that draws from a bank.
+    Mutation(
+        name="stem_bank_rows_split_without_review",
+        asserts=["stem_review_stale_17"],
+        description=(
+            "Make the packet builder print each bank row as one row per field, so which answer a "
+            "question is keyed to is lost again -- the flattening ruling 47 removed. What a judge "
+            "reads changed, so every approval of the bank lc must go stale."
+        ),
+        edits={
+            "backend/app/practice_gen/validation/stem_packets.py": (
+                '                        "rows": [{f: r[f] for f in flds if f in r} for r in _bank_rows(dotted)\n'
+                '                                 if any(f in r for f in flds)]}\n',
+                '                        "rows": [{f: r[f]} for f in flds for r in _bank_rows(dotted)  # planted mutation\n'
+                '                                 if f in r]}\n',
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_stem_review", "--node-ids", "mat_g1_dp_q3_0",
+                 "--review-dir", "tests/stem_review_fixtures"],
+        expected_check="§17 an item bank's rows are bound by freshness (ruling 47)",
+        expect_output_contains=["stem_review_stale_17 (", "changed section(s) ['banks']"],
+        baseline_must_not_contain=["FAIL stem_review_stale_17"],
+    ),
+    Mutation(
+        name="stem_bank_row_mixing_unseen",
+        asserts=["stem_review_stale_17"],
+        description=(
+            "Make the interview generator print the NEXT row's distractors beside a row's question "
+            "and answer. The packet must observe that a problem's bank fields no longer come from "
+            "one row (one_row_per_problem turns false), so the approval of the lc goes stale; a "
+            "builder that assumed rows are drawn whole would keep it."
+        ),
+        edits={
+            "backend/app/practice_gen/dna/dp/pictographs.py": (
+                '        item = bank_fields(_INTERVIEW_POOL[seed % len(_INTERVIEW_POOL)], "backend.app.practice_gen.dna.dp.pictographs._INTERVIEW_POOL")\n',
+                '        item = bank_fields(_INTERVIEW_POOL[seed % len(_INTERVIEW_POOL)], "backend.app.practice_gen.dna.dp.pictographs._INTERVIEW_POOL")\n'
+                '        item["distractors"] = bank_fields(_INTERVIEW_POOL[(seed + 1) % len(_INTERVIEW_POOL)], "backend.app.practice_gen.dna.dp.pictographs._INTERVIEW_POOL")["distractors"]  # planted mutation\n',
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_stem_review", "--node-ids", "mat_g1_dp_q3_0",
+                 "--review-dir", "tests/stem_review_fixtures"],
+        expected_check="§17 a problem's bank fields are observed to come from one row (ruling 47)",
+        expect_output_contains=["stem_review_stale_17 (", "changed section(s) ['banks']"],
+        baseline_must_not_contain=["FAIL stem_review_stale_17"],
+    ),
 ]
 
 # The templated-review mutation cannot be a literal find/replace: each review's

@@ -1,0 +1,681 @@
+{
+ "schema_version": 2,
+ "hash_version": 3,
+ "node_id": "mat_g1_dp_q3_0",
+ "record_id": "fixture-mat_g1_dp_q3_0-confirming",
+ "role": "confirming",
+ "confirms": "fixture-mat_g1_dp_q3_0-first",
+ "item_id": "FIX-002",
+ "lc_hash": "f658dca19f49d1d0c3ac16e51ac95f14aca675e67bd2fde882e9949262e1aaa4",
+ "judged_by": "fixture-not-a-judge-mat_g1_dp_q3_0-confirming",
+ "dispatch_id": "fixture-mat_g1_dp_q3_0-confirming",
+ "filed_at": "2026-10-13T01:00:00Z",
+ "delivery": "fixture written by tests/stem_review_fixture.py for §17 mutation proofs; no judge was dispatched, so no judge read the packet or CLAUDE.md",
+ "tool_uses_by_judge": "none (hand-written fixture)",
+ "dispatch_prompt_digest": "9002466dbbc8c9710e84f4a60a23c8fa3b5b5fa147831db8ddec79f5f2869b5b",
+ "raw_reply": "{\"item\": \"FIX-002\", \"clauses\": {\"collect_data\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F08\", \"template\": \"{question}\", \"reasoning\": \"Fixture: the template '{question}' addresses this clause.\"}, \"one_variable\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F08\", \"template\": \"{question}\", \"reasoning\": \"Fixture: the template '{question}' addresses this clause.\"}, \"simple_interview\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F08\", \"template\": \"{question}\", \"reasoning\": \"Fixture: the template '{question}' addresses this clause.\"}}, \"failing_families\": [], \"failing_templates\": [], \"overall\": \"PASS\", \"reasoning\": \"Fixture, not a judgment: the bank rows and the hints were read for the bank lc's gate words.\"}",
+ "raw_reply_digest": "ad6f665d1a5d833e1ca0b7f6d79bdee8a7af62fd6f6c843b1c631c37dfb3698e",
+ "packet_digest": "6d6e811eabb237985f95cbf3f6bf3a63813cddbda0767069d5f440710b100e25",
+ "family_keys": {
+  "F01": {
+   "source": "backend/app/practice_gen/dna/dp/pictographs.py",
+   "first_site": "backend/app/practice_gen/dna/dp/pictographs.py:537",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ]
+  },
+  "F02": {
+   "source": "backend/app/practice_gen/dna/dp/pictographs.py",
+   "first_site": "backend/app/practice_gen/dna/dp/pictographs.py:536",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ]
+  },
+  "F03": {
+   "source": "backend/app/practice_gen/dna/dp/pictographs.py",
+   "first_site": "backend/app/practice_gen/dna/dp/pictographs.py:535",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ]
+  },
+  "F04": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:32",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ]
+  },
+  "F05": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:39",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ]
+  },
+  "F06": {
+   "source": "backend/app/practice_gen/slots.py",
+   "first_site": "backend/app/practice_gen/slots.py:157",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ]
+  },
+  "F07": {
+   "source": "backend/app/practice_gen/slots.py",
+   "first_site": "backend/app/practice_gen/slots.py:159",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ]
+  },
+  "F08": {
+   "source": "backend/app/practice_gen/slots.py",
+   "first_site": "backend/app/practice_gen/slots.py:157",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ]
+  }
+ },
+ "packet": {
+  "item": "FIX-002",
+  "competency": {
+   "text": "Collect data in one variable through a simple interview.",
+   "grade": 1,
+   "quarter": 3
+  },
+  "clauses": [
+   {
+    "id": "collect_data",
+    "kind": "task",
+    "clause": "Collect data"
+   },
+   {
+    "id": "one_variable",
+    "kind": "object",
+    "clause": "one variable"
+   },
+   {
+    "id": "simple_interview",
+    "kind": "task",
+    "clause": "simple interview"
+   }
+  ],
+  "vocabulary": {
+   "student_vocab": [
+    "data"
+   ],
+   "curriculum_vocab": [
+    "collect data",
+    "variable",
+    "interview"
+   ],
+   "introduces_vocab": [
+    "data",
+    "collect data",
+    "variable",
+    "interview"
+   ],
+   "cumulative_vocab": [
+    "1 less",
+    "1 more",
+    "10th",
+    "1st",
+    "2nd",
+    "3rd",
+    "4th",
+    "5th",
+    "6th",
+    "7th",
+    "8th",
+    "9th",
+    "addition",
+    "bigger",
+    "compare",
+    "corner",
+    "count",
+    "difference",
+    "digit",
+    "equal",
+    "expanded form",
+    "group",
+    "how many",
+    "left",
+    "length",
+    "less",
+    "measure",
+    "missing number",
+    "more",
+    "number",
+    "number line",
+    "numeral",
+    "ones",
+    "pattern",
+    "place value",
+    "rectangle",
+    "repeating pattern",
+    "same",
+    "side",
+    "skip counting",
+    "smaller",
+    "square",
+    "subtraction",
+    "sum",
+    "tens",
+    "total",
+    "triangle"
+   ],
+   "NOT_YET_KNOWN": [
+    "L",
+    "a.m.",
+    "analog clock",
+    "area",
+    "axis",
+    "balance scale",
+    "bar graph",
+    "bill",
+    "calendar",
+    "capacity",
+    "centavo",
+    "centimeter",
+    "certain",
+    "circle",
+    "clockwise",
+    "cm",
+    "coin",
+    "counter-clockwise",
+    "decreasing pattern",
+    "denominator",
+    "division",
+    "elapsed time",
+    "equal groups",
+    "equally likely",
+    "estimate",
+    "even",
+    "fraction",
+    "g",
+    "gram",
+    "half",
+    "half hour",
+    "half turn",
+    "hour",
+    "hundreds",
+    "impossible",
+    "improper fraction",
+    "increasing pattern",
+    "intersecting",
+    "kg",
+    "kilogram",
+    "less likely",
+    "line",
+    "line of symmetry",
+    "line segment",
+    "liter",
+    "m",
+    "mL",
+    "mass",
+    "meter",
+    "milliliter",
+    "minute",
+    "missing term",
+    "more likely",
+    "multiplication",
+    "nearest hundred",
+    "nearest ten",
+    "nearest thousand",
+    "numerator",
+    "odd",
+    "order of operations",
+    "outcome",
+    "p.m.",
+    "parallel",
+    "perimeter",
+    "perpendicular",
+    "peso",
+    "pictograph",
+    "point",
+    "product",
+    "quarter",
+    "quarter hour",
+    "quarter turn",
+    "quotient",
+    "ray",
+    "regrouping",
+    "remainder",
+    "round",
+    "ruler",
+    "scale",
+    "similar fractions",
+    "slide",
+    "solid figure",
+    "sq. cm",
+    "square centimeter",
+    "symmetry",
+    "table",
+    "ten thousand",
+    "ten-thousands place",
+    "thousand",
+    "translation",
+    "whole",
+    "₱"
+   ],
+   "sentence_max_words": 15,
+   "number_format": "no commas, no thousands separator"
+  },
+  "declared_variants": [
+   [
+    "scale_type",
+    "no_scale"
+   ],
+   [
+    "task_type",
+    "collect_interview"
+   ]
+  ],
+  "declared_bounds": [
+   {
+    "task_type": "collect_interview",
+    "scale_type": "no_scale"
+   }
+  ],
+  "families": [
+   {
+    "id": "F01",
+    "template": "Answer what the interview shows.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F02",
+    "template": "Find the votes or answers counted for each choice.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F03",
+    "template": "Read the interview question or results carefully.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F04",
+    "template": "{answer}",
+    "appears_in": [
+     "correct_answer",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "answer",
+        "derived_from_values": [
+         "answer"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F05",
+    "template": "{member}",
+    "appears_in": [
+     "distractors",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "member"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "QuestionContext.distractors (the generator's own)",
+        "members": [
+         "1",
+         "2",
+         "20 pesos",
+         "4",
+         "7 o'clock",
+         "Cat: 1, Dog: 4",
+         "Cat: 3, Dog: 2",
+         "Cat: 5, Dog: 0",
+         "Change her friend's answer to apple.",
+         "Count the number of balls in the gym.",
+         "Erase all previous answers.",
+         "Guess what each classmate likes without asking.",
+         "How many doors are in the room?",
+         "How many pencils do you own?",
+         "How many shoes do you have?",
+         "How old are you?",
+         "How tall is the tree?",
+         "Measure the height of the classroom door.",
+         "Stop asking and leave the room.",
+         "What color is your ball?",
+         "What day is today?",
+         "What is your favorite food?",
+         "What time do you wake up?",
+         "What time is it?",
+         "What time is lunch?",
+         "Where is your pencil?",
+         "bedtime",
+         "favorite color",
+         "favorite drink",
+         "favorite food",
+         "favorite game",
+         "favorite pet",
+         "favorite toy",
+         "how old classmates are",
+         "number of bags",
+         "the birds outside",
+         "the classroom walls",
+         "the desks",
+         "triangle",
+         "|",
+         "||",
+         "|||",
+         "||||",
+         "|||||"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F06",
+    "template": "{answer}",
+    "appears_in": [
+     "correct_answer",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "a field of a fixed item bank",
+        "field": "answer",
+        "bank": "_INTERVIEW_POOL",
+        "derived_from_values": [
+         "answer",
+         "distractors",
+         "question"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F07",
+    "template": "{distractors}",
+    "appears_in": [
+     "distractors",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "distractors"
+      ],
+      "domains": [
+       {
+        "domain": "a field of a fixed item bank",
+        "field": "distractors",
+        "bank": "_INTERVIEW_POOL",
+        "derived_from_values": [
+         "answer",
+         "distractors",
+         "question"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F08",
+    "template": "{question}",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "question"
+      ],
+      "domains": [
+       {
+        "domain": "a field of a fixed item bank",
+        "field": "question",
+        "bank": "_INTERVIEW_POOL",
+        "derived_from_values": [
+         "answer",
+         "distractors",
+         "question"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   }
+  ],
+  "lists": {},
+  "banks": {
+   "_INTERVIEW_POOL": {
+    "fields": [
+     "answer",
+     "distractors",
+     "question"
+    ],
+    "one_row_per_problem": true,
+    "rows": [
+     {
+      "answer": "What is your favorite fruit?",
+      "distractors": [
+       "How old are you?",
+       "What time is it?",
+       "How many shoes do you have?"
+      ],
+      "question": "Maya wants to collect information about her classmates' favorite fruits. What question should Maya ask in her simple interview?"
+     },
+     {
+      "answer": "What is your favorite color?",
+      "distractors": [
+       "Where is your pencil?",
+       "What day is today?",
+       "How many doors are in the room?"
+      ],
+      "question": "Carlo wants to collect data on his friends' favorite colors. What question should Carlo ask in his interview?"
+     },
+     {
+      "answer": "What pet do you have at home?",
+      "distractors": [
+       "What is your favorite food?",
+       "What time do you wake up?",
+       "How tall is the tree?"
+      ],
+      "question": "Sam wants to find out what pets his classmates have at home. What question should Sam ask in his interview?"
+     },
+     {
+      "answer": "What is your favorite game?",
+      "distractors": [
+       "What color is your ball?",
+       "How many pencils do you own?",
+       "What time is lunch?"
+      ],
+      "question": "Liza wants to collect data about her classmates' favorite games. What question should Liza ask in her interview?"
+     },
+     {
+      "answer": "favorite color",
+      "distractors": [
+       "favorite food",
+       "how old classmates are",
+       "favorite pet"
+      ],
+      "question": "Ben asks each classmate: 'What is your favorite color?' What topic is Ben collecting data about in this interview?"
+     },
+     {
+      "answer": "pets at home",
+      "distractors": [
+       "favorite toy",
+       "favorite drink",
+       "bedtime"
+      ],
+      "question": "Ella asks each friend: 'What pet do you have at home?' What is Ella collecting data about?"
+     },
+     {
+      "answer": "favorite snack",
+      "distractors": [
+       "number of bags",
+       "favorite game",
+       "favorite color"
+      ],
+      "question": "Dan asks each pupil: 'What is your favorite snack?' What information is Dan collecting in this interview?"
+     },
+     {
+      "answer": "|||",
+      "distractors": [
+       "||",
+       "||||",
+       "|"
+      ],
+      "question": "During an interview, 3 classmates answered 'dog'. How should you record 3 tally marks for 'dog'?"
+     },
+     {
+      "answer": "||||",
+      "distractors": [
+       "|||",
+       "||",
+       "|||||"
+      ],
+      "question": "During an interview, 4 classmates answered 'red'. How should you record 4 tally marks for 'red'?"
+     },
+     {
+      "answer": "3",
+      "distractors": [
+       "1",
+       "4",
+       "2"
+      ],
+      "question": "In an interview, you ask 4 friends for their favorite fruit: Kim says Apple, Ben says Mango, Dan says Apple, Joy says Apple. How many votes did Apple get?"
+     },
+     {
+      "answer": "3",
+      "distractors": [
+       "1",
+       "4",
+       "2"
+      ],
+      "question": "Rico conducts an interview with 4 classmates: Ana chose blue, Leo chose red, Sam chose blue, Mia chose blue. How many times was 'blue' collected in the interview?"
+     },
+     {
+      "answer": "Cat: 2, Dog: 3",
+      "distractors": [
+       "Cat: 3, Dog: 2",
+       "Cat: 5, Dog: 0",
+       "Cat: 1, Dog: 4"
+      ],
+      "question": "Tina asks 5 friends their favorite pet: 2 say Cat, 3 say Dog. How should Tina record the data in her interview list?"
+     },
+     {
+      "answer": "Ask each classmate one by one and record their answers.",
+      "distractors": [
+       "Guess what each classmate likes without asking.",
+       "Count the number of balls in the gym.",
+       "Measure the height of the classroom door."
+      ],
+      "question": "To collect data from 5 classmates about their favorite sport, what is the best way to do a simple interview?"
+     },
+     {
+      "answer": "Record 'mango' on her interview data sheet.",
+      "distractors": [
+       "Erase all previous answers.",
+       "Stop asking and leave the room.",
+       "Change her friend's answer to apple."
+      ],
+      "question": "Liza is conducting a simple interview. She asks: 'What is your favorite fruit?' What should Liza do right after a friend answers 'mango'?"
+     },
+     {
+      "answer": "your classmates",
+      "distractors": [
+       "the birds outside",
+       "the classroom walls",
+       "the desks"
+      ],
+      "question": "If you want to collect data about what shoes your classmates wear to school, whom should you interview?"
+     },
+     {
+      "answer": "banana",
+      "distractors": [
+       "20 pesos",
+       "7 o'clock",
+       "triangle"
+      ],
+      "question": "Paul asks 4 pupils for their favorite fruit. Which of these is a response collected from this interview?"
+     }
+    ]
+   }
+  },
+  "value_derivations": [],
+  "reason_kinds": {}
+ }
+}

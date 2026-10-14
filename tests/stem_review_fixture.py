@@ -10,6 +10,9 @@ They are not reviews and judge nothing.
     PASS with every clause PRODUCIBLE, on the LIVE packet. `validate_stem_review --node-ids
     mat_g2_na_q3_8 --review-dir tests/stem_review_fixtures` therefore exits 0, and each §17
     mutation plants one defect into the generator, the builder or one of these records.
+  * mat_g1_dp_q3_0 (owner ruling 47): the same pair on an lc whose stems draw from an ITEM
+    BANK, which mat_g2_na_q3_8 does not, so a mutation of how a bank is packeted reaches a
+    record whose freshness is checked.
   * mat_g3_mg_q2_0, mat_g3_mg_q2_2, mat_g3_mg_q2_5: one first record each, out of the proof's
     scope, whose overall reasoning shares ONE sentence frame (3 lcs: the most §17 allows), so a
     mutation that gives mat_g2_na_q3_8 that frame makes 4; and whose identities a mutation can
@@ -37,6 +40,12 @@ from tests import stem_file  # noqa: E402
 
 FIXTURE_DIR = REPO_ROOT / "tests" / "stem_review_fixtures"
 MAIN = "mat_g2_na_q3_8"
+BANK_LC = "mat_g1_dp_q3_0"
+BANK_CLAUSES = {"collect_data": "{question}", "one_variable": "{question}", "simple_interview": "{question}"}
+BANK_REASONING = {
+    "first": "Fixture, not a judgment: each interview row is read as one problem with its own keyed answer.",
+    "confirming": "Fixture, not a judgment: the bank rows and the hints were read for the bank lc's gate words.",
+}
 OTHERS = ("mat_g3_mg_q2_0", "mat_g3_mg_q2_2", "mat_g3_mg_q2_5")
 DELIVERY = ("fixture written by tests/stem_review_fixture.py for §17 mutation proofs; no judge was "
             "dispatched, so no judge read the packet or CLAUDE.md")
@@ -94,22 +103,23 @@ def main() -> int:
     FIXTURE_DIR.mkdir(parents=True)
     scratch = FIXTURE_DIR / "_prompt.txt"
     written = []
-    for i, node_id in enumerate((MAIN,) + OTHERS):
+    for i, node_id in enumerate((MAIN, BANK_LC) + OTHERS):
         renders, _refused = SP.observe_lc(node_id)
         body, key = SP.build_item(node_id, renders)
         item_id = f"FIX-{i + 1:03d}"
         item = {"item": item_id, **body}
         key = {**key, "item_hash": SP.item_hash(body)}
         scratch.write_text(stem_file.prompt_text(item), encoding="utf-8")
-        if node_id == MAIN:
+        if node_id in (MAIN, BANK_LC):
+            spec, why = (MAIN_CLAUSES, MAIN_REASONING) if node_id == MAIN else (BANK_CLAUSES, BANK_REASONING)
             clauses = {cid: {"verdict": "PRODUCIBLE", "family": _family_of(body, t), "template": t,
                              "reasoning": f"Fixture: the template '{t}' addresses this clause."}
-                       for cid, t in MAIN_CLAUSES.items()}
-            first = _file(item, key, _reply(item_id, clauses, "PASS", MAIN_REASONING["first"]),
+                       for cid, t in spec.items()}
+            first = _file(item, key, _reply(item_id, clauses, "PASS", why["first"]),
                           "first", None, "2026-10-13T00:00:00Z", scratch)
             written.append(first)
-            written.append(_file(item, key, _reply(item_id, clauses, "PASS", MAIN_REASONING["confirming"]),
-                                 "confirming", f"fixture-{MAIN}-first", "2026-10-13T01:00:00Z", scratch))
+            written.append(_file(item, key, _reply(item_id, clauses, "PASS", why["confirming"]),
+                                 "confirming", f"fixture-{node_id}-first", "2026-10-13T01:00:00Z", scratch))
         else:
             t, fid = body["families"][0]["template"], body["families"][0]["id"]
             clauses = {c["id"]: {"verdict": "PRODUCIBLE", "family": fid, "template": t,

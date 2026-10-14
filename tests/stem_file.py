@@ -74,7 +74,12 @@ direction). "nested_in" names the families whose text this family's text is prin
 Judge each family where it appears: an answer choice is one choice, not a whole question.
 Each {slot} in a template is filled from a declared domain:
   - "one of a fixed list": a member of the named list in "lists";
-  - "a field of a fixed item bank": a member of the named list in "lists";
+  - "a field of a fixed item bank": the named field of a row of the named bank in "banks". A
+    bank is printed row by row. Where its "one_row_per_problem" is true, every field a problem
+    prints from that bank comes from ONE row: judge each row as one problem (its question, its
+    own keyed answer, its own distractors). Where it is false, one problem may print fields of
+    the bank from different rows. A field whose value is a list (such as "distractors") gives
+    one answer choice per member;
   - "a noun from a fixed list, or its plural": a member of the named list, or its plural;
   - "a number in a range": any number from lo to hi;
   - "one of the generator's own choices": every member the generator offered across the renders

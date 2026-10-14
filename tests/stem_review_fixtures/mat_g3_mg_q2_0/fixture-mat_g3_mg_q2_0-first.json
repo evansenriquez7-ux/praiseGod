@@ -1,21 +1,21 @@
 {
  "schema_version": 2,
- "hash_version": 2,
+ "hash_version": 3,
  "node_id": "mat_g3_mg_q2_0",
  "record_id": "fixture-mat_g3_mg_q2_0-first",
  "role": "first",
  "confirms": null,
- "item_id": "FIX-002",
- "lc_hash": "823507b5cdf82e25c1625e042552b3f588c9d4736477d203a95c9872385a294b",
+ "item_id": "FIX-003",
+ "lc_hash": "b9ba61729128c8cb32786ffc05adec0171f2892e019cd6ce3f63d4269cfebf42",
  "judged_by": "fixture-not-a-judge-mat_g3_mg_q2_0-first",
  "dispatch_id": "fixture-mat_g3_mg_q2_0-first",
  "filed_at": "2026-10-13T00:00:00Z",
  "delivery": "fixture written by tests/stem_review_fixture.py for §17 mutation proofs; no judge was dispatched, so no judge read the packet or CLAUDE.md",
  "tool_uses_by_judge": "none (hand-written fixture)",
- "dispatch_prompt_digest": "a5dda90b6e817e40dee08c9350ee66111425064f250d33cd4fde230d75210b61",
- "raw_reply": "{\"item\": \"FIX-002\", \"clauses\": {\"measure_mass\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F01\", \"template\": \"{term}\", \"reasoning\": \"Fixture: hand-written.\"}, \"grams_kilograms_and_or_milligrams\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F01\", \"template\": \"{term}\", \"reasoning\": \"Fixture: hand-written.\"}, \"measuring_tools\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F01\", \"template\": \"{term}\", \"reasoning\": \"Fixture: hand-written.\"}}, \"failing_families\": [], \"failing_templates\": [], \"overall\": \"PASS\", \"reasoning\": \"Fixture, not a judgment: the template '{term}' was read with its domains, and nothing in it is out of scope.\"}",
- "raw_reply_digest": "848f9264d9c494db2c8257dde88a15ec0024ced43cd7048649ac1d0e64086c75",
- "packet_digest": "429f1a3ce6c7116219ebf4908eec06679166a43b63a58ea85687851650883d59",
+ "dispatch_prompt_digest": "627f05b321c84d64a846ad40129433bb3ed23934d55b59d32e58d2162b5ed470",
+ "raw_reply": "{\"item\": \"FIX-003\", \"clauses\": {\"measure_mass\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F01\", \"template\": \"{term}\", \"reasoning\": \"Fixture: hand-written.\"}, \"grams_kilograms_and_or_milligrams\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F01\", \"template\": \"{term}\", \"reasoning\": \"Fixture: hand-written.\"}, \"measuring_tools\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F01\", \"template\": \"{term}\", \"reasoning\": \"Fixture: hand-written.\"}}, \"failing_families\": [], \"failing_templates\": [], \"overall\": \"PASS\", \"reasoning\": \"Fixture, not a judgment: the template '{term}' was read with its domains, and nothing in it is out of scope.\"}",
+ "raw_reply_digest": "0460041f0adc98d0159e44264a9b48683c5f5d3d9f5a1edf0fe3c46ad761b0af",
+ "packet_digest": "165f79cd0780763b4ba78d2cceea257810bd71a6777c2fd0c12f97330f8963b3",
  "family_keys": {
   "F01": {
    "source": "backend/app/practice_gen/dna/base.py",
@@ -64,7 +64,7 @@
   }
  },
  "packet": {
-  "item": "FIX-002",
+  "item": "FIX-003",
   "competency": {
    "text": "Measure mass in grams (g), kilograms (kg) and/or milligrams (mg), using appropriate measuring tools.",
    "grade": 3,
@@ -471,6 +471,7 @@
     "the bag"
    ]
   },
+  "banks": {},
   "value_derivations": [],
   "reason_kinds": {
    "arithmetic": "a number the generator computes from the generated values named in src (a half, a sum, a difference, a running total, a place's digit). Its range is the image of those values' own domains; whether the arithmetic is RIGHT is the hint contract's (§16) and §1E's to check, not §14's."

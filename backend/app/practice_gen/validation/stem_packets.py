@@ -19,7 +19,7 @@ structured record (`slots.capture()`, ruling 28), never from learner-facing text
     text adds no letter or digit (`{answer}`, `{p0}, {p1}`): ruling 44a. A wrapper that adds words
     (`{statement}. True or False?`) is a family of its own;
   * each slot's domain is rendered for a reader by RESOLVING it (ruling 44c): an `enum:`/`noun:`
-    list and a `bank:` field by their members, a runtime `E` by the union of its members and an
+    list by its members and a `bank:` field by its bank's rows (ruling 47, below), a runtime `E` by the union of its members and an
     `R` by its lowest lo and highest hi over the enumerated renders, `value:<key>` by its key, a
     `fill` slot by the families whose text filled it, a type-only slot by its registered reason
     and `src`. Provenance (`src`, template `_src`) and the lc's `derives`/`computes` declarations
@@ -31,6 +31,11 @@ structured record (`slots.capture()`, ruling 28), never from learner-facing text
     on the first real dispatch: a judge read the option family `{member}` as "the whole stem",
     because nothing in the packet said it is only ever an answer choice. The builder raises on
     a family with neither;
+  * an item bank is printed ROW BY ROW in `banks` (owner ruling 47, 2026-10-14), each row with
+    the fields this lc prints from it, and `one_row_per_problem` says whether every render
+    enumerated printed its fields of the bank from ONE row. Found on the second real dispatch:
+    printed as one flat list per field, a bank lost which answer each question is keyed to, and
+    a judge FAILed a correctly keyed bank as "questions and answers can be mismatched";
   * the lc's competency text, clauses (`requires`), vocabulary gates and declared variants
     (ruling 26) and declared bounds complete the item.
 
@@ -58,11 +63,17 @@ NAMED LIMITS (Scaling Mandate 6; also in docs/pgen_contract.md §17):
   7. `appears_in` / `nested_in` are matched by text the same way (limit 6): a family whose text
      happens to equal another field's text (an option "5" and a hint "5") is listed in both.
      Over-inclusive, never lossy. They are observed over `paths()` only (limit 1).
+  8. `banks` prints EVERY row of a bank that carries a field this lc prints, including rows the
+     lc's generator filters out (a bank shared by several lcs): over-inclusive, as §14's own
+     membership check is. `one_row_per_problem` is observed over `paths()` only (limit 1), and
+     rows are matched by value: a render whose values all occur together in some row counts as
+     one-row even if the generator took them from two rows that happen to share them.
 """
 from __future__ import annotations
 
 import argparse
 import hashlib
+import importlib
 import json
 import re
 import string
@@ -76,7 +87,9 @@ from backend.app.practice_gen.slots import DERIVED_REASONS, RENDERERS, TRANSFORM
 # stales every review (which is what a shape change must do). `stem_review_hash_drift_17`
 # catches a hash that changes WITHOUT a bump. 2 (2026-10-14, owner ruling 46a): every family
 # carries `appears_in` / `nested_in`, the learner-read fields its text was observed in.
-HASH_VERSION = 2
+# 3 (2026-10-14, owner ruling 47): an item bank is printed as its rows in `banks`, not as one
+# flat list per field, with whether each problem printed its fields from one row.
+HASH_VERSION = 3
 
 _ALNUM = re.compile(r"[^\W_]")            # a letter or digit, in any script
 
@@ -225,6 +238,25 @@ def observe_lc(node_id: str) -> Tuple[List[Tuple[int, Optional[str], Dict[str, A
     return renders, refused
 
 
+def _bank_rows(dotted: str) -> List[Dict[str, Any]]:
+    """The rows of the generator's own item bank `module.NAME`: a list of dicts, else it raises."""
+    module_path, _, name = dotted.rpartition(".")
+    rows = getattr(importlib.import_module(module_path), name)
+    if not isinstance(rows, (list, tuple)) or not all(isinstance(r, dict) for r in rows):
+        raise TypeError(f"stem packet: bank {dotted!r} is not a list of dicts")
+    return list(rows)
+
+
+def _row_pairs(row: Dict[str, Any], fields: set) -> set:
+    """(field, canonical member) for every value a row offers in `fields` (a list field: each member)."""
+    out = set()
+    for fld in fields:
+        if fld in row:
+            v = row[fld]
+            out |= {(fld, _dump(_canon(m))) for m in (v if isinstance(v, (list, tuple)) else [v])}
+    return out
+
+
 def _resolve_static(domain: str) -> Dict[str, Any]:
     """A registry-id domain rendered for a reader (members resolved by §14's own resolvers)."""
     from backend.app.practice_gen.validation import validate_slots as VS
@@ -237,10 +269,11 @@ def _resolve_static(domain: str) -> Dict[str, Any]:
         return {"domain": "a noun from a fixed list, or its plural", "list": domain.rsplit(".", 1)[-1],
                 "members": _canon(VS._members(VS._enum(domain[len("noun:"):])))}
     if domain.startswith("bank:"):
-        spec = domain[len("bank:"):]
-        dotted, _, fld = spec.rpartition(":")
-        return {"domain": "a field of a fixed item bank", "bank": dotted.rsplit(".", 1)[-1], "field": fld,
-                "members": _canon(VS._bank(spec))}
+        # The bank is printed once, ROW BY ROW, in the item's `banks` table (owner ruling 47);
+        # `_bank` is the module path that table is built from, replaced by its label on output.
+        dotted, _, fld = domain[len("bank:"):].rpartition(":")
+        _bank_rows(dotted)
+        return {"domain": "a field of a fixed item bank", "_bank": dotted, "field": fld}
     if domain.startswith("value:"):
         return {"domain": "repeats a generated value", "key": domain[len("value:"):]}
     if domain in ("num.derived", "text.derived"):
@@ -280,8 +313,12 @@ def build_item(node_id: str, renders=None) -> Tuple[Dict[str, Any], Dict[str, An
     fams: "OrderedDict[Tuple[str, str, str], Dict[str, Any]]" = OrderedDict()
     derivations = set()
     nested_of: Dict[Tuple[str, str, str], Dict[str, set]] = {}
+    # Ruling 47: per bank (module path), the fields this lc prints from it and the first render
+    # whose printed fields of it are found together in NO single row (None: every render's are).
+    bank_seen: Dict[str, Dict[str, Any]] = {}
 
     for seed, formatter, problem, fills, values in renders:
+        drawn: Dict[str, set] = {}
         reach = reaching(problem, fills)
         by_text: Dict[str, List[Any]] = {}
         for f in reach:
@@ -333,6 +370,9 @@ def build_item(node_id: str, renders=None) -> Tuple[Dict[str, Any], Dict[str, An
                     d = slot.setdefault(("id", domain), _resolve_static(domain))
                     if domain == "fill":
                         d.setdefault("_families", set()).update(sources(value, f))
+                    elif domain.startswith("bank:"):
+                        dotted, _, fld = domain[len("bank:"):].rpartition(":")
+                        drawn.setdefault(dotted, set()).add((fld, _dump(_canon(value))))
                 else:
                     raise TypeError(f"stem packet: domain {domain!r} at {f.site} is not a str, R or E")
                 if srcs.get(name):
@@ -341,15 +381,43 @@ def build_item(node_id: str, renders=None) -> Tuple[Dict[str, Any], Dict[str, An
                     d["reason"] = whys[name]
         for dv in getattr(fills, "derivations", []):
             derivations.add((dv.kind, dv.key, tuple(dv.src)))
+        for dotted, pairs in drawn.items():
+            seen_b = bank_seen.setdefault(dotted, {"fields": set(), "mixed_at": None})
+            flds = {fld for fld, _v in pairs}
+            seen_b["fields"] |= flds
+            if seen_b["mixed_at"] is None and not any(pairs <= _row_pairs(r, flds) for r in _bank_rows(dotted)):
+                seen_b["mixed_at"] = [seed, formatter]
 
     order = sorted(fams, key=lambda k: (k[0], k[1], k[2]))
     ids = {k: f"F{i + 1:02d}" for i, k in enumerate(order)}
     families, key_families, used_reasons = [], OrderedDict(), set()
-    # A fixed list (`enum:`/`noun:`/`bank:`) is printed ONCE, in `lists`, and named by every slot
-    # that draws from it: measured 2026-10-13, inlining it per slot made mat_g2_na_q2_7's packet
+    # A fixed list (`enum:`/`noun:`) is printed ONCE, in `lists`, and named by every slot that
+    # draws from it: measured 2026-10-13, inlining it per slot made mat_g2_na_q2_7's packet
     # 173,763 characters, most of them one 2,350-character pool repeated. Nothing is dropped:
     # every member is printed, and the table is part of the hash.
     lists: "OrderedDict[str, Any]" = OrderedDict()
+    # An item bank is printed ONCE, in `banks`, as its ROWS (owner ruling 47, 2026-10-14). Until
+    # then each field was a flat list of its own, so a judge could not tell which answer a question
+    # is keyed to: the first S441-001 judge FAILed `{answer}` and `{question}` as mismatchable,
+    # though pictographs.py draws one row whole. Each row shows the fields this lc prints from the
+    # bank; `one_row_per_problem` says whether every render enumerated printed its fields of the
+    # bank from one row (observed, never assumed: `fmt_pictograph` fills a bank's symbol and
+    # subject at different call sites).
+    banks: "OrderedDict[str, Any]" = OrderedDict()
+    bank_label: Dict[str, str] = {}
+    key_banks: "OrderedDict[str, Any]" = OrderedDict()
+    for dotted in sorted(bank_seen):
+        name, n = dotted.rsplit(".", 1)[-1], 1
+        label = name
+        while label in banks:
+            n += 1
+            label = f"{name}#{n}"
+        flds = sorted(bank_seen[dotted]["fields"])
+        banks[label] = {"fields": flds, "one_row_per_problem": bank_seen[dotted]["mixed_at"] is None,
+                        "rows": [{f: r[f] for f in flds if f in r} for r in _bank_rows(dotted)
+                                 if any(f in r for f in flds)]}
+        bank_label[dotted] = label
+        key_banks[label] = {"module": dotted, "first_render_not_from_one_row": bank_seen[dotted]["mixed_at"]}
 
     def _table(name: str, members: Any) -> str:
         # Each distinct member once, in the list's own order (a bank repeats answers across rows;
@@ -377,8 +445,9 @@ def build_item(node_id: str, renders=None) -> Tuple[Dict[str, Any], Dict[str, An
                 if "members" in d and isinstance(d["members"], set):
                     d["members"] = [json.loads(m) for m in sorted(d["members"])]
                 elif "members" in d:
-                    table = d.pop("list", None) or f"{d.pop('bank')}.{d.pop('field')}"
-                    d["members_in_list"] = _table(table, d.pop("members"))
+                    d["members_in_list"] = _table(d.pop("list"), d.pop("members"))
+                if "_bank" in d:
+                    d["bank"] = bank_label[d.pop("_bank")]
                 if "_families" in d:
                     d["families"] = sorted(ids[x] for x in d.pop("_families") if x in ids)
                 if "_from" in d:
@@ -434,11 +503,12 @@ def build_item(node_id: str, renders=None) -> Tuple[Dict[str, Any], Dict[str, An
         "declared_bounds": bounds,
         "families": _canon(families),
         "lists": _canon(lists),
+        "banks": _canon(banks),
         "value_derivations": [{"kind": kind, "key": key, "from": list(src)}
                               for kind, key, src in sorted(derivations)],
         "reason_kinds": {k: DERIVED_REASONS[k] for k in sorted(used_reasons)},
     }
-    key = {"node_id": node_id, "families": key_families}
+    key = {"node_id": node_id, "families": key_families, "banks": key_banks}
     return item, key
 
 
