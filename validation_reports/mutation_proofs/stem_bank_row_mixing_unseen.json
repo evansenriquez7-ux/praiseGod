@@ -1,0 +1,48 @@
+{
+ "asserts": [
+  "stem_review_stale_17"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "FAIL stem_review_stale_17"
+ ],
+ "command": [
+  "backend.app.practice_gen.validation.validate_stem_review",
+  "--node-ids",
+  "mat_g1_dp_q3_0",
+  "--review-dir",
+  "tests/stem_review_fixtures"
+ ],
+ "definition_digest": "71e2430d8c6f262f51e486ae395b732b430d241278bbe259630e39a0685530a4",
+ "detected": true,
+ "diagnostic_line": "exit 1 — PASS stem_review_hash_drift_17",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "stem_review_stale_17 (",
+  "changed section(s) ['banks']"
+ ],
+ "expected_check": "§17 a problem's bank fields are observed to come from one row (ruling 47)",
+ "finished_at": "2026-10-14T15:12:32+08:00",
+ "input_digest": "0ce30ac40c10850a1408b1745229ec3225ad5e2a027a17371e69bc2fe4f6d765",
+ "mutated_paths": [
+  "backend/app/practice_gen/dna/dp/pictographs.py"
+ ],
+ "mutation": "stem_bank_row_mixing_unseen",
+ "observed_markers": {
+  "changed section(s) ['banks']": true,
+  "stem_review_stale_17 (": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-10-14T15:12:30+08:00"
+}

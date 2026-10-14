@@ -1,0 +1,48 @@
+{
+ "asserts": [
+  "stem_review_stale_17"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "FAIL stem_review_stale_17"
+ ],
+ "command": [
+  "backend.app.practice_gen.validation.validate_stem_review",
+  "--node-ids",
+  "mat_g1_dp_q3_0",
+  "--review-dir",
+  "tests/stem_review_fixtures"
+ ],
+ "definition_digest": "2dcd96273bd6183b080505769555267bb44f7c9376ded497e66df24f4c46f5e5",
+ "detected": true,
+ "diagnostic_line": "exit 1 — PASS stem_review_hash_drift_17",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "stem_review_stale_17 (",
+  "changed section(s) ['banks']"
+ ],
+ "expected_check": "§17 an item bank's rows are bound by freshness (ruling 47)",
+ "finished_at": "2026-10-14T15:12:30+08:00",
+ "input_digest": "0ce30ac40c10850a1408b1745229ec3225ad5e2a027a17371e69bc2fe4f6d765",
+ "mutated_paths": [
+  "backend/app/practice_gen/validation/stem_packets.py"
+ ],
+ "mutation": "stem_bank_rows_split_without_review",
+ "observed_markers": {
+  "changed section(s) ['banks']": true,
+  "stem_review_stale_17 (": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-10-14T15:12:29+08:00"
+}
