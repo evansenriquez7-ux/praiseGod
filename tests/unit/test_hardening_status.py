@@ -294,9 +294,16 @@ def test_the_live_ledger_claims_every_artifact_on_disk():
 # exempt from the disk->rows direction entirely. Measured before the fix: 6 on disk, 0
 # reported.
 
-def test_an_artifact_in_a_subdirectory_is_not_invisible():
+def test_an_artifact_in_a_subdirectory_is_not_invisible(tmp_path, monkeypatch):
+    # Planted, not read from the live tree: this test named the live receipt
+    # `shard_000_of_006.json` until 2026-10-15, when the benchmark's shard count became 7
+    # and the test failed on a correct tree (a check scoped to one shard count).
+    monkeypatch.setattr(hs, "REPO_ROOT", tmp_path)
+    monkeypatch.setattr(hs, "ARTIFACT_DIR", tmp_path / "artifacts")
+    (tmp_path / "artifacts" / "obligation_release_shards").mkdir(parents=True)
+    (tmp_path / "artifacts" / "obligation_release_shards" / "shard_000_of_007.json").write_text("{}")
     errors = hs._unclaimed_artifacts([_row(proof_artifacts=[])])
-    assert any("obligation_release_shards/shard_000_of_006.json" in e for e in errors), (
+    assert any("obligation_release_shards/shard_000_of_007.json" in e for e in errors), (
         "a nested artifact must be reconciled like any other; this is the H-08 shape one "
         f"directory level down -- {errors}"
     )
