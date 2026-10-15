@@ -1,0 +1,48 @@
+{
+ "asserts": [
+  "stem_review_stale_17"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "FAIL stem_review_stale_17"
+ ],
+ "command": [
+  "backend.app.practice_gen.validation.validate_stem_review",
+  "--node-ids",
+  "mat_g1_mg_q1_0",
+  "--review-dir",
+  "tests/stem_review_fixtures"
+ ],
+ "definition_digest": "1781f9841cdd3c96264d0cc63718ba09fe8f89ed8c5766596659ca54e8d2ed3e",
+ "detected": true,
+ "diagnostic_line": "exit 1 — PASS stem_review_hash_drift_17",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "stem_review_stale_17 (",
+  "domain/provenance changed in"
+ ],
+ "expected_check": "§17 a gate's one word is bound by freshness (ruling 48)",
+ "finished_at": "2026-10-15T20:48:29+08:00",
+ "input_digest": "28d1e3f4ef451da6e9f8bed1124b14824dd23a4dae7f8c358daf0aebb6a2a846",
+ "mutated_paths": [
+  "backend/app/practice_gen/validation/stem_packets.py"
+ ],
+ "mutation": "stem_gate_word_changed_without_review",
+ "observed_markers": {
+  "domain/provenance changed in": true,
+  "stem_review_stale_17 (": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-10-15T20:48:24+08:00"
+}

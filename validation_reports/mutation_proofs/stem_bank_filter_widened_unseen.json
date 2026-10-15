@@ -1,0 +1,48 @@
+{
+ "asserts": [
+  "stem_review_stale_17"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "FAIL stem_review_stale_17"
+ ],
+ "command": [
+  "backend.app.practice_gen.validation.validate_stem_review",
+  "--node-ids",
+  "mat_g1_mg_q1_0",
+  "--review-dir",
+  "tests/stem_review_fixtures"
+ ],
+ "definition_digest": "86f0084c2059cc4774f849ebd76d0edb95dda9de97d5e32a3b959162e7a265e0",
+ "detected": true,
+ "diagnostic_line": "exit 1 — PASS stem_review_hash_drift_17",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "stem_review_stale_17 (",
+  "changed section(s) ['banks']"
+ ],
+ "expected_check": "§17 the rows a bank lc draws are observed (ruling 48)",
+ "finished_at": "2026-10-15T20:48:40+08:00",
+ "input_digest": "28d1e3f4ef451da6e9f8bed1124b14824dd23a4dae7f8c358daf0aebb6a2a846",
+ "mutated_paths": [
+  "backend/app/practice_gen/dna/mg/shapes_2d.py"
+ ],
+ "mutation": "stem_bank_filter_widened_unseen",
+ "observed_markers": {
+  "changed section(s) ['banks']": true,
+  "stem_review_stale_17 (": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-10-15T20:48:35+08:00"
+}

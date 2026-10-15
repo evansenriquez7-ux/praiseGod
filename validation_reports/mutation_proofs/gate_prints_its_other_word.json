@@ -1,0 +1,46 @@
+{
+ "asserts": [
+  "slot_domain_escape_14"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "FAIL slot_domain_escape_14"
+ ],
+ "command": [
+  "backend.app.practice_gen.validation.validate_slots",
+  "--node-ids",
+  "mat_g1_mg_q1_0"
+ ],
+ "definition_digest": "254bb9ad72569c4a58cd1f26115794dbf99b0aeec169757e7cbfb5eb538952d2",
+ "detected": true,
+ "diagnostic_line": "exit 1 — FAIL slot_domain_escape_14 (4):",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "slot_domain_escape_14 (",
+  "is the gate's other word"
+ ],
+ "expected_check": "§14 a vocabulary gate prints the one word it gives the lc (ruling 48)",
+ "finished_at": "2026-10-15T20:48:24+08:00",
+ "input_digest": "28d1e3f4ef451da6e9f8bed1124b14824dd23a4dae7f8c358daf0aebb6a2a846",
+ "mutated_paths": [
+  "backend/app/practice_gen/dna/mg/shapes_2d.py"
+ ],
+ "mutation": "gate_prints_its_other_word",
+ "observed_markers": {
+  "is the gate's other word": true,
+  "slot_domain_escape_14 (": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-10-15T20:48:23+08:00"
+}
