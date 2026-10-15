@@ -1737,6 +1737,16 @@ that points at it break every time the section is refreshed.
 >     cited `longer`/`shorter` and 2-9 from the packet; its FAIL (a singular count noun after 2-9 in F01/F03)
 >     is false on real renders (729 number-noun pairs over paths() and seeds 41-240, all agree), the
 >     cross-slot joint fact ruling 49 settles by a fresh blind judge.
+>     (b) **Printed numbers are shown as lossless runs** (asked the same day, during the first fan-out on (a);
+>     the owner first asked why the generator does not print every number 2-10, was answered that the
+>     competency names the 2, 3, 4, 5 and 10 tables so the generator is right and the display misleads, and
+>     then chose the dispatcher's recommendation). (a) showed a generated number as its lowest and highest
+>     printed value; on mat_g2_na_q3_2/_3 the table factor prints only 2, 3, 4, 5 and 10 and showed as 2-10,
+>     and S444-012/S444-013 FAILed on "7 x 8", which no render prints. Every number is now shown as runs of
+>     consecutive integers (`printed_runs`, `HASH_VERSION` 8); the 95 first replies taken on HASH_VERSION 7
+>     are set aside unfiled and every first reruns. Rejected: keep the pair and settle each gap ground by
+>     renders and ruling 21. Found in passing, a content finding left for the generator queue: seed 17 at
+>     three pinned formatters prints "48 / 8" on mat_g2_na_q3_6 and _9, outside their tables.
 >
 > **Owner rulings recorded 2026-09-22, binding on the next session:**
 >

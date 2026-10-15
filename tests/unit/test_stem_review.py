@@ -382,6 +382,27 @@ def test_a_generated_value_shows_what_renders_printed_for_it():
     assert seen["value:comparison"] == {"longer", "shorter"}
     assert by_key["comparison"] and all(d["printed"] == ["longer", "shorter"] for d in by_key["comparison"])
     nums = seen["value:answer"]
-    assert by_key["answer"] and all((d["printed_lo"], d["printed_hi"]) == (min(nums), max(nums))
-                                    for d in by_key["answer"])
-    assert all("printed" in d or "printed_lo" in d for ds in by_key.values() for d in ds)
+    assert by_key["answer"] and all(SP._runs_text(SP._runs(sorted(nums))) == d["printed_runs"] for d in by_key["answer"])
+    assert all("printed" in d or "printed_runs" in d for ds in by_key.values() for d in ds)
+
+
+def test_printed_numbers_keep_their_gaps():
+    """
+    Ruling 50b. A lowest-highest pair showed mat_g2_na_q3_2's table factor as 2-10; it prints
+    only 2, 3, 4, 5 and 10 (the competency names those tables), and two judges FAILed on 7 x 8.
+    Every number printed is shown as runs, measured here from the renders, gaps included.
+    """
+    from backend.app.practice_gen.validation import validate_slots as VS
+
+    lc = "mat_g2_na_q3_2"
+    renders, _refused = SP.observe_lc(lc)
+    item, _key = SP.build_item(lc, renders)
+    seen = set()
+    for fills in [r[3] for r in renders] + [VS.observe(lc, s)[1] for s in SP.SWEEP_SEEDS]:
+        seen |= {v for f in fills for _n, v, d in f.slots if d == "value:groups"}
+    assert seen == {2, 3, 4, 5, 10}
+    runs = [d["printed_runs"] for fam in item["families"] for g in fam["slots"] for d in g["domains"]
+            if d.get("key") == "groups"]
+    assert runs and all(r == "2 to 5, 10" for r in runs), runs
+    assert SP._runs([1, 2, 3, 7]) == [[1, 3], [7, 7]] and SP._runs([]) == []
+    assert SP._runs_text([[1, 3], [7, 7]]) == "1 to 3, 7"

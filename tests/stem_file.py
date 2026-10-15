@@ -96,7 +96,8 @@ problem printed one value twice (false). The domain kinds:
     the list shows what was observed and does not bound the slot: treat it as unbounded;
   - "repeats a generated value": the generated value named by "key". What renders printed for
     it, on every render observed (the enumerated renders and 200 more): where every value was a
-    number, the lowest and highest ("printed_lo", "printed_hi"); otherwise every value, in
+    number, every number printed, as runs from first to last ("printed_runs": "2 to 5, 10" means
+    2, 3, 4, 5 and 10, and no number between 5 and 10); otherwise every value, in
     "printed". These are observed, not a bound: judge each value shown, and judge the slot by
     the kind of value they show;
   - "nested learner text": the text of the listed families;

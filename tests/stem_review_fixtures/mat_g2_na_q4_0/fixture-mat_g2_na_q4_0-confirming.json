@@ -1,21 +1,21 @@
 {
  "schema_version": 2,
- "hash_version": 7,
+ "hash_version": 8,
  "node_id": "mat_g2_na_q4_0",
  "record_id": "fixture-mat_g2_na_q4_0-confirming",
  "role": "confirming",
  "confirms": "fixture-mat_g2_na_q4_0-first",
  "item_id": "FIX-008",
- "lc_hash": "82bb1675bfb30fd1667d5168a868a9259628870bd6737e2d0db62b78ca4bcaee",
+ "lc_hash": "b1ae0a3e8d490a51ed56fbc54f65bc7ff33df703853c401553ce68d48c5c096d",
  "judged_by": "fixture-not-a-judge-mat_g2_na_q4_0-confirming",
  "dispatch_id": "fixture-mat_g2_na_q4_0-confirming",
  "filed_at": "2026-10-13T01:00:00Z",
  "delivery": "fixture written by tests/stem_review_fixture.py for §17 mutation proofs; no judge was dispatched, so no judge read the packet or CLAUDE.md",
  "tool_uses_by_judge": "none (hand-written fixture)",
- "dispatch_prompt_digest": "e431c2af4d0a9e510b1635531cde90026475241a2132ec92393685a1661f5080",
+ "dispatch_prompt_digest": "663d46097f56d225dcb42d5d5afa4073d368918ebe39130a8b1225ffa8ac628e",
  "raw_reply": "{\"item\": \"FIX-008\", \"clauses\": {\"represent\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F17\", \"template\": \"Shade {fraction_str} of the shape.\", \"reasoning\": \"Fixture: the template 'Shade {fraction_str} of the shape.' addresses this clause.\"}, \"identify\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F11\", \"template\": \"What fraction does the {name} show?\", \"reasoning\": \"Fixture: the template 'What fraction does the {name} show?' addresses this clause.\"}, \"unit_fractions\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F11\", \"template\": \"What fraction does the {name} show?\", \"reasoning\": \"Fixture: the template 'What fraction does the {name} show?' addresses this clause.\"}, \"denominators_2_3_4_5_6_8\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F11\", \"template\": \"What fraction does the {name} show?\", \"reasoning\": \"Fixture: the template 'What fraction does the {name} show?' addresses this clause.\"}}, \"failing_families\": [], \"failing_templates\": [], \"overall\": \"PASS\", \"reasoning\": \"Fixture, not a judgment: the shading and naming questions were read for unit fractions.\"}",
  "raw_reply_digest": "c4e9c29cbf29037e9b796ae0972c81f6fa84a0382153d3f1e27886ed56c56a54",
- "packet_digest": "564d800876fbcb0dddfbd4e91c04cdefaa7cc0da857fc33c5cb837a2b9b8d83e",
+ "packet_digest": "60c2af53ba928b84c30b091ee1108e7127f342235c917d570b9f83e38cc1f027",
  "family_keys": {
   "F01": {
    "source": "backend/app/practice_gen/dna/base.py [gate denominator]",
@@ -580,8 +580,7 @@
        {
         "domain": "repeats a generated value",
         "key": "numerator",
-        "printed_lo": 1,
-        "printed_hi": 1,
+        "printed_runs": "1",
         "derived_from_values": [
          "numerator"
         ]
@@ -596,8 +595,7 @@
        {
         "domain": "repeats a generated value",
         "key": "denominator",
-        "printed_lo": 2,
-        "printed_hi": 8,
+        "printed_runs": "2 to 6, 8",
         "derived_from_values": [
          "denominator"
         ]
@@ -639,8 +637,7 @@
        {
         "domain": "repeats a generated value",
         "key": "denominator",
-        "printed_lo": 2,
-        "printed_hi": 8,
+        "printed_runs": "2 to 6, 8",
         "derived_from_values": [
          "denominator"
         ]
@@ -682,8 +679,7 @@
        {
         "domain": "repeats a generated value",
         "key": "numerator",
-        "printed_lo": 1,
-        "printed_hi": 1,
+        "printed_runs": "1",
         "derived_from_values": [
          "numerator"
         ]
@@ -947,8 +943,7 @@
        {
         "domain": "repeats a generated value",
         "key": "numerator",
-        "printed_lo": 1,
-        "printed_hi": 1,
+        "printed_runs": "1",
         "derived_from_values": [
          "numerator"
         ]
@@ -970,8 +965,7 @@
        {
         "domain": "repeats a generated value",
         "key": "denominator",
-        "printed_lo": 2,
-        "printed_hi": 8,
+        "printed_runs": "2 to 6, 8",
         "derived_from_values": [
          "denominator"
         ]
@@ -1125,8 +1119,7 @@
        {
         "domain": "repeats a generated value",
         "key": "numerator",
-        "printed_lo": 1,
-        "printed_hi": 1,
+        "printed_runs": "1",
         "derived_from_values": [
          "numerator"
         ]
@@ -1149,8 +1142,7 @@
        {
         "domain": "repeats a generated value",
         "key": "denominator",
-        "printed_lo": 2,
-        "printed_hi": 8,
+        "printed_runs": "2 to 6, 8",
         "derived_from_values": [
          "denominator"
         ]

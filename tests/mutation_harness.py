@@ -6386,21 +6386,22 @@ MUTATIONS: List[Mutation] = [
         baseline_must_not_contain=["FAIL stem_review_stale_17"],
     ),
     Mutation(
-        name="stem_value_printed_range_changed_without_review",
+        name="stem_value_runs_collapsed_without_review",
         asserts=["stem_review_stale_17"],
         description=(
-            "Make the packet builder print a generated number's highest printed value as its lowest "
-            "(ruling 50). What a judge reads about a value slot changed, so the approval must go stale."
+            "Make the packet builder show a generated number's printed values as one lowest-highest "
+            "span again, hiding every gap (ruling 50b: mat_g2_na_q3_2's table factor prints 2-5 and "
+            "10, shown as 2-10, and judges FAILed on 7 x 8). The approval must go stale."
         ),
         edits={
             "backend/app/practice_gen/validation/stem_packets.py": (
-                '                        d["printed_hi"] = max(v for _k, v in seen_v)\n',
-                '                        d["printed_hi"] = min(v for _k, v in seen_v)  # planted mutation\n',
+                '                        d["printed_runs"] = _runs_text(_runs(sorted({v for _k, v in seen_v})))\n',
+                '                        d["printed_runs"] = _runs_text([[min(v for _k, v in seen_v), max(v for _k, v in seen_v)]])  # planted mutation\n',
             )
         },
         command=["backend.app.practice_gen.validation.validate_stem_review", "--node-ids", "mat_g2_na_q3_8",
                  "--review-dir", "tests/stem_review_fixtures"],
-        expected_check="§17 what a generated number printed is bound by freshness (ruling 50)",
+        expected_check="§17 every number a generated value printed is shown, gaps included (ruling 50b)",
         expect_output_contains=["stem_review_stale_17 (", "domain/provenance changed in"],
         baseline_must_not_contain=["FAIL stem_review_stale_17"],
     ),

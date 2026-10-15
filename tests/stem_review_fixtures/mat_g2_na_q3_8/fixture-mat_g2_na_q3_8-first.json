@@ -1,21 +1,21 @@
 {
  "schema_version": 2,
- "hash_version": 7,
+ "hash_version": 8,
  "node_id": "mat_g2_na_q3_8",
  "record_id": "fixture-mat_g2_na_q3_8-first",
  "role": "first",
  "confirms": null,
  "item_id": "FIX-001",
- "lc_hash": "eec5c608321b463fbe496105c37541ea91c34305f2d80b20a8eb545b122ecb07",
+ "lc_hash": "494e7ee674d822e271ccf5b2701e37364077f3dc21acb42f95d70bcbdba36d9d",
  "judged_by": "fixture-not-a-judge-mat_g2_na_q3_8-first",
  "dispatch_id": "fixture-mat_g2_na_q3_8-first",
  "filed_at": "2026-10-13T00:00:00Z",
  "delivery": "fixture written by tests/stem_review_fixture.py for §17 mutation proofs; no judge was dispatched, so no judge read the packet or CLAUDE.md",
  "tool_uses_by_judge": "none (hand-written fixture)",
- "dispatch_prompt_digest": "d419318599878d035d3d2d547d88d2d4aeb9a3a44317f9d7b28671b6c074005d",
+ "dispatch_prompt_digest": "b230985e6b0f57e573daecdac3ac0977bee8191d2d0beff7a9f672c57bd99c6f",
  "raw_reply": "{\"item\": \"FIX-001\", \"clauses\": {\"distinguish\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F11\", \"template\": \"{d} ÷ 2 comes out exactly, so {d} is an even number\", \"reasoning\": \"Fixture: the template '{d} ÷ 2 comes out exactly, so {d} is an even number' addresses this clause.\"}, \"even_and_odd_numbers\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F04\", \"template\": \"Nothing is left over, so {n} is an even number.\", \"reasoning\": \"Fixture: the template 'Nothing is left over, so {n} is an even number.' addresses this clause.\"}, \"division\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F03\", \"template\": \"Divide {n} by 2: how many 2s fit into {n}?\", \"reasoning\": \"Fixture: the template 'Divide {n} by 2: how many 2s fit into {n}?' addresses this clause.\"}, \"divisor_2\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F02\", \"template\": \"2 × {half} = {twice}, and {n} − {twice} = {left}.\", \"reasoning\": \"Fixture: the template '2 × {half} = {twice}, and {n} − {twice} = {left}.' addresses this clause.\"}}, \"failing_families\": [], \"failing_templates\": [], \"overall\": \"PASS\", \"reasoning\": \"Fixture, not a judgment: the hint 'Divide {n} by 2: how many 2s fit into {n}?' and the statements about even and odd numbers keep to division by 2.\"}",
  "raw_reply_digest": "f142e60b6370fa413b1062a126d8828a5c38735d35081334ed9820383aa0a4ee",
- "packet_digest": "6934a1a18d081039e684b1e1b4352d89591649179f9b592b91659dc4e9251b59",
+ "packet_digest": "3ea4678e9a93cd9be08753abfb35ebbb6831527f6bebcea189f7851aaaebca78",
  "family_keys": {
   "F01": {
    "source": "backend/app/practice_gen/dna/na/division.py",
@@ -388,8 +388,7 @@
        {
         "domain": "repeats a generated value",
         "key": "dividend",
-        "printed_lo": 1,
-        "printed_hi": 87,
+        "printed_runs": "1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29, 31, 33, 35, 37, 39, 41, 43, 45, 47, 49, 51, 53, 55, 57, 59, 61, 63, 65, 67, 69, 71, 73, 75, 77, 79, 81, 87",
         "derived_from_values": [
          "dividend"
         ]
@@ -434,8 +433,7 @@
        {
         "domain": "repeats a generated value",
         "key": "dividend",
-        "printed_lo": 1,
-        "printed_hi": 90,
+        "printed_runs": "1 to 82, 84, 86 to 88, 90",
         "derived_from_values": [
          "dividend"
         ]
@@ -479,8 +477,7 @@
        {
         "domain": "repeats a generated value",
         "key": "dividend",
-        "printed_lo": 1,
-        "printed_hi": 90,
+        "printed_runs": "1 to 82, 84, 86 to 88, 90",
         "derived_from_values": [
          "dividend"
         ]
@@ -509,8 +506,7 @@
        {
         "domain": "repeats a generated value",
         "key": "dividend",
-        "printed_lo": 2,
-        "printed_hi": 90,
+        "printed_runs": "2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 72, 74, 76, 78, 80, 82, 84, 86, 88, 90",
         "derived_from_values": [
          "dividend"
         ]
@@ -593,8 +589,7 @@
        {
         "domain": "repeats a generated value",
         "key": "dividend",
-        "printed_lo": 1,
-        "printed_hi": 87,
+        "printed_runs": "1 to 2, 7, 10 to 12, 14 to 15, 18 to 19, 22, 26, 28 to 33, 36, 41 to 43, 45, 48, 50, 53, 57 to 58, 67 to 68, 72, 75 to 77, 81 to 82, 84, 87",
         "derived_from_values": [
          "dividend"
         ]
@@ -625,8 +620,7 @@
        {
         "domain": "repeats a generated value",
         "key": "dividend",
-        "printed_lo": 6,
-        "printed_hi": 88,
+        "printed_runs": "6, 8 to 9, 12, 18, 25 to 27, 29, 31 to 32, 35 to 38, 40, 45, 51 to 52, 61 to 62, 64, 70 to 71, 74 to 76, 79 to 80, 88",
         "derived_from_values": [
          "dividend"
         ]
@@ -657,8 +651,7 @@
        {
         "domain": "repeats a generated value",
         "key": "dividend",
-        "printed_lo": 6,
-        "printed_hi": 87,
+        "printed_runs": "6, 9 to 10, 14, 17, 19 to 20, 24 to 25, 32, 34 to 35, 43 to 46, 50 to 51, 53 to 55, 60 to 62, 64 to 67, 71, 74 to 75, 80, 87",
         "derived_from_values": [
          "dividend"
         ]
@@ -689,8 +682,7 @@
        {
         "domain": "repeats a generated value",
         "key": "dividend",
-        "printed_lo": 1,
-        "printed_hi": 88,
+        "printed_runs": "1, 3, 10, 12, 14 to 16, 18, 21, 30 to 31, 33, 37, 39, 42, 44, 49 to 52, 54, 64 to 65, 69 to 70, 72 to 74, 77 to 79, 86, 88",
         "derived_from_values": [
          "dividend"
         ]
@@ -721,8 +713,7 @@
        {
         "domain": "repeats a generated value",
         "key": "dividend",
-        "printed_lo": 2,
-        "printed_hi": 90,
+        "printed_runs": "2 to 4, 6, 9 to 10, 13, 15 to 16, 23, 27, 31, 35, 37, 42, 47 to 48, 51 to 53, 56 to 58, 62, 64, 67 to 68, 70, 72, 79, 82, 88, 90",
         "derived_from_values": [
          "dividend"
         ]
@@ -753,8 +744,7 @@
        {
         "domain": "repeats a generated value",
         "key": "dividend",
-        "printed_lo": 5,
-        "printed_hi": 90,
+        "printed_runs": "5, 10 to 11, 18, 24, 26 to 27, 46, 48 to 51, 58 to 60, 62 to 64, 66 to 68, 74, 78 to 79, 84, 88, 90",
         "derived_from_values": [
          "dividend"
         ]

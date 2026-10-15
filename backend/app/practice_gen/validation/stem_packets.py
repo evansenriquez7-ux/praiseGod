@@ -54,8 +54,9 @@ structured record (`slots.capture()`, ruling 28), never from learner-facing text
     one). Found on the ruling-48 pilot: a judge FAILed a category list as able to repeat a member,
     which no render does;
   * a `value:<key>` slot shows what renders printed for it (owner ruling 50, 2026-10-15): over
-    `paths()` and the `SWEEP_SEEDS` student renders, the lowest and highest where every value was
-    a number (`printed_lo`/`printed_hi`), else every value (`printed`). Found on the first fan-out
+    `paths()` and the `SWEEP_SEEDS` student renders, every number as runs of consecutive integers
+    (`printed_runs`; ruling 50b, the same day: a lowest-highest pair hid gaps), else every value
+    (`printed`). Found on the first fan-out
     on ruling 48e: all 2,122 such slots on 144 of 151 lcs showed only a key that the declared
     bounds never state, so judges guessed what `{comparison}` or `{word_form}` prints and quoted
     the guesses (213 quoted spans no packet contains, 81 of 151 replies unfileable);
@@ -135,7 +136,8 @@ from backend.app.practice_gen.slots import DERIVED_REASONS, RENDERERS, TRANSFORM
 # 6 (2026-10-14, owner ruling 48e): a pure vocabulary-gate fill (`{term}`) is one family per gate,
 # nested only in the parents its own word fills.
 # 7 (2026-10-15, owner ruling 50): a `value:<key>` slot shows what renders printed for it.
-HASH_VERSION = 7
+# 8 (2026-10-15, owner ruling 50b): printed numbers as lossless runs, not a lowest-highest pair.
+HASH_VERSION = 8
 
 # Owner ruling 48b/d: extra STUDENT-path seeds rendered only to learn which bank rows the lc draws
 # and whether slots sharing a domain ever print one value twice (never judged, never a family
@@ -350,6 +352,31 @@ def _printed(value: Any) -> Tuple[str, Any]:
     if isinstance(value, (int, float)) and not isinstance(value, bool):
         return ("n", value)
     return ("t", _dump(_canon(value)))
+
+
+def _runs(numbers: List[Any]) -> List[List[Any]]:
+    """
+    Ruling 50b: sorted distinct numbers as [first, last] runs of consecutive integers -- lossless,
+    and compact where values are dense. A lowest-highest pair hid gaps: mat_g2_na_q3_2's table
+    factor prints only 2, 3, 4, 5 and 10, shown as "2-10", and two judges FAILed on "7 x 8".
+    A non-integer is a run of its own.
+    """
+    out: List[List[Any]] = []
+    for v in numbers:
+        if out and isinstance(v, int) and isinstance(out[-1][1], int) and v == out[-1][1] + 1:
+            out[-1][1] = v
+        else:
+            out.append([v, v])
+    return out
+
+
+def _runs_text(runs: List[List[Any]]) -> str:
+    """
+    The runs as ONE line ("2 to 5, 10"): printed as JSON lists they took four prompt lines per run,
+    and 53 of 151 prompts passed 2,000 lines (one 10,312) -- a judge then reads in pieces and the
+    audit refuses a partial read. Lossless: every run is written out.
+    """
+    return ", ".join(str(a) if a == b else f"{a} to {b}" for a, b in runs)
 
 
 def _row_pairs(row: Dict[str, Any], fields: set) -> set:
@@ -621,12 +648,12 @@ def build_item(node_id: str, renders=None) -> Tuple[Dict[str, Any], Dict[str, An
                 if "_bank" in d:
                     d["bank"] = bank_label[d.pop("_bank")]
                 if "_printed" in d:
-                    # Ruling 50: what renders printed for a generated value -- the lowest and highest
-                    # where every one was a number, else every one (observed, not a bound: limit 3).
+                    # Ruling 50: what renders printed for a generated value -- every number as runs of
+                    # consecutive integers (ruling 50b: a lowest-highest pair hid gaps), else every
+                    # value (observed, not a bound: limit 3).
                     seen_v = d.pop("_printed")
                     if all(kind == "n" for kind, _v in seen_v):
-                        d["printed_lo"] = min(v for _k, v in seen_v)
-                        d["printed_hi"] = max(v for _k, v in seen_v)
+                        d["printed_runs"] = _runs_text(_runs(sorted({v for _k, v in seen_v})))
                     else:
                         d["printed"] = [v if kind == "n" else json.loads(v)
                                         for kind, v in sorted(seen_v, key=lambda kv: (kv[0], _dump(kv[1])))]

@@ -1,21 +1,21 @@
 {
  "schema_version": 2,
- "hash_version": 7,
+ "hash_version": 8,
  "node_id": "mat_g3_mg_q2_2",
  "record_id": "fixture-mat_g3_mg_q2_2-first",
  "role": "first",
  "confirms": null,
  "item_id": "FIX-004",
- "lc_hash": "6ac3a1572db1ee362af439726d246c99cef97bf3003936fd131d3ab8006dfbab",
+ "lc_hash": "ddfd67eb094bfac4b75443d6a2edc2c4c196063cd3aecbb9595b98157073d20b",
  "judged_by": "fixture-not-a-judge-mat_g3_mg_q2_2-first",
  "dispatch_id": "fixture-mat_g3_mg_q2_2-first",
  "filed_at": "2026-10-13T00:00:00Z",
  "delivery": "fixture written by tests/stem_review_fixture.py for §17 mutation proofs; no judge was dispatched, so no judge read the packet or CLAUDE.md",
  "tool_uses_by_judge": "none (hand-written fixture)",
- "dispatch_prompt_digest": "b6f3a4cf3645c6ddb5967fe88d8c7083cebc5d1b0ff5bc9cb1a976c34e89e50a",
+ "dispatch_prompt_digest": "0d28f25c7ce7a250de27858942fb9ff01d3c5cf3a9f1d1e01bc4ae9ad1566499",
  "raw_reply": "{\"item\": \"FIX-004\", \"clauses\": {\"compare_masses\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F01\", \"template\": \"Compare the two measurements: {a} {unit} and {b} {unit}.\", \"reasoning\": \"Fixture: hand-written.\"}, \"objects\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F01\", \"template\": \"Compare the two measurements: {a} {unit} and {b} {unit}.\", \"reasoning\": \"Fixture: hand-written.\"}, \"balance_scale\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F01\", \"template\": \"Compare the two measurements: {a} {unit} and {b} {unit}.\", \"reasoning\": \"Fixture: hand-written.\"}}, \"failing_families\": [], \"failing_templates\": [], \"overall\": \"PASS\", \"reasoning\": \"Fixture, not a judgment: the template 'Compare the two measurements: {a} {unit} and {b} {unit}.' was read with its domains, and nothing in it is out of scope.\"}",
  "raw_reply_digest": "a164d64694401417a02470b62337a6d5dde435ab55f70c124bbd46d7dc2a2d42",
- "packet_digest": "b1efc7498c70142e6e67424749cf5db9e1bbba58aeddde395826e51756354afe",
+ "packet_digest": "00f20f31e00514ed95309b9754e9b0e3ddbe777c75e155d0da26d6fbf35e74f5",
  "family_keys": {
   "F01": {
    "source": "backend/app/practice_gen/dna/mg/mass_capacity.py",
@@ -310,8 +310,7 @@
        {
         "domain": "repeats a generated value",
         "key": "value_a",
-        "printed_lo": 1,
-        "printed_hi": 70,
+        "printed_runs": "1 to 22, 25 to 51, 54 to 70",
         "derived_from_values": [
          "value_a"
         ]
@@ -345,8 +344,7 @@
        {
         "domain": "repeats a generated value",
         "key": "value_b",
-        "printed_lo": 1,
-        "printed_hi": 70,
+        "printed_runs": "1 to 31, 33 to 39, 42, 44 to 58, 60 to 70",
         "derived_from_values": [
          "value_b"
         ]
@@ -393,8 +391,7 @@
        {
         "domain": "repeats a generated value",
         "key": "answer",
-        "printed_lo": 2,
-        "printed_hi": 70,
+        "printed_runs": "2 to 3, 5 to 40, 42 to 70",
         "derived_from_values": [
          "answer"
         ]
@@ -461,8 +458,7 @@
        {
         "domain": "repeats a generated value",
         "key": "value_a",
-        "printed_lo": 1,
-        "printed_hi": 70,
+        "printed_runs": "1 to 22, 25 to 51, 54 to 70",
         "derived_from_values": [
          "value_a"
         ]
@@ -496,8 +492,7 @@
        {
         "domain": "repeats a generated value",
         "key": "value_b",
-        "printed_lo": 1,
-        "printed_hi": 70,
+        "printed_runs": "1 to 31, 33 to 39, 42, 44 to 58, 60 to 70",
         "derived_from_values": [
          "value_b"
         ]
