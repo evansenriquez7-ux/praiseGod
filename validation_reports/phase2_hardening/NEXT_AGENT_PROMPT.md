@@ -2,7 +2,8 @@
 
 **Rewritten 2026-10-16 after batch H4-C, at the owner's request: "rewrite the next_agent_prompt.md for a fresh claude
 agent session to finish phase 2 hardening". This REPLACES every earlier version of this file.**
-`CLAUDE_AGENT_PROMPT.md`, `GPT_HANDOFF_PROMPT.md` and `HANDOFF_PROMPT.md` beside it are history. Their method notes
+`CLAUDE_AGENT_PROMPT.md`, `GPT_HANDOFF_PROMPT.md` and `HANDOFF_PROMPT.md` beside it (all in
+`validation_reports/phase2_hardening/`) are history. Their method notes
 are still correct and cited below: §7 heavy runs and the lock, §8 anchor one-liner, §9 traps, §11 not yours. Their
 state sections are stale.
 
@@ -69,21 +70,23 @@ Content findings do not block Phase 2.
 6. `validation_reports/phase2_hardening/hardening_status.json`: rows H-02, H-05, H-06, H-07, H-08, H-10 (`finding`,
    `acceptance_checks`, `progress`).
 7. Code, as background:
-   - `validation/run_all.py`: the stage table (~line 670), the stage functions (~line 1105), the stage list
-     (~line 1204), and the verdict and exit code;
-   - `validation/_manifest.py` (`FINDING_CLASS`);
-   - `validation/validate_coverage.py` (`UNPROVEN_ASSERTIONS`);
+   - `backend/app/practice_gen/validation/run_all.py`: the stage table (from ~line 666), the `_stage_*` functions
+     run through `ledger.run(...)` (~lines 738-1067), the Phase 2 stage loop (~line 1233), and the verdict and
+     exit code (line numbers measured 2026-10-16; search, don't trust them);
+   - `backend/app/practice_gen/validation/_manifest.py` (`FINDING_CLASS`);
+   - `backend/app/practice_gen/validation/validate_coverage.py` (`UNPROVEN_ASSERTIONS`);
    - one `Mutation(...)` in `tests/mutation_harness.py`;
-   - `tests/test_stage_ledger.py` (`stubbed_harness`);
+   - `tests/unit/test_stage_ledger.py` (`stubbed_harness`);
    - `tests/tree_state.py`.
-8. `CLAUDE_AGENT_PROMPT.md` §7, §8, §9, §11.
+8. `validation_reports/phase2_hardening/CLAUDE_AGENT_PROMPT.md` §7, §8, §9, §11.
 
 ---
 
 ## 2. State at handoff (2026-10-16, after H4-C; re-measure before quoting)
 
 ```
-HEAD                d729425a on main, PUSHED (origin/main == main)
+HEAD                main at the handoff commit that last changed this file (after d729425a); check
+                    `git status -sb` for whether it is pushed
 source              6ebbd1b3 (last harness change, ruling 50b); chain 563f7c59; tree_state 9067acd4;
                     §17 records 967f5d2c; evidence/handoff f5e16525; lock released d729425a
 H-06 lock           RELEASED @ f5e16525; claim a row before any work (§4)
@@ -96,12 +99,12 @@ run_all             2026-10-16 after d729425a: EXIT 2; scheduled=22 completed=15
                     stem_clause_unproducible_17 15, count_noun_singular_after_many_1J 423,
                     variant_not_exhibited_2L 420, attester_packet_refused_2L 61, slot_domain_escape_14 74,
                     slot_text_unaccounted_14 4, slot_path_refused_14 1, selector_value_unexhibited_15 58,
-                    hint_sequence_unshown_15 6   (log: local_only/scratch/h4c/run_all_final.log)
+                    hint_sequence_unshown_15 6   (re-measure at §4 step 3)
 §17                 every lc has a filed first judge and blind confirmer (355 records); 141 FAIL, 10 PASS,
                     15 NOT_PRODUCIBLE clauses; every §17 integrity label PASS
 floors              obligation_routes_reachable 5 unreachable (balance_scale, fill_in_blank, numeric_input,
-                    table_read, ten_frame); formatters_reachable 6; the §6 Phase 1 floor's 5 draw gaps
-                    (the last two from the 2026-10-13 handoff; re-measure)
+                    table_read, ten_frame; floor 5); formatters_reachable 6 (node, formatter) pairs (floor 6);
+                    capability_contract Phase 1: 5 content findings (floor 5) -- all measured in the 2026-10-16 run
 mutations           262; corpus 262/262, no INVALID
 latest attestation  batch447 (next free prefix: batch448)
 ```
@@ -165,7 +168,7 @@ anything in "Not yours" (§7).
    - `ps` grep is empty;
    - `df -h /System/Volumes/Data` shows space;
    - `PYTHONPATH=. .venv/bin/python tests/tree_state.py` prints CERTIFIED;
-   - the worktree is clean and `git status -sb` shows no divergence from origin.
+   - the worktree is clean; note what `git status -sb` says about origin (push only when the owner asks).
 
    CERTIFIED does not cover `validation_reports/`, so also run
    `PYTHONPATH=. .venv/bin/python -m pytest tests/unit -m "not slow" -q -p no:cacheprovider`. Expect 1010 passed,
@@ -247,12 +250,12 @@ Record every answer verbatim as owner ruling 52, 53, … in the plan doc (same f
 
 **A. H6: retire the per-sample gates (ruling 25; row H-06).**
 - Remove `judgment_reviews_5` and the `capability_phase2` attestation stage as gates in `run_all`.
-- Keep their records as read-only history: never edit or delete `validation_reports/judgment_reviews/`, attester
-  records or the batch117–batch150 corpus.
+- Keep their records as read-only history: never edit or delete `validation_reports/judgment/`,
+  `validation_reports/judgment_audit/`, `validation_reports/attestation/` or the batch117–batch150 corpus.
 - Carry every confirmed defect into the content report in the shape question 4 decides.
 - In the same commit, update the contract rows §5 and §6 and `docs/pgen_judgment.md` (Protocol 7).
-- Update `_manifest.FINDING_CLASS` and `test_stage_ledger.stubbed_harness`. Memory "New run_all stage needs a stub":
-  removing a stage also moves the stage-ledger mutations.
+- Update `_manifest.FINDING_CLASS` and `tests/unit/test_stage_ledger.py`'s `stubbed_harness`. Memory "New
+  run_all stage needs a stub": removing a stage also moves the stage-ledger mutations.
 - Re-run the assertion-coverage census. `judgment_reviews` and `capability_contract` are in `UNPROVEN_ASSERTIONS`
   as rollup prints, and leave it with their stages.
 - Prove the replacement: §17 plus §14 must still catch what the retired gates caught. Name in the evidence which
@@ -325,8 +328,8 @@ Close a row only with evidence per acceptance check.
 If you dispatch judges:
 - use `effort: "medium"`;
 - give prompts of 2,000 lines or more as explicit chunked Read calls;
-- the tools in `local_only/scratch/h4c/` (`h4c.py`, `taf.sh`, `mkdisp.py`, `render_dump.py`) are uncommitted
-  scratch; copy and re-prove them before relying on them.
+- the tools H4-C used are committed in `validation_reports/phase2_hardening/h4c_tools/` (read its README.md); they
+  assume H4-C's gitignored scratch layout, so copy and re-prove them before relying on them.
 
 ---
 
@@ -334,7 +337,7 @@ If you dispatch judges:
 
 - §17: 141 FAIL lcs (`stem_review_fail_17`, each naming its failing templates) and 15 NOT_PRODUCIBLE clauses (the
   "H4-C" evidence entry lists them).
-- Disproved and real grounds per lc: `local_only/scratch/h4c/r49.log` (uncommitted).
+- Disproved and real grounds per lc: `validation_reports/phase2_hardening/h4c_tools/r49.log`.
 - §2L: 420 non-exhibited variant values; 61 packet refusals.
 - §6: 78 CONTRADICTED capabilities.
 - §5: 752 judgment problems.
@@ -399,12 +402,14 @@ PYTHONPATH=. .venv/bin/python -m pytest tests/unit -m "not slow" -q -p no:cachep
 #  DATABASE_URL= PYTHONPATH=. .venv/bin/python tests/frontend_suite.py, then re-run that one mutation)
 # commit source by name; bash validation_reports/phase2_hardening/h4_0_tools/anchors.sh must print "all anchors OK"; then:
 PYTHONPATH=. .venv/bin/python tests/tree_state.py --begin chain --force --session "<id>" --note "..."
-nohup zsh local_only/scratch/<batch>/chain.sh > local_only/scratch/<batch>/chain.nohup 2>&1 &
+mkdir -p local_only/scratch/<batch>
+nohup zsh validation_reports/phase2_hardening/h4c_tools/chain.sh <batch> > local_only/scratch/<batch>/chain.nohup 2>&1 &
 ```
 
-Copy `local_only/scratch/h4c/chain50.sh`, NOT `h4c/chain.sh`, which hard-codes 6 shards. `chain50.sh` reads
-`projection.recommended_shard_count` from `obligation_benchmark.json` after the benchmark step (7 today) and moves
-stale `shard_*_of_*.json` receipts aside first. Change its directory, and never hard-code the shard count.
+The chain script is committed: `validation_reports/phase2_hardening/h4c_tools/chain.sh <batch>` (logs go to
+`local_only/scratch/<batch>/chain/`). It reads `projection.recommended_shard_count` from `obligation_benchmark.json`
+after the benchmark step (7 today) and moves stale `shard_*_of_*.json` receipts aside first. Never hard-code the
+shard count.
 
 Measured in H4-C on `6ebbd1b3`:
 - regen + benchmark + frontend: 50 s;
@@ -415,7 +420,8 @@ Measured in H4-C on `6ebbd1b3`:
 
 Each new mutation adds roughly 20–60 s to the corpus.
 
-- Wait with one background `until grep -q "CHAIN DONE" $L/progress.log; do sleep 60; done` (one notification).
+- Wait with one background `until grep -q "CHAIN DONE" local_only/scratch/<batch>/chain/progress.log; do sleep 60; done`
+  (one notification).
   Never wait on `pgrep -f` of a string in the same command.
 - **If interrupted:**
   - confirm there is no `chain.sh` or `mutation_harness` process;
