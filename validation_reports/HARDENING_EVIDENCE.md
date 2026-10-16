@@ -20640,3 +20640,226 @@ Rejected: a 5-lc pilot first; starting in this session; not yet.
   undetectable here; quote provenance checks quoted spans only; per-lc verdicts name only the templates quoted; nested
   families matched by text; the fixture lc's stems are pinned by the proofs (a generator change to mat_g2_na_q3_8 makes
   every §17 proof INVALID until `tests/stem_review_fixture.py` is re-run).
+
+## 2026-10-16 — H4-C: the §17 stem judge campaign (owner rulings 45-51)
+
+Batch H4-C ran the §17 judge campaign approved by ruling 45. Every one of the 151 lcs now has a filed first judge and
+a filed blind confirming judge (ruling 44e). The later verdict stands. Every ground of every standing FAIL was then
+checked against real renders (ruling 49), and a further blind judge went only to lcs where every ground was false
+(ruling 51). The campaign changed harness source five times, under rulings 46-50b (packet content only; verdict
+logic, mutations and the filer's checks unchanged). Each change re-ran the full chain. The last tree is CERTIFIED at
+digest 28d1e3f4ef451da6. No generator content was changed (ruling 23). H6 was not started.
+
+### Commits
+
+```text
+2e1fba7a chore(hardening): claim H-06 for batch H4-C
+6b2c59ed fix(harness): §17 packets say where each family is read; replies name family ids (ruling 46)   f3207159 chain 247/247
+8f83125a fix(harness): §17 packets print an item bank row by row (ruling 47)                            f97ab9f9 chain 249/249
+613315ee fix(harness): §17 packets show only what the pg can print; §14 checks vocabulary gates (ruling 48)  (chain stopped)
+fb146422 fix(harness): §17 shared slots say whether a render repeated a value (ruling 48d)                (chain stopped)
+0388fecf fix(harness): §17 each vocabulary-gate word is its own family (ruling 48e); record ruling 49
+09ca8af0 fix(harness): §17 a generated value shows what it printed (ruling 50)                          (chain: a unit test failed; fixed next)
+39c2752b fix(tests): subdirectory artifact test no longer names one shard count; H-04 claims the receipts directory
+6ebbd1b3 fix(harness): §17 printed numbers shown as lossless runs (ruling 50b; HASH_VERSION 8)
+563f7c59 chore(proofs): H4-C re-proof chain on 6ebbd1b3 (262/262, 7 shards, run_all exit 2)
+9067acd4 chore(tree-state): complete H4-C chain intent (rulings 50, 50b)
+967f5d2c data(stem-review): H4-C §17 judge records for all 151 lcs (rulings 44-45, 49-51)
+```
+
+Rulings 46-50b are recorded verbatim in the plan doc with their measured grounds. Ruling 51 was asked this
+session and is recorded verbatim in `967f5d2c`. The pre-commit hook also staged `graphify-out/` into `967f5d2c`,
+including a dated backup folder; earlier commits carry the same files, so it was left as is.
+
+### Owner ruling 51 (asked this session)
+
+Measured on group S441 under ruling 49, before the question:
+- 12 of 16 FAIL lcs had at least one ground the renders disprove;
+- 11 of those 12 also had at least one real printed ground;
+- the 4 ruling-21 judges sent all returned FAIL, 3 of them re-asserting disproved grounds.
+
+The owner chose (a): a ruling-21 judge goes only where every ground of the standing record is disproved by the
+renders. Every disproof is logged, and where a real printed ground exists the confirmer's FAIL stands. The question
+and the measured counts are in the plan doc.
+
+### The final packets and judges
+
+- Packets: HASH_VERSION 8 on `6ebbd1b3`, 2,684 stem families over 151 lcs.
+- Delivery: prompts of 2,000 lines or more are delivered as explicit chunked Read calls (offset 1/1101/2201, limit
+  1100). Haiku read only the first 2,000 lines when told to "keep reading", and also failed when given a line count
+  (4 of 5). This is a delivery change only; the prompt files are unchanged. 17 prompts needed it.
+- Model: every dispatch used the Agent tool's `haiku` alias. All 451 HV8 transcripts audited record
+  `claude-haiku-5-5`. Effort was not set before the owner asked; from S444-009-confirming onward every dispatch
+  passed `effort: medium`, 139 in all, each noted in dispatch.log.
+- The owner later asked for "haiku 4.5 (medium)". The Agent tool accepts only the alias `haiku`, so an older
+  version cannot be pinned from this host. This was reported to the owner, and the alias was kept at effort medium.
+- Every reply was taken byte for byte from its transcript, audited by `local_only/scratch/h4c/h4c.py audit`, and
+  filed only on a clean audit through `tests/stem_file.py file`. The audit checks transcript tool use, full-read
+  coverage, and every refusal the filer raises.
+
+```text
+HV8 replies taken     451   (ledger.json; models: claude-haiku-5-5 x 451)
+filed                 355   = 151 first + 204 confirming (151 first confirmers + 53 ruling-21 records)
+set aside, unfiled     96   (dispatch.log SETASIDE lines = ledger 'taken' entries, reconciled 96 = 96)
+  quote not in packet  68   (composed example renders, elided "...", placeholders such as 'group of N')
+  incomplete read      21   (all before the chunked-read delivery)
+  tool call             5   (Claude Docs MCP guide x4, ToolSearch x1)
+  unparseable reply     1   (S446-002 first: JSONDecodeError at char 0)
+  failing_families      1   (S442-014 first-r1: a failing family prints a template not in failing_templates, ruling 46b)
+first verdicts        146 FAIL, 5 PASS;  first vs first confirmer: same overall verdict on 143 of 151
+earlier rounds        HV6: 81 of 151 firsts unfileable (ruling 50's ground); HV7: 95 firsts set aside unfiled (ruling 50b)
+```
+
+### Ruling 49 / 51: every standing FAIL checked against real renders
+
+The render dumps are in `local_only/scratch/h4c/renders/` (`render_dump.py`). They cover every
+`validate_slots.paths()` path: seeds 1-40 plus each advertised formatter at 3/17/29, through `validate_slots.observe`.
+All 151 dumped, 0 errors.
+- Each lc's standing (latest-filed) record was checked ground by ground with scripts. The results are in
+  `local_only/scratch/h4c/r49.log`: one line per lc, plus outcome lines.
+- Where one real printed ground was found, the others were sometimes left unchecked and marked "not checked" in the
+  log. Under ruling 51 one real ground settles it.
+
+```text
+standing FAILs checked                 141 of 141   (r49.log covers every lc; script check: missing r49: [])
+all grounds disproved -> ruling 21      49 lcs   (S441 021; S442 001 002 005 007 008 010 011 012 013 021 023 024
+                                                  025; S443 004 007 008 009 015 016 019 023 024; S444 004 005 009 020
+                                                  023; S445 002 004 008 009 010 013 014 016 017 018 022 023;
+                                                  S446 003 010 011 012 017 019 022 024; S447 001)
+ruling-21 records filed                  53   (one per lc: the 49 above, some at -r2/-r3 after set-asides, plus
+                                                  S441-004/-009/-010/-012 sent before ruling 51)
+ruling-21 outcomes                     50 FAIL (most re-assert a ground the renders disprove; several add a new ground)
+                                        3 PASS: S442-010 (mat_g1_na_q3_2), S442-025 (mat_g2_mg_q1_0), S446-010 (mat_g3_na_q2_6)
+```
+
+Disproofs are recorded with counts, for example:
+- S441-021: no ordinal past tenth prints anywhere, and 0 malformed ordinal symbols.
+- S442-002: the only bare emoji-row render (seed 25) carries its prompt.
+- S443-009: 0 day names in time slots; all time arithmetic checked true.
+- S445-002: the hint's axis word matches the graph's orientation on 25 of 25 oriented renders.
+- S444-023: re-observed seeds 4-12 each render a shape for "Shade ... of the shape."
+
+Real grounds are recorded with the printing seed, for example:
+- S441-022 seed 7: a 20-word sentence over the declared 15.
+- S443-005 seed 1: 'rounded to the nearest' printed while round is NOT_YET_KNOWN.
+
+### The gate at the end
+
+```text
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_stem_review   (EXIT 1: findings exist)
+  PASS stem_family_unpacketed_17 | PASS stem_review_hash_drift_17 | PASS stem_review_record_invalid_17
+  PASS stem_review_quote_provenance_17 | PASS stem_review_identity_reused_17 | PASS stem_review_skeleton_17
+  PASS stem_review_missing_17 | PASS stem_review_stale_17 | PASS stem_review_unconfirmed_17
+  FAIL stem_review_fail_17 (141):
+  FAIL stem_clause_unproducible_17 (15):
+  NOTE: 10 of 151 lc(s) carry a confirmed, fresh PASS with every clause PRODUCIBLE; 2684 stem families packeted; 2 pinned path(s) refused (named by §14 as slot_path_refused_14)
+  §17: 156 finding(s) over 151 lc(s); records read from .../validation_reports/stem_review
+```
+
+`stem_review_missing_17` fell from 151 to 0. The 141 FAILs and 15 NOT_PRODUCIBLE clauses are content findings for
+the generator queue (ruling 23). The NOT_PRODUCIBLE clauses are:
+- mat_g1_mg_q1_0 different_size
+- mat_g1_na_q1_7 concrete, describes
+- mat_g1_na_q3_4 concrete_models
+- mat_g1_na_q4_6 in_pictures
+- mat_g2_mg_q4_4 tools
+- mat_g2_na_q3_1 concrete_model
+- mat_g2_na_q4_3 fraction_tiles
+- mat_g3_dp_q3_0 collect_data
+- mat_g3_dp_q3_1 horizontal_bar_graph, vertical_bar_graph
+- mat_g3_mg_q1_0 estimate_area
+- mat_g3_mg_q2_2 objects, balance_scale
+- mat_g3_mg_q4_1 drawing_the_line_of_symmetry
+
+### The last chain (on 6ebbd1b3) and tree state
+
+```text
+$ cat local_only/scratch/h4c/chain/progress.log
+END regen EXIT 0 19:41:07 | END benchmark EXIT 0 19:41:32 | END frontend EXIT 0 19:41:45
+END corpus EXIT 0 20:49:17   262/262 mutations detected.
+escaped-plant grep lines: 1  (backend/app/practice_gen/validation/validate_coverage.py:456, the benign comment)
+END shard0..shard6 EXIT 0; END verify EXIT 0 (release_status=complete receipts=7 complete=True)
+END run_all EXIT 2 00:42:16
+  PASS unit_tests (1010 passed, 1 skipped, 2 deselected, 4 warnings in 730.04s (0:12:10))
+  PASS mutation_proof_integrity_8: 262 executed mutation proof(s) verified against the current source/fixture digest
+  PASS assertion_coverage_8: 184/195 harness assertions proven BY EXECUTION
+  scheduled=22 completed=15 failed=7 crashed=0 not_run=0 incomplete=0
+  PASS finding_class_registry_complete: 195 label(s) classified, equal to the §8 inventory
+  INTEGRITY: GREEN
+ALL TESTS: integrity green, CONTENT FINDINGS REMAIN (exit 2).
+$ PYTHONPATH=. .venv/bin/python tests/tree_state.py        (after 967f5d2c)
+PASS tree_state: CERTIFIED   live input digest : 28d1e3f4ef451da6   worktree : clean   mutation_proofs fresh 262
+```
+
+The unit suite after the last bookkeeping commit is quoted in the lock-release commit's message. CERTIFIED cannot
+see `validation_reports/`.
+
+### Found, not fixed (generator content; for the generator queue)
+
+1. **A wrong key** on mat_g3_na_q4_2 (S446-021): '81 ÷ 9 = 9. True or False?' (seed 11) and '36 ÷ 9 = 4. True or
+   False?' (seed 16) are both keyed False, though both statements are true. The same lc prints divisors outside
+   6-9, for example '16 ÷ 3 = 2' and 'Ask: how many times does 10 fit into 90?'.
+2. Seed 17 at three pinned formatters prints "48 ÷ 8" on mat_g2_na_q3_6 and _9, outside their 2, 3, 4, 5, 10 tables
+   (ruling 50b's finding). The 6-9 times tables are named in hints on mat_g2_na_q3_2/_3; the 20-400 "times
+   tables" on mat_g3_na_q3_2/_3/_4.
+3. "order word word" (mat_g1_na_q1_5, mat_g2_na_q1_5, mat_g3_na_q1_2) and "Ordinal numbers describe order in order."
+4. Peso amounts printed as 'peso60' (mat_g1_na_q4_6, mat_g2_na_q2_0 seed 1); 'PhP8802c'; unspaced four-digit
+   amounts against the declared space separator.
+5. Sums or answers above their bounds: '5735 + 4344' estimated (mat_g3_na_q2_2 seed 1); 'The answer is 10009.'
+   (mat_g3_na_q2_3 seed 4); 'You land on 102.' (mat_g1_na_q2_5 seed 3).
+6. Words past their gates printed: 'digits'/'sides' on grade 1; 'multiply' past its gate; 'probability',
+   'favorable outcomes', 'sq cm', 'mg', 'set square', 'right angle (90°)', 'array', 'vertex', 'polygon', 'scalene'.
+7. Grammar and wording: 'This is a same group again pattern.'; 'Each area is the side multiplied together.';
+   'Moses collected 401 prayer journal'; 'We need to find the total of equal groups 2 groups of 7.'
+8. A table question with a bar hint: mat_g3_dp_q3_2 seeds 5, 30, 34.
+9. Questions framed as True or False statements, for example mat_g2_na_q2_3 seed 6 'Since 43 + 2 = 45, what is
+   45 − 2? The answer is 47. True or False?'.
+
+### Mistakes of my own
+
+1. Chain 2 was launched before the change was piloted, and was then stopped (chain48_stopped, chain48d_stopped; no
+   plant left).
+2. Docs were edited during a dev loop.
+3. A sed path slip.
+4. A dict-as-string pairing check.
+5. I recommended "a wider sample" before measuring.
+6. Two SIGTERM stops.
+7. zsh word-split slips in dispatch loops, twice: S445-019/020, and the S441 r1 batch. Both were corrected with
+   CORRECTION lines in dispatch.log.
+8. chain.sh hard-coded 6 shards (fixed to read the count from the benchmark). The chain on `09ca8af0` then completed
+   with 7 shards, but run_all exited 1 with `FAIL unit_tests (3 failed, 1006 passed, ...)`: a test named one shard
+   count. Fixed in `39c2752b`, and the chain re-run on `6ebbd1b3`.
+9. A bad generator plant (dividend +100) in a dev check.
+10. Ruling 50's lo-hi display hid gaps, which led to ruling 50b.
+11. I first counted 98 HV7 replies; it was 95.
+12. JSON-list runs bloated prompts.
+13. I omitted ruling 49's rejection when asking the ruling-50 question; this was reported to the owner.
+14. A dispatch description did not match its item for S444-013 in an earlier round.
+15. 429 rate-limit redispatches: S442-024/025, S443-015.
+16. I exceeded my own 3-try cap on S444-010 and S445-024 (both filed at -r3).
+17. An S441-009 scan iterated an entry's keys instead of its texts; it was caught and rerun.
+18. Three regex slips in ruling-49 scripts were caught before logging:
+    - a month check read the year 2025 as a day;
+    - a noun check flagged "9. Keep";
+    - a set-aside count matched DISPATCH lines whose note said "after SETASIDE".
+19. One r49.log outcome line for S444-004-r2 was written before its audit set the reply aside. It was corrected in
+    place to "set aside -> r3" before any commit.
+
+### NAMED LIMITS of this campaign's result
+
+- **What the gate certifies.** Each verdict is one Haiku reading of a packet; the later confirming verdict stands
+  (ruling 20). 143 of 151 confirmers agreed with their first. The gate's failing list names templates, not seeds
+  (ruling 44d).
+- **Packets and renders.** Packets state joint facts only within one template (ruling 48d). Many FAILs rest on
+  domain-level combinations that the renders here do not print; ruling 49 checked these only over
+  `validate_slots.paths()`.
+- **Ruling-49 checks.**
+  - The checks are scripts written per ground, so a ground they mis-parse can be misjudged. The disproofs list
+    their counts so each can be re-run.
+  - Where one real ground was found, other grounds were often left unchecked (ruling 51 makes this sufficient).
+  - Scope and vocabulary grounds were counted as real when the text prints. The judgment itself (for example "is
+    'greatest' beyond the gate") is the judge's.
+- **Ruling-21 judges.** They see the same packet, so 50 of 53 re-asserted disproved grounds. Ruling 51 accepts their
+  verdict.
+- **Blindness.** The judge read only its prompt; this is evidenced by the transcript audit (tool uses, read
+  coverage), not enforced.

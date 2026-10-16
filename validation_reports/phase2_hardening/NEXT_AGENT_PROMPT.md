@@ -1,7 +1,8 @@
-# Task prompt: Phase 2 pipeline hardening under owner rulings 23–45 (Claude host)
+# Task prompt: Phase 2 pipeline hardening under owner rulings 23–51 (Claude host)
 
-**Rewritten 2026-10-13 after batch H4 (the §17 stem review gate is built, proven and CERTIFIED; owner ruling 45
-approved its judge campaign for THIS session). This REPLACES every earlier version of this file.**
+**Rewritten 2026-10-13 after batch H4; §0, §2 and §5's status rewritten 2026-10-16 after batch H4-C (the §17 judge
+campaign is complete: every lc has a filed first judge and a blind confirmer). This REPLACES every earlier version of
+this file.**
 `CLAUDE_AGENT_PROMPT.md`, `GPT_HANDOFF_PROMPT.md` and `HANDOFF_PROMPT.md` beside it are history: their method notes
 (§7 heavy runs and the lock, §8 anchor one-liner, §9 traps, §11 not yours) are still correct and cited below; their
 state sections are stale.
@@ -13,15 +14,20 @@ Trust order: a command you executed > this file > `CLAUDE_AGENT_PROMPT.md` > the
 
 ## 0. Your task, in one paragraph
 
-Run batch **H4-C**: the §17 **stem judge campaign** that owner ruling 45 approved. The gate (`validate_stem_review`,
-§17) is built and proven; today it reports `stem_review_missing_17 (151)`, one per lc. For every lc, build its
-blind stem packet, dispatch a **first** Haiku judge and then an independent blind **confirming** Haiku judge on the
-SAME packet (ruling 44e; about 302 dispatches, about 6 concurrent), audit every reply against the packet it was
-shown, and file both through `tests/stem_file.py` from **batch441**. Disputed non-PASS claims go to ruling 21. The
-campaign files records into `validation_reports/stem_review/` only: it changes no source, so the tree stays
-CERTIFIED and no chain is owed unless you change code. Do not fix generator content (a confirmed FAIL or
-NOT_PRODUCIBLE is a content finding for the generator queue, ruling 23). Do not start H6 (§6.2) until the owner says
-so. Leave this file's §0, §2 and §5 rewritten.
+Batch **H4-C is done** (2026-10-16). Every one of the 151 lcs has a filed first Haiku judge and a filed blind
+confirming judge under `validation_reports/stem_review/` (355 records, `967f5d2c`). Each standing FAIL was checked
+against real renders (rulings 49 and 51). `validate_stem_review` now reports `stem_review_missing_17` 0 and every
+integrity label PASS; `stem_review_fail_17 (141)` and `stem_clause_unproducible_17 (15)` are content findings for
+the generator queue (ruling 23).
+
+**Next: there is no approved batch.** At Phase 0, ask the owner which of these to run:
+- **H6** (§6.2): retire the per-sample gates. Ruling 25's precondition (the stem gate proven, its campaign done) now
+  holds, but the owner has not said to start.
+- An unowned exit item (§6.3).
+- Stopping Phase 2 for generator work (§6.4).
+
+Do not fix generator content, and do not edit a filed record. Read the "H4-C" evidence entry (at the END of
+`validation_reports/HARDENING_EVIDENCE.md`) before anything else.
 
 **Goal of Phase 2 (ruling 23).** It hardens the **testing pipeline**, not the generators. It is done when every
 check is proven by a mutation on the path it executes (Scaling Mandate 1–2), `run_all` exits 0 or 2 (integrity
@@ -62,30 +68,34 @@ module, template, renderer) as `stem_packets.family_key` defines it (ruling 44a)
 
 ---
 
-## 2. State at handoff (2026-10-13, after H4; re-measure before quoting)
+## 2. State at handoff (2026-10-16, after H4-C; re-measure before quoting)
 
 ```
 HEAD                local main, NOT pushed (git status -sb: ahead of origin)
-source              27761ea1 (H4) + dfc151ea (packet slot-name fix); chain 2 artifacts 4360860a; tree_state ff48377c;
-                    docs/evidence/rulings 44-45 in the bookkeeping commit after it
+source              6ebbd1b3 (ruling 50b, packet HASH_VERSION 8) after 6b2c59ed/8f83125a/613315ee/fb146422/0388fecf/
+                    09ca8af0/39c2752b (rulings 46-50); chain 563f7c59; tree_state 9067acd4; records 967f5d2c;
+                    evidence/handoff in the bookkeeping commit after it
 H-06 lock           RELEASED (follow-up commit); claim it before any work (§4 Phase 0)
-tree_state          CERTIFIED (244 proofs, 6 shards, benchmark, frontend fresh; digest e5f87c8fd8859e34)
-run_all             2026-10-13 on dfc151ea: EXIT 2; scheduled=22 completed=15 failed=7 crashed=0; INTEGRITY GREEN;
-                    184/195 assertions proven by execution; finding_class_registry_complete 195 labels
+tree_state          CERTIFIED (262 proofs, 7 shards, benchmark, frontend fresh; digest 28d1e3f4ef451da6)
+run_all             on 6ebbd1b3 (before the records): EXIT 2; scheduled=22 completed=15 failed=7 crashed=0; INTEGRITY
+                    GREEN; 184/195 assertions proven by execution; finding_class_registry_complete 195 labels
   CONTENT           variant_not_exhibited_2L 420, attester_packet_refused_2L 61, judgment_reviews 752,
                     capability_contract 78, count_noun_singular_after_many_1J 423, slot_domain_escape_14 74,
                     slot_text_unaccounted_14 4, slot_path_refused_14 1, selector_value_unexhibited_15 58,
-                    hint_sequence_unshown_15 6, stem_review_missing_17 151
-§14                 over validate_slots.paths() (student seeds 1-40 + every advertised formatter pinned at 3/17/29,
-                    7,285 renders; ruling 44b): 79 findings (67 at the old 20 seeds; 12 new real defects, H4 evidence);
-                    type_only 0 on 151 of 151 lcs
-§17                 0 of 151 lcs approved; 2,561 stem families packeted (median 15 per lc, max 56); packets
-                    6,410-47,919 characters (median 16,012); validation_reports/stem_review/ does not exist yet
-§15 / §1J           58 + 6 (1,351 of 1,351 decided) / indefinite_article_1J 0, count_noun_singular_after_many_1J 423
-unit suite          999 passed, 1 skipped (~11 min)
-mutations           244 (230 + 14 for §17 and §14 f); corpus 244/244, no INVALID
-latest attestation  batch440 (next free prefix: batch441); §17 records go to validation_reports/stem_review/<lc>/
+                    hint_sequence_unshown_15 6, stem_review_missing_17 151 (now 0; see §17 below)
+§17                 validate_stem_review over the filed records: stem_review_missing_17 0, every integrity label PASS;
+                    stem_review_fail_17 141, stem_clause_unproducible_17 15; 10 of 151 lcs carry a confirmed PASS with
+                    every clause PRODUCIBLE; 2,684 stem families packeted
+records             355 in validation_reports/stem_review/ (151 first, 204 confirming incl. 53 ruling-21 records);
+                    451 Haiku replies audited, 96 set aside unfiled; all transcripts record claude-haiku-5-5
+unit suite          1010 passed, 1 skipped (in the chain's run_all); after the last commit: see the lock-release commit
+mutations           262; corpus 262/262, no INVALID
+latest attestation  batch447 (next free prefix: batch448)
 ```
+
+The chain's run_all predates the records, so its CONTENT line still shows `stem_review_missing_17 151`. The next
+run_all will report `stem_review_fail_17 (141)` and `stem_clause_unproducible_17 (15)` instead. Records are not a
+digest input, so no chain is owed for them.
 
 **Before you resume anything detached, run `ps -eo pid,lstart,command | grep claude`**: one copy of the agent per
 conversation.
@@ -119,8 +129,13 @@ conversation.
   its failing templates; (f) verdicts and record defects are content; (g) the judge rules every clause
   PRODUCIBLE / NOT_PRODUCIBLE (gated); (h) Haiku judges, about 6 concurrent.
 - 45: **the campaign is approved**, as designed, from batch441, in a fresh session.
+- 46-48e: packet content (where each family is read; item banks row by row; only printable text; repeated values;
+  one family per gate word).  49: a standing FAIL is settled by real renders.  50, 50b: a value slot shows what
+  it printed, numbers as lossless runs (HASH_VERSION 8).
+- 51: **ruling 21 only where every ground of the standing record is disproved by renders**; every disproof is
+  logged; where a real printed ground exists the confirmer's FAIL stands.
 
-**Stop and ask** for any content judgment or design question that rulings 1–45 and MATATAG do not settle, and for
+**Stop and ask** for any content judgment or design question that rulings 1–51 and MATATAG do not settle, and for
 anything in "Not yours" (§7).
 
 ---
@@ -166,19 +181,41 @@ PY
 
 ### 5.0 Status
 
-**Built, proven and CERTIFIED (batch H4, 2026-10-13); the judge campaign (H4-C) is approved (ruling 45) and is
-this session's work.** The design questions the old §5.2 listed were answered as owner ruling 44 (plan doc,
-verbatim). What exists:
-- `validate_slots.paths()` / `observe()`: the ONE path enumeration and render §14 and §17 share.
-- `validation/stem_packets.py`: `observe_lc`, `build_item` (blind item: competency, clauses, vocabulary gates,
-  declared variants and bounds, families with resolved slot domains, a `lists` table, provenance, derivations),
-  `item_hash` (HASH_VERSION 1), `coverage_gaps`; CLI `--nodes a,b --prefix S441 --packets P.json --key K.json`
-  (refuses to write a packet with a coverage gap).
-- `validation/validate_stem_review.py` (§17, Phase 2): reads `validation_reports/stem_review/<lc>/*.json`.
-- `tests/stem_file.py prompt|file`: the judge's instructions + item, and the filer.
-- Proofs: 14 mutations against hand-written fixtures in `tests/stem_review_fixtures/` (`tests/stem_review_fixture.py`).
-  **A generator change to mat_g2_na_q3_8 stales the fixture and makes every §17 proof INVALID: re-run the fixture
-  script then** (contract §17 limit 12).
+**Built and proven in batch H4 (2026-10-13), CERTIFIED, and run to completion in batch H4-C (2026-10-14 to
+2026-10-16).**
+
+What exists:
+- `validate_slots.paths()` / `observe()`: the one path enumeration and render that §14 and §17 share.
+- `validation/stem_packets.py`: builds the blind item, now HASH_VERSION 8, under rulings 46-50b:
+  - the competency, clauses, vocabulary gates, and declared variants and bounds;
+  - families with their slot domains, each saying where it is read (46);
+  - item banks printed row by row (47);
+  - only printable text (48), and whether a render repeated a value (48d);
+  - each gate word as its own family (48e);
+  - what a generated value printed, numbers shown as lossless runs (50, 50b).
+- `validation/validate_stem_review.py` (§17, Phase 2) reads `validation_reports/stem_review/<lc>/*.json` and uses
+  the latest-filed confirming record per lc.
+- `tests/stem_file.py prompt|file`: the judge's instructions plus item, and the filer.
+- Proofs: 14 §17 mutations against the fixture in `tests/stem_review_fixtures/`. **A generator change to
+  mat_g2_na_q3_8 stales the fixture and makes every §17 proof INVALID: re-run `tests/stem_review_fixture.py` then**
+  (contract §17 limit 12).
+
+The campaign's result (evidence entry "H4-C"):
+- **Records:** 151 firsts and 204 confirmers, 53 of them ruling-21 records. Standing verdicts are 141 FAIL and
+  10 PASS, with 15 NOT_PRODUCIBLE clauses.
+- **Render checks:** ruling 49/51 checks covered all 141 FAILs and are in `local_only/scratch/h4c/r49.log`, which is
+  not committed.
+- **Tools:** in `local_only/scratch/h4c/`, not committed:
+  - `h4c.py` (take, audit, file);
+  - `taf.sh`;
+  - `mkdisp.py` (prompts of 2,000 lines or more need explicit chunked Read calls; Haiku otherwise reads only 2,000
+    lines);
+  - `render_dump.py`, `grounds.py`, `r49brief.py`.
+- **When a record goes stale:** a generator change stales the records of the lcs it touches (freshness binds
+  resolved content). Re-dispatch those lcs on fresh packets by §5.1 (new dispatch ids; never edit a record).
+- **Model:** judges run on the Agent tool's `haiku` alias at `effort: medium`, which the owner asked for to conserve
+  rate limits. It resolved to `claude-haiku-5-5` in every transcript. An older Haiku cannot be pinned from this
+  host.
 
 ### 5.1 The campaign, step by step (H4-C)
 
