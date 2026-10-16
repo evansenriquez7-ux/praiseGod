@@ -1,0 +1,46 @@
+{
+ "asserts": [
+  "determinism_harness_18"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "FAIL determinism_harness_18"
+ ],
+ "command": [
+  "backend.app.practice_gen.validation.validate_determinism",
+  "--node-ids",
+  "mat_g1_mg_q1_0,mat_g1_mg_q1_2"
+ ],
+ "definition_digest": "554ea12b0ab73ace87eb03afac0c4b5e4f15069d00ad611dae388582166b3d4e",
+ "detected": true,
+ "diagnostic_line": "exit 1 — FAIL determinism_harness_18 (1):",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "FAIL determinism_harness_18",
+  "enumerated different paths"
+ ],
+ "expected_check": "§18 the two render children enumerate the same paths (integrity)",
+ "finished_at": "2026-10-17T02:41:12+08:00",
+ "input_digest": "d0982b98639c1a08460e0fc28c0800af2421d2cd6c5b74356d34e0eada966ada",
+ "mutated_paths": [
+  "backend/app/practice_gen/validation/validate_determinism.py"
+ ],
+ "mutation": "determinism_children_render_different_scopes",
+ "observed_markers": {
+  "FAIL determinism_harness_18": true,
+  "enumerated different paths": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-10-17T02:41:09+08:00"
+}

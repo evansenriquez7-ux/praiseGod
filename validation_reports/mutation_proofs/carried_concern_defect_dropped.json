@@ -1,0 +1,50 @@
+{
+ "asserts": [
+  "carried_judgment_defect_5"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "test_a_sample_concern_is_carried_with_its_seed && failed"
+ ],
+ "command": [
+  "pytest",
+  "tests/unit/test_validate_carried.py",
+  "-q",
+  "-p",
+  "no:cacheprovider",
+  "-k",
+  "test_a_sample_concern_is_carried_with_its_seed"
+ ],
+ "definition_digest": "9a96de087a21da1350f7dfa112c3d5bd66c219e9c8038ad7ae45d5175e5b49ce",
+ "detected": true,
+ "diagnostic_line": "exit 1 — =================================== FAILURES ===================================",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "test_a_sample_concern_is_carried_with_its_seed",
+  "failed"
+ ],
+ "expected_check": "every non-PASS §5 sample verdict is carried with its seed (H6)",
+ "finished_at": "2026-10-17T02:40:09+08:00",
+ "input_digest": "d0982b98639c1a08460e0fc28c0800af2421d2cd6c5b74356d34e0eada966ada",
+ "mutated_paths": [
+  "backend/app/practice_gen/validation/validate_carried.py"
+ ],
+ "mutation": "carried_concern_defect_dropped",
+ "observed_markers": {
+  "failed": true,
+  "test_a_sample_concern_is_carried_with_its_seed": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-10-17T02:40:08+08:00"
+}

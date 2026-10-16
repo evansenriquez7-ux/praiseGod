@@ -1,0 +1,50 @@
+{
+ "asserts": [
+  "carried_records_frozen"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "test_an_edited_record_breaks_the_freeze && failed"
+ ],
+ "command": [
+  "pytest",
+  "tests/unit/test_validate_carried.py",
+  "-q",
+  "-p",
+  "no:cacheprovider",
+  "-k",
+  "test_an_edited_record_breaks_the_freeze"
+ ],
+ "definition_digest": "0e85619092f0c853e97e27d9adbca0c1c3c5a4651fe6871ddbdbe7df889325d1",
+ "detected": true,
+ "diagnostic_line": "exit 1 — =================================== FAILURES ===================================",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "test_an_edited_record_breaks_the_freeze",
+  "failed"
+ ],
+ "expected_check": "the retired records are frozen (H6, carried_records_frozen)",
+ "finished_at": "2026-10-17T02:40:08+08:00",
+ "input_digest": "d0982b98639c1a08460e0fc28c0800af2421d2cd6c5b74356d34e0eada966ada",
+ "mutated_paths": [
+  "backend/app/practice_gen/validation/validate_carried.py"
+ ],
+ "mutation": "carried_record_edit_goes_unseen",
+ "observed_markers": {
+  "failed": true,
+  "test_an_edited_record_breaks_the_freeze": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-10-17T02:40:06+08:00"
+}

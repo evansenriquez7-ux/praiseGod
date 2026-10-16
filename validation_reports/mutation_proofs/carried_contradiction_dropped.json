@@ -1,0 +1,50 @@
+{
+ "asserts": [
+  "carried_capability_defect_6F"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "test_carried_capabilities_equal_the_retired_gate && failed"
+ ],
+ "command": [
+  "pytest",
+  "tests/unit/test_validate_carried.py",
+  "-q",
+  "-p",
+  "no:cacheprovider",
+  "-k",
+  "test_carried_capabilities_equal_the_retired_gate"
+ ],
+ "definition_digest": "6aee3749abf38ddca59feafcdfcb06451fd831e546ad8c7e2a9613e38285784d",
+ "detected": true,
+ "diagnostic_line": "exit 1 — =================================== FAILURES ===================================",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "test_carried_capabilities_equal_the_retired_gate",
+  "failed"
+ ],
+ "expected_check": "every standing CONTRADICTED capability is carried (H6, ruling 55)",
+ "finished_at": "2026-10-17T02:40:57+08:00",
+ "input_digest": "d0982b98639c1a08460e0fc28c0800af2421d2cd6c5b74356d34e0eada966ada",
+ "mutated_paths": [
+  "backend/app/practice_gen/validation/validate_carried.py"
+ ],
+ "mutation": "carried_contradiction_dropped",
+ "observed_markers": {
+  "failed": true,
+  "test_carried_capabilities_equal_the_retired_gate": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-10-17T02:40:27+08:00"
+}

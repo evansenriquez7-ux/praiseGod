@@ -1,0 +1,46 @@
+{
+ "asserts": [
+  "render_hash_order_dependent_18"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "FAIL render_hash_order_dependent_18"
+ ],
+ "command": [
+  "backend.app.practice_gen.validation.validate_determinism",
+  "--node-ids",
+  "mat_g1_mg_q1_1"
+ ],
+ "definition_digest": "9637423a04c6b6b29391f1770caef0a4f48859289c1308a07ec73936d3fb500d",
+ "detected": true,
+ "diagnostic_line": "exit 1 — FAIL render_hash_order_dependent_18 (22):",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "FAIL render_hash_order_dependent_18",
+  "mat_g1_mg_q1_1: seed"
+ ],
+ "expected_check": "§18 a seed reproduces the same problem under two PYTHONHASHSEEDs (ruling 54)",
+ "finished_at": "2026-10-17T02:41:09+08:00",
+ "input_digest": "d0982b98639c1a08460e0fc28c0800af2421d2cd6c5b74356d34e0eada966ada",
+ "mutated_paths": [
+  "backend/app/practice_gen/dna/mg/shapes_2d.py"
+ ],
+ "mutation": "distractors_iterate_a_set",
+ "observed_markers": {
+  "FAIL render_hash_order_dependent_18": true,
+  "mat_g1_mg_q1_1: seed": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-10-17T02:41:07+08:00"
+}

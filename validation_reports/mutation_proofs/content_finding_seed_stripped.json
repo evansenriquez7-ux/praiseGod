@@ -1,0 +1,50 @@
+{
+ "asserts": [
+  "content_finding_named"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "test_a_real_1J_finding_is_named && failed"
+ ],
+ "command": [
+  "pytest",
+  "tests/unit/test_validate_naming.py",
+  "-q",
+  "-p",
+  "no:cacheprovider",
+  "-k",
+  "test_a_real_1J_finding_is_named"
+ ],
+ "definition_digest": "6610d111ccd1c7ff30f66e33be4c27af7a96b9b3fe61b15df8858d80f8515d42",
+ "detected": true,
+ "diagnostic_line": "exit 1 — =================================== FAILURES ===================================",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "test_a_real_1J_finding_is_named",
+  "failed"
+ ],
+ "expected_check": "ruling 52: a content finding names its witness seed (content_finding_named)",
+ "finished_at": "2026-10-17T02:41:02+08:00",
+ "input_digest": "d0982b98639c1a08460e0fc28c0800af2421d2cd6c5b74356d34e0eada966ada",
+ "mutated_paths": [
+  "backend/app/practice_gen/validation/validate_language.py"
+ ],
+ "mutation": "content_finding_seed_stripped",
+ "observed_markers": {
+  "failed": true,
+  "test_a_real_1J_finding_is_named": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-10-17T02:40:57+08:00"
+}
