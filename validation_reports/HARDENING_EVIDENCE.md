@@ -20863,3 +20863,210 @@ see `validation_reports/`.
   verdict.
 - **Blindness.** The judge read only its prompt; this is evidenced by the transcript audit (tool uses, read
   coverage), not enforced.
+
+## 2026-10-17 — P2-A (part 1): H6 retires the per-sample gates; every content finding is named; §18 determinism (owner rulings 52-56)
+
+Batch P2-A finishes Phase 2 under `NEXT_AGENT_PROMPT.md`. This entry covers its first chain: H6 (ruling 25 as ruling 55
+shapes it), the ruling-52 naming check (§5.2 D) and the ruling-54 determinism stage (§5.2 C, part). The floors (ruling
+53), H-02 and the row closures follow in part 2 under their own chain. No generator content was changed (ruling 23).
+
+### Phase 0 (2026-10-17, on 2d6f1b75)
+
+```text
+$ ps -eo pid,lstart,command | grep claude      -> one process (this session)
+$ df -h /System/Volumes/Data                  -> 12Gi available
+$ PYTHONPATH=. .venv/bin/python tests/tree_state.py
+PASS tree_state: CERTIFIED   live input digest : 28d1e3f4ef451da6   worktree : clean
+$ PYTHONPATH=. .venv/bin/python -m pytest tests/unit -m "not slow" -q -p no:cacheprovider
+1010 passed, 1 skipped, 2 deselected, 4 warnings in 745.15s (0:12:25)   EXIT 0
+```
+
+The run_all CONTENT line was taken from `local_only/scratch/h4c/run_all_final.log` (2026-10-16 20:52, after the last
+harness change; only docs changed since) rather than re-run, and each number the owner questions quote was re-measured
+by script this session (below).
+
+### Owner rulings 52-56 (asked one at a time; recorded verbatim in the plan doc, `545d900b`)
+
+The owner chose the recommended option on all five:
+- 52: a finding is named by lc + witness seed + owed build, with a ruled substitute only where no render can exist;
+- 53: the three floors become named content findings;
+- 54: a determinism check, with differing renders as content;
+- 55: H6 carries the retired gates' defects in a read-only content stage;
+- 56: H-07 closes on §17 + §14 + §15/§16 with its gaps written as NAMED LIMITS.
+
+Measurements put to the owner:
+
+```text
+judgment_reviews (validate_judgment_reviews, 1 run, 7 min): 751 + run_all's 1 aggregate
+  per-sample 449, facet 143, overall 73, clause 56, decomposition 30; 73 lcs; 0 stale; 0 record-integrity lines
+capability_contract §6F: 78 CONTRADICTED on 42 lcs; owed build on 78; a seed only inside the quoted reasoning on 42
+stem_review_fail_17: 141 of 141 name 'reached at seed N' and 'Owed:'   stem_clause_unproducible_17: 15, no seed
+render_snapshot under PYTHONHASHSEED 0 vs 12345 (7,285 paths): 81 changed, all on mat_g1_na_q1_4 24,
+  mat_g2_na_q1_4 23, mat_g1_na_q2_0 18, mat_g3_na_q1_6 16; fields: distractors 81, given_values.distractors 81
+formatters_reachable 6 pairs; obligation_routes_reachable 5 routes; §6 Phase 1: 5 draw capabilities
+overlap: 69 of 73 judgment lcs and 39 of 42 capability lcs are also §17 FAILs
+```
+
+### What was built (`10078725`)
+
+**H6 — `validate_carried`, stage `carried_defects_5_6` (Phase 2, ref §5; replaces `judgment_reviews_5` and
+`capability_phase2`).**
+- `carried_records_frozen` (INTEGRITY): every file under `validation_reports/judgment/`, `judgment_audit/` and
+  `attestation/` (1,708, all tracked) hashes to the pinned `FROZEN_RECORDS`.
+- `carried_judgment_defect_5`: every non-PASS verdict on a §5 record that still replays (`_validate_freshness` empty),
+  per sample by lc + seed + facet, a clause by lc + its cited seeds, lc-wide verdicts by ruling 52's substitute.
+- `carried_capability_defect_6F`: the standing NOT_PROVIDED verdicts the provider table still claims, in a batch that
+  still replays.
+- `carried_defect_rejudge_owed`: a record that no longer replays clears its defects; the lc owes a §17 re-judgment until
+  a §17 record filed after `RETIRED_AT` (2026-10-17T00:00:00Z) stands.
+- The freshness and standing-verdict rules are the retired validators' own functions, called one record at a time; the
+  §5 verdict fields are read structurally and held equal to `_validate_one`'s verdict lines by a unit test over all 151
+  records. `validate_judgment` and `validate_capability` keep their CLIs and all their mutations.
+- Removed: the `judgment_reviews` rollup label (manifest, `validate_judgment.ASSERTIONS`, `UNPROVEN_ASSERTIONS`).
+
+**D — ruling 52, `validate_naming`, run_all's `content_finding_named` (INTEGRITY).** Every content block a stage prints
+(`  FAIL <label>` then `    - <finding>`) is read from the stage's captured output; each finding needs a registered lc
+(or `route '<name>'`), a witness seed or `ruled substitute (ruling 52)`, and `Owed:`; an empty block or `... and N more`
+fails. The matrix's structured findings are checked through `validate_matrix.named_finding` and its `OWED_BY_CHECK`
+table (held equal to the matrix's 37 content families by a unit test). To bring the count to zero before landing:
+- §1J, §1K and §1M findings gained an owed build;
+- §2L packet refusals gained a witness or the substitute (by the refusal's type, never its text) and an owed build;
+- §17 NOT_PRODUCIBLE clauses gained the substitute;
+- run_all's vocabulary stage prints one named finding per violation;
+- every content block in §1J, §1K, §1M, §2C, §14, §15, §16, §17, §5/§6F carried, the matrix and §6 Phase 1 now prints
+  every finding (integrity blocks keep their cut).
+
+**§18 — `validate_determinism`, stage `determinism_18` (Phase 1).** Every `validate_slots.paths()` render (the full
+`model_dump()` through `tests.render_snapshot`, now scopable by lc) is rendered in two child processes under
+PYTHONHASHSEED 0 and 12345 and compared path by path. A difference is content (`render_hash_order_dependent_18`, lc +
+seed + fields + owed); a failed child or differing path sets is integrity (`determinism_harness_18`).
+
+Docs in the same commit: contract rows §5, §6F, §6G, §6H (retired; run_all no longer runs them), a carried-defects row,
+a §18 row and a naming row; `docs/pgen_judgment.md` (retired as a gate) and `docs/testing_pipeline.md`.
+
+### Mutations (10 new; corpus 262 -> 272)
+
+```text
+carried_record_edit_goes_unseen          carried_records_frozen         pytest test_validate_carried -k edited_record   DETECTED
+carried_concern_defect_dropped           carried_judgment_defect_5      pytest ... -k sample_concern                    DETECTED
+carried_stale_defect_still_reported      carried_judgment_defect_5      pytest ... -k stale_record                      DETECTED
+carried_rejudgment_never_owed            carried_defect_rejudge_owed    pytest ... -k stale_record                      DETECTED
+carried_contradiction_dropped            carried_capability_defect_6F   pytest ... -k capabilities_equal (live corpus)  DETECTED
+content_finding_seed_stripped            content_finding_named          seed stripped from §1J's real finding           DETECTED
+content_naming_left_out_of_verdict       content_finding_named          stubbed run_all                                 DETECTED
+content_naming_accepts_truncation        content_finding_named          pytest test_validate_naming -k truncated        DETECTED
+distractors_iterate_a_set                render_hash_order_dependent_18 validate_determinism --node-ids mat_g1_mg_q1_1   DETECTED (22)
+determinism_children_render_different_scopes  determinism_harness_18    validate_determinism --node-ids mat_g1_mg_q1_0,_2  DETECTED
+```
+
+### Pre-flight, then the chain (`10078725`, chain `f5104c85`, tree state `d59256c2`)
+
+Before the chain, every content stage's CLI was run and its output read by `validate_naming`: 0 problems in 12 of 12,
+every count equal to the baseline (§18: 81).
+
+```text
+$ cat local_only/scratch/p2fin_c1/chain/progress.log
+END regen EXIT 0 01:31:21 | END benchmark EXIT 0 01:31:45 (shard count 7) | END frontend EXIT 0 01:31:58
+END corpus EXIT 0 02:41:12   272/272 mutations detected.
+escaped-plant grep lines: 1  (validate_coverage.py:457, the benign comment; 456 before this batch's one-line move)
+END shard0..shard6 EXIT 0 (26.9-28.0 min each); END verify EXIT 0 05:52:51; END run_all EXIT 2 06:42:10
+  PASS unit_tests (1022 passed, 1 skipped, 2 deselected, 4 warnings in 735.35s (0:12:15))
+  PASS carried_records_frozen
+  PASS determinism_harness_18
+  PASS mutation_proof_integrity_8: 272 executed mutation proof(s) verified against the current source/fixture digest
+  PASS assertion_coverage_8: 191/201 harness assertions proven BY EXECUTION ..., 10 knowingly unproven
+  PASS census: nodes=151 unit_tests=1023 mutations=272 variant_candidates=973
+  PASS contract_doc_matches_registry | PASS two_direction_contract_match
+  scheduled=22 completed=15 failed=7 crashed=0 not_run=0 incomplete=0
+  PASS content_finding_named: every content finding names its lc, a witness seed (or ruling 52's substitute) and its owed build, and every one is printed
+  PASS finding_class_registry_complete: 201 label(s) classified, equal to the §8 inventory
+  INTEGRITY: GREEN
+ALL TESTS: integrity green, CONTENT FINDINGS REMAIN (exit 2).
+$ PYTHONPATH=. .venv/bin/python tests/tree_state.py      (after d59256c2)
+PASS tree_state: CERTIFIED   live input digest : d0982b98639c1a08   worktree : clean   mutation_proofs fresh 272
+```
+
+CONTENT after the chain (before -> after): judgment_reviews 752 -> 0 (stage retired), capability_contract (Phase 2) 78
+-> 0 (stage retired), carried_judgment_defect_5 0 -> 751, carried_capability_defect_6F 0 -> 78,
+render_hash_order_dependent_18 0 -> 81; unchanged: stem_review_fail_17 141, stem_clause_unproducible_17 15,
+count_noun_singular_after_many_1J 423, variant_not_exhibited_2L 420, attester_packet_refused_2L 61,
+slot_domain_escape_14 74, slot_text_unaccounted_14 4, slot_path_refused_14 1, selector_value_unexhibited_15 58,
+hint_sequence_unshown_15 6. Every one of them is now printed in full in run_all's output.
+
+### H6: what §17 + §14 catch of the retired gates' confirmed defects
+
+By lc, from the frozen records against the standing §17 verdicts (`local_only/scratch/p2fin/` scripts):
+
+```text
+retired defect class                  lcs  also a §17 FAIL   not a §17 FAIL
+sample: mathematical_validity          11        11
+sample: ambiguity                      11        11
+sample: contextual_logical_validity    26        25          mat_g2_na_q3_8
+sample: learner_facing_clarity         30        29          mat_g2_mg_q1_0
+clause_evidence                        43        42          mat_g2_mg_q1_0
+decomposition                          30        29          mat_g2_mg_q1_0
+facet: competency_fulfillment          39        38          mat_g2_mg_q1_0
+facet: comprehensive_coverage          34        32          mat_g1_mg_q1_1, mat_g2_mg_q1_0
+facet: variant_comprehensiveness       29        25          mat_g1_mg_q1_1, mat_g1_na_q3_2, mat_g2_mg_q1_0, mat_g2_na_q3_8
+facet: competency_alignment            27        26          mat_g2_mg_q1_0
+facet: cognitive_capacity               8         8
+facet: scale_appropriateness            6         6
+§6F CONTRADICTED (78 capabilities)     42        39          mat_g1_dp_q3_1, mat_g2_mg_q1_0, mat_g2_mg_q4_3
+```
+
+The overlap is by lc, not by defect: a §17 FAIL on the same lc may rest on a different ground. Every one of these
+defects stays in the queue as `carried_*` until its render changes, so none is lost by the retirement. NAMED LIMIT (as
+rulings 55 and 56): once a carried defect's render changes, it is re-judged only to §17's depth, and §17 does not name
+ambiguity, misconception quality, interaction clarity or accessibility.
+
+### H-06's acceptance checks
+
+1. **Canonical full-view packet and replay digest.** §17 packets are hashed per lc (`lc_hash`, HASH_VERSION 8, both
+   directions proven in H4); the frozen §5 records carry `packet_digest`/`replay_digest`, and the carried stage clears a
+   defect only through the replay comparison.
+2. **Render-derived textual visual description, with its own mutation.** It stays in `validate_judgment._validate_freshness`,
+   which the carried stage executes on every record. `judgment_accepts_corrupt_rendered_visual` and
+   `attestation_accepts_corrupt_rendered_visual` are DETECTED in this chain's corpus.
+3. **Full decomposition reviewed; exact clause coverage.** Every clause of all 151 lcs carries a confirmed §17 Rule-2
+   verdict (15 NOT_PRODUCIBLE, H4-C), and `judgment_clause_coverage_5` stays proven.
+4. **Missing learner-visible evidence is unadjudicable and blocking.**
+   - `stem_family_unpacketed_17` is INTEGRITY (a learner-read field whose family the packet omits);
+   - `slot_text_unaccounted_14` names every un-instrumented field;
+   - both are proven in H4.
+
+H-06 is closed with these.
+
+### Mistakes of my own, caught before they counted
+
+1. `distractors_iterate_a_set` first planted into a shapes_2d row (`"No, the square has more."`) that no path ever draws:
+   SURVIVED. Before changing anything I measured it against this session's snapshot (0 renders print that row), then
+   moved the plant to a row mat_g1_mg_q1_1 draws on 22 paths: DETECTED with exactly 22 findings (Mandate 2, cause 2: the
+   plant did not reach the render).
+2. I wrote "Count at landing: 0 problems over the full tree" into the naming contract row before measuring it. It was
+   then measured by the pre-flight (12 of 12 stages, 0) and by the chain's run_all (`PASS content_finding_named`), so the
+   statement is true, but it was written first.
+3. The first fast-suite run after the edits failed one test, `test_every_assertion_is_proven_or_excused`, because
+   `determinism_harness_18` had no mutation; `determinism_children_render_different_scopes` was added before committing.
+4. My first draft of §1J's owed build cited `dna.base.count_phrase`, which does not exist; it was corrected to
+   `dna.base.count_noun` before the commit.
+
+### NAMED LIMITS of part 1 (also in the contract rows and module docstrings)
+
+- **Carried defects:**
+  - freshness is per record, so one changed sample clears every defect in its record;
+  - a cleared defect is re-judged only to §17's depth;
+  - any §17 record filed after the retirement clears a re-judgment, whatever it says;
+  - nothing new is owed to the retired gates, so a capability declared later is checked only by §17's clause rule.
+- **Naming:**
+  - a content label that has not fired is not read. Six labels have no lc to name today (`compatibility_table`,
+    `registry_coverage`, `node_references_resolve`, `option_placement`, `static_vocab_gated_lint`,
+    `capability_orphan_provider_6A`) and would fail integrity the day they fire;
+  - the rule checks shape, not truth;
+  - the substitute marker is self-declared.
+- **§18:**
+  - two hash seeds, not all of them;
+  - the §14 paths and the default experience only;
+  - hash order only.
+- **Not yet ruled out by measurement:** a set iteration found while reading. `validate_matrix`'s §1C-reverse picks
+  `list(excluded_vals)[0]` from a set of strings, so which excluded variant the harness requests follows PYTHONHASHSEED
+  (Protocol 6). It is fixed in part 2.
