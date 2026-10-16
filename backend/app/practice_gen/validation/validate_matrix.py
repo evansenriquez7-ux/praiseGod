@@ -671,6 +671,64 @@ LAST_EXECUTED_CHECKS: Set[str] = set()
 # start of every run.
 LAST_FAILURES: List[Dict[str, Any]] = []
 
+# The owed build for each CONTENT check family the matrix emits (owner ruling 52): every
+# matrix finding is printed as lc + seed + owed build by `named_finding`, and run_all holds
+# it to `validate_naming`'s rule. Keyed by FAMILY (`window_containment`, not
+# `window_containment_0.5_range`), resolved through `_manifest.finding_key(family=True)`.
+# `tests/unit/test_validate_naming.py` holds this table equal to the matrix's content
+# families in both directions, so a new check family cannot ship without one.
+OWED_BY_CHECK: Dict[str, str] = {
+    "NODE_TO_DNA_presence": "map the lc to its DNA in NODE_TO_DNA",
+    "import_dna": "make the DNA module import",
+    "generate_scalar": "make the DNA generate at this difficulty scalar",
+    "scalar_exactness_0.0": "map scalar 0.0 exactly to the competency's lower bound",
+    "scalar_exactness_1.0": "map scalar 1.0 exactly to the competency's upper bound",
+    "scalar_exactness_1.0_exceed": "keep scalar 1.0 inside the competency's upper bound",
+    "window_containment": "keep every value at this scalar inside its window",
+    "monotonicity": "make difficulty rise monotonically with the scalar",
+    "value_containment": "keep generated values inside the competency's bounds",
+    "value_reaches_max": "make scalar 1.0 reach the competency's stated range",
+    "reach_generation": "make the DNA generate at scalar 1.0",
+    "discrete_gen": "make every supported variant x formatter generate",
+    "discrete_integrity": "give every supported variant x formatter a valid answer",
+    "reverse_compatibility_check": "make an unsupported variant x formatter raise, never substitute",
+    "reverse_compatibility_check_crash": "make an unsupported variant x formatter raise its named error",
+    "reverse_curriculum_gate_check": "refuse a variant outside the lc's curriculum gate",
+    "reverse_curriculum_gate_check_crash": "make the curriculum gate refuse with its named error",
+    "pipeline_run": "make the pipeline run this lc and seed",
+    "formatter_match": "serve the formatter that was requested",
+    "question_text_presence": "give the item a question",
+    "correct_answer_presence": "give the item a correct answer",
+    "answer_key_integrity": "keep the answer key intact through formatting",
+    "answer_key_recomputation": "make the keyed answer equal the recomputed answer",
+    "degenerate_answer_key": "vary the keyed answer across the item family",
+    "answer_leak_in_stem": "stop the stem giving away its own answer",
+    "mcq_option_count": "offer the declared number of options",
+    "mcq_option_uniqueness": "make every option distinct",
+    "mcq_option_validity": "make every option a valid value of the answer's type",
+    "mcq_correct_presence": "include the correct answer among the options",
+    "mcq_correct_value_mismatch": "make the keyed option's value equal the answer",
+    "visual_payload": "make the visual payload valid and agree with the answer",
+    "visual_schema_integrity": "make the visual payload match its schema",
+    "vocabulary_gating": "remove the NOT_YET_KNOWN vocabulary from the rendered text (Content Rule 1)",
+    "concept_gating": "remove the concept past the lc's gate (Content Rule 1)",
+    "interest_invariance_formatted": "keep the answer key invariant under the interest theme",
+    "interest_theme_generation": "make the lc generate under this interest theme",
+    "empty_execution_matrix": "give the lc at least one executable variant x formatter",
+}
+
+
+def named_finding(f: Dict[str, Any]) -> str:
+    """One matrix finding as lc + seed + owed build (owner ruling 52)."""
+    from backend.app.practice_gen.validation._manifest import finding_key
+
+    family = finding_key(str(f.get("check")), family=True)
+    owed = OWED_BY_CHECK.get(family or "", None)
+    return (f"{f.get('node_id')}: [{f.get('dna')} / {f.get('formatter')}] {f.get('check')} "
+            f"(seed {f.get('seed')}): {str(f.get('error'))[:300]}"
+            + (f". Owed: {owed}." if owed else ""))
+
+
 # node_id -> sorted list of §-refs that node actually exercised (written to the
 # JSON report alongside the failures).
 _EXECUTED_BY_NODE: Dict[str, List[str]] = {}
@@ -2116,7 +2174,7 @@ def run_matrix_validation(node: Optional[str] = None, fail_fast: bool = False, w
                 print("  FAIL")
                 total_failures_count += len(node_failures)
                 for f in node_failures:
-                    print(f"    - [{f['dna']} / {f['formatter']}] {f['check']} (seed {f['seed']}): {f['error']}")
+                    print(f"    - {named_finding({**f, 'node_id': node_id})}")
                 if fail_fast:
                     print("\nAborting validation due to --fail-fast.")
                     break
@@ -2170,10 +2228,8 @@ def run_matrix_validation(node: Optional[str] = None, fail_fast: bool = False, w
                 _record(report, node_id, node_failures, node_executed)
                 if node_failures:
                     print(f"[{completed}/{len(node_ids)}] {node_id}  FAIL ({len(node_failures)} failures)")
-                    for f in node_failures[:3]:  # print first 3 per node to avoid flooding
-                        print(f"    - [{f['dna']} / {f['formatter']}] {f['check']} (seed {f['seed']}): {f['error'][:120]}")
-                    if len(node_failures) > 3:
-                        print(f"    ... and {len(node_failures) - 3} more (see report)")
+                    for f in node_failures:  # every finding, by name (rulings 23, 52)
+                        print(f"    - {named_finding({**f, 'node_id': node_id})}")
                     total_failures_count += len(node_failures)
                 else:
                     print(f"[{completed}/{len(node_ids)}] {node_id}  PASS")

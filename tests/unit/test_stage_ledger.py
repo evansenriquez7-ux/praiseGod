@@ -187,6 +187,7 @@ def stubbed_harness(monkeypatch):
     monkeypatch.setattr(ra.validate_reference, "validate_all", lambda: True)
     monkeypatch.setattr(ra.validate_exhibit, "validate_all", lambda **kw: True)
     monkeypatch.setattr(ra.validate_slots, "validate_all", lambda **kw: True)
+    monkeypatch.setattr(ra.validate_determinism, "validate_all", lambda **kw: True)
     monkeypatch.setattr(ra.validate_composition, "validate_all", lambda **kw: True)
     monkeypatch.setattr(ra.validate_hint_contract, "validate_all", lambda **kw: True)
     monkeypatch.setattr(ra.validate_options, "validate_all", lambda: True)
@@ -195,14 +196,9 @@ def stubbed_harness(monkeypatch):
     monkeypatch.setattr(ra.validate_coverage, "validate_all", lambda: True)
     monkeypatch.setattr(ra.validate_obligations, "validate_all", lambda: True)
     monkeypatch.setattr(ra.validate_census, "validate_all", lambda: True)
-    # Phase 2 too, so a `phase=None` run stays in the fast suite: the real judgment and
-    # attestation stages read the agent-authored corpora and take tens of seconds.
-    monkeypatch.setattr(ra.validate_judgment, "validate_judgment_reviews", lambda **kw: [])
-    monkeypatch.setattr(ra.validate_judgment, "summarize_verdicts",
-                        lambda: {"reviewed": 0, "PASS": 0, "CONCERN": 0, "FAIL": 0})
-    monkeypatch.setattr(ra.validate_capability, "validate_capability_attestation", lambda: [])
-    monkeypatch.setattr(ra.validate_capability, "attestation_findings_tagged",
-                        lambda node_ids=None: [])
+    # Phase 2 too, so a `phase=None` run stays in the fast suite: the carried stage (H6)
+    # re-renders every frozen §5/§6F record and takes minutes.
+    monkeypatch.setattr(ra.validate_carried, "validate_all", lambda **kw: True)
     # §17 (H4) renders every lc's stem families against validation_reports/stem_review/.
     monkeypatch.setattr(ra.validate_stem_review, "validate_all", lambda **kw: True)
     return monkeypatch
@@ -311,8 +307,8 @@ class TestCrashIsolationEndToEnd:
     def test_phase_2_stages_are_not_scheduled_in_a_phase_1_run(self, stubbed_harness, capsys):
         ra.run_all(phase=1)
         out = capsys.readouterr().out.split("--- Stage Ledger ---")[1]
-        assert "judgment_reviews_5" not in out
-        assert "capability_phase2" not in out
+        assert "carried_defects_5_6" not in out
+        assert "stem_review_17" not in out
 
 
 def _scheduled_stage_names(stubbed_harness, phase):

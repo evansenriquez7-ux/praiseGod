@@ -122,10 +122,8 @@ def validate_all(node_ids: Optional[List[str]] = None) -> bool:
         total += len(items)
         if items:
             print(f"  FAIL {label} ({len(items)}):")
-            for item in items[:12]:
+            for item in items:  # every finding, by name (ruling 23)
                 print(f"    - {item}")
-            if len(items) > 12:
-                print(f"    ... and {len(items) - 12} more.")
         else:
             print(f"  PASS {label}")
     print(f"  §16: {total} finding(s) over {len(node_ids) if node_ids else 'all'} lc(s)")

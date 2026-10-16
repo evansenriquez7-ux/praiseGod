@@ -207,7 +207,8 @@ def collect_findings(node_ids: Optional[List[str]] = None) -> Tuple[List[str], D
                 stats["render_failures"] += 1
                 findings.append(
                     f"{node_id}: seed {seed} could not be rendered on the student path "
-                    f"({type(exc).__name__}: {exc}), so its options were never checked."
+                    f"({type(exc).__name__}: {exc}), so its options were never checked. "
+                    f"Owed: make the student path render this seed."
                 )
                 continue
             d = problem if isinstance(problem, dict) else problem.__dict__
@@ -220,7 +221,8 @@ def collect_findings(node_ids: Optional[List[str]] = None) -> Tuple[List[str], D
             stats["equal_valued_distractor_pairs"] += equal_d
             stats["unjudged_pairs"] += unjudged
             for v in bad:
-                findings.append(f"{node_id}: seed {seed} {v}. Options: {opts}")
+                findings.append(f"{node_id}: seed {seed} {v}. Options: {opts}. Owed: offer "
+                                f"distinguishable choices of which exactly one answers the item.")
     return findings, stats
 
 
@@ -228,10 +230,8 @@ def validate_all(node_ids: Optional[List[str]] = None) -> bool:
     findings, stats = collect_findings(node_ids)
     if findings:
         print(f"  FAIL option_degeneracy_1K ({len(findings)}):")
-        for f in findings[:12]:
-            print(f"    - {f[:400]}")
-        if len(findings) > 12:
-            print(f"    ... and {len(findings) - 12} more.")
+        for f in findings:  # every finding, by name (ruling 23)
+            print(f"    - {f[:300]} ... {f[-160:]}" if len(f) > 470 else f"    - {f}")
         return False
     print(f"  PASS option_degeneracy_1K: 0 findings over {stats['option_items']} "
           f"option-bearing sample(s) of {stats['samples']}; "

@@ -28,6 +28,11 @@ import pytest
 from backend.app.practice_gen.validation import _manifest
 from backend.app.practice_gen.validation import run_all as ra
 from backend.app.practice_gen.validation import validate_capability as VC
+from backend.app.practice_gen.validation import validate_carried as VCAR
+
+# Captured at import, before `stubbed_harness` replaces it, so a test can run the real
+# printing over stubbed findings.
+_REAL_CARRIED_VALIDATE_ALL = VCAR.validate_all
 
 from tests.unit.test_stage_ledger import stubbed_harness  # noqa: F401  (pytest fixture)
 
@@ -50,7 +55,7 @@ def _stage_prints(stubbed, *labels, ok=False):
     def body(*_a, **_k):
         for label in labels:
             print(f"  FAIL {label} (1):")
-            print("    - mat_test_lc: planted finding at seed 1")
+            print("    - mat_g1_na_q1_0: planted finding at seed 1. Owed: nothing; planted.")
         return ok
     stubbed.setattr(ra.validate_exhibit, "validate_all", body)
 
@@ -59,7 +64,7 @@ def _matrix_reports(stubbed, *checks):
     """Make the matrix stage fail with one structured finding per `check`."""
     stubbed.setattr(ra, "run_matrix_validation", lambda **kw: 1)
     stubbed.setattr(ra.validate_matrix, "LAST_FAILURES", [
-        {"node_id": "mat_test_lc", "dna": "d", "formatter": "f", "check": c, "seed": 1,
+        {"node_id": "mat_g1_na_q1_0", "dna": "d", "formatter": "f", "check": c, "seed": 1,
          "error": "planted"} for c in checks])
 
 
@@ -208,13 +213,13 @@ def _tagged_phase1(stubbed, tagged):
 
 
 def test_capability_content_within_the_floor_passes(stubbed_harness):
-    _tagged_phase1(stubbed_harness, [(VC.CONTENT_ROLLUP, f"mat_x: gap {i}")
+    _tagged_phase1(stubbed_harness, [(VC.CONTENT_ROLLUP, f"mat_g1_na_q1_0: gap {i} at seed {i}. Owed: x.")
                                      for i in range(VC._PROVISION_FLOOR)])
     assert ra.run_all(phase=1) == 0
 
 
 def test_capability_content_over_the_floor_exits_2(stubbed_harness, capsys):
-    _tagged_phase1(stubbed_harness, [(VC.CONTENT_ROLLUP, f"mat_x: gap {i}")
+    _tagged_phase1(stubbed_harness, [(VC.CONTENT_ROLLUP, f"mat_g1_na_q1_0: gap {i} at seed {i}. Owed: x.")
                                      for i in range(VC._PROVISION_FLOOR + 1)])
     assert ra.run_all(phase=1) == 2
     assert "FAIL capability_contract" in capsys.readouterr().out
@@ -228,18 +233,20 @@ def test_capability_content_over_the_floor_exits_2(stubbed_harness, capsys):
 def test_a_capability_integrity_finding_is_not_absorbed_by_the_floor(
         stubbed_harness, capsys, label):
     """One integrity finding plus content well inside the floor: still exit 1."""
-    _tagged_phase1(stubbed_harness, [(VC.CONTENT_ROLLUP, "mat_x: a gap"),
+    _tagged_phase1(stubbed_harness, [(VC.CONTENT_ROLLUP, "mat_g1_na_q1_0: a gap at seed 1. Owed: x."),
                                      (label, "mat_x: planted")])
     assert ra.run_all(phase=1) == 1
     assert f"FAIL {label}" in capsys.readouterr().out
 
 
-def test_capability_phase2_content_exits_2_and_partition_exits_1(stubbed_harness, capsys):
-    stubbed_harness.setattr(ra.validate_capability, "attestation_findings_tagged",
-                            lambda node_ids=None: [(VC.CONTENT_ROLLUP, "mat_x: CONTRADICTED")])
+def test_carried_content_exits_2_and_an_edited_record_exits_1(stubbed_harness, capsys):
+    """H6 (rulings 25/55): a carried defect is content; an edited frozen record is integrity."""
+    findings = {label: [] for label in VCAR.ASSERTIONS}
+    findings["carried_capability_defect_6F"] = ["mat_g1_na_q1_0: capability 'c' NOT_PROVIDED; ruled substitute (ruling 52): an absence. Owed: build it."]
+    stubbed_harness.setattr(VCAR, "validate_all", _REAL_CARRIED_VALIDATE_ALL)
+    stubbed_harness.setattr(VCAR, "collect_findings", lambda node_ids=None: findings)
     assert ra.run_all(phase=2) == 2
-    capsys.readouterr()
-    stubbed_harness.setattr(ra.validate_capability, "attestation_findings_tagged",
-                            lambda node_ids=None: [(VC.CONTENT_ROLLUP, "mat_x: CONTRADICTED"),
-                                                   ("capability_phase_partition_6", "x")])
+    assert "FAIL carried_capability_defect_6F" in capsys.readouterr().out
+    findings["carried_records_frozen"] = ["planted: a frozen record was edited"]
     assert ra.run_all(phase=2) == 1
+    assert "FAIL carried_records_frozen" in capsys.readouterr().out

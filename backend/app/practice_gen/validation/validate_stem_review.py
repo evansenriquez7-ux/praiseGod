@@ -403,7 +403,8 @@ def collect_findings(node_ids: Optional[List[str]] = None,
                 clause = next((x["clause"] for x in item["clauses"] if x["id"] == cid), cid)
                 out["stem_clause_unproducible_17"].append(
                     f"{node_id}: clause {cid!r} ({clause!r}) is ruled NOT_PRODUCIBLE by the confirmed review "
-                    f"{rel(path)}: {c['reasoning'][:240]!r}. Owed: build what the clause names "
+                    f"{rel(path)}: {c['reasoning'][:240]!r}. Witness: ruled substitute (ruling 52): a "
+                    f"NOT_PRODUCIBLE clause has no render. Owed: build what the clause names "
                     f"(Content Rule 4), then re-review.")
         if verdict["overall"] == "PASS" and all(c["verdict"] == "PRODUCIBLE" for c in verdict["clauses"].values()):
             stats["approved"] += 1
@@ -418,10 +419,8 @@ def validate_all(node_ids: Optional[List[str]] = None, review_dir: Path = REVIEW
         total += len(items)
         if items:
             print(f"  FAIL {label} ({len(items)}):")
-            for item in items[:15]:
+            for item in items:  # every finding, by name (ruling 23)
                 print(f"    - {item}")
-            if len(items) > 15:
-                print(f"    ... and {len(items) - 15} more.")
         else:
             print(f"  PASS {label}")
     print(f"  NOTE: {stats['approved']} of {stats['lcs']} lc(s) carry a confirmed, fresh PASS with every clause "

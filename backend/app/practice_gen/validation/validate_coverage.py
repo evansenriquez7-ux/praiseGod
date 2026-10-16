@@ -158,7 +158,8 @@ UNPROVEN_ASSERTIONS: Dict[str, str] = {
     # verbatim_rationale_reuse, single_reviewer_identity). §5 had declared six assertions
     # and proven one; five could have been silently broken and its 696 findings would have
     # looked identical either way.
-    "judgment_reviews":             "2026-09-08: run_all's rollup print for §5; the sub-assertions above carry the proof",
+    # `judgment_reviews` left 2026-10-17 with its stage (H6, ruling 25): run_all no longer
+    # prints a §5 rollup; validate_carried's labels replace it, each proven by mutation.
     # ---- §6 validate_capability ----------------------------------------------------
     "capability_contract":          "2026-09-08: run_all's rollup print for §6; the sub-assertions above carry the proof",
     # ---- §7 validate_census --------------------------------------------------------

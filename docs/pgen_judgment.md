@@ -1,12 +1,22 @@
 # PG Pipeline Judgment Guide
 
 **Species: judgment guide** (see [`DOC_RULES.md`](./DOC_RULES.md) R3). These are the curriculum-fidelity
-questions a machine cannot score. Nothing here is checked by reading it — the *artifact* is checked, by
-`validate_judgment` (step 6/6 of `run_all`). `run_all` is run locally and by the hardening loop; since
-2026-08-12 no CI workflow runs it, so nothing here blocks a deploy.
+questions a machine cannot score. Nothing here is checked by reading it — the *artifact* is checked.
+`run_all` is run locally and by the hardening loop; since 2026-08-12 no CI workflow runs it, so nothing
+here blocks a deploy.
 
-Checking a box in this document proves nothing. Every registered node must have a review file at
-`validation_reports/judgment/<group_dir>/<node_id>.json` that passes `validate_judgment`.
+**Retired as a gate on 2026-10-17 (batch H6, owner rulings 25 and 55).** The per-sample review below is no
+longer filed or required. The 151 records under `validation_reports/judgment/` are frozen history: `run_all`'s
+`carried_defects_5_6` stage (`validate_carried`) fails integrity if any of them is edited, added or deleted, and
+reports every non-PASS verdict on a record that still replays as a content finding (exit 2), named by lc +
+seed (or ruling 52's substitute for an lc-wide verdict) + owed build. When a generator change stops a record
+replaying, its defects clear and the lc owes a §17 re-judgment. The live LLM gate is the §17 stem review
+(`validate_stem_review`, rulings 24 and 44): judges rule on an lc's stem templates and field domains, and §14
+proves every rendered field stays inside those domains. `validate_judgment` and its mutations stay in the tree;
+its rules below describe what the frozen records were held to.
+
+Checking a box in this document proves nothing. Every registered node had a review file at
+`validation_reports/judgment/<group_dir>/<node_id>.json` that passed `validate_judgment`'s record checks.
 
 ## What the enforcer accepts
 
@@ -79,9 +89,8 @@ about content rather than the author grading their own homework.
 python -m backend.app.practice_gen.validation.judgment_packets --node <NODE_ID>
 ```
 
-A review's samples are evidence, not decoration: because the enforcer re-renders every cited seed, a
-review filed against content the generator no longer produces fails the run and has to be redone. Changing
-a generator therefore obliges a fresh review of the nodes it touches, in the same change.
+A review's samples are evidence, not decoration: the enforcer re-renders every cited seed. Since H6 a record
+that no longer replays is not redone; its carried defects clear and the lc owes a §17 re-judgment instead.
 
 ## The six items
 
@@ -95,4 +104,9 @@ a generator therefore obliges a fresh review of the nodes it touches, in the sam
 | `scale_appropriateness` | Does the numeric range match the competency's stated ceiling, on a linear/log scale suited to its span? |
 
 ## Enforcement
-A `FAIL` or `CONCERN` verdict causes `validate_judgment` (and `run_all.py`) to exit with a non-zero error. All nodes must be remediated in generator DNA/formatters and re-reviewed blind to achieve genuine `PASS` verdicts across all 6 findings and overall verdict.
+Since H6 (2026-10-17), a `FAIL` or `CONCERN` verdict on a frozen record that still replays is a carried
+content finding (`carried_judgment_defect_5`, exit 2): a generator work item, named by lc, seed and owed build.
+It leaves the queue when the generator change that fixes it stops the record replaying and the lc's §17 stem
+review is re-judged (`carried_defect_rejudge_owed` until a §17 record filed after the retirement stands).
+NAMED LIMIT: §17 judges stems, not samples, so a sample-level defect class §17 does not judge (ambiguity,
+for one; ruling 56) is not re-checked once its sample changes.

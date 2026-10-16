@@ -480,7 +480,8 @@ def collect_findings(node_ids: Optional[List[str]] = None) -> Tuple[List[str], D
                     f"{node_id}: seed {seed} could not be rendered on the student path "
                     f"({type(exc).__name__}: {exc}), so its language was never linted. "
                     f"Reproduce: PracticeOrchestrator.generate_problem(node_id='{node_id}', "
-                    f"seed={seed}, is_student_path=True)"
+                    f"seed={seed}, is_student_path=True). Owed: make the student path render "
+                    f"this seed."
                 )
                 continue
             d = problem if isinstance(problem, dict) else problem.__dict__
@@ -499,7 +500,8 @@ def collect_findings(node_ids: Optional[List[str]] = None) -> Tuple[List[str], D
                         f"pipeline's own article rule (dna.base.indefinite_article, by sound) "
                         f"gives '{want}'. Text: {text[:160]!r}. Reproduce: "
                         f"PracticeOrchestrator.generate_problem(node_id='{node_id}', "
-                        f"seed={seed}, is_student_path=True)"
+                        f"seed={seed}, is_student_path=True). Owed: choose the article through "
+                        f"dna.base.indefinite_article (ruling 40)."
                     )
                 many, unjudged = scan_singular_after_many(text, lexicon)
                 stats["singular_after_many_observed"] += unjudged
@@ -509,14 +511,16 @@ def collect_findings(node_ids: Optional[List[str]] = None) -> Tuple[List[str], D
                         f"of {count} before a phrase the generator's own noun inventory "
                         f"declares SINGULAR ({source}). Text: {text[:160]!r}. Reproduce: "
                         f"PracticeOrchestrator.generate_problem(node_id='{node_id}', "
-                        f"seed={seed}, is_student_path=True)"
+                        f"seed={seed}, is_student_path=True). Owed: inflect the noun for its "
+                        f"count (dna.base.count_noun) or correct the noun inventory."
                     )
                 for count, written, correct in bad:
                     findings.append(
                         f"{node_id}: seed {seed} {where} writes '{count} {written}' where the "
                         f"count is {count}; the pipeline's own inflection rule "
                         f"(dna.base.to_singular_phrase) gives '{count} {correct}'. "
-                        f"Text: {text[:160]!r}"
+                        f"Text: {text[:160]!r}. Owed: inflect the noun for its count "
+                        f"(dna.base.to_singular_phrase)."
                     )
     stats["unclassified_fields"] = len(unclassified_seen)
     stats["article_findings"] = article_findings
@@ -528,10 +532,8 @@ def validate_all(node_ids: Optional[List[str]] = None) -> bool:
     ok = True
     if findings:
         print(f"  FAIL count_noun_agreement_1J ({len(findings)}):")
-        for f in findings[:12]:
+        for f in findings:  # every content finding, by name (ruling 23)
             print(f"    - {f}")
-        if len(findings) > 12:
-            print(f"    ... and {len(findings) - 12} more.")
         ok = False
     else:
         print(f"  PASS count_noun_agreement_1J: 0 findings over {stats['samples']} "
@@ -540,10 +542,8 @@ def validate_all(node_ids: Optional[List[str]] = None) -> bool:
               f"count of 1")
     if mirror:
         print(f"  FAIL count_noun_singular_after_many_1J ({len(mirror)}):")
-        for f in mirror[:12]:
+        for f in mirror:  # every content finding, by name (ruling 23)
             print(f"    - {f}")
-        if len(mirror) > 12:
-            print(f"    ... and {len(mirror) - 12} more.")
         ok = False
     else:
         print(f"  PASS count_noun_singular_after_many_1J: 0 findings against "
@@ -551,10 +551,8 @@ def validate_all(node_ids: Optional[List[str]] = None) -> bool:
     articles = stats["article_findings"]
     if articles:
         print(f"  FAIL indefinite_article_1J ({len(articles)}):")
-        for f in articles[:12]:
+        for f in articles:  # every content finding, by name (ruling 23)
             print(f"    - {f}")
-        if len(articles) > 12:
-            print(f"    ... and {len(articles) - 12} more.")
         ok = False
     else:
         print(f"  PASS indefinite_article_1J: 0 findings over {stats['texts_linted']} text(s)")

@@ -274,6 +274,24 @@ def exhibit_findings(node_id: str, stats: Dict[str, int]) -> List[str]:
     return findings
 
 
+def _refusal_witness_and_owed(refusal, AP) -> str:
+    """Ruling 52's witness (or substitute) and owed build for one typed packet refusal.
+
+    Decided by the refusal's TYPE (`node_wide`, `label`), never by its message text. A
+    node-wide refusal is raised before any render, so it has no witness seed (ruling 52's
+    substitute); a per-capability refusal names the seeds it tried in its own message.
+    """
+    if refusal.node_wide:
+        return ("Witness: ruled substitute (ruling 52): the packet is refused before any render. "
+                "Owed: emit a structured field for each needs_instrumentation member so the clause "
+                "can be observed (ruling 22), then rebuild.")
+    if refusal.label == AP.PROVIDER_VARIANT_LABEL:
+        return ("Owed: make the provider variant render on the student path at these seeds, or "
+                "correct its CAPABILITY_PROVIDERS entry.")
+    return ("Owed: make the clause member render where its selector observes it, or correct the "
+            "selector (ruling 22).")
+
+
 def packet_findings(node_id: str, stats: Dict[str, int]) -> List[str]:
     """Every capability whose Attester packet the builder refuses to assemble."""
     from ..registry import get_node_info
@@ -304,8 +322,8 @@ def packet_findings(node_id: str, stats: Dict[str, int]) -> List[str]:
                 node_wide_reported = True
             stats["packet_refusals"] += 1
             out.append(f"{node_id}: the Attester packet for capability {cap!r} is refused "
-                       f"[{refusal.label}]: {refusal}. Reproduce: "
-                       f"tests.attester_packets.build(['{node_id}'], ['{cap}'])")
+                       f"[{refusal.label}]: {refusal}. {_refusal_witness_and_owed(refusal, AP)} "
+                       f"Reproduce: tests.attester_packets.build(['{node_id}'], ['{cap}'])")
     if not out:
         raise RuntimeError(
             f"§2L: {node_id}'s whole-node Attester packet was refused ({first}) but no "

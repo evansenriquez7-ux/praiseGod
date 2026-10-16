@@ -148,7 +148,8 @@ def collect_findings(node_ids: Optional[List[str]] = None) -> Tuple[List[str], D
                     f"{node_id}: seed {seed} could not be rendered on the student path "
                     f"({type(exc).__name__}: {exc}), so its references were never "
                     f"checked. Reproduce: PracticeOrchestrator.generate_problem("
-                    f"node_id='{node_id}', seed={seed}, is_student_path=True)"
+                    f"node_id='{node_id}', seed={seed}, is_student_path=True). Owed: make the "
+                    f"student path render this seed."
                 )
                 continue
             d = problem if isinstance(problem, dict) else problem.__dict__
@@ -170,7 +171,8 @@ def collect_findings(node_ids: Optional[List[str]] = None) -> Tuple[List[str], D
                     f"formatter that draws the referent, or write a stem that does not "
                     f"promise one. Text: {' '.join(str(text).split())[:160]!r}. "
                     f"Reproduce: PracticeOrchestrator.generate_problem("
-                    f"node_id='{node_id}', seed={seed}, is_student_path=True)"
+                    f"node_id='{node_id}', seed={seed}, is_student_path=True). Owed: draw the "
+                    f"referent, or reword the stem so it promises no display."
                 )
     return findings, stats
 
@@ -179,10 +181,8 @@ def validate_all(node_ids: Optional[List[str]] = None) -> bool:
     findings, stats = collect_findings(node_ids)
     if findings:
         print(f"  FAIL dangling_visual_reference_1M ({len(findings)}):")
-        for f in findings[:12]:
+        for f in findings:  # every finding, by name (ruling 23)
             print(f"    - {f}")
-        if len(findings) > 12:
-            print(f"    ... and {len(findings) - 12} more.")
         return False
     print(f"  PASS dangling_visual_reference_1M: 0 findings over {stats['samples']} "
           f"student-path sample(s); {stats['deictic_and_drawn']} sample(s) point at a "

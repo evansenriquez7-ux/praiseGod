@@ -75,7 +75,6 @@ ASSERTIONS = (
     "judgment_rationale_verbatim_5",  # a rationale byte-identical to another node's
     "judgment_rationale_skeleton_5",  # _validate_skeleton_clusters: one sentence frame, many nodes
     "judgment_reviewer_plurality_5",  # one 'reviewed_by' identity across more than one blind batch
-    "judgment_reviews",               # run_all's rollup print for the stage
 )
 
 # Anchored to the repo root from this file's location, not the process CWD.

@@ -6464,6 +6464,231 @@ MUTATIONS: List[Mutation] = [
         expect_output_contains=["stem_review_stale_17 (", "domain/provenance changed in"],
         baseline_must_not_contain=["FAIL stem_review_stale_17"],
     ),
+    # ---- H6: the retired §5/§6F gates' defects, carried (owner rulings 25, 52, 55) -------
+    Mutation(
+        name="carried_record_edit_goes_unseen",
+        asserts=["carried_records_frozen"],
+        description=(
+            "Compare only the frozen records' file COUNT, not their digest. A retired §5 or §6F "
+            "record whose verdict is rewritten in place (CONCERN -> PASS) then passes the freeze, "
+            "and the defect it confirmed silently leaves the generator queue -- the history "
+            "ruling 25 keeps read-only would be editable with nothing reporting it."
+        ),
+        edits={
+            "backend/app/practice_gen/validation/validate_carried.py": (
+                "    if live == pin:\n",
+                "    if live[\"files\"] == pin[\"files\"]:  # planted mutation: count only\n",
+            )
+        },
+        command=["pytest", "tests/unit/test_validate_carried.py", "-q", "-p", "no:cacheprovider",
+                 "-k", "test_an_edited_record_breaks_the_freeze"],
+        expected_check="the retired records are frozen (H6, carried_records_frozen)",
+        expect_output_contains=["test_an_edited_record_breaks_the_freeze", "failed"],
+        baseline_must_not_contain=["test_an_edited_record_breaks_the_freeze && failed"],
+    ),
+    Mutation(
+        name="carried_concern_defect_dropped",
+        asserts=["carried_judgment_defect_5"],
+        description=(
+            "Carry only FAIL sample verdicts, dropping CONCERN. 449 of the 751 carried §5 "
+            "defects are per-sample, and most are CONCERN: the generator queue would lose them "
+            "while the stage still printed a plausible count."
+        ),
+        edits={
+            "backend/app/practice_gen/validation/validate_carried.py": (
+                "            if isinstance(block, dict) and block.get(\"verdict\") != \"PASS\":\n"
+                "                out.append(f\"{node_id}: {_sample_where(sample)}",
+                "            if isinstance(block, dict) and block.get(\"verdict\") == \"FAIL\":  # planted\n"
+                "                out.append(f\"{node_id}: {_sample_where(sample)}",
+            )
+        },
+        command=["pytest", "tests/unit/test_validate_carried.py", "-q", "-p", "no:cacheprovider",
+                 "-k", "test_a_sample_concern_is_carried_with_its_seed"],
+        expected_check="every non-PASS §5 sample verdict is carried with its seed (H6)",
+        expect_output_contains=["test_a_sample_concern_is_carried_with_its_seed", "failed"],
+        baseline_must_not_contain=["test_a_sample_concern_is_carried_with_its_seed && failed"],
+    ),
+    Mutation(
+        name="carried_stale_defect_still_reported",
+        asserts=["carried_judgment_defect_5"],
+        description=(
+            "Keep carrying a §5 record's defects after its reviewed render stopped replaying. "
+            "Ruling 55 clears such a defect (the generator changed the render) and owes a §17 "
+            "re-judgment instead; without the clear, a fixed generator could never leave the "
+            "queue, and the finding would name content the pipeline no longer serves."
+        ),
+        edits={
+            "backend/app/practice_gen/validation/validate_carried.py": (
+                "                                             f\"replays ({drift[0][:200]})\")\n"
+                "            continue\n",
+                "                                             f\"replays ({drift[0][:200]})\")\n"
+                "            pass  # planted mutation: a stale record keeps its defects\n",
+            )
+        },
+        command=["pytest", "tests/unit/test_validate_carried.py", "-q", "-p", "no:cacheprovider",
+                 "-k", "test_a_stale_record_clears_and_owes_a_rejudgment"],
+        expected_check="a defect clears when its reviewed render no longer replays (H6, ruling 55)",
+        expect_output_contains=["test_a_stale_record_clears_and_owes_a_rejudgment", "failed"],
+        baseline_must_not_contain=["test_a_stale_record_clears_and_owes_a_rejudgment && failed"],
+    ),
+    Mutation(
+        name="carried_rejudgment_never_owed",
+        asserts=["carried_defect_rejudge_owed"],
+        description=(
+            "Treat every lc's §17 record as filed after the retirement. A record that stopped "
+            "replaying then clears its defects and owes nothing: a generator change would erase "
+            "confirmed defects from the queue with no judge ever looking at the changed content."
+        ),
+        edits={
+            "backend/app/practice_gen/validation/validate_carried.py": (
+                "        if at and at > RETIRED_AT:\n",
+                "        if True:  # planted mutation: every lc reads as re-judged\n",
+            )
+        },
+        command=["pytest", "tests/unit/test_validate_carried.py", "-q", "-p", "no:cacheprovider",
+                 "-k", "test_a_stale_record_clears_and_owes_a_rejudgment"],
+        expected_check="a cleared carried defect owes a §17 re-judgment (H6, ruling 55)",
+        expect_output_contains=["test_a_stale_record_clears_and_owes_a_rejudgment", "failed"],
+        baseline_must_not_contain=["test_a_stale_record_clears_and_owes_a_rejudgment && failed"],
+    ),
+    Mutation(
+        name="carried_contradiction_dropped",
+        asserts=["carried_capability_defect_6F"],
+        description=(
+            "Skip a NOT_PROVIDED verdict whose capability has more than one formatter provider. "
+            "Most CONTRADICTED capabilities name several formatters, so most of the 78 would "
+            "leave the queue; the test compares the carried set with the retired gate's own "
+            "CONTRADICTED lines on two lcs."
+        ),
+        edits={
+            "backend/app/practice_gen/validation/validate_carried.py": (
+                "            if verdict is None or verdict.get(\"verdict\") != \"NOT_PROVIDED\" or cap not in VC.CAPABILITY_PROVIDERS:\n",
+                "            if verdict is None or verdict.get(\"verdict\") != \"NOT_PROVIDED\" or cap not in VC.CAPABILITY_PROVIDERS"
+                " or len(VC.CAPABILITY_PROVIDERS[cap].get(\"formatters\", [])) > 1:  # planted\n",
+            )
+        },
+        command=["pytest", "tests/unit/test_validate_carried.py", "-q", "-p", "no:cacheprovider",
+                 "-k", "test_carried_capabilities_equal_the_retired_gate"],
+        expected_check="every standing CONTRADICTED capability is carried (H6, ruling 55)",
+        expect_output_contains=["test_carried_capabilities_equal_the_retired_gate", "failed"],
+        baseline_must_not_contain=["test_carried_capabilities_equal_the_retired_gate && failed"],
+    ),
+    # ---- ruling 52: every content finding names its lc, a witness seed, an owed build -------
+    Mutation(
+        name="content_finding_seed_stripped",
+        asserts=["content_finding_named"],
+        description=(
+            "Strip the seed from §1J's real singular-after-many finding (both the `seed N` and "
+            "the `seed=N` of its Reproduce call). A generator agent reading the queue would "
+            "then be told an lc prints '401 prayer journal' with no render to reproduce -- the "
+            "shape ruling 52 forbids. Planted at the stage's real site, caught on its real "
+            "findings for mat_g2_na_q2_2."
+        ),
+        edits={
+            "backend/app/practice_gen/validation/validate_language.py": (
+                "                        f\"{node_id}: seed {seed} {where} writes '{count} {written}' -- a count \"\n"
+                "                        f\"of {count} before a phrase the generator's own noun inventory \"\n"
+                "                        f\"declares SINGULAR ({source}). Text: {text[:160]!r}. Reproduce: \"\n"
+                "                        f\"PracticeOrchestrator.generate_problem(node_id='{node_id}', \"\n"
+                "                        f\"seed={seed}, is_student_path=True). Owed: inflect the noun for its \"\n",
+                "                        f\"{node_id}: {where} writes '{count} {written}' -- a count \"  # planted\n"
+                "                        f\"of {count} before a phrase the generator's own noun inventory \"\n"
+                "                        f\"declares SINGULAR ({source}). Text: {text[:160]!r}. Reproduce: \"\n"
+                "                        f\"PracticeOrchestrator.generate_problem(node_id='{node_id}', \"\n"
+                "                        f\"is_student_path=True). Owed: inflect the noun for its \"\n",
+            )
+        },
+        command=["pytest", "tests/unit/test_validate_naming.py", "-q", "-p", "no:cacheprovider",
+                 "-k", "test_a_real_1J_finding_is_named"],
+        expected_check="ruling 52: a content finding names its witness seed (content_finding_named)",
+        expect_output_contains=["test_a_real_1J_finding_is_named", "failed"],
+        baseline_must_not_contain=["test_a_real_1J_finding_is_named && failed"],
+    ),
+    Mutation(
+        name="content_naming_left_out_of_verdict",
+        asserts=["content_finding_named"],
+        description=(
+            "Compute the naming problems but leave them out of the verdict. run_all would then "
+            "print FAIL content_finding_named and still exit 2: an unnamed finding would sit in "
+            "the generator queue, which is ruling 23's exit test failing silently."
+        ),
+        edits={
+            "backend/app/practice_gen/validation/run_all.py": (
+                "    integrity += [f\"content_finding_named: {p}\" for p in naming]\n",
+                "    integrity += []  # planted mutation: naming never reaches the verdict\n",
+            )
+        },
+        command=["pytest", "tests/unit/test_validate_naming.py", "-q", "-p", "no:cacheprovider",
+                 "-k", "test_an_unnamed_content_finding_fails_integrity"],
+        expected_check="ruling 52: an unnamed content finding fails integrity (exit 1)",
+        expect_output_contains=["test_an_unnamed_content_finding_fails_integrity", "failed"],
+        baseline_must_not_contain=["test_an_unnamed_content_finding_fails_integrity && failed"],
+    ),
+    Mutation(
+        name="content_naming_accepts_truncation",
+        asserts=["content_finding_named"],
+        description=(
+            "Stop noticing '... and N more' under a content block. A stage could then print 15 "
+            "of 423 findings and the other 408 would never be reported by name -- what every "
+            "stage did before ruling 52, and what hid 742 of §5's findings."
+        ),
+        edits={
+            "backend/app/practice_gen/validation/validate_naming.py": (
+                "            current[\"truncated\"] = True\n",
+                "            current[\"truncated\"] = False  # planted mutation\n",
+            )
+        },
+        command=["pytest", "tests/unit/test_validate_naming.py", "-q", "-p", "no:cacheprovider",
+                 "-k", "test_a_truncated_or_empty_block_is_a_problem"],
+        expected_check="ruling 23: every content finding is printed (no truncation)",
+        expect_output_contains=["test_a_truncated_or_empty_block_is_a_problem", "failed"],
+        baseline_must_not_contain=["test_a_truncated_or_empty_block_is_a_problem && failed"],
+    ),
+    # ---- ruling 54: a seed reproduces the same problem in every process (§18) ---------------
+    Mutation(
+        name="distractors_iterate_a_set",
+        asserts=["render_hash_order_dependent_18"],
+        description=(
+            "Build one shapes_2d bank row's distractors by iterating a set of strings (a row "
+            "mat_g1_mg_q1_1 draws on 22 of its paths, measured 2026-10-17), the "
+            "shape of the comparing_ordering defect ruling 54 measured (81 renders on 4 lcs). "
+            "On the clean lc mat_g1_mg_q1_1 the row's answer choices then come out in "
+            "PYTHONHASHSEED order: a seed printed in a finding would not reproduce the problem "
+            "in another process."
+        ),
+        edits={
+            "backend/app/practice_gen/dna/mg/shapes_2d.py": (
+                '        "distractors": ["triangle", "they are different", "neither"],\n',
+                '        "distractors": list({"triangle", "they are different", "neither"}),  # planted mutation\n',
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_determinism", "--node-ids", "mat_g1_mg_q1_1"],
+        expected_check="§18 a seed reproduces the same problem under two PYTHONHASHSEEDs (ruling 54)",
+        expect_output_contains=["FAIL render_hash_order_dependent_18", "mat_g1_mg_q1_1: seed"],
+        baseline_must_not_contain=["FAIL render_hash_order_dependent_18"],
+    ),
+    Mutation(
+        name="determinism_children_render_different_scopes",
+        asserts=["determinism_harness_18"],
+        description=(
+            "Hand the second render child only the first lc of the scope. The two children then "
+            "enumerate different paths, and a comparison over the keys they share would call the "
+            "tree deterministic while half of it was never rendered twice. §18 must refuse to "
+            "compare unlike path sets, as integrity."
+        ),
+        edits={
+            "backend/app/practice_gen/validation/validate_determinism.py": (
+                '            [sys.executable, "-c", _CHILD, str(out), ",".join(node_ids or [])],\n',
+                '            [sys.executable, "-c", _CHILD, str(out), ",".join((node_ids or [])[:1] '
+                'if hs == HASH_SEEDS[1] else (node_ids or []))],  # planted mutation\n',
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_determinism",
+                 "--node-ids", "mat_g1_mg_q1_0,mat_g1_mg_q1_2"],
+        expected_check="§18 the two render children enumerate the same paths (integrity)",
+        expect_output_contains=["FAIL determinism_harness_18", "enumerated different paths"],
+        baseline_must_not_contain=["FAIL determinism_harness_18"],
+    ),
 ]
 
 # The templated-review mutation cannot be a literal find/replace: each review's

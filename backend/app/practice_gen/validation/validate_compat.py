@@ -1436,19 +1436,15 @@ def validate_all() -> bool:
 
     if servable_errors:
         print("  FAIL advertised_formatters_are_servable:")
-        for e in servable_errors[:10]:
+        for e in servable_errors:  # every content finding, by name (ruling 23)
             print(f"    - {e}")
-        if len(servable_errors) > 10:
-            print(f"    ... and {len(servable_errors) - 10} more.")
     else:
         print("  PASS advertised_formatters_are_servable")
 
     if config_errors:
         print("  FAIL config_respects_competency:")
-        for e in config_errors[:10]:
+        for e in config_errors:  # every content finding, by name (ruling 23)
             print(f"    - {e}")
-        if len(config_errors) > 10:
-            print(f"    ... and {len(config_errors) - 10} more.")
     else:
         print("  PASS config_respects_competency")
 
@@ -1462,10 +1458,8 @@ def validate_all() -> bool:
     if len(reach_errors) > _REACH_FLOOR:
         print(f"  FAIL formatters_reachable ({len(reach_errors)} (node, formatter) pair(s), "
               f"floor {_REACH_FLOOR}):")
-        for e in reach_errors[:10]:
+        for e in reach_errors:  # every content finding, by name (ruling 23)
             print(f"    - {e}")
-        if len(reach_errors) > 10:
-            print(f"    ... and {len(reach_errors) - 10} more.")
     else:
         print(f"  PASS formatters_reachable ({len(reach_errors)} (node, formatter) pair(s), "
               f"floor {_REACH_FLOOR})")
@@ -1494,7 +1488,7 @@ def validate_all() -> bool:
     if len(producible_errors) > _PRODUCIBLE_FLOOR:
         print(f"  FAIL declared_variants_are_producible ({len(producible_errors)}, "
               f"floor {_PRODUCIBLE_FLOOR} — it GREW):")
-        for e in producible_errors[:10]:
+        for e in producible_errors:  # every content finding, by name (ruling 23)
             print(f"    - {e}")
     else:
         print(f"  PASS declared_variants_are_producible ({len(producible_errors)}, "
@@ -1502,16 +1496,14 @@ def validate_all() -> bool:
 
     if medium_errors:
         print(f"  FAIL medium_composition ({len(medium_errors)}):")
-        for e in medium_errors[:10]:
+        for e in medium_errors:  # every content finding, by name (ruling 23)
             print(f"    - {e}")
-        if len(medium_errors) > 10:
-            print(f"    ... and {len(medium_errors) - 10} more.")
     else:
         print("  PASS medium_composition (every medium clause classified; composed nodes serve >= 50% visual)")
 
     if batch_errors:
         print(f"  FAIL batch_matches_single ({len(batch_errors)}):")
-        for e in batch_errors[:10]:
+        for e in batch_errors:  # every content finding, by name (ruling 23)
             print(f"    - {e}")
     else:
         print("  PASS batch_matches_single (the portal batch feed serves what the student path serves)")

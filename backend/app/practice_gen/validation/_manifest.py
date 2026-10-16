@@ -61,6 +61,7 @@ CHECK_PHASE: Dict[str, int] = {
     "§14": 1,           # learner-read text is a recorded fill of declared slots (H3)
     "§15": 1,           # selected values and hinted runs reach the item (H5)
     "§16": 1,           # the hint contract over the live tree, as content (H5, ruling 30)
+    "§18": 1,           # a seed reproduces its problem under two PYTHONHASHSEEDs (ruling 54)
     # -- Phase 2: needs an agent-authored artifact on disk ------------------------------
     "§5": 2,            # validation_reports/judgment/
     "§6F": 2, "§6G": 2, "§6H": 2,   # validation_reports/attestation/
@@ -242,7 +243,16 @@ FINDING_CLASS: Dict[str, str] = {
     "judgment_rationale_verbatim_5": CONTENT,
     "judgment_rationale_skeleton_5": CONTENT,
     "judgment_reviewer_plurality_5": CONTENT,
-    "judgment_reviews": CONTENT,                 # run_all's rollup print for §5
+    # -- §18 validate_determinism (owner ruling 54) -----------------------------------
+    "render_hash_order_dependent_18": CONTENT,
+    "determinism_harness_18": INTEGRITY,         # a render child failed or path sets differ
+    # -- ruling 52 validate_naming: every content finding names lc, seed, owed build ---
+    "content_finding_named": INTEGRITY,          # the harness failing ruling 23's exit test
+    # -- H6 validate_carried: the retired §5/§6F records (owner rulings 25, 55) -------
+    "carried_records_frozen": INTEGRITY,         # a frozen record was edited/added/deleted
+    "carried_judgment_defect_5": CONTENT,
+    "carried_capability_defect_6F": CONTENT,
+    "carried_defect_rejudge_owed": CONTENT,
     # -- §1J validate_language -------------------------------------------------------
     "count_noun_agreement_1J": CONTENT,
     "count_noun_singular_after_many_1J": CONTENT,  # the mirror direction (H5)

@@ -16,8 +16,10 @@ nothing. This is the fix-until-green loop:
   §7    validate_census
 
 PHASE 2 -- needs an agent-authored artifact on disk before it can run at all:
-  §5    validate_judgment  (validation_reports/judgment/)
-  §6F-H validate_capability_attestation (validation_reports/attestation/)
+  §5/§6F-H validate_carried (the retired per-sample gates' frozen records, H6, rulings
+        25/55: validation_reports/judgment/ and validation_reports/attestation/ are read,
+        never re-filed; their confirmed defects are carried as content)
+  §17   validate_stem_review (validation_reports/stem_review/)
 
 The seam is artifact-dependence, not "does it need an LLM" -- every check here is
 programmatic; the LLM only ever PRODUCES the artifact. Phase 2 is gated on Phase 1
@@ -59,7 +61,6 @@ from backend.app.practice_gen.validation import (
     validate_dna,
     validate_interest,
     validate_capability,
-    validate_judgment,
     validate_matrix,
     validate_census,
     validate_language,
@@ -75,6 +76,8 @@ from backend.app.practice_gen.validation import (
     validate_composition,
     validate_hint_contract,
     validate_stem_review,
+    validate_carried,
+    validate_determinism,
 )
 from backend.app.practice_gen.validation.validate_matrix import run_matrix_validation
 from backend.app.practice_gen.validation._manifest import (
@@ -257,13 +260,13 @@ CONTRACT_CHECKS: Dict[str, str] = {
     "§2H": "validate_compat: a competency naming BOTH cases of a dimension must not be bound to one of them — §2G proves bounds are well-formed, this proves they are faithful",
     "§3": "validate_dna: structural checks and difficulty profiles feasibility",
     "§4": "validate_matrix: VISUAL payload schema validation (recorded only under is_visual, so ~67 of 151 nodes; non-visual response shape rests on the Pydantic model at runtime)",
-    "§5": "validate_judgment PHASE 2 (whole): genuine, non-boilerplate, non-stale blind judgment reviews",
+    "§5": "validate_carried PHASE 2 (H6, owner rulings 25/55): the retired §5 judgment records are frozen (carried_records_frozen), and every non-PASS verdict on a record that still replays is a content finding by lc + seed (or ruling 52's substitute) + owed build; validate_judgment's record checks are no longer a gate",
     "§6": "validate_capability PHASE 1: competency requirements declared, cited, covered, and provided — artifact-free, runs with validation_reports/attestation/ absent",
     "§6D": "validate_capability PHASE 1: a capability carried only by a generic textual formatter is not provided",
     "§6E": "validate_capability PHASE 1: a capability carried only by a `bounds` list most of the table shares is not provided",
-    "§6F": "validate_capability PHASE 2: every declared capability carries a blind Attester verdict, and none is contradicted",
-    "§6G": "validate_capability PHASE 2: an attestation shows its work — non-boilerplate reasoning citing seeds from its own packet",
-    "§6H": "validate_capability PHASE 2: an Attester verdict must name who made it, and no identity may cover more than one dispatch",
+    "§6F": "validate_carried PHASE 2 (H6, owner rulings 25/55): a standing NOT_PROVIDED verdict the provider table still claims, in a batch that still replays, is a content finding by lc + capability + owed build; no attestation is owed after retirement",
+    "§6G": "validate_carried PHASE 2 (H6): the frozen attestation corpus, which carried 0 §6G findings at retirement (2026-10-17), is byte-identical (carried_records_frozen)",
+    "§6H": "validate_carried PHASE 2 (H6): the frozen attestation corpus, which carried 0 §6H findings at retirement (2026-10-17), is byte-identical (carried_records_frozen)",
     "§7": "run_all: the suite's own census (nodes, unit tests, mutations) has not shrunk below its floor",
     "§8": "validate_coverage: every assertion the harness can emit is either proven by a mutation or on a shrinking allowlist",
     "§1J": "validate_language: an explicit count and its noun must agree in the rendered student text, nested quoted statements included",
@@ -277,6 +280,7 @@ CONTRACT_CHECKS: Dict[str, str] = {
     "§16": "validate_hint_contract: every lc's hint chains, on its stratified seeds, satisfy hint_contract.hint_chain_violations; a CONTENT stage labelled per dimension (owner ruling 30, moved from the unit suite in H5)",
     "§15": "validate_composition: a value a clause selector chose reaches non-hint learner-read text (by slot provenance, decided on fully instrumented renders), and a hint never quotes a run of numbers the item does not show (text stopgap); owner rulings 35/36",
     "§14": "validate_slots: every learner-read field is the text of a recorded template fill whose every slot lies inside its declared domain (structured slots, owner rulings 28/33/34)",
+    "§18": "validate_determinism: every validate_slots.paths() render is identical under PYTHONHASHSEED 0 and 12345, so a seed reproduces its problem in every process (owner ruling 54); a differing render is content",
     "§17": "validate_stem_review: every lc's current stem families (validate_slots.paths) carry a fresh, valid, confirmed blind LLM approval and every clause is ruled producible (the stem review gate, owner rulings 24/26/44)",
 }
 
@@ -323,7 +327,7 @@ class StageResult:
     """One scheduled harness stage and what became of it."""
 
     __slots__ = ("name", "phase", "refs", "title", "state", "ok", "detail", "seconds",
-                 "labels")
+                 "labels", "output")
 
     def __init__(self, name: str, phase: int, refs: tuple, title: str) -> None:
         self.name = name
@@ -338,6 +342,9 @@ class StageResult:
         # `  FAIL <label>` line its body printed, plus any a stage body appends itself
         # (the matrix's structured findings). The verdict classifies the run from these.
         self.labels: list = []
+        # Everything the stage body printed, kept for `content_finding_named` (ruling 52),
+        # which reads every content block a stage reported.
+        self.output = ""
 
     def __repr__(self) -> str:  # pragma: no cover - diagnostics only
         return f"StageResult({self.name!r}, {self.state!r}, ok={self.ok!r})"
@@ -450,7 +457,8 @@ class StageLedger:
             # Read from what the stage PRINTED, whatever it returned: a stage that prints
             # `FAIL <label>` and returns True (§2L did, by design, until H2) still reported
             # a finding, and `stage_failure_reaches_verdict` could not see it.
-            stage.labels.extend(_printed_labels(tee.getvalue()))
+            stage.output = tee.getvalue()
+            stage.labels.extend(_printed_labels(stage.output))
             stage.state = "completed" if ok else "failed"
             stage.ok = ok
             return ok
@@ -677,6 +685,7 @@ def run_all(fail_fast: bool = False, phase: Optional[int] = None) -> int:
         ("dangling_reference_1M", 1, ("§1M",), "Dangling Visual Reference (§1M)"),
         ("variant_exhibit_2L",  1, ("§2L",), "Declared Variants Reach the Render (§2L)"),
         ("slot_domains_14",     1, ("§14",), "Structured Slots and Field Domains (§14)"),
+        ("determinism_18",      1, ("§18",), "A Seed Reproduces Its Problem in Every Process (§18)"),
         ("composition_15",      1, ("§15",), "Composition: Selected Values and Hinted Runs (§15)"),
         ("hint_contract_16",    1, ("§16",), "Hint Contract over the Live Tree (§16)"),
         ("render_contract_9",   1, ("§9", "§12", "§13"),  "Render Contract (§9/§12/§13)"),
@@ -684,8 +693,7 @@ def run_all(fail_fast: bool = False, phase: Optional[int] = None) -> int:
         ("assertion_coverage_8", 1, ("§8",), "Assertion Coverage (§8)"),
         ("obligation_manifest_11", 1, ("§11",), "Obligation Manifest (§11)"),
         ("census_7",            1, ("§7",),  "Suite Census (§7)"),
-        ("judgment_reviews_5",  2, ("§5",),  "Judgment Reviews (§5)"),
-        ("capability_phase2",   2, (),      "Capability Contract Phase 2 (§6F-§6H)"),
+        ("carried_defects_5_6", 2, ("§5",),  "Carried Defects of the Retired §5/§6F Gates (H6)"),
         ("stem_review_17",      2, ("§17",), "Stem Review Gate (§17)"),
     ):
         if phase is None or phase == _phase:
@@ -833,10 +841,11 @@ def run_all(fail_fast: bool = False, phase: Optional[int] = None) -> int:
         vocab_ok = len(vocab_failed) == 0
         if not vocab_ok:
             print(f"  FAIL vocab_audit_pass_rate ({len(vocab_failed)} node(s) below 1.00):")
-            for nid, violations in vocab_failed[:5]:  # print first 5 to avoid flood
-                print(f"    - {nid}: {violations}")
-            if len(vocab_failed) > 5:
-                print(f"    ... and {len(vocab_failed) - 5} more nodes.")
+            # Every violation, one finding each, by lc and seed (rulings 23, 52).
+            for nid, violations in vocab_failed:
+                for violation in violations:
+                    print(f"    - {nid}: {violation}. Owed: remove the vocabulary or concept "
+                          f"past the lc's gate (Content Rule 1).")
             if fail_fast:
                 return vocab_ok
         else:
@@ -909,42 +918,6 @@ def run_all(fail_fast: bool = False, phase: Optional[int] = None) -> int:
     else:
         matrix_ok = True
 
-    # 6. Judgment Reviews (genuine, non-boilerplate — hard gate)
-    def _stage_judgment_reviews_5() -> bool:
-        print("\n--- Judgment Reviews (genuine per-node artifacts) ---")
-        judgment_errors = validate_judgment.validate_judgment_reviews(fail_fast=fail_fast)
-        v = validate_judgment.summarize_verdicts()
-        if v["FAIL"] > 0 or v["CONCERN"] > 0:
-            judgment_errors.append(
-                f"Unresolved judgment verdicts remain across {v['reviewed']} nodes: "
-                f"PASS={v['PASS']} CONCERN={v['CONCERN']} FAIL={v['FAIL']}; "
-                f"all nodes must reach PASS verdict."
-            )
-        judgment_ok = len(judgment_errors) == 0
-        if judgment_ok:
-            executed_checks.add("§5")
-            print(
-                f"  PASS judgment_reviews (all {v['reviewed']} nodes have genuine, fresh, PASS reviews: "
-                f"PASS={v['PASS']} CONCERN={v['CONCERN']} FAIL={v['FAIL']})"
-            )
-        else:
-            print(f"  FAIL judgment_reviews ({len(judgment_errors)} problem(s) — non-PASS verdicts or incomplete reviews):")
-            for err in judgment_errors[:10]:
-                print(f"    - {err}")
-            if len(judgment_errors) > 10:
-                print(f"    ... and {len(judgment_errors) - 10} more.")
-            if fail_fast:
-                return judgment_ok
-        return judgment_ok
-
-    if _runs(2):
-        judgment_ok = ledger.run("judgment_reviews_5", _stage_judgment_reviews_5)
-        if not judgment_ok and fail_fast:
-            _print_stage_ledger(ledger, phase)
-            return 1
-    else:
-        judgment_ok = True
-
     # 7. Capability Contract (§6) — in its two phases.
     #
     # The seam is NOT "does this check need an LLM": every §6 check is programmatic,
@@ -977,10 +950,12 @@ def run_all(fail_fast: bool = False, phase: Optional[int] = None) -> int:
                 print(f"  FAIL {label} ({title}, {len(errs)} content finding(s)):")
             else:
                 print(f"  FAIL {label} ({title}, {len(errs)} finding(s)):")
-            for err in errs[:10]:
+            # Content prints whole (ruling 23: every finding by name); integrity is cut at 10.
+            shown = errs if label == validate_capability.CONTENT_ROLLUP else errs[:10]
+            for err in shown:
                 print(f"    - {err}")
-            if len(errs) > 10:
-                print(f"    ... and {len(errs) - 10} more.")
+            if len(errs) > len(shown):
+                print(f"    ... and {len(errs) - len(shown)} more.")
 
     def _stage_capability_phase1() -> bool:
         print("\n--- Capability Contract Phase 1 (artifact-free — §6A–§6E) ---")
@@ -1006,51 +981,27 @@ def run_all(fail_fast: bool = False, phase: Optional[int] = None) -> int:
     else:
         provision_ok = True
 
-    # PHASE 2 — gated on Phase 1 in the reorganised loop, but still RUN here so a
-    # single `run_all` reports the whole contract. Skipping it when Phase 1 is red
-    # would hide the attestation band behind a §6D backlog, which is the failure this
-    # split exists to end, not to repeat one level down.
-    def _stage_capability_phase2() -> bool:
-        print("\n--- Capability Contract Phase 2 (attestation — §6F–§6H) ---")
-        tagged = validate_capability.attestation_findings_tagged()
-        attestation_ok = len(tagged) == 0
-        if attestation_ok:
+    # PHASE 2 -- the retired per-sample gates (H6, owner rulings 25 and 55). §5's judgment
+    # reviews and §6F-§6H's attestations stopped being gates once §17 and §14 were each
+    # proven by mutation. Their records are frozen history; the defects they confirmed are
+    # carried into the generator work queue by ONE content stage, named by lc + seed (or
+    # ruling 52's substitute) + owed build, and cleared only when the reviewed render no
+    # longer replays (the lc then owes a §17 re-judgment). validate_judgment and
+    # validate_capability's Phase 2 checks stay in the tree with their mutations; run_all
+    # no longer runs them, because no record can be filed against them.
+    def _stage_carried_defects_5_6() -> bool:
+        print("\n--- Carried Defects of the Retired §5/§6F Gates (H6) ---")
+        ok = validate_carried.validate_all()
+        if ok:
+            executed_checks.add("§5")
             _record_phase(2)
-            print("  PASS capability_contract (Phase 2: every declared capability carries "
-                  "a fresh, non-boilerplate, attributed blind Attester verdict)")
-        else:
-            content = [f for lb, f in tagged if lb == validate_capability.CONTENT_ROLLUP]
-            unattested = [e for e in content if "UNATTESTED" in e]
-            contradicted = [e for e in content if "CONTRADICTED" in e]
-            stale = [e for e in content if "is STALE" in e]
-            unadjudicable = [e for e in content if "records no 'options'" in e]
-            # A DISPLAY tally only -- the verdict reads the labels, not these substrings.
-            # It must add up, or a class of finding is invisible in the summary line: when
-            # §6F reached §5 parity on 2026-09-10 it read "78 CONTRADICTED, 0 UNATTESTED
-            # and 5 STALE" above 220 findings. Anything unnamed is counted as `other`.
-            named = len(unattested) + len(contradicted) + len(stale) + len(unadjudicable)
-            other = len(content) - named
-            print(
-                f"  Phase 2 tally: {len(contradicted)} CONTRADICTED, {len(unattested)} "
-                f"UNATTESTED, {len(stale)} STALE (§6F), {len(unadjudicable)} UNADJUDICABLE "
-                f"(no recorded options){f', {other} other' if other else ''}"
-            )
-            # UNATTESTED dominates by volume while the backlog is open and would bury the
-            # findings that name a defect. Show the ones that name a real problem first.
-            ordered = ([(lb, f) for lb, f in tagged if "UNATTESTED" not in f]
-                       + [(lb, f) for lb, f in tagged if "UNATTESTED" in f])
-            _print_tagged(ordered, "Phase 2")
-            if fail_fast:
-                return attestation_ok
-        return attestation_ok
+        return ok
 
     if _runs(2):
-        attestation_ok = ledger.run("capability_phase2", _stage_capability_phase2)
-        if not attestation_ok and fail_fast:
+        carried_ok = ledger.run("carried_defects_5_6", _stage_carried_defects_5_6)
+        if not carried_ok and fail_fast:
             _print_stage_ledger(ledger, phase)
             return 1
-    else:
-        attestation_ok = True
 
     def _stage_stem_review_17() -> bool:
         print("\n--- Stem Review Gate (§17) ---")
@@ -1131,6 +1082,16 @@ def run_all(fail_fast: bool = False, phase: Optional[int] = None) -> int:
         ok = validate_slots.validate_all()
         if ok:
             executed_checks.add("§14")
+        return ok
+
+    def _stage_determinism_18() -> bool:
+        print("\n--- A Seed Reproduces Its Problem in Every Process (§18) ---")
+        # Owner ruling 54: every path §14 checks is rendered under two PYTHONHASHSEEDs in
+        # child processes and compared. A differing render is CONTENT (lc + seed + owed);
+        # a failed child or differing path sets is integrity.
+        ok = validate_determinism.validate_all()
+        if ok:
+            executed_checks.add("§18")
         return ok
 
     def _stage_composition_15() -> bool:
@@ -1222,6 +1183,7 @@ def run_all(fail_fast: bool = False, phase: Optional[int] = None) -> int:
             ("dangling_reference_1M", _stage_dangling_reference_1M),
             ("variant_exhibit_2L", _stage_variant_exhibit_2L),
             ("slot_domains_14", _stage_slot_domains_14),
+            ("determinism_18", _stage_determinism_18),
             ("composition_15", _stage_composition_15),
             ("hint_contract_16", _stage_hint_contract_16),
             ("render_contract_9", _stage_render_contract_9),
@@ -1313,7 +1275,7 @@ def run_all(fail_fast: bool = False, phase: Optional[int] = None) -> int:
         # Per PHASE, not per stage: a red Phase 1 no longer suppresses the §6F/§6G/§6H
         # rows, and a red Phase 2 no longer suppresses §6/§6D/§6E. Six hand-written
         # discard pairs on one boolean is what made the seam invisible here too.
-        for _phase, _stage_name in ((1, "capability_phase1"), (2, "capability_phase2")):
+        for _phase, _stage_name in ((1, "capability_phase1"), (2, "carried_defects_5_6")):
             try:
                 if ledger.get(_stage_name).state != "failed":
                     continue
@@ -1368,13 +1330,54 @@ def run_all(fail_fast: bool = False, phase: Optional[int] = None) -> int:
         print("  PASS stage_phase_matches_manifest: every stage's refs are registered to "
               "the band that stage runs in")
     ledger_failures = ledger_failures + phase_problems
+    naming = content_naming_failures(ledger, phase)
     integrity, content = _classify_verdict(ledger, phase)
+    integrity += [f"content_finding_named: {p}" for p in naming]
     if not contract_match_ok:
         integrity.append("the two-direction contract checks above failed "
                          "(contract_doc_matches_registry / operator_doc_covers_registry / "
                          "two_direction_contract_match)")
     integrity = ledger_failures + integrity
     return _print_verdict(integrity, content, phase)
+
+
+# ─── Every content finding is named (owner rulings 23 and 52) ─────────────────
+
+def content_naming_failures(ledger: "StageLedger", phase: Optional[int]) -> list:
+    """
+    `content_finding_named`: every content finding a stage reported names its lc (or
+    route), a witness seed or ruling 52's substitute, and an owed build -- and every one is
+    printed. Read from each stage's own captured output (`validate_naming`), and for the
+    matrix from its structured findings through the text it prints (`named_finding`).
+    INTEGRITY: an unnamed finding is the harness failing ruling 23's exit test, not content.
+    """
+    from backend.app.practice_gen.validation import validate_naming
+
+    lcs, routes = validate_naming._known_lcs(), validate_naming._known_routes()
+    problems: list = []
+    for stage in ledger:
+        if phase is not None and stage.phase != phase:
+            continue
+        if stage.state not in ("completed", "failed"):
+            continue  # crashed / never run: the ledger already fails integrity
+        problems += validate_naming.problems_in_output(stage.output, stage.name, lcs=lcs, routes=routes)
+        if stage.name == "behavioural_matrix":
+            for f in validate_matrix.LAST_FAILURES:
+                if finding_class(str(f.get("check")), family=True) != CONTENT:
+                    continue
+                text = validate_matrix.named_finding(f)
+                missing = validate_naming.finding_problems(text, lcs, routes)
+                if missing:
+                    problems.append(f"stage 'behavioural_matrix': {f.get('check')} finding "
+                                    f"{text[:160]!r} lacks {'; '.join(missing)} (ruling 52).")
+    if problems:
+        print(f"  FAIL content_finding_named ({len(problems)}):")
+        for p in problems:
+            print(f"    - {p}")
+    else:
+        print("  PASS content_finding_named: every content finding names its lc, a witness seed "
+              "(or ruling 52's substitute) and its owed build, and every one is printed")
+    return problems
 
 
 # ─── The verdict (owner ruling 27, batch H2) ─────────────────────────────────

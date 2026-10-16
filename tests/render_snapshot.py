@@ -33,12 +33,16 @@ def _render(node_id, seed, formatter=None):
         return {"__raised__": f"{type(exc).__name__}: {exc}"}
 
 
-def snapshot(out_path: str) -> int:
+def snapshot(out_path: str, node_ids=None) -> int:
+    """Every path of `node_ids` (default: every lc), one JSON line each, to `out_path`.
+
+    `node_ids` scopes a §18 determinism proof (validate_determinism --node-ids) to a clean lc.
+    """
     from backend.app.practice_gen.registry import get_all_node_ids
     from backend.app.practice_gen.validation.validate_slots import paths
     n = 0
     with open(out_path, "w", encoding="utf-8") as fh:
-        for node_id in sorted(get_all_node_ids()):
+        for node_id in sorted(node_ids or get_all_node_ids()):
             for seed, formatter in paths(node_id):
                 fh.write(json.dumps({"k": [node_id, seed, formatter],
                                      "r": _render(node_id, seed, formatter)},
