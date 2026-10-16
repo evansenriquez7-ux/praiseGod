@@ -1,0 +1,1670 @@
+{
+ "schema_version": 2,
+ "hash_version": 8,
+ "node_id": "mat_g3_dp_q3_0",
+ "record_id": "stem-batch445-S445-001-first",
+ "role": "first",
+ "confirms": null,
+ "item_id": "S445-001",
+ "lc_hash": "bbf4ae50685f9eaf549286905f49f65a22fc14e0087d8367654f380a2fe07234",
+ "judged_by": "blind-stem-judge-claude-haiku-batch445-S445-001-first",
+ "dispatch_id": "stem-batch445-S445-001-first",
+ "filed_at": "2026-10-15T16:47:44Z",
+ "delivery": "Claude Code Agent tool, model=haiku, subagent_type=general-purpose; the judge was told to read only local_only/scratch/h4c/prompts/S445-001.prompt.txt (tests/stem_file.py prompt output, item S445-001; no lc id, no key or packets file in that directory) and reply with what it asks; dispatched with CLAUDE.md loaded (ruling 29). Blindness is a prompt contract, audited from the subagent transcript.",
+ "tool_uses_by_judge": "From the subagent transcript: 1 tool use(s), all Read of its own prompt file (1463 lines, every line read); no other tool, path or search. Model reported in the transcript: claude-haiku-5-5.",
+ "dispatch_prompt_digest": "a80d1dc6b29cb9f45d23b6eac38bff2dca0d95e3bd2625ce9d374e7bd8fa8a62",
+ "raw_reply": "{\"item\": \"S445-001\", \"clauses\": {\"collect_data\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F08\", \"template\": \"A student recorded coin toss results in a table: Heads ({heads_count}), Tails ({tails_count}). How many total tosses were recorded in the experiment?\", \"reasoning\": \"F08 shows a student recording results in a table and asks for the total, which is the act of collecting data. It has no total slot, so no printed table can contradict a stated number of trials.\"}, \"experiments\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F04\", \"template\": \"A coin toss experiment was conducted with {total_trials} tosses. The results are: Heads: {heads_count}, Tails: {tails_count}. How many times did the coin land on {target}?\", \"reasoning\": \"F04 names a coin toss experiment directly. The clause is produced by its wording, though F04 itself fails on its heads_count and tails_count domain (lo 2, hi 23, not bounded by total_trials, whose members start at 10).\"}, \"small_number_of_possible_outcomes\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F03\", \"template\": \"A 6-sided die was rolled {total_trials} times. The recorded tally is: {table_str}. Which face was rolled {direction} frequently?\", \"reasoning\": \"F03 names a 6-sided die, so the outcome set is six faces, a small fixed number. F03 fails on its total_trials versus table_str counts, which are drawn from separate domains, and on possible ties for most or least frequent.\"}, \"rolling_die\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F18\", \"template\": \"The results of a rolling die experiment are recorded: {table_str}. How many total rolls were made in the experiment?\", \"reasoning\": \"F18 names rolling a die and has no total slot, so the answer is the sum of the printed table and nothing in its domains contradicts it.\"}, \"tossing_coin\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F08\", \"template\": \"A student recorded coin toss results in a table: Heads ({heads_count}), Tails ({tails_count}). How many total tosses were recorded in the experiment?\", \"reasoning\": \"F08 names tossing a coin as coin toss results in a table and is internally consistent, since it has no separate total slot.\"}}, \"failing_families\": [\"F03\", \"F04\", \"F05\", \"F07\", \"F09\", \"F14\", \"F15\", \"F16\", \"F24\", \"F25\"], \"failing_templates\": [\"A 6-sided die was rolled {total_trials} times. The recorded tally is: {table_str}. Which face was rolled {direction} frequently?\", \"A coin toss experiment was conducted with {total_trials} tosses. The results are: Heads: {heads_count}, Tails: {tails_count}. How many times did the coin land on {target}?\", \"A coin was tossed {total_trials} times. Heads occurred {heads_count} times and Tails occurred {tails_count} times. How many more times did {more_side} land than {less_side}?\", \"A spinner with colored sections was spun {total_spins} times. The outcomes recorded are: {table_str}. Which color was landed on {direction} often?\", \"A student spun a spinner {total_spins} times and recorded: {table_str}. How many times did the spinner land on {q_col}?\", \"In a coin toss experiment of {total_trials} tosses, the coin landed on {other} {other_val} times. How many times did it land on {target}?\", \"In a die rolling experiment of {total_trials} rolls, the results are: {table_str}. How many times did Face {q_face} appear?\", \"In a probability experiment, a tile was picked from a bag and replaced {total_draws} times. Results: {table_str}. How many times was a {q_tile} drawn?\", \"{question_text} The answer is {fill_value}.\", \"{statement}. True or False?\"], \"overall\": \"FAIL\", \"reasoning\": \"Rule 1 fails. The F03, F07, F09, F15 and F16 templates print a table whose counts come from the values['counts'] domain (1 to 9, or 1 to 15 for F19), which is not tied to total_trials or total_spins or total_draws (12 to 30, 10 to 25). Any draw can print counts that do not sum to the stated number of trials, so the text is misleading. The F04, F05 and F14 templates bound heads_count or other_val by 2 to 23 (2 to 18 for F05) independently of total_trials (members starting at 10), so tails or the other side can be negative, which is impossible. The F24 template embeds a question (F04, F05, F09, F15, F16 texts end in a question mark) inside a statement that ends The answer is, and F25 then appends True or False, producing a question inside a true-or-false statement and a double period. F23 and F25 print nested text from these families and fail through them. Vocabulary: no NOT_YET_KNOWN term appears in any template. Words outside cumulative_vocab and curriculum_vocab (frequently, tally, recorded, face, tile, bag, drawn, appear, spinner) are not gated by any declared rule here and are noted but not separately failed. Rule 2: each clause has a producing family, with F08 covering collect data and tossing a coin, F04 covering experiments, F03 covering small outcomes, and F18 covering rolling a die.\"}",
+ "raw_reply_digest": "0919f825e0f1aa3a707bad5fa69f6ea165dba2f0c996f4a9275d40051f1a3f99",
+ "packet_digest": "c7795fc7b6b29d17d77edbdf2d9a0b9b84ee8e82b77b70d5635fba868d4c7b9d",
+ "family_keys": {
+  "F01": {
+   "source": "backend/app/practice_gen/dna/base.py [gate experiment]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F02": {
+   "source": "backend/app/practice_gen/dna/base.py [gate outcome]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F03": {
+   "source": "backend/app/practice_gen/dna/dp/probability_experiment.py",
+   "first_site": "backend/app/practice_gen/dna/dp/probability_experiment.py:156",
+   "renderer": "",
+   "path": [
+    4,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F04": {
+   "source": "backend/app/practice_gen/dna/dp/probability_experiment.py",
+   "first_site": "backend/app/practice_gen/dna/dp/probability_experiment.py:138",
+   "renderer": "",
+   "path": [
+    2,
+    null
+   ],
+   "first_render_repeating": {
+    "heads_count,tails_count": [
+     113,
+     null
+    ]
+   }
+  },
+  "F05": {
+   "source": "backend/app/practice_gen/dna/dp/probability_experiment.py",
+   "first_site": "backend/app/practice_gen/dna/dp/probability_experiment.py:132",
+   "renderer": "",
+   "path": [
+    6,
+    null
+   ],
+   "first_render_repeating": {
+    "heads_count,tails_count": [
+     174,
+     null
+    ]
+   }
+  },
+  "F06": {
+   "source": "backend/app/practice_gen/dna/dp/probability_experiment.py",
+   "first_site": "backend/app/practice_gen/dna/dp/probability_experiment.py:198",
+   "renderer": "",
+   "path": [
+    7,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F07": {
+   "source": "backend/app/practice_gen/dna/dp/probability_experiment.py",
+   "first_site": "backend/app/practice_gen/dna/dp/probability_experiment.py:193",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F08": {
+   "source": "backend/app/practice_gen/dna/dp/probability_experiment.py",
+   "first_site": "backend/app/practice_gen/dna/dp/probability_experiment.py:125",
+   "renderer": "",
+   "path": [
+    28,
+    null
+   ],
+   "first_render_repeating": {
+    "heads_count,tails_count": [
+     32,
+     null
+    ]
+   }
+  },
+  "F09": {
+   "source": "backend/app/practice_gen/dna/dp/probability_experiment.py",
+   "first_site": "backend/app/practice_gen/dna/dp/probability_experiment.py:205",
+   "renderer": "",
+   "path": [
+    16,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F10": {
+   "source": "backend/app/practice_gen/dna/dp/probability_experiment.py",
+   "first_site": "backend/app/practice_gen/dna/dp/probability_experiment.py:254",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F11": {
+   "source": "backend/app/practice_gen/dna/dp/probability_experiment.py",
+   "first_site": "backend/app/practice_gen/dna/dp/probability_experiment.py:155",
+   "renderer": "",
+   "path": [
+    4,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F12": {
+   "source": "backend/app/practice_gen/dna/dp/probability_experiment.py",
+   "first_site": "backend/app/practice_gen/dna/dp/probability_experiment.py:147",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F13": {
+   "source": "backend/app/practice_gen/dna/dp/probability_experiment.py",
+   "first_site": "backend/app/practice_gen/dna/dp/probability_experiment.py:255",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F14": {
+   "source": "backend/app/practice_gen/dna/dp/probability_experiment.py",
+   "first_site": "backend/app/practice_gen/dna/dp/probability_experiment.py:122",
+   "renderer": "",
+   "path": [
+    14,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F15": {
+   "source": "backend/app/practice_gen/dna/dp/probability_experiment.py",
+   "first_site": "backend/app/practice_gen/dna/dp/probability_experiment.py:174",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F16": {
+   "source": "backend/app/practice_gen/dna/dp/probability_experiment.py",
+   "first_site": "backend/app/practice_gen/dna/dp/probability_experiment.py:220",
+   "renderer": "",
+   "path": [
+    9,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F17": {
+   "source": "backend/app/practice_gen/dna/dp/probability_experiment.py",
+   "first_site": "backend/app/practice_gen/dna/dp/probability_experiment.py:253",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F18": {
+   "source": "backend/app/practice_gen/dna/dp/probability_experiment.py",
+   "first_site": "backend/app/practice_gen/dna/dp/probability_experiment.py:167",
+   "renderer": "",
+   "path": [
+    22,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F19": {
+   "source": "backend/app/practice_gen/dna/dp/probability_experiment.py",
+   "first_site": "backend/app/practice_gen/dna/dp/probability_experiment.py:186",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F20": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:32",
+   "renderer": "",
+   "path": [
+    4,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F21": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:39",
+   "renderer": "",
+   "path": [
+    4,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F22": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_error_detect.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_error_detect.py:387",
+   "renderer": "",
+   "path": [
+    3,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F23": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_error_detect.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_error_detect.py:372",
+   "renderer": "",
+   "path": [
+    3,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F24": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_true_false.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_true_false.py:411",
+   "renderer": "",
+   "path": [
+    6,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F25": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_true_false.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_true_false.py:430",
+   "renderer": "",
+   "path": [
+    6,
+    null
+   ],
+   "first_render_repeating": {}
+  }
+ },
+ "packet": {
+  "item": "S445-001",
+  "competency": {
+   "text": "Collect data from experiments with a small number of possible outcomes (e.g., rolling a die or tossing a coin).",
+   "grade": 3,
+   "quarter": 3
+  },
+  "clauses": [
+   {
+    "id": "collect_data",
+    "kind": "task",
+    "clause": "Collect data"
+   },
+   {
+    "id": "experiments",
+    "kind": "context",
+    "clause": "experiments"
+   },
+   {
+    "id": "small_number_of_possible_outcomes",
+    "kind": "property",
+    "clause": "small number of possible outcomes"
+   },
+   {
+    "id": "rolling_die",
+    "kind": "context",
+    "clause": "rolling a die"
+   },
+   {
+    "id": "tossing_coin",
+    "kind": "context",
+    "clause": "tossing a coin"
+   }
+  ],
+  "vocabulary": {
+   "student_vocab": [
+    "outcome"
+   ],
+   "curriculum_vocab": [
+    "experiment",
+    "possible outcome",
+    "rolling a die",
+    "tossing a coin",
+    "die",
+    "coin"
+   ],
+   "introduces_vocab": [
+    "experiment",
+    "outcome",
+    "possible outcome",
+    "rolling a die",
+    "tossing a coin",
+    "die",
+    "coin"
+   ],
+   "cumulative_vocab": [
+    "1 less",
+    "1 more",
+    "10th",
+    "1st",
+    "2nd",
+    "3rd",
+    "4th",
+    "5th",
+    "6th",
+    "7th",
+    "8th",
+    "9th",
+    "L",
+    "a.m.",
+    "addition",
+    "analog clock",
+    "area",
+    "balance scale",
+    "bigger",
+    "bill",
+    "calendar",
+    "capacity",
+    "centavo",
+    "centimeter",
+    "circle",
+    "clockwise",
+    "cm",
+    "coin",
+    "compare",
+    "corner",
+    "count",
+    "counter-clockwise",
+    "data",
+    "decreasing pattern",
+    "denominator",
+    "difference",
+    "digit",
+    "division",
+    "elapsed time",
+    "equal",
+    "equal groups",
+    "estimate",
+    "even",
+    "expanded form",
+    "fraction",
+    "g",
+    "gram",
+    "group",
+    "half",
+    "half hour",
+    "half turn",
+    "hour",
+    "how many",
+    "hundreds",
+    "increasing pattern",
+    "intersecting",
+    "kg",
+    "kilogram",
+    "left",
+    "length",
+    "less",
+    "line",
+    "line segment",
+    "liter",
+    "m",
+    "mL",
+    "mass",
+    "measure",
+    "meter",
+    "milliliter",
+    "minute",
+    "missing number",
+    "missing term",
+    "more",
+    "multiplication",
+    "nearest hundred",
+    "nearest ten",
+    "nearest thousand",
+    "number",
+    "number line",
+    "numeral",
+    "numerator",
+    "odd",
+    "ones",
+    "order of operations",
+    "p.m.",
+    "parallel",
+    "pattern",
+    "perimeter",
+    "perpendicular",
+    "peso",
+    "pictograph",
+    "place value",
+    "point",
+    "product",
+    "quarter",
+    "quarter hour",
+    "quarter turn",
+    "quotient",
+    "ray",
+    "rectangle",
+    "regrouping",
+    "repeating pattern",
+    "round",
+    "ruler",
+    "same",
+    "scale",
+    "side",
+    "similar fractions",
+    "skip counting",
+    "slide",
+    "smaller",
+    "solid figure",
+    "sq. cm",
+    "square",
+    "square centimeter",
+    "subtraction",
+    "sum",
+    "table",
+    "ten thousand",
+    "ten-thousands place",
+    "tens",
+    "thousand",
+    "total",
+    "translation",
+    "triangle",
+    "whole",
+    "₱"
+   ],
+   "NOT_YET_KNOWN": [
+    "axis",
+    "bar graph",
+    "certain",
+    "equally likely",
+    "impossible",
+    "improper fraction",
+    "less likely",
+    "line of symmetry",
+    "more likely",
+    "remainder",
+    "symmetry"
+   ],
+   "sentence_max_words": 22,
+   "number_format": "space separator for thousands (e.g. 1 000)"
+  },
+  "declared_variants": [
+   [
+    "experiment_type",
+    "coin_toss"
+   ],
+   [
+    "experiment_type",
+    "colored_tiles"
+   ],
+   [
+    "experiment_type",
+    "die_roll"
+   ],
+   [
+    "experiment_type",
+    "spinner"
+   ]
+  ],
+  "declared_bounds": [
+   {}
+  ],
+  "families": [
+   {
+    "id": "F01",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F17"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='experiment')",
+        "requires_vocab": "experiment",
+        "prints": "experiment",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F02",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F10"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='outcome')",
+        "requires_vocab": "outcome",
+        "prints": "outcome",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F03",
+    "template": "A 6-sided die was rolled {total_trials} times. The recorded tally is: {table_str}. Which face was rolled {direction} frequently?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "total_trials"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the trial_choices bank",
+        "members": [
+         12,
+         18,
+         20,
+         24,
+         30
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "table_str"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F12"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "direction"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "most or least",
+        "members": [
+         "least",
+         "most"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "experiment_type",
+     "task_subtype"
+    ]
+   },
+   {
+    "id": "F04",
+    "template": "A coin toss experiment was conducted with {total_trials} tosses. The results are: Heads: {heads_count}, Tails: {tails_count}. How many times did the coin land on {target}?",
+    "appears_in": [
+     "format_data.problem_expression",
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [
+     "F23",
+     "F24"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "total_trials"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the trial_choices bank",
+        "members": [
+         10,
+         12,
+         15,
+         20,
+         25
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "heads_count",
+       "tails_count"
+      ],
+      "domains": [
+       {
+        "domain": "a number in a range",
+        "basis": "the heads draw bounds (tails is the rest)",
+        "lo": 2,
+        "hi": 23
+       }
+      ],
+      "distinct_in_every_render": false
+     },
+     {
+      "slots": [
+       "target"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "values['categories']",
+        "members": [
+         "Heads",
+         "Tails"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "experiment_type"
+    ]
+   },
+   {
+    "id": "F05",
+    "template": "A coin was tossed {total_trials} times. Heads occurred {heads_count} times and Tails occurred {tails_count} times. How many more times did {more_side} land than {less_side}?",
+    "appears_in": [],
+    "nested_in": [
+     "F24"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "total_trials"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the trial_choices bank",
+        "members": [
+         10,
+         12,
+         15,
+         20,
+         25
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "heads_count",
+       "tails_count"
+      ],
+      "domains": [
+       {
+        "domain": "a number in a range",
+        "basis": "the heads draw bounds (tails is the rest)",
+        "lo": 2,
+        "hi": 18
+       }
+      ],
+      "distinct_in_every_render": false
+     },
+     {
+      "slots": [
+       "more_side",
+       "less_side"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "values['categories']",
+        "members": [
+         "Heads",
+         "Tails"
+        ]
+       }
+      ],
+      "distinct_in_every_render": true
+     }
+    ],
+    "template_chosen_by_values": [
+     "experiment_type",
+     "task_subtype"
+    ]
+   },
+   {
+    "id": "F06",
+    "template": "A spinner experiment recorded these outcomes: {table_str}. What is the total number of spins in the experiment?",
+    "appears_in": [
+     "format_data.problem_expression"
+    ],
+    "nested_in": [
+     "F23"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "table_str"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F19"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "experiment_type",
+     "task_subtype"
+    ]
+   },
+   {
+    "id": "F07",
+    "template": "A spinner with colored sections was spun {total_spins} times. The outcomes recorded are: {table_str}. Which color was landed on {direction} often?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "total_spins"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the spin_choices bank",
+        "members": [
+         15,
+         20,
+         24,
+         30
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "table_str"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F19"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "direction"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "most or least",
+        "members": [
+         "least",
+         "most"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "experiment_type",
+     "task_subtype"
+    ]
+   },
+   {
+    "id": "F08",
+    "template": "A student recorded coin toss results in a table: Heads ({heads_count}), Tails ({tails_count}). How many total tosses were recorded in the experiment?",
+    "appears_in": [
+     "format_data.problem_expression"
+    ],
+    "nested_in": [
+     "F23"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "heads_count",
+       "tails_count"
+      ],
+      "domains": [
+       {
+        "domain": "a number in a range",
+        "basis": "the heads draw bounds (tails is the rest)",
+        "lo": 2,
+        "hi": 23
+       }
+      ],
+      "distinct_in_every_render": false
+     }
+    ],
+    "template_chosen_by_values": [
+     "experiment_type",
+     "task_subtype"
+    ]
+   },
+   {
+    "id": "F09",
+    "template": "A student spun a spinner {total_spins} times and recorded: {table_str}. How many times did the spinner land on {q_col}?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [
+     "F24"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "total_spins"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the spin_choices bank",
+        "members": [
+         15,
+         20,
+         24,
+         30
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "table_str"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F19"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "q_col"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "values['categories']",
+        "members": [
+         "Blue",
+         "Green",
+         "Red",
+         "Yellow"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "experiment_type"
+    ]
+   },
+   {
+    "id": "F10",
+    "template": "Each tally or count represents an {out_lbl}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "out_lbl"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F02"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F11",
+    "template": "Face {v}",
+    "appears_in": [
+     "correct_answer",
+     "distractors",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "v"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "values['categories']",
+        "members": [
+         "1",
+         "2",
+         "3",
+         "4",
+         "5",
+         "6"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "experiment_type",
+     "task_subtype"
+    ]
+   },
+   {
+    "id": "F12",
+    "template": "Face {v}: {v2}",
+    "appears_in": [],
+    "nested_in": [
+     "F03",
+     "F15",
+     "F18"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "v"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "values['categories']",
+        "members": [
+         "1",
+         "2",
+         "3",
+         "4",
+         "5",
+         "6"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "v2"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "values['counts']",
+        "members": [
+         1,
+         2,
+         3,
+         4,
+         5,
+         6,
+         7,
+         9
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "experiment_type"
+    ]
+   },
+   {
+    "id": "F13",
+    "template": "Find the requested value in the recorded data.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F14",
+    "template": "In a coin toss experiment of {total_trials} tosses, the coin landed on {other} {other_val} times. How many times did it land on {target}?",
+    "appears_in": [
+     "format_data.problem_expression",
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [
+     "F23"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "total_trials"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the trial_choices bank",
+        "members": [
+         10,
+         12,
+         15,
+         20,
+         25
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "other",
+       "target"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "values['categories']",
+        "members": [
+         "Heads",
+         "Tails"
+        ]
+       }
+      ],
+      "distinct_in_every_render": true
+     },
+     {
+      "slots": [
+       "other_val"
+      ],
+      "domains": [
+       {
+        "domain": "a number in a range",
+        "basis": "the heads draw bounds (tails is the rest)",
+        "lo": 2,
+        "hi": 23
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "experiment_type",
+     "task_subtype"
+    ]
+   },
+   {
+    "id": "F15",
+    "template": "In a die rolling experiment of {total_trials} rolls, the results are: {table_str}. How many times did Face {q_face} appear?",
+    "appears_in": [
+     "format_data.problem_expression",
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [
+     "F23",
+     "F24"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "total_trials"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the trial_choices bank",
+        "members": [
+         12,
+         18,
+         20,
+         24,
+         30
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "table_str"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F12"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "q_face"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "values['categories']",
+        "members": [
+         "1",
+         "2",
+         "3",
+         "4",
+         "5",
+         "6"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "experiment_type"
+    ]
+   },
+   {
+    "id": "F16",
+    "template": "In a probability experiment, a tile was picked from a bag and replaced {total_draws} times. Results: {table_str}. How many times was a {q_tile} drawn?",
+    "appears_in": [
+     "format_data.problem_expression",
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [
+     "F23",
+     "F24"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "total_draws"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the draw_choices bank",
+        "members": [
+         10,
+         15,
+         20,
+         25
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "table_str"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F19"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "q_tile"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "values['categories']",
+        "members": [
+         "Blue tile",
+         "Green tile",
+         "Red tile"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "experiment_type"
+    ]
+   },
+   {
+    "id": "F17",
+    "template": "Look at the recorded data from the {exp_lbl}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "exp_lbl"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F01"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F18",
+    "template": "The results of a rolling die experiment are recorded: {table_str}. How many total rolls were made in the experiment?",
+    "appears_in": [
+     "format_data.problem_expression"
+    ],
+    "nested_in": [
+     "F23"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "table_str"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F12"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "experiment_type",
+     "task_subtype"
+    ]
+   },
+   {
+    "id": "F19",
+    "template": "{v}: {v2}",
+    "appears_in": [],
+    "nested_in": [
+     "F06",
+     "F07",
+     "F09",
+     "F16"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "v"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "values['categories']",
+        "members": [
+         "Blue tile",
+         "Blue",
+         "Green tile",
+         "Green",
+         "Red tile",
+         "Red",
+         "Yellow"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "v2"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "values['counts']",
+        "members": [
+         1,
+         10,
+         15,
+         2,
+         3,
+         4,
+         5,
+         6,
+         7,
+         8,
+         9
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "experiment_type"
+    ]
+   },
+   {
+    "id": "F20",
+    "template": "{answer}",
+    "appears_in": [
+     "correct_answer",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "answer",
+        "printed": [
+         "Blue",
+         "Face 1",
+         "Face 2",
+         "Face 3",
+         "Face 4",
+         "Face 5",
+         "Face 6",
+         "Green",
+         "Red"
+        ],
+        "derived_from_values": [
+         "answer"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F21",
+    "template": "{member}",
+    "appears_in": [
+     "distractors",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "member"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "QuestionContext.distractors (the generator's own)",
+        "members": [
+         "Blue",
+         "Face 1",
+         "Face 2",
+         "Face 3",
+         "Face 4",
+         "Green",
+         "Orange"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F22",
+    "template": "{actor}",
+    "appears_in": [
+     "format_data.actor_name"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "actor"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "_FILIPINO_NAMES"
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F23",
+    "template": "{actor} solved this problem: \"{problem}\" {actor} says the answer is {answer}. Is {actor} correct?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "actor"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "_FILIPINO_NAMES"
+       }
+      ]
+     },
+     {
+      "slots": [
+       "problem"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F04",
+         "F06",
+         "F08",
+         "F14",
+         "F15",
+         "F16",
+         "F18"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the keyed answer and the distractor candidates",
+        "members": [
+         10,
+         12,
+         14,
+         15,
+         16,
+         17,
+         18,
+         2,
+         20,
+         21,
+         22,
+         24,
+         25,
+         26,
+         27,
+         3,
+         30,
+         4,
+         5,
+         6,
+         7,
+         8,
+         9
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F24",
+    "template": "{question_text} The answer is {fill_value}.",
+    "appears_in": [
+     "format_data.statement"
+    ],
+    "nested_in": [
+     "F25"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "question_text"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F04",
+         "F05",
+         "F09",
+         "F15",
+         "F16"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "fill_value"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the distractors shaped like the keyed answer",
+        "members": [
+         10,
+         11,
+         12,
+         15,
+         17,
+         2,
+         21,
+         25,
+         3,
+         4,
+         5,
+         6,
+         7,
+         8,
+         9
+        ]
+       },
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the keyed answer (a true statement)",
+        "members": [
+         3,
+         6
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F25",
+    "template": "{statement}. True or False?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "statement"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F24"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   }
+  ],
+  "lists": {
+   "_FILIPINO_NAMES": [
+    "Noel",
+    "Maria",
+    "Jose",
+    "Ana",
+    "Carlo",
+    "Liza",
+    "Manny",
+    "Grace",
+    "Rico",
+    "Pia",
+    "Dante",
+    "Rosa"
+   ]
+  },
+  "banks": {},
+  "value_derivations": [],
+  "reason_kinds": {}
+ }
+}

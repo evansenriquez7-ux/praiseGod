@@ -1,0 +1,891 @@
+{
+ "schema_version": 2,
+ "hash_version": 8,
+ "node_id": "mat_g1_na_q4_1",
+ "record_id": "stem-batch442-S442-017-first",
+ "role": "first",
+ "confirms": null,
+ "item_id": "S442-017",
+ "lc_hash": "509672cfcc31ceabf39dae1e050359f818528c4df32e4cb5ef3babde581561b3",
+ "judged_by": "blind-stem-judge-claude-haiku-batch442-S442-017-first",
+ "dispatch_id": "stem-batch442-S442-017-first",
+ "filed_at": "2026-10-15T16:46:59Z",
+ "delivery": "Claude Code Agent tool, model=haiku, subagent_type=general-purpose; the judge was told to read only local_only/scratch/h4c/prompts/S442-017.prompt.txt (tests/stem_file.py prompt output, item S442-017; no lc id, no key or packets file in that directory) and reply with what it asks; dispatched with CLAUDE.md loaded (ruling 29). Blindness is a prompt contract, audited from the subagent transcript.",
+ "tool_uses_by_judge": "From the subagent transcript: 1 tool use(s), all Read of its own prompt file (814 lines, every line read); no other tool, path or search. Model reported in the transcript: claude-haiku-5-5.",
+ "dispatch_prompt_digest": "0ed3d4c111753f96e19706c64d197553160b1be9bca061e475f1a5dbd46ec8dd",
+ "raw_reply": "{\"item\": \"S442-017\",\n \"clauses\": {\"compare\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F05\", \"template\": \"Look at the fraction models. Compare \\\\(\\\\frac{{{num}}}{{{den}}}\\\\) and \\\\(\\\\frac{{{b_num}}}{{{b_den}}}\\\\). Which sign makes the statement true: \\\\(\\\\frac{{{num}}}{{{den}}}\\\\) ___ \\\\(\\\\frac{{{b_num}}}{{{b_den}}}\\\\)?\", \"reasoning\": \"F05 carries the task word Compare over two fractions whose numerators are always 1 and whose denominators are 2 and 4 in distinct values on every render, so it produces the comparison of 1/2 and 1/4.\"},\n \"half\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F04\", \"template\": \"Look at the fraction models for \\\\(\\\\frac{{{num}}}{{{den}}}\\\\) and \\\\(\\\\frac{{{b_num}}}{{{b_den}}}\\\\). Which comparison sign is correct: \\\\(\\\\frac{{{num}}}{{{den}}}\\\\) ___ \\\\(\\\\frac{{{b_num}}}{{{b_den}}}\\\\)?\", \"reasoning\": \"F04 prints the fraction with numerator 1 and denominator 2 as one of its two fractions, so the object 1/2 appears in the question text.\"},\n \"quarter\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F04\", \"template\": \"Look at the fraction models for \\\\(\\\\frac{{{num}}}{{{den}}}\\\\) and \\\\(\\\\frac{{{b_num}}}{{{b_den}}}\\\\). Which comparison sign is correct: \\\\(\\\\frac{{{num}}}{{{den}}}\\\\) ___ \\\\(\\\\frac{{{b_num}}}{{{b_den}}}\\\\)?\", \"reasoning\": \"F04 prints the fraction with numerator 1 and denominator 4 as its other fraction, so the object 1/4 appears in the question text.\"},\n \"models\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F04\", \"template\": \"Look at the fraction models for \\\\(\\\\frac{{{num}}}{{{den}}}\\\\) and \\\\(\\\\frac{{{b_num}}}{{{b_den}}}\\\\). Which comparison sign is correct: \\\\(\\\\frac{{{num}}}{{{den}}}\\\\) ___ \\\\(\\\\frac{{{b_num}}}{{{b_den}}}\\\\)?\", \"reasoning\": \"F04 names the fraction models as the representation the learner must look at, which is the models clause.\"}},\n \"failing_families\": [\"F09\"],\n \"failing_templates\": [\"{num} vs {other_num}: the larger top number gives the larger {frac_lbl}.\"],\n \"overall\": \"FAIL\",\n \"reasoning\": \"F09 is a hint. Its num and other_num slots repeat the numerator and b_num generated values, which printed only 1 on every render (printed_runs 1), so the hint compares 1 with 1 and then states that the larger top number gives the larger fraction. The two top numbers are equal for every pair this lc draws, so the hint is misleading, and the stated rule is false as a general rule. The remaining families pass: F04, F05 and F06 print 1 over 2 or 4 with distinct denominators on every render and their keyed answer comes from F10 (printed only the signs less-than and greater-than). F07 (bottom numbers equal check) and F08 (same bottom numbers, bigger top number is larger) state true rules using F01 bottom number, F02 fraction and F03 top number, which are in cumulative_vocab or are gate words for this lc. F12 distractors are signs only, and F11 keys are letters A to D.\"}",
+ "raw_reply_digest": "e163553ab18e0e4900cf9f711a0f069ac1682068a92f83cdc0cd2f8971040741",
+ "packet_digest": "0cd4f99ae4f8b3ec38b7f7218ddcc10ee0efb37ecc9c4e729aea2b3e989e7a67",
+ "family_keys": {
+  "F01": {
+   "source": "backend/app/practice_gen/dna/base.py [gate denominator]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F02": {
+   "source": "backend/app/practice_gen/dna/base.py [gate fraction]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F03": {
+   "source": "backend/app/practice_gen/dna/base.py [gate numerator]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F04": {
+   "source": "backend/app/practice_gen/dna/na/fractions.py",
+   "first_site": "backend/app/practice_gen/dna/na/fractions.py:430",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {
+    "num,b_num": [
+     1,
+     null
+    ]
+   }
+  },
+  "F05": {
+   "source": "backend/app/practice_gen/dna/na/fractions.py",
+   "first_site": "backend/app/practice_gen/dna/na/fractions.py:428",
+   "renderer": "",
+   "path": [
+    2,
+    null
+   ],
+   "first_render_repeating": {
+    "num,b_num": [
+     2,
+     null
+    ]
+   }
+  },
+  "F06": {
+   "source": "backend/app/practice_gen/dna/na/fractions.py",
+   "first_site": "backend/app/practice_gen/dna/na/fractions.py:429",
+   "renderer": "",
+   "path": [
+    4,
+    null
+   ],
+   "first_render_repeating": {
+    "num,b_num": [
+     4,
+     null
+    ]
+   }
+  },
+  "F07": {
+   "source": "backend/app/practice_gen/dna/na/fractions.py",
+   "first_site": "backend/app/practice_gen/dna/na/fractions.py:625",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F08": {
+   "source": "backend/app/practice_gen/dna/na/fractions.py",
+   "first_site": "backend/app/practice_gen/dna/na/fractions.py:626",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F09": {
+   "source": "backend/app/practice_gen/dna/na/fractions.py",
+   "first_site": "backend/app/practice_gen/dna/na/fractions.py:627",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F10": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:32",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F11": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:51",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F12": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:39",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  }
+ },
+ "packet": {
+  "item": "S442-017",
+  "competency": {
+   "text": "Compare 1/2 and 1/4 using models.",
+   "grade": 1,
+   "quarter": 4
+  },
+  "clauses": [
+   {
+    "id": "compare",
+    "kind": "task",
+    "clause": "Compare"
+   },
+   {
+    "id": "half",
+    "kind": "object",
+    "clause": "1/2"
+   },
+   {
+    "id": "quarter",
+    "kind": "object",
+    "clause": "1/4"
+   },
+   {
+    "id": "models",
+    "kind": "representation",
+    "clause": "models"
+   }
+  ],
+  "vocabulary": {
+   "student_vocab": [],
+   "curriculum_vocab": [],
+   "introduces_vocab": [],
+   "cumulative_vocab": [
+    "1 less",
+    "1 more",
+    "10th",
+    "1st",
+    "2nd",
+    "3rd",
+    "4th",
+    "5th",
+    "6th",
+    "7th",
+    "8th",
+    "9th",
+    "addition",
+    "bigger",
+    "compare",
+    "corner",
+    "count",
+    "data",
+    "difference",
+    "digit",
+    "equal",
+    "expanded form",
+    "fraction",
+    "group",
+    "half",
+    "how many",
+    "left",
+    "length",
+    "less",
+    "measure",
+    "missing number",
+    "more",
+    "number",
+    "number line",
+    "numeral",
+    "ones",
+    "pattern",
+    "pictograph",
+    "place value",
+    "quarter",
+    "rectangle",
+    "repeating pattern",
+    "same",
+    "side",
+    "skip counting",
+    "smaller",
+    "square",
+    "subtraction",
+    "sum",
+    "table",
+    "tens",
+    "total",
+    "triangle",
+    "whole"
+   ],
+   "NOT_YET_KNOWN": [
+    "L",
+    "a.m.",
+    "analog clock",
+    "area",
+    "axis",
+    "balance scale",
+    "bar graph",
+    "bill",
+    "calendar",
+    "capacity",
+    "centavo",
+    "centimeter",
+    "certain",
+    "circle",
+    "clockwise",
+    "cm",
+    "coin",
+    "counter-clockwise",
+    "decreasing pattern",
+    "denominator",
+    "division",
+    "elapsed time",
+    "equal groups",
+    "equally likely",
+    "estimate",
+    "even",
+    "g",
+    "gram",
+    "half hour",
+    "half turn",
+    "hour",
+    "hundreds",
+    "impossible",
+    "improper fraction",
+    "increasing pattern",
+    "intersecting",
+    "kg",
+    "kilogram",
+    "less likely",
+    "line",
+    "line of symmetry",
+    "line segment",
+    "liter",
+    "m",
+    "mL",
+    "mass",
+    "meter",
+    "milliliter",
+    "minute",
+    "missing term",
+    "more likely",
+    "multiplication",
+    "nearest hundred",
+    "nearest ten",
+    "nearest thousand",
+    "numerator",
+    "odd",
+    "order of operations",
+    "outcome",
+    "p.m.",
+    "parallel",
+    "perimeter",
+    "perpendicular",
+    "peso",
+    "point",
+    "product",
+    "quarter hour",
+    "quarter turn",
+    "quotient",
+    "ray",
+    "regrouping",
+    "remainder",
+    "round",
+    "ruler",
+    "scale",
+    "similar fractions",
+    "slide",
+    "solid figure",
+    "sq. cm",
+    "square centimeter",
+    "symmetry",
+    "ten thousand",
+    "ten-thousands place",
+    "thousand",
+    "translation",
+    "₱"
+   ],
+   "sentence_max_words": 15,
+   "number_format": "no commas, no thousands separator"
+  },
+  "declared_variants": [
+   [
+    "fraction_model",
+    "area_model"
+   ],
+   [
+    "fraction_model",
+    "number_line"
+   ],
+   [
+    "fraction_model",
+    "set_model"
+   ]
+  ],
+  "declared_bounds": [
+   {
+    "fraction_type": "unit_fraction",
+    "fraction_task_mode": "model",
+    "operation": "compare"
+   }
+  ],
+  "families": [
+   {
+    "id": "F01",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F07",
+     "F08"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='denominator')",
+        "requires_vocab": "denominator",
+        "prints": "bottom number",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F02",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F08",
+     "F09"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='fraction')",
+        "requires_vocab": "fraction",
+        "prints": "fraction",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F03",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F08"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='numerator')",
+        "requires_vocab": "numerator",
+        "prints": "top number",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F04",
+    "template": "Look at the fraction models for \\(\\frac{{{num}}}{{{den}}}\\) and \\(\\frac{{{b_num}}}{{{b_den}}}\\). Which comparison sign is correct: \\(\\frac{{{num}}}{{{den}}}\\) ___ \\(\\frac{{{b_num}}}{{{b_den}}}\\)?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "num",
+       "b_num"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the g1_pairs numerators",
+        "members": [
+         1
+        ]
+       }
+      ],
+      "distinct_in_every_render": false
+     },
+     {
+      "slots": [
+       "den",
+       "b_den"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the g1_pairs denominators",
+        "members": [
+         2,
+         4
+        ]
+       }
+      ],
+      "distinct_in_every_render": true
+     }
+    ],
+    "template_chosen_by_values": [
+     "operation"
+    ]
+   },
+   {
+    "id": "F05",
+    "template": "Look at the fraction models. Compare \\(\\frac{{{num}}}{{{den}}}\\) and \\(\\frac{{{b_num}}}{{{b_den}}}\\). Which sign makes the statement true: \\(\\frac{{{num}}}{{{den}}}\\) ___ \\(\\frac{{{b_num}}}{{{b_den}}}\\)?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "num",
+       "b_num"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the g1_pairs numerators",
+        "members": [
+         1
+        ]
+       }
+      ],
+      "distinct_in_every_render": false
+     },
+     {
+      "slots": [
+       "den",
+       "b_den"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the g1_pairs denominators",
+        "members": [
+         2,
+         4
+        ]
+       }
+      ],
+      "distinct_in_every_render": true
+     }
+    ],
+    "template_chosen_by_values": [
+     "operation"
+    ]
+   },
+   {
+    "id": "F06",
+    "template": "Look at the shaded models. Which sign correctly compares the shaded parts: \\(\\frac{{{num}}}{{{den}}}\\) ___ \\(\\frac{{{b_num}}}{{{b_den}}}\\)?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "num",
+       "b_num"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the g1_pairs numerators",
+        "members": [
+         1
+        ]
+       }
+      ],
+      "distinct_in_every_render": false
+     },
+     {
+      "slots": [
+       "den",
+       "b_den"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the g1_pairs denominators",
+        "members": [
+         2,
+         4
+        ]
+       }
+      ],
+      "distinct_in_every_render": true
+     }
+    ],
+    "template_chosen_by_values": [
+     "operation"
+    ]
+   },
+   {
+    "id": "F07",
+    "template": "To compare {num}/{den} and {other_num}/{other_den}, check if the {den_lbl}s are equal.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "num"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "numerator",
+        "printed_runs": "1",
+        "derived_from_values": [
+         "numerator"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "den"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "denominator",
+        "printed_runs": "2, 4",
+        "derived_from_values": [
+         "denominator"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "other_num"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b_num",
+        "printed_runs": "1",
+        "derived_from_values": [
+         "b_num",
+         "numerator"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "other_den"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b_den",
+        "printed_runs": "2, 4",
+        "derived_from_values": [
+         "b_den",
+         "denominator"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "den_lbl"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F01"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "operation"
+    ]
+   },
+   {
+    "id": "F08",
+    "template": "When {den_lbl}s are the same, the {frac_lbl} with the bigger {num_lbl} is larger.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "den_lbl"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F01"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "frac_lbl"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F02"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "num_lbl"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F03"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "operation"
+    ]
+   },
+   {
+    "id": "F09",
+    "template": "{num} vs {other_num}: the larger top number gives the larger {frac_lbl}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "num"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "numerator",
+        "printed_runs": "1",
+        "derived_from_values": [
+         "numerator"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "other_num"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b_num",
+        "printed_runs": "1",
+        "derived_from_values": [
+         "b_num",
+         "numerator"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "frac_lbl"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F02"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "operation"
+    ]
+   },
+   {
+    "id": "F10",
+    "template": "{answer}",
+    "appears_in": [
+     "format_data.mcq_options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "result",
+        "printed": [
+         "<",
+         ">"
+        ],
+        "derived_from_values": [
+         "result"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F11",
+    "template": "{key}",
+    "appears_in": [
+     "correct_answer"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "key"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the option keys this item shows",
+        "members": [
+         "A",
+         "B",
+         "C",
+         "D"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F12",
+    "template": "{member}",
+    "appears_in": [
+     "distractors",
+     "format_data.mcq_options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "member"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "values['distractors'] (the DNA's own)",
+        "members": [
+         "+",
+         "<",
+         "=",
+         ">"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   }
+  ],
+  "lists": {},
+  "banks": {},
+  "value_derivations": [
+   {
+    "kind": "derives",
+    "key": "answer",
+    "from": [
+     "numerator",
+     "denominator"
+    ]
+   },
+   {
+    "kind": "derives",
+    "key": "fraction_str",
+    "from": [
+     "numerator",
+     "denominator"
+    ]
+   }
+  ],
+  "reason_kinds": {}
+ }
+}

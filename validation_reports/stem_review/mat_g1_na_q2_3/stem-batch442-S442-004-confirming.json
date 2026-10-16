@@ -1,0 +1,931 @@
+{
+ "schema_version": 2,
+ "hash_version": 8,
+ "node_id": "mat_g1_na_q2_3",
+ "record_id": "stem-batch442-S442-004-confirming",
+ "role": "confirming",
+ "confirms": "stem-batch442-S442-004-first",
+ "item_id": "S442-004",
+ "lc_hash": "7aeb4e2f46d62764390df6e60d59e29f61fed244a219411ba22b5ec5f3601bbc",
+ "judged_by": "blind-stem-judge-claude-haiku-batch442-S442-004-confirming",
+ "dispatch_id": "stem-batch442-S442-004-confirming",
+ "filed_at": "2026-10-16T05:01:08Z",
+ "delivery": "Claude Code Agent tool, model=haiku, subagent_type=general-purpose; the judge was told to read only local_only/scratch/h4c/prompts/S442-004.prompt.txt (tests/stem_file.py prompt output, item S442-004; no lc id, no key or packets file in that directory) and reply with what it asks; dispatched with CLAUDE.md loaded (ruling 29). Blindness is a prompt contract, audited from the subagent transcript.",
+ "tool_uses_by_judge": "From the subagent transcript: 1 tool use(s), all Read of its own prompt file (849 lines, every line read); no other tool, path or search. Model reported in the transcript: claude-haiku-5-5.",
+ "dispatch_prompt_digest": "7882f15c248f0d239b05dd4103331bc1d405e9a0b9b938abe2ca868355d9a073",
+ "raw_reply": "{\"item\": \"S442-004\", \"clauses\": {\"decompose\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F14\", \"template\": \"Write {number} as tens and ones, for example 45 = 40 + 5.\", \"reasoning\": \"F14 asks the learner to write a number as tens and ones, which is the decomposition task. Its number slot prints 10, 12, 15, 20, 40, 45 and 50, and each of these decomposes.\"}, \"domain_2_digit\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F14\", \"template\": \"Write {number} as tens and ones, for example 45 = 40 + 5.\", \"reasoning\": \"F14 number slot repeats the generated value number, and every printed value (10, 12, 15, 20, 40, 45, 50) is a 2-digit number.\"}, \"tens_ones\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F14\", \"template\": \"Write {number} as tens and ones, for example 45 = 40 + 5.\", \"reasoning\": \"F14 template names tens and ones directly and its example shows the tens-and-ones form 40 + 5.\"}}, \"failing_families\": [\"F05\", \"F08\", \"F10\", \"F11\", \"F12\", \"F14\"], \"failing_templates\": [\"{d} {count_noun}\", \"{v} + {randint}\", \"{member}\", \"{question_text} The answer is {fill_value}.\", \"{statement}. True or False?\", \"Write {number} as tens and ones, for example 45 = 40 + 5.\"], \"overall\": \"FAIL\", \"reasoning\": \"F14: its example is the keyed answer whenever number prints 45 (printed_runs includes 45), so that question shows its own answer. F11 and F12: F12 wraps F11, which wraps F14 text. The result is an imperative instruction followed by 'The answer is' and then the F12 suffix. F12 adds '. True or False?' to a statement that already ends in a period, so the printed text contains two consecutive periods. The item also asks a learner to judge True or False about an instruction that is not a statement. F05: slot d is derived from number, but slot count_noun has its own domain (one, ones, ten, tens) with no stated link to d. The full set therefore includes mismatched forms such as 4 one or 1 tens, which are wrong English for a Grade 1 learner. F06 and F07 carry this fault through the nesting. F08 appears in correct_answer, and its slots v (tens multiple 10 to 90) and randint (1 to 9) are not derived from number, so the keyed answer can be a decomposition of a different number. F10 members include 40 + 5, which equals the keyed answer when number is 45, and the domain does not exclude the key, so the options can contain a second correct answer. F09, F13, F01, F02, F03, F04 and F07's own domains were checked and raise no fault on their own: F09's printed expanded forms match their numbers, F13 is a plain base-10 blocks instruction, and the F01/F02 gated words are in or out of vocabulary as required.\"}",
+ "raw_reply_digest": "bf9389662097635169c658a9f2598190670ab0687f650d907f1053a621ef9294",
+ "packet_digest": "b1fb691ea39696a3572d1a20931e9d09b143bead219417fbdec7afeb37d71900",
+ "family_keys": {
+  "F01": {
+   "source": "backend/app/practice_gen/dna/base.py [gate place value]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F02": {
+   "source": "backend/app/practice_gen/dna/base.py [gate value]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F03": {
+   "source": "backend/app/practice_gen/dna/na/place_value.py",
+   "first_site": "backend/app/practice_gen/dna/na/place_value.py:438",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F04": {
+   "source": "backend/app/practice_gen/dna/na/place_value.py",
+   "first_site": "backend/app/practice_gen/dna/na/place_value.py:440",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F05": {
+   "source": "backend/app/practice_gen/dna/na/place_value.py",
+   "first_site": "backend/app/practice_gen/dna/na/place_value.py:433",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F06": {
+   "source": "backend/app/practice_gen/dna/na/place_value.py",
+   "first_site": "backend/app/practice_gen/dna/na/place_value.py:436",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F07": {
+   "source": "backend/app/practice_gen/dna/na/place_value.py",
+   "first_site": "backend/app/practice_gen/dna/na/place_value.py:439",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F08": {
+   "source": "backend/app/practice_gen/dna/na/place_value.py",
+   "first_site": "backend/app/practice_gen/dna/na/place_value.py:273",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F09": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:32",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F10": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:39",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F11": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_true_false.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_true_false.py:411",
+   "renderer": "",
+   "path": [
+    6,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F12": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_true_false.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_true_false.py:430",
+   "renderer": "",
+   "path": [
+    6,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F13": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_place_value_blocks.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_place_value_blocks.py:154",
+   "renderer": "",
+   "path": [
+    4,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F14": {
+   "source": "backend/app/practice_gen/generators/base_generator.py",
+   "first_site": "backend/app/practice_gen/generators/base_generator.py:883",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  }
+ },
+ "packet": {
+  "item": "S442-004",
+  "competency": {
+   "text": "Decompose any 2-digit number into tens and ones.",
+   "grade": 1,
+   "quarter": 2
+  },
+  "clauses": [
+   {
+    "id": "decompose",
+    "kind": "task",
+    "clause": "Decompose"
+   },
+   {
+    "id": "domain_2_digit",
+    "kind": "range",
+    "clause": "2-digit number"
+   },
+   {
+    "id": "tens_ones",
+    "kind": "representation",
+    "clause": "tens and ones"
+   }
+  ],
+  "vocabulary": {
+   "student_vocab": [],
+   "curriculum_vocab": [
+    "decompose into tens and ones"
+   ],
+   "introduces_vocab": [
+    "decompose into tens and ones"
+   ],
+   "cumulative_vocab": [
+    "1 less",
+    "1 more",
+    "10th",
+    "1st",
+    "2nd",
+    "3rd",
+    "4th",
+    "5th",
+    "6th",
+    "7th",
+    "8th",
+    "9th",
+    "addition",
+    "bigger",
+    "compare",
+    "corner",
+    "count",
+    "digit",
+    "equal",
+    "group",
+    "how many",
+    "left",
+    "less",
+    "more",
+    "number",
+    "number line",
+    "numeral",
+    "ones",
+    "place value",
+    "rectangle",
+    "same",
+    "side",
+    "skip counting",
+    "smaller",
+    "square",
+    "sum",
+    "tens",
+    "total",
+    "triangle"
+   ],
+   "NOT_YET_KNOWN": [
+    "L",
+    "a.m.",
+    "analog clock",
+    "area",
+    "axis",
+    "balance scale",
+    "bar graph",
+    "bill",
+    "calendar",
+    "capacity",
+    "centavo",
+    "centimeter",
+    "certain",
+    "circle",
+    "clockwise",
+    "cm",
+    "coin",
+    "counter-clockwise",
+    "data",
+    "decreasing pattern",
+    "denominator",
+    "difference",
+    "division",
+    "elapsed time",
+    "equal groups",
+    "equally likely",
+    "estimate",
+    "even",
+    "expanded form",
+    "fraction",
+    "g",
+    "gram",
+    "half",
+    "half hour",
+    "half turn",
+    "hour",
+    "hundreds",
+    "impossible",
+    "improper fraction",
+    "increasing pattern",
+    "intersecting",
+    "kg",
+    "kilogram",
+    "length",
+    "less likely",
+    "line",
+    "line of symmetry",
+    "line segment",
+    "liter",
+    "m",
+    "mL",
+    "mass",
+    "measure",
+    "meter",
+    "milliliter",
+    "minute",
+    "missing number",
+    "missing term",
+    "more likely",
+    "multiplication",
+    "nearest hundred",
+    "nearest ten",
+    "nearest thousand",
+    "numerator",
+    "odd",
+    "order of operations",
+    "outcome",
+    "p.m.",
+    "parallel",
+    "pattern",
+    "perimeter",
+    "perpendicular",
+    "peso",
+    "pictograph",
+    "point",
+    "product",
+    "quarter",
+    "quarter hour",
+    "quarter turn",
+    "quotient",
+    "ray",
+    "regrouping",
+    "remainder",
+    "repeating pattern",
+    "round",
+    "ruler",
+    "scale",
+    "similar fractions",
+    "slide",
+    "solid figure",
+    "sq. cm",
+    "square centimeter",
+    "subtraction",
+    "symmetry",
+    "table",
+    "ten thousand",
+    "ten-thousands place",
+    "thousand",
+    "translation",
+    "whole",
+    "₱"
+   ],
+   "sentence_max_words": 15,
+   "number_format": "no commas, no thousands separator"
+  },
+  "declared_variants": [
+   [
+    "digit_count",
+    "2_digit"
+   ],
+   [
+    "include_zeros",
+    "no"
+   ],
+   [
+    "include_zeros",
+    "yes"
+   ],
+   [
+    "task_type",
+    "decompose"
+   ]
+  ],
+  "declared_bounds": [
+   {
+    "digit_count": "2_digit",
+    "task_type": "decompose"
+   }
+  ],
+  "families": [
+   {
+    "id": "F01",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F03"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='place value')",
+        "requires_vocab": "place value",
+        "prints": "place value",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F02",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F04"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='value')",
+        "requires_vocab": "value",
+        "prints": "worth",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F03",
+    "template": "Break {number} into parts by {pv_phrase}: {exp_form}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "number"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "number",
+        "printed_runs": "10, 12, 15, 20, 40, 45, 50",
+        "derived_from_values": [
+         "number"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "pv_phrase"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F01"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "exp_form"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "expanded_form",
+        "printed": [
+         "10 + 0",
+         "10 + 2",
+         "10 + 5",
+         "20 + 0",
+         "40 + 0",
+         "40 + 5",
+         "50 + 0"
+        ],
+        "derived_from_values": [
+         "expanded_form"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F04",
+    "template": "Each part shows how much that digit is {val_phrase} in its position.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "val_phrase"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F02"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F05",
+    "template": "{d} {count_noun}",
+    "appears_in": [],
+    "nested_in": [
+     "F06"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "d"
+      ],
+      "domains": [
+       {
+        "domain": "a number computed by the generator",
+        "reason": "arithmetic",
+        "derived_from_values": [
+         "number"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "count_noun"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the place name or its singular (dna.base.count_noun)",
+        "members": [
+         "one",
+         "ones",
+         "ten",
+         "tens"
+        ],
+        "derived_from_values": [
+         "number"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F06",
+    "template": "{join} and {v}",
+    "appears_in": [],
+    "nested_in": [
+     "F07"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "join",
+       "v"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F05"
+        ]
+       }
+      ],
+      "distinct_in_every_render": true
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F07",
+    "template": "{number} is {counted}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "number"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "number",
+        "printed_runs": "10, 12, 15, 20, 40, 45, 50",
+        "derived_from_values": [
+         "number"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "counted"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F06"
+        ],
+        "derived_from_values": [
+         "number"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F08",
+    "template": "{v} + {randint}",
+    "appears_in": [
+     "correct_answer",
+     "distractors",
+     "format_data.mcq_options",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "v"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "a tens multiple, 10 to 90",
+        "members": [
+         10,
+         20,
+         30,
+         40,
+         50,
+         60,
+         70,
+         80,
+         90
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "randint"
+      ],
+      "domains": [
+       {
+        "domain": "a number in a range",
+        "basis": "a ones digit, 1 to 9",
+        "lo": 1,
+        "hi": 9
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F09",
+    "template": "{answer}",
+    "appears_in": [
+     "correct_answer",
+     "format_data.mcq_options",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "expanded_form",
+        "printed": [
+         "10 + 0",
+         "10 + 2",
+         "10 + 5",
+         "20 + 0",
+         "40 + 0",
+         "40 + 5",
+         "50 + 0"
+        ],
+        "derived_from_values": [
+         "expanded_form"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F10",
+    "template": "{member}",
+    "appears_in": [
+     "distractors",
+     "format_data.mcq_options",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "member"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "QuestionContext.distractors (the generator's own)",
+        "members": [
+         "1 + 0",
+         "1 + 2",
+         "1 + 5",
+         "1",
+         "10 + 4",
+         "10 + 8",
+         "2 + 0",
+         "2",
+         "20 + 1",
+         "20 + 2",
+         "20 + 7",
+         "30 + 4",
+         "30 + 5",
+         "30 + 6",
+         "4 + 0",
+         "4 + 5",
+         "4",
+         "40 + 5",
+         "40 + 7",
+         "5 + 0",
+         "5",
+         "50 + 1",
+         "50 + 2",
+         "50 + 4",
+         "50 + 5",
+         "50 + 6",
+         "60 + 5",
+         "60 + 8",
+         "70 + 1",
+         "70 + 2",
+         "70 + 5",
+         "70 + 8",
+         "80 + 5",
+         "80 + 6",
+         "80 + 9",
+         "90 + 1",
+         "90 + 2",
+         "90 + 3"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F11",
+    "template": "{question_text} The answer is {fill_value}.",
+    "appears_in": [
+     "format_data.statement"
+    ],
+    "nested_in": [
+     "F12"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "question_text"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F14"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "fill_value"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the distractors shaped like the keyed answer",
+        "members": [
+         "1 + 2",
+         "1 + 5",
+         "2 + 0",
+         "20 + 1",
+         "4 + 0",
+         "5 + 0",
+         "50 + 1",
+         "50 + 6",
+         "60 + 5",
+         "70 + 5",
+         "70 + 8",
+         "80 + 5",
+         "80 + 9"
+        ]
+       },
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the keyed answer (a true statement)",
+        "members": [
+         "10 + 0",
+         "10 + 2",
+         "40 + 5"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F12",
+    "template": "{statement}. True or False?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "statement"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F11"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F13",
+    "template": "Use base-10 blocks to show the number {total}.",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "total"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "number",
+        "printed_runs": "10, 12, 15, 20, 40, 45, 50",
+        "derived_from_values": [
+         "number"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F14",
+    "template": "Write {number} as tens and ones, for example 45 = 40 + 5.",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [
+     "F11"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "number"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "number",
+        "printed_runs": "10, 12, 15, 20, 40, 45, 50",
+        "derived_from_values": [
+         "a",
+         "number",
+         "start"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   }
+  ],
+  "lists": {},
+  "banks": {},
+  "value_derivations": [],
+  "reason_kinds": {
+   "arithmetic": "a number the generator computes from the generated values named in src (a half, a sum, a difference, a running total, a place's digit). Its range is the image of those values' own domains; whether the arithmetic is RIGHT is the hint contract's (§16) and §1E's to check, not §14's."
+  }
+ }
+}

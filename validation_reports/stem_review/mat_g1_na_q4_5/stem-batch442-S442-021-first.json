@@ -1,0 +1,690 @@
+{
+ "schema_version": 2,
+ "hash_version": 8,
+ "node_id": "mat_g1_na_q4_5",
+ "record_id": "stem-batch442-S442-021-first",
+ "role": "first",
+ "confirms": null,
+ "item_id": "S442-021",
+ "lc_hash": "1fbe7227155e6c501876c7c924e3063c0c5e007a813af658c352cdd4b4336a42",
+ "judged_by": "blind-stem-judge-claude-haiku-batch442-S442-021-first",
+ "dispatch_id": "stem-batch442-S442-021-first",
+ "filed_at": "2026-10-15T16:47:02Z",
+ "delivery": "Claude Code Agent tool, model=haiku, subagent_type=general-purpose; the judge was told to read only local_only/scratch/h4c/prompts/S442-021.prompt.txt (tests/stem_file.py prompt output, item S442-021; no lc id, no key or packets file in that directory) and reply with what it asks; dispatched with CLAUDE.md loaded (ruling 29). Blindness is a prompt contract, audited from the subagent transcript.",
+ "tool_uses_by_judge": "From the subagent transcript: 1 tool use(s), all Read of its own prompt file (638 lines, every line read); no other tool, path or search. Model reported in the transcript: claude-haiku-5-5.",
+ "dispatch_prompt_digest": "46164fde18e7fced878d4787bb837d7b0d6e7d144c4e9596a589f54899614a43",
+ "raw_reply": "{\"item\": \"S442-021\", \"clauses\": {\"compare\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F05\", \"template\": \"Which has a greater value: {desc1} or {desc2}?\", \"reasoning\": \"F05 asks the learner to compare two money descriptions with 'greater value', which is the task named by 'Compare'. Its desc1 and desc2 slots draw from nested families F07, F09 and F11.\"}, \"different_denominations\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F05\", \"template\": \"Which has a greater value: {desc1} or {desc2}?\", \"reasoning\": \"F05's slots are declared distinct_in_every_render: true, so the two compared descriptions differ. count is fixed at 1 in F07, so a difference comes from the denomination or the unit. Note: a same-denomination coin/bill pair is also possible through F07's unit slot, so the denomination difference is not guaranteed by F05 alone.\"}, \"peso_coins\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F09\", \"template\": \"{answer}\", \"reasoning\": \"F09's printed values include '1 ₱1 coin', '1 ₱10 coin' and '1 ₱5 coin', which are peso coin denominations, and F09 is the keyed answer that a problem shows.\"}, \"excluding_centavo_coins\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F09\", \"template\": \"{answer}\", \"reasoning\": \"Every printed F09 value and every F08 denom member (1, 5, 10, 20, 50, 100) is a whole-peso amount, so no problem shows a centavo coin. The exclusion is honored by the domains.\"}, \"bills\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F09\", \"template\": \"{answer}\", \"reasoning\": \"F09's printed values include '1 ₱20 bill', '1 ₱50 bill' and '1 ₱100 bill', which are peso bill denominations.\"}, \"up_to_100\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F09\", \"template\": \"{answer}\", \"reasoning\": \"F09 prints '1 ₱100 bill', and the F08 denom members have a maximum of 100, so values reach the declared bound of 100 and no value exceeds it.\"}}, \"failing_families\": [\"F05\", \"F06\", \"F07\"], \"failing_templates\": [\"Which has a greater value: {desc1} or {desc2}?\", \"Which has a smaller value: {desc1} or {desc2}?\", \"{count} {face} {unit}\"], \"overall\": \"FAIL\", \"reasoning\": \"F07 '{count} {face} {unit}' fills unit from the generator's own choices (bill, bills, coin, coins) and face from F08 '₱{denom}' with denom from 1, 5, 10, 20, 50, 100. Neither slot is tied to the other, and no derived_from_values or template choice links them. So F07 can print a bill of a denomination the Philippines does not issue (₱1, ₱5 or ₱10 as bills, ₱50 or ₱100 as coins) and can pair the plural noun with count, which is fixed at 1. Such text is incorrect for a grade 1 learner. F05 and F06 nest F07 through desc1 and desc2 (distinct_in_every_render: true), so their question_text prints the same wrong values, which makes them failing. F09 and F11 printed or listed values are all valid peso bills and coins, and F04, F01, F02 and F03 contain no wrong content, so they are not at fault. Vocabulary: 'greater' and 'smaller' are not in NOT_YET_KNOWN, so the gate is not violated. Sentences stay within sentence_max_words (15) in the printed F05 and F06 forms.\"}",
+ "raw_reply_digest": "dab912935c47cf091e867a0ce378d6de6a7b1e43f0e2477dc4d27ac22db42e82",
+ "packet_digest": "463857b12c56f8d5752103d6a581f052a618235509c3e60f87f01954d6d6b08a",
+ "family_keys": {
+  "F01": {
+   "source": "backend/app/practice_gen/dna/na/money_peso.py",
+   "first_site": "backend/app/practice_gen/dna/na/money_peso.py:546",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F02": {
+   "source": "backend/app/practice_gen/dna/na/money_peso.py",
+   "first_site": "backend/app/practice_gen/dna/na/money_peso.py:544",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F03": {
+   "source": "backend/app/practice_gen/dna/na/money_peso.py",
+   "first_site": "backend/app/practice_gen/dna/na/money_peso.py:545",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F04": {
+   "source": "backend/app/practice_gen/dna/na/money_peso.py",
+   "first_site": "backend/app/practice_gen/dna/na/money_peso.py:385",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F05": {
+   "source": "backend/app/practice_gen/dna/na/money_peso.py",
+   "first_site": "backend/app/practice_gen/dna/na/money_peso.py:374",
+   "renderer": "",
+   "path": [
+    2,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F06": {
+   "source": "backend/app/practice_gen/dna/na/money_peso.py",
+   "first_site": "backend/app/practice_gen/dna/na/money_peso.py:382",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F07": {
+   "source": "backend/app/practice_gen/dna/na/money_peso.py",
+   "first_site": "backend/app/practice_gen/dna/na/money_peso.py:360",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F08": {
+   "source": "backend/app/practice_gen/dna/na/money_peso.py",
+   "first_site": "backend/app/practice_gen/dna/na/money_peso.py:357",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F09": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:32",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F10": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:51",
+   "renderer": "",
+   "path": [
+    4,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F11": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:39",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  }
+ },
+ "packet": {
+  "item": "S442-021",
+  "competency": {
+   "text": "Compare different denominations of peso coins (excluding centavo coins) and bills up to ₱100.",
+   "grade": 1,
+   "quarter": 4
+  },
+  "clauses": [
+   {
+    "id": "compare",
+    "kind": "task",
+    "clause": "Compare"
+   },
+   {
+    "id": "different_denominations",
+    "kind": "property",
+    "clause": "different denominations"
+   },
+   {
+    "id": "peso_coins",
+    "kind": "object",
+    "clause": "peso coins"
+   },
+   {
+    "id": "excluding_centavo_coins",
+    "kind": "property",
+    "clause": "excluding centavo coins"
+   },
+   {
+    "id": "bills",
+    "kind": "object",
+    "clause": "bills"
+   },
+   {
+    "id": "up_to_100",
+    "kind": "range",
+    "clause": "up to ₱100"
+   }
+  ],
+  "vocabulary": {
+   "student_vocab": [],
+   "curriculum_vocab": [
+    "denomination"
+   ],
+   "introduces_vocab": [
+    "denomination"
+   ],
+   "cumulative_vocab": [
+    "1 less",
+    "1 more",
+    "10th",
+    "1st",
+    "2nd",
+    "3rd",
+    "4th",
+    "5th",
+    "6th",
+    "7th",
+    "8th",
+    "9th",
+    "addition",
+    "bigger",
+    "bill",
+    "coin",
+    "compare",
+    "corner",
+    "count",
+    "data",
+    "difference",
+    "digit",
+    "equal",
+    "expanded form",
+    "fraction",
+    "group",
+    "half",
+    "how many",
+    "left",
+    "length",
+    "less",
+    "measure",
+    "missing number",
+    "more",
+    "number",
+    "number line",
+    "numeral",
+    "ones",
+    "pattern",
+    "peso",
+    "pictograph",
+    "place value",
+    "quarter",
+    "rectangle",
+    "repeating pattern",
+    "same",
+    "side",
+    "skip counting",
+    "smaller",
+    "square",
+    "subtraction",
+    "sum",
+    "table",
+    "tens",
+    "total",
+    "triangle",
+    "whole",
+    "₱"
+   ],
+   "NOT_YET_KNOWN": [
+    "L",
+    "a.m.",
+    "analog clock",
+    "area",
+    "axis",
+    "balance scale",
+    "bar graph",
+    "calendar",
+    "capacity",
+    "centavo",
+    "centimeter",
+    "certain",
+    "circle",
+    "clockwise",
+    "cm",
+    "counter-clockwise",
+    "decreasing pattern",
+    "denominator",
+    "division",
+    "elapsed time",
+    "equal groups",
+    "equally likely",
+    "estimate",
+    "even",
+    "g",
+    "gram",
+    "half hour",
+    "half turn",
+    "hour",
+    "hundreds",
+    "impossible",
+    "improper fraction",
+    "increasing pattern",
+    "intersecting",
+    "kg",
+    "kilogram",
+    "less likely",
+    "line",
+    "line of symmetry",
+    "line segment",
+    "liter",
+    "m",
+    "mL",
+    "mass",
+    "meter",
+    "milliliter",
+    "minute",
+    "missing term",
+    "more likely",
+    "multiplication",
+    "nearest hundred",
+    "nearest ten",
+    "nearest thousand",
+    "numerator",
+    "odd",
+    "order of operations",
+    "outcome",
+    "p.m.",
+    "parallel",
+    "perimeter",
+    "perpendicular",
+    "point",
+    "product",
+    "quarter hour",
+    "quarter turn",
+    "quotient",
+    "ray",
+    "regrouping",
+    "remainder",
+    "round",
+    "ruler",
+    "scale",
+    "similar fractions",
+    "slide",
+    "solid figure",
+    "sq. cm",
+    "square centimeter",
+    "symmetry",
+    "ten thousand",
+    "ten-thousands place",
+    "thousand",
+    "translation"
+   ],
+   "sentence_max_words": 15,
+   "number_format": "no commas, no thousands separator"
+  },
+  "declared_variants": [
+   [
+    "context",
+    "pure"
+   ],
+   [
+    "context",
+    "word_problem"
+   ],
+   [
+    "denomination_type",
+    "bills"
+   ],
+   [
+    "denomination_type",
+    "coins"
+   ],
+   [
+    "denomination_type",
+    "mixed"
+   ],
+   [
+    "task_type",
+    "count_total"
+   ],
+   [
+    "task_type",
+    "give_money"
+   ],
+   [
+    "task_type",
+    "make_change"
+   ]
+  ],
+  "declared_bounds": [
+   {
+    "operation": "compare",
+    "max_total": [
+     1,
+     100
+    ]
+   }
+  ],
+  "families": [
+   {
+    "id": "F01",
+    "template": "Compare the two values to see which one is greater.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": [
+     "operation"
+    ]
+   },
+   {
+    "id": "F02",
+    "template": "Find the total value of the first group of money.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": [
+     "operation"
+    ]
+   },
+   {
+    "id": "F03",
+    "template": "Find the total value of the second group of money.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": [
+     "operation"
+    ]
+   },
+   {
+    "id": "F04",
+    "template": "They are equal",
+    "appears_in": [
+     "distractors",
+     "format_data.mcq_options",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": [
+     "operation"
+    ]
+   },
+   {
+    "id": "F05",
+    "template": "Which has a greater value: {desc1} or {desc2}?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "desc1",
+       "desc2"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F07",
+         "F09",
+         "F11"
+        ]
+       }
+      ],
+      "distinct_in_every_render": true
+     }
+    ],
+    "template_chosen_by_values": [
+     "operation"
+    ]
+   },
+   {
+    "id": "F06",
+    "template": "Which has a smaller value: {desc1} or {desc2}?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "desc1",
+       "desc2"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F07",
+         "F09",
+         "F11"
+        ]
+       }
+      ],
+      "distinct_in_every_render": true
+     }
+    ],
+    "template_chosen_by_values": [
+     "operation"
+    ]
+   },
+   {
+    "id": "F07",
+    "template": "{count} {face} {unit}",
+    "appears_in": [
+     "correct_answer",
+     "distractors",
+     "format_data.mcq_options",
+     "format_data.options"
+    ],
+    "nested_in": [
+     "F05",
+     "F06"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "count"
+      ],
+      "domains": [
+       {
+        "domain": "a number in a range",
+        "basis": "how many of one denomination the pile holds",
+        "lo": 1,
+        "hi": 1
+       }
+      ]
+     },
+     {
+      "slots": [
+       "face"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F08"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "unit"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "coin/bill, singular or plural",
+        "members": [
+         "bill",
+         "bills",
+         "coin",
+         "coins"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F08",
+    "template": "₱{denom}",
+    "appears_in": [],
+    "nested_in": [
+     "F07"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "denom"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the pile get_desc describes",
+        "members": [
+         1,
+         10,
+         100,
+         20,
+         5,
+         50
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F09",
+    "template": "{answer}",
+    "appears_in": [
+     "correct_answer",
+     "format_data.mcq_options",
+     "format_data.options"
+    ],
+    "nested_in": [
+     "F05",
+     "F06"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "answer",
+        "printed": [
+         "1 ₱1 coin",
+         "1 ₱10 coin",
+         "1 ₱100 bill",
+         "1 ₱20 bill",
+         "1 ₱5 coin",
+         "1 ₱50 bill"
+        ],
+        "derived_from_values": [
+         "answer"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F10",
+    "template": "{key}",
+    "appears_in": [
+     "correct_answer"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "key"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the option keys this item shows",
+        "members": [
+         "A",
+         "B",
+         "C",
+         "D"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F11",
+    "template": "{member}",
+    "appears_in": [
+     "distractors",
+     "format_data.mcq_options",
+     "format_data.options"
+    ],
+    "nested_in": [
+     "F05",
+     "F06"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "member"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "QuestionContext.distractors (the generator's own)",
+        "members": [
+         "1 ₱1 coin",
+         "1 ₱10 coin",
+         "1 ₱100 bill",
+         "1 ₱20 bill",
+         "1 ₱5 coin",
+         "1 ₱50 bill",
+         "They are equal"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   }
+  ],
+  "lists": {},
+  "banks": {},
+  "value_derivations": [],
+  "reason_kinds": {}
+ }
+}

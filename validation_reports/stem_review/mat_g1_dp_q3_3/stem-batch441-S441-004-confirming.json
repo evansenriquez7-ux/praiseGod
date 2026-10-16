@@ -1,0 +1,729 @@
+{
+ "schema_version": 2,
+ "hash_version": 8,
+ "node_id": "mat_g1_dp_q3_3",
+ "record_id": "stem-batch441-S441-004-confirming",
+ "role": "confirming",
+ "confirms": "stem-batch441-S441-004-first",
+ "item_id": "S441-004",
+ "lc_hash": "aa06f7f5d3cfc0840e6a376ac73cd00872a8a5fc45228dd2b90d4bba3fc07e14",
+ "judged_by": "blind-stem-judge-claude-haiku-batch441-S441-004-confirming",
+ "dispatch_id": "stem-batch441-S441-004-confirming",
+ "filed_at": "2026-10-16T04:54:04Z",
+ "delivery": "Claude Code Agent tool, model=haiku, subagent_type=general-purpose; the judge was told to read only local_only/scratch/h4c/prompts/S441-004.prompt.txt (tests/stem_file.py prompt output, item S441-004; no lc id, no key or packets file in that directory) and reply with what it asks; dispatched with CLAUDE.md loaded (ruling 29). Blindness is a prompt contract, audited from the subagent transcript.",
+ "tool_uses_by_judge": "From the subagent transcript: 1 tool use(s), all Read of its own prompt file (687 lines, every line read); no other tool, path or search. Model reported in the transcript: claude-haiku-5-5.",
+ "dispatch_prompt_digest": "20bb93725f4f15092a4c2a4d89fde3f86c20340ba47228c2943872988189b9ad",
+ "raw_reply": "{\"item\": \"S441-004\",\n \"clauses\": {\"organize_data\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F05\", \"template\": \"Count the pictures in each row of the {pg_word}, then write the counts for {cat_list} in the {table_word}.\", \"reasoning\": \"F05 asks the learner to count the pictures in each row of the pictograph and write the counts into the table, which is organizing the pictograph's data into a table. The producing family is itself failing (see below), but the clause is producible.\"},\n \"pictograph\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F06\", \"template\": \"Look at the {pg_word}. Write the correct count for each row in the {table_word}: {cat_list}.\", \"reasoning\": \"F06 names the pictograph as the object the learner reads (pg_word draws only on F01, which prints the gated word pictograph). The producing family is itself failing (see below), but the clause is producible.\"},\n \"without_scale\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F02\", \"template\": \"Each picture stands for 1 item.\", \"reasoning\": \"F02 is a hint stating a one-picture-to-one-item correspondence, which is the no-scale condition; the declared variant scale_type no_scale covers it. No family prints the word scale, which is NOT_YET_KNOWN.\"},\n \"table\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F07\", \"template\": \"The {pg_word} shows {cat_list}. Fill in the {table_word} with the correct counts.\", \"reasoning\": \"F07 asks the learner to fill in the table with counts. table_word prints only the gated word table, which is introduced for this lc. The producing family is itself failing (see below), but the clause is producible.\"}},\n \"failing_families\": [\"F05\", \"F06\", \"F07\", \"F09\"],\n \"failing_templates\": [\"Count the pictures in each row of the {pg_word}, then write the counts for {cat_list} in the {table_word}.\", \"Look at the {pg_word}. Write the correct count for each row in the {table_word}: {cat_list}.\", \"The {pg_word} shows {cat_list}. Fill in the {table_word} with the correct counts.\", \"{join} and {v}\"],\n \"overall\": \"FAIL\",\n \"reasoning\": \"Two defects. (1) Length: sentence_max_words is 15. F05 is a single sentence whose fixed wording alone is 14 words before cat_list (which adds at least 4 words) and 3 more after it, so every render exceeds 15 words. F06's second sentence is 10 fixed words plus the cat_list tokens; with two-word category members (Grade 1 through Grade 4 are in the F09 domain) it reaches 19 words. (2) Duplicates: F09 is '{join} and {v}', where join is F10 (three distinct members, distinct_in_every_render true) and v is drawn from the same category domain with no distinctness statement. Nothing in the domains stops v from equalling one of the three joined categories, so a learner can be shown one category twice in the list that the table must count, which is misleading. F06 and F07 print cat_list from F09 and inherit this fault. F02 (1 item per picture), F03, F04, F01 and F08 pass: they print only the gated word table or pictograph, or a count-based hint. F04's words (category, items, record) are common words not in NOT_YET_KNOWN, so they are not flagged.\"}",
+ "raw_reply_digest": "e36865c6d2e9bd4cb0257136410fba23914cbba9eaa68f1fddf6959e6d5a0680",
+ "packet_digest": "0afc2390de56b8e15072b2c974d7b3d2cb4ff1e969e3ce141aa3f98680aaf2a2",
+ "family_keys": {
+  "F01": {
+   "source": "backend/app/practice_gen/dna/base.py [gate pictograph]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F02": {
+   "source": "backend/app/practice_gen/dna/dp/pictographs.py",
+   "first_site": "backend/app/practice_gen/dna/dp/pictographs.py:559",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F03": {
+   "source": "backend/app/practice_gen/dna/dp/pictographs.py",
+   "first_site": "backend/app/practice_gen/dna/dp/pictographs.py:549",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F04": {
+   "source": "backend/app/practice_gen/dna/dp/pictographs.py [gate table]",
+   "first_site": "backend/app/practice_gen/dna/dp/pictographs.py:591",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F05": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_fill_in_table.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_fill_in_table.py:91",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F06": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_fill_in_table.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_fill_in_table.py:89",
+   "renderer": "",
+   "path": [
+    2,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F07": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_fill_in_table.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_fill_in_table.py:90",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F08": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_fill_in_table.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_fill_in_table.py:86",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F09": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_fill_in_table.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_fill_in_table.py:229",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F10": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_fill_in_table.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_fill_in_table.py:229",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  }
+ },
+ "packet": {
+  "item": "S441-004",
+  "competency": {
+   "text": "Organize data in a pictograph without a scale into a table.",
+   "grade": 1,
+   "quarter": 3
+  },
+  "clauses": [
+   {
+    "id": "organize_data",
+    "kind": "task",
+    "clause": "Organize data"
+   },
+   {
+    "id": "pictograph",
+    "kind": "object",
+    "clause": "pictograph"
+   },
+   {
+    "id": "without_scale",
+    "kind": "property",
+    "clause": "without a scale"
+   },
+   {
+    "id": "table",
+    "kind": "representation",
+    "clause": "table"
+   }
+  ],
+  "vocabulary": {
+   "student_vocab": [
+    "table"
+   ],
+   "curriculum_vocab": [
+    "organize data"
+   ],
+   "introduces_vocab": [
+    "organize data",
+    "table"
+   ],
+   "cumulative_vocab": [
+    "1 less",
+    "1 more",
+    "10th",
+    "1st",
+    "2nd",
+    "3rd",
+    "4th",
+    "5th",
+    "6th",
+    "7th",
+    "8th",
+    "9th",
+    "addition",
+    "bigger",
+    "compare",
+    "corner",
+    "count",
+    "data",
+    "difference",
+    "digit",
+    "equal",
+    "expanded form",
+    "group",
+    "how many",
+    "left",
+    "length",
+    "less",
+    "measure",
+    "missing number",
+    "more",
+    "number",
+    "number line",
+    "numeral",
+    "ones",
+    "pattern",
+    "pictograph",
+    "place value",
+    "rectangle",
+    "repeating pattern",
+    "same",
+    "side",
+    "skip counting",
+    "smaller",
+    "square",
+    "subtraction",
+    "sum",
+    "tens",
+    "total",
+    "triangle"
+   ],
+   "NOT_YET_KNOWN": [
+    "L",
+    "a.m.",
+    "analog clock",
+    "area",
+    "axis",
+    "balance scale",
+    "bar graph",
+    "bill",
+    "calendar",
+    "capacity",
+    "centavo",
+    "centimeter",
+    "certain",
+    "circle",
+    "clockwise",
+    "cm",
+    "coin",
+    "counter-clockwise",
+    "decreasing pattern",
+    "denominator",
+    "division",
+    "elapsed time",
+    "equal groups",
+    "equally likely",
+    "estimate",
+    "even",
+    "fraction",
+    "g",
+    "gram",
+    "half",
+    "half hour",
+    "half turn",
+    "hour",
+    "hundreds",
+    "impossible",
+    "improper fraction",
+    "increasing pattern",
+    "intersecting",
+    "kg",
+    "kilogram",
+    "less likely",
+    "line",
+    "line of symmetry",
+    "line segment",
+    "liter",
+    "m",
+    "mL",
+    "mass",
+    "meter",
+    "milliliter",
+    "minute",
+    "missing term",
+    "more likely",
+    "multiplication",
+    "nearest hundred",
+    "nearest ten",
+    "nearest thousand",
+    "numerator",
+    "odd",
+    "order of operations",
+    "outcome",
+    "p.m.",
+    "parallel",
+    "perimeter",
+    "perpendicular",
+    "peso",
+    "point",
+    "product",
+    "quarter",
+    "quarter hour",
+    "quarter turn",
+    "quotient",
+    "ray",
+    "regrouping",
+    "remainder",
+    "round",
+    "ruler",
+    "scale",
+    "similar fractions",
+    "slide",
+    "solid figure",
+    "sq. cm",
+    "square centimeter",
+    "symmetry",
+    "ten thousand",
+    "ten-thousands place",
+    "thousand",
+    "translation",
+    "whole",
+    "₱"
+   ],
+   "sentence_max_words": 15,
+   "number_format": "no commas, no thousands separator"
+  },
+  "declared_variants": [
+   [
+    "scale_type",
+    "no_scale"
+   ],
+   [
+    "task_type",
+    "organize_table"
+   ]
+  ],
+  "declared_bounds": [
+   {
+    "task_type": "organize_table",
+    "scale_type": "no_scale"
+   }
+  ],
+  "families": [
+   {
+    "id": "F01",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F03",
+     "F05",
+     "F06",
+     "F07"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='pictograph')",
+        "requires_vocab": "pictograph",
+        "prints": "pictograph",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F02",
+    "template": "Each picture stands for 1 item.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F03",
+    "template": "Look at the {pg_label} carefully.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "pg_label"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F01",
+         "F08"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F04",
+    "template": "Count the items for each category and record them in the {chart_word}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "chart_word"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "'table' gated by cumulative_vocab",
+        "requires_vocab": "table",
+        "prints": "table",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F05",
+    "template": "Count the pictures in each row of the {pg_word}, then write the counts for {cat_list} in the {table_word}.",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "pg_word"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F01",
+         "F08"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "cat_list"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F09"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "table_word"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "'table' gated by cumulative_vocab",
+        "requires_vocab": "table",
+        "prints": "table",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F06",
+    "template": "Look at the {pg_word}. Write the correct count for each row in the {table_word}: {cat_list}.",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "pg_word"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F01",
+         "F08"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "table_word"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "'table' gated by cumulative_vocab",
+        "requires_vocab": "table",
+        "prints": "table",
+        "words_left_out": 1
+       }
+      ]
+     },
+     {
+      "slots": [
+       "cat_list"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F09"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F07",
+    "template": "The {pg_word} shows {cat_list}. Fill in the {table_word} with the correct counts.",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "pg_word"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F01",
+         "F08"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "cat_list"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F09"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "table_word"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "'table' gated by cumulative_vocab",
+        "requires_vocab": "table",
+        "prints": "table",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F08",
+    "template": "pictograph",
+    "appears_in": [],
+    "nested_in": [
+     "F03",
+     "F05",
+     "F06",
+     "F07"
+    ],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F09",
+    "template": "{join} and {v}",
+    "appears_in": [],
+    "nested_in": [
+     "F05",
+     "F06",
+     "F07"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "join"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F10"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "v"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the table's categories",
+        "members": [
+         "Art",
+         "English",
+         "Grade 1",
+         "Grade 2",
+         "Grade 3",
+         "Grade 4",
+         "Math",
+         "Monday",
+         "Science",
+         "Thursday",
+         "Tuesday",
+         "Wednesday",
+         "apples",
+         "bananas",
+         "basketball",
+         "birds",
+         "blue",
+         "cats",
+         "daisies",
+         "dogs",
+         "fish",
+         "grapes",
+         "green",
+         "mangoes",
+         "red",
+         "roses",
+         "running",
+         "sunflowers",
+         "swimming",
+         "tulips",
+         "volleyball",
+         "yellow"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F10",
+    "template": "{p0}, {p1}, {p2}",
+    "appears_in": [],
+    "nested_in": [
+     "F09"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "p0",
+       "p1",
+       "p2"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the table's categories",
+        "members": [
+         "Art",
+         "English",
+         "Grade 1",
+         "Grade 2",
+         "Grade 3",
+         "Grade 4",
+         "Math",
+         "Monday",
+         "Science",
+         "Thursday",
+         "Tuesday",
+         "Wednesday",
+         "apples",
+         "bananas",
+         "basketball",
+         "birds",
+         "blue",
+         "cats",
+         "daisies",
+         "dogs",
+         "fish",
+         "grapes",
+         "green",
+         "mangoes",
+         "red",
+         "roses",
+         "running",
+         "sunflowers",
+         "swimming",
+         "tulips",
+         "volleyball",
+         "yellow"
+        ]
+       }
+      ],
+      "distinct_in_every_render": true
+     }
+    ],
+    "template_chosen_by_values": []
+   }
+  ],
+  "lists": {},
+  "banks": {},
+  "value_derivations": [],
+  "reason_kinds": {}
+ }
+}

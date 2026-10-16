@@ -1,0 +1,603 @@
+{
+ "schema_version": 2,
+ "hash_version": 8,
+ "node_id": "mat_g3_mg_q4_2",
+ "record_id": "stem-batch445-S445-021-first",
+ "role": "first",
+ "confirms": null,
+ "item_id": "S445-021",
+ "lc_hash": "2861755767d1817ea68c57d548207586eb2078a78accac4e078dce134d665a97",
+ "judged_by": "blind-stem-judge-claude-haiku-batch445-S445-021-first",
+ "dispatch_id": "stem-batch445-S445-021-first",
+ "filed_at": "2026-10-15T16:48:02Z",
+ "delivery": "Claude Code Agent tool, model=haiku, subagent_type=general-purpose; the judge was told to read only local_only/scratch/h4c/prompts/S445-021.prompt.txt (tests/stem_file.py prompt output, item S445-021; no lc id, no key or packets file in that directory) and reply with what it asks; dispatched with CLAUDE.md loaded (ruling 29). Blindness is a prompt contract, audited from the subagent transcript.",
+ "tool_uses_by_judge": "From the subagent transcript: 1 tool use(s), all Read of its own prompt file (581 lines, every line read); no other tool, path or search. Model reported in the transcript: claude-haiku-5-5.",
+ "dispatch_prompt_digest": "f4a70bebcfaef094708d40d04acdda7dcc09e5ff93c0a0257502f6d4f94e3546",
+ "raw_reply": "{\"item\": \"S445-021\", \"clauses\": {\"complete\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F08\", \"template\": \"{question}\", \"reasoning\": \"Bank rows of _ITEM_POOL that print through F08 ask the learner to complete the figure: the row with the question about a point 4 grid units to the right (complete the figure), the row about a point 2 grid units above a horizontal line (complete the symmetric figure), and the butterfly row (complete the figure). F08 is failing under Rule 1 for a different reason; this clause is still producible.\"}, \"figure\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F08\", \"template\": \"{question}\", \"reasoning\": \"The row whose question begins To complete a symmetric figure across a vertical line of symmetry and the rows asking to complete the figure print the word figure through F08.\"}, \"symmetric_with_respect_to_a_line\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F08\", \"template\": \"{question}\", \"reasoning\": \"Bank rows print symmetric figure across a vertical line of symmetry and horizontal line of symmetry through F08, so the property of symmetry with respect to a line is addressed.\"}}, \"failing_families\": [\"F05\", \"F07\", \"F08\"], \"failing_templates\": [\"{member}\", \"{distractors}\", \"{question}\"], \"overall\": \"FAIL\", \"reasoning\": \"F05 ({member}) draws from the generator's own choices, which include False, Only for circles, Only for rectangles and Only for squares. F05 prints in format_data.options for any problem, so a question asking where a matching point or dots must go can show Only for circles or False as an answer choice. That is misleading and incoherent for the learner. F07 ({distractors}) reads the distractors of one _ITEM_POOL row, one_row_per_problem true. The True or false rows carry distractors Only for circles, Only for squares and False (one row) and False, Only for rectangles and Only for circles (another row). A true or false question then offers options that are not true or false, so the printed answer choices are wrong for the question. F08 ({question}) prints the bank question field. The row whose question begins When completing a symmetric figure on grid paper, each vertex on the second half must be the same distance from the line of symmetry as its partner on the first half, then True or false? has a first sentence of 31 words, over sentence_max_words 22, which is a load beyond the declared limit for grade 3 quarter 4. F04 and F06 keyed answers, the hints in F01 to F03, and the other bank questions were checked and are correct for their rows. No NOT_YET_KNOWN term is printed.\"}",
+ "raw_reply_digest": "e8ae465e540714282a8f5d00e405169271eed87f8082a06660c2a5f91168217e",
+ "packet_digest": "1644c9e1f6b8102e5b537ebf6b04d08dc6358906186b6420543667f4793852d8",
+ "family_keys": {
+  "F01": {
+   "source": "backend/app/practice_gen/dna/mg/symmetry_slides.py",
+   "first_site": "backend/app/practice_gen/dna/mg/symmetry_slides.py:600",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F02": {
+   "source": "backend/app/practice_gen/dna/mg/symmetry_slides.py",
+   "first_site": "backend/app/practice_gen/dna/mg/symmetry_slides.py:599",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F03": {
+   "source": "backend/app/practice_gen/dna/mg/symmetry_slides.py",
+   "first_site": "backend/app/practice_gen/dna/mg/symmetry_slides.py:598",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F04": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:32",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F05": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:39",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F06": {
+   "source": "backend/app/practice_gen/slots.py",
+   "first_site": "backend/app/practice_gen/slots.py:180",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F07": {
+   "source": "backend/app/practice_gen/slots.py",
+   "first_site": "backend/app/practice_gen/slots.py:182",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F08": {
+   "source": "backend/app/practice_gen/slots.py",
+   "first_site": "backend/app/practice_gen/slots.py:180",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  }
+ },
+ "packet": {
+  "item": "S445-021",
+  "competency": {
+   "text": "Complete a figure that is symmetric with respect to a line.",
+   "grade": 3,
+   "quarter": 4
+  },
+  "clauses": [
+   {
+    "id": "complete",
+    "kind": "task",
+    "clause": "Complete"
+   },
+   {
+    "id": "figure",
+    "kind": "object",
+    "clause": "figure"
+   },
+   {
+    "id": "symmetric_with_respect_to_a_line",
+    "kind": "property",
+    "clause": "symmetric with respect to a line"
+   }
+  ],
+  "vocabulary": {
+   "student_vocab": [],
+   "curriculum_vocab": [
+    "symmetric with respect to a line"
+   ],
+   "introduces_vocab": [
+    "symmetric with respect to a line"
+   ],
+   "cumulative_vocab": [
+    "1 less",
+    "1 more",
+    "10th",
+    "1st",
+    "2nd",
+    "3rd",
+    "4th",
+    "5th",
+    "6th",
+    "7th",
+    "8th",
+    "9th",
+    "L",
+    "a.m.",
+    "addition",
+    "analog clock",
+    "area",
+    "axis",
+    "balance scale",
+    "bar graph",
+    "bigger",
+    "bill",
+    "calendar",
+    "capacity",
+    "centavo",
+    "centimeter",
+    "certain",
+    "circle",
+    "clockwise",
+    "cm",
+    "coin",
+    "compare",
+    "corner",
+    "count",
+    "counter-clockwise",
+    "data",
+    "decreasing pattern",
+    "denominator",
+    "difference",
+    "digit",
+    "division",
+    "elapsed time",
+    "equal",
+    "equal groups",
+    "equally likely",
+    "estimate",
+    "even",
+    "expanded form",
+    "fraction",
+    "g",
+    "gram",
+    "group",
+    "half",
+    "half hour",
+    "half turn",
+    "hour",
+    "how many",
+    "hundreds",
+    "impossible",
+    "improper fraction",
+    "increasing pattern",
+    "intersecting",
+    "kg",
+    "kilogram",
+    "left",
+    "length",
+    "less",
+    "less likely",
+    "line",
+    "line of symmetry",
+    "line segment",
+    "liter",
+    "m",
+    "mL",
+    "mass",
+    "measure",
+    "meter",
+    "milliliter",
+    "minute",
+    "missing number",
+    "missing term",
+    "more",
+    "more likely",
+    "multiplication",
+    "nearest hundred",
+    "nearest ten",
+    "nearest thousand",
+    "number",
+    "number line",
+    "numeral",
+    "numerator",
+    "odd",
+    "ones",
+    "order of operations",
+    "outcome",
+    "p.m.",
+    "parallel",
+    "pattern",
+    "perimeter",
+    "perpendicular",
+    "peso",
+    "pictograph",
+    "place value",
+    "point",
+    "product",
+    "quarter",
+    "quarter hour",
+    "quarter turn",
+    "quotient",
+    "ray",
+    "rectangle",
+    "regrouping",
+    "remainder",
+    "repeating pattern",
+    "round",
+    "ruler",
+    "same",
+    "scale",
+    "side",
+    "similar fractions",
+    "skip counting",
+    "slide",
+    "smaller",
+    "solid figure",
+    "sq. cm",
+    "square",
+    "square centimeter",
+    "subtraction",
+    "sum",
+    "symmetry",
+    "table",
+    "ten thousand",
+    "ten-thousands place",
+    "tens",
+    "thousand",
+    "total",
+    "translation",
+    "triangle",
+    "whole",
+    "₱"
+   ],
+   "NOT_YET_KNOWN": [],
+   "sentence_max_words": 22,
+   "number_format": "space separator for thousands (e.g. 1 000)"
+  },
+  "declared_variants": [
+   [
+    "concept",
+    "complete_symmetric_figure"
+   ],
+   [
+    "directions",
+    "one_direction"
+   ],
+   [
+    "directions",
+    "two_directions"
+   ]
+  ],
+  "declared_bounds": [
+   {
+    "concept": "complete_symmetric_figure"
+   }
+  ],
+  "families": [
+   {
+    "id": "F01",
+    "template": "Draw the mirror image to complete the figure.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F02",
+    "template": "Each point on one side has a matching point the same distance on the other side.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F03",
+    "template": "Find the line of symmetry first.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F04",
+    "template": "{answer}",
+    "appears_in": [
+     "correct_answer",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "result",
+        "printed": [
+         "2 grid units below the line of symmetry",
+         "3 dots in matching positions",
+         "3 grid units to the right of the line",
+         "4 grid units to the left of the line",
+         "5 units to the right of the line",
+         "True",
+         "drawn as a mirror image of the first half"
+        ],
+        "derived_from_values": [
+         "result"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F05",
+    "template": "{member}",
+    "appears_in": [
+     "distractors",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "member"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "QuestionContext.distractors (the generator's own)",
+        "members": [
+         "0 dots",
+         "1 dot on the wing",
+         "10 units to the right of the line",
+         "2 grid units above the line of symmetry",
+         "2 grid units to the left of the line",
+         "2 grid units to the right of the line",
+         "3 grid units above the line",
+         "4 grid units below the line of symmetry",
+         "4 grid units to the right of the line",
+         "5 units to the left of the line",
+         "6 dots in matching positions",
+         "6 grid units to the right of the line",
+         "False",
+         "Only for circles",
+         "Only for rectangles",
+         "Only for squares",
+         "drawn as a triangle",
+         "drawn twice as large",
+         "drawn upside down",
+         "on the line itself",
+         "on the line of symmetry"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F06",
+    "template": "{answer}",
+    "appears_in": [
+     "correct_answer",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "a field of a fixed item bank",
+        "field": "answer",
+        "bank": "_ITEM_POOL",
+        "derived_from_values": [
+         "answer",
+         "concept",
+         "directions",
+         "distractors",
+         "grade_min",
+         "question"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F07",
+    "template": "{distractors}",
+    "appears_in": [
+     "distractors",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "distractors"
+      ],
+      "domains": [
+       {
+        "domain": "a field of a fixed item bank",
+        "field": "distractors",
+        "bank": "_ITEM_POOL",
+        "derived_from_values": [
+         "answer",
+         "concept",
+         "directions",
+         "distractors",
+         "grade_min",
+         "question"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F08",
+    "template": "{question}",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "question"
+      ],
+      "domains": [
+       {
+        "domain": "a field of a fixed item bank",
+        "field": "question",
+        "bank": "_ITEM_POOL",
+        "derived_from_values": [
+         "answer",
+         "concept",
+         "directions",
+         "distractors",
+         "grade_min",
+         "question"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   }
+  ],
+  "lists": {},
+  "banks": {
+   "_ITEM_POOL": {
+    "fields": [
+     "answer",
+     "distractors",
+     "question"
+    ],
+    "one_row_per_problem": true,
+    "rows": [
+     {
+      "answer": "drawn as a mirror image of the first half",
+      "distractors": [
+       "drawn upside down",
+       "drawn twice as large",
+       "drawn as a triangle"
+      ],
+      "question": "To complete a symmetric figure across a vertical line of symmetry, the other half must be ___."
+     },
+     {
+      "answer": "3 grid units to the right of the line",
+      "distractors": [
+       "3 grid units above the line",
+       "6 grid units to the right of the line",
+       "on the line itself"
+      ],
+      "question": "A point is 3 grid units to the left of a vertical line of symmetry. Where is its mirror-image point?"
+     },
+     {
+      "answer": "True",
+      "distractors": [
+       "False",
+       "Only for circles",
+       "Only for squares"
+      ],
+      "question": "If a shape is symmetrical across a line, folding along that line makes both halves match exactly. True or false?"
+     },
+     {
+      "answer": "4 grid units to the left of the line",
+      "distractors": [
+       "4 grid units to the right of the line",
+       "2 grid units to the left of the line",
+       "on the line of symmetry"
+      ],
+      "question": "A point is 4 grid units to the right of a vertical line of symmetry. Where should its matching point be drawn to complete the figure?"
+     },
+     {
+      "answer": "2 grid units below the line of symmetry",
+      "distractors": [
+       "2 grid units above the line of symmetry",
+       "4 grid units below the line of symmetry",
+       "2 grid units to the right of the line"
+      ],
+      "question": "A point is 2 grid units above a horizontal line of symmetry. Where must the matching point be drawn to complete the symmetric figure?"
+     },
+     {
+      "answer": "3 dots in matching positions",
+      "distractors": [
+       "6 dots in matching positions",
+       "1 dot on the wing",
+       "0 dots"
+      ],
+      "question": "One side of a symmetric butterfly drawing has 3 dots on the left wing. How many dots must be drawn on the right wing to complete the figure?"
+     },
+     {
+      "answer": "True",
+      "distractors": [
+       "False",
+       "Only for rectangles",
+       "Only for circles"
+      ],
+      "question": "When completing a symmetric figure on grid paper, each vertex on the second half must be the same distance from the line of symmetry as its partner on the first half. True or false?"
+     },
+     {
+      "answer": "5 units to the right of the line",
+      "distractors": [
+       "5 units to the left of the line",
+       "10 units to the right of the line",
+       "on the line of symmetry"
+      ],
+      "question": "A vertex of a polygon is 5 units to the left of a vertical line of symmetry. Where is the corresponding vertex of the completed symmetric polygon?"
+     }
+    ],
+    "rows_left_out": 45
+   }
+  },
+  "value_derivations": [],
+  "reason_kinds": {}
+ }
+}

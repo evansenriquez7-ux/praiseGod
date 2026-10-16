@@ -1,0 +1,2770 @@
+{
+ "schema_version": 2,
+ "hash_version": 8,
+ "node_id": "mat_g1_na_q1_9",
+ "record_id": "stem-batch441-S441-025-confirming",
+ "role": "confirming",
+ "confirms": "stem-batch441-S441-025-first-r4",
+ "item_id": "S441-025",
+ "lc_hash": "e86a1965414403f90e1d30adb2ec877270081872d038b1f64898e2fcd949259e",
+ "judged_by": "blind-stem-judge-claude-haiku-batch441-S441-025-confirming",
+ "dispatch_id": "stem-batch441-S441-025-confirming",
+ "filed_at": "2026-10-16T04:59:51Z",
+ "delivery": "Claude Code Agent tool, model=haiku, subagent_type=general-purpose; the judge was told to read only local_only/scratch/h4c/prompts/S441-025.prompt.txt (tests/stem_file.py prompt output, item S441-025; no lc id, no key or packets file in that directory) and reply with what it asks; dispatched with CLAUDE.md loaded (ruling 29). Blindness is a prompt contract, audited from the subagent transcript.",
+ "tool_uses_by_judge": "From the subagent transcript: 6 tool use(s), all Read of its own prompt file (2443 lines, every line read); no other tool, path or search. Model reported in the transcript: claude-haiku-5-5.",
+ "dispatch_prompt_digest": "64a31e1cce10cf9807d42eb4ebfee97883614050c50afaef68a968a940748e4c",
+ "raw_reply": "{\"item\": \"S441-025\", \"clauses\": {\"solve\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F05\", \"template\": \"One group has {a_phrase} and another group has {b_phrase}. If you put them together, how many items are there in all?\", \"reasoning\": \"F05 is a word problem given in question_text that asks the learner to combine two groups and find the total, so it asks the learner to solve a problem stated orally.\"}, \"problems\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F05\", \"template\": \"One group has {a_phrase} and another group has {b_phrase}. If you put them together, how many items are there in all?\", \"reasoning\": \"F05 is a word problem; its a_phrase and b_phrase come from F09 to F12 and are sized by the a and b values.\"}, \"pictures\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F15\", \"template\": \"{group_a_str} — There {v} {a} {name_a}.\", \"reasoning\": \"F15 places a pictorial group (group_a_str, nested from the emoji families F18 to F29) in question_text, so a learner can solve from a picture. The clause is producible although F15 itself fails Rule 1.\"}, \"addition\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F05\", \"template\": \"One group has {a_phrase} and another group has {b_phrase}. If you put them together, how many items are there in all?\", \"reasoning\": \"F05 states the operation of putting two groups together and asking for the total, which is addition of the a and b values.\"}, \"sums_up_to_20\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F05\", \"template\": \"One group has {a_phrase} and another group has {b_phrase}. If you put them together, how many items are there in all?\", \"reasoning\": \"F05 uses the a and b values whose sums are declared to stay within max_sum 0 to 20 for the word_problem context in declared_bounds, so it addresses sums up to 20.\"}}, \"failing_families\": [\"F03\", \"F04\", \"F15\", \"F16\", \"F32\"], \"failing_templates\": [\"Add the first digits: {tens_a} + {tens_b}{v} = {tens_sum}.\", \"Add the last digits: {ones_a} + {ones_b} = {ones_sum}.\", \"{group_a_str} — There {v} {a} {name_a}.\", \"{group_b_str} — {b} more {name_b} {v} added.\", \"The dot is at {a} and it moves forward {b} {num_word}. Starting from {a}, just count up {b} {num_word}. Which number will the dot land on?\"], \"overall\": \"FAIL\", \"reasoning\": \"F03 and F04 print the words digits in their templates, and digit, tens and ones are in NOT_YET_KNOWN for this lc, so both hint templates use vocabulary beyond the gate; F03 also teaches a tens and ones split that the competency does not name. F15 and F16 pair the copula slot v (one of a fixed list: is, are) and the noun slot name_a or name_b (a noun or its plural) with a and b without any template_chosen_by_values link, so the text can read There is 2 items or 1 more items is added, which are wrong for a learner. The emoji group in F15 and F16 is drawn from F18 to F29 with its own count, which is not derived from a or b, so the picture can show a count different from the number printed. F32 draws num_word (number or numbers) independently of b, so the text can read forward 1 numbers or 3 number, which is ungrammatical.\"}",
+ "raw_reply_digest": "f5a5c8596b661853c9d958257dfb77e16872f24a832f15a83cc32259937e1352",
+ "packet_digest": "23bb25525d9a77826e95bef3d5cfd23a223b7371081f5cc508d9e701ff638d28",
+ "family_keys": {
+  "F01": {
+   "source": "backend/app/practice_gen/dna/base.py [gate regrouping]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F02": {
+   "source": "backend/app/practice_gen/dna/base.py [gate sum]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F03": {
+   "source": "backend/app/practice_gen/dna/na/addition.py",
+   "first_site": "backend/app/practice_gen/dna/na/addition.py:1154",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F04": {
+   "source": "backend/app/practice_gen/dna/na/addition.py",
+   "first_site": "backend/app/practice_gen/dna/na/addition.py:1136",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F05": {
+   "source": "backend/app/practice_gen/dna/na/addition.py",
+   "first_site": "backend/app/practice_gen/dna/na/addition.py:835",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F06": {
+   "source": "backend/app/practice_gen/dna/na/addition.py",
+   "first_site": "backend/app/practice_gen/dna/na/addition.py:1108",
+   "renderer": "",
+   "path": [
+    2,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F07": {
+   "source": "backend/app/practice_gen/dna/na/addition.py",
+   "first_site": "backend/app/practice_gen/dna/na/addition.py:758",
+   "renderer": "",
+   "path": [
+    8,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F08": {
+   "source": "backend/app/practice_gen/dna/na/addition.py",
+   "first_site": "backend/app/practice_gen/dna/na/addition.py:1096",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F09": {
+   "source": "backend/app/practice_gen/dna/na/addition.py",
+   "first_site": "backend/app/practice_gen/dna/na/addition.py:825",
+   "renderer": "",
+   "path": [
+    36,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F10": {
+   "source": "backend/app/practice_gen/dna/na/addition.py",
+   "first_site": "backend/app/practice_gen/dna/na/addition.py:825",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F11": {
+   "source": "backend/app/practice_gen/dna/na/addition.py",
+   "first_site": "backend/app/practice_gen/dna/na/addition.py:826",
+   "renderer": "",
+   "path": [
+    18,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F12": {
+   "source": "backend/app/practice_gen/dna/na/addition.py",
+   "first_site": "backend/app/practice_gen/dna/na/addition.py:826",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F13": {
+   "source": "backend/app/practice_gen/dna/na/addition.py",
+   "first_site": "backend/app/practice_gen/dna/na/addition.py:1158",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F14": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_emoji_pictorial.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_emoji_pictorial.py:324",
+   "renderer": "",
+   "path": [
+    2,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F15": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_emoji_pictorial.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_emoji_pictorial.py:315",
+   "renderer": "",
+   "path": [
+    2,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F16": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_emoji_pictorial.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_emoji_pictorial.py:321",
+   "renderer": "",
+   "path": [
+    2,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F17": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_emoji_pictorial.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_emoji_pictorial.py:464",
+   "renderer": "",
+   "path": [
+    2,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F18": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_emoji_pictorial.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_emoji_pictorial.py:186",
+   "renderer": "",
+   "path": [
+    25,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F19": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_emoji_pictorial.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_emoji_pictorial.py:174",
+   "renderer": "",
+   "path": [
+    23,
+    null
+   ],
+   "first_render_repeating": {
+    "p0,p1": [
+     23,
+     null
+    ]
+   }
+  },
+  "F20": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_emoji_pictorial.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_emoji_pictorial.py:174",
+   "renderer": "",
+   "path": [
+    32,
+    null
+   ],
+   "first_render_repeating": {
+    "p0,p1,p2": [
+     32,
+     null
+    ]
+   }
+  },
+  "F21": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_emoji_pictorial.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_emoji_pictorial.py:174",
+   "renderer": "",
+   "path": [
+    22,
+    null
+   ],
+   "first_render_repeating": {
+    "p0,p1,p2,p3": [
+     22,
+     null
+    ]
+   }
+  },
+  "F22": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_emoji_pictorial.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_emoji_pictorial.py:174",
+   "renderer": "",
+   "path": [
+    2,
+    null
+   ],
+   "first_render_repeating": {
+    "p0,p1,p2,p3,p4": [
+     2,
+     null
+    ]
+   }
+  },
+  "F23": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_emoji_pictorial.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_emoji_pictorial.py:186",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {
+    "p0,p1,p2,p3,p4,p5": [
+     5,
+     null
+    ]
+   }
+  },
+  "F24": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_emoji_pictorial.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_emoji_pictorial.py:186",
+   "renderer": "",
+   "path": [
+    22,
+    null
+   ],
+   "first_render_repeating": {
+    "p0,p1,p2,p3,p4,p5,p6": [
+     22,
+     null
+    ]
+   }
+  },
+  "F25": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_emoji_pictorial.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_emoji_pictorial.py:186",
+   "renderer": "",
+   "path": [
+    2,
+    null
+   ],
+   "first_render_repeating": {
+    "p0,p1,p2,p3,p4,p5,p6,p7": [
+     2,
+     null
+    ]
+   }
+  },
+  "F26": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_emoji_pictorial.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_emoji_pictorial.py:186",
+   "renderer": "",
+   "path": [
+    23,
+    null
+   ],
+   "first_render_repeating": {
+    "p0,p1,p2,p3,p4,p5,p6,p7,p8": [
+     23,
+     null
+    ]
+   }
+  },
+  "F27": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_emoji_pictorial.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_emoji_pictorial.py:174",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {
+    "p0,p1,p2,p3,p4,p5,p6,p7,p8,p9": [
+     5,
+     null
+    ]
+   }
+  },
+  "F28": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_emoji_pictorial.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_emoji_pictorial.py:186",
+   "renderer": "",
+   "path": [
+    24,
+    null
+   ],
+   "first_render_repeating": {
+    "p0,p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11,p12": [
+     24,
+     null
+    ]
+   }
+  },
+  "F29": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_emoji_pictorial.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_emoji_pictorial.py:186",
+   "renderer": "",
+   "path": [
+    34,
+    null
+   ],
+   "first_render_repeating": {
+    "p0,p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11,p12,p13,p14": [
+     34,
+     null
+    ]
+   }
+  },
+  "F30": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_number_bond.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_number_bond.py:172",
+   "renderer": "",
+   "path": [
+    15,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F31": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_number_line.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_number_line.py:871",
+   "renderer": "",
+   "path": [
+    4,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F32": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_number_line.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_number_line.py:869",
+   "renderer": "",
+   "path": [
+    9,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F33": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_number_line.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_number_line.py:834",
+   "renderer": "",
+   "path": [
+    9,
+    null
+   ],
+   "first_render_repeating": {}
+  }
+ },
+ "packet": {
+  "item": "S441-025",
+  "competency": {
+   "text": "Solve problems (given orally or in pictures) involving addition with sums up to 20.",
+   "grade": 1,
+   "quarter": 1
+  },
+  "clauses": [
+   {
+    "id": "solve",
+    "kind": "task",
+    "clause": "Solve"
+   },
+   {
+    "id": "problems",
+    "kind": "object",
+    "clause": "problems"
+   },
+   {
+    "id": "pictures",
+    "kind": "context",
+    "clause": "pictures"
+   },
+   {
+    "id": "addition",
+    "kind": "object",
+    "clause": "addition"
+   },
+   {
+    "id": "sums_up_to_20",
+    "kind": "range",
+    "clause": "sums up to 20"
+   }
+  ],
+  "vocabulary": {
+   "student_vocab": [],
+   "curriculum_vocab": [
+    "solve problems",
+    "given orally",
+    "given in pictures"
+   ],
+   "introduces_vocab": [
+    "solve problems",
+    "given orally",
+    "given in pictures"
+   ],
+   "cumulative_vocab": [
+    "1 less",
+    "1 more",
+    "10th",
+    "1st",
+    "2nd",
+    "3rd",
+    "4th",
+    "5th",
+    "6th",
+    "7th",
+    "8th",
+    "9th",
+    "addition",
+    "bigger",
+    "compare",
+    "count",
+    "equal",
+    "group",
+    "how many",
+    "left",
+    "less",
+    "more",
+    "number",
+    "number line",
+    "numeral",
+    "same",
+    "smaller",
+    "sum",
+    "total"
+   ],
+   "NOT_YET_KNOWN": [
+    "L",
+    "a.m.",
+    "analog clock",
+    "area",
+    "axis",
+    "balance scale",
+    "bar graph",
+    "bill",
+    "calendar",
+    "capacity",
+    "centavo",
+    "centimeter",
+    "certain",
+    "circle",
+    "clockwise",
+    "cm",
+    "coin",
+    "corner",
+    "counter-clockwise",
+    "data",
+    "decreasing pattern",
+    "denominator",
+    "difference",
+    "digit",
+    "division",
+    "elapsed time",
+    "equal groups",
+    "equally likely",
+    "estimate",
+    "even",
+    "expanded form",
+    "fraction",
+    "g",
+    "gram",
+    "half",
+    "half hour",
+    "half turn",
+    "hour",
+    "hundreds",
+    "impossible",
+    "improper fraction",
+    "increasing pattern",
+    "intersecting",
+    "kg",
+    "kilogram",
+    "length",
+    "less likely",
+    "line",
+    "line of symmetry",
+    "line segment",
+    "liter",
+    "m",
+    "mL",
+    "mass",
+    "measure",
+    "meter",
+    "milliliter",
+    "minute",
+    "missing number",
+    "missing term",
+    "more likely",
+    "multiplication",
+    "nearest hundred",
+    "nearest ten",
+    "nearest thousand",
+    "numerator",
+    "odd",
+    "ones",
+    "order of operations",
+    "outcome",
+    "p.m.",
+    "parallel",
+    "pattern",
+    "perimeter",
+    "perpendicular",
+    "peso",
+    "pictograph",
+    "place value",
+    "point",
+    "product",
+    "quarter",
+    "quarter hour",
+    "quarter turn",
+    "quotient",
+    "ray",
+    "rectangle",
+    "regrouping",
+    "remainder",
+    "repeating pattern",
+    "round",
+    "ruler",
+    "scale",
+    "side",
+    "similar fractions",
+    "skip counting",
+    "slide",
+    "solid figure",
+    "sq. cm",
+    "square",
+    "square centimeter",
+    "subtraction",
+    "symmetry",
+    "table",
+    "ten thousand",
+    "ten-thousands place",
+    "tens",
+    "thousand",
+    "translation",
+    "triangle",
+    "whole",
+    "₱"
+   ],
+   "sentence_max_words": 15,
+   "number_format": "no commas, no thousands separator"
+  },
+  "declared_variants": [
+   [
+    "context",
+    "word_problem"
+   ],
+   [
+    "regrouping",
+    "none"
+   ],
+   [
+    "regrouping",
+    "one_place"
+   ],
+   [
+    "spine",
+    "counting_up"
+   ],
+   [
+    "spine",
+    "putting_together"
+   ],
+   [
+    "strategy",
+    "standard"
+   ],
+   [
+    "structure",
+    "result_unknown"
+   ],
+   [
+    "task_type",
+    "counting_up"
+   ],
+   [
+    "task_type",
+    "putting_together"
+   ]
+  ],
+  "declared_bounds": [
+   {
+    "max_sum": [
+     0,
+     20
+    ],
+    "task_type": [
+     "putting_together",
+     "counting_up"
+    ],
+    "context": "word_problem"
+   }
+  ],
+  "families": [
+   {
+    "id": "F01",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F03"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='regrouping')",
+        "requires_vocab": "regrouping",
+        "prints": "",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F02",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F13"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='sum')",
+        "requires_vocab": "sum",
+        "prints": "the sum",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F03",
+    "template": "Add the first digits: {tens_a} + {tens_b}{v} = {tens_sum}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "tens_a"
+      ],
+      "domains": [
+       {
+        "domain": "a number computed by the generator",
+        "reason": "arithmetic",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "tens_b"
+      ],
+      "domains": [
+       {
+        "domain": "a number computed by the generator",
+        "reason": "arithmetic",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "v"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F01"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "tens_sum"
+      ],
+      "domains": [
+       {
+        "domain": "a number computed by the generator",
+        "reason": "arithmetic",
+        "derived_from_values": [
+         "a",
+         "b"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "a",
+     "b"
+    ]
+   },
+   {
+    "id": "F04",
+    "template": "Add the last digits: {ones_a} + {ones_b} = {ones_sum}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "ones_a"
+      ],
+      "domains": [
+       {
+        "domain": "a number computed by the generator",
+        "reason": "arithmetic",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "ones_b"
+      ],
+      "domains": [
+       {
+        "domain": "a number computed by the generator",
+        "reason": "arithmetic",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "ones_sum"
+      ],
+      "domains": [
+       {
+        "domain": "a number computed by the generator",
+        "reason": "arithmetic",
+        "derived_from_values": [
+         "a",
+         "b"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F05",
+    "template": "One group has {a_phrase} and another group has {b_phrase}. If you put them together, how many items are there in all?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "a_phrase"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F09",
+         "F10"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b_phrase"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F11",
+         "F12"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F06",
+    "template": "Start at {a} and count up {b}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "1 to 2, 4 to 9, 11, 14, 16 to 19",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "1 to 9, 12, 15 to 16, 19",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "result"
+    ]
+   },
+   {
+    "id": "F07",
+    "template": "Start at {start}. Count up {count_by} more. What number do you land on?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "start"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "3 to 7, 9 to 13, 15, 17",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "count_by"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "1 to 8",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F08",
+    "template": "We are adding two numbers: {a} and {b}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "1 to 19",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "1 to 16, 19",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F09",
+    "template": "{a_val} item",
+    "appears_in": [],
+    "nested_in": [
+     "F05"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "a_val"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "1",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F10",
+    "template": "{a_val} items",
+    "appears_in": [],
+    "nested_in": [
+     "F05"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "a_val"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "2, 4 to 8, 10, 12, 14 to 16",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F11",
+    "template": "{b_val} item",
+    "appears_in": [],
+    "nested_in": [
+     "F05"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "b_val"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "1",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F12",
+    "template": "{b_val} items",
+    "appears_in": [],
+    "nested_in": [
+     "F05"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "b_val"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "2 to 4, 6 to 7, 10 to 16",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F13",
+    "template": "{capitalize} is {a} + {b} = {result}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "capitalize"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F02"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "1 to 19",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "1 to 16, 19",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "result"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "result",
+        "printed_runs": "2 to 20",
+        "derived_from_values": [
+         "result"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "result"
+    ]
+   },
+   {
+    "id": "F14",
+    "template": "How many total {name_plural} are there?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "name_plural"
+      ],
+      "domains": [
+       {
+        "domain": "a noun from a fixed list, or its plural",
+        "members_in_list": "_EMOJI_NAMES"
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F15",
+    "template": "{group_a_str} — There {v} {a} {name_a}.",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "group_a_str"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F18",
+         "F19",
+         "F20",
+         "F21",
+         "F22",
+         "F23",
+         "F27",
+         "F28",
+         "F29"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "v"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "_COPULAS"
+       }
+      ]
+     },
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "1 to 7, 9 to 17, 19",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "name_a"
+      ],
+      "domains": [
+       {
+        "domain": "a noun from a fixed list, or its plural",
+        "members_in_list": "_EMOJI_NAMES"
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F16",
+    "template": "{group_b_str} — {b} more {name_b} {v} added.",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "group_b_str"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F18",
+         "F19",
+         "F23",
+         "F24",
+         "F25",
+         "F26",
+         "F27",
+         "F28",
+         "F29"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "1 to 10, 13 to 15, 19",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "name_b"
+      ],
+      "domains": [
+       {
+        "domain": "a noun from a fixed list, or its plural",
+        "members_in_list": "_EMOJI_NAMES"
+       }
+      ]
+     },
+     {
+      "slots": [
+       "v"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "_COPULAS"
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F17",
+    "template": "{key}",
+    "appears_in": [
+     "correct_answer"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "key"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "_OPTION_KEYS"
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F18",
+    "template": "{p0}",
+    "appears_in": [],
+    "nested_in": [
+     "F15",
+     "F16"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "p0"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "fmt_emoji_pictorial._EMOJI_SETS and the interest themes' emojis",
+        "members": [
+         "⚔️",
+         "⚽",
+         "✍️",
+         "✏️",
+         "✝️",
+         "⭐",
+         "🌮",
+         "🌳",
+         "🌷",
+         "🌸",
+         "🌺",
+         "🌻",
+         "🌼",
+         "🍀",
+         "🍇",
+         "🍊",
+         "🍋",
+         "🍌",
+         "🍎",
+         "🍑",
+         "🍒",
+         "🍓",
+         "🍕",
+         "🍩",
+         "🍪",
+         "🍫",
+         "🍬",
+         "🎁",
+         "🎈",
+         "🎤",
+         "🎨",
+         "🎬",
+         "🎮",
+         "🎵",
+         "🎸",
+         "🏀",
+         "🏐",
+         "🐕",
+         "🐟",
+         "🐢",
+         "🐥",
+         "🐰",
+         "🐱",
+         "🐶",
+         "🐸",
+         "🐻",
+         "💃",
+         "💜",
+         "💰",
+         "📖",
+         "📚",
+         "📜",
+         "📱",
+         "📷",
+         "🔬",
+         "🗳️",
+         "😂",
+         "🚴",
+         "🥤",
+         "🧁",
+         "🧩",
+         "🧱",
+         "🧶",
+         "🧸"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F19",
+    "template": "{p0}{p1}",
+    "appears_in": [],
+    "nested_in": [
+     "F15",
+     "F16"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "p0",
+       "p1"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "fmt_emoji_pictorial._EMOJI_SETS and the interest themes' emojis",
+        "members": [
+         "⚔️",
+         "⚽",
+         "✍️",
+         "✏️",
+         "✝️",
+         "⭐",
+         "🌮",
+         "🌳",
+         "🌷",
+         "🌸",
+         "🌺",
+         "🌻",
+         "🌼",
+         "🍀",
+         "🍇",
+         "🍊",
+         "🍋",
+         "🍌",
+         "🍎",
+         "🍑",
+         "🍒",
+         "🍓",
+         "🍕",
+         "🍩",
+         "🍪",
+         "🍫",
+         "🍬",
+         "🎁",
+         "🎈",
+         "🎤",
+         "🎨",
+         "🎬",
+         "🎮",
+         "🎵",
+         "🎸",
+         "🏀",
+         "🏐",
+         "🐕",
+         "🐟",
+         "🐢",
+         "🐥",
+         "🐰",
+         "🐱",
+         "🐶",
+         "🐸",
+         "🐻",
+         "💃",
+         "💜",
+         "💰",
+         "📖",
+         "📚",
+         "📜",
+         "📱",
+         "📷",
+         "🔬",
+         "🗳️",
+         "😂",
+         "🚴",
+         "🥤",
+         "🧁",
+         "🧩",
+         "🧱",
+         "🧶",
+         "🧸"
+        ]
+       }
+      ],
+      "distinct_in_every_render": false
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F20",
+    "template": "{p0}{p1}{p2}",
+    "appears_in": [],
+    "nested_in": [
+     "F15"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "p0",
+       "p1",
+       "p2"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "fmt_emoji_pictorial._EMOJI_SETS and the interest themes' emojis",
+        "members": [
+         "⚔️",
+         "⚽",
+         "✍️",
+         "✏️",
+         "✝️",
+         "⭐",
+         "🌮",
+         "🌳",
+         "🌷",
+         "🌸",
+         "🌺",
+         "🌻",
+         "🌼",
+         "🍀",
+         "🍇",
+         "🍊",
+         "🍋",
+         "🍌",
+         "🍎",
+         "🍑",
+         "🍒",
+         "🍓",
+         "🍕",
+         "🍩",
+         "🍪",
+         "🍫",
+         "🍬",
+         "🎁",
+         "🎈",
+         "🎤",
+         "🎨",
+         "🎬",
+         "🎮",
+         "🎵",
+         "🎸",
+         "🏀",
+         "🏐",
+         "🐕",
+         "🐟",
+         "🐢",
+         "🐥",
+         "🐰",
+         "🐱",
+         "🐶",
+         "🐸",
+         "🐻",
+         "💃",
+         "💜",
+         "💰",
+         "📖",
+         "📚",
+         "📜",
+         "📱",
+         "📷",
+         "🔬",
+         "🗳️",
+         "😂",
+         "🚴",
+         "🥤",
+         "🧁",
+         "🧩",
+         "🧱",
+         "🧶",
+         "🧸"
+        ]
+       }
+      ],
+      "distinct_in_every_render": false
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F21",
+    "template": "{p0}{p1}{p2}{p3}",
+    "appears_in": [],
+    "nested_in": [
+     "F15"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "p0",
+       "p1",
+       "p2",
+       "p3"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "fmt_emoji_pictorial._EMOJI_SETS and the interest themes' emojis",
+        "members": [
+         "⚔️",
+         "⚽",
+         "✍️",
+         "✏️",
+         "✝️",
+         "⭐",
+         "🌮",
+         "🌳",
+         "🌷",
+         "🌸",
+         "🌺",
+         "🌻",
+         "🌼",
+         "🍀",
+         "🍇",
+         "🍊",
+         "🍋",
+         "🍌",
+         "🍎",
+         "🍑",
+         "🍒",
+         "🍓",
+         "🍕",
+         "🍩",
+         "🍪",
+         "🍫",
+         "🍬",
+         "🎁",
+         "🎈",
+         "🎤",
+         "🎨",
+         "🎬",
+         "🎮",
+         "🎵",
+         "🎸",
+         "🏀",
+         "🏐",
+         "🐕",
+         "🐟",
+         "🐢",
+         "🐥",
+         "🐰",
+         "🐱",
+         "🐶",
+         "🐸",
+         "🐻",
+         "💃",
+         "💜",
+         "💰",
+         "📖",
+         "📚",
+         "📜",
+         "📱",
+         "📷",
+         "🔬",
+         "🗳️",
+         "😂",
+         "🚴",
+         "🥤",
+         "🧁",
+         "🧩",
+         "🧱",
+         "🧶",
+         "🧸"
+        ]
+       }
+      ],
+      "distinct_in_every_render": false
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F22",
+    "template": "{p0}{p1}{p2}{p3}{p4}",
+    "appears_in": [],
+    "nested_in": [
+     "F15"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "p0",
+       "p1",
+       "p2",
+       "p3",
+       "p4"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "fmt_emoji_pictorial._EMOJI_SETS and the interest themes' emojis",
+        "members": [
+         "⚔️",
+         "⚽",
+         "✍️",
+         "✏️",
+         "✝️",
+         "⭐",
+         "🌮",
+         "🌳",
+         "🌷",
+         "🌸",
+         "🌺",
+         "🌻",
+         "🌼",
+         "🍀",
+         "🍇",
+         "🍊",
+         "🍋",
+         "🍌",
+         "🍎",
+         "🍑",
+         "🍒",
+         "🍓",
+         "🍕",
+         "🍩",
+         "🍪",
+         "🍫",
+         "🍬",
+         "🎁",
+         "🎈",
+         "🎤",
+         "🎨",
+         "🎬",
+         "🎮",
+         "🎵",
+         "🎸",
+         "🏀",
+         "🏐",
+         "🐕",
+         "🐟",
+         "🐢",
+         "🐥",
+         "🐰",
+         "🐱",
+         "🐶",
+         "🐸",
+         "🐻",
+         "💃",
+         "💜",
+         "💰",
+         "📖",
+         "📚",
+         "📜",
+         "📱",
+         "📷",
+         "🔬",
+         "🗳️",
+         "😂",
+         "🚴",
+         "🥤",
+         "🧁",
+         "🧩",
+         "🧱",
+         "🧶",
+         "🧸"
+        ]
+       }
+      ],
+      "distinct_in_every_render": false
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F23",
+    "template": "{p0}{p1}{p2}{p3}{p4}{p5}",
+    "appears_in": [],
+    "nested_in": [
+     "F15",
+     "F16"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "p0",
+       "p1",
+       "p2",
+       "p3",
+       "p4",
+       "p5"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "fmt_emoji_pictorial._EMOJI_SETS and the interest themes' emojis",
+        "members": [
+         "⚔️",
+         "⚽",
+         "✍️",
+         "✏️",
+         "✝️",
+         "⭐",
+         "🌮",
+         "🌳",
+         "🌷",
+         "🌸",
+         "🌺",
+         "🌻",
+         "🌼",
+         "🍀",
+         "🍇",
+         "🍊",
+         "🍋",
+         "🍌",
+         "🍎",
+         "🍑",
+         "🍒",
+         "🍓",
+         "🍕",
+         "🍩",
+         "🍪",
+         "🍫",
+         "🍬",
+         "🎁",
+         "🎈",
+         "🎤",
+         "🎨",
+         "🎬",
+         "🎮",
+         "🎵",
+         "🎸",
+         "🏀",
+         "🏐",
+         "🐕",
+         "🐟",
+         "🐢",
+         "🐥",
+         "🐰",
+         "🐱",
+         "🐶",
+         "🐸",
+         "🐻",
+         "💃",
+         "💜",
+         "💰",
+         "📖",
+         "📚",
+         "📜",
+         "📱",
+         "📷",
+         "🔬",
+         "🗳️",
+         "😂",
+         "🚴",
+         "🥤",
+         "🧁",
+         "🧩",
+         "🧱",
+         "🧶",
+         "🧸"
+        ]
+       }
+      ],
+      "distinct_in_every_render": false
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F24",
+    "template": "{p0}{p1}{p2}{p3}{p4}{p5}{p6}",
+    "appears_in": [],
+    "nested_in": [
+     "F16"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "p0",
+       "p1",
+       "p2",
+       "p3",
+       "p4",
+       "p5",
+       "p6"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "fmt_emoji_pictorial._EMOJI_SETS and the interest themes' emojis",
+        "members": [
+         "⚔️",
+         "⚽",
+         "✍️",
+         "✏️",
+         "✝️",
+         "⭐",
+         "🌮",
+         "🌳",
+         "🌷",
+         "🌸",
+         "🌺",
+         "🌻",
+         "🌼",
+         "🍀",
+         "🍇",
+         "🍊",
+         "🍋",
+         "🍌",
+         "🍎",
+         "🍑",
+         "🍒",
+         "🍓",
+         "🍕",
+         "🍩",
+         "🍪",
+         "🍫",
+         "🍬",
+         "🎁",
+         "🎈",
+         "🎤",
+         "🎨",
+         "🎬",
+         "🎮",
+         "🎵",
+         "🎸",
+         "🏀",
+         "🏐",
+         "🐕",
+         "🐟",
+         "🐢",
+         "🐥",
+         "🐰",
+         "🐱",
+         "🐶",
+         "🐸",
+         "🐻",
+         "💃",
+         "💜",
+         "💰",
+         "📖",
+         "📚",
+         "📜",
+         "📱",
+         "📷",
+         "🔬",
+         "🗳️",
+         "😂",
+         "🚴",
+         "🥤",
+         "🧁",
+         "🧩",
+         "🧱",
+         "🧶",
+         "🧸"
+        ]
+       }
+      ],
+      "distinct_in_every_render": false
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F25",
+    "template": "{p0}{p1}{p2}{p3}{p4}{p5}{p6}{p7}",
+    "appears_in": [],
+    "nested_in": [
+     "F16"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "p0",
+       "p1",
+       "p2",
+       "p3",
+       "p4",
+       "p5",
+       "p6",
+       "p7"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "fmt_emoji_pictorial._EMOJI_SETS and the interest themes' emojis",
+        "members": [
+         "⚔️",
+         "⚽",
+         "✍️",
+         "✏️",
+         "✝️",
+         "⭐",
+         "🌮",
+         "🌳",
+         "🌷",
+         "🌸",
+         "🌺",
+         "🌻",
+         "🌼",
+         "🍀",
+         "🍇",
+         "🍊",
+         "🍋",
+         "🍌",
+         "🍎",
+         "🍑",
+         "🍒",
+         "🍓",
+         "🍕",
+         "🍩",
+         "🍪",
+         "🍫",
+         "🍬",
+         "🎁",
+         "🎈",
+         "🎤",
+         "🎨",
+         "🎬",
+         "🎮",
+         "🎵",
+         "🎸",
+         "🏀",
+         "🏐",
+         "🐕",
+         "🐟",
+         "🐢",
+         "🐥",
+         "🐰",
+         "🐱",
+         "🐶",
+         "🐸",
+         "🐻",
+         "💃",
+         "💜",
+         "💰",
+         "📖",
+         "📚",
+         "📜",
+         "📱",
+         "📷",
+         "🔬",
+         "🗳️",
+         "😂",
+         "🚴",
+         "🥤",
+         "🧁",
+         "🧩",
+         "🧱",
+         "🧶",
+         "🧸"
+        ]
+       }
+      ],
+      "distinct_in_every_render": false
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F26",
+    "template": "{p0}{p1}{p2}{p3}{p4}{p5}{p6}{p7}{p8}",
+    "appears_in": [],
+    "nested_in": [
+     "F16"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "p0",
+       "p1",
+       "p2",
+       "p3",
+       "p4",
+       "p5",
+       "p6",
+       "p7",
+       "p8"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "fmt_emoji_pictorial._EMOJI_SETS and the interest themes' emojis",
+        "members": [
+         "⚔️",
+         "⚽",
+         "✍️",
+         "✏️",
+         "✝️",
+         "⭐",
+         "🌮",
+         "🌳",
+         "🌷",
+         "🌸",
+         "🌺",
+         "🌻",
+         "🌼",
+         "🍀",
+         "🍇",
+         "🍊",
+         "🍋",
+         "🍌",
+         "🍎",
+         "🍑",
+         "🍒",
+         "🍓",
+         "🍕",
+         "🍩",
+         "🍪",
+         "🍫",
+         "🍬",
+         "🎁",
+         "🎈",
+         "🎤",
+         "🎨",
+         "🎬",
+         "🎮",
+         "🎵",
+         "🎸",
+         "🏀",
+         "🏐",
+         "🐕",
+         "🐟",
+         "🐢",
+         "🐥",
+         "🐰",
+         "🐱",
+         "🐶",
+         "🐸",
+         "🐻",
+         "💃",
+         "💜",
+         "💰",
+         "📖",
+         "📚",
+         "📜",
+         "📱",
+         "📷",
+         "🔬",
+         "🗳️",
+         "😂",
+         "🚴",
+         "🥤",
+         "🧁",
+         "🧩",
+         "🧱",
+         "🧶",
+         "🧸"
+        ]
+       }
+      ],
+      "distinct_in_every_render": false
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F27",
+    "template": "{p0}{p1}{p2}{p3}{p4}{p5}{p6}{p7}{p8}{p9}",
+    "appears_in": [],
+    "nested_in": [
+     "F15",
+     "F16"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "p0",
+       "p1",
+       "p2",
+       "p3",
+       "p4",
+       "p5",
+       "p6",
+       "p7",
+       "p8",
+       "p9"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "fmt_emoji_pictorial._EMOJI_SETS and the interest themes' emojis",
+        "members": [
+         "⚔️",
+         "⚽",
+         "✍️",
+         "✏️",
+         "✝️",
+         "⭐",
+         "🌮",
+         "🌳",
+         "🌷",
+         "🌸",
+         "🌺",
+         "🌻",
+         "🌼",
+         "🍀",
+         "🍇",
+         "🍊",
+         "🍋",
+         "🍌",
+         "🍎",
+         "🍑",
+         "🍒",
+         "🍓",
+         "🍕",
+         "🍩",
+         "🍪",
+         "🍫",
+         "🍬",
+         "🎁",
+         "🎈",
+         "🎤",
+         "🎨",
+         "🎬",
+         "🎮",
+         "🎵",
+         "🎸",
+         "🏀",
+         "🏐",
+         "🐕",
+         "🐟",
+         "🐢",
+         "🐥",
+         "🐰",
+         "🐱",
+         "🐶",
+         "🐸",
+         "🐻",
+         "💃",
+         "💜",
+         "💰",
+         "📖",
+         "📚",
+         "📜",
+         "📱",
+         "📷",
+         "🔬",
+         "🗳️",
+         "😂",
+         "🚴",
+         "🥤",
+         "🧁",
+         "🧩",
+         "🧱",
+         "🧶",
+         "🧸"
+        ]
+       }
+      ],
+      "distinct_in_every_render": false
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F28",
+    "template": "{p0}{p1}{p2}{p3}{p4}{p5}{p6}{p7}{p8}{p9}{p10}{p11}{p12}",
+    "appears_in": [],
+    "nested_in": [
+     "F15",
+     "F16"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "p0",
+       "p1",
+       "p2",
+       "p3",
+       "p4",
+       "p5",
+       "p6",
+       "p7",
+       "p8",
+       "p9",
+       "p10",
+       "p11",
+       "p12"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "fmt_emoji_pictorial._EMOJI_SETS and the interest themes' emojis",
+        "members": [
+         "⚔️",
+         "⚽",
+         "✍️",
+         "✏️",
+         "✝️",
+         "⭐",
+         "🌮",
+         "🌳",
+         "🌷",
+         "🌸",
+         "🌺",
+         "🌻",
+         "🌼",
+         "🍀",
+         "🍇",
+         "🍊",
+         "🍋",
+         "🍌",
+         "🍎",
+         "🍑",
+         "🍒",
+         "🍓",
+         "🍕",
+         "🍩",
+         "🍪",
+         "🍫",
+         "🍬",
+         "🎁",
+         "🎈",
+         "🎤",
+         "🎨",
+         "🎬",
+         "🎮",
+         "🎵",
+         "🎸",
+         "🏀",
+         "🏐",
+         "🐕",
+         "🐟",
+         "🐢",
+         "🐥",
+         "🐰",
+         "🐱",
+         "🐶",
+         "🐸",
+         "🐻",
+         "💃",
+         "💜",
+         "💰",
+         "📖",
+         "📚",
+         "📜",
+         "📱",
+         "📷",
+         "🔬",
+         "🗳️",
+         "😂",
+         "🚴",
+         "🥤",
+         "🧁",
+         "🧩",
+         "🧱",
+         "🧶",
+         "🧸"
+        ]
+       }
+      ],
+      "distinct_in_every_render": false
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F29",
+    "template": "{p0}{p1}{p2}{p3}{p4}{p5}{p6}{p7}{p8}{p9}{p10}{p11}{p12}{p13}{p14}",
+    "appears_in": [],
+    "nested_in": [
+     "F15",
+     "F16"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "p0",
+       "p1",
+       "p2",
+       "p3",
+       "p4",
+       "p5",
+       "p6",
+       "p7",
+       "p8",
+       "p9",
+       "p10",
+       "p11",
+       "p12",
+       "p13",
+       "p14"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "fmt_emoji_pictorial._EMOJI_SETS and the interest themes' emojis",
+        "members": [
+         "⚔️",
+         "⚽",
+         "✍️",
+         "✏️",
+         "✝️",
+         "⭐",
+         "🌮",
+         "🌳",
+         "🌷",
+         "🌸",
+         "🌺",
+         "🌻",
+         "🌼",
+         "🍀",
+         "🍇",
+         "🍊",
+         "🍋",
+         "🍌",
+         "🍎",
+         "🍑",
+         "🍒",
+         "🍓",
+         "🍕",
+         "🍩",
+         "🍪",
+         "🍫",
+         "🍬",
+         "🎁",
+         "🎈",
+         "🎤",
+         "🎨",
+         "🎬",
+         "🎮",
+         "🎵",
+         "🎸",
+         "🏀",
+         "🏐",
+         "🐕",
+         "🐟",
+         "🐢",
+         "🐥",
+         "🐰",
+         "🐱",
+         "🐶",
+         "🐸",
+         "🐻",
+         "💃",
+         "💜",
+         "💰",
+         "📖",
+         "📚",
+         "📜",
+         "📱",
+         "📷",
+         "🔬",
+         "🗳️",
+         "😂",
+         "🚴",
+         "🥤",
+         "🧁",
+         "🧩",
+         "🧱",
+         "🧶",
+         "🧸"
+        ]
+       }
+      ],
+      "distinct_in_every_render": false
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F30",
+    "template": "The two parts are {p1} and {p2}. What is the {word}?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "p1"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "1 to 2, 4 to 12, 14 to 16, 18",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "p2"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "1 to 5, 7 to 12, 15",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "word"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "vocab gate 'sum'",
+        "requires_vocab": "sum",
+        "prints": "sum",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F31",
+    "template": "Show {a} + {b} on the number line.",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "1 to 6, 8 to 19",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "1 to 8",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F32",
+    "template": "The dot is at {a} and it moves forward {b} {num_word}. Starting from {a}, just count up {b} {num_word}. Which number will the dot land on?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "2, 4 to 5, 7, 9 to 18",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "1 to 7, 9",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "num_word"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "number, singular or plural",
+        "members": [
+         "number",
+         "numbers"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F33",
+    "template": "{key}",
+    "appears_in": [
+     "correct_answer"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "key"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "_OPTION_KEYS"
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   }
+  ],
+  "lists": {
+   "_EMOJI_NAMES": [
+    "apple",
+    "orange",
+    "lemon",
+    "grape",
+    "strawberry",
+    "banana",
+    "peach",
+    "cherry",
+    "puppy",
+    "kitten",
+    "bunny",
+    "bear",
+    "frog",
+    "chick",
+    "turtle",
+    "fish",
+    "flower",
+    "sunflower",
+    "hibiscus",
+    "tulip",
+    "daisy",
+    "clover",
+    "tree",
+    "star",
+    "book",
+    "pencil",
+    "balloon",
+    "gift",
+    "ball",
+    "teddy bear",
+    "paint",
+    "note",
+    "cookie",
+    "donut",
+    "cupcake",
+    "candy",
+    "chocolate",
+    "drink",
+    "pizza",
+    "taco"
+   ],
+   "_COPULAS": [
+    "is",
+    "are"
+   ],
+   "_OPTION_KEYS": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ]
+  },
+  "banks": {},
+  "value_derivations": [],
+  "reason_kinds": {
+   "arithmetic": "a number the generator computes from the generated values named in src (a half, a sum, a difference, a running total, a place's digit). Its range is the image of those values' own domains; whether the arithmetic is RIGHT is the hint contract's (§16) and §1E's to check, not §14's."
+  }
+ }
+}

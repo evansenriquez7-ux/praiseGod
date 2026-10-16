@@ -1,0 +1,882 @@
+{
+ "schema_version": 2,
+ "hash_version": 8,
+ "node_id": "mat_g2_mg_q2_1",
+ "record_id": "stem-batch443-S443-004-confirming",
+ "role": "confirming",
+ "confirms": "stem-batch443-S443-004-first",
+ "item_id": "S443-004",
+ "lc_hash": "14169972e24bd01fec408bbf1cd585833777a2f3c7eea63f32d82b45aed28195",
+ "judged_by": "blind-stem-judge-claude-haiku-batch443-S443-004-confirming",
+ "dispatch_id": "stem-batch443-S443-004-confirming",
+ "filed_at": "2026-10-16T05:08:54Z",
+ "delivery": "Claude Code Agent tool, model=haiku, subagent_type=general-purpose; the judge was told to read only local_only/scratch/h4c/prompts/S443-004.prompt.txt (tests/stem_file.py prompt output, item S443-004; no lc id, no key or packets file in that directory) and reply with what it asks; dispatched with CLAUDE.md loaded (ruling 29). Blindness is a prompt contract, audited from the subagent transcript.",
+ "tool_uses_by_judge": "From the subagent transcript: 1 tool use(s), all Read of its own prompt file (810 lines, every line read); no other tool, path or search. Model reported in the transcript: claude-haiku-5-5.",
+ "dispatch_prompt_digest": "94a8182b1ad0c640af286aef7d34b446d5737dc2293e4584a98ef09f66534dcd",
+ "raw_reply": "{\"item\": \"S443-004\", \"clauses\": {\"identify\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F07\", \"template\": \"What is the appropriate unit to measure the length of {item}: cm or m?\", \"reasoning\": \"F07 asks for the appropriate unit for an item from its printed list, which is the identify task for the unit.\"}, \"use\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F09\", \"template\": \"Which unit would you use to measure the length of {item}: centimeters (cm) or meters (m)?\", \"reasoning\": \"F09 asks which unit the learner would use to measure an object's length, which is the use task.\"}, \"unit\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F07\", \"template\": \"What is the appropriate unit to measure the length of {item}: cm or m?\", \"reasoning\": \"F07 names the appropriate unit as the answer target.\"}, \"m_or_cm\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F07\", \"template\": \"What is the appropriate unit to measure the length of {item}: cm or m?\", \"reasoning\": \"F07 offers exactly cm or m as the two choices.\"}, \"measure\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F07\", \"template\": \"What is the appropriate unit to measure the length of {item}: cm or m?\", \"reasoning\": \"F07 frames the question as measuring the length of an item.\"}, \"length\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F07\", \"template\": \"What is the appropriate unit to measure the length of {item}: cm or m?\", \"reasoning\": \"F07 names length as the property being measured.\"}, \"object\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F07\", \"template\": \"What is the appropriate unit to measure the length of {item}: cm or m?\", \"reasoning\": \"The item slot in F07 draws objects such as a pencil, a notebook and a shoe from its printed list.\"}, \"distance\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F08\", \"template\": \"Which unit is best to measure the distance between {pair}: centimeters (cm) or meters (m)?\", \"reasoning\": \"F08 names distance between two places as the measured property.\"}, \"between_two_locations\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F08\", \"template\": \"Which unit is best to measure the distance between {pair}: centimeters (cm) or meters (m)?\", \"reasoning\": \"The pair slot in F08 prints two locations, such as the school and the market, from its printed list.\"}}, \"failing_families\": [\"F11\"], \"failing_templates\": [\"{capitalize} has a length of about {item_len} ___. Which unit is correct: cm or m?\"], \"overall\": \"FAIL\", \"reasoning\": \"F11 pairs the capitalized item slot, a fixed list of objects and places, with the item_len slot, a fixed list of numbers from 5 to 50. The domains declare no link between the two, so every pairing can print. Some pairings state a false size: a basketball court about 5 units long, a road about 5 units long, and a crayon about 50 units long. These statements are misleading for a learner of this grade. F06, F07, F08, F09, F10, F13 and the hint families F03, F04, F05 were checked: their slots are unit-plausible for every combination in the declared domains, and vocabulary stays within cumulative_vocab, with 'distance' and 'reasonable' used as ordinary words named in the competency or the stem.\"}",
+ "raw_reply_digest": "a967d238248ee6e54704f4e92a4c52367e56a2092903a1c70959570bcde82dbd",
+ "packet_digest": "1f3af913c98b29df3e00a16c9ef74df7c2370206392b0714d903796d473f403a",
+ "family_keys": {
+  "F01": {
+   "source": "backend/app/practice_gen/dna/base.py [gate centimeter]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F02": {
+   "source": "backend/app/practice_gen/dna/base.py [gate meter]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F03": {
+   "source": "backend/app/practice_gen/dna/mg/length_measurement.py",
+   "first_site": "backend/app/practice_gen/dna/mg/length_measurement.py:1058",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F04": {
+   "source": "backend/app/practice_gen/dna/mg/length_measurement.py",
+   "first_site": "backend/app/practice_gen/dna/mg/length_measurement.py:1057",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F05": {
+   "source": "backend/app/practice_gen/dna/mg/length_measurement.py",
+   "first_site": "backend/app/practice_gen/dna/mg/length_measurement.py:1059",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F06": {
+   "source": "backend/app/practice_gen/dna/mg/length_measurement.py",
+   "first_site": "backend/app/practice_gen/dna/mg/length_measurement.py:425",
+   "renderer": "",
+   "path": [
+    9,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F07": {
+   "source": "backend/app/practice_gen/dna/mg/length_measurement.py",
+   "first_site": "backend/app/practice_gen/dna/mg/length_measurement.py:449",
+   "renderer": "",
+   "path": [
+    19,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F08": {
+   "source": "backend/app/practice_gen/dna/mg/length_measurement.py",
+   "first_site": "backend/app/practice_gen/dna/mg/length_measurement.py:414",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F09": {
+   "source": "backend/app/practice_gen/dna/mg/length_measurement.py",
+   "first_site": "backend/app/practice_gen/dna/mg/length_measurement.py:447",
+   "renderer": "",
+   "path": [
+    2,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F10": {
+   "source": "backend/app/practice_gen/dna/mg/length_measurement.py",
+   "first_site": "backend/app/practice_gen/dna/mg/length_measurement.py:448",
+   "renderer": "",
+   "path": [
+    14,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F11": {
+   "source": "backend/app/practice_gen/dna/mg/length_measurement.py",
+   "first_site": "backend/app/practice_gen/dna/mg/length_measurement.py:439",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F12": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:32",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F13": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:39",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  }
+ },
+ "packet": {
+  "item": "S443-004",
+  "competency": {
+   "text": "Identify and use the appropriate unit (m or cm) to measure the length of an object and the distance between two locations.",
+   "grade": 2,
+   "quarter": 2
+  },
+  "clauses": [
+   {
+    "id": "identify",
+    "kind": "task",
+    "clause": "Identify"
+   },
+   {
+    "id": "use",
+    "kind": "task",
+    "clause": "use"
+   },
+   {
+    "id": "unit",
+    "kind": "object",
+    "clause": "unit"
+   },
+   {
+    "id": "m_or_cm",
+    "kind": "property",
+    "clause": "m or cm"
+   },
+   {
+    "id": "measure",
+    "kind": "task",
+    "clause": "measure"
+   },
+   {
+    "id": "length",
+    "kind": "property",
+    "clause": "length"
+   },
+   {
+    "id": "object",
+    "kind": "object",
+    "clause": "object"
+   },
+   {
+    "id": "distance",
+    "kind": "property",
+    "clause": "distance"
+   },
+   {
+    "id": "between_two_locations",
+    "kind": "range",
+    "clause": "between two locations"
+   }
+  ],
+  "vocabulary": {
+   "student_vocab": [],
+   "curriculum_vocab": [
+    "appropriate unit"
+   ],
+   "introduces_vocab": [
+    "appropriate unit"
+   ],
+   "cumulative_vocab": [
+    "1 less",
+    "1 more",
+    "10th",
+    "1st",
+    "2nd",
+    "3rd",
+    "4th",
+    "5th",
+    "6th",
+    "7th",
+    "8th",
+    "9th",
+    "addition",
+    "analog clock",
+    "bigger",
+    "bill",
+    "calendar",
+    "centavo",
+    "centimeter",
+    "circle",
+    "clockwise",
+    "cm",
+    "coin",
+    "compare",
+    "corner",
+    "count",
+    "counter-clockwise",
+    "data",
+    "decreasing pattern",
+    "difference",
+    "digit",
+    "equal",
+    "expanded form",
+    "fraction",
+    "group",
+    "half",
+    "half hour",
+    "half turn",
+    "hour",
+    "how many",
+    "hundreds",
+    "increasing pattern",
+    "left",
+    "length",
+    "less",
+    "m",
+    "measure",
+    "meter",
+    "missing number",
+    "more",
+    "number",
+    "number line",
+    "numeral",
+    "ones",
+    "pattern",
+    "peso",
+    "pictograph",
+    "place value",
+    "quarter",
+    "quarter hour",
+    "quarter turn",
+    "rectangle",
+    "regrouping",
+    "repeating pattern",
+    "ruler",
+    "same",
+    "side",
+    "skip counting",
+    "slide",
+    "smaller",
+    "square",
+    "subtraction",
+    "sum",
+    "table",
+    "tens",
+    "thousand",
+    "total",
+    "translation",
+    "triangle",
+    "whole",
+    "₱"
+   ],
+   "NOT_YET_KNOWN": [
+    "L",
+    "a.m.",
+    "area",
+    "axis",
+    "balance scale",
+    "bar graph",
+    "capacity",
+    "certain",
+    "denominator",
+    "division",
+    "elapsed time",
+    "equal groups",
+    "equally likely",
+    "estimate",
+    "even",
+    "g",
+    "gram",
+    "impossible",
+    "improper fraction",
+    "intersecting",
+    "kg",
+    "kilogram",
+    "less likely",
+    "line",
+    "line of symmetry",
+    "line segment",
+    "liter",
+    "mL",
+    "mass",
+    "milliliter",
+    "minute",
+    "missing term",
+    "more likely",
+    "multiplication",
+    "nearest hundred",
+    "nearest ten",
+    "nearest thousand",
+    "numerator",
+    "odd",
+    "order of operations",
+    "outcome",
+    "p.m.",
+    "parallel",
+    "perimeter",
+    "perpendicular",
+    "point",
+    "product",
+    "quotient",
+    "ray",
+    "remainder",
+    "round",
+    "scale",
+    "similar fractions",
+    "solid figure",
+    "sq. cm",
+    "square centimeter",
+    "symmetry",
+    "ten thousand",
+    "ten-thousands place"
+   ],
+   "sentence_max_words": 18,
+   "number_format": "no commas for numbers up to 1000"
+  },
+  "declared_variants": [
+   [
+    "context",
+    "pure"
+   ],
+   [
+    "task_type",
+    "choose_unit"
+   ],
+   [
+    "unit_type",
+    "cm"
+   ],
+   [
+    "unit_type",
+    "m"
+   ]
+  ],
+  "declared_bounds": [
+   {
+    "task_type": "choose_unit",
+    "context": "pure"
+   }
+  ],
+  "families": [
+   {
+    "id": "F01",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F04",
+     "F05"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='centimeter')",
+        "requires_vocab": "centimeter",
+        "prints": "centimeter (cm)",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F02",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F03",
+     "F05"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='meter')",
+        "requires_vocab": "meter",
+        "prints": "meter (m)",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F03",
+    "template": "Long lengths and distances, like a room or a road, are measured in {m_label}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "m_label"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F02"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F04",
+    "template": "Short things, like a pencil or an eraser, are measured in {cm_label}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "cm_label"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F01"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F05",
+    "template": "So the better unit here is {unit_word}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "unit_word"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F01",
+         "F02"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F06",
+    "template": "The distance between {pair} is about {dist_val} ___. Which unit makes the measurement reasonable: cm or m?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "pair"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "item",
+        "printed": [
+         "the barangay hall and the plaza",
+         "the bench and the playground",
+         "the classroom and the canteen",
+         "the gate and the library",
+         "the school and the market",
+         "your house and the church"
+        ],
+        "derived_from_values": [
+         "item"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "dist_val"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the distance_pairs bank",
+        "members": [
+         100,
+         150,
+         200,
+         30,
+         40,
+         50
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F07",
+    "template": "What is the appropriate unit to measure the length of {item}: cm or m?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "item"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "item",
+        "printed": [
+         "a basketball court",
+         "a classroom",
+         "a flagpole",
+         "a hallway",
+         "a notebook",
+         "a pencil case",
+         "a pencil",
+         "a road",
+         "a school fence",
+         "a shoe",
+         "a spoon"
+        ],
+        "derived_from_values": [
+         "item"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F08",
+    "template": "Which unit is best to measure the distance between {pair}: centimeters (cm) or meters (m)?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "pair"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "item",
+        "printed": [
+         "the barangay hall and the plaza",
+         "the bench and the playground",
+         "the classroom and the canteen",
+         "the gate and the library",
+         "the school and the market",
+         "your house and the church"
+        ],
+        "derived_from_values": [
+         "item"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F09",
+    "template": "Which unit would you use to measure the length of {item}: centimeters (cm) or meters (m)?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "item"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "item",
+        "printed": [
+         "a basketball court",
+         "a book",
+         "a classroom",
+         "a flagpole",
+         "a garden",
+         "a hallway",
+         "a notebook",
+         "a pencil",
+         "a road",
+         "a school fence",
+         "a shoe",
+         "a spoon",
+         "a swimming pool",
+         "an eraser"
+        ],
+        "derived_from_values": [
+         "item"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F10",
+    "template": "Would you measure the length of {item} in centimeters (cm) or meters (m)?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "item"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "item",
+        "printed": [
+         "a basketball court",
+         "a book",
+         "a crayon",
+         "a garden",
+         "a notebook",
+         "a pencil case",
+         "a pencil",
+         "a road",
+         "a school fence",
+         "a shoe",
+         "a swimming pool",
+         "an eraser"
+        ],
+        "derived_from_values": [
+         "item"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F11",
+    "template": "{capitalize} has a length of about {item_len} ___. Which unit is correct: cm or m?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "capitalize"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the chosen scale-item bank, capitalized",
+        "members": [
+         "A basketball court",
+         "A book",
+         "A classroom",
+         "A crayon",
+         "A flagpole",
+         "A garden",
+         "A hallway",
+         "A notebook",
+         "A pencil case",
+         "A pencil",
+         "A road",
+         "A school fence",
+         "A shoe",
+         "A spoon",
+         "A swimming pool",
+         "An eraser"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "item_len"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the chosen scale-item bank",
+        "members": [
+         10,
+         15,
+         16,
+         20,
+         22,
+         24,
+         25,
+         28,
+         30,
+         5,
+         50,
+         8
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F12",
+    "template": "{answer}",
+    "appears_in": [
+     "correct_answer",
+     "format_data.mcq_options",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "answer",
+        "printed": [
+         "cm",
+         "m"
+        ],
+        "derived_from_values": [
+         "answer"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F13",
+    "template": "{member}",
+    "appears_in": [
+     "distractors",
+     "format_data.mcq_options",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "member"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "QuestionContext.distractors (the generator's own)",
+        "members": [
+         "cm",
+         "either works",
+         "m",
+         "neither works"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   }
+  ],
+  "lists": {},
+  "banks": {},
+  "value_derivations": [],
+  "reason_kinds": {}
+ }
+}

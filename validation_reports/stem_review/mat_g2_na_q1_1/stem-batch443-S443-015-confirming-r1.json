@@ -1,0 +1,1597 @@
+{
+ "schema_version": 2,
+ "hash_version": 8,
+ "node_id": "mat_g2_na_q1_1",
+ "record_id": "stem-batch443-S443-015-confirming-r1",
+ "role": "confirming",
+ "confirms": "stem-batch443-S443-015-first-r2",
+ "item_id": "S443-015",
+ "lc_hash": "ab10c8ec9494d54d271c8f7a45cc0bc0534b34cc1d0b3f84303ea4270ebd8f03",
+ "judged_by": "blind-stem-judge-claude-haiku-batch443-S443-015-confirming-r1",
+ "dispatch_id": "stem-batch443-S443-015-confirming-r1",
+ "filed_at": "2026-10-16T10:26:59Z",
+ "delivery": "Claude Code Agent tool, model=haiku, subagent_type=general-purpose; the judge was told to read only local_only/scratch/h4c/prompts/S443-015.prompt.txt (tests/stem_file.py prompt output, item S443-015; no lc id, no key or packets file in that directory) and reply with what it asks; dispatched with CLAUDE.md loaded (ruling 29). Blindness is a prompt contract, audited from the subagent transcript.",
+ "tool_uses_by_judge": "From the subagent transcript: 1 tool use(s), all Read of its own prompt file (1465 lines, every line read); no other tool, path or search. Model reported in the transcript: claude-haiku-5-5.",
+ "dispatch_prompt_digest": "d3c3aa1ef778f1bebb1706ec8cabde48d1760e8c9dac9de8137e2fe0d459d362",
+ "raw_reply": "{\"item\": \"S443-015\", \"clauses\": {\"read_and_write\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F18\", \"template\": \"Write the number: {word_form}.\", \"reasoning\": \"F18 reads a word form and asks the learner to write the numeral, so it covers both reading and writing. Its word_form domain repeats the generated word_form values, which are number words from eight hundred eighty-something down to two hundred twenty-one, all within 10 to 1000.\"}, \"numerals\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F19\", \"template\": \"Write {number} in words.\", \"reasoning\": \"F19 prints a numeral (the number slot, repeating the generated number, printed values 208 to 991) and asks the learner to write it in words. The numeral is the object of the competency.\"}, \"up_to_1000\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F19\", \"template\": \"Write {number} in words.\", \"reasoning\": \"The number slot in F19 is a generated number inside the declared bound of 10 to 1000, and the printed values run from 208 to 991, so the range of numbers up to 1000 is produced.\"}}, \"failing_families\": [\"F08\", \"F09\", \"F10\", \"F11\", \"F12\"], \"failing_templates\": [\"{chunk}-{v}\", \"{hundreds_label}: {hd} → '{num_to_tagalog_style_english_words} hundred'.\", \"{p0}\", \"{p0} {p1}\", \"{v} hundred\"], \"overall\": \"FAIL\", \"reasoning\": \"F08 (\\\"{chunk}-{v}\\\") draws chunk and v from _TENS and _ONES, and both lists include the empty string, so the domain permits a hyphenated answer with a missing tens or ones part and a bare hyphen. Those are malformed answer choices in correct_answer, distractors and options. F12 (\\\"{v} hundred\\\") draws v from _ONES, which includes the empty string and the teens, so it can print a bare 'hundred' or a teen followed by 'hundred', which is wrong for a number up to 1000. F11 (\\\"{p0} {p1}\\\") combines p0 from F12 or F14 with p1 from _ONES or _TENS, which includes the empty string. Its domain therefore allows a trailing space, and it allows a full hundreds phrase joined to a tens word, which is not a number. F10 (\\\"{p0}\\\") is printed directly as a distractor and draws from _ONES, which includes the empty string, so it can give an empty answer choice. F09 (\\\"{hundreds_label}: {hd} → '{num_to_tagalog_style_english_words} hundred'.\\\") takes its word from F10, whose domain includes the empty string and the teens. For a number under 100, the hundreds digit is zero, and the domain permits a hint that names a teen or an empty word as the hundreds value. The hundreds_label is the gated 'The 3rd part from the right', which is correct. F01, F02, F03, F04, F05, F06, F07, F13, F14, F15, F16, F17, F18 and F19 print text within the vocabulary and grade bounds, and their numeric and word domains stay within 10 to 1000. F15 and F16 pair a word slot and a fill_value slot that are independent, so whether each statement is true depends on the generator's key, which this packet does not show; I do not fail them on that basis.\"}",
+ "raw_reply_digest": "42a4f697142da9a79ae0e7162ece4ece1edac8dae7d2b55b9d8b65c3df780af9",
+ "packet_digest": "6a2ce9326fc8a5b2a0f98bace028f721dab5f3fd84aeed558202a51f136abacd",
+ "family_keys": {
+  "F01": {
+   "source": "backend/app/practice_gen/dna/base.py [gate expanded form]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F02": {
+   "source": "backend/app/practice_gen/dna/base.py [gate place value]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F03": {
+   "source": "backend/app/practice_gen/dna/na/number_reading.py",
+   "first_site": "backend/app/practice_gen/dna/na/number_reading.py:352",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F04": {
+   "source": "backend/app/practice_gen/dna/na/number_reading.py",
+   "first_site": "backend/app/practice_gen/dna/na/number_reading.py:349",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F05": {
+   "source": "backend/app/practice_gen/dna/na/number_reading.py",
+   "first_site": "backend/app/practice_gen/dna/na/number_reading.py:338",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F06": {
+   "source": "backend/app/practice_gen/dna/na/number_reading.py",
+   "first_site": "backend/app/practice_gen/dna/na/number_reading.py:346",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F07": {
+   "source": "backend/app/practice_gen/dna/na/number_reading.py",
+   "first_site": "backend/app/practice_gen/dna/na/number_reading.py:351",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F08": {
+   "source": "backend/app/practice_gen/dna/na/number_reading.py",
+   "first_site": "backend/app/practice_gen/dna/na/number_reading.py:97",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F09": {
+   "source": "backend/app/practice_gen/dna/na/number_reading.py",
+   "first_site": "backend/app/practice_gen/dna/na/number_reading.py:345",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F10": {
+   "source": "backend/app/practice_gen/dna/na/number_reading.py",
+   "first_site": "backend/app/practice_gen/dna/na/number_reading.py:100",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F11": {
+   "source": "backend/app/practice_gen/dna/na/number_reading.py",
+   "first_site": "backend/app/practice_gen/dna/na/number_reading.py:100",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F12": {
+   "source": "backend/app/practice_gen/dna/na/number_reading.py",
+   "first_site": "backend/app/practice_gen/dna/na/number_reading.py:87",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F13": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:32",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F14": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:39",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F15": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_true_false.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_true_false.py:326",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F16": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_true_false.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_true_false.py:321",
+   "renderer": "",
+   "path": [
+    4,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F17": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_true_false.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_true_false.py:430",
+   "renderer": "",
+   "path": [
+    4,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F18": {
+   "source": "backend/app/practice_gen/generators/base_generator.py",
+   "first_site": "backend/app/practice_gen/generators/base_generator.py:1140",
+   "renderer": "",
+   "path": [
+    7,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F19": {
+   "source": "backend/app/practice_gen/generators/base_generator.py",
+   "first_site": "backend/app/practice_gen/generators/base_generator.py:1144",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  }
+ },
+ "packet": {
+  "item": "S443-015",
+  "competency": {
+   "text": "Read and write numerals up to 1000.",
+   "grade": 2,
+   "quarter": 1
+  },
+  "clauses": [
+   {
+    "id": "read_and_write",
+    "kind": "task",
+    "clause": "Read and write"
+   },
+   {
+    "id": "numerals",
+    "kind": "object",
+    "clause": "numerals"
+   },
+   {
+    "id": "up_to_1000",
+    "kind": "range",
+    "clause": "up to 1000"
+   }
+  ],
+  "vocabulary": {
+   "student_vocab": [],
+   "curriculum_vocab": [],
+   "introduces_vocab": [],
+   "cumulative_vocab": [
+    "1 less",
+    "1 more",
+    "10th",
+    "1st",
+    "2nd",
+    "3rd",
+    "4th",
+    "5th",
+    "6th",
+    "7th",
+    "8th",
+    "9th",
+    "addition",
+    "analog clock",
+    "bigger",
+    "bill",
+    "calendar",
+    "clockwise",
+    "coin",
+    "compare",
+    "corner",
+    "count",
+    "counter-clockwise",
+    "data",
+    "difference",
+    "digit",
+    "equal",
+    "expanded form",
+    "fraction",
+    "group",
+    "half",
+    "half hour",
+    "half turn",
+    "hour",
+    "how many",
+    "left",
+    "length",
+    "less",
+    "measure",
+    "missing number",
+    "more",
+    "number",
+    "number line",
+    "numeral",
+    "ones",
+    "pattern",
+    "peso",
+    "pictograph",
+    "place value",
+    "quarter",
+    "quarter hour",
+    "quarter turn",
+    "rectangle",
+    "repeating pattern",
+    "same",
+    "side",
+    "skip counting",
+    "smaller",
+    "square",
+    "subtraction",
+    "sum",
+    "table",
+    "tens",
+    "thousand",
+    "total",
+    "triangle",
+    "whole",
+    "₱"
+   ],
+   "NOT_YET_KNOWN": [
+    "L",
+    "a.m.",
+    "area",
+    "axis",
+    "balance scale",
+    "bar graph",
+    "capacity",
+    "centavo",
+    "centimeter",
+    "certain",
+    "circle",
+    "cm",
+    "decreasing pattern",
+    "denominator",
+    "division",
+    "elapsed time",
+    "equal groups",
+    "equally likely",
+    "estimate",
+    "even",
+    "g",
+    "gram",
+    "hundreds",
+    "impossible",
+    "improper fraction",
+    "increasing pattern",
+    "intersecting",
+    "kg",
+    "kilogram",
+    "less likely",
+    "line",
+    "line of symmetry",
+    "line segment",
+    "liter",
+    "m",
+    "mL",
+    "mass",
+    "meter",
+    "milliliter",
+    "minute",
+    "missing term",
+    "more likely",
+    "multiplication",
+    "nearest hundred",
+    "nearest ten",
+    "nearest thousand",
+    "numerator",
+    "odd",
+    "order of operations",
+    "outcome",
+    "p.m.",
+    "parallel",
+    "perimeter",
+    "perpendicular",
+    "point",
+    "product",
+    "quotient",
+    "ray",
+    "regrouping",
+    "remainder",
+    "round",
+    "ruler",
+    "scale",
+    "similar fractions",
+    "slide",
+    "solid figure",
+    "sq. cm",
+    "square centimeter",
+    "symmetry",
+    "ten thousand",
+    "ten-thousands place",
+    "translation"
+   ],
+   "sentence_max_words": 18,
+   "number_format": "no commas for numbers up to 1000"
+  },
+  "declared_variants": [],
+  "declared_bounds": [
+   {
+    "range": [
+     10,
+     1000
+    ],
+    "task_type": "read_and_write"
+   }
+  ],
+  "families": [
+   {
+    "id": "F01",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F07"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='expanded form')",
+        "requires_vocab": "expanded form",
+        "prints": "expanded form",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F02",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F04"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='place value')",
+        "requires_vocab": "place value",
+        "prints": "place value",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F03",
+    "template": "Add the parts together to get {number}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "number"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "number",
+        "printed_runs": "185 to 186, 195, 210, 214, 221, 225, 233, 237, 242, 255, 263, 265, 270, 303 to 305, 313, 332, 337, 347, 350, 352, 362, 364, 369, 372, 376, 379, 408, 412, 418 to 419, 449 to 450, 453, 457, 468, 473, 475, 484, 488, 500, 511, 518, 524, 539 to 540, 544, 559, 567, 581, 586, 601 to 602, 605, 617, 632, 648, 652, 658, 664, 671, 676, 685, 698, 706, 710, 713, 716, 718, 739, 751, 757, 766, 771 to 772, 774, 776 to 778, 801, 803, 805, 818, 820, 838, 854, 860, 880 to 881, 884, 896 to 897, 907, 914, 920, 936 to 937, 939 to 940, 946, 959, 964, 971, 991",
+        "derived_from_values": [
+         "number"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F04",
+    "template": "Identify each word part and its {pv_label}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "pv_label"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F02"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F05",
+    "template": "Read the number {number} one place at a time, starting from the largest place.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "number"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "number",
+        "printed_runs": "189, 203, 208, 215, 221, 224, 234, 236, 241, 244, 258 to 259, 264, 267, 271, 276, 278, 282, 296, 303, 305 to 306, 313, 321, 333, 350 to 351, 360, 363, 371 to 372, 374, 378, 380, 386, 388, 396, 401, 405, 408, 418, 426, 443 to 444, 449, 452, 470, 479, 487 to 488, 497, 501, 504, 530, 532, 554, 557, 569, 581, 587, 593 to 594, 606, 613, 617, 626 to 627, 630, 645, 648, 658, 663, 674, 683, 688, 692, 694, 707, 715, 730, 741, 747 to 748, 754, 760, 764 to 765, 769, 772 to 773, 782, 784, 789, 808, 810, 812, 816, 824 to 825, 835, 847, 853, 870, 884, 889, 896, 908 to 910, 915, 933, 937 to 938, 964 to 965, 969, 978, 981, 987, 991",
+        "derived_from_values": [
+         "number"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F06",
+    "template": "The full word form is: '{word_form}'.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "word_form"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "word_form",
+        "printed": [
+         "eight hundred eight",
+         "eight hundred eighty-four",
+         "eight hundred eighty-nine",
+         "eight hundred fifty-three",
+         "eight hundred forty-seven",
+         "eight hundred ninety-six",
+         "eight hundred seventy",
+         "eight hundred sixteen",
+         "eight hundred ten",
+         "eight hundred thirty-five",
+         "eight hundred twelve",
+         "eight hundred twenty-five",
+         "eight hundred twenty-four",
+         "five hundred eighty-one",
+         "five hundred eighty-seven",
+         "five hundred fifty-four",
+         "five hundred fifty-seven",
+         "five hundred four",
+         "five hundred ninety-four",
+         "five hundred ninety-three",
+         "five hundred one",
+         "five hundred sixty-nine",
+         "five hundred thirty-two",
+         "five hundred thirty",
+         "four hundred eight",
+         "four hundred eighteen",
+         "four hundred eighty-eight",
+         "four hundred eighty-seven",
+         "four hundred fifty-two",
+         "four hundred five",
+         "four hundred forty-four",
+         "four hundred forty-nine",
+         "four hundred forty-three",
+         "four hundred ninety-seven",
+         "four hundred one",
+         "four hundred seventy-nine",
+         "four hundred seventy",
+         "four hundred twenty-six",
+         "nine hundred eight",
+         "nine hundred eighty-one",
+         "nine hundred eighty-seven",
+         "nine hundred fifteen",
+         "nine hundred nine",
+         "nine hundred ninety-one",
+         "nine hundred seventy-eight",
+         "nine hundred sixty-five",
+         "nine hundred sixty-four",
+         "nine hundred sixty-nine",
+         "nine hundred ten",
+         "nine hundred thirty-eight",
+         "nine hundred thirty-seven",
+         "nine hundred thirty-three",
+         "one hundred eighty-nine",
+         "seven hundred eighty-four",
+         "seven hundred eighty-nine",
+         "seven hundred eighty-two",
+         "seven hundred fifteen",
+         "seven hundred fifty-four",
+         "seven hundred forty-eight",
+         "seven hundred forty-one",
+         "seven hundred forty-seven",
+         "seven hundred seven",
+         "seven hundred seventy-three",
+         "seven hundred seventy-two",
+         "seven hundred sixty-five",
+         "seven hundred sixty-four",
+         "seven hundred sixty-nine",
+         "seven hundred sixty",
+         "seven hundred thirty",
+         "six hundred eighty-eight",
+         "six hundred eighty-three",
+         "six hundred fifty-eight",
+         "six hundred forty-eight",
+         "six hundred forty-five",
+         "six hundred ninety-four",
+         "six hundred ninety-two",
+         "six hundred seventeen",
+         "six hundred seventy-four",
+         "six hundred six",
+         "six hundred sixty-three",
+         "six hundred thirteen",
+         "six hundred thirty",
+         "six hundred twenty-seven",
+         "six hundred twenty-six",
+         "three hundred eighty-eight",
+         "three hundred eighty-six",
+         "three hundred eighty",
+         "three hundred fifty-one",
+         "three hundred fifty",
+         "three hundred five",
+         "three hundred ninety-six",
+         "three hundred seventy-eight",
+         "three hundred seventy-four",
+         "three hundred seventy-one",
+         "three hundred seventy-two",
+         "three hundred six",
+         "three hundred sixty-three",
+         "three hundred sixty",
+         "three hundred thirteen",
+         "three hundred thirty-three",
+         "three hundred three",
+         "three hundred twenty-one",
+         "two hundred eight",
+         "two hundred eighty-two",
+         "two hundred fifteen",
+         "two hundred fifty-eight",
+         "two hundred fifty-nine",
+         "two hundred forty-four",
+         "two hundred forty-one",
+         "two hundred ninety-six",
+         "two hundred seventy-eight",
+         "two hundred seventy-one",
+         "two hundred seventy-six",
+         "two hundred sixty-four",
+         "two hundred sixty-seven",
+         "two hundred thirty-four",
+         "two hundred thirty-six",
+         "two hundred three",
+         "two hundred twenty-four",
+         "two hundred twenty-one"
+        ],
+        "derived_from_values": [
+         "word_form"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F07",
+    "template": "{capitalize}: {expanded_form}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "capitalize"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F01"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "expanded_form"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "expanded_form",
+        "printed": [
+         "100 + 80 + 5",
+         "100 + 80 + 6",
+         "100 + 90 + 5",
+         "200 + 10 + 4",
+         "200 + 10",
+         "200 + 20 + 1",
+         "200 + 20 + 5",
+         "200 + 30 + 3",
+         "200 + 30 + 7",
+         "200 + 40 + 2",
+         "200 + 50 + 5",
+         "200 + 60 + 3",
+         "200 + 60 + 5",
+         "200 + 70",
+         "300 + 10 + 3",
+         "300 + 30 + 2",
+         "300 + 30 + 7",
+         "300 + 3",
+         "300 + 40 + 7",
+         "300 + 4",
+         "300 + 50 + 2",
+         "300 + 50",
+         "300 + 5",
+         "300 + 60 + 2",
+         "300 + 60 + 4",
+         "300 + 60 + 9",
+         "300 + 70 + 2",
+         "300 + 70 + 6",
+         "300 + 70 + 9",
+         "400 + 10 + 2",
+         "400 + 10 + 8",
+         "400 + 10 + 9",
+         "400 + 40 + 9",
+         "400 + 50 + 3",
+         "400 + 50 + 7",
+         "400 + 50",
+         "400 + 60 + 8",
+         "400 + 70 + 3",
+         "400 + 70 + 5",
+         "400 + 80 + 4",
+         "400 + 80 + 8",
+         "400 + 8",
+         "500 + 10 + 1",
+         "500 + 10 + 8",
+         "500 + 20 + 4",
+         "500 + 30 + 9",
+         "500 + 40 + 4",
+         "500 + 40",
+         "500 + 50 + 9",
+         "500 + 60 + 7",
+         "500 + 80 + 1",
+         "500 + 80 + 6",
+         "500",
+         "600 + 10 + 7",
+         "600 + 1",
+         "600 + 2",
+         "600 + 30 + 2",
+         "600 + 40 + 8",
+         "600 + 50 + 2",
+         "600 + 50 + 8",
+         "600 + 5",
+         "600 + 60 + 4",
+         "600 + 70 + 1",
+         "600 + 70 + 6",
+         "600 + 80 + 5",
+         "600 + 90 + 8",
+         "700 + 10 + 3",
+         "700 + 10 + 6",
+         "700 + 10 + 8",
+         "700 + 10",
+         "700 + 30 + 9",
+         "700 + 50 + 1",
+         "700 + 50 + 7",
+         "700 + 60 + 6",
+         "700 + 6",
+         "700 + 70 + 1",
+         "700 + 70 + 2",
+         "700 + 70 + 4",
+         "700 + 70 + 6",
+         "700 + 70 + 7",
+         "700 + 70 + 8",
+         "800 + 10 + 8",
+         "800 + 1",
+         "800 + 20",
+         "800 + 30 + 8",
+         "800 + 3",
+         "800 + 50 + 4",
+         "800 + 5",
+         "800 + 60",
+         "800 + 80 + 1",
+         "800 + 80 + 4",
+         "800 + 80",
+         "800 + 90 + 6",
+         "800 + 90 + 7",
+         "900 + 10 + 4",
+         "900 + 20",
+         "900 + 30 + 6",
+         "900 + 30 + 7",
+         "900 + 30 + 9",
+         "900 + 40 + 6",
+         "900 + 40",
+         "900 + 50 + 9",
+         "900 + 60 + 4",
+         "900 + 70 + 1",
+         "900 + 7",
+         "900 + 90 + 1"
+        ],
+        "derived_from_values": [
+         "expanded_form"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F08",
+    "template": "{chunk}-{v}",
+    "appears_in": [
+     "correct_answer",
+     "distractors",
+     "format_data.mcq_options",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "chunk"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "_TENS"
+       }
+      ]
+     },
+     {
+      "slots": [
+       "v"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "_ONES"
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F09",
+    "template": "{hundreds_label}: {hd} → '{num_to_tagalog_style_english_words} hundred'.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "hundreds_label"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "'hundreds' gated by cumulative_vocab",
+        "requires_vocab": "hundreds",
+        "prints": "The 3rd part from the right",
+        "words_left_out": 1
+       }
+      ]
+     },
+     {
+      "slots": [
+       "hd"
+      ],
+      "domains": [
+       {
+        "domain": "a number computed by the generator",
+        "reason": "arithmetic",
+        "derived_from_values": [
+         "number"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "num_to_tagalog_style_english_words"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F10"
+        ],
+        "derived_from_values": [
+         "number"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "number",
+     "task_type"
+    ]
+   },
+   {
+    "id": "F10",
+    "template": "{p0}",
+    "appears_in": [
+     "distractors"
+    ],
+    "nested_in": [
+     "F09"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "p0"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "_ONES"
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F11",
+    "template": "{p0} {p1}",
+    "appears_in": [
+     "correct_answer",
+     "distractors",
+     "format_data.mcq_options",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "p0"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F12",
+         "F14"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "p1"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "_ONES"
+       },
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "_TENS"
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F12",
+    "template": "{v} hundred",
+    "appears_in": [
+     "correct_answer",
+     "distractors",
+     "format_data.mcq_options",
+     "format_data.options"
+    ],
+    "nested_in": [
+     "F11"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "v"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "_ONES"
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F13",
+    "template": "{answer}",
+    "appears_in": [
+     "correct_answer",
+     "format_data.mcq_options",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "word_form",
+        "printed": [
+         "eight hundred eight",
+         "eight hundred forty-seven",
+         "eight hundred ninety-six",
+         "eight hundred seventy",
+         "eight hundred sixteen",
+         "eight hundred twelve",
+         "eight hundred twenty-five",
+         "eight hundred twenty-four",
+         "five hundred eighty-one",
+         "five hundred eighty-seven",
+         "five hundred fifty-four",
+         "five hundred fifty-seven",
+         "five hundred four",
+         "five hundred ninety-four",
+         "five hundred ninety-three",
+         "five hundred one",
+         "five hundred thirty-two",
+         "five hundred thirty",
+         "four hundred eighteen",
+         "four hundred fifty-two",
+         "four hundred forty-four",
+         "four hundred forty-nine",
+         "four hundred forty-three",
+         "four hundred ninety-seven",
+         "four hundred seventy",
+         "four hundred twenty-six",
+         "nine hundred eight",
+         "nine hundred eighty-seven",
+         "nine hundred nine",
+         "nine hundred ninety-one",
+         "nine hundred seventy-eight",
+         "nine hundred sixty-four",
+         "nine hundred sixty-nine",
+         "nine hundred thirty-seven",
+         "seven hundred eighty-four",
+         "seven hundred eighty-nine",
+         "seven hundred fifty-four",
+         "seven hundred forty-one",
+         "seven hundred seven",
+         "seven hundred sixty-four",
+         "seven hundred sixty-nine",
+         "seven hundred sixty",
+         "six hundred eighty-eight",
+         "six hundred eighty-three",
+         "six hundred fifty-eight",
+         "six hundred forty-eight",
+         "six hundred forty-five",
+         "six hundred ninety-four",
+         "six hundred ninety-two",
+         "six hundred seventeen",
+         "six hundred seventy-four",
+         "six hundred sixty-three",
+         "six hundred thirteen",
+         "six hundred thirty",
+         "six hundred twenty-seven",
+         "three hundred fifty-one",
+         "three hundred fifty",
+         "three hundred five",
+         "three hundred ninety-six",
+         "three hundred seventy-eight",
+         "three hundred seventy-four",
+         "three hundred seventy-two",
+         "three hundred six",
+         "three hundred sixty-three",
+         "three hundred sixty",
+         "three hundred thirteen",
+         "three hundred thirty-three",
+         "three hundred three",
+         "three hundred twenty-one",
+         "two hundred eight",
+         "two hundred eighty-two",
+         "two hundred fifteen",
+         "two hundred forty-four",
+         "two hundred forty-one",
+         "two hundred ninety-six",
+         "two hundred seventy-eight",
+         "two hundred seventy-one",
+         "two hundred seventy-six",
+         "two hundred sixty-four",
+         "two hundred sixty-seven",
+         "two hundred thirty-four",
+         "two hundred thirty-six",
+         "two hundred twenty-four"
+        ],
+        "derived_from_values": [
+         "word_form"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F14",
+    "template": "{member}",
+    "appears_in": [
+     "distractors",
+     "format_data.mcq_options",
+     "format_data.options"
+    ],
+    "nested_in": [
+     "F11"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "member"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "QuestionContext.distractors (the generator's own)",
+        "members": [
+         "eight hundred eighty-four",
+         "eight hundred eleven",
+         "eight hundred fifteen",
+         "eight hundred fifty-four",
+         "eight hundred fifty-six",
+         "eight hundred forty-three",
+         "eight hundred nine",
+         "eight hundred seven",
+         "eight hundred thirty-nine",
+         "eight hundred twenty-six",
+         "eight hundred",
+         "eighteen",
+         "five hundred fifty-eight",
+         "five hundred forty-seven",
+         "five hundred ninety-six",
+         "five hundred thirty-three",
+         "five hundred twenty-eight",
+         "five hundred twenty-two",
+         "four hundred eighty-nine",
+         "four hundred eighty-seven",
+         "four hundred forty-five",
+         "four hundred forty-four",
+         "four hundred forty-three",
+         "four hundred seventy-eight",
+         "four hundred seventy-six",
+         "four hundred sixteen",
+         "four hundred thirty-four",
+         "four hundred thirty-three",
+         "four hundred twenty-seven",
+         "nine hundred eighty-one",
+         "nine hundred eighty-two",
+         "nine hundred seventy-one",
+         "nine hundred thirty-nine",
+         "nine hundred twenty-eight",
+         "one hundred eighty-nine",
+         "one hundred ninety",
+         "one hundred seventy-nine",
+         "one hundred seventy-two",
+         "seven hundred eighty-five",
+         "seven hundred fifty",
+         "seven hundred fifty-five",
+         "seven hundred ninety-eight",
+         "seven hundred seventy-four",
+         "seven hundred sixteen",
+         "seven hundred sixty-one",
+         "six hundred eighteen",
+         "six hundred fifty-nine",
+         "six hundred five",
+         "six hundred forty-eight",
+         "six hundred ninety-three",
+         "six hundred seven",
+         "six hundred seventy-five",
+         "six hundred sixty-four",
+         "six hundred twenty-four",
+         "sixty-seven",
+         "three hundred eighty-six",
+         "three hundred fifty-eight",
+         "three hundred forty-four",
+         "three hundred four",
+         "three hundred ninety-seven",
+         "three hundred two",
+         "two hundred ninety-three",
+         "two hundred seventy-two",
+         "two hundred sixty-one",
+         "two hundred thirty-five"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F15",
+    "template": "The number written as '{word}' is {fill_value}",
+    "appears_in": [
+     "format_data.statement"
+    ],
+    "nested_in": [
+     "F17"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "word"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "word_form",
+        "printed": [
+         "eight hundred eighty-four",
+         "eight hundred eighty",
+         "eight hundred fifty-four",
+         "eight hundred ninety-seven",
+         "eight hundred one",
+         "eight hundred sixty",
+         "eight hundred three",
+         "eight hundred twenty",
+         "five hundred sixty-seven",
+         "four hundred eighteen",
+         "four hundred eighty-eight",
+         "four hundred fifty-seven",
+         "four hundred forty-nine",
+         "four hundred seventy-five",
+         "four hundred seventy-three",
+         "nine hundred forty-six",
+         "nine hundred fourteen",
+         "nine hundred ninety-one",
+         "nine hundred thirty-seven",
+         "one hundred eighty-five",
+         "seven hundred eighteen",
+         "seven hundred fifty-seven",
+         "seven hundred seventy-six",
+         "seven hundred seventy-two",
+         "seven hundred six",
+         "seven hundred ten",
+         "seven hundred thirteen",
+         "six hundred eighty-five",
+         "six hundred seventeen",
+         "six hundred seventy-one",
+         "six hundred sixty-four",
+         "three hundred five",
+         "three hundred sixty-nine",
+         "three hundred sixty-two",
+         "three hundred thirteen",
+         "three hundred three",
+         "two hundred forty-two",
+         "two hundred sixty-five",
+         "two hundred thirty-three",
+         "two hundred twenty-one"
+        ],
+        "derived_from_values": [
+         "word_form"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "fill_value"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the distractors shaped like the keyed answer",
+        "members": [
+         478,
+         489,
+         649,
+         884,
+         936,
+         947
+        ]
+       },
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the keyed answer (a true statement)",
+        "members": [
+         475,
+         617,
+         803,
+         937
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F16",
+    "template": "The number {number} is written in words as '{fill_value}'",
+    "appears_in": [
+     "format_data.statement"
+    ],
+    "nested_in": [
+     "F17"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "number"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "number",
+        "printed_runs": "189, 203, 221, 258 to 259, 371, 380, 386, 388, 401, 405, 408, 479, 487 to 488, 532, 569, 606, 626, 715, 730, 747 to 748, 765, 772 to 773, 782, 784, 810, 835, 853, 884, 889, 910, 915, 933, 937 to 938, 965, 981",
+        "derived_from_values": [
+         "number"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "fill_value"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the distractors shaped like the keyed answer",
+        "members": [
+         "eight hundred eighty-four",
+         "five hundred ninety-six",
+         "five hundred thirty-three",
+         "five hundred twenty-two",
+         "four hundred eighty-nine",
+         "four hundred eighty-seven",
+         "four hundred seventy-eight",
+         "seven hundred eighty-five",
+         "seven hundred seventy-four",
+         "six hundred five",
+         "six hundred seven",
+         "two hundred thirty-five"
+        ]
+       },
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the keyed answer (a true statement)",
+        "members": [
+         "eight hundred fifty-three",
+         "eight hundred ten",
+         "five hundred thirty-two",
+         "nine hundred eighty-one",
+         "nine hundred thirty-eight",
+         "one hundred eighty-nine"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F17",
+    "template": "{statement}. True or False?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "statement"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F15",
+         "F16"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F18",
+    "template": "Write the number: {word_form}.",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "word_form"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "word_form",
+        "printed": [
+         "eight hundred eighteen",
+         "eight hundred eighty-one",
+         "eight hundred five",
+         "eight hundred ninety-six",
+         "eight hundred thirty-eight",
+         "five hundred eighteen",
+         "five hundred eighty-one",
+         "five hundred eighty-six",
+         "five hundred eleven",
+         "five hundred fifty-nine",
+         "five hundred forty-four",
+         "five hundred forty",
+         "five hundred thirty-nine",
+         "five hundred twenty-four",
+         "five hundred",
+         "four hundred eight",
+         "four hundred eighty-eight",
+         "four hundred eighty-four",
+         "four hundred fifty-three",
+         "four hundred fifty",
+         "four hundred nineteen",
+         "four hundred sixty-eight",
+         "four hundred twelve",
+         "nine hundred fifty-nine",
+         "nine hundred forty",
+         "nine hundred seven",
+         "nine hundred seventy-one",
+         "nine hundred sixty-four",
+         "nine hundred thirty-nine",
+         "nine hundred thirty-six",
+         "nine hundred twenty",
+         "one hundred eighty-five",
+         "one hundred eighty-six",
+         "one hundred ninety-five",
+         "seven hundred eighteen",
+         "seven hundred fifty-one",
+         "seven hundred seventy-eight",
+         "seven hundred seventy-four",
+         "seven hundred seventy-one",
+         "seven hundred seventy-seven",
+         "seven hundred seventy-six",
+         "seven hundred sixteen",
+         "seven hundred sixty-six",
+         "seven hundred ten",
+         "seven hundred thirty-nine",
+         "six hundred fifty-eight",
+         "six hundred fifty-two",
+         "six hundred five",
+         "six hundred forty-eight",
+         "six hundred ninety-eight",
+         "six hundred one",
+         "six hundred seventy-six",
+         "six hundred thirty-two",
+         "six hundred two",
+         "three hundred fifty-two",
+         "three hundred fifty",
+         "three hundred forty-seven",
+         "three hundred four",
+         "three hundred seventy-nine",
+         "three hundred seventy-six",
+         "three hundred seventy-two",
+         "three hundred sixty-four",
+         "three hundred thirty-seven",
+         "three hundred thirty-two",
+         "two hundred fifty-five",
+         "two hundred fourteen",
+         "two hundred seventy",
+         "two hundred sixty-three",
+         "two hundred ten",
+         "two hundred thirty-seven",
+         "two hundred twenty-five"
+        ],
+        "derived_from_values": [
+         "word_form"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type",
+     "word_form"
+    ]
+   },
+   {
+    "id": "F19",
+    "template": "Write {number} in words.",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "number"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "number",
+        "printed_runs": "208, 215, 224, 234, 236, 241, 244, 264, 267, 271, 276, 278, 282, 296, 303, 305 to 306, 313, 321, 333, 350 to 351, 360, 363, 372, 374, 378, 396, 418, 426, 443 to 444, 449, 452, 470, 497, 501, 504, 530, 532, 554, 557, 581, 587, 593 to 594, 613, 617, 627, 630, 645, 648, 658, 663, 674, 683, 688, 692, 694, 707, 741, 754, 760, 764, 769, 784, 789, 808, 812, 816, 824 to 825, 847, 870, 896, 908 to 909, 937, 964, 969, 978, 987, 991",
+        "derived_from_values": [
+         "number"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   }
+  ],
+  "lists": {
+   "_TENS": [
+    "",
+    "twenty",
+    "thirty",
+    "forty",
+    "fifty",
+    "sixty",
+    "seventy",
+    "eighty",
+    "ninety"
+   ],
+   "_ONES": [
+    "",
+    "one",
+    "two",
+    "three",
+    "four",
+    "five",
+    "six",
+    "seven",
+    "eight",
+    "nine",
+    "ten",
+    "eleven",
+    "twelve",
+    "thirteen",
+    "fourteen",
+    "fifteen",
+    "sixteen",
+    "seventeen",
+    "eighteen",
+    "nineteen"
+   ]
+  },
+  "banks": {},
+  "value_derivations": [],
+  "reason_kinds": {
+   "arithmetic": "a number the generator computes from the generated values named in src (a half, a sum, a difference, a running total, a place's digit). Its range is the image of those values' own domains; whether the arithmetic is RIGHT is the hint contract's (§16) and §1E's to check, not §14's."
+  }
+ }
+}

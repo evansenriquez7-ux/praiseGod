@@ -1,0 +1,1128 @@
+{
+ "schema_version": 2,
+ "hash_version": 8,
+ "node_id": "mat_g1_na_q4_2",
+ "record_id": "stem-batch442-S442-018-first-r1",
+ "role": "first",
+ "confirms": null,
+ "item_id": "S442-018",
+ "lc_hash": "a1fdf1731276fb16dc508777efaa1bde3a6f339d6e028f90ca7b52c2737703c8",
+ "judged_by": "blind-stem-judge-claude-haiku-batch442-S442-018-first-r1",
+ "dispatch_id": "stem-batch442-S442-018-first-r1",
+ "filed_at": "2026-10-15T16:53:32Z",
+ "delivery": "Claude Code Agent tool, model=haiku, subagent_type=general-purpose; the judge was told to read only local_only/scratch/h4c/prompts/S442-018.prompt.txt (tests/stem_file.py prompt output, item S442-018; no lc id, no key or packets file in that directory) and reply with what it asks; dispatched with CLAUDE.md loaded (ruling 29). Blindness is a prompt contract, audited from the subagent transcript.",
+ "tool_uses_by_judge": "From the subagent transcript: 1 tool use(s), all Read of its own prompt file (976 lines, every line read); no other tool, path or search. Model reported in the transcript: claude-haiku-5-5.",
+ "dispatch_prompt_digest": "e259c87d4c425d2e09773be384b68683535f96bee81b47e370c03c839760f99f",
+ "raw_reply": "{\"item\": \"S442-018\", \"clauses\": {\"count\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F04\", \"template\": \"Count by halves: 1/2, ___. What fraction comes next?\", \"reasoning\": \"F04 is a counting-by-halves sequence with a blank to fill, built on the task clause Count. Its denominator and operation are chosen from the lc's declared bounds (unit_fraction, count_sequence).\"}, \"halves\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F09\", \"template\": \"What comes next when counting by halves: 1/2, ___?\", \"reasoning\": \"F09 names halves as the object being counted. The word halves is in curriculum_vocab.\"}, \"quarters\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F05\", \"template\": \"Count by quarters: 1/4, 2/4, 3/4, ___. What fraction comes next?\", \"reasoning\": \"F05 counts quarters in a unit-fraction sequence. The word quarters is in curriculum_vocab.\"}}, \"failing_families\": [\"F07\", \"F12\", \"F15\", \"F18\", \"F19\", \"F21\"], \"failing_templates\": [\"Put the result over the same {den_lbl}: {step}/{den}.\", \"What fraction is missing when counting by quarters: {join}?\", \"When {verb} {frac_lbl}s with the same {den_lbl}, keep the {den_lbl} the same.\", \"{p0}, {p1}, {p2}, {p3}\", \"{replace} only the {num_lbl}s: {a_num} {sign} {b_num} = {step}.\", \"{member}\"], \"overall\": \"FAIL\", \"reasoning\": \"F15 and F07 teach adding and subtracting fractions that share a bottom number. The lc says only Count halves and quarters, and the declared operation is count_sequence alone, so this is an operation beyond scope. F19 pairs an Add or Subtract verb with a + or - sign drawn from separate domains with no link between them, so a learner can be told to add with a minus sign. Its b_num domain is printed only as 0. F21 members include 4/3, which is thirds and outside halves and quarters, and also 1/2, 3/2 and 4/2 alongside quarter members. F18 joins F17 and F21 values with no denominator constraint, and F12 nests F18 under a count-by-quarters question, so a problem can show a sequence that mixes halves, thirds or other denominators. Families F01 to F06, F08 to F11, F13, F14, F16, F17 and F20 pass. F16 and F17 print fixed /4 answer choices, which I accepted as wrong choices. Whether the F08 hint matches the keyed answer cannot be determined from the packet, because result_num is not listed among the value derivations.\"}",
+ "raw_reply_digest": "846ffd85355faaa5eebf4ddae2cf9fdd6227104ea4784df50a6bfab277e34eba",
+ "packet_digest": "4c935a023c3af104ec9ebf48c8ff38d133b4d8d61e45fb209172d6c2d2b586f1",
+ "family_keys": {
+  "F01": {
+   "source": "backend/app/practice_gen/dna/base.py [gate denominator]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F02": {
+   "source": "backend/app/practice_gen/dna/base.py [gate fraction]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F03": {
+   "source": "backend/app/practice_gen/dna/base.py [gate numerator]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F04": {
+   "source": "backend/app/practice_gen/dna/na/fractions.py",
+   "first_site": "backend/app/practice_gen/dna/na/fractions.py:308",
+   "renderer": "",
+   "path": [
+    4,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F05": {
+   "source": "backend/app/practice_gen/dna/na/fractions.py",
+   "first_site": "backend/app/practice_gen/dna/na/fractions.py:343",
+   "renderer": "",
+   "path": [
+    7,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F06": {
+   "source": "backend/app/practice_gen/dna/na/fractions.py",
+   "first_site": "backend/app/practice_gen/dna/na/fractions.py:324",
+   "renderer": "",
+   "path": [
+    12,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F07": {
+   "source": "backend/app/practice_gen/dna/na/fractions.py",
+   "first_site": "backend/app/practice_gen/dna/na/fractions.py:690",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F08": {
+   "source": "backend/app/practice_gen/dna/na/fractions.py",
+   "first_site": "backend/app/practice_gen/dna/na/fractions.py:691",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F09": {
+   "source": "backend/app/practice_gen/dna/na/fractions.py",
+   "first_site": "backend/app/practice_gen/dna/na/fractions.py:308",
+   "renderer": "",
+   "path": [
+    2,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F10": {
+   "source": "backend/app/practice_gen/dna/na/fractions.py",
+   "first_site": "backend/app/practice_gen/dna/na/fractions.py:343",
+   "renderer": "",
+   "path": [
+    23,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F11": {
+   "source": "backend/app/practice_gen/dna/na/fractions.py",
+   "first_site": "backend/app/practice_gen/dna/na/fractions.py:324",
+   "renderer": "",
+   "path": [
+    13,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F12": {
+   "source": "backend/app/practice_gen/dna/na/fractions.py",
+   "first_site": "backend/app/practice_gen/dna/na/fractions.py:337",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F13": {
+   "source": "backend/app/practice_gen/dna/na/fractions.py",
+   "first_site": "backend/app/practice_gen/dna/na/fractions.py:308",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F14": {
+   "source": "backend/app/practice_gen/dna/na/fractions.py",
+   "first_site": "backend/app/practice_gen/dna/na/fractions.py:343",
+   "renderer": "",
+   "path": [
+    35,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F15": {
+   "source": "backend/app/practice_gen/dna/na/fractions.py",
+   "first_site": "backend/app/practice_gen/dna/na/fractions.py:686",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F16": {
+   "source": "backend/app/practice_gen/dna/na/fractions.py",
+   "first_site": "backend/app/practice_gen/dna/na/fractions.py:331",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F17": {
+   "source": "backend/app/practice_gen/dna/na/fractions.py",
+   "first_site": "backend/app/practice_gen/dna/na/fractions.py:333",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F18": {
+   "source": "backend/app/practice_gen/dna/na/fractions.py",
+   "first_site": "backend/app/practice_gen/dna/na/fractions.py:337",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F19": {
+   "source": "backend/app/practice_gen/dna/na/fractions.py",
+   "first_site": "backend/app/practice_gen/dna/na/fractions.py:687",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F20": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:32",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F21": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:39",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  }
+ },
+ "packet": {
+  "item": "S442-018",
+  "competency": {
+   "text": "Count halves and quarters.",
+   "grade": 1,
+   "quarter": 4
+  },
+  "clauses": [
+   {
+    "id": "count",
+    "kind": "task",
+    "clause": "Count"
+   },
+   {
+    "id": "halves",
+    "kind": "object",
+    "clause": "halves"
+   },
+   {
+    "id": "quarters",
+    "kind": "object",
+    "clause": "quarters"
+   }
+  ],
+  "vocabulary": {
+   "student_vocab": [],
+   "curriculum_vocab": [
+    "halves",
+    "quarters"
+   ],
+   "introduces_vocab": [
+    "halves",
+    "quarters"
+   ],
+   "cumulative_vocab": [
+    "1 less",
+    "1 more",
+    "10th",
+    "1st",
+    "2nd",
+    "3rd",
+    "4th",
+    "5th",
+    "6th",
+    "7th",
+    "8th",
+    "9th",
+    "addition",
+    "bigger",
+    "compare",
+    "corner",
+    "count",
+    "data",
+    "difference",
+    "digit",
+    "equal",
+    "expanded form",
+    "fraction",
+    "group",
+    "half",
+    "how many",
+    "left",
+    "length",
+    "less",
+    "measure",
+    "missing number",
+    "more",
+    "number",
+    "number line",
+    "numeral",
+    "ones",
+    "pattern",
+    "pictograph",
+    "place value",
+    "quarter",
+    "rectangle",
+    "repeating pattern",
+    "same",
+    "side",
+    "skip counting",
+    "smaller",
+    "square",
+    "subtraction",
+    "sum",
+    "table",
+    "tens",
+    "total",
+    "triangle",
+    "whole"
+   ],
+   "NOT_YET_KNOWN": [
+    "L",
+    "a.m.",
+    "analog clock",
+    "area",
+    "axis",
+    "balance scale",
+    "bar graph",
+    "bill",
+    "calendar",
+    "capacity",
+    "centavo",
+    "centimeter",
+    "certain",
+    "circle",
+    "clockwise",
+    "cm",
+    "coin",
+    "counter-clockwise",
+    "decreasing pattern",
+    "denominator",
+    "division",
+    "elapsed time",
+    "equal groups",
+    "equally likely",
+    "estimate",
+    "even",
+    "g",
+    "gram",
+    "half hour",
+    "half turn",
+    "hour",
+    "hundreds",
+    "impossible",
+    "improper fraction",
+    "increasing pattern",
+    "intersecting",
+    "kg",
+    "kilogram",
+    "less likely",
+    "line",
+    "line of symmetry",
+    "line segment",
+    "liter",
+    "m",
+    "mL",
+    "mass",
+    "meter",
+    "milliliter",
+    "minute",
+    "missing term",
+    "more likely",
+    "multiplication",
+    "nearest hundred",
+    "nearest ten",
+    "nearest thousand",
+    "numerator",
+    "odd",
+    "order of operations",
+    "outcome",
+    "p.m.",
+    "parallel",
+    "perimeter",
+    "perpendicular",
+    "peso",
+    "point",
+    "product",
+    "quarter hour",
+    "quarter turn",
+    "quotient",
+    "ray",
+    "regrouping",
+    "remainder",
+    "round",
+    "ruler",
+    "scale",
+    "similar fractions",
+    "slide",
+    "solid figure",
+    "sq. cm",
+    "square centimeter",
+    "symmetry",
+    "ten thousand",
+    "ten-thousands place",
+    "thousand",
+    "translation",
+    "₱"
+   ],
+   "sentence_max_words": 15,
+   "number_format": "no commas, no thousands separator"
+  },
+  "declared_variants": [
+   [
+    "fraction_model",
+    "area_model"
+   ],
+   [
+    "fraction_model",
+    "number_line"
+   ],
+   [
+    "fraction_model",
+    "set_model"
+   ]
+  ],
+  "declared_bounds": [
+   {
+    "fraction_type": "unit_fraction",
+    "operation": "count_sequence"
+   }
+  ],
+  "families": [
+   {
+    "id": "F01",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F07",
+     "F15"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='denominator')",
+        "requires_vocab": "denominator",
+        "prints": "bottom number",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F02",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F15"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='fraction')",
+        "requires_vocab": "fraction",
+        "prints": "fraction",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F03",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F19"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='numerator')",
+        "requires_vocab": "numerator",
+        "prints": "top number",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F04",
+    "template": "Count by halves: 1/2, ___. What fraction comes next?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": [
+     "denominator",
+     "operation"
+    ]
+   },
+   {
+    "id": "F05",
+    "template": "Count by quarters: 1/4, 2/4, 3/4, ___. What fraction comes next?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": [
+     "denominator",
+     "operation"
+    ]
+   },
+   {
+    "id": "F06",
+    "template": "Count by quarters: 2/4, 3/4, ___. What fraction comes next?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": [
+     "denominator",
+     "operation"
+    ]
+   },
+   {
+    "id": "F07",
+    "template": "Put the result over the same {den_lbl}: {step}/{den}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "den_lbl"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F01"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "step"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "result_num",
+        "printed_runs": "2 to 4",
+        "derived_from_values": [
+         "result_num"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "den"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "denominator",
+        "printed_runs": "2, 4",
+        "derived_from_values": [
+         "denominator"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F08",
+    "template": "The answer is {r_num}/{r_den}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "r_num"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "result_num",
+        "printed_runs": "2 to 4",
+        "derived_from_values": [
+         "a_num",
+         "b_num",
+         "numerator",
+         "result_num"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "r_den"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "denominator",
+        "printed_runs": "2, 4",
+        "derived_from_values": [
+         "denominator",
+         "result_den"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F09",
+    "template": "What comes next when counting by halves: 1/2, ___?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": [
+     "denominator",
+     "operation"
+    ]
+   },
+   {
+    "id": "F10",
+    "template": "What comes next when counting by quarters: 1/4, 2/4, 3/4, ___?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": [
+     "denominator",
+     "operation"
+    ]
+   },
+   {
+    "id": "F11",
+    "template": "What comes next when counting by quarters: 2/4, 3/4, ___?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": [
+     "denominator",
+     "operation"
+    ]
+   },
+   {
+    "id": "F12",
+    "template": "What fraction is missing when counting by quarters: {join}?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "join"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F18"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "denominator",
+     "operation"
+    ]
+   },
+   {
+    "id": "F13",
+    "template": "What is the next fraction in the pattern: 1/2, ___?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": [
+     "denominator",
+     "operation"
+    ]
+   },
+   {
+    "id": "F14",
+    "template": "What is the next fraction in the pattern: 1/4, 2/4, 3/4, ___?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": [
+     "denominator",
+     "operation"
+    ]
+   },
+   {
+    "id": "F15",
+    "template": "When {verb} {frac_lbl}s with the same {den_lbl}, keep the {den_lbl} the same.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "verb"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the two operation verbs",
+        "members": [
+         "adding",
+         "subtracting"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "frac_lbl"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F02"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "den_lbl"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F01"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F16",
+    "template": "{missing_num}/4",
+    "appears_in": [
+     "correct_answer",
+     "format_data.mcq_options",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "missing_num"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the missing_nums choices",
+        "members": [
+         2,
+         3
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "denominator",
+     "operation"
+    ]
+   },
+   {
+    "id": "F17",
+    "template": "{n}/4",
+    "appears_in": [
+     "distractors",
+     "format_data.mcq_options",
+     "format_data.options"
+    ],
+    "nested_in": [
+     "F18"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "n"
+      ],
+      "domains": [
+       {
+        "domain": "a number in a range",
+        "basis": "the quarters 1/4 to 4/4",
+        "lo": 1,
+        "hi": 4
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "denominator",
+     "operation"
+    ]
+   },
+   {
+    "id": "F18",
+    "template": "{p0}, {p1}, {p2}, {p3}",
+    "appears_in": [],
+    "nested_in": [
+     "F12"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "p0",
+       "p3"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F17",
+         "F21"
+        ]
+       }
+      ],
+      "distinct_in_every_render": true
+     },
+     {
+      "slots": [
+       "p1",
+       "p2"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the missing term's blank",
+        "members": [
+         "___"
+        ]
+       },
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F17",
+         "F21"
+        ]
+       }
+      ],
+      "distinct_in_every_render": true
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F19",
+    "template": "{replace} only the {num_lbl}s: {a_num} {sign} {b_num} = {step}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "replace"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the two operation verbs, imperative",
+        "members": [
+         "Add",
+         "Subtract"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "num_lbl"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F03"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "a_num"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "numerator",
+        "printed_runs": "2 to 4",
+        "derived_from_values": [
+         "a_num",
+         "numerator"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "sign"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the two operation signs",
+        "members": [
+         "+",
+         "-"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b_num"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b_num",
+        "printed_runs": "0",
+        "derived_from_values": [
+         "b_num"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "step"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "result_num",
+        "printed_runs": "2 to 4",
+        "derived_from_values": [
+         "result_num"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F20",
+    "template": "{answer}",
+    "appears_in": [
+     "correct_answer",
+     "format_data.mcq_options",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "answer",
+        "printed": [
+         "2/2",
+         "2/4",
+         "3/4",
+         "4/4"
+        ],
+        "derived_from_values": [
+         "answer"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F21",
+    "template": "{member}",
+    "appears_in": [
+     "distractors",
+     "format_data.mcq_options",
+     "format_data.options"
+    ],
+    "nested_in": [
+     "F18"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "member"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "QuestionContext.distractors (the generator's own)",
+        "members": [
+         "1/2",
+         "1/4",
+         "2/4",
+         "3/2",
+         "3/4",
+         "4/2",
+         "4/3",
+         "4/4",
+         "5/4",
+         "6/4",
+         "7/4",
+         "8/4"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   }
+  ],
+  "lists": {},
+  "banks": {},
+  "value_derivations": [
+   {
+    "kind": "derives",
+    "key": "answer",
+    "from": [
+     "numerator",
+     "denominator"
+    ]
+   },
+   {
+    "kind": "derives",
+    "key": "fraction_str",
+    "from": [
+     "numerator",
+     "denominator"
+    ]
+   }
+  ],
+  "reason_kinds": {}
+ }
+}

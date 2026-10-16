@@ -1,0 +1,728 @@
+{
+ "schema_version": 2,
+ "hash_version": 8,
+ "node_id": "mat_g1_mg_q1_1",
+ "record_id": "stem-batch441-S441-006-confirming",
+ "role": "confirming",
+ "confirms": "stem-batch441-S441-006-first",
+ "item_id": "S441-006",
+ "lc_hash": "1e2936e109f2362363876ff8cde82cde3464d973652f0b75f8aebc30cbf70461",
+ "judged_by": "blind-stem-judge-claude-haiku-batch441-S441-006-confirming",
+ "dispatch_id": "stem-batch441-S441-006-confirming",
+ "filed_at": "2026-10-16T04:53:51Z",
+ "delivery": "Claude Code Agent tool, model=haiku, subagent_type=general-purpose; the judge was told to read only local_only/scratch/h4c/prompts/S441-006.prompt.txt (tests/stem_file.py prompt output, item S441-006; no lc id, no key or packets file in that directory) and reply with what it asks; dispatched with CLAUDE.md loaded (ruling 29). Blindness is a prompt contract, audited from the subagent transcript.",
+ "tool_uses_by_judge": "From the subagent transcript: 1 tool use(s), all Read of its own prompt file (686 lines, every line read); no other tool, path or search. Model reported in the transcript: claude-haiku-5-5.",
+ "dispatch_prompt_digest": "ad956f5162aab7564d2f787e50e6831ed11dfc3191cea963e2e155f1a735a031",
+ "raw_reply": "{\"item\": \"S441-006\",\n \"clauses\": {\n  \"compare_shapes\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F10\", \"template\": \"{question}\", \"reasoning\": \"F10 prints the question from _ITEM_POOL, which is one row per problem. The drawn rows compare two shapes on sides or corners, or ask which shape has the same number of sides as a square.\"},\n  \"distinguish_shapes\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F10\", \"template\": \"{question}\", \"reasoning\": \"Each drawn row asks the learner to tell one shape from the others by a side or corner feature, so the question family produces distinguishing problems. 'distinguish' is in introduces_vocab.\"},\n  \"two_dimensional_shapes\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F10\", \"template\": \"{question}\", \"reasoning\": \"The drawn rows name rectangle, triangle and square, all 2-dimensional and all in cumulative_vocab.\"},\n  \"shape_features_as_comparison_basis\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F10\", \"template\": \"{question}\", \"reasoning\": \"Every drawn row uses sides or corners as the basis of the comparison, which is the feature set the clause names.\"},\n  \"sides_of_a_shape\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F10\", \"template\": \"{question}\", \"reasoning\": \"Rows asking which shape has more sides, and rows asking about the same number of sides, make sides the comparison basis.\"},\n  \"corners_of_a_shape\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F10\", \"template\": \"{question}\", \"reasoning\": \"The row asking which shape has fewer corners makes corners the comparison basis.\"}\n },\n \"failing_families\": [],\n \"failing_templates\": [],\n \"overall\": \"PASS\",\n \"reasoning\": \"F01 to F04 print the gated word 'sides' (the gate's other word is never printed), and the printed statements are true: a rectangle has 4 sides with opposite sides equal and 4 corners, a square has 4 equal sides and 4 corners, a triangle has 3 sides and 3 corners. 'sides' and 'corners' are in introduces_vocab and 'equal' is in cumulative_vocab. F05 and F08 print only rectangle or triangle, and F08 and F09 draw from the same single row, so the keyed answer and distractors come from one row. All three drawn rows are correct: the rectangle has more sides than the triangle, the triangle has fewer corners than the square, and the rectangle has the same number of sides as the square, with the keyed answer unique among the offered choices. Every printed shape name is in cumulative_vocab, no printed sentence exceeds 15 words, and numbers are plain digits. Non-blocking observation: several distractors ('they are equal', 'they are different', 'neither') are not shapes under a 'Which shape' stem. They are not false statements, so they do not fail Rule 1. Scope: the drawn rows cover sides and corners. Circles and composite figures are not printed by any family, which is consistent with NOT_YET_KNOWN and the lc's scope.\"}",
+ "raw_reply_digest": "1ed09de124f6d85d33356d41d7535ad97c7c2d53ed1ccd6187bb614e80f43df9",
+ "packet_digest": "d4b09bc9a83f20f9aa368d197af40c45b865334b376cd8b96f7d0a6b2249f454",
+ "family_keys": {
+  "F01": {
+   "source": "backend/app/practice_gen/dna/mg/shapes_2d.py [gate side]",
+   "first_site": "backend/app/practice_gen/dna/mg/shapes_2d.py:817",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F02": {
+   "source": "backend/app/practice_gen/dna/mg/shapes_2d.py [gate side]",
+   "first_site": "backend/app/practice_gen/dna/mg/shapes_2d.py:816",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F03": {
+   "source": "backend/app/practice_gen/dna/mg/shapes_2d.py [gate side]",
+   "first_site": "backend/app/practice_gen/dna/mg/shapes_2d.py:815",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F04": {
+   "source": "backend/app/practice_gen/dna/mg/shapes_2d.py [gate side]",
+   "first_site": "backend/app/practice_gen/dna/mg/shapes_2d.py:814",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F05": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:32",
+   "renderer": "",
+   "path": [
+    4,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F06": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:51",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F07": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:39",
+   "renderer": "",
+   "path": [
+    4,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F08": {
+   "source": "backend/app/practice_gen/slots.py",
+   "first_site": "backend/app/practice_gen/slots.py:180",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F09": {
+   "source": "backend/app/practice_gen/slots.py",
+   "first_site": "backend/app/practice_gen/slots.py:182",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F10": {
+   "source": "backend/app/practice_gen/slots.py",
+   "first_site": "backend/app/practice_gen/slots.py:180",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  }
+ },
+ "packet": {
+  "item": "S441-006",
+  "competency": {
+   "text": "Compare and distinguish 2-dimensional shapes according to features such as sides and corners.",
+   "grade": 1,
+   "quarter": 1
+  },
+  "clauses": [
+   {
+    "id": "compare_shapes",
+    "kind": "task",
+    "clause": "Compare"
+   },
+   {
+    "id": "distinguish_shapes",
+    "kind": "task",
+    "clause": "distinguish"
+   },
+   {
+    "id": "two_dimensional_shapes",
+    "kind": "object",
+    "clause": "2-dimensional shapes"
+   },
+   {
+    "id": "shape_features_as_comparison_basis",
+    "kind": "attribute",
+    "clause": "features"
+   },
+   {
+    "id": "sides_of_a_shape",
+    "kind": "attribute",
+    "clause": "sides"
+   },
+   {
+    "id": "corners_of_a_shape",
+    "kind": "attribute",
+    "clause": "corners"
+   }
+  ],
+  "vocabulary": {
+   "student_vocab": [
+    "side",
+    "corner"
+   ],
+   "curriculum_vocab": [
+    "sides",
+    "corners",
+    "features",
+    "distinguish"
+   ],
+   "introduces_vocab": [
+    "sides",
+    "corners",
+    "features",
+    "distinguish"
+   ],
+   "cumulative_vocab": [
+    "1 less",
+    "1 more",
+    "10th",
+    "1st",
+    "2nd",
+    "3rd",
+    "4th",
+    "5th",
+    "6th",
+    "7th",
+    "8th",
+    "9th",
+    "addition",
+    "bigger",
+    "compare",
+    "count",
+    "equal",
+    "group",
+    "how many",
+    "left",
+    "less",
+    "more",
+    "number",
+    "number line",
+    "numeral",
+    "rectangle",
+    "same",
+    "smaller",
+    "square",
+    "sum",
+    "total",
+    "triangle"
+   ],
+   "NOT_YET_KNOWN": [
+    "L",
+    "a.m.",
+    "analog clock",
+    "area",
+    "axis",
+    "balance scale",
+    "bar graph",
+    "bill",
+    "calendar",
+    "capacity",
+    "centavo",
+    "centimeter",
+    "certain",
+    "circle",
+    "clockwise",
+    "cm",
+    "coin",
+    "counter-clockwise",
+    "data",
+    "decreasing pattern",
+    "denominator",
+    "difference",
+    "digit",
+    "division",
+    "elapsed time",
+    "equal groups",
+    "equally likely",
+    "estimate",
+    "even",
+    "expanded form",
+    "fraction",
+    "g",
+    "gram",
+    "half",
+    "half hour",
+    "half turn",
+    "hour",
+    "hundreds",
+    "impossible",
+    "improper fraction",
+    "increasing pattern",
+    "intersecting",
+    "kg",
+    "kilogram",
+    "length",
+    "less likely",
+    "line",
+    "line of symmetry",
+    "line segment",
+    "liter",
+    "m",
+    "mL",
+    "mass",
+    "measure",
+    "meter",
+    "milliliter",
+    "minute",
+    "missing number",
+    "missing term",
+    "more likely",
+    "multiplication",
+    "nearest hundred",
+    "nearest ten",
+    "nearest thousand",
+    "numerator",
+    "odd",
+    "ones",
+    "order of operations",
+    "outcome",
+    "p.m.",
+    "parallel",
+    "pattern",
+    "perimeter",
+    "perpendicular",
+    "peso",
+    "pictograph",
+    "place value",
+    "point",
+    "product",
+    "quarter",
+    "quarter hour",
+    "quarter turn",
+    "quotient",
+    "ray",
+    "regrouping",
+    "remainder",
+    "repeating pattern",
+    "round",
+    "ruler",
+    "scale",
+    "similar fractions",
+    "skip counting",
+    "slide",
+    "solid figure",
+    "sq. cm",
+    "square centimeter",
+    "subtraction",
+    "symmetry",
+    "table",
+    "ten thousand",
+    "ten-thousands place",
+    "tens",
+    "thousand",
+    "translation",
+    "whole",
+    "₱"
+   ],
+   "sentence_max_words": 15,
+   "number_format": "no commas, no thousands separator"
+  },
+  "declared_variants": [
+   [
+    "context",
+    "pure"
+   ],
+   [
+    "context",
+    "word_problem"
+   ],
+   [
+    "direction",
+    "ascending"
+   ],
+   [
+    "direction",
+    "descending"
+   ],
+   [
+    "orientation",
+    "rotated"
+   ],
+   [
+    "orientation",
+    "standard"
+   ],
+   [
+    "proximity",
+    "close_together"
+   ],
+   [
+    "proximity",
+    "far_apart"
+   ],
+   [
+    "shape_set",
+    "basic_triangles_rectangles_squares"
+   ],
+   [
+    "shape_set",
+    "composite_figures"
+   ],
+   [
+    "shape_set",
+    "extended_with_circles"
+   ],
+   [
+    "task_type",
+    "compare_shapes"
+   ]
+  ],
+  "declared_bounds": [
+   {
+    "task_type": "compare_shapes"
+   },
+   {
+    "task_type": "compare_pair",
+    "max_value": [
+     1,
+     100
+    ]
+   }
+  ],
+  "families": [
+   {
+    "id": "F01",
+    "template": "A rectangle has 4 {sides_label} (opposite {sides_label} are equal) and 4 corners.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "sides_label"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "'side' gated by cumulative_vocab",
+        "requires_vocab": "side",
+        "prints": "sides",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F02",
+    "template": "A square has 4 equal {sides_label} and 4 corners.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "sides_label"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "'side' gated by cumulative_vocab",
+        "requires_vocab": "side",
+        "prints": "sides",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F03",
+    "template": "A triangle has 3 {sides_label} and 3 corners.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "sides_label"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "'side' gated by cumulative_vocab",
+        "requires_vocab": "side",
+        "prints": "sides",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F04",
+    "template": "Think about the {sides_label} and corners of each shape.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "sides_label"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "'side' gated by cumulative_vocab",
+        "requires_vocab": "side",
+        "prints": "sides",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F05",
+    "template": "{answer}",
+    "appears_in": [
+     "correct_answer",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "result",
+        "printed": [
+         "rectangle",
+         "triangle"
+        ],
+        "derived_from_values": [
+         "result"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F06",
+    "template": "{key}",
+    "appears_in": [
+     "correct_answer"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "key"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the option keys this item shows",
+        "members": [
+         "A",
+         "B",
+         "C",
+         "D"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F07",
+    "template": "{member}",
+    "appears_in": [
+     "distractors",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "member"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "QuestionContext.distractors (the generator's own)",
+        "members": [
+         "neither",
+         "square",
+         "they are different",
+         "they are equal",
+         "triangle"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F08",
+    "template": "{answer}",
+    "appears_in": [
+     "correct_answer",
+     "format_data.mcq_options",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "a field of a fixed item bank",
+        "field": "answer",
+        "bank": "_ITEM_POOL",
+        "derived_from_values": [
+         "answer",
+         "distractors",
+         "grade_min",
+         "orientation",
+         "question",
+         "shape_set",
+         "task_type"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F09",
+    "template": "{distractors}",
+    "appears_in": [
+     "distractors",
+     "format_data.mcq_options",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "distractors"
+      ],
+      "domains": [
+       {
+        "domain": "a field of a fixed item bank",
+        "field": "distractors",
+        "bank": "_ITEM_POOL",
+        "derived_from_values": [
+         "answer",
+         "distractors",
+         "grade_min",
+         "orientation",
+         "question",
+         "shape_set",
+         "task_type"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F10",
+    "template": "{question}",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "question"
+      ],
+      "domains": [
+       {
+        "domain": "a field of a fixed item bank",
+        "field": "question",
+        "bank": "_ITEM_POOL",
+        "derived_from_values": [
+         "answer",
+         "distractors",
+         "grade_min",
+         "orientation",
+         "question",
+         "shape_set",
+         "task_type"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   }
+  ],
+  "lists": {},
+  "banks": {
+   "_ITEM_POOL": {
+    "fields": [
+     "answer",
+     "distractors",
+     "question"
+    ],
+    "one_row_per_problem": true,
+    "rows": [
+     {
+      "answer": "rectangle",
+      "distractors": [
+       "triangle",
+       "they are equal",
+       "neither"
+      ],
+      "question": "Which shape has more sides — a triangle or a rectangle?"
+     },
+     {
+      "answer": "triangle",
+      "distractors": [
+       "square",
+       "they are equal",
+       "neither"
+      ],
+      "question": "Which shape has fewer corners — a square or a triangle?"
+     },
+     {
+      "answer": "rectangle",
+      "distractors": [
+       "triangle",
+       "they are different",
+       "neither"
+      ],
+      "question": "Which shape has the same number of sides as a square?"
+     }
+    ],
+    "rows_left_out": 71
+   }
+  },
+  "value_derivations": [],
+  "reason_kinds": {}
+ }
+}

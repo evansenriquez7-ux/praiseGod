@@ -1,0 +1,1363 @@
+{
+ "schema_version": 2,
+ "hash_version": 8,
+ "node_id": "mat_g2_na_q2_6",
+ "record_id": "stem-batch444-S444-006-first-r1",
+ "role": "first",
+ "confirms": null,
+ "item_id": "S444-006",
+ "lc_hash": "9c214d9f803187a77a9701dab34cdbb41d4744f87afa34ed69c80471ddbd1ee7",
+ "judged_by": "blind-stem-judge-claude-haiku-batch444-S444-006-first-r1",
+ "dispatch_id": "stem-batch444-S444-006-first-r1",
+ "filed_at": "2026-10-15T16:55:19Z",
+ "delivery": "Claude Code Agent tool, model=haiku, subagent_type=general-purpose; the judge was told to read only local_only/scratch/h4c/prompts/S444-006.prompt.txt (tests/stem_file.py prompt output, item S444-006; no lc id, no key or packets file in that directory) and reply with what it asks; dispatched with CLAUDE.md loaded (ruling 29). Blindness is a prompt contract, audited from the subagent transcript.",
+ "tool_uses_by_judge": "From the subagent transcript: 1 tool use(s), all Read of its own prompt file (1216 lines, every line read); no other tool, path or search. Model reported in the transcript: claude-haiku-5-5.",
+ "dispatch_prompt_digest": "d90d7970638d4de03cc7e5bbcf7022fde7f5b36b1827bfa9ea32971e6ce5f0e6",
+ "raw_reply": "{\"item\": \"S444-006\",\n \"clauses\": {\n  \"subtract_numbers\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F12\", \"template\": \"What is {a} − {b}?\", \"reasoning\": \"F12 states the subtraction task directly as a question. Its minuend a and subtrahend b are repeats of generated values with observed runs up to 930 and 524, so the family produces subtraction of two numbers.\"},\n  \"less_than_1000\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F12\", \"template\": \"What is {a} − {b}?\", \"reasoning\": \"The declared bound max_minuend is [1,999] and F12 prints a from the generated value a, with observed runs up to 990 and b up to 524. Both operands are below 1000 in the observed values, so F12 produces problems with both numbers under 1000.\"},\n  \"regrouping\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F12\", \"template\": \"What is {a} − {b}?\", \"reasoning\": \"The declared regrouping variants none, one_place and two_places select operand pairs for F12. The same a and b domains feed F12 whether or not the ones digit of a is less than the ones digit of b, so F12 produces both regrouping and non-regrouping problems. The regrouping step itself is named in hint family F05, which is not a failing family.\"}\n },\n \"failing_families\": [\"F03\", \"F04\", \"F10\", \"F13\", \"F16\", \"F17\"],\n \"failing_templates\": [\n  \"Subtract the ones: {oa} − {ob} = {od}.\",\n  \"Subtract the tens: {ta} − {tb} = {td}.{note}\",\n  \"{actor} solved: \\\"{problem}\\\". {actor} says the {miss} is {answer}. Is {actor} correct?\",\n  \"{a} − {b} = {v}\",\n  \"The two parts are {p1} and {p2}. What is the {word}?\",\n  \"The dot is at {a} and it moves backward {b} {word}. Starting from {a}, just count back {b} {word}. Which number will the dot land on?\"\n ],\n \"overall\": \"FAIL\",\n \"reasoning\": \"F03 (ones hint) and F04 (tens hint) compute od and td as differences of generated digits from a and b with no lower bound, and neither template is gated by template_chosen_by_values. A ones or tens difference below zero is in the domain, and F04 also reaches hundreds-place operands, so a learner can be shown a negative difference or a hint that skips the hundreds place. F10 takes its answer slot from a member list the basis describes as the keyed answer and distractor candidates, which is unbounded; the observed members include values above 999, outside the lc's both-numbers-under-1000 scope, and printed without the comma that the item's number_format rule requires above 1000. F13 prints the statement slot v from distractor and keyed-answer members that include values above 999 (for example 1056 and 1075), which the lc's range does not reach. F14 carries F13's text but has no fault of its own. F16 prints the fixed word from the vocabulary gate for sum, so the question asks for the sum of the two parts, which is addition rather than the subtraction this lc names. F17 counts back b numbers, and observed b values reach 738 (and 540 and 561), a counting load beyond grade 2 Quarter 2. The clause checks are PRODUCIBLE through F12, which has no fault in its own domains. The reasoning does not quote any filled-in template.\"}",
+ "raw_reply_digest": "aa788665b008a514bbaf51b75b8b0a248d71a865fcfdd0325c4accd97e34e299",
+ "packet_digest": "5a29da234b39aeeb621af287c89a2aedfc0d19d37f289c8e297be78b621dcabf",
+ "family_keys": {
+  "F01": {
+   "source": "backend/app/practice_gen/dna/base.py [gate difference]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F02": {
+   "source": "backend/app/practice_gen/dna/base.py [gate regrouping]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F03": {
+   "source": "backend/app/practice_gen/dna/na/subtraction.py",
+   "first_site": "backend/app/practice_gen/dna/na/subtraction.py:956",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {
+    "oa,ob,od": [
+     2,
+     null
+    ]
+   }
+  },
+  "F04": {
+   "source": "backend/app/practice_gen/dna/na/subtraction.py",
+   "first_site": "backend/app/practice_gen/dna/na/subtraction.py:967",
+   "renderer": "",
+   "path": [
+    2,
+    null
+   ],
+   "first_render_repeating": {
+    "ta,tb,td": [
+     3,
+     null
+    ]
+   }
+  },
+  "F05": {
+   "source": "backend/app/practice_gen/dna/na/subtraction.py",
+   "first_site": "backend/app/practice_gen/dna/na/subtraction.py:945",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {
+    "oa,ob,oa10,od": [
+     5,
+     null
+    ]
+   }
+  },
+  "F06": {
+   "source": "backend/app/practice_gen/dna/na/subtraction.py",
+   "first_site": "backend/app/practice_gen/dna/na/subtraction.py:927",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F07": {
+   "source": "backend/app/practice_gen/dna/na/subtraction.py",
+   "first_site": "backend/app/practice_gen/dna/na/subtraction.py:973",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F08": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_cloze.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_cloze.py:105",
+   "renderer": "",
+   "path": [
+    2,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F09": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_error_detect.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_error_detect.py:387",
+   "renderer": "",
+   "path": [
+    7,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F10": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_error_detect.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_error_detect.py:367",
+   "renderer": "",
+   "path": [
+    7,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F11": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_error_detect.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_error_detect.py:187",
+   "renderer": "",
+   "path": [
+    7,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F12": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_mcq.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_mcq.py:71",
+   "renderer": "",
+   "path": [
+    4,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F13": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_true_false.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_true_false.py:208",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F14": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_true_false.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_true_false.py:430",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F15": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_number_bond.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_number_bond.py:175",
+   "renderer": "",
+   "path": [
+    6,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F16": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_number_bond.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_number_bond.py:172",
+   "renderer": "",
+   "path": [
+    3,
+    "number_bond"
+   ],
+   "first_render_repeating": {}
+  },
+  "F17": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_number_line.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_number_line.py:878",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F18": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_number_line.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_number_line.py:834",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F19": {
+   "source": "backend/app/practice_gen/generators/base_generator.py",
+   "first_site": "backend/app/practice_gen/generators/base_generator.py:810",
+   "renderer": "",
+   "path": [
+    4,
+    null
+   ],
+   "first_render_repeating": {}
+  }
+ },
+ "packet": {
+  "item": "S444-006",
+  "competency": {
+   "text": "Subtract numbers, where both numbers are less than 1000, with and without regrouping.",
+   "grade": 2,
+   "quarter": 2
+  },
+  "clauses": [
+   {
+    "id": "subtract_numbers",
+    "kind": "task",
+    "clause": "Subtract numbers"
+   },
+   {
+    "id": "less_than_1000",
+    "kind": "range",
+    "clause": "both numbers are less than 1000"
+   },
+   {
+    "id": "regrouping",
+    "kind": "property",
+    "clause": "with and without regrouping"
+   }
+  ],
+  "vocabulary": {
+   "student_vocab": [],
+   "curriculum_vocab": [],
+   "introduces_vocab": [],
+   "cumulative_vocab": [
+    "1 less",
+    "1 more",
+    "10th",
+    "1st",
+    "2nd",
+    "3rd",
+    "4th",
+    "5th",
+    "6th",
+    "7th",
+    "8th",
+    "9th",
+    "addition",
+    "analog clock",
+    "bigger",
+    "bill",
+    "calendar",
+    "centavo",
+    "circle",
+    "clockwise",
+    "coin",
+    "compare",
+    "corner",
+    "count",
+    "counter-clockwise",
+    "data",
+    "difference",
+    "digit",
+    "equal",
+    "expanded form",
+    "fraction",
+    "group",
+    "half",
+    "half hour",
+    "half turn",
+    "hour",
+    "how many",
+    "hundreds",
+    "left",
+    "length",
+    "less",
+    "measure",
+    "missing number",
+    "more",
+    "number",
+    "number line",
+    "numeral",
+    "ones",
+    "pattern",
+    "peso",
+    "pictograph",
+    "place value",
+    "quarter",
+    "quarter hour",
+    "quarter turn",
+    "rectangle",
+    "regrouping",
+    "repeating pattern",
+    "same",
+    "side",
+    "skip counting",
+    "slide",
+    "smaller",
+    "square",
+    "subtraction",
+    "sum",
+    "table",
+    "tens",
+    "thousand",
+    "total",
+    "translation",
+    "triangle",
+    "whole",
+    "₱"
+   ],
+   "NOT_YET_KNOWN": [
+    "L",
+    "a.m.",
+    "area",
+    "axis",
+    "balance scale",
+    "bar graph",
+    "capacity",
+    "centimeter",
+    "certain",
+    "cm",
+    "decreasing pattern",
+    "denominator",
+    "division",
+    "elapsed time",
+    "equal groups",
+    "equally likely",
+    "estimate",
+    "even",
+    "g",
+    "gram",
+    "impossible",
+    "improper fraction",
+    "increasing pattern",
+    "intersecting",
+    "kg",
+    "kilogram",
+    "less likely",
+    "line",
+    "line of symmetry",
+    "line segment",
+    "liter",
+    "m",
+    "mL",
+    "mass",
+    "meter",
+    "milliliter",
+    "minute",
+    "missing term",
+    "more likely",
+    "multiplication",
+    "nearest hundred",
+    "nearest ten",
+    "nearest thousand",
+    "numerator",
+    "odd",
+    "order of operations",
+    "outcome",
+    "p.m.",
+    "parallel",
+    "perimeter",
+    "perpendicular",
+    "point",
+    "product",
+    "quotient",
+    "ray",
+    "remainder",
+    "round",
+    "ruler",
+    "scale",
+    "similar fractions",
+    "solid figure",
+    "sq. cm",
+    "square centimeter",
+    "symmetry",
+    "ten thousand",
+    "ten-thousands place"
+   ],
+   "sentence_max_words": 18,
+   "number_format": "no commas for numbers up to 1000"
+  },
+  "declared_variants": [
+   [
+    "context",
+    "pure"
+   ],
+   [
+    "context",
+    "word_problem"
+   ],
+   [
+    "number_range",
+    10000
+   ],
+   [
+    "number_range",
+    1000
+   ],
+   [
+    "number_range",
+    100
+   ],
+   [
+    "number_range",
+    20
+   ],
+   [
+    "regrouping",
+    "none"
+   ],
+   [
+    "regrouping",
+    "one_place"
+   ],
+   [
+    "regrouping",
+    "two_places"
+   ],
+   [
+    "spine",
+    "comparing"
+   ],
+   [
+    "spine",
+    "taking_away"
+   ],
+   [
+    "structure",
+    "change_unknown"
+   ],
+   [
+    "structure",
+    "result_unknown"
+   ],
+   [
+    "structure",
+    "start_unknown"
+   ]
+  ],
+  "declared_bounds": [
+   {
+    "max_minuend": [
+     1,
+     999
+    ]
+   }
+  ],
+  "families": [
+   {
+    "id": "F01",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F07"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='difference')",
+        "requires_vocab": "difference",
+        "prints": "the difference",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F02",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F05"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='regrouping')",
+        "requires_vocab": "regrouping",
+        "prints": "regroup",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F03",
+    "template": "Subtract the ones: {oa} − {ob} = {od}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "oa",
+       "ob",
+       "od"
+      ],
+      "domains": [
+       {
+        "domain": "a number computed by the generator",
+        "reason": "arithmetic",
+        "derived_from_values": [
+         "a",
+         "b"
+        ]
+       }
+      ],
+      "distinct_in_every_render": false
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F04",
+    "template": "Subtract the tens: {ta} − {tb} = {td}.{note}",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "ta",
+       "tb",
+       "td"
+      ],
+      "domains": [
+       {
+        "domain": "a number computed by the generator",
+        "reason": "arithmetic",
+        "derived_from_values": [
+         "a",
+         "b"
+        ]
+       }
+      ],
+      "distinct_in_every_render": false
+     },
+     {
+      "slots": [
+       "note"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "subtraction tens-step note",
+        "members": [
+         " (1 ten became 10 ones)",
+         " (after regrouping)",
+         ""
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F05",
+    "template": "The ones digit {oa} is less than {ob}, so we need to {reg}. Regroup 1 ten as 10 ones: {oa10} − {ob} = {od}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "oa",
+       "ob",
+       "oa10",
+       "od"
+      ],
+      "domains": [
+       {
+        "domain": "a number computed by the generator",
+        "reason": "arithmetic",
+        "derived_from_values": [
+         "a",
+         "b"
+        ]
+       }
+      ],
+      "distinct_in_every_render": false
+     },
+     {
+      "slots": [
+       "reg"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F02"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F06",
+    "template": "We are subtracting {b} from {a}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "0 to 5, 8, 10, 12 to 15, 17 to 18, 20 to 25, 27, 29 to 30, 32 to 33, 35, 38, 40, 42 to 43, 45, 48, 51 to 52, 54, 57, 60, 62, 75 to 76, 81 to 82, 90, 93, 95, 100 to 101, 104 to 105, 110, 114 to 116, 120, 125, 128, 132 to 133, 135, 139, 145 to 146, 150, 155, 157 to 158, 160, 164 to 167, 172, 174 to 177, 180, 184, 189, 193, 195, 204, 209 to 210, 213, 220, 222, 225 to 226, 229, 235, 240 to 241, 249, 253 to 254, 256, 258 to 259, 264, 270, 274, 280, 290, 318, 330, 336, 344, 354, 360, 375, 382, 390, 420, 427, 450, 465, 480, 485, 510, 512, 524, 531, 540 to 541, 561, 600 to 601, 604, 660, 738",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "1, 3 to 5, 9 to 12, 18, 20 to 23, 30, 40, 43, 45, 50 to 51, 54 to 55, 57, 60 to 61, 67, 70 to 71, 74 to 75, 83, 90, 100, 102 to 103, 105, 110, 116 to 117, 120 to 121, 125, 130, 132, 135 to 136, 145, 150, 152, 156, 158, 165, 167, 170, 178 to 180, 189 to 190, 192, 195, 200 to 201, 210, 212, 214, 220, 224 to 225, 230, 240, 243 to 244, 256, 261, 263, 265, 270, 282, 285, 290, 300, 305 to 306, 312, 315, 319, 330 to 331, 342, 350, 358, 360, 363, 370 to 371, 380, 390, 405, 419 to 420, 425, 450, 460, 465, 477, 480, 495, 500 to 501, 510, 518, 525, 530, 540 to 541, 543, 555, 558, 570, 572, 600, 603, 610, 627, 630, 640, 690, 710, 720, 722, 740, 750, 770, 780, 790, 795, 800, 810, 840, 843, 870, 900, 902, 920, 930, 945, 950, 960, 990",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F07",
+    "template": "{label} of {a} − {b} = {result}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "label"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F01"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "1, 3 to 5, 9 to 12, 18, 20 to 23, 30, 40, 43, 45, 50 to 51, 54 to 55, 57, 60 to 61, 67, 70 to 71, 74 to 75, 83, 90, 100, 102 to 103, 105, 110, 116 to 117, 120 to 121, 125, 130, 132, 135 to 136, 145, 150, 152, 156, 158, 165, 167, 170, 178 to 180, 189 to 190, 192, 195, 200 to 201, 210, 212, 214, 220, 224 to 225, 230, 240, 243 to 244, 256, 261, 263, 265, 270, 282, 285, 290, 300, 305 to 306, 312, 315, 319, 330 to 331, 342, 350, 358, 360, 363, 370 to 371, 380, 390, 405, 419 to 420, 425, 450, 460, 465, 477, 480, 495, 500 to 501, 510, 518, 525, 530, 540 to 541, 543, 555, 558, 570, 572, 600, 603, 610, 627, 630, 640, 690, 710, 720, 722, 740, 750, 770, 780, 790, 795, 800, 810, 840, 843, 870, 900, 902, 920, 930, 945, 950, 960, 990",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "0 to 5, 8, 10, 12 to 15, 17 to 18, 20 to 25, 27, 29 to 30, 32 to 33, 35, 38, 40, 42 to 43, 45, 48, 51 to 52, 54, 57, 60, 62, 75 to 76, 81 to 82, 90, 93, 95, 100 to 101, 104 to 105, 110, 114 to 116, 120, 125, 128, 132 to 133, 135, 139, 145 to 146, 150, 155, 157 to 158, 160, 164 to 167, 172, 174 to 177, 180, 184, 189, 193, 195, 204, 209 to 210, 213, 220, 222, 225 to 226, 229, 235, 240 to 241, 249, 253 to 254, 256, 258 to 259, 264, 270, 274, 280, 290, 318, 330, 336, 344, 354, 360, 375, 382, 390, 420, 427, 450, 465, 480, 485, 510, 512, 524, 531, 540 to 541, 561, 600 to 601, 604, 660, 738",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "result"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "result",
+        "printed_runs": "0 to 11, 13, 15 to 18, 20 to 23, 27, 33, 35 to 36, 39 to 43, 45, 47 to 49, 51, 55 to 56, 58, 60 to 61, 63, 65 to 69, 72, 74, 77 to 78, 81 to 82, 85, 87 to 88, 90, 94 to 96, 99 to 100, 102 to 103, 106, 108 to 109, 111 to 112, 114 to 116, 123, 125, 128, 130 to 131, 138, 145, 148, 155 to 156, 162, 168, 170, 173, 179 to 180, 184 to 185, 187, 190, 192, 194, 199 to 201, 203, 211 to 212, 215, 218, 221, 228, 230, 241, 246, 248 to 249, 251, 256, 260, 263, 265, 269, 271, 275, 279 to 280, 284, 290, 292, 294 to 296, 299, 302, 325, 328, 342, 345, 358, 366, 376 to 377, 384 to 385, 387, 398 to 399, 410 to 411, 415, 445 to 447, 465 to 466, 476, 500, 505, 513, 542 to 543, 555, 568 to 569, 580, 585, 590, 592, 600, 603, 617, 627, 643, 651, 662, 665, 683, 704, 725, 750, 758, 772, 794, 872, 874, 903, 920",
+        "derived_from_values": [
+         "result"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F08",
+    "template": "{a} − {b} = ___",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "1, 3, 5, 21 to 22, 45, 51, 60, 70, 74, 90, 100, 102 to 103, 110, 117, 120, 125, 135 to 136, 156, 167, 200, 240, 263, 270, 282, 312, 319, 405, 450, 480, 510, 530, 570, 600, 720, 750, 795, 843, 945, 950",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "0 to 2, 12, 15, 17 to 18, 20, 22 to 23, 30, 35, 38, 40, 75, 90, 133, 150, 160, 165, 193, 209 to 210, 213, 222, 229, 240, 254, 290, 336, 360, 375, 382, 427, 450",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F09",
+    "template": "{actor}",
+    "appears_in": [
+     "format_data.actor_name"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "actor"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "_FILIPINO_NAMES"
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F10",
+    "template": "{actor} solved: \"{problem}\". {actor} says the {miss} is {answer}. Is {actor} correct?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "actor"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "_FILIPINO_NAMES"
+       }
+      ]
+     },
+     {
+      "slots": [
+       "problem"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F11"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the keyed answer and the distractor candidates",
+        "members": [
+         1056,
+         1250,
+         1504,
+         229,
+         230,
+         231,
+         295,
+         296,
+         297,
+         3,
+         330,
+         356,
+         383,
+         384,
+         385,
+         4,
+         465,
+         466,
+         467,
+         5,
+         59,
+         60,
+         61,
+         73,
+         74,
+         75,
+         974
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "miss"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "vocab gate 'missing number'",
+        "requires_vocab": "missing number",
+        "prints": "missing number",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F11",
+    "template": "{a} − {b} = {r}",
+    "appears_in": [
+     "format_data.problem_expression"
+    ],
+    "nested_in": [
+     "F10"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "20, 22, 40, 50, 67, 74, 110, 120, 150, 158, 170, 180, 192, 195, 210, 214, 224 to 225, 230, 261, 270, 285, 300, 315, 370, 380, 465, 543, 627, 640, 710, 720, 740, 780, 810, 900, 930",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "0 to 2, 10, 13 to 14, 20, 25, 30, 33, 40, 45, 62, 75 to 76, 81, 90, 100, 105, 120, 125, 132, 135, 155, 176, 210, 225 to 226, 254, 258 to 259, 336, 344, 354, 485, 510, 604",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "r"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the blank for the unknown blank_target",
+        "members": [
+         "___"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F12",
+    "template": "What is {a} − {b}?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "10 to 11, 43, 54, 74, 110, 116, 121, 145, 150, 210, 212, 220, 256, 300, 306, 330, 342, 371, 419, 425, 477, 541, 603, 690, 720, 722, 770, 900, 902, 930",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "0, 3 to 4, 10, 15, 20, 27, 30, 32, 45, 60, 90, 95, 105, 135, 146, 150, 177, 240, 254, 270, 274, 280, 336, 524",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F13",
+    "template": "{a} − {b} = {v}",
+    "appears_in": [
+     "format_data.statement"
+    ],
+    "nested_in": [
+     "F14"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "3, 9, 57, 74, 120, 189 to 190, 200, 225, 240, 265, 270, 290, 300, 305 to 306, 358, 370, 460, 480, 501, 518, 525, 558, 710, 720, 800, 840, 900, 920, 960",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "0 to 1, 12 to 13, 15, 21 to 22, 30, 40, 43, 57, 82, 90, 110, 114, 120, 145, 175, 184, 195, 204, 210, 220, 254, 270, 318, 336, 390, 420, 450, 541, 601, 660",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "v"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the distractors shaped like the keyed answer",
+        "members": [
+         1056,
+         1075,
+         345,
+         383,
+         385,
+         465,
+         467,
+         54,
+         56,
+         724,
+         726,
+         974
+        ]
+       },
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the keyed answer (a true statement)",
+        "members": [
+         265,
+         299,
+         328,
+         74
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F14",
+    "template": "{statement}. True or False?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "statement"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F13"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F15",
+    "template": "The total is {whole} and one part is {part}. What is the other part?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "whole"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "1, 11, 21, 23, 30, 50, 55, 71, 75, 83, 102, 105, 150, 156, 165, 200, 210, 225, 230, 243, 300, 342, 390, 420, 495, 500, 540, 572, 610, 630, 720, 790, 900, 930",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "part"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "1 to 2, 10, 12, 15, 20, 24, 27, 29 to 30, 35, 42, 48, 54, 60, 62, 75, 100, 104 to 105, 116, 120, 160, 164, 174, 180, 249, 254, 256, 336, 465, 480, 600",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F16",
+    "template": "The two parts are {p1} and {p2}. What is the {word}?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "p1"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "74, 179, 201",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "p2"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "0",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "word"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "vocab gate 'sum'",
+        "requires_vocab": "sum",
+        "prints": "sum",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F17",
+    "template": "The dot is at {a} and it moves backward {b} {word}. Starting from {a}, just count back {b} {word}. Which number will the dot land on?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "1, 3 to 4, 12, 18, 21, 51, 60 to 61, 70, 74, 100, 120, 130, 132, 150, 152, 170, 178, 200, 220, 240, 244, 270, 305, 330 to 331, 350, 360, 363, 380, 390, 420, 555, 600, 810, 840, 870, 930, 960, 990",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "0 to 2, 5, 8, 10, 12, 15, 21, 30, 35, 51 to 52, 60, 93, 101, 105, 115 to 116, 120, 128, 139, 145, 150, 157 to 158, 165 to 167, 172, 189, 229, 235, 241, 253, 264, 330, 512, 531, 540, 561, 738",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "word"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "'number' agreeing with b",
+        "members": [
+         "number",
+         "numbers"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F18",
+    "template": "{key}",
+    "appears_in": [
+     "correct_answer"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "key"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "_OPTION_KEYS"
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F19",
+    "template": "What is {a} − {b}?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "10 to 11, 43, 54, 74, 110, 116, 121, 145, 150, 210, 212, 220, 256, 300, 306, 330, 342, 371, 419, 425, 477, 541, 603, 690, 720, 722, 770, 900, 902, 930",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "0, 3 to 4, 10, 15, 20, 27, 30, 32, 45, 60, 90, 95, 105, 135, 146, 150, 177, 240, 254, 270, 274, 280, 336, 524",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "blank_target"
+    ]
+   }
+  ],
+  "lists": {
+   "_FILIPINO_NAMES": [
+    "Noel",
+    "Maria",
+    "Jose",
+    "Ana",
+    "Carlo",
+    "Liza",
+    "Manny",
+    "Grace",
+    "Rico",
+    "Pia",
+    "Dante",
+    "Rosa"
+   ],
+   "_OPTION_KEYS": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ]
+  },
+  "banks": {},
+  "value_derivations": [],
+  "reason_kinds": {
+   "arithmetic": "a number the generator computes from the generated values named in src (a half, a sum, a difference, a running total, a place's digit). Its range is the image of those values' own domains; whether the arithmetic is RIGHT is the hint contract's (§16) and §1E's to check, not §14's."
+  }
+ }
+}

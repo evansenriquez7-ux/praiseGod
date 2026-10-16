@@ -1,0 +1,2064 @@
+{
+ "schema_version": 2,
+ "hash_version": 8,
+ "node_id": "mat_g1_na_q1_5",
+ "record_id": "stem-batch441-S441-021-confirming-r1",
+ "role": "confirming",
+ "confirms": "stem-batch441-S441-021-first",
+ "item_id": "S441-021",
+ "lc_hash": "b895f43cfeaef0c58d0b49062305c93a431c234fff21f985db0414f56255eb4a",
+ "judged_by": "blind-stem-judge-claude-haiku-batch441-S441-021-confirming-r1",
+ "dispatch_id": "stem-batch441-S441-021-confirming-r1",
+ "filed_at": "2026-10-16T06:28:31Z",
+ "delivery": "Claude Code Agent tool, model=haiku, subagent_type=general-purpose; the judge was told to read only local_only/scratch/h4c/prompts/S441-021.prompt.txt (tests/stem_file.py prompt output, item S441-021; no lc id, no key or packets file in that directory) and reply with what it asks; dispatched with CLAUDE.md loaded (ruling 29). Blindness is a prompt contract, audited from the subagent transcript.",
+ "tool_uses_by_judge": "From the subagent transcript: 1 tool use(s), all Read of its own prompt file (1792 lines, every line read); no other tool, path or search. Model reported in the transcript: claude-haiku-5-5.",
+ "dispatch_prompt_digest": "984a8950ad38e03561b669dac07ed62995072dcd70e68c2cc952f3b2a3e101f8",
+ "raw_reply": "{\"item\": \"S441-021\", \"clauses\": {\"describe_position\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F15\", \"template\": \"The {objects_plural} are placed in a row. One {object_singular} is number {n} in the row. Which word describes its position?\", \"reasoning\": \"F15 asks the learner to name the ordinal word that describes the position of one object in a row, which is describing the position of objects. n is drawn from 2, 4 to 5, 7 to 8 in observed renders and its domain is a number in the lc's range, and the object nouns come from the generator's fixed object list.\"}, \"objects\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F15\", \"template\": \"The {objects_plural} are placed in a row. One {object_singular} is number {n} in the row. Which word describes its position?\", \"reasoning\": \"F15 places named objects (baskets, eggs, marbles and so on) in a row, so the problem addresses positions of objects.\"}, \"ordinal_numbers\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F19\", \"template\": \"Which word describes the {symbol} position?\", \"reasoning\": \"F19 prints ordinal number symbols (1st to 10th in its printed list) and asks the learner to relate each to its ordinal word.\"}, \"1st\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F19\", \"template\": \"Which word describes the {symbol} position?\", \"reasoning\": \"F19 prints the symbol 1st in its printed list, so a problem can address the 1st ordinal.\"}, \"2nd\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F19\", \"template\": \"Which word describes the {symbol} position?\", \"reasoning\": \"F19 prints the symbol 2nd in its printed list, so a problem can address the 2nd ordinal.\"}, \"3rd\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F19\", \"template\": \"Which word describes the {symbol} position?\", \"reasoning\": \"F19 prints the symbol 3rd in its printed list, so a problem can address the 3rd ordinal.\"}, \"up_to_10th\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F19\", \"template\": \"Which word describes the {symbol} position?\", \"reasoning\": \"F19 prints the symbol 10th in its printed list, so a problem can reach the upper end of the range up to 10th.\"}}, \"failing_families\": [\"F03\", \"F12\", \"F14\", \"F16\", \"F20\", \"F21\", \"F22\", \"F25\", \"F31\", \"F32\", \"F33\"], \"failing_templates\": [\"'{capitalize}' is an {ord_label} word.\", \"The number {n} in order is called the {symbol} ({word}).\", \"The {lineup} are lined up on a shelf from left to right. Which one is in {symbol} place?\", \"The {symbol} ({word}) place is position number {n}.\", \"Who arrived earlier: the student in {symbol} place or {symbol2} place?\", \"Write the symbol for the {word} position.\", \"{capitalize} = position {n}, written as {symbol}.\", \"{n}{v}\", \"{w}\", \"{answer}\", \"{member}\"], \"overall\": \"FAIL\", \"reasoning\": \"F31 (template '{w}', basis _ORDINAL_WORDS) includes eleventh through twentieth. These are beyond the lc's up to 10th range and outside student_vocab 1st to 10th, and F31 is reachable as a correct answer, a distractor, and through F03 and F22. F25 ('{n}{v}') draws its suffix v from nd, rd, st, th with no derivation from n, so a learner can see a mismatched ordinal such as a 2 with st; it is a correct answer, a distractor, and nested in F20. F20 ('Who arrived earlier: the student in {symbol} place or {symbol2} place?') takes symbol2 from F25, F32 or F33; F32 and F33 print names (Ana, Carlo and others) and objects (egg, marble and others) in the ordinal place slot, so a learner can be asked to compare a place with a name or an object. F32 ('{answer}') and F33 ('{member}') are therefore failing as well. F12, F16 and F22 print a word from the word domain and a symbol or number from n; value_derivations ties symbol to n but ties word to nothing, so the word can contradict the symbol or n in the same sentence. F21 ('Write the symbol for the {word} position.') asks for a word that is not tied to the keyed answer, which is derived from symbol. F03 ('{ord_label}' from F01, which prints the gate word 'order word', followed by the literal word 'word' in the template) renders as a doubled word, which is unreadable for a grade 1 learner. F14 ('The {lineup} are lined up on a shelf from left to right. Which one is in {symbol} place?') takes lineup from F23, which can contain names and objects together; with names it prints 'The' before proper names and places people on a shelf. Conflict noted, not failed: F05 ('Compare the numbers: the smaller ordinal position is earlier.') and F17 ('What ordinal describes position number {n}?') use the bare word ordinal, while F01's vocabulary gate for this lc prints order word instead, yet introduces_vocab includes ordinal number. I did not fail them on this, and the packet's gate and introduces_vocab disagree. F13 ('The pupils stand in a row. {actor} is number {n} in the row. Which word describes {actor}'s position?') has no derivation of its answer from n in the packet, so its answer relies on F31, which is failing.\"}",
+ "raw_reply_digest": "6cfe086da64b9099118ccbd634fe8c5232136be778d31285f2886ee804232df4",
+ "packet_digest": "91b68e341818ab95e135fb9c1ac6f42f3f4b38d188c53c749dacf2ce41f4cb17",
+ "family_keys": {
+  "F01": {
+   "source": "backend/app/practice_gen/dna/base.py [gate ordinal]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F02": {
+   "source": "backend/app/practice_gen/dna/base.py [gate position]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    2,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F03": {
+   "source": "backend/app/practice_gen/dna/na/ordinal_numbers.py",
+   "first_site": "backend/app/practice_gen/dna/na/ordinal_numbers.py:574",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F04": {
+   "source": "backend/app/practice_gen/dna/na/ordinal_numbers.py",
+   "first_site": "backend/app/practice_gen/dna/na/ordinal_numbers.py:501",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F05": {
+   "source": "backend/app/practice_gen/dna/na/ordinal_numbers.py",
+   "first_site": "backend/app/practice_gen/dna/na/ordinal_numbers.py:585",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F06": {
+   "source": "backend/app/practice_gen/dna/na/ordinal_numbers.py",
+   "first_site": "backend/app/practice_gen/dna/na/ordinal_numbers.py:575",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F07": {
+   "source": "backend/app/practice_gen/dna/na/ordinal_numbers.py",
+   "first_site": "backend/app/practice_gen/dna/na/ordinal_numbers.py:579",
+   "renderer": "",
+   "path": [
+    9,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F08": {
+   "source": "backend/app/practice_gen/dna/na/ordinal_numbers.py",
+   "first_site": "backend/app/practice_gen/dna/na/ordinal_numbers.py:581",
+   "renderer": "",
+   "path": [
+    9,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F09": {
+   "source": "backend/app/practice_gen/dna/na/ordinal_numbers.py",
+   "first_site": "backend/app/practice_gen/dna/na/ordinal_numbers.py:569",
+   "renderer": "",
+   "path": [
+    2,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F10": {
+   "source": "backend/app/practice_gen/dna/na/ordinal_numbers.py",
+   "first_site": "backend/app/practice_gen/dna/na/ordinal_numbers.py:571",
+   "renderer": "",
+   "path": [
+    2,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F11": {
+   "source": "backend/app/practice_gen/dna/na/ordinal_numbers.py",
+   "first_site": "backend/app/practice_gen/dna/na/ordinal_numbers.py:584",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F12": {
+   "source": "backend/app/practice_gen/dna/na/ordinal_numbers.py",
+   "first_site": "backend/app/practice_gen/dna/na/ordinal_numbers.py:570",
+   "renderer": "",
+   "path": [
+    2,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F13": {
+   "source": "backend/app/practice_gen/dna/na/ordinal_numbers.py",
+   "first_site": "backend/app/practice_gen/dna/na/ordinal_numbers.py:501",
+   "renderer": "",
+   "path": [
+    24,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F14": {
+   "source": "backend/app/practice_gen/dna/na/ordinal_numbers.py",
+   "first_site": "backend/app/practice_gen/dna/na/ordinal_numbers.py:501",
+   "renderer": "",
+   "path": [
+    9,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F15": {
+   "source": "backend/app/practice_gen/dna/na/ordinal_numbers.py",
+   "first_site": "backend/app/practice_gen/dna/na/ordinal_numbers.py:501",
+   "renderer": "",
+   "path": [
+    11,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F16": {
+   "source": "backend/app/practice_gen/dna/na/ordinal_numbers.py",
+   "first_site": "backend/app/practice_gen/dna/na/ordinal_numbers.py:580",
+   "renderer": "",
+   "path": [
+    9,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F17": {
+   "source": "backend/app/practice_gen/dna/na/ordinal_numbers.py",
+   "first_site": "backend/app/practice_gen/dna/na/ordinal_numbers.py:501",
+   "renderer": "",
+   "path": [
+    4,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F18": {
+   "source": "backend/app/practice_gen/dna/na/ordinal_numbers.py",
+   "first_site": "backend/app/practice_gen/dna/na/ordinal_numbers.py:501",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F19": {
+   "source": "backend/app/practice_gen/dna/na/ordinal_numbers.py",
+   "first_site": "backend/app/practice_gen/dna/na/ordinal_numbers.py:501",
+   "renderer": "",
+   "path": [
+    2,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F20": {
+   "source": "backend/app/practice_gen/dna/na/ordinal_numbers.py",
+   "first_site": "backend/app/practice_gen/dna/na/ordinal_numbers.py:501",
+   "renderer": "",
+   "path": [
+    7,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F21": {
+   "source": "backend/app/practice_gen/dna/na/ordinal_numbers.py",
+   "first_site": "backend/app/practice_gen/dna/na/ordinal_numbers.py:501",
+   "renderer": "",
+   "path": [
+    6,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F22": {
+   "source": "backend/app/practice_gen/dna/na/ordinal_numbers.py",
+   "first_site": "backend/app/practice_gen/dna/na/ordinal_numbers.py:576",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F23": {
+   "source": "backend/app/practice_gen/dna/na/ordinal_numbers.py",
+   "first_site": "backend/app/practice_gen/dna/na/ordinal_numbers.py:479",
+   "renderer": "",
+   "path": [
+    9,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F24": {
+   "source": "backend/app/practice_gen/dna/na/ordinal_numbers.py",
+   "first_site": "backend/app/practice_gen/dna/na/ordinal_numbers.py:501",
+   "renderer": "",
+   "path": [
+    25,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F25": {
+   "source": "backend/app/practice_gen/dna/na/ordinal_numbers.py",
+   "first_site": "backend/app/practice_gen/dna/na/ordinal_numbers.py:42",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F26": {
+   "source": "backend/app/practice_gen/dna/na/ordinal_numbers.py",
+   "first_site": "backend/app/practice_gen/dna/na/ordinal_numbers.py:479",
+   "renderer": "",
+   "path": [
+    25,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F27": {
+   "source": "backend/app/practice_gen/dna/na/ordinal_numbers.py",
+   "first_site": "backend/app/practice_gen/dna/na/ordinal_numbers.py:479",
+   "renderer": "",
+   "path": [
+    9,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F28": {
+   "source": "backend/app/practice_gen/dna/na/ordinal_numbers.py",
+   "first_site": "backend/app/practice_gen/dna/na/ordinal_numbers.py:479",
+   "renderer": "",
+   "path": [
+    17,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F29": {
+   "source": "backend/app/practice_gen/dna/na/ordinal_numbers.py",
+   "first_site": "backend/app/practice_gen/dna/na/ordinal_numbers.py:479",
+   "renderer": "",
+   "path": [
+    12,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F30": {
+   "source": "backend/app/practice_gen/dna/na/ordinal_numbers.py",
+   "first_site": "backend/app/practice_gen/dna/na/ordinal_numbers.py:586",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F31": {
+   "source": "backend/app/practice_gen/dna/na/ordinal_numbers.py",
+   "first_site": "backend/app/practice_gen/dna/na/ordinal_numbers.py:64",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F32": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:32",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F33": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:39",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  }
+ },
+ "packet": {
+  "item": "S441-021",
+  "competency": {
+   "text": "Describe the position of objects using ordinal numbers: 1st, 2nd, 3rd, up to 10th.",
+   "grade": 1,
+   "quarter": 1
+  },
+  "clauses": [
+   {
+    "id": "describe_position",
+    "kind": "task",
+    "clause": "Describe the position"
+   },
+   {
+    "id": "objects",
+    "kind": "object",
+    "clause": "objects"
+   },
+   {
+    "id": "ordinal_numbers",
+    "kind": "object",
+    "clause": "ordinal numbers"
+   },
+   {
+    "id": "1st",
+    "kind": "range",
+    "clause": "1st"
+   },
+   {
+    "id": "2nd",
+    "kind": "range",
+    "clause": "2nd"
+   },
+   {
+    "id": "3rd",
+    "kind": "range",
+    "clause": "3rd"
+   },
+   {
+    "id": "up_to_10th",
+    "kind": "range",
+    "clause": "up to 10th"
+   }
+  ],
+  "vocabulary": {
+   "student_vocab": [
+    "1st",
+    "2nd",
+    "3rd",
+    "4th",
+    "5th",
+    "6th",
+    "7th",
+    "8th",
+    "9th",
+    "10th"
+   ],
+   "curriculum_vocab": [
+    "position",
+    "ordinal number"
+   ],
+   "introduces_vocab": [
+    "position",
+    "ordinal number",
+    "1st",
+    "2nd",
+    "3rd",
+    "10th"
+   ],
+   "cumulative_vocab": [
+    "1 less",
+    "1 more",
+    "bigger",
+    "compare",
+    "count",
+    "equal",
+    "group",
+    "how many",
+    "left",
+    "less",
+    "more",
+    "number",
+    "number line",
+    "numeral",
+    "same",
+    "smaller",
+    "total"
+   ],
+   "NOT_YET_KNOWN": [
+    "L",
+    "a.m.",
+    "addition",
+    "analog clock",
+    "area",
+    "axis",
+    "balance scale",
+    "bar graph",
+    "bill",
+    "calendar",
+    "capacity",
+    "centavo",
+    "centimeter",
+    "certain",
+    "circle",
+    "clockwise",
+    "cm",
+    "coin",
+    "corner",
+    "counter-clockwise",
+    "data",
+    "decreasing pattern",
+    "denominator",
+    "difference",
+    "digit",
+    "division",
+    "elapsed time",
+    "equal groups",
+    "equally likely",
+    "estimate",
+    "even",
+    "expanded form",
+    "fraction",
+    "g",
+    "gram",
+    "half",
+    "half hour",
+    "half turn",
+    "hour",
+    "hundreds",
+    "impossible",
+    "improper fraction",
+    "increasing pattern",
+    "intersecting",
+    "kg",
+    "kilogram",
+    "length",
+    "less likely",
+    "line",
+    "line of symmetry",
+    "line segment",
+    "liter",
+    "m",
+    "mL",
+    "mass",
+    "measure",
+    "meter",
+    "milliliter",
+    "minute",
+    "missing number",
+    "missing term",
+    "more likely",
+    "multiplication",
+    "nearest hundred",
+    "nearest ten",
+    "nearest thousand",
+    "numerator",
+    "odd",
+    "ones",
+    "order of operations",
+    "outcome",
+    "p.m.",
+    "parallel",
+    "pattern",
+    "perimeter",
+    "perpendicular",
+    "peso",
+    "pictograph",
+    "place value",
+    "point",
+    "product",
+    "quarter",
+    "quarter hour",
+    "quarter turn",
+    "quotient",
+    "ray",
+    "rectangle",
+    "regrouping",
+    "remainder",
+    "repeating pattern",
+    "round",
+    "ruler",
+    "scale",
+    "side",
+    "similar fractions",
+    "skip counting",
+    "slide",
+    "solid figure",
+    "sq. cm",
+    "square",
+    "square centimeter",
+    "subtraction",
+    "sum",
+    "symmetry",
+    "table",
+    "ten thousand",
+    "ten-thousands place",
+    "tens",
+    "thousand",
+    "translation",
+    "triangle",
+    "whole",
+    "₱"
+   ],
+   "sentence_max_words": 15,
+   "number_format": "no commas, no thousands separator"
+  },
+  "declared_variants": [
+   [
+    "task_type",
+    "compare_positions"
+   ],
+   [
+    "task_type",
+    "describe_position"
+   ],
+   [
+    "task_type",
+    "find_position"
+   ],
+   [
+    "task_type",
+    "identify_ordinal"
+   ]
+  ],
+  "declared_bounds": [
+   {
+    "ordinal_range": [
+     1,
+     10
+    ]
+   }
+  ],
+  "families": [
+   {
+    "id": "F01",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F03"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='ordinal')",
+        "requires_vocab": "ordinal",
+        "prints": "order word",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F02",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F09"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='position')",
+        "requires_vocab": "position",
+        "prints": "position",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F03",
+    "template": "'{capitalize}' is an {ord_label} word.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "capitalize"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F31"
+        ],
+        "derived_from_values": [
+         "word"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "ord_label"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F01"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F04",
+    "template": "A runner is at position number {n}. In what place did the runner finish?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "n"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "n",
+        "printed_runs": "1 to 10",
+        "derived_from_values": [
+         "n"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F05",
+    "template": "Compare the numbers: the smaller ordinal position is earlier.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F06",
+    "template": "Count positions from the start: 1st, 2nd, 3rd, … until you reach {word}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "word"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "word",
+        "printed": [
+         "eighth",
+         "fifth",
+         "first",
+         "fourth",
+         "ninth",
+         "second",
+         "seventh",
+         "sixth",
+         "tenth",
+         "third"
+        ],
+        "derived_from_values": [
+         "word"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F07",
+    "template": "Count the objects in order from the front: 1st, 2nd, 3rd, …",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F08",
+    "template": "Find the object standing at position {n}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "n"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "n",
+        "printed_runs": "1 to 10",
+        "derived_from_values": [
+         "n"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F09",
+    "template": "Ordinal numbers describe {pos_label} in order.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "pos_label"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F02"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F10",
+    "template": "Remember: 1st = first, 2nd = second, 3rd = third, then add -th.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F11",
+    "template": "Smaller ordinal numbers come earlier (closer to the start).",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F12",
+    "template": "The number {n} in order is called the {symbol} ({word}).",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "n"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "n",
+        "printed_runs": "1 to 10",
+        "derived_from_values": [
+         "n"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "symbol"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "symbol",
+        "printed": [
+         "10th",
+         "1st",
+         "2nd",
+         "3rd",
+         "4th",
+         "5th",
+         "6th",
+         "7th",
+         "8th",
+         "9th"
+        ],
+        "derived_from_values": [
+         "symbol"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "word"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "word",
+        "printed": [
+         "eighth",
+         "fifth",
+         "first",
+         "fourth",
+         "ninth",
+         "second",
+         "seventh",
+         "sixth",
+         "tenth",
+         "third"
+        ],
+        "derived_from_values": [
+         "word"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F13",
+    "template": "The pupils stand in a row. {actor} is number {n} in the row. Which word describes {actor}'s position?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "n"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "n",
+        "printed_runs": "1 to 9",
+        "derived_from_values": [
+         "n"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "actor"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "_LINEUP_NAMES",
+        "derived_from_values": [
+         "actor"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F14",
+    "template": "The {lineup} are lined up on a shelf from left to right. Which one is in {symbol} place?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "symbol"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "symbol",
+        "printed": [
+         "2nd",
+         "3rd",
+         "4th",
+         "5th",
+         "6th",
+         "8th",
+         "9th"
+        ],
+        "derived_from_values": [
+         "symbol"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "lineup"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F23"
+        ],
+        "derived_from_values": [
+         "lineup"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F15",
+    "template": "The {objects_plural} are placed in a row. One {object_singular} is number {n} in the row. Which word describes its position?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "n"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "n",
+        "printed_runs": "2, 4 to 5, 7 to 8",
+        "derived_from_values": [
+         "n"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "object_singular"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "_LINEUP_OBJECTS' singulars",
+        "members": [
+         "basket",
+         "egg",
+         "mango",
+         "marble",
+         "notebook",
+         "pencil",
+         "shell",
+         "spoon",
+         "sticker",
+         "storybook"
+        ],
+        "derived_from_values": [
+         "object_singular"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "objects_plural"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "_LINEUP_OBJECTS' plurals",
+        "members": [
+         "baskets",
+         "eggs",
+         "mangoes",
+         "marbles",
+         "notebooks",
+         "pencils",
+         "shells",
+         "spoons",
+         "stickers",
+         "storybooks"
+        ],
+        "derived_from_values": [
+         "objects_plural"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F16",
+    "template": "The {symbol} ({word}) place is position number {n}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "symbol"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "symbol",
+        "printed": [
+         "10th",
+         "1st",
+         "2nd",
+         "3rd",
+         "4th",
+         "5th",
+         "6th",
+         "7th",
+         "8th",
+         "9th"
+        ],
+        "derived_from_values": [
+         "symbol"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "word"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "word",
+        "printed": [
+         "eighth",
+         "fifth",
+         "first",
+         "fourth",
+         "ninth",
+         "second",
+         "seventh",
+         "sixth",
+         "tenth",
+         "third"
+        ],
+        "derived_from_values": [
+         "word"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "n"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "n",
+        "printed_runs": "1 to 10",
+        "derived_from_values": [
+         "n"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F17",
+    "template": "What ordinal describes position number {n}?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "n"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "n",
+        "printed_runs": "1 to 4, 6 to 9",
+        "derived_from_values": [
+         "n"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F18",
+    "template": "Which position comes after {symbol}?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "symbol"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "symbol",
+        "printed": [
+         "1st",
+         "2nd",
+         "3rd",
+         "4th",
+         "5th",
+         "6th",
+         "7th",
+         "8th",
+         "9th"
+        ],
+        "derived_from_values": [
+         "symbol"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F19",
+    "template": "Which word describes the {symbol} position?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "symbol"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "symbol",
+        "printed": [
+         "10th",
+         "1st",
+         "2nd",
+         "3rd",
+         "4th",
+         "5th",
+         "6th",
+         "7th",
+         "8th",
+         "9th"
+        ],
+        "derived_from_values": [
+         "symbol"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F20",
+    "template": "Who arrived earlier: the student in {symbol} place or {symbol2} place?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "symbol"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "symbol",
+        "printed": [
+         "10th",
+         "1st",
+         "2nd",
+         "3rd",
+         "4th",
+         "5th",
+         "6th",
+         "7th",
+         "8th",
+         "9th"
+        ],
+        "derived_from_values": [
+         "symbol"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "symbol2"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F25",
+         "F32",
+         "F33"
+        ],
+        "derived_from_values": [
+         "symbol2"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F21",
+    "template": "Write the symbol for the {word} position.",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "word"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "word",
+        "printed": [
+         "eighth",
+         "fifth",
+         "first",
+         "fourth",
+         "ninth",
+         "second",
+         "seventh",
+         "tenth",
+         "third"
+        ],
+        "derived_from_values": [
+         "word"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F22",
+    "template": "{capitalize} = position {n}, written as {symbol}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "capitalize"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F31"
+        ],
+        "derived_from_values": [
+         "word"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "n"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "n",
+        "printed_runs": "1 to 10",
+        "derived_from_values": [
+         "n"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "symbol"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "symbol",
+        "printed": [
+         "10th",
+         "1st",
+         "2nd",
+         "3rd",
+         "4th",
+         "5th",
+         "6th",
+         "7th",
+         "8th",
+         "9th"
+        ],
+        "derived_from_values": [
+         "symbol"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F23",
+    "template": "{head} and {last}",
+    "appears_in": [],
+    "nested_in": [
+     "F14",
+     "F24"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "head"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F26",
+         "F27",
+         "F28",
+         "F29"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "last"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the line-up pool",
+        "members": [
+         "Ana",
+         "Ben",
+         "Carlo",
+         "Dina",
+         "Elena",
+         "Fidel",
+         "Gina",
+         "Hector",
+         "Iris",
+         "Jose",
+         "basket",
+         "egg",
+         "mango",
+         "marble",
+         "notebook",
+         "pencil",
+         "shell",
+         "spoon",
+         "sticker",
+         "storybook"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F24",
+    "template": "{lineup} stand in a row. Who is {symbol} in the row?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "symbol"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "symbol",
+        "printed": [
+         "10th",
+         "1st",
+         "3rd",
+         "4th",
+         "7th",
+         "8th",
+         "9th"
+        ],
+        "derived_from_values": [
+         "symbol"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "lineup"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F23"
+        ],
+        "derived_from_values": [
+         "lineup"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F25",
+    "template": "{n}{v}",
+    "appears_in": [
+     "correct_answer",
+     "distractors",
+     "format_data.mcq_options",
+     "format_data.options"
+    ],
+    "nested_in": [
+     "F20"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "n"
+      ],
+      "domains": [
+       {
+        "domain": "a number in a range",
+        "basis": "the distractor ordinals' range",
+        "lo": 1,
+        "hi": 10
+       },
+       {
+        "domain": "a number in a range",
+        "basis": "the second ordinal's draw bounds",
+        "lo": 1,
+        "hi": 10
+       },
+       {
+        "domain": "a number computed by the generator",
+        "reason": "arithmetic",
+        "derived_from_values": [
+         "n"
+        ]
+       },
+       {
+        "domain": "repeats a generated value",
+        "key": "n",
+        "printed_runs": "1 to 10",
+        "derived_from_values": [
+         "n"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "v"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the ordinal suffixes",
+        "members": [
+         "nd",
+         "rd",
+         "st",
+         "th"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F26",
+    "template": "{p0}, {p1}, {p2}",
+    "appears_in": [],
+    "nested_in": [
+     "F23"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "p0",
+       "p1",
+       "p2"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the line-up pool",
+        "members": [
+         "Ana",
+         "Ben",
+         "Carlo",
+         "Dina",
+         "Elena",
+         "Fidel",
+         "Gina",
+         "Hector",
+         "Iris",
+         "Jose"
+        ]
+       }
+      ],
+      "distinct_in_every_render": true
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F27",
+    "template": "{p0}, {p1}, {p2}, {p3}",
+    "appears_in": [],
+    "nested_in": [
+     "F23"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "p0",
+       "p1",
+       "p2",
+       "p3"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the line-up pool",
+        "members": [
+         "basket",
+         "egg",
+         "mango",
+         "marble",
+         "notebook",
+         "pencil",
+         "shell",
+         "spoon",
+         "sticker",
+         "storybook"
+        ]
+       }
+      ],
+      "distinct_in_every_render": true
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F28",
+    "template": "{p0}, {p1}, {p2}, {p3}, {p4}",
+    "appears_in": [],
+    "nested_in": [
+     "F23"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "p0",
+       "p1",
+       "p2",
+       "p3",
+       "p4"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the line-up pool",
+        "members": [
+         "basket",
+         "egg",
+         "mango",
+         "marble",
+         "notebook",
+         "pencil",
+         "shell",
+         "spoon",
+         "sticker",
+         "storybook"
+        ]
+       }
+      ],
+      "distinct_in_every_render": true
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F29",
+    "template": "{p0}, {p1}, {p2}, {p3}, {p4}, {p5}, {p6}, {p7}",
+    "appears_in": [],
+    "nested_in": [
+     "F23"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "p0",
+       "p1",
+       "p2",
+       "p3",
+       "p4",
+       "p5",
+       "p6",
+       "p7"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the line-up pool",
+        "members": [
+         "basket",
+         "egg",
+         "mango",
+         "marble",
+         "notebook",
+         "pencil",
+         "shell",
+         "spoon",
+         "sticker",
+         "storybook"
+        ]
+       }
+      ],
+      "distinct_in_every_render": true
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F30",
+    "template": "{symbol} means position {n}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "symbol"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "symbol",
+        "printed": [
+         "10th",
+         "1st",
+         "2nd",
+         "3rd",
+         "4th",
+         "5th",
+         "6th",
+         "7th",
+         "8th",
+         "9th"
+        ],
+        "derived_from_values": [
+         "symbol"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "n"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "n",
+        "printed_runs": "1 to 10",
+        "derived_from_values": [
+         "n"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F31",
+    "template": "{w}",
+    "appears_in": [
+     "correct_answer",
+     "distractors",
+     "format_data.mcq_options",
+     "format_data.options"
+    ],
+    "nested_in": [
+     "F03",
+     "F22"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "w"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "_ORDINAL_WORDS",
+        "members": [
+         "eighteenth",
+         "eighth",
+         "eleventh",
+         "fifteenth",
+         "fifth",
+         "first",
+         "fourteenth",
+         "fourth",
+         "nineteenth",
+         "ninth",
+         "second",
+         "seventeenth",
+         "seventh",
+         "sixteenth",
+         "sixth",
+         "tenth",
+         "third",
+         "thirteenth",
+         "twelfth",
+         "twentieth"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F32",
+    "template": "{answer}",
+    "appears_in": [
+     "correct_answer",
+     "format_data.mcq_options",
+     "format_data.options"
+    ],
+    "nested_in": [
+     "F20"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "answer",
+        "printed": [
+         "10th",
+         "1st",
+         "2nd",
+         "3rd",
+         "4th",
+         "5th",
+         "6th",
+         "7th",
+         "8th",
+         "9th",
+         "Ana",
+         "Carlo",
+         "Dina",
+         "Gina",
+         "Hector",
+         "Iris",
+         "Jose",
+         "egg",
+         "eighth",
+         "fifth",
+         "first",
+         "fourth",
+         "marble",
+         "ninth",
+         "notebook",
+         "pencil",
+         "second",
+         "seventh",
+         "shell",
+         "sixth",
+         "sticker",
+         "storybook",
+         "tenth",
+         "third"
+        ],
+        "derived_from_values": [
+         "answer"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F33",
+    "template": "{member}",
+    "appears_in": [
+     "distractors",
+     "format_data.mcq_options",
+     "format_data.options"
+    ],
+    "nested_in": [
+     "F20"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "member"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "QuestionContext.distractors (the generator's own)",
+        "members": [
+         "10th",
+         "1st",
+         "2nd",
+         "3rd",
+         "4th",
+         "5th",
+         "6th",
+         "7th",
+         "8th",
+         "9th",
+         "Ana",
+         "Ben",
+         "Carlo",
+         "basket",
+         "egg",
+         "eighth",
+         "fifth",
+         "first",
+         "fourth",
+         "mango",
+         "marble",
+         "ninth",
+         "second",
+         "seventh",
+         "shell",
+         "sixth",
+         "sticker",
+         "tenth",
+         "third"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   }
+  ],
+  "lists": {
+   "_LINEUP_NAMES": [
+    "Ana",
+    "Ben",
+    "Carlo",
+    "Dina",
+    "Elena",
+    "Fidel",
+    "Gina",
+    "Hector",
+    "Iris",
+    "Jose"
+   ]
+  },
+  "banks": {},
+  "value_derivations": [
+   {
+    "kind": "computes",
+    "key": "symbol",
+    "from": [
+     "n"
+    ]
+   },
+   {
+    "kind": "derives",
+    "key": "answer",
+    "from": [
+     "symbol"
+    ]
+   }
+  ],
+  "reason_kinds": {
+   "arithmetic": "a number the generator computes from the generated values named in src (a half, a sum, a difference, a running total, a place's digit). Its range is the image of those values' own domains; whether the arithmetic is RIGHT is the hint contract's (§16) and §1E's to check, not §14's."
+  }
+ }
+}

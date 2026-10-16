@@ -1,0 +1,1867 @@
+{
+ "schema_version": 2,
+ "hash_version": 8,
+ "node_id": "mat_g2_na_q3_9",
+ "record_id": "stem-batch444-S444-019-confirming",
+ "role": "confirming",
+ "confirms": "stem-batch444-S444-019-first",
+ "item_id": "S444-019",
+ "lc_hash": "d6208c4ddb0571f496790db8cd46ef20499101489679bd625515acb6708f32fa",
+ "judged_by": "blind-stem-judge-claude-haiku-batch444-S444-019-confirming",
+ "dispatch_id": "stem-batch444-S444-019-confirming",
+ "filed_at": "2026-10-16T06:17:23Z",
+ "delivery": "Claude Code Agent tool, model=haiku, subagent_type=general-purpose; the judge was told to read only local_only/scratch/h4c/prompts/S444-019.prompt.txt (tests/stem_file.py prompt output, item S444-019; no lc id, no key or packets file in that directory) and reply with what it asks; dispatched with CLAUDE.md loaded (ruling 29). Blindness is a prompt contract, audited from the subagent transcript.",
+ "tool_uses_by_judge": "From the subagent transcript: 1 tool use(s), all Read of its own prompt file (1745 lines, every line read); no other tool, path or search. Model reported in the transcript: claude-haiku-5-5.",
+ "dispatch_prompt_digest": "92feab9e8f5f85c46dc3efc31b1cd4daede0872013dc61f483daecdad5640359",
+ "raw_reply": "{\"item\": \"S444-019\", \"clauses\": {\"solve_division_problems\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F08\", \"template\": \"Start at {dividend} on a number line and take equal jumps back of {divisor} to reach 0: {dividend} ÷ {divisor} = ___\", \"reasoning\": \"F08 prints a division sentence with a blank for the quotient, so it addresses the task clause. Its divisor domain is repeats a generated value with printed_runs 3, 8 (from key b), so for in-scope divisors it is producible; the out-of-scope divisor 8 is a separate failure, recorded under failing_families.\"}, \"tables_2_3_4_5_10\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F15\", \"template\": \"There are {a} {objects}. If {b} {objects} are put in each bag, how many bags are needed?\", \"reasoning\": \"F15 divisor slot b has printed_runs 2 to 5, 10, which is exactly the declared table set 2, 3, 4, 5 and 10, so this family produces in-scope table divisions. F15 is itself failing for its objects domain (see reasoning), but it is the family whose b values match the range clause.\"}, \"money\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F16\", \"template\": \"{actor} has ₱{a} and wants to share it equally among {b} friends. How much does each friend get?\", \"reasoning\": \"F16 places a peso amount (the ₱ symbol is in cumulative_vocab) and asks for an equal share, which is a money division context. Its divisor b has printed_runs 2 to 5, 10, in table range.\"}}, \"failing_families\": [\"F04\", \"F05\", \"F06\", \"F07\", \"F08\", \"F09\", \"F15\", \"F16\", \"F17\"], \"failing_templates\": [\"Ask: how many times does {b} fit into {a}? {b} × {result} = {v}.\", \"Start at {a} on a number line and take equal jumps back of {b} to reach 0. How many jumps did you make? {a} ÷ {b} = ___\", \"We need to divide {a} by {b}. {capitalize} is {a}; {divisor_label} is {b}.\", \"{capitalize} of {a} ÷ {b} = {result}.\", \"Start at {dividend} on a number line and take equal jumps back of {divisor} to reach 0: {dividend} ÷ {divisor} = ___\", \"Starting at {dividend} on a number line, taking equal jumps back of {divisor} takes {slot} jumps to reach 0\", \"There are {a} {objects}. If {b} {objects} are put in each bag, how many bags are needed?\", \"{actor} has ₱{a} and wants to share it equally among {b} friends. How much does each friend get?\", \"{actor} wants to share {a} {objects} equally among {b} friends. How many {objects} does each friend get?\"], \"overall\": \"FAIL\", \"reasoning\": \"Divisor out of scope: families F04, F05, F06, F07, F08 and F09 draw their divisor from the key b (or divisor) with printed_runs that include 8 (F04 '2 to 5, 8, 10'; F05 and F09 '3, 8'; F06 and F07 '2 to 5, 8, 10'; F08 '3, 8'). The lc names only the 2, 3, 4, 5 and 10 tables, so a divisor of 8 requires facts outside the stated scope (Rule 1 and Rule 3). Context beyond a grade 2 learner: F15 and F17 draw their objects from OBJECTS_POOL, which includes wording a grade 2 learner cannot be expected to read or relate to, such as 'gacha tickets' and 'donation cards'. Non-whole results: F15, F16 and F17 draw a and b independently from their own domains with no divisibility condition, while declared_variants sets remainder to 'none'. F16 can therefore print a peso share that is not whole (for example a value of 2 or 3 shared among a divisor such as 2), and F17 can print the same kind of non-whole share. The hint families F04 to F09 carry the same unconstrained a and b pairing. Clauses are PRODUCIBLE only through the in-table divisors, which the generator does not guarantee.\"}",
+ "raw_reply_digest": "131756643c7c42a8e86631361302f998729c8fdd85688d1a32e6630e3c6997d5",
+ "packet_digest": "ef6423946efa07971d9572c6a8dc4bac53c8ef552f271c381a342afa95599f76",
+ "family_keys": {
+  "F01": {
+   "source": "backend/app/practice_gen/dna/base.py [gate dividend]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F02": {
+   "source": "backend/app/practice_gen/dna/base.py [gate divisor]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F03": {
+   "source": "backend/app/practice_gen/dna/base.py [gate quotient]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F04": {
+   "source": "backend/app/practice_gen/dna/na/division.py",
+   "first_site": "backend/app/practice_gen/dna/na/division.py:661",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F05": {
+   "source": "backend/app/practice_gen/dna/na/division.py",
+   "first_site": "backend/app/practice_gen/dna/na/division.py:236",
+   "renderer": "",
+   "path": [
+    17,
+    "mcq"
+   ],
+   "first_render_repeating": {}
+  },
+  "F06": {
+   "source": "backend/app/practice_gen/dna/na/division.py",
+   "first_site": "backend/app/practice_gen/dna/na/division.py:656",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F07": {
+   "source": "backend/app/practice_gen/dna/na/division.py",
+   "first_site": "backend/app/practice_gen/dna/na/division.py:681",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F08": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_cloze.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_cloze.py:165",
+   "renderer": "",
+   "path": [
+    17,
+    "cloze"
+   ],
+   "first_render_repeating": {}
+  },
+  "F09": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_error_detect.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_error_detect.py:240",
+   "renderer": "",
+   "path": [
+    17,
+    "error_detect"
+   ],
+   "first_render_repeating": {}
+  },
+  "F10": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_error_detect.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_error_detect.py:387",
+   "renderer": "",
+   "path": [
+    3,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F11": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_error_detect.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_error_detect.py:372",
+   "renderer": "",
+   "path": [
+    3,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F12": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_error_detect.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_error_detect.py:367",
+   "renderer": "",
+   "path": [
+    17,
+    "error_detect"
+   ],
+   "first_render_repeating": {}
+  },
+  "F13": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_true_false.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_true_false.py:119",
+   "renderer": "",
+   "path": [
+    6,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F14": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_true_false.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_true_false.py:430",
+   "renderer": "",
+   "path": [
+    6,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F15": {
+   "source": "div_how_many_groups",
+   "first_site": "backend/app/practice_gen/dna/base.py:225",
+   "renderer": "spine",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {
+    "objects,inflect_objects": [
+     5,
+     null
+    ]
+   }
+  },
+  "F16": {
+   "source": "div_money_share",
+   "first_site": "backend/app/practice_gen/dna/base.py:225",
+   "renderer": "spine",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F17": {
+   "source": "div_share_equally",
+   "first_site": "backend/app/practice_gen/dna/base.py:225",
+   "renderer": "spine",
+   "path": [
+    2,
+    null
+   ],
+   "first_render_repeating": {
+    "objects,inflect_objects": [
+     2,
+     null
+    ]
+   }
+  }
+ },
+ "packet": {
+  "item": "S444-019",
+  "competency": {
+   "text": "Solve division problems using the 2, 3, 4, 5, and 10 multiplication tables, including problems involving money.",
+   "grade": 2,
+   "quarter": 3
+  },
+  "clauses": [
+   {
+    "id": "solve_division_problems",
+    "kind": "task",
+    "clause": "Solve division problems"
+   },
+   {
+    "id": "tables_2_3_4_5_10",
+    "kind": "range",
+    "clause": "2, 3, 4, 5, and 10 multiplication tables"
+   },
+   {
+    "id": "money",
+    "kind": "context",
+    "clause": "money"
+   }
+  ],
+  "vocabulary": {
+   "student_vocab": [],
+   "curriculum_vocab": [],
+   "introduces_vocab": [],
+   "cumulative_vocab": [
+    "1 less",
+    "1 more",
+    "10th",
+    "1st",
+    "2nd",
+    "3rd",
+    "4th",
+    "5th",
+    "6th",
+    "7th",
+    "8th",
+    "9th",
+    "addition",
+    "analog clock",
+    "bigger",
+    "bill",
+    "calendar",
+    "centavo",
+    "centimeter",
+    "circle",
+    "clockwise",
+    "cm",
+    "coin",
+    "compare",
+    "corner",
+    "count",
+    "counter-clockwise",
+    "data",
+    "decreasing pattern",
+    "difference",
+    "digit",
+    "division",
+    "equal",
+    "equal groups",
+    "estimate",
+    "even",
+    "expanded form",
+    "fraction",
+    "group",
+    "half",
+    "half hour",
+    "half turn",
+    "hour",
+    "how many",
+    "hundreds",
+    "increasing pattern",
+    "left",
+    "length",
+    "less",
+    "m",
+    "measure",
+    "meter",
+    "missing number",
+    "more",
+    "multiplication",
+    "number",
+    "number line",
+    "numeral",
+    "odd",
+    "ones",
+    "pattern",
+    "peso",
+    "pictograph",
+    "place value",
+    "product",
+    "quarter",
+    "quarter hour",
+    "quarter turn",
+    "quotient",
+    "rectangle",
+    "regrouping",
+    "repeating pattern",
+    "ruler",
+    "same",
+    "side",
+    "skip counting",
+    "slide",
+    "smaller",
+    "square",
+    "subtraction",
+    "sum",
+    "table",
+    "tens",
+    "thousand",
+    "total",
+    "translation",
+    "triangle",
+    "whole",
+    "₱"
+   ],
+   "NOT_YET_KNOWN": [
+    "L",
+    "a.m.",
+    "area",
+    "axis",
+    "balance scale",
+    "bar graph",
+    "capacity",
+    "certain",
+    "denominator",
+    "elapsed time",
+    "equally likely",
+    "g",
+    "gram",
+    "impossible",
+    "improper fraction",
+    "intersecting",
+    "kg",
+    "kilogram",
+    "less likely",
+    "line",
+    "line of symmetry",
+    "line segment",
+    "liter",
+    "mL",
+    "mass",
+    "milliliter",
+    "minute",
+    "missing term",
+    "more likely",
+    "nearest hundred",
+    "nearest ten",
+    "nearest thousand",
+    "numerator",
+    "order of operations",
+    "outcome",
+    "p.m.",
+    "parallel",
+    "perimeter",
+    "perpendicular",
+    "point",
+    "ray",
+    "remainder",
+    "round",
+    "scale",
+    "similar fractions",
+    "solid figure",
+    "sq. cm",
+    "square centimeter",
+    "symmetry",
+    "ten thousand",
+    "ten-thousands place"
+   ],
+   "sentence_max_words": 18,
+   "number_format": "no commas for numbers up to 1000"
+  },
+  "declared_variants": [
+   [
+    "context",
+    "word_problem"
+   ],
+   [
+    "remainder",
+    "none"
+   ],
+   [
+    "structure",
+    "result_unknown"
+   ],
+   [
+    "table",
+    "2_3_4_5_10"
+   ]
+  ],
+  "declared_bounds": [
+   {
+    "table": "2_3_4_5_10",
+    "remainder": "none",
+    "structure": "result_unknown",
+    "context": "word_problem"
+   }
+  ],
+  "families": [
+   {
+    "id": "F01",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F06"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='dividend')",
+        "requires_vocab": "dividend",
+        "prints": "the number being divided",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F02",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F06"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='divisor')",
+        "requires_vocab": "divisor",
+        "prints": "the number we divide by",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F03",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F07"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='quotient')",
+        "requires_vocab": "quotient",
+        "prints": "the quotient",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F04",
+    "template": "Ask: how many times does {b} fit into {a}? {b} × {result} = {v}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "2 to 5, 8, 10",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "2 to 3, 10, 12, 15, 20 to 21, 30, 40, 48, 50, 70, 80, 90",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "result",
+       "v"
+      ],
+      "domains": [
+       {
+        "domain": "a number computed by the generator",
+        "reason": "arithmetic",
+        "derived_from_values": [
+         "a",
+         "b"
+        ]
+       }
+      ],
+      "distinct_in_every_render": true
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F05",
+    "template": "Start at {a} on a number line and take equal jumps back of {b} to reach 0. How many jumps did you make? {a} ÷ {b} = ___",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "21, 48",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "3, 8",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F06",
+    "template": "We need to divide {a} by {b}. {capitalize} is {a}; {divisor_label} is {b}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "2 to 3, 10, 12, 15, 20 to 21, 30, 40, 48, 50, 70, 80, 90",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "2 to 5, 8, 10",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "capitalize"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F01"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "divisor_label"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F02"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F07",
+    "template": "{capitalize} of {a} ÷ {b} = {result}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "capitalize"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F03"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "2 to 3, 10, 12, 15, 20 to 21, 30, 40, 48, 50, 70, 80, 90",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "2 to 5, 8, 10",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "result"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "result",
+        "printed_runs": "1 to 9",
+        "derived_from_values": [
+         "result"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F08",
+    "template": "Start at {dividend} on a number line and take equal jumps back of {divisor} to reach 0: {dividend} ÷ {divisor} = ___",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "dividend"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "21, 48",
+        "derived_from_values": [
+         "a",
+         "dividend"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "divisor"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "3, 8",
+        "derived_from_values": [
+         "b",
+         "divisor"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F09",
+    "template": "Starting at {dividend} on a number line, taking equal jumps back of {divisor} takes {slot} jumps to reach 0",
+    "appears_in": [
+     "format_data.problem_expression"
+    ],
+    "nested_in": [
+     "F12"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "dividend"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "21, 48",
+        "derived_from_values": [
+         "a",
+         "dividend"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "divisor"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "3, 8",
+        "derived_from_values": [
+         "b",
+         "divisor"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "slot"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the blank for the unknown blank_target",
+        "members": [
+         "___"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F10",
+    "template": "{actor}",
+    "appears_in": [
+     "format_data.actor_name"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "actor"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "_FILIPINO_NAMES"
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F11",
+    "template": "{actor} solved this problem: \"{problem}\" {actor} says the answer is {answer}. Is {actor} correct?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "actor"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "_FILIPINO_NAMES"
+       }
+      ]
+     },
+     {
+      "slots": [
+       "problem"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F16",
+         "F17"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the keyed answer and the distractor candidates",
+        "members": [
+         0,
+         1,
+         10,
+         12,
+         16,
+         2,
+         25,
+         3,
+         4,
+         5,
+         6,
+         7,
+         8,
+         80,
+         9
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F12",
+    "template": "{actor} solved: \"{problem}\". {actor} says the {miss} is {answer}. Is {actor} correct?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "actor"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "_FILIPINO_NAMES"
+       }
+      ]
+     },
+     {
+      "slots": [
+       "problem"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F09"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the keyed answer and the distractor candidates",
+        "members": [
+         18,
+         3,
+         40,
+         5,
+         6,
+         7,
+         8
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "miss"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "vocab gate 'missing number'",
+        "requires_vocab": "missing number",
+        "prints": "missing number",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F13",
+    "template": "{q} The answer is {v}.",
+    "appears_in": [
+     "format_data.statement"
+    ],
+    "nested_in": [
+     "F14"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "q"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F15",
+         "F16",
+         "F17"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "v"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the distractors shaped like the keyed answer",
+        "members": [
+         0,
+         10,
+         12,
+         2,
+         3,
+         4,
+         40,
+         5,
+         6,
+         7,
+         70,
+         8,
+         80,
+         9
+        ]
+       },
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the keyed answer (a true statement)",
+        "members": [
+         1,
+         2,
+         4
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F14",
+    "template": "{statement}. True or False?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "statement"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F13"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F15",
+    "template": "There are {a} {objects}. If {b} {objects} are put in each bag, how many bags are needed?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [
+     "F13"
+    ],
+    "transformation": {
+     "name": "spine",
+     "meaning": "the template is rendered by the spine renderer, which also chooses a/an by sound and the singular after a count of 1"
+    },
+    "slots": [
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "2 to 3, 10, 12, 15, 20, 30, 40, 50, 70, 80, 90",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "objects",
+       "inflect_objects"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "OBJECTS_POOL"
+       }
+      ],
+      "distinct_in_every_render": false
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "2 to 5, 10",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "inflect_item1"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "ITEM1_POOL"
+       }
+      ]
+     },
+     {
+      "slots": [
+       "inflect_item2"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "ITEM2_POOL"
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F16",
+    "template": "{actor} has ₱{a} and wants to share it equally among {b} friends. How much does each friend get?",
+    "appears_in": [
+     "format_data.problem_expression",
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [
+     "F11",
+     "F13"
+    ],
+    "transformation": {
+     "name": "spine",
+     "meaning": "the template is rendered by the spine renderer, which also chooses a/an by sound and the singular after a count of 1"
+    },
+    "slots": [
+     {
+      "slots": [
+       "actor"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "ACTOR_POOL"
+       }
+      ]
+     },
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "2 to 3, 10, 12, 15, 20, 30, 40, 50, 70",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "2 to 5, 10",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "inflect_objects"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "OBJECTS_POOL"
+       }
+      ]
+     },
+     {
+      "slots": [
+       "inflect_item1"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "ITEM1_POOL"
+       }
+      ]
+     },
+     {
+      "slots": [
+       "inflect_item2"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "ITEM2_POOL"
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F17",
+    "template": "{actor} wants to share {a} {objects} equally among {b} friends. How many {objects} does each friend get?",
+    "appears_in": [
+     "format_data.problem_expression",
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [
+     "F11",
+     "F13"
+    ],
+    "transformation": {
+     "name": "spine",
+     "meaning": "the template is rendered by the spine renderer, which also chooses a/an by sound and the singular after a count of 1"
+    },
+    "slots": [
+     {
+      "slots": [
+       "actor"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "ACTOR_POOL"
+       }
+      ]
+     },
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "2 to 3, 10, 12, 15, 20, 40, 50, 70, 80, 90",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "objects",
+       "inflect_objects"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "OBJECTS_POOL"
+       }
+      ],
+      "distinct_in_every_render": false
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "2 to 5, 10",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "inflect_item1"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "ITEM1_POOL"
+       }
+      ]
+     },
+     {
+      "slots": [
+       "inflect_item2"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "ITEM2_POOL"
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   }
+  ],
+  "lists": {
+   "_FILIPINO_NAMES": [
+    "Noel",
+    "Maria",
+    "Jose",
+    "Ana",
+    "Carlo",
+    "Liza",
+    "Manny",
+    "Grace",
+    "Rico",
+    "Pia",
+    "Dante",
+    "Rosa"
+   ],
+   "OBJECTS_POOL": [
+    "loaves of bread",
+    "fish",
+    "olives",
+    "coins",
+    "scrolls",
+    "lamps",
+    "jars",
+    "baskets",
+    "stones",
+    "seeds",
+    "match tickets",
+    "hero cards",
+    "score cards",
+    "tournament tickets",
+    "rank badges",
+    "headsets",
+    "building blocks",
+    "game manuals",
+    "block packs",
+    "coin tokens",
+    "skin cards",
+    "craft blocks",
+    "gacha tickets",
+    "character cards",
+    "gem tokens",
+    "event tickets",
+    "figure collectibles",
+    "resin figures",
+    "puzzle pieces",
+    "chess pieces",
+    "game cards",
+    "hint tokens",
+    "star stickers",
+    "power-up cards",
+    "photocards",
+    "albums",
+    "concert tickets",
+    "lightsticks",
+    "fan shirts",
+    "posters",
+    "fan merch",
+    "trading cards",
+    "manga volumes",
+    "anime figurines",
+    "cosplay pins",
+    "sticker sheets",
+    "art prints",
+    "keychains",
+    "album CDs",
+    "fan posters",
+    "movie tickets",
+    "collector cards",
+    "merchandise shirts",
+    "notebooks",
+    "story cards",
+    "book covers",
+    "bookmarks",
+    "pens",
+    "printed drafts",
+    "memory cards",
+    "fan letters",
+    "light clips",
+    "phone stands",
+    "preset cards",
+    "microphones",
+    "donation cards",
+    "subscriber badges",
+    "emote stickers",
+    "clip cards",
+    "fan art prints",
+    "merch shirts",
+    "template cards",
+    "photo prints",
+    "sketch cards",
+    "photo albums",
+    "brush packs",
+    "basketballs",
+    "jerseys",
+    "water bottles",
+    "medals",
+    "sneakers",
+    "volleyballs",
+    "shuttlecocks",
+    "whistles",
+    "arm sleeves",
+    "knee pads",
+    "score sheets",
+    "jump ropes",
+    "wristbands",
+    "running shoes",
+    "weights",
+    "helmets",
+    "dance shoes",
+    "costumes",
+    "trophies",
+    "fan accessories",
+    "pom-poms",
+    "ribbons",
+    "crayons",
+    "paintbrushes",
+    "sketchpads",
+    "colored pencils",
+    "watercolor sets",
+    "paint tubes",
+    "guitar picks",
+    "ukulele strings",
+    "song sheets",
+    "capos",
+    "drumsticks",
+    "yarn balls",
+    "journal notebooks",
+    "scrapbook pages",
+    "fabric swatches",
+    "washi tape rolls",
+    "cupcakes",
+    "cookies",
+    "milk tea cups",
+    "bags of flour",
+    "eggs",
+    "dog treats",
+    "cat toys",
+    "fish food packets",
+    "hamsters",
+    "leashes",
+    "water bowls",
+    "circuit boards",
+    "coding books",
+    "robot kits",
+    "solar cells",
+    "lab notebooks",
+    "USB drives",
+    "sticker packs",
+    "product samples",
+    "order slips",
+    "savings jars",
+    "business cards",
+    "packaging bags",
+    "trivia cards",
+    "history books",
+    "documentary DVDs",
+    "map prints",
+    "quiz notebooks",
+    "mystery novels",
+    "campaign posters",
+    "eco bags",
+    "ballot papers",
+    "project folders",
+    "campaign pins",
+    "speech scripts",
+    "stickers"
+   ],
+   "ITEM1_POOL": [
+    "Bible storybook",
+    "prayer journal",
+    "bookmark",
+    "coloring book",
+    "headset",
+    "gaming mouse",
+    "keyboard skin",
+    "mousepad",
+    "game skin",
+    "server pass",
+    "resource pack",
+    "avatar outfit",
+    "character keychain",
+    "acrylic standee",
+    "gacha topup card",
+    "enamel pin",
+    "chess set",
+    "puzzle book",
+    "mobile game credit",
+    "sudoku pad",
+    "album",
+    "photocard",
+    "lightstick",
+    "fan shirt",
+    "photocard sleeve",
+    "manga volume",
+    "anime keychain",
+    "album CD",
+    "fan poster",
+    "movie ticket",
+    "notebook",
+    "gel pen set",
+    "story planner",
+    "ring light",
+    "tripod",
+    "phone mic",
+    "green screen",
+    "streamer merch shirt",
+    "emote sticker",
+    "fan badge",
+    "stream credit",
+    "photo print",
+    "sticker sheet",
+    "design template pack",
+    "sketchpad",
+    "basketball",
+    "jersey",
+    "headband",
+    "wristband",
+    "volleyball",
+    "knee pad",
+    "sport socks",
+    "bicycle pump",
+    "helmet",
+    "knee guard",
+    "running shoes",
+    "dance shoes",
+    "costume sash",
+    "pom-pom",
+    "hair tie set",
+    "colored pencil set",
+    "watercolor set",
+    "crayons",
+    "guitar pick",
+    "ukulele string set",
+    "capo",
+    "song sheet booklet",
+    "yarn ball",
+    "journal notebook",
+    "washi tape roll",
+    "cupcake",
+    "cookie pack",
+    "bread loaf",
+    "baking mix pack",
+    "dog treat pack",
+    "cat toy",
+    "fish food packet",
+    "pet collar",
+    "coding book",
+    "USB drive",
+    "robot kit part",
+    "science kit",
+    "sticker pack",
+    "handmade keychain",
+    "savings jar",
+    "business card pack",
+    "trivia card pack",
+    "history book",
+    "quiz notebook",
+    "map print",
+    "eco bag",
+    "campaign poster roll",
+    "project folder",
+    "marker set",
+    "pencil"
+   ],
+   "ITEM2_POOL": [
+    "sticker set",
+    "wristband",
+    "song lyrics card",
+    "memory verse card",
+    "phone cooling fan",
+    "controller grip",
+    "RGB light strip",
+    "phone stand",
+    "gaming chair cushion",
+    "desk lamp",
+    "cooling pad",
+    "sticker sheet",
+    "loot box pass",
+    "tote bag",
+    "poster",
+    "pen set",
+    "timer",
+    "score notepad",
+    "strategy guide",
+    "lace pin",
+    "acrylic standee",
+    "art print",
+    "cosplay accessory",
+    "collector card",
+    "bookmark",
+    "pin badge",
+    "highlighter set",
+    "sticky notes",
+    "pen case",
+    "reading light",
+    "SD card",
+    "phone grip",
+    "led strip",
+    "editing app credit",
+    "meme poster",
+    "phone case",
+    "stylus pen",
+    "photo frame",
+    "washi tape set",
+    "colored markers",
+    "water bottle",
+    "sports towel",
+    "cap",
+    "knee pad",
+    "racket grip tape",
+    "headband",
+    "sports bag",
+    "resistance band",
+    "duffel bag",
+    "paintbrush set",
+    "eraser",
+    "ruler",
+    "drawing pen",
+    "tuner clip",
+    "microphone",
+    "music stand",
+    "drumstick pair",
+    "crochet hook",
+    "scissors",
+    "glue stick",
+    "colored pens",
+    "milk tea cup",
+    "pastry box",
+    "cooking apron",
+    "measuring cup set",
+    "water bowl",
+    "pet brush",
+    "leash",
+    "hamster bedding pack",
+    "notebook",
+    "ballpen set",
+    "calculator",
+    "solar toy",
+    "packaging bag",
+    "price tag set",
+    "receipt booklet",
+    "rubber band pack",
+    "booklight",
+    "sticky note pad",
+    "ballpen pack",
+    "tarpaulin print",
+    "ribbon spool"
+   ],
+   "ACTOR_POOL": [
+    "David",
+    "Moses",
+    "Ruth",
+    "Esther",
+    "Daniel",
+    "Mary",
+    "Joseph",
+    "Paul",
+    "Peter",
+    "Ate Joy",
+    "Kuya Franz",
+    "Aldrin",
+    "Mikko",
+    "Gio",
+    "Trisha",
+    "Coach Val",
+    "Nico",
+    "Bea",
+    "Lester",
+    "Mariz",
+    "Kuya Dan",
+    "Raffy",
+    "Hiro",
+    "Rina",
+    "Emman",
+    "Yuki",
+    "Alvin",
+    "Ate Cai",
+    "Lola Caring",
+    "Tito Jun",
+    "Andrea",
+    "Migs",
+    "Reyna",
+    "Pabs",
+    "Ate Shei",
+    "Marco",
+    "Janna",
+    "Renz",
+    "Lianne",
+    "Kuya Pat",
+    "Ate Lia",
+    "Sora",
+    "Dani",
+    "Kris",
+    "Eunji",
+    "Hana",
+    "Rex",
+    "Ate Gem",
+    "Kuya Dos",
+    "Ate Cess",
+    "Jake",
+    "Mia",
+    "Ronan",
+    "Bria",
+    "Kuya Axel",
+    "Ate Nina",
+    "Luis",
+    "Camille",
+    "Raph",
+    "Zia",
+    "Kuya Bien",
+    "Kuya Lance",
+    "Ate Charm",
+    "Reina",
+    "Topher",
+    "Jade",
+    "Kuya Cong",
+    "Ate Mags",
+    "Boyax",
+    "Trish",
+    "Aldrei",
+    "Jomar",
+    "Ate Cara",
+    "Dex",
+    "Mika",
+    "Noel",
+    "Izza",
+    "Kuya Erwin",
+    "Isko",
+    "Ate Bea",
+    "Coach Roel",
+    "Jun",
+    "Gab",
+    "Ate Alyssa",
+    "Cris",
+    "Des",
+    "Coach Nora",
+    "Pia",
+    "Romel",
+    "Kuya Chad",
+    "Aling Rosa",
+    "Tito Bong",
+    "Faye",
+    "Arnel",
+    "Ate Sam",
+    "Ate Gab",
+    "Maico",
+    "Bianca",
+    "Sir Rez",
+    "Lara",
+    "Kuya Ton",
+    "Ate Liza",
+    "Carlo",
+    "Sir Ben",
+    "Yna",
+    "Kuya Renz",
+    "Kuya Noel",
+    "Ate Ria",
+    "Manny",
+    "Ching",
+    "Sir Leo",
+    "Dana",
+    "Lena",
+    "Nikka",
+    "Kuya Art",
+    "Tessie",
+    "Ate Nena",
+    "Kuya Coy",
+    "Lola Ising",
+    "Chef Demi",
+    "Riza",
+    "Boboy",
+    "Ate Beng",
+    "Kuya Tads",
+    "Nanding",
+    "Boyong",
+    "Kuya Ian",
+    "Ateneo Doc",
+    "Sir Erwin",
+    "Ate Dang",
+    "Celso",
+    "Kuya Bert",
+    "Ate Gina",
+    "Ronnie",
+    "Maribel",
+    "Sir Doy",
+    "Sir Mando",
+    "Ate Lory",
+    "Bogs",
+    "Celia",
+    "Kuya Dex",
+    "Rhea",
+    "Ate Lyn",
+    "Patricia",
+    "Romar",
+    "Sir Dave",
+    "Connie",
+    "Maria"
+   ]
+  },
+  "banks": {},
+  "value_derivations": [
+   {
+    "kind": "computes",
+    "key": "remainder",
+    "from": [
+     "a",
+     "b"
+    ]
+   }
+  ],
+  "reason_kinds": {
+   "arithmetic": "a number the generator computes from the generated values named in src (a half, a sum, a difference, a running total, a place's digit). Its range is the image of those values' own domains; whether the arithmetic is RIGHT is the hint contract's (§16) and §1E's to check, not §14's."
+  }
+ }
+}

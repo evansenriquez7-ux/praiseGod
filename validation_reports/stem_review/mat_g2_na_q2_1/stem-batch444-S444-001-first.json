@@ -1,0 +1,1001 @@
+{
+ "schema_version": 2,
+ "hash_version": 8,
+ "node_id": "mat_g2_na_q2_1",
+ "record_id": "stem-batch444-S444-001-first",
+ "role": "first",
+ "confirms": null,
+ "item_id": "S444-001",
+ "lc_hash": "c3da753c7278b53af353f41d3c5cb09bededc4cb86219c2b1e1137462c39aa7a",
+ "judged_by": "blind-stem-judge-claude-haiku-batch444-S444-001-first",
+ "dispatch_id": "stem-batch444-S444-001-first",
+ "filed_at": "2026-10-15T16:47:27Z",
+ "delivery": "Claude Code Agent tool, model=haiku, subagent_type=general-purpose; the judge was told to read only local_only/scratch/h4c/prompts/S444-001.prompt.txt (tests/stem_file.py prompt output, item S444-001; no lc id, no key or packets file in that directory) and reply with what it asks; dispatched with CLAUDE.md loaded (ruling 29). Blindness is a prompt contract, audited from the subagent transcript.",
+ "tool_uses_by_judge": "From the subagent transcript: 1 tool use(s), all Read of its own prompt file (929 lines, every line read); no other tool, path or search. Model reported in the transcript: claude-haiku-5-5.",
+ "dispatch_prompt_digest": "c1f36f1015eb90997e70559903c725dbde1b1e9c0e412bea8761dcde473ac087",
+ "raw_reply": "{\"item\": \"S444-001\", \"clauses\": {\"compare\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F05\", \"template\": \"Which has a greater value: {desc1} or {desc2}?\", \"reasoning\": \"F05 is the question_text comparison template. Its desc1 and desc2 slots draw nested learner text from F07, F08, F09, F11 and F13, so a problem can ask which of two described amounts has the greater value.\"}, \"values\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F05\", \"template\": \"Which has a greater value: {desc1} or {desc2}?\", \"reasoning\": \"The word value in the F05 question_text is the clause word. The described amounts are money values built from the F07, F08, F09 and F11 families.\"}, \"different\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F06\", \"template\": \"Which has a smaller value: {desc1} or {desc2}?\", \"reasoning\": \"F06 slots desc1 and desc2 are declared distinct_in_every_render true, so a problem can compare two different amounts of money, which is what the clause asks for.\"}, \"denominations\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F07\", \"template\": \"{count} {face} {unit}\", \"reasoning\": \"F07 prints a count with a face slot drawn from F10 denomination values, so each amount names a denomination.\"}, \"peso_coins\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F07\", \"template\": \"{count} {face} {unit}\", \"reasoning\": \"F07 with unit coin or coins and face values 1, 5, 10 (and 20 via F10) produces amounts made of peso coins, as in the printed F11 answers.\"}, \"bills\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F07\", \"template\": \"{count} {face} {unit}\", \"reasoning\": \"F07 with unit bill or bills and face values such as 20, 50, 100, 200 and 500 produces amounts made of peso bills, as in the printed F11 answers.\"}, \"up_to_1000\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F11\", \"template\": \"{answer}\", \"reasoning\": \"The printed F11 answers reach a combined value of 870 (one 500 bill, one 200 bill, one 100 bill, one 50 bill and one 20 bill). Every printed answer stays within the declared max_total of 1000. The 1000 denomination itself is not in the F10 domain (see failing_families).\"}}, \"failing_families\": [\"F05\", \"F06\", \"F07\", \"F10\"], \"failing_templates\": [\"Which has a greater value: {desc1} or {desc2}?\", \"Which has a smaller value: {desc1} or {desc2}?\", \"{count} {face} {unit}\", \"₱{denom}\"], \"overall\": \"FAIL\", \"reasoning\": \"F05 and F06 nest F13, whose members include the option that says the two are equal. A description slot can therefore print an equal-value statement as one of the two things being compared. F05 also has no distinct_in_every_render flag on its desc1 and desc2 slots, so the same described amount can appear on both sides, which leaves no answer to a greater-value question. F06 is declared distinct, but it still nests the same F13 member. F07 has its face slot (F10 values 1, 5, 10, 20, 50, 100, 200, 500) and its unit slot (bill, bills, coin, coins) declared as independent domains, and the unit slot is not tied to the count (1 to 5) or to the face. The declared domains therefore allow denomination and type pairings that do not exist in Philippine currency, such as a coin of a bill-only face value, and a singular or plural unit that disagrees with the count. The observed printed answers in F11 and the F13 members show only consistent pairings, but the declared domains do not bound them, and judges judge the domains. F10 has no 1000 denomination, although the lc is stated as up to 1000 pesos. That leaves the top of the stated range unrepresented in the denomination domain, which is short of the competency's scope.\"}",
+ "raw_reply_digest": "cdbe44fe41247993048f651cf3e2a09b817327958338cb483755d1179d5be2d2",
+ "packet_digest": "c4b8a232b7837e49087c25a83e072b53a12cf0cb93958f7b56090b8bd899b18c",
+ "family_keys": {
+  "F01": {
+   "source": "backend/app/practice_gen/dna/na/money_peso.py",
+   "first_site": "backend/app/practice_gen/dna/na/money_peso.py:546",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F02": {
+   "source": "backend/app/practice_gen/dna/na/money_peso.py",
+   "first_site": "backend/app/practice_gen/dna/na/money_peso.py:544",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F03": {
+   "source": "backend/app/practice_gen/dna/na/money_peso.py",
+   "first_site": "backend/app/practice_gen/dna/na/money_peso.py:545",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F04": {
+   "source": "backend/app/practice_gen/dna/na/money_peso.py",
+   "first_site": "backend/app/practice_gen/dna/na/money_peso.py:380",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F05": {
+   "source": "backend/app/practice_gen/dna/na/money_peso.py",
+   "first_site": "backend/app/practice_gen/dna/na/money_peso.py:374",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F06": {
+   "source": "backend/app/practice_gen/dna/na/money_peso.py",
+   "first_site": "backend/app/practice_gen/dna/na/money_peso.py:382",
+   "renderer": "",
+   "path": [
+    2,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F07": {
+   "source": "backend/app/practice_gen/dna/na/money_peso.py",
+   "first_site": "backend/app/practice_gen/dna/na/money_peso.py:360",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F08": {
+   "source": "backend/app/practice_gen/dna/na/money_peso.py",
+   "first_site": "backend/app/practice_gen/dna/na/money_peso.py:366",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F09": {
+   "source": "backend/app/practice_gen/dna/na/money_peso.py",
+   "first_site": "backend/app/practice_gen/dna/na/money_peso.py:364",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F10": {
+   "source": "backend/app/practice_gen/dna/na/money_peso.py",
+   "first_site": "backend/app/practice_gen/dna/na/money_peso.py:357",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F11": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:32",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F12": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:51",
+   "renderer": "",
+   "path": [
+    4,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F13": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:39",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  }
+ },
+ "packet": {
+  "item": "S444-001",
+  "competency": {
+   "text": "Compare the values of different denominations of peso coins and bills up to ₱1000.",
+   "grade": 2,
+   "quarter": 2
+  },
+  "clauses": [
+   {
+    "id": "compare",
+    "kind": "task",
+    "clause": "Compare"
+   },
+   {
+    "id": "values",
+    "kind": "property",
+    "clause": "values"
+   },
+   {
+    "id": "different",
+    "kind": "property",
+    "clause": "different"
+   },
+   {
+    "id": "denominations",
+    "kind": "object",
+    "clause": "denominations"
+   },
+   {
+    "id": "peso_coins",
+    "kind": "object",
+    "clause": "peso coins"
+   },
+   {
+    "id": "bills",
+    "kind": "object",
+    "clause": "bills"
+   },
+   {
+    "id": "up_to_1000",
+    "kind": "range",
+    "clause": "up to ₱1000"
+   }
+  ],
+  "vocabulary": {
+   "student_vocab": [],
+   "curriculum_vocab": [],
+   "introduces_vocab": [],
+   "cumulative_vocab": [
+    "1 less",
+    "1 more",
+    "10th",
+    "1st",
+    "2nd",
+    "3rd",
+    "4th",
+    "5th",
+    "6th",
+    "7th",
+    "8th",
+    "9th",
+    "addition",
+    "analog clock",
+    "bigger",
+    "bill",
+    "calendar",
+    "centavo",
+    "circle",
+    "clockwise",
+    "coin",
+    "compare",
+    "corner",
+    "count",
+    "counter-clockwise",
+    "data",
+    "difference",
+    "digit",
+    "equal",
+    "expanded form",
+    "fraction",
+    "group",
+    "half",
+    "half hour",
+    "half turn",
+    "hour",
+    "how many",
+    "hundreds",
+    "left",
+    "length",
+    "less",
+    "measure",
+    "missing number",
+    "more",
+    "number",
+    "number line",
+    "numeral",
+    "ones",
+    "pattern",
+    "peso",
+    "pictograph",
+    "place value",
+    "quarter",
+    "quarter hour",
+    "quarter turn",
+    "rectangle",
+    "regrouping",
+    "repeating pattern",
+    "same",
+    "side",
+    "skip counting",
+    "slide",
+    "smaller",
+    "square",
+    "subtraction",
+    "sum",
+    "table",
+    "tens",
+    "thousand",
+    "total",
+    "translation",
+    "triangle",
+    "whole",
+    "₱"
+   ],
+   "NOT_YET_KNOWN": [
+    "L",
+    "a.m.",
+    "area",
+    "axis",
+    "balance scale",
+    "bar graph",
+    "capacity",
+    "centimeter",
+    "certain",
+    "cm",
+    "decreasing pattern",
+    "denominator",
+    "division",
+    "elapsed time",
+    "equal groups",
+    "equally likely",
+    "estimate",
+    "even",
+    "g",
+    "gram",
+    "impossible",
+    "improper fraction",
+    "increasing pattern",
+    "intersecting",
+    "kg",
+    "kilogram",
+    "less likely",
+    "line",
+    "line of symmetry",
+    "line segment",
+    "liter",
+    "m",
+    "mL",
+    "mass",
+    "meter",
+    "milliliter",
+    "minute",
+    "missing term",
+    "more likely",
+    "multiplication",
+    "nearest hundred",
+    "nearest ten",
+    "nearest thousand",
+    "numerator",
+    "odd",
+    "order of operations",
+    "outcome",
+    "p.m.",
+    "parallel",
+    "perimeter",
+    "perpendicular",
+    "point",
+    "product",
+    "quotient",
+    "ray",
+    "remainder",
+    "round",
+    "ruler",
+    "scale",
+    "similar fractions",
+    "solid figure",
+    "sq. cm",
+    "square centimeter",
+    "symmetry",
+    "ten thousand",
+    "ten-thousands place"
+   ],
+   "sentence_max_words": 18,
+   "number_format": "no commas for numbers up to 1000"
+  },
+  "declared_variants": [
+   [
+    "context",
+    "pure"
+   ],
+   [
+    "context",
+    "word_problem"
+   ],
+   [
+    "denomination_type",
+    "bills"
+   ],
+   [
+    "denomination_type",
+    "coins"
+   ],
+   [
+    "denomination_type",
+    "mixed"
+   ],
+   [
+    "task_type",
+    "count_total"
+   ],
+   [
+    "task_type",
+    "give_money"
+   ],
+   [
+    "task_type",
+    "make_change"
+   ]
+  ],
+  "declared_bounds": [
+   {
+    "operation": "compare",
+    "max_total": [
+     1,
+     1000
+    ]
+   }
+  ],
+  "families": [
+   {
+    "id": "F01",
+    "template": "Compare the two values to see which one is greater.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": [
+     "operation"
+    ]
+   },
+   {
+    "id": "F02",
+    "template": "Find the total value of the first group of money.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": [
+     "operation"
+    ]
+   },
+   {
+    "id": "F03",
+    "template": "Find the total value of the second group of money.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": [
+     "operation"
+    ]
+   },
+   {
+    "id": "F04",
+    "template": "They are equal",
+    "appears_in": [
+     "distractors",
+     "format_data.mcq_options",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": [
+     "operation"
+    ]
+   },
+   {
+    "id": "F05",
+    "template": "Which has a greater value: {desc1} or {desc2}?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "desc1"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F07",
+         "F08",
+         "F09",
+         "F11",
+         "F13"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "desc2"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F08",
+         "F09",
+         "F11",
+         "F13"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "operation"
+    ]
+   },
+   {
+    "id": "F06",
+    "template": "Which has a smaller value: {desc1} or {desc2}?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "desc1",
+       "desc2"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F07",
+         "F08",
+         "F09",
+         "F11",
+         "F13"
+        ]
+       }
+      ],
+      "distinct_in_every_render": true
+     }
+    ],
+    "template_chosen_by_values": [
+     "operation"
+    ]
+   },
+   {
+    "id": "F07",
+    "template": "{count} {face} {unit}",
+    "appears_in": [
+     "correct_answer",
+     "distractors",
+     "format_data.mcq_options",
+     "format_data.options"
+    ],
+    "nested_in": [
+     "F05",
+     "F06",
+     "F08",
+     "F09"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "count"
+      ],
+      "domains": [
+       {
+        "domain": "a number in a range",
+        "basis": "how many of one denomination the pile holds",
+        "lo": 1,
+        "hi": 5
+       }
+      ]
+     },
+     {
+      "slots": [
+       "face"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F10"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "unit"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "coin/bill, singular or plural",
+        "members": [
+         "bill",
+         "bills",
+         "coin",
+         "coins"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F08",
+    "template": "{join}, and {v}",
+    "appears_in": [
+     "correct_answer",
+     "distractors",
+     "format_data.mcq_options",
+     "format_data.options"
+    ],
+    "nested_in": [
+     "F05",
+     "F06"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "join"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F07"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "v"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F07",
+         "F13"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F09",
+    "template": "{v} and {v2}",
+    "appears_in": [
+     "correct_answer",
+     "distractors",
+     "format_data.mcq_options",
+     "format_data.options"
+    ],
+    "nested_in": [
+     "F05",
+     "F06"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "v",
+       "v2"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F07"
+        ]
+       }
+      ],
+      "distinct_in_every_render": true
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F10",
+    "template": "₱{denom}",
+    "appears_in": [],
+    "nested_in": [
+     "F07"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "denom"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the pile get_desc describes",
+        "members": [
+         1,
+         10,
+         100,
+         20,
+         200,
+         5,
+         50,
+         500
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F11",
+    "template": "{answer}",
+    "appears_in": [
+     "correct_answer",
+     "format_data.mcq_options",
+     "format_data.options"
+    ],
+    "nested_in": [
+     "F05",
+     "F06"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "answer",
+        "printed": [
+         "1 ₱10 coin and 1 ₱1 coin",
+         "1 ₱10 coin and 1 ₱5 coin",
+         "1 ₱100 bill and 1 ₱1 coin",
+         "1 ₱100 bill and 1 ₱10 coin",
+         "1 ₱100 bill and 1 ₱20 bill",
+         "1 ₱100 bill and 1 ₱5 coin",
+         "1 ₱100 bill and 1 ₱50 bill",
+         "1 ₱100 bill and 2 ₱20 bills",
+         "1 ₱100 bill and 2 ₱5 coins",
+         "1 ₱100 bill, 1 ₱10 coin, and 1 ₱5 coin",
+         "1 ₱100 bill, 1 ₱20 bill, and 2 ₱5 coins",
+         "1 ₱100 bill, 1 ₱50 bill, 1 ₱20 bill, 1 ₱10 coin, and 1 ₱5 coin",
+         "1 ₱100 bill, 1 ₱50 bill, 1 ₱20 bill, 1 ₱5 coin, and 1 ₱1 coin",
+         "1 ₱100 bill, 1 ₱50 bill, and 1 ₱10 coin",
+         "1 ₱100 bill, 1 ₱50 bill, and 1 ₱20 bill",
+         "1 ₱100 bill, 2 ₱20 bills, 1 ₱5 coin, and 1 ₱1 coin",
+         "1 ₱100 bill, 2 ₱50 bills, and 1 ₱20 bill",
+         "1 ₱20 bill and 1 ₱1 coin",
+         "1 ₱20 bill and 1 ₱10 coin",
+         "1 ₱20 bill and 1 ₱5 coin",
+         "1 ₱20 bill and 2 ₱10 coins",
+         "1 ₱20 bill, 1 ₱5 coin, and 1 ₱1 coin",
+         "1 ₱20 bill, 2 ₱10 coins, and 1 ₱1 coin",
+         "1 ₱200 bill and 1 ₱100 bill",
+         "1 ₱200 bill and 1 ₱5 coin",
+         "1 ₱200 bill and 1 ₱50 bill",
+         "1 ₱200 bill and 2 ₱20 bills",
+         "1 ₱200 bill, 1 ₱10 coin, and 1 ₱5 coin",
+         "1 ₱200 bill, 1 ₱100 bill, 1 ₱20 bill, 1 ₱10 coin, and 1 ₱1 coin",
+         "1 ₱200 bill, 1 ₱100 bill, 1 ₱20 bill, 1 ₱5 coin, and 1 ₱1 coin",
+         "1 ₱200 bill, 1 ₱100 bill, 1 ₱50 bill, 1 ₱10 coin, and 1 ₱5 coin",
+         "1 ₱200 bill, 1 ₱100 bill, 1 ₱50 bill, 1 ₱20 bill, and 1 ₱1 coin",
+         "1 ₱200 bill, 1 ₱100 bill, 1 ₱50 bill, and 1 ₱20 bill",
+         "1 ₱200 bill, 1 ₱100 bill, 1 ₱50 bill, and 1 ₱5 coin",
+         "1 ₱200 bill, 1 ₱100 bill, 2 ₱50 bills, and 1 ₱10 coin",
+         "1 ₱200 bill, 1 ₱100 bill, and 1 ₱10 coin",
+         "1 ₱200 bill, 1 ₱100 bill, and 1 ₱50 bill",
+         "1 ₱200 bill, 1 ₱20 bill, and 1 ₱1 coin",
+         "1 ₱200 bill, 1 ₱50 bill, 1 ₱10 coin, and 1 ₱5 coin",
+         "1 ₱200 bill, 1 ₱50 bill, 1 ₱10 coin, and 2 ₱1 coins",
+         "1 ₱200 bill, 1 ₱50 bill, 1 ₱10 coin, and 2 ₱5 coins",
+         "1 ₱200 bill, 1 ₱50 bill, 1 ₱20 bill, and 1 ₱5 coin",
+         "1 ₱200 bill, 1 ₱50 bill, 1 ₱20 bill, and 2 ₱10 coins",
+         "1 ₱200 bill, 1 ₱50 bill, 1 ₱5 coin, and 2 ₱1 coins",
+         "1 ₱200 bill, 1 ₱50 bill, 2 ₱5 coins, and 1 ₱1 coin",
+         "1 ₱200 bill, 1 ₱50 bill, and 1 ₱1 coin",
+         "1 ₱200 bill, 1 ₱50 bill, and 1 ₱5 coin",
+         "1 ₱200 bill, 1 ₱50 bill, and 2 ₱20 bills",
+         "1 ₱200 bill, 2 ₱100 bills, 1 ₱10 coin, and 1 ₱5 coin",
+         "1 ₱200 bill, 2 ₱100 bills, 1 ₱50 bill, and 1 ₱5 coin",
+         "1 ₱200 bill, 2 ₱100 bills, and 1 ₱20 bill",
+         "1 ₱200 bill, 2 ₱100 bills, and 2 ₱50 bills",
+         "1 ₱5 coin and 1 ₱1 coin",
+         "1 ₱5 coin and 2 ₱1 coins",
+         "1 ₱50 bill and 1 ₱1 coin",
+         "1 ₱50 bill and 1 ₱10 coin",
+         "1 ₱50 bill and 1 ₱20 bill",
+         "1 ₱50 bill and 2 ₱1 coins",
+         "1 ₱50 bill and 3 ₱20 bills",
+         "1 ₱50 bill, 1 ₱10 coin, and 1 ₱5 coin",
+         "1 ₱50 bill, 1 ₱10 coin, and 2 ₱1 coins",
+         "1 ₱50 bill, 1 ₱20 bill, 1 ₱10 coin, 1 ₱5 coin, and 1 ₱1 coin",
+         "1 ₱50 bill, 1 ₱20 bill, 1 ₱10 coin, and 1 ₱5 coin",
+         "1 ₱50 bill, 1 ₱20 bill, and 1 ₱1 coin",
+         "1 ₱50 bill, 1 ₱20 bill, and 1 ₱10 coin",
+         "1 ₱50 bill, 1 ₱5 coin, and 1 ₱1 coin",
+         "1 ₱50 bill, 2 ₱20 bills, and 1 ₱5 coin",
+         "1 ₱500 bill and 1 ₱10 coin",
+         "1 ₱500 bill and 1 ₱100 bill",
+         "1 ₱500 bill and 1 ₱20 bill",
+         "1 ₱500 bill and 1 ₱200 bill",
+         "1 ₱500 bill and 1 ₱5 coin",
+         "1 ₱500 bill and 1 ₱50 bill",
+         "1 ₱500 bill and 2 ₱20 bills",
+         "1 ₱500 bill and 2 ₱200 bills",
+         "1 ₱500 bill and 3 ₱1 coins",
+         "1 ₱500 bill, 1 ₱10 coin, 1 ₱5 coin, and 1 ₱1 coin",
+         "1 ₱500 bill, 1 ₱10 coin, and 1 ₱1 coin",
+         "1 ₱500 bill, 1 ₱100 bill, 1 ₱10 coin, and 1 ₱1 coin",
+         "1 ₱500 bill, 1 ₱100 bill, 1 ₱20 bill, 1 ₱5 coin, and 1 ₱1 coin",
+         "1 ₱500 bill, 1 ₱100 bill, 1 ₱20 bill, and 2 ₱5 coins",
+         "1 ₱500 bill, 1 ₱100 bill, 1 ₱50 bill, 1 ₱5 coin, and 1 ₱1 coin",
+         "1 ₱500 bill, 1 ₱100 bill, 2 ₱20 bills, and 1 ₱10 coin",
+         "1 ₱500 bill, 1 ₱100 bill, 2 ₱50 bills, and 1 ₱1 coin",
+         "1 ₱500 bill, 1 ₱100 bill, and 1 ₱10 coin",
+         "1 ₱500 bill, 1 ₱100 bill, and 1 ₱5 coin",
+         "1 ₱500 bill, 1 ₱20 bill, 1 ₱10 coin, 1 ₱5 coin, and 1 ₱1 coin",
+         "1 ₱500 bill, 1 ₱20 bill, 1 ₱5 coin, and 1 ₱1 coin",
+         "1 ₱500 bill, 1 ₱20 bill, 1 ₱5 coin, and 2 ₱1 coins",
+         "1 ₱500 bill, 1 ₱20 bill, and 1 ₱5 coin",
+         "1 ₱500 bill, 1 ₱200 bill, 1 ₱100 bill, 1 ₱20 bill, and 1 ₱5 coin",
+         "1 ₱500 bill, 1 ₱200 bill, 1 ₱100 bill, 1 ₱5 coin, and 1 ₱1 coin",
+         "1 ₱500 bill, 1 ₱200 bill, 1 ₱100 bill, 1 ₱50 bill, and 1 ₱20 bill",
+         "1 ₱500 bill, 1 ₱200 bill, 1 ₱100 bill, and 1 ₱20 bill",
+         "1 ₱500 bill, 1 ₱200 bill, 1 ₱100 bill, and 1 ₱50 bill",
+         "1 ₱500 bill, 1 ₱200 bill, 1 ₱20 bill, 1 ₱10 coin, and 1 ₱5 coin",
+         "1 ₱500 bill, 1 ₱200 bill, 1 ₱20 bill, and 2 ₱1 coins",
+         "1 ₱500 bill, 1 ₱200 bill, 1 ₱50 bill, 1 ₱5 coin, and 1 ₱1 coin",
+         "1 ₱500 bill, 1 ₱200 bill, and 1 ₱10 coin",
+         "1 ₱500 bill, 1 ₱200 bill, and 1 ₱20 bill",
+         "1 ₱500 bill, 1 ₱200 bill, and 1 ₱5 coin",
+         "1 ₱500 bill, 1 ₱200 bill, and 1 ₱50 bill",
+         "1 ₱500 bill, 1 ₱50 bill, 1 ₱10 coin, 1 ₱5 coin, and 1 ₱1 coin",
+         "1 ₱500 bill, 1 ₱50 bill, 1 ₱10 coin, and 2 ₱5 coins",
+         "1 ₱500 bill, 1 ₱50 bill, 1 ₱5 coin, and 1 ₱1 coin",
+         "1 ₱500 bill, 1 ₱50 bill, 2 ₱20 bills, and 1 ₱1 coin",
+         "1 ₱500 bill, 1 ₱50 bill, and 1 ₱1 coin",
+         "1 ₱500 bill, 1 ₱50 bill, and 1 ₱5 coin",
+         "1 ₱500 bill, 1 ₱50 bill, and 2 ₱10 coins",
+         "1 ₱500 bill, 2 ₱100 bills, and 1 ₱1 coin",
+         "1 ₱500 bill, 2 ₱200 bills, and 1 ₱10 coin",
+         "1 ₱500 bill, 2 ₱50 bills, and 2 ₱1 coins",
+         "1 ₱500 bill, 2 ₱50 bills, and 2 ₱10 coins",
+         "2 ₱10 coins",
+         "2 ₱100 bills, 1 ₱50 bill, and 1 ₱1 coin",
+         "2 ₱100 bills, 1 ₱50 bill, and 1 ₱5 coin",
+         "2 ₱20 bills",
+         "2 ₱200 bills and 1 ₱20 bill",
+         "2 ₱200 bills and 2 ₱100 bills",
+         "2 ₱200 bills, 1 ₱100 bill, 1 ₱20 bill, and 1 ₱1 coin",
+         "2 ₱200 bills, 1 ₱100 bill, 1 ₱50 bill, and 1 ₱1 coin",
+         "2 ₱200 bills, 1 ₱100 bill, and 1 ₱5 coin",
+         "2 ₱200 bills, 1 ₱20 bill, 1 ₱10 coin, and 1 ₱1 coin",
+         "2 ₱200 bills, 1 ₱20 bill, 1 ₱10 coin, and 1 ₱5 coin",
+         "2 ₱200 bills, 1 ₱20 bill, and 1 ₱10 coin",
+         "2 ₱200 bills, 1 ₱50 bill, 1 ₱10 coin, and 1 ₱5 coin",
+         "2 ₱200 bills, 1 ₱50 bill, 1 ₱20 bill, and 1 ₱10 coin",
+         "2 ₱200 bills, 2 ₱100 bills, and 1 ₱10 coin",
+         "2 ₱5 coins",
+         "2 ₱50 bills, 1 ₱10 coin, and 2 ₱5 coins",
+         "2 ₱50 bills, 2 ₱10 coins, and 1 ₱1 coin",
+         "2 ₱500 bills",
+         "3 ₱100 bills, 1 ₱10 coin, and 1 ₱5 coin",
+         "3 ₱200 bills and 1 ₱10 coin"
+        ],
+        "derived_from_values": [
+         "answer"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F12",
+    "template": "{key}",
+    "appears_in": [
+     "correct_answer"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "key"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the option keys this item shows",
+        "members": [
+         "A",
+         "B",
+         "C",
+         "D"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F13",
+    "template": "{member}",
+    "appears_in": [
+     "distractors",
+     "format_data.mcq_options",
+     "format_data.options"
+    ],
+    "nested_in": [
+     "F05",
+     "F06",
+     "F08"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "member"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "QuestionContext.distractors (the generator's own)",
+        "members": [
+         "1 ₱10 coin and 1 ₱1 coin",
+         "1 ₱100 bill and 1 ₱1 coin",
+         "1 ₱100 bill and 1 ₱10 coin",
+         "1 ₱100 bill and 1 ₱5 coin",
+         "1 ₱100 bill and 1 ₱50 bill",
+         "1 ₱100 bill and 2 ₱1 coins",
+         "1 ₱100 bill, 1 ₱10 coin, and 1 ₱1 coin",
+         "1 ₱100 bill, 1 ₱5 coin, and 1 ₱1 coin",
+         "1 ₱100 bill, 1 ₱5 coin, and 2 ₱1 coins",
+         "1 ₱100 bill, 1 ₱50 bill, 1 ₱20 bill, and 1 ₱5 coin",
+         "1 ₱100 bill, 1 ₱50 bill, 2 ₱20 bills, and 1 ₱5 coin",
+         "1 ₱100 bill, 1 ₱50 bill, and 2 ₱10 coins",
+         "1 ₱100 bill, 1 ₱50 bill, and 2 ₱20 bills",
+         "1 ₱20 bill and 1 ₱10 coin",
+         "1 ₱20 bill and 1 ₱5 coin",
+         "1 ₱20 bill and 2 ₱10 coins",
+         "1 ₱200 bill and 1 ₱1 coin",
+         "1 ₱200 bill and 1 ₱100 bill",
+         "1 ₱200 bill and 1 ₱20 bill",
+         "1 ₱200 bill, 1 ₱10 coin, 1 ₱5 coin, and 1 ₱1 coin",
+         "1 ₱200 bill, 1 ₱100 bill, 1 ₱50 bill, and 1 ₱5 coin",
+         "1 ₱200 bill, 1 ₱100 bill, 2 ₱50 bills, and 1 ₱5 coin",
+         "1 ₱200 bill, 1 ₱100 bill, and 1 ₱20 bill",
+         "1 ₱200 bill, 1 ₱20 bill, 1 ₱10 coin, and 1 ₱5 coin",
+         "1 ₱200 bill, 1 ₱20 bill, and 1 ₱5 coin",
+         "1 ₱200 bill, 1 ₱50 bill, 1 ₱10 coin, and 1 ₱5 coin",
+         "1 ₱200 bill, 1 ₱50 bill, and 1 ₱20 bill",
+         "1 ₱200 bill, 2 ₱100 bills, 1 ₱10 coin, and 1 ₱1 coin",
+         "1 ₱5 coin and 2 ₱1 coins",
+         "1 ₱50 bill and 1 ₱10 coin",
+         "1 ₱50 bill and 2 ₱5 coins",
+         "1 ₱50 bill, 1 ₱10 coin, and 1 ₱5 coin",
+         "1 ₱50 bill, 1 ₱20 bill, 1 ₱10 coin, and 2 ₱5 coins",
+         "1 ₱50 bill, 1 ₱20 bill, and 1 ₱1 coin",
+         "1 ₱50 bill, 1 ₱5 coin, and 1 ₱1 coin",
+         "1 ₱500 bill and 1 ₱1 coin",
+         "1 ₱500 bill and 1 ₱100 bill",
+         "1 ₱500 bill and 1 ₱200 bill",
+         "1 ₱500 bill and 1 ₱50 bill",
+         "1 ₱500 bill, 1 ₱10 coin, 1 ₱5 coin, and 1 ₱1 coin",
+         "1 ₱500 bill, 1 ₱10 coin, and 1 ₱5 coin",
+         "1 ₱500 bill, 1 ₱100 bill, 1 ₱20 bill, and 1 ₱1 coin",
+         "1 ₱500 bill, 1 ₱100 bill, 1 ₱50 bill, 1 ₱20 bill, and 1 ₱5 coin",
+         "1 ₱500 bill, 1 ₱100 bill, and 1 ₱1 coin",
+         "1 ₱500 bill, 1 ₱100 bill, and 1 ₱10 coin",
+         "1 ₱500 bill, 1 ₱100 bill, and 2 ₱1 coins",
+         "1 ₱500 bill, 1 ₱20 bill, 1 ₱10 coin, and 1 ₱1 coin",
+         "1 ₱500 bill, 1 ₱20 bill, and 2 ₱1 coins",
+         "1 ₱500 bill, 1 ₱200 bill, 2 ₱20 bills, and 1 ₱10 coin",
+         "1 ₱500 bill, 1 ₱200 bill, 2 ₱20 bills, and 1 ₱5 coin",
+         "1 ₱500 bill, 1 ₱200 bill, and 1 ₱100 bill",
+         "1 ₱500 bill, 1 ₱5 coin, and 1 ₱1 coin",
+         "1 ₱500 bill, 1 ₱50 bill, 1 ₱10 coin, and 1 ₱5 coin",
+         "1 ₱500 bill, 1 ₱50 bill, 2 ₱10 coins, and 1 ₱5 coin",
+         "1 ₱500 bill, 2 ₱10 coins, 1 ₱5 coin, and 1 ₱1 coin",
+         "1 ₱500 bill, 2 ₱200 bills, 1 ₱50 bill, and 1 ₱20 bill",
+         "1 ₱500 bill, 2 ₱200 bills, and 1 ₱1 coin",
+         "1 ₱500 bill, 2 ₱200 bills, and 2 ₱10 coins",
+         "1 ₱500 bill, 3 ₱100 bills, and 1 ₱50 bill",
+         "2 ₱100 bills, 1 ₱50 bill, and 1 ₱10 coin",
+         "2 ₱20 bills, 2 ₱10 coins, and 1 ₱5 coin",
+         "2 ₱200 bills and 1 ₱100 bill",
+         "2 ₱200 bills, 2 ₱100 bills, and 1 ₱50 bill",
+         "2 ₱200 bills, 2 ₱20 bills, and 1 ₱1 coin",
+         "2 ₱200 bills, 2 ₱50 bills, and 1 ₱1 coin",
+         "2 ₱5 coins",
+         "2 ₱500 bills",
+         "They are equal"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   }
+  ],
+  "lists": {},
+  "banks": {},
+  "value_derivations": [],
+  "reason_kinds": {}
+ }
+}

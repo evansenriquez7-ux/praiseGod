@@ -1,0 +1,1265 @@
+{
+ "schema_version": 2,
+ "hash_version": 8,
+ "node_id": "mat_g2_mg_q4_1",
+ "record_id": "stem-batch443-S443-008-first",
+ "role": "first",
+ "confirms": null,
+ "item_id": "S443-008",
+ "lc_hash": "2377b9bede5e38e60eef023ee3af505bd6f1c69ca00ac065281f4a799241b3ac",
+ "judged_by": "blind-stem-judge-claude-haiku-batch443-S443-008-first",
+ "dispatch_id": "stem-batch443-S443-008-first",
+ "filed_at": "2026-10-15T16:47:12Z",
+ "delivery": "Claude Code Agent tool, model=haiku, subagent_type=general-purpose; the judge was told to read only local_only/scratch/h4c/prompts/S443-008.prompt.txt (tests/stem_file.py prompt output, item S443-008; no lc id, no key or packets file in that directory) and reply with what it asks; dispatched with CLAUDE.md loaded (ruling 29). Blindness is a prompt contract, audited from the subagent transcript.",
+ "tool_uses_by_judge": "From the subagent transcript: 1 tool use(s), all Read of its own prompt file (1138 lines, every line read); no other tool, path or search. Model reported in the transcript: claude-haiku-5-5.",
+ "dispatch_prompt_digest": "cf2fc79b3c9904e0631f37b3ef5e5cbf5e1bfab4a57c621a16582cae44bfe17f",
+ "raw_reply": "{\"item\": \"S443-008\", \"clauses\": {\"read\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F16\", \"template\": \"What time does the clock show?\", \"reasoning\": \"F16 is the read-mode question (chosen by interaction_mode) asking the learner to read the time shown on the analog clock. Its text is not at fault.\"}, \"write\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F15\", \"template\": \"Set the clock to show {time_str}{trailing}\", \"reasoning\": \"No family asks the learner to write a digital time. F15 is the set-mode item in which the learner writes a time onto the analog clock by setting its hands, and it is the only producible write task. Read here as that. Its time_str values come from the domain given.\"}, \"time\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F15\", \"template\": \"Set the clock to show {time_str}{trailing}\", \"reasoning\": \"F15 prints complete clock times with a.m. or p.m. as the object of the item. Its trailing-period fault is noted in failing_families but does not remove the clause.\"}, \"hours\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F11\", \"template\": \"{hour}:00\", \"reasoning\": \"F11 prints an hour-only time with hour from 1 to 12, nested inside the F13 and F17 answer choices.\"}, \"minutes\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F12\", \"template\": \"{hour}:{minute:02d}\", \"reasoning\": \"F12 prints hour and minute from the 1 to 12 and 0 to 59 ranges, nested inside the F13 and F17 answer choices.\"}, \"am_and_pm\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F13\", \"template\": \"{time_str} {period}\", \"reasoning\": \"F13 appends the a.m. or p.m. period to the time in the answer choices. Its nested time_str fault is noted in failing_families but does not remove the clause.\"}, \"analog_clock\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F08\", \"template\": \"The short hand shows the hour. The long hand shows the minutes.\", \"reasoning\": \"F08 is a hint that teaches how the hour hand and minute hand of the analog clock are read.\"}}, \"failing_families\": [\"F01\", \"F02\", \"F13\", \"F15\", \"F17\", \"F18\"], \"failing_templates\": [\"Count by 5s from 12 to the last number the long hand has passed: {marks} {count_noun} make {v} minutes.\", \"Count by 5s from 12: the long hand has passed {marks} {count_noun}, so the minutes are {minute}.\", \"{time_str} {period}\", \"Set the clock to show {time_str}{trailing}\", \"{base} {period}\", \"{hours}:{minutes:02d}\"], \"overall\": \"FAIL\", \"reasoning\": \"F18 (template {hours}:{minutes:02d}) draws hours from a 0 to 23 range (basis: an hour of the day) united with the 1 to 12 repeats. Hour values 0 and 13 to 23 can therefore fill the slot, and F13 or F17 then add a.m. or p.m., giving times outside the 12-hour analog clock that this lc teaches. F13 and F17 print F18 text through their nested time_str and base slots, so the faulty text reaches the learner in correct_answer and mcq_options; both are listed. F15 (template Set the clock to show {time_str}{trailing}) has a trailing member that is a closing period. Every time_str in its printed list already ends in a.m. or p.m., and the basis says the period is omitted when the time already ends with one, but the domain still offers the period member, so a doubled period can print after the time. F01 and F02 print a count noun (five or fives; mark or marks) whose plurality is not tied to the marks slot in their domains. A singular noun can therefore print with a plural count and a plural noun with a count of one, which is ungrammatical text for a grade 2 learner.\"}",
+ "raw_reply_digest": "0490dc0aa19558b4a5845f33f2aae72867091be5e4279971658ea558589afd68",
+ "packet_digest": "aafb5f88193e1b4e2e4b988ff841d79ab903beaa607bbcbd1fc7642df535134e",
+ "family_keys": {
+  "F01": {
+   "source": "backend/app/practice_gen/dna/mg/time_reading.py",
+   "first_site": "backend/app/practice_gen/dna/mg/time_reading.py:713",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {
+    "marks,v": [
+     62,
+     null
+    ]
+   }
+  },
+  "F02": {
+   "source": "backend/app/practice_gen/dna/mg/time_reading.py",
+   "first_site": "backend/app/practice_gen/dna/mg/time_reading.py:704",
+   "renderer": "",
+   "path": [
+    9,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F03": {
+   "source": "backend/app/practice_gen/dna/mg/time_reading.py",
+   "first_site": "backend/app/practice_gen/dna/mg/time_reading.py:694",
+   "renderer": "",
+   "path": [
+    2,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F04": {
+   "source": "backend/app/practice_gen/dna/mg/time_reading.py",
+   "first_site": "backend/app/practice_gen/dna/mg/time_reading.py:698",
+   "renderer": "",
+   "path": [
+    13,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F05": {
+   "source": "backend/app/practice_gen/dna/mg/time_reading.py",
+   "first_site": "backend/app/practice_gen/dna/mg/time_reading.py:696",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F06": {
+   "source": "backend/app/practice_gen/dna/mg/time_reading.py",
+   "first_site": "backend/app/practice_gen/dna/mg/time_reading.py:700",
+   "renderer": "",
+   "path": [
+    7,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F07": {
+   "source": "backend/app/practice_gen/dna/mg/time_reading.py",
+   "first_site": "backend/app/practice_gen/dna/mg/time_reading.py:691",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F08": {
+   "source": "backend/app/practice_gen/dna/mg/time_reading.py",
+   "first_site": "backend/app/practice_gen/dna/mg/time_reading.py:690",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F09": {
+   "source": "backend/app/practice_gen/dna/mg/time_reading.py",
+   "first_site": "backend/app/practice_gen/dna/mg/time_reading.py:739",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F10": {
+   "source": "backend/app/practice_gen/dna/mg/time_reading.py",
+   "first_site": "backend/app/practice_gen/dna/mg/time_reading.py:716",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F11": {
+   "source": "backend/app/practice_gen/dna/mg/time_reading.py",
+   "first_site": "backend/app/practice_gen/dna/mg/time_reading.py:442",
+   "renderer": "",
+   "path": [
+    2,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F12": {
+   "source": "backend/app/practice_gen/dna/mg/time_reading.py",
+   "first_site": "backend/app/practice_gen/dna/mg/time_reading.py:444",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F13": {
+   "source": "backend/app/practice_gen/dna/mg/time_reading.py",
+   "first_site": "backend/app/practice_gen/dna/mg/time_reading.py:465",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F14": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:51",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F15": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_clock.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_clock.py:280",
+   "renderer": "",
+   "path": [
+    4,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F16": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_clock.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_clock.py:263",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F17": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_clock.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_clock.py:35",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F18": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_clock.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_clock.py:203",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  }
+ },
+ "packet": {
+  "item": "S443-008",
+  "competency": {
+   "text": "Read and write time in hours and minutes, with a.m. and p.m., using an analog clock.",
+   "grade": 2,
+   "quarter": 4
+  },
+  "clauses": [
+   {
+    "id": "read",
+    "kind": "task",
+    "clause": "Read"
+   },
+   {
+    "id": "write",
+    "kind": "task",
+    "clause": "write"
+   },
+   {
+    "id": "time",
+    "kind": "object",
+    "clause": "time"
+   },
+   {
+    "id": "hours",
+    "kind": "property",
+    "clause": "hours"
+   },
+   {
+    "id": "minutes",
+    "kind": "property",
+    "clause": "minutes"
+   },
+   {
+    "id": "am_and_pm",
+    "kind": "property",
+    "clause": "a.m. and p.m."
+   },
+   {
+    "id": "analog_clock",
+    "kind": "representation",
+    "clause": "analog clock"
+   }
+  ],
+  "vocabulary": {
+   "student_vocab": [
+    "minute",
+    "a.m.",
+    "p.m."
+   ],
+   "curriculum_vocab": [
+    "minutes",
+    "hours and minutes"
+   ],
+   "introduces_vocab": [
+    "minutes",
+    "a.m.",
+    "p.m.",
+    "hours and minutes"
+   ],
+   "cumulative_vocab": [
+    "1 less",
+    "1 more",
+    "10th",
+    "1st",
+    "2nd",
+    "3rd",
+    "4th",
+    "5th",
+    "6th",
+    "7th",
+    "8th",
+    "9th",
+    "addition",
+    "analog clock",
+    "bigger",
+    "bill",
+    "calendar",
+    "centavo",
+    "centimeter",
+    "circle",
+    "clockwise",
+    "cm",
+    "coin",
+    "compare",
+    "corner",
+    "count",
+    "counter-clockwise",
+    "data",
+    "decreasing pattern",
+    "denominator",
+    "difference",
+    "digit",
+    "division",
+    "equal",
+    "equal groups",
+    "estimate",
+    "even",
+    "expanded form",
+    "fraction",
+    "group",
+    "half",
+    "half hour",
+    "half turn",
+    "hour",
+    "how many",
+    "hundreds",
+    "increasing pattern",
+    "left",
+    "length",
+    "less",
+    "m",
+    "measure",
+    "meter",
+    "missing number",
+    "more",
+    "multiplication",
+    "number",
+    "number line",
+    "numeral",
+    "numerator",
+    "odd",
+    "ones",
+    "pattern",
+    "peso",
+    "pictograph",
+    "place value",
+    "product",
+    "quarter",
+    "quarter hour",
+    "quarter turn",
+    "quotient",
+    "rectangle",
+    "regrouping",
+    "repeating pattern",
+    "ruler",
+    "same",
+    "scale",
+    "side",
+    "similar fractions",
+    "skip counting",
+    "slide",
+    "smaller",
+    "square",
+    "subtraction",
+    "sum",
+    "table",
+    "tens",
+    "thousand",
+    "total",
+    "translation",
+    "triangle",
+    "whole",
+    "₱"
+   ],
+   "NOT_YET_KNOWN": [
+    "L",
+    "area",
+    "axis",
+    "balance scale",
+    "bar graph",
+    "capacity",
+    "certain",
+    "elapsed time",
+    "equally likely",
+    "g",
+    "gram",
+    "impossible",
+    "improper fraction",
+    "intersecting",
+    "kg",
+    "kilogram",
+    "less likely",
+    "line",
+    "line of symmetry",
+    "line segment",
+    "liter",
+    "mL",
+    "mass",
+    "milliliter",
+    "missing term",
+    "more likely",
+    "nearest hundred",
+    "nearest ten",
+    "nearest thousand",
+    "order of operations",
+    "outcome",
+    "parallel",
+    "perimeter",
+    "perpendicular",
+    "point",
+    "ray",
+    "remainder",
+    "round",
+    "solid figure",
+    "sq. cm",
+    "square centimeter",
+    "symmetry",
+    "ten thousand",
+    "ten-thousands place"
+   ],
+   "sentence_max_words": 18,
+   "number_format": "no commas for numbers up to 1000"
+  },
+  "declared_variants": [
+   [
+    "context",
+    "pure"
+   ],
+   [
+    "include_ampm",
+    "yes"
+   ],
+   [
+    "mode",
+    "read"
+   ],
+   [
+    "mode",
+    "set"
+   ],
+   [
+    "precision",
+    "five_minutes"
+   ],
+   [
+    "precision",
+    "half_hour"
+   ],
+   [
+    "precision",
+    "hour"
+   ],
+   [
+    "precision",
+    "one_minute"
+   ],
+   [
+    "precision",
+    "quarter_hour"
+   ],
+   [
+    "task_type",
+    "clock_reading"
+   ]
+  ],
+  "declared_bounds": [
+   {
+    "task_type": "clock_reading",
+    "context": "pure",
+    "include_ampm": "yes"
+   }
+  ],
+  "families": [
+   {
+    "id": "F01",
+    "template": "Count by 5s from 12 to the last number the long hand has passed: {marks} {count_noun} make {v} minutes.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "marks",
+       "v"
+      ],
+      "domains": [
+       {
+        "domain": "a number computed by the generator",
+        "reason": "arithmetic",
+        "derived_from_values": [
+         "minute"
+        ]
+       }
+      ],
+      "distinct_in_every_render": false
+     },
+     {
+      "slots": [
+       "count_noun"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the noun or its singular (dna.base.count_noun)",
+        "members": [
+         "five",
+         "fives"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F02",
+    "template": "Count by 5s from 12: the long hand has passed {marks} {count_noun}, so the minutes are {minute}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "marks"
+      ],
+      "domains": [
+       {
+        "domain": "a number computed by the generator",
+        "reason": "arithmetic",
+        "derived_from_values": [
+         "minute"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "count_noun"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the noun or its singular (dna.base.count_noun)",
+        "members": [
+         "mark",
+         "marks"
+        ],
+        "derived_from_values": [
+         "minute"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "minute"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "minute",
+        "printed_runs": "5, 10, 20, 25, 35, 40, 50, 55",
+        "derived_from_values": [
+         "minute"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "minute"
+    ]
+   },
+   {
+    "id": "F03",
+    "template": "The long (minute) hand points to 12, so the minutes are 00.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": [
+     "minute"
+    ]
+   },
+   {
+    "id": "F04",
+    "template": "The long (minute) hand points to 3, so the minutes are 15.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": [
+     "minute"
+    ]
+   },
+   {
+    "id": "F05",
+    "template": "The long (minute) hand points to 6, so the minutes are 30.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": [
+     "minute"
+    ]
+   },
+   {
+    "id": "F06",
+    "template": "The long (minute) hand points to 9, so the minutes are 45.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": [
+     "minute"
+    ]
+   },
+   {
+    "id": "F07",
+    "template": "The short (hour) hand points near {hour}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "hour"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "hour",
+        "printed_runs": "1 to 12",
+        "derived_from_values": [
+         "hour"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F08",
+    "template": "The short hand shows the hour. The long hand shows the minutes.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F09",
+    "template": "The time is {time_str}",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "time_str"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "time_str",
+        "printed": [
+         "10:00 a.m.",
+         "10:00 p.m.",
+         "10:10 a.m.",
+         "10:15 p.m.",
+         "10:25 p.m.",
+         "10:29 a.m.",
+         "10:30 a.m.",
+         "10:30 p.m.",
+         "10:40 a.m.",
+         "10:45 p.m.",
+         "10:55 p.m.",
+         "11:00 p.m.",
+         "11:01 a.m.",
+         "11:09 p.m.",
+         "11:10 p.m.",
+         "11:25 a.m.",
+         "11:30 a.m.",
+         "11:30 p.m.",
+         "11:35 p.m.",
+         "11:42 a.m.",
+         "11:45 p.m.",
+         "12:00 a.m.",
+         "12:00 p.m.",
+         "12:06 a.m.",
+         "12:15 a.m.",
+         "12:20 a.m.",
+         "12:20 p.m.",
+         "12:22 p.m.",
+         "12:30 a.m.",
+         "12:41 a.m.",
+         "12:43 p.m.",
+         "12:45 p.m.",
+         "12:50 a.m.",
+         "12:55 a.m.",
+         "1:00 a.m.",
+         "1:00 p.m.",
+         "1:02 p.m.",
+         "1:08 a.m.",
+         "1:15 p.m.",
+         "1:27 p.m.",
+         "1:30 a.m.",
+         "1:30 p.m.",
+         "1:35 a.m.",
+         "1:36 p.m.",
+         "1:37 p.m.",
+         "1:40 p.m.",
+         "1:45 a.m.",
+         "1:45 p.m.",
+         "1:50 a.m.",
+         "1:50 p.m.",
+         "2:00 a.m.",
+         "2:00 p.m.",
+         "2:15 a.m.",
+         "2:15 p.m.",
+         "2:22 p.m.",
+         "2:30 a.m.",
+         "2:30 p.m.",
+         "2:31 p.m.",
+         "2:37 a.m.",
+         "2:45 a.m.",
+         "2:45 p.m.",
+         "2:50 p.m.",
+         "2:59 a.m.",
+         "3:00 a.m.",
+         "3:00 p.m.",
+         "3:04 a.m.",
+         "3:07 p.m.",
+         "3:14 p.m.",
+         "3:15 p.m.",
+         "3:30 a.m.",
+         "3:30 p.m.",
+         "3:40 a.m.",
+         "3:45 a.m.",
+         "3:50 p.m.",
+         "4:00 a.m.",
+         "4:00 p.m.",
+         "4:12 p.m.",
+         "4:13 a.m.",
+         "4:15 a.m.",
+         "4:15 p.m.",
+         "4:25 a.m.",
+         "4:29 p.m.",
+         "4:30 a.m.",
+         "4:30 p.m.",
+         "4:35 a.m.",
+         "4:38 p.m.",
+         "4:45 p.m.",
+         "4:58 p.m.",
+         "5:00 a.m.",
+         "5:00 p.m.",
+         "5:15 a.m.",
+         "5:15 p.m.",
+         "5:20 a.m.",
+         "5:25 a.m.",
+         "5:30 a.m.",
+         "5:30 p.m.",
+         "5:39 a.m.",
+         "5:47 p.m.",
+         "5:50 p.m.",
+         "6:00 a.m.",
+         "6:00 p.m.",
+         "6:08 p.m.",
+         "6:15 a.m.",
+         "6:15 p.m.",
+         "6:30 p.m.",
+         "6:35 p.m.",
+         "6:37 a.m.",
+         "6:45 a.m.",
+         "6:47 a.m.",
+         "6:48 a.m.",
+         "7:00 a.m.",
+         "7:02 a.m.",
+         "7:15 a.m.",
+         "7:17 p.m.",
+         "7:26 a.m.",
+         "7:30 a.m.",
+         "7:30 p.m.",
+         "7:33 a.m.",
+         "7:45 p.m.",
+         "7:51 p.m.",
+         "7:55 a.m.",
+         "8:00 a.m.",
+         "8:05 a.m.",
+         "8:14 a.m.",
+         "8:15 a.m.",
+         "8:20 p.m.",
+         "8:21 p.m.",
+         "8:30 p.m.",
+         "8:45 a.m.",
+         "8:45 p.m.",
+         "8:55 a.m.",
+         "8:56 a.m.",
+         "8:57 a.m.",
+         "9:00 a.m.",
+         "9:00 p.m.",
+         "9:15 a.m.",
+         "9:15 p.m.",
+         "9:17 a.m.",
+         "9:30 a.m.",
+         "9:34 p.m.",
+         "9:35 p.m.",
+         "9:40 a.m.",
+         "9:45 p.m.",
+         "9:46 p.m.",
+         "9:47 a.m.",
+         "9:55 a.m."
+        ],
+        "derived_from_values": [
+         "time_str"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F10",
+    "template": "Then count on the small marks one at a time: {v} + {extra} = {minute}, so the minutes are {minute}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "v",
+       "extra"
+      ],
+      "domains": [
+       {
+        "domain": "a number computed by the generator",
+        "reason": "arithmetic",
+        "derived_from_values": [
+         "minute"
+        ]
+       }
+      ],
+      "distinct_in_every_render": true
+     },
+     {
+      "slots": [
+       "minute"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "minute",
+        "printed_runs": "1 to 2, 4, 6 to 9, 12 to 14, 17, 21 to 22, 26 to 27, 29, 31, 33 to 34, 36 to 39, 41 to 43, 46 to 48, 51, 56 to 59",
+        "derived_from_values": [
+         "minute"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F11",
+    "template": "{hour}:00",
+    "appears_in": [],
+    "nested_in": [
+     "F13",
+     "F17"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "hour"
+      ],
+      "domains": [
+       {
+        "domain": "a number in a range",
+        "basis": "bounds['hour']",
+        "lo": 1,
+        "hi": 12
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "minute"
+    ]
+   },
+   {
+    "id": "F12",
+    "template": "{hour}:{minute:02d}",
+    "appears_in": [],
+    "nested_in": [
+     "F13",
+     "F17"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "hour"
+      ],
+      "domains": [
+       {
+        "domain": "a number in a range",
+        "basis": "bounds['hour']",
+        "lo": 1,
+        "hi": 12
+       }
+      ]
+     },
+     {
+      "slots": [
+       "minute"
+      ],
+      "domains": [
+       {
+        "domain": "a number in a range",
+        "basis": "a minute of the hour",
+        "lo": 0,
+        "hi": 59
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F13",
+    "template": "{time_str} {period}",
+    "appears_in": [
+     "correct_answer",
+     "format_data.mcq_options",
+     "format_data.time_str"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "time_str"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F11",
+         "F12",
+         "F18"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "period"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "period",
+        "printed": [
+         "a.m.",
+         "p.m."
+        ],
+        "derived_from_values": [
+         "period"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F14",
+    "template": "{key}",
+    "appears_in": [
+     "correct_answer"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "key"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the option keys this item shows",
+        "members": [
+         "A",
+         "B",
+         "C",
+         "D"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F15",
+    "template": "Set the clock to show {time_str}{trailing}",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "time_str"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "time_str",
+        "printed": [
+         "10:00 p.m.",
+         "10:25 p.m.",
+         "10:30 a.m.",
+         "10:30 p.m.",
+         "10:45 p.m.",
+         "10:55 p.m.",
+         "11:00 p.m.",
+         "11:09 p.m.",
+         "11:25 a.m.",
+         "11:30 p.m.",
+         "11:35 p.m.",
+         "11:45 p.m.",
+         "12:00 p.m.",
+         "12:20 a.m.",
+         "12:20 p.m.",
+         "12:22 p.m.",
+         "12:45 p.m.",
+         "1:27 p.m.",
+         "1:30 p.m.",
+         "1:36 p.m.",
+         "1:37 p.m.",
+         "2:22 p.m.",
+         "2:31 p.m.",
+         "4:29 p.m.",
+         "4:38 p.m.",
+         "4:58 p.m.",
+         "5:00 a.m.",
+         "5:00 p.m.",
+         "5:15 a.m.",
+         "5:15 p.m.",
+         "5:20 a.m.",
+         "5:25 a.m.",
+         "5:30 a.m.",
+         "5:30 p.m.",
+         "5:47 p.m.",
+         "5:50 p.m.",
+         "6:00 a.m.",
+         "6:00 p.m.",
+         "6:15 a.m.",
+         "6:15 p.m.",
+         "6:30 p.m.",
+         "6:35 p.m.",
+         "6:45 a.m.",
+         "7:00 a.m.",
+         "7:15 a.m.",
+         "7:17 p.m.",
+         "7:26 a.m.",
+         "7:30 a.m.",
+         "7:30 p.m.",
+         "7:45 p.m.",
+         "7:51 p.m.",
+         "7:55 a.m.",
+         "8:00 a.m.",
+         "8:05 a.m.",
+         "8:15 a.m.",
+         "8:20 p.m.",
+         "8:21 p.m.",
+         "8:30 p.m.",
+         "8:45 a.m.",
+         "8:45 p.m.",
+         "8:55 a.m.",
+         "9:00 p.m.",
+         "9:34 p.m.",
+         "9:35 p.m.",
+         "9:45 p.m.",
+         "9:47 a.m.",
+         "9:55 a.m."
+        ],
+        "derived_from_values": [
+         "time_str"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "trailing"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "a closing period unless the time already ends with one",
+        "members": [
+         "",
+         "."
+        ],
+        "derived_from_values": [
+         "period"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F16",
+    "template": "What time does the clock show?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": [
+     "interaction_mode"
+    ]
+   },
+   {
+    "id": "F17",
+    "template": "{base} {period}",
+    "appears_in": [
+     "correct_answer",
+     "format_data.mcq_options",
+     "format_data.time_str"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "base"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F11",
+         "F12",
+         "F18"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "period"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "period",
+        "printed": [
+         "a.m.",
+         "p.m."
+        ],
+        "derived_from_values": [
+         "period"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F18",
+    "template": "{hours}:{minutes:02d}",
+    "appears_in": [],
+    "nested_in": [
+     "F13",
+     "F17"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "hours"
+      ],
+      "domains": [
+       {
+        "domain": "a number in a range",
+        "basis": "an hour of the day",
+        "lo": 0,
+        "hi": 23
+       },
+       {
+        "domain": "repeats a generated value",
+        "key": "hour",
+        "printed_runs": "1 to 12",
+        "derived_from_values": [
+         "hour"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "minutes"
+      ],
+      "domains": [
+       {
+        "domain": "a number in a range",
+        "basis": "a minute of the hour",
+        "lo": 0,
+        "hi": 59
+       },
+       {
+        "domain": "repeats a generated value",
+        "key": "minute",
+        "printed_runs": "0 to 2, 4 to 10, 12 to 15, 17, 20 to 22, 25 to 27, 29 to 31, 33 to 43, 45 to 48, 50 to 51, 55 to 59",
+        "derived_from_values": [
+         "minute"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   }
+  ],
+  "lists": {},
+  "banks": {},
+  "value_derivations": [
+   {
+    "kind": "derives",
+    "key": "minute",
+    "from": [
+     "precision"
+    ]
+   },
+   {
+    "kind": "derives",
+    "key": "time_str",
+    "from": [
+     "precision"
+    ]
+   }
+  ],
+  "reason_kinds": {
+   "arithmetic": "a number the generator computes from the generated values named in src (a half, a sum, a difference, a running total, a place's digit). Its range is the image of those values' own domains; whether the arithmetic is RIGHT is the hint contract's (§16) and §1E's to check, not §14's."
+  }
+ }
+}

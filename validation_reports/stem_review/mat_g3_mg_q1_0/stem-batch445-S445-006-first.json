@@ -1,0 +1,611 @@
+{
+ "schema_version": 2,
+ "hash_version": 8,
+ "node_id": "mat_g3_mg_q1_0",
+ "record_id": "stem-batch445-S445-006-first",
+ "role": "first",
+ "confirms": null,
+ "item_id": "S445-006",
+ "lc_hash": "773b7cfb629626d687c24b0a32597e038865bfd9254377370ac2742994c8d54d",
+ "judged_by": "blind-stem-judge-claude-haiku-batch445-S445-006-first",
+ "dispatch_id": "stem-batch445-S445-006-first",
+ "filed_at": "2026-10-15T16:47:48Z",
+ "delivery": "Claude Code Agent tool, model=haiku, subagent_type=general-purpose; the judge was told to read only local_only/scratch/h4c/prompts/S445-006.prompt.txt (tests/stem_file.py prompt output, item S445-006; no lc id, no key or packets file in that directory) and reply with what it asks; dispatched with CLAUDE.md loaded (ruling 29). Blindness is a prompt contract, audited from the subagent transcript.",
+ "tool_uses_by_judge": "From the subagent transcript: 1 tool use(s), all Read of its own prompt file (609 lines, every line read); no other tool, path or search. Model reported in the transcript: claude-haiku-5-5.",
+ "dispatch_prompt_digest": "c2cf6a99886812254c5bcd52093f28f866bc6dbea109de18e060a6cc52826523",
+ "raw_reply": "{\"item\": \"S445-006\", \"clauses\": {\"illustrate_area_with_tiles\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F06\", \"template\": \"This {figure} is covered by {rows} rows of {cols} square tiles. How many square tile units cover the {figure}?\", \"reasoning\": \"F06 asks the learner to picture the tiles covering a figure as rows and columns of square tiles. That is the Illustrate task, and the declared illustrate_tiles task_type renders it.\"}, \"estimate_area\": {\"verdict\": \"NOT_PRODUCIBLE\", \"family\": null, \"template\": null, \"reasoning\": \"No family asks for an estimate. F06 asks for the exact count of tiles covering a figure, and F02 and F03 compute an exact product. The declared variants contain no estimate task.\"}, \"area_attribute\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F06\", \"template\": \"This {figure} is covered by {rows} rows of {cols} square tiles. How many square tile units cover the {figure}?\", \"reasoning\": \"F06 asks how many square tile units cover the figure, which is the area of the figure.\"}, \"square_figure\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F06\", \"template\": \"This {figure} is covered by {rows} rows of {cols} square tiles. How many square tile units cover the {figure}?\", \"reasoning\": \"F06 prints figure from the shape domain, whose printed values include square.\"}, \"rectangle_figure\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F06\", \"template\": \"This {figure} is covered by {rows} rows of {cols} square tiles. How many square tile units cover the {figure}?\", \"reasoning\": \"F06 prints figure from the shape domain, whose printed values include rectangle.\"}, \"square_tile_covering\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F06\", \"template\": \"This {figure} is covered by {rows} rows of {cols} square tiles. How many square tile units cover the {figure}?\", \"reasoning\": \"F06 states that the figure is covered by rows of square tiles.\"}, \"square_tile_unit\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F06\", \"template\": \"This {figure} is covered by {rows} rows of {cols} square tiles. How many square tile units cover the {figure}?\", \"reasoning\": \"F06 asks how many square tile units cover the figure, so the tile is the unit of measure.\"}}, \"failing_families\": [\"F02\", \"F03\", \"F06\"], \"failing_templates\": [\"Area of a rectangle = length × width = {l} × {w} = {answer} {unit}.\", \"Area of a square = side × side = {s} × {s} = {answer} {unit}.\", \"This {figure} is covered by {rows} rows of {cols} square tiles. How many square tile units cover the {figure}?\"], \"overall\": \"FAIL\", \"reasoning\": \"F02 and F03 print the unit slot from the domain whose printed value is 'sq cm', a square centimeter. NOT_YET_KNOWN lists 'sq. cm' and 'square centimeter', so the unit is a concept beyond this lc's gate. Both templates also teach an area formula (length × width; side × side) that the competency, which asks for area using square tile units, does not name. F02 also uses 'width', which appears in neither cumulative_vocab nor the packet's vocabulary lists. F06: the rows domain (from s, 2 to 8) and the cols domain (from values['sides'], members 2 to 8) are independent, and the packet shows no rule tying them for shape 'square'. A square can therefore be printed as covered by unequal rows and columns, which is a false statement.\"}",
+ "raw_reply_digest": "8a2c13d16532ce4aef18c46d9fa77b195e3363db7ebdff2ddfb9adc68a8f1f9d",
+ "packet_digest": "3a4662c42ddd5f4e654c6b34234d335021a3af60a9c99d106f685c9f407e9bc6",
+ "family_keys": {
+  "F01": {
+   "source": "backend/app/practice_gen/dna/base.py [gate area]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F02": {
+   "source": "backend/app/practice_gen/dna/mg/area.py",
+   "first_site": "backend/app/practice_gen/dna/mg/area.py:770",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F03": {
+   "source": "backend/app/practice_gen/dna/mg/area.py",
+   "first_site": "backend/app/practice_gen/dna/mg/area.py:767",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F04": {
+   "source": "backend/app/practice_gen/dna/mg/area.py",
+   "first_site": "backend/app/practice_gen/dna/mg/area.py:763",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F05": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:51",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F06": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_array_grid.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_array_grid.py:394",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  }
+ },
+ "packet": {
+  "item": "S445-006",
+  "competency": {
+   "text": "Illustrate and estimate the area of a square or rectangle using square tile units.",
+   "grade": 3,
+   "quarter": 1
+  },
+  "clauses": [
+   {
+    "id": "illustrate_area_with_tiles",
+    "kind": "task",
+    "clause": "Illustrate"
+   },
+   {
+    "id": "estimate_area",
+    "kind": "task",
+    "clause": "estimate the area"
+   },
+   {
+    "id": "area_attribute",
+    "kind": "attribute",
+    "clause": "the area"
+   },
+   {
+    "id": "square_figure",
+    "kind": "object",
+    "clause": "a square"
+   },
+   {
+    "id": "rectangle_figure",
+    "kind": "object",
+    "clause": "rectangle"
+   },
+   {
+    "id": "square_tile_covering",
+    "kind": "representation",
+    "clause": "square tile units"
+   },
+   {
+    "id": "square_tile_unit",
+    "kind": "unit",
+    "clause": "tile units"
+   }
+  ],
+  "vocabulary": {
+   "student_vocab": [
+    "area"
+   ],
+   "curriculum_vocab": [
+    "square tile units",
+    "square unit"
+   ],
+   "introduces_vocab": [
+    "area",
+    "square tile units",
+    "square unit"
+   ],
+   "cumulative_vocab": [
+    "1 less",
+    "1 more",
+    "10th",
+    "1st",
+    "2nd",
+    "3rd",
+    "4th",
+    "5th",
+    "6th",
+    "7th",
+    "8th",
+    "9th",
+    "a.m.",
+    "addition",
+    "analog clock",
+    "bigger",
+    "bill",
+    "calendar",
+    "centavo",
+    "centimeter",
+    "circle",
+    "clockwise",
+    "cm",
+    "coin",
+    "compare",
+    "corner",
+    "count",
+    "counter-clockwise",
+    "data",
+    "decreasing pattern",
+    "denominator",
+    "difference",
+    "digit",
+    "division",
+    "elapsed time",
+    "equal",
+    "equal groups",
+    "estimate",
+    "even",
+    "expanded form",
+    "fraction",
+    "group",
+    "half",
+    "half hour",
+    "half turn",
+    "hour",
+    "how many",
+    "hundreds",
+    "increasing pattern",
+    "left",
+    "length",
+    "less",
+    "m",
+    "measure",
+    "meter",
+    "minute",
+    "missing number",
+    "more",
+    "multiplication",
+    "nearest hundred",
+    "nearest ten",
+    "nearest thousand",
+    "number",
+    "number line",
+    "numeral",
+    "numerator",
+    "odd",
+    "ones",
+    "p.m.",
+    "pattern",
+    "perimeter",
+    "peso",
+    "pictograph",
+    "place value",
+    "product",
+    "quarter",
+    "quarter hour",
+    "quarter turn",
+    "quotient",
+    "rectangle",
+    "regrouping",
+    "repeating pattern",
+    "round",
+    "ruler",
+    "same",
+    "scale",
+    "side",
+    "similar fractions",
+    "skip counting",
+    "slide",
+    "smaller",
+    "solid figure",
+    "square",
+    "subtraction",
+    "sum",
+    "table",
+    "ten thousand",
+    "ten-thousands place",
+    "tens",
+    "thousand",
+    "total",
+    "translation",
+    "triangle",
+    "whole",
+    "₱"
+   ],
+   "NOT_YET_KNOWN": [
+    "L",
+    "axis",
+    "balance scale",
+    "bar graph",
+    "capacity",
+    "certain",
+    "equally likely",
+    "g",
+    "gram",
+    "impossible",
+    "improper fraction",
+    "intersecting",
+    "kg",
+    "kilogram",
+    "less likely",
+    "line",
+    "line of symmetry",
+    "line segment",
+    "liter",
+    "mL",
+    "mass",
+    "milliliter",
+    "missing term",
+    "more likely",
+    "order of operations",
+    "outcome",
+    "parallel",
+    "perpendicular",
+    "point",
+    "ray",
+    "remainder",
+    "sq. cm",
+    "square centimeter",
+    "symmetry"
+   ],
+   "sentence_max_words": 22,
+   "number_format": "space separator for thousands (e.g. 1 000)"
+  },
+  "declared_variants": [
+   [
+    "context",
+    "pure"
+   ],
+   [
+    "context",
+    "word_problem"
+   ],
+   [
+    "shape",
+    "rectangle"
+   ],
+   [
+    "shape",
+    "square"
+   ],
+   [
+    "task_type",
+    "illustrate_tiles"
+   ],
+   [
+    "unit",
+    "square_cm"
+   ],
+   [
+    "unit",
+    "square_m"
+   ]
+  ],
+  "declared_bounds": [
+   {
+    "task_type": "illustrate_tiles"
+   }
+  ],
+  "families": [
+   {
+    "id": "F01",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F04"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='area')",
+        "requires_vocab": "area",
+        "prints": "area",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F02",
+    "template": "Area of a rectangle = length × width = {l} × {w} = {answer} {unit}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "l"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "l",
+        "printed_runs": "2 to 8",
+        "derived_from_values": [
+         "l"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "w"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "w",
+        "printed_runs": "2 to 8",
+        "derived_from_values": [
+         "w"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "answer",
+        "printed_runs": "6, 8, 10, 12, 14 to 16, 18, 20 to 21, 24, 28, 30, 32, 35, 40",
+        "derived_from_values": [
+         "answer"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "unit"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "unit",
+        "printed": [
+         "sq cm"
+        ],
+        "derived_from_values": [
+         "unit"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F03",
+    "template": "Area of a square = side × side = {s} × {s} = {answer} {unit}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "s"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "s",
+        "printed_runs": "2 to 5",
+        "derived_from_values": [
+         "s",
+         "sides"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "answer",
+        "printed_runs": "4, 9, 16, 25",
+        "derived_from_values": [
+         "answer"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "unit"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "unit",
+        "printed": [
+         "sq cm"
+        ],
+        "derived_from_values": [
+         "unit"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "shape"
+    ]
+   },
+   {
+    "id": "F04",
+    "template": "The {area_label} tells us how many unit squares cover the shape.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "area_label"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F01"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F05",
+    "template": "{key}",
+    "appears_in": [
+     "correct_answer"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "key"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the option keys this item shows",
+        "members": [
+         "A",
+         "B",
+         "C",
+         "D"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F06",
+    "template": "This {figure} is covered by {rows} rows of {cols} square tiles. How many square tile units cover the {figure}?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "figure"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "shape",
+        "printed": [
+         "rectangle",
+         "square"
+        ],
+        "derived_from_values": [
+         "shape"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "rows"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "s",
+        "printed_runs": "2 to 8",
+        "derived_from_values": [
+         "s"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "cols"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "values['sides']",
+        "members": [
+         2,
+         3,
+         4,
+         5,
+         6,
+         7,
+         8
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "cols",
+     "rows",
+     "shape_type"
+    ]
+   }
+  ],
+  "lists": {},
+  "banks": {},
+  "value_derivations": [],
+  "reason_kinds": {}
+ }
+}

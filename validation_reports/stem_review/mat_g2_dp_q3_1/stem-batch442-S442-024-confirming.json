@@ -1,0 +1,1665 @@
+{
+ "schema_version": 2,
+ "hash_version": 8,
+ "node_id": "mat_g2_dp_q3_1",
+ "record_id": "stem-batch442-S442-024-confirming",
+ "role": "confirming",
+ "confirms": "stem-batch442-S442-024-first",
+ "item_id": "S442-024",
+ "lc_hash": "56404c2b20c7015db7778636966bda3cf08bf0156f0320e5105f5efe6fb79aa3",
+ "judged_by": "blind-stem-judge-claude-haiku-batch442-S442-024-confirming",
+ "dispatch_id": "stem-batch442-S442-024-confirming",
+ "filed_at": "2026-10-16T05:08:44Z",
+ "delivery": "Claude Code Agent tool, model=haiku, subagent_type=general-purpose; the judge was told to read only local_only/scratch/h4c/prompts/S442-024.prompt.txt (tests/stem_file.py prompt output, item S442-024; no lc id, no key or packets file in that directory) and reply with what it asks; dispatched with CLAUDE.md loaded (ruling 29). Blindness is a prompt contract, audited from the subagent transcript.",
+ "tool_uses_by_judge": "From the subagent transcript: 1 tool use(s), all Read of its own prompt file (1413 lines, every line read); no other tool, path or search. Model reported in the transcript: claude-haiku-5-5.",
+ "dispatch_prompt_digest": "a71f883eb3d4530068e347af9175151ad3ef78382ea02bb0a8deb99168b242c1",
+ "raw_reply": "{\"item\": \"S442-024\", \"clauses\": {\"interpret\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F28\", \"template\": \"Look at the picture graph. Which has the most {subj}: {cats_str}?\", \"reasoning\": \"F28 asks the learner to read the graph and decide which category has the most, over one _THEMES row (one_row_per_problem true). The question is a direct interpretation task and is not affected by the defect in F30 listed below.\"}, \"data\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F27\", \"template\": \"Look at the picture graph. What is the total number of {subj} shown?\", \"reasoning\": \"{subj} is a field of the _THEMES subject column, so the learner is asked to read the whole data set (for example fruits, pets, or stars earned) shown in the graph.\"}, \"tabular_form\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F19\", \"template\": \"Look at the {table_word}. {sub_q}\", \"reasoning\": \"table_word prints only the gated word 'table', so the stem names a table. The sub_q families F15 to F18 ask a count question about one category from fixed lists. The packet does not show how the table's row is tied to the sub_q family, so the tabular item is producible but its row linkage is not shown.\"}, \"pictograph\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F29\", \"template\": \"Look at the picture graph. {sub_q}\", \"reasoning\": \"F29 names the pictograph and nests F21, which asks how many pupils chose one of the fixed colour categories blue, green, red, yellow. The F21 domain is fixed and does not depend on the bank row, so this stem is clean.\"}, \"scale\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F25\", \"template\": \"Look at the picture graph. Each {symbol} = {scale}. {sub_q}\", \"reasoning\": \"F25 prints a scale per symbol, with scale printed_runs 2, 5, 10, so the scaled picture graph is producible. The nested sub_q defect in F20, F22, F23 and F24 applies to this family and is listed in failing_families.\"}}, \"failing_families\": [\"F05\", \"F20\", \"F22\", \"F23\", \"F24\", \"F25\", \"F26\", \"F30\"], \"failing_templates\": [\"Count the pictures for '{cat}': there are {pics} picture(s) × {scale} = {count}.\", \"How many books were read on {cat}?\", \"How many pupils play {cat}?\", \"How many {cat} are in the garden?\", \"How many {cat} were counted?\", \"Look at the picture graph. Each {symbol} = {scale}. {sub_q}\", \"Look at the picture graph. What is the difference between {comp_a} and {comp_b}?\", \"{join} or {v}\"], \"overall\": \"FAIL\", \"reasoning\": \"F25 draws one _THEMES row for symbol, scale and sub_q, and its sub_q families F20, F22, F23 and F24 take cat from that same row. Those templates are subject-specific (books read, pupils play, in the garden, counted), so the row drawn for symbol and sub_q can differ: for a fruits row the stem would read as 'How many books were read on' followed by an apple name, and for a subjects row F22 and F23 print nonsense. F26 takes comp_a and comp_b from separate generated values whose printed lists span several rows (comp_a includes blue and comp_b includes Art); the packet does not show that both come from one row, so a cross-row difference is producible. F30 prints v from the row's categories with no distinctness from p0 to p2 (the distinct_in_every_render flag covers only F31's slots), so the same category can appear twice among the choices. F05 computes pics from answer and scale, and the answer domain prints odd values 5 and 15 while scale includes 2 and 10; a pair such as count 5 with scale 2 gives a fractional picture count, which the packet does not rule out. Clauses interpret, data, tabular_form, pictograph and scale are each producible by a family that is clean in its own template, but the item fails overall on the families above.\"}",
+ "raw_reply_digest": "e48f43440d831f4ebd6a680e1b7dab3dff7d0660b3b01fd03c044aa51fc52dea",
+ "packet_digest": "e6122a997ac5e0e09cdb0ac60f2a84a04a0c2cc6cafa7e378c4b6ca0e00a893d",
+ "family_keys": {
+  "F01": {
+   "source": "backend/app/practice_gen/dna/base.py [gate pictograph]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F02": {
+   "source": "backend/app/practice_gen/dna/dp/pictographs.py",
+   "first_site": "backend/app/practice_gen/dna/dp/pictographs.py:581",
+   "renderer": "",
+   "path": [
+    6,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F03": {
+   "source": "backend/app/practice_gen/dna/dp/pictographs.py",
+   "first_site": "backend/app/practice_gen/dna/dp/pictographs.py:585",
+   "renderer": "",
+   "path": [
+    4,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F04": {
+   "source": "backend/app/practice_gen/dna/dp/pictographs.py",
+   "first_site": "backend/app/practice_gen/dna/dp/pictographs.py:571",
+   "renderer": "",
+   "path": [
+    28,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F05": {
+   "source": "backend/app/practice_gen/dna/dp/pictographs.py",
+   "first_site": "backend/app/practice_gen/dna/dp/pictographs.py:567",
+   "renderer": "",
+   "path": [
+    7,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F06": {
+   "source": "backend/app/practice_gen/dna/dp/pictographs.py",
+   "first_site": "backend/app/practice_gen/dna/dp/pictographs.py:559",
+   "renderer": "",
+   "path": [
+    6,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F07": {
+   "source": "backend/app/practice_gen/dna/dp/pictographs.py",
+   "first_site": "backend/app/practice_gen/dna/dp/pictographs.py:557",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F08": {
+   "source": "backend/app/practice_gen/dna/dp/pictographs.py",
+   "first_site": "backend/app/practice_gen/dna/dp/pictographs.py:545",
+   "renderer": "",
+   "path": [
+    2,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F09": {
+   "source": "backend/app/practice_gen/dna/dp/pictographs.py",
+   "first_site": "backend/app/practice_gen/dna/dp/pictographs.py:549",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F10": {
+   "source": "backend/app/practice_gen/dna/dp/pictographs.py",
+   "first_site": "backend/app/practice_gen/dna/dp/pictographs.py:583",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F11": {
+   "source": "backend/app/practice_gen/dna/dp/pictographs.py",
+   "first_site": "backend/app/practice_gen/dna/dp/pictographs.py:546",
+   "renderer": "",
+   "path": [
+    2,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F12": {
+   "source": "backend/app/practice_gen/dna/dp/pictographs.py [gate table]",
+   "first_site": "backend/app/practice_gen/dna/dp/pictographs.py:544",
+   "renderer": "",
+   "path": [
+    2,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F13": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:51",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F14": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:39",
+   "renderer": "",
+   "path": [
+    4,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F15": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_fill_in_table.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_fill_in_table.py:152",
+   "renderer": "",
+   "path": [
+    2,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F16": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_fill_in_table.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_fill_in_table.py:152",
+   "renderer": "",
+   "path": [
+    25,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F17": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_fill_in_table.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_fill_in_table.py:152",
+   "renderer": "",
+   "path": [
+    18,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F18": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_fill_in_table.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_fill_in_table.py:152",
+   "renderer": "",
+   "path": [
+    15,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F19": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_fill_in_table.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_fill_in_table.py:153",
+   "renderer": "",
+   "path": [
+    2,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F20": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_pictograph.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_pictograph.py:206",
+   "renderer": "",
+   "path": [
+    33,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F21": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_pictograph.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_pictograph.py:206",
+   "renderer": "",
+   "path": [
+    28,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F22": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_pictograph.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_pictograph.py:206",
+   "renderer": "",
+   "path": [
+    35,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F23": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_pictograph.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_pictograph.py:206",
+   "renderer": "",
+   "path": [
+    7,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F24": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_pictograph.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_pictograph.py:206",
+   "renderer": "",
+   "path": [
+    22,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F25": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_pictograph.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_pictograph.py:208",
+   "renderer": "",
+   "path": [
+    7,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F26": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_pictograph.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_pictograph.py:194",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F27": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_pictograph.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_pictograph.py:189",
+   "renderer": "",
+   "path": [
+    6,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F28": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_pictograph.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_pictograph.py:185",
+   "renderer": "",
+   "path": [
+    4,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F29": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_pictograph.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_pictograph.py:210",
+   "renderer": "",
+   "path": [
+    28,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F30": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_pictograph.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_pictograph.py:181",
+   "renderer": "",
+   "path": [
+    4,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F31": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_pictograph.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_pictograph.py:181",
+   "renderer": "",
+   "path": [
+    4,
+    null
+   ],
+   "first_render_repeating": {}
+  }
+ },
+ "packet": {
+  "item": "S442-024",
+  "competency": {
+   "text": "Interpret data in tabular form and in a pictograph with or without scale.",
+   "grade": 2,
+   "quarter": 3
+  },
+  "clauses": [
+   {
+    "id": "interpret",
+    "kind": "task",
+    "clause": "Interpret"
+   },
+   {
+    "id": "data",
+    "kind": "object",
+    "clause": "data"
+   },
+   {
+    "id": "tabular_form",
+    "kind": "representation",
+    "clause": "tabular form"
+   },
+   {
+    "id": "pictograph",
+    "kind": "representation",
+    "clause": "pictograph"
+   },
+   {
+    "id": "scale",
+    "kind": "property",
+    "clause": "scale"
+   }
+  ],
+  "vocabulary": {
+   "student_vocab": [],
+   "curriculum_vocab": [],
+   "introduces_vocab": [],
+   "cumulative_vocab": [
+    "1 less",
+    "1 more",
+    "10th",
+    "1st",
+    "2nd",
+    "3rd",
+    "4th",
+    "5th",
+    "6th",
+    "7th",
+    "8th",
+    "9th",
+    "addition",
+    "analog clock",
+    "bigger",
+    "bill",
+    "calendar",
+    "centavo",
+    "centimeter",
+    "circle",
+    "clockwise",
+    "cm",
+    "coin",
+    "compare",
+    "corner",
+    "count",
+    "counter-clockwise",
+    "data",
+    "decreasing pattern",
+    "difference",
+    "digit",
+    "division",
+    "equal",
+    "equal groups",
+    "estimate",
+    "even",
+    "expanded form",
+    "fraction",
+    "group",
+    "half",
+    "half hour",
+    "half turn",
+    "hour",
+    "how many",
+    "hundreds",
+    "increasing pattern",
+    "left",
+    "length",
+    "less",
+    "m",
+    "measure",
+    "meter",
+    "missing number",
+    "more",
+    "multiplication",
+    "number",
+    "number line",
+    "numeral",
+    "odd",
+    "ones",
+    "pattern",
+    "peso",
+    "pictograph",
+    "place value",
+    "product",
+    "quarter",
+    "quarter hour",
+    "quarter turn",
+    "quotient",
+    "rectangle",
+    "regrouping",
+    "repeating pattern",
+    "ruler",
+    "same",
+    "scale",
+    "side",
+    "skip counting",
+    "slide",
+    "smaller",
+    "square",
+    "subtraction",
+    "sum",
+    "table",
+    "tens",
+    "thousand",
+    "total",
+    "translation",
+    "triangle",
+    "whole",
+    "₱"
+   ],
+   "NOT_YET_KNOWN": [
+    "L",
+    "a.m.",
+    "area",
+    "axis",
+    "balance scale",
+    "bar graph",
+    "capacity",
+    "certain",
+    "denominator",
+    "elapsed time",
+    "equally likely",
+    "g",
+    "gram",
+    "impossible",
+    "improper fraction",
+    "intersecting",
+    "kg",
+    "kilogram",
+    "less likely",
+    "line",
+    "line of symmetry",
+    "line segment",
+    "liter",
+    "mL",
+    "mass",
+    "milliliter",
+    "minute",
+    "missing term",
+    "more likely",
+    "nearest hundred",
+    "nearest ten",
+    "nearest thousand",
+    "numerator",
+    "order of operations",
+    "outcome",
+    "p.m.",
+    "parallel",
+    "perimeter",
+    "perpendicular",
+    "point",
+    "ray",
+    "remainder",
+    "round",
+    "similar fractions",
+    "solid figure",
+    "sq. cm",
+    "square centimeter",
+    "symmetry",
+    "ten thousand",
+    "ten-thousands place"
+   ],
+   "sentence_max_words": 18,
+   "number_format": "no commas for numbers up to 1000"
+  },
+  "declared_variants": [],
+  "declared_bounds": [
+   {
+    "task_type": "tabular_and_pictograph",
+    "scale_type": "with_or_without_scale"
+   }
+  ],
+  "families": [
+   {
+    "id": "F01",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F09"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='pictograph')",
+        "requires_vocab": "pictograph",
+        "prints": "pictograph",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F02",
+    "template": "Add up the values for ALL categories to find the total.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F03",
+    "template": "Compare the number of pictures in each row. The row with the most pictures has the greatest count.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F04",
+    "template": "Count the pictures for '{cat}': there are {count} picture(s).",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "cat"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "question_category",
+        "printed": [
+         "English",
+         "Grade 4",
+         "Monday",
+         "Science",
+         "Tuesday",
+         "blue",
+         "green",
+         "mangoes",
+         "red",
+         "roses",
+         "running",
+         "sunflowers",
+         "tulips",
+         "yellow"
+        ],
+        "derived_from_values": [
+         "question_category"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "count"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "answer",
+        "printed_runs": "2 to 5, 7 to 8",
+        "derived_from_values": [
+         "answer"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F05",
+    "template": "Count the pictures for '{cat}': there are {pics} picture(s) × {scale} = {count}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "cat"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "question_category",
+        "printed": [
+         "Art",
+         "English",
+         "Grade 1",
+         "Grade 2",
+         "Grade 3",
+         "Math",
+         "Monday",
+         "Tuesday",
+         "Wednesday",
+         "apples",
+         "basketball",
+         "birds",
+         "blue",
+         "cats",
+         "daisies",
+         "fish",
+         "green",
+         "mangoes",
+         "roses",
+         "running",
+         "sunflowers",
+         "swimming",
+         "yellow"
+        ],
+        "derived_from_values": [
+         "question_category"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "pics"
+      ],
+      "domains": [
+       {
+        "domain": "a number computed by the generator",
+        "reason": "arithmetic",
+        "derived_from_values": [
+         "answer",
+         "scale"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "scale"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "scale",
+        "printed_runs": "2, 5, 10",
+        "derived_from_values": [
+         "scale"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "count"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "answer",
+        "printed_runs": "5 to 6, 8, 10, 12, 14 to 16, 18, 20, 30",
+        "derived_from_values": [
+         "answer"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "scale",
+     "task_type"
+    ]
+   },
+   {
+    "id": "F06",
+    "template": "Each picture stands for 1 item.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F07",
+    "template": "Each picture stands for {scale} items.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "scale"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "scale",
+        "printed_runs": "2, 5, 10",
+        "derived_from_values": [
+         "scale"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "scale"
+    ]
+   },
+   {
+    "id": "F08",
+    "template": "Find the row labelled '{cat}'.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "cat"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "question_category",
+        "printed": [
+         "English",
+         "Grade 1",
+         "Grade 2",
+         "Grade 3",
+         "Grade 4",
+         "Math",
+         "Monday",
+         "Science",
+         "Thursday",
+         "Tuesday",
+         "Wednesday",
+         "apples",
+         "bananas",
+         "basketball",
+         "birds",
+         "cats",
+         "daisies",
+         "dogs",
+         "grapes",
+         "mangoes",
+         "roses",
+         "sunflowers",
+         "swimming",
+         "tulips",
+         "yellow"
+        ],
+        "derived_from_values": [
+         "question_category"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F09",
+    "template": "Look at the {pg_label} carefully.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "pg_label"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F01"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F10",
+    "template": "Read each category's value, then subtract the smaller from the larger.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F11",
+    "template": "Read the number written next to it in the Count column.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F12",
+    "template": "Look at the {chart_word} carefully.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "chart_word"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "'table' gated by cumulative_vocab",
+        "requires_vocab": "table",
+        "prints": "table",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F13",
+    "template": "{key}",
+    "appears_in": [
+     "correct_answer"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "key"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the option keys this item shows",
+        "members": [
+         "A",
+         "B",
+         "C",
+         "D"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F14",
+    "template": "{member}",
+    "appears_in": [
+     "format_data.mcq_options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "member"
+      ],
+      "domains": [
+       {
+        "domain": "a field of a fixed item bank",
+        "field": "categories",
+        "read_from": "the row drawn for the problem",
+        "bank": "_THEMES"
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F15",
+    "template": "How many pupils chose {cat}?",
+    "appears_in": [],
+    "nested_in": [
+     "F19"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "cat"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the table's categories",
+        "members": [
+         "birds",
+         "cats",
+         "dogs",
+         "fish"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F16",
+    "template": "How many pupils voted for {cat}?",
+    "appears_in": [],
+    "nested_in": [
+     "F19"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "cat"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the table's categories",
+        "members": [
+         "Art",
+         "English",
+         "Math",
+         "Science"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F17",
+    "template": "How many stars were earned by {cat}?",
+    "appears_in": [],
+    "nested_in": [
+     "F19"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "cat"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the table's categories",
+        "members": [
+         "Grade 1",
+         "Grade 2",
+         "Grade 3",
+         "Grade 4"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F18",
+    "template": "How many {cat} were counted?",
+    "appears_in": [],
+    "nested_in": [
+     "F19"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "cat"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the table's categories",
+        "members": [
+         "apples",
+         "bananas",
+         "grapes",
+         "mangoes"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F19",
+    "template": "Look at the {table_word}. {sub_q}",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "table_word"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "'table' gated by cumulative_vocab",
+        "requires_vocab": "table",
+        "prints": "table",
+        "words_left_out": 1
+       }
+      ]
+     },
+     {
+      "slots": [
+       "sub_q"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F15",
+         "F16",
+         "F17",
+         "F18"
+        ],
+        "derived_from_values": [
+         "stem_template"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F20",
+    "template": "How many books were read on {cat}?",
+    "appears_in": [],
+    "nested_in": [
+     "F25"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "cat"
+      ],
+      "domains": [
+       {
+        "domain": "a field of a fixed item bank",
+        "field": "categories",
+        "read_from": "the row drawn for the problem",
+        "bank": "_THEMES"
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F21",
+    "template": "How many pupils chose {cat}?",
+    "appears_in": [],
+    "nested_in": [
+     "F29"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "cat"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the graph's categories",
+        "members": [
+         "blue",
+         "green",
+         "red",
+         "yellow"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F22",
+    "template": "How many pupils play {cat}?",
+    "appears_in": [],
+    "nested_in": [
+     "F25"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "cat"
+      ],
+      "domains": [
+       {
+        "domain": "a field of a fixed item bank",
+        "field": "categories",
+        "read_from": "the row drawn for the problem",
+        "bank": "_THEMES"
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F23",
+    "template": "How many {cat} are in the garden?",
+    "appears_in": [],
+    "nested_in": [
+     "F25"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "cat"
+      ],
+      "domains": [
+       {
+        "domain": "a field of a fixed item bank",
+        "field": "categories",
+        "read_from": "the row drawn for the problem",
+        "bank": "_THEMES"
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F24",
+    "template": "How many {cat} were counted?",
+    "appears_in": [],
+    "nested_in": [
+     "F25"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "cat"
+      ],
+      "domains": [
+       {
+        "domain": "a field of a fixed item bank",
+        "field": "categories",
+        "read_from": "the row drawn for the problem",
+        "bank": "_THEMES"
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F25",
+    "template": "Look at the picture graph. Each {symbol} = {scale}. {sub_q}",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "symbol"
+      ],
+      "domains": [
+       {
+        "domain": "a field of a fixed item bank",
+        "field": "symbol",
+        "bank": "_THEMES"
+       }
+      ]
+     },
+     {
+      "slots": [
+       "scale"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "scale",
+        "printed_runs": "2, 5, 10",
+        "derived_from_values": [
+         "scale"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "sub_q"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F20",
+         "F22",
+         "F23",
+         "F24"
+        ],
+        "derived_from_values": [
+         "stem_template"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F26",
+    "template": "Look at the picture graph. What is the difference between {comp_a} and {comp_b}?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "comp_a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "compare_a",
+        "printed": [
+         "English",
+         "Grade 1",
+         "Grade 2",
+         "Grade 3",
+         "Math",
+         "Monday",
+         "Science",
+         "Tuesday",
+         "Wednesday",
+         "apples",
+         "bananas",
+         "basketball",
+         "blue",
+         "cats",
+         "dogs",
+         "mangoes",
+         "red",
+         "sunflowers",
+         "swimming",
+         "volleyball"
+        ],
+        "derived_from_values": [
+         "compare_a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "comp_b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "compare_b",
+        "printed": [
+         "Art",
+         "Grade 2",
+         "Grade 3",
+         "Grade 4",
+         "Science",
+         "Thursday",
+         "Wednesday",
+         "bananas",
+         "birds",
+         "daisies",
+         "dogs",
+         "fish",
+         "grapes",
+         "green",
+         "mangoes",
+         "running",
+         "swimming",
+         "tulips",
+         "volleyball",
+         "yellow"
+        ],
+        "derived_from_values": [
+         "compare_b"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F27",
+    "template": "Look at the picture graph. What is the total number of {subj} shown?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "subj"
+      ],
+      "domains": [
+       {
+        "domain": "a field of a fixed item bank",
+        "field": "subject",
+        "bank": "_THEMES"
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F28",
+    "template": "Look at the picture graph. Which has the most {subj}: {cats_str}?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "subj"
+      ],
+      "domains": [
+       {
+        "domain": "a field of a fixed item bank",
+        "field": "subject",
+        "bank": "_THEMES"
+       }
+      ]
+     },
+     {
+      "slots": [
+       "cats_str"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F30"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F29",
+    "template": "Look at the picture graph. {sub_q}",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "sub_q"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F21"
+        ],
+        "derived_from_values": [
+         "stem_template"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F30",
+    "template": "{join} or {v}",
+    "appears_in": [],
+    "nested_in": [
+     "F28"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "join"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F31"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "v"
+      ],
+      "domains": [
+       {
+        "domain": "a field of a fixed item bank",
+        "field": "categories",
+        "read_from": "the row drawn for the problem",
+        "bank": "_THEMES"
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F31",
+    "template": "{p0}, {p1}, {p2}",
+    "appears_in": [],
+    "nested_in": [
+     "F30"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "p0",
+       "p1",
+       "p2"
+      ],
+      "domains": [
+       {
+        "domain": "a field of a fixed item bank",
+        "field": "categories",
+        "read_from": "the row drawn for the problem",
+        "bank": "_THEMES"
+       }
+      ],
+      "distinct_in_every_render": true
+     }
+    ],
+    "template_chosen_by_values": []
+   }
+  ],
+  "lists": {},
+  "banks": {
+   "_THEMES": {
+    "fields": [
+     "categories",
+     "subject",
+     "symbol"
+    ],
+    "one_row_per_problem": true,
+    "rows": [
+     {
+      "categories": [
+       "apples",
+       "bananas",
+       "mangoes",
+       "grapes",
+       "oranges",
+       "strawberries"
+      ],
+      "subject": "fruits",
+      "symbol": "🍎"
+     },
+     {
+      "categories": [
+       "cats",
+       "dogs",
+       "birds",
+       "fish",
+       "rabbits",
+       "turtles"
+      ],
+      "subject": "pets",
+      "symbol": "🐾"
+     },
+     {
+      "categories": [
+       "red",
+       "blue",
+       "green",
+       "yellow",
+       "purple",
+       "orange"
+      ],
+      "subject": "colors",
+      "symbol": "🎨"
+     },
+     {
+      "categories": [
+       "Math",
+       "Science",
+       "English",
+       "Art",
+       "PE",
+       "Music"
+      ],
+      "subject": "subjects",
+      "symbol": "📚"
+     },
+     {
+      "categories": [
+       "Monday",
+       "Tuesday",
+       "Wednesday",
+       "Thursday",
+       "Friday",
+       "Saturday"
+      ],
+      "subject": "books read",
+      "symbol": "📖"
+     },
+     {
+      "categories": [
+       "basketball",
+       "volleyball",
+       "swimming",
+       "running",
+       "soccer",
+       "tennis"
+      ],
+      "subject": "sports",
+      "symbol": "⚽"
+     },
+     {
+      "categories": [
+       "roses",
+       "sunflowers",
+       "tulips",
+       "daisies",
+       "orchids",
+       "lilies"
+      ],
+      "subject": "flowers",
+      "symbol": "🌸"
+     },
+     {
+      "categories": [
+       "Grade 1",
+       "Grade 2",
+       "Grade 3",
+       "Grade 4",
+       "Grade 5",
+       "Grade 6"
+      ],
+      "subject": "stars earned",
+      "symbol": "⭐"
+     }
+    ],
+    "rows_left_out": 0
+   }
+  },
+  "value_derivations": [],
+  "reason_kinds": {
+   "arithmetic": "a number the generator computes from the generated values named in src (a half, a sum, a difference, a running total, a place's digit). Its range is the image of those values' own domains; whether the arithmetic is RIGHT is the hint contract's (§16) and §1E's to check, not §14's."
+  }
+ }
+}

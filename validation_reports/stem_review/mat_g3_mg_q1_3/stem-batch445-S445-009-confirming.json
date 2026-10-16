@@ -1,0 +1,2073 @@
+{
+ "schema_version": 2,
+ "hash_version": 8,
+ "node_id": "mat_g3_mg_q1_3",
+ "record_id": "stem-batch445-S445-009-confirming",
+ "role": "confirming",
+ "confirms": "stem-batch445-S445-009-first",
+ "item_id": "S445-009",
+ "lc_hash": "abc8629f93287286a370a1412e9a48e6d203133c2a7ed82e413c034d7ae2ac45",
+ "judged_by": "blind-stem-judge-claude-haiku-batch445-S445-009-confirming",
+ "dispatch_id": "stem-batch445-S445-009-confirming",
+ "filed_at": "2026-10-16T06:22:50Z",
+ "delivery": "Claude Code Agent tool, model=haiku, subagent_type=general-purpose; the judge was told to read only local_only/scratch/h4c/prompts/S445-009.prompt.txt (tests/stem_file.py prompt output, item S445-009; no lc id, no key or packets file in that directory) and reply with what it asks; dispatched with CLAUDE.md loaded (ruling 29). Blindness is a prompt contract, audited from the subagent transcript.",
+ "tool_uses_by_judge": "From the subagent transcript: 1 tool use(s), all Read of its own prompt file (1901 lines, every line read); no other tool, path or search. Model reported in the transcript: claude-haiku-5-5.",
+ "dispatch_prompt_digest": "2ab0b2c5cac611fd1c122fd8add94bb7d127da7bd12c1733316955fdb255889d",
+ "raw_reply": "{\"item\": \"S445-009\", \"clauses\": {\"solve_area_problem\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F06\", \"template\": \"Ana has two rectangular flower beds: Bed 1 is {l1} {lu} by {w1} {lu} and Bed 2 is {l2} {lu} by {w2} {lu}. What is the combined total area of both flower beds in {unit_label}?\", \"reasoning\": \"F06 asks the learner to solve for an area (a combined total of two areas) from given side lengths. Its item (flower beds) is not in the F02 or F04 fault set, and its side ranges (2 to 10, with Bed 2 lengths 2 to 5 and widths 2 to 6) and sq m unit produce realistic whole-number areas.\"}, \"word_problem_context\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F06\", \"template\": \"Ana has two rectangular flower beds: Bed 1 is {l1} {lu} by {w1} {lu} and Bed 2 is {l2} {lu} by {w2} {lu}. What is the combined total area of both flower beds in {unit_label}?\", \"reasoning\": \"F06 is a word problem with a named person and a real-world setting; it is the family that produces problems in context without the F04 item/unit mismatch.\"}, \"extract_area_relationship_from_context\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F02\", \"template\": \"A rectangular {item_noun} has an area of {rect_area} {unit_label} and a {known_name} of {known_val} {lu}. What is its {other_name} in {lu}?\", \"reasoning\": \"F02 gives an area and one side in context and requires the learner to extract the area-length-width relationship to find the missing side. It is the family that best produces the extraction task, although it is itself listed as failing for item and unit realism.\"}, \"area_attribute\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F06\", \"template\": \"Ana has two rectangular flower beds: Bed 1 is {l1} {lu} by {w1} {lu} and Bed 2 is {l2} {lu} by {w2} {lu}. What is the combined total area of both flower beds in {unit_label}?\", \"reasoning\": \"The question asks for area in a square unit (sq m, printed through unit_label) of each bed and their total, so the attribute area is named and measured.\"}, \"square_figure\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F05\", \"template\": \"A square {item_noun} measures {s} {lu} on each side. What is its area in {unit_label}?\", \"reasoning\": \"F05 states a square by its side length (s, 2 to 5 m) and asks for its area, which addresses squares directly. Its item nouns are not in the F02 or F04 fault set.\"}, \"rectangle_figure\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F06\", \"template\": \"Ana has two rectangular flower beds: Bed 1 is {l1} {lu} by {w1} {lu} and Bed 2 is {l2} {lu} by {w2} {lu}. What is the combined total area of both flower beds in {unit_label}?\", \"reasoning\": \"F06 describes each figure as a rectangle with two different side lengths and asks for its area.\"}}, \"failing_families\": [\"F02\", \"F04\"], \"failing_templates\": [\"A rectangular {item_noun} has an area of {rect_area} {unit_label} and a {known_name} of {known_val} {lu}. What is its {other_name} in {lu}?\", \"A rectangular {item_noun} is {l} {lu} long and {w} {lu} wide. What is the area of the {item_noun} in {unit_label}?\"], \"overall\": \"FAIL\", \"reasoning\": \"F04: the item_noun domain (one of the generator's own choices, members including bookmark, index card, rug, classroom floor, garden plot) is not coupled to the length domain, and lu is printed as both cm and m with side slots of 2 to 8. A bookmark or index card given as 8 m long, or a classroom floor given as 8 cm long, are both in the declared domains and are wrong statements about the world. F02: the item_noun domain includes card and photo, and the unit_label domain includes sq m with rect_area printed up to 40. A card with an area of 40 sq m is in the printed observations, which is a misleading context for a grade 3 learner. Its lu member is tied to the unit_label only by basis text, and the rect_area and known_val values are printed as independent slots. F05, F06 and the hint families were checked for the same item-realism and vocabulary faults and were not found to produce a misleading statement. Vocabulary: width, unit, larger, combined and cost are not in cumulative_vocab, but they are ordinary terms and not in NOT_YET_KNOWN, so they were not counted as faults. Square meter (sq m) is not in cumulative_vocab, although square centimeter and meter are; this was not counted as a fault because the declared variant names it.\"}",
+ "raw_reply_digest": "2a129dfbf49b33c5a1ead91bb23fd94225a124a25c75ffb94c9588092ee0ffdc",
+ "packet_digest": "35f2a3cdcef58041882bee253984755211d947f8c085482d972c57c1f232a420",
+ "family_keys": {
+  "F01": {
+   "source": "backend/app/practice_gen/dna/base.py [gate area]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F02": {
+   "source": "backend/app/practice_gen/dna/mg/area.py",
+   "first_site": "backend/app/practice_gen/dna/mg/area.py:536",
+   "renderer": "",
+   "path": [
+    13,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F03": {
+   "source": "backend/app/practice_gen/dna/mg/area.py",
+   "first_site": "backend/app/practice_gen/dna/mg/area.py:589",
+   "renderer": "",
+   "path": [
+    11,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F04": {
+   "source": "backend/app/practice_gen/dna/mg/area.py",
+   "first_site": "backend/app/practice_gen/dna/mg/area.py:510",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F05": {
+   "source": "backend/app/practice_gen/dna/mg/area.py",
+   "first_site": "backend/app/practice_gen/dna/mg/area.py:490",
+   "renderer": "",
+   "path": [
+    4,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F06": {
+   "source": "backend/app/practice_gen/dna/mg/area.py",
+   "first_site": "backend/app/practice_gen/dna/mg/area.py:616",
+   "renderer": "",
+   "path": [
+    17,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F07": {
+   "source": "backend/app/practice_gen/dna/mg/area.py",
+   "first_site": "backend/app/practice_gen/dna/mg/area.py:770",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F08": {
+   "source": "backend/app/practice_gen/dna/mg/area.py",
+   "first_site": "backend/app/practice_gen/dna/mg/area.py:767",
+   "renderer": "",
+   "path": [
+    4,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F09": {
+   "source": "backend/app/practice_gen/dna/mg/area.py",
+   "first_site": "backend/app/practice_gen/dna/mg/area.py:745",
+   "renderer": "",
+   "path": [
+    17,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F10": {
+   "source": "backend/app/practice_gen/dna/mg/area.py",
+   "first_site": "backend/app/practice_gen/dna/mg/area.py:746",
+   "renderer": "",
+   "path": [
+    17,
+    null
+   ],
+   "first_render_repeating": {
+    "l2,w2": [
+     27,
+     null
+    ]
+   }
+  },
+  "F11": {
+   "source": "backend/app/practice_gen/dna/mg/area.py",
+   "first_site": "backend/app/practice_gen/dna/mg/area.py:722",
+   "renderer": "",
+   "path": [
+    13,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F12": {
+   "source": "backend/app/practice_gen/dna/mg/area.py",
+   "first_site": "backend/app/practice_gen/dna/mg/area.py:738",
+   "renderer": "",
+   "path": [
+    11,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F13": {
+   "source": "backend/app/practice_gen/dna/mg/area.py",
+   "first_site": "backend/app/practice_gen/dna/mg/area.py:737",
+   "renderer": "",
+   "path": [
+    11,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F14": {
+   "source": "backend/app/practice_gen/dna/mg/area.py",
+   "first_site": "backend/app/practice_gen/dna/mg/area.py:561",
+   "renderer": "",
+   "path": [
+    12,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F15": {
+   "source": "backend/app/practice_gen/dna/mg/area.py",
+   "first_site": "backend/app/practice_gen/dna/mg/area.py:730",
+   "renderer": "",
+   "path": [
+    12,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F16": {
+   "source": "backend/app/practice_gen/dna/mg/area.py",
+   "first_site": "backend/app/practice_gen/dna/mg/area.py:731",
+   "renderer": "",
+   "path": [
+    12,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F17": {
+   "source": "backend/app/practice_gen/dna/mg/area.py",
+   "first_site": "backend/app/practice_gen/dna/mg/area.py:739",
+   "renderer": "",
+   "path": [
+    11,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F18": {
+   "source": "backend/app/practice_gen/dna/mg/area.py",
+   "first_site": "backend/app/practice_gen/dna/mg/area.py:720",
+   "renderer": "",
+   "path": [
+    13,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F19": {
+   "source": "backend/app/practice_gen/dna/mg/area.py",
+   "first_site": "backend/app/practice_gen/dna/mg/area.py:763",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F20": {
+   "source": "backend/app/practice_gen/dna/mg/area.py",
+   "first_site": "backend/app/practice_gen/dna/mg/area.py:721",
+   "renderer": "",
+   "path": [
+    13,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F21": {
+   "source": "backend/app/practice_gen/dna/mg/area.py",
+   "first_site": "backend/app/practice_gen/dna/mg/area.py:747",
+   "renderer": "",
+   "path": [
+    17,
+    null
+   ],
+   "first_render_repeating": {
+    "a1,a2": [
+     170,
+     null
+    ]
+   }
+  },
+  "F22": {
+   "source": "backend/app/practice_gen/dna/mg/area.py",
+   "first_site": "backend/app/practice_gen/dna/mg/area.py:732",
+   "renderer": "",
+   "path": [
+    12,
+    null
+   ],
+   "first_render_repeating": {}
+  }
+ },
+ "packet": {
+  "item": "S445-009",
+  "competency": {
+   "text": "Solve problems involving areas of squares and rectangles.",
+   "grade": 3,
+   "quarter": 1
+  },
+  "clauses": [
+   {
+    "id": "solve_area_problem",
+    "kind": "task",
+    "clause": "Solve"
+   },
+   {
+    "id": "word_problem_context",
+    "kind": "object",
+    "clause": "problems"
+   },
+   {
+    "id": "extract_area_relationship_from_context",
+    "kind": "task",
+    "clause": "involving"
+   },
+   {
+    "id": "area_attribute",
+    "kind": "attribute",
+    "clause": "areas"
+   },
+   {
+    "id": "square_figure",
+    "kind": "object",
+    "clause": "squares"
+   },
+   {
+    "id": "rectangle_figure",
+    "kind": "object",
+    "clause": "rectangles"
+   }
+  ],
+  "vocabulary": {
+   "student_vocab": [],
+   "curriculum_vocab": [],
+   "introduces_vocab": [],
+   "cumulative_vocab": [
+    "1 less",
+    "1 more",
+    "10th",
+    "1st",
+    "2nd",
+    "3rd",
+    "4th",
+    "5th",
+    "6th",
+    "7th",
+    "8th",
+    "9th",
+    "a.m.",
+    "addition",
+    "analog clock",
+    "area",
+    "bigger",
+    "bill",
+    "calendar",
+    "centavo",
+    "centimeter",
+    "circle",
+    "clockwise",
+    "cm",
+    "coin",
+    "compare",
+    "corner",
+    "count",
+    "counter-clockwise",
+    "data",
+    "decreasing pattern",
+    "denominator",
+    "difference",
+    "digit",
+    "division",
+    "elapsed time",
+    "equal",
+    "equal groups",
+    "estimate",
+    "even",
+    "expanded form",
+    "fraction",
+    "group",
+    "half",
+    "half hour",
+    "half turn",
+    "hour",
+    "how many",
+    "hundreds",
+    "increasing pattern",
+    "left",
+    "length",
+    "less",
+    "m",
+    "measure",
+    "meter",
+    "minute",
+    "missing number",
+    "more",
+    "multiplication",
+    "nearest hundred",
+    "nearest ten",
+    "nearest thousand",
+    "number",
+    "number line",
+    "numeral",
+    "numerator",
+    "odd",
+    "ones",
+    "p.m.",
+    "pattern",
+    "perimeter",
+    "peso",
+    "pictograph",
+    "place value",
+    "product",
+    "quarter",
+    "quarter hour",
+    "quarter turn",
+    "quotient",
+    "rectangle",
+    "regrouping",
+    "repeating pattern",
+    "round",
+    "ruler",
+    "same",
+    "scale",
+    "side",
+    "similar fractions",
+    "skip counting",
+    "slide",
+    "smaller",
+    "solid figure",
+    "sq. cm",
+    "square",
+    "square centimeter",
+    "subtraction",
+    "sum",
+    "table",
+    "ten thousand",
+    "ten-thousands place",
+    "tens",
+    "thousand",
+    "total",
+    "translation",
+    "triangle",
+    "whole",
+    "₱"
+   ],
+   "NOT_YET_KNOWN": [
+    "L",
+    "axis",
+    "balance scale",
+    "bar graph",
+    "capacity",
+    "certain",
+    "equally likely",
+    "g",
+    "gram",
+    "impossible",
+    "improper fraction",
+    "intersecting",
+    "kg",
+    "kilogram",
+    "less likely",
+    "line",
+    "line of symmetry",
+    "line segment",
+    "liter",
+    "mL",
+    "mass",
+    "milliliter",
+    "missing term",
+    "more likely",
+    "order of operations",
+    "outcome",
+    "parallel",
+    "perpendicular",
+    "point",
+    "ray",
+    "remainder",
+    "symmetry"
+   ],
+   "sentence_max_words": 22,
+   "number_format": "space separator for thousands (e.g. 1 000)"
+  },
+  "declared_variants": [
+   [
+    "context",
+    "word_problem"
+   ],
+   [
+    "shape",
+    "rectangle"
+   ],
+   [
+    "shape",
+    "square"
+   ],
+   [
+    "unit",
+    "square_cm"
+   ],
+   [
+    "unit",
+    "square_m"
+   ]
+  ],
+  "declared_bounds": [
+   {
+    "task_type": "find_area_or_missing_dimension",
+    "context": "word_problem"
+   }
+  ],
+  "families": [
+   {
+    "id": "F01",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F13",
+     "F18",
+     "F19"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='area')",
+        "requires_vocab": "area",
+        "prints": "area",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F02",
+    "template": "A rectangular {item_noun} has an area of {rect_area} {unit_label} and a {known_name} of {known_val} {lu}. What is its {other_name} in {lu}?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "item_noun"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the item_nouns bank for the unit",
+        "members": [
+         "card",
+         "drawing sheet",
+         "photo",
+         "postcard",
+         "poster"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "rect_area"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "area",
+        "printed_runs": "6, 8, 12, 15 to 16, 20 to 21, 24, 28, 30, 40",
+        "derived_from_values": [
+         "area"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "unit_label"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "unit",
+        "printed": [
+         "sq cm",
+         "sq m"
+        ],
+        "derived_from_values": [
+         "unit"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "known_name"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the known dimension's name",
+        "members": [
+         "length",
+         "width"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "known_val"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "known_value",
+        "printed_runs": "2 to 5",
+        "derived_from_values": [
+         "known_value"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "lu"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the length units of the two unit_labels, sq cm and sq m",
+        "members": [
+         "cm",
+         "m"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "other_name"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the other dimension's name",
+        "members": [
+         "length",
+         "width"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "context",
+     "shape"
+    ]
+   },
+   {
+    "id": "F03",
+    "template": "A rectangular {item_noun} is {l} {lu} long and {w} {lu} wide (area = {rect_area} {unit_label}). If {action} costs ₱{cost_per_sq} per {unit_label}, what is the total cost to cover the {item_noun}?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "item_noun"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the item_nouns bank",
+        "members": [
+         "floor",
+         "patio",
+         "wall"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "l",
+       "w"
+      ],
+      "domains": [
+       {
+        "domain": "a number in a range",
+        "basis": "a known-table side or its co-factor (_table_and_cofactor)",
+        "lo": 2,
+        "hi": 10
+       }
+      ],
+      "distinct_in_every_render": true
+     },
+     {
+      "slots": [
+       "lu"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "length_unit",
+        "printed": [
+         "m"
+        ],
+        "derived_from_values": [
+         "length_unit"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "rect_area"
+      ],
+      "domains": [
+       {
+        "domain": "a number computed by the generator",
+        "reason": "arithmetic",
+        "derived_from_values": [
+         "area_parts"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "unit_label"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "unit",
+        "printed": [
+         "sq m"
+        ],
+        "derived_from_values": [
+         "unit"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "action"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the two cover actions",
+        "members": [
+         "painting",
+         "tiling"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "cost_per_sq"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the costs bank",
+        "members": [
+         10,
+         2,
+         5
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "context",
+     "shape"
+    ]
+   },
+   {
+    "id": "F04",
+    "template": "A rectangular {item_noun} is {l} {lu} long and {w} {lu} wide. What is the area of the {item_noun} in {unit_label}?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "item_noun"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the item_nouns bank for the unit",
+        "members": [
+         "bookmark",
+         "chalkboard",
+         "classroom floor",
+         "garden plot",
+         "index card",
+         "photo",
+         "postcard",
+         "rug",
+         "sheet of paper"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "l"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "l",
+        "printed_runs": "2 to 8",
+        "derived_from_values": [
+         "l"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "lu"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "length_unit",
+        "printed": [
+         "cm",
+         "m"
+        ],
+        "derived_from_values": [
+         "length_unit"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "w"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "w",
+        "printed_runs": "2 to 8",
+        "derived_from_values": [
+         "w"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "unit_label"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "unit",
+        "printed": [
+         "sq cm",
+         "sq m"
+        ],
+        "derived_from_values": [
+         "unit"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "context",
+     "shape"
+    ]
+   },
+   {
+    "id": "F05",
+    "template": "A square {item_noun} measures {s} {lu} on each side. What is its area in {unit_label}?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "item_noun"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the item_nouns bank for the unit",
+        "members": [
+         "garden bed",
+         "mat",
+         "patio",
+         "table top"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "s"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "s",
+        "printed_runs": "2 to 5",
+        "derived_from_values": [
+         "s"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "lu"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "length_unit",
+        "printed": [
+         "m"
+        ],
+        "derived_from_values": [
+         "length_unit"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "unit_label"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "unit",
+        "printed": [
+         "sq m"
+        ],
+        "derived_from_values": [
+         "unit"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "context",
+     "shape"
+    ]
+   },
+   {
+    "id": "F06",
+    "template": "Ana has two rectangular flower beds: Bed 1 is {l1} {lu} by {w1} {lu} and Bed 2 is {l2} {lu} by {w2} {lu}. What is the combined total area of both flower beds in {unit_label}?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "l1",
+       "w1"
+      ],
+      "domains": [
+       {
+        "domain": "a number in a range",
+        "basis": "a known-table side or its co-factor (_table_and_cofactor)",
+        "lo": 2,
+        "hi": 10
+       }
+      ],
+      "distinct_in_every_render": true
+     },
+     {
+      "slots": [
+       "lu"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "length_unit",
+        "printed": [
+         "m"
+        ],
+        "derived_from_values": [
+         "length_unit"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "l2"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "Bed 2's length choices",
+        "members": [
+         2,
+         3,
+         4,
+         5
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "w2"
+      ],
+      "domains": [
+       {
+        "domain": "a number in a range",
+        "basis": "Bed 2's width draw bounds",
+        "lo": 2,
+        "hi": 6
+       }
+      ]
+     },
+     {
+      "slots": [
+       "unit_label"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "unit",
+        "printed": [
+         "sq m"
+        ],
+        "derived_from_values": [
+         "unit"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "context"
+    ]
+   },
+   {
+    "id": "F07",
+    "template": "Area of a rectangle = length × width = {l} × {w} = {answer} {unit}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "l"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "l",
+        "printed_runs": "2 to 8",
+        "derived_from_values": [
+         "l"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "w"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "w",
+        "printed_runs": "2 to 8",
+        "derived_from_values": [
+         "w"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "answer",
+        "printed_runs": "6, 8, 10, 12, 14 to 16, 20 to 21, 24, 28, 30, 32, 35, 40",
+        "derived_from_values": [
+         "answer"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "unit"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "unit",
+        "printed": [
+         "sq cm",
+         "sq m"
+        ],
+        "derived_from_values": [
+         "unit"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F08",
+    "template": "Area of a square = side × side = {s} × {s} = {answer} {unit}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "s"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "s",
+        "printed_runs": "2 to 5",
+        "derived_from_values": [
+         "s",
+         "sides"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "answer",
+        "printed_runs": "4, 9, 16, 25",
+        "derived_from_values": [
+         "answer"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "unit"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "unit",
+        "printed": [
+         "sq m"
+        ],
+        "derived_from_values": [
+         "unit"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "shape"
+    ]
+   },
+   {
+    "id": "F09",
+    "template": "Bed 1: {l1} × {w1} = {a1} {unit}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "l1",
+       "w1"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "values['area_parts']",
+        "members": [
+         2,
+         3,
+         4
+        ],
+        "derived_from_values": [
+         "area_parts"
+        ]
+       }
+      ],
+      "distinct_in_every_render": true
+     },
+     {
+      "slots": [
+       "a1"
+      ],
+      "domains": [
+       {
+        "domain": "a number computed by the generator",
+        "reason": "arithmetic",
+        "derived_from_values": [
+         "area_parts"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "unit"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "unit",
+        "printed": [
+         "sq m"
+        ],
+        "derived_from_values": [
+         "unit"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "area_problem"
+    ]
+   },
+   {
+    "id": "F10",
+    "template": "Bed 2: {l2} × {w2} = {a2} {unit}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "l2",
+       "w2"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "values['area_parts']",
+        "members": [
+         2,
+         3,
+         4
+        ],
+        "derived_from_values": [
+         "area_parts"
+        ]
+       }
+      ],
+      "distinct_in_every_render": false
+     },
+     {
+      "slots": [
+       "a2"
+      ],
+      "domains": [
+       {
+        "domain": "a number computed by the generator",
+        "reason": "arithmetic",
+        "derived_from_values": [
+         "area_parts"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "unit"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "unit",
+        "printed": [
+         "sq m"
+        ],
+        "derived_from_values": [
+         "unit"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "area_problem"
+    ]
+   },
+   {
+    "id": "F11",
+    "template": "Divide: {area} ÷ {known_val} = {answer}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "area"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "area",
+        "printed_runs": "6, 8, 12, 15 to 16, 20 to 21, 24, 28, 30, 40",
+        "derived_from_values": [
+         "area"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "known_val"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "known_value",
+        "printed_runs": "2 to 5",
+        "derived_from_values": [
+         "known_value"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "answer",
+        "printed_runs": "2 to 8",
+        "derived_from_values": [
+         "answer"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F12",
+    "template": "Each {unit} costs ₱{cost}: {area} × {cost} = {answer}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "unit"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "unit",
+        "printed": [
+         "sq m"
+        ],
+        "derived_from_values": [
+         "unit"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "cost",
+       "area"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "values['area_parts']",
+        "members": [
+         10,
+         12,
+         3,
+         4
+        ],
+        "derived_from_values": [
+         "area_parts"
+        ]
+       }
+      ],
+      "distinct_in_every_render": true
+     },
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "answer",
+        "printed_runs": "16, 32, 60, 100, 120, 140, 150, 160, 200",
+        "derived_from_values": [
+         "answer"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "area_problem"
+    ]
+   },
+   {
+    "id": "F13",
+    "template": "First find the {area_label}: {l} × {w} = {area} {unit}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "area_label"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F01"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "l",
+       "w",
+       "area"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "values['area_parts']",
+        "members": [
+         10,
+         12,
+         3,
+         4
+        ],
+        "derived_from_values": [
+         "area_parts"
+        ]
+       }
+      ],
+      "distinct_in_every_render": true
+     },
+     {
+      "slots": [
+       "unit"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "unit",
+        "printed": [
+         "sq m"
+        ],
+        "derived_from_values": [
+         "unit"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "area_problem"
+    ]
+   },
+   {
+    "id": "F14",
+    "template": "Garden Plot A is {l1} {lu} by {w1} {lu} (area = {area1} {unit_label}). Garden Plot B is {l2} {lu} by {w2} {lu} (area = {area2} {unit_label}). How many {unit_label} larger is Plot B than Plot A?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "l1"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "l1",
+        "printed_runs": "2 to 5",
+        "derived_from_values": [
+         "l1"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "lu"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "length_unit",
+        "printed": [
+         "m"
+        ],
+        "derived_from_values": [
+         "length_unit"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "w1"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "w1",
+        "printed_runs": "2 to 8",
+        "derived_from_values": [
+         "w1"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "area1"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "area1",
+        "printed_runs": "6, 8, 10, 12, 14 to 16, 20 to 21, 24, 28, 30, 32, 35, 40",
+        "derived_from_values": [
+         "area1"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "unit_label"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "unit",
+        "printed": [
+         "sq m"
+        ],
+        "derived_from_values": [
+         "unit"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "l2"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "l2",
+        "printed_runs": "2 to 5",
+        "derived_from_values": [
+         "l2"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "w2"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "w2",
+        "printed_runs": "4 to 10",
+        "derived_from_values": [
+         "w2"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "area2"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "area2",
+        "printed_runs": "8, 10, 12, 14 to 16, 18, 20 to 21, 24 to 25, 30, 32, 40, 45",
+        "derived_from_values": [
+         "area2"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "context"
+    ]
+   },
+   {
+    "id": "F15",
+    "template": "Plot A: {l1} × {w1} = {a1} {unit}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "l1"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "l1",
+        "printed_runs": "2 to 5",
+        "derived_from_values": [
+         "l1"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "w1"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "w1",
+        "printed_runs": "2 to 8",
+        "derived_from_values": [
+         "w1"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "a1"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "area1",
+        "printed_runs": "6, 8, 10, 12, 14 to 16, 20 to 21, 24, 28, 30, 32, 35, 40",
+        "derived_from_values": [
+         "area1"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "unit"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "unit",
+        "printed": [
+         "sq m"
+        ],
+        "derived_from_values": [
+         "unit"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "area_problem"
+    ]
+   },
+   {
+    "id": "F16",
+    "template": "Plot B: {l2} × {w2} = {a2} {unit}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "l2"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "l2",
+        "printed_runs": "2 to 5",
+        "derived_from_values": [
+         "l2"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "w2"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "w2",
+        "printed_runs": "4 to 10",
+        "derived_from_values": [
+         "w2"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "a2"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "area2",
+        "printed_runs": "8, 10, 12, 14 to 16, 18, 20 to 21, 24 to 25, 30, 32, 40, 45",
+        "derived_from_values": [
+         "area2"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "unit"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "unit",
+        "printed": [
+         "sq m"
+        ],
+        "derived_from_values": [
+         "unit"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "area_problem"
+    ]
+   },
+   {
+    "id": "F17",
+    "template": "The total cost is ₱{answer}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "answer",
+        "printed_runs": "16, 32, 60, 100, 120, 140, 150, 160, 200",
+        "derived_from_values": [
+         "answer"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "area_problem"
+    ]
+   },
+   {
+    "id": "F18",
+    "template": "The {area_label} = length × width.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "area_label"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F01"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F19",
+    "template": "The {area_label} tells us how many unit squares cover the shape.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "area_label"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F01"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F20",
+    "template": "We know the area is {area} {unit} and one side is {known_val}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "area"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "area",
+        "printed_runs": "6, 8, 12, 15 to 16, 20 to 21, 24, 28, 30, 40",
+        "derived_from_values": [
+         "area"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "unit"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "unit",
+        "printed": [
+         "sq cm",
+         "sq m"
+        ],
+        "derived_from_values": [
+         "unit"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "known_val"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "known_value",
+        "printed_runs": "2 to 5",
+        "derived_from_values": [
+         "known_value"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F21",
+    "template": "{a1} + {a2} = {answer} {unit} in all.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "a1",
+       "a2"
+      ],
+      "domains": [
+       {
+        "domain": "a number computed by the generator",
+        "reason": "arithmetic",
+        "derived_from_values": [
+         "area_parts"
+        ]
+       }
+      ],
+      "distinct_in_every_render": false
+     },
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "answer",
+        "printed_runs": "12, 14, 20, 22, 24, 27, 34 to 35, 40, 47 to 48, 52, 55",
+        "derived_from_values": [
+         "answer"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "unit"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "unit",
+        "printed": [
+         "sq m"
+        ],
+        "derived_from_values": [
+         "unit"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "area_problem"
+    ]
+   },
+   {
+    "id": "F22",
+    "template": "{a2} − {a1} = {answer}, so Plot B is {answer} {unit} larger.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "a2"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "area2",
+        "printed_runs": "8, 10, 12, 14 to 16, 18, 20 to 21, 24 to 25, 30, 32, 40, 45",
+        "derived_from_values": [
+         "area2"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "a1"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "area1",
+        "printed_runs": "6, 8, 10, 12, 14 to 16, 20 to 21, 24, 28, 30, 32, 35, 40",
+        "derived_from_values": [
+         "area1"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "answer",
+        "printed_runs": "2 to 6, 8 to 10, 15",
+        "derived_from_values": [
+         "answer"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "unit"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "unit",
+        "printed": [
+         "sq m"
+        ],
+        "derived_from_values": [
+         "unit"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "area_problem"
+    ]
+   }
+  ],
+  "lists": {},
+  "banks": {},
+  "value_derivations": [],
+  "reason_kinds": {
+   "arithmetic": "a number the generator computes from the generated values named in src (a half, a sum, a difference, a running total, a place's digit). Its range is the image of those values' own domains; whether the arithmetic is RIGHT is the hint contract's (§16) and §1E's to check, not §14's."
+  }
+ }
+}

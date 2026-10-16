@@ -1,0 +1,1281 @@
+{
+ "schema_version": 2,
+ "hash_version": 8,
+ "node_id": "mat_g1_na_q3_5",
+ "record_id": "stem-batch442-S442-013-confirming-r1",
+ "role": "confirming",
+ "confirms": "stem-batch442-S442-013-first",
+ "item_id": "S442-013",
+ "lc_hash": "064cfc6fefec469b8049359e949ca88c56540fe1dfd935521cf6fa1fcf5f718b",
+ "judged_by": "blind-stem-judge-claude-haiku-batch442-S442-013-confirming-r1",
+ "dispatch_id": "stem-batch442-S442-013-confirming-r1",
+ "filed_at": "2026-10-16T10:18:53Z",
+ "delivery": "Claude Code Agent tool, model=haiku, subagent_type=general-purpose; the judge was told to read only local_only/scratch/h4c/prompts/S442-013.prompt.txt (tests/stem_file.py prompt output, item S442-013; no lc id, no key or packets file in that directory) and reply with what it asks; dispatched with CLAUDE.md loaded (ruling 29). Blindness is a prompt contract, audited from the subagent transcript.",
+ "tool_uses_by_judge": "From the subagent transcript: 1 tool use(s), all Read of its own prompt file (1179 lines, every line read); no other tool, path or search. Model reported in the transcript: claude-haiku-5-5.",
+ "dispatch_prompt_digest": "0c01c15a5b6e3730d1a4e67662e147e7ee5cea2f0f6c12d89e1aa59ae6c01062",
+ "raw_reply": "{\"item\": \"S442-013\", \"clauses\": {\"subtract_numbers\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F08\", \"template\": \"{da} {db} Subtract the place values, then find what's left: what is {a} − {b}?\", \"reasoning\": \"F08 is the question text that asks the learner to subtract a from b, with the place-value prompt. Its a and b come from the repeats of the generated values, so the subtraction task is produced.\"}, \"expressing_tens_ones\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F03\", \"template\": \"{n} is {p0} and {p1}.\", \"reasoning\": \"F03 prints a number as tens and ones (p0 and p1 are nested F02 place-word text), which is the expression of minuends and subtrahends as tens and ones. Its word domain carries the flaw recorded under failing_families, so this verdict is only as sound as F02.\"}, \"expanded_form\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F03\", \"template\": \"{n} is {p0} and {p1}.\", \"reasoning\": \"The expanded-form representation is the place-value split printed by F03. No template prints the words expanded form itself, but the representation is produced.\"}, \"without_regrouping\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F05\", \"template\": \"Subtract the ones: {oa} − {ob} = {od}.\", \"reasoning\": \"F05 shows the ones-place subtraction step, which is the no-regrouping case. The declared bound regrouping false supports it. However, F06 can print a regrouping note in hints, which is recorded under failing_families and does not change this producibility verdict.\"}}, \"failing_families\": [\"F02\", \"F06\"], \"failing_templates\": [\"{count} {word}\", \"Subtract the tens: {ta} − {tb} = {td}.{note}\"], \"overall\": \"FAIL\", \"reasoning\": \"F06 note domain (one of the generator's own choices, basis subtraction tens-step note) has members \\\" (1 ten became 10 ones)\\\" and \\\" (after regrouping)\\\". The word regrouping is in NOT_YET_KNOWN, and describing a ten becoming ten ones is regrouping, which this lc excludes. The note domain has no link to task_type or to declared_bounds regrouping false, so the note can print in any hint. F02 (template \\\"{count} {word}\\\") word domain (decompose_to_places place words) has members hundred and hundreds. The plural hundreds is in NOT_YET_KNOWN and is beyond this lc's gates. Its count is computed from a and b, and the declared number_range variants of 1000 and 10000 make hundreds reachable, although no observed render printed it. F02 is nested in F03 and F04, which print inside the question and statement families F08, F10, F13 and F14, so the learner sees the flaw there too. F03 and F04 are carriers and are not listed separately as failing because their own domains are sound.\"}",
+ "raw_reply_digest": "14f9a127f06b4720d488fce63cdf57e074354711696766f50bfc44bb46b48f4d",
+ "packet_digest": "f5da89f5a61c5d393867577f4ab4106b117030b65cf77f8b9cdbff7cb3d45914",
+ "family_keys": {
+  "F01": {
+   "source": "backend/app/practice_gen/dna/base.py [gate difference]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F02": {
+   "source": "backend/app/practice_gen/dna/na/addition.py",
+   "first_site": "backend/app/practice_gen/dna/na/addition.py:143",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F03": {
+   "source": "backend/app/practice_gen/dna/na/addition.py",
+   "first_site": "backend/app/practice_gen/dna/na/addition.py:158",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F04": {
+   "source": "backend/app/practice_gen/dna/na/addition.py",
+   "first_site": "backend/app/practice_gen/dna/na/addition.py:156",
+   "renderer": "",
+   "path": [
+    2,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F05": {
+   "source": "backend/app/practice_gen/dna/na/subtraction.py",
+   "first_site": "backend/app/practice_gen/dna/na/subtraction.py:956",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {
+    "oa,ob,od": [
+     1,
+     null
+    ]
+   }
+  },
+  "F06": {
+   "source": "backend/app/practice_gen/dna/na/subtraction.py",
+   "first_site": "backend/app/practice_gen/dna/na/subtraction.py:967",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {
+    "ta,tb,td": [
+     1,
+     null
+    ]
+   }
+  },
+  "F07": {
+   "source": "backend/app/practice_gen/dna/na/subtraction.py",
+   "first_site": "backend/app/practice_gen/dna/na/subtraction.py:927",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F08": {
+   "source": "backend/app/practice_gen/dna/na/subtraction.py",
+   "first_site": "backend/app/practice_gen/dna/na/subtraction.py:765",
+   "renderer": "",
+   "path": [
+    4,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F09": {
+   "source": "backend/app/practice_gen/dna/na/subtraction.py",
+   "first_site": "backend/app/practice_gen/dna/na/subtraction.py:973",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F10": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_cloze.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_cloze.py:82",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F11": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_error_detect.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_error_detect.py:387",
+   "renderer": "",
+   "path": [
+    3,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F12": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_error_detect.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_error_detect.py:367",
+   "renderer": "",
+   "path": [
+    3,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F13": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_error_detect.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_error_detect.py:162",
+   "renderer": "",
+   "path": [
+    3,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F14": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_true_false.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_true_false.py:186",
+   "renderer": "",
+   "path": [
+    6,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F15": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_true_false.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_true_false.py:430",
+   "renderer": "",
+   "path": [
+    6,
+    null
+   ],
+   "first_render_repeating": {}
+  }
+ },
+ "packet": {
+  "item": "S442-013",
+  "competency": {
+   "text": "Subtract numbers by expressing minuends and subtrahends as tens and ones (expanded form), without regrouping.",
+   "grade": 1,
+   "quarter": 3
+  },
+  "clauses": [
+   {
+    "id": "subtract_numbers",
+    "kind": "task",
+    "clause": "Subtract numbers"
+   },
+   {
+    "id": "expressing_tens_ones",
+    "kind": "task",
+    "clause": "expressing minuends and subtrahends as tens and ones"
+   },
+   {
+    "id": "expanded_form",
+    "kind": "representation",
+    "clause": "expanded form"
+   },
+   {
+    "id": "without_regrouping",
+    "kind": "property",
+    "clause": "without regrouping"
+   }
+  ],
+  "vocabulary": {
+   "student_vocab": [],
+   "curriculum_vocab": [
+    "minuend",
+    "subtrahend"
+   ],
+   "introduces_vocab": [
+    "minuend",
+    "subtrahend"
+   ],
+   "cumulative_vocab": [
+    "1 less",
+    "1 more",
+    "10th",
+    "1st",
+    "2nd",
+    "3rd",
+    "4th",
+    "5th",
+    "6th",
+    "7th",
+    "8th",
+    "9th",
+    "addition",
+    "bigger",
+    "compare",
+    "corner",
+    "count",
+    "difference",
+    "digit",
+    "equal",
+    "expanded form",
+    "group",
+    "how many",
+    "left",
+    "length",
+    "less",
+    "measure",
+    "missing number",
+    "more",
+    "number",
+    "number line",
+    "numeral",
+    "ones",
+    "place value",
+    "rectangle",
+    "same",
+    "side",
+    "skip counting",
+    "smaller",
+    "square",
+    "subtraction",
+    "sum",
+    "tens",
+    "total",
+    "triangle"
+   ],
+   "NOT_YET_KNOWN": [
+    "L",
+    "a.m.",
+    "analog clock",
+    "area",
+    "axis",
+    "balance scale",
+    "bar graph",
+    "bill",
+    "calendar",
+    "capacity",
+    "centavo",
+    "centimeter",
+    "certain",
+    "circle",
+    "clockwise",
+    "cm",
+    "coin",
+    "counter-clockwise",
+    "data",
+    "decreasing pattern",
+    "denominator",
+    "division",
+    "elapsed time",
+    "equal groups",
+    "equally likely",
+    "estimate",
+    "even",
+    "fraction",
+    "g",
+    "gram",
+    "half",
+    "half hour",
+    "half turn",
+    "hour",
+    "hundreds",
+    "impossible",
+    "improper fraction",
+    "increasing pattern",
+    "intersecting",
+    "kg",
+    "kilogram",
+    "less likely",
+    "line",
+    "line of symmetry",
+    "line segment",
+    "liter",
+    "m",
+    "mL",
+    "mass",
+    "meter",
+    "milliliter",
+    "minute",
+    "missing term",
+    "more likely",
+    "multiplication",
+    "nearest hundred",
+    "nearest ten",
+    "nearest thousand",
+    "numerator",
+    "odd",
+    "order of operations",
+    "outcome",
+    "p.m.",
+    "parallel",
+    "pattern",
+    "perimeter",
+    "perpendicular",
+    "peso",
+    "pictograph",
+    "point",
+    "product",
+    "quarter",
+    "quarter hour",
+    "quarter turn",
+    "quotient",
+    "ray",
+    "regrouping",
+    "remainder",
+    "repeating pattern",
+    "round",
+    "ruler",
+    "scale",
+    "similar fractions",
+    "slide",
+    "solid figure",
+    "sq. cm",
+    "square centimeter",
+    "symmetry",
+    "table",
+    "ten thousand",
+    "ten-thousands place",
+    "thousand",
+    "translation",
+    "whole",
+    "₱"
+   ],
+   "sentence_max_words": 15,
+   "number_format": "no commas, no thousands separator"
+  },
+  "declared_variants": [
+   [
+    "context",
+    "pure"
+   ],
+   [
+    "context",
+    "word_problem"
+   ],
+   [
+    "number_range",
+    10000
+   ],
+   [
+    "number_range",
+    1000
+   ],
+   [
+    "number_range",
+    100
+   ],
+   [
+    "number_range",
+    20
+   ],
+   [
+    "spine",
+    "comparing"
+   ],
+   [
+    "spine",
+    "taking_away"
+   ],
+   [
+    "structure",
+    "change_unknown"
+   ],
+   [
+    "structure",
+    "result_unknown"
+   ],
+   [
+    "structure",
+    "start_unknown"
+   ]
+  ],
+  "declared_bounds": [
+   {
+    "task_type": "expanded_form",
+    "regrouping": false
+   }
+  ],
+  "families": [
+   {
+    "id": "F01",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F09"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='difference')",
+        "requires_vocab": "difference",
+        "prints": "the difference",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F02",
+    "template": "{count} {word}",
+    "appears_in": [],
+    "nested_in": [
+     "F03",
+     "F04"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "count"
+      ],
+      "domains": [
+       {
+        "domain": "a number computed by the generator",
+        "reason": "arithmetic",
+        "derived_from_values": [
+         "a",
+         "b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "word"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "decompose_to_places place words",
+        "members": [
+         "hundred",
+         "hundreds",
+         "one",
+         "ones",
+         "ten",
+         "tens"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F03",
+    "template": "{n} is {p0} and {p1}.",
+    "appears_in": [],
+    "nested_in": [
+     "F08",
+     "F10",
+     "F13",
+     "F14"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "n"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "11 to 16, 18 to 22, 24 to 29, 31 to 48, 50 to 52, 54 to 57, 60 to 66, 70 to 72, 74 to 75, 80 to 81, 84 to 85, 90, 92 to 93",
+        "derived_from_values": [
+         "a"
+        ]
+       },
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "10 to 15, 20, 30, 40, 50, 60, 80",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "p0",
+       "p1"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F02"
+        ]
+       }
+      ],
+      "distinct_in_every_render": true
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F04",
+    "template": "{n} is {p0}.",
+    "appears_in": [],
+    "nested_in": [
+     "F08",
+     "F10",
+     "F13",
+     "F14"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "n"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "0 to 5",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "p0"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F02"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F05",
+    "template": "Subtract the ones: {oa} − {ob} = {od}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "oa",
+       "ob",
+       "od"
+      ],
+      "domains": [
+       {
+        "domain": "a number computed by the generator",
+        "reason": "arithmetic",
+        "derived_from_values": [
+         "a",
+         "b"
+        ]
+       }
+      ],
+      "distinct_in_every_render": false
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F06",
+    "template": "Subtract the tens: {ta} − {tb} = {td}.{note}",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "ta",
+       "tb",
+       "td"
+      ],
+      "domains": [
+       {
+        "domain": "a number computed by the generator",
+        "reason": "arithmetic",
+        "derived_from_values": [
+         "a",
+         "b"
+        ]
+       }
+      ],
+      "distinct_in_every_render": false
+     },
+     {
+      "slots": [
+       "note"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "subtraction tens-step note",
+        "members": [
+         " (1 ten became 10 ones)",
+         " (after regrouping)",
+         ""
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F07",
+    "template": "We are subtracting {b} from {a}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "0 to 5, 10 to 15, 20, 30, 40, 50, 60, 80",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "11 to 16, 18 to 22, 24 to 29, 31 to 48, 50 to 52, 54 to 57, 60 to 66, 70 to 72, 74 to 75, 80 to 81, 84 to 85, 90, 92 to 93",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F08",
+    "template": "{da} {db} Subtract the place values, then find what's left: what is {a} − {b}?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "da"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F03"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "db"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F03",
+         "F04"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "11, 13 to 16, 19 to 20, 22, 28 to 29, 32, 34 to 35, 39 to 40, 42, 45 to 47, 51 to 52, 54 to 55, 57, 60 to 62, 64, 70, 72, 74 to 75, 80, 84, 90, 93",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "0 to 1, 3, 5, 10, 12, 20, 30, 50, 60",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F09",
+    "template": "{label} of {a} − {b} = {result}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "label"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F01"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "11 to 16, 18 to 22, 24 to 29, 31 to 48, 50 to 52, 54 to 57, 60 to 66, 70 to 72, 74 to 75, 80 to 81, 84 to 85, 90, 92 to 93",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "0 to 5, 10 to 15, 20, 30, 40, 50, 60, 80",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "result"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "result",
+        "printed_runs": "1 to 6, 8, 10 to 16, 18 to 48, 50 to 52, 54 to 57, 60 to 64, 66, 70, 74, 80 to 81, 84 to 85, 92 to 93",
+        "derived_from_values": [
+         "result"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F10",
+    "template": "{da} {db} Subtract the place values, then find what's left: {a} − {b} = ___",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "da"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F03"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "db"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F03",
+         "F04"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "11 to 16, 18, 21 to 22, 24 to 28, 31 to 33, 35 to 37, 40 to 43, 45, 48, 50, 52, 54 to 56, 62 to 64, 70, 72, 75, 80 to 81, 84 to 85, 90, 92 to 93",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "0 to 2, 10 to 12, 15, 20, 30, 40, 60, 80",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F11",
+    "template": "{actor}",
+    "appears_in": [
+     "format_data.actor_name"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "actor"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "_FILIPINO_NAMES"
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F12",
+    "template": "{actor} solved: \"{problem}\". {actor} says the {miss} is {answer}. Is {actor} correct?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "actor"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "_FILIPINO_NAMES"
+       }
+      ]
+     },
+     {
+      "slots": [
+       "problem"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F13"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the keyed answer and the distractor candidates",
+        "members": [
+         0,
+         1,
+         10,
+         100,
+         11,
+         126,
+         17,
+         18,
+         19,
+         2,
+         25,
+         26,
+         27,
+         28,
+         3,
+         33,
+         34,
+         35,
+         4,
+         41,
+         5,
+         6,
+         61,
+         62,
+         63,
+         7,
+         70,
+         79,
+         8,
+         80,
+         81,
+         9,
+         94
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "miss"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "vocab gate 'missing number'",
+        "requires_vocab": "missing number",
+        "prints": "missing number",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F13",
+    "template": "{da} {db} Subtract the place values, then find what's left: {a} − {b} = {r}",
+    "appears_in": [
+     "format_data.problem_expression"
+    ],
+    "nested_in": [
+     "F12"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "da"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F03"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "db"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F03",
+         "F04"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "12, 14 to 16, 18 to 19, 21 to 22, 26, 28, 32 to 34, 36, 38, 40, 43, 45 to 46, 50, 55, 57, 60 to 66, 70 to 72, 74 to 75, 81, 84, 90",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "0 to 1, 4, 10 to 15, 20, 30, 50, 60",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "r"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the blank for the unknown blank_target",
+        "members": [
+         "___"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F14",
+    "template": "{da} {db} Subtract the place values, then find what's left: {a} − {b} = {v}",
+    "appears_in": [
+     "format_data.statement"
+    ],
+    "nested_in": [
+     "F15"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "da"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F03"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "db"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F03",
+         "F04"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "11 to 12, 15, 18, 21 to 22, 24 to 25, 27, 31 to 33, 35, 40 to 42, 44 to 45, 50 to 51, 55, 60 to 66, 70 to 72, 75, 80",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "0 to 1, 10 to 12, 15, 20, 30, 60",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "v"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the distractors shaped like the keyed answer",
+        "members": [
+         126,
+         23,
+         25,
+         33,
+         35,
+         43,
+         45,
+         5,
+         50,
+         52,
+         61,
+         63,
+         7,
+         94
+        ]
+       },
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the keyed answer (a true statement)",
+        "members": [
+         11,
+         2,
+         63
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F15",
+    "template": "{statement}. True or False?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "statement"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F14"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   }
+  ],
+  "lists": {
+   "_FILIPINO_NAMES": [
+    "Noel",
+    "Maria",
+    "Jose",
+    "Ana",
+    "Carlo",
+    "Liza",
+    "Manny",
+    "Grace",
+    "Rico",
+    "Pia",
+    "Dante",
+    "Rosa"
+   ]
+  },
+  "banks": {},
+  "value_derivations": [],
+  "reason_kinds": {
+   "arithmetic": "a number the generator computes from the generated values named in src (a half, a sum, a difference, a running total, a place's digit). Its range is the image of those values' own domains; whether the arithmetic is RIGHT is the hint contract's (§16) and §1E's to check, not §14's."
+  }
+ }
+}

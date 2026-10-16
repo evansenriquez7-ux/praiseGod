@@ -1,0 +1,1410 @@
+{
+ "schema_version": 2,
+ "hash_version": 8,
+ "node_id": "mat_g3_na_q1_6",
+ "record_id": "stem-batch446-S446-003-confirming-r1",
+ "role": "confirming",
+ "confirms": "stem-batch446-S446-003-first",
+ "item_id": "S446-003",
+ "lc_hash": "423cc17ddac6264faa167dfce758421dec0a03c915499b1a97ce2de4d7cfa570",
+ "judged_by": "blind-stem-judge-claude-haiku-batch446-S446-003-confirming-r1",
+ "dispatch_id": "stem-batch446-S446-003-confirming-r1",
+ "filed_at": "2026-10-16T10:37:50Z",
+ "delivery": "Claude Code Agent tool, model=haiku, subagent_type=general-purpose; the judge was told to read only local_only/scratch/h4c/prompts/S446-003.prompt.txt (tests/stem_file.py prompt output, item S446-003; no lc id, no key or packets file in that directory) and reply with what it asks; dispatched with CLAUDE.md loaded (ruling 29). Blindness is a prompt contract, audited from the subagent transcript.",
+ "tool_uses_by_judge": "From the subagent transcript: 1 tool use(s), all Read of its own prompt file (1318 lines, every line read); no other tool, path or search. Model reported in the transcript: claude-haiku-5-5.",
+ "dispatch_prompt_digest": "58752b47a4c55409b1e7c042d9a982066aa2ba2d04f534c7bc6c1d9c52f468b6",
+ "raw_reply": "{\"item\": \"S446-003\", \"clauses\": {\"order\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F11\", \"template\": \"Arrange these numbers from {direction_word}: {join}\", \"reasoning\": \"F11 is a question_text that asks the learner to arrange the listed numbers, and its direction_word offers both orders, so the ordering task is produced.\"}, \"numbers\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F11\", \"template\": \"Arrange these numbers from {direction_word}: {join}\", \"reasoning\": \"The join slot of F11 draws its values from the sequence families F13, F14 and F15 (3, 4 and 5 values, all drawn from the generator's numbers to order), so the learner is asked to order numbers.\"}, \"up_to_10000\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F11\", \"template\": \"Arrange these numbers from {direction_word}: {join}\", \"reasoning\": \"Offered four-digit values run from the 3000s to 9706 (F13, F14, F15 members), so the range is produced at four digits. No offered value reaches 10 000 or the 9707 to 9999 band, so the top of the range is named by the clause but never offered. This is noted as a scope gap and does not by itself make the clause unproducible.\"}, \"smallest_to_largest\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F11\", \"template\": \"Arrange these numbers from {direction_word}: {join}\", \"reasoning\": \"direction_word offers smallest to largest in F11, and F11 is the question the learner answers.\"}, \"vice_versa\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F11\", \"template\": \"Arrange these numbers from {direction_word}: {join}\", \"reasoning\": \"The same F11 template offers largest to smallest, so the reverse ordering is produced from the same family.\"}}, \"failing_families\": [\"F01\", \"F02\", \"F04\", \"F05\", \"F06\", \"F07\", \"F08\", \"F09\", \"F10\", \"F13\", \"F14\", \"F15\"], \"failing_templates\": [\"Find the largest number first, then the next largest.\", \"Find the smallest number first, then the next smallest.\", \"Ordered from greatest to least: {listed}.\", \"Ordered from least to greatest: {listed}.\", \"{actor} counted {item_word} collected by {len} friends: {join}. Arrange the counts from {direction_word}.\", \"{p0}, {p1}, {p2}\", \"{p0}, {p1}, {p2}, {p3}\", \"{p0}, {p1}, {p2}, {p3}, {p4}\", \"{member}\"], \"overall\": \"FAIL\", \"reasoning\": \"F01 and F02 are hints whose only declared selector is task_type, while direction is a free declared variant, so a largest-first hint can accompany a smallest-to-largest problem and the reverse. F04 prints its listed slot from F07 to F10 with no derived_from_values, so nothing ties the printed list to the stated greatest-to-least order; the F10 members include lists that are not in that order. F05 fixes the label least to greatest while its listed slot is derived from direction, and template choice is by task_type only, so a descending problem can carry the least-to-greatest label over a list in descending order. F06 has two faults: item_word can print a singular noun with a plural count, since the item_word domain is the drawn pair with no link to len, and the join slot draws from F07 to F09 (3, 4 or 5 values) with no derived link to len, so the stated number of friends and the number of values can disagree. F07, F08, F09, F10, F13, F14 and F15 print four-digit values without the thousands space separator that the item's number_format requires (for example the member lists in F13, F14 and F15 and the F10 member strings). Family F03 and F11 pass on their own text; F11 is failing only through the nested families it prints.\"}",
+ "raw_reply_digest": "4b311dc049d0e81e7ad7277e79cc9e119bad6d41b747c1b036d18171233f36e3",
+ "packet_digest": "b2a2c59aeee796fd43c332e2ee2fb552a023075e1c923ab5ff17fe5b87ecbc5d",
+ "family_keys": {
+  "F01": {
+   "source": "backend/app/practice_gen/dna/na/comparing_ordering.py",
+   "first_site": "backend/app/practice_gen/dna/na/comparing_ordering.py:399",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F02": {
+   "source": "backend/app/practice_gen/dna/na/comparing_ordering.py",
+   "first_site": "backend/app/practice_gen/dna/na/comparing_ordering.py:402",
+   "renderer": "",
+   "path": [
+    2,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F03": {
+   "source": "backend/app/practice_gen/dna/na/comparing_ordering.py",
+   "first_site": "backend/app/practice_gen/dna/na/comparing_ordering.py:397",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F04": {
+   "source": "backend/app/practice_gen/dna/na/comparing_ordering.py",
+   "first_site": "backend/app/practice_gen/dna/na/comparing_ordering.py:400",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F05": {
+   "source": "backend/app/practice_gen/dna/na/comparing_ordering.py",
+   "first_site": "backend/app/practice_gen/dna/na/comparing_ordering.py:403",
+   "renderer": "",
+   "path": [
+    2,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F06": {
+   "source": "backend/app/practice_gen/dna/na/comparing_ordering.py",
+   "first_site": "backend/app/practice_gen/dna/na/comparing_ordering.py:325",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F07": {
+   "source": "backend/app/practice_gen/dna/na/comparing_ordering.py",
+   "first_site": "backend/app/practice_gen/dna/na/comparing_ordering.py:325",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F08": {
+   "source": "backend/app/practice_gen/dna/na/comparing_ordering.py",
+   "first_site": "backend/app/practice_gen/dna/na/comparing_ordering.py:325",
+   "renderer": "",
+   "path": [
+    3,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F09": {
+   "source": "backend/app/practice_gen/dna/na/comparing_ordering.py",
+   "first_site": "backend/app/practice_gen/dna/na/comparing_ordering.py:396",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F10": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:39",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F11": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_ordering.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_ordering.py:156",
+   "renderer": "",
+   "path": [
+    2,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F12": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_ordering.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_ordering.py:137",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F13": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_ordering.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_ordering.py:156",
+   "renderer": "",
+   "path": [
+    2,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F14": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_ordering.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_ordering.py:156",
+   "renderer": "",
+   "path": [
+    7,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F15": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_ordering.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_ordering.py:156",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {}
+  }
+ },
+ "packet": {
+  "item": "S446-003",
+  "competency": {
+   "text": "Order numbers up to 10 000 from smallest to largest, and vice versa.",
+   "grade": 3,
+   "quarter": 1
+  },
+  "clauses": [
+   {
+    "id": "order",
+    "kind": "task",
+    "clause": "Order"
+   },
+   {
+    "id": "numbers",
+    "kind": "object",
+    "clause": "numbers"
+   },
+   {
+    "id": "up_to_10000",
+    "kind": "range",
+    "clause": "up to 10 000"
+   },
+   {
+    "id": "smallest_to_largest",
+    "kind": "property",
+    "clause": "smallest to largest"
+   },
+   {
+    "id": "vice_versa",
+    "kind": "property",
+    "clause": "vice versa"
+   }
+  ],
+  "vocabulary": {
+   "student_vocab": [],
+   "curriculum_vocab": [],
+   "introduces_vocab": [],
+   "cumulative_vocab": [
+    "1 less",
+    "1 more",
+    "10th",
+    "1st",
+    "2nd",
+    "3rd",
+    "4th",
+    "5th",
+    "6th",
+    "7th",
+    "8th",
+    "9th",
+    "a.m.",
+    "addition",
+    "analog clock",
+    "bigger",
+    "bill",
+    "calendar",
+    "centavo",
+    "centimeter",
+    "circle",
+    "clockwise",
+    "cm",
+    "coin",
+    "compare",
+    "corner",
+    "count",
+    "counter-clockwise",
+    "data",
+    "decreasing pattern",
+    "denominator",
+    "difference",
+    "digit",
+    "division",
+    "elapsed time",
+    "equal",
+    "equal groups",
+    "estimate",
+    "even",
+    "expanded form",
+    "fraction",
+    "group",
+    "half",
+    "half hour",
+    "half turn",
+    "hour",
+    "how many",
+    "hundreds",
+    "increasing pattern",
+    "left",
+    "length",
+    "less",
+    "m",
+    "measure",
+    "meter",
+    "minute",
+    "missing number",
+    "more",
+    "multiplication",
+    "nearest hundred",
+    "nearest ten",
+    "nearest thousand",
+    "number",
+    "number line",
+    "numeral",
+    "numerator",
+    "odd",
+    "ones",
+    "p.m.",
+    "pattern",
+    "perimeter",
+    "peso",
+    "pictograph",
+    "place value",
+    "product",
+    "quarter",
+    "quarter hour",
+    "quarter turn",
+    "quotient",
+    "rectangle",
+    "regrouping",
+    "repeating pattern",
+    "round",
+    "ruler",
+    "same",
+    "scale",
+    "side",
+    "similar fractions",
+    "skip counting",
+    "slide",
+    "smaller",
+    "solid figure",
+    "square",
+    "subtraction",
+    "sum",
+    "table",
+    "ten thousand",
+    "ten-thousands place",
+    "tens",
+    "thousand",
+    "total",
+    "translation",
+    "triangle",
+    "whole",
+    "₱"
+   ],
+   "NOT_YET_KNOWN": [
+    "L",
+    "area",
+    "axis",
+    "balance scale",
+    "bar graph",
+    "capacity",
+    "certain",
+    "equally likely",
+    "g",
+    "gram",
+    "impossible",
+    "improper fraction",
+    "intersecting",
+    "kg",
+    "kilogram",
+    "less likely",
+    "line",
+    "line of symmetry",
+    "line segment",
+    "liter",
+    "mL",
+    "mass",
+    "milliliter",
+    "missing term",
+    "more likely",
+    "order of operations",
+    "outcome",
+    "parallel",
+    "perpendicular",
+    "point",
+    "ray",
+    "remainder",
+    "sq. cm",
+    "square centimeter",
+    "symmetry"
+   ],
+   "sentence_max_words": 22,
+   "number_format": "space separator for thousands (e.g. 1 000)"
+  },
+  "declared_variants": [
+   [
+    "context",
+    "pure"
+   ],
+   [
+    "context",
+    "word_problem"
+   ],
+   [
+    "direction",
+    "ascending"
+   ],
+   [
+    "direction",
+    "descending"
+   ],
+   [
+    "proximity",
+    "close_together"
+   ],
+   [
+    "proximity",
+    "far_apart"
+   ],
+   [
+    "task_type",
+    "order_sequence"
+   ]
+  ],
+  "declared_bounds": [
+   {
+    "task_type": "order_sequence",
+    "max_value": [
+     1,
+     10000
+    ]
+   }
+  ],
+  "families": [
+   {
+    "id": "F01",
+    "template": "Find the largest number first, then the next largest.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F02",
+    "template": "Find the smallest number first, then the next smallest.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F03",
+    "template": "Numbers to order: {join}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "join"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F07",
+         "F08",
+         "F09",
+         "F13"
+        ],
+        "derived_from_values": [
+         "numbers"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F04",
+    "template": "Ordered from greatest to least: {listed}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "listed"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F07",
+         "F08",
+         "F09",
+         "F10"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F05",
+    "template": "Ordered from least to greatest: {listed}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "listed"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F07",
+         "F08",
+         "F09"
+        ],
+        "derived_from_values": [
+         "direction",
+         "numbers"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F06",
+    "template": "{actor} counted {item_word} collected by {len} friends: {join}. Arrange the counts from {direction_word}.",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "actor"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the word-problem actors",
+        "members": [
+         "Ana",
+         "Ben",
+         "Jose",
+         "Kuya Pat",
+         "Liza",
+         "Maria"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "item_word"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the drawn item pair",
+        "members": [
+         "marble",
+         "marbles",
+         "pencil",
+         "pencils",
+         "seashell",
+         "seashells",
+         "sticker",
+         "stickers",
+         "storybook",
+         "storybooks"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "len"
+      ],
+      "domains": [
+       {
+        "domain": "a number computed by the generator",
+        "reason": "arithmetic",
+        "derived_from_values": [
+         "numbers"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "join"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F07",
+         "F08",
+         "F09"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "direction_word"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the two orders",
+        "members": [
+         "largest to smallest",
+         "smallest to largest"
+        ],
+        "derived_from_values": [
+         "direction"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "context",
+     "task_type"
+    ]
+   },
+   {
+    "id": "F07",
+    "template": "{p0}, {p1}, {p2}",
+    "appears_in": [
+     "distractors"
+    ],
+    "nested_in": [
+     "F03",
+     "F04",
+     "F05",
+     "F06",
+     "F11"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "p0",
+       "p1",
+       "p2"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the numbers to order",
+        "members": [
+         102,
+         1092,
+         1098,
+         1099,
+         1293,
+         1298,
+         1305,
+         2394,
+         2402,
+         2405,
+         2594,
+         2597,
+         2610,
+         4729,
+         5501,
+         5509,
+         91,
+         94
+        ]
+       },
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "values['numbers']",
+        "members": [
+         102,
+         1092,
+         1098,
+         1099,
+         1293,
+         1298,
+         1305,
+         1504,
+         2394,
+         2402,
+         2405,
+         2594,
+         2597,
+         2610,
+         2771,
+         3290,
+         3292,
+         3299,
+         3796,
+         3799,
+         3810,
+         4597,
+         4599,
+         4610,
+         4729,
+         5290,
+         5297,
+         5302,
+         5501,
+         5509,
+         6796,
+         6802,
+         6806,
+         6809,
+         6810,
+         7095,
+         7096,
+         7891,
+         7898,
+         7905,
+         91,
+         94,
+         9592,
+         9601,
+         9691,
+         9695,
+         9706
+        ],
+        "derived_from_values": [
+         "direction",
+         "numbers"
+        ]
+       }
+      ],
+      "distinct_in_every_render": true
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F08",
+    "template": "{p0}, {p1}, {p2}, {p3}",
+    "appears_in": [
+     "distractors"
+    ],
+    "nested_in": [
+     "F03",
+     "F04",
+     "F05",
+     "F06"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "p0",
+       "p1",
+       "p2",
+       "p3"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the numbers to order",
+        "members": [
+         1095,
+         1097,
+         1107,
+         1109,
+         2394,
+         2401,
+         2405,
+         2407,
+         2408,
+         2409,
+         2410,
+         794,
+         797,
+         799,
+         805
+        ]
+       },
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "values['numbers']",
+        "members": [
+         1095,
+         1097,
+         1107,
+         1109,
+         2394,
+         2401,
+         2405,
+         2407,
+         2408,
+         2409,
+         2410,
+         3191,
+         3192,
+         3202,
+         3210,
+         5390,
+         5396,
+         5409,
+         5410,
+         5492,
+         5494,
+         5499,
+         5500,
+         5503,
+         5506,
+         5509,
+         5697,
+         5704,
+         5706,
+         5709,
+         6492,
+         6496,
+         6498,
+         6499,
+         7496,
+         7503,
+         7507,
+         7509,
+         794,
+         797,
+         799,
+         805,
+         9093,
+         9098,
+         9100,
+         9110,
+         9590,
+         9597,
+         9604,
+         9609
+        ],
+        "derived_from_values": [
+         "direction",
+         "numbers"
+        ]
+       }
+      ],
+      "distinct_in_every_render": true
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F09",
+    "template": "{p0}, {p1}, {p2}, {p3}, {p4}",
+    "appears_in": [
+     "distractors"
+    ],
+    "nested_in": [
+     "F03",
+     "F04",
+     "F05",
+     "F06"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "p0",
+       "p1",
+       "p2",
+       "p3",
+       "p4"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the numbers to order",
+        "members": [
+         1596,
+         1599,
+         1605,
+         1606,
+         1610,
+         1796,
+         1797,
+         1800,
+         1805,
+         1810,
+         2090,
+         2096,
+         2097,
+         2102,
+         2108,
+         2291,
+         2292,
+         2294,
+         2296,
+         2297,
+         5195,
+         5198,
+         5199,
+         5201,
+         5207
+        ]
+       },
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "values['numbers']",
+        "members": [
+         1596,
+         1599,
+         1605,
+         1606,
+         1610,
+         1796,
+         1797,
+         1800,
+         1805,
+         1810,
+         2090,
+         2096,
+         2097,
+         2102,
+         2108,
+         2291,
+         2292,
+         2294,
+         2296,
+         2297,
+         3590,
+         3597,
+         3599,
+         3603,
+         3604,
+         4495,
+         4496,
+         4504,
+         4506,
+         4508,
+         4590,
+         4594,
+         4595,
+         4598,
+         4600,
+         4690,
+         4694,
+         4701,
+         4702,
+         4705,
+         5195,
+         5198,
+         5199,
+         5201,
+         5207,
+         5689,
+         5695,
+         5703,
+         5704,
+         5707,
+         6190,
+         6197,
+         6204,
+         6206,
+         6210,
+         6391,
+         6392,
+         6393,
+         6401,
+         6404,
+         9190,
+         9192,
+         9199,
+         9203,
+         9208
+        ],
+        "derived_from_values": [
+         "direction",
+         "numbers"
+        ]
+       }
+      ],
+      "distinct_in_every_render": true
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F10",
+    "template": "{member}",
+    "appears_in": [
+     "distractors"
+    ],
+    "nested_in": [
+     "F04",
+     "F11"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "member"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "QuestionContext.distractors (the generator's own)",
+        "members": [
+         "102, 94, 91",
+         "1092, 1099, 1098",
+         "1095, 1109, 1107, 1097",
+         "1097, 1107, 1095, 1109",
+         "1099, 1092, 1098",
+         "1099, 1098, 1092",
+         "1109, 1107, 1097, 1095",
+         "1293, 1305, 1298",
+         "1298, 1305, 1293",
+         "1305, 1298, 1293",
+         "1504, 7096, 7095",
+         "1599, 1610, 1596, 1606, 1605",
+         "1606, 1605, 1596, 1610, 1599",
+         "1610, 1606, 1605, 1599, 1596",
+         "1796, 1800, 1810, 1805, 1797",
+         "1810, 1796, 1805, 1797, 1800",
+         "1810, 1805, 1800, 1797, 1796",
+         "2096, 2090, 2102, 2108, 2097",
+         "2096, 2108, 2102, 2097, 2090",
+         "2108, 2102, 2097, 2096, 2090",
+         "2291, 2294, 2292, 2297, 2296",
+         "2294, 2291, 2296, 2292, 2297",
+         "2297, 2296, 2294, 2292, 2291",
+         "2401, 2394, 2407, 2408",
+         "2402, 2405, 2394",
+         "2405, 2394, 2402",
+         "2405, 2402, 2394",
+         "2405, 2410, 2409, 2401",
+         "2407, 2408, 2394, 2401",
+         "2408, 2407, 2401, 2394",
+         "2409, 2401, 2405, 2410",
+         "2410, 2409, 2405, 2401",
+         "2597, 2594, 2610",
+         "2597, 2610, 2594",
+         "2610, 2597, 2594",
+         "3202, 3210, 3192, 3191",
+         "3210, 3202, 3191, 3192",
+         "3210, 3202, 3192, 3191",
+         "3290, 3299, 3292",
+         "3292, 3290, 3299",
+         "3299, 3292, 3290",
+         "3603, 3590, 3604, 3597, 3599",
+         "3604, 3603, 3597, 3599, 3590",
+         "3604, 3603, 3599, 3597, 3590",
+         "3796, 3810, 3799",
+         "3810, 3796, 3799",
+         "3810, 3799, 3796",
+         "4504, 4508, 4495, 4496, 4506",
+         "4506, 4508, 4495, 4496, 4504",
+         "4508, 4506, 4504, 4496, 4495",
+         "4594, 4590, 4595, 4598, 4600",
+         "4597, 4610, 4599",
+         "4598, 4594, 4600, 4590, 4595",
+         "4599, 4597, 4610",
+         "4600, 4598, 4595, 4594, 4590",
+         "4610, 4599, 4597",
+         "4694, 4690, 4705, 4702, 4701",
+         "4694, 4702, 4701, 4690, 4705",
+         "4705, 4702, 4701, 4694, 4690",
+         "4729, 5509, 5501",
+         "5195, 5198, 5207, 5199, 5201",
+         "5199, 5198, 5201, 5207, 5195",
+         "5207, 5201, 5199, 5198, 5195",
+         "5290, 5302, 5297",
+         "5302, 5290, 5297",
+         "5302, 5297, 5290",
+         "5396, 5390, 5409, 5410",
+         "5410, 5396, 5390, 5409",
+         "5410, 5409, 5396, 5390",
+         "5492, 5509, 5499, 5506",
+         "5494, 5499, 5503, 5500",
+         "5499, 5494, 5503, 5500",
+         "5499, 5506, 5509, 5492",
+         "5501, 5509, 4729",
+         "5503, 5500, 5499, 5494",
+         "5509, 5501, 4729",
+         "5509, 5506, 5499, 5492",
+         "5697, 5706, 5704, 5709",
+         "5697, 5709, 5706, 5704",
+         "5707, 5695, 5704, 5689, 5703",
+         "5707, 5704, 5689, 5695, 5703",
+         "5707, 5704, 5703, 5695, 5689",
+         "5709, 5706, 5704, 5697",
+         "6204, 6190, 6210, 6197, 6206",
+         "6204, 6206, 6210, 6197, 6190",
+         "6210, 6206, 6204, 6197, 6190",
+         "6391, 6392, 6401, 6404, 6393",
+         "6391, 6401, 6393, 6392, 6404",
+         "6404, 6401, 6393, 6392, 6391",
+         "6492, 6499, 6496, 6498",
+         "6496, 6498, 6492, 6499",
+         "6499, 6498, 6496, 6492",
+         "6796, 6806, 6802",
+         "6802, 6796, 6806",
+         "6806, 6802, 6796",
+         "6806, 6810, 6809",
+         "6810, 6806, 6809",
+         "6810, 6809, 6806",
+         "7095, 1504, 7096",
+         "7096, 7095, 1504",
+         "7503, 7509, 7507, 7496",
+         "7507, 7503, 7509, 7496",
+         "7509, 7507, 7503, 7496",
+         "7898, 7905, 7891",
+         "7905, 7891, 7898",
+         "7905, 7898, 7891",
+         "797, 805, 799, 794",
+         "805, 797, 799, 794",
+         "805, 799, 797, 794",
+         "9098, 9100, 9093, 9110",
+         "9100, 9110, 9093, 9098",
+         "9110, 9100, 9098, 9093",
+         "9192, 9208, 9190, 9199, 9203",
+         "9192, 9208, 9190, 9203, 9199",
+         "9208, 9203, 9199, 9192, 9190",
+         "94, 102, 91",
+         "94, 91, 102",
+         "9592, 2771, 9601",
+         "9597, 9609, 9590, 9604",
+         "9601, 2771, 9592",
+         "9601, 9592, 2771",
+         "9609, 9590, 9604, 9597",
+         "9609, 9604, 9597, 9590",
+         "9691, 9706, 9695",
+         "9695, 9706, 9691",
+         "9706, 9695, 9691"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F11",
+    "template": "Arrange these numbers from {direction_word}: {join}",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "direction_word"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the two orders",
+        "members": [
+         "largest to smallest",
+         "smallest to largest"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "join"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F07",
+         "F10",
+         "F13",
+         "F14",
+         "F15"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F12",
+    "template": "{direction}",
+    "appears_in": [
+     "format_data.direction"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "direction"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "fmt_ordering sort directions",
+        "members": [
+         "ascending",
+         "descending"
+        ],
+        "derived_from_values": [
+         "direction"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F13",
+    "template": "{p0}, {p1}, {p2}",
+    "appears_in": [
+     "distractors"
+    ],
+    "nested_in": [
+     "F03",
+     "F11"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "p0",
+       "p1",
+       "p2"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the sequence to order",
+        "members": [
+         1504,
+         2771,
+         3290,
+         3292,
+         3299,
+         3796,
+         3799,
+         3810,
+         4597,
+         4599,
+         4610,
+         5290,
+         5297,
+         5302,
+         6796,
+         6802,
+         6806,
+         6809,
+         6810,
+         7095,
+         7096,
+         7891,
+         7898,
+         7905,
+         9592,
+         9601,
+         9691,
+         9695,
+         9706
+        ]
+       }
+      ],
+      "distinct_in_every_render": true
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F14",
+    "template": "{p0}, {p1}, {p2}, {p3}",
+    "appears_in": [],
+    "nested_in": [
+     "F11"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "p0",
+       "p1",
+       "p2",
+       "p3"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the sequence to order",
+        "members": [
+         3191,
+         3192,
+         3202,
+         3210,
+         5390,
+         5396,
+         5409,
+         5410,
+         5492,
+         5494,
+         5499,
+         5500,
+         5503,
+         5506,
+         5509,
+         5697,
+         5704,
+         5706,
+         5709,
+         6492,
+         6496,
+         6498,
+         6499,
+         7496,
+         7503,
+         7507,
+         7509,
+         9093,
+         9098,
+         9100,
+         9110,
+         9590,
+         9597,
+         9604,
+         9609
+        ]
+       }
+      ],
+      "distinct_in_every_render": true
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F15",
+    "template": "{p0}, {p1}, {p2}, {p3}, {p4}",
+    "appears_in": [],
+    "nested_in": [
+     "F11"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "p0",
+       "p1",
+       "p2",
+       "p3",
+       "p4"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the sequence to order",
+        "members": [
+         3590,
+         3597,
+         3599,
+         3603,
+         3604,
+         4495,
+         4496,
+         4504,
+         4506,
+         4508,
+         4590,
+         4594,
+         4595,
+         4598,
+         4600,
+         4690,
+         4694,
+         4701,
+         4702,
+         4705,
+         5195,
+         5198,
+         5199,
+         5201,
+         5207,
+         5689,
+         5695,
+         5703,
+         5704,
+         5707,
+         6190,
+         6197,
+         6204,
+         6206,
+         6210,
+         6391,
+         6392,
+         6393,
+         6401,
+         6404,
+         9190,
+         9192,
+         9199,
+         9203,
+         9208
+        ]
+       }
+      ],
+      "distinct_in_every_render": true
+     }
+    ],
+    "template_chosen_by_values": []
+   }
+  ],
+  "lists": {},
+  "banks": {},
+  "value_derivations": [],
+  "reason_kinds": {
+   "arithmetic": "a number the generator computes from the generated values named in src (a half, a sum, a difference, a running total, a place's digit). Its range is the image of those values' own domains; whether the arithmetic is RIGHT is the hint contract's (§16) and §1E's to check, not §14's."
+  }
+ }
+}

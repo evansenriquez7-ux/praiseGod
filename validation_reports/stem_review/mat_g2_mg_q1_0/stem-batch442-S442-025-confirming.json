@@ -1,0 +1,749 @@
+{
+ "schema_version": 2,
+ "hash_version": 8,
+ "node_id": "mat_g2_mg_q1_0",
+ "record_id": "stem-batch442-S442-025-confirming",
+ "role": "confirming",
+ "confirms": "stem-batch442-S442-025-first",
+ "item_id": "S442-025",
+ "lc_hash": "af1eefaf7b3c33a8be378ffcb695fc6dae4fe10a5705d9d5f62ea4420c9a23c0",
+ "judged_by": "blind-stem-judge-claude-haiku-batch442-S442-025-confirming",
+ "dispatch_id": "stem-batch442-S442-025-confirming",
+ "filed_at": "2026-10-16T05:08:16Z",
+ "delivery": "Claude Code Agent tool, model=haiku, subagent_type=general-purpose; the judge was told to read only local_only/scratch/h4c/prompts/S442-025.prompt.txt (tests/stem_file.py prompt output, item S442-025; no lc id, no key or packets file in that directory) and reply with what it asks; dispatched with CLAUDE.md loaded (ruling 29). Blindness is a prompt contract, audited from the subagent transcript.",
+ "tool_uses_by_judge": "From the subagent transcript: 1 tool use(s), all Read of its own prompt file (697 lines, every line read); no other tool, path or search. Model reported in the transcript: claude-haiku-5-5.",
+ "dispatch_prompt_digest": "3e92317b88a03c6f5f97438382f1ca558748c36e79a8acb502dab0713cd05c52",
+ "raw_reply": "{\"item\": \"S442-025\", \"clauses\": {\"represent\": {\"verdict\": \"NOT_PRODUCIBLE\", \"family\": null, \"template\": null, \"reasoning\": \"No family prints a task to draw, show or model a circle, half circle or quarter circle. The question families (F11, bank rows) ask the learner to name a shape from a description, and the declared variants (compose_decompose, compare_shapes, count_sides_corners, identify_name) have no family whose text carries a representation task.\"}, \"describe\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F11\", \"template\": \"{question}\", \"reasoning\": \"Bank rows print descriptions of the shape, such as a shape with no corners and no straight sides, or a shape made from exactly half of a circle, and ask its name. This describes circles, half circles and quarter circles.\"}, \"circles\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F09\", \"template\": \"{answer}\", \"reasoning\": \"Bank field answer prints circle in row 1, whose question describes a shape with no corners and no straight sides.\"}, \"half_circles\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F09\", \"template\": \"{answer}\", \"reasoning\": \"Bank field answer prints half-circle in rows 2 and 4, whose questions describe exactly half of a circle and a circle divided into 2 equal parts.\"}, \"quarter_circles\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F09\", \"template\": \"{answer}\", \"reasoning\": \"Bank field answer prints quarter-circle in rows 3 and 5, whose questions describe exactly one quarter of a circle and a circle divided into 4 equal parts.\"}}, \"failing_families\": [\"F08\"], \"failing_templates\": [\"{member}\"], \"overall\": \"FAIL\", \"reasoning\": \"F08 template {member} draws from the generator's distractor list of six members: half-circle, quarter-circle, rectangle, square, triangle, whole circle. Its domain declares no exclusion of the keyed answer, and it is printed in format_data.options and distractors. Any circle-type member can therefore sit beside the same keyed answer: whole circle beside keyed answer circle, or half-circle beside keyed answer half-circle, or quarter-circle beside keyed answer quarter-circle. That gives two correct-looking choices or a duplicate choice. The bank rows never pair a distractor with its own answer, so the fault is in F08 and not in F10. The rest passes. The hint families F01, F03, F04 and F05 are true statements using sides, gated by side in cumulative_vocab, and corners, which is in cumulative_vocab. F02 is accurate. F06 prints circle, half-circle and quarter-circle, which match the bank answers. F09, F10 and F11 each read one bank row, and every row's question, keyed answer and distractors agree. No printed word is in NOT_YET_KNOWN.\"}",
+ "raw_reply_digest": "931da89544e6997547874673bd9b97347c2f2d6268d020fbc89313af362bf53a",
+ "packet_digest": "eb5f47eff54a6dd3153f5ce9113ade26334c767aac47b81d0926a58799a555f3",
+ "family_keys": {
+  "F01": {
+   "source": "backend/app/practice_gen/dna/mg/shapes_2d.py [gate side]",
+   "first_site": "backend/app/practice_gen/dna/mg/shapes_2d.py:820",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F02": {
+   "source": "backend/app/practice_gen/dna/mg/shapes_2d.py [gate side]",
+   "first_site": "backend/app/practice_gen/dna/mg/shapes_2d.py:817",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F03": {
+   "source": "backend/app/practice_gen/dna/mg/shapes_2d.py [gate side]",
+   "first_site": "backend/app/practice_gen/dna/mg/shapes_2d.py:816",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F04": {
+   "source": "backend/app/practice_gen/dna/mg/shapes_2d.py [gate side]",
+   "first_site": "backend/app/practice_gen/dna/mg/shapes_2d.py:815",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F05": {
+   "source": "backend/app/practice_gen/dna/mg/shapes_2d.py [gate side]",
+   "first_site": "backend/app/practice_gen/dna/mg/shapes_2d.py:814",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F06": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:32",
+   "renderer": "",
+   "path": [
+    4,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F07": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:51",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F08": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:39",
+   "renderer": "",
+   "path": [
+    4,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F09": {
+   "source": "backend/app/practice_gen/slots.py",
+   "first_site": "backend/app/practice_gen/slots.py:180",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F10": {
+   "source": "backend/app/practice_gen/slots.py",
+   "first_site": "backend/app/practice_gen/slots.py:182",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F11": {
+   "source": "backend/app/practice_gen/slots.py",
+   "first_site": "backend/app/practice_gen/slots.py:180",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  }
+ },
+ "packet": {
+  "item": "S442-025",
+  "competency": {
+   "text": "Represent and describe circles, half circles and quarter circles.",
+   "grade": 2,
+   "quarter": 1
+  },
+  "clauses": [
+   {
+    "id": "represent",
+    "kind": "task",
+    "clause": "Represent"
+   },
+   {
+    "id": "describe",
+    "kind": "task",
+    "clause": "describe"
+   },
+   {
+    "id": "circles",
+    "kind": "object",
+    "clause": "circles"
+   },
+   {
+    "id": "half_circles",
+    "kind": "object",
+    "clause": "half circles"
+   },
+   {
+    "id": "quarter_circles",
+    "kind": "object",
+    "clause": "quarter circles"
+   }
+  ],
+  "vocabulary": {
+   "student_vocab": [
+    "circle"
+   ],
+   "curriculum_vocab": [
+    "half circle",
+    "quarter circle"
+   ],
+   "introduces_vocab": [
+    "circle",
+    "half circle",
+    "quarter circle"
+   ],
+   "cumulative_vocab": [
+    "1 less",
+    "1 more",
+    "10th",
+    "1st",
+    "2nd",
+    "3rd",
+    "4th",
+    "5th",
+    "6th",
+    "7th",
+    "8th",
+    "9th",
+    "addition",
+    "analog clock",
+    "bigger",
+    "bill",
+    "calendar",
+    "clockwise",
+    "coin",
+    "compare",
+    "corner",
+    "count",
+    "counter-clockwise",
+    "data",
+    "difference",
+    "digit",
+    "equal",
+    "expanded form",
+    "fraction",
+    "group",
+    "half",
+    "half hour",
+    "half turn",
+    "hour",
+    "how many",
+    "hundreds",
+    "left",
+    "length",
+    "less",
+    "measure",
+    "missing number",
+    "more",
+    "number",
+    "number line",
+    "numeral",
+    "ones",
+    "pattern",
+    "peso",
+    "pictograph",
+    "place value",
+    "quarter",
+    "quarter hour",
+    "quarter turn",
+    "rectangle",
+    "regrouping",
+    "repeating pattern",
+    "same",
+    "side",
+    "skip counting",
+    "smaller",
+    "square",
+    "subtraction",
+    "sum",
+    "table",
+    "tens",
+    "thousand",
+    "total",
+    "triangle",
+    "whole",
+    "₱"
+   ],
+   "NOT_YET_KNOWN": [
+    "L",
+    "a.m.",
+    "area",
+    "axis",
+    "balance scale",
+    "bar graph",
+    "capacity",
+    "centavo",
+    "centimeter",
+    "certain",
+    "cm",
+    "decreasing pattern",
+    "denominator",
+    "division",
+    "elapsed time",
+    "equal groups",
+    "equally likely",
+    "estimate",
+    "even",
+    "g",
+    "gram",
+    "impossible",
+    "improper fraction",
+    "increasing pattern",
+    "intersecting",
+    "kg",
+    "kilogram",
+    "less likely",
+    "line",
+    "line of symmetry",
+    "line segment",
+    "liter",
+    "m",
+    "mL",
+    "mass",
+    "meter",
+    "milliliter",
+    "minute",
+    "missing term",
+    "more likely",
+    "multiplication",
+    "nearest hundred",
+    "nearest ten",
+    "nearest thousand",
+    "numerator",
+    "odd",
+    "order of operations",
+    "outcome",
+    "p.m.",
+    "parallel",
+    "perimeter",
+    "perpendicular",
+    "point",
+    "product",
+    "quotient",
+    "ray",
+    "remainder",
+    "round",
+    "ruler",
+    "scale",
+    "similar fractions",
+    "slide",
+    "solid figure",
+    "sq. cm",
+    "square centimeter",
+    "symmetry",
+    "ten thousand",
+    "ten-thousands place",
+    "translation"
+   ],
+   "sentence_max_words": 18,
+   "number_format": "no commas for numbers up to 1000"
+  },
+  "declared_variants": [
+   [
+    "orientation",
+    "rotated"
+   ],
+   [
+    "orientation",
+    "standard"
+   ],
+   [
+    "shape_set",
+    "extended_with_circles"
+   ],
+   [
+    "task_type",
+    "compare_shapes"
+   ],
+   [
+    "task_type",
+    "compose_decompose"
+   ],
+   [
+    "task_type",
+    "count_sides_corners"
+   ],
+   [
+    "task_type",
+    "identify_name"
+   ]
+  ],
+  "declared_bounds": [
+   {
+    "shape_set": "extended_with_circles"
+   }
+  ],
+  "families": [
+   {
+    "id": "F01",
+    "template": "A circle has no straight {sides_label} and no corners.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "sides_label"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "'side' gated by cumulative_vocab",
+        "requires_vocab": "side",
+        "prints": "sides",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F02",
+    "template": "A rectangle has 4 {sides_label} (opposite {sides_label} are equal) and 4 corners.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "sides_label"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "'side' gated by cumulative_vocab",
+        "requires_vocab": "side",
+        "prints": "sides",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F03",
+    "template": "A square has 4 equal {sides_label} and 4 corners.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "sides_label"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "'side' gated by cumulative_vocab",
+        "requires_vocab": "side",
+        "prints": "sides",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F04",
+    "template": "A triangle has 3 {sides_label} and 3 corners.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "sides_label"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "'side' gated by cumulative_vocab",
+        "requires_vocab": "side",
+        "prints": "sides",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F05",
+    "template": "Think about the {sides_label} and corners of each shape.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "sides_label"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "'side' gated by cumulative_vocab",
+        "requires_vocab": "side",
+        "prints": "sides",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F06",
+    "template": "{answer}",
+    "appears_in": [
+     "correct_answer",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "result",
+        "printed": [
+         "circle",
+         "half-circle",
+         "quarter-circle"
+        ],
+        "derived_from_values": [
+         "result"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F07",
+    "template": "{key}",
+    "appears_in": [
+     "correct_answer"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "key"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the option keys this item shows",
+        "members": [
+         "A",
+         "B",
+         "C",
+         "D"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F08",
+    "template": "{member}",
+    "appears_in": [
+     "distractors",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "member"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "QuestionContext.distractors (the generator's own)",
+        "members": [
+         "half-circle",
+         "quarter-circle",
+         "rectangle",
+         "square",
+         "triangle",
+         "whole circle"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F09",
+    "template": "{answer}",
+    "appears_in": [
+     "correct_answer",
+     "format_data.mcq_options",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "a field of a fixed item bank",
+        "field": "answer",
+        "bank": "_ITEM_POOL",
+        "derived_from_values": [
+         "answer",
+         "distractors",
+         "grade_min",
+         "orientation",
+         "question",
+         "shape_set",
+         "task_type"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F10",
+    "template": "{distractors}",
+    "appears_in": [
+     "distractors",
+     "format_data.mcq_options",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "distractors"
+      ],
+      "domains": [
+       {
+        "domain": "a field of a fixed item bank",
+        "field": "distractors",
+        "bank": "_ITEM_POOL",
+        "derived_from_values": [
+         "answer",
+         "distractors",
+         "grade_min",
+         "orientation",
+         "question",
+         "shape_set",
+         "task_type"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F11",
+    "template": "{question}",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "question"
+      ],
+      "domains": [
+       {
+        "domain": "a field of a fixed item bank",
+        "field": "question",
+        "bank": "_ITEM_POOL",
+        "derived_from_values": [
+         "answer",
+         "distractors",
+         "grade_min",
+         "orientation",
+         "question",
+         "shape_set",
+         "task_type"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   }
+  ],
+  "lists": {},
+  "banks": {
+   "_ITEM_POOL": {
+    "fields": [
+     "answer",
+     "distractors",
+     "question"
+    ],
+    "one_row_per_problem": true,
+    "rows": [
+     {
+      "answer": "circle",
+      "distractors": [
+       "triangle",
+       "rectangle",
+       "square"
+      ],
+      "question": "What shape has no corners and no straight sides?"
+     },
+     {
+      "answer": "half-circle",
+      "distractors": [
+       "quarter-circle",
+       "triangle",
+       "rectangle"
+      ],
+      "question": "A shape is made from exactly half of a circle. What is it called?"
+     },
+     {
+      "answer": "quarter-circle",
+      "distractors": [
+       "half-circle",
+       "triangle",
+       "square"
+      ],
+      "question": "A shape is made from exactly one quarter of a circle. What is it called?"
+     },
+     {
+      "answer": "half-circle",
+      "distractors": [
+       "quarter-circle",
+       "whole circle",
+       "triangle"
+      ],
+      "question": "A circle is divided into 2 equal parts. What is each part called?"
+     },
+     {
+      "answer": "quarter-circle",
+      "distractors": [
+       "half-circle",
+       "whole circle",
+       "rectangle"
+      ],
+      "question": "A circle is divided into 4 equal parts. What is each part called?"
+     }
+    ],
+    "rows_left_out": 69
+   }
+  },
+  "value_derivations": [],
+  "reason_kinds": {}
+ }
+}

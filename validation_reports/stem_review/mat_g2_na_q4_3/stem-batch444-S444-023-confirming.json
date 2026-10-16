@@ -1,0 +1,1279 @@
+{
+ "schema_version": 2,
+ "hash_version": 8,
+ "node_id": "mat_g2_na_q4_3",
+ "record_id": "stem-batch444-S444-023-confirming",
+ "role": "confirming",
+ "confirms": "stem-batch444-S444-023-first",
+ "item_id": "S444-023",
+ "lc_hash": "6bf85336b7b225d5203c251db8c39151914ebe6afb4b3ab275d35f47b2d9c856",
+ "judged_by": "blind-stem-judge-claude-haiku-batch444-S444-023-confirming",
+ "dispatch_id": "stem-batch444-S444-023-confirming",
+ "filed_at": "2026-10-16T06:20:13Z",
+ "delivery": "Claude Code Agent tool, model=haiku, subagent_type=general-purpose; the judge was told to read only local_only/scratch/h4c/prompts/S444-023.prompt.txt (tests/stem_file.py prompt output, item S444-023; no lc id, no key or packets file in that directory) and reply with what it asks; dispatched with CLAUDE.md loaded (ruling 29). Blindness is a prompt contract, audited from the subagent transcript.",
+ "tool_uses_by_judge": "From the subagent transcript: 1 tool use(s), all Read of its own prompt file (1117 lines, every line read); no other tool, path or search. Model reported in the transcript: claude-haiku-5-5.",
+ "dispatch_prompt_digest": "c3a299681b57fb771969c27ac7dcbfde4c6c1d158012cfbc48eadefe5691f518",
+ "raw_reply": "{\"item\": \"S444-023\", \"clauses\": {\"represent\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F17\", \"template\": \"Shade {fraction_str} of the shape.\", \"reasoning\": \"F17 asks the learner to shade a fraction, which is the representation task the clause names. Its fraction_str is nested learner text from F08 and F20.\"}, \"identify\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F11\", \"template\": \"What fraction does the {name} show?\", \"reasoning\": \"F11 asks the learner to name the fraction a model shows, which is the identify task. Its name slot draws from the model names, including the declared number line and set model variants.\"}, \"similar_fractions\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F15\", \"template\": \"{unshaded}/{denom}\", \"reasoning\": \"F15 is a distractor whose denominator is the keyed answer's denominator (its slots derive from answer), so it is a fraction similar to the keyed answer within the same answer set.\"}, \"denominators_2_3_4_5_6_8\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F08\", \"template\": \"{num}/{den}\", \"reasoning\": \"F08's den slot has the grade denom_pool as its basis and lists members 2, 3, 4, 5, 6 and 8. The judgment rests on the declared domain. Observed printed values for the other families (F05, F06, F09) never showed denominators 2 or 6, so the coverage gap is for the generator to close, not a domain gap.\"}, \"groups_of_objects\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F11\", \"template\": \"What fraction does the {name} show?\", \"reasoning\": \"The set model is a declared variant, and F11's name slot includes 'set model' as a member. A set model shows a group of objects.\"}, \"fraction_charts\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F17\", \"template\": \"Shade {fraction_str} of the shape.\", \"reasoning\": \"A shaded shape divided into equal parts is the fraction chart form. F17 presents that as a shape to shade. The packet does not define area_model's rendering, so this rests on F17 matching the chart form.\"}, \"fraction_tiles\": {\"verdict\": \"NOT_PRODUCIBLE\", \"family\": null, \"template\": null, \"reasoning\": \"No family or declared variant names fraction tiles. The model names are model, number line, set model and shaded picture, and the declared variants are area_model, number_line and set_model. None of them is a tile.\"}, \"number_line\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F11\", \"template\": \"What fraction does the {name} show?\", \"reasoning\": \"The number line is a declared variant (fraction_model with number_line), and F11's name slot includes 'number line' as a member.\"}}, \"failing_families\": [\"F17\"], \"failing_templates\": [\"Shade {fraction_str} of the shape.\"], \"overall\": \"FAIL\", \"reasoning\": \"F17 has no template_chosen_by_values, so the same sentence prints for every model, including the declared number_line and set_model variants. For those variants the words 'of the shape' describe something the learner is not shown. Its fraction_str is nested learner text from F08 and F20, which are fine on their own, so only F17 fails. The other families were checked and pass. F04 and F06/F07 describe fractions generally, and F11 names the model. F09 prints only proper fractions. Families F13, F16, F19 and F22 print computed values whose range the packet does not state, and the reason_kinds text defers arithmetic to other checks, so they are not failed here.\"}",
+ "raw_reply_digest": "d1a74d8b5997136806f5891d559bf1ec2768b7b39748f43c53a3374dfedbf631",
+ "packet_digest": "81a0ccf31691988dd0f23b32887e1deba11e649ace9da90471d004ce08bb419a",
+ "family_keys": {
+  "F01": {
+   "source": "backend/app/practice_gen/dna/base.py [gate denominator]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F02": {
+   "source": "backend/app/practice_gen/dna/base.py [gate fraction]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F03": {
+   "source": "backend/app/practice_gen/dna/base.py [gate numerator]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F04": {
+   "source": "backend/app/practice_gen/dna/na/fractions.py",
+   "first_site": "backend/app/practice_gen/dna/na/fractions.py:615",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F05": {
+   "source": "backend/app/practice_gen/dna/na/fractions.py",
+   "first_site": "backend/app/practice_gen/dna/na/fractions.py:618",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F06": {
+   "source": "backend/app/practice_gen/dna/na/fractions.py",
+   "first_site": "backend/app/practice_gen/dna/na/fractions.py:616",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F07": {
+   "source": "backend/app/practice_gen/dna/na/fractions.py",
+   "first_site": "backend/app/practice_gen/dna/na/fractions.py:617",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F08": {
+   "source": "backend/app/practice_gen/dna/na/fractions.py",
+   "first_site": "backend/app/practice_gen/dna/na/fractions.py:107",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F09": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:32",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F10": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:51",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F11": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_fraction_model.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_fraction_model.py:162",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F12": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_fraction_model.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_fraction_model.py:105",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F13": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_fraction_model.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_fraction_model.py:99",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F14": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_fraction_model.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_fraction_model.py:215",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F15": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_fraction_model.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_fraction_model.py:119",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F16": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_fraction_model.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_fraction_model.py:126",
+   "renderer": "",
+   "path": [
+    14,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F17": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_fraction_shade.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_fraction_shade.py:136",
+   "renderer": "",
+   "path": [
+    4,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F18": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_fraction_shade.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_fraction_shade.py:95",
+   "renderer": "",
+   "path": [
+    4,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F19": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_fraction_shade.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_fraction_shade.py:89",
+   "renderer": "",
+   "path": [
+    4,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F20": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_fraction_shade.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_fraction_shade.py:200",
+   "renderer": "",
+   "path": [
+    4,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F21": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_fraction_shade.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_fraction_shade.py:102",
+   "renderer": "",
+   "path": [
+    4,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F22": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_fraction_shade.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_fraction_shade.py:109",
+   "renderer": "",
+   "path": [
+    8,
+    null
+   ],
+   "first_render_repeating": {}
+  }
+ },
+ "packet": {
+  "item": "S444-023",
+  "competency": {
+   "text": "Represent and identify similar fractions with denominators 2, 3, 4, 5, 6, and 8 using groups of objects, fraction charts, fraction tiles, and the number line.",
+   "grade": 2,
+   "quarter": 4
+  },
+  "clauses": [
+   {
+    "id": "represent",
+    "kind": "task",
+    "clause": "Represent"
+   },
+   {
+    "id": "identify",
+    "kind": "task",
+    "clause": "identify"
+   },
+   {
+    "id": "similar_fractions",
+    "kind": "object",
+    "clause": "similar fractions"
+   },
+   {
+    "id": "denominators_2_3_4_5_6_8",
+    "kind": "property",
+    "clause": "with denominators 2, 3, 4, 5, 6, and 8"
+   },
+   {
+    "id": "groups_of_objects",
+    "kind": "representation",
+    "clause": "groups of objects"
+   },
+   {
+    "id": "fraction_charts",
+    "kind": "representation",
+    "clause": "fraction charts"
+   },
+   {
+    "id": "fraction_tiles",
+    "kind": "representation",
+    "clause": "fraction tiles"
+   },
+   {
+    "id": "number_line",
+    "kind": "representation",
+    "clause": "the number line"
+   }
+  ],
+  "vocabulary": {
+   "student_vocab": [
+    "similar fractions"
+   ],
+   "curriculum_vocab": [
+    "like fractions",
+    "fraction chart",
+    "fraction tile",
+    "same denominator"
+   ],
+   "introduces_vocab": [
+    "similar fractions",
+    "like fractions",
+    "fraction chart",
+    "fraction tile",
+    "same denominator"
+   ],
+   "cumulative_vocab": [
+    "1 less",
+    "1 more",
+    "10th",
+    "1st",
+    "2nd",
+    "3rd",
+    "4th",
+    "5th",
+    "6th",
+    "7th",
+    "8th",
+    "9th",
+    "addition",
+    "analog clock",
+    "bigger",
+    "bill",
+    "calendar",
+    "centavo",
+    "centimeter",
+    "circle",
+    "clockwise",
+    "cm",
+    "coin",
+    "compare",
+    "corner",
+    "count",
+    "counter-clockwise",
+    "data",
+    "decreasing pattern",
+    "denominator",
+    "difference",
+    "digit",
+    "division",
+    "equal",
+    "equal groups",
+    "estimate",
+    "even",
+    "expanded form",
+    "fraction",
+    "group",
+    "half",
+    "half hour",
+    "half turn",
+    "hour",
+    "how many",
+    "hundreds",
+    "increasing pattern",
+    "left",
+    "length",
+    "less",
+    "m",
+    "measure",
+    "meter",
+    "missing number",
+    "more",
+    "multiplication",
+    "number",
+    "number line",
+    "numeral",
+    "numerator",
+    "odd",
+    "ones",
+    "pattern",
+    "peso",
+    "pictograph",
+    "place value",
+    "product",
+    "quarter",
+    "quarter hour",
+    "quarter turn",
+    "quotient",
+    "rectangle",
+    "regrouping",
+    "repeating pattern",
+    "ruler",
+    "same",
+    "scale",
+    "side",
+    "skip counting",
+    "slide",
+    "smaller",
+    "square",
+    "subtraction",
+    "sum",
+    "table",
+    "tens",
+    "thousand",
+    "total",
+    "translation",
+    "triangle",
+    "whole",
+    "₱"
+   ],
+   "NOT_YET_KNOWN": [
+    "L",
+    "a.m.",
+    "area",
+    "axis",
+    "balance scale",
+    "bar graph",
+    "capacity",
+    "certain",
+    "elapsed time",
+    "equally likely",
+    "g",
+    "gram",
+    "impossible",
+    "improper fraction",
+    "intersecting",
+    "kg",
+    "kilogram",
+    "less likely",
+    "line",
+    "line of symmetry",
+    "line segment",
+    "liter",
+    "mL",
+    "mass",
+    "milliliter",
+    "minute",
+    "missing term",
+    "more likely",
+    "nearest hundred",
+    "nearest ten",
+    "nearest thousand",
+    "order of operations",
+    "outcome",
+    "p.m.",
+    "parallel",
+    "perimeter",
+    "perpendicular",
+    "point",
+    "ray",
+    "remainder",
+    "round",
+    "solid figure",
+    "sq. cm",
+    "square centimeter",
+    "symmetry",
+    "ten thousand",
+    "ten-thousands place"
+   ],
+   "sentence_max_words": 18,
+   "number_format": "no commas for numbers up to 1000"
+  },
+  "declared_variants": [
+   [
+    "fraction_model",
+    "area_model"
+   ],
+   [
+    "fraction_model",
+    "number_line"
+   ],
+   [
+    "fraction_model",
+    "set_model"
+   ]
+  ],
+  "declared_bounds": [
+   {
+    "fraction_model": [
+     "area_model",
+     "number_line",
+     "set_model"
+    ],
+    "fraction_type": "similar_proper",
+    "fraction_task_mode": "model",
+    "operation": "identify_name"
+   }
+  ],
+  "families": [
+   {
+    "id": "F01",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F06"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='denominator')",
+        "requires_vocab": "denominator",
+        "prints": "denominator",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F02",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F04",
+     "F05"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='fraction')",
+        "requires_vocab": "fraction",
+        "prints": "fraction",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F03",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F07"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='numerator')",
+        "requires_vocab": "numerator",
+        "prints": "numerator",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F04",
+    "template": "A {frac_lbl} shows how many equal parts are shaded out of the total.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "frac_lbl"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F02"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "operation"
+    ]
+   },
+   {
+    "id": "F05",
+    "template": "So the {frac_lbl} is {num}/{den}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "frac_lbl"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F02"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "num"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "numerator",
+        "printed_runs": "1 to 4",
+        "derived_from_values": [
+         "numerator"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "den"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "denominator",
+        "printed_runs": "3 to 5, 8",
+        "derived_from_values": [
+         "denominator"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "operation"
+    ]
+   },
+   {
+    "id": "F06",
+    "template": "The {den_lbl} (bottom number) tells the total equal parts: {den}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "den_lbl"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F01"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "den"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "denominator",
+        "printed_runs": "3 to 5, 8",
+        "derived_from_values": [
+         "denominator"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "operation"
+    ]
+   },
+   {
+    "id": "F07",
+    "template": "The {num_lbl} (top number) tells how many parts are taken: {num}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "num_lbl"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F03"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "num"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "numerator",
+        "printed_runs": "1 to 4",
+        "derived_from_values": [
+         "numerator"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "operation"
+    ]
+   },
+   {
+    "id": "F08",
+    "template": "{num}/{den}",
+    "appears_in": [
+     "correct_answer",
+     "distractors",
+     "format_data.mcq_options"
+    ],
+    "nested_in": [
+     "F17"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "num"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the candidate numerators at this denominator",
+        "members": [
+         1,
+         2,
+         3,
+         4,
+         5,
+         6,
+         7
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "den"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the grade's denom_pool",
+        "members": [
+         2,
+         3,
+         4,
+         5,
+         6,
+         8
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F09",
+    "template": "{answer}",
+    "appears_in": [
+     "format_data.mcq_options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "result",
+        "printed": [
+         "1/8",
+         "2/3",
+         "2/4",
+         "2/5",
+         "3/4",
+         "3/5",
+         "3/8",
+         "4/5"
+        ],
+        "derived_from_values": [
+         "result"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F10",
+    "template": "{key}",
+    "appears_in": [
+     "correct_answer"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "key"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the option keys this item shows",
+        "members": [
+         "A",
+         "B",
+         "C",
+         "D"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F11",
+    "template": "What fraction does the {name} show?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "name"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "model_names, or 'model' for any other model_type",
+        "members": [
+         "model",
+         "number line",
+         "set model",
+         "shaded picture"
+        ],
+        "derived_from_values": [
+         "model_type"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F12",
+    "template": "{denom}/{denom}",
+    "appears_in": [
+     "distractors",
+     "format_data.mcq_options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "denom"
+      ],
+      "domains": [
+       {
+        "domain": "a number computed by the generator",
+        "reason": "arithmetic",
+        "derived_from_values": [
+         "answer"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F13",
+    "template": "{denom}/{numer}",
+    "appears_in": [
+     "distractors",
+     "format_data.mcq_options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "denom",
+       "numer"
+      ],
+      "domains": [
+       {
+        "domain": "a number computed by the generator",
+        "reason": "arithmetic",
+        "derived_from_values": [
+         "answer"
+        ]
+       }
+      ],
+      "distinct_in_every_render": true
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F14",
+    "template": "{numer}/{denom}",
+    "appears_in": [
+     "format_data.mcq_options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "numer"
+      ],
+      "domains": [
+       {
+        "domain": "a number computed by the generator",
+        "reason": "arithmetic",
+        "derived_from_values": [
+         "answer"
+        ]
+       },
+       {
+        "domain": "repeats a generated value",
+        "key": "numerator",
+        "printed_runs": "1 to 4",
+        "derived_from_values": [
+         "numerator"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "denom"
+      ],
+      "domains": [
+       {
+        "domain": "a number computed by the generator",
+        "reason": "arithmetic",
+        "derived_from_values": [
+         "answer"
+        ]
+       },
+       {
+        "domain": "repeats a generated value",
+        "key": "denominator",
+        "printed_runs": "3 to 5, 8",
+        "derived_from_values": [
+         "denominator"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F15",
+    "template": "{unshaded}/{denom}",
+    "appears_in": [
+     "distractors",
+     "format_data.mcq_options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "unshaded",
+       "denom"
+      ],
+      "domains": [
+       {
+        "domain": "a number computed by the generator",
+        "reason": "arithmetic",
+        "derived_from_values": [
+         "answer"
+        ]
+       }
+      ],
+      "distinct_in_every_render": true
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F16",
+    "template": "{v}/{denom}",
+    "appears_in": [
+     "distractors",
+     "format_data.mcq_options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "v",
+       "denom"
+      ],
+      "domains": [
+       {
+        "domain": "a number computed by the generator",
+        "reason": "arithmetic",
+        "derived_from_values": [
+         "answer"
+        ]
+       }
+      ],
+      "distinct_in_every_render": true
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F17",
+    "template": "Shade {fraction_str} of the shape.",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "fraction_str"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F08",
+         "F20"
+        ],
+        "derived_from_values": [
+         "denominator",
+         "fraction_str",
+         "numerator"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F18",
+    "template": "{denom}/{denom}",
+    "appears_in": [
+     "distractors"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "denom"
+      ],
+      "domains": [
+       {
+        "domain": "a number computed by the generator",
+        "reason": "arithmetic",
+        "derived_from_values": [
+         "denominator",
+         "numerator"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F19",
+    "template": "{denom}/{numer}",
+    "appears_in": [
+     "distractors"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "denom",
+       "numer"
+      ],
+      "domains": [
+       {
+        "domain": "a number computed by the generator",
+        "reason": "arithmetic",
+        "derived_from_values": [
+         "denominator",
+         "numerator"
+        ]
+       }
+      ],
+      "distinct_in_every_render": true
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F20",
+    "template": "{numer}/{denom}",
+    "appears_in": [
+     "correct_answer"
+    ],
+    "nested_in": [
+     "F17"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "numer"
+      ],
+      "domains": [
+       {
+        "domain": "a number computed by the generator",
+        "reason": "arithmetic",
+        "derived_from_values": [
+         "denominator",
+         "numerator"
+        ]
+       },
+       {
+        "domain": "repeats a generated value",
+        "key": "numerator",
+        "printed_runs": "1 to 4",
+        "derived_from_values": [
+         "numerator"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "denom"
+      ],
+      "domains": [
+       {
+        "domain": "a number computed by the generator",
+        "reason": "arithmetic",
+        "derived_from_values": [
+         "denominator",
+         "numerator"
+        ]
+       },
+       {
+        "domain": "repeats a generated value",
+        "key": "denominator",
+        "printed_runs": "3 to 5, 8",
+        "derived_from_values": [
+         "denominator"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F21",
+    "template": "{unshaded}/{denom}",
+    "appears_in": [
+     "distractors"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "unshaded",
+       "denom"
+      ],
+      "domains": [
+       {
+        "domain": "a number computed by the generator",
+        "reason": "arithmetic",
+        "derived_from_values": [
+         "denominator",
+         "numerator"
+        ]
+       }
+      ],
+      "distinct_in_every_render": true
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F22",
+    "template": "{v}/{denom}",
+    "appears_in": [
+     "distractors"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "v",
+       "denom"
+      ],
+      "domains": [
+       {
+        "domain": "a number computed by the generator",
+        "reason": "arithmetic",
+        "derived_from_values": [
+         "denominator",
+         "numerator"
+        ]
+       }
+      ],
+      "distinct_in_every_render": true
+     }
+    ],
+    "template_chosen_by_values": []
+   }
+  ],
+  "lists": {},
+  "banks": {},
+  "value_derivations": [
+   {
+    "kind": "derives",
+    "key": "answer",
+    "from": [
+     "numerator",
+     "denominator"
+    ]
+   },
+   {
+    "kind": "derives",
+    "key": "fraction_str",
+    "from": [
+     "numerator",
+     "denominator"
+    ]
+   }
+  ],
+  "reason_kinds": {
+   "arithmetic": "a number the generator computes from the generated values named in src (a half, a sum, a difference, a running total, a place's digit). Its range is the image of those values' own domains; whether the arithmetic is RIGHT is the hint contract's (§16) and §1E's to check, not §14's."
+  }
+ }
+}

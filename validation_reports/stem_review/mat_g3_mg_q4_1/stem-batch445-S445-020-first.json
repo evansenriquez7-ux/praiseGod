@@ -1,0 +1,642 @@
+{
+ "schema_version": 2,
+ "hash_version": 8,
+ "node_id": "mat_g3_mg_q4_1",
+ "record_id": "stem-batch445-S445-020-first",
+ "role": "first",
+ "confirms": null,
+ "item_id": "S445-020",
+ "lc_hash": "93255361a8d4d61c7a55cebccf940a7b8a2df0ed540321b6ba82577b0c43a9eb",
+ "judged_by": "blind-stem-judge-claude-haiku-batch445-S445-020-first",
+ "dispatch_id": "stem-batch445-S445-020-first",
+ "filed_at": "2026-10-15T16:48:01Z",
+ "delivery": "Claude Code Agent tool, model=haiku, subagent_type=general-purpose; the judge was told to read only local_only/scratch/h4c/prompts/S445-020.prompt.txt (tests/stem_file.py prompt output, item S445-020; no lc id, no key or packets file in that directory) and reply with what it asks; dispatched with CLAUDE.md loaded (ruling 29). Blindness is a prompt contract, audited from the subagent transcript.",
+ "tool_uses_by_judge": "From the subagent transcript: 1 tool use(s), all Read of its own prompt file (630 lines, every line read); no other tool, path or search. Model reported in the transcript: claude-haiku-5-5.",
+ "dispatch_prompt_digest": "dec523e1b7c4ec5463cd2810f8350b19e8f902be2c068e7d68e2ddc4d3aaa8b2",
+ "raw_reply": "{\"item\": \"S445-020\", \"clauses\": {\"identify\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F07\", \"template\": \"{question}\", \"reasoning\": \"F07 draws from _ITEM_POOL one row per problem. Row 11 asks which of these shapes has NO line of symmetry, so the learner identifies shapes that do or do not show line symmetry.\"}, \"shapes_or_figures\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F07\", \"template\": \"{question}\", \"reasoning\": \"Row 11 presents several named shapes (a square, a rectangle, an equilateral triangle, a scalene triangle) for the learner to sort by line symmetry. Row 2 asks about the lines of symmetry of a named shape.\"}, \"line_symmetry\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F07\", \"template\": \"{question}\", \"reasoning\": \"Row 1 asks about what a line of symmetry does to a shape, and row 8 asks in which direction the line of symmetry of the letter A runs. Both address line symmetry directly.\"}, \"drawing_the_line_of_symmetry\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F07\", \"template\": \"{question}\", \"reasoning\": \"Row 12 asks, if you draw a vertical line down the center of a heart shape, do both sides match. This addresses drawing a line of symmetry, but only hypothetically: no row asks the learner to draw a line, so the clause is reached through one row only.\"}}, \"failing_families\": [\"F03\", \"F04\", \"F05\", \"F06\", \"F07\"], \"failing_templates\": [\"{answer}\", \"{member}\", \"{distractors}\", \"{question}\"], \"overall\": \"FAIL\", \"reasoning\": \"Two defects. (1) F04 {member} is a one-of-the-generator's-own-choices domain whose members are the union of every row's distractors, not the distractors of the row the problem draws. Its members include heart-specific choices (about hearts having 4 lines of symmetry, the sides being different, and a heart being tilted), count-style numerals, and shape names, so a count question (row 2, row 4, row 6 and others) or a fill-in-the-blank phrase (row 1) can print choices that do not fit its question, which is misleading for a grade 3 learner. The same mismatch applies to the numeral members printed beside a phrase-answer row. (2) Vocabulary gate: the words horizontal, vertical, diagonal, isosceles, equilateral and scalene are not in cumulative_vocab or introduces_vocab for this lc, and NOT_YET_KNOWN is empty, so the packet does not show them as introduced here. They are printed by F03 {answer} (horizontal, vertical, a scalene triangle), F04 {member} (horizontal, diagonal, equilateral), F05 and F03 {answer} from _ITEM_POOL (horizontal, vertical, scalene), F06 {distractors} (horizontal, diagonal) and F07 {question} (equilateral, isosceles, scalene, plus the bank question text). Families F01 and F02 pass. Clause verdicts are unaffected by the gate failure; all four clauses are reached through F07 {question}.\"}",
+ "raw_reply_digest": "fb7e66f7e8a5ed5375f4b8160008e1b77db111f7df3314df491740cd798c9ae4",
+ "packet_digest": "06d432af6229ad68e302b2f2608ee714979b8159eab7c64fee461f8f13d35f8e",
+ "family_keys": {
+  "F01": {
+   "source": "backend/app/practice_gen/dna/mg/symmetry_slides.py",
+   "first_site": "backend/app/practice_gen/dna/mg/symmetry_slides.py:594",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F02": {
+   "source": "backend/app/practice_gen/dna/mg/symmetry_slides.py",
+   "first_site": "backend/app/practice_gen/dna/mg/symmetry_slides.py:595",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F03": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:32",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F04": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:39",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F05": {
+   "source": "backend/app/practice_gen/slots.py",
+   "first_site": "backend/app/practice_gen/slots.py:180",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F06": {
+   "source": "backend/app/practice_gen/slots.py",
+   "first_site": "backend/app/practice_gen/slots.py:182",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F07": {
+   "source": "backend/app/practice_gen/slots.py",
+   "first_site": "backend/app/practice_gen/slots.py:180",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  }
+ },
+ "packet": {
+  "item": "S445-020",
+  "competency": {
+   "text": "Identify shapes or figures that show line symmetry by drawing the line of symmetry.",
+   "grade": 3,
+   "quarter": 4
+  },
+  "clauses": [
+   {
+    "id": "identify",
+    "kind": "task",
+    "clause": "Identify"
+   },
+   {
+    "id": "shapes_or_figures",
+    "kind": "object",
+    "clause": "shapes or figures"
+   },
+   {
+    "id": "line_symmetry",
+    "kind": "property",
+    "clause": "line symmetry"
+   },
+   {
+    "id": "drawing_the_line_of_symmetry",
+    "kind": "task",
+    "clause": "drawing the line of symmetry"
+   }
+  ],
+  "vocabulary": {
+   "student_vocab": [
+    "symmetry",
+    "line of symmetry"
+   ],
+   "curriculum_vocab": [
+    "line symmetry",
+    "symmetric"
+   ],
+   "introduces_vocab": [
+    "line symmetry",
+    "line of symmetry",
+    "symmetric",
+    "symmetry"
+   ],
+   "cumulative_vocab": [
+    "1 less",
+    "1 more",
+    "10th",
+    "1st",
+    "2nd",
+    "3rd",
+    "4th",
+    "5th",
+    "6th",
+    "7th",
+    "8th",
+    "9th",
+    "L",
+    "a.m.",
+    "addition",
+    "analog clock",
+    "area",
+    "axis",
+    "balance scale",
+    "bar graph",
+    "bigger",
+    "bill",
+    "calendar",
+    "capacity",
+    "centavo",
+    "centimeter",
+    "certain",
+    "circle",
+    "clockwise",
+    "cm",
+    "coin",
+    "compare",
+    "corner",
+    "count",
+    "counter-clockwise",
+    "data",
+    "decreasing pattern",
+    "denominator",
+    "difference",
+    "digit",
+    "division",
+    "elapsed time",
+    "equal",
+    "equal groups",
+    "equally likely",
+    "estimate",
+    "even",
+    "expanded form",
+    "fraction",
+    "g",
+    "gram",
+    "group",
+    "half",
+    "half hour",
+    "half turn",
+    "hour",
+    "how many",
+    "hundreds",
+    "impossible",
+    "improper fraction",
+    "increasing pattern",
+    "intersecting",
+    "kg",
+    "kilogram",
+    "left",
+    "length",
+    "less",
+    "less likely",
+    "line",
+    "line segment",
+    "liter",
+    "m",
+    "mL",
+    "mass",
+    "measure",
+    "meter",
+    "milliliter",
+    "minute",
+    "missing number",
+    "missing term",
+    "more",
+    "more likely",
+    "multiplication",
+    "nearest hundred",
+    "nearest ten",
+    "nearest thousand",
+    "number",
+    "number line",
+    "numeral",
+    "numerator",
+    "odd",
+    "ones",
+    "order of operations",
+    "outcome",
+    "p.m.",
+    "parallel",
+    "pattern",
+    "perimeter",
+    "perpendicular",
+    "peso",
+    "pictograph",
+    "place value",
+    "point",
+    "product",
+    "quarter",
+    "quarter hour",
+    "quarter turn",
+    "quotient",
+    "ray",
+    "rectangle",
+    "regrouping",
+    "remainder",
+    "repeating pattern",
+    "round",
+    "ruler",
+    "same",
+    "scale",
+    "side",
+    "similar fractions",
+    "skip counting",
+    "slide",
+    "smaller",
+    "solid figure",
+    "sq. cm",
+    "square",
+    "square centimeter",
+    "subtraction",
+    "sum",
+    "table",
+    "ten thousand",
+    "ten-thousands place",
+    "tens",
+    "thousand",
+    "total",
+    "translation",
+    "triangle",
+    "whole",
+    "₱"
+   ],
+   "NOT_YET_KNOWN": [],
+   "sentence_max_words": 22,
+   "number_format": "space separator for thousands (e.g. 1 000)"
+  },
+  "declared_variants": [
+   [
+    "concept",
+    "line_symmetry"
+   ],
+   [
+    "directions",
+    "one_direction"
+   ],
+   [
+    "directions",
+    "two_directions"
+   ]
+  ],
+  "declared_bounds": [
+   {
+    "concept": "line_symmetry"
+   }
+  ],
+  "families": [
+   {
+    "id": "F01",
+    "template": "A line of symmetry splits a shape into two mirror-image halves.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": [
+     "concept"
+    ]
+   },
+   {
+    "id": "F02",
+    "template": "Fold the shape along the line — both halves should match exactly.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": [
+     "concept"
+    ]
+   },
+   {
+    "id": "F03",
+    "template": "{answer}",
+    "appears_in": [
+     "correct_answer",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "result",
+        "printed": [
+         "0",
+         "1",
+         "2",
+         "3",
+         "4",
+         "Infinite (unlimited)",
+         "Yes, it shows line symmetry.",
+         "a scalene triangle",
+         "equal halves that are mirror images",
+         "horizontal (side to side)",
+         "vertical (up and down)"
+        ],
+        "derived_from_values": [
+         "result"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F04",
+    "template": "{member}",
+    "appears_in": [
+     "distractors",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "member"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "QuestionContext.distractors (the generator's own)",
+        "members": [
+         "0",
+         "1",
+         "2",
+         "3",
+         "4",
+         "No, hearts have 4 lines of symmetry.",
+         "No, the sides are different.",
+         "Only if the heart is tilted.",
+         "a rectangle",
+         "a square",
+         "an equilateral triangle",
+         "diagonal",
+         "halves that are different sizes",
+         "horizontal (side to side)",
+         "no lines of symmetry",
+         "triangles",
+         "unequal parts",
+         "vertical (up and down)"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F05",
+    "template": "{answer}",
+    "appears_in": [
+     "correct_answer",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "a field of a fixed item bank",
+        "field": "answer",
+        "bank": "_ITEM_POOL",
+        "derived_from_values": [
+         "answer",
+         "concept",
+         "directions",
+         "distractors",
+         "grade_min",
+         "question"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F06",
+    "template": "{distractors}",
+    "appears_in": [
+     "distractors",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "distractors"
+      ],
+      "domains": [
+       {
+        "domain": "a field of a fixed item bank",
+        "field": "distractors",
+        "bank": "_ITEM_POOL",
+        "derived_from_values": [
+         "answer",
+         "concept",
+         "directions",
+         "distractors",
+         "grade_min",
+         "question"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F07",
+    "template": "{question}",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "question"
+      ],
+      "domains": [
+       {
+        "domain": "a field of a fixed item bank",
+        "field": "question",
+        "bank": "_ITEM_POOL",
+        "derived_from_values": [
+         "answer",
+         "concept",
+         "directions",
+         "distractors",
+         "grade_min",
+         "question"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   }
+  ],
+  "lists": {},
+  "banks": {
+   "_ITEM_POOL": {
+    "fields": [
+     "answer",
+     "distractors",
+     "question"
+    ],
+    "one_row_per_problem": true,
+    "rows": [
+     {
+      "answer": "equal halves that are mirror images",
+      "distractors": [
+       "unequal parts",
+       "halves that are different sizes",
+       "triangles"
+      ],
+      "question": "A line of symmetry divides a shape into two ___."
+     },
+     {
+      "answer": "4",
+      "distractors": [
+       "1",
+       "2",
+       "0"
+      ],
+      "question": "How many lines of symmetry does a square have?"
+     },
+     {
+      "answer": "2",
+      "distractors": [
+       "1",
+       "4",
+       "0"
+      ],
+      "question": "How many lines of symmetry does a rectangle (non-square) have?"
+     },
+     {
+      "answer": "3",
+      "distractors": [
+       "1",
+       "2",
+       "0"
+      ],
+      "question": "How many lines of symmetry does an equilateral triangle have?"
+     },
+     {
+      "answer": "1",
+      "distractors": [
+       "2",
+       "3",
+       "0"
+      ],
+      "question": "How many lines of symmetry does an isosceles triangle (two equal sides) have?"
+     },
+     {
+      "answer": "0",
+      "distractors": [
+       "1",
+       "2",
+       "3"
+      ],
+      "question": "How many lines of symmetry does a scalene triangle (all sides different) have?"
+     },
+     {
+      "answer": "Infinite (unlimited)",
+      "distractors": [
+       "1",
+       "4",
+       "0"
+      ],
+      "question": "A circle has how many lines of symmetry?"
+     },
+     {
+      "answer": "vertical (up and down)",
+      "distractors": [
+       "horizontal (side to side)",
+       "diagonal",
+       "no lines of symmetry"
+      ],
+      "question": "The letter 'A' has a line of symmetry. In which direction does it run?"
+     },
+     {
+      "answer": "2",
+      "distractors": [
+       "1",
+       "3",
+       "0"
+      ],
+      "question": "The letter 'H' has how many lines of symmetry?"
+     },
+     {
+      "answer": "vertical (up and down)",
+      "distractors": [
+       "horizontal (side to side)",
+       "diagonal",
+       "no lines of symmetry"
+      ],
+      "question": "The letter 'M' has a line of symmetry. In which direction does it run?"
+     },
+     {
+      "answer": "horizontal (side to side)",
+      "distractors": [
+       "vertical (up and down)",
+       "diagonal",
+       "no lines of symmetry"
+      ],
+      "question": "The letter 'B' has a line of symmetry. In which direction does it run?"
+     },
+     {
+      "answer": "a scalene triangle",
+      "distractors": [
+       "a square",
+       "a rectangle",
+       "an equilateral triangle"
+      ],
+      "question": "Which of these shapes has NO line of symmetry?"
+     },
+     {
+      "answer": "Yes, it shows line symmetry.",
+      "distractors": [
+       "No, the sides are different.",
+       "Only if the heart is tilted.",
+       "No, hearts have 4 lines of symmetry."
+      ],
+      "question": "If you draw a vertical line down the center of a heart shape, do both sides match?"
+     }
+    ],
+    "rows_left_out": 40
+   }
+  },
+  "value_derivations": [],
+  "reason_kinds": {}
+ }
+}

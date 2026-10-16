@@ -1,0 +1,954 @@
+{
+ "schema_version": 2,
+ "hash_version": 8,
+ "node_id": "mat_g3_mg_q1_1",
+ "record_id": "stem-batch445-S445-007-confirming",
+ "role": "confirming",
+ "confirms": "stem-batch445-S445-007-first-r1",
+ "item_id": "S445-007",
+ "lc_hash": "b1612c7819f7791601e2581be6846df424c22a65569c82d171bdf8ab515c4cc1",
+ "judged_by": "blind-stem-judge-claude-haiku-batch445-S445-007-confirming",
+ "dispatch_id": "stem-batch445-S445-007-confirming",
+ "filed_at": "2026-10-16T06:22:18Z",
+ "delivery": "Claude Code Agent tool, model=haiku, subagent_type=general-purpose; the judge was told to read only local_only/scratch/h4c/prompts/S445-007.prompt.txt (tests/stem_file.py prompt output, item S445-007; no lc id, no key or packets file in that directory) and reply with what it asks; dispatched with CLAUDE.md loaded (ruling 29). Blindness is a prompt contract, audited from the subagent transcript.",
+ "tool_uses_by_judge": "From the subagent transcript: 1 tool use(s), all Read of its own prompt file (902 lines, every line read); no other tool, path or search. Model reported in the transcript: claude-haiku-5-5.",
+ "dispatch_prompt_digest": "6e2761ef476151882a817cb9eed8c23665ecfa350ce1899c2936313db1fdb354",
+ "raw_reply": "{\"item\": \"S445-007\", \"clauses\": {\"explore_pattern_across_cases\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F09\", \"template\": \"Three {shape}s are tiled with unit squares: {shown}. Which rule works for every one of them?\", \"reasoning\": \"F09 shows three cases and asks for one rule that works for all of them, which is exploring a pattern across cases.\"}, \"reason_inductively_from_cases\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F09\", \"template\": \"Three {shape}s are tiled with unit squares: {shown}. Which rule works for every one of them?\", \"reasoning\": \"F09 asks the learner to generalize from three tiled cases to one rule, which is inductive reasoning from cases.\"}, \"derive_area_formula\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F08\", \"template\": \"Cover each {shape} with unit square tiles and count them: {shown}. Which rule always gives the number of tiles?\", \"reasoning\": \"F08 has the learner cover a shape with tiles, count them, and find the rule for the count, which is deriving the area formula from tile counts.\"}, \"area_formula_expression\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F04\", \"template\": \"So the rule is: {area_label} = {answer}.\", \"reasoning\": \"F04 prints the formula as an expression, area equals length times width or side times side, drawn from the answer domain.\"}, \"area_attribute\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F01\", \"template\": \"{term}\", \"reasoning\": \"F01 prints the word area, the attribute named by the clause, through the vocabulary gate.\"}, \"square_figure\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F08\", \"template\": \"Cover each {shape} with unit square tiles and count them: {shown}. Which rule always gives the number of tiles?\", \"reasoning\": \"The shape slot of F08 prints the value square, so the family produces problems about a square.\"}, \"rectangle_figure\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F08\", \"template\": \"Cover each {shape} with unit square tiles and count them: {shown}. Which rule always gives the number of tiles?\", \"reasoning\": \"The shape slot of F08 prints the value rectangle, so the family produces problems about a rectangle.\"}, \"square_tile_array\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F10\", \"template\": \"{article} {r} by {c} {shape} takes {t} tiles\", \"reasoning\": \"F10 prints a row by column array of tiles with a tile total, which is the square tile array representation.\"}, \"square_tile_unit\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F08\", \"template\": \"Cover each {shape} with unit square tiles and count them: {shown}. Which rule always gives the number of tiles?\", \"reasoning\": \"F08 names the unit as unit square tiles, which is the square tile unit.\"}}, \"failing_families\": [\"F02\", \"F04\", \"F06\", \"F10\"], \"failing_templates\": [\"Each {area_label} is the {dims_word} multiplied together.\", \"So the rule is: {area_label} = {answer}.\", \"{answer}\", \"{article} {r} by {c} {shape} takes {t} tiles\"], \"overall\": \"FAIL\", \"reasoning\": \"The domains bind no slot to shape. shape is derived only from shape, answer only from answer, dims_word only from dims_word, and r, c and t only from values['cases'] rows, columns and tile totals. So the packet allows a square-shaped problem to print unequal row and column values through F10, which is a misleading statement since a square has equal sides. It also allows a rectangle-shaped problem to key the answer side times side (F06, and F04 as a hint), which is wrong for a rectangle. F02 with dims_word printed as side gives the wording Each area is the side multiplied together, which is singular and misleading. The words width (in the printed values length and width and length times width) and width-based text in F02, F04 and F06 do not appear in cumulative_vocab or NOT_YET_KNOWN, so they fall outside the lc's listed gate. If the generator ties shape to answer, dims_word and the cases, the packet does not show it, so this verdict rests on the domains as given.\"}",
+ "raw_reply_digest": "faf4bcb7effee22a533f19901dd3be89e91afe7456866a8a55038a016f03ade6",
+ "packet_digest": "6b08c024a91f0738e7e023e87219a360b34aae5816c51deae3b189aa785928c3",
+ "family_keys": {
+  "F01": {
+   "source": "backend/app/practice_gen/dna/base.py [gate area]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F02": {
+   "source": "backend/app/practice_gen/dna/mg/area.py",
+   "first_site": "backend/app/practice_gen/dna/mg/area.py:757",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F03": {
+   "source": "backend/app/practice_gen/dna/mg/area.py",
+   "first_site": "backend/app/practice_gen/dna/mg/area.py:756",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F04": {
+   "source": "backend/app/practice_gen/dna/mg/area.py",
+   "first_site": "backend/app/practice_gen/dna/mg/area.py:758",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F05": {
+   "source": "backend/app/practice_gen/dna/mg/area.py",
+   "first_site": "backend/app/practice_gen/dna/mg/area.py:754",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F06": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:32",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F07": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:39",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F08": {
+   "source": "backend/app/practice_gen/generators/base_generator.py",
+   "first_site": "backend/app/practice_gen/generators/base_generator.py:1370",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F09": {
+   "source": "backend/app/practice_gen/generators/base_generator.py",
+   "first_site": "backend/app/practice_gen/generators/base_generator.py:1373",
+   "renderer": "",
+   "path": [
+    23,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F10": {
+   "source": "backend/app/practice_gen/generators/base_generator.py",
+   "first_site": "backend/app/practice_gen/generators/base_generator.py:1360",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F11": {
+   "source": "backend/app/practice_gen/generators/base_generator.py",
+   "first_site": "backend/app/practice_gen/generators/base_generator.py:1362",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  }
+ },
+ "packet": {
+  "item": "S445-007",
+  "competency": {
+   "text": "Explore inductively the derivation of the formulas for the areas of a square and a rectangle using square tile units.",
+   "grade": 3,
+   "quarter": 1
+  },
+  "clauses": [
+   {
+    "id": "explore_pattern_across_cases",
+    "kind": "task",
+    "clause": "Explore"
+   },
+   {
+    "id": "reason_inductively_from_cases",
+    "kind": "task",
+    "clause": "inductively"
+   },
+   {
+    "id": "derive_area_formula",
+    "kind": "task",
+    "clause": "the derivation"
+   },
+   {
+    "id": "area_formula_expression",
+    "kind": "object",
+    "clause": "the formulas"
+   },
+   {
+    "id": "area_attribute",
+    "kind": "attribute",
+    "clause": "the areas"
+   },
+   {
+    "id": "square_figure",
+    "kind": "object",
+    "clause": "a square"
+   },
+   {
+    "id": "rectangle_figure",
+    "kind": "object",
+    "clause": "a rectangle"
+   },
+   {
+    "id": "square_tile_array",
+    "kind": "representation",
+    "clause": "square tile units"
+   },
+   {
+    "id": "square_tile_unit",
+    "kind": "unit",
+    "clause": "tile units"
+   }
+  ],
+  "vocabulary": {
+   "student_vocab": [],
+   "curriculum_vocab": [
+    "area formula",
+    "derive formula",
+    "inductively"
+   ],
+   "introduces_vocab": [
+    "area formula",
+    "derive formula",
+    "inductively"
+   ],
+   "cumulative_vocab": [
+    "1 less",
+    "1 more",
+    "10th",
+    "1st",
+    "2nd",
+    "3rd",
+    "4th",
+    "5th",
+    "6th",
+    "7th",
+    "8th",
+    "9th",
+    "a.m.",
+    "addition",
+    "analog clock",
+    "area",
+    "bigger",
+    "bill",
+    "calendar",
+    "centavo",
+    "centimeter",
+    "circle",
+    "clockwise",
+    "cm",
+    "coin",
+    "compare",
+    "corner",
+    "count",
+    "counter-clockwise",
+    "data",
+    "decreasing pattern",
+    "denominator",
+    "difference",
+    "digit",
+    "division",
+    "elapsed time",
+    "equal",
+    "equal groups",
+    "estimate",
+    "even",
+    "expanded form",
+    "fraction",
+    "group",
+    "half",
+    "half hour",
+    "half turn",
+    "hour",
+    "how many",
+    "hundreds",
+    "increasing pattern",
+    "left",
+    "length",
+    "less",
+    "m",
+    "measure",
+    "meter",
+    "minute",
+    "missing number",
+    "more",
+    "multiplication",
+    "nearest hundred",
+    "nearest ten",
+    "nearest thousand",
+    "number",
+    "number line",
+    "numeral",
+    "numerator",
+    "odd",
+    "ones",
+    "p.m.",
+    "pattern",
+    "perimeter",
+    "peso",
+    "pictograph",
+    "place value",
+    "product",
+    "quarter",
+    "quarter hour",
+    "quarter turn",
+    "quotient",
+    "rectangle",
+    "regrouping",
+    "repeating pattern",
+    "round",
+    "ruler",
+    "same",
+    "scale",
+    "side",
+    "similar fractions",
+    "skip counting",
+    "slide",
+    "smaller",
+    "solid figure",
+    "square",
+    "subtraction",
+    "sum",
+    "table",
+    "ten thousand",
+    "ten-thousands place",
+    "tens",
+    "thousand",
+    "total",
+    "translation",
+    "triangle",
+    "whole",
+    "₱"
+   ],
+   "NOT_YET_KNOWN": [
+    "L",
+    "axis",
+    "balance scale",
+    "bar graph",
+    "capacity",
+    "certain",
+    "equally likely",
+    "g",
+    "gram",
+    "impossible",
+    "improper fraction",
+    "intersecting",
+    "kg",
+    "kilogram",
+    "less likely",
+    "line",
+    "line of symmetry",
+    "line segment",
+    "liter",
+    "mL",
+    "mass",
+    "milliliter",
+    "missing term",
+    "more likely",
+    "order of operations",
+    "outcome",
+    "parallel",
+    "perpendicular",
+    "point",
+    "ray",
+    "remainder",
+    "sq. cm",
+    "square centimeter",
+    "symmetry"
+   ],
+   "sentence_max_words": 22,
+   "number_format": "space separator for thousands (e.g. 1 000)"
+  },
+  "declared_variants": [
+   [
+    "context",
+    "pure"
+   ],
+   [
+    "context",
+    "word_problem"
+   ],
+   [
+    "shape",
+    "rectangle"
+   ],
+   [
+    "shape",
+    "square"
+   ],
+   [
+    "task_type",
+    "derive_formula"
+   ],
+   [
+    "unit",
+    "square_cm"
+   ],
+   [
+    "unit",
+    "square_m"
+   ]
+  ],
+  "declared_bounds": [
+   {
+    "task_type": "derive_formula"
+   }
+  ],
+  "families": [
+   {
+    "id": "F01",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F02",
+     "F04"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='area')",
+        "requires_vocab": "area",
+        "prints": "area",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F02",
+    "template": "Each {area_label} is the {dims_word} multiplied together.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "area_label"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F01"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "dims_word"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "dims_word",
+        "printed": [
+         "length and width",
+         "side"
+        ],
+        "derived_from_values": [
+         "dims_word"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F03",
+    "template": "Look at each {shape_noun}: {worked}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "shape_noun"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "shape_noun",
+        "printed": [
+         "rectangle",
+         "square"
+        ],
+        "derived_from_values": [
+         "shape_noun"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "worked"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F05"
+        ],
+        "derived_from_values": [
+         "cases"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F04",
+    "template": "So the rule is: {area_label} = {answer}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "area_label"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F01"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "answer",
+        "printed": [
+         "length × width",
+         "side × side"
+        ],
+        "derived_from_values": [
+         "answer"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F05",
+    "template": "{x} × {y} = {z}",
+    "appears_in": [],
+    "nested_in": [
+     "F03"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "x"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "values['cases'] rows",
+        "members": [
+         10,
+         2,
+         3,
+         4,
+         5,
+         6,
+         7,
+         8,
+         9
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "y"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "values['cases'] columns",
+        "members": [
+         10,
+         2,
+         3,
+         4,
+         5
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "z"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "values['cases'] tile totals",
+        "members": [
+         10,
+         12,
+         14,
+         15,
+         16,
+         18,
+         20,
+         24,
+         25,
+         27,
+         28,
+         30,
+         32,
+         35,
+         36,
+         4,
+         40,
+         45,
+         6,
+         60,
+         70,
+         8,
+         80,
+         9,
+         90
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F06",
+    "template": "{answer}",
+    "appears_in": [
+     "correct_answer",
+     "format_data.mcq_options",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "answer",
+        "printed": [
+         "length × width",
+         "side × side"
+        ],
+        "derived_from_values": [
+         "answer"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F07",
+    "template": "{member}",
+    "appears_in": [
+     "distractors",
+     "format_data.mcq_options",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "member"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "QuestionContext.distractors (the generator's own)",
+        "members": [
+         "4 × side",
+         "length + length",
+         "length + width + length + width",
+         "length + width",
+         "side + 4",
+         "side + side"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F08",
+    "template": "Cover each {shape} with unit square tiles and count them: {shown}. Which rule always gives the number of tiles?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "shape"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "shape",
+        "printed": [
+         "rectangle",
+         "square"
+        ],
+        "derived_from_values": [
+         "shape"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "shown"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F11"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "cases",
+     "task_type"
+    ]
+   },
+   {
+    "id": "F09",
+    "template": "Three {shape}s are tiled with unit squares: {shown}. Which rule works for every one of them?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "shape"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "shape",
+        "printed": [
+         "rectangle",
+         "square"
+        ],
+        "derived_from_values": [
+         "shape"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "shown"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F11"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F10",
+    "template": "{article} {r} by {c} {shape} takes {t} tiles",
+    "appears_in": [],
+    "nested_in": [
+     "F11"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "article"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the article for the leading number",
+        "members": [
+         "a",
+         "an"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "r"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "values['cases'] rows",
+        "members": [
+         10,
+         2,
+         3,
+         4,
+         5,
+         6,
+         7,
+         8,
+         9
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "c"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "values['cases'] columns",
+        "members": [
+         10,
+         2,
+         3,
+         4,
+         5
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "shape"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "shape",
+        "printed": [
+         "rectangle",
+         "square"
+        ],
+        "derived_from_values": [
+         "shape"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "t"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "values['cases'] tile totals",
+        "members": [
+         10,
+         12,
+         14,
+         15,
+         16,
+         18,
+         20,
+         24,
+         25,
+         27,
+         28,
+         30,
+         32,
+         35,
+         36,
+         4,
+         40,
+         45,
+         6,
+         60,
+         70,
+         8,
+         80,
+         9,
+         90
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F11",
+    "template": "{head}, and {case}",
+    "appears_in": [],
+    "nested_in": [
+     "F08",
+     "F09"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "head",
+       "case"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F10"
+        ]
+       }
+      ],
+      "distinct_in_every_render": true
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   }
+  ],
+  "lists": {},
+  "banks": {},
+  "value_derivations": [],
+  "reason_kinds": {}
+ }
+}

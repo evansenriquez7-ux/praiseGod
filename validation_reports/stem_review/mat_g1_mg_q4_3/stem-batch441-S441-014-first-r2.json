@@ -1,0 +1,916 @@
+{
+ "schema_version": 2,
+ "hash_version": 8,
+ "node_id": "mat_g1_mg_q4_3",
+ "record_id": "stem-batch441-S441-014-first-r2",
+ "role": "first",
+ "confirms": null,
+ "item_id": "S441-014",
+ "lc_hash": "68da76f14928a1121927873df2d9d3e35226feb848b3b151a54559326551cbf7",
+ "judged_by": "blind-stem-judge-claude-haiku-batch441-S441-014-first-r2",
+ "dispatch_id": "stem-batch441-S441-014-first-r2",
+ "filed_at": "2026-10-15T16:51:04Z",
+ "delivery": "Claude Code Agent tool, model=haiku, subagent_type=general-purpose; the judge was told to read only local_only/scratch/h4c/prompts/S441-014.prompt.txt (tests/stem_file.py prompt output, item S441-014; no lc id, no key or packets file in that directory) and reply with what it asks; dispatched with CLAUDE.md loaded (ruling 29). Blindness is a prompt contract, audited from the subagent transcript.",
+ "tool_uses_by_judge": "From the subagent transcript: 1 tool use(s), all Read of its own prompt file (824 lines, every line read); no other tool, path or search. Model reported in the transcript: claude-haiku-5-5.",
+ "dispatch_prompt_digest": "645836863e78554204667cbb591b81ea722720d94f67df4ab55d8984915925e5",
+ "raw_reply": "{\"item\": \"S441-014\", \"clauses\": {\"determine\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F06\", \"template\": \"Look at the calendar page shown. What month of the year is shown on this calendar?\", \"reasoning\": \"F06 has no slots. It asks the learner to determine the month of the year from a calendar page shown, which is the determine task applied to the month of the year.\"}, \"day_and_month_of_the_year\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F14\", \"template\": \"Look at the {month_name} {year} {cal_word}. What day of the week is {month_name} {date}?\", \"reasoning\": \"F14 names a month from the fixed month list and asks a day question about that month, so it addresses the day and month of the year. F14 is also a failing family because its date slot is not tied to the month, so it can print impossible dates.\"}, \"calendar\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F13\", \"template\": \"Look at the {cal_word} page shown. What month of the year is shown on this {cal_word}?\", \"reasoning\": \"F13 places the calendar representation in the question. cal_word draws only from F01 and F15, which both print the word calendar.\"}}, \"failing_families\": [\"F05\", \"F07\", \"F08\", \"F09\", \"F14\"], \"failing_templates\": [\"Count to the {month}th month.\", \"Look at the {v} {year} calendar. What day of the week is {v} {target_date}?\", \"The {elapsed_label} is the number of days or weeks that have passed.\", \"The {months_label} go from January (1st) to December (12th).\", \"Look at the {month_name} {year} {cal_word}. What day of the week is {month_name} {date}?\"], \"overall\": \"FAIL\", \"reasoning\": \"F05 template Count to the {month}th month. has month printed as every number from 1 to 12 (printed_runs 1 to 12), so the month values 1, 2 and 3 produce the malformed ordinals 1th, 2th and 3th. F07 and F14 pair a month name with a date from 1 to 31 with no link between them (target_date printed_runs 1 to 31, derived only from target_date), so February can print 30 or 31 and other short months can print 31, which are impossible dates in 2025. F08 template The {elapsed_label} is the number of days or weeks that have passed. takes elapsed_label only from nested F02, which always prints how much time has passed, so the hint reads as an ungrammatical sentence, and it introduces the days-or-weeks elapsed concept. F09 template The {months_label} go from January (1st) to December (12th). takes months_label from F03, which prints the 12 months, so the hint reads The the 12 months, a duplicated article. It also prints the ordinal 12th, while cumulative_vocab gives ordinals only up to 10th. F06, F13, F01, F10, F11, F12 and F15 raised no defect in the packet.\"}",
+ "raw_reply_digest": "309f6efc4c10bd4a0b0058fc6cacc9a74471e2681ba112ca33ae1d2d0bf9f105",
+ "packet_digest": "d56d5a2dd62216e3afa1c76f5d2e2b2868f785db48526f0f74d58c95dd950270",
+ "family_keys": {
+  "F01": {
+   "source": "backend/app/practice_gen/dna/base.py [gate calendar]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F02": {
+   "source": "backend/app/practice_gen/dna/base.py [gate elapsed]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F03": {
+   "source": "backend/app/practice_gen/dna/base.py [gate months of the year]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    7,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F04": {
+   "source": "backend/app/practice_gen/dna/mg/calendar.py",
+   "first_site": "backend/app/practice_gen/dna/mg/calendar.py:411",
+   "renderer": "",
+   "path": [
+    7,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F05": {
+   "source": "backend/app/practice_gen/dna/mg/calendar.py",
+   "first_site": "backend/app/practice_gen/dna/mg/calendar.py:410",
+   "renderer": "",
+   "path": [
+    7,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F06": {
+   "source": "backend/app/practice_gen/dna/mg/calendar.py",
+   "first_site": "backend/app/practice_gen/dna/mg/calendar.py:246",
+   "renderer": "",
+   "path": [
+    7,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F07": {
+   "source": "backend/app/practice_gen/dna/mg/calendar.py",
+   "first_site": "backend/app/practice_gen/dna/mg/calendar.py:227",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F08": {
+   "source": "backend/app/practice_gen/dna/mg/calendar.py",
+   "first_site": "backend/app/practice_gen/dna/mg/calendar.py:452",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F09": {
+   "source": "backend/app/practice_gen/dna/mg/calendar.py",
+   "first_site": "backend/app/practice_gen/dna/mg/calendar.py:409",
+   "renderer": "",
+   "path": [
+    7,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F10": {
+   "source": "backend/app/practice_gen/dna/mg/calendar.py",
+   "first_site": "backend/app/practice_gen/dna/mg/calendar.py:451",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F11": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:51",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F12": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:39",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F13": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_calendar.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_calendar.py:207",
+   "renderer": "",
+   "path": [
+    7,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F14": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_calendar.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_calendar.py:214",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F15": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_calendar.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_calendar.py:200",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  }
+ },
+ "packet": {
+  "item": "S441-014",
+  "competency": {
+   "text": "Determine the day and month of the year using a calendar.",
+   "grade": 1,
+   "quarter": 4
+  },
+  "clauses": [
+   {
+    "id": "determine",
+    "kind": "task",
+    "clause": "Determine"
+   },
+   {
+    "id": "day_and_month_of_the_year",
+    "kind": "object",
+    "clause": "day and month of the year"
+   },
+   {
+    "id": "calendar",
+    "kind": "representation",
+    "clause": "calendar"
+   }
+  ],
+  "vocabulary": {
+   "student_vocab": [
+    "calendar"
+   ],
+   "curriculum_vocab": [
+    "date"
+   ],
+   "introduces_vocab": [
+    "calendar",
+    "date"
+   ],
+   "cumulative_vocab": [
+    "1 less",
+    "1 more",
+    "10th",
+    "1st",
+    "2nd",
+    "3rd",
+    "4th",
+    "5th",
+    "6th",
+    "7th",
+    "8th",
+    "9th",
+    "addition",
+    "analog clock",
+    "bigger",
+    "bill",
+    "clockwise",
+    "coin",
+    "compare",
+    "corner",
+    "count",
+    "counter-clockwise",
+    "data",
+    "difference",
+    "digit",
+    "equal",
+    "expanded form",
+    "fraction",
+    "group",
+    "half",
+    "half hour",
+    "half turn",
+    "hour",
+    "how many",
+    "left",
+    "length",
+    "less",
+    "measure",
+    "missing number",
+    "more",
+    "number",
+    "number line",
+    "numeral",
+    "ones",
+    "pattern",
+    "peso",
+    "pictograph",
+    "place value",
+    "quarter",
+    "quarter hour",
+    "quarter turn",
+    "rectangle",
+    "repeating pattern",
+    "same",
+    "side",
+    "skip counting",
+    "smaller",
+    "square",
+    "subtraction",
+    "sum",
+    "table",
+    "tens",
+    "total",
+    "triangle",
+    "whole",
+    "₱"
+   ],
+   "NOT_YET_KNOWN": [
+    "L",
+    "a.m.",
+    "area",
+    "axis",
+    "balance scale",
+    "bar graph",
+    "capacity",
+    "centavo",
+    "centimeter",
+    "certain",
+    "circle",
+    "cm",
+    "decreasing pattern",
+    "denominator",
+    "division",
+    "elapsed time",
+    "equal groups",
+    "equally likely",
+    "estimate",
+    "even",
+    "g",
+    "gram",
+    "hundreds",
+    "impossible",
+    "improper fraction",
+    "increasing pattern",
+    "intersecting",
+    "kg",
+    "kilogram",
+    "less likely",
+    "line",
+    "line of symmetry",
+    "line segment",
+    "liter",
+    "m",
+    "mL",
+    "mass",
+    "meter",
+    "milliliter",
+    "minute",
+    "missing term",
+    "more likely",
+    "multiplication",
+    "nearest hundred",
+    "nearest ten",
+    "nearest thousand",
+    "numerator",
+    "odd",
+    "order of operations",
+    "outcome",
+    "p.m.",
+    "parallel",
+    "perimeter",
+    "perpendicular",
+    "point",
+    "product",
+    "quotient",
+    "ray",
+    "regrouping",
+    "remainder",
+    "round",
+    "ruler",
+    "scale",
+    "similar fractions",
+    "slide",
+    "solid figure",
+    "sq. cm",
+    "square centimeter",
+    "symmetry",
+    "ten thousand",
+    "ten-thousands place",
+    "thousand",
+    "translation"
+   ],
+   "sentence_max_words": 15,
+   "number_format": "no commas, no thousands separator"
+  },
+  "declared_variants": [
+   [
+    "calendar_feature",
+    "dates"
+   ],
+   [
+    "calendar_feature",
+    "days"
+   ],
+   [
+    "calendar_feature",
+    "days_order"
+   ],
+   [
+    "calendar_feature",
+    "full_calendar"
+   ],
+   [
+    "calendar_feature",
+    "months"
+   ],
+   [
+    "calendar_feature",
+    "months_order"
+   ],
+   [
+    "calendar_feature",
+    "weeks"
+   ],
+   [
+    "task_type",
+    "day_and_month_calendar"
+   ]
+  ],
+  "declared_bounds": [
+   {
+    "task_type": "day_and_month_calendar"
+   }
+  ],
+  "families": [
+   {
+    "id": "F01",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F10",
+     "F13",
+     "F14"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='calendar')",
+        "requires_vocab": "calendar",
+        "prints": "calendar",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F02",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F08"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='elapsed')",
+        "requires_vocab": "elapsed",
+        "prints": "how much time has passed",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F03",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F09"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='months of the year')",
+        "requires_vocab": "months of the year",
+        "prints": "the 12 months",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F04",
+    "template": "Answer: {answer}",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "answer",
+        "printed": [
+         "April",
+         "August",
+         "December",
+         "February",
+         "January",
+         "July",
+         "June",
+         "March",
+         "May",
+         "November",
+         "October",
+         "September"
+        ],
+        "derived_from_values": [
+         "answer"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F05",
+    "template": "Count to the {month}th month.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "month"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "month",
+        "printed_runs": "1 to 12",
+        "derived_from_values": [
+         "month"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F06",
+    "template": "Look at the calendar page shown. What month of the year is shown on this calendar?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F07",
+    "template": "Look at the {v} {year} calendar. What day of the week is {v} {target_date}?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "v"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "MONTHS_OF_YEAR"
+       }
+      ]
+     },
+     {
+      "slots": [
+       "year"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "year",
+        "printed_runs": "2025",
+        "derived_from_values": [
+         "year"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "target_date"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "target_date",
+        "printed_runs": "1 to 31",
+        "derived_from_values": [
+         "target_date"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F08",
+    "template": "The {elapsed_label} is the number of days or weeks that have passed.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "elapsed_label"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F02"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F09",
+    "template": "The {months_label} go from January (1st) to December (12th).",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "months_label"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F03"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F10",
+    "template": "Use the {cal_label} to find the answer.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "cal_label"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F01",
+         "F15"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F11",
+    "template": "{key}",
+    "appears_in": [
+     "correct_answer"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "key"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the option keys this item shows",
+        "members": [
+         "A",
+         "B",
+         "C",
+         "D"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F12",
+    "template": "{member}",
+    "appears_in": [
+     "distractors",
+     "format_data.mcq_options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "member"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "QuestionContext.distractors (the generator's own)",
+        "members": [
+         "April",
+         "February",
+         "January",
+         "March"
+        ]
+       },
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "fmt_calendar month and day names",
+        "members": [
+         "April",
+         "August",
+         "December",
+         "February",
+         "Friday",
+         "January",
+         "July",
+         "June",
+         "March",
+         "May",
+         "Monday",
+         "November",
+         "October",
+         "Saturday",
+         "September",
+         "Sunday",
+         "Thursday",
+         "Tuesday",
+         "Wednesday"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F13",
+    "template": "Look at the {cal_word} page shown. What month of the year is shown on this {cal_word}?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "cal_word"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F01",
+         "F15"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F14",
+    "template": "Look at the {month_name} {year} {cal_word}. What day of the week is {month_name} {date}?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "month_name"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "_MONTH_NAMES"
+       }
+      ]
+     },
+     {
+      "slots": [
+       "year"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "year",
+        "printed_runs": "2025",
+        "derived_from_values": [
+         "year"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "cal_word"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F01",
+         "F15"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "date"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "target_date",
+        "printed_runs": "1 to 31",
+        "derived_from_values": [
+         "target_date"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F15",
+    "template": "calendar",
+    "appears_in": [],
+    "nested_in": [
+     "F10",
+     "F13",
+     "F14"
+    ],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": []
+   }
+  ],
+  "lists": {
+   "MONTHS_OF_YEAR": [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+   ],
+   "_MONTH_NAMES": [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+   ]
+  },
+  "banks": {},
+  "value_derivations": [],
+  "reason_kinds": {}
+ }
+}

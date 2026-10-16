@@ -1,0 +1,693 @@
+{
+ "schema_version": 2,
+ "hash_version": 8,
+ "node_id": "mat_g1_mg_q2_1",
+ "record_id": "stem-batch441-S441-009-first",
+ "role": "first",
+ "confirms": null,
+ "item_id": "S441-009",
+ "lc_hash": "8902bdd1ae9a4d9e6ba2c08bd3a4c729bff4f372b6111f5c4bf4042887ec781c",
+ "judged_by": "blind-stem-judge-claude-haiku-batch441-S441-009-first",
+ "dispatch_id": "stem-batch441-S441-009-first",
+ "filed_at": "2026-10-15T16:46:42Z",
+ "delivery": "Claude Code Agent tool, model=haiku, subagent_type=general-purpose; the judge was told to read only local_only/scratch/h4c/prompts/S441-009.prompt.txt (tests/stem_file.py prompt output, item S441-009; no lc id, no key or packets file in that directory) and reply with what it asks; dispatched with CLAUDE.md loaded (ruling 29). Blindness is a prompt contract, audited from the subagent transcript.",
+ "tool_uses_by_judge": "From the subagent transcript: 1 tool use(s), all Read of its own prompt file (676 lines, every line read); no other tool, path or search. Model reported in the transcript: claude-haiku-5-5.",
+ "dispatch_prompt_digest": "875f699b963669071e6279d5c8ba5cd8886186d144eb6f3e19eba5cdec8f742e",
+ "raw_reply": "{\"item\": \"S441-009\",\n \"clauses\": {\"compare\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F04\", \"template\": \"Which is {comp_word}: {val_a} {unit_a} or {val_b} {unit_b}?\", \"reasoning\": \"F04 is a question-level comparison of two counts of units, with comp_word drawn from longer/shorter. Its unit domain prints only plural members (crayons, hands, paperclips), so it does not share F01's singular-noun fault.\"}, \"lengths\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F03\", \"template\": \"The {comparison} {measure} is {answer} {count_noun}.\", \"reasoning\": \"F03's measure domain offers the member 'length', the only family that names lengths. F03 is also one of the failing families, for the singular count_noun reason below. The clause is still addressed by the template.\"}, \"distances\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F02\", \"template\": \"The distance from the bench to the tree is {val_a} {unit_a}. The distance from the gate to the tree is {val_b} {unit_b}. Which distance is {comp_word}?\", \"reasoning\": \"F02 prints 'distance' as the measure in two sentences and asks which is longer or shorter. Its unit domain prints only plural members (blocks, hands) for values 2 to 9, so it is clean.\"}, \"non_standard_units\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F04\", \"template\": \"Which is {comp_word}: {val_a} {unit_a} or {val_b} {unit_b}?\", \"reasoning\": \"F04 prints non-standard units (crayons, hands, paperclips) as the counting units for the lengths compared, with values 2 to 9 printed by the value domains.\"}},\n \"failing_families\": [\"F01\", \"F03\"],\n \"failing_templates\": [\"Compare {val_a} {count_noun} and {val_b} {count_noun2}.\", \"The {comparison} {measure} is {answer} {count_noun}.\"],\n \"overall\": \"FAIL\",\n \"reasoning\": \"F01 and F03 take count_noun from the generator's own choices, whose basis is 'the unit word or its singular (dna.base.count_noun)', and the members include the singular forms 'block', 'crayon', 'hand' and 'paperclip' alongside the plurals. The value slots they print with are 'repeats a generated value' with printed_runs '2 to 9', so every value that can appear is 2 or more. The domain's distinct_in_every_render is false, so no check ties the singular noun to a value of 1 (the only count that takes a singular). The domain therefore admits ungrammatical learner text such as a singular noun after a count of 2 to 9, in the hint of F01 and the hint of F03. F02 and F04 print only plural unit members and are not at fault. F05 ('{max} is more than {min}.') and F06 ('{key}') are not at fault on the domains shown. For F02 and F04, the value slots val_a and val_b carry no distinctness flag in the packet; I did not treat equal values as a fault, because F05 declares its two compared values distinct in every render, but that inference is not stated for val_a and val_b. The vocabulary 'distance', 'longer' and 'shorter' is not in cumulative_vocab, and 'distance' appears in this lc's own curriculum_vocab and introduces_vocab through 'compare distances'; I did not treat these as gate violations. Clause verdicts cite the families that best produce each clause, with the templates copied exactly as printed in the packet.\"}",
+ "raw_reply_digest": "62b5de2e469f3b3d9928d66780e4cceb82456e3bd7170bc2406bd7b174b99723",
+ "packet_digest": "46bd63b47eda891eb0679b16eb4d369a3e9654b0e0a33ea05bdc406ecb641313",
+ "family_keys": {
+  "F01": {
+   "source": "backend/app/practice_gen/dna/mg/length_measurement.py",
+   "first_site": "backend/app/practice_gen/dna/mg/length_measurement.py:972",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {
+    "count_noun,count_noun2": [
+     1,
+     null
+    ]
+   }
+  },
+  "F02": {
+   "source": "backend/app/practice_gen/dna/mg/length_measurement.py",
+   "first_site": "backend/app/practice_gen/dna/mg/length_measurement.py:350",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {
+    "unit_a,unit_b": [
+     5,
+     null
+    ]
+   }
+  },
+  "F03": {
+   "source": "backend/app/practice_gen/dna/mg/length_measurement.py",
+   "first_site": "backend/app/practice_gen/dna/mg/length_measurement.py:974",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F04": {
+   "source": "backend/app/practice_gen/dna/mg/length_measurement.py",
+   "first_site": "backend/app/practice_gen/dna/mg/length_measurement.py:283",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {
+    "unit_a,unit_b": [
+     1,
+     null
+    ]
+   }
+  },
+  "F05": {
+   "source": "backend/app/practice_gen/dna/mg/length_measurement.py",
+   "first_site": "backend/app/practice_gen/dna/mg/length_measurement.py:973",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F06": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:51",
+   "renderer": "",
+   "path": [
+    3,
+    "ruler_measure"
+   ],
+   "first_render_repeating": {}
+  }
+ },
+ "packet": {
+  "item": "S441-009",
+  "competency": {
+   "text": "Compare lengths and distances using non-standard units.",
+   "grade": 1,
+   "quarter": 2
+  },
+  "clauses": [
+   {
+    "id": "compare",
+    "kind": "task",
+    "clause": "Compare"
+   },
+   {
+    "id": "lengths",
+    "kind": "property",
+    "clause": "lengths"
+   },
+   {
+    "id": "distances",
+    "kind": "property",
+    "clause": "distances"
+   },
+   {
+    "id": "non_standard_units",
+    "kind": "representation",
+    "clause": "non-standard units"
+   }
+  ],
+  "vocabulary": {
+   "student_vocab": [],
+   "curriculum_vocab": [
+    "compare lengths",
+    "compare distances"
+   ],
+   "introduces_vocab": [
+    "compare lengths",
+    "compare distances"
+   ],
+   "cumulative_vocab": [
+    "1 less",
+    "1 more",
+    "10th",
+    "1st",
+    "2nd",
+    "3rd",
+    "4th",
+    "5th",
+    "6th",
+    "7th",
+    "8th",
+    "9th",
+    "addition",
+    "bigger",
+    "compare",
+    "corner",
+    "count",
+    "digit",
+    "equal",
+    "expanded form",
+    "group",
+    "how many",
+    "left",
+    "length",
+    "less",
+    "measure",
+    "more",
+    "number",
+    "number line",
+    "numeral",
+    "ones",
+    "place value",
+    "rectangle",
+    "same",
+    "side",
+    "skip counting",
+    "smaller",
+    "square",
+    "sum",
+    "tens",
+    "total",
+    "triangle"
+   ],
+   "NOT_YET_KNOWN": [
+    "L",
+    "a.m.",
+    "analog clock",
+    "area",
+    "axis",
+    "balance scale",
+    "bar graph",
+    "bill",
+    "calendar",
+    "capacity",
+    "centavo",
+    "centimeter",
+    "certain",
+    "circle",
+    "clockwise",
+    "cm",
+    "coin",
+    "counter-clockwise",
+    "data",
+    "decreasing pattern",
+    "denominator",
+    "difference",
+    "division",
+    "elapsed time",
+    "equal groups",
+    "equally likely",
+    "estimate",
+    "even",
+    "fraction",
+    "g",
+    "gram",
+    "half",
+    "half hour",
+    "half turn",
+    "hour",
+    "hundreds",
+    "impossible",
+    "improper fraction",
+    "increasing pattern",
+    "intersecting",
+    "kg",
+    "kilogram",
+    "less likely",
+    "line",
+    "line of symmetry",
+    "line segment",
+    "liter",
+    "m",
+    "mL",
+    "mass",
+    "meter",
+    "milliliter",
+    "minute",
+    "missing number",
+    "missing term",
+    "more likely",
+    "multiplication",
+    "nearest hundred",
+    "nearest ten",
+    "nearest thousand",
+    "numerator",
+    "odd",
+    "order of operations",
+    "outcome",
+    "p.m.",
+    "parallel",
+    "pattern",
+    "perimeter",
+    "perpendicular",
+    "peso",
+    "pictograph",
+    "point",
+    "product",
+    "quarter",
+    "quarter hour",
+    "quarter turn",
+    "quotient",
+    "ray",
+    "regrouping",
+    "remainder",
+    "repeating pattern",
+    "round",
+    "ruler",
+    "scale",
+    "similar fractions",
+    "slide",
+    "solid figure",
+    "sq. cm",
+    "square centimeter",
+    "subtraction",
+    "symmetry",
+    "table",
+    "ten thousand",
+    "ten-thousands place",
+    "thousand",
+    "translation",
+    "whole",
+    "₱"
+   ],
+   "sentence_max_words": 15,
+   "number_format": "no commas, no thousands separator"
+  },
+  "declared_variants": [
+   [
+    "context",
+    "pure"
+   ]
+  ],
+  "declared_bounds": [
+   {
+    "task_type": "compare_length_or_distance",
+    "context": "pure"
+   }
+  ],
+  "families": [
+   {
+    "id": "F01",
+    "template": "Compare {val_a} {count_noun} and {val_b} {count_noun2}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "val_a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "value_a",
+        "printed_runs": "2 to 9",
+        "derived_from_values": [
+         "value_a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "count_noun",
+       "count_noun2"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the unit word or its singular (dna.base.count_noun)",
+        "members": [
+         "block",
+         "blocks",
+         "crayon",
+         "crayons",
+         "hand",
+         "hands",
+         "paperclip",
+         "paperclips"
+        ],
+        "derived_from_values": [
+         "unit"
+        ]
+       }
+      ],
+      "distinct_in_every_render": false
+     },
+     {
+      "slots": [
+       "val_b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "value_b",
+        "printed_runs": "2 to 9",
+        "derived_from_values": [
+         "value_b"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F02",
+    "template": "The distance from the bench to the tree is {val_a} {unit_a}. The distance from the gate to the tree is {val_b} {unit_b}. Which distance is {comp_word}?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "val_a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "value_a",
+        "printed_runs": "2 to 9",
+        "derived_from_values": [
+         "value_a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "unit_a",
+       "unit_b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "unit",
+        "printed": [
+         "blocks",
+         "hands"
+        ],
+        "derived_from_values": [
+         "unit"
+        ]
+       }
+      ],
+      "distinct_in_every_render": false
+     },
+     {
+      "slots": [
+       "val_b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "value_b",
+        "printed_runs": "2 to 9",
+        "derived_from_values": [
+         "value_b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "comp_word"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "comparison",
+        "printed": [
+         "longer",
+         "shorter"
+        ],
+        "derived_from_values": [
+         "comparison"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F03",
+    "template": "The {comparison} {measure} is {answer} {count_noun}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "comparison"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "comparison",
+        "printed": [
+         "longer",
+         "shorter"
+        ],
+        "derived_from_values": [
+         "comparison"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "measure"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the two compare measures",
+        "members": [
+         "distance",
+         "length"
+        ],
+        "derived_from_values": [
+         "task_type"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "answer",
+        "printed_runs": "2 to 9",
+        "derived_from_values": [
+         "answer"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "count_noun"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the unit word or its singular (dna.base.count_noun)",
+        "members": [
+         "block",
+         "blocks",
+         "crayon",
+         "crayons",
+         "hand",
+         "hands",
+         "paperclip",
+         "paperclips"
+        ],
+        "derived_from_values": [
+         "unit"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F04",
+    "template": "Which is {comp_word}: {val_a} {unit_a} or {val_b} {unit_b}?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "comp_word"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "comparison",
+        "printed": [
+         "longer",
+         "shorter"
+        ],
+        "derived_from_values": [
+         "comparison"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "val_a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "value_a",
+        "printed_runs": "2 to 9",
+        "derived_from_values": [
+         "value_a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "unit_a",
+       "unit_b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "unit",
+        "printed": [
+         "crayons",
+         "hands",
+         "paperclips"
+        ],
+        "derived_from_values": [
+         "unit"
+        ]
+       }
+      ],
+      "distinct_in_every_render": false
+     },
+     {
+      "slots": [
+       "val_b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "value_b",
+        "printed_runs": "2 to 9",
+        "derived_from_values": [
+         "value_b"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F05",
+    "template": "{max} is more than {min}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "max",
+       "min"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the two compared values",
+        "members": [
+         2,
+         3,
+         4,
+         5,
+         6,
+         7,
+         8,
+         9
+        ]
+       }
+      ],
+      "distinct_in_every_render": true
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F06",
+    "template": "{key}",
+    "appears_in": [
+     "correct_answer"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "key"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the option keys this item shows",
+        "members": [
+         "A",
+         "B",
+         "C",
+         "D"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   }
+  ],
+  "lists": {},
+  "banks": {},
+  "value_derivations": [],
+  "reason_kinds": {}
+ }
+}

@@ -1,0 +1,1512 @@
+{
+ "schema_version": 2,
+ "hash_version": 8,
+ "node_id": "mat_g2_na_q1_6",
+ "record_id": "stem-batch443-S443-021-first",
+ "role": "first",
+ "confirms": null,
+ "item_id": "S443-021",
+ "lc_hash": "610e9c6fe0c9005d366f96e86fdbfba3d2162ec60759ca94673708334b21da16",
+ "judged_by": "blind-stem-judge-claude-haiku-batch443-S443-021-first",
+ "dispatch_id": "stem-batch443-S443-021-first",
+ "filed_at": "2026-10-15T16:47:22Z",
+ "delivery": "Claude Code Agent tool, model=haiku, subagent_type=general-purpose; the judge was told to read only local_only/scratch/h4c/prompts/S443-021.prompt.txt (tests/stem_file.py prompt output, item S443-021; no lc id, no key or packets file in that directory) and reply with what it asks; dispatched with CLAUDE.md loaded (ruling 29). Blindness is a prompt contract, audited from the subagent transcript.",
+ "tool_uses_by_judge": "From the subagent transcript: 1 tool use(s), all Read of its own prompt file (1340 lines, every line read); no other tool, path or search. Model reported in the transcript: claude-haiku-5-5.",
+ "dispatch_prompt_digest": "5a4241511653d50c94373b8cc0ce3e536e7576d4394d25cdb3b9cf5648a4b293",
+ "raw_reply": "{\"item\": \"S443-021\", \"clauses\": {\"determine_place_value\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F22\", \"template\": \"What is the {pv_label} of the digit {digit} in {number}?\", \"reasoning\": \"F22 asks the learner for the place value of a digit in a number. pv_label is drawn from F01, which prints the gated word for place value, so the question addresses the task directly.\"}, \"digit_in_3_digit_number\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F21\", \"template\": \"In {number}, what digit is in the {place_name} place?\", \"reasoning\": \"F21 asks for a digit inside a number. The number domain is the printed 3-digit run (102 to 705), and the 3_digit variant is declared.\"}, \"determine_value_of_digit\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F18\", \"template\": \"In the number {number}, the value of the digit {digit} in the {place} place is {fill_value}\", \"reasoning\": \"F18 states the value of a digit in its place. It reaches the learner nested in F20 as a True or False item. Its keyed-true fill (300) and its distractor fills give value-of-digit statements over 3-digit numbers.\"}, \"determine_digit_given_place_value\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F21\", \"template\": \"In {number}, what digit is in the {place_name} place?\", \"reasoning\": \"F21 gives the place and asks for the digit, which matches the clause's direction (digit given its place value). place_name is drawn from hundreds, tens and ones.\"}}, \"failing_families\": [\"F07\", \"F13\", \"F14\", \"F15\", \"F19\", \"F20\"], \"failing_templates\": [\"Multiply it by its place: {digit} × {v} = {value}.\", \"{p0}\", \"{p0}, {p1}\", \"{p0}, {p1}, {p2}\", \"{question_text} The answer is {fill_value}.\", \"{statement}. True or False?\"], \"overall\": \"FAIL\", \"reasoning\": \"F07 is a hint whose template names multiplication (\\\"Multiply it by its place\\\" and the times sign). multiplication is listed in NOT_YET_KNOWN for this lc, and the template is always printed. F13, F14 and F15 draw their values from the PLACE_NAMES list, which includes 'thousands', with no derivation that bounds them to the places of a 3-digit number. F13 is also a correct_answer and F14 and F15 are nested in the hint template 'Count from the right: {relevant_places}.' (F03) and F06, so a 3-digit lc can key or show a place beyond its scope. F19 wraps a question_text (from F21 or F23, which end in a question mark) in 'The answer is', and its fill_value domain (place names and digits) is independent of the question's answer type, so a question about a digit can be paired with a place name as its answer. F20 then appends '. True or False?' to a statement that F19 has already ended with a period, so the learner sees doubled sentence punctuation, and a question is framed as a true-or-false statement. Other families (F01 to F12, F16 to F18, F21 to F23) were judged passable.\"}",
+ "raw_reply_digest": "5850f2d94a22395f5b323b3d82f3e4d3aa919d48ba538683b5a1680e0de1e0b1",
+ "packet_digest": "3fa5d90d5912e6d83894066e68c8bafc8db4fbf7acae7822815aea29b781c7c6",
+ "family_keys": {
+  "F01": {
+   "source": "backend/app/practice_gen/dna/base.py [gate place value]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F02": {
+   "source": "backend/app/practice_gen/dna/base.py [gate value]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    7,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F03": {
+   "source": "backend/app/practice_gen/dna/na/place_value.py",
+   "first_site": "backend/app/practice_gen/dna/na/place_value.py:405",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F04": {
+   "source": "backend/app/practice_gen/dna/na/place_value.py",
+   "first_site": "backend/app/practice_gen/dna/na/place_value.py:411",
+   "renderer": "",
+   "path": [
+    7,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F05": {
+   "source": "backend/app/practice_gen/dna/na/place_value.py",
+   "first_site": "backend/app/practice_gen/dna/na/place_value.py:397",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F06": {
+   "source": "backend/app/practice_gen/dna/na/place_value.py",
+   "first_site": "backend/app/practice_gen/dna/na/place_value.py:396",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F07": {
+   "source": "backend/app/practice_gen/dna/na/place_value.py",
+   "first_site": "backend/app/practice_gen/dna/na/place_value.py:413",
+   "renderer": "",
+   "path": [
+    7,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F08": {
+   "source": "backend/app/practice_gen/dna/na/place_value.py",
+   "first_site": "backend/app/practice_gen/dna/na/place_value.py:404",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F09": {
+   "source": "backend/app/practice_gen/dna/na/place_value.py",
+   "first_site": "backend/app/practice_gen/dna/na/place_value.py:412",
+   "renderer": "",
+   "path": [
+    7,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F10": {
+   "source": "backend/app/practice_gen/dna/na/place_value.py",
+   "first_site": "backend/app/practice_gen/dna/na/place_value.py:406",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F11": {
+   "source": "backend/app/practice_gen/dna/na/place_value.py",
+   "first_site": "backend/app/practice_gen/dna/na/place_value.py:398",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F12": {
+   "source": "backend/app/practice_gen/dna/na/place_value.py",
+   "first_site": "backend/app/practice_gen/dna/na/place_value.py:414",
+   "renderer": "",
+   "path": [
+    7,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F13": {
+   "source": "backend/app/practice_gen/dna/na/place_value.py",
+   "first_site": "backend/app/practice_gen/dna/na/place_value.py:402",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F14": {
+   "source": "backend/app/practice_gen/dna/na/place_value.py",
+   "first_site": "backend/app/practice_gen/dna/na/place_value.py:402",
+   "renderer": "",
+   "path": [
+    8,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F15": {
+   "source": "backend/app/practice_gen/dna/na/place_value.py",
+   "first_site": "backend/app/practice_gen/dna/na/place_value.py:402",
+   "renderer": "",
+   "path": [
+    3,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F16": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:32",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F17": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:39",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F18": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_true_false.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_true_false.py:357",
+   "renderer": "",
+   "path": [
+    9,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F19": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_true_false.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_true_false.py:411",
+   "renderer": "",
+   "path": [
+    4,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F20": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_true_false.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_true_false.py:430",
+   "renderer": "",
+   "path": [
+    4,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F21": {
+   "source": "backend/app/practice_gen/generators/base_generator.py",
+   "first_site": "backend/app/practice_gen/generators/base_generator.py:890",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F22": {
+   "source": "backend/app/practice_gen/generators/base_generator.py",
+   "first_site": "backend/app/practice_gen/generators/base_generator.py:891",
+   "renderer": "",
+   "path": [
+    7,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F23": {
+   "source": "backend/app/practice_gen/generators/base_generator.py",
+   "first_site": "backend/app/practice_gen/generators/base_generator.py:887",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  }
+ },
+ "packet": {
+  "item": "S443-021",
+  "competency": {
+   "text": "Determine the place value of a digit in a 3-digit number, the value of a digit, and the digit of a number, given its place value.",
+   "grade": 2,
+   "quarter": 1
+  },
+  "clauses": [
+   {
+    "id": "determine_place_value",
+    "kind": "task",
+    "clause": "Determine the place value"
+   },
+   {
+    "id": "digit_in_3_digit_number",
+    "kind": "object",
+    "clause": "digit in a 3-digit number"
+   },
+   {
+    "id": "determine_value_of_digit",
+    "kind": "task",
+    "clause": "the value of a digit"
+   },
+   {
+    "id": "determine_digit_given_place_value",
+    "kind": "task",
+    "clause": "the digit of a number, given its place value"
+   }
+  ],
+  "vocabulary": {
+   "student_vocab": [
+    "hundreds"
+   ],
+   "curriculum_vocab": [
+    "3-digit number"
+   ],
+   "introduces_vocab": [
+    "3-digit number",
+    "hundreds"
+   ],
+   "cumulative_vocab": [
+    "1 less",
+    "1 more",
+    "10th",
+    "1st",
+    "2nd",
+    "3rd",
+    "4th",
+    "5th",
+    "6th",
+    "7th",
+    "8th",
+    "9th",
+    "addition",
+    "analog clock",
+    "bigger",
+    "bill",
+    "calendar",
+    "clockwise",
+    "coin",
+    "compare",
+    "corner",
+    "count",
+    "counter-clockwise",
+    "data",
+    "difference",
+    "digit",
+    "equal",
+    "expanded form",
+    "fraction",
+    "group",
+    "half",
+    "half hour",
+    "half turn",
+    "hour",
+    "how many",
+    "left",
+    "length",
+    "less",
+    "measure",
+    "missing number",
+    "more",
+    "number",
+    "number line",
+    "numeral",
+    "ones",
+    "pattern",
+    "peso",
+    "pictograph",
+    "place value",
+    "quarter",
+    "quarter hour",
+    "quarter turn",
+    "rectangle",
+    "repeating pattern",
+    "same",
+    "side",
+    "skip counting",
+    "smaller",
+    "square",
+    "subtraction",
+    "sum",
+    "table",
+    "tens",
+    "thousand",
+    "total",
+    "triangle",
+    "whole",
+    "₱"
+   ],
+   "NOT_YET_KNOWN": [
+    "L",
+    "a.m.",
+    "area",
+    "axis",
+    "balance scale",
+    "bar graph",
+    "capacity",
+    "centavo",
+    "centimeter",
+    "certain",
+    "circle",
+    "cm",
+    "decreasing pattern",
+    "denominator",
+    "division",
+    "elapsed time",
+    "equal groups",
+    "equally likely",
+    "estimate",
+    "even",
+    "g",
+    "gram",
+    "impossible",
+    "improper fraction",
+    "increasing pattern",
+    "intersecting",
+    "kg",
+    "kilogram",
+    "less likely",
+    "line",
+    "line of symmetry",
+    "line segment",
+    "liter",
+    "m",
+    "mL",
+    "mass",
+    "meter",
+    "milliliter",
+    "minute",
+    "missing term",
+    "more likely",
+    "multiplication",
+    "nearest hundred",
+    "nearest ten",
+    "nearest thousand",
+    "numerator",
+    "odd",
+    "order of operations",
+    "outcome",
+    "p.m.",
+    "parallel",
+    "perimeter",
+    "perpendicular",
+    "point",
+    "product",
+    "quotient",
+    "ray",
+    "regrouping",
+    "remainder",
+    "round",
+    "ruler",
+    "scale",
+    "similar fractions",
+    "slide",
+    "solid figure",
+    "sq. cm",
+    "square centimeter",
+    "symmetry",
+    "ten thousand",
+    "ten-thousands place",
+    "translation"
+   ],
+   "sentence_max_words": 18,
+   "number_format": "no commas for numbers up to 1000"
+  },
+  "declared_variants": [
+   [
+    "digit_count",
+    "3_digit"
+   ],
+   [
+    "include_zeros",
+    "no"
+   ],
+   [
+    "include_zeros",
+    "yes"
+   ]
+  ],
+  "declared_bounds": [
+   {
+    "digit_count": "3_digit",
+    "task_type": "any_place_value_skill"
+   }
+  ],
+  "families": [
+   {
+    "id": "F01",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F04",
+     "F05",
+     "F22"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='place value')",
+        "requires_vocab": "place value",
+        "prints": "place value",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F02",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F12"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='value')",
+        "requires_vocab": "value",
+        "prints": "worth",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F03",
+    "template": "Count from the right: {relevant_places}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "relevant_places"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F13",
+         "F14",
+         "F15",
+         "F16"
+        ],
+        "derived_from_values": [
+         "target_digit_position"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F04",
+    "template": "Find the digit in the {place_name} {pv_phrase} of {number}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "place_name"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "place_name",
+        "printed": [
+         "hundreds",
+         "ones",
+         "tens"
+        ],
+        "derived_from_values": [
+         "place_name"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "pv_phrase"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F01"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "number"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "number",
+        "printed_runs": "102, 105, 130, 135, 140, 160, 165, 170, 190, 195, 230, 250, 260, 285, 310, 315, 320, 340, 345, 350, 375, 405, 410, 430, 435, 465, 520, 610, 615, 705",
+        "derived_from_values": [
+         "number"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F05",
+    "template": "Find the {place_name} {pv_phrase}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "place_name"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "place_name",
+        "printed": [
+         "hundreds",
+         "ones",
+         "tens"
+        ],
+        "derived_from_values": [
+         "place_name"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "pv_phrase"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F01"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F06",
+    "template": "Look at the digits of {number} from the right: {relevant_places}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "number"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "number",
+        "printed_runs": "102, 105, 130, 135, 140, 160, 165, 170, 190, 195, 230, 250, 260, 285, 310, 315, 320, 350, 375, 405, 410, 430, 435, 465, 520, 610, 615, 705",
+        "derived_from_values": [
+         "number"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "relevant_places"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F13",
+         "F14",
+         "F15"
+        ],
+        "derived_from_values": [
+         "target_digit_position"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F07",
+    "template": "Multiply it by its place: {digit} × {v} = {value}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "digit"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "digit_at_position",
+        "printed_runs": "0 to 9",
+        "derived_from_values": [
+         "digit_at_position"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "v"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "PLACE_VALUES",
+        "derived_from_values": [
+         "target_digit_position"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "value"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "value_at_position",
+        "printed_runs": "0, 2, 5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 200, 300, 400, 500, 600, 700",
+        "derived_from_values": [
+         "value_at_position"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F08",
+    "template": "Put each digit of {number} in its own column.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "number"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "number",
+        "printed_runs": "102, 105, 130, 135, 140, 160, 165, 170, 190, 195, 250, 260, 285, 310, 315, 320, 340, 345, 350, 375, 405, 410, 430, 435, 465, 520, 610, 615, 705",
+        "derived_from_values": [
+         "number"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F09",
+    "template": "That digit is {digit}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "digit"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "digit_at_position",
+        "printed_runs": "0 to 9",
+        "derived_from_values": [
+         "digit_at_position"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F10",
+    "template": "The digit in the {place_name} column is {digit}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "place_name"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "place_name",
+        "printed": [
+         "hundreds",
+         "ones",
+         "tens"
+        ],
+        "derived_from_values": [
+         "place_name",
+         "target_digit_position"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "digit"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "digit_at_position",
+        "printed_runs": "0 to 9",
+        "derived_from_values": [
+         "digit_at_position"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F11",
+    "template": "The digit in the {place_name} place is {digit}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "place_name"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "place_name",
+        "printed": [
+         "hundreds",
+         "ones",
+         "tens"
+        ],
+        "derived_from_values": [
+         "place_name"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "digit"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "digit_at_position",
+        "printed_runs": "0 to 8",
+        "derived_from_values": [
+         "digit_at_position"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F12",
+    "template": "The {val_phrase} of {digit} in {number} is {value}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "val_phrase"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F02"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "digit"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "digit_at_position",
+        "printed_runs": "0 to 9",
+        "derived_from_values": [
+         "digit_at_position"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "number"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "number",
+        "printed_runs": "102, 105, 130, 135, 140, 160, 165, 170, 190, 195, 230, 250, 260, 285, 310, 315, 320, 340, 345, 350, 375, 405, 410, 430, 435, 465, 520, 610, 615, 705",
+        "derived_from_values": [
+         "number"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "value"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "value_at_position",
+        "printed_runs": "0, 2, 5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 200, 300, 400, 500, 600, 700",
+        "derived_from_values": [
+         "value_at_position"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F13",
+    "template": "{p0}",
+    "appears_in": [
+     "correct_answer",
+     "format_data.mcq_options"
+    ],
+    "nested_in": [
+     "F03",
+     "F06"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "p0"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "PLACE_NAMES"
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F14",
+    "template": "{p0}, {p1}",
+    "appears_in": [],
+    "nested_in": [
+     "F03",
+     "F06"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "p0",
+       "p1"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "PLACE_NAMES"
+       }
+      ],
+      "distinct_in_every_render": true
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F15",
+    "template": "{p0}, {p1}, {p2}",
+    "appears_in": [],
+    "nested_in": [
+     "F03",
+     "F06"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "p0",
+       "p1",
+       "p2"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "PLACE_NAMES"
+       }
+      ],
+      "distinct_in_every_render": true
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F16",
+    "template": "{answer}",
+    "appears_in": [
+     "correct_answer",
+     "format_data.mcq_options"
+    ],
+    "nested_in": [
+     "F03"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "place_name",
+        "printed": [
+         "hundreds",
+         "ones",
+         "tens"
+        ],
+        "derived_from_values": [
+         "place_name"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F17",
+    "template": "{member}",
+    "appears_in": [
+     "distractors",
+     "format_data.mcq_options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "member"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "QuestionContext.distractors (the generator's own)",
+        "members": [
+         "hundreds",
+         "ones",
+         "tens"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F18",
+    "template": "In the number {number}, the value of the digit {digit} in the {place} place is {fill_value}",
+    "appears_in": [
+     "format_data.statement"
+    ],
+    "nested_in": [
+     "F20"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "number"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "number",
+        "printed_runs": "320, 340, 345, 350, 375, 405, 410, 430, 465, 520, 610, 705",
+        "derived_from_values": [
+         "number"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "digit"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "digit_at_position",
+        "printed_runs": "0, 3 to 7",
+        "derived_from_values": [
+         "digit_at_position"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "place"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "place_name",
+        "printed": [
+         "hundreds",
+         "ones",
+         "tens"
+        ],
+        "derived_from_values": [
+         "place_name"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "fill_value"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the distractors shaped like the keyed answer",
+        "members": [
+         1,
+         15,
+         16,
+         2,
+         350,
+         5,
+         500,
+         55,
+         6,
+         60,
+         6000,
+         606
+        ]
+       },
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the keyed answer (a true statement)",
+        "members": [
+         300
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F19",
+    "template": "{question_text} The answer is {fill_value}.",
+    "appears_in": [
+     "format_data.statement"
+    ],
+    "nested_in": [
+     "F20"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "question_text"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F21",
+         "F23"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "fill_value"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the distractors shaped like the keyed answer",
+        "members": [
+         "hundreds",
+         "ones",
+         "tens",
+         0,
+         1,
+         1000,
+         101,
+         2,
+         3,
+         300,
+         3000,
+         303,
+         33,
+         4,
+         5,
+         6,
+         7,
+         8,
+         800,
+         88,
+         9
+        ]
+       },
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the keyed answer (a true statement)",
+        "members": [
+         "hundreds",
+         "ones",
+         0,
+         1,
+         2,
+         5,
+         6
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F20",
+    "template": "{statement}. True or False?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "statement"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F18",
+         "F19"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F21",
+    "template": "In {number}, what digit is in the {place_name} place?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [
+     "F19"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "number"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "number",
+        "printed_runs": "102, 105, 130, 135, 140, 160, 165, 170, 190, 195, 230, 250, 260, 285, 310, 315, 320, 350, 375, 405, 410, 430, 435, 465, 520, 610, 615, 705",
+        "derived_from_values": [
+         "a",
+         "number",
+         "start"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "place_name"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "place_name",
+        "printed": [
+         "hundreds",
+         "ones",
+         "tens"
+        ],
+        "derived_from_values": [
+         "place_name"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F22",
+    "template": "What is the {pv_label} of the digit {digit} in {number}?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "pv_label"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F01"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "digit"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "digit_at_position",
+        "printed_runs": "0 to 9",
+        "derived_from_values": [
+         "b",
+         "digit",
+         "digit_at_position",
+         "skip_by"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "number"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "number",
+        "printed_runs": "102, 105, 130, 135, 140, 160, 165, 170, 190, 195, 230, 250, 260, 285, 310, 315, 435, 520, 610, 615",
+        "derived_from_values": [
+         "a",
+         "number",
+         "start"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F23",
+    "template": "What place is the digit {digit} in, in the number {number}?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [
+     "F19"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "digit"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "digit_at_position",
+        "printed_runs": "0 to 9",
+        "derived_from_values": [
+         "b",
+         "digit",
+         "digit_at_position",
+         "skip_by"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "number"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "number",
+        "printed_runs": "102, 105, 130, 135, 140, 160, 165, 170, 190, 195, 250, 260, 285, 310, 315, 320, 340, 345, 350, 375, 405, 410, 430, 435, 465, 520, 610, 615, 705",
+        "derived_from_values": [
+         "a",
+         "number",
+         "start"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   }
+  ],
+  "lists": {
+   "PLACE_VALUES": [
+    1,
+    10,
+    100,
+    1000
+   ],
+   "PLACE_NAMES": [
+    "ones",
+    "tens",
+    "hundreds",
+    "thousands"
+   ]
+  },
+  "banks": {},
+  "value_derivations": [],
+  "reason_kinds": {}
+ }
+}

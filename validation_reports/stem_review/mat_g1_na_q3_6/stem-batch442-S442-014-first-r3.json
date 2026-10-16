@@ -1,0 +1,1075 @@
+{
+ "schema_version": 2,
+ "hash_version": 8,
+ "node_id": "mat_g1_na_q3_6",
+ "record_id": "stem-batch442-S442-014-first-r3",
+ "role": "first",
+ "confirms": null,
+ "item_id": "S442-014",
+ "lc_hash": "a3e523121d296aa5ad2ef371debf23c0636d45c467010cdea217128d5f5360b5",
+ "judged_by": "blind-stem-judge-claude-haiku-batch442-S442-014-first-r3",
+ "dispatch_id": "stem-batch442-S442-014-first-r3",
+ "filed_at": "2026-10-15T16:57:53Z",
+ "delivery": "Claude Code Agent tool, model=haiku, subagent_type=general-purpose; the judge was told to read only local_only/scratch/h4c/prompts/S442-014.prompt.txt (tests/stem_file.py prompt output, item S442-014; no lc id, no key or packets file in that directory) and reply with what it asks; dispatched with CLAUDE.md loaded (ruling 29). Blindness is a prompt contract, audited from the subagent transcript.",
+ "tool_uses_by_judge": "From the subagent transcript: 1 tool use(s), all Read of its own prompt file (973 lines, every line read); no other tool, path or search. Model reported in the transcript: claude-haiku-5-5.",
+ "dispatch_prompt_digest": "6321f1f7cecd429e7617d2b6c8ec8a7f2fe395cc3e5cc5268e906d0e4c4128fc",
+ "raw_reply": "{\"item\": \"S442-014\", \"clauses\": {\"determine_next_term\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F14\", \"template\": \"What is the next {unit} in the pattern: {seq_str}?\", \"reasoning\": \"F14 asks for the next unit of a pattern, with unit from the generator's sequence and seq_str from F15 (six terms). The question asks the learner to determine the next term, which is this clause's task.\"}, \"repeating_pattern\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F15\", \"template\": \"{p0}, {p1}, {p2}, {p3}, {p4}, {p5}\", \"reasoning\": \"F15 prints the six terms that F14 shows, drawn from the generator's sequence, and the declared bound is pattern_type repeating. The problem's displayed sequence is therefore a repeating pattern.\"}}, \"failing_families\": [\"F06\", \"F09\", \"F10\", \"F12\"], \"failing_templates\": [\"This is a {rep} {resolve}. Find the repeating group.\", \"{rule}. The answer is {ans}.\", \"{answer}\", \"{member}\"], \"overall\": \"FAIL\", \"reasoning\": \"F06 is the hint template This is a {rep} {resolve}. Find the repeating group. Its slots are single choices: rep is F02, whose only printed text is 'same group again', and resolve is F01, whose only printed text is the gated word pattern. The template places the article 'a' before rep, so every render reads as ungrammatical English (an article followed by 'same group again' and then 'pattern'). That is wrong wording for a grade 1 learner, so F06 fails. F10 (answer, correct_answer and options) and F12 (member, distractors and options) print only letters. F14 with unit number and F15 or F08 with numeric members can produce numeric sequences, so a number question can carry letter-only answer choices and a letter-only key, which is a misleading keyed answer. F09 prints the answer slot as 1, 10, 2 plus letters, while F10 under the same answer key never prints a number, so the two observed sets disagree. F09 is also a hint in which rule_description and answer are separate domains, and value_derivations links answer only to common_difference and pattern_kind. The packet gives no pairing that makes the answer the next term of the printed group, so the domains allow a hint that states an answer which is not the group's next term. Vocabulary is otherwise gated correctly: pattern, term, group and same are all permitted, and missing term is replaced by piece.\"}",
+ "raw_reply_digest": "531fada51bd0e1b79ce28b5a25f18fdd7f7d7f27d77b9754848f61c545ba7e3c",
+ "packet_digest": "c5e57360d6f3fa7bf4cd26cb417c926cb11b2658652da22682216a6f2a31a0c2",
+ "family_keys": {
+  "F01": {
+   "source": "backend/app/practice_gen/dna/base.py [gate pattern]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F02": {
+   "source": "backend/app/practice_gen/dna/base.py [gate repeating]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F03": {
+   "source": "backend/app/practice_gen/dna/base.py [gate term]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F04": {
+   "source": "backend/app/practice_gen/dna/na/patterns.py",
+   "first_site": "backend/app/practice_gen/dna/na/patterns.py:607",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F05": {
+   "source": "backend/app/practice_gen/dna/na/patterns.py",
+   "first_site": "backend/app/practice_gen/dna/na/patterns.py:625",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F06": {
+   "source": "backend/app/practice_gen/dna/na/patterns.py",
+   "first_site": "backend/app/practice_gen/dna/na/patterns.py:611",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F07": {
+   "source": "backend/app/practice_gen/dna/na/patterns.py",
+   "first_site": "backend/app/practice_gen/dna/na/patterns.py:622",
+   "renderer": "",
+   "path": [
+    2,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F08": {
+   "source": "backend/app/practice_gen/dna/na/patterns.py",
+   "first_site": "backend/app/practice_gen/dna/na/patterns.py:607",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {
+    "p0,p1,p2,p3,p4,p5,p6": [
+     1,
+     null
+    ]
+   }
+  },
+  "F09": {
+   "source": "backend/app/practice_gen/dna/na/patterns.py",
+   "first_site": "backend/app/practice_gen/dna/na/patterns.py:628",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F10": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:32",
+   "renderer": "",
+   "path": [
+    2,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F11": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:51",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F12": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:39",
+   "renderer": "",
+   "path": [
+    2,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F13": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_pattern_sequence.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_pattern_sequence.py:199",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F14": {
+   "source": "backend/app/practice_gen/generators/base_generator.py",
+   "first_site": "backend/app/practice_gen/generators/base_generator.py:993",
+   "renderer": "",
+   "path": [
+    2,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F15": {
+   "source": "backend/app/practice_gen/generators/base_generator.py",
+   "first_site": "backend/app/practice_gen/generators/base_generator.py:991",
+   "renderer": "",
+   "path": [
+    2,
+    null
+   ],
+   "first_render_repeating": {
+    "p0,p1,p2,p3,p4,p5": [
+     2,
+     null
+    ]
+   }
+  }
+ },
+ "packet": {
+  "item": "S442-014",
+  "competency": {
+   "text": "Determine the next term/s in a repeating pattern (patterns could use rhythmic properties, visual elements in the arts, …) (e.g., numbers: 2, 4, 2, 4__, __; letters: a, b, c, a, b, c, a, __, __).",
+   "grade": 1,
+   "quarter": 3
+  },
+  "clauses": [
+   {
+    "id": "determine_next_term",
+    "kind": "task",
+    "clause": "Determine the next term/s"
+   },
+   {
+    "id": "repeating_pattern",
+    "kind": "object",
+    "clause": "repeating pattern"
+   }
+  ],
+  "vocabulary": {
+   "student_vocab": [
+    "pattern",
+    "repeating pattern"
+   ],
+   "curriculum_vocab": [
+    "next term",
+    "term"
+   ],
+   "introduces_vocab": [
+    "pattern",
+    "repeating pattern",
+    "next term",
+    "term"
+   ],
+   "cumulative_vocab": [
+    "1 less",
+    "1 more",
+    "10th",
+    "1st",
+    "2nd",
+    "3rd",
+    "4th",
+    "5th",
+    "6th",
+    "7th",
+    "8th",
+    "9th",
+    "addition",
+    "bigger",
+    "compare",
+    "corner",
+    "count",
+    "difference",
+    "digit",
+    "equal",
+    "expanded form",
+    "group",
+    "how many",
+    "left",
+    "length",
+    "less",
+    "measure",
+    "missing number",
+    "more",
+    "number",
+    "number line",
+    "numeral",
+    "ones",
+    "place value",
+    "rectangle",
+    "same",
+    "side",
+    "skip counting",
+    "smaller",
+    "square",
+    "subtraction",
+    "sum",
+    "tens",
+    "total",
+    "triangle"
+   ],
+   "NOT_YET_KNOWN": [
+    "L",
+    "a.m.",
+    "analog clock",
+    "area",
+    "axis",
+    "balance scale",
+    "bar graph",
+    "bill",
+    "calendar",
+    "capacity",
+    "centavo",
+    "centimeter",
+    "certain",
+    "circle",
+    "clockwise",
+    "cm",
+    "coin",
+    "counter-clockwise",
+    "data",
+    "decreasing pattern",
+    "denominator",
+    "division",
+    "elapsed time",
+    "equal groups",
+    "equally likely",
+    "estimate",
+    "even",
+    "fraction",
+    "g",
+    "gram",
+    "half",
+    "half hour",
+    "half turn",
+    "hour",
+    "hundreds",
+    "impossible",
+    "improper fraction",
+    "increasing pattern",
+    "intersecting",
+    "kg",
+    "kilogram",
+    "less likely",
+    "line",
+    "line of symmetry",
+    "line segment",
+    "liter",
+    "m",
+    "mL",
+    "mass",
+    "meter",
+    "milliliter",
+    "minute",
+    "missing term",
+    "more likely",
+    "multiplication",
+    "nearest hundred",
+    "nearest ten",
+    "nearest thousand",
+    "numerator",
+    "odd",
+    "order of operations",
+    "outcome",
+    "p.m.",
+    "parallel",
+    "perimeter",
+    "perpendicular",
+    "peso",
+    "pictograph",
+    "point",
+    "product",
+    "quarter",
+    "quarter hour",
+    "quarter turn",
+    "quotient",
+    "ray",
+    "regrouping",
+    "remainder",
+    "round",
+    "ruler",
+    "scale",
+    "similar fractions",
+    "slide",
+    "solid figure",
+    "sq. cm",
+    "square centimeter",
+    "symmetry",
+    "table",
+    "ten thousand",
+    "ten-thousands place",
+    "thousand",
+    "translation",
+    "whole",
+    "₱"
+   ],
+   "sentence_max_words": 15,
+   "number_format": "no commas, no thousands separator"
+  },
+  "declared_variants": [],
+  "declared_bounds": [
+   {
+    "pattern_type": "repeating",
+    "element_pool": "numbers_and_letters",
+    "ask_type": "next"
+   }
+  ],
+  "families": [
+   {
+    "id": "F01",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F06"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='pattern')",
+        "requires_vocab": "pattern",
+        "prints": "pattern",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F02",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F06"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='repeating')",
+        "requires_vocab": "repeating",
+        "prints": "same group again",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F03",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F05"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='term')",
+        "requires_vocab": "term",
+        "prints": "term",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F04",
+    "template": "Look at the pattern: {join}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "join"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F08"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F05",
+    "template": "The next {term_label} is at position {v}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term_label"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F03",
+         "F07"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "v"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "position",
+        "printed_runs": "7",
+        "derived_from_values": [
+         "position"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "sequence"
+    ]
+   },
+   {
+    "id": "F06",
+    "template": "This is a {rep} {resolve}. Find the repeating group.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "rep"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F02"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "resolve"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F01"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "pattern_kind"
+    ]
+   },
+   {
+    "id": "F07",
+    "template": "letter",
+    "appears_in": [],
+    "nested_in": [
+     "F05"
+    ],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F08",
+    "template": "{p0}, {p1}, {p2}, {p3}, {p4}, {p5}, {p6}",
+    "appears_in": [],
+    "nested_in": [
+     "F04"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "p0",
+       "p1",
+       "p2",
+       "p3",
+       "p4",
+       "p5",
+       "p6"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the sequence, its missing term blanked",
+        "members": [
+         "___",
+         "a",
+         "b",
+         "c",
+         "d",
+         "e",
+         "f",
+         "h",
+         "i",
+         "j",
+         "k",
+         "n",
+         "o",
+         "p",
+         1,
+         10,
+         11,
+         12,
+         13,
+         2,
+         4,
+         5,
+         6,
+         8
+        ]
+       }
+      ],
+      "distinct_in_every_render": false
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F09",
+    "template": "{rule}. The answer is {ans}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "rule"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "rule_description",
+        "printed": [
+         "Repeat the group: 1, 10",
+         "Repeat the group: 1, 11",
+         "Repeat the group: 1, 13",
+         "Repeat the group: 1, 14",
+         "Repeat the group: 1, 2",
+         "Repeat the group: 1, 3",
+         "Repeat the group: 1, 4",
+         "Repeat the group: 1, 5",
+         "Repeat the group: 1, 6",
+         "Repeat the group: 1, 8",
+         "Repeat the group: 10, 11",
+         "Repeat the group: 10, 12",
+         "Repeat the group: 10, 13",
+         "Repeat the group: 10, 14",
+         "Repeat the group: 10, 1",
+         "Repeat the group: 10, 2",
+         "Repeat the group: 10, 3",
+         "Repeat the group: 10, 4",
+         "Repeat the group: 10, 5",
+         "Repeat the group: 10, 7",
+         "Repeat the group: 10, 8",
+         "Repeat the group: 2, 10",
+         "Repeat the group: 2, 11",
+         "Repeat the group: 2, 12",
+         "Repeat the group: 2, 13",
+         "Repeat the group: 2, 14",
+         "Repeat the group: 2, 1",
+         "Repeat the group: 2, 4",
+         "Repeat the group: 2, 5",
+         "Repeat the group: 2, 7",
+         "Repeat the group: 2, 9",
+         "Repeat the group: a, c, d, p",
+         "Repeat the group: a, f",
+         "Repeat the group: a, j",
+         "Repeat the group: a, p, i",
+         "Repeat the group: b, e",
+         "Repeat the group: b, f, k, c",
+         "Repeat the group: b, k",
+         "Repeat the group: b, o, c, i",
+         "Repeat the group: c, a",
+         "Repeat the group: c, d, f",
+         "Repeat the group: c, h, b, o",
+         "Repeat the group: c, k, j",
+         "Repeat the group: c, o, n",
+         "Repeat the group: c, p, a",
+         "Repeat the group: d, a, p, i",
+         "Repeat the group: d, b",
+         "Repeat the group: d, c, p, n",
+         "Repeat the group: d, e, f",
+         "Repeat the group: d, i, o, j",
+         "Repeat the group: d, j, p",
+         "Repeat the group: d, p, c",
+         "Repeat the group: d, p, i",
+         "Repeat the group: d, p",
+         "Repeat the group: e, b, a",
+         "Repeat the group: e, b, j, f",
+         "Repeat the group: e, b, n, c",
+         "Repeat the group: e, d",
+         "Repeat the group: e, h, a",
+         "Repeat the group: e, k, c, f",
+         "Repeat the group: f, d, o",
+         "Repeat the group: f, e, a, o",
+         "Repeat the group: f, e",
+         "Repeat the group: f, j",
+         "Repeat the group: f, o, a",
+         "Repeat the group: f, p, d, a",
+         "Repeat the group: f, p, e",
+         "Repeat the group: h, b, i, d",
+         "Repeat the group: h, c, a, e",
+         "Repeat the group: h, c",
+         "Repeat the group: h, d, b, f",
+         "Repeat the group: h, e, n, d",
+         "Repeat the group: h, i, a, c",
+         "Repeat the group: h, i, c, b",
+         "Repeat the group: h, j, n, a",
+         "Repeat the group: h, k",
+         "Repeat the group: h, n, d, f",
+         "Repeat the group: i, a, c, e",
+         "Repeat the group: i, a, e, b",
+         "Repeat the group: i, c, b, f",
+         "Repeat the group: i, c, f",
+         "Repeat the group: i, e",
+         "Repeat the group: i, f",
+         "Repeat the group: i, h, e",
+         "Repeat the group: i, k, f, e",
+         "Repeat the group: j, a, b",
+         "Repeat the group: j, b",
+         "Repeat the group: j, e, p, d",
+         "Repeat the group: j, i, f, h",
+         "Repeat the group: j, k, o, a",
+         "Repeat the group: j, o",
+         "Repeat the group: k, c, i",
+         "Repeat the group: k, d, a",
+         "Repeat the group: k, e",
+         "Repeat the group: k, h",
+         "Repeat the group: k, i, o",
+         "Repeat the group: k, o, c, d",
+         "Repeat the group: k, o, j, d",
+         "Repeat the group: n, b, o, c",
+         "Repeat the group: n, c, k",
+         "Repeat the group: n, d",
+         "Repeat the group: n, f, c, h",
+         "Repeat the group: n, i, p, o",
+         "Repeat the group: n, j, a, h",
+         "Repeat the group: n, j, h, b",
+         "Repeat the group: o, c",
+         "Repeat the group: o, d, b",
+         "Repeat the group: o, d",
+         "Repeat the group: o, e, h, a",
+         "Repeat the group: o, f, p, n",
+         "Repeat the group: o, h, k",
+         "Repeat the group: o, k, n, i",
+         "Repeat the group: p, b, c",
+         "Repeat the group: p, b",
+         "Repeat the group: p, c, n, d",
+         "Repeat the group: p, e",
+         "Repeat the group: p, f",
+         "Repeat the group: p, i"
+        ],
+        "derived_from_values": [
+         "rule_description"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "ans"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "answer",
+        "printed": [
+         1,
+         10,
+         2,
+         "a",
+         "b",
+         "c",
+         "d",
+         "e",
+         "f",
+         "h",
+         "i",
+         "j",
+         "k",
+         "n",
+         "o",
+         "p"
+        ],
+        "derived_from_values": [
+         "answer"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F10",
+    "template": "{answer}",
+    "appears_in": [
+     "correct_answer",
+     "format_data.mcq_options",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "answer",
+        "printed": [
+         "a",
+         "b",
+         "c",
+         "d",
+         "e",
+         "f",
+         "h",
+         "i",
+         "j",
+         "k",
+         "n",
+         "o",
+         "p"
+        ],
+        "derived_from_values": [
+         "answer"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F11",
+    "template": "{key}",
+    "appears_in": [
+     "correct_answer"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "key"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the option keys this item shows",
+        "members": [
+         "A",
+         "B",
+         "C",
+         "D"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F12",
+    "template": "{member}",
+    "appears_in": [
+     "distractors",
+     "format_data.mcq_options",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "member"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "QuestionContext.distractors (the generator's own)",
+        "members": [
+         "a",
+         "b",
+         "c",
+         "d",
+         "e",
+         "f",
+         "h",
+         "i",
+         "j",
+         "k",
+         "n",
+         "p"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F13",
+    "template": "What is the missing {term_word} (position {pos_label}) in the pattern?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term_word"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "'missing term' gated by cumulative_vocab",
+        "requires_vocab": "missing term",
+        "prints": "piece",
+        "words_left_out": 1
+       }
+      ]
+     },
+     {
+      "slots": [
+       "pos_label"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "position",
+        "printed_runs": "7",
+        "derived_from_values": [
+         "position"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F14",
+    "template": "What is the next {unit} in the pattern: {seq_str}?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "unit"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "what the pattern's terms are",
+        "members": [
+         "letter",
+         "number"
+        ],
+        "derived_from_values": [
+         "sequence"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "seq_str"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F15"
+        ],
+        "derived_from_values": [
+         "a",
+         "sequence",
+         "start"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F15",
+    "template": "{p0}, {p1}, {p2}, {p3}, {p4}, {p5}",
+    "appears_in": [],
+    "nested_in": [
+     "F14"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "p0",
+       "p1",
+       "p2",
+       "p3",
+       "p4",
+       "p5"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "values['sequence']",
+        "members": [
+         "a",
+         "b",
+         "c",
+         "d",
+         "e",
+         "f",
+         "h",
+         "i",
+         "j",
+         "k",
+         "n",
+         "o",
+         "p",
+         1,
+         10,
+         11,
+         2,
+         4,
+         5,
+         6
+        ]
+       }
+      ],
+      "distinct_in_every_render": false
+     }
+    ],
+    "template_chosen_by_values": []
+   }
+  ],
+  "lists": {},
+  "banks": {},
+  "value_derivations": [
+   {
+    "kind": "derives",
+    "key": "answer",
+    "from": [
+     "common_difference",
+     "pattern_kind"
+    ]
+   },
+   {
+    "kind": "derives",
+    "key": "sequence",
+    "from": [
+     "common_difference",
+     "pattern_kind"
+    ]
+   }
+  ],
+  "reason_kinds": {}
+ }
+}

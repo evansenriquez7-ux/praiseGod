@@ -1,0 +1,788 @@
+{
+ "schema_version": 2,
+ "hash_version": 8,
+ "node_id": "mat_g3_dp_q3_3",
+ "record_id": "stem-batch445-S445-004-confirming",
+ "role": "confirming",
+ "confirms": "stem-batch445-S445-004-first-r1",
+ "item_id": "S445-004",
+ "lc_hash": "7a0d0aa102d6f4d11f803ad4ce705ec15b4cef175b6b804d60c0cad97a3976fc",
+ "judged_by": "blind-stem-judge-claude-haiku-batch445-S445-004-confirming",
+ "dispatch_id": "stem-batch445-S445-004-confirming",
+ "filed_at": "2026-10-16T06:20:40Z",
+ "delivery": "Claude Code Agent tool, model=haiku, subagent_type=general-purpose; the judge was told to read only local_only/scratch/h4c/prompts/S445-004.prompt.txt (tests/stem_file.py prompt output, item S445-004; no lc id, no key or packets file in that directory) and reply with what it asks; dispatched with CLAUDE.md loaded (ruling 29). Blindness is a prompt contract, audited from the subagent transcript.",
+ "tool_uses_by_judge": "From the subagent transcript: 1 tool use(s), all Read of its own prompt file (756 lines, every line read); no other tool, path or search. Model reported in the transcript: claude-haiku-5-5.",
+ "dispatch_prompt_digest": "d29fb7ae090f6844a64b58df96fbaccd082ebe594390d954b24d24483ecc2a0b",
+ "raw_reply": "{\"item\": \"S445-004\",\n \"clauses\": {\n  \"solve_problems\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F08\", \"template\": \"Look at the {bg_full_lbl}. {problem_question}\", \"reasoning\": \"F08 prints a problem_question drawn from its repeated printed list. Every printed item asks the learner to compute a difference, a total, a new total or a total cost from recorded counts, so the family produces problems that must be solved from data.\"},\n  \"data_presented\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F08\", \"template\": \"Look at the {bg_full_lbl}. {problem_question}\", \"reasoning\": \"F08 presents the data by directing the learner to look at the bar graph and then asks about recorded items by category, which is the data presented in the problem.\"},\n  \"single_bar_graph\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F08\", \"template\": \"Look at the {bg_full_lbl}. {problem_question}\", \"reasoning\": \"F08 names the representation through bg_full_lbl, which draws on F01 'bar graph' (a single term, so one graph is referred to). The problem is about one bar graph.\"},\n  \"horizontal\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F08\", \"template\": \"Look at the {bg_full_lbl}. {problem_question}\", \"reasoning\": \"bg_full_lbl can take the F09 member for orientation horizontal, and the template_chosen_by_values entry ties the orientation choice to the generated value, so F08 can produce a horizontal bar graph problem. The F09 member on its own yields the bare word horizontal with no noun, so this route is defective (see failing_families), but it is a route that addresses the clause.\"},\n  \"vertical\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F08\", \"template\": \"Look at the {bg_full_lbl}. {problem_question}\", \"reasoning\": \"bg_full_lbl can take the F09 member for orientation vertical, so F08 can produce a vertical bar graph problem. The same defect as the horizontal route applies (see failing_families).\"}\n },\n \"failing_families\": [\"F04\", \"F08\"],\n \"failing_templates\": [\"The {scale_label} on the {axis} goes up by {scale}.\", \"Look at the {bg_full_lbl}. {problem_question}\"],\n \"overall\": \"FAIL\",\n \"reasoning\": \"F04 hint: the axis slot draws only from F05 and F06, with no derived_from_values tying it to orientation. So the hint can name the vertical (y-axis) for a horizontal bar graph, and the value scale of a horizontal graph runs along the horizontal axis, so the hint is a misleading statement. F08: the bg_full_lbl slot draws from F01 and F09. F09 prints only the orientation word, with no bar graph noun, and the template_chosen_by_values entry means the generator can choose F09. The question would then read as the orientation word followed directly by the question, with no noun and no sentence, which is wrong and unreadable. Vocabulary: no printed word from the NOT_YET_KNOWN list appears in any template or printed value. Printed questions in F08 and the scale values in F04 otherwise stay within cumulative_vocab and the grade 3 quarter 3 context. Judged on the domains as the full set; the printed-question list was judged as observed values.\"}",
+ "raw_reply_digest": "3ec746ac2259cefc40529b03370332272ada2680816092de3c9aed3f07a82902",
+ "packet_digest": "05e38c8bb1078cfa6bf1b7a05c0ffc96ec6d71c0e180caa4fba160dc9633eead",
+ "family_keys": {
+  "F01": {
+   "source": "backend/app/practice_gen/dna/base.py [gate bar graph]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F02": {
+   "source": "backend/app/practice_gen/dna/base.py [gate scale]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F03": {
+   "source": "backend/app/practice_gen/dna/dp/bar_graphs.py",
+   "first_site": "backend/app/practice_gen/dna/dp/bar_graphs.py:323",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F04": {
+   "source": "backend/app/practice_gen/dna/dp/bar_graphs.py",
+   "first_site": "backend/app/practice_gen/dna/dp/bar_graphs.py:324",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F05": {
+   "source": "backend/app/practice_gen/dna/dp/bar_graphs.py",
+   "first_site": "backend/app/practice_gen/dna/dp/bar_graphs.py:315",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F06": {
+   "source": "backend/app/practice_gen/dna/dp/bar_graphs.py",
+   "first_site": "backend/app/practice_gen/dna/dp/bar_graphs.py:315",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F07": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:51",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F08": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_bar_chart.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_bar_chart.py:275",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F09": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_bar_chart.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_bar_chart.py:267",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  }
+ },
+ "packet": {
+  "item": "S445-004",
+  "competency": {
+   "text": "Solve problems using data presented in a single bar graph (horizontal and vertical).",
+   "grade": 3,
+   "quarter": 3
+  },
+  "clauses": [
+   {
+    "id": "solve_problems",
+    "kind": "task",
+    "clause": "Solve problems"
+   },
+   {
+    "id": "data_presented",
+    "kind": "object",
+    "clause": "data presented"
+   },
+   {
+    "id": "single_bar_graph",
+    "kind": "representation",
+    "clause": "single bar graph"
+   },
+   {
+    "id": "horizontal",
+    "kind": "property",
+    "clause": "horizontal"
+   },
+   {
+    "id": "vertical",
+    "kind": "property",
+    "clause": "vertical"
+   }
+  ],
+  "vocabulary": {
+   "student_vocab": [],
+   "curriculum_vocab": [],
+   "introduces_vocab": [],
+   "cumulative_vocab": [
+    "1 less",
+    "1 more",
+    "10th",
+    "1st",
+    "2nd",
+    "3rd",
+    "4th",
+    "5th",
+    "6th",
+    "7th",
+    "8th",
+    "9th",
+    "L",
+    "a.m.",
+    "addition",
+    "analog clock",
+    "area",
+    "axis",
+    "balance scale",
+    "bar graph",
+    "bigger",
+    "bill",
+    "calendar",
+    "capacity",
+    "centavo",
+    "centimeter",
+    "circle",
+    "clockwise",
+    "cm",
+    "coin",
+    "compare",
+    "corner",
+    "count",
+    "counter-clockwise",
+    "data",
+    "decreasing pattern",
+    "denominator",
+    "difference",
+    "digit",
+    "division",
+    "elapsed time",
+    "equal",
+    "equal groups",
+    "estimate",
+    "even",
+    "expanded form",
+    "fraction",
+    "g",
+    "gram",
+    "group",
+    "half",
+    "half hour",
+    "half turn",
+    "hour",
+    "how many",
+    "hundreds",
+    "increasing pattern",
+    "intersecting",
+    "kg",
+    "kilogram",
+    "left",
+    "length",
+    "less",
+    "line",
+    "line segment",
+    "liter",
+    "m",
+    "mL",
+    "mass",
+    "measure",
+    "meter",
+    "milliliter",
+    "minute",
+    "missing number",
+    "missing term",
+    "more",
+    "multiplication",
+    "nearest hundred",
+    "nearest ten",
+    "nearest thousand",
+    "number",
+    "number line",
+    "numeral",
+    "numerator",
+    "odd",
+    "ones",
+    "order of operations",
+    "outcome",
+    "p.m.",
+    "parallel",
+    "pattern",
+    "perimeter",
+    "perpendicular",
+    "peso",
+    "pictograph",
+    "place value",
+    "point",
+    "product",
+    "quarter",
+    "quarter hour",
+    "quarter turn",
+    "quotient",
+    "ray",
+    "rectangle",
+    "regrouping",
+    "repeating pattern",
+    "round",
+    "ruler",
+    "same",
+    "scale",
+    "side",
+    "similar fractions",
+    "skip counting",
+    "slide",
+    "smaller",
+    "solid figure",
+    "sq. cm",
+    "square",
+    "square centimeter",
+    "subtraction",
+    "sum",
+    "table",
+    "ten thousand",
+    "ten-thousands place",
+    "tens",
+    "thousand",
+    "total",
+    "translation",
+    "triangle",
+    "whole",
+    "₱"
+   ],
+   "NOT_YET_KNOWN": [
+    "certain",
+    "equally likely",
+    "impossible",
+    "improper fraction",
+    "less likely",
+    "line of symmetry",
+    "more likely",
+    "remainder",
+    "symmetry"
+   ],
+   "sentence_max_words": 22,
+   "number_format": "space separator for thousands (e.g. 1 000)"
+  },
+  "declared_variants": [
+   [
+    "orientation",
+    "horizontal"
+   ],
+   [
+    "orientation",
+    "vertical"
+   ],
+   [
+    "scale",
+    "scale_10"
+   ],
+   [
+    "scale",
+    "scale_20"
+   ],
+   [
+    "scale",
+    "scale_5"
+   ],
+   [
+    "task_type",
+    "solve_problem"
+   ]
+  ],
+  "declared_bounds": [
+   {
+    "task_type": "solve_problem",
+    "orientation": [
+     "vertical",
+     "horizontal"
+    ]
+   }
+  ],
+  "families": [
+   {
+    "id": "F01",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F03",
+     "F08"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='bar graph')",
+        "requires_vocab": "bar graph",
+        "prints": "bar graph",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F02",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F04"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='scale')",
+        "requires_vocab": "scale",
+        "prints": "scale",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F03",
+    "template": "Look at the {bg_label} carefully.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "bg_label"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F01"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F04",
+    "template": "The {scale_label} on the {axis} goes up by {scale}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "scale_label"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F02"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "axis"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F05",
+         "F06"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "scale"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "_SCALE_MAP, the scales generate_params draws",
+        "members": [
+         10,
+         20,
+         5
+        ],
+        "derived_from_values": [
+         "visual_params"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F05",
+    "template": "horizontal (x-axis)",
+    "appears_in": [],
+    "nested_in": [
+     "F04"
+    ],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F06",
+    "template": "vertical (y-axis)",
+    "appears_in": [],
+    "nested_in": [
+     "F04"
+    ],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F07",
+    "template": "{key}",
+    "appears_in": [
+     "correct_answer"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "key"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the option keys this item shows",
+        "members": [
+         "A",
+         "B",
+         "C",
+         "D"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F08",
+    "template": "Look at the {bg_full_lbl}. {problem_question}",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "bg_full_lbl"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F01",
+         "F09"
+        ],
+        "derived_from_values": [
+         "orientation"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "problem_question"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "problem_question",
+        "printed": [
+         "How many more items were recorded for April than for March?",
+         "How many more items were recorded for Art than for English?",
+         "How many more items were recorded for English than for Math?",
+         "How many more items were recorded for English than for Science?",
+         "How many more items were recorded for February than for April?",
+         "How many more items were recorded for February than for January?",
+         "How many more items were recorded for Grade 1 than for Grade 4?",
+         "How many more items were recorded for Grade 2 than for Grade 4?",
+         "How many more items were recorded for Grade 3 than for Grade 1?",
+         "How many more items were recorded for Grade 3 than for Grade 4?",
+         "How many more items were recorded for Grade 4 than for Grade 2?",
+         "How many more items were recorded for Grade 4 than for Grade 3?",
+         "How many more items were recorded for March than for April?",
+         "How many more items were recorded for March than for January?",
+         "How many more items were recorded for Monday than for Thursday?",
+         "How many more items were recorded for Science than for Art?",
+         "How many more items were recorded for Science than for Math?",
+         "How many more items were recorded for Thursday than for Tuesday?",
+         "How many more items were recorded for Tuesday than for Thursday?",
+         "How many more items were recorded for Wednesday than for Monday?",
+         "How many more items were recorded for Wednesday than for Thursday?",
+         "How many more items were recorded for Wednesday than for Tuesday?",
+         "How many more items were recorded for apples than for bananas?",
+         "How many more items were recorded for bananas than for grapes?",
+         "How many more items were recorded for basketball than for running?",
+         "How many more items were recorded for cats than for fish?",
+         "How many more items were recorded for daisies than for roses?",
+         "How many more items were recorded for daisies than for tulips?",
+         "How many more items were recorded for dogs than for birds?",
+         "How many more items were recorded for dogs than for cats?",
+         "How many more items were recorded for dogs than for fish?",
+         "How many more items were recorded for fish than for dogs?",
+         "How many more items were recorded for grapes than for bananas?",
+         "How many more items were recorded for grapes than for mangoes?",
+         "How many more items were recorded for mangoes than for apples?",
+         "How many more items were recorded for mangoes than for grapes?",
+         "How many more items were recorded for roses than for daisies?",
+         "How many more items were recorded for roses than for tulips?",
+         "How many more items were recorded for running than for basketball?",
+         "How many more items were recorded for running than for volleyball?",
+         "How many more items were recorded for sunflowers than for roses?",
+         "How many more items were recorded for sunflowers than for tulips?",
+         "How many more items were recorded for tulips than for roses?",
+         "How many more items were recorded for tulips than for sunflowers?",
+         "How many more items were recorded for volleyball than for basketball?",
+         "How many more items were recorded for volleyball than for swimming?",
+         "How many total items were recorded for April and January together?",
+         "How many total items were recorded for April and March together?",
+         "How many total items were recorded for Art and English together?",
+         "How many total items were recorded for Art and Math together?",
+         "How many total items were recorded for Art and Science together?",
+         "How many total items were recorded for English and Math together?",
+         "How many total items were recorded for February and January together?",
+         "How many total items were recorded for February and March together?",
+         "How many total items were recorded for Grade 2 and Grade 1 together?",
+         "How many total items were recorded for Grade 2 and Grade 3 together?",
+         "How many total items were recorded for Grade 3 and Grade 4 together?",
+         "How many total items were recorded for Grade 4 and Grade 2 together?",
+         "How many total items were recorded for March and April together?",
+         "How many total items were recorded for Math and Science together?",
+         "How many total items were recorded for Monday and Thursday together?",
+         "How many total items were recorded for Monday and Wednesday together?",
+         "How many total items were recorded for Science and Art together?",
+         "How many total items were recorded for Science and English together?",
+         "How many total items were recorded for Science and Math together?",
+         "How many total items were recorded for Thursday and Monday together?",
+         "How many total items were recorded for Thursday and Tuesday together?",
+         "How many total items were recorded for Tuesday and Thursday together?",
+         "How many total items were recorded for Tuesday and Wednesday together?",
+         "How many total items were recorded for Wednesday and Monday together?",
+         "How many total items were recorded for Wednesday and Thursday together?",
+         "How many total items were recorded for apples and grapes together?",
+         "How many total items were recorded for apples and mangoes together?",
+         "How many total items were recorded for bananas and apples together?",
+         "How many total items were recorded for bananas and grapes together?",
+         "How many total items were recorded for basketball and running together?",
+         "How many total items were recorded for daisies and roses together?",
+         "How many total items were recorded for daisies and sunflowers together?",
+         "How many total items were recorded for dogs and cats together?",
+         "How many total items were recorded for fish and birds together?",
+         "How many total items were recorded for grapes and apples together?",
+         "How many total items were recorded for grapes and bananas together?",
+         "How many total items were recorded for mangoes and apples together?",
+         "How many total items were recorded for running and basketball together?",
+         "How many total items were recorded for running and swimming together?",
+         "How many total items were recorded for running and volleyball together?",
+         "How many total items were recorded for sunflowers and daisies together?",
+         "How many total items were recorded for sunflowers and tulips together?",
+         "How many total items were recorded for swimming and basketball together?",
+         "How many total items were recorded for tulips and roses together?",
+         "How many total items were recorded for volleyball and swimming together?",
+         "If 10 more items are added to April, what will be the new total for April?",
+         "If 10 more items are added to February, what will be the new total for February?",
+         "If 10 more items are added to Grade 2, what will be the new total for Grade 2?",
+         "If 10 more items are added to Grade 4, what will be the new total for Grade 4?",
+         "If 10 more items are added to Monday, what will be the new total for Monday?",
+         "If 10 more items are added to Tuesday, what will be the new total for Tuesday?",
+         "If 10 more items are added to birds, what will be the new total for birds?",
+         "If 15 more items are added to February, what will be the new total for February?",
+         "If 15 more items are added to Grade 1, what will be the new total for Grade 1?",
+         "If 15 more items are added to Grade 3, what will be the new total for Grade 3?",
+         "If 15 more items are added to January, what will be the new total for January?",
+         "If 15 more items are added to Math, what will be the new total for Math?",
+         "If 15 more items are added to Thursday, what will be the new total for Thursday?",
+         "If 15 more items are added to basketball, what will be the new total for basketball?",
+         "If 15 more items are added to birds, what will be the new total for birds?",
+         "If 15 more items are added to dogs, what will be the new total for dogs?",
+         "If 15 more items are added to mangoes, what will be the new total for mangoes?",
+         "If 15 more items are added to running, what will be the new total for running?",
+         "If 15 more items are added to swimming, what will be the new total for swimming?",
+         "If 20 more items are added to Art, what will be the new total for Art?",
+         "If 20 more items are added to English, what will be the new total for English?",
+         "If 20 more items are added to Grade 2, what will be the new total for Grade 2?",
+         "If 20 more items are added to January, what will be the new total for January?",
+         "If 20 more items are added to Math, what will be the new total for Math?",
+         "If 20 more items are added to Tuesday, what will be the new total for Tuesday?",
+         "If 20 more items are added to bananas, what will be the new total for bananas?",
+         "If 20 more items are added to basketball, what will be the new total for basketball?",
+         "If 20 more items are added to fish, what will be the new total for fish?",
+         "If 20 more items are added to mangoes, what will be the new total for mangoes?",
+         "If 20 more items are added to running, what will be the new total for running?",
+         "If 20 more items are added to sunflowers, what will be the new total for sunflowers?",
+         "If 5 more items are added to Grade 2, what will be the new total for Grade 2?",
+         "If 5 more items are added to March, what will be the new total for March?",
+         "If 5 more items are added to Math, what will be the new total for Math?",
+         "If 5 more items are added to Monday, what will be the new total for Monday?",
+         "If 5 more items are added to apples, what will be the new total for apples?",
+         "If 5 more items are added to basketball, what will be the new total for basketball?",
+         "If 5 more items are added to birds, what will be the new total for birds?",
+         "If 5 more items are added to daisies, what will be the new total for daisies?",
+         "If 5 more items are added to running, what will be the new total for running?",
+         "If each item for April costs ₱2, what is the total cost for April?",
+         "If each item for Art costs ₱10, what is the total cost for Art?",
+         "If each item for Art costs ₱2, what is the total cost for Art?",
+         "If each item for English costs ₱2, what is the total cost for English?",
+         "If each item for English costs ₱3, what is the total cost for English?",
+         "If each item for February costs ₱2, what is the total cost for February?",
+         "If each item for Grade 1 costs ₱10, what is the total cost for Grade 1?",
+         "If each item for Grade 1 costs ₱5, what is the total cost for Grade 1?",
+         "If each item for Grade 2 costs ₱2, what is the total cost for Grade 2?",
+         "If each item for Grade 2 costs ₱3, what is the total cost for Grade 2?",
+         "If each item for Grade 3 costs ₱10, what is the total cost for Grade 3?",
+         "If each item for Grade 4 costs ₱2, what is the total cost for Grade 4?",
+         "If each item for Math costs ₱2, what is the total cost for Math?",
+         "If each item for Math costs ₱5, what is the total cost for Math?",
+         "If each item for Monday costs ₱10, what is the total cost for Monday?",
+         "If each item for Monday costs ₱3, what is the total cost for Monday?",
+         "If each item for Science costs ₱5, what is the total cost for Science?",
+         "If each item for Thursday costs ₱10, what is the total cost for Thursday?",
+         "If each item for Thursday costs ₱2, what is the total cost for Thursday?",
+         "If each item for Tuesday costs ₱10, what is the total cost for Tuesday?",
+         "If each item for Tuesday costs ₱3, what is the total cost for Tuesday?",
+         "If each item for Wednesday costs ₱5, what is the total cost for Wednesday?",
+         "If each item for apples costs ₱10, what is the total cost for apples?",
+         "If each item for apples costs ₱2, what is the total cost for apples?",
+         "If each item for apples costs ₱3, what is the total cost for apples?",
+         "If each item for apples costs ₱5, what is the total cost for apples?",
+         "If each item for bananas costs ₱10, what is the total cost for bananas?",
+         "If each item for bananas costs ₱2, what is the total cost for bananas?",
+         "If each item for bananas costs ₱3, what is the total cost for bananas?",
+         "If each item for basketball costs ₱10, what is the total cost for basketball?",
+         "If each item for basketball costs ₱3, what is the total cost for basketball?",
+         "If each item for birds costs ₱10, what is the total cost for birds?",
+         "If each item for birds costs ₱3, what is the total cost for birds?",
+         "If each item for birds costs ₱5, what is the total cost for birds?",
+         "If each item for cats costs ₱2, what is the total cost for cats?",
+         "If each item for daisies costs ₱10, what is the total cost for daisies?",
+         "If each item for daisies costs ₱2, what is the total cost for daisies?",
+         "If each item for daisies costs ₱5, what is the total cost for daisies?",
+         "If each item for dogs costs ₱10, what is the total cost for dogs?",
+         "If each item for dogs costs ₱2, what is the total cost for dogs?",
+         "If each item for dogs costs ₱3, what is the total cost for dogs?",
+         "If each item for dogs costs ₱5, what is the total cost for dogs?",
+         "If each item for fish costs ₱2, what is the total cost for fish?",
+         "If each item for fish costs ₱3, what is the total cost for fish?",
+         "If each item for fish costs ₱5, what is the total cost for fish?",
+         "If each item for grapes costs ₱3, what is the total cost for grapes?",
+         "If each item for grapes costs ₱5, what is the total cost for grapes?",
+         "If each item for mangoes costs ₱10, what is the total cost for mangoes?",
+         "If each item for mangoes costs ₱3, what is the total cost for mangoes?",
+         "If each item for roses costs ₱2, what is the total cost for roses?",
+         "If each item for roses costs ₱5, what is the total cost for roses?",
+         "If each item for running costs ₱3, what is the total cost for running?",
+         "If each item for running costs ₱5, what is the total cost for running?",
+         "If each item for swimming costs ₱2, what is the total cost for swimming?",
+         "If each item for swimming costs ₱3, what is the total cost for swimming?",
+         "If each item for swimming costs ₱5, what is the total cost for swimming?",
+         "If each item for tulips costs ₱2, what is the total cost for tulips?",
+         "If each item for volleyball costs ₱10, what is the total cost for volleyball?"
+        ],
+        "derived_from_values": [
+         "problem_question"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F09",
+    "template": "{orientation} ",
+    "appears_in": [],
+    "nested_in": [
+     "F08"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "orientation"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the two bar orientations",
+        "members": [
+         "horizontal",
+         "vertical"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "orientation"
+    ]
+   }
+  ],
+  "lists": {},
+  "banks": {},
+  "value_derivations": [],
+  "reason_kinds": {}
+ }
+}

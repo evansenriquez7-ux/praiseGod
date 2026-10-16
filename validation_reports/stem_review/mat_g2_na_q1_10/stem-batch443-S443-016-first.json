@@ -1,0 +1,2257 @@
+{
+ "schema_version": 2,
+ "hash_version": 8,
+ "node_id": "mat_g2_na_q1_10",
+ "record_id": "stem-batch443-S443-016-first",
+ "role": "first",
+ "confirms": null,
+ "item_id": "S443-016",
+ "lc_hash": "11f00df6249577144828ba3ff2a9ac5b155936ea34f5dc59cc31c932b8425fc1",
+ "judged_by": "blind-stem-judge-claude-haiku-batch443-S443-016-first",
+ "dispatch_id": "stem-batch443-S443-016-first",
+ "filed_at": "2026-10-15T16:47:17Z",
+ "delivery": "Claude Code Agent tool, model=haiku, subagent_type=general-purpose; the judge was told to read only local_only/scratch/h4c/prompts/S443-016.prompt.txt (tests/stem_file.py prompt output, item S443-016; no lc id, no key or packets file in that directory) and reply with what it asks; dispatched with CLAUDE.md loaded (ruling 29). Blindness is a prompt contract, audited from the subagent transcript.",
+ "tool_uses_by_judge": "From the subagent transcript: 1 tool use(s), all Read of its own prompt file (2000 lines, every line read); no other tool, path or search. Model reported in the transcript: claude-haiku-5-5.",
+ "dispatch_prompt_digest": "fee59445b07bf65e3c4e8ba086bd2a4091b30acf14cb922b03e05f465eff6ac5",
+ "raw_reply": "{\"item\": \"S443-016\", \"clauses\": {\"illustrate_properties\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F08\", \"template\": \"Is ({a_val} + {b_val}) + {c_val} the same as {rhs}?\", \"reasoning\": \"F08 asks the learner to compare a three-addend grouping with a second grouping of the same addends. a_val, b_val and c_val repeat a, b and c, and rhs is F19, where v repeats a and v2 repeats b, so the two sides show the same addends regrouped.\"}, \"apply_properties\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F09\", \"template\": \"Is {a_val} + {b_val} the same as {rhs}?\", \"reasoning\": \"F09 asks the learner to decide whether two sums match, which applies the order-change property to a pair of addends. a_val and b_val repeat a and b, and rhs is F18 or F20.\"}, \"properties_of_addition\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F09\", \"template\": \"Is {a_val} + {b_val} the same as {rhs}?\", \"reasoning\": \"The same question covers the properties in general. Its rhs slot can be F20, which reverses the two addends, so the question tests whether the sum is unchanged when the order of the addends changes.\"}, \"sums_up_to_1000\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F27\", \"template\": \"What is {a} + {b}?\", \"reasoning\": \"F27 is a plain sum question. Its a and b runs reach 983 and 924, which fall within the 0 to 1000 range in declared_bounds.\"}, \"identity_property\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F21\", \"template\": \"{a} + {b} = ___\", \"reasoning\": \"a repeats a generated value that prints 0 in F21, so a problem can show 0 plus a number, and the learner finds the missing sum, which is that number. F21 is in question_text.\"}, \"commutative_property\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F09\", \"template\": \"Is {a_val} + {b_val} the same as {rhs}?\", \"reasoning\": \"F20 as rhs reverses the addends, so the question asks whether the order change leaves the sum unchanged.\"}, \"associative_property\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F08\", \"template\": \"Is ({a_val} + {b_val}) + {c_val} the same as {rhs}?\", \"reasoning\": \"F08 places the three addends in a grouping and compares it with a different grouping (rhs, F19), which is the change of grouping the clause names.\"}}, \"failing_families\": [\"F04\"], \"failing_templates\": [\"Add the ones: {ones_a} + {ones_b} = {ones_sum}. Keep {ones_sum} in the ones place.\"], \"overall\": \"FAIL\", \"reasoning\": \"F04 is a hint with no template gating, so it can appear on any problem of this lc. Its ones_a and ones_b are digits of a place (reason arithmetic), so each is 0 to 9, and ones_sum, derived from a and b, ranges up to 18. The packet's F03 printed runs include 97 for a and 5 for b, so ones_sum of 12 is reachable. The hint then tells the learner to keep a two-digit sum in the ones place, which is a misleading statement. The lc declares regrouping none, so this carrying step is outside its bounds. No other family was judged to fail: F05 is correct place-value arithmetic, and the rest are true statements built from the lc's properties.\"}",
+ "raw_reply_digest": "0d49333bab1de558387ef5feb25c3fb6323c41af992d0e393b5f5f3de9013908",
+ "packet_digest": "39958f962bd35ccbbe3d7400172f25203b30f99ef797c251ebb8d36814f57104",
+ "family_keys": {
+  "F01": {
+   "source": "backend/app/practice_gen/dna/base.py [gate sum]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F02": {
+   "source": "backend/app/practice_gen/dna/na/addition.py",
+   "first_site": "backend/app/practice_gen/dna/na/addition.py:1150",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F03": {
+   "source": "backend/app/practice_gen/dna/na/addition.py",
+   "first_site": "backend/app/practice_gen/dna/na/addition.py:1177",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F04": {
+   "source": "backend/app/practice_gen/dna/na/addition.py",
+   "first_site": "backend/app/practice_gen/dna/na/addition.py:1124",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F05": {
+   "source": "backend/app/practice_gen/dna/na/addition.py",
+   "first_site": "backend/app/practice_gen/dna/na/addition.py:1151",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F06": {
+   "source": "backend/app/practice_gen/dna/na/addition.py",
+   "first_site": "backend/app/practice_gen/dna/na/addition.py:1181",
+   "renderer": "",
+   "path": [
+    6,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F07": {
+   "source": "backend/app/practice_gen/dna/na/addition.py",
+   "first_site": "backend/app/practice_gen/dna/na/addition.py:1172",
+   "renderer": "",
+   "path": [
+    7,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F08": {
+   "source": "backend/app/practice_gen/dna/na/addition.py",
+   "first_site": "backend/app/practice_gen/dna/na/addition.py:586",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F09": {
+   "source": "backend/app/practice_gen/dna/na/addition.py",
+   "first_site": "backend/app/practice_gen/dna/na/addition.py:562",
+   "renderer": "",
+   "path": [
+    7,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F10": {
+   "source": "backend/app/practice_gen/dna/na/addition.py",
+   "first_site": "backend/app/practice_gen/dna/na/addition.py:1192",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F11": {
+   "source": "backend/app/practice_gen/dna/na/addition.py",
+   "first_site": "backend/app/practice_gen/dna/na/addition.py:1192",
+   "renderer": "",
+   "path": [
+    6,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F12": {
+   "source": "backend/app/practice_gen/dna/na/addition.py",
+   "first_site": "backend/app/practice_gen/dna/na/addition.py:1174",
+   "renderer": "",
+   "path": [
+    9,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F13": {
+   "source": "backend/app/practice_gen/dna/na/addition.py",
+   "first_site": "backend/app/practice_gen/dna/na/addition.py:1183",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {
+    "a,v": [
+     5,
+     null
+    ]
+   }
+  },
+  "F14": {
+   "source": "backend/app/practice_gen/dna/na/addition.py",
+   "first_site": "backend/app/practice_gen/dna/na/addition.py:1096",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F15": {
+   "source": "backend/app/practice_gen/dna/na/addition.py",
+   "first_site": "backend/app/practice_gen/dna/na/addition.py:1169",
+   "renderer": "",
+   "path": [
+    7,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F16": {
+   "source": "backend/app/practice_gen/dna/na/addition.py",
+   "first_site": "backend/app/practice_gen/dna/na/addition.py:1158",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F17": {
+   "source": "backend/app/practice_gen/dna/na/addition.py",
+   "first_site": "backend/app/practice_gen/dna/na/addition.py:1191",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F18": {
+   "source": "backend/app/practice_gen/dna/na/addition.py",
+   "first_site": "backend/app/practice_gen/dna/na/addition.py:550",
+   "renderer": "",
+   "path": [
+    7,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F19": {
+   "source": "backend/app/practice_gen/dna/na/addition.py",
+   "first_site": "backend/app/practice_gen/dna/na/addition.py:575",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F20": {
+   "source": "backend/app/practice_gen/dna/na/addition.py",
+   "first_site": "backend/app/practice_gen/dna/na/addition.py:1169",
+   "renderer": "",
+   "path": [
+    7,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F21": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_cloze.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_cloze.py:58",
+   "renderer": "",
+   "path": [
+    2,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F22": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_error_detect.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_error_detect.py:387",
+   "renderer": "",
+   "path": [
+    8,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F23": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_error_detect.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_error_detect.py:367",
+   "renderer": "",
+   "path": [
+    8,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F24": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_error_detect.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_error_detect.py:143",
+   "renderer": "",
+   "path": [
+    8,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F25": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_mcq.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_mcq.py:321",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F26": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_mcq.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_mcq.py:321",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F27": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_mcq.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_mcq.py:45",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F28": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_true_false.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_true_false.py:162",
+   "renderer": "",
+   "path": [
+    4,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F29": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_true_false.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_true_false.py:430",
+   "renderer": "",
+   "path": [
+    4,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F30": {
+   "source": "backend/app/practice_gen/generators/base_generator.py",
+   "first_site": "backend/app/practice_gen/generators/base_generator.py:788",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F31": {
+   "source": "backend/app/practice_gen/generators/base_generator.py",
+   "first_site": "backend/app/practice_gen/generators/base_generator.py:791",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  }
+ },
+ "packet": {
+  "item": "S443-016",
+  "competency": {
+   "text": "Illustrate and apply the following properties of addition using sums up to 1000: the sum of zero and any number is equal to the number, changing the order of the addends does not change the sum, and changing the grouping of the addends does not change the sum.",
+   "grade": 2,
+   "quarter": 1
+  },
+  "clauses": [
+   {
+    "id": "illustrate_properties",
+    "kind": "task",
+    "clause": "Illustrate"
+   },
+   {
+    "id": "apply_properties",
+    "kind": "task",
+    "clause": "apply"
+   },
+   {
+    "id": "properties_of_addition",
+    "kind": "property",
+    "clause": "properties of addition"
+   },
+   {
+    "id": "sums_up_to_1000",
+    "kind": "range",
+    "clause": "sums up to 1000"
+   },
+   {
+    "id": "identity_property",
+    "kind": "property",
+    "clause": "sum of zero and any number is equal to the number"
+   },
+   {
+    "id": "commutative_property",
+    "kind": "property",
+    "clause": "changing the order of the addends does not change the sum"
+   },
+   {
+    "id": "associative_property",
+    "kind": "property",
+    "clause": "changing the grouping of the addends does not change the sum"
+   }
+  ],
+  "vocabulary": {
+   "student_vocab": [],
+   "curriculum_vocab": [
+    "associative property",
+    "grouping of addends"
+   ],
+   "introduces_vocab": [
+    "associative property",
+    "grouping of addends"
+   ],
+   "cumulative_vocab": [
+    "1 less",
+    "1 more",
+    "10th",
+    "1st",
+    "2nd",
+    "3rd",
+    "4th",
+    "5th",
+    "6th",
+    "7th",
+    "8th",
+    "9th",
+    "addition",
+    "analog clock",
+    "bigger",
+    "bill",
+    "calendar",
+    "clockwise",
+    "coin",
+    "compare",
+    "corner",
+    "count",
+    "counter-clockwise",
+    "data",
+    "difference",
+    "digit",
+    "equal",
+    "expanded form",
+    "fraction",
+    "group",
+    "half",
+    "half hour",
+    "half turn",
+    "hour",
+    "how many",
+    "hundreds",
+    "left",
+    "length",
+    "less",
+    "measure",
+    "missing number",
+    "more",
+    "number",
+    "number line",
+    "numeral",
+    "ones",
+    "pattern",
+    "peso",
+    "pictograph",
+    "place value",
+    "quarter",
+    "quarter hour",
+    "quarter turn",
+    "rectangle",
+    "regrouping",
+    "repeating pattern",
+    "same",
+    "side",
+    "skip counting",
+    "smaller",
+    "square",
+    "subtraction",
+    "sum",
+    "table",
+    "tens",
+    "thousand",
+    "total",
+    "triangle",
+    "whole",
+    "₱"
+   ],
+   "NOT_YET_KNOWN": [
+    "L",
+    "a.m.",
+    "area",
+    "axis",
+    "balance scale",
+    "bar graph",
+    "capacity",
+    "centavo",
+    "centimeter",
+    "certain",
+    "circle",
+    "cm",
+    "decreasing pattern",
+    "denominator",
+    "division",
+    "elapsed time",
+    "equal groups",
+    "equally likely",
+    "estimate",
+    "even",
+    "g",
+    "gram",
+    "impossible",
+    "improper fraction",
+    "increasing pattern",
+    "intersecting",
+    "kg",
+    "kilogram",
+    "less likely",
+    "line",
+    "line of symmetry",
+    "line segment",
+    "liter",
+    "m",
+    "mL",
+    "mass",
+    "meter",
+    "milliliter",
+    "minute",
+    "missing term",
+    "more likely",
+    "multiplication",
+    "nearest hundred",
+    "nearest ten",
+    "nearest thousand",
+    "numerator",
+    "odd",
+    "order of operations",
+    "outcome",
+    "p.m.",
+    "parallel",
+    "perimeter",
+    "perpendicular",
+    "point",
+    "product",
+    "quotient",
+    "ray",
+    "remainder",
+    "round",
+    "ruler",
+    "scale",
+    "similar fractions",
+    "slide",
+    "solid figure",
+    "sq. cm",
+    "square centimeter",
+    "symmetry",
+    "ten thousand",
+    "ten-thousands place",
+    "translation"
+   ],
+   "sentence_max_words": 18,
+   "number_format": "no commas for numbers up to 1000"
+  },
+  "declared_variants": [
+   [
+    "context",
+    "pure"
+   ],
+   [
+    "context",
+    "word_problem"
+   ],
+   [
+    "regrouping",
+    "none"
+   ],
+   [
+    "spine",
+    "counting_up"
+   ],
+   [
+    "spine",
+    "putting_together"
+   ],
+   [
+    "strategy",
+    "expanded_form"
+   ],
+   [
+    "strategy",
+    "standard"
+   ],
+   [
+    "structure",
+    "result_unknown"
+   ]
+  ],
+  "declared_bounds": [
+   {
+    "max_sum": [
+     0,
+     1000
+    ],
+    "task_type": "properties",
+    "regrouping": "none"
+   }
+  ],
+  "families": [
+   {
+    "id": "F01",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F16"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='sum')",
+        "requires_vocab": "sum",
+        "prints": "the sum",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F02",
+    "template": "",
+    "appears_in": [],
+    "nested_in": [
+     "F05",
+     "F31"
+    ],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F03",
+    "template": "({a} + {b}) + {c}",
+    "appears_in": [],
+    "nested_in": [
+     "F17"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "16, 32, 62, 75, 84, 87, 97, 101, 124, 177, 181, 213, 222, 236, 241, 247, 271 to 272, 274, 276, 283, 296, 303 to 304, 315, 346, 365, 367, 372, 374, 383, 407, 423, 427, 434, 444, 456, 504, 514, 521, 533, 535, 564, 575 to 576, 581, 602, 651, 656, 677, 694, 705 to 706, 712, 714, 742, 744, 762, 773, 785, 787, 791, 842, 861, 864, 877, 891, 903, 953, 962",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "1, 5 to 6, 11, 13, 15, 22, 32, 36, 42, 45, 51, 54, 63, 101 to 104, 111 to 113, 115, 121 to 122, 131, 201 to 202, 204, 211 to 212, 221, 232, 241, 255, 311, 331, 335, 352, 381, 403, 407, 412, 421, 442, 451, 464, 503, 514, 531, 533, 571, 601, 641, 651, 701, 705, 755, 903",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "c"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "c",
+        "printed_runs": "1 to 5, 11 to 13, 21, 23, 33, 41 to 42, 63, 101 to 104, 111 to 112, 121 to 122, 131 to 132, 201, 211, 215, 222, 225, 247, 251, 301 to 302, 312, 314, 331, 401, 431, 511, 513 to 514, 516, 611, 621, 631, 742",
+        "derived_from_values": [
+         "c"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F04",
+    "template": "Add the ones: {ones_a} + {ones_b} = {ones_sum}. Keep {ones_sum} in the ones place.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "ones_a"
+      ],
+      "domains": [
+       {
+        "domain": "a number computed by the generator",
+        "reason": "arithmetic",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "ones_b"
+      ],
+      "domains": [
+       {
+        "domain": "a number computed by the generator",
+        "reason": "arithmetic",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "ones_sum"
+      ],
+      "domains": [
+       {
+        "domain": "a number computed by the generator",
+        "reason": "arithmetic",
+        "derived_from_values": [
+         "a",
+         "b"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F05",
+    "template": "Add the tens: {tens_a} + {tens_b}{tail} = {tens_sum}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "tens_a"
+      ],
+      "domains": [
+       {
+        "domain": "a number computed by the generator",
+        "reason": "arithmetic",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "tens_b"
+      ],
+      "domains": [
+       {
+        "domain": "a number computed by the generator",
+        "reason": "arithmetic",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "tail"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F02",
+         "F30"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "tens_sum"
+      ],
+      "domains": [
+       {
+        "domain": "a number computed by the generator",
+        "reason": "arithmetic",
+        "derived_from_values": [
+         "a",
+         "b"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "a",
+     "b"
+    ]
+   },
+   {
+    "id": "F06",
+    "template": "Both sides add the same three numbers, {a}, {b} and {c}, grouped differently.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "62, 87, 101, 177, 181, 247, 271 to 272, 274, 283, 296, 304, 315, 346, 374, 434, 444, 456, 521, 564, 576, 694, 705 to 706, 712, 714, 742, 744, 864, 891, 903",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "1, 13, 32, 45, 51, 101 to 103, 112 to 113, 121 to 122, 131, 201 to 202, 204, 211 to 212, 221, 241, 255, 331, 352, 403, 514, 641, 701, 705",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "c"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "c",
+        "printed_runs": "1 to 5, 11 to 12, 21, 23, 41 to 42, 63, 101 to 103, 111 to 112, 201, 247, 401, 513 to 514, 621, 742",
+        "derived_from_values": [
+         "c"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "answer"
+    ]
+   },
+   {
+    "id": "F07",
+    "template": "Both sides add the same two numbers, {a} and {b}, in a different order.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "3, 25, 44, 51, 74, 117, 136, 212, 216, 272, 344, 348, 397, 401, 416, 421, 447, 451, 462, 533, 536, 638, 676, 735, 737, 788, 803, 857, 892, 982, 994, 998",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "1, 6, 11 to 12, 14, 21, 27, 35, 52, 63, 72, 101, 107, 122, 124, 153, 202, 211, 214, 221, 238, 251, 263, 265, 301, 331, 411, 424, 563, 622, 725",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "answer",
+     "task_type"
+    ]
+   },
+   {
+    "id": "F08",
+    "template": "Is ({a_val} + {b_val}) + {c_val} the same as {rhs}?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "a_val"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "16, 32, 62, 75, 84, 87, 97, 101, 124, 177, 181, 213, 222, 236, 241, 247, 271 to 272, 274, 276, 283, 296, 303 to 304, 315, 346, 365, 367, 372, 374, 383, 407, 423, 427, 434, 444, 456, 504, 514, 521, 533, 535, 564, 575 to 576, 581, 602, 651, 656, 677, 694, 705 to 706, 712, 714, 742, 744, 762, 773, 785, 787, 791, 842, 861, 864, 877, 891, 903, 953, 962",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b_val"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "1, 5 to 6, 11, 13, 15, 22, 32, 36, 42, 45, 51, 54, 63, 101 to 104, 111 to 113, 115, 121 to 122, 131, 201 to 202, 204, 211 to 212, 221, 232, 241, 255, 311, 331, 335, 352, 381, 403, 407, 412, 421, 442, 451, 464, 503, 514, 531, 533, 571, 601, 641, 651, 701, 705, 755, 903",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "c_val"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "c",
+        "printed_runs": "1 to 5, 11 to 13, 21, 23, 33, 41 to 42, 63, 101 to 104, 111 to 112, 121 to 122, 131 to 132, 201, 211, 215, 222, 225, 247, 251, 301 to 302, 312, 314, 331, 401, 431, 511, 513 to 514, 516, 611, 621, 631, 742",
+        "derived_from_values": [
+         "c"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "rhs"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F19"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F09",
+    "template": "Is {a_val} + {b_val} the same as {rhs}?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "a_val"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "3, 11, 25 to 26, 28, 38, 41, 44, 51, 74, 117, 133, 136, 148, 166, 183, 212, 216, 235, 241, 272, 288, 295, 341, 344, 348, 357, 397, 401, 412, 416, 421, 447, 451, 462, 474, 494, 516, 521, 533, 536, 551, 556, 565, 584, 593, 611, 632, 638, 642, 675 to 676, 692, 695, 701, 707, 724, 735, 737, 741, 745, 747, 761, 785, 788, 803, 824, 836, 857, 873, 883, 892, 895, 926, 982, 994, 998",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b_val"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "1 to 3, 5 to 6, 11 to 12, 14, 21, 27 to 28, 32, 35, 52, 54, 61, 63 to 64, 72, 101, 103, 105 to 107, 111 to 112, 114, 116, 122, 124, 153 to 154, 202, 211 to 212, 214, 221, 232, 238, 240, 251, 258, 263, 265, 282, 301, 315, 331, 351 to 352, 401, 411, 414, 424, 442, 513, 522, 524, 531, 563, 621 to 622, 631, 701, 725, 801",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "rhs"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F18",
+         "F20"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F10",
+    "template": "So the two sides are not the same.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F11",
+    "template": "So the two sides are the same.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": [
+     "answer"
+    ]
+   },
+   {
+    "id": "F12",
+    "template": "The left side adds {a} and {b}. The right side adds {v} and {v2}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "11, 26, 28, 38, 41, 133, 148, 166, 183, 235, 241, 288, 295, 341, 357, 412, 474, 494, 516, 521, 551, 556, 565, 584, 593, 611, 632, 642, 675, 692, 695, 701, 707, 724, 741, 745, 747, 761, 785, 824, 836, 873, 883, 895, 926",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "2 to 3, 5 to 6, 28, 32, 54, 61, 64, 101, 103, 105 to 106, 111 to 112, 114, 116, 154, 202, 211 to 212, 232, 240, 251, 258, 282, 301, 315, 351 to 352, 401, 414, 424, 442, 513, 522, 524, 531, 621, 631, 701, 801",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "v"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "2 to 3, 5 to 6, 28, 32, 54, 61, 64, 101, 103, 105 to 106, 111 to 112, 114, 116, 154, 202, 211 to 212, 232, 240, 251, 258, 282, 301, 315, 351 to 352, 401, 414, 424, 442, 513, 522, 524, 531, 621, 631, 701, 801",
+        "derived_from_values": [
+         "b",
+         "rhs_operands"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "v2"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "values['rhs_operands']",
+        "members": [
+         154,
+         200,
+         239,
+         30,
+         301,
+         326,
+         352,
+         38,
+         522,
+         54,
+         552,
+         686,
+         701,
+         801
+        ],
+        "derived_from_values": [
+         "rhs_operands"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F13",
+    "template": "The left side adds {a}, {b} and {c}. The right side adds {v}, {v2} and {v3}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "a",
+       "v"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "16, 32, 75, 84, 97, 124, 213, 222, 236, 241, 276, 303, 365, 367, 372, 383, 407, 423, 427, 434, 504, 514, 533, 535, 575, 581, 602, 651, 656, 677, 762, 773, 785, 787, 791, 842, 861, 877, 953, 962",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ],
+      "distinct_in_every_render": false
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "1, 5 to 6, 11, 15, 22, 32, 36, 42, 54, 63, 102 to 104, 111 to 112, 115, 131, 201 to 202, 211, 232, 311, 331, 335, 381, 407, 412, 421, 442, 451, 464, 503, 531, 533, 571, 601, 651, 755, 903",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "c"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "c",
+        "printed_runs": "1 to 2, 5, 11, 13, 21, 33, 101 to 102, 104, 111, 121 to 122, 131 to 132, 201, 211, 215, 222, 225, 251, 301 to 302, 312, 314, 331, 431, 511, 516, 611, 631",
+        "derived_from_values": [
+         "c"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "v2"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "1, 5 to 6, 11, 15, 22, 32, 36, 42, 54, 63, 102 to 104, 111 to 112, 115, 131, 201 to 202, 211, 232, 311, 331, 335, 381, 407, 412, 421, 442, 451, 464, 503, 531, 533, 571, 601, 651, 755, 903",
+        "derived_from_values": [
+         "b",
+         "rhs_operands"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "v3"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "values['rhs_operands']",
+        "members": [
+         10,
+         104,
+         107,
+         12,
+         124,
+         14,
+         16,
+         201,
+         224,
+         232,
+         236,
+         247,
+         337,
+         34,
+         36,
+         383,
+         399,
+         407,
+         423,
+         442,
+         462,
+         5,
+         503,
+         514,
+         533,
+         54,
+         581,
+         6,
+         601,
+         651,
+         762,
+         785,
+         791,
+         83,
+         842,
+         97
+        ],
+        "derived_from_values": [
+         "rhs_operands"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F14",
+    "template": "We are adding two numbers: {a} and {b}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "0, 31, 44, 64, 81, 87, 99, 101, 119, 126, 144, 173, 186, 224, 228, 241, 266, 302, 320, 353, 380, 392, 416, 429, 440, 449 to 450, 471, 511, 517, 570, 587, 635, 647 to 648, 670, 693, 732, 760, 787 to 788, 843, 944, 980, 983",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "0, 12, 57, 82, 94, 128, 156, 186, 197, 249, 275, 293, 311, 377, 410, 417, 436, 453, 481, 577, 583, 605, 607, 631, 658, 707, 719, 731, 733, 756, 761, 801, 841, 859, 865, 872, 893, 924, 935, 949, 974, 986",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F15",
+    "template": "{a} + {b}",
+    "appears_in": [],
+    "nested_in": [
+     "F17"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "3, 11, 25 to 26, 28, 38, 41, 44, 51, 74, 117, 133, 136, 148, 166, 183, 212, 216, 235, 241, 272, 288, 295, 341, 344, 348, 357, 397, 401, 412, 416, 421, 447, 451, 462, 474, 494, 516, 521, 533, 536, 551, 556, 565, 584, 593, 611, 632, 638, 642, 675 to 676, 692, 695, 701, 707, 724, 735, 737, 741, 745, 747, 761, 785, 788, 803, 824, 836, 857, 873, 883, 892, 895, 926, 982, 994, 998",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "1 to 3, 5 to 6, 11 to 12, 14, 21, 27 to 28, 32, 35, 52, 54, 61, 63 to 64, 72, 101, 103, 105 to 107, 111 to 112, 114, 116, 122, 124, 153 to 154, 202, 211 to 212, 214, 221, 232, 238, 240, 251, 258, 263, 265, 282, 301, 315, 331, 351 to 352, 401, 411, 414, 424, 442, 513, 522, 524, 531, 563, 621 to 622, 631, 701, 725, 801",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F16",
+    "template": "{capitalize} is {a} + {b} = {result}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "capitalize"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F01"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "0, 31, 44, 64, 81, 87, 99, 101, 119, 126, 144, 173, 186, 224, 228, 241, 266, 302, 320, 353, 380, 392, 416, 429, 440, 449 to 450, 471, 511, 517, 570, 587, 635, 647 to 648, 670, 693, 732, 760, 787 to 788, 843, 944, 980, 983",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "0, 12, 57, 82, 94, 128, 156, 186, 197, 249, 275, 293, 311, 377, 410, 417, 436, 453, 481, 577, 583, 605, 607, 631, 658, 707, 719, 731, 733, 756, 761, 801, 841, 859, 865, 872, 893, 924, 935, 949, 974, 986",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "result"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "result",
+        "printed_runs": "12, 31, 44, 57, 64, 81 to 82, 87, 94, 99, 101, 119, 126, 128, 144, 156, 173, 186, 197, 224, 228, 241, 249, 266, 275, 293, 302, 311, 320, 353, 377, 380, 392, 410, 416 to 417, 429, 436, 440, 449 to 450, 453, 471, 481, 511, 517, 570, 577, 583, 587, 605, 607, 631, 635, 647 to 648, 658, 670, 693, 707, 719, 731 to 733, 756, 760 to 761, 787 to 788, 801, 841, 843, 859, 865, 872, 893, 924, 935, 944, 949, 974, 980, 983, 986",
+        "derived_from_values": [
+         "result"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F17",
+    "template": "{left_text} = {left} and {right_text} = {right}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "left_text"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F03",
+         "F15"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "left"
+      ],
+      "domains": [
+       {
+        "domain": "a number computed by the generator",
+        "reason": "arithmetic",
+        "derived_from_values": [
+         "a",
+         "b",
+         "c"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "right_text"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F18",
+         "F19",
+         "F20"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "right"
+      ],
+      "domains": [
+       {
+        "domain": "a number computed by the generator",
+        "reason": "arithmetic",
+        "derived_from_values": [
+         "rhs_operands"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F18",
+    "template": "{p0} + {p1}",
+    "appears_in": [],
+    "nested_in": [
+     "F09",
+     "F17"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "p0",
+       "p1"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the rhs_operands the question shows",
+        "members": [
+         14,
+         154,
+         200,
+         239,
+         25,
+         30,
+         301,
+         326,
+         331,
+         348,
+         352,
+         38,
+         522,
+         54,
+         552,
+         563,
+         686,
+         701,
+         801,
+         803
+        ]
+       }
+      ],
+      "distinct_in_every_render": true
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F19",
+    "template": "{v} + ({v2} + {v3})",
+    "appears_in": [],
+    "nested_in": [
+     "F08",
+     "F17"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "v"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "16, 32, 62, 75, 84, 87, 97, 101, 124, 177, 181, 213, 222, 236, 241, 247, 271 to 272, 274, 276, 283, 296, 303 to 304, 315, 346, 365, 367, 372, 374, 383, 407, 423, 427, 434, 444, 456, 504, 514, 521, 533, 535, 564, 575 to 576, 581, 602, 651, 656, 677, 694, 705 to 706, 712, 714, 742, 744, 762, 773, 785, 787, 791, 842, 861, 864, 877, 891, 903, 953, 962",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "v2"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "1, 5 to 6, 11, 13, 15, 22, 32, 36, 42, 45, 51, 54, 63, 101 to 104, 111 to 113, 115, 121 to 122, 131, 201 to 202, 204, 211 to 212, 221, 232, 241, 255, 311, 331, 335, 352, 381, 403, 407, 412, 421, 442, 451, 464, 503, 514, 531, 533, 571, 601, 641, 651, 701, 705, 755, 903",
+        "derived_from_values": [
+         "b",
+         "rhs_operands"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "v3"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the rhs_operands the question shows",
+        "members": [
+         1,
+         10,
+         102,
+         103,
+         104,
+         107,
+         12,
+         124,
+         13,
+         14,
+         16,
+         201,
+         224,
+         232,
+         236,
+         247,
+         337,
+         34,
+         36,
+         383,
+         399,
+         403,
+         407,
+         42,
+         423,
+         434,
+         442,
+         444,
+         462,
+         5,
+         503,
+         514,
+         533,
+         54,
+         581,
+         6,
+         601,
+         651,
+         701,
+         762,
+         785,
+         791,
+         83,
+         842,
+         891,
+         97
+        ]
+       },
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "values['rhs_operands']",
+        "members": [
+         1,
+         10,
+         102,
+         103,
+         104,
+         107,
+         12,
+         124,
+         13,
+         14,
+         16,
+         201,
+         224,
+         232,
+         236,
+         247,
+         337,
+         34,
+         36,
+         383,
+         399,
+         403,
+         407,
+         42,
+         423,
+         434,
+         442,
+         444,
+         462,
+         5,
+         503,
+         514,
+         533,
+         54,
+         581,
+         6,
+         601,
+         651,
+         701,
+         762,
+         785,
+         791,
+         83,
+         842,
+         891,
+         97
+        ],
+        "derived_from_values": [
+         "rhs_operands"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F20",
+    "template": "{v} + {v2}",
+    "appears_in": [],
+    "nested_in": [
+     "F09",
+     "F17"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "v"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "1 to 3, 5 to 6, 11 to 12, 14, 21, 27 to 28, 32, 35, 52, 54, 61, 63 to 64, 72, 101, 103, 105 to 107, 111 to 112, 114, 116, 122, 124, 153 to 154, 202, 211 to 212, 214, 221, 232, 238, 240, 251, 258, 263, 265, 282, 301, 315, 331, 351 to 352, 401, 411, 414, 424, 442, 513, 522, 524, 531, 563, 621 to 622, 631, 701, 725, 801",
+        "derived_from_values": [
+         "b",
+         "rhs_operands"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "v2"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "values['rhs_operands']",
+        "members": [
+         14,
+         154,
+         200,
+         239,
+         25,
+         30,
+         301,
+         326,
+         331,
+         348,
+         352,
+         38,
+         522,
+         54,
+         552,
+         563,
+         686,
+         701,
+         801,
+         803
+        ],
+        "derived_from_values": [
+         "rhs_operands"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F21",
+    "template": "{a} + {b} = ___",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "0, 31, 64, 87, 144, 266, 353, 440, 587, 647, 670, 983",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "0, 12, 57, 94, 128, 410, 453, 756, 872, 924, 935",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F22",
+    "template": "{actor}",
+    "appears_in": [
+     "format_data.actor_name"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "actor"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "_FILIPINO_NAMES"
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F23",
+    "template": "{actor} solved: \"{problem}\". {actor} says the {miss} is {answer}. Is {actor} correct?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "actor"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "_FILIPINO_NAMES"
+       }
+      ]
+     },
+     {
+      "slots": [
+       "problem"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F24"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the keyed answer and the distractor candidates",
+        "members": [
+         0,
+         248,
+         249,
+         250,
+         259,
+         379,
+         380,
+         381,
+         390,
+         760,
+         761,
+         762,
+         771,
+         948,
+         949,
+         950,
+         959
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "miss"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "vocab gate 'missing number'",
+        "requires_vocab": "missing number",
+        "prints": "missing number",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F24",
+    "template": "{slot} + {slot2} = {slot3}",
+    "appears_in": [
+     "format_data.problem_expression"
+    ],
+    "nested_in": [
+     "F23"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "slot"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "0, 44, 81, 224, 320, 380, 449, 471, 693, 787, 980",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "slot2"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "0, 156, 186, 249, 377, 605, 707, 761, 859, 893, 949, 974",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "slot3"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the blank for the unknown blank_target",
+        "members": [
+         "___"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F25",
+    "template": "Cannot be determined",
+    "appears_in": [
+     "distractors",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F26",
+    "template": "Only when both are 0",
+    "appears_in": [
+     "distractors",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F27",
+    "template": "What is {a} + {b}?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "0, 99, 126, 173, 186, 228, 241, 392, 429, 570, 760, 788, 944",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "0, 82, 94, 417, 577, 583, 607, 631, 719, 801, 841",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F28",
+    "template": "{a} + {b} = {fill_value}",
+    "appears_in": [
+     "format_data.statement"
+    ],
+    "nested_in": [
+     "F29"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "0, 101, 119, 302, 416, 450, 511, 517, 635, 648, 732, 843",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "0, 197, 275, 293, 311, 436, 481, 658, 731, 733, 865, 986",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "fill_value"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the distractors shaped like the keyed answer",
+        "members": [
+         0,
+         310,
+         312,
+         321
+        ]
+       },
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the keyed answer (a true statement)",
+        "members": [
+         481
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F29",
+    "template": "{statement}. True or False?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "statement"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F28"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F30",
+    "template": "",
+    "appears_in": [],
+    "nested_in": [
+     "F05",
+     "F31"
+    ],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F31",
+    "template": "{prefix}What is {a} + {b}?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "prefix"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F02",
+         "F30"
+        ],
+        "derived_from_values": [
+         "strategy"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "0, 99, 126, 173, 186, 228, 241, 392, 429, 570, 760, 788, 944",
+        "derived_from_values": [
+         "a",
+         "start"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "0, 82, 94, 417, 577, 583, 607, 631, 719, 801, 841",
+        "derived_from_values": [
+         "b",
+         "skip_by"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "blank_target"
+    ]
+   }
+  ],
+  "lists": {
+   "_FILIPINO_NAMES": [
+    "Noel",
+    "Maria",
+    "Jose",
+    "Ana",
+    "Carlo",
+    "Liza",
+    "Manny",
+    "Grace",
+    "Rico",
+    "Pia",
+    "Dante",
+    "Rosa"
+   ]
+  },
+  "banks": {},
+  "value_derivations": [
+   {
+    "kind": "derives",
+    "key": "a",
+    "from": [
+     "task_type"
+    ]
+   },
+   {
+    "kind": "derives",
+    "key": "b",
+    "from": [
+     "task_type"
+    ]
+   }
+  ],
+  "reason_kinds": {
+   "arithmetic": "a number the generator computes from the generated values named in src (a half, a sum, a difference, a running total, a place's digit). Its range is the image of those values' own domains; whether the arithmetic is RIGHT is the hint contract's (§16) and §1E's to check, not §14's."
+  }
+ }
+}

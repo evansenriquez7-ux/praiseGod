@@ -1,0 +1,2639 @@
+{
+ "schema_version": 2,
+ "hash_version": 8,
+ "node_id": "mat_g1_na_q3_1",
+ "record_id": "stem-batch442-S442-009-confirming",
+ "role": "confirming",
+ "confirms": "stem-batch442-S442-009-first-r2",
+ "item_id": "S442-009",
+ "lc_hash": "b178f9c726244beeb8693012cb267d16b53d514b5049395b4f9e03219088fc9b",
+ "judged_by": "blind-stem-judge-claude-haiku-batch442-S442-009-confirming",
+ "dispatch_id": "stem-batch442-S442-009-confirming",
+ "filed_at": "2026-10-16T05:03:12Z",
+ "delivery": "Claude Code Agent tool, model=haiku, subagent_type=general-purpose; the judge was told to read only local_only/scratch/h4c/prompts/S442-009.prompt.txt (tests/stem_file.py prompt output, item S442-009; no lc id, no key or packets file in that directory) and reply with what it asks; dispatched with CLAUDE.md loaded (ruling 29). Blindness is a prompt contract, audited from the subagent transcript.",
+ "tool_uses_by_judge": "From the subagent transcript: 6 tool use(s), all Read of its own prompt file (2347 lines, every line read); no other tool, path or search. Model reported in the transcript: claude-haiku-5-5.",
+ "dispatch_prompt_digest": "67d4b6a2da4b83390044a887159d42a8ee4ff50e2882d345876b4cc6b7333ee2",
+ "raw_reply": "{\"item\": \"S442-009\", \"clauses\": {\"find_missing_number\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F22\", \"template\": \"What number goes in the blank: ___ {op_symbol} {b_val} = {res}?\", \"reasoning\": \"F22 asks the learner for the value of the blank in the first position of a number sentence, which is the task the clause names. Its op_symbol domain also contains the multiplication and division symbols; that is recorded under failing_families, not a reason this clause cannot be produced.\"}, \"addition_subtraction_sentences\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F21\", \"template\": \"{a_val} {op_symbol} {b_val} = ___\", \"reasoning\": \"F21 is a number sentence with the blank at the end, using the operation symbol slot. The addition and subtraction symbols are in its domain, so it produces addition or subtraction sentences.\"}, \"numbers_up_to_20\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F24\", \"template\": \"What number goes in the blank: {a_val} {op_symbol} {b_val} = ___?\", \"reasoning\": \"F24's a_val and b_val are repeats of generated values with printed runs that stay within 1 to 20 (a_val printed_runs \\\"3 to 7, 10 to 14, 16 to 17, 19 to 20\\\"; b_val printed_runs \\\"1 to 2, 5, 10 to 15, 17 to 18\\\"). The sentence can therefore be built from numbers up to 20.\"}}, \"failing_families\": [\"F05\", \"F06\", \"F07\", \"F08\", \"F09\", \"F10\", \"F11\", \"F12\", \"F13\", \"F14\", \"F15\", \"F16\", \"F17\", \"F19\", \"F20\", \"F21\", \"F22\", \"F23\", \"F24\", \"F25\", \"F26\", \"F27\", \"F29\", \"F31\", \"F32\", \"F33\", \"F34\"], \"failing_templates\": [\"Calculate: {a} {sym} {b} = {result}.\", \"Check: {a} {sym} {missing} = {result}. ✓\", \"Check: {missing} {sym} {b} = {result}. ✓\", \"The {eq_lbl} is: ___ {sym} {b} = {result}\", \"The {eq_lbl} is: {a} {sym} ___ = {result}\", \"The {eq_lbl} is: {a} {sym} {b} = ___\", \"Think: {a} {sym} what number gives {result}?\", \"To find the {miss_lbl}, use the opposite operation ({inv_op_lbl}).\", \"Use {inv_op_lbl} to undo the operation.\", \"We need to find what {a} {sym} {b} equals.\", \"{a} {sym} {result} = {missing}.\", \"{result} {v} {a} = {missing}.\", \"{result} {v} {b} = {missing}.\", \"___ {op_symbol} {b_val} = {res}\", \"{a_val} {op_symbol} ___ = {res}\", \"{a_val} {op_symbol} {b_val} = ___\", \"What number goes in the blank: ___ {op_symbol} {b_val} = {res}?\", \"What number goes in the blank: {a_val} {op_symbol} ___ = {res}?\", \"What number goes in the blank: {a_val} {op_symbol} {b_val} = ___?\", \"In ___ {op_symbol} {b_val} = {res}, the {miss_lbl} is {fill_value}\", \"In {a_val} {op_symbol} ___ = {res}, the {miss_lbl} is {fill_value}\", \"In {a_val} {op_symbol} {b_val} = ___, the {miss_lbl} is {fill_value}\", \"{statement}. True or False?\", \"? {op_char} {b}\", \"Both sides balance evenly. {left} = {right}. What is the missing value?\", \"{a} {op_char} ?\", \"{a} {op_char} {b}\"], \"overall\": \"FAIL\", \"reasoning\": \"Operation-symbol domains. Every family with a sym, v, op_symbol or op_char slot draws from a list that includes the multiplication and division symbols (\\\"×\\\", \\\"÷\\\"). Those are NOT_YET_KNOWN concepts (\\\"multiplication\\\", \\\"division\\\") for this lc, and declared_bounds names only addition_subtraction. Families F05 to F11, F14 to F17, F19 to F27, F31, F33 and F34 can therefore print multiplication or division. F32 prints F31, F33 and F34 as its left side, so it inherits this fault. Numbers beyond 20. F25's fill_value domain (the distractors shaped like the keyed answer) includes 21, 25, 27 and 35, all printed as the missing number in the learner-facing statement, outside the lc's numbers up to 20. Hint F12. Its inv_op_lbl is always the F04 word \\\"subtraction\\\", and template_chosen_by_values lists only blank_position. For a subtraction problem it prints a wrong operation (the opposite of subtraction is addition). Hint F13. Its inv_op_lbl draws from both F01 (addition) and F04 (subtraction) with no link to the operation, so it can say to undo an addition with addition. Scope. F29 (\\\"True or False?\\\") asks the learner to judge a given statement, a task the lc does not name; F32 frames the problem as sides that \\\"balance evenly\\\", which is the balance and equation concept (\\\"balance scale\\\" and \\\"equation\\\" are gated out for this lc). F15 and F16 also fail on their symbol slots. Their hint arithmetic is correct only for some operation and blank combinations, and the packet does not show which combinations the generator selects. F02 (\\\"number statement\\\") and the F01 to F04 word families are not failed. The clauses are producible by F22, F21 and F24.\"}",
+ "raw_reply_digest": "7fd07e44816d7a9b6142797ef67211af083fb7f828c917101c2b0a3e6fe7f1f4",
+ "packet_digest": "e4cd62bf8d8e1c38c5337859bd2ea7795171ea1e683371b7e443a4f7f72cb7da",
+ "family_keys": {
+  "F01": {
+   "source": "backend/app/practice_gen/dna/base.py [gate addition]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F02": {
+   "source": "backend/app/practice_gen/dna/base.py [gate equation]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F03": {
+   "source": "backend/app/practice_gen/dna/base.py [gate missing number]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    6,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F04": {
+   "source": "backend/app/practice_gen/dna/base.py [gate subtraction]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    6,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F05": {
+   "source": "backend/app/practice_gen/dna/na/missing_number.py",
+   "first_site": "backend/app/practice_gen/dna/na/missing_number.py:436",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F06": {
+   "source": "backend/app/practice_gen/dna/na/missing_number.py",
+   "first_site": "backend/app/practice_gen/dna/na/missing_number.py:455",
+   "renderer": "",
+   "path": [
+    7,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F07": {
+   "source": "backend/app/practice_gen/dna/na/missing_number.py",
+   "first_site": "backend/app/practice_gen/dna/na/missing_number.py:463",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F08": {
+   "source": "backend/app/practice_gen/dna/na/missing_number.py",
+   "first_site": "backend/app/practice_gen/dna/na/missing_number.py:460",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F09": {
+   "source": "backend/app/practice_gen/dna/na/missing_number.py",
+   "first_site": "backend/app/practice_gen/dna/na/missing_number.py:452",
+   "renderer": "",
+   "path": [
+    7,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F10": {
+   "source": "backend/app/practice_gen/dna/na/missing_number.py",
+   "first_site": "backend/app/practice_gen/dna/na/missing_number.py:434",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F11": {
+   "source": "backend/app/practice_gen/dna/na/missing_number.py",
+   "first_site": "backend/app/practice_gen/dna/na/missing_number.py:447",
+   "renderer": "",
+   "path": [
+    11,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F12": {
+   "source": "backend/app/practice_gen/dna/na/missing_number.py",
+   "first_site": "backend/app/practice_gen/dna/na/missing_number.py:453",
+   "renderer": "",
+   "path": [
+    7,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F13": {
+   "source": "backend/app/practice_gen/dna/na/missing_number.py",
+   "first_site": "backend/app/practice_gen/dna/na/missing_number.py:461",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F14": {
+   "source": "backend/app/practice_gen/dna/na/missing_number.py",
+   "first_site": "backend/app/practice_gen/dna/na/missing_number.py:435",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F15": {
+   "source": "backend/app/practice_gen/dna/na/missing_number.py",
+   "first_site": "backend/app/practice_gen/dna/na/missing_number.py:448",
+   "renderer": "",
+   "path": [
+    11,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F16": {
+   "source": "backend/app/practice_gen/dna/na/missing_number.py",
+   "first_site": "backend/app/practice_gen/dna/na/missing_number.py:454",
+   "renderer": "",
+   "path": [
+    7,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F17": {
+   "source": "backend/app/practice_gen/dna/na/missing_number.py",
+   "first_site": "backend/app/practice_gen/dna/na/missing_number.py:462",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F18": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:51",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F19": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_cloze.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_cloze.py:229",
+   "renderer": "",
+   "path": [
+    24,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F20": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_cloze.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_cloze.py:231",
+   "renderer": "",
+   "path": [
+    7,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F21": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_cloze.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_cloze.py:233",
+   "renderer": "",
+   "path": [
+    3,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F22": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_mcq.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_mcq.py:161",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F23": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_mcq.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_mcq.py:163",
+   "renderer": "",
+   "path": [
+    9,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F24": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_mcq.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_mcq.py:165",
+   "renderer": "",
+   "path": [
+    4,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F25": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_true_false.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_true_false.py:377",
+   "renderer": "",
+   "path": [
+    6,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F26": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_true_false.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_true_false.py:379",
+   "renderer": "",
+   "path": [
+    11,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F27": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_true_false.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_true_false.py:381",
+   "renderer": "",
+   "path": [
+    21,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F28": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_true_false.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_true_false.py:368",
+   "renderer": "",
+   "path": [
+    6,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F29": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_true_false.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_true_false.py:430",
+   "renderer": "",
+   "path": [
+    6,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F30": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_balance_scale.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_balance_scale.py:89",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F31": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_balance_scale.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_balance_scale.py:93",
+   "renderer": "",
+   "path": [
+    19,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F32": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_balance_scale.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_balance_scale.py:170",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F33": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_balance_scale.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_balance_scale.py:98",
+   "renderer": "",
+   "path": [
+    23,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F34": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_balance_scale.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_balance_scale.py:88",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F35": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_balance_scale.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_balance_scale.py:94",
+   "renderer": "",
+   "path": [
+    19,
+    null
+   ],
+   "first_render_repeating": {}
+  }
+ },
+ "packet": {
+  "item": "S442-009",
+  "competency": {
+   "text": "Find the missing number in addition or subtraction sentences involving numbers up to 20.",
+   "grade": 1,
+   "quarter": 3
+  },
+  "clauses": [
+   {
+    "id": "find_missing_number",
+    "kind": "task",
+    "clause": "Find the missing number"
+   },
+   {
+    "id": "addition_subtraction_sentences",
+    "kind": "context",
+    "clause": "addition or subtraction sentences"
+   },
+   {
+    "id": "numbers_up_to_20",
+    "kind": "range",
+    "clause": "numbers up to 20"
+   }
+  ],
+  "vocabulary": {
+   "student_vocab": [
+    "missing number"
+   ],
+   "curriculum_vocab": [
+    "number sentence",
+    "addition sentence",
+    "subtraction sentence"
+   ],
+   "introduces_vocab": [
+    "missing number",
+    "number sentence",
+    "addition sentence",
+    "subtraction sentence"
+   ],
+   "cumulative_vocab": [
+    "1 less",
+    "1 more",
+    "10th",
+    "1st",
+    "2nd",
+    "3rd",
+    "4th",
+    "5th",
+    "6th",
+    "7th",
+    "8th",
+    "9th",
+    "addition",
+    "bigger",
+    "compare",
+    "corner",
+    "count",
+    "difference",
+    "digit",
+    "equal",
+    "expanded form",
+    "group",
+    "how many",
+    "left",
+    "length",
+    "less",
+    "measure",
+    "more",
+    "number",
+    "number line",
+    "numeral",
+    "ones",
+    "place value",
+    "rectangle",
+    "same",
+    "side",
+    "skip counting",
+    "smaller",
+    "square",
+    "subtraction",
+    "sum",
+    "tens",
+    "total",
+    "triangle"
+   ],
+   "NOT_YET_KNOWN": [
+    "L",
+    "a.m.",
+    "analog clock",
+    "area",
+    "axis",
+    "balance scale",
+    "bar graph",
+    "bill",
+    "calendar",
+    "capacity",
+    "centavo",
+    "centimeter",
+    "certain",
+    "circle",
+    "clockwise",
+    "cm",
+    "coin",
+    "counter-clockwise",
+    "data",
+    "decreasing pattern",
+    "denominator",
+    "division",
+    "elapsed time",
+    "equal groups",
+    "equally likely",
+    "estimate",
+    "even",
+    "fraction",
+    "g",
+    "gram",
+    "half",
+    "half hour",
+    "half turn",
+    "hour",
+    "hundreds",
+    "impossible",
+    "improper fraction",
+    "increasing pattern",
+    "intersecting",
+    "kg",
+    "kilogram",
+    "less likely",
+    "line",
+    "line of symmetry",
+    "line segment",
+    "liter",
+    "m",
+    "mL",
+    "mass",
+    "meter",
+    "milliliter",
+    "minute",
+    "missing term",
+    "more likely",
+    "multiplication",
+    "nearest hundred",
+    "nearest ten",
+    "nearest thousand",
+    "numerator",
+    "odd",
+    "order of operations",
+    "outcome",
+    "p.m.",
+    "parallel",
+    "pattern",
+    "perimeter",
+    "perpendicular",
+    "peso",
+    "pictograph",
+    "point",
+    "product",
+    "quarter",
+    "quarter hour",
+    "quarter turn",
+    "quotient",
+    "ray",
+    "regrouping",
+    "remainder",
+    "repeating pattern",
+    "round",
+    "ruler",
+    "scale",
+    "similar fractions",
+    "slide",
+    "solid figure",
+    "sq. cm",
+    "square centimeter",
+    "symmetry",
+    "table",
+    "ten thousand",
+    "ten-thousands place",
+    "thousand",
+    "translation",
+    "whole",
+    "₱"
+   ],
+   "sentence_max_words": 15,
+   "number_format": "no commas, no thousands separator"
+  },
+  "declared_variants": [
+   [
+    "blank_position",
+    "end"
+   ],
+   [
+    "blank_position",
+    "middle"
+   ],
+   [
+    "blank_position",
+    "start"
+   ],
+   [
+    "context",
+    "pure"
+   ],
+   [
+    "context",
+    "word_problem"
+   ],
+   [
+    "equation_type",
+    "non_standard"
+   ],
+   [
+    "equation_type",
+    "standard"
+   ]
+  ],
+  "declared_bounds": [
+   {
+    "operation": "addition_subtraction",
+    "max_result": 20
+   }
+  ],
+  "families": [
+   {
+    "id": "F01",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F13"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='addition')",
+        "requires_vocab": "addition",
+        "prints": "addition",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F02",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F08",
+     "F09",
+     "F10"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='equation')",
+        "requires_vocab": "equation",
+        "prints": "number statement",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F03",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F12",
+     "F25",
+     "F26",
+     "F27"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='missing number')",
+        "requires_vocab": "missing number",
+        "prints": "missing number",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F04",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F12",
+     "F13"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='subtraction')",
+        "requires_vocab": "subtraction",
+        "prints": "subtraction",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F05",
+    "template": "Calculate: {a} {sym} {b} = {result}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "1 to 20",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "sym"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the four operation symbols",
+        "members": [
+         "+",
+         "×",
+         "÷",
+         "−"
+        ],
+        "derived_from_values": [
+         "operation"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "1 to 19",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "result"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "result",
+        "printed_runs": "1 to 8, 10 to 16, 18 to 20",
+        "derived_from_values": [
+         "result"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "blank_position"
+    ]
+   },
+   {
+    "id": "F06",
+    "template": "Check: {a} {sym} {missing} = {result}. ✓",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "1 to 8, 10 to 20",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "sym"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the four operation symbols",
+        "members": [
+         "+",
+         "×",
+         "÷",
+         "−"
+        ],
+        "derived_from_values": [
+         "operation"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "missing"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "missing_value",
+        "printed_runs": "1 to 18",
+        "derived_from_values": [
+         "missing_value"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "result"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "result",
+        "printed_runs": "1 to 6, 8, 10 to 20",
+        "derived_from_values": [
+         "result"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "blank_position",
+     "operation"
+    ]
+   },
+   {
+    "id": "F07",
+    "template": "Check: {missing} {sym} {b} = {result}. ✓",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "missing"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "missing_value",
+        "printed_runs": "1, 3 to 20",
+        "derived_from_values": [
+         "missing_value"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "sym"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the four operation symbols",
+        "members": [
+         "+",
+         "×",
+         "÷",
+         "−"
+        ],
+        "derived_from_values": [
+         "operation"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "1 to 7, 9 to 19",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "result"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "result",
+        "printed_runs": "1 to 20",
+        "derived_from_values": [
+         "result"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F08",
+    "template": "The {eq_lbl} is: ___ {sym} {b} = {result}",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "eq_lbl"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F02"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "sym"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the four operation symbols",
+        "members": [
+         "+",
+         "×",
+         "÷",
+         "−"
+        ],
+        "derived_from_values": [
+         "operation"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "1 to 7, 9 to 19",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "result"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "result",
+        "printed_runs": "1 to 20",
+        "derived_from_values": [
+         "result"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F09",
+    "template": "The {eq_lbl} is: {a} {sym} ___ = {result}",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "eq_lbl"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F02"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "1 to 8, 10 to 20",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "sym"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the four operation symbols",
+        "members": [
+         "+",
+         "×",
+         "÷",
+         "−"
+        ],
+        "derived_from_values": [
+         "operation"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "result"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "result",
+        "printed_runs": "1 to 6, 8, 10 to 20",
+        "derived_from_values": [
+         "result"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "blank_position",
+     "operation"
+    ]
+   },
+   {
+    "id": "F10",
+    "template": "The {eq_lbl} is: {a} {sym} {b} = ___",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "eq_lbl"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F02"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "1 to 20",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "sym"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the four operation symbols",
+        "members": [
+         "+",
+         "×",
+         "÷",
+         "−"
+        ],
+        "derived_from_values": [
+         "operation"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "1 to 19",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "blank_position"
+    ]
+   },
+   {
+    "id": "F11",
+    "template": "Think: {a} {sym} what number gives {result}?",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "8, 11 to 17, 19 to 20",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "sym"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the four operation symbols",
+        "members": [
+         "+",
+         "×",
+         "÷",
+         "−"
+        ],
+        "derived_from_values": [
+         "operation"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "result"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "result",
+        "printed_runs": "1 to 4, 6, 8, 10 to 16, 19",
+        "derived_from_values": [
+         "result"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "blank_position",
+     "operation"
+    ]
+   },
+   {
+    "id": "F12",
+    "template": "To find the {miss_lbl}, use the opposite operation ({inv_op_lbl}).",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "miss_lbl"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F03"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "inv_op_lbl"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F04"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "blank_position"
+    ]
+   },
+   {
+    "id": "F13",
+    "template": "Use {inv_op_lbl} to undo the operation.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "inv_op_lbl"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F01",
+         "F04"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F14",
+    "template": "We need to find what {a} {sym} {b} equals.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "1 to 20",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "sym"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the four operation symbols",
+        "members": [
+         "+",
+         "×",
+         "÷",
+         "−"
+        ],
+        "derived_from_values": [
+         "operation"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "1 to 19",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "blank_position"
+    ]
+   },
+   {
+    "id": "F15",
+    "template": "{a} {sym} {result} = {missing}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "8, 11 to 17, 19 to 20",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "sym"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the four operation symbols",
+        "members": [
+         "+",
+         "×",
+         "÷",
+         "−"
+        ],
+        "derived_from_values": [
+         "operation"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "result"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "result",
+        "printed_runs": "1 to 4, 6, 8, 10 to 16, 19",
+        "derived_from_values": [
+         "result"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "missing"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "missing_value",
+        "printed_runs": "1 to 6, 8 to 12, 14 to 16, 18",
+        "derived_from_values": [
+         "missing_value"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "blank_position",
+     "operation"
+    ]
+   },
+   {
+    "id": "F16",
+    "template": "{result} {v} {a} = {missing}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "result"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "result",
+        "printed_runs": "4 to 6, 11 to 20",
+        "derived_from_values": [
+         "result"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "v"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the four operation symbols",
+        "members": [
+         "+",
+         "×",
+         "÷",
+         "−"
+        ],
+        "derived_from_values": [
+         "operation"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "1 to 8, 10 to 15, 18 to 19",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "missing"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "missing_value",
+        "printed_runs": "1 to 4, 7 to 8, 10 to 15, 17",
+        "derived_from_values": [
+         "missing_value"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "blank_position"
+    ]
+   },
+   {
+    "id": "F17",
+    "template": "{result} {v} {b} = {missing}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "result"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "result",
+        "printed_runs": "1 to 20",
+        "derived_from_values": [
+         "result"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "v"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the four operation symbols",
+        "members": [
+         "+",
+         "×",
+         "÷",
+         "−"
+        ],
+        "derived_from_values": [
+         "operation"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "1 to 7, 9 to 19",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "missing"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "missing_value",
+        "printed_runs": "1, 3 to 20",
+        "derived_from_values": [
+         "missing_value"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F18",
+    "template": "{key}",
+    "appears_in": [
+     "correct_answer"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "key"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the option keys this item shows",
+        "members": [
+         "A",
+         "B",
+         "C",
+         "D"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F19",
+    "template": "___ {op_symbol} {b_val} = {res}",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "op_symbol"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the operation symbols",
+        "members": [
+         "+",
+         "×",
+         "÷",
+         "−"
+        ],
+        "derived_from_values": [
+         "equivalent_symbol",
+         "operation"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b_val"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "1 to 6, 10, 12 to 13, 15, 18 to 19",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "res"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "result",
+        "printed_runs": "1 to 7, 10, 13 to 14, 16 to 18, 20",
+        "derived_from_values": [
+         "result",
+         "total"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "blank_position"
+    ]
+   },
+   {
+    "id": "F20",
+    "template": "{a_val} {op_symbol} ___ = {res}",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "a_val"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "1 to 5, 8, 12, 14 to 15, 19 to 20",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "op_symbol"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the operation symbols",
+        "members": [
+         "+",
+         "×",
+         "÷",
+         "−"
+        ],
+        "derived_from_values": [
+         "equivalent_symbol",
+         "operation"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "res"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "result",
+        "printed_runs": "4 to 6, 8, 11, 13, 15 to 20",
+        "derived_from_values": [
+         "result",
+         "total"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "blank_position"
+    ]
+   },
+   {
+    "id": "F21",
+    "template": "{a_val} {op_symbol} {b_val} = ___",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "a_val"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "1 to 4, 6, 10, 12 to 15, 20",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "op_symbol"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the operation symbols",
+        "members": [
+         "+",
+         "×",
+         "÷",
+         "−"
+        ],
+        "derived_from_values": [
+         "equivalent_symbol",
+         "operation"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b_val"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "1 to 10, 12, 14 to 15, 18",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F22",
+    "template": "What number goes in the blank: ___ {op_symbol} {b_val} = {res}?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "op_symbol"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the operation symbols",
+        "members": [
+         "+",
+         "×",
+         "÷",
+         "−"
+        ],
+        "derived_from_values": [
+         "equivalent_symbol",
+         "operation"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b_val"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "1 to 2, 4, 10, 12, 14 to 15, 19",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "res"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "result",
+        "printed_runs": "1 to 2, 5 to 6, 8, 14, 16, 20",
+        "derived_from_values": [
+         "result",
+         "total"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "blank_position"
+    ]
+   },
+   {
+    "id": "F23",
+    "template": "What number goes in the blank: {a_val} {op_symbol} ___ = {res}?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "a_val"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "6 to 8, 11, 13 to 18, 20",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "op_symbol"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the operation symbols",
+        "members": [
+         "+",
+         "×",
+         "÷",
+         "−"
+        ],
+        "derived_from_values": [
+         "equivalent_symbol",
+         "operation"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "res"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "result",
+        "printed_runs": "1, 3 to 4, 6, 8, 10 to 13, 16, 20",
+        "derived_from_values": [
+         "result",
+         "total"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "blank_position"
+    ]
+   },
+   {
+    "id": "F24",
+    "template": "What number goes in the blank: {a_val} {op_symbol} {b_val} = ___?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "a_val"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "3 to 7, 10 to 14, 16 to 17, 19 to 20",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "op_symbol"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the operation symbols",
+        "members": [
+         "+",
+         "×",
+         "÷",
+         "−"
+        ],
+        "derived_from_values": [
+         "equivalent_symbol",
+         "operation"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b_val"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "1 to 2, 5, 10 to 15, 17 to 18",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F25",
+    "template": "In ___ {op_symbol} {b_val} = {res}, the {miss_lbl} is {fill_value}",
+    "appears_in": [
+     "format_data.statement"
+    ],
+    "nested_in": [
+     "F29"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "op_symbol"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the operation symbols",
+        "members": [
+         "+",
+         "×",
+         "÷",
+         "−"
+        ],
+        "derived_from_values": [
+         "equivalent_symbol",
+         "operation"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b_val"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "1 to 2, 4 to 5, 12, 15",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "res"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "result",
+        "printed_runs": "2, 5 to 6, 10 to 15, 18, 20",
+        "derived_from_values": [
+         "result",
+         "total"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "miss_lbl"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F03",
+         "F28"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "fill_value"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the distractors shaped like the keyed answer",
+        "members": [
+         10,
+         14,
+         16,
+         18,
+         19,
+         2,
+         21,
+         25,
+         27,
+         3,
+         35,
+         4,
+         5,
+         8
+        ]
+       },
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the keyed answer (a true statement)",
+        "members": [
+         19
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "blank_position"
+    ]
+   },
+   {
+    "id": "F26",
+    "template": "In {a_val} {op_symbol} ___ = {res}, the {miss_lbl} is {fill_value}",
+    "appears_in": [
+     "format_data.statement"
+    ],
+    "nested_in": [
+     "F29"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "a_val"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "6, 8, 12 to 17, 19 to 20",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "op_symbol"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the operation symbols",
+        "members": [
+         "+",
+         "×",
+         "÷",
+         "−"
+        ],
+        "derived_from_values": [
+         "equivalent_symbol",
+         "operation"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "res"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "result",
+        "printed_runs": "1 to 4, 6, 10 to 15, 20",
+        "derived_from_values": [
+         "result",
+         "total"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "miss_lbl"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F03",
+         "F28"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "fill_value"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the distractors shaped like the keyed answer",
+        "members": [
+         11,
+         14,
+         17,
+         18,
+         19,
+         20,
+         9
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "blank_position"
+    ]
+   },
+   {
+    "id": "F27",
+    "template": "In {a_val} {op_symbol} {b_val} = ___, the {miss_lbl} is {fill_value}",
+    "appears_in": [
+     "format_data.statement"
+    ],
+    "nested_in": [
+     "F29"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "a_val"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "1, 4, 6 to 9, 12 to 14, 16, 19 to 20",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "op_symbol"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the operation symbols",
+        "members": [
+         "+",
+         "×",
+         "÷",
+         "−"
+        ],
+        "derived_from_values": [
+         "equivalent_symbol",
+         "operation"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b_val"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "1 to 7, 11 to 12, 14, 16, 19",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "miss_lbl"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F03",
+         "F28"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "fill_value"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the distractors shaped like the keyed answer",
+        "members": [
+         10,
+         3,
+         5,
+         6
+        ]
+       },
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the keyed answer (a true statement)",
+        "members": [
+         13,
+         20
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F28",
+    "template": "missing number",
+    "appears_in": [],
+    "nested_in": [
+     "F25",
+     "F26",
+     "F27"
+    ],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F29",
+    "template": "{statement}. True or False?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "statement"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F25",
+         "F26",
+         "F27"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F30",
+    "template": "?",
+    "appears_in": [],
+    "nested_in": [
+     "F32"
+    ],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F31",
+    "template": "? {op_char} {b}",
+    "appears_in": [],
+    "nested_in": [
+     "F32"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "op_char"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "_OP_CHARS",
+        "members": [
+         "+",
+         "-",
+         "×",
+         "÷"
+        ],
+        "derived_from_values": [
+         "operation"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "1 to 3, 5 to 7, 9, 11 to 14, 16 to 18",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "blank_target"
+    ]
+   },
+   {
+    "id": "F32",
+    "template": "Both sides balance evenly. {left} = {right}. What is the missing value?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "left"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F31",
+         "F33",
+         "F34"
+        ],
+        "derived_from_values": [
+         "a",
+         "b",
+         "operation"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "right"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F30",
+         "F35"
+        ],
+        "derived_from_values": [
+         "a",
+         "b",
+         "operation"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F33",
+    "template": "{a} {op_char} ?",
+    "appears_in": [],
+    "nested_in": [
+     "F32"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "1 to 5, 7, 10 to 11, 13, 15, 20",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "op_char"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "_OP_CHARS",
+        "members": [
+         "+",
+         "-",
+         "×",
+         "÷"
+        ],
+        "derived_from_values": [
+         "operation"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F34",
+    "template": "{a} {op_char} {b}",
+    "appears_in": [],
+    "nested_in": [
+     "F32"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "1, 3, 5 to 11, 15, 18, 20",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "op_char"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "_OP_CHARS",
+        "members": [
+         "+",
+         "-",
+         "×",
+         "÷"
+        ],
+        "derived_from_values": [
+         "operation"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "1 to 6, 9 to 15",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "blank_target"
+    ]
+   },
+   {
+    "id": "F35",
+    "template": "{result}",
+    "appears_in": [],
+    "nested_in": [
+     "F32"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "result"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "result",
+        "printed_runs": "1 to 6, 8 to 15, 17 to 20",
+        "derived_from_values": [
+         "result"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   }
+  ],
+  "lists": {},
+  "banks": {},
+  "value_derivations": [],
+  "reason_kinds": {}
+ }
+}

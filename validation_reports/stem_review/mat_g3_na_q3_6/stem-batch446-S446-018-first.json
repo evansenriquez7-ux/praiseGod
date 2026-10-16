@@ -1,0 +1,1169 @@
+{
+ "schema_version": 2,
+ "hash_version": 8,
+ "node_id": "mat_g3_na_q3_6",
+ "record_id": "stem-batch446-S446-018-first",
+ "role": "first",
+ "confirms": null,
+ "item_id": "S446-018",
+ "lc_hash": "a4ac26b24477c1b3f64151ba667ca9eab4f6a0b736fff02d6564ed0c317a0eb6",
+ "judged_by": "blind-stem-judge-claude-haiku-batch446-S446-018-first",
+ "dispatch_id": "stem-batch446-S446-018-first",
+ "filed_at": "2026-10-15T16:48:21Z",
+ "delivery": "Claude Code Agent tool, model=haiku, subagent_type=general-purpose; the judge was told to read only local_only/scratch/h4c/prompts/S446-018.prompt.txt (tests/stem_file.py prompt output, item S446-018; no lc id, no key or packets file in that directory) and reply with what it asks; dispatched with CLAUDE.md loaded (ruling 29). Blindness is a prompt contract, audited from the subagent transcript.",
+ "tool_uses_by_judge": "From the subagent transcript: 1 tool use(s), all Read of its own prompt file (1127 lines, every line read); no other tool, path or search. Model reported in the transcript: claude-haiku-5-5.",
+ "dispatch_prompt_digest": "9dec9c92694c7489624ffe55e524749b787e36da57259c17047d2b5645c665ee",
+ "raw_reply": "{\"item\": \"S446-018\", \"clauses\": {\"explain_generation\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F06\", \"template\": \"This pattern follows a rule: {seq_str}, ... Each group of numbers repeats, then the next group changes by the same amount. What number is added or subtracted from one group to the next?\", \"reasoning\": \"F06 asks the learner to name the step that generates each next group. Its answer is a single amount rather than a written explanation, so it is the closest producible match and not a full explanation. The declared bound ask_type is 'explain', and no family asks for a written explanation.\"}, \"pattern\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F04\", \"template\": \"{p0}, {p1}, {p2}, {p3}, {p4}, {p5}, {p6}, {p7}\", \"reasoning\": \"F04 prints an eight-term sequence drawn from the generator's own sequence choices, with one term possibly blanked as '___'. This shows a pattern.\"}, \"repeating_and_increasing\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F01\", \"template\": \"A group of numbers repeats, and each new group {v} by {abs}.\", \"reasoning\": \"F01 slot v has the domain 'one of the generator's own choices' with members 'goes up' and 'goes down', and abs is an arithmetic number derived from common_difference. With v set to 'goes up', F01 states a repeating group that increases.\"}, \"repeating_and_decreasing\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F01\", \"template\": \"A group of numbers repeats, and each new group {v} by {abs}.\", \"reasoning\": \"With v set to 'goes down', F01 states a repeating group that decreases, with abs a positive arithmetic magnitude derived from common_difference.\"}}, \"failing_families\": [\"F05\"], \"failing_templates\": [\"{rule}. The answer is {ans}.\"], \"overall\": \"FAIL\", \"reasoning\": \"F05 (template '{rule}. The answer is {ans}.', appears in hints) fails Rule 1. Slot ans repeats the generated value 'answer', and the printed runs are '-100, -50, -20, -10, 10, 20, 50, 100'. Negative numbers appear in the learner-facing hint 'The answer is' followed by a negative value. Negative integers are not in cumulative_vocab, and a grade 3 quarter 3 learner cannot read or reason with them, so this misstates the answer for every decreasing pattern. Slot rule (domain 'repeats a generated value', key 'rule_description') prints text in which the word 'ones' names the repeating group of numbers. 'Ones' is a place-value term in cumulative_vocab, so the wording is misleading for a group of numbers. No family lists correct_answer in appears_in, so the negative keyed value reaches the learner only through F05's hint. F06 (question) and F01 (hint) are not failing: their domains produce only sign-free wording, and F06's keyed answer is printed only through F05. The word 'rule' in F06 is not in cumulative_vocab or NOT_YET_KNOWN, and it is judged acceptable for a pattern lc. F03, F04, F07 and F08 print numbers from 13 to 249 and are read within grade 3 range; their 'distinct_in_every_render' false only reflects repeated group values and is not a content fault. The competency's scope is covered by F01, F04 and F06 for increasing and decreasing repeating patterns.\"}",
+ "raw_reply_digest": "05573d956a5e59ed73813d5bd0aa0ddd5dda489d364e0cbf1959f565cd0ee5cf",
+ "packet_digest": "5e2df682c9e8d03ad0739c6a170550236bfd045a6670eedddbd6847fda44bf95",
+ "family_keys": {
+  "F01": {
+   "source": "backend/app/practice_gen/dna/na/patterns.py",
+   "first_site": "backend/app/practice_gen/dna/na/patterns.py:614",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F02": {
+   "source": "backend/app/practice_gen/dna/na/patterns.py",
+   "first_site": "backend/app/practice_gen/dna/na/patterns.py:607",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F03": {
+   "source": "backend/app/practice_gen/dna/na/patterns.py",
+   "first_site": "backend/app/practice_gen/dna/na/patterns.py:607",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {
+    "p0,p1,p2,p3,p4": [
+     1,
+     null
+    ]
+   }
+  },
+  "F04": {
+   "source": "backend/app/practice_gen/dna/na/patterns.py",
+   "first_site": "backend/app/practice_gen/dna/na/patterns.py:607",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {
+    "p0,p1,p2,p3,p4,p5,p6,p7": [
+     13,
+     null
+    ]
+   }
+  },
+  "F05": {
+   "source": "backend/app/practice_gen/dna/na/patterns.py",
+   "first_site": "backend/app/practice_gen/dna/na/patterns.py:628",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F06": {
+   "source": "backend/app/practice_gen/generators/base_generator.py",
+   "first_site": "backend/app/practice_gen/generators/base_generator.py:967",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F07": {
+   "source": "backend/app/practice_gen/generators/base_generator.py",
+   "first_site": "backend/app/practice_gen/generators/base_generator.py:952",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {
+    "p0,p1,p2,p3,p4": [
+     1,
+     null
+    ]
+   }
+  },
+  "F08": {
+   "source": "backend/app/practice_gen/generators/base_generator.py",
+   "first_site": "backend/app/practice_gen/generators/base_generator.py:952",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {
+    "p0,p1,p2,p3,p4,p5,p6,p7": [
+     13,
+     null
+    ]
+   }
+  }
+ },
+ "packet": {
+  "item": "S446-018",
+  "competency": {
+   "text": "Explain how to generate a given pattern with repeating and increasing components or repeating and decreasing components.",
+   "grade": 3,
+   "quarter": 3
+  },
+  "clauses": [
+   {
+    "id": "explain_generation",
+    "kind": "task",
+    "clause": "Explain how to generate"
+   },
+   {
+    "id": "pattern",
+    "kind": "object",
+    "clause": "pattern"
+   },
+   {
+    "id": "repeating_and_increasing",
+    "kind": "property",
+    "clause": "repeating and increasing components"
+   },
+   {
+    "id": "repeating_and_decreasing",
+    "kind": "property",
+    "clause": "repeating and decreasing components"
+   }
+  ],
+  "vocabulary": {
+   "student_vocab": [],
+   "curriculum_vocab": [
+    "generate a pattern"
+   ],
+   "introduces_vocab": [
+    "generate a pattern"
+   ],
+   "cumulative_vocab": [
+    "1 less",
+    "1 more",
+    "10th",
+    "1st",
+    "2nd",
+    "3rd",
+    "4th",
+    "5th",
+    "6th",
+    "7th",
+    "8th",
+    "9th",
+    "L",
+    "a.m.",
+    "addition",
+    "analog clock",
+    "area",
+    "balance scale",
+    "bigger",
+    "bill",
+    "calendar",
+    "capacity",
+    "centavo",
+    "centimeter",
+    "circle",
+    "clockwise",
+    "cm",
+    "coin",
+    "compare",
+    "corner",
+    "count",
+    "counter-clockwise",
+    "data",
+    "decreasing pattern",
+    "denominator",
+    "difference",
+    "digit",
+    "division",
+    "elapsed time",
+    "equal",
+    "equal groups",
+    "estimate",
+    "even",
+    "expanded form",
+    "fraction",
+    "g",
+    "gram",
+    "group",
+    "half",
+    "half hour",
+    "half turn",
+    "hour",
+    "how many",
+    "hundreds",
+    "increasing pattern",
+    "intersecting",
+    "kg",
+    "kilogram",
+    "left",
+    "length",
+    "less",
+    "line",
+    "line segment",
+    "liter",
+    "m",
+    "mL",
+    "mass",
+    "measure",
+    "meter",
+    "milliliter",
+    "minute",
+    "missing number",
+    "missing term",
+    "more",
+    "multiplication",
+    "nearest hundred",
+    "nearest ten",
+    "nearest thousand",
+    "number",
+    "number line",
+    "numeral",
+    "numerator",
+    "odd",
+    "ones",
+    "order of operations",
+    "p.m.",
+    "parallel",
+    "pattern",
+    "perimeter",
+    "perpendicular",
+    "peso",
+    "pictograph",
+    "place value",
+    "point",
+    "product",
+    "quarter",
+    "quarter hour",
+    "quarter turn",
+    "quotient",
+    "ray",
+    "rectangle",
+    "regrouping",
+    "repeating pattern",
+    "round",
+    "ruler",
+    "same",
+    "scale",
+    "side",
+    "similar fractions",
+    "skip counting",
+    "slide",
+    "smaller",
+    "solid figure",
+    "sq. cm",
+    "square",
+    "square centimeter",
+    "subtraction",
+    "sum",
+    "table",
+    "ten thousand",
+    "ten-thousands place",
+    "tens",
+    "thousand",
+    "total",
+    "translation",
+    "triangle",
+    "whole",
+    "₱"
+   ],
+   "NOT_YET_KNOWN": [
+    "axis",
+    "bar graph",
+    "certain",
+    "equally likely",
+    "impossible",
+    "improper fraction",
+    "less likely",
+    "line of symmetry",
+    "more likely",
+    "outcome",
+    "remainder",
+    "symmetry"
+   ],
+   "sentence_max_words": 22,
+   "number_format": "space separator for thousands (e.g. 1 000)"
+  },
+  "declared_variants": [],
+  "declared_bounds": [
+   {
+    "pattern_type": "combined",
+    "ask_type": "explain"
+   }
+  ],
+  "families": [
+   {
+    "id": "F01",
+    "template": "A group of numbers repeats, and each new group {v} by {abs}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "v"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the group step's direction",
+        "members": [
+         "goes down",
+         "goes up"
+        ],
+        "derived_from_values": [
+         "common_difference"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "abs"
+      ],
+      "domains": [
+       {
+        "domain": "a number computed by the generator",
+        "reason": "arithmetic",
+        "derived_from_values": [
+         "common_difference"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "pattern_kind"
+    ]
+   },
+   {
+    "id": "F02",
+    "template": "Look at the pattern: {join}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "join"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F03",
+         "F04",
+         "F07",
+         "F08"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F03",
+    "template": "{p0}, {p1}, {p2}, {p3}, {p4}",
+    "appears_in": [],
+    "nested_in": [
+     "F02",
+     "F06"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "p0",
+       "p1",
+       "p2",
+       "p3",
+       "p4"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the sequence, its missing term blanked",
+        "members": [
+         "___",
+         102,
+         105,
+         106,
+         113,
+         117,
+         121,
+         125,
+         127,
+         128,
+         13,
+         14,
+         141,
+         144,
+         15,
+         152,
+         155,
+         17,
+         18,
+         21,
+         213,
+         217,
+         221,
+         225,
+         23,
+         24,
+         241,
+         244,
+         25,
+         26,
+         27,
+         28,
+         29,
+         31,
+         33,
+         34,
+         35,
+         36,
+         38,
+         41,
+         43,
+         44,
+         45,
+         46,
+         48,
+         49,
+         52,
+         53,
+         54,
+         55,
+         56,
+         57,
+         58,
+         61,
+         63,
+         64,
+         66,
+         67,
+         68,
+         69,
+         72,
+         75,
+         76,
+         77,
+         78,
+         92,
+         94,
+         95,
+         98
+        ]
+       }
+      ],
+      "distinct_in_every_render": false
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F04",
+    "template": "{p0}, {p1}, {p2}, {p3}, {p4}, {p5}, {p6}, {p7}",
+    "appears_in": [],
+    "nested_in": [
+     "F02",
+     "F06"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "p0",
+       "p1",
+       "p2",
+       "p3",
+       "p4",
+       "p5",
+       "p6",
+       "p7"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the sequence, its missing term blanked",
+        "members": [
+         "___",
+         101,
+         103,
+         106,
+         11,
+         113,
+         114,
+         116,
+         117,
+         118,
+         12,
+         121,
+         123,
+         124,
+         129,
+         13,
+         132,
+         133,
+         134,
+         135,
+         14,
+         142,
+         143,
+         144,
+         146,
+         149,
+         151,
+         153,
+         156,
+         16,
+         17,
+         21,
+         214,
+         217,
+         218,
+         23,
+         24,
+         242,
+         243,
+         244,
+         249,
+         26,
+         27,
+         28,
+         29,
+         31,
+         32,
+         33,
+         34,
+         35,
+         37,
+         38,
+         39,
+         41,
+         42,
+         43,
+         44,
+         45,
+         46,
+         48,
+         51,
+         52,
+         53,
+         54,
+         55,
+         56,
+         57,
+         58,
+         59,
+         61,
+         62,
+         63,
+         64,
+         65,
+         66,
+         67,
+         71,
+         72,
+         73,
+         74,
+         75,
+         77,
+         78,
+         79,
+         82,
+         83,
+         84,
+         85,
+         89
+        ]
+       }
+      ],
+      "distinct_in_every_render": false
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F05",
+    "template": "{rule}. The answer is {ans}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "rule"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "rule_description",
+        "printed": [
+         "Repeat the ones [1, 1] and add 100 every group",
+         "Repeat the ones [1, 1] and subtract 20 every group",
+         "Repeat the ones [1, 2, 9] and subtract 20 every group",
+         "Repeat the ones [1, 2] and subtract 100 every group",
+         "Repeat the ones [1, 3] and add 10 every group",
+         "Repeat the ones [1, 3] and add 20 every group",
+         "Repeat the ones [1, 4] and add 50 every group",
+         "Repeat the ones [1, 4] and subtract 100 every group",
+         "Repeat the ones [1, 5, 9] and add 10 every group",
+         "Repeat the ones [1, 6, 6] and subtract 20 every group",
+         "Repeat the ones [1, 6] and add 10 every group",
+         "Repeat the ones [1, 7, 5] and subtract 10 every group",
+         "Repeat the ones [1, 7, 6] and add 10 every group",
+         "Repeat the ones [1, 8, 5] and subtract 10 every group",
+         "Repeat the ones [1, 9] and add 10 every group",
+         "Repeat the ones [2, 1, 5] and subtract 10 every group",
+         "Repeat the ones [2, 2, 3] and subtract 10 every group",
+         "Repeat the ones [2, 2, 5] and subtract 10 every group",
+         "Repeat the ones [2, 2, 6] and add 100 every group",
+         "Repeat the ones [2, 3, 8] and add 10 every group",
+         "Repeat the ones [2, 3] and add 20 every group",
+         "Repeat the ones [2, 3] and subtract 50 every group",
+         "Repeat the ones [2, 5, 6] and subtract 100 every group",
+         "Repeat the ones [2, 5, 7] and subtract 10 every group",
+         "Repeat the ones [2, 6, 3] and add 50 every group",
+         "Repeat the ones [2, 6] and add 10 every group",
+         "Repeat the ones [2, 6] and add 50 every group",
+         "Repeat the ones [2, 6] and subtract 50 every group",
+         "Repeat the ones [2, 7, 5] and add 50 every group",
+         "Repeat the ones [2, 7, 8] and add 20 every group",
+         "Repeat the ones [2, 8, 5] and subtract 50 every group",
+         "Repeat the ones [2, 9, 6] and add 20 every group",
+         "Repeat the ones [2, 9, 8] and add 50 every group",
+         "Repeat the ones [2, 9] and add 50 every group",
+         "Repeat the ones [3, 1, 5] and subtract 20 every group",
+         "Repeat the ones [3, 1, 6] and subtract 50 every group",
+         "Repeat the ones [3, 1, 9] and add 100 every group",
+         "Repeat the ones [3, 1, 9] and subtract 20 every group",
+         "Repeat the ones [3, 3] and subtract 10 every group",
+         "Repeat the ones [3, 4, 3] and add 50 every group",
+         "Repeat the ones [3, 4, 3] and subtract 20 every group",
+         "Repeat the ones [3, 4, 4] and subtract 100 every group",
+         "Repeat the ones [3, 4, 5] and subtract 10 every group",
+         "Repeat the ones [3, 4] and add 20 every group",
+         "Repeat the ones [3, 4] and add 50 every group",
+         "Repeat the ones [3, 4] and subtract 10 every group",
+         "Repeat the ones [3, 4] and subtract 100 every group",
+         "Repeat the ones [3, 5, 7] and add 20 every group",
+         "Repeat the ones [3, 5] and subtract 10 every group",
+         "Repeat the ones [3, 7, 2] and subtract 10 every group",
+         "Repeat the ones [3, 7, 5] and subtract 50 every group",
+         "Repeat the ones [3, 7] and add 20 every group",
+         "Repeat the ones [3, 7] and subtract 100 every group",
+         "Repeat the ones [3, 7] and subtract 50 every group",
+         "Repeat the ones [3, 8, 5] and add 10 every group",
+         "Repeat the ones [3, 8] and add 100 every group",
+         "Repeat the ones [3, 8] and add 50 every group",
+         "Repeat the ones [3, 8] and subtract 100 every group",
+         "Repeat the ones [4, 1] and add 10 every group",
+         "Repeat the ones [4, 1] and add 20 every group",
+         "Repeat the ones [4, 1] and subtract 10 every group",
+         "Repeat the ones [4, 2, 1] and subtract 20 every group",
+         "Repeat the ones [4, 2, 2] and add 50 every group",
+         "Repeat the ones [4, 2, 5] and subtract 50 every group",
+         "Repeat the ones [4, 2, 6] and subtract 20 every group",
+         "Repeat the ones [4, 2] and add 10 every group",
+         "Repeat the ones [4, 2] and add 50 every group",
+         "Repeat the ones [4, 2] and subtract 20 every group",
+         "Repeat the ones [4, 3, 6] and subtract 10 every group",
+         "Repeat the ones [4, 3, 7] and add 10 every group",
+         "Repeat the ones [4, 3, 9] and subtract 100 every group",
+         "Repeat the ones [4, 3] and subtract 10 every group",
+         "Repeat the ones [4, 4, 7] and subtract 100 every group",
+         "Repeat the ones [4, 4] and add 10 every group",
+         "Repeat the ones [4, 4] and subtract 10 every group",
+         "Repeat the ones [4, 4] and subtract 20 every group",
+         "Repeat the ones [4, 4] and subtract 50 every group",
+         "Repeat the ones [4, 5, 1] and add 10 every group",
+         "Repeat the ones [4, 5, 1] and add 100 every group",
+         "Repeat the ones [4, 5, 1] and subtract 10 every group",
+         "Repeat the ones [4, 6, 3] and add 100 every group",
+         "Repeat the ones [4, 6, 5] and subtract 50 every group",
+         "Repeat the ones [4, 7, 2] and add 10 every group",
+         "Repeat the ones [4, 7, 3] and subtract 10 every group",
+         "Repeat the ones [4, 7, 7] and subtract 50 every group",
+         "Repeat the ones [4, 7, 8] and add 10 every group",
+         "Repeat the ones [4, 7] and add 20 every group",
+         "Repeat the ones [4, 7] and subtract 100 every group",
+         "Repeat the ones [4, 8, 6] and subtract 50 every group",
+         "Repeat the ones [4, 8, 8] and subtract 50 every group",
+         "Repeat the ones [4, 8] and add 10 every group",
+         "Repeat the ones [4, 8] and subtract 100 every group",
+         "Repeat the ones [4, 8] and subtract 20 every group",
+         "Repeat the ones [4, 8] and subtract 50 every group",
+         "Repeat the ones [4, 9, 4] and add 20 every group",
+         "Repeat the ones [4, 9] and subtract 100 every group",
+         "Repeat the ones [4, 9] and subtract 20 every group",
+         "Repeat the ones [4, 9] and subtract 50 every group",
+         "Repeat the ones [5, 1, 8] and add 100 every group",
+         "Repeat the ones [5, 2, 1] and add 10 every group",
+         "Repeat the ones [5, 2] and add 10 every group",
+         "Repeat the ones [5, 2] and add 20 every group",
+         "Repeat the ones [5, 2] and add 50 every group",
+         "Repeat the ones [5, 2] and subtract 20 every group",
+         "Repeat the ones [5, 3, 9] and add 50 every group",
+         "Repeat the ones [5, 3] and add 100 every group",
+         "Repeat the ones [5, 3] and add 20 every group",
+         "Repeat the ones [5, 3] and subtract 100 every group",
+         "Repeat the ones [5, 3] and subtract 50 every group",
+         "Repeat the ones [5, 4, 6] and subtract 20 every group",
+         "Repeat the ones [5, 4, 8] and add 50 every group",
+         "Repeat the ones [5, 4] and subtract 10 every group",
+         "Repeat the ones [5, 4] and subtract 100 every group",
+         "Repeat the ones [5, 4] and subtract 50 every group",
+         "Repeat the ones [5, 5] and subtract 20 every group",
+         "Repeat the ones [5, 6, 2] and subtract 20 every group",
+         "Repeat the ones [5, 6] and subtract 10 every group",
+         "Repeat the ones [5, 6] and subtract 50 every group",
+         "Repeat the ones [5, 7, 6] and subtract 50 every group",
+         "Repeat the ones [5, 7, 7] and subtract 10 every group",
+         "Repeat the ones [5, 7] and add 10 every group",
+         "Repeat the ones [5, 7] and subtract 10 every group",
+         "Repeat the ones [5, 7] and subtract 20 every group",
+         "Repeat the ones [5, 8, 1] and subtract 10 every group",
+         "Repeat the ones [5, 8, 2] and subtract 100 every group",
+         "Repeat the ones [5, 8, 3] and subtract 100 every group",
+         "Repeat the ones [5, 8, 5] and subtract 20 every group",
+         "Repeat the ones [5, 8] and add 100 every group",
+         "Repeat the ones [5, 8] and add 20 every group",
+         "Repeat the ones [5, 8] and add 50 every group",
+         "Repeat the ones [5, 9, 2] and subtract 20 every group",
+         "Repeat the ones [5, 9, 6] and add 10 every group",
+         "Repeat the ones [5, 9] and add 100 every group",
+         "Repeat the ones [5, 9] and subtract 100 every group",
+         "Repeat the ones [6, 1, 7] and subtract 20 every group",
+         "Repeat the ones [6, 1] and add 100 every group",
+         "Repeat the ones [6, 1] and subtract 100 every group",
+         "Repeat the ones [6, 2, 7] and add 100 every group",
+         "Repeat the ones [6, 2] and add 20 every group",
+         "Repeat the ones [6, 2] and subtract 10 every group",
+         "Repeat the ones [6, 3, 7] and add 50 every group",
+         "Repeat the ones [6, 3] and add 10 every group",
+         "Repeat the ones [6, 3] and subtract 20 every group",
+         "Repeat the ones [6, 4] and add 10 every group",
+         "Repeat the ones [6, 4] and add 20 every group",
+         "Repeat the ones [6, 4] and subtract 10 every group",
+         "Repeat the ones [6, 5, 6] and add 20 every group",
+         "Repeat the ones [6, 5] and subtract 50 every group",
+         "Repeat the ones [6, 6, 4] and subtract 20 every group",
+         "Repeat the ones [6, 6, 5] and subtract 20 every group",
+         "Repeat the ones [6, 6, 5] and subtract 50 every group",
+         "Repeat the ones [6, 6, 6] and subtract 10 every group",
+         "Repeat the ones [6, 8, 9] and subtract 10 every group",
+         "Repeat the ones [6, 8] and add 10 every group",
+         "Repeat the ones [6, 8] and add 100 every group",
+         "Repeat the ones [6, 8] and subtract 10 every group",
+         "Repeat the ones [6, 9, 1] and subtract 50 every group",
+         "Repeat the ones [6, 9] and subtract 50 every group",
+         "Repeat the ones [7, 1, 1] and subtract 100 every group",
+         "Repeat the ones [7, 1, 3] and add 20 every group",
+         "Repeat the ones [7, 2] and add 10 every group",
+         "Repeat the ones [7, 3, 1] and add 10 every group",
+         "Repeat the ones [7, 3, 6] and add 50 every group",
+         "Repeat the ones [7, 3] and add 20 every group",
+         "Repeat the ones [7, 3] and subtract 100 every group",
+         "Repeat the ones [7, 3] and subtract 20 every group",
+         "Repeat the ones [7, 4, 2] and add 50 every group",
+         "Repeat the ones [7, 4, 6] and add 10 every group",
+         "Repeat the ones [7, 4, 8] and subtract 100 every group",
+         "Repeat the ones [7, 5, 4] and add 100 every group",
+         "Repeat the ones [7, 5] and add 10 every group",
+         "Repeat the ones [7, 5] and add 20 every group",
+         "Repeat the ones [7, 5] and subtract 50 every group",
+         "Repeat the ones [7, 6, 5] and add 10 every group",
+         "Repeat the ones [7, 6, 6] and add 100 every group",
+         "Repeat the ones [7, 6] and add 10 every group",
+         "Repeat the ones [7, 7] and subtract 20 every group",
+         "Repeat the ones [7, 7] and subtract 50 every group",
+         "Repeat the ones [7, 8, 1] and add 50 every group",
+         "Repeat the ones [7, 8] and add 20 every group",
+         "Repeat the ones [7, 8] and subtract 50 every group",
+         "Repeat the ones [7, 9, 1] and add 10 every group",
+         "Repeat the ones [7, 9, 6] and subtract 10 every group",
+         "Repeat the ones [7, 9, 8] and add 50 every group",
+         "Repeat the ones [7, 9, 9] and subtract 50 every group",
+         "Repeat the ones [8, 1] and add 10 every group",
+         "Repeat the ones [8, 1] and add 100 every group",
+         "Repeat the ones [8, 1] and add 20 every group",
+         "Repeat the ones [8, 1] and subtract 100 every group",
+         "Repeat the ones [8, 1] and subtract 20 every group",
+         "Repeat the ones [8, 2, 8] and add 100 every group",
+         "Repeat the ones [8, 2] and add 20 every group",
+         "Repeat the ones [8, 2] and subtract 20 every group",
+         "Repeat the ones [8, 3, 7] and subtract 100 every group",
+         "Repeat the ones [8, 3] and add 50 every group",
+         "Repeat the ones [8, 3] and subtract 100 every group",
+         "Repeat the ones [8, 3] and subtract 20 every group",
+         "Repeat the ones [8, 6, 5] and subtract 10 every group",
+         "Repeat the ones [8, 6] and add 100 every group",
+         "Repeat the ones [8, 7] and add 10 every group",
+         "Repeat the ones [8, 8, 1] and add 50 every group",
+         "Repeat the ones [8, 8] and add 100 every group",
+         "Repeat the ones [8, 8] and subtract 10 every group",
+         "Repeat the ones [8, 8] and subtract 100 every group",
+         "Repeat the ones [8, 8] and subtract 20 every group",
+         "Repeat the ones [8, 9] and add 100 every group",
+         "Repeat the ones [8, 9] and add 20 every group",
+         "Repeat the ones [9, 1, 2] and subtract 20 every group",
+         "Repeat the ones [9, 1, 3] and add 10 every group",
+         "Repeat the ones [9, 1, 8] and add 50 every group",
+         "Repeat the ones [9, 1] and add 50 every group",
+         "Repeat the ones [9, 1] and subtract 10 every group",
+         "Repeat the ones [9, 1] and subtract 20 every group",
+         "Repeat the ones [9, 2, 6] and add 20 every group",
+         "Repeat the ones [9, 2, 7] and subtract 50 every group",
+         "Repeat the ones [9, 2] and add 20 every group",
+         "Repeat the ones [9, 3, 1] and add 20 every group",
+         "Repeat the ones [9, 4, 5] and subtract 20 every group",
+         "Repeat the ones [9, 4] and subtract 20 every group",
+         "Repeat the ones [9, 4] and subtract 50 every group",
+         "Repeat the ones [9, 5, 9] and add 20 every group",
+         "Repeat the ones [9, 6, 3] and subtract 20 every group",
+         "Repeat the ones [9, 6, 4] and add 100 every group",
+         "Repeat the ones [9, 6, 4] and subtract 10 every group",
+         "Repeat the ones [9, 6] and subtract 20 every group",
+         "Repeat the ones [9, 6] and subtract 50 every group",
+         "Repeat the ones [9, 8, 1] and add 10 every group",
+         "Repeat the ones [9, 8, 4] and subtract 100 every group",
+         "Repeat the ones [9, 8, 6] and add 10 every group",
+         "Repeat the ones [9, 8, 6] and subtract 100 every group",
+         "Repeat the ones [9, 8, 8] and add 100 every group",
+         "Repeat the ones [9, 9, 7] and add 20 every group"
+        ],
+        "derived_from_values": [
+         "rule_description"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "ans"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "answer",
+        "printed_runs": "-100, -50, -20, -10, 10, 20, 50, 100",
+        "derived_from_values": [
+         "answer"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F06",
+    "template": "This pattern follows a rule: {seq_str}, ... Each group of numbers repeats, then the next group changes by the same amount. What number is added or subtracted from one group to the next?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "seq_str"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F03",
+         "F04",
+         "F07",
+         "F08"
+        ],
+        "derived_from_values": [
+         "a",
+         "sequence",
+         "start"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "missing_index",
+     "pattern_kind",
+     "rule_description"
+    ]
+   },
+   {
+    "id": "F07",
+    "template": "{p0}, {p1}, {p2}, {p3}, {p4}",
+    "appears_in": [],
+    "nested_in": [
+     "F02",
+     "F06"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "p0",
+       "p1",
+       "p2",
+       "p3",
+       "p4"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "values['sequence']",
+        "members": [
+         102,
+         105,
+         106,
+         113,
+         117,
+         121,
+         125,
+         127,
+         128,
+         13,
+         14,
+         141,
+         144,
+         15,
+         152,
+         155,
+         17,
+         18,
+         21,
+         213,
+         217,
+         221,
+         225,
+         23,
+         24,
+         241,
+         244,
+         25,
+         26,
+         27,
+         28,
+         29,
+         31,
+         33,
+         34,
+         35,
+         36,
+         38,
+         41,
+         43,
+         44,
+         45,
+         46,
+         48,
+         49,
+         52,
+         53,
+         54,
+         55,
+         56,
+         57,
+         58,
+         61,
+         63,
+         64,
+         66,
+         67,
+         68,
+         69,
+         72,
+         75,
+         76,
+         77,
+         78,
+         92,
+         94,
+         95,
+         98
+        ]
+       }
+      ],
+      "distinct_in_every_render": false
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F08",
+    "template": "{p0}, {p1}, {p2}, {p3}, {p4}, {p5}, {p6}, {p7}",
+    "appears_in": [],
+    "nested_in": [
+     "F02",
+     "F06"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "p0",
+       "p1",
+       "p2",
+       "p3",
+       "p4",
+       "p5",
+       "p6",
+       "p7"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "values['sequence']",
+        "members": [
+         101,
+         103,
+         106,
+         11,
+         113,
+         114,
+         116,
+         117,
+         118,
+         12,
+         121,
+         123,
+         124,
+         129,
+         13,
+         132,
+         133,
+         134,
+         135,
+         14,
+         142,
+         143,
+         144,
+         146,
+         149,
+         151,
+         153,
+         156,
+         16,
+         17,
+         21,
+         214,
+         217,
+         218,
+         23,
+         24,
+         242,
+         243,
+         244,
+         249,
+         26,
+         27,
+         28,
+         29,
+         31,
+         32,
+         33,
+         34,
+         35,
+         37,
+         38,
+         39,
+         41,
+         42,
+         43,
+         44,
+         45,
+         46,
+         48,
+         51,
+         52,
+         53,
+         54,
+         55,
+         56,
+         57,
+         58,
+         59,
+         61,
+         62,
+         63,
+         64,
+         65,
+         66,
+         67,
+         71,
+         72,
+         73,
+         74,
+         75,
+         77,
+         78,
+         79,
+         82,
+         83,
+         84,
+         85,
+         89
+        ]
+       }
+      ],
+      "distinct_in_every_render": false
+     }
+    ],
+    "template_chosen_by_values": []
+   }
+  ],
+  "lists": {},
+  "banks": {},
+  "value_derivations": [
+   {
+    "kind": "derives",
+    "key": "answer",
+    "from": [
+     "common_difference",
+     "pattern_kind"
+    ]
+   },
+   {
+    "kind": "derives",
+    "key": "sequence",
+    "from": [
+     "common_difference",
+     "pattern_kind"
+    ]
+   }
+  ],
+  "reason_kinds": {
+   "arithmetic": "a number the generator computes from the generated values named in src (a half, a sum, a difference, a running total, a place's digit). Its range is the image of those values' own domains; whether the arithmetic is RIGHT is the hint contract's (§16) and §1E's to check, not §14's."
+  }
+ }
+}

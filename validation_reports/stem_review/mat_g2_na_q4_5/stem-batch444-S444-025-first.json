@@ -1,0 +1,1007 @@
+{
+ "schema_version": 2,
+ "hash_version": 8,
+ "node_id": "mat_g2_na_q4_5",
+ "record_id": "stem-batch444-S444-025-first",
+ "role": "first",
+ "confirms": null,
+ "item_id": "S444-025",
+ "lc_hash": "83855eec14928727af77dec5a620cd84d426ecc83e7b69279b3e7458f53f83c3",
+ "judged_by": "blind-stem-judge-claude-haiku-batch444-S444-025-first",
+ "dispatch_id": "stem-batch444-S444-025-first",
+ "filed_at": "2026-10-15T16:47:43Z",
+ "delivery": "Claude Code Agent tool, model=haiku, subagent_type=general-purpose; the judge was told to read only local_only/scratch/h4c/prompts/S444-025.prompt.txt (tests/stem_file.py prompt output, item S444-025; no lc id, no key or packets file in that directory) and reply with what it asks; dispatched with CLAUDE.md loaded (ruling 29). Blindness is a prompt contract, audited from the subagent transcript.",
+ "tool_uses_by_judge": "From the subagent transcript: 1 tool use(s), all Read of its own prompt file (925 lines, every line read); no other tool, path or search. Model reported in the transcript: claude-haiku-5-5.",
+ "dispatch_prompt_digest": "7279eb28c1b8955744f6543841c6979f31b6c182e6acde0ac5e9d51b1ee9ab1b",
+ "raw_reply": "{\"item\": \"S444-025\", \"clauses\": {\"order\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F07\", \"template\": \"Order these fractions from smallest to largest: {display_str}.\", \"reasoning\": \"F07 is an ordering task whose display_str nests F12 and F14. F14 members are multi-fraction lists, so F07 can print a list to order.\"}, \"similar_fractions\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F07\", \"template\": \"Order these fractions from smallest to largest: {display_str}.\", \"reasoning\": \"F14 members used as display_str are lists in which every fraction shares one denominator (for example denominators 4, 5, 6 or 8 within one list), so F07 prints similar fractions as the object being ordered.\"}, \"smallest_to_largest\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F07\", \"template\": \"Order these fractions from smallest to largest: {display_str}.\", \"reasoning\": \"F07 names the smallest-to-largest direction directly in its template, and its display_str draws ordering lists from F14.\"}, \"vice_versa\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F10\", \"template\": \"Which list shows these fractions ordered from largest to smallest: {display_str}?\", \"reasoning\": \"F10 gives the reverse (largest-to-smallest) direction with a multi-fraction display_str from F14. F06 gives the same direction but nests only F12, which prints a single fraction, so F10 is the better producer.\"}}, \"failing_families\": [\"F03\", \"F04\", \"F06\", \"F07\", \"F08\", \"F10\", \"F11\", \"F12\", \"F14\"], \"failing_templates\": [\"Arrange these fractions from greatest to least: {display_str}.\", \"Arrange these fractions from least to greatest: {display_str}.\", \"Order these fractions from largest to smallest: {display_str}.\", \"Order these fractions from smallest to largest: {display_str}.\", \"Place all the {frac_lbl}s from {direction_words}: {answer}.\", \"Which list shows these fractions ordered from largest to smallest: {display_str}?\", \"Which list shows these fractions ordered from smallest to largest: {display_str}?\", \"{num}/{den}\", \"{member}\"], \"overall\": \"FAIL\", \"reasoning\": \"F12 (template {num}/{den}) draws num from 1 to 7 and den from 4, 5, 6 or 8 with no bound to proper fractions, so it can print improper fractions, which are in NOT_YET_KNOWN (improper fraction); the declared bound similar_proper is not enforced by F12's domain. F14 (template {member}) has printed members that are whole numbers or improper fractions, so its answer choices can show NOT_YET_KNOWN content. F03, F04, F07, F10 and F11 nest F12 as well as F14, so display_str can be one fraction, and the sentence 'these fractions' then asks a learner to order a single fraction. F06 nests only F12, so its display_str is always a single fraction under a plural ordering instruction. F08 (template Place all the {frac_lbl}s from {direction_words}: {answer}.) pairs direction_words, derived from direction, with answer, which repeats the keyed result. The packet declares no link between direction and the printed order of the answer, and the F13 printed set contains both ascending and descending orderings of the same fractions, so the hint can read as 'from largest to smallest' above an ascending list. F01 and F02 are gated vocabulary (fraction, numerator) and F05 and F09 use cumulative vocabulary only, so they are not at fault.\"}",
+ "raw_reply_digest": "8ea12b378ff7eb5236b30be850d8bea26699f02680d0890b2d943f934a86c2cf",
+ "packet_digest": "200505554e28a2000a81bbbb82c24cd0f2a024f157a7ea636e997160feba3608",
+ "family_keys": {
+  "F01": {
+   "source": "backend/app/practice_gen/dna/base.py [gate fraction]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F02": {
+   "source": "backend/app/practice_gen/dna/base.py [gate numerator]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F03": {
+   "source": "backend/app/practice_gen/dna/na/fractions.py",
+   "first_site": "backend/app/practice_gen/dna/na/fractions.py:253",
+   "renderer": "",
+   "path": [
+    14,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F04": {
+   "source": "backend/app/practice_gen/dna/na/fractions.py",
+   "first_site": "backend/app/practice_gen/dna/na/fractions.py:247",
+   "renderer": "",
+   "path": [
+    4,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F05": {
+   "source": "backend/app/practice_gen/dna/na/fractions.py",
+   "first_site": "backend/app/practice_gen/dna/na/fractions.py:642",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F06": {
+   "source": "backend/app/practice_gen/dna/na/fractions.py",
+   "first_site": "backend/app/practice_gen/dna/na/fractions.py:254",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F07": {
+   "source": "backend/app/practice_gen/dna/na/fractions.py",
+   "first_site": "backend/app/practice_gen/dna/na/fractions.py:248",
+   "renderer": "",
+   "path": [
+    2,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F08": {
+   "source": "backend/app/practice_gen/dna/na/fractions.py",
+   "first_site": "backend/app/practice_gen/dna/na/fractions.py:649",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F09": {
+   "source": "backend/app/practice_gen/dna/na/fractions.py",
+   "first_site": "backend/app/practice_gen/dna/na/fractions.py:647",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F10": {
+   "source": "backend/app/practice_gen/dna/na/fractions.py",
+   "first_site": "backend/app/practice_gen/dna/na/fractions.py:252",
+   "renderer": "",
+   "path": [
+    19,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F11": {
+   "source": "backend/app/practice_gen/dna/na/fractions.py",
+   "first_site": "backend/app/practice_gen/dna/na/fractions.py:246",
+   "renderer": "",
+   "path": [
+    3,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F12": {
+   "source": "backend/app/practice_gen/dna/na/fractions.py",
+   "first_site": "backend/app/practice_gen/dna/na/fractions.py:107",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F13": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:32",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F14": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:39",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  }
+ },
+ "packet": {
+  "item": "S444-025",
+  "competency": {
+   "text": "Order similar fractions from smallest to largest, and vice versa.",
+   "grade": 2,
+   "quarter": 4
+  },
+  "clauses": [
+   {
+    "id": "order",
+    "kind": "task",
+    "clause": "Order"
+   },
+   {
+    "id": "similar_fractions",
+    "kind": "object",
+    "clause": "similar fractions"
+   },
+   {
+    "id": "smallest_to_largest",
+    "kind": "property",
+    "clause": "smallest to largest"
+   },
+   {
+    "id": "vice_versa",
+    "kind": "property",
+    "clause": "vice versa"
+   }
+  ],
+  "vocabulary": {
+   "student_vocab": [],
+   "curriculum_vocab": [],
+   "introduces_vocab": [],
+   "cumulative_vocab": [
+    "1 less",
+    "1 more",
+    "10th",
+    "1st",
+    "2nd",
+    "3rd",
+    "4th",
+    "5th",
+    "6th",
+    "7th",
+    "8th",
+    "9th",
+    "addition",
+    "analog clock",
+    "bigger",
+    "bill",
+    "calendar",
+    "centavo",
+    "centimeter",
+    "circle",
+    "clockwise",
+    "cm",
+    "coin",
+    "compare",
+    "corner",
+    "count",
+    "counter-clockwise",
+    "data",
+    "decreasing pattern",
+    "denominator",
+    "difference",
+    "digit",
+    "division",
+    "equal",
+    "equal groups",
+    "estimate",
+    "even",
+    "expanded form",
+    "fraction",
+    "group",
+    "half",
+    "half hour",
+    "half turn",
+    "hour",
+    "how many",
+    "hundreds",
+    "increasing pattern",
+    "left",
+    "length",
+    "less",
+    "m",
+    "measure",
+    "meter",
+    "missing number",
+    "more",
+    "multiplication",
+    "number",
+    "number line",
+    "numeral",
+    "numerator",
+    "odd",
+    "ones",
+    "pattern",
+    "peso",
+    "pictograph",
+    "place value",
+    "product",
+    "quarter",
+    "quarter hour",
+    "quarter turn",
+    "quotient",
+    "rectangle",
+    "regrouping",
+    "repeating pattern",
+    "ruler",
+    "same",
+    "scale",
+    "side",
+    "similar fractions",
+    "skip counting",
+    "slide",
+    "smaller",
+    "square",
+    "subtraction",
+    "sum",
+    "table",
+    "tens",
+    "thousand",
+    "total",
+    "translation",
+    "triangle",
+    "whole",
+    "₱"
+   ],
+   "NOT_YET_KNOWN": [
+    "L",
+    "a.m.",
+    "area",
+    "axis",
+    "balance scale",
+    "bar graph",
+    "capacity",
+    "certain",
+    "elapsed time",
+    "equally likely",
+    "g",
+    "gram",
+    "impossible",
+    "improper fraction",
+    "intersecting",
+    "kg",
+    "kilogram",
+    "less likely",
+    "line",
+    "line of symmetry",
+    "line segment",
+    "liter",
+    "mL",
+    "mass",
+    "milliliter",
+    "minute",
+    "missing term",
+    "more likely",
+    "nearest hundred",
+    "nearest ten",
+    "nearest thousand",
+    "order of operations",
+    "outcome",
+    "p.m.",
+    "parallel",
+    "perimeter",
+    "perpendicular",
+    "point",
+    "ray",
+    "remainder",
+    "round",
+    "solid figure",
+    "sq. cm",
+    "square centimeter",
+    "symmetry",
+    "ten thousand",
+    "ten-thousands place"
+   ],
+   "sentence_max_words": 18,
+   "number_format": "no commas for numbers up to 1000"
+  },
+  "declared_variants": [
+   [
+    "fraction_model",
+    "area_model"
+   ],
+   [
+    "fraction_model",
+    "number_line"
+   ],
+   [
+    "fraction_model",
+    "set_model"
+   ]
+  ],
+  "declared_bounds": [
+   {
+    "fraction_type": "similar_proper",
+    "operation": "order"
+   }
+  ],
+  "families": [
+   {
+    "id": "F01",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F08"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='fraction')",
+        "requires_vocab": "fraction",
+        "prints": "fraction",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F02",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F05"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='numerator')",
+        "requires_vocab": "numerator",
+        "prints": "numerator",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F03",
+    "template": "Arrange these fractions from greatest to least: {display_str}.",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "display_str"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F12",
+         "F14"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "direction",
+     "operation"
+    ]
+   },
+   {
+    "id": "F04",
+    "template": "Arrange these fractions from least to greatest: {display_str}.",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "display_str"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F12",
+         "F14"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "direction",
+     "operation"
+    ]
+   },
+   {
+    "id": "F05",
+    "template": "For equal bottom numbers, compare the {num_lbl}s.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "num_lbl"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F02"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "operation"
+    ]
+   },
+   {
+    "id": "F06",
+    "template": "Order these fractions from largest to smallest: {display_str}.",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "display_str"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F12"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "direction",
+     "operation"
+    ]
+   },
+   {
+    "id": "F07",
+    "template": "Order these fractions from smallest to largest: {display_str}.",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "display_str"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F12",
+         "F14"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "direction",
+     "operation"
+    ]
+   },
+   {
+    "id": "F08",
+    "template": "Place all the {frac_lbl}s from {direction_words}: {answer}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "frac_lbl"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F01"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "direction_words"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the two order directions",
+        "members": [
+         "largest to smallest",
+         "smallest to largest"
+        ],
+        "derived_from_values": [
+         "direction"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F13"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "operation"
+    ]
+   },
+   {
+    "id": "F09",
+    "template": "Read the requested order: {direction_words}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "direction_words"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the two order directions",
+        "members": [
+         "largest to smallest",
+         "smallest to largest"
+        ],
+        "derived_from_values": [
+         "direction"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "operation"
+    ]
+   },
+   {
+    "id": "F10",
+    "template": "Which list shows these fractions ordered from largest to smallest: {display_str}?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "display_str"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F12",
+         "F14"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "direction",
+     "operation"
+    ]
+   },
+   {
+    "id": "F11",
+    "template": "Which list shows these fractions ordered from smallest to largest: {display_str}?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "display_str"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F12",
+         "F14"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "direction",
+     "operation"
+    ]
+   },
+   {
+    "id": "F12",
+    "template": "{num}/{den}",
+    "appears_in": [
+     "distractors",
+     "format_data.mcq_options",
+     "format_data.options"
+    ],
+    "nested_in": [
+     "F03",
+     "F04",
+     "F06",
+     "F07",
+     "F10",
+     "F11"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "num"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the order set's numerators",
+        "members": [
+         1,
+         2,
+         3,
+         4,
+         5,
+         6,
+         7
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "den"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the order set's denominators",
+        "members": [
+         4,
+         5,
+         6,
+         8
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F13",
+    "template": "{answer}",
+    "appears_in": [
+     "correct_answer",
+     "format_data.mcq_options",
+     "format_data.options"
+    ],
+    "nested_in": [
+     "F08"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "result",
+        "printed": [
+         "1/4, 2/4, 3/4",
+         "1/5, 2/5, 3/5, 4/5",
+         "1/6, 2/6, 3/6, 4/6",
+         "1/6, 2/6, 3/6, 5/6",
+         "1/6, 2/6, 4/6, 5/6",
+         "1/6, 3/6, 4/6, 5/6",
+         "1/8, 2/8, 3/8, 7/8",
+         "1/8, 2/8, 4/8, 6/8",
+         "1/8, 2/8, 4/8, 7/8",
+         "1/8, 2/8, 5/8, 7/8",
+         "1/8, 2/8, 6/8, 7/8",
+         "1/8, 3/8, 5/8, 6/8",
+         "1/8, 4/8, 5/8, 6/8",
+         "1/8, 4/8, 5/8, 7/8",
+         "1/8, 5/8, 6/8, 7/8",
+         "2/6, 3/6, 4/6, 5/6",
+         "2/8, 3/8, 4/8, 5/8",
+         "2/8, 3/8, 4/8, 6/8",
+         "2/8, 3/8, 5/8, 6/8",
+         "2/8, 3/8, 5/8, 7/8",
+         "2/8, 3/8, 6/8, 7/8",
+         "2/8, 4/8, 5/8, 6/8",
+         "2/8, 4/8, 6/8, 7/8",
+         "2/8, 5/8, 6/8, 7/8",
+         "3/4, 2/4, 1/4",
+         "3/8, 4/8, 5/8, 6/8",
+         "3/8, 4/8, 5/8, 7/8",
+         "3/8, 4/8, 6/8, 7/8",
+         "3/8, 5/8, 6/8, 7/8",
+         "4/5, 3/5, 2/5, 1/5",
+         "4/6, 3/6, 2/6, 1/6",
+         "4/8, 5/8, 6/8, 7/8",
+         "5/6, 3/6, 2/6, 1/6",
+         "5/6, 4/6, 2/6, 1/6",
+         "5/6, 4/6, 3/6, 1/6",
+         "5/6, 4/6, 3/6, 2/6",
+         "5/8, 4/8, 3/8, 2/8",
+         "6/8, 4/8, 3/8, 2/8",
+         "6/8, 5/8, 2/8, 1/8",
+         "6/8, 5/8, 4/8, 1/8",
+         "6/8, 5/8, 4/8, 3/8",
+         "7/8, 3/8, 2/8, 1/8",
+         "7/8, 4/8, 2/8, 1/8",
+         "7/8, 4/8, 3/8, 1/8",
+         "7/8, 5/8, 2/8, 1/8",
+         "7/8, 5/8, 3/8, 2/8",
+         "7/8, 5/8, 4/8, 2/8",
+         "7/8, 6/8, 3/8, 1/8",
+         "7/8, 6/8, 3/8, 2/8",
+         "7/8, 6/8, 4/8, 1/8",
+         "7/8, 6/8, 5/8, 1/8",
+         "7/8, 6/8, 5/8, 3/8"
+        ],
+        "derived_from_values": [
+         "result"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F14",
+    "template": "{member}",
+    "appears_in": [
+     "distractors",
+     "format_data.mcq_options",
+     "format_data.options"
+    ],
+    "nested_in": [
+     "F03",
+     "F04",
+     "F07",
+     "F10",
+     "F11"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "member"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "QuestionContext.distractors (the generator's own)",
+        "members": [
+         "1/4, 2/4, 3/4",
+         "1/4, 3/4, 2/4",
+         "1/5, 2/5, 3/5, 4/5",
+         "1/5, 2/5, 4/5, 3/5",
+         "1/5, 3/5, 4/5, 2/5",
+         "1/5, 4/5, 2/5, 3/5",
+         "1/5, 4/5, 3/5, 2/5",
+         "1/6, 2/6, 3/6, 5/6",
+         "1/6, 2/6, 5/6, 4/6",
+         "1/6, 3/6, 2/6, 4/6",
+         "1/6, 3/6, 4/6, 5/6",
+         "1/6, 3/6, 5/6, 2/6",
+         "1/6, 4/6, 2/6, 3/6",
+         "1/6, 4/6, 3/6, 5/6",
+         "1/6, 5/6, 3/6, 2/6",
+         "1/8, 2/8, 3/8, 7/8",
+         "1/8, 2/8, 5/8, 7/8",
+         "1/8, 3/8, 2/8, 7/8",
+         "1/8, 4/8, 5/8, 6/8",
+         "10/6",
+         "11/6",
+         "11/8",
+         "12/8",
+         "13/8",
+         "14/8",
+         "15/8",
+         "2/4, 1/4, 3/4",
+         "2/4, 3/4, 1/4",
+         "2/5, 1/5, 3/5, 4/5",
+         "2/5, 1/5, 4/5, 3/5",
+         "2/5, 3/5, 4/5, 1/5",
+         "2/5, 4/5, 1/5, 3/5",
+         "2/6, 1/6, 3/6, 4/6",
+         "2/6, 1/6, 3/6, 5/6",
+         "2/6, 1/6, 5/6, 3/6",
+         "2/6, 3/6, 5/6, 1/6",
+         "2/8, 7/8, 6/8, 3/8",
+         "3/4, 1/4, 2/4",
+         "3/4, 2/4, 1/4",
+         "3/5, 1/5, 2/5, 4/5",
+         "3/5, 2/5, 1/5, 4/5",
+         "3/5, 2/5, 4/5, 1/5",
+         "3/5, 4/5, 2/5, 1/5",
+         "3/6, 2/6, 4/6, 1/6",
+         "3/6, 2/6, 5/6, 4/6",
+         "3/6, 4/6, 5/6, 1/6",
+         "3/6, 5/6, 1/6, 4/6",
+         "3/8, 5/8, 7/8, 6/8",
+         "3/8, 6/8, 7/8, 5/8",
+         "4/1",
+         "4/2",
+         "4/3",
+         "4/5, 1/5, 2/5, 3/5",
+         "4/5, 3/5, 1/5, 2/5",
+         "4/5, 3/5, 2/5, 1/5",
+         "4/6, 3/6, 2/6, 1/6",
+         "4/6, 3/6, 5/6, 1/6",
+         "4/6, 5/6, 2/6, 1/6",
+         "4/8, 5/8, 1/8, 6/8",
+         "4/8, 5/8, 6/8, 1/8",
+         "4/8, 6/8, 7/8, 5/8",
+         "5/1",
+         "5/2",
+         "5/3",
+         "5/4",
+         "5/6, 3/6, 2/6, 1/6",
+         "5/6, 3/6, 4/6, 2/6",
+         "5/6, 4/6, 2/6, 1/6",
+         "5/6, 4/6, 3/6, 2/6",
+         "5/8, 6/8, 7/8, 4/8",
+         "5/8, 7/8, 2/8, 1/8",
+         "6/1",
+         "6/2",
+         "6/3",
+         "6/4",
+         "6/5",
+         "6/8, 2/8, 3/8, 5/8",
+         "6/8, 2/8, 3/8, 7/8",
+         "6/8, 2/8, 5/8, 7/8",
+         "6/8, 3/8, 5/8, 2/8",
+         "6/8, 5/8, 3/8, 2/8",
+         "7/4",
+         "7/5",
+         "7/6",
+         "7/8, 1/8, 3/8, 2/8",
+         "7/8, 2/8, 1/8, 5/8",
+         "7/8, 3/8, 5/8, 6/8",
+         "7/8, 6/8, 2/8, 5/8",
+         "7/8, 6/8, 3/8, 2/8",
+         "7/8, 6/8, 5/8, 2/8",
+         "7/8, 6/8, 5/8, 3/8",
+         "7/8, 6/8, 5/8, 4/8",
+         "8/3",
+         "8/4",
+         "8/5",
+         "8/6",
+         "8/7",
+         "9/5",
+         "9/6"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   }
+  ],
+  "lists": {},
+  "banks": {},
+  "value_derivations": [
+   {
+    "kind": "derives",
+    "key": "answer",
+    "from": [
+     "numerator",
+     "denominator"
+    ]
+   },
+   {
+    "kind": "derives",
+    "key": "fraction_str",
+    "from": [
+     "numerator",
+     "denominator"
+    ]
+   }
+  ],
+  "reason_kinds": {}
+ }
+}

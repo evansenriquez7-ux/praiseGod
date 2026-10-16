@@ -1,0 +1,1560 @@
+{
+ "schema_version": 2,
+ "hash_version": 8,
+ "node_id": "mat_g3_dp_q3_2",
+ "record_id": "stem-batch445-S445-003-first",
+ "role": "first",
+ "confirms": null,
+ "item_id": "S445-003",
+ "lc_hash": "2679fb9d1d8b828e7ab40579b0512b248ab4a0e85155444215081a4b0a1d4516",
+ "judged_by": "blind-stem-judge-claude-haiku-batch445-S445-003-first",
+ "dispatch_id": "stem-batch445-S445-003-first",
+ "filed_at": "2026-10-15T16:47:46Z",
+ "delivery": "Claude Code Agent tool, model=haiku, subagent_type=general-purpose; the judge was told to read only local_only/scratch/h4c/prompts/S445-003.prompt.txt (tests/stem_file.py prompt output, item S445-003; no lc id, no key or packets file in that directory) and reply with what it asks; dispatched with CLAUDE.md loaded (ruling 29). Blindness is a prompt contract, audited from the subagent transcript.",
+ "tool_uses_by_judge": "From the subagent transcript: 1 tool use(s), all Read of its own prompt file (1358 lines, every line read); no other tool, path or search. Model reported in the transcript: claude-haiku-5-5.",
+ "dispatch_prompt_digest": "ec19b848ec1afc99c364dc1b7b28503432eebc351c6a8bb4e2a161fc3e0a4a91",
+ "raw_reply": "{\"item\": \"S445-003\", \"clauses\": {\"interpret_data\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F22\", \"template\": \"Look at the {bg_full_lbl}. What is the value for {ask_cat}?\", \"reasoning\": \"F22 asks the learner to read one category's value from the chart, which is the core act of interpreting data. Its bg_full_lbl draws from F01, F25 and F26, and ask_cat is a repeated question_category value from a fixed list that includes Monday, apples and Grade 1, all of which are grade-appropriate.\"}, \"tables\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F22\", \"template\": \"Look at the {bg_full_lbl}. What is the value for {ask_cat}?\", \"reasoning\": \"Under the declared orientation variant table, bg_full_lbl draws F25, whose template is table, so F22 prints a question about a table. The same family also covers the table-only hint family F07, but F07 is only a hint, so F22 is the question producer.\"}, \"single_bar_graphs\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F23\", \"template\": \"Look at the {bg_full_lbl}. Which category has the {direction}?\", \"reasoning\": \"With bg_full_lbl drawn from F01 (bar graph) and direction drawn from the printed least or most, F23 asks the learner to find the highest or lowest bar of a single bar graph. It addresses single bar graphs directly.\"}, \"horizontal\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F23\", \"template\": \"Look at the {bg_full_lbl}. Which category has the {direction}?\", \"reasoning\": \"A declared orientation variant of horizontal renders a horizontal bar graph, and F23 with bg_full_lbl drawn from F01 presents it. The orientation is carried by the rendered chart, not the text. Note that F26 can print the bare orientation word into the same slot (see failing_families), which is a fault but does not remove producibility.\"}, \"vertical\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F24\", \"template\": \"Look at the {bg_full_lbl}. Which is greater: {comp_a} or {comp_b}?\", \"reasoning\": \"A declared orientation variant of vertical renders a vertical bar graph, and F24 with bg_full_lbl drawn from F01 presents it as a comparison of two bars. The orientation is carried by the rendered chart. The same F26 slot fault applies.\"}}, \"failing_families\": [\"F06\", \"F10\", \"F15\", \"F20\", \"F21\", \"F22\", \"F23\", \"F24\", \"F26\"], \"failing_templates\": [\"Find the bar for '{cat}' and read across to the scale.\", \"Look for the {adj} bar.\", \"The {scale_label} on the {axis} goes up by {scale}.\", \"Look at the {bg_full_lbl}. What is the difference between {comp_a} and {comp_b}?\", \"Look at the {bg_full_lbl}. What is the total value of all categories?\", \"Look at the {bg_full_lbl}. What is the value for {ask_cat}?\", \"Look at the {bg_full_lbl}. Which category has the {direction}?\", \"Look at the {bg_full_lbl}. Which is greater: {comp_a} or {comp_b}?\", \"{orientation} \"], \"overall\": \"FAIL\", \"reasoning\": \"Three faults. (1) F26 has template {orientation} (with a trailing space) and is nested in the bg_full_lbl slot of F20, F21, F22, F23 and F24, whose domain also includes F01 and F25 with derived_from_values orientation. Any value of orientation therefore prints a bare word where the question's noun phrase should be, such as the horizontal or vertical word alone after 'Look at the', which is ungrammatical and unclear for a grade 3 learner. The five question templates are listed as failing because they print this slot. (2) F15 fills axis from F16 or F17 with no derived_from_values, so the hint can name the horizontal (x-axis) for a vertical chart or the vertical (y-axis) for a horizontal chart, which is a misleading statement. (3) F10 draws adj from longest, shortest and tallest with no tie to orientation, so the hint can say tallest for a horizontal bar, and F06 always says read across to the scale, which is wrong for vertical bars. The axis terms x-axis and y-axis and the words horizontal and vertical are not in cumulative_vocab; I did not fail on this alone, because the competency itself names horizontal and vertical and axis is in the gate. F03 prints the keyed answer as a hint; this gives the answer away but is not a wrong or out-of-scope statement under Rule 1, so I did not fail it on that basis.\"}",
+ "raw_reply_digest": "c2057a23a397bd59de2f35bed4bf71bad521cf1ef59fb747d58c15eaed5c980e",
+ "packet_digest": "f7fbda3dd8e1cfdae1673f153a36777794dfe2ed0eb1da08a6e2b68030aeeb75",
+ "family_keys": {
+  "F01": {
+   "source": "backend/app/practice_gen/dna/base.py [gate bar graph]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F02": {
+   "source": "backend/app/practice_gen/dna/base.py [gate scale]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F03": {
+   "source": "backend/app/practice_gen/dna/dp/bar_graphs.py",
+   "first_site": "backend/app/practice_gen/dna/dp/bar_graphs.py:334",
+   "renderer": "",
+   "path": [
+    2,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F04": {
+   "source": "backend/app/practice_gen/dna/dp/bar_graphs.py",
+   "first_site": "backend/app/practice_gen/dna/dp/bar_graphs.py:349",
+   "renderer": "",
+   "path": [
+    20,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F05": {
+   "source": "backend/app/practice_gen/dna/dp/bar_graphs.py",
+   "first_site": "backend/app/practice_gen/dna/dp/bar_graphs.py:351",
+   "renderer": "",
+   "path": [
+    7,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F06": {
+   "source": "backend/app/practice_gen/dna/dp/bar_graphs.py",
+   "first_site": "backend/app/practice_gen/dna/dp/bar_graphs.py:332",
+   "renderer": "",
+   "path": [
+    2,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F07": {
+   "source": "backend/app/practice_gen/dna/dp/bar_graphs.py",
+   "first_site": "backend/app/practice_gen/dna/dp/bar_graphs.py:330",
+   "renderer": "",
+   "path": [
+    6,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F08": {
+   "source": "backend/app/practice_gen/dna/dp/bar_graphs.py",
+   "first_site": "backend/app/practice_gen/dna/dp/bar_graphs.py:320",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F09": {
+   "source": "backend/app/practice_gen/dna/dp/bar_graphs.py",
+   "first_site": "backend/app/practice_gen/dna/dp/bar_graphs.py:323",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F10": {
+   "source": "backend/app/practice_gen/dna/dp/bar_graphs.py",
+   "first_site": "backend/app/practice_gen/dna/dp/bar_graphs.py:359",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F11": {
+   "source": "backend/app/practice_gen/dna/dp/bar_graphs.py",
+   "first_site": "backend/app/practice_gen/dna/dp/bar_graphs.py:336",
+   "renderer": "",
+   "path": [
+    4,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F12": {
+   "source": "backend/app/practice_gen/dna/dp/bar_graphs.py",
+   "first_site": "backend/app/practice_gen/dna/dp/bar_graphs.py:343",
+   "renderer": "",
+   "path": [
+    7,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F13": {
+   "source": "backend/app/practice_gen/dna/dp/bar_graphs.py",
+   "first_site": "backend/app/practice_gen/dna/dp/bar_graphs.py:341",
+   "renderer": "",
+   "path": [
+    17,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F14": {
+   "source": "backend/app/practice_gen/dna/dp/bar_graphs.py",
+   "first_site": "backend/app/practice_gen/dna/dp/bar_graphs.py:346",
+   "renderer": "",
+   "path": [
+    16,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F15": {
+   "source": "backend/app/practice_gen/dna/dp/bar_graphs.py",
+   "first_site": "backend/app/practice_gen/dna/dp/bar_graphs.py:324",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F16": {
+   "source": "backend/app/practice_gen/dna/dp/bar_graphs.py",
+   "first_site": "backend/app/practice_gen/dna/dp/bar_graphs.py:315",
+   "renderer": "",
+   "path": [
+    7,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F17": {
+   "source": "backend/app/practice_gen/dna/dp/bar_graphs.py",
+   "first_site": "backend/app/practice_gen/dna/dp/bar_graphs.py:315",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F18": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:51",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F19": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:39",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F20": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_bar_chart.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_bar_chart.py:288",
+   "renderer": "",
+   "path": [
+    16,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F21": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_bar_chart.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_bar_chart.py:283",
+   "renderer": "",
+   "path": [
+    4,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F22": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_bar_chart.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_bar_chart.py:307",
+   "renderer": "",
+   "path": [
+    2,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F23": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_bar_chart.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_bar_chart.py:292",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F24": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_bar_chart.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_bar_chart.py:280",
+   "renderer": "",
+   "path": [
+    7,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F25": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_bar_chart.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_bar_chart.py:264",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F26": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_bar_chart.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_bar_chart.py:267",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  }
+ },
+ "packet": {
+  "item": "S445-003",
+  "competency": {
+   "text": "Interpret data in tables and single bar graphs (horizontal and vertical).",
+   "grade": 3,
+   "quarter": 3
+  },
+  "clauses": [
+   {
+    "id": "interpret_data",
+    "kind": "task",
+    "clause": "Interpret data"
+   },
+   {
+    "id": "tables",
+    "kind": "representation",
+    "clause": "tables"
+   },
+   {
+    "id": "single_bar_graphs",
+    "kind": "representation",
+    "clause": "single bar graphs"
+   },
+   {
+    "id": "horizontal",
+    "kind": "property",
+    "clause": "horizontal"
+   },
+   {
+    "id": "vertical",
+    "kind": "property",
+    "clause": "vertical"
+   }
+  ],
+  "vocabulary": {
+   "student_vocab": [],
+   "curriculum_vocab": [],
+   "introduces_vocab": [],
+   "cumulative_vocab": [
+    "1 less",
+    "1 more",
+    "10th",
+    "1st",
+    "2nd",
+    "3rd",
+    "4th",
+    "5th",
+    "6th",
+    "7th",
+    "8th",
+    "9th",
+    "L",
+    "a.m.",
+    "addition",
+    "analog clock",
+    "area",
+    "axis",
+    "balance scale",
+    "bar graph",
+    "bigger",
+    "bill",
+    "calendar",
+    "capacity",
+    "centavo",
+    "centimeter",
+    "circle",
+    "clockwise",
+    "cm",
+    "coin",
+    "compare",
+    "corner",
+    "count",
+    "counter-clockwise",
+    "data",
+    "decreasing pattern",
+    "denominator",
+    "difference",
+    "digit",
+    "division",
+    "elapsed time",
+    "equal",
+    "equal groups",
+    "estimate",
+    "even",
+    "expanded form",
+    "fraction",
+    "g",
+    "gram",
+    "group",
+    "half",
+    "half hour",
+    "half turn",
+    "hour",
+    "how many",
+    "hundreds",
+    "increasing pattern",
+    "intersecting",
+    "kg",
+    "kilogram",
+    "left",
+    "length",
+    "less",
+    "line",
+    "line segment",
+    "liter",
+    "m",
+    "mL",
+    "mass",
+    "measure",
+    "meter",
+    "milliliter",
+    "minute",
+    "missing number",
+    "missing term",
+    "more",
+    "multiplication",
+    "nearest hundred",
+    "nearest ten",
+    "nearest thousand",
+    "number",
+    "number line",
+    "numeral",
+    "numerator",
+    "odd",
+    "ones",
+    "order of operations",
+    "outcome",
+    "p.m.",
+    "parallel",
+    "pattern",
+    "perimeter",
+    "perpendicular",
+    "peso",
+    "pictograph",
+    "place value",
+    "point",
+    "product",
+    "quarter",
+    "quarter hour",
+    "quarter turn",
+    "quotient",
+    "ray",
+    "rectangle",
+    "regrouping",
+    "repeating pattern",
+    "round",
+    "ruler",
+    "same",
+    "scale",
+    "side",
+    "similar fractions",
+    "skip counting",
+    "slide",
+    "smaller",
+    "solid figure",
+    "sq. cm",
+    "square",
+    "square centimeter",
+    "subtraction",
+    "sum",
+    "table",
+    "ten thousand",
+    "ten-thousands place",
+    "tens",
+    "thousand",
+    "total",
+    "translation",
+    "triangle",
+    "whole",
+    "₱"
+   ],
+   "NOT_YET_KNOWN": [
+    "certain",
+    "equally likely",
+    "impossible",
+    "improper fraction",
+    "less likely",
+    "line of symmetry",
+    "more likely",
+    "remainder",
+    "symmetry"
+   ],
+   "sentence_max_words": 22,
+   "number_format": "space separator for thousands (e.g. 1 000)"
+  },
+  "declared_variants": [
+   [
+    "orientation",
+    "horizontal"
+   ],
+   [
+    "orientation",
+    "table"
+   ],
+   [
+    "orientation",
+    "vertical"
+   ],
+   [
+    "scale",
+    "scale_10"
+   ],
+   [
+    "scale",
+    "scale_20"
+   ],
+   [
+    "scale",
+    "scale_5"
+   ]
+  ],
+  "declared_bounds": [
+   {
+    "task_type": "interpret_data",
+    "orientation": [
+     "vertical",
+     "horizontal",
+     "table"
+    ]
+   }
+  ],
+  "families": [
+   {
+    "id": "F01",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F09",
+     "F20",
+     "F21",
+     "F22",
+     "F23",
+     "F24"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='bar graph')",
+        "requires_vocab": "bar graph",
+        "prints": "bar graph",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F02",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F15"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='scale')",
+        "requires_vocab": "scale",
+        "prints": "scale",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F03",
+    "template": "Answer: {answer}",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "answer",
+        "printed_runs": "5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70",
+        "derived_from_values": [
+         "answer"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F04",
+    "template": "Compare the two values.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F05",
+    "template": "Compare: which bar is taller (or longer)?",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F06",
+    "template": "Find the bar for '{cat}' and read across to the scale.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "cat"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "question_category",
+        "printed": [
+         "April",
+         "February",
+         "Grade 1",
+         "Grade 2",
+         "Grade 3",
+         "Grade 4",
+         "January",
+         "March",
+         "Monday",
+         "Wednesday",
+         "apples",
+         "bananas",
+         "basketball",
+         "birds",
+         "cats",
+         "grapes",
+         "mangoes",
+         "roses",
+         "running",
+         "volleyball"
+        ],
+        "derived_from_values": [
+         "question_category"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F07",
+    "template": "Find the row for '{cat}' and read its value.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "cat"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "question_category",
+        "printed": [
+         "April",
+         "Art",
+         "February",
+         "Grade 4",
+         "January",
+         "Math",
+         "Science",
+         "bananas",
+         "birds",
+         "mangoes",
+         "roses",
+         "sunflowers"
+        ],
+        "derived_from_values": [
+         "question_category"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F08",
+    "template": "Look at the table carefully.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F09",
+    "template": "Look at the {bg_label} carefully.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "bg_label"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F01"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F10",
+    "template": "Look for the {adj} bar.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "adj"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the bar adjectives for most and least",
+        "members": [
+         "longest",
+         "shortest",
+         "tallest"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F11",
+    "template": "Read each bar's value, then add them all together.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F12",
+    "template": "Read the bar for '{a}' and the bar for '{b}'.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "compare_a",
+        "printed": [
+         "April",
+         "Art",
+         "English",
+         "February",
+         "Grade 1",
+         "Grade 2",
+         "Grade 3",
+         "Grade 4",
+         "January",
+         "March",
+         "Math",
+         "Monday",
+         "Science",
+         "Tuesday",
+         "Wednesday",
+         "apples",
+         "bananas",
+         "birds",
+         "cats",
+         "daisies",
+         "dogs",
+         "mangoes",
+         "roses",
+         "running",
+         "tulips",
+         "volleyball"
+        ],
+        "derived_from_values": [
+         "compare_a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "compare_b",
+        "printed": [
+         "April",
+         "Art",
+         "English",
+         "February",
+         "Grade 1",
+         "Grade 2",
+         "Grade 3",
+         "Grade 4",
+         "January",
+         "March",
+         "Math",
+         "Monday",
+         "Science",
+         "Tuesday",
+         "apples",
+         "birds",
+         "cats",
+         "daisies",
+         "fish",
+         "grapes",
+         "mangoes",
+         "roses",
+         "running",
+         "sunflowers",
+         "swimming",
+         "tulips",
+         "volleyball"
+        ],
+        "derived_from_values": [
+         "compare_b"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F13",
+    "template": "Read the rows for '{a}' and '{b}'.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "compare_a",
+        "printed": [
+         "English",
+         "Grade 2",
+         "Grade 3",
+         "March",
+         "Math",
+         "Monday",
+         "Science",
+         "Thursday",
+         "Tuesday",
+         "Wednesday",
+         "apples",
+         "bananas",
+         "basketball",
+         "birds",
+         "cats",
+         "fish",
+         "grapes",
+         "roses",
+         "running",
+         "sunflowers",
+         "swimming",
+         "volleyball"
+        ],
+        "derived_from_values": [
+         "compare_a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "compare_b",
+        "printed": [
+         "April",
+         "English",
+         "Grade 2",
+         "Grade 4",
+         "Math",
+         "Monday",
+         "Thursday",
+         "Tuesday",
+         "Wednesday",
+         "bananas",
+         "basketball",
+         "birds",
+         "cats",
+         "daisies",
+         "dogs",
+         "fish",
+         "grapes",
+         "mangoes",
+         "running",
+         "swimming",
+         "tulips",
+         "volleyball"
+        ],
+        "derived_from_values": [
+         "compare_b"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F14",
+    "template": "Subtract the smaller value from the larger value.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F15",
+    "template": "The {scale_label} on the {axis} goes up by {scale}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "scale_label"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F02"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "axis"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F16",
+         "F17"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "scale"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "_SCALE_MAP, the scales generate_params draws",
+        "members": [
+         10,
+         20,
+         5
+        ],
+        "derived_from_values": [
+         "visual_params"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F16",
+    "template": "horizontal (x-axis)",
+    "appears_in": [],
+    "nested_in": [
+     "F15"
+    ],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F17",
+    "template": "vertical (y-axis)",
+    "appears_in": [],
+    "nested_in": [
+     "F15"
+    ],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F18",
+    "template": "{key}",
+    "appears_in": [
+     "correct_answer"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "key"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the option keys this item shows",
+        "members": [
+         "A",
+         "B",
+         "C",
+         "D"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F19",
+    "template": "{member}",
+    "appears_in": [
+     "format_data.mcq_options"
+    ],
+    "nested_in": [
+     "F24"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "member"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the chart's displayed categories",
+        "members": [
+         "April",
+         "Art",
+         "English",
+         "February",
+         "Grade 1",
+         "Grade 2",
+         "Grade 3",
+         "Grade 4",
+         "January",
+         "March",
+         "Math",
+         "Monday",
+         "Science",
+         "Thursday",
+         "Tuesday",
+         "Wednesday",
+         "apples",
+         "bananas",
+         "basketball",
+         "birds",
+         "cats",
+         "daisies",
+         "dogs",
+         "fish",
+         "grapes",
+         "mangoes",
+         "roses",
+         "running",
+         "sunflowers",
+         "swimming",
+         "tulips",
+         "volleyball"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F20",
+    "template": "Look at the {bg_full_lbl}. What is the difference between {comp_a} and {comp_b}?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "bg_full_lbl"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F01",
+         "F25",
+         "F26"
+        ],
+        "derived_from_values": [
+         "orientation"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "comp_a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "compare_a",
+        "printed": [
+         "English",
+         "Grade 2",
+         "Grade 3",
+         "Grade 4",
+         "January",
+         "March",
+         "Math",
+         "Monday",
+         "Science",
+         "Tuesday",
+         "Wednesday",
+         "apples",
+         "bananas",
+         "cats",
+         "daisies",
+         "dogs",
+         "fish",
+         "grapes",
+         "roses",
+         "running",
+         "swimming",
+         "tulips",
+         "volleyball"
+        ],
+        "derived_from_values": [
+         "compare_a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "comp_b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "compare_b",
+        "printed": [
+         "April",
+         "Art",
+         "English",
+         "February",
+         "Grade 1",
+         "Grade 4",
+         "January",
+         "Math",
+         "Monday",
+         "Tuesday",
+         "Wednesday",
+         "apples",
+         "bananas",
+         "basketball",
+         "birds",
+         "cats",
+         "daisies",
+         "dogs",
+         "fish",
+         "grapes",
+         "mangoes",
+         "roses",
+         "running",
+         "sunflowers",
+         "swimming",
+         "tulips",
+         "volleyball"
+        ],
+        "derived_from_values": [
+         "compare_b"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F21",
+    "template": "Look at the {bg_full_lbl}. What is the total value of all categories?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "bg_full_lbl"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F01",
+         "F25",
+         "F26"
+        ],
+        "derived_from_values": [
+         "orientation"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F22",
+    "template": "Look at the {bg_full_lbl}. What is the value for {ask_cat}?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "bg_full_lbl"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F01",
+         "F25",
+         "F26"
+        ],
+        "derived_from_values": [
+         "orientation"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "ask_cat"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "question_category",
+        "printed": [
+         "April",
+         "Art",
+         "February",
+         "Grade 1",
+         "Grade 2",
+         "Grade 3",
+         "Grade 4",
+         "January",
+         "March",
+         "Math",
+         "Monday",
+         "Science",
+         "Wednesday",
+         "apples",
+         "bananas",
+         "basketball",
+         "birds",
+         "cats",
+         "grapes",
+         "mangoes",
+         "roses",
+         "running",
+         "sunflowers",
+         "volleyball"
+        ],
+        "derived_from_values": [
+         "question_category"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F23",
+    "template": "Look at the {bg_full_lbl}. Which category has the {direction}?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "bg_full_lbl"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F01",
+         "F25",
+         "F26"
+        ],
+        "derived_from_values": [
+         "orientation"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "direction"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "direction",
+        "printed": [
+         "least",
+         "most"
+        ],
+        "derived_from_values": [
+         "direction"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F24",
+    "template": "Look at the {bg_full_lbl}. Which is greater: {comp_a} or {comp_b}?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "bg_full_lbl"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F01",
+         "F25",
+         "F26"
+        ],
+        "derived_from_values": [
+         "orientation"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "comp_a"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F19"
+        ],
+        "derived_from_values": [
+         "compare_a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "comp_b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "compare_b",
+        "printed": [
+         "April",
+         "Art",
+         "English",
+         "February",
+         "Grade 1",
+         "Grade 2",
+         "Grade 3",
+         "Grade 4",
+         "January",
+         "March",
+         "Math",
+         "Monday",
+         "Science",
+         "Thursday",
+         "Tuesday",
+         "Wednesday",
+         "apples",
+         "birds",
+         "cats",
+         "fish",
+         "grapes",
+         "mangoes",
+         "roses",
+         "running",
+         "sunflowers",
+         "swimming",
+         "tulips",
+         "volleyball"
+        ],
+        "derived_from_values": [
+         "compare_b"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F25",
+    "template": "table",
+    "appears_in": [],
+    "nested_in": [
+     "F20",
+     "F21",
+     "F22",
+     "F23",
+     "F24"
+    ],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F26",
+    "template": "{orientation} ",
+    "appears_in": [],
+    "nested_in": [
+     "F20",
+     "F21",
+     "F22",
+     "F23",
+     "F24"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "orientation"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the two bar orientations",
+        "members": [
+         "horizontal",
+         "vertical"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "orientation"
+    ]
+   }
+  ],
+  "lists": {},
+  "banks": {},
+  "value_derivations": [],
+  "reason_kinds": {}
+ }
+}

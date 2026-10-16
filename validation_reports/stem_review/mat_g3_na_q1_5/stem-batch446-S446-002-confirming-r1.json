@@ -1,0 +1,2302 @@
+{
+ "schema_version": 2,
+ "hash_version": 8,
+ "node_id": "mat_g3_na_q1_5",
+ "record_id": "stem-batch446-S446-002-confirming-r1",
+ "role": "confirming",
+ "confirms": "stem-batch446-S446-002-first-r2",
+ "item_id": "S446-002",
+ "lc_hash": "813190cbe3d49b5936ec9df7783b61c6f896bee0e0c25971ff340f772ef8d98e",
+ "judged_by": "blind-stem-judge-claude-haiku-batch446-S446-002-confirming-r1",
+ "dispatch_id": "stem-batch446-S446-002-confirming-r1",
+ "filed_at": "2026-10-16T10:10:02Z",
+ "delivery": "Claude Code Agent tool, model=haiku, subagent_type=general-purpose; the judge was told to read only local_only/scratch/h4c/prompts/S446-002.prompt.txt (tests/stem_file.py prompt output, item S446-002; no lc id, no key or packets file in that directory) and reply with what it asks; dispatched with CLAUDE.md loaded (ruling 29). Blindness is a prompt contract, audited from the subagent transcript.",
+ "tool_uses_by_judge": "From the subagent transcript: 2 tool use(s), all Read of its own prompt file (2105 lines, every line read); no other tool, path or search. Model reported in the transcript: claude-haiku-5-5.",
+ "dispatch_prompt_digest": "f5ca8c85f2046e54f88ed94d0cdf8147ff791f14a88360ac9b68776c5ce38133",
+ "raw_reply": "{\"item\": \"S446-002\", \"clauses\": {\"compare\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F22\", \"template\": \"Compare the numbers: {a} ___ {b}. Which sign is correct: >, <, or =?\", \"reasoning\": \"F22 is a question_text family whose slots draw a and b from the generator's number range and whose text names the task of comparing the numbers. Its template states the comparison task directly.\"}, \"numbers\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F22\", \"template\": \"Compare the numbers: {a} ___ {b}. Which sign is correct: >, <, or =?\", \"reasoning\": \"The a and b slots print observed whole numbers (for example 33 and 60 in the printed runs), so the object of the comparison is numbers.\"}, \"up_to_10000\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F22\", \"template\": \"Compare the numbers: {a} ___ {b}. Which sign is correct: >, <, or =?\", \"reasoning\": \"The printed runs for a and b reach 9990 and 9930 and the declared bound is 10000, so numbers up to 10 000 are produced. Values stay within the range the generator declares.\"}, \"symbols\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F14\", \"template\": \"{answer}\", \"reasoning\": \"F14 is the keyed answer and prints only the three symbols less than, equal to and greater than, which are the symbols the clause names.\"}}, \"failing_families\": [\"F07\", \"F12\", \"F20\", \"F21\", \"F23\", \"F24\"], \"failing_templates\": [\"{a} > {neighbour}\", \"{a} {s} {b}\", \"{q} The answer is {v}.\", \"{statement}. True or False?\", \"{actor} is thinking of a number of {objects} that is greater than {a} but less than {b}. What is the number?\", \"{actor} has {a} {objects}. Another classmate has {b} {objects}. Which comparison is correct: {a} ___ {b}?\"], \"overall\": \"FAIL\", \"reasoning\": \"F12 has a sign slot s chosen from the three signs with no tie to a or b, so the same template can print a true statement. F12 appears in distractors, so a true distractor can sit beside the keyed true statement from F18. F07 has a fixed sign and a neighbour slot computed by sum or difference, with no stated direction. Its neighbour can be above or below a, so the printed statement can be true while appearing in distractors. F20 prints a comparison sign as The answer is v after the question text from F23 or F24. For F23 the question asks for a number, so a sign is a wrong answer. F20 is nested in F21, so the learner sees a sign followed by True or False. F21 ends with True or False, but no family prints True or False as an answer choice or keyed answer. Its answer keys are comparison statements or signs, so the question cannot be answered as keyed. F23 prints the phrases greater than and less than. The vocabulary gate for this lc gives bigger than and smaller than, and states that greater than and less than are left out, so F23 breaks the gate. F23 also has no ordering constraint between a and b in the declared domain, so a number greater than a and less than b may not exist. F23 and F24 draw from OBJECTS_POOL, which includes gacha tickets, loot box pass, lightsticks, photocards, anime figurines and similar items. These are outside a grade 3 context and include gambling-like mechanics for children. F05, F04, F06, F08, F09, F10, F11, F13, F14, F15, F16, F17, F18, F19 and F22 are not at fault for the printed text. F19 is a true or false statement and its sign randomness is by design, so the fault there sits in F21.\"}",
+ "raw_reply_digest": "6c31e2687b088e39f1372c2c452f721a5aa75a8564461e8a622d5602e8fa0a4b",
+ "packet_digest": "8a94c5506441a7d9dc49afda1f4dbaecb5c4982a6c74f1ca6637b001d993c49f",
+ "family_keys": {
+  "F01": {
+   "source": "backend/app/practice_gen/dna/base.py [gate equal to]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    4,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F02": {
+   "source": "backend/app/practice_gen/dna/base.py [gate greater than]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    6,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F03": {
+   "source": "backend/app/practice_gen/dna/base.py [gate less than]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F04": {
+   "source": "backend/app/practice_gen/dna/na/comparing_ordering.py",
+   "first_site": "backend/app/practice_gen/dna/na/comparing_ordering.py:375",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F05": {
+   "source": "backend/app/practice_gen/dna/na/comparing_ordering.py",
+   "first_site": "backend/app/practice_gen/dna/na/comparing_ordering.py:377",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F06": {
+   "source": "backend/app/practice_gen/dna/na/comparing_ordering.py",
+   "first_site": "backend/app/practice_gen/dna/na/comparing_ordering.py:350",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {
+    "a_word,b_word": [
+     1,
+     null
+    ]
+   }
+  },
+  "F07": {
+   "source": "backend/app/practice_gen/dna/na/comparing_ordering.py",
+   "first_site": "backend/app/practice_gen/dna/na/comparing_ordering.py:187",
+   "renderer": "",
+   "path": [
+    7,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F08": {
+   "source": "backend/app/practice_gen/dna/na/comparing_ordering.py",
+   "first_site": "backend/app/practice_gen/dna/na/comparing_ordering.py:385",
+   "renderer": "",
+   "path": [
+    4,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F09": {
+   "source": "backend/app/practice_gen/dna/na/comparing_ordering.py",
+   "first_site": "backend/app/practice_gen/dna/na/comparing_ordering.py:381",
+   "renderer": "",
+   "path": [
+    6,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F10": {
+   "source": "backend/app/practice_gen/dna/na/comparing_ordering.py",
+   "first_site": "backend/app/practice_gen/dna/na/comparing_ordering.py:383",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F11": {
+   "source": "backend/app/practice_gen/dna/na/comparing_ordering.py",
+   "first_site": "backend/app/practice_gen/dna/na/comparing_ordering.py:174",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F12": {
+   "source": "backend/app/practice_gen/dna/na/comparing_ordering.py",
+   "first_site": "backend/app/practice_gen/dna/na/comparing_ordering.py:175",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F13": {
+   "source": "backend/app/practice_gen/dna/na/comparing_ordering.py",
+   "first_site": "backend/app/practice_gen/dna/na/comparing_ordering.py:179",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F14": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:32",
+   "renderer": "",
+   "path": [
+    2,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F15": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:39",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F16": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_cloze.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_cloze.py:210",
+   "renderer": "",
+   "path": [
+    2,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F17": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_mcq.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_mcq.py:230",
+   "renderer": "",
+   "path": [
+    6,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F18": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_mcq.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_mcq.py:282",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F19": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_true_false.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_true_false.py:345",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F20": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_true_false.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_true_false.py:119",
+   "renderer": "",
+   "path": [
+    4,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F21": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_true_false.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_true_false.py:430",
+   "renderer": "",
+   "path": [
+    4,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F22": {
+   "source": "backend/app/practice_gen/generators/base_generator.py",
+   "first_site": "backend/app/practice_gen/generators/base_generator.py:921",
+   "renderer": "",
+   "path": [
+    2,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F23": {
+   "source": "comp_between_story",
+   "first_site": "backend/app/practice_gen/dna/base.py:225",
+   "renderer": "spine",
+   "path": [
+    13,
+    null
+   ],
+   "first_render_repeating": {
+    "objects,inflect_objects": [
+     13,
+     null
+    ]
+   }
+  },
+  "F24": {
+   "source": "comp_symbol_story",
+   "first_site": "backend/app/practice_gen/dna/base.py:225",
+   "renderer": "spine",
+   "path": [
+    4,
+    null
+   ],
+   "first_render_repeating": {
+    "objects,inflect_objects": [
+     4,
+     null
+    ]
+   }
+  }
+ },
+ "packet": {
+  "item": "S446-002",
+  "competency": {
+   "text": "Compare numbers up to 10 000 using the symbols =, >, and <.",
+   "grade": 3,
+   "quarter": 1
+  },
+  "clauses": [
+   {
+    "id": "compare",
+    "kind": "task",
+    "clause": "Compare"
+   },
+   {
+    "id": "numbers",
+    "kind": "object",
+    "clause": "numbers"
+   },
+   {
+    "id": "up_to_10000",
+    "kind": "range",
+    "clause": "up to 10 000"
+   },
+   {
+    "id": "symbols",
+    "kind": "representation",
+    "clause": "symbols =, >, and <"
+   }
+  ],
+  "vocabulary": {
+   "student_vocab": [],
+   "curriculum_vocab": [
+    "greater than symbol >",
+    "less than symbol <",
+    "equal to symbol ="
+   ],
+   "introduces_vocab": [
+    "greater than symbol >",
+    "less than symbol <",
+    "equal to symbol ="
+   ],
+   "cumulative_vocab": [
+    "1 less",
+    "1 more",
+    "10th",
+    "1st",
+    "2nd",
+    "3rd",
+    "4th",
+    "5th",
+    "6th",
+    "7th",
+    "8th",
+    "9th",
+    "a.m.",
+    "addition",
+    "analog clock",
+    "bigger",
+    "bill",
+    "calendar",
+    "centavo",
+    "centimeter",
+    "circle",
+    "clockwise",
+    "cm",
+    "coin",
+    "compare",
+    "corner",
+    "count",
+    "counter-clockwise",
+    "data",
+    "decreasing pattern",
+    "denominator",
+    "difference",
+    "digit",
+    "division",
+    "elapsed time",
+    "equal",
+    "equal groups",
+    "estimate",
+    "even",
+    "expanded form",
+    "fraction",
+    "group",
+    "half",
+    "half hour",
+    "half turn",
+    "hour",
+    "how many",
+    "hundreds",
+    "increasing pattern",
+    "left",
+    "length",
+    "less",
+    "m",
+    "measure",
+    "meter",
+    "minute",
+    "missing number",
+    "more",
+    "multiplication",
+    "nearest hundred",
+    "nearest ten",
+    "nearest thousand",
+    "number",
+    "number line",
+    "numeral",
+    "numerator",
+    "odd",
+    "ones",
+    "p.m.",
+    "pattern",
+    "perimeter",
+    "peso",
+    "pictograph",
+    "place value",
+    "product",
+    "quarter",
+    "quarter hour",
+    "quarter turn",
+    "quotient",
+    "rectangle",
+    "regrouping",
+    "repeating pattern",
+    "round",
+    "ruler",
+    "same",
+    "scale",
+    "side",
+    "similar fractions",
+    "skip counting",
+    "slide",
+    "smaller",
+    "solid figure",
+    "square",
+    "subtraction",
+    "sum",
+    "table",
+    "ten thousand",
+    "ten-thousands place",
+    "tens",
+    "thousand",
+    "total",
+    "translation",
+    "triangle",
+    "whole",
+    "₱"
+   ],
+   "NOT_YET_KNOWN": [
+    "L",
+    "area",
+    "axis",
+    "balance scale",
+    "bar graph",
+    "capacity",
+    "certain",
+    "equally likely",
+    "g",
+    "gram",
+    "impossible",
+    "improper fraction",
+    "intersecting",
+    "kg",
+    "kilogram",
+    "less likely",
+    "line",
+    "line of symmetry",
+    "line segment",
+    "liter",
+    "mL",
+    "mass",
+    "milliliter",
+    "missing term",
+    "more likely",
+    "order of operations",
+    "outcome",
+    "parallel",
+    "perpendicular",
+    "point",
+    "ray",
+    "remainder",
+    "sq. cm",
+    "square centimeter",
+    "symmetry"
+   ],
+   "sentence_max_words": 22,
+   "number_format": "space separator for thousands (e.g. 1 000)"
+  },
+  "declared_variants": [
+   [
+    "context",
+    "pure"
+   ],
+   [
+    "context",
+    "word_problem"
+   ],
+   [
+    "direction",
+    "ascending"
+   ],
+   [
+    "direction",
+    "descending"
+   ],
+   [
+    "proximity",
+    "close_together"
+   ],
+   [
+    "proximity",
+    "far_apart"
+   ],
+   [
+    "task_type",
+    "compare_pair"
+   ]
+  ],
+  "declared_bounds": [
+   {
+    "task_type": "compare_pair",
+    "max_value": [
+     1,
+     10000
+    ]
+   }
+  ],
+  "families": [
+   {
+    "id": "F01",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F08"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='equal to')",
+        "requires_vocab": "equal to",
+        "prints": "the same as",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F02",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F09"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='greater than')",
+        "requires_vocab": "greater than",
+        "prints": "bigger than",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F03",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F10"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='less than')",
+        "requires_vocab": "less than",
+        "prints": "smaller than",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F04",
+    "template": "Compare {a} and {b}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "33, 75, 81, 150, 154, 255, 347, 360, 368, 382, 387, 392, 469, 480, 512, 593, 651, 780, 792, 900, 908, 950, 952, 958, 960, 984, 1017, 1025, 1032, 1034, 1037, 1060, 1062, 1077, 1182, 1188, 1204, 1208, 1248, 1259, 1317, 1320, 1335, 1350, 1466, 1523, 1572, 1582, 1606, 1623, 1640, 1666, 1678, 1808, 1824, 1847, 1858, 1870, 1995, 2040, 2160, 2173, 2217, 2282, 2296, 2324, 2435, 2495, 2498, 2615, 2644, 2662, 2698, 2735, 2813, 2897, 2917, 2991, 3020, 3031, 3056, 3061, 3090, 3187, 3252, 3262, 3267, 3296, 3323, 3579, 3670, 3804, 3853, 3888, 3900, 3902, 3970, 3972, 3990, 4029, 4145, 4155, 4217, 4261, 4270, 4355, 4373, 4457, 4460, 4467, 4507, 4547, 4551, 4558, 4560, 4590, 4599, 4660 to 4661, 4746, 4890, 4965, 4989, 5002, 5072, 5080, 5110, 5129, 5176, 5202, 5367, 5370, 5485, 5585, 5624, 5644, 5730, 5820, 5854, 5903, 5910, 5968, 6010, 6019, 6030, 6130, 6156, 6223, 6332, 6427, 6432, 6437, 6460, 6470, 6486, 6490, 6552, 6641, 6650, 6673, 6720, 6840, 6870, 6953, 6957, 7020, 7023, 7035, 7053, 7091, 7240, 7312, 7355, 7458, 7470, 7481, 7542, 7582, 7670, 7763, 7783, 7847, 7926, 8016, 8024, 8060, 8065, 8085, 8107, 8155, 8235, 8307, 8309 to 8310, 8318, 8387, 8399, 8429, 8439, 8484, 8578, 8637, 8646, 8650, 8702, 8706, 8723, 8762, 8826, 8835, 8854, 8857, 8886, 8925, 9060, 9111, 9113, 9130, 9205, 9209, 9249, 9350, 9355, 9395, 9415, 9426, 9468, 9510, 9567, 9599, 9636, 9662, 9754, 9786, 9824, 9841, 9896, 9900, 9930",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "54, 60, 76, 174, 264, 286, 330, 347, 387, 396, 425, 435, 448, 467, 486, 531, 570, 593, 617, 645, 651, 718, 728, 769, 792, 960, 973, 1020, 1062, 1070, 1077, 1131, 1157, 1188, 1214, 1259, 1372, 1483, 1500, 1550, 1582, 1620, 1623, 1732, 1772, 1806, 1816, 1818, 1837, 1850, 1858, 1863, 1929, 1956, 2145, 2148, 2160, 2190, 2198, 2210, 2250, 2319, 2380, 2476, 2498, 2515, 2587, 2610, 2644, 2647, 2659, 2697, 2705, 2715, 2735, 2835, 2977, 3031, 3060, 3167, 3194, 3248, 3267, 3293, 3303, 3420, 3450, 3454, 3471, 3512, 3527, 3611, 3615, 3629, 3650, 3736, 3783, 3794, 3812, 3854, 3891, 3900, 3902, 3920, 3926, 3930, 3990, 4046, 4104, 4120, 4178, 4217, 4246, 4261, 4373, 4375, 4507, 4531, 4557, 4590, 4599, 4603, 4632, 4652, 4655, 4660, 4662, 4713, 4824, 4832, 4926, 5004, 5033, 5046, 5100, 5176, 5202, 5211, 5229, 5328, 5448, 5485, 5557, 5564, 5588, 5673, 5700, 5872, 5882, 5911, 6150, 6247, 6260, 6268, 6290 to 6291, 6437, 6460, 6490, 6521, 6552, 6558, 6673, 6686, 6721, 6745, 6855, 6957, 7143, 7163, 7180, 7205, 7312, 7323, 7401, 7425, 7620, 7669, 7718, 7759, 7783, 7830, 7847, 7860, 7912, 7937, 7953, 8100, 8255, 8260, 8358, 8398 to 8399, 8418, 8430, 8439, 8460, 8508, 8682, 8737, 8762, 8779, 8826, 8830, 8835, 8857, 8872, 8949, 8952, 8992, 9000, 9026, 9043, 9111, 9114, 9130, 9390, 9395, 9415, 9419, 9426, 9450, 9567, 9590, 9662, 9692, 9711, 9724, 9786, 9795, 9841, 9853, 9855, 9877, 9896, 9900, 9903, 9990",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F05",
+    "template": "Start from the largest place value and compare each digit.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F06",
+    "template": "{actor} has {a} {a_word}. {friend} has {b} {b_word}. Which statement is true?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "actor"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the word-problem actors",
+        "members": [
+         "Ana",
+         "Ben",
+         "Jose",
+         "Kuya Pat",
+         "Liza",
+         "Maria"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "81, 392, 512, 952, 1259, 1640, 2217, 3990, 4155, 4355, 4457, 4599, 4989, 5367, 6427, 6437, 6673, 6953, 6957, 7023, 7035, 7481, 7926, 8429, 8484, 8637, 9415, 9599, 9636, 9754",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "a_word",
+       "b_word"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the drawn item pair",
+        "members": [
+         "marble",
+         "marbles",
+         "pencil",
+         "pencils",
+         "seashell",
+         "seashells"
+        ]
+       }
+      ],
+      "distinct_in_every_render": false
+     },
+     {
+      "slots": [
+       "friend"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the friends other than the actor",
+        "members": [
+         "Ben",
+         "Jose",
+         "Liza",
+         "Maria"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "1259, 1772, 1837, 1863, 2647, 2697, 3527, 3629, 3736, 3891, 3990, 4046, 4599, 4926, 6437, 6673, 6957, 7143, 7401, 7718, 7759, 7847, 7953, 8508, 8779, 9114, 9390, 9415, 9853, 9877",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "context",
+     "task_type"
+    ]
+   },
+   {
+    "id": "F07",
+    "template": "{a} > {neighbour}",
+    "appears_in": [
+     "distractors",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "792, 1077, 1259, 1623, 3031, 3990, 4217, 4590, 4599, 6437, 6460, 6673, 6957, 9111, 9415",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "neighbour"
+      ],
+      "domains": [
+       {
+        "domain": "a number computed by the generator",
+        "reason": "arithmetic",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "a",
+     "task_type"
+    ]
+   },
+   {
+    "id": "F08",
+    "template": "{a} is {eq} {b}, so we write {a} = {b}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "347, 387, 593, 792, 1062, 1077, 1259, 1623, 1858, 2498, 2644, 2735, 3031, 3267, 3902, 3990, 4217, 4261, 4373, 4507, 4590, 4599, 5176, 5202, 5485, 6437, 6460, 6490, 6552, 6673, 6957, 7783, 8399, 8439, 8762, 8826, 8835, 8857, 9111, 9130, 9395, 9415, 9426, 9567, 9662, 9786, 9841",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "eq"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F01"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "347, 387, 593, 792, 1062, 1077, 1259, 1623, 1858, 2498, 2644, 2735, 3031, 3267, 3902, 3990, 4217, 4261, 4373, 4507, 4590, 4599, 5176, 5202, 5485, 6437, 6460, 6490, 6552, 6673, 6957, 7783, 8399, 8439, 8762, 8826, 8835, 8857, 9111, 9130, 9395, 9415, 9426, 9567, 9662, 9786, 9841",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F09",
+    "template": "{a} is {gt} {b}, so we write {a} > {b}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "382, 900, 960, 984, 1025, 1320, 1466, 1572, 1995, 2173, 2282, 2495, 2698, 3020, 3090, 3296, 3323, 3579, 3670, 3804, 3900, 3972, 4029, 4270, 4355, 4460, 4551, 4558, 4560, 4746, 4989, 5002, 5080, 5110, 5370, 5585, 5644, 5730, 5820, 5854, 5910, 6010, 6019, 6030, 6130, 6223, 6432, 6470, 6486, 6720, 6870, 7020, 7023, 7053, 7091, 7240, 7312, 7470, 7481, 7542, 7582, 7670, 7847, 7926, 8016, 8024, 8060, 8065, 8085, 8107, 8155, 8307, 8309 to 8310, 8387, 8484, 8578, 8637, 8646, 8650, 8702, 8706, 8723, 8854, 8886, 8925, 9060, 9113, 9205, 9209, 9249, 9350, 9355, 9468, 9510, 9636, 9754, 9824, 9896, 9900, 9930",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "gt"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F02"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "54, 60, 76, 174, 286, 330, 396, 425, 435, 448, 467, 486, 531, 570, 617, 651, 718, 728, 769, 960, 973, 1020, 1070, 1131, 1157, 1188, 1214, 1372, 1483, 1500, 1550, 1582, 1732, 1772, 1806, 1816, 1818, 1837, 1850, 1929, 1956, 2145, 2160, 2190, 2198, 2250, 2476, 2515, 2647, 2659, 2697, 2705, 2715, 2835, 2977, 3060, 3167, 3194, 3420, 3454, 3615, 3650, 3736, 3854, 3891, 3920, 3930, 4046, 4104, 4178, 4246, 4375, 4557, 4632, 4660, 4662, 4713, 4824, 4926, 5004, 5033, 5100, 5211, 5229, 5328, 5588, 5911, 6247, 6260, 6290, 6558, 6721, 6855, 7143, 7323, 7669, 7912, 8737, 9043, 9450",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F10",
+    "template": "{a} is {lt} {b}, so we write {a} < {b}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "33, 75, 81, 150, 154, 255, 360, 368, 392, 469, 480, 512, 651, 780, 908, 950, 952, 958, 1017, 1032, 1034, 1037, 1060, 1182, 1188, 1204, 1208, 1248, 1317, 1335, 1350, 1523, 1582, 1606, 1640, 1666, 1678, 1808, 1824, 1847, 1870, 2040, 2160, 2217, 2296, 2324, 2435, 2615, 2662, 2813, 2897, 2917, 2991, 3056, 3061, 3187, 3252, 3262, 3853, 3888, 3970, 4145, 4155, 4457, 4467, 4547, 4660 to 4661, 4890, 4965, 5072, 5129, 5367, 5624, 5903, 5968, 6156, 6332, 6427, 6641, 6650, 6840, 6953, 7035, 7355, 7458, 7763, 8235, 8318, 8429, 9599",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "lt"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F03"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "264, 645, 1620, 1863, 2148, 2210, 2319, 2380, 2587, 2610, 3248, 3293, 3303, 3450, 3471, 3512, 3527, 3611, 3629, 3783, 3794, 3812, 3900, 3926, 4120, 4531, 4603, 4652, 4655, 4832, 5046, 5448, 5557, 5564, 5673, 5700, 5872, 5882, 6150, 6268, 6291, 6521, 6686, 6745, 7163, 7180, 7205, 7312, 7401, 7425, 7620, 7718, 7759, 7830, 7847, 7860, 7937, 7953, 8100, 8255, 8260, 8358, 8398, 8418, 8430, 8460, 8508, 8682, 8779, 8830, 8872, 8949, 8952, 8992, 9000, 9026, 9114, 9390, 9419, 9590, 9692, 9711, 9724, 9795, 9853, 9855, 9877, 9896, 9900, 9903, 9990",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F11",
+    "template": "{a} {answer} {b}",
+    "appears_in": [
+     "correct_answer",
+     "format_data.options",
+     "format_data.statement"
+    ],
+    "nested_in": [
+     "F21"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "33, 81, 150, 255, 368, 392, 469, 512, 593, 651, 792, 952, 958, 984, 1017, 1025, 1032, 1034, 1037, 1060, 1077, 1182, 1208, 1259, 1317, 1623, 1640, 1666, 1808, 1824, 1870, 2040, 2217, 2296, 2495, 2498, 2662, 2813, 2991, 3031, 3252, 3262, 3267, 3579, 3804, 3853, 3900, 3970, 3990, 4029, 4155, 4217, 4355, 4457, 4551, 4558, 4560, 4590, 4599, 4661, 4746, 4890, 4965, 4989, 5002, 5072, 5080, 5367, 5370, 5644, 5730, 5820, 6019, 6130, 6332, 6427, 6437, 6460, 6650, 6673, 6720, 6953, 6957, 7020, 7023, 7035, 7355, 7481, 7542, 7582, 7926, 8065, 8107, 8155, 8307, 8309 to 8310, 8429, 8439, 8484, 8637, 8646, 8650, 8886, 9060, 9111, 9130, 9350, 9355, 9395, 9415, 9567, 9599, 9636, 9754, 9896, 9930",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "answer",
+        "printed": [
+         "<",
+         "=",
+         ">"
+        ],
+        "derived_from_values": [
+         "answer"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "54, 60, 264, 330, 396, 448, 467, 593, 645, 728, 792, 960, 1020, 1070, 1077, 1131, 1157, 1188, 1214, 1259, 1483, 1500, 1550, 1623, 1732, 1772, 1816, 1837, 1863, 1929, 2148, 2198, 2250, 2498, 2610, 2647, 2659, 2697, 2705, 2715, 2835, 3031, 3167, 3248, 3267, 3471, 3527, 3611, 3615, 3629, 3650, 3736, 3891, 3926, 3990, 4046, 4104, 4120, 4217, 4246, 4531, 4590, 4599, 4603, 4655, 4660, 4662, 4926, 5100, 5564, 5673, 6150, 6268, 6437, 6460, 6673, 6686, 6957, 7143, 7163, 7205, 7401, 7425, 7669, 7718, 7759, 7830, 7847, 7860, 7937, 7953, 8100, 8255, 8358, 8439, 8460, 8508, 8737, 8779, 8872, 8992, 9111, 9114, 9130, 9390, 9395, 9415, 9419, 9567, 9692, 9853, 9855, 9877, 9896, 9903, 9990",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F12",
+    "template": "{a} {s} {b}",
+    "appears_in": [
+     "distractors",
+     "format_data.options",
+     "format_data.statement"
+    ],
+    "nested_in": [
+     "F21"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "33, 81, 360, 392, 469, 512, 651, 792, 900, 952, 958, 960, 1025, 1032, 1034, 1060, 1077, 1208, 1248, 1259, 1317, 1320, 1623, 1640, 1666, 1808, 1824, 2040, 2217, 2282, 2662, 2813, 2991, 3031, 3187, 3252, 3804, 3970, 3990, 4029, 4155, 4217, 4355, 4457, 4467, 4507, 4551, 4560, 4590, 4599, 4746, 4965, 4989, 5072, 5202, 5367, 5370, 5624, 5730, 5820, 5854, 6019, 6130, 6156, 6332, 6427, 6437, 6460, 6641, 6673, 6953, 6957, 7020, 7023, 7035, 7355, 7470, 7481, 7582, 7783, 7926, 8065, 8107, 8155, 8307, 8309, 8399, 8429, 8484, 8637, 8646, 8650, 8706, 8762, 8826, 8835, 9060, 9111, 9355, 9415, 9599, 9636, 9662, 9754, 9841, 9900, 9930",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "s"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the three comparison signs",
+        "members": [
+         "<",
+         "=",
+         ">"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "54, 286, 448, 486, 531, 617, 645, 728, 792, 960, 973, 1077, 1131, 1157, 1188, 1259, 1500, 1623, 1732, 1772, 1816, 1837, 1863, 1929, 2198, 2250, 2647, 2659, 2697, 2715, 2835, 3031, 3167, 3248, 3450, 3471, 3527, 3611, 3615, 3629, 3650, 3736, 3891, 3926, 3990, 4046, 4120, 4217, 4246, 4375, 4507, 4590, 4599, 4603, 4662, 4926, 5046, 5100, 5202, 5673, 5872, 6150, 6268, 6290, 6437, 6460, 6673, 6686, 6957, 7143, 7163, 7180, 7205, 7401, 7425, 7669, 7718, 7759, 7783, 7830, 7847, 7860, 7953, 8255, 8399, 8430, 8460, 8508, 8762, 8779, 8826, 8830, 8835, 8872, 8949, 8992, 9043, 9111, 9114, 9390, 9415, 9662, 9692, 9841, 9853, 9877, 9990",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F13",
+    "template": "{b} {answer} {a}",
+    "appears_in": [
+     "distractors",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "54, 448, 645, 728, 960, 1131, 1157, 1188, 1500, 1732, 1772, 1816, 1837, 1863, 1929, 2198, 2250, 2647, 2659, 2697, 2715, 2835, 3167, 3248, 3471, 3527, 3611, 3615, 3629, 3650, 3736, 3891, 3926, 4046, 4120, 4246, 4603, 4662, 4926, 5100, 5673, 6150, 6268, 6686, 7143, 7163, 7205, 7401, 7425, 7669, 7718, 7759, 7830, 7847, 7860, 7953, 8255, 8460, 8508, 8779, 8872, 8992, 9114, 9390, 9692, 9853, 9877, 9990",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "answer",
+        "printed": [
+         "<",
+         ">"
+        ],
+        "derived_from_values": [
+         "answer"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "33, 81, 392, 469, 512, 651, 952, 958, 1025, 1032, 1034, 1060, 1208, 1317, 1640, 1666, 1808, 1824, 2040, 2217, 2662, 2813, 2991, 3252, 3804, 3970, 4029, 4155, 4355, 4457, 4551, 4560, 4746, 4965, 4989, 5072, 5367, 5370, 5730, 5820, 6019, 6130, 6332, 6427, 6953, 7020, 7023, 7035, 7355, 7481, 7582, 7926, 8065, 8107, 8155, 8307, 8309, 8429, 8484, 8637, 8646, 8650, 9060, 9355, 9599, 9636, 9754, 9930",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "a",
+     "b",
+     "task_type"
+    ]
+   },
+   {
+    "id": "F14",
+    "template": "{answer}",
+    "appears_in": [
+     "correct_answer",
+     "format_data.mcq_options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "answer",
+        "printed": [
+         "<",
+         "=",
+         ">"
+        ],
+        "derived_from_values": [
+         "answer"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F15",
+    "template": "{member}",
+    "appears_in": [
+     "distractors",
+     "format_data.mcq_options",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "member"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "QuestionContext.distractors (the generator's own)",
+        "members": [
+         "<",
+         "=",
+         ">"
+        ]
+       },
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "values['statement_distractors']",
+        "members": [
+         "1131 > 7582",
+         "1188 > 4560",
+         "1929 > 4746",
+         "2040 = 3926",
+         "2040 > 3926",
+         "2250 > 4551",
+         "2715 > 5820",
+         "3167 > 9060",
+         "33 = 645",
+         "33 > 645",
+         "3650 > 3804",
+         "3804 < 3650",
+         "3804 = 3650",
+         "3926 < 2040",
+         "4046 > 8637",
+         "4551 < 2250",
+         "4551 = 2250",
+         "4560 < 1188",
+         "4560 = 1188",
+         "4746 < 1929",
+         "4746 = 1929",
+         "5100 > 8155",
+         "5367 = 9390",
+         "5367 > 9390",
+         "5820 < 2715",
+         "5820 = 2715",
+         "6437 < 6437",
+         "6437 > 6437",
+         "6437 > 6438",
+         "645 < 33",
+         "7582 < 1131",
+         "7582 = 1131",
+         "7759 < 81",
+         "792 < 792",
+         "792 > 792",
+         "792 > 793",
+         "81 = 7759",
+         "81 > 7759",
+         "8155 < 5100",
+         "8155 = 5100",
+         "8429 = 9114",
+         "8429 > 9114",
+         "8637 < 4046",
+         "8637 = 4046",
+         "9060 < 3167",
+         "9060 = 3167",
+         "9114 < 8429",
+         "9390 < 5367",
+         "958 = 9692",
+         "958 > 9692",
+         "9692 < 958"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F16",
+    "template": "Compare the numbers: {a} ___ {b}. Which sign is correct: >, <, or =?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "33, 75, 154, 347, 387, 480, 780, 950, 1062, 1335, 1350, 1466, 1523, 1606, 1858, 2160, 2435, 2698, 2735, 2897, 3061, 3090, 3296, 3323, 3670, 3902, 3972, 4261, 4270, 4373, 5110, 5129, 5176, 5485, 5585, 5910, 5968, 6010, 6030, 6223, 6486, 6840, 6870, 7053, 7458, 7670, 7763, 8016, 8024, 8085, 8235, 8702, 9060, 9113, 9205, 9426, 9468, 9510",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "60, 76, 347, 387, 435, 570, 645, 1062, 1582, 1806, 1850, 1858, 2145, 2160, 2190, 2210, 2319, 2380, 2587, 2735, 2977, 3060, 3167, 3293, 3420, 3454, 3812, 3900, 3902, 3920, 3930, 4178, 4261, 4373, 4557, 4824, 5033, 5176, 5211, 5448, 5485, 5700, 6260, 6521, 6558, 6721, 6745, 6855, 7620, 8260, 8398, 9000, 9426, 9450, 9711, 9724, 9795, 9900",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F17",
+    "template": "Which statement is true?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": [
+     "statement"
+    ]
+   },
+   {
+    "id": "F18",
+    "template": "{statement}",
+    "appears_in": [
+     "correct_answer",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "statement"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "statement",
+        "printed": [
+         "1025 > 960",
+         "1032 < 9990",
+         "1034 < 3611",
+         "1060 < 6150",
+         "1077 = 1077",
+         "1208 < 6686",
+         "1259 = 1259",
+         "1317 < 3471",
+         "1623 = 1623",
+         "1640 < 3527",
+         "1666 < 8255",
+         "1808 < 3248",
+         "1824 < 7163",
+         "2040 < 3926",
+         "2217 < 8779",
+         "2662 < 4603",
+         "2813 < 6268",
+         "2991 < 8460",
+         "3031 = 3031",
+         "3252 < 4120",
+         "33 < 645",
+         "3804 > 3650",
+         "392 < 1863",
+         "3970 < 8872",
+         "3990 = 3990",
+         "4029 > 1500",
+         "4155 < 7718",
+         "4217 = 4217",
+         "4355 > 1772",
+         "4457 < 8508",
+         "4551 > 2250",
+         "4560 > 1188",
+         "4590 = 4590",
+         "4599 = 4599",
+         "469 < 8992",
+         "4746 > 1929",
+         "4965 < 7425",
+         "4989 > 2647",
+         "5072 < 7860",
+         "512 < 7401",
+         "5367 < 9390",
+         "5370 > 4662",
+         "5730 > 1732",
+         "5820 > 2715",
+         "6019 > 1816",
+         "6130 > 3615",
+         "6332 < 7205",
+         "6427 < 9877",
+         "6437 = 6437",
+         "6460 = 6460",
+         "651 < 5673",
+         "6673 = 6673",
+         "6953 < 7847",
+         "6957 = 6957",
+         "7020 > 1157",
+         "7023 > 3891",
+         "7035 < 7953",
+         "7355 < 7830",
+         "7481 > 4926",
+         "7582 > 1131",
+         "792 = 792",
+         "7926 > 1837",
+         "8065 > 2835",
+         "81 < 7759",
+         "8107 > 2198",
+         "8155 > 5100",
+         "8307 > 448",
+         "8309 > 7669",
+         "8429 < 9114",
+         "8484 > 7143",
+         "8637 > 4046",
+         "8646 > 2659",
+         "8650 > 728",
+         "9060 > 3167",
+         "9111 = 9111",
+         "9355 > 4246",
+         "9415 = 9415",
+         "952 < 3629",
+         "958 < 9692",
+         "9599 < 9853",
+         "9636 > 3736",
+         "9754 > 2697",
+         "9930 > 54"
+        ],
+        "derived_from_values": [
+         "statement"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F19",
+    "template": "{a} {sign_fill} {b}",
+    "appears_in": [
+     "format_data.statement"
+    ],
+    "nested_in": [
+     "F21"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "33, 150, 255, 360, 368, 593, 900, 960, 984, 1017, 1037, 1182, 1248, 1320, 1870, 2282, 2296, 2495, 2498, 3187, 3262, 3267, 3579, 3853, 3900, 4467, 4507, 4558, 4661, 4890, 5002, 5080, 5202, 5624, 5644, 5854, 6156, 6641, 6650, 6720, 7470, 7542, 7783, 8310, 8399, 8439, 8706, 8762, 8826, 8835, 8886, 9060, 9130, 9350, 9395, 9567, 9662, 9841, 9896, 9900",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "sign_fill"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the three comparison signs",
+        "members": [
+         "<",
+         "=",
+         ">"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "60, 264, 286, 330, 396, 467, 486, 531, 593, 617, 645, 973, 1020, 1070, 1214, 1483, 1500, 1550, 2148, 2498, 2610, 2705, 3167, 3267, 3450, 4104, 4375, 4507, 4531, 4655, 4660, 5046, 5202, 5564, 5872, 6290, 7180, 7783, 7937, 8100, 8358, 8399, 8430, 8439, 8737, 8762, 8826, 8830, 8835, 8949, 9043, 9130, 9395, 9419, 9567, 9662, 9841, 9855, 9896, 9903",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F20",
+    "template": "{q} The answer is {v}.",
+    "appears_in": [
+     "format_data.statement"
+    ],
+    "nested_in": [
+     "F21"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "q"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F23",
+         "F24"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "v"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the distractors shaped like the keyed answer",
+        "members": [
+         "<",
+         "=",
+         ">"
+        ]
+       },
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the keyed answer (a true statement)",
+        "members": [
+         "<",
+         "="
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F21",
+    "template": "{statement}. True or False?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "statement"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F11",
+         "F12",
+         "F19",
+         "F20"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F22",
+    "template": "Compare the numbers: {a} ___ {b}. Which sign is correct: >, <, or =?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "33, 75, 154, 347, 387, 480, 780, 950, 1062, 1335, 1350, 1466, 1523, 1606, 1858, 2160, 2435, 2698, 2735, 2897, 3061, 3090, 3296, 3323, 3670, 3902, 3972, 4261, 4270, 4373, 5110, 5129, 5176, 5485, 5585, 5910, 5968, 6010, 6030, 6223, 6486, 6840, 6870, 7053, 7458, 7670, 7763, 8016, 8024, 8085, 8235, 8702, 9060, 9113, 9205, 9426, 9468, 9510",
+        "derived_from_values": [
+         "a",
+         "start"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "60, 76, 347, 387, 435, 570, 645, 1062, 1582, 1806, 1850, 1858, 2145, 2160, 2190, 2210, 2319, 2380, 2587, 2735, 2977, 3060, 3167, 3293, 3420, 3454, 3812, 3900, 3902, 3920, 3930, 4178, 4261, 4373, 4557, 4824, 5033, 5176, 5211, 5448, 5485, 5700, 6260, 6521, 6558, 6721, 6745, 6855, 7620, 8260, 8398, 9000, 9426, 9450, 9711, 9724, 9795, 9900",
+        "derived_from_values": [
+         "b",
+         "skip_by"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F23",
+    "template": "{actor} is thinking of a number of {objects} that is greater than {a} but less than {b}. What is the number?",
+    "appears_in": [],
+    "nested_in": [
+     "F20"
+    ],
+    "transformation": {
+     "name": "spine",
+     "meaning": "the template is rendered by the spine renderer, which also chooses a/an by sound and the singular after a count of 1"
+    },
+    "slots": [
+     {
+      "slots": [
+       "actor"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "ACTOR_POOL"
+       }
+      ]
+     },
+     {
+      "slots": [
+       "objects",
+       "inflect_objects"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "OBJECTS_POOL"
+       }
+      ],
+      "distinct_in_every_render": false
+     },
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "908, 1188, 4460, 7091, 7312, 8723",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "1956, 2476, 2515, 3512, 3783, 5004",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "inflect_item1"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "ITEM1_POOL"
+       }
+      ]
+     },
+     {
+      "slots": [
+       "inflect_item2"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "ITEM2_POOL"
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F24",
+    "template": "{actor} has {a} {objects}. Another classmate has {b} {objects}. Which comparison is correct: {a} ___ {b}?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [
+     "F20"
+    ],
+    "transformation": {
+     "name": "spine",
+     "meaning": "the template is rendered by the spine renderer, which also chooses a/an by sound and the singular after a count of 1"
+    },
+    "slots": [
+     {
+      "slots": [
+       "actor"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "ACTOR_POOL"
+       }
+      ]
+     },
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "81, 382, 1204, 1572, 1582, 1678, 1847, 1995, 2173, 2324, 2615, 2644, 2917, 3020, 3056, 3888, 4145, 4547, 4660, 5903, 6130, 6432, 6470, 6490, 6552, 7240, 7847, 8060, 8318, 8387, 8578, 8854, 8857, 8925, 9209, 9249, 9786, 9824",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "objects",
+       "inflect_objects"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "OBJECTS_POOL"
+       }
+      ],
+      "distinct_in_every_render": false
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "174, 425, 651, 718, 769, 1372, 1620, 1818, 2644, 3194, 3303, 3794, 3854, 4632, 4652, 4713, 4832, 5229, 5328, 5557, 5588, 5882, 5911, 6247, 6291, 6490, 6552, 7312, 7323, 7759, 7912, 8418, 8682, 8857, 8952, 9026, 9590, 9786",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "inflect_item1"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "ITEM1_POOL"
+       }
+      ]
+     },
+     {
+      "slots": [
+       "inflect_item2"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "ITEM2_POOL"
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   }
+  ],
+  "lists": {
+   "ACTOR_POOL": [
+    "David",
+    "Moses",
+    "Ruth",
+    "Esther",
+    "Daniel",
+    "Mary",
+    "Joseph",
+    "Paul",
+    "Peter",
+    "Ate Joy",
+    "Kuya Franz",
+    "Aldrin",
+    "Mikko",
+    "Gio",
+    "Trisha",
+    "Coach Val",
+    "Nico",
+    "Bea",
+    "Lester",
+    "Mariz",
+    "Kuya Dan",
+    "Raffy",
+    "Hiro",
+    "Rina",
+    "Emman",
+    "Yuki",
+    "Alvin",
+    "Ate Cai",
+    "Lola Caring",
+    "Tito Jun",
+    "Andrea",
+    "Migs",
+    "Reyna",
+    "Pabs",
+    "Ate Shei",
+    "Marco",
+    "Janna",
+    "Renz",
+    "Lianne",
+    "Kuya Pat",
+    "Ate Lia",
+    "Sora",
+    "Dani",
+    "Kris",
+    "Eunji",
+    "Hana",
+    "Rex",
+    "Ate Gem",
+    "Kuya Dos",
+    "Ate Cess",
+    "Jake",
+    "Mia",
+    "Ronan",
+    "Bria",
+    "Kuya Axel",
+    "Ate Nina",
+    "Luis",
+    "Camille",
+    "Raph",
+    "Zia",
+    "Kuya Bien",
+    "Kuya Lance",
+    "Ate Charm",
+    "Reina",
+    "Topher",
+    "Jade",
+    "Kuya Cong",
+    "Ate Mags",
+    "Boyax",
+    "Trish",
+    "Aldrei",
+    "Jomar",
+    "Ate Cara",
+    "Dex",
+    "Mika",
+    "Noel",
+    "Izza",
+    "Kuya Erwin",
+    "Isko",
+    "Ate Bea",
+    "Coach Roel",
+    "Jun",
+    "Gab",
+    "Ate Alyssa",
+    "Cris",
+    "Des",
+    "Coach Nora",
+    "Pia",
+    "Romel",
+    "Kuya Chad",
+    "Aling Rosa",
+    "Tito Bong",
+    "Faye",
+    "Arnel",
+    "Ate Sam",
+    "Ate Gab",
+    "Maico",
+    "Bianca",
+    "Sir Rez",
+    "Lara",
+    "Kuya Ton",
+    "Ate Liza",
+    "Carlo",
+    "Sir Ben",
+    "Yna",
+    "Kuya Renz",
+    "Kuya Noel",
+    "Ate Ria",
+    "Manny",
+    "Ching",
+    "Sir Leo",
+    "Dana",
+    "Lena",
+    "Nikka",
+    "Kuya Art",
+    "Tessie",
+    "Ate Nena",
+    "Kuya Coy",
+    "Lola Ising",
+    "Chef Demi",
+    "Riza",
+    "Boboy",
+    "Ate Beng",
+    "Kuya Tads",
+    "Nanding",
+    "Boyong",
+    "Kuya Ian",
+    "Ateneo Doc",
+    "Sir Erwin",
+    "Ate Dang",
+    "Celso",
+    "Kuya Bert",
+    "Ate Gina",
+    "Ronnie",
+    "Maribel",
+    "Sir Doy",
+    "Sir Mando",
+    "Ate Lory",
+    "Bogs",
+    "Celia",
+    "Kuya Dex",
+    "Rhea",
+    "Ate Lyn",
+    "Patricia",
+    "Romar",
+    "Sir Dave",
+    "Connie",
+    "Maria"
+   ],
+   "OBJECTS_POOL": [
+    "loaves of bread",
+    "fish",
+    "olives",
+    "coins",
+    "scrolls",
+    "lamps",
+    "jars",
+    "baskets",
+    "stones",
+    "seeds",
+    "match tickets",
+    "hero cards",
+    "score cards",
+    "tournament tickets",
+    "rank badges",
+    "headsets",
+    "building blocks",
+    "game manuals",
+    "block packs",
+    "coin tokens",
+    "skin cards",
+    "craft blocks",
+    "gacha tickets",
+    "character cards",
+    "gem tokens",
+    "event tickets",
+    "figure collectibles",
+    "resin figures",
+    "puzzle pieces",
+    "chess pieces",
+    "game cards",
+    "hint tokens",
+    "star stickers",
+    "power-up cards",
+    "photocards",
+    "albums",
+    "concert tickets",
+    "lightsticks",
+    "fan shirts",
+    "posters",
+    "fan merch",
+    "trading cards",
+    "manga volumes",
+    "anime figurines",
+    "cosplay pins",
+    "sticker sheets",
+    "art prints",
+    "keychains",
+    "album CDs",
+    "fan posters",
+    "movie tickets",
+    "collector cards",
+    "merchandise shirts",
+    "notebooks",
+    "story cards",
+    "book covers",
+    "bookmarks",
+    "pens",
+    "printed drafts",
+    "memory cards",
+    "fan letters",
+    "light clips",
+    "phone stands",
+    "preset cards",
+    "microphones",
+    "donation cards",
+    "subscriber badges",
+    "emote stickers",
+    "clip cards",
+    "fan art prints",
+    "merch shirts",
+    "template cards",
+    "photo prints",
+    "sketch cards",
+    "photo albums",
+    "brush packs",
+    "basketballs",
+    "jerseys",
+    "water bottles",
+    "medals",
+    "sneakers",
+    "volleyballs",
+    "shuttlecocks",
+    "whistles",
+    "arm sleeves",
+    "knee pads",
+    "score sheets",
+    "jump ropes",
+    "wristbands",
+    "running shoes",
+    "weights",
+    "helmets",
+    "dance shoes",
+    "costumes",
+    "trophies",
+    "fan accessories",
+    "pom-poms",
+    "ribbons",
+    "crayons",
+    "paintbrushes",
+    "sketchpads",
+    "colored pencils",
+    "watercolor sets",
+    "paint tubes",
+    "guitar picks",
+    "ukulele strings",
+    "song sheets",
+    "capos",
+    "drumsticks",
+    "yarn balls",
+    "journal notebooks",
+    "scrapbook pages",
+    "fabric swatches",
+    "washi tape rolls",
+    "cupcakes",
+    "cookies",
+    "milk tea cups",
+    "bags of flour",
+    "eggs",
+    "dog treats",
+    "cat toys",
+    "fish food packets",
+    "hamsters",
+    "leashes",
+    "water bowls",
+    "circuit boards",
+    "coding books",
+    "robot kits",
+    "solar cells",
+    "lab notebooks",
+    "USB drives",
+    "sticker packs",
+    "product samples",
+    "order slips",
+    "savings jars",
+    "business cards",
+    "packaging bags",
+    "trivia cards",
+    "history books",
+    "documentary DVDs",
+    "map prints",
+    "quiz notebooks",
+    "mystery novels",
+    "campaign posters",
+    "eco bags",
+    "ballot papers",
+    "project folders",
+    "campaign pins",
+    "speech scripts",
+    "stickers"
+   ],
+   "ITEM1_POOL": [
+    "Bible storybook",
+    "prayer journal",
+    "bookmark",
+    "coloring book",
+    "headset",
+    "gaming mouse",
+    "keyboard skin",
+    "mousepad",
+    "game skin",
+    "server pass",
+    "resource pack",
+    "avatar outfit",
+    "character keychain",
+    "acrylic standee",
+    "gacha topup card",
+    "enamel pin",
+    "chess set",
+    "puzzle book",
+    "mobile game credit",
+    "sudoku pad",
+    "album",
+    "photocard",
+    "lightstick",
+    "fan shirt",
+    "photocard sleeve",
+    "manga volume",
+    "anime keychain",
+    "album CD",
+    "fan poster",
+    "movie ticket",
+    "notebook",
+    "gel pen set",
+    "story planner",
+    "ring light",
+    "tripod",
+    "phone mic",
+    "green screen",
+    "streamer merch shirt",
+    "emote sticker",
+    "fan badge",
+    "stream credit",
+    "photo print",
+    "sticker sheet",
+    "design template pack",
+    "sketchpad",
+    "basketball",
+    "jersey",
+    "headband",
+    "wristband",
+    "volleyball",
+    "knee pad",
+    "sport socks",
+    "bicycle pump",
+    "helmet",
+    "knee guard",
+    "running shoes",
+    "dance shoes",
+    "costume sash",
+    "pom-pom",
+    "hair tie set",
+    "colored pencil set",
+    "watercolor set",
+    "crayons",
+    "guitar pick",
+    "ukulele string set",
+    "capo",
+    "song sheet booklet",
+    "yarn ball",
+    "journal notebook",
+    "washi tape roll",
+    "cupcake",
+    "cookie pack",
+    "bread loaf",
+    "baking mix pack",
+    "dog treat pack",
+    "cat toy",
+    "fish food packet",
+    "pet collar",
+    "coding book",
+    "USB drive",
+    "robot kit part",
+    "science kit",
+    "sticker pack",
+    "handmade keychain",
+    "savings jar",
+    "business card pack",
+    "trivia card pack",
+    "history book",
+    "quiz notebook",
+    "map print",
+    "eco bag",
+    "campaign poster roll",
+    "project folder",
+    "marker set",
+    "pencil"
+   ],
+   "ITEM2_POOL": [
+    "sticker set",
+    "wristband",
+    "song lyrics card",
+    "memory verse card",
+    "phone cooling fan",
+    "controller grip",
+    "RGB light strip",
+    "phone stand",
+    "gaming chair cushion",
+    "desk lamp",
+    "cooling pad",
+    "sticker sheet",
+    "loot box pass",
+    "tote bag",
+    "poster",
+    "pen set",
+    "timer",
+    "score notepad",
+    "strategy guide",
+    "lace pin",
+    "acrylic standee",
+    "art print",
+    "cosplay accessory",
+    "collector card",
+    "bookmark",
+    "pin badge",
+    "highlighter set",
+    "sticky notes",
+    "pen case",
+    "reading light",
+    "SD card",
+    "phone grip",
+    "led strip",
+    "editing app credit",
+    "meme poster",
+    "phone case",
+    "stylus pen",
+    "photo frame",
+    "washi tape set",
+    "colored markers",
+    "water bottle",
+    "sports towel",
+    "cap",
+    "knee pad",
+    "racket grip tape",
+    "headband",
+    "sports bag",
+    "resistance band",
+    "duffel bag",
+    "paintbrush set",
+    "eraser",
+    "ruler",
+    "drawing pen",
+    "tuner clip",
+    "microphone",
+    "music stand",
+    "drumstick pair",
+    "crochet hook",
+    "scissors",
+    "glue stick",
+    "colored pens",
+    "milk tea cup",
+    "pastry box",
+    "cooking apron",
+    "measuring cup set",
+    "water bowl",
+    "pet brush",
+    "leash",
+    "hamster bedding pack",
+    "notebook",
+    "ballpen set",
+    "calculator",
+    "solar toy",
+    "packaging bag",
+    "price tag set",
+    "receipt booklet",
+    "rubber band pack",
+    "booklight",
+    "sticky note pad",
+    "ballpen pack",
+    "tarpaulin print",
+    "ribbon spool"
+   ]
+  },
+  "banks": {},
+  "value_derivations": [],
+  "reason_kinds": {
+   "arithmetic": "a number the generator computes from the generated values named in src (a half, a sum, a difference, a running total, a place's digit). Its range is the image of those values' own domains; whether the arithmetic is RIGHT is the hint contract's (§16) and §1E's to check, not §14's."
+  }
+ }
+}

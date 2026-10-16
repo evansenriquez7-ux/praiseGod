@@ -1,0 +1,1355 @@
+{
+ "schema_version": 2,
+ "hash_version": 8,
+ "node_id": "mat_g3_mg_q1_6",
+ "record_id": "stem-batch445-S445-012-confirming",
+ "role": "confirming",
+ "confirms": "stem-batch445-S445-012-first",
+ "item_id": "S445-012",
+ "lc_hash": "ac33ef258c9b891425c409ed47f2f14c315230743d88c41efde8dfc078822b80",
+ "judged_by": "blind-stem-judge-claude-haiku-batch445-S445-012-confirming",
+ "dispatch_id": "stem-batch445-S445-012-confirming",
+ "filed_at": "2026-10-16T06:24:15Z",
+ "delivery": "Claude Code Agent tool, model=haiku, subagent_type=general-purpose; the judge was told to read only local_only/scratch/h4c/prompts/S445-012.prompt.txt (tests/stem_file.py prompt output, item S445-012; no lc id, no key or packets file in that directory) and reply with what it asks; dispatched with CLAUDE.md loaded (ruling 29). Blindness is a prompt contract, audited from the subagent transcript.",
+ "tool_uses_by_judge": "From the subagent transcript: 1 tool use(s), all Read of its own prompt file (1198 lines, every line read); no other tool, path or search. Model reported in the transcript: claude-haiku-5-5.",
+ "dispatch_prompt_digest": "ab4a9522b2404c5b1274460bfd7d8d28092208afe47529e25d32e37f4ebc0403",
+ "raw_reply": "{\"item\": \"S445-012\", \"clauses\": {\"identify_equal_length_segments\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F14\", \"template\": \"Segment A measures {len_a} cm on a ruler. Which of the following describes a line segment that is equal in length to Segment A?\", \"reasoning\": \"F14 asks the learner to identify a line segment equal in length to Segment A, with the answer choices drawn from F21 and F20. Its slot len_a repeats the generated length (printed 2 to 9).\"}, \"draw_segment_of_given_length\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F12\", \"template\": \"Segment A is {len_a} cm long. If you use a ruler to draw Segment B equal in length starting at the {start_b} cm mark, at which centimeter mark on the ruler must Segment B end?\", \"reasoning\": \"F12 is a drawing task: the learner draws Segment B with a ruler from a start mark (start_b, domain 1 to 5) to the mark where its length matches Segment A (len_a, printed 2 to 9). F11 also names drawing with a ruler.\"}, \"line_segment\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F02\", \"template\": \"A segment starting at {start_b} cm and ending at {end_match} cm\", \"reasoning\": \"F02 presents a line segment as the correct answer, with start_b 1 to 5 and end_match 3 to 14. The printed correct answers in F20 are all segments of length 2 to 9 with a start and an end mark.\"}, \"equal_length\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F10\", \"template\": \"On a ruler, Segment A starts at 0 cm and ends at {len_a} cm. Segment B starts at {start_b} cm and ends at {end_b} cm. Are Segment A and Segment B equal in length?\", \"reasoning\": \"F10 asks whether two segments are equal in length, with the answer Yes or No from F20. Segment A's length (len_a) and Segment B's span are both given.\"}, \"ruler\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F10\", \"template\": \"On a ruler, Segment A starts at 0 cm and ends at {len_a} cm. Segment B starts at {start_b} cm and ends at {end_b} cm. Are Segment A and Segment B equal in length?\", \"reasoning\": \"F10 names a ruler and gives marks on it (0 cm start, centimeter ends) in the question text.\"}}, \"failing_families\": [\"F05\", \"F16\", \"F17\", \"F19\", \"F21\"], \"failing_templates\": [\"A segment starting at {v} cm and ending at {v2} cm\", \"Start at the {start} mark and count on {length}: {start} + {length} = {answer}.\", \"Starting at the 0 mark, count {length} {count_noun}: Segment B ends at the {answer} mark.\", \"{val_a} and {val_b} are {v}, so the answer is {answer}.\", \"{member}\"], \"overall\": \"FAIL\", \"reasoning\": \"F21 (template {member}): the member list includes a choice containing the phrase 'set square', which is not in cumulative_vocab or NOT_YET_KNOWN, so it is vocabulary outside the lc's gates. F19: slot v (domain: the two equality verdicts, not declared derived from val_a, val_b or answer) and slot answer (No or Yes, declared derived from answer) are independent, so the hint can state that unequal values are the same, or equal values are not the same, with answer Yes. The sentence is false for those combinations. F17: length (2 to 9) and answer (printed 2 to 9) are independent with no derivation declared, so the hint can state a count from the 0 mark that ends at a mark other than the counted length. F16: start is computed from answer (3 to 14) minus length (2 to 9), whose image includes values below 0; the hint then prints a negative mark that does not exist on a grade 3 ruler. F05: v (2 to 6) and v2 (5 to 16) are independent, so the distractor's length can equal Segment A's length, making a distractor a correct answer. F02, F03, F04, F10, F12, F13, F14, F20 and the hint families F06, F07, F08, F09, F15, F18 were checked and not failed; F01 prints the single gated word centimeter (cm), and count-noun grammar such as a plural numeral before centimeter (cm) was noted but not treated as a content fault.\"}",
+ "raw_reply_digest": "bb1d0da055753188026f3e7b288a910c6db9eb2cf95664df0c1f145260e452cc",
+ "packet_digest": "71fc3eb73f73d01250b3c19b5ed8d6aecf1de7082da33bb59343aad1182db6d5",
+ "family_keys": {
+  "F01": {
+   "source": "backend/app/practice_gen/dna/base.py [gate centimeter]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F02": {
+   "source": "backend/app/practice_gen/dna/mg/length_measurement.py",
+   "first_site": "backend/app/practice_gen/dna/mg/length_measurement.py:751",
+   "renderer": "",
+   "path": [
+    9,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F03": {
+   "source": "backend/app/practice_gen/dna/mg/length_measurement.py",
+   "first_site": "backend/app/practice_gen/dna/mg/length_measurement.py:754",
+   "renderer": "",
+   "path": [
+    9,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F04": {
+   "source": "backend/app/practice_gen/dna/mg/length_measurement.py",
+   "first_site": "backend/app/practice_gen/dna/mg/length_measurement.py:753",
+   "renderer": "",
+   "path": [
+    9,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F05": {
+   "source": "backend/app/practice_gen/dna/mg/length_measurement.py",
+   "first_site": "backend/app/practice_gen/dna/mg/length_measurement.py:755",
+   "renderer": "",
+   "path": [
+    9,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F06": {
+   "source": "backend/app/practice_gen/dna/mg/length_measurement.py",
+   "first_site": "backend/app/practice_gen/dna/mg/length_measurement.py:1004",
+   "renderer": "",
+   "path": [
+    9,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F07": {
+   "source": "backend/app/practice_gen/dna/mg/length_measurement.py",
+   "first_site": "backend/app/practice_gen/dna/mg/length_measurement.py:986",
+   "renderer": "",
+   "path": [
+    2,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F08": {
+   "source": "backend/app/practice_gen/dna/mg/length_measurement.py",
+   "first_site": "backend/app/practice_gen/dna/mg/length_measurement.py:984",
+   "renderer": "",
+   "path": [
+    2,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F09": {
+   "source": "backend/app/practice_gen/dna/mg/length_measurement.py",
+   "first_site": "backend/app/practice_gen/dna/mg/length_measurement.py:1003",
+   "renderer": "",
+   "path": [
+    9,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F10": {
+   "source": "backend/app/practice_gen/dna/mg/length_measurement.py",
+   "first_site": "backend/app/practice_gen/dna/mg/length_measurement.py:709",
+   "renderer": "",
+   "path": [
+    2,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F11": {
+   "source": "backend/app/practice_gen/dna/mg/length_measurement.py",
+   "first_site": "backend/app/practice_gen/dna/mg/length_measurement.py:726",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F12": {
+   "source": "backend/app/practice_gen/dna/mg/length_measurement.py",
+   "first_site": "backend/app/practice_gen/dna/mg/length_measurement.py:744",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F13": {
+   "source": "backend/app/practice_gen/dna/mg/length_measurement.py",
+   "first_site": "backend/app/practice_gen/dna/mg/length_measurement.py:985",
+   "renderer": "",
+   "path": [
+    2,
+    null
+   ],
+   "first_render_repeating": {
+    "count_noun,count_noun2": [
+     2,
+     null
+    ]
+   }
+  },
+  "F14": {
+   "source": "backend/app/practice_gen/dna/mg/length_measurement.py",
+   "first_site": "backend/app/practice_gen/dna/mg/length_measurement.py:767",
+   "renderer": "",
+   "path": [
+    9,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F15": {
+   "source": "backend/app/practice_gen/dna/mg/length_measurement.py",
+   "first_site": "backend/app/practice_gen/dna/mg/length_measurement.py:991",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F16": {
+   "source": "backend/app/practice_gen/dna/mg/length_measurement.py",
+   "first_site": "backend/app/practice_gen/dna/mg/length_measurement.py:998",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F17": {
+   "source": "backend/app/practice_gen/dna/mg/length_measurement.py",
+   "first_site": "backend/app/practice_gen/dna/mg/length_measurement.py:992",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F18": {
+   "source": "backend/app/practice_gen/dna/mg/length_measurement.py",
+   "first_site": "backend/app/practice_gen/dna/mg/length_measurement.py:1002",
+   "renderer": "",
+   "path": [
+    9,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F19": {
+   "source": "backend/app/practice_gen/dna/mg/length_measurement.py",
+   "first_site": "backend/app/practice_gen/dna/mg/length_measurement.py:987",
+   "renderer": "",
+   "path": [
+    2,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F20": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:32",
+   "renderer": "",
+   "path": [
+    2,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F21": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:39",
+   "renderer": "",
+   "path": [
+    2,
+    null
+   ],
+   "first_render_repeating": {}
+  }
+ },
+ "packet": {
+  "item": "S445-012",
+  "competency": {
+   "text": "Identify and draw line segments of equal length using a ruler.",
+   "grade": 3,
+   "quarter": 1
+  },
+  "clauses": [
+   {
+    "id": "identify_equal_length_segments",
+    "kind": "task",
+    "clause": "Identify"
+   },
+   {
+    "id": "draw_segment_of_given_length",
+    "kind": "task",
+    "clause": "draw"
+   },
+   {
+    "id": "line_segment",
+    "kind": "object",
+    "clause": "line segments"
+   },
+   {
+    "id": "equal_length",
+    "kind": "attribute",
+    "clause": "equal length"
+   },
+   {
+    "id": "ruler",
+    "kind": "tool",
+    "clause": "a ruler"
+   }
+  ],
+  "vocabulary": {
+   "student_vocab": [],
+   "curriculum_vocab": [
+    "line segments of equal length"
+   ],
+   "introduces_vocab": [
+    "line segments of equal length"
+   ],
+   "cumulative_vocab": [
+    "1 less",
+    "1 more",
+    "10th",
+    "1st",
+    "2nd",
+    "3rd",
+    "4th",
+    "5th",
+    "6th",
+    "7th",
+    "8th",
+    "9th",
+    "a.m.",
+    "addition",
+    "analog clock",
+    "area",
+    "bigger",
+    "bill",
+    "calendar",
+    "centavo",
+    "centimeter",
+    "circle",
+    "clockwise",
+    "cm",
+    "coin",
+    "compare",
+    "corner",
+    "count",
+    "counter-clockwise",
+    "data",
+    "decreasing pattern",
+    "denominator",
+    "difference",
+    "digit",
+    "division",
+    "elapsed time",
+    "equal",
+    "equal groups",
+    "estimate",
+    "even",
+    "expanded form",
+    "fraction",
+    "group",
+    "half",
+    "half hour",
+    "half turn",
+    "hour",
+    "how many",
+    "hundreds",
+    "increasing pattern",
+    "intersecting",
+    "left",
+    "length",
+    "less",
+    "line",
+    "line segment",
+    "m",
+    "measure",
+    "meter",
+    "minute",
+    "missing number",
+    "more",
+    "multiplication",
+    "nearest hundred",
+    "nearest ten",
+    "nearest thousand",
+    "number",
+    "number line",
+    "numeral",
+    "numerator",
+    "odd",
+    "ones",
+    "p.m.",
+    "parallel",
+    "pattern",
+    "perimeter",
+    "perpendicular",
+    "peso",
+    "pictograph",
+    "place value",
+    "point",
+    "product",
+    "quarter",
+    "quarter hour",
+    "quarter turn",
+    "quotient",
+    "ray",
+    "rectangle",
+    "regrouping",
+    "repeating pattern",
+    "round",
+    "ruler",
+    "same",
+    "scale",
+    "side",
+    "similar fractions",
+    "skip counting",
+    "slide",
+    "smaller",
+    "solid figure",
+    "sq. cm",
+    "square",
+    "square centimeter",
+    "subtraction",
+    "sum",
+    "table",
+    "ten thousand",
+    "ten-thousands place",
+    "tens",
+    "thousand",
+    "total",
+    "translation",
+    "triangle",
+    "whole",
+    "₱"
+   ],
+   "NOT_YET_KNOWN": [
+    "L",
+    "axis",
+    "balance scale",
+    "bar graph",
+    "capacity",
+    "certain",
+    "equally likely",
+    "g",
+    "gram",
+    "impossible",
+    "improper fraction",
+    "kg",
+    "kilogram",
+    "less likely",
+    "line of symmetry",
+    "liter",
+    "mL",
+    "mass",
+    "milliliter",
+    "missing term",
+    "more likely",
+    "order of operations",
+    "outcome",
+    "remainder",
+    "symmetry"
+   ],
+   "sentence_max_words": 22,
+   "number_format": "space separator for thousands (e.g. 1 000)"
+  },
+  "declared_variants": [
+   [
+    "context",
+    "pure"
+   ],
+   [
+    "task_type",
+    "equal_length"
+   ],
+   [
+    "unit_type",
+    "cm"
+   ],
+   [
+    "unit_type",
+    "m"
+   ]
+  ],
+  "declared_bounds": [
+   {
+    "task_type": "equal_length",
+    "context": "pure"
+   }
+  ],
+  "families": [
+   {
+    "id": "F01",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F06",
+     "F13",
+     "F15",
+     "F17",
+     "F18"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='centimeter')",
+        "requires_vocab": "centimeter",
+        "prints": "centimeter (cm)",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F02",
+    "template": "A segment starting at {start_b} cm and ending at {end_match} cm",
+    "appears_in": [
+     "correct_answer",
+     "format_data.mcq_options",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "start_b"
+      ],
+      "domains": [
+       {
+        "domain": "a number in a range",
+        "basis": "the start-mark draw bounds",
+        "lo": 1,
+        "hi": 5
+       }
+      ]
+     },
+     {
+      "slots": [
+       "end_match"
+      ],
+      "domains": [
+       {
+        "domain": "a number in a range",
+        "basis": "the start-mark draw bounds plus Segment A's length",
+        "lo": 3,
+        "hi": 14
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F03",
+    "template": "A segment starting at {start_b} cm and ending at {max} cm",
+    "appears_in": [
+     "distractors",
+     "format_data.mcq_options",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "start_b"
+      ],
+      "domains": [
+       {
+        "domain": "a number in a range",
+        "basis": "the start-mark draw bounds",
+        "lo": 1,
+        "hi": 5
+       }
+      ]
+     },
+     {
+      "slots": [
+       "max"
+      ],
+      "domains": [
+       {
+        "domain": "a number in a range",
+        "basis": "a mark after the start and before the matching end",
+        "lo": 2,
+        "hi": 13
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F04",
+    "template": "A segment starting at {start_b} cm and ending at {v} cm",
+    "appears_in": [
+     "distractors",
+     "format_data.mcq_options",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "start_b"
+      ],
+      "domains": [
+       {
+        "domain": "a number in a range",
+        "basis": "the start-mark draw bounds",
+        "lo": 1,
+        "hi": 5
+       }
+      ]
+     },
+     {
+      "slots": [
+       "v"
+      ],
+      "domains": [
+       {
+        "domain": "a number in a range",
+        "basis": "the matching end mark plus 2",
+        "lo": 5,
+        "hi": 16
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F05",
+    "template": "A segment starting at {v} cm and ending at {v2} cm",
+    "appears_in": [
+     "distractors",
+     "format_data.mcq_options",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "v"
+      ],
+      "domains": [
+       {
+        "domain": "a number in a range",
+        "basis": "the start-mark draw bounds plus 1",
+        "lo": 2,
+        "hi": 6
+       }
+      ]
+     },
+     {
+      "slots": [
+       "v2"
+      ],
+      "domains": [
+       {
+        "domain": "a number in a range",
+        "basis": "the matching end mark plus 2",
+        "lo": 5,
+        "hi": 16
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F06",
+    "template": "Choose the one that is exactly {length} {count_noun} long.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "length"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "length",
+        "printed_runs": "2 to 9",
+        "derived_from_values": [
+         "length"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "count_noun"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F01"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "sub_task",
+     "task_type"
+    ]
+   },
+   {
+    "id": "F07",
+    "template": "Equal length means the same number of units, not the same start and end marks.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": [
+     "sub_task",
+     "task_type"
+    ]
+   },
+   {
+    "id": "F08",
+    "template": "Find how long each segment is: count the units from where it starts to where it ends.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": [
+     "sub_task",
+     "task_type"
+    ]
+   },
+   {
+    "id": "F09",
+    "template": "For each choice, count the units from where the segment starts to where it ends.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": [
+     "sub_task",
+     "task_type"
+    ]
+   },
+   {
+    "id": "F10",
+    "template": "On a ruler, Segment A starts at 0 cm and ends at {len_a} cm. Segment B starts at {start_b} cm and ends at {end_b} cm. Are Segment A and Segment B equal in length?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "len_a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "value_a",
+        "printed_runs": "2 to 9",
+        "derived_from_values": [
+         "value_a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "start_b"
+      ],
+      "domains": [
+       {
+        "domain": "a number in a range",
+        "basis": "Segment B's start-mark draw bounds",
+        "lo": 1,
+        "hi": 5
+       }
+      ]
+     },
+     {
+      "slots": [
+       "end_b"
+      ],
+      "domains": [
+       {
+        "domain": "a number in a range",
+        "basis": "Segment B's start-mark draw bounds plus its length",
+        "lo": 3,
+        "hi": 14
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F11",
+    "template": "Segment A has a length of {len_a} cm. To draw Segment B equal in length using a ruler starting at the 0 cm mark, at which centimeter mark must Segment B end?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "len_a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "length",
+        "printed_runs": "2 to 9",
+        "derived_from_values": [
+         "length"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F12",
+    "template": "Segment A is {len_a} cm long. If you use a ruler to draw Segment B equal in length starting at the {start_b} cm mark, at which centimeter mark on the ruler must Segment B end?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "len_a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "length",
+        "printed_runs": "2 to 9",
+        "derived_from_values": [
+         "length"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "start_b"
+      ],
+      "domains": [
+       {
+        "domain": "a number in a range",
+        "basis": "Segment B's start-mark draw bounds",
+        "lo": 1,
+        "hi": 5
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F13",
+    "template": "Segment A is {val_a} {count_noun} long. Segment B is {val_b} {count_noun2} long.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "val_a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "value_a",
+        "printed_runs": "2 to 9",
+        "derived_from_values": [
+         "value_a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "count_noun",
+       "count_noun2"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F01"
+        ]
+       }
+      ],
+      "distinct_in_every_render": false
+     },
+     {
+      "slots": [
+       "val_b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "value_b",
+        "printed_runs": "1 to 11",
+        "derived_from_values": [
+         "value_b"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "sub_task",
+     "task_type"
+    ]
+   },
+   {
+    "id": "F14",
+    "template": "Segment A measures {len_a} cm on a ruler. Which of the following describes a line segment that is equal in length to Segment A?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "len_a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "length",
+        "printed_runs": "2 to 9",
+        "derived_from_values": [
+         "length"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F15",
+    "template": "Segment B must be {length} {count_noun} long, like Segment A.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "length"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "length",
+        "printed_runs": "2 to 9",
+        "derived_from_values": [
+         "length"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "count_noun"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F01"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "sub_task",
+     "task_type"
+    ]
+   },
+   {
+    "id": "F16",
+    "template": "Start at the {start} mark and count on {length}: {start} + {length} = {answer}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "start"
+      ],
+      "domains": [
+       {
+        "domain": "a number computed by the generator",
+        "reason": "arithmetic",
+        "derived_from_values": [
+         "answer",
+         "length"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "length"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "length",
+        "printed_runs": "2 to 9",
+        "derived_from_values": [
+         "length"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "answer",
+        "printed_runs": "3 to 14",
+        "derived_from_values": [
+         "answer"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "sub_task",
+     "task_type"
+    ]
+   },
+   {
+    "id": "F17",
+    "template": "Starting at the 0 mark, count {length} {count_noun}: Segment B ends at the {answer} mark.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "length"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "length",
+        "printed_runs": "2 to 9",
+        "derived_from_values": [
+         "length"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "count_noun"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F01"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "answer",
+        "printed_runs": "2 to 9",
+        "derived_from_values": [
+         "answer"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "sub_task",
+     "task_type"
+    ]
+   },
+   {
+    "id": "F18",
+    "template": "The matching segment must be {length} {count_noun} long, like Segment A.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "length"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "length",
+        "printed_runs": "2 to 9",
+        "derived_from_values": [
+         "length"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "count_noun"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F01"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "sub_task",
+     "task_type"
+    ]
+   },
+   {
+    "id": "F19",
+    "template": "{val_a} and {val_b} are {v}, so the answer is {answer}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "val_a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "value_a",
+        "printed_runs": "2 to 9",
+        "derived_from_values": [
+         "value_a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "val_b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "value_b",
+        "printed_runs": "1 to 11",
+        "derived_from_values": [
+         "value_b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "v"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the two equality verdicts",
+        "members": [
+         "not the same",
+         "the same"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "answer",
+        "printed": [
+         "No",
+         "Yes"
+        ],
+        "derived_from_values": [
+         "answer"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "sub_task",
+     "task_type"
+    ]
+   },
+   {
+    "id": "F20",
+    "template": "{answer}",
+    "appears_in": [
+     "correct_answer",
+     "format_data.mcq_options",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "answer",
+        "printed": [
+         "A segment starting at 1 cm and ending at 10 cm",
+         "A segment starting at 1 cm and ending at 4 cm",
+         "A segment starting at 1 cm and ending at 6 cm",
+         "A segment starting at 1 cm and ending at 7 cm",
+         "A segment starting at 1 cm and ending at 8 cm",
+         "A segment starting at 1 cm and ending at 9 cm",
+         "A segment starting at 2 cm and ending at 10 cm",
+         "A segment starting at 2 cm and ending at 4 cm",
+         "A segment starting at 2 cm and ending at 5 cm",
+         "A segment starting at 2 cm and ending at 6 cm",
+         "A segment starting at 2 cm and ending at 7 cm",
+         "A segment starting at 2 cm and ending at 8 cm",
+         "A segment starting at 2 cm and ending at 9 cm",
+         "A segment starting at 3 cm and ending at 10 cm",
+         "A segment starting at 3 cm and ending at 12 cm",
+         "A segment starting at 3 cm and ending at 7 cm",
+         "A segment starting at 3 cm and ending at 8 cm",
+         "A segment starting at 3 cm and ending at 9 cm",
+         "A segment starting at 4 cm and ending at 10 cm",
+         "A segment starting at 4 cm and ending at 11 cm",
+         "A segment starting at 4 cm and ending at 12 cm",
+         "A segment starting at 4 cm and ending at 13 cm",
+         "A segment starting at 4 cm and ending at 6 cm",
+         "A segment starting at 4 cm and ending at 8 cm",
+         "A segment starting at 4 cm and ending at 9 cm",
+         "A segment starting at 5 cm and ending at 10 cm",
+         "A segment starting at 5 cm and ending at 11 cm",
+         "A segment starting at 5 cm and ending at 12 cm",
+         "A segment starting at 5 cm and ending at 7 cm",
+         "A segment starting at 5 cm and ending at 8 cm",
+         "A segment starting at 5 cm and ending at 9 cm",
+         "No",
+         "Yes"
+        ],
+        "derived_from_values": [
+         "answer"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F21",
+    "template": "{member}",
+    "appears_in": [
+     "distractors",
+     "format_data.mcq_options",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "member"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "QuestionContext.distractors (the generator's own)",
+        "members": [
+         "A segment starting at 1 cm and ending at 11 cm",
+         "A segment starting at 1 cm and ending at 7 cm",
+         "A segment starting at 2 cm and ending at 11 cm",
+         "A segment starting at 2 cm and ending at 3 cm",
+         "A segment starting at 2 cm and ending at 4 cm",
+         "A segment starting at 2 cm and ending at 6 cm",
+         "A segment starting at 2 cm and ending at 8 cm",
+         "A segment starting at 3 cm and ending at 11 cm",
+         "A segment starting at 3 cm and ending at 12 cm",
+         "A segment starting at 3 cm and ending at 6 cm",
+         "A segment starting at 3 cm and ending at 7 cm",
+         "A segment starting at 3 cm and ending at 8 cm",
+         "A segment starting at 4 cm and ending at 11 cm",
+         "A segment starting at 4 cm and ending at 12 cm",
+         "A segment starting at 4 cm and ending at 15 cm",
+         "A segment starting at 5 cm and ending at 13 cm",
+         "A segment starting at 5 cm and ending at 15 cm",
+         "A segment starting at 5 cm and ending at 9 cm",
+         "A segment starting at 6 cm and ending at 13 cm",
+         "Cannot be determined without a set square",
+         "No",
+         "Only if both segments start at 0 cm",
+         "Yes"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   }
+  ],
+  "lists": {},
+  "banks": {},
+  "value_derivations": [],
+  "reason_kinds": {
+   "arithmetic": "a number the generator computes from the generated values named in src (a half, a sum, a difference, a running total, a place's digit). Its range is the image of those values' own domains; whether the arithmetic is RIGHT is the hint contract's (§16) and §1E's to check, not §14's."
+  }
+ }
+}

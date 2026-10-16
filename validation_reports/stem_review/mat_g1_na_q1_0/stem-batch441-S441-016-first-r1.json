@@ -1,0 +1,1618 @@
+{
+ "schema_version": 2,
+ "hash_version": 8,
+ "node_id": "mat_g1_na_q1_0",
+ "record_id": "stem-batch441-S441-016-first-r1",
+ "role": "first",
+ "confirms": null,
+ "item_id": "S441-016",
+ "lc_hash": "006c563e447a04ca4e6d5d2bdbc7db071e8a7b899d52d2185f949348e795cf6b",
+ "judged_by": "blind-stem-judge-claude-haiku-batch441-S441-016-first-r1",
+ "dispatch_id": "stem-batch441-S441-016-first-r1",
+ "filed_at": "2026-10-15T16:50:16Z",
+ "delivery": "Claude Code Agent tool, model=haiku, subagent_type=general-purpose; the judge was told to read only local_only/scratch/h4c/prompts/S441-016.prompt.txt (tests/stem_file.py prompt output, item S441-016; no lc id, no key or packets file in that directory) and reply with what it asks; dispatched with CLAUDE.md loaded (ruling 29). Blindness is a prompt contract, audited from the subagent transcript.",
+ "tool_uses_by_judge": "From the subagent transcript: 1 tool use(s), all Read of its own prompt file (1461 lines, every line read); no other tool, path or search. Model reported in the transcript: claude-haiku-5-5.",
+ "dispatch_prompt_digest": "d7ccb30d3d82b702bf5c35ad7e14ad840dbe7932b6bccf9484c9f31ebd4b1f7d",
+ "raw_reply": "{\"item\": \"S441-016\",\n \"clauses\": {\n  \"count_objects_to_a_total\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F16\", \"template\": \"Count the {names}.\", \"reasoning\": \"F16 asks the learner to count a noun from the fixed noun list, which is the counting-to-a-total task. The countable set is the pictorial display of F19, which is the only family that shows items to count.\"},\n  \"range_up_to_100\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F14\", \"template\": \"(Large group of {a} {names})\", \"reasoning\": \"F14 prints the answer value as the count, and the observed printed_runs run from 21 up to 100, so the family presents numbers across the 1 to 100 range. Its noun slot can print the singular form, which is a fault recorded in failing_families, but the clause is still addressed by its numbers.\"},\n  \"count_forward_from_a_given_number\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F12\", \"template\": \"What number comes next when counting: {seq}, ___?\", \"reasoning\": \"F12 gives a sequence of four numbers built from the forward direction and skip_by 1, then asks for the next number when counting, which is counting up from a given number.\"},\n  \"count_backward_from_a_given_number\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F11\", \"template\": \"What number comes next when counting backward: {seq}, ___?\", \"reasoning\": \"F11 is chosen by the backward direction and asks for the next number when counting backward from a given sequence, which is counting down from a given number.\"},\n  \"identify_a_number_relative_to_another\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F10\", \"template\": \"{stem}: {seq}, ___\", \"reasoning\": \"F10 asks the learner to identify the missing next number of a sequence. Its stem prints What comes next under the missing number gate, and its sequence comes from F07 or F09.\"},\n  \"identify_one_more_than_a_number\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F12\", \"template\": \"What number comes next when counting: {seq}, ___?\", \"reasoning\": \"With the forward direction and skip_by 1, the keyed answer of F12 is one more than the last printed number, so the learner identifies a number that is 1 more than a given number.\"},\n  \"identify_one_less_than_a_number\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F11\", \"template\": \"What number comes next when counting backward: {seq}, ___?\", \"reasoning\": \"With the backward direction and skip_by 1, the keyed answer of F11 is one less than the last printed number, so the learner identifies a number that is 1 less than a given number.\"}\n },\n \"failing_families\": [\"F03\", \"F05\", \"F06\", \"F08\", \"F14\", \"F15\", \"F17\"],\n \"failing_templates\": [\n  \"Find the rule by comparing neighbours: {bigger} − {smaller} = {diff}.\",\n  \"This {seq_lbl} shows {cnt_lbl} {skip}s ({action} {skip} each time).\",\n  \"{action} {skip} {prep} {last}\",\n  \"{step}: {last} {op}{skip} = {answer}.\",\n  \"(Large group of {a} {names})\",\n  \"(Large group of {a} {pluralize})\",\n  \"How many {names} are there in all?\"\n ],\n \"overall\": \"FAIL\",\n \"reasoning\": \"F03 prints a subtraction equation with the minus sign and the word comparing, and F03 bigger and smaller come from the first two terms. Subtraction is in NOT_YET_KNOWN and is an operation this lc does not teach, so F03 fails Rule 1. F05 prints add or subtract each time with a skip, F06 prints Add or Subtract with from or to, and F08 prints a plus or minus operator with an equals sign and an answer. Addition and subtraction are in NOT_YET_KNOWN (addition, subtraction), so F05, F06 and F08 imply operations beyond the lc's gates, and F08 is the hint that carries the operation equation. F14 and F15 draw the noun from _EMOJI_NAMES as a member or its plural, and the domain lets the singular print with a count of 21 to 100, which reads as the count followed by a singular noun. F17 can print a singular noun after How many, which is an incorrect statement of the question. F16 with Count the and a singular noun is acceptable English and is not failed. F01 prints jumping by, which is the designed alternative to the gated counting by word, and is not failed on the packet. F21 prints What number is marked with an empty suffix; whether that reads as complete depends on a number line visual the packet does not show, so it is not failed here on the packet alone. The other families (F02, F04, F07, F09, F10, F13, F18, F19, F20) use only counting vocabulary or fixed lists and are not failed.\"}",
+ "raw_reply_digest": "4c7dac71dc38e4cf8553a83f8dad84063d7e41f85ef6481568c8f92f22e08ffb",
+ "packet_digest": "b5c33ec966fd8228a1e64b786338c3b5cefc09856c52940a1453fb83bc786358",
+ "family_keys": {
+  "F01": {
+   "source": "backend/app/practice_gen/dna/base.py [gate counting by]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F02": {
+   "source": "backend/app/practice_gen/dna/base.py [gate sequence]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F03": {
+   "source": "backend/app/practice_gen/dna/na/counting.py",
+   "first_site": "backend/app/practice_gen/dna/na/counting.py:312",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F04": {
+   "source": "backend/app/practice_gen/dna/na/counting.py",
+   "first_site": "backend/app/practice_gen/dna/na/counting.py:310",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F05": {
+   "source": "backend/app/practice_gen/dna/na/counting.py",
+   "first_site": "backend/app/practice_gen/dna/na/counting.py:316",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F06": {
+   "source": "backend/app/practice_gen/dna/na/counting.py",
+   "first_site": "backend/app/practice_gen/dna/na/counting.py:305",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F07": {
+   "source": "backend/app/practice_gen/dna/na/counting.py",
+   "first_site": "backend/app/practice_gen/dna/na/counting.py:293",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F08": {
+   "source": "backend/app/practice_gen/dna/na/counting.py",
+   "first_site": "backend/app/practice_gen/dna/na/counting.py:318",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F09": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_cloze.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_cloze.py:185",
+   "renderer": "",
+   "path": [
+    2,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F10": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_cloze.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_cloze.py:182",
+   "renderer": "",
+   "path": [
+    2,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F11": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_mcq.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_mcq.py:200",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F12": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_mcq.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_mcq.py:202",
+   "renderer": "",
+   "path": [
+    9,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F13": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_mcq.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_mcq.py:196",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F14": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_emoji_pictorial.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_emoji_pictorial.py:382",
+   "renderer": "",
+   "path": [
+    12,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F15": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_emoji_pictorial.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_emoji_pictorial.py:174",
+   "renderer": "",
+   "path": [
+    12,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F16": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_emoji_pictorial.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_emoji_pictorial.py:384",
+   "renderer": "",
+   "path": [
+    12,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F17": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_emoji_pictorial.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_emoji_pictorial.py:385",
+   "renderer": "",
+   "path": [
+    12,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F18": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_emoji_pictorial.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_emoji_pictorial.py:464",
+   "renderer": "",
+   "path": [
+    12,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F19": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_emoji_pictorial.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_emoji_pictorial.py:174",
+   "renderer": "",
+   "path": [
+    25,
+    null
+   ],
+   "first_render_repeating": {
+    "p0,p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11": [
+     25,
+     null
+    ]
+   }
+  },
+  "F20": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_number_line.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_number_line.py:834",
+   "renderer": "",
+   "path": [
+    4,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F21": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_number_line.py [gate number line]",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_number_line.py:347",
+   "renderer": "",
+   "path": [
+    4,
+    null
+   ],
+   "first_render_repeating": {}
+  }
+ },
+ "packet": {
+  "item": "S441-016",
+  "competency": {
+   "text": "Count up to 100 (includes counting up or down from a given number and identifying a number that is 1 more or 1 less than a given number).",
+   "grade": 1,
+   "quarter": 1
+  },
+  "clauses": [
+   {
+    "id": "count_objects_to_a_total",
+    "kind": "task",
+    "clause": "Count"
+   },
+   {
+    "id": "range_up_to_100",
+    "kind": "range",
+    "clause": "up to 100"
+   },
+   {
+    "id": "count_forward_from_a_given_number",
+    "kind": "task",
+    "clause": "counting up"
+   },
+   {
+    "id": "count_backward_from_a_given_number",
+    "kind": "task",
+    "clause": "down from a given number"
+   },
+   {
+    "id": "identify_a_number_relative_to_another",
+    "kind": "task",
+    "clause": "identifying a number"
+   },
+   {
+    "id": "identify_one_more_than_a_number",
+    "kind": "task",
+    "clause": "1 more"
+   },
+   {
+    "id": "identify_one_less_than_a_number",
+    "kind": "task",
+    "clause": "1 less"
+   }
+  ],
+  "vocabulary": {
+   "student_vocab": [
+    "1 more",
+    "1 less"
+   ],
+   "curriculum_vocab": [
+    "up to 100",
+    "counting up",
+    "counting down",
+    "given number"
+   ],
+   "introduces_vocab": [
+    "up to 100",
+    "counting up",
+    "counting down",
+    "1 more",
+    "1 less",
+    "given number"
+   ],
+   "cumulative_vocab": [
+    "bigger",
+    "count",
+    "equal",
+    "group",
+    "how many",
+    "left",
+    "less",
+    "more",
+    "number",
+    "same",
+    "smaller",
+    "total"
+   ],
+   "NOT_YET_KNOWN": [
+    "10th",
+    "1st",
+    "2nd",
+    "3rd",
+    "4th",
+    "5th",
+    "6th",
+    "7th",
+    "8th",
+    "9th",
+    "L",
+    "a.m.",
+    "addition",
+    "analog clock",
+    "area",
+    "axis",
+    "balance scale",
+    "bar graph",
+    "bill",
+    "calendar",
+    "capacity",
+    "centavo",
+    "centimeter",
+    "certain",
+    "circle",
+    "clockwise",
+    "cm",
+    "coin",
+    "compare",
+    "corner",
+    "counter-clockwise",
+    "data",
+    "decreasing pattern",
+    "denominator",
+    "difference",
+    "digit",
+    "division",
+    "elapsed time",
+    "equal groups",
+    "equally likely",
+    "estimate",
+    "even",
+    "expanded form",
+    "fraction",
+    "g",
+    "gram",
+    "half",
+    "half hour",
+    "half turn",
+    "hour",
+    "hundreds",
+    "impossible",
+    "improper fraction",
+    "increasing pattern",
+    "intersecting",
+    "kg",
+    "kilogram",
+    "length",
+    "less likely",
+    "line",
+    "line of symmetry",
+    "line segment",
+    "liter",
+    "m",
+    "mL",
+    "mass",
+    "measure",
+    "meter",
+    "milliliter",
+    "minute",
+    "missing number",
+    "missing term",
+    "more likely",
+    "multiplication",
+    "nearest hundred",
+    "nearest ten",
+    "nearest thousand",
+    "number line",
+    "numeral",
+    "numerator",
+    "odd",
+    "ones",
+    "order of operations",
+    "outcome",
+    "p.m.",
+    "parallel",
+    "pattern",
+    "perimeter",
+    "perpendicular",
+    "peso",
+    "pictograph",
+    "place value",
+    "point",
+    "product",
+    "quarter",
+    "quarter hour",
+    "quarter turn",
+    "quotient",
+    "ray",
+    "rectangle",
+    "regrouping",
+    "remainder",
+    "repeating pattern",
+    "round",
+    "ruler",
+    "scale",
+    "side",
+    "similar fractions",
+    "skip counting",
+    "slide",
+    "solid figure",
+    "sq. cm",
+    "square",
+    "square centimeter",
+    "subtraction",
+    "sum",
+    "symmetry",
+    "table",
+    "ten thousand",
+    "ten-thousands place",
+    "tens",
+    "thousand",
+    "translation",
+    "triangle",
+    "whole",
+    "₱"
+   ],
+   "sentence_max_words": 15,
+   "number_format": "no commas, no thousands separator"
+  },
+  "declared_variants": [
+   [
+    "context",
+    "pure"
+   ],
+   [
+    "context",
+    "word_problem"
+   ],
+   [
+    "direction",
+    "backward"
+   ],
+   [
+    "direction",
+    "forward"
+   ]
+  ],
+  "declared_bounds": [
+   {
+    "range": [
+     10,
+     100
+    ],
+    "skip_pool": [
+     1
+    ],
+    "skip_interval": "by_1",
+    "direction": [
+     "forward",
+     "backward"
+    ]
+   }
+  ],
+  "families": [
+   {
+    "id": "F01",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F05"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='counting by')",
+        "requires_vocab": "counting by",
+        "prints": "jumping by",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F02",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F04",
+     "F05"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='sequence')",
+        "requires_vocab": "sequence",
+        "prints": "list of numbers",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F03",
+    "template": "Find the rule by comparing neighbours: {bigger} − {smaller} = {diff}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "bigger",
+       "smaller"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the first two terms",
+        "members": [
+         13,
+         14,
+         22,
+         23,
+         25,
+         26,
+         27,
+         28,
+         30,
+         31,
+         33,
+         34,
+         35,
+         40,
+         41,
+         42,
+         43,
+         44,
+         46,
+         47,
+         48,
+         49,
+         50,
+         54,
+         55,
+         56,
+         58,
+         59,
+         60,
+         61,
+         65,
+         66,
+         67,
+         68,
+         69,
+         70,
+         78,
+         79,
+         8,
+         80,
+         81,
+         83,
+         84,
+         85,
+         87,
+         88,
+         89,
+         9,
+         90,
+         91,
+         95,
+         96,
+         97,
+         98
+        ],
+        "derived_from_values": [
+         "sequence"
+        ]
+       }
+      ],
+      "distinct_in_every_render": true
+     },
+     {
+      "slots": [
+       "diff"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "skip_by",
+        "printed_runs": "1",
+        "derived_from_values": [
+         "skip_by"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F04",
+    "template": "Look at the {seq_lbl}: {seq}, ___",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "seq_lbl"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F02"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "seq"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F07",
+         "F09",
+         "F13"
+        ],
+        "derived_from_values": [
+         "direction",
+         "sequence",
+         "skip_by"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F05",
+    "template": "This {seq_lbl} shows {cnt_lbl} {skip}s ({action} {skip} each time).",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "seq_lbl"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F02"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "cnt_lbl"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F01"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "skip"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "skip_by",
+        "printed_runs": "1",
+        "derived_from_values": [
+         "skip_by"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "action"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "direction forward/backward",
+        "members": [
+         "add",
+         "subtract"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F06",
+    "template": "{action} {skip} {prep} {last}",
+    "appears_in": [],
+    "nested_in": [
+     "F08"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "action"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "direction forward/backward",
+        "members": [
+         "Add",
+         "Subtract"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "skip"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "skip_by",
+        "printed_runs": "1",
+        "derived_from_values": [
+         "skip_by"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "prep"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "direction",
+        "members": [
+         "from",
+         "to"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "last"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "start",
+        "printed_runs": "8 to 11, 13 to 18, 20 to 54, 56 to 63, 65 to 88, 90 to 99",
+        "derived_from_values": [
+         "start"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F07",
+    "template": "{p0}, {p1}, {p2}, {p3}",
+    "appears_in": [],
+    "nested_in": [
+     "F04",
+     "F10",
+     "F11",
+     "F12"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "p0",
+       "p1",
+       "p2",
+       "p3"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "values['sequence']",
+        "members": [
+         10,
+         11,
+         13,
+         14,
+         15,
+         16,
+         20,
+         21,
+         22,
+         23,
+         25,
+         26,
+         27,
+         28,
+         29,
+         30,
+         31,
+         32,
+         33,
+         34,
+         35,
+         36,
+         37,
+         38,
+         39,
+         40,
+         41,
+         42,
+         43,
+         44,
+         45,
+         46,
+         47,
+         48,
+         49,
+         50,
+         51,
+         52,
+         53,
+         54,
+         55,
+         56,
+         57,
+         58,
+         59,
+         60,
+         61,
+         63,
+         64,
+         65,
+         66,
+         67,
+         68,
+         69,
+         70,
+         76,
+         77,
+         78,
+         79,
+         8,
+         80,
+         81,
+         82,
+         83,
+         84,
+         85,
+         86,
+         87,
+         88,
+         89,
+         9,
+         90,
+         91,
+         92,
+         93,
+         94,
+         95,
+         96,
+         97,
+         98
+        ]
+       }
+      ],
+      "distinct_in_every_render": true
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F08",
+    "template": "{step}: {last} {op}{skip} = {answer}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "step"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F06"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "last"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "start",
+        "printed_runs": "8 to 11, 13 to 18, 20 to 54, 56 to 63, 65 to 88, 90 to 99",
+        "derived_from_values": [
+         "start"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "op"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "direction",
+        "members": [
+         "+ ",
+         "- "
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "skip"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "skip_by",
+        "printed_runs": "1",
+        "derived_from_values": [
+         "skip_by"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "answer",
+        "printed_runs": "8 to 9, 11 to 17, 19 to 22, 24 to 35, 37 to 53, 55 to 62, 64 to 100",
+        "derived_from_values": [
+         "answer"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F09",
+    "template": "{p0}, {p1}, {p2}, {p3}",
+    "appears_in": [],
+    "nested_in": [
+     "F04",
+     "F10"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "p0",
+       "p1",
+       "p2",
+       "p3"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "values['sequence']",
+        "members": [
+         31,
+         32,
+         33,
+         34,
+         35,
+         36,
+         37,
+         38,
+         39,
+         40,
+         41,
+         48,
+         49,
+         50,
+         51,
+         52,
+         53,
+         54,
+         55,
+         56,
+         57,
+         58,
+         59,
+         60,
+         61,
+         67,
+         68,
+         69,
+         70,
+         81,
+         82,
+         83,
+         84,
+         89,
+         90,
+         91,
+         92
+        ]
+       }
+      ],
+      "distinct_in_every_render": true
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F10",
+    "template": "{stem}: {seq}, ___",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "stem"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "vocab gate 'missing number'",
+        "requires_vocab": "missing number",
+        "prints": "What comes next",
+        "words_left_out": 1
+       }
+      ]
+     },
+     {
+      "slots": [
+       "seq"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F07",
+         "F09"
+        ],
+        "derived_from_values": [
+         "direction",
+         "sequence",
+         "skip_by"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F11",
+    "template": "What number comes next when counting backward: {seq}, ___?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "seq"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F07",
+         "F13"
+        ],
+        "derived_from_values": [
+         "direction",
+         "sequence",
+         "skip_by"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "direction"
+    ]
+   },
+   {
+    "id": "F12",
+    "template": "What number comes next when counting: {seq}, ___?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "seq"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F07",
+         "F13"
+        ],
+        "derived_from_values": [
+         "direction",
+         "sequence",
+         "skip_by"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F13",
+    "template": "{p0}, {p1}, {p2}, {p3}",
+    "appears_in": [],
+    "nested_in": [
+     "F04",
+     "F11",
+     "F12"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "p0",
+       "p1",
+       "p2",
+       "p3"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "values['sequence']",
+        "members": [
+         13,
+         14,
+         15,
+         16,
+         20,
+         21,
+         22,
+         23,
+         27,
+         28,
+         29,
+         30,
+         48,
+         49,
+         50,
+         51,
+         52,
+         56,
+         57,
+         58,
+         59,
+         60,
+         63,
+         64,
+         65,
+         66,
+         67,
+         68,
+         69,
+         70,
+         76,
+         77,
+         78,
+         79,
+         81,
+         82,
+         83,
+         84,
+         85,
+         87,
+         88,
+         89,
+         90,
+         93,
+         94,
+         95,
+         96
+        ]
+       }
+      ],
+      "distinct_in_every_render": true
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F14",
+    "template": "(Large group of {a} {names})",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "answer",
+        "printed_runs": "21, 25, 32, 37 to 38, 42, 44, 46 to 49, 51 to 53, 55, 58 to 60, 64, 70 to 72, 75 to 76, 78 to 79, 84 to 85, 87 to 89, 94, 100",
+        "derived_from_values": [
+         "answer"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "names"
+      ],
+      "domains": [
+       {
+        "domain": "a noun from a fixed list, or its plural",
+        "members_in_list": "_EMOJI_NAMES"
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F15",
+    "template": "(Large group of {a} {pluralize})",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "answer",
+        "printed_runs": "21, 25, 32, 37 to 38, 42, 44, 46 to 49, 51 to 53, 55, 58 to 60, 64, 70 to 72, 75 to 76, 78 to 79, 84 to 85, 87 to 89, 94, 100",
+        "derived_from_values": [
+         "answer"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "pluralize"
+      ],
+      "domains": [
+       {
+        "domain": "a noun from a fixed list, or its plural",
+        "members_in_list": "_EMOJI_NAMES"
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F16",
+    "template": "Count the {names}.",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "names"
+      ],
+      "domains": [
+       {
+        "domain": "a noun from a fixed list, or its plural",
+        "members_in_list": "_EMOJI_NAMES"
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F17",
+    "template": "How many {names} are there in all?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "names"
+      ],
+      "domains": [
+       {
+        "domain": "a noun from a fixed list, or its plural",
+        "members_in_list": "_EMOJI_NAMES"
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F18",
+    "template": "{key}",
+    "appears_in": [
+     "correct_answer"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "key"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "_OPTION_KEYS"
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F19",
+    "template": "{p0}{p1}{p2}{p3}{p4}{p5}{p6}{p7}{p8}{p9}{p10}{p11}",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "p0",
+       "p1",
+       "p2",
+       "p3",
+       "p4",
+       "p5",
+       "p6",
+       "p7",
+       "p8",
+       "p9",
+       "p10",
+       "p11"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "fmt_emoji_pictorial._EMOJI_SETS and the interest themes' emojis",
+        "members": [
+         "⚔️",
+         "⚽",
+         "✍️",
+         "✏️",
+         "✝️",
+         "⭐",
+         "🌮",
+         "🌳",
+         "🌷",
+         "🌸",
+         "🌺",
+         "🌻",
+         "🌼",
+         "🍀",
+         "🍇",
+         "🍊",
+         "🍋",
+         "🍌",
+         "🍎",
+         "🍑",
+         "🍒",
+         "🍓",
+         "🍕",
+         "🍩",
+         "🍪",
+         "🍫",
+         "🍬",
+         "🎁",
+         "🎈",
+         "🎤",
+         "🎨",
+         "🎬",
+         "🎮",
+         "🎵",
+         "🎸",
+         "🏀",
+         "🏐",
+         "🐕",
+         "🐟",
+         "🐢",
+         "🐥",
+         "🐰",
+         "🐱",
+         "🐶",
+         "🐸",
+         "🐻",
+         "💃",
+         "💜",
+         "💰",
+         "📖",
+         "📚",
+         "📜",
+         "📱",
+         "📷",
+         "🔬",
+         "🗳️",
+         "😂",
+         "🚴",
+         "🥤",
+         "🧁",
+         "🧩",
+         "🧱",
+         "🧶",
+         "🧸"
+        ]
+       }
+      ],
+      "distinct_in_every_render": false
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F20",
+    "template": "{key}",
+    "appears_in": [
+     "correct_answer"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "key"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "_OPTION_KEYS"
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F21",
+    "template": "What number is marked{suffix}?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "suffix"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "vocab gate 'number line'",
+        "requires_vocab": "number line",
+        "prints": "",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   }
+  ],
+  "lists": {
+   "_EMOJI_NAMES": [
+    "apple",
+    "orange",
+    "lemon",
+    "grape",
+    "strawberry",
+    "banana",
+    "peach",
+    "cherry",
+    "puppy",
+    "kitten",
+    "bunny",
+    "bear",
+    "frog",
+    "chick",
+    "turtle",
+    "fish",
+    "flower",
+    "sunflower",
+    "hibiscus",
+    "tulip",
+    "daisy",
+    "clover",
+    "tree",
+    "star",
+    "book",
+    "pencil",
+    "balloon",
+    "gift",
+    "ball",
+    "teddy bear",
+    "paint",
+    "note",
+    "cookie",
+    "donut",
+    "cupcake",
+    "candy",
+    "chocolate",
+    "drink",
+    "pizza",
+    "taco"
+   ],
+   "_OPTION_KEYS": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ]
+  },
+  "banks": {},
+  "value_derivations": [],
+  "reason_kinds": {}
+ }
+}

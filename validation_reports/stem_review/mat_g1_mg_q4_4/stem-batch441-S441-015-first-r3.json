@@ -1,0 +1,3057 @@
+{
+ "schema_version": 2,
+ "hash_version": 8,
+ "node_id": "mat_g1_mg_q4_4",
+ "record_id": "stem-batch441-S441-015-first-r3",
+ "role": "first",
+ "confirms": null,
+ "item_id": "S441-015",
+ "lc_hash": "f6226df41f759a4dfc42813b719606fbabd285b1cec4394bc4655b9c545f5f64",
+ "judged_by": "blind-stem-judge-claude-haiku-batch441-S441-015-first-r3",
+ "dispatch_id": "stem-batch441-S441-015-first-r3",
+ "filed_at": "2026-10-15T16:58:10Z",
+ "delivery": "Claude Code Agent tool, model=haiku, subagent_type=general-purpose; the judge was told to read only local_only/scratch/h4c/prompts/S441-015.prompt.txt (tests/stem_file.py prompt output, item S441-015; no lc id, no key or packets file in that directory) and reply with what it asks; dispatched with CLAUDE.md loaded (ruling 29). Blindness is a prompt contract, audited from the subagent transcript.",
+ "tool_uses_by_judge": "From the subagent transcript: 6 tool use(s), all Read of its own prompt file (2575 lines, every line read); no other tool, path or search. Model reported in the transcript: claude-haiku-5-5.",
+ "dispatch_prompt_digest": "cf97c77db4de1df8717a58d1963d4838b62dc9bba16434dd2a9dad414ddc22af",
+ "raw_reply": "{\"item\": \"S441-015\", \"clauses\": {\"solve_problems\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F36\", \"template\": \"{capitalize} starts at {start_h}:00 and lasts for {dur} {v}. What time does it end?\", \"reasoning\": \"F36 (question_text) poses a multi-step time problem: a start hour and a duration, with the end time asked. Its slots draw from bounded lists and ranges.\"}, \"time\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F36\", \"template\": \"{capitalize} starts at {start_h}:00 and lasts for {dur} {v}. What time does it end?\", \"reasoning\": \"F36 asks for a clock time as the answer, and its start is a clock hour from 7 to 10.\"}, \"hour\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F36\", \"template\": \"{capitalize} starts at {start_h}:00 and lasts for {dur} {v}. What time does it end?\", \"reasoning\": \"F36 gives a duration of 1 to 2 with v drawn as hour or hours by the count, so hour-length problems are produced.\"}, \"half_hour\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F34\", \"template\": \"{activity} starts at {start_h}:00 and lasts half an hour (30 minutes). What time does it end?\", \"reasoning\": \"F34 is a half-hour problem asking for the end time. Its parenthetical contains the word minutes, which is a separate Rule 1 fault recorded under F34, not a missing clause.\"}, \"quarter_hour\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F33\", \"template\": \"{activity} starts at {start_h}:00 and lasts a quarter of an hour (15 minutes). What time does it end?\", \"reasoning\": \"F33 is a quarter-hour problem asking for the end time. Its parenthetical contains the word minutes, which is a separate Rule 1 fault recorded under F33, not a missing clause.\"}, \"days_in_a_week\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F11\", \"template\": \"A {duration_days}-day {activity} starts on {start_day}. On what day of the week does it end?\", \"reasoning\": \"F11 asks for a day of the week after a count of days. The start-day draw has only Monday observed in the packet, which is recorded as observed, not as a fault.\"}, \"months_in_a_year\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F08\", \"template\": \"This month is {m_name}. What month will it be in {add_m} {v}?\", \"reasoning\": \"F08 asks for a month reached by a count of 1 to 3 months from a month of the year, using only MONTHS_OF_YEAR names.\"}}, \"failing_families\": [\"F05\", \"F06\", \"F07\", \"F09\", \"F12\", \"F16\", \"F17\", \"F19\", \"F20\", \"F29\", \"F30\", \"F32\", \"F33\", \"F34\", \"F39\", \"F50\", \"F51\", \"F54\"], \"failing_templates\": [\"Look at the {v} {year} calendar. What day of the week is {v} {target_date}?\", \"The school program begins in {m1_name} and an exhibit happens in {m2_name}. How many months later is the exhibit?\", \"The {elapsed_label} is the number of days or weeks that have passed.\", \"Use the order of the {months_label}: January through December.\", \"Count on from the start time to the end time: that is {answer} {count_noun}.\", \"Find the row for {target} in the {timetable_kind} {v}.\", \"From {start} to {end} is {n} {count_noun}.\", \"Look at the bus timetable. According to the timetable, how many minutes is the travel time for Bus {target_bus}?\", \"Look at the class schedule. How many minutes long is the English class?\", \"The {activity} began at {start_h}:00 and finished at {start_h}:30. How many minutes did it last?\", \"The {activity} started at {start_str} and ended at {end_str}{trailing} How many hours did it last?\", \"day {i} is {d}\", \"{activity} starts at {start_h}:00 and lasts a quarter of an hour (15 minutes). What time does it end?\", \"{activity} starts at {start_h}:00 and lasts half an hour (30 minutes). What time does it end?\", \"{h}:{m:02d}{v}\", \"{member}\", \"Look at the {month_name} {year} {cal_word}. What day of the week is {month_name} {date}?\", \"{hours}:{minutes:02d}\"], \"overall\": \"FAIL\", \"reasoning\": \"Rule 1 fails on several counts. (a) F05 and F51 pair a month from MONTHS_OF_YEAR or _MONTH_NAMES with a day from 1 to 31 independently, so a day past the end of that month (for example February 31 in F51's list) can print. (b) F06 draws two distinct months with no order, so the exhibit can come before the program while the question asks how many months later. (c) F07 nests F02's 'how much time has passed' into 'The {elapsed_label} is', which prints an ungrammatical sentence. (d) F09 places F03's 'the 12 months' after its own 'the', giving a doubled article. (e) minute and minutes are NOT_YET_KNOWN and are printed by F12 (count_noun), F19, F20, F29, F33 and F34. (f) F39 draws minutes from 0 to 59 and prints a.m. and p.m., both NOT_YET_KNOWN, and F54 draws hours from 0 to 23 and minutes from 0 to 59, outside the 12-hour clock and the hour, half-hour and quarter-hour scope. (g) F50 has 'member' choices from calendar names and day names, which F21, F31 and F41 print as start times. (h) F16 draws the target and the timetable kind independently, so an English row can print under a bus timetable. (i) F17 gives a fixed duration with an unlinked start time, so the stated count can be false. (j) F32 draws each day name independently of the day count and the start day, so consecutive days are not guaranteed, and F13 prints F32 under 'Count on:'. (k) F30's trailing member can be empty with the end time '1:00' unpunctuated. The clause templates above were each checked against the domains and are all producible; the failures are in the families they print.\"}",
+ "raw_reply_digest": "b22b0226204e6652483a24dd8a6f39f4451525c64c31ae5ad2e01b9c08d7591b",
+ "packet_digest": "32471deec08c2b566aec07c84bcfbda31ec9233c814d3ed0a7e19c72341984a3",
+ "family_keys": {
+  "F01": {
+   "source": "backend/app/practice_gen/dna/base.py [gate calendar]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F02": {
+   "source": "backend/app/practice_gen/dna/base.py [gate elapsed]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F03": {
+   "source": "backend/app/practice_gen/dna/base.py [gate months of the year]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    7,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F04": {
+   "source": "backend/app/practice_gen/dna/mg/calendar.py",
+   "first_site": "backend/app/practice_gen/dna/mg/calendar.py:448",
+   "renderer": "",
+   "path": [
+    7,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F05": {
+   "source": "backend/app/practice_gen/dna/mg/calendar.py",
+   "first_site": "backend/app/practice_gen/dna/mg/calendar.py:227",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F06": {
+   "source": "backend/app/practice_gen/dna/mg/calendar.py",
+   "first_site": "backend/app/practice_gen/dna/mg/calendar.py:199",
+   "renderer": "",
+   "path": [
+    7,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F07": {
+   "source": "backend/app/practice_gen/dna/mg/calendar.py",
+   "first_site": "backend/app/practice_gen/dna/mg/calendar.py:452",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F08": {
+   "source": "backend/app/practice_gen/dna/mg/calendar.py",
+   "first_site": "backend/app/practice_gen/dna/mg/calendar.py:190",
+   "renderer": "",
+   "path": [
+    13,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F09": {
+   "source": "backend/app/practice_gen/dna/mg/calendar.py",
+   "first_site": "backend/app/practice_gen/dna/mg/calendar.py:447",
+   "renderer": "",
+   "path": [
+    7,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F10": {
+   "source": "backend/app/practice_gen/dna/mg/calendar.py",
+   "first_site": "backend/app/practice_gen/dna/mg/calendar.py:451",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F11": {
+   "source": "backend/app/practice_gen/dna/mg/time_reading.py",
+   "first_site": "backend/app/practice_gen/dna/mg/time_reading.py:208",
+   "renderer": "",
+   "path": [
+    29,
+    "cloze"
+   ],
+   "first_render_repeating": {}
+  },
+  "F12": {
+   "source": "backend/app/practice_gen/dna/mg/time_reading.py",
+   "first_site": "backend/app/practice_gen/dna/mg/time_reading.py:629",
+   "renderer": "",
+   "path": [
+    3,
+    "timetable_read"
+   ],
+   "first_render_repeating": {}
+  },
+  "F13": {
+   "source": "backend/app/practice_gen/dna/mg/time_reading.py",
+   "first_site": "backend/app/practice_gen/dna/mg/time_reading.py:649",
+   "renderer": "",
+   "path": [
+    29,
+    "cloze"
+   ],
+   "first_render_repeating": {}
+  },
+  "F14": {
+   "source": "backend/app/practice_gen/dna/mg/time_reading.py",
+   "first_site": "backend/app/practice_gen/dna/mg/time_reading.py:658",
+   "renderer": "",
+   "path": [
+    3,
+    "cloze"
+   ],
+   "first_render_repeating": {}
+  },
+  "F15": {
+   "source": "backend/app/practice_gen/dna/mg/time_reading.py",
+   "first_site": "backend/app/practice_gen/dna/mg/time_reading.py:650",
+   "renderer": "",
+   "path": [
+    29,
+    "cloze"
+   ],
+   "first_render_repeating": {}
+  },
+  "F16": {
+   "source": "backend/app/practice_gen/dna/mg/time_reading.py",
+   "first_site": "backend/app/practice_gen/dna/mg/time_reading.py:627",
+   "renderer": "",
+   "path": [
+    3,
+    "timetable_read"
+   ],
+   "first_render_repeating": {}
+  },
+  "F17": {
+   "source": "backend/app/practice_gen/dna/mg/time_reading.py",
+   "first_site": "backend/app/practice_gen/dna/mg/time_reading.py:659",
+   "renderer": "",
+   "path": [
+    3,
+    "cloze"
+   ],
+   "first_render_repeating": {}
+  },
+  "F18": {
+   "source": "backend/app/practice_gen/dna/mg/time_reading.py",
+   "first_site": "backend/app/practice_gen/dna/mg/time_reading.py:628",
+   "renderer": "",
+   "path": [
+    3,
+    "timetable_read"
+   ],
+   "first_render_repeating": {}
+  },
+  "F19": {
+   "source": "backend/app/practice_gen/dna/mg/time_reading.py",
+   "first_site": "backend/app/practice_gen/dna/mg/time_reading.py:270",
+   "renderer": "",
+   "path": [
+    3,
+    "timetable_read"
+   ],
+   "first_render_repeating": {}
+  },
+  "F20": {
+   "source": "backend/app/practice_gen/dna/mg/time_reading.py",
+   "first_site": "backend/app/practice_gen/dna/mg/time_reading.py:300",
+   "renderer": "",
+   "path": [
+    17,
+    "timetable_read"
+   ],
+   "first_render_repeating": {}
+  },
+  "F21": {
+   "source": "backend/app/practice_gen/dna/mg/time_reading.py",
+   "first_site": "backend/app/practice_gen/dna/mg/time_reading.py:663",
+   "renderer": "",
+   "path": [
+    17,
+    "cloze"
+   ],
+   "first_render_repeating": {}
+  },
+  "F22": {
+   "source": "backend/app/practice_gen/dna/mg/time_reading.py",
+   "first_site": "backend/app/practice_gen/dna/mg/time_reading.py:648",
+   "renderer": "",
+   "path": [
+    29,
+    "cloze"
+   ],
+   "first_render_repeating": {}
+  },
+  "F23": {
+   "source": "backend/app/practice_gen/dna/mg/time_reading.py",
+   "first_site": "backend/app/practice_gen/dna/mg/time_reading.py:726",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F24": {
+   "source": "backend/app/practice_gen/dna/mg/time_reading.py",
+   "first_site": "backend/app/practice_gen/dna/mg/time_reading.py:730",
+   "renderer": "",
+   "path": [
+    6,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F25": {
+   "source": "backend/app/practice_gen/dna/mg/time_reading.py",
+   "first_site": "backend/app/practice_gen/dna/mg/time_reading.py:728",
+   "renderer": "",
+   "path": [
+    3,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F26": {
+   "source": "backend/app/practice_gen/dna/mg/time_reading.py",
+   "first_site": "backend/app/practice_gen/dna/mg/time_reading.py:723",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F27": {
+   "source": "backend/app/practice_gen/dna/mg/time_reading.py",
+   "first_site": "backend/app/practice_gen/dna/mg/time_reading.py:722",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F28": {
+   "source": "backend/app/practice_gen/dna/mg/time_reading.py",
+   "first_site": "backend/app/practice_gen/dna/mg/time_reading.py:739",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F29": {
+   "source": "backend/app/practice_gen/dna/mg/time_reading.py",
+   "first_site": "backend/app/practice_gen/dna/mg/time_reading.py:579",
+   "renderer": "",
+   "path": [
+    3,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F30": {
+   "source": "backend/app/practice_gen/dna/mg/time_reading.py",
+   "first_site": "backend/app/practice_gen/dna/mg/time_reading.py:136",
+   "renderer": "",
+   "path": [
+    3,
+    "cloze"
+   ],
+   "first_render_repeating": {}
+  },
+  "F31": {
+   "source": "backend/app/practice_gen/dna/mg/time_reading.py",
+   "first_site": "backend/app/practice_gen/dna/mg/time_reading.py:145",
+   "renderer": "",
+   "path": [
+    17,
+    "cloze"
+   ],
+   "first_render_repeating": {}
+  },
+  "F32": {
+   "source": "backend/app/practice_gen/dna/mg/time_reading.py",
+   "first_site": "backend/app/practice_gen/dna/mg/time_reading.py:649",
+   "renderer": "",
+   "path": [
+    29,
+    "cloze"
+   ],
+   "first_render_repeating": {}
+  },
+  "F33": {
+   "source": "backend/app/practice_gen/dna/mg/time_reading.py",
+   "first_site": "backend/app/practice_gen/dna/mg/time_reading.py:546",
+   "renderer": "",
+   "path": [
+    6,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F34": {
+   "source": "backend/app/practice_gen/dna/mg/time_reading.py",
+   "first_site": "backend/app/practice_gen/dna/mg/time_reading.py:530",
+   "renderer": "",
+   "path": [
+    28,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F35": {
+   "source": "backend/app/practice_gen/dna/mg/time_reading.py",
+   "first_site": "backend/app/practice_gen/dna/mg/time_reading.py:564",
+   "renderer": "",
+   "path": [
+    8,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F36": {
+   "source": "backend/app/practice_gen/dna/mg/time_reading.py",
+   "first_site": "backend/app/practice_gen/dna/mg/time_reading.py:514",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F37": {
+   "source": "backend/app/practice_gen/dna/mg/time_reading.py",
+   "first_site": "backend/app/practice_gen/dna/mg/time_reading.py:504",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F38": {
+   "source": "backend/app/practice_gen/dna/mg/time_reading.py",
+   "first_site": "backend/app/practice_gen/dna/mg/time_reading.py:442",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F39": {
+   "source": "backend/app/practice_gen/dna/mg/time_reading.py",
+   "first_site": "backend/app/practice_gen/dna/mg/time_reading.py:106",
+   "renderer": "",
+   "path": [
+    3,
+    "cloze"
+   ],
+   "first_render_repeating": {}
+  },
+  "F40": {
+   "source": "backend/app/practice_gen/dna/mg/time_reading.py",
+   "first_site": "backend/app/practice_gen/dna/mg/time_reading.py:505",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F41": {
+   "source": "backend/app/practice_gen/dna/mg/time_reading.py",
+   "first_site": "backend/app/practice_gen/dna/mg/time_reading.py:664",
+   "renderer": "",
+   "path": [
+    17,
+    "cloze"
+   ],
+   "first_render_repeating": {}
+  },
+  "F42": {
+   "source": "backend/app/practice_gen/dna/mg/time_reading.py",
+   "first_site": "backend/app/practice_gen/dna/mg/time_reading.py:505",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F43": {
+   "source": "backend/app/practice_gen/dna/mg/time_reading.py",
+   "first_site": "backend/app/practice_gen/dna/mg/time_reading.py:534",
+   "renderer": "",
+   "path": [
+    6,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F44": {
+   "source": "backend/app/practice_gen/dna/mg/time_reading.py",
+   "first_site": "backend/app/practice_gen/dna/mg/time_reading.py:576",
+   "renderer": "",
+   "path": [
+    3,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F45": {
+   "source": "backend/app/practice_gen/dna/mg/time_reading.py",
+   "first_site": "backend/app/practice_gen/dna/mg/time_reading.py:537",
+   "renderer": "",
+   "path": [
+    6,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F46": {
+   "source": "backend/app/practice_gen/dna/mg/time_reading.py",
+   "first_site": "backend/app/practice_gen/dna/mg/time_reading.py:505",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F47": {
+   "source": "backend/app/practice_gen/dna/mg/time_reading.py",
+   "first_site": "backend/app/practice_gen/dna/mg/time_reading.py:521",
+   "renderer": "",
+   "path": [
+    28,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F48": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:32",
+   "renderer": "",
+   "path": [
+    13,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F49": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:51",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F50": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:39",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F51": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_calendar.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_calendar.py:214",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F52": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_calendar.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_calendar.py:200",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F53": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_clock.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_clock.py:257",
+   "renderer": "",
+   "path": [
+    4,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F54": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_clock.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_clock.py:203",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  }
+ },
+ "packet": {
+  "item": "S441-015",
+  "competency": {
+   "text": "Solve problems involving time (hour, half hour, quarter hour, days in a week, and months in a year).",
+   "grade": 1,
+   "quarter": 4
+  },
+  "clauses": [
+   {
+    "id": "solve_problems",
+    "kind": "task",
+    "clause": "Solve problems"
+   },
+   {
+    "id": "time",
+    "kind": "object",
+    "clause": "time"
+   },
+   {
+    "id": "hour",
+    "kind": "range",
+    "clause": "hour"
+   },
+   {
+    "id": "half_hour",
+    "kind": "range",
+    "clause": "half hour"
+   },
+   {
+    "id": "quarter_hour",
+    "kind": "range",
+    "clause": "quarter hour"
+   },
+   {
+    "id": "days_in_a_week",
+    "kind": "range",
+    "clause": "days in a week"
+   },
+   {
+    "id": "months_in_a_year",
+    "kind": "range",
+    "clause": "months in a year"
+   }
+  ],
+  "vocabulary": {
+   "student_vocab": [],
+   "curriculum_vocab": [
+    "days in a week",
+    "months in a year"
+   ],
+   "introduces_vocab": [
+    "days in a week",
+    "months in a year"
+   ],
+   "cumulative_vocab": [
+    "1 less",
+    "1 more",
+    "10th",
+    "1st",
+    "2nd",
+    "3rd",
+    "4th",
+    "5th",
+    "6th",
+    "7th",
+    "8th",
+    "9th",
+    "addition",
+    "analog clock",
+    "bigger",
+    "bill",
+    "calendar",
+    "clockwise",
+    "coin",
+    "compare",
+    "corner",
+    "count",
+    "counter-clockwise",
+    "data",
+    "difference",
+    "digit",
+    "equal",
+    "expanded form",
+    "fraction",
+    "group",
+    "half",
+    "half hour",
+    "half turn",
+    "hour",
+    "how many",
+    "left",
+    "length",
+    "less",
+    "measure",
+    "missing number",
+    "more",
+    "number",
+    "number line",
+    "numeral",
+    "ones",
+    "pattern",
+    "peso",
+    "pictograph",
+    "place value",
+    "quarter",
+    "quarter hour",
+    "quarter turn",
+    "rectangle",
+    "repeating pattern",
+    "same",
+    "side",
+    "skip counting",
+    "smaller",
+    "square",
+    "subtraction",
+    "sum",
+    "table",
+    "tens",
+    "total",
+    "triangle",
+    "whole",
+    "₱"
+   ],
+   "NOT_YET_KNOWN": [
+    "L",
+    "a.m.",
+    "area",
+    "axis",
+    "balance scale",
+    "bar graph",
+    "capacity",
+    "centavo",
+    "centimeter",
+    "certain",
+    "circle",
+    "cm",
+    "decreasing pattern",
+    "denominator",
+    "division",
+    "elapsed time",
+    "equal groups",
+    "equally likely",
+    "estimate",
+    "even",
+    "g",
+    "gram",
+    "hundreds",
+    "impossible",
+    "improper fraction",
+    "increasing pattern",
+    "intersecting",
+    "kg",
+    "kilogram",
+    "less likely",
+    "line",
+    "line of symmetry",
+    "line segment",
+    "liter",
+    "m",
+    "mL",
+    "mass",
+    "meter",
+    "milliliter",
+    "minute",
+    "missing term",
+    "more likely",
+    "multiplication",
+    "nearest hundred",
+    "nearest ten",
+    "nearest thousand",
+    "numerator",
+    "odd",
+    "order of operations",
+    "outcome",
+    "p.m.",
+    "parallel",
+    "perimeter",
+    "perpendicular",
+    "point",
+    "product",
+    "quotient",
+    "ray",
+    "regrouping",
+    "remainder",
+    "round",
+    "ruler",
+    "scale",
+    "similar fractions",
+    "slide",
+    "solid figure",
+    "sq. cm",
+    "square centimeter",
+    "symmetry",
+    "ten thousand",
+    "ten-thousands place",
+    "thousand",
+    "translation"
+   ],
+   "sentence_max_words": 15,
+   "number_format": "no commas, no thousands separator"
+  },
+  "declared_variants": [
+   [
+    "calendar_feature",
+    "dates"
+   ],
+   [
+    "calendar_feature",
+    "days"
+   ],
+   [
+    "calendar_feature",
+    "days_order"
+   ],
+   [
+    "calendar_feature",
+    "full_calendar"
+   ],
+   [
+    "calendar_feature",
+    "months"
+   ],
+   [
+    "calendar_feature",
+    "months_order"
+   ],
+   [
+    "calendar_feature",
+    "weeks"
+   ],
+   [
+    "context",
+    "word_problem"
+   ],
+   [
+    "include_ampm",
+    "no"
+   ],
+   [
+    "include_ampm",
+    "yes"
+   ],
+   [
+    "mode",
+    "read"
+   ],
+   [
+    "mode",
+    "set"
+   ],
+   [
+    "precision",
+    "five_minutes"
+   ],
+   [
+    "precision",
+    "half_hour"
+   ],
+   [
+    "precision",
+    "hour"
+   ],
+   [
+    "precision",
+    "one_minute"
+   ],
+   [
+    "precision",
+    "quarter_hour"
+   ],
+   [
+    "task_type",
+    "clock_reading"
+   ],
+   [
+    "task_type",
+    "elapsed_time"
+   ]
+  ],
+  "declared_bounds": [
+   {
+    "context": "word_problem"
+   },
+   {
+    "task_type": "days_and_months"
+   }
+  ],
+  "families": [
+   {
+    "id": "F01",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F10",
+     "F51"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='calendar')",
+        "requires_vocab": "calendar",
+        "prints": "calendar",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F02",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F07"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='elapsed')",
+        "requires_vocab": "elapsed",
+        "prints": "how much time has passed",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F03",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F09"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='months of the year')",
+        "requires_vocab": "months of the year",
+        "prints": "the 12 months",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F04",
+    "template": "Count forward one month at a time from the first month named in the problem.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F05",
+    "template": "Look at the {v} {year} calendar. What day of the week is {v} {target_date}?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "v"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "MONTHS_OF_YEAR"
+       }
+      ]
+     },
+     {
+      "slots": [
+       "year"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "year",
+        "printed_runs": "2025",
+        "derived_from_values": [
+         "year"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "target_date"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "target_date",
+        "printed_runs": "1 to 2, 5, 8 to 9, 11 to 12, 14 to 31",
+        "derived_from_values": [
+         "target_date"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F06",
+    "template": "The school program begins in {m1_name} and an exhibit happens in {m2_name}. How many months later is the exhibit?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "m1_name",
+       "m2_name"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "MONTHS_OF_YEAR"
+       }
+      ],
+      "distinct_in_every_render": true
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F07",
+    "template": "The {elapsed_label} is the number of days or weeks that have passed.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "elapsed_label"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F02"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F08",
+    "template": "This month is {m_name}. What month will it be in {add_m} {v}?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "m_name"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "MONTHS_OF_YEAR"
+       }
+      ]
+     },
+     {
+      "slots": [
+       "add_m"
+      ],
+      "domains": [
+       {
+        "domain": "a number in a range",
+        "basis": "the months-ahead draw bounds",
+        "lo": 1,
+        "hi": 3
+       }
+      ]
+     },
+     {
+      "slots": [
+       "v"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "month or months, by the count",
+        "members": [
+         "month",
+         "months"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F09",
+    "template": "Use the order of the {months_label}: January through December.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "months_label"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F03"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F10",
+    "template": "Use the {cal_label} to find the answer.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "cal_label"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F01",
+         "F52"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F11",
+    "template": "A {duration_days}-day {activity} starts on {start_day}. On what day of the week does it end?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "duration_days"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "duration_days",
+        "printed_runs": "3",
+        "derived_from_values": [
+         "duration_days"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "activity"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the activities bank",
+        "members": [
+         "art workshop",
+         "gardening project",
+         "reading camp",
+         "school sports meet",
+         "science fair"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "start_day"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "start_day",
+        "printed": [
+         "Monday"
+        ],
+        "derived_from_values": [
+         "start_day"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "elapsed_unit"
+    ]
+   },
+   {
+    "id": "F12",
+    "template": "Count on from the start time to the end time: that is {answer} {count_noun}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "answer",
+        "printed_runs": "45, 60",
+        "derived_from_values": [
+         "answer"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "count_noun"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the noun or its singular (dna.base.count_noun)",
+        "members": [
+         "minute",
+         "minutes"
+        ],
+        "derived_from_values": [
+         "answer",
+         "question"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "elapsed_unit"
+    ]
+   },
+   {
+    "id": "F13",
+    "template": "Count on: {join}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "join"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F32"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "elapsed_unit"
+    ]
+   },
+   {
+    "id": "F14",
+    "template": "Count the hours from {start} to {end}, one hour at a time.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "start"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F39"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "end"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "end_time_str",
+        "printed": [
+         "1:00"
+        ],
+        "derived_from_values": [
+         "end_time_str"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "elapsed_ask",
+     "elapsed_unit"
+    ]
+   },
+   {
+    "id": "F15",
+    "template": "Day {n} is {end}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "n"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "duration_days",
+        "printed_runs": "3",
+        "derived_from_values": [
+         "duration_days"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "end"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F48"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "elapsed_unit"
+    ]
+   },
+   {
+    "id": "F16",
+    "template": "Find the row for {target} in the {timetable_kind} {v}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "target"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "timetable_target",
+        "printed": [
+         "Bus 1",
+         "Bus 2",
+         "English"
+        ],
+        "derived_from_values": [
+         "timetable_target"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "timetable_kind"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "timetable_kind",
+        "printed": [
+         "bus",
+         "class"
+        ],
+        "derived_from_values": [
+         "timetable_kind"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "v"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the bus timetable or the class schedule",
+        "members": [
+         "schedule",
+         "timetable"
+        ],
+        "derived_from_values": [
+         "timetable_kind"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "elapsed_unit"
+    ]
+   },
+   {
+    "id": "F17",
+    "template": "From {start} to {end} is {n} {count_noun}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "start"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F39"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "end"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "end_time_str",
+        "printed": [
+         "1:00"
+        ],
+        "derived_from_values": [
+         "end_time_str"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "n"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "duration_hours",
+        "printed_runs": "6",
+        "derived_from_values": [
+         "duration_hours"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "count_noun"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "elapsed_unit",
+        "printed": [
+         "hours"
+        ],
+        "derived_from_values": [
+         "elapsed_unit"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "elapsed_ask",
+     "elapsed_unit"
+    ]
+   },
+   {
+    "id": "F18",
+    "template": "It starts at {start} and ends at {end}",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "start",
+       "end"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F39"
+        ]
+       }
+      ],
+      "distinct_in_every_render": true
+     }
+    ],
+    "template_chosen_by_values": [
+     "elapsed_unit"
+    ]
+   },
+   {
+    "id": "F19",
+    "template": "Look at the bus timetable. According to the timetable, how many minutes is the travel time for Bus {target_bus}?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "target_bus"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the buses on the timetable",
+        "members": [
+         1,
+         2
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "elapsed_unit"
+    ]
+   },
+   {
+    "id": "F20",
+    "template": "Look at the class schedule. How many minutes long is the English class?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": [
+     "elapsed_unit"
+    ]
+   },
+   {
+    "id": "F21",
+    "template": "Start at {start} and count on {n} {count_noun}, one hour at a time.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "start"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F39",
+         "F50"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "n"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "duration_hours",
+        "printed_runs": "5",
+        "derived_from_values": [
+         "duration_hours"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "count_noun"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "elapsed_unit",
+        "printed": [
+         "hours"
+        ],
+        "derived_from_values": [
+         "elapsed_unit"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "elapsed_ask",
+     "elapsed_unit"
+    ]
+   },
+   {
+    "id": "F22",
+    "template": "Start on {start} and call it day 1.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "start"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "start_day",
+        "printed": [
+         "Monday"
+        ],
+        "derived_from_values": [
+         "start_day"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "elapsed_unit"
+    ]
+   },
+   {
+    "id": "F23",
+    "template": "The long hand points to 12, so it is exactly on the hour.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": [
+     "minute"
+    ]
+   },
+   {
+    "id": "F24",
+    "template": "The long hand points to 3 — that is a quarter past the hour.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": [
+     "minute"
+    ]
+   },
+   {
+    "id": "F25",
+    "template": "The long hand points to 6 — that is half past the hour.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": [
+     "minute"
+    ]
+   },
+   {
+    "id": "F26",
+    "template": "The short (hour) hand points near {hour}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "hour"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "hour",
+        "printed_runs": "7 to 11",
+        "derived_from_values": [
+         "hour"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F27",
+    "template": "The short hand shows the hour. The long hand shows how far past the hour it is.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F28",
+    "template": "The time is {time_str}",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "time_str"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "time_str",
+        "printed": [
+         "10:00",
+         "10:15",
+         "10:30",
+         "11:00",
+         "11:15",
+         "11:30",
+         "7:00",
+         "8:00",
+         "8:15",
+         "8:30",
+         "9:00",
+         "9:15",
+         "9:30"
+        ],
+        "derived_from_values": [
+         "time_str"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F29",
+    "template": "The {activity} began at {start_h}:00 and finished at {start_h}:30. How many minutes did it last?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "activity"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the activities bank",
+        "members": [
+         "clean-up time",
+         "recess",
+         "snack time"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "start_h"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "hour",
+        "printed_runs": "8 to 11",
+        "derived_from_values": [
+         "hour"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F30",
+    "template": "The {activity} started at {start_str} and ended at {end_str}{trailing} How many hours did it last?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "activity"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the activities bank",
+        "members": [
+         "community sports festival",
+         "family road trip",
+         "museum tour",
+         "school library schedule",
+         "train journey"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "start_str"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F39"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "end_str"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "end_time_str",
+        "printed": [
+         "1:00"
+        ],
+        "derived_from_values": [
+         "end_time_str"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "trailing"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "a full stop unless the time already ends in one",
+        "members": [
+         "",
+         "."
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "elapsed_unit"
+    ]
+   },
+   {
+    "id": "F31",
+    "template": "The {activity} started at {start_str} and lasted for {duration_hours} hours. What time did it end?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "activity"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the activities bank",
+        "members": [
+         "community sports festival",
+         "family road trip",
+         "museum tour",
+         "school library schedule",
+         "train journey"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "start_str"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F39",
+         "F50"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "duration_hours"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "duration_hours",
+        "printed_runs": "5",
+        "derived_from_values": [
+         "duration_hours"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "elapsed_unit"
+    ]
+   },
+   {
+    "id": "F32",
+    "template": "day {i} is {d}",
+    "appears_in": [],
+    "nested_in": [
+     "F13"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "i"
+      ],
+      "domains": [
+       {
+        "domain": "a number in a range",
+        "basis": "the day count, 1 to duration_days",
+        "lo": 1,
+        "hi": 3
+       }
+      ]
+     },
+     {
+      "slots": [
+       "d"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the days of the week",
+        "members": [
+         "Friday",
+         "Monday",
+         "Saturday",
+         "Sunday",
+         "Thursday",
+         "Tuesday",
+         "Wednesday"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F33",
+    "template": "{activity} starts at {start_h}:00 and lasts a quarter of an hour (15 minutes). What time does it end?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "activity"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the activities bank",
+        "members": [
+         "A short break",
+         "Morning exercise",
+         "Reading time"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "start_h"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "hour",
+        "printed_runs": "8 to 11",
+        "derived_from_values": [
+         "hour"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F34",
+    "template": "{activity} starts at {start_h}:00 and lasts half an hour (30 minutes). What time does it end?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "activity"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the activities bank",
+        "members": [
+         "Lunch",
+         "Play time",
+         "Recess",
+         "Story time"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "start_h"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "hour",
+        "printed_runs": "8 to 11",
+        "derived_from_values": [
+         "hour"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F35",
+    "template": "{actor} started to {activity} at {start_h}:00 and finished at {end_h}:00. How many hours did {actor} spend?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "actor"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the actors bank",
+        "members": [
+         "Ana",
+         "Ben",
+         "Jose",
+         "Leo",
+         "Liza",
+         "Maria",
+         "Mia",
+         "Sam"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "activity"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the activities bank",
+        "members": [
+         "draw pictures",
+         "help in the garden",
+         "play games",
+         "read books"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "start_h"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "hour",
+        "printed_runs": "7 to 9",
+        "derived_from_values": [
+         "hour"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "end_h"
+      ],
+      "domains": [
+       {
+        "domain": "a number computed by the generator",
+        "reason": "arithmetic",
+        "derived_from_values": [
+         "answer",
+         "hour"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F36",
+    "template": "{capitalize} starts at {start_h}:00 and lasts for {dur} {v}. What time does it end?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "capitalize"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the activities bank, capitalized",
+        "members": [
+         "A class",
+         "A workshop",
+         "Art time",
+         "Study time"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "start_h"
+      ],
+      "domains": [
+       {
+        "domain": "a number in a range",
+        "basis": "the start hour's draw bounds",
+        "lo": 7,
+        "hi": 10
+       }
+      ]
+     },
+     {
+      "slots": [
+       "dur"
+      ],
+      "domains": [
+       {
+        "domain": "a number in a range",
+        "basis": "the duration's draw bounds",
+        "lo": 1,
+        "hi": 2
+       }
+      ]
+     },
+     {
+      "slots": [
+       "v"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "hour or hours, by the count",
+        "members": [
+         "hour",
+         "hours"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F37",
+    "template": "{end_h}:00",
+    "appears_in": [
+     "correct_answer",
+     "format_data.mcq_options",
+     "format_data.time_str"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "end_h"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "hour",
+        "printed_runs": "9 to 11",
+        "derived_from_values": [
+         "hour"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F38",
+    "template": "{hour}:00",
+    "appears_in": [
+     "distractors",
+     "format_data.mcq_options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "hour"
+      ],
+      "domains": [
+       {
+        "domain": "a number in a range",
+        "basis": "bounds['hour']",
+        "lo": 1,
+        "hi": 12
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "minute"
+    ]
+   },
+   {
+    "id": "F39",
+    "template": "{h}:{m:02d}{v}",
+    "appears_in": [
+     "correct_answer",
+     "distractors",
+     "format_data.mcq_options",
+     "format_data.options"
+    ],
+    "nested_in": [
+     "F14",
+     "F17",
+     "F18",
+     "F21",
+     "F30",
+     "F31",
+     "F41"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "h"
+      ],
+      "domains": [
+       {
+        "domain": "a number in a range",
+        "basis": "an hour on a 12-hour clock",
+        "lo": 1,
+        "hi": 12
+       }
+      ]
+     },
+     {
+      "slots": [
+       "m"
+      ],
+      "domains": [
+       {
+        "domain": "a number in a range",
+        "basis": "a minute of the hour",
+        "lo": 0,
+        "hi": 59
+       }
+      ]
+     },
+     {
+      "slots": [
+       "v"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "no period, a.m. or p.m.",
+        "members": [
+         " a.m.",
+         " p.m.",
+         ""
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F40",
+    "template": "{max}:00",
+    "appears_in": [
+     "distractors",
+     "format_data.mcq_options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "max"
+      ],
+      "domains": [
+       {
+        "domain": "a number in a range",
+        "basis": "the hour before the start",
+        "lo": 6,
+        "hi": 9
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F41",
+    "template": "{n} {count_noun} after {start} is {end}",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "n"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "duration_hours",
+        "printed_runs": "5",
+        "derived_from_values": [
+         "duration_hours"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "count_noun"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "elapsed_unit",
+        "printed": [
+         "hours"
+        ],
+        "derived_from_values": [
+         "elapsed_unit"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "start"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F39",
+         "F50"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "end"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F39",
+         "F48"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "elapsed_ask",
+     "elapsed_unit"
+    ]
+   },
+   {
+    "id": "F42",
+    "template": "{start_h}:00",
+    "appears_in": [
+     "distractors",
+     "format_data.mcq_options",
+     "format_data.time_str"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "start_h"
+      ],
+      "domains": [
+       {
+        "domain": "a number in a range",
+        "basis": "the start hour's draw bounds",
+        "lo": 7,
+        "hi": 10
+       },
+       {
+        "domain": "repeats a generated value",
+        "key": "hour",
+        "printed_runs": "7 to 11",
+        "derived_from_values": [
+         "hour"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F43",
+    "template": "{start_h}:15",
+    "appears_in": [
+     "correct_answer",
+     "format_data.mcq_options",
+     "format_data.time_str"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "start_h"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "hour",
+        "printed_runs": "8 to 11",
+        "derived_from_values": [
+         "hour"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F44",
+    "template": "{start_h}:30",
+    "appears_in": [
+     "distractors",
+     "format_data.mcq_options",
+     "format_data.time_str"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "start_h"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "hour",
+        "printed_runs": "8 to 11",
+        "derived_from_values": [
+         "hour"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F45",
+    "template": "{start_h}:45",
+    "appears_in": [
+     "distractors",
+     "format_data.mcq_options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "start_h"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "hour",
+        "printed_runs": "8 to 11",
+        "derived_from_values": [
+         "hour"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F46",
+    "template": "{v}:00",
+    "appears_in": [
+     "distractors",
+     "format_data.mcq_options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "v"
+      ],
+      "domains": [
+       {
+        "domain": "a number computed by the generator",
+        "reason": "arithmetic",
+        "derived_from_values": [
+         "hour"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F47",
+    "template": "{v}:30",
+    "appears_in": [
+     "distractors",
+     "format_data.mcq_options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "v"
+      ],
+      "domains": [
+       {
+        "domain": "a number computed by the generator",
+        "reason": "arithmetic",
+        "derived_from_values": [
+         "hour"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F48",
+    "template": "{answer}",
+    "appears_in": [
+     "correct_answer",
+     "format_data.mcq_options",
+     "format_data.options"
+    ],
+    "nested_in": [
+     "F15",
+     "F41"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "answer",
+        "printed": [
+         "3:00",
+         "April",
+         "August",
+         "December",
+         "January",
+         "July",
+         "June",
+         "March",
+         "May",
+         "November",
+         "October",
+         "September",
+         "Wednesday"
+        ],
+        "derived_from_values": [
+         "answer"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F49",
+    "template": "{key}",
+    "appears_in": [
+     "correct_answer"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "key"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the option keys this item shows",
+        "members": [
+         "A",
+         "B",
+         "C",
+         "D"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F50",
+    "template": "{member}",
+    "appears_in": [
+     "distractors",
+     "format_data.mcq_options",
+     "format_data.options"
+    ],
+    "nested_in": [
+     "F21",
+     "F31",
+     "F41"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "member"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "QuestionContext.distractors (the generator's own)",
+        "members": [
+         "10:00",
+         "10:30",
+         "10:45",
+         "11:00",
+         "12:00",
+         "2:00",
+         "4:00",
+         "6:00",
+         "7:00",
+         "8:00",
+         "8:30",
+         "8:45",
+         "9:00",
+         "9:30",
+         "9:45",
+         "February",
+         "Friday",
+         "January",
+         "March",
+         "Thursday",
+         "Tuesday"
+        ]
+       },
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "fmt_calendar month and day names",
+        "members": [
+         "April",
+         "August",
+         "December",
+         "February",
+         "Friday",
+         "January",
+         "July",
+         "June",
+         "March",
+         "May",
+         "Monday",
+         "November",
+         "October",
+         "Saturday",
+         "September",
+         "Sunday",
+         "Thursday",
+         "Tuesday",
+         "Wednesday"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F51",
+    "template": "Look at the {month_name} {year} {cal_word}. What day of the week is {month_name} {date}?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "month_name"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "_MONTH_NAMES"
+       }
+      ]
+     },
+     {
+      "slots": [
+       "year"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "year",
+        "printed_runs": "2025",
+        "derived_from_values": [
+         "year"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "cal_word"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F01",
+         "F52"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "date"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "target_date",
+        "printed_runs": "1 to 2, 5, 8 to 9, 11 to 12, 14 to 31",
+        "derived_from_values": [
+         "target_date"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F52",
+    "template": "calendar",
+    "appears_in": [],
+    "nested_in": [
+     "F10",
+     "F51"
+    ],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F53",
+    "template": "{answer}",
+    "appears_in": [
+     "correct_answer",
+     "format_data.time_str"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "answer",
+        "printed": [
+         1,
+         2,
+         3,
+         30,
+         "10:00",
+         "10:15",
+         "10:30",
+         "11:00",
+         "11:15",
+         "11:30",
+         "8:15",
+         "8:30",
+         "9:00",
+         "9:15"
+        ],
+        "derived_from_values": [
+         "answer"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "question"
+    ]
+   },
+   {
+    "id": "F54",
+    "template": "{hours}:{minutes:02d}",
+    "appears_in": [
+     "correct_answer",
+     "format_data.mcq_options",
+     "format_data.time_str"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "hours"
+      ],
+      "domains": [
+       {
+        "domain": "a number in a range",
+        "basis": "an hour of the day",
+        "lo": 0,
+        "hi": 23
+       },
+       {
+        "domain": "repeats a generated value",
+        "key": "hour",
+        "printed_runs": "7 to 11",
+        "derived_from_values": [
+         "hour"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "minutes"
+      ],
+      "domains": [
+       {
+        "domain": "a number in a range",
+        "basis": "a minute of the hour",
+        "lo": 0,
+        "hi": 59
+       },
+       {
+        "domain": "repeats a generated value",
+        "key": "minute",
+        "printed_runs": "0, 15, 30",
+        "derived_from_values": [
+         "minute"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   }
+  ],
+  "lists": {
+   "MONTHS_OF_YEAR": [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+   ],
+   "_MONTH_NAMES": [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+   ]
+  },
+  "banks": {},
+  "value_derivations": [
+   {
+    "kind": "derives",
+    "key": "minute",
+    "from": [
+     "precision"
+    ]
+   },
+   {
+    "kind": "derives",
+    "key": "time_str",
+    "from": [
+     "precision"
+    ]
+   }
+  ],
+  "reason_kinds": {
+   "arithmetic": "a number the generator computes from the generated values named in src (a half, a sum, a difference, a running total, a place's digit). Its range is the image of those values' own domains; whether the arithmetic is RIGHT is the hint contract's (§16) and §1E's to check, not §14's."
+  }
+ }
+}

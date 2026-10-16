@@ -1,0 +1,1842 @@
+{
+ "schema_version": 2,
+ "hash_version": 8,
+ "node_id": "mat_g3_na_q4_3",
+ "record_id": "stem-batch446-S446-022-confirming-r2",
+ "role": "confirming",
+ "confirms": "stem-batch446-S446-022-first",
+ "item_id": "S446-022",
+ "lc_hash": "e22a4f31d2b6f729fea86871ef0a6539d79aa29600343e0895bae330da7fd8bc",
+ "judged_by": "blind-stem-judge-claude-haiku-batch446-S446-022-confirming-r2",
+ "dispatch_id": "stem-batch446-S446-022-confirming-r2",
+ "filed_at": "2026-10-16T10:42:00Z",
+ "delivery": "Claude Code Agent tool, model=haiku, subagent_type=general-purpose; the judge was told to read only local_only/scratch/h4c/prompts/S446-022.prompt.txt (tests/stem_file.py prompt output, item S446-022; no lc id, no key or packets file in that directory) and reply with what it asks; dispatched with CLAUDE.md loaded (ruling 29). Blindness is a prompt contract, audited from the subagent transcript.",
+ "tool_uses_by_judge": "From the subagent transcript: 1 tool use(s), all Read of its own prompt file (1640 lines, every line read); no other tool, path or search. Model reported in the transcript: claude-haiku-5-5.",
+ "dispatch_prompt_digest": "87a44105a3a15173c9d71ec787e7bb0aa2bcf425c396fb5ba578f78c18ed1e19",
+ "raw_reply": "{\"item\": \"S446-022\", \"clauses\": {\"divide_numbers\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F23\", \"template\": \"What is {dividend} ÷ {divisor}?\", \"reasoning\": \"F23 is a plain division question whose dividend and divisor come from generated values, so it addresses the task clause Divide numbers.\"}, \"with_and_without_remainder\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F23\", \"template\": \"What is {dividend} ÷ {divisor}?\", \"reasoning\": \"F23 draws dividend and divisor independently, so its problems include both exact and remainder cases. F09 and F13 show the remainder form only.\"}, \"2_to_3_digit_numbers\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F18\", \"template\": \"{dividend} ÷ {divisor} = ___\", \"reasoning\": \"F18 prints 3-digit dividends (158, 166, 200, 210, 216, 219, 272) with 1-digit divisors, so it can address the 2- to 3-digit range.\"}, \"1_digit_number_without_remainder\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F23\", \"template\": \"What is {dividend} ÷ {divisor}?\", \"reasoning\": \"F23 prints 1-digit divisors 4, 6 to 7 with dividends that divide exactly, such as 12, 24 and 36.\"}, \"2_digit_numbers\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F06\", \"template\": \"Start at {a} on a number line and take equal jumps back of {b} to reach 0. How many jumps did you make? {a} ÷ {b} = ___\", \"reasoning\": \"F06 prints 2-digit dividends 21 and 48 with 1-digit divisors 3 and 8, which addresses the 2-digit range. F18 and F23 also print 2-digit dividends.\"}, \"1_digit_number_with_remainder\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F09\", \"template\": \"{capitalize} is {result} remainder {remainder} (written as {result} R {remainder}).\", \"reasoning\": \"F09 prints a quotient with a remainder from 1 to 7, which is the remainder form of 1-digit division. Scope risk for 3- and 4-digit dividends is listed under failing_families.\"}, \"2_to_4_digit_numbers\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F26\", \"template\": \"What is {total} ÷ {n}?\", \"reasoning\": \"F26 prints totals from 2-digit up to 4-digit (for example 8400) with divisors 4, 6 to 7, 10, 100 and 1000, which addresses the 2- to 4-digit range with powers of ten.\"}, \"10_100_1000\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F18\", \"template\": \"{dividend} ÷ {divisor} = ___\", \"reasoning\": \"F18 prints divisors 10, 100 and 1000 with dividends from 2-digit to 4-digit, which addresses division by powers of ten.\"}}, \"failing_families\": [\"F05\", \"F06\", \"F07\", \"F09\", \"F10\", \"F12\", \"F13\", \"F17\", \"F18\", \"F19\", \"F22\", \"F23\", \"F24\", \"F26\"], \"failing_templates\": [\"Ask: how many times does {b} fit into {a}? {b} × {result} = {v}.\", \"Start at {a} on a number line and take equal jumps back of {b} to reach 0. How many jumps did you make? {a} ÷ {b} = ___\", \"We need to divide {a} by {b}. {capitalize} is {a}; {divisor_label} is {b}.\", \"{capitalize} is {result} remainder {remainder} (written as {result} R {remainder}).\", \"{capitalize} of {a} ÷ {b} = {result}.\", \"{q_val} R {alt_r}\", \"{q_val} R {rem}\", \"Start at {dividend} on a number line and take equal jumps back of {divisor} to reach 0: {dividend} ÷ {divisor} = ___\", \"{dividend} ÷ {divisor} = ___\", \"Starting at {dividend} on a number line, taking equal jumps back of {divisor} takes {slot} jumps to reach 0\", \"{slot} ÷ {slot2} = {slot3}\", \"What is {dividend} ÷ {divisor}?\", \"{dividend} ÷ {divisor} = {fill_value}\", \"What is {total} ÷ {n}?\"], \"overall\": \"FAIL\", \"reasoning\": \"The slot domains for a dividend and a divisor are declared independently, and the harness reads them as the full set of pairings. Under that reading, 4-digit dividends (up to 9980) appear with 1-digit divisors in F05, F07, F18, F22, F23 and F26, which is outside the lc's named ranges. 3-digit dividends with 1-digit divisors also appear with remainders in F09, F13 and F23, which the lc does not name. F06 and F17 print the pair 21 and 8, which has a remainder, while the template says the jumps reach 0 exactly, so the statement is false. F19 has the same false statement. F10 prints an equation with no remainder for dividends that leave a remainder, so it states a false equation. F12 can be a correct answer, but its alt_r slot is derived from b and remainder and is not tied to the true remainder, so the keyed answer may be wrong. F24 prints a fill value from the distractors (for example 10 or 100) that can make the true/false statement true, so the item may be mislabeled. F21 and F25 are not failing on their own text; their nested families F19, F22 and F24 carry the faults. The remainder notation R used in F09, F12, F13 and F14 is not in cumulative_vocab, but F09 glosses it, so it is not listed as a failure. Clause mapping uses the families that best produce each clause.\"}",
+ "raw_reply_digest": "92f00511d8d1983b1e71a3812b4f62d67d042d66c93edffd216db66d837978bf",
+ "packet_digest": "68834f9ae8ab3a0a3b2a3ee2f25a75dd15fd65266979621533909d62833a0903",
+ "family_keys": {
+  "F01": {
+   "source": "backend/app/practice_gen/dna/base.py [gate dividend]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F02": {
+   "source": "backend/app/practice_gen/dna/base.py [gate divisor]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F03": {
+   "source": "backend/app/practice_gen/dna/base.py [gate quotient]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F04": {
+   "source": "backend/app/practice_gen/dna/base.py [gate remainder]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    7,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F05": {
+   "source": "backend/app/practice_gen/dna/na/division.py",
+   "first_site": "backend/app/practice_gen/dna/na/division.py:661",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F06": {
+   "source": "backend/app/practice_gen/dna/na/division.py",
+   "first_site": "backend/app/practice_gen/dna/na/division.py:236",
+   "renderer": "",
+   "path": [
+    17,
+    "mcq"
+   ],
+   "first_render_repeating": {}
+  },
+  "F07": {
+   "source": "backend/app/practice_gen/dna/na/division.py",
+   "first_site": "backend/app/practice_gen/dna/na/division.py:656",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F08": {
+   "source": "backend/app/practice_gen/dna/na/division.py",
+   "first_site": "backend/app/practice_gen/dna/na/division.py:667",
+   "renderer": "",
+   "path": [
+    7,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F09": {
+   "source": "backend/app/practice_gen/dna/na/division.py",
+   "first_site": "backend/app/practice_gen/dna/na/division.py:674",
+   "renderer": "",
+   "path": [
+    7,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F10": {
+   "source": "backend/app/practice_gen/dna/na/division.py",
+   "first_site": "backend/app/practice_gen/dna/na/division.py:681",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F11": {
+   "source": "backend/app/practice_gen/dna/na/division.py",
+   "first_site": "backend/app/practice_gen/dna/na/division.py:481",
+   "renderer": "",
+   "path": [
+    7,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F12": {
+   "source": "backend/app/practice_gen/dna/na/division.py",
+   "first_site": "backend/app/practice_gen/dna/na/division.py:482",
+   "renderer": "",
+   "path": [
+    7,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F13": {
+   "source": "backend/app/practice_gen/dna/na/division.py",
+   "first_site": "backend/app/practice_gen/dna/na/division.py:471",
+   "renderer": "",
+   "path": [
+    7,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F14": {
+   "source": "backend/app/practice_gen/dna/na/division.py",
+   "first_site": "backend/app/practice_gen/dna/na/division.py:483",
+   "renderer": "",
+   "path": [
+    7,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F15": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:32",
+   "renderer": "",
+   "path": [
+    13,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F16": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:39",
+   "renderer": "",
+   "path": [
+    7,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F17": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_cloze.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_cloze.py:165",
+   "renderer": "",
+   "path": [
+    17,
+    "cloze"
+   ],
+   "first_render_repeating": {}
+  },
+  "F18": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_cloze.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_cloze.py:171",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F19": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_error_detect.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_error_detect.py:240",
+   "renderer": "",
+   "path": [
+    17,
+    "error_detect"
+   ],
+   "first_render_repeating": {}
+  },
+  "F20": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_error_detect.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_error_detect.py:387",
+   "renderer": "",
+   "path": [
+    3,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F21": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_error_detect.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_error_detect.py:367",
+   "renderer": "",
+   "path": [
+    3,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F22": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_error_detect.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_error_detect.py:246",
+   "renderer": "",
+   "path": [
+    3,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F23": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_mcq.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_mcq.py:137",
+   "renderer": "",
+   "path": [
+    4,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F24": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_true_false.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_true_false.py:304",
+   "renderer": "",
+   "path": [
+    6,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F25": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_true_false.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_true_false.py:430",
+   "renderer": "",
+   "path": [
+    6,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F26": {
+   "source": "backend/app/practice_gen/generators/base_generator.py",
+   "first_site": "backend/app/practice_gen/generators/base_generator.py:866",
+   "renderer": "",
+   "path": [
+    4,
+    null
+   ],
+   "first_render_repeating": {}
+  }
+ },
+ "packet": {
+  "item": "S446-022",
+  "competency": {
+   "text": "Divide numbers with and without remainder: 2- to 3-digit numbers by 1-digit number without remainder, 2-digit numbers by 1-digit number with remainder, and 2- to 4-digit numbers by 10,100, and 1000.",
+   "grade": 3,
+   "quarter": 4
+  },
+  "clauses": [
+   {
+    "id": "divide_numbers",
+    "kind": "task",
+    "clause": "Divide numbers"
+   },
+   {
+    "id": "with_and_without_remainder",
+    "kind": "property",
+    "clause": "with and without remainder"
+   },
+   {
+    "id": "2_to_3_digit_numbers",
+    "kind": "range",
+    "clause": "2- to 3-digit numbers"
+   },
+   {
+    "id": "1_digit_number_without_remainder",
+    "kind": "range",
+    "clause": "1-digit number without remainder"
+   },
+   {
+    "id": "2_digit_numbers",
+    "kind": "range",
+    "clause": "2-digit numbers"
+   },
+   {
+    "id": "1_digit_number_with_remainder",
+    "kind": "range",
+    "clause": "1-digit number with remainder"
+   },
+   {
+    "id": "2_to_4_digit_numbers",
+    "kind": "range",
+    "clause": "2- to 4-digit numbers"
+   },
+   {
+    "id": "10_100_1000",
+    "kind": "range",
+    "clause": "10,100, and 1000"
+   }
+  ],
+  "vocabulary": {
+   "student_vocab": [
+    "remainder"
+   ],
+   "curriculum_vocab": [
+    "with remainder",
+    "without remainder",
+    "divide by 10",
+    "divide by 100",
+    "divide by 1000"
+   ],
+   "introduces_vocab": [
+    "remainder",
+    "with remainder",
+    "without remainder",
+    "divide by 10",
+    "divide by 100",
+    "divide by 1000"
+   ],
+   "cumulative_vocab": [
+    "1 less",
+    "1 more",
+    "10th",
+    "1st",
+    "2nd",
+    "3rd",
+    "4th",
+    "5th",
+    "6th",
+    "7th",
+    "8th",
+    "9th",
+    "L",
+    "a.m.",
+    "addition",
+    "analog clock",
+    "area",
+    "axis",
+    "balance scale",
+    "bar graph",
+    "bigger",
+    "bill",
+    "calendar",
+    "capacity",
+    "centavo",
+    "centimeter",
+    "certain",
+    "circle",
+    "clockwise",
+    "cm",
+    "coin",
+    "compare",
+    "corner",
+    "count",
+    "counter-clockwise",
+    "data",
+    "decreasing pattern",
+    "denominator",
+    "difference",
+    "digit",
+    "division",
+    "elapsed time",
+    "equal",
+    "equal groups",
+    "equally likely",
+    "estimate",
+    "even",
+    "expanded form",
+    "fraction",
+    "g",
+    "gram",
+    "group",
+    "half",
+    "half hour",
+    "half turn",
+    "hour",
+    "how many",
+    "hundreds",
+    "impossible",
+    "increasing pattern",
+    "intersecting",
+    "kg",
+    "kilogram",
+    "left",
+    "length",
+    "less",
+    "less likely",
+    "line",
+    "line segment",
+    "liter",
+    "m",
+    "mL",
+    "mass",
+    "measure",
+    "meter",
+    "milliliter",
+    "minute",
+    "missing number",
+    "missing term",
+    "more",
+    "more likely",
+    "multiplication",
+    "nearest hundred",
+    "nearest ten",
+    "nearest thousand",
+    "number",
+    "number line",
+    "numeral",
+    "numerator",
+    "odd",
+    "ones",
+    "order of operations",
+    "outcome",
+    "p.m.",
+    "parallel",
+    "pattern",
+    "perimeter",
+    "perpendicular",
+    "peso",
+    "pictograph",
+    "place value",
+    "point",
+    "product",
+    "quarter",
+    "quarter hour",
+    "quarter turn",
+    "quotient",
+    "ray",
+    "rectangle",
+    "regrouping",
+    "repeating pattern",
+    "round",
+    "ruler",
+    "same",
+    "scale",
+    "side",
+    "similar fractions",
+    "skip counting",
+    "slide",
+    "smaller",
+    "solid figure",
+    "sq. cm",
+    "square",
+    "square centimeter",
+    "subtraction",
+    "sum",
+    "table",
+    "ten thousand",
+    "ten-thousands place",
+    "tens",
+    "thousand",
+    "total",
+    "translation",
+    "triangle",
+    "whole",
+    "₱"
+   ],
+   "NOT_YET_KNOWN": [
+    "improper fraction",
+    "line of symmetry",
+    "symmetry"
+   ],
+   "sentence_max_words": 22,
+   "number_format": "space separator for thousands (e.g. 1 000)"
+  },
+  "declared_variants": [
+   [
+    "context",
+    "pure"
+   ],
+   [
+    "remainder",
+    "none"
+   ],
+   [
+    "remainder",
+    "with_remainder"
+   ],
+   [
+    "structure",
+    "result_unknown"
+   ],
+   [
+    "table",
+    "one_digit_mixed_or_power_of_ten"
+   ]
+  ],
+  "declared_bounds": [
+   {
+    "table": "one_digit_mixed_or_power_of_ten",
+    "context": "pure",
+    "structure": "result_unknown"
+   }
+  ],
+  "families": [
+   {
+    "id": "F01",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F07"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='dividend')",
+        "requires_vocab": "dividend",
+        "prints": "the number being divided",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F02",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F07"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='divisor')",
+        "requires_vocab": "divisor",
+        "prints": "the number we divide by",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F03",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F09",
+     "F10"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='quotient')",
+        "requires_vocab": "quotient",
+        "prints": "the quotient",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F04",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F08"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='remainder')",
+        "requires_vocab": "remainder",
+        "prints": "the remainder",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F05",
+    "template": "Ask: how many times does {b} fit into {a}? {b} × {result} = {v}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "2 to 10, 100, 1000",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "12, 15 to 16, 18, 20 to 21, 24, 27 to 28, 35 to 36, 39 to 40, 42, 44 to 48, 50 to 60, 62 to 64, 66, 69 to 70, 74 to 75, 77 to 78, 80 to 81, 84 to 85, 90 to 91, 95 to 96, 100, 158, 166, 200, 210, 216, 219 to 220, 268, 272, 276, 280, 300, 320, 340, 350, 372, 390, 400, 410, 434, 448, 460, 470, 480, 488, 496, 500, 504, 512, 549, 558, 560, 567, 600, 700, 710, 800, 900, 940, 1000, 1010, 1420, 1500, 2000, 2490, 2600, 3000, 3030, 3100, 3200, 3530, 3800, 3810, 4000, 4400, 4780, 4800, 4820, 5000, 5300, 5470, 5500, 5800, 6000, 6200, 6300, 6540, 6780, 6930, 7000, 7510, 7700, 8000, 8400, 8800, 9000, 9700, 9770, 9980",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "result",
+       "v"
+      ],
+      "domains": [
+       {
+        "domain": "a number computed by the generator",
+        "reason": "arithmetic",
+        "derived_from_values": [
+         "a",
+         "b"
+        ]
+       }
+      ],
+      "distinct_in_every_render": true
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F06",
+    "template": "Start at {a} on a number line and take equal jumps back of {b} to reach 0. How many jumps did you make? {a} ÷ {b} = ___",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "21, 48",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "3, 8",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F07",
+    "template": "We need to divide {a} by {b}. {capitalize} is {a}; {divisor_label} is {b}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "12, 15 to 16, 18, 20 to 21, 24, 27 to 28, 35 to 36, 39 to 40, 42, 44 to 48, 50 to 60, 62 to 64, 66, 69 to 70, 74 to 75, 77 to 78, 80 to 81, 84 to 85, 90 to 91, 95 to 96, 100, 158, 166, 200, 210, 216, 219 to 220, 268, 272, 276, 280, 300, 320, 340, 350, 372, 390, 400, 410, 434, 448, 460, 470, 480, 488, 496, 500, 504, 512, 549, 558, 560, 567, 600, 700, 710, 800, 900, 940, 1000, 1010, 1420, 1500, 2000, 2490, 2600, 3000, 3030, 3100, 3200, 3530, 3800, 3810, 4000, 4400, 4780, 4800, 4820, 5000, 5300, 5470, 5500, 5800, 6000, 6200, 6300, 6540, 6780, 6930, 7000, 7510, 7700, 8000, 8400, 8800, 9000, 9700, 9770, 9980",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "2 to 10, 100, 1000",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "capitalize"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F01"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "divisor_label"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F02"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F08",
+    "template": "{a} − {v} = {remainder}. {capitalize} is {remainder}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "42, 44, 46 to 48, 50 to 60, 62 to 63, 66, 69",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "v"
+      ],
+      "domains": [
+       {
+        "domain": "a number computed by the generator",
+        "reason": "arithmetic",
+        "derived_from_values": [
+         "a",
+         "b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "remainder"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "remainder",
+        "printed_runs": "1 to 7",
+        "derived_from_values": [
+         "a",
+         "b",
+         "remainder"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "capitalize"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F04"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "remainder"
+    ]
+   },
+   {
+    "id": "F09",
+    "template": "{capitalize} is {result} remainder {remainder} (written as {result} R {remainder}).",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "capitalize"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F03"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "result"
+      ],
+      "domains": [
+       {
+        "domain": "a number computed by the generator",
+        "reason": "arithmetic",
+        "derived_from_values": [
+         "a",
+         "b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "remainder"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "remainder",
+        "printed_runs": "1 to 7",
+        "derived_from_values": [
+         "a",
+         "b",
+         "remainder"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "remainder"
+    ]
+   },
+   {
+    "id": "F10",
+    "template": "{capitalize} of {a} ÷ {b} = {result}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "capitalize"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F03"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "12, 15 to 16, 18, 20 to 21, 24, 27 to 28, 35 to 36, 39 to 40, 45 to 46, 48, 50, 52, 55 to 56, 60, 64, 66, 70, 74 to 75, 77 to 78, 80 to 81, 84 to 85, 90 to 91, 95 to 96, 100, 158, 166, 200, 210, 216, 219 to 220, 268, 272, 276, 280, 300, 320, 340, 350, 372, 390, 400, 410, 434, 448, 460, 470, 480, 488, 496, 500, 504, 512, 549, 558, 560, 567, 600, 700, 710, 800, 900, 940, 1000, 1010, 1420, 1500, 2000, 2490, 2600, 3000, 3030, 3100, 3200, 3530, 3800, 3810, 4000, 4400, 4780, 4800, 4820, 5000, 5300, 5470, 5500, 5800, 6000, 6200, 6300, 6540, 6780, 6930, 7000, 7510, 7700, 8000, 8400, 8800, 9000, 9700, 9770, 9980",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "2 to 10, 100, 1000",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "result"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "result",
+        "printed_runs": "1 to 17, 19 to 24, 26 to 28, 31 to 33, 35, 37 to 41, 44, 46 to 48, 53, 55 to 56, 60 to 65, 67 to 73, 77, 79, 83 to 84, 88, 94, 97, 101, 142, 249, 303, 353, 381, 478, 482, 547, 580, 654, 678, 693, 751, 840, 977, 998",
+        "derived_from_values": [
+         "result"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F11",
+    "template": "{q_val}",
+    "appears_in": [
+     "distractors",
+     "format_data.mcq_options",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "q_val"
+      ],
+      "domains": [
+       {
+        "domain": "a number computed by the generator",
+        "reason": "arithmetic",
+        "derived_from_values": [
+         "a",
+         "b"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "blank_target"
+    ]
+   },
+   {
+    "id": "F12",
+    "template": "{q_val} R {alt_r}",
+    "appears_in": [
+     "correct_answer",
+     "distractors",
+     "format_data.mcq_options",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "q_val"
+      ],
+      "domains": [
+       {
+        "domain": "a number computed by the generator",
+        "reason": "arithmetic",
+        "derived_from_values": [
+         "a",
+         "b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "alt_r"
+      ],
+      "domains": [
+       {
+        "domain": "a number computed by the generator",
+        "reason": "arithmetic",
+        "derived_from_values": [
+         "b",
+         "remainder"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "blank_target"
+    ]
+   },
+   {
+    "id": "F13",
+    "template": "{q_val} R {rem}",
+    "appears_in": [
+     "correct_answer",
+     "format_data.actors_answer",
+     "format_data.correct_value",
+     "format_data.mcq_options",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "q_val"
+      ],
+      "domains": [
+       {
+        "domain": "a number computed by the generator",
+        "reason": "arithmetic",
+        "derived_from_values": [
+         "a",
+         "b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "rem"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "remainder",
+        "printed_runs": "1 to 5",
+        "derived_from_values": [
+         "remainder"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "blank_target"
+    ]
+   },
+   {
+    "id": "F14",
+    "template": "{v} R {rem}",
+    "appears_in": [
+     "distractors",
+     "format_data.mcq_options",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "v"
+      ],
+      "domains": [
+       {
+        "domain": "a number computed by the generator",
+        "reason": "arithmetic",
+        "derived_from_values": [
+         "a",
+         "b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "rem"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "remainder",
+        "printed_runs": "1 to 7",
+        "derived_from_values": [
+         "remainder"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "blank_target"
+    ]
+   },
+   {
+    "id": "F15",
+    "template": "{answer}",
+    "appears_in": [
+     "correct_answer",
+     "format_data.mcq_options",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "result",
+        "printed": [
+         "17 R 1",
+         "17 R 2",
+         "18 R 1",
+         "18 R 2",
+         "19 R 2",
+         "26 R 1",
+         "27 R 1",
+         "28 R 1",
+         "6 R 2",
+         "7 R 1",
+         "7 R 2",
+         "7 R 4",
+         "7 R 5",
+         "8 R 1",
+         "8 R 4",
+         "9 R 2"
+        ],
+        "derived_from_values": [
+         "result"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F16",
+    "template": "{member}",
+    "appears_in": [
+     "correct_answer",
+     "distractors",
+     "format_data.mcq_options",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "member"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "QuestionContext.distractors (the generator's own)",
+        "members": [
+         "10 R 2",
+         "13 R 2",
+         "13",
+         "14 R 3",
+         "17 R 1",
+         "17",
+         "18 R 2",
+         "26 R 1",
+         "26",
+         "27 R 1",
+         "6 R 4",
+         "6",
+         "7 R 5",
+         "9 R 1",
+         "9"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F17",
+    "template": "Start at {dividend} on a number line and take equal jumps back of {divisor} to reach 0: {dividend} ÷ {divisor} = ___",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "dividend"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "21, 48",
+        "derived_from_values": [
+         "a",
+         "dividend"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "divisor"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "3, 8",
+        "derived_from_values": [
+         "b",
+         "divisor"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F18",
+    "template": "{dividend} ÷ {divisor} = ___",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "dividend"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "12, 18, 20, 36, 39 to 40, 46, 50, 52 to 53, 55 to 57, 59, 66, 74, 80 to 81, 84, 90, 100, 158, 166, 200, 210, 216, 219, 272, 1000, 1010, 1420, 1500, 2000, 4000, 5000, 6000, 6540, 7510, 7700, 8000, 8400, 8800, 9000, 9980",
+        "derived_from_values": [
+         "a",
+         "dividend"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "divisor"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "2 to 4, 10, 100, 1000",
+        "derived_from_values": [
+         "b",
+         "divisor"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F19",
+    "template": "Starting at {dividend} on a number line, taking equal jumps back of {divisor} takes {slot} jumps to reach 0",
+    "appears_in": [
+     "format_data.problem_expression"
+    ],
+    "nested_in": [
+     "F21"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "dividend"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "21, 48",
+        "derived_from_values": [
+         "a",
+         "dividend"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "divisor"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "3, 8",
+        "derived_from_values": [
+         "b",
+         "divisor"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "slot"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the blank for the unknown blank_target",
+        "members": [
+         "___"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F20",
+    "template": "{actor}",
+    "appears_in": [
+     "format_data.actor_name"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "actor"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "_FILIPINO_NAMES"
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F21",
+    "template": "{actor} solved: \"{problem}\". {actor} says the {miss} is {answer}. Is {actor} correct?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "actor"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "_FILIPINO_NAMES"
+       }
+      ]
+     },
+     {
+      "slots": [
+       "problem"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F19",
+         "F22"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the keyed answer and the distractor candidates",
+        "members": [
+         "13 R 2",
+         "13 R 3",
+         "13",
+         "14 R 3",
+         10,
+         100,
+         1000,
+         11,
+         12,
+         18,
+         19,
+         20,
+         21,
+         25,
+         2500,
+         26,
+         268,
+         27,
+         3,
+         30,
+         300,
+         3000,
+         315,
+         4,
+         40,
+         5,
+         50,
+         6,
+         6000,
+         63,
+         64,
+         65,
+         67,
+         68,
+         69,
+         7,
+         76,
+         8
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "miss"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "vocab gate 'missing number'",
+        "requires_vocab": "missing number",
+        "prints": "missing number",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F22",
+    "template": "{slot} ÷ {slot2} = {slot3}",
+    "appears_in": [
+     "format_data.problem_expression"
+    ],
+    "nested_in": [
+     "F21"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "slot"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "15, 20, 28, 35, 46, 48, 50 to 52, 54 to 56, 59 to 60, 64, 70, 75, 80, 85, 90, 95 to 96, 268, 272, 276, 280, 300, 320, 340, 400, 900, 2490, 2600, 3000, 3030, 3100, 3200, 3530, 3800, 4000, 7000, 8000, 8400, 9000",
+        "derived_from_values": [
+         "a",
+         "dividend"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "slot2"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "4 to 5, 10, 100, 1000",
+        "derived_from_values": [
+         "b",
+         "divisor"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "slot3"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the blank for the unknown blank_target",
+        "members": [
+         "___"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F23",
+    "template": "What is {dividend} ÷ {divisor}?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "dividend"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "12, 18, 21, 24, 36, 44, 46 to 48, 50 to 51, 56 to 57, 60, 77 to 78, 91, 272, 372, 390, 434, 448, 460, 500, 560, 600, 710, 900, 940, 2000, 3000, 3810, 4000, 4400, 4780, 4800, 4820, 5300, 5500, 6000, 6780, 6930, 8000, 8400",
+        "derived_from_values": [
+         "a",
+         "dividend"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "divisor"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "4, 6 to 7, 10, 100, 1000",
+        "derived_from_values": [
+         "b",
+         "divisor"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F24",
+    "template": "{dividend} ÷ {divisor} = {fill_value}",
+    "appears_in": [
+     "format_data.statement"
+    ],
+    "nested_in": [
+     "F25"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "dividend"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "16, 18, 27, 42, 45, 51, 54, 58 to 59, 62 to 63, 66, 69, 210, 220, 272, 350, 410, 470, 480, 488, 496, 504, 512, 549, 558, 567, 600, 700, 800, 4800, 5470, 5800, 6000, 6200, 6300, 7000, 9700, 9770",
+        "derived_from_values": [
+         "a",
+         "dividend"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "divisor"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "4, 8 to 10, 100, 1000",
+        "derived_from_values": [
+         "b",
+         "divisor"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "fill_value"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the distractors shaped like the keyed answer",
+        "members": [
+         "6 R 4",
+         "7 R 5",
+         10,
+         100,
+         47,
+         4700,
+         49,
+         496,
+         5,
+         500,
+         6,
+         600,
+         62,
+         64,
+         7,
+         700,
+         8,
+         9,
+         976,
+         9760,
+         978
+        ]
+       },
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the keyed answer (a true statement)",
+        "members": [
+         3,
+         68,
+         7
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F25",
+    "template": "{statement}. True or False?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "statement"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F24"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F26",
+    "template": "What is {total} ÷ {n}?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "total"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "12, 18, 21, 24, 36, 44, 46 to 48, 50 to 51, 56 to 57, 60, 77 to 78, 91, 272, 372, 390, 434, 448, 460, 500, 560, 600, 710, 900, 940, 2000, 3000, 3810, 4000, 4400, 4780, 4800, 4820, 5300, 5500, 6000, 6780, 6930, 8000, 8400",
+        "derived_from_values": [
+         "a",
+         "start",
+         "total"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "n"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "4, 6 to 7, 10, 100, 1000",
+        "derived_from_values": [
+         "b",
+         "n",
+         "skip_by"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "blank_target"
+    ]
+   }
+  ],
+  "lists": {
+   "_FILIPINO_NAMES": [
+    "Noel",
+    "Maria",
+    "Jose",
+    "Ana",
+    "Carlo",
+    "Liza",
+    "Manny",
+    "Grace",
+    "Rico",
+    "Pia",
+    "Dante",
+    "Rosa"
+   ]
+  },
+  "banks": {},
+  "value_derivations": [
+   {
+    "kind": "computes",
+    "key": "remainder",
+    "from": [
+     "a",
+     "b"
+    ]
+   }
+  ],
+  "reason_kinds": {
+   "arithmetic": "a number the generator computes from the generated values named in src (a half, a sum, a difference, a running total, a place's digit). Its range is the image of those values' own domains; whether the arithmetic is RIGHT is the hint contract's (§16) and §1E's to check, not §14's."
+  }
+ }
+}

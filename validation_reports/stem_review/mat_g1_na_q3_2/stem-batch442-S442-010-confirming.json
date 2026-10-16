@@ -1,0 +1,1175 @@
+{
+ "schema_version": 2,
+ "hash_version": 8,
+ "node_id": "mat_g1_na_q3_2",
+ "record_id": "stem-batch442-S442-010-confirming",
+ "role": "confirming",
+ "confirms": "stem-batch442-S442-010-first",
+ "item_id": "S442-010",
+ "lc_hash": "150f7324f4a6dd2e9a446458264306a84365d92e2837a42f6938cfd5e593b278",
+ "judged_by": "blind-stem-judge-claude-haiku-batch442-S442-010-confirming",
+ "dispatch_id": "stem-batch442-S442-010-confirming",
+ "filed_at": "2026-10-16T05:03:06Z",
+ "delivery": "Claude Code Agent tool, model=haiku, subagent_type=general-purpose; the judge was told to read only local_only/scratch/h4c/prompts/S442-010.prompt.txt (tests/stem_file.py prompt output, item S442-010; no lc id, no key or packets file in that directory) and reply with what it asks; dispatched with CLAUDE.md loaded (ruling 29). Blindness is a prompt contract, audited from the subagent transcript.",
+ "tool_uses_by_judge": "From the subagent transcript: 1 tool use(s), all Read of its own prompt file (1093 lines, every line read); no other tool, path or search. Model reported in the transcript: claude-haiku-5-5.",
+ "dispatch_prompt_digest": "863ea88695b90412801f5fe9da4fe145c3823651a7368f13d350b06dc0530f6d",
+ "raw_reply": "{\"item\": \"S442-010\", \"clauses\": {\"write_equivalent_expression\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F07\", \"template\": \"{a_val} + {b_val} = {c_val} + ___\", \"reasoning\": \"F07 puts an addition equation with one blank on the right side in the question. The learner supplies the number that makes the two sides equal, the nearest the families come to writing an equivalent expression. No family asks the learner to write a whole expression.\"}, \"addition_subtraction_expression\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F08\", \"template\": \"{a_val} − {b_val} = {c_val} − ___\", \"reasoning\": \"F08 is a subtraction expression in the question. F07 gives the addition form of the same clause.\"}}, \"failing_families\": [\"F01\", \"F02\", \"F03\", \"F04\", \"F05\", \"F06\", \"F07\", \"F08\", \"F09\", \"F10\", \"F11\", \"F12\"], \"failing_templates\": [\"The other side must also make {total}: {c} + ___ = {total}.\", \"The other side must also make {total}: {c} − ___ = {total}.\", \"Work out the side you know: {a} + {b} = {total}.\", \"Work out the side you know: {a} − {b} = {total}.\", \"{c} − {total} = {d}, so the missing number is {d}.\", \"{total} − {c} = {d}, so the missing number is {d}.\", \"{a_val} + {b_val} = {c_val} + ___\", \"{a_val} − {b_val} = {c_val} − ___\", \"What number completes the expression: {a_val} + {b_val} = {c_val} + ___?\", \"What number completes the expression: {a_val} − {b_val} = {c_val} − ___?\", \"In {a_val} + {b_val} = {c_val} + ___, the {miss_lbl} is {fill_value}\", \"In {a_val} − {b_val} = {c_val} − ___, the {miss_lbl} is {fill_value}\"], \"overall\": \"FAIL\", \"reasoning\": \"The packet declares no relation between the generated values that fill each equation. derived_from_values names one key per slot, and value_derivations and reason_kinds are empty. Each family's domains are therefore marginal ranges, and they admit combinations that make the printed equation false or give a negative blank. Examples from the stated domains: F01 with c at 18 and total at 2 gives a negative blank. F02 with c at 3 and total at 20 gives a negative blank. F04 with a at 3 and b at 9 gives a negative difference. F03 with a at 19, b at 1 and total at 2 gives a false sum. F05 and F06 with c at 3, total at 20 and d at 1 give a false difference. F07 with a at 1, b at 1 and c at 16 gives a negative blank. F08 with a at 21, b at 1 and c at 19 gives a negative blank. F09 to F12 carry the same equations and the same unbound slot combinations. F11 and F12 also show fill_value choices that may or may not be the true answer, because the joint values are not tied. F13 has no slots and is not at fault. F14 adds only the 'True or False?' frame around F11 and F12, so its own wording is not at fault; the faults are in the nested families. Learner-facing wording stays within the vocabulary gates: the words used are in cumulative_vocab or are plain English, and numbers run to 22 with no commas. The sentence word limit of 15 may be exceeded by the F11 and F12 statements plus the frame, but the packet does not give the word count of the printed question text, so I did not count it as a finding.\"}",
+ "raw_reply_digest": "257531aa0772071f844b4677e81271740e68358964f670ca1897e41f300d9ed3",
+ "packet_digest": "2345b52fe83e187905d6c4e4f4d4b834aaa631eb3a2cc9fab3e69c375fd44b62",
+ "family_keys": {
+  "F01": {
+   "source": "backend/app/practice_gen/dna/na/missing_number.py",
+   "first_site": "backend/app/practice_gen/dna/na/missing_number.py:473",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F02": {
+   "source": "backend/app/practice_gen/dna/na/missing_number.py",
+   "first_site": "backend/app/practice_gen/dna/na/missing_number.py:478",
+   "renderer": "",
+   "path": [
+    4,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F03": {
+   "source": "backend/app/practice_gen/dna/na/missing_number.py",
+   "first_site": "backend/app/practice_gen/dna/na/missing_number.py:472",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F04": {
+   "source": "backend/app/practice_gen/dna/na/missing_number.py",
+   "first_site": "backend/app/practice_gen/dna/na/missing_number.py:477",
+   "renderer": "",
+   "path": [
+    4,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F05": {
+   "source": "backend/app/practice_gen/dna/na/missing_number.py",
+   "first_site": "backend/app/practice_gen/dna/na/missing_number.py:479",
+   "renderer": "",
+   "path": [
+    4,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F06": {
+   "source": "backend/app/practice_gen/dna/na/missing_number.py",
+   "first_site": "backend/app/practice_gen/dna/na/missing_number.py:474",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F07": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_cloze.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_cloze.py:225",
+   "renderer": "",
+   "path": [
+    2,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F08": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_cloze.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_cloze.py:227",
+   "renderer": "",
+   "path": [
+    35,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F09": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_mcq.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_mcq.py:157",
+   "renderer": "",
+   "path": [
+    6,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F10": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_mcq.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_mcq.py:159",
+   "renderer": "",
+   "path": [
+    4,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F11": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_true_false.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_true_false.py:373",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F12": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_true_false.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_true_false.py:375",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F13": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_true_false.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_true_false.py:368",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F14": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_true_false.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_true_false.py:430",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  }
+ },
+ "packet": {
+  "item": "S442-010",
+  "competency": {
+   "text": "Write an equivalent expression to a given addition or subtraction expression (e.g., 2+3 = 1+4; 10-5 = 6-1).",
+   "grade": 1,
+   "quarter": 3
+  },
+  "clauses": [
+   {
+    "id": "write_equivalent_expression",
+    "kind": "task",
+    "clause": "Write an equivalent expression"
+   },
+   {
+    "id": "addition_subtraction_expression",
+    "kind": "context",
+    "clause": "addition or subtraction expression"
+   }
+  ],
+  "vocabulary": {
+   "student_vocab": [],
+   "curriculum_vocab": [
+    "equivalent expression",
+    "expression"
+   ],
+   "introduces_vocab": [
+    "equivalent expression",
+    "expression"
+   ],
+   "cumulative_vocab": [
+    "1 less",
+    "1 more",
+    "10th",
+    "1st",
+    "2nd",
+    "3rd",
+    "4th",
+    "5th",
+    "6th",
+    "7th",
+    "8th",
+    "9th",
+    "addition",
+    "bigger",
+    "compare",
+    "corner",
+    "count",
+    "difference",
+    "digit",
+    "equal",
+    "expanded form",
+    "group",
+    "how many",
+    "left",
+    "length",
+    "less",
+    "measure",
+    "missing number",
+    "more",
+    "number",
+    "number line",
+    "numeral",
+    "ones",
+    "place value",
+    "rectangle",
+    "same",
+    "side",
+    "skip counting",
+    "smaller",
+    "square",
+    "subtraction",
+    "sum",
+    "tens",
+    "total",
+    "triangle"
+   ],
+   "NOT_YET_KNOWN": [
+    "L",
+    "a.m.",
+    "analog clock",
+    "area",
+    "axis",
+    "balance scale",
+    "bar graph",
+    "bill",
+    "calendar",
+    "capacity",
+    "centavo",
+    "centimeter",
+    "certain",
+    "circle",
+    "clockwise",
+    "cm",
+    "coin",
+    "counter-clockwise",
+    "data",
+    "decreasing pattern",
+    "denominator",
+    "division",
+    "elapsed time",
+    "equal groups",
+    "equally likely",
+    "estimate",
+    "even",
+    "fraction",
+    "g",
+    "gram",
+    "half",
+    "half hour",
+    "half turn",
+    "hour",
+    "hundreds",
+    "impossible",
+    "improper fraction",
+    "increasing pattern",
+    "intersecting",
+    "kg",
+    "kilogram",
+    "less likely",
+    "line",
+    "line of symmetry",
+    "line segment",
+    "liter",
+    "m",
+    "mL",
+    "mass",
+    "meter",
+    "milliliter",
+    "minute",
+    "missing term",
+    "more likely",
+    "multiplication",
+    "nearest hundred",
+    "nearest ten",
+    "nearest thousand",
+    "numerator",
+    "odd",
+    "order of operations",
+    "outcome",
+    "p.m.",
+    "parallel",
+    "pattern",
+    "perimeter",
+    "perpendicular",
+    "peso",
+    "pictograph",
+    "point",
+    "product",
+    "quarter",
+    "quarter hour",
+    "quarter turn",
+    "quotient",
+    "ray",
+    "regrouping",
+    "remainder",
+    "repeating pattern",
+    "round",
+    "ruler",
+    "scale",
+    "similar fractions",
+    "slide",
+    "solid figure",
+    "sq. cm",
+    "square centimeter",
+    "symmetry",
+    "table",
+    "ten thousand",
+    "ten-thousands place",
+    "thousand",
+    "translation",
+    "whole",
+    "₱"
+   ],
+   "sentence_max_words": 15,
+   "number_format": "no commas, no thousands separator"
+  },
+  "declared_variants": [
+   [
+    "blank_position",
+    "end"
+   ],
+   [
+    "blank_position",
+    "middle"
+   ],
+   [
+    "blank_position",
+    "start"
+   ],
+   [
+    "context",
+    "pure"
+   ],
+   [
+    "context",
+    "word_problem"
+   ],
+   [
+    "equation_type",
+    "non_standard"
+   ],
+   [
+    "equation_type",
+    "standard"
+   ],
+   [
+    "operation",
+    "equivalent"
+   ]
+  ],
+  "declared_bounds": [
+   {
+    "operation": "equivalent"
+   }
+  ],
+  "families": [
+   {
+    "id": "F01",
+    "template": "The other side must also make {total}: {c} + ___ = {total}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "total"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "result",
+        "printed_runs": "2 to 20",
+        "derived_from_values": [
+         "result"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "c"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "c",
+        "printed_runs": "1 to 18",
+        "derived_from_values": [
+         "c"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F02",
+    "template": "The other side must also make {total}: {c} − ___ = {total}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "total"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "result",
+        "printed_runs": "2 to 20",
+        "derived_from_values": [
+         "result"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "c"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "c",
+        "printed_runs": "3, 5, 8 to 22",
+        "derived_from_values": [
+         "c"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F03",
+    "template": "Work out the side you know: {a} + {b} = {total}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "1 to 14, 16, 18 to 19",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "1 to 15, 17 to 18",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "total"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "result",
+        "printed_runs": "2 to 20",
+        "derived_from_values": [
+         "result"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F04",
+    "template": "Work out the side you know: {a} − {b} = {total}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "3 to 4, 6 to 22",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "1 to 9, 11 to 12, 14, 18",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "total"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "result",
+        "printed_runs": "2 to 20",
+        "derived_from_values": [
+         "result"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F05",
+    "template": "{c} − {total} = {d}, so the missing number is {d}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "c"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "c",
+        "printed_runs": "3, 5, 8 to 22",
+        "derived_from_values": [
+         "c"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "total"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "result",
+        "printed_runs": "2 to 20",
+        "derived_from_values": [
+         "result"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "d"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "d",
+        "printed_runs": "1 to 16",
+        "derived_from_values": [
+         "d"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F06",
+    "template": "{total} − {c} = {d}, so the missing number is {d}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "total"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "result",
+        "printed_runs": "2 to 20",
+        "derived_from_values": [
+         "result"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "c"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "c",
+        "printed_runs": "1 to 18",
+        "derived_from_values": [
+         "c"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "d"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "d",
+        "printed_runs": "1 to 18",
+        "derived_from_values": [
+         "d"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F07",
+    "template": "{a_val} + {b_val} = {c_val} + ___",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "a_val"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "1 to 13, 16",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b_val"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "1 to 11, 13 to 15, 17 to 18",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "c_val"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "c",
+        "printed_runs": "1 to 16",
+        "derived_from_values": [
+         "c"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "equivalent_symbol",
+     "operation"
+    ]
+   },
+   {
+    "id": "F08",
+    "template": "{a_val} − {b_val} = {c_val} − ___",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "a_val"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "20 to 21",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b_val"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "1 to 2",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "c_val"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "c",
+        "printed_runs": "19, 21 to 22",
+        "derived_from_values": [
+         "c"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "operation"
+    ]
+   },
+   {
+    "id": "F09",
+    "template": "What number completes the expression: {a_val} + {b_val} = {c_val} + ___?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "a_val"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "6, 11 to 14, 16",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b_val"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "3 to 7",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "c_val"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "c",
+        "printed_runs": "1, 4 to 5, 9 to 10, 17 to 18",
+        "derived_from_values": [
+         "c"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "equivalent_symbol",
+     "operation"
+    ]
+   },
+   {
+    "id": "F10",
+    "template": "What number completes the expression: {a_val} − {b_val} = {c_val} − ___?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "a_val"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "3 to 4, 6, 8 to 21",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b_val"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "1 to 9, 11 to 12, 14",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "c_val"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "c",
+        "printed_runs": "9, 11 to 20",
+        "derived_from_values": [
+         "c"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "operation"
+    ]
+   },
+   {
+    "id": "F11",
+    "template": "In {a_val} + {b_val} = {c_val} + ___, the {miss_lbl} is {fill_value}",
+    "appears_in": [
+     "format_data.statement"
+    ],
+    "nested_in": [
+     "F14"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "a_val"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "1 to 12, 16, 18 to 19",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b_val"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "1 to 10, 12",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "c_val"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "c",
+        "printed_runs": "1 to 12, 15",
+        "derived_from_values": [
+         "c"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "miss_lbl"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F13"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "fill_value"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the distractors shaped like the keyed answer",
+        "members": [
+         26,
+         31
+        ]
+       },
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the keyed answer (a true statement)",
+        "members": [
+         1,
+         10,
+         11,
+         2,
+         4,
+         5
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "equivalent_symbol",
+     "operation"
+    ]
+   },
+   {
+    "id": "F12",
+    "template": "In {a_val} − {b_val} = {c_val} − ___, the {miss_lbl} is {fill_value}",
+    "appears_in": [
+     "format_data.statement"
+    ],
+    "nested_in": [
+     "F14"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "a_val"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "3, 7, 9 to 10, 12, 14 to 22",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b_val"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "1 to 5, 7 to 9, 11, 14, 18",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "c_val"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "c",
+        "printed_runs": "3, 5, 8 to 11, 13 to 22",
+        "derived_from_values": [
+         "c"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "miss_lbl"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F13"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "fill_value"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the distractors shaped like the keyed answer",
+        "members": [
+         19,
+         20,
+         29,
+         35,
+         36,
+         38
+        ]
+       },
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the keyed answer (a true statement)",
+        "members": [
+         2
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "operation"
+    ]
+   },
+   {
+    "id": "F13",
+    "template": "missing number",
+    "appears_in": [],
+    "nested_in": [
+     "F11",
+     "F12"
+    ],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F14",
+    "template": "{statement}. True or False?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "statement"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F11",
+         "F12"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   }
+  ],
+  "lists": {},
+  "banks": {},
+  "value_derivations": [],
+  "reason_kinds": {}
+ }
+}

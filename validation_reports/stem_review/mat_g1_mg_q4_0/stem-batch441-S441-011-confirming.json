@@ -1,0 +1,637 @@
+{
+ "schema_version": 2,
+ "hash_version": 8,
+ "node_id": "mat_g1_mg_q4_0",
+ "record_id": "stem-batch441-S441-011-confirming",
+ "role": "confirming",
+ "confirms": "stem-batch441-S441-011-first",
+ "item_id": "S441-011",
+ "lc_hash": "e4f906fef257a627564f5e1d0889df04c06613ceb53334654bde4109b874c6ca",
+ "judged_by": "blind-stem-judge-claude-haiku-batch441-S441-011-confirming",
+ "dispatch_id": "stem-batch441-S441-011-confirming",
+ "filed_at": "2026-10-16T04:55:27Z",
+ "delivery": "Claude Code Agent tool, model=haiku, subagent_type=general-purpose; the judge was told to read only local_only/scratch/h4c/prompts/S441-011.prompt.txt (tests/stem_file.py prompt output, item S441-011; no lc id, no key or packets file in that directory) and reply with what it asks; dispatched with CLAUDE.md loaded (ruling 29). Blindness is a prompt contract, audited from the subagent transcript.",
+ "tool_uses_by_judge": "From the subagent transcript: 1 tool use(s), all Read of its own prompt file (615 lines, every line read); no other tool, path or search. Model reported in the transcript: claude-haiku-5-5.",
+ "dispatch_prompt_digest": "580231164a2499f64cd63d14cb86b86b7d9f0735b26f92fd1ae5e01d7594d5c5",
+ "raw_reply": "{\"item\": \"S441-011\", \"clauses\": {\"identify_position\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F08\", \"template\": \"{question}\", \"reasoning\": \"F08 prints the bank question. Each row states an initial facing direction, applies a turn, and asks which direction the arrow faces now, so the learner identifies a position.\"}, \"objects\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F08\", \"template\": \"{question}\", \"reasoning\": \"Every bank row presents the moved item as an arrow ('An arrow faces ...'). An arrow is an object, so the clause is addressed, though only one kind of object appears.\"}, \"moved\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F08\", \"template\": \"{question}\", \"reasoning\": \"Rows such as 'It does a quarter turn clockwise.' and 'It does a half turn.' show the object being moved.\"}, \"half_turn\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F08\", \"template\": \"{question}\", \"reasoning\": \"Bank rows with 'It does a half turn.' (for example the UP and LEFT rows) address the half turn range.\"}, \"quarter_turn\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F08\", \"template\": \"{question}\", \"reasoning\": \"Bank rows with 'It does a quarter turn clockwise.' and 'It does a quarter turn counter-clockwise.' address the quarter turn range.\"}, \"clockwise\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F08\", \"template\": \"{question}\", \"reasoning\": \"Bank rows with 'clockwise' in the question, including 'Which direction is clockwise?', address the clockwise property. 'clockwise' is in student_vocab.\"}, \"counter_clockwise\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F08\", \"template\": \"{question}\", \"reasoning\": \"Bank rows with 'counter-clockwise' in the question address the counter-clockwise direction clause. 'counter-clockwise' is in student_vocab.\"}, \"initial_facing_direction\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F08\", \"template\": \"{question}\", \"reasoning\": \"Every bank row opens with a stated initial facing direction ('An arrow faces UP.' and the other directions).\"}}, \"failing_families\": [\"F02\"], \"failing_templates\": [\"A quarter turn moves it like 15 minutes on a clock.\"], \"overall\": \"FAIL\", \"reasoning\": \"F02 is a fixed template with no slots, so every render prints it. It uses 'minutes' in a clock-reading sense. The NOT_YET_KNOWN list contains 'minute', 'hour' and 'analog clock', so this introduces a time concept beyond this lc's gates. F01 and F03 are within vocabulary and accurate. F04 to F08 draw from the _ITEM_POOL bank, where one_row_per_problem is true. I checked all nine printed rows: each keyed answer is correct for its turn and facing, no distractor equals its key, and the wording uses student_vocab and no NOT_YET_KNOWN terms. The row 'Which direction is clockwise?' is a definitional item rather than a moved object; it stays within the clockwise clause and is not a fault. The F05 generator distractors are all directions and do not create a defect.\"}",
+ "raw_reply_digest": "63b42b23bab9bd7f6f4226034ca5b8bfc203e847c50b6f107bf2f7254e2d1647",
+ "packet_digest": "558d61105a7ead2f892c9e9ae76e6ce35b8e0d589545dddacebce5a8184883ec",
+ "family_keys": {
+  "F01": {
+   "source": "backend/app/practice_gen/dna/mg/symmetry_slides.py",
+   "first_site": "backend/app/practice_gen/dna/mg/symmetry_slides.py:590",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F02": {
+   "source": "backend/app/practice_gen/dna/mg/symmetry_slides.py",
+   "first_site": "backend/app/practice_gen/dna/mg/symmetry_slides.py:589",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F03": {
+   "source": "backend/app/practice_gen/dna/mg/symmetry_slides.py",
+   "first_site": "backend/app/practice_gen/dna/mg/symmetry_slides.py:588",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F04": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:32",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F05": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:39",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F06": {
+   "source": "backend/app/practice_gen/slots.py",
+   "first_site": "backend/app/practice_gen/slots.py:180",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F07": {
+   "source": "backend/app/practice_gen/slots.py",
+   "first_site": "backend/app/practice_gen/slots.py:182",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F08": {
+   "source": "backend/app/practice_gen/slots.py",
+   "first_site": "backend/app/practice_gen/slots.py:180",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  }
+ },
+ "packet": {
+  "item": "S441-011",
+  "competency": {
+   "text": "Identify the position of objects moved in half turn or in quarter turn, in clockwise or in counter-clockwise direction, given an initial facing direction.",
+   "grade": 1,
+   "quarter": 4
+  },
+  "clauses": [
+   {
+    "id": "identify_position",
+    "kind": "task",
+    "clause": "Identify the position"
+   },
+   {
+    "id": "objects",
+    "kind": "object",
+    "clause": "objects"
+   },
+   {
+    "id": "moved",
+    "kind": "task",
+    "clause": "moved"
+   },
+   {
+    "id": "half_turn",
+    "kind": "range",
+    "clause": "half turn"
+   },
+   {
+    "id": "quarter_turn",
+    "kind": "range",
+    "clause": "quarter turn"
+   },
+   {
+    "id": "clockwise",
+    "kind": "property",
+    "clause": "clockwise"
+   },
+   {
+    "id": "counter_clockwise",
+    "kind": "property",
+    "clause": "counter-clockwise direction"
+   },
+   {
+    "id": "initial_facing_direction",
+    "kind": "property",
+    "clause": "initial facing direction"
+   }
+  ],
+  "vocabulary": {
+   "student_vocab": [
+    "clockwise",
+    "counter-clockwise",
+    "half turn",
+    "quarter turn"
+   ],
+   "curriculum_vocab": [
+    "facing direction",
+    "turn",
+    "rotation"
+   ],
+   "introduces_vocab": [
+    "half turn",
+    "quarter turn",
+    "clockwise",
+    "counter-clockwise",
+    "facing direction",
+    "turn",
+    "rotation"
+   ],
+   "cumulative_vocab": [
+    "1 less",
+    "1 more",
+    "10th",
+    "1st",
+    "2nd",
+    "3rd",
+    "4th",
+    "5th",
+    "6th",
+    "7th",
+    "8th",
+    "9th",
+    "addition",
+    "bigger",
+    "bill",
+    "coin",
+    "compare",
+    "corner",
+    "count",
+    "data",
+    "difference",
+    "digit",
+    "equal",
+    "expanded form",
+    "fraction",
+    "group",
+    "half",
+    "how many",
+    "left",
+    "length",
+    "less",
+    "measure",
+    "missing number",
+    "more",
+    "number",
+    "number line",
+    "numeral",
+    "ones",
+    "pattern",
+    "peso",
+    "pictograph",
+    "place value",
+    "quarter",
+    "rectangle",
+    "repeating pattern",
+    "same",
+    "side",
+    "skip counting",
+    "smaller",
+    "square",
+    "subtraction",
+    "sum",
+    "table",
+    "tens",
+    "total",
+    "triangle",
+    "whole",
+    "₱"
+   ],
+   "NOT_YET_KNOWN": [
+    "L",
+    "a.m.",
+    "analog clock",
+    "area",
+    "axis",
+    "balance scale",
+    "bar graph",
+    "calendar",
+    "capacity",
+    "centavo",
+    "centimeter",
+    "certain",
+    "circle",
+    "cm",
+    "decreasing pattern",
+    "denominator",
+    "division",
+    "elapsed time",
+    "equal groups",
+    "equally likely",
+    "estimate",
+    "even",
+    "g",
+    "gram",
+    "half hour",
+    "hour",
+    "hundreds",
+    "impossible",
+    "improper fraction",
+    "increasing pattern",
+    "intersecting",
+    "kg",
+    "kilogram",
+    "less likely",
+    "line",
+    "line of symmetry",
+    "line segment",
+    "liter",
+    "m",
+    "mL",
+    "mass",
+    "meter",
+    "milliliter",
+    "minute",
+    "missing term",
+    "more likely",
+    "multiplication",
+    "nearest hundred",
+    "nearest ten",
+    "nearest thousand",
+    "numerator",
+    "odd",
+    "order of operations",
+    "outcome",
+    "p.m.",
+    "parallel",
+    "perimeter",
+    "perpendicular",
+    "point",
+    "product",
+    "quarter hour",
+    "quotient",
+    "ray",
+    "regrouping",
+    "remainder",
+    "round",
+    "ruler",
+    "scale",
+    "similar fractions",
+    "slide",
+    "solid figure",
+    "sq. cm",
+    "square centimeter",
+    "symmetry",
+    "ten thousand",
+    "ten-thousands place",
+    "thousand",
+    "translation"
+   ],
+   "sentence_max_words": 15,
+   "number_format": "no commas, no thousands separator"
+  },
+  "declared_variants": [
+   [
+    "concept",
+    "rotation"
+   ],
+   [
+    "directions",
+    "one_direction"
+   ],
+   [
+    "directions",
+    "two_directions"
+   ]
+  ],
+  "declared_bounds": [
+   {
+    "concept": "rotation"
+   }
+  ],
+  "families": [
+   {
+    "id": "F01",
+    "template": "A half turn faces it the opposite way.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": [
+     "concept"
+    ]
+   },
+   {
+    "id": "F02",
+    "template": "A quarter turn moves it like 15 minutes on a clock.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": [
+     "concept"
+    ]
+   },
+   {
+    "id": "F03",
+    "template": "A turn (rotation) spins a shape in place without sliding it.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": [
+     "concept"
+    ]
+   },
+   {
+    "id": "F04",
+    "template": "{answer}",
+    "appears_in": [
+     "correct_answer",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "result",
+        "printed": [
+         "down",
+         "left",
+         "right",
+         "the direction clock hands move",
+         "up"
+        ],
+        "derived_from_values": [
+         "result"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F05",
+    "template": "{member}",
+    "appears_in": [
+     "distractors",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "member"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "QuestionContext.distractors (the generator's own)",
+        "members": [
+         "down",
+         "left",
+         "right",
+         "straight up",
+         "the opposite direction clock hands move",
+         "to the left",
+         "up"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F06",
+    "template": "{answer}",
+    "appears_in": [
+     "correct_answer",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "a field of a fixed item bank",
+        "field": "answer",
+        "bank": "_ITEM_POOL",
+        "derived_from_values": [
+         "answer",
+         "concept",
+         "directions",
+         "distractors",
+         "grade_min",
+         "question"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F07",
+    "template": "{distractors}",
+    "appears_in": [
+     "distractors",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "distractors"
+      ],
+      "domains": [
+       {
+        "domain": "a field of a fixed item bank",
+        "field": "distractors",
+        "bank": "_ITEM_POOL",
+        "derived_from_values": [
+         "answer",
+         "concept",
+         "directions",
+         "distractors",
+         "grade_min",
+         "question"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F08",
+    "template": "{question}",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "question"
+      ],
+      "domains": [
+       {
+        "domain": "a field of a fixed item bank",
+        "field": "question",
+        "bank": "_ITEM_POOL",
+        "derived_from_values": [
+         "answer",
+         "concept",
+         "directions",
+         "distractors",
+         "grade_min",
+         "question"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   }
+  ],
+  "lists": {},
+  "banks": {
+   "_ITEM_POOL": {
+    "fields": [
+     "answer",
+     "distractors",
+     "question"
+    ],
+    "one_row_per_problem": true,
+    "rows": [
+     {
+      "answer": "right",
+      "distractors": [
+       "left",
+       "down",
+       "up"
+      ],
+      "question": "An arrow faces UP. It does a quarter turn clockwise. Which direction does it face now?"
+     },
+     {
+      "answer": "down",
+      "distractors": [
+       "up",
+       "left",
+       "right"
+      ],
+      "question": "An arrow faces UP. It does a half turn. Which direction does it face now?"
+     },
+     {
+      "answer": "left",
+      "distractors": [
+       "right",
+       "down",
+       "up"
+      ],
+      "question": "An arrow faces UP. It does a quarter turn counter-clockwise. Which direction does it face now?"
+     },
+     {
+      "answer": "the direction clock hands move",
+      "distractors": [
+       "the opposite direction clock hands move",
+       "straight up",
+       "to the left"
+      ],
+      "question": "Which direction is clockwise?"
+     },
+     {
+      "answer": "left",
+      "distractors": [
+       "right",
+       "up",
+       "down"
+      ],
+      "question": "An arrow faces DOWN. It does a quarter turn clockwise. Which direction does it face now?"
+     },
+     {
+      "answer": "up",
+      "distractors": [
+       "down",
+       "right",
+       "left"
+      ],
+      "question": "An arrow faces LEFT. It does a quarter turn clockwise. Which direction does it face now?"
+     },
+     {
+      "answer": "up",
+      "distractors": [
+       "down",
+       "left",
+       "right"
+      ],
+      "question": "An arrow faces RIGHT. It does a quarter turn counter-clockwise. Which direction does it face now?"
+     },
+     {
+      "answer": "right",
+      "distractors": [
+       "left",
+       "up",
+       "down"
+      ],
+      "question": "An arrow faces LEFT. It does a half turn. Which direction does it face now?"
+     },
+     {
+      "answer": "left",
+      "distractors": [
+       "right",
+       "up",
+       "down"
+      ],
+      "question": "An arrow faces RIGHT. It does a half turn. Which direction does it face now?"
+     }
+    ],
+    "rows_left_out": 44
+   }
+  },
+  "value_derivations": [],
+  "reason_kinds": {}
+ }
+}

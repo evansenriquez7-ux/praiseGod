@@ -1,0 +1,647 @@
+{
+ "schema_version": 2,
+ "hash_version": 8,
+ "node_id": "mat_g2_mg_q4_3",
+ "record_id": "stem-batch443-S443-010-confirming",
+ "role": "confirming",
+ "confirms": "stem-batch443-S443-010-first",
+ "item_id": "S443-010",
+ "lc_hash": "d0663a7ed6b03efe7f6d7d037a18a07b328bac4c37422a09474e5222d45ea1d2",
+ "judged_by": "blind-stem-judge-claude-haiku-batch443-S443-010-confirming",
+ "dispatch_id": "stem-batch443-S443-010-confirming",
+ "filed_at": "2026-10-16T05:11:06Z",
+ "delivery": "Claude Code Agent tool, model=haiku, subagent_type=general-purpose; the judge was told to read only local_only/scratch/h4c/prompts/S443-010.prompt.txt (tests/stem_file.py prompt output, item S443-010; no lc id, no key or packets file in that directory) and reply with what it asks; dispatched with CLAUDE.md loaded (ruling 29). Blindness is a prompt contract, audited from the subagent transcript.",
+ "tool_uses_by_judge": "From the subagent transcript: 1 tool use(s), all Read of its own prompt file (635 lines, every line read); no other tool, path or search. Model reported in the transcript: claude-haiku-5-5.",
+ "dispatch_prompt_digest": "da2a01d14c186f75fe3fbc93f38f3e140cb2c65fb453e11c557cf36c2ff6e54f",
+ "raw_reply": "{\"item\": \"S443-010\", \"clauses\": {\"identify\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F05\", \"template\": \"{text}\", \"reasoning\": \"F05 prints the question_text of a bank row, such as \\\"The edge of a desk never bends or changes direction. Which best describes it?\\\", and the learner identifies the line or surface named by the keyed answer.\"}, \"explain\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F05\", \"template\": \"{text}\", \"reasoning\": \"F05 prints the \\\"Why\\\" rows, such as \\\"Why is the edge of a ruler called a straight line?\\\", whose keyed answers are reasons (F06 and F05 answers such as \\\"Because it never bends or changes direction.\\\"), so the learner explains.\"}, \"difference_between\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F05\", \"template\": \"{text}\", \"reasoning\": \"F05 prints the comparison rows \\\"How is a straight line different from a curved line?\\\" and \\\"How is a flat surface different from a curved surface?\\\", with keyed answers stating the difference.\"}, \"straight_lines\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F05\", \"template\": \"{text}\", \"reasoning\": \"Bank rows about the edge of a desk and the edge of a ruler print the straight line answer through F05.\"}, \"curved_lines\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F05\", \"template\": \"{text}\", \"reasoning\": \"Bank rows about a winding river path and the rim of a circle print the curved line answer through F05.\"}, \"flat_surfaces\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F05\", \"template\": \"{text}\", \"reasoning\": \"Bank rows about a tabletop-like surface of a solid figure, a box's faces and a closed book's cover print the flat surface answer through F05.\"}, \"curved_surfaces\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F05\", \"template\": \"{text}\", \"reasoning\": \"Bank rows about a ball's surface and a can's remaining surface print the curved surface answer through F05.\"}, \"3_dimensional_objects\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F05\", \"template\": \"{text}\", \"reasoning\": \"Bank rows that open \\\"A solid figure has a surface...\\\" and rows about a box, a ball and a can present 3-dimensional objects through F05.\"}}, \"failing_families\": [], \"failing_templates\": [], \"overall\": \"PASS\", \"reasoning\": \"Every bank row is one problem with a correct keyed answer and distractors that are wrong for its question (for example, the rim of a circle is a curved line and the edge of a ruler is straight). The F06 printed answers and the F07 distractor members all belong to their own row, and F07 members are the union of the 15 drawn rows' distractors, so no cross-row mismatch arises. Hints F01 to F04 are correct. Sentences are at most 15 words, within the 18-word limit. The only NOT_YET_KNOWN words in the text are 'line' and 'round' inside the compounds 'straight line' and 'curved line' (introduced here) and the substring of 'around', which is a different word. Some distractors are true facts that are not the reason, such as \\\"Because it has two ends.\\\" and \\\"Because it is very long.\\\" when paired with the ruler question, but they are not wrong statements about the ruler and do not make the keyed answer ambiguous.\"}",
+ "raw_reply_digest": "5ec41128117daa1b80d1b89828edc5f681c9b3bd9709bdf6c26b1c288e1c4ab9",
+ "packet_digest": "c4fd60b3d499d38113c70d37f55608122eaf2a573e2dcb7f5df6bb2004bfcd6c",
+ "family_keys": {
+  "F01": {
+   "source": "backend/app/practice_gen/dna/mg/geometric_lines.py",
+   "first_site": "backend/app/practice_gen/dna/mg/geometric_lines.py:723",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F02": {
+   "source": "backend/app/practice_gen/dna/mg/geometric_lines.py",
+   "first_site": "backend/app/practice_gen/dna/mg/geometric_lines.py:725",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F03": {
+   "source": "backend/app/practice_gen/dna/mg/geometric_lines.py",
+   "first_site": "backend/app/practice_gen/dna/mg/geometric_lines.py:724",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F04": {
+   "source": "backend/app/practice_gen/dna/mg/geometric_lines.py",
+   "first_site": "backend/app/practice_gen/dna/mg/geometric_lines.py:722",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F05": {
+   "source": "backend/app/practice_gen/dna/mg/geometric_lines.py",
+   "first_site": "backend/app/practice_gen/dna/mg/geometric_lines.py:704",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F06": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:32",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F07": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:39",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  }
+ },
+ "packet": {
+  "item": "S443-010",
+  "competency": {
+   "text": "Identify and explain the difference between straight and curved lines, and flat and curved surfaces of 3-dimensional objects.",
+   "grade": 2,
+   "quarter": 4
+  },
+  "clauses": [
+   {
+    "id": "identify",
+    "kind": "task",
+    "clause": "Identify"
+   },
+   {
+    "id": "explain",
+    "kind": "task",
+    "clause": "explain"
+   },
+   {
+    "id": "difference_between",
+    "kind": "property",
+    "clause": "difference between"
+   },
+   {
+    "id": "straight_lines",
+    "kind": "object",
+    "clause": "straight"
+   },
+   {
+    "id": "curved_lines",
+    "kind": "object",
+    "clause": "curved lines"
+   },
+   {
+    "id": "flat_surfaces",
+    "kind": "object",
+    "clause": "flat"
+   },
+   {
+    "id": "curved_surfaces",
+    "kind": "object",
+    "clause": "curved surfaces"
+   },
+   {
+    "id": "3_dimensional_objects",
+    "kind": "object",
+    "clause": "3-dimensional objects"
+   }
+  ],
+  "vocabulary": {
+   "student_vocab": [
+    "solid figure"
+   ],
+   "curriculum_vocab": [
+    "3-dimensional object",
+    "3D object",
+    "straight line",
+    "curved line",
+    "flat surface",
+    "curved surface"
+   ],
+   "introduces_vocab": [
+    "3-dimensional object",
+    "3D object",
+    "straight line",
+    "curved line",
+    "flat surface",
+    "curved surface",
+    "solid figure"
+   ],
+   "cumulative_vocab": [
+    "1 less",
+    "1 more",
+    "10th",
+    "1st",
+    "2nd",
+    "3rd",
+    "4th",
+    "5th",
+    "6th",
+    "7th",
+    "8th",
+    "9th",
+    "a.m.",
+    "addition",
+    "analog clock",
+    "bigger",
+    "bill",
+    "calendar",
+    "centavo",
+    "centimeter",
+    "circle",
+    "clockwise",
+    "cm",
+    "coin",
+    "compare",
+    "corner",
+    "count",
+    "counter-clockwise",
+    "data",
+    "decreasing pattern",
+    "denominator",
+    "difference",
+    "digit",
+    "division",
+    "elapsed time",
+    "equal",
+    "equal groups",
+    "estimate",
+    "even",
+    "expanded form",
+    "fraction",
+    "group",
+    "half",
+    "half hour",
+    "half turn",
+    "hour",
+    "how many",
+    "hundreds",
+    "increasing pattern",
+    "left",
+    "length",
+    "less",
+    "m",
+    "measure",
+    "meter",
+    "minute",
+    "missing number",
+    "more",
+    "multiplication",
+    "number",
+    "number line",
+    "numeral",
+    "numerator",
+    "odd",
+    "ones",
+    "p.m.",
+    "pattern",
+    "peso",
+    "pictograph",
+    "place value",
+    "product",
+    "quarter",
+    "quarter hour",
+    "quarter turn",
+    "quotient",
+    "rectangle",
+    "regrouping",
+    "repeating pattern",
+    "ruler",
+    "same",
+    "scale",
+    "side",
+    "similar fractions",
+    "skip counting",
+    "slide",
+    "smaller",
+    "square",
+    "subtraction",
+    "sum",
+    "table",
+    "tens",
+    "thousand",
+    "total",
+    "translation",
+    "triangle",
+    "whole",
+    "₱"
+   ],
+   "NOT_YET_KNOWN": [
+    "L",
+    "area",
+    "axis",
+    "balance scale",
+    "bar graph",
+    "capacity",
+    "certain",
+    "equally likely",
+    "g",
+    "gram",
+    "impossible",
+    "improper fraction",
+    "intersecting",
+    "kg",
+    "kilogram",
+    "less likely",
+    "line",
+    "line of symmetry",
+    "line segment",
+    "liter",
+    "mL",
+    "mass",
+    "milliliter",
+    "missing term",
+    "more likely",
+    "nearest hundred",
+    "nearest ten",
+    "nearest thousand",
+    "order of operations",
+    "outcome",
+    "parallel",
+    "perimeter",
+    "perpendicular",
+    "point",
+    "ray",
+    "remainder",
+    "round",
+    "sq. cm",
+    "square centimeter",
+    "symmetry",
+    "ten thousand",
+    "ten-thousands place"
+   ],
+   "sentence_max_words": 18,
+   "number_format": "no commas for numbers up to 1000"
+  },
+  "declared_variants": [
+   [
+    "concept_type",
+    "straight_curved"
+   ],
+   [
+    "task_type",
+    "explain_difference"
+   ],
+   [
+    "task_type",
+    "identify_name"
+   ],
+   [
+    "task_type",
+    "identify_property"
+   ]
+  ],
+  "declared_bounds": [
+   {
+    "concept_type": "straight_curved"
+   }
+  ],
+  "families": [
+   {
+    "id": "F01",
+    "template": "A curved line bends smoothly.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F02",
+    "template": "A curved surface bends, like the outside of a ball or a can.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F03",
+    "template": "A flat surface has no bumps or curves, like a tabletop.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F04",
+    "template": "A straight line never bends.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F05",
+    "template": "{text}",
+    "appears_in": [
+     "correct_answer",
+     "distractors",
+     "format_data.options",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "text"
+      ],
+      "domains": [
+       {
+        "domain": "a field of a fixed item bank",
+        "field": "answer",
+        "bank": "_ITEM_POOL"
+       },
+       {
+        "domain": "a field of a fixed item bank",
+        "field": "distractors",
+        "bank": "_ITEM_POOL"
+       },
+       {
+        "domain": "a field of a fixed item bank",
+        "field": "question",
+        "bank": "_ITEM_POOL"
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F06",
+    "template": "{answer}",
+    "appears_in": [
+     "correct_answer",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "result",
+        "printed": [
+         "A ball has a curved surface, but a box has flat surfaces.",
+         "A flat surface has no bumps or curves, but a curved surface bends.",
+         "A straight line never bends, but a curved line bends smoothly.",
+         "Because it bends smoothly and changes direction.",
+         "Because it never bends or changes direction.",
+         "curved line",
+         "curved surface",
+         "flat surface",
+         "straight line"
+        ],
+        "derived_from_values": [
+         "result"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F07",
+    "template": "{member}",
+    "appears_in": [
+     "distractors",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "member"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "QuestionContext.distractors (the generator's own)",
+        "members": [
+         "A ball has flat surfaces, but a box has a curved surface.",
+         "A ball is always heavier than a box.",
+         "A flat surface bends, but a curved surface has no bumps.",
+         "A flat surface is always bigger than a curved surface.",
+         "A straight line bends, but a curved line never bends.",
+         "A straight line is always longer than a curved line.",
+         "Because it bends all the way around.",
+         "Because it has two ends.",
+         "Because it is a flat surface.",
+         "Because it is flat and wide.",
+         "Because it is very long.",
+         "Because it never bends.",
+         "Both of them bend in the same way.",
+         "Both of them have only flat surfaces.",
+         "curved line",
+         "curved surface",
+         "flat surface",
+         "straight line"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   }
+  ],
+  "lists": {},
+  "banks": {
+   "_ITEM_POOL": {
+    "fields": [
+     "answer",
+     "distractors",
+     "question"
+    ],
+    "one_row_per_problem": true,
+    "rows": [
+     {
+      "answer": "straight line",
+      "distractors": [
+       "curved line",
+       "flat surface",
+       "curved surface"
+      ],
+      "question": "The edge of a desk never bends or changes direction. Which best describes it?"
+     },
+     {
+      "answer": "curved line",
+      "distractors": [
+       "straight line",
+       "flat surface",
+       "curved surface"
+      ],
+      "question": "The path of a winding river bends smoothly and changes direction. Which best describes it?"
+     },
+     {
+      "answer": "straight line",
+      "distractors": [
+       "curved line",
+       "flat surface",
+       "curved surface"
+      ],
+      "question": "The edge of a ruler never bends. Which best describes it?"
+     },
+     {
+      "answer": "curved line",
+      "distractors": [
+       "straight line",
+       "flat surface",
+       "curved surface"
+      ],
+      "question": "The rim of a circle bends all the way around. Which best describes it?"
+     },
+     {
+      "answer": "flat surface",
+      "distractors": [
+       "curved surface",
+       "straight line",
+       "curved line"
+      ],
+      "question": "A solid figure has a surface with no bumps or curves, like a tabletop. What kind of surface is that?"
+     },
+     {
+      "answer": "curved surface",
+      "distractors": [
+       "flat surface",
+       "straight line",
+       "curved line"
+      ],
+      "question": "A solid figure has a surface that bends all the way around, like a ball. What kind of surface is that?"
+     },
+     {
+      "answer": "flat surface",
+      "distractors": [
+       "curved surface",
+       "straight line",
+       "curved line"
+      ],
+      "question": "A box has six faces that are each flat. What kind of surface does a box have?"
+     },
+     {
+      "answer": "curved surface",
+      "distractors": [
+       "flat surface",
+       "straight line",
+       "curved line"
+      ],
+      "question": "A ball has a surface that bends smoothly in every direction. What kind of surface does a ball have?"
+     },
+     {
+      "answer": "curved surface",
+      "distractors": [
+       "flat surface",
+       "straight line",
+       "curved line"
+      ],
+      "question": "A can has both flat surfaces (its ends) and one other kind of surface. What kind is it?"
+     },
+     {
+      "answer": "flat surface",
+      "distractors": [
+       "curved surface",
+       "straight line",
+       "curved line"
+      ],
+      "question": "What kind of surface does the cover of a closed book have?"
+     },
+     {
+      "answer": "Because it never bends or changes direction.",
+      "distractors": [
+       "Because it bends all the way around.",
+       "Because it is flat and wide.",
+       "Because it is very long."
+      ],
+      "question": "Why is the edge of a ruler called a straight line?"
+     },
+     {
+      "answer": "Because it bends smoothly and changes direction.",
+      "distractors": [
+       "Because it never bends.",
+       "Because it is a flat surface.",
+       "Because it has two ends."
+      ],
+      "question": "Why is the rim of a plate called a curved line?"
+     },
+     {
+      "answer": "A straight line never bends, but a curved line bends smoothly.",
+      "distractors": [
+       "A straight line bends, but a curved line never bends.",
+       "Both of them bend in the same way.",
+       "A straight line is always longer than a curved line."
+      ],
+      "question": "How is a straight line different from a curved line?"
+     },
+     {
+      "answer": "A flat surface has no bumps or curves, but a curved surface bends.",
+      "distractors": [
+       "A flat surface bends, but a curved surface has no bumps.",
+       "Both of them bend in the same way.",
+       "A flat surface is always bigger than a curved surface."
+      ],
+      "question": "How is a flat surface different from a curved surface?"
+     },
+     {
+      "answer": "A ball has a curved surface, but a box has flat surfaces.",
+      "distractors": [
+       "A ball has flat surfaces, but a box has a curved surface.",
+       "Both of them have only flat surfaces.",
+       "A ball is always heavier than a box."
+      ],
+      "question": "A ball rolls smoothly but a box does not roll. Why?"
+     }
+    ],
+    "rows_left_out": 40
+   }
+  },
+  "value_derivations": [],
+  "reason_kinds": {}
+ }
+}

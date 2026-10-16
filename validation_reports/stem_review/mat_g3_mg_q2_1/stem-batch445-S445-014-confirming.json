@@ -1,0 +1,652 @@
+{
+ "schema_version": 2,
+ "hash_version": 8,
+ "node_id": "mat_g3_mg_q2_1",
+ "record_id": "stem-batch445-S445-014-confirming",
+ "role": "confirming",
+ "confirms": "stem-batch445-S445-014-first",
+ "item_id": "S445-014",
+ "lc_hash": "9634ef6f722b813985e99b29fa423eb24c770e8a6a879bb3aadc62b203741b26",
+ "judged_by": "blind-stem-judge-claude-haiku-batch445-S445-014-confirming",
+ "dispatch_id": "stem-batch445-S445-014-confirming",
+ "filed_at": "2026-10-16T06:23:47Z",
+ "delivery": "Claude Code Agent tool, model=haiku, subagent_type=general-purpose; the judge was told to read only local_only/scratch/h4c/prompts/S445-014.prompt.txt (tests/stem_file.py prompt output, item S445-014; no lc id, no key or packets file in that directory) and reply with what it asks; dispatched with CLAUDE.md loaded (ruling 29). Blindness is a prompt contract, audited from the subagent transcript.",
+ "tool_uses_by_judge": "From the subagent transcript: 1 tool use(s), all Read of its own prompt file (650 lines, every line read); no other tool, path or search. Model reported in the transcript: claude-haiku-5-5.",
+ "dispatch_prompt_digest": "d31b4e017d662920c6dcfa89cb8d3772b15b2f5d9e7710e18eb72ce09354042b",
+ "raw_reply": "{\"item\": \"S445-014\", \"clauses\": {\"estimate_mass\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F06\", \"template\": \"{article} {target_noun}'s {mc_lbl} measures {val} {unit}. About how many {unit} is that, rounded to the nearest {round_to}?\", \"reasoning\": \"F06 is the only family that poses a question. It asks the learner to estimate a stated mass by rounding it to the nearest 10 (round_to is printed only as 10), so it produces the estimation task.\"}, \"an_object\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F06\", \"template\": \"{article} {target_noun}'s {mc_lbl} measures {val} {unit}. About how many {unit} is that, rounded to the nearest {round_to}?\", \"reasoning\": \"The target_noun domain of F06 includes the member object, so the question is about an object's mass.\"}, \"grams_kilograms_and_or_milligrams\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F06\", \"template\": \"{article} {target_noun}'s {mc_lbl} measures {val} {unit}. About how many {unit} is that, rounded to the nearest {round_to}?\", \"reasoning\": \"The unit slot of F06 prints g, kg and mg, so the question is posed in grams, kilograms or milligrams.\"}}, \"failing_families\": [\"F06\"], \"failing_templates\": [\"{article} {target_noun}'s {mc_lbl} measures {val} {unit}. About how many {unit} is that, rounded to the nearest {round_to}?\"], \"overall\": \"FAIL\", \"reasoning\": \"F06 fills its article slot from the members A and An and its target_noun slot from the members container and object. Both are declared as derived only from measurement_type, which is fixed to mass, and the packet states no link between them. Independent choice can therefore print the article A before object or An before container, an ungrammatical noun phrase in the question stem, which is misleading wording for a grade 3 learner. Hint families F02, F03, F04 and F05 were checked: their arithmetic (low, high and the rounding statements) is consistent with the value and answer domains, and no failure was found. Not failed: milligrams is named in the competency clause, so mg is within scope, but mg is absent from cumulative_vocab and its notation should be checked by the gate owner.\"}",
+ "raw_reply_digest": "fcb5db2e1ced1e9550f392f80b53d1e96d4e376841d33c210fb65dd28d43e971",
+ "packet_digest": "bb2c4597ece165c6ac3c360e464485010408af4c187df0eb872b16243e48491f",
+ "family_keys": {
+  "F01": {
+   "source": "backend/app/practice_gen/dna/base.py [gate mass]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F02": {
+   "source": "backend/app/practice_gen/dna/mg/mass_capacity.py",
+   "first_site": "backend/app/practice_gen/dna/mg/mass_capacity.py:421",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F03": {
+   "source": "backend/app/practice_gen/dna/mg/mass_capacity.py",
+   "first_site": "backend/app/practice_gen/dna/mg/mass_capacity.py:423",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F04": {
+   "source": "backend/app/practice_gen/dna/mg/mass_capacity.py",
+   "first_site": "backend/app/practice_gen/dna/mg/mass_capacity.py:418",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F05": {
+   "source": "backend/app/practice_gen/dna/mg/mass_capacity.py",
+   "first_site": "backend/app/practice_gen/dna/mg/mass_capacity.py:416",
+   "renderer": "",
+   "path": [
+    6,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F06": {
+   "source": "backend/app/practice_gen/generators/base_generator.py",
+   "first_site": "backend/app/practice_gen/generators/base_generator.py:1223",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  }
+ },
+ "packet": {
+  "item": "S445-014",
+  "competency": {
+   "text": "Estimate mass of an object using grams, kilograms, and/or milligrams.",
+   "grade": 3,
+   "quarter": 2
+  },
+  "clauses": [
+   {
+    "id": "estimate_mass",
+    "kind": "task",
+    "clause": "Estimate mass"
+   },
+   {
+    "id": "an_object",
+    "kind": "object",
+    "clause": "an object"
+   },
+   {
+    "id": "grams_kilograms_and_or_milligrams",
+    "kind": "representation",
+    "clause": "grams, kilograms, and/or milligrams"
+   }
+  ],
+  "vocabulary": {
+   "student_vocab": [],
+   "curriculum_vocab": [
+    "estimate mass"
+   ],
+   "introduces_vocab": [
+    "estimate mass"
+   ],
+   "cumulative_vocab": [
+    "1 less",
+    "1 more",
+    "10th",
+    "1st",
+    "2nd",
+    "3rd",
+    "4th",
+    "5th",
+    "6th",
+    "7th",
+    "8th",
+    "9th",
+    "a.m.",
+    "addition",
+    "analog clock",
+    "area",
+    "bigger",
+    "bill",
+    "calendar",
+    "centavo",
+    "centimeter",
+    "circle",
+    "clockwise",
+    "cm",
+    "coin",
+    "compare",
+    "corner",
+    "count",
+    "counter-clockwise",
+    "data",
+    "decreasing pattern",
+    "denominator",
+    "difference",
+    "digit",
+    "division",
+    "elapsed time",
+    "equal",
+    "equal groups",
+    "estimate",
+    "even",
+    "expanded form",
+    "fraction",
+    "g",
+    "gram",
+    "group",
+    "half",
+    "half hour",
+    "half turn",
+    "hour",
+    "how many",
+    "hundreds",
+    "increasing pattern",
+    "intersecting",
+    "kg",
+    "kilogram",
+    "left",
+    "length",
+    "less",
+    "line",
+    "line segment",
+    "m",
+    "mass",
+    "measure",
+    "meter",
+    "minute",
+    "missing number",
+    "more",
+    "multiplication",
+    "nearest hundred",
+    "nearest ten",
+    "nearest thousand",
+    "number",
+    "number line",
+    "numeral",
+    "numerator",
+    "odd",
+    "ones",
+    "order of operations",
+    "p.m.",
+    "parallel",
+    "pattern",
+    "perimeter",
+    "perpendicular",
+    "peso",
+    "pictograph",
+    "place value",
+    "point",
+    "product",
+    "quarter",
+    "quarter hour",
+    "quarter turn",
+    "quotient",
+    "ray",
+    "rectangle",
+    "regrouping",
+    "repeating pattern",
+    "round",
+    "ruler",
+    "same",
+    "scale",
+    "side",
+    "similar fractions",
+    "skip counting",
+    "slide",
+    "smaller",
+    "solid figure",
+    "sq. cm",
+    "square",
+    "square centimeter",
+    "subtraction",
+    "sum",
+    "table",
+    "ten thousand",
+    "ten-thousands place",
+    "tens",
+    "thousand",
+    "total",
+    "translation",
+    "triangle",
+    "whole",
+    "₱"
+   ],
+   "NOT_YET_KNOWN": [
+    "L",
+    "axis",
+    "balance scale",
+    "bar graph",
+    "capacity",
+    "certain",
+    "equally likely",
+    "impossible",
+    "improper fraction",
+    "less likely",
+    "line of symmetry",
+    "liter",
+    "mL",
+    "milliliter",
+    "missing term",
+    "more likely",
+    "outcome",
+    "remainder",
+    "symmetry"
+   ],
+   "sentence_max_words": 22,
+   "number_format": "space separator for thousands (e.g. 1 000)"
+  },
+  "declared_variants": [
+   [
+    "measurement_type",
+    "mass"
+   ],
+   [
+    "task_type",
+    "estimate"
+   ],
+   [
+    "unit",
+    "g"
+   ],
+   [
+    "unit",
+    "kg"
+   ],
+   [
+    "unit",
+    "l"
+   ],
+   [
+    "unit",
+    "ml"
+   ]
+  ],
+  "declared_bounds": [
+   {
+    "measurement_type": "mass",
+    "task_type": "estimate"
+   }
+  ],
+  "families": [
+   {
+    "id": "F01",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F06"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='mass')",
+        "requires_vocab": "mass",
+        "prints": "mass",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F02",
+    "template": "Count by {step}s: {value} is between {low} and {high}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "step"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "round_to",
+        "printed_runs": "10",
+        "derived_from_values": [
+         "round_to"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "value"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "value",
+        "printed_runs": "5 to 9, 11 to 19, 21 to 26, 29, 31 to 39, 41 to 49, 51 to 55, 57 to 59, 61 to 69, 71",
+        "derived_from_values": [
+         "value"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "low",
+       "high"
+      ],
+      "domains": [
+       {
+        "domain": "a number computed by the generator",
+        "reason": "arithmetic",
+        "derived_from_values": [
+         "round_to",
+         "value"
+        ]
+       }
+      ],
+      "distinct_in_every_render": true
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F03",
+    "template": "So {value} {unit} is about {answer} {unit}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "value"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "value",
+        "printed_runs": "5 to 9, 11 to 19, 21 to 26, 29, 31 to 39, 41 to 49, 51 to 55, 57 to 59, 61 to 69, 71",
+        "derived_from_values": [
+         "value"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "unit"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "unit",
+        "printed": [
+         "g",
+         "kg",
+         "mg"
+        ],
+        "derived_from_values": [
+         "unit"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "answer",
+        "printed_runs": "10, 20, 30, 40, 50, 60, 70",
+        "derived_from_values": [
+         "answer"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F04",
+    "template": "{value} is closer to {answer}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "value"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "value",
+        "printed_runs": "6 to 9, 11 to 14, 16 to 19, 21 to 24, 26, 29, 31 to 34, 36 to 39, 41 to 44, 46 to 49, 51 to 54, 57 to 59, 61 to 64, 66 to 69, 71",
+        "derived_from_values": [
+         "value"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "answer",
+        "printed_runs": "10, 20, 30, 40, 50, 60, 70",
+        "derived_from_values": [
+         "answer"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F05",
+    "template": "{value} is exactly halfway, so it rounds up to {high}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "value"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "value",
+        "printed_runs": "5, 15, 25, 35, 45, 55, 65",
+        "derived_from_values": [
+         "value"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "high"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "answer",
+        "printed_runs": "10, 20, 30, 40, 50, 60, 70",
+        "derived_from_values": [
+         "answer"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F06",
+    "template": "{article} {target_noun}'s {mc_lbl} measures {val} {unit}. About how many {unit} is that, rounded to the nearest {round_to}?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "article"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the article this stem chooses",
+        "members": [
+         "A",
+         "An"
+        ],
+        "derived_from_values": [
+         "measurement_type"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "target_noun"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the mass and capacity nouns",
+        "members": [
+         "container",
+         "object"
+        ],
+        "derived_from_values": [
+         "measurement_type"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "mc_lbl"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F01"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "val"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "value",
+        "printed_runs": "5 to 9, 11 to 19, 21 to 26, 29, 31 to 39, 41 to 49, 51 to 55, 57 to 59, 61 to 69, 71",
+        "derived_from_values": [
+         "value"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "unit"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "unit",
+        "printed": [
+         "g",
+         "kg",
+         "mg"
+        ],
+        "derived_from_values": [
+         "unit"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "round_to"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "round_to",
+        "printed_runs": "10",
+        "derived_from_values": [
+         "round_to"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   }
+  ],
+  "lists": {},
+  "banks": {},
+  "value_derivations": [],
+  "reason_kinds": {
+   "arithmetic": "a number the generator computes from the generated values named in src (a half, a sum, a difference, a running total, a place's digit). Its range is the image of those values' own domains; whether the arithmetic is RIGHT is the hint contract's (§16) and §1E's to check, not §14's."
+  }
+ }
+}

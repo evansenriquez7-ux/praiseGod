@@ -1,0 +1,835 @@
+{
+ "schema_version": 2,
+ "hash_version": 8,
+ "node_id": "mat_g1_mg_q4_1",
+ "record_id": "stem-batch441-S441-012-confirming",
+ "role": "confirming",
+ "confirms": "stem-batch441-S441-012-first",
+ "item_id": "S441-012",
+ "lc_hash": "63f82fc5584235822e064b8c56b8f6f481fdfb2500b12813048ca83935fde334",
+ "judged_by": "blind-stem-judge-claude-haiku-batch441-S441-012-confirming",
+ "dispatch_id": "stem-batch441-S441-012-confirming",
+ "filed_at": "2026-10-16T04:55:20Z",
+ "delivery": "Claude Code Agent tool, model=haiku, subagent_type=general-purpose; the judge was told to read only local_only/scratch/h4c/prompts/S441-012.prompt.txt (tests/stem_file.py prompt output, item S441-012; no lc id, no key or packets file in that directory) and reply with what it asks; dispatched with CLAUDE.md loaded (ruling 29). Blindness is a prompt contract, audited from the subagent transcript.",
+ "tool_uses_by_judge": "From the subagent transcript: 1 tool use(s), all Read of its own prompt file (763 lines, every line read); no other tool, path or search. Model reported in the transcript: claude-haiku-5-5.",
+ "dispatch_prompt_digest": "7e00e3c2b239212a8c88bece76adeccdf74acf94a2815daec7626b76590eab35",
+ "raw_reply": "{\"item\": \"S441-012\", \"clauses\": {\"read_and_write\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F11\", \"template\": \"Set the clock to show {time_str}{trailing}\", \"reasoning\": \"The write half of the task is produced by F11, which asks the learner to set the clock. The read half is produced by F12, which asks what time the clock shows. F11 is chosen as the single best family for the task clause.\"}, \"time\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F11\", \"template\": \"Set the clock to show {time_str}{trailing}\", \"reasoning\": \"The object of the task, a time, is the value F11 asks the learner to set. time_str draws from precision-derived times, and its printed values are all whole-hour, half-hour or quarter-hour times.\"}, \"hour\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F08\", \"template\": \"{hour}:00\", \"reasoning\": \"F08 gives whole-hour times with hour in the range 1 to 12 (bounds['hour']), which matches the hour clause on a 12-hour analog dial.\"}, \"half_hour\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F11\", \"template\": \"Set the clock to show {time_str}{trailing}\", \"reasoning\": \"F11's time_str printed list includes half-past times at 10, 11, 12 and other hours, so half-hour times are produced by this family.\"}, \"quarter_hour\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F11\", \"template\": \"Set the clock to show {time_str}{trailing}\", \"reasoning\": \"F11's time_str printed list includes quarter-past and quarter-to times (minute values 15 and 45 on several hours), so quarter-hour times are produced by this family.\"}, \"analog_clock\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F12\", \"template\": \"What time does the clock show?\", \"reasoning\": \"F12 presents the clock as the item the learner reads, with the clock shown through interaction_mode. It is the representation the analog_clock clause requires.\"}}, \"failing_families\": [\"F09\", \"F13\"], \"failing_templates\": [\"{hour}:{minute:02d}\", \"{hours}:{minutes:02d}\"], \"overall\": \"FAIL\", \"reasoning\": \"F09 fills minute from a domain that is a number in a range from 0 to 59 with basis 'a minute of the hour', not restricted to the hour, half-hour and quarter-hour values this lc names. Its correct_answer and format_data.mcq_options can therefore show minutes such as 7 or 53, which is content beyond the competency's scope and beyond the one_minute and five_minutes precisions only as declared variants. F13 has the same minute range (0 to 59) and also an hours range from 0 to 23 with basis 'an hour of the day'. Values 0 and 13 to 23 cannot be shown on a 12-hour analog dial, and grade 1 quarter 4 has no a.m./p.m. or 24-hour reading in scope (a.m. and p.m. are in NOT_YET_KNOWN). F13 can therefore produce misleading answers and options. F08, F11, F12, F05 and the other hint families stay within 1 to 12 hours and whole, half or quarter minutes, so they pass. Hints F01 to F04 are chosen by minute and cover only 0, 15, 30 and 45. Hints use 'long hand' and 'short hand' where curriculum_vocab names 'minute hand' and 'hour hand'. This is noted but is not a failing finding.\"}",
+ "raw_reply_digest": "6e9e545b6c6fba5b40144ae670f0f2299903111e3fb646958de32e21bc4c8f13",
+ "packet_digest": "8b3775e3e1db091f9f5209245af9356ff50db5f049c16580eb3e5357a5586f78",
+ "family_keys": {
+  "F01": {
+   "source": "backend/app/practice_gen/dna/mg/time_reading.py",
+   "first_site": "backend/app/practice_gen/dna/mg/time_reading.py:726",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F02": {
+   "source": "backend/app/practice_gen/dna/mg/time_reading.py",
+   "first_site": "backend/app/practice_gen/dna/mg/time_reading.py:730",
+   "renderer": "",
+   "path": [
+    19,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F03": {
+   "source": "backend/app/practice_gen/dna/mg/time_reading.py",
+   "first_site": "backend/app/practice_gen/dna/mg/time_reading.py:728",
+   "renderer": "",
+   "path": [
+    7,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F04": {
+   "source": "backend/app/practice_gen/dna/mg/time_reading.py",
+   "first_site": "backend/app/practice_gen/dna/mg/time_reading.py:732",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F05": {
+   "source": "backend/app/practice_gen/dna/mg/time_reading.py",
+   "first_site": "backend/app/practice_gen/dna/mg/time_reading.py:723",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F06": {
+   "source": "backend/app/practice_gen/dna/mg/time_reading.py",
+   "first_site": "backend/app/practice_gen/dna/mg/time_reading.py:722",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F07": {
+   "source": "backend/app/practice_gen/dna/mg/time_reading.py",
+   "first_site": "backend/app/practice_gen/dna/mg/time_reading.py:739",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F08": {
+   "source": "backend/app/practice_gen/dna/mg/time_reading.py",
+   "first_site": "backend/app/practice_gen/dna/mg/time_reading.py:442",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F09": {
+   "source": "backend/app/practice_gen/dna/mg/time_reading.py",
+   "first_site": "backend/app/practice_gen/dna/mg/time_reading.py:444",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F10": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:51",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F11": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_clock.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_clock.py:280",
+   "renderer": "",
+   "path": [
+    4,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F12": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_clock.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_clock.py:263",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F13": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_clock.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_clock.py:203",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  }
+ },
+ "packet": {
+  "item": "S441-012",
+  "competency": {
+   "text": "Read and write time by the hour, half hour, and quarter hour using an analog clock.",
+   "grade": 1,
+   "quarter": 4
+  },
+  "clauses": [
+   {
+    "id": "read_and_write",
+    "kind": "task",
+    "clause": "Read and write"
+   },
+   {
+    "id": "time",
+    "kind": "object",
+    "clause": "time"
+   },
+   {
+    "id": "hour",
+    "kind": "range",
+    "clause": "hour"
+   },
+   {
+    "id": "half_hour",
+    "kind": "range",
+    "clause": "half hour"
+   },
+   {
+    "id": "quarter_hour",
+    "kind": "range",
+    "clause": "quarter hour"
+   },
+   {
+    "id": "analog_clock",
+    "kind": "representation",
+    "clause": "analog clock"
+   }
+  ],
+  "vocabulary": {
+   "student_vocab": [
+    "hour",
+    "half hour",
+    "quarter hour",
+    "analog clock"
+   ],
+   "curriculum_vocab": [
+    "time",
+    "minute hand",
+    "hour hand"
+   ],
+   "introduces_vocab": [
+    "time",
+    "hour",
+    "half hour",
+    "quarter hour",
+    "analog clock",
+    "minute hand",
+    "hour hand"
+   ],
+   "cumulative_vocab": [
+    "1 less",
+    "1 more",
+    "10th",
+    "1st",
+    "2nd",
+    "3rd",
+    "4th",
+    "5th",
+    "6th",
+    "7th",
+    "8th",
+    "9th",
+    "addition",
+    "bigger",
+    "bill",
+    "clockwise",
+    "coin",
+    "compare",
+    "corner",
+    "count",
+    "counter-clockwise",
+    "data",
+    "difference",
+    "digit",
+    "equal",
+    "expanded form",
+    "fraction",
+    "group",
+    "half",
+    "half turn",
+    "how many",
+    "left",
+    "length",
+    "less",
+    "measure",
+    "missing number",
+    "more",
+    "number",
+    "number line",
+    "numeral",
+    "ones",
+    "pattern",
+    "peso",
+    "pictograph",
+    "place value",
+    "quarter",
+    "quarter turn",
+    "rectangle",
+    "repeating pattern",
+    "same",
+    "side",
+    "skip counting",
+    "smaller",
+    "square",
+    "subtraction",
+    "sum",
+    "table",
+    "tens",
+    "total",
+    "triangle",
+    "whole",
+    "₱"
+   ],
+   "NOT_YET_KNOWN": [
+    "L",
+    "a.m.",
+    "area",
+    "axis",
+    "balance scale",
+    "bar graph",
+    "calendar",
+    "capacity",
+    "centavo",
+    "centimeter",
+    "certain",
+    "circle",
+    "cm",
+    "decreasing pattern",
+    "denominator",
+    "division",
+    "elapsed time",
+    "equal groups",
+    "equally likely",
+    "estimate",
+    "even",
+    "g",
+    "gram",
+    "hundreds",
+    "impossible",
+    "improper fraction",
+    "increasing pattern",
+    "intersecting",
+    "kg",
+    "kilogram",
+    "less likely",
+    "line",
+    "line of symmetry",
+    "line segment",
+    "liter",
+    "m",
+    "mL",
+    "mass",
+    "meter",
+    "milliliter",
+    "minute",
+    "missing term",
+    "more likely",
+    "multiplication",
+    "nearest hundred",
+    "nearest ten",
+    "nearest thousand",
+    "numerator",
+    "odd",
+    "order of operations",
+    "outcome",
+    "p.m.",
+    "parallel",
+    "perimeter",
+    "perpendicular",
+    "point",
+    "product",
+    "quotient",
+    "ray",
+    "regrouping",
+    "remainder",
+    "round",
+    "ruler",
+    "scale",
+    "similar fractions",
+    "slide",
+    "solid figure",
+    "sq. cm",
+    "square centimeter",
+    "symmetry",
+    "ten thousand",
+    "ten-thousands place",
+    "thousand",
+    "translation"
+   ],
+   "sentence_max_words": 15,
+   "number_format": "no commas, no thousands separator"
+  },
+  "declared_variants": [
+   [
+    "context",
+    "pure"
+   ],
+   [
+    "include_ampm",
+    "no"
+   ],
+   [
+    "include_ampm",
+    "yes"
+   ],
+   [
+    "mode",
+    "read"
+   ],
+   [
+    "mode",
+    "set"
+   ],
+   [
+    "precision",
+    "five_minutes"
+   ],
+   [
+    "precision",
+    "half_hour"
+   ],
+   [
+    "precision",
+    "hour"
+   ],
+   [
+    "precision",
+    "one_minute"
+   ],
+   [
+    "precision",
+    "quarter_hour"
+   ],
+   [
+    "task_type",
+    "clock_reading"
+   ]
+  ],
+  "declared_bounds": [
+   {
+    "task_type": "clock_reading",
+    "context": "pure"
+   }
+  ],
+  "families": [
+   {
+    "id": "F01",
+    "template": "The long hand points to 12, so it is exactly on the hour.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": [
+     "minute"
+    ]
+   },
+   {
+    "id": "F02",
+    "template": "The long hand points to 3 — that is a quarter past the hour.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": [
+     "minute"
+    ]
+   },
+   {
+    "id": "F03",
+    "template": "The long hand points to 6 — that is half past the hour.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": [
+     "minute"
+    ]
+   },
+   {
+    "id": "F04",
+    "template": "The long hand points to 9 — that is a quarter before the next hour.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": [
+     "minute"
+    ]
+   },
+   {
+    "id": "F05",
+    "template": "The short (hour) hand points near {hour}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "hour"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "hour",
+        "printed_runs": "1 to 12",
+        "derived_from_values": [
+         "hour"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F06",
+    "template": "The short hand shows the hour. The long hand shows how far past the hour it is.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F07",
+    "template": "The time is {time_str}",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "time_str"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "time_str",
+        "printed": [
+         "10:00",
+         "10:15",
+         "10:30",
+         "10:45",
+         "11:00",
+         "11:15",
+         "11:30",
+         "11:45",
+         "12:00",
+         "12:15",
+         "12:30",
+         "12:45",
+         "1:00",
+         "1:15",
+         "1:30",
+         "1:45",
+         "2:00",
+         "2:15",
+         "2:30",
+         "2:45",
+         "3:00",
+         "3:15",
+         "3:30",
+         "3:45",
+         "4:00",
+         "4:15",
+         "4:30",
+         "4:45",
+         "5:00",
+         "5:15",
+         "5:30",
+         "5:45",
+         "6:00",
+         "6:15",
+         "6:30",
+         "6:45",
+         "7:00",
+         "7:15",
+         "7:30",
+         "7:45",
+         "8:00",
+         "8:15",
+         "8:30",
+         "8:45",
+         "9:00",
+         "9:15",
+         "9:30",
+         "9:45"
+        ],
+        "derived_from_values": [
+         "time_str"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F08",
+    "template": "{hour}:00",
+    "appears_in": [
+     "correct_answer",
+     "format_data.mcq_options",
+     "format_data.time_str"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "hour"
+      ],
+      "domains": [
+       {
+        "domain": "a number in a range",
+        "basis": "bounds['hour']",
+        "lo": 1,
+        "hi": 12
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "minute"
+    ]
+   },
+   {
+    "id": "F09",
+    "template": "{hour}:{minute:02d}",
+    "appears_in": [
+     "correct_answer",
+     "format_data.mcq_options",
+     "format_data.time_str"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "hour"
+      ],
+      "domains": [
+       {
+        "domain": "a number in a range",
+        "basis": "bounds['hour']",
+        "lo": 1,
+        "hi": 12
+       }
+      ]
+     },
+     {
+      "slots": [
+       "minute"
+      ],
+      "domains": [
+       {
+        "domain": "a number in a range",
+        "basis": "a minute of the hour",
+        "lo": 0,
+        "hi": 59
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F10",
+    "template": "{key}",
+    "appears_in": [
+     "correct_answer"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "key"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the option keys this item shows",
+        "members": [
+         "A",
+         "B",
+         "C",
+         "D"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F11",
+    "template": "Set the clock to show {time_str}{trailing}",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "time_str"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "time_str",
+        "printed": [
+         "10:00",
+         "10:30",
+         "11:00",
+         "11:15",
+         "11:30",
+         "12:00",
+         "12:30",
+         "12:45",
+         "1:45",
+         "2:45",
+         "3:45",
+         "4:45",
+         "5:00",
+         "5:30",
+         "5:45",
+         "6:00",
+         "6:30",
+         "6:45",
+         "7:00",
+         "7:30",
+         "7:45",
+         "8:00",
+         "8:30",
+         "8:45",
+         "9:00",
+         "9:15",
+         "9:30",
+         "9:45"
+        ],
+        "derived_from_values": [
+         "time_str"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "trailing"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "a closing period unless the time already ends with one",
+        "members": [
+         "",
+         "."
+        ],
+        "derived_from_values": [
+         "period"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F12",
+    "template": "What time does the clock show?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": [
+     "interaction_mode"
+    ]
+   },
+   {
+    "id": "F13",
+    "template": "{hours}:{minutes:02d}",
+    "appears_in": [
+     "correct_answer",
+     "format_data.mcq_options",
+     "format_data.time_str"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "hours"
+      ],
+      "domains": [
+       {
+        "domain": "a number in a range",
+        "basis": "an hour of the day",
+        "lo": 0,
+        "hi": 23
+       },
+       {
+        "domain": "repeats a generated value",
+        "key": "hour",
+        "printed_runs": "1 to 12",
+        "derived_from_values": [
+         "hour"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "minutes"
+      ],
+      "domains": [
+       {
+        "domain": "a number in a range",
+        "basis": "a minute of the hour",
+        "lo": 0,
+        "hi": 59
+       },
+       {
+        "domain": "repeats a generated value",
+        "key": "minute",
+        "printed_runs": "0, 15, 30, 45",
+        "derived_from_values": [
+         "minute"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   }
+  ],
+  "lists": {},
+  "banks": {},
+  "value_derivations": [
+   {
+    "kind": "derives",
+    "key": "minute",
+    "from": [
+     "precision"
+    ]
+   },
+   {
+    "kind": "derives",
+    "key": "time_str",
+    "from": [
+     "precision"
+    ]
+   }
+  ],
+  "reason_kinds": {}
+ }
+}

@@ -1,0 +1,1260 @@
+{
+ "schema_version": 2,
+ "hash_version": 8,
+ "node_id": "mat_g3_dp_q3_4",
+ "record_id": "stem-batch445-S445-005-first",
+ "role": "first",
+ "confirms": null,
+ "item_id": "S445-005",
+ "lc_hash": "e137d0dcf174ee99c6b197963ac280fe5d8a531af5be4d4f6113c7ed17550cd8",
+ "judged_by": "blind-stem-judge-claude-haiku-batch445-S445-005-first",
+ "dispatch_id": "stem-batch445-S445-005-first",
+ "filed_at": "2026-10-15T16:47:47Z",
+ "delivery": "Claude Code Agent tool, model=haiku, subagent_type=general-purpose; the judge was told to read only local_only/scratch/h4c/prompts/S445-005.prompt.txt (tests/stem_file.py prompt output, item S445-005; no lc id, no key or packets file in that directory) and reply with what it asks; dispatched with CLAUDE.md loaded (ruling 29). Blindness is a prompt contract, audited from the subagent transcript.",
+ "tool_uses_by_judge": "From the subagent transcript: 1 tool use(s), all Read of its own prompt file (1158 lines, every line read); no other tool, path or search. Model reported in the transcript: claude-haiku-5-5.",
+ "dispatch_prompt_digest": "68b7137a0b221a317905e04f178fd26fb811e24da2fe0a96de97962fc74b0133",
+ "raw_reply": "{\"item\": \"S445-005\",\n \"clauses\": {\"describe\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F16\", \"template\": \"{question}\", \"reasoning\": \"Bank rows ask learners to describe an event or outcome in a real-life setting, for example the row whose question is \\\"Which event is CERTAIN to happen when you roll a standard number cube (1–6)?\\\" and the row whose question is \\\"Which event is IMPOSSIBLE when you flip a coin?\\\".\"},\n  \"compare\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F16\", \"template\": \"{question}\", \"reasoning\": \"Bank rows ask learners to compare two outcomes, for example \\\"Is picking red more likely, less likely, or equally likely compared to picking blue?\\\" and \\\"Picking a pencil vs picking a pen — which is more likely?\\\".\"},\n  \"outcomes\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F14\", \"template\": \"{answer}\", \"reasoning\": \"The keyed answers from the item bank name outcomes such as \\\"Getting the number 5.\\\" and \\\"It stays sunny.\\\", so the family prints outcomes the learner describes or compares.\"},\n  \"real_life_situations\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F16\", \"template\": \"{question}\", \"reasoning\": \"Bank rows are set in bags, spinners, coin flips, dice, a classroom box, an aquarium tank and weather, which are real-life contexts for grade 3.\"},\n  \"equally_likely\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F16\", \"template\": \"{question}\", \"reasoning\": \"Bank rows whose keyed answer is equally likely, for example the coin-flip row with the sentence about the chance of heads and the chance of tails, produce problems about equally likely outcomes.\"},\n  \"less_least_likely\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F16\", \"template\": \"{question}\", \"reasoning\": \"Bank rows with keyed answers less likely and least likely, for example the row about picking yellow versus red counters, produce problems on these terms.\"},\n  \"more_most_likely\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F16\", \"template\": \"{question}\", \"reasoning\": \"Bank rows with keyed answers more likely and most likely, for example the row asking which color is MOST likely to be picked, produce problems on these terms.\"},\n  \"certain\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F16\", \"template\": \"{question}\", \"reasoning\": \"The bank row asking which event is CERTAIN to happen on a number cube, keyed to a number between 1 and 6, produces a problem on certain. The keyed answer is printed through F14 and F01 gives the word certain in answer choices.\"},\n  \"impossible\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F16\", \"template\": \"{question}\", \"reasoning\": \"The bank row asking which event is IMPOSSIBLE when you flip a coin, keyed to the number 5, produces a problem on impossible.\"}},\n \"failing_families\": [\"F06\", \"F07\", \"F10\", \"F11\", \"F14\", \"F16\"],\n \"failing_templates\": [\"Count the favorable outcomes and compare to the total to decide.\", \"{capitalize}: can never happen (probability = 0).\", \"{capitalize}: two events have the same chance.\", \"{capitalize}: will always happen (probability = 1).\", \"{answer}\", \"{question}\"],\n \"overall\": \"FAIL\",\n \"reasoning\": \"(1) F06 prints the hint 'Count the favorable outcomes and compare to the total to decide.' Favorable is not in cumulative_vocab or introduces_vocab, and the probability-style concept of favorable outcomes is not introduced by this lc. (2) F07 and F11 print the concept 'probability = 0' and 'probability = 1'. Probability as a number is not in cumulative_vocab or introduces_vocab. (3) F07, F10 and F11 fill their capitalize slot from nested families F12, F13, F14 and F15, whose domains include the values certain, impossible, red, equally likely, Getting a 0., Getting a 7., Red is more likely and similar. Those domains can produce false or nonsensical hints, such as F07 telling the learner that a certain event can never happen, F11 telling the learner that a Getting a 0. event will always happen, and F10 beginning with a bare color word. (4) The item bank row whose question is \\\"The chances of picking red or blue are ___.\\\" is keyed equally likely, but every ball in that bag is red or blue, so the correct answer is certain. This wrong key is printed through F14 and F16. (5) The bank row whose question is \\\"Which color is LEAST likely to be landed on?\\\" is keyed red or green, a combined answer to a single-color question that two colors share, so the key is misleading. This is also printed through F14 and F16. Domains checked and passed: F01, F02, F03, F04, F05, F08 and F09 print only gated or fixed vocabulary, and F12, F13 and F15 are fine as stand-alone answer text. Sentence length and number format were within limits in the rows I checked.\"}",
+ "raw_reply_digest": "ab83da0aad864775726e1acc994b0e9ae2a1000d40b165bf28deb85e964b93c8",
+ "packet_digest": "fdd3e1fa983f0662e19d49576ed582fe7d3052a15e7cdac472e6d56b07aa5b28",
+ "family_keys": {
+  "F01": {
+   "source": "backend/app/practice_gen/dna/base.py [gate certain]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F02": {
+   "source": "backend/app/practice_gen/dna/base.py [gate equally likely]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F03": {
+   "source": "backend/app/practice_gen/dna/base.py [gate impossible]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F04": {
+   "source": "backend/app/practice_gen/dna/base.py [gate likely]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F05": {
+   "source": "backend/app/practice_gen/dna/base.py [gate unlikely]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F06": {
+   "source": "backend/app/practice_gen/dna/dp/probability_language.py",
+   "first_site": "backend/app/practice_gen/dna/dp/probability_language.py:442",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F07": {
+   "source": "backend/app/practice_gen/dna/dp/probability_language.py",
+   "first_site": "backend/app/practice_gen/dna/dp/probability_language.py:438",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F08": {
+   "source": "backend/app/practice_gen/dna/dp/probability_language.py",
+   "first_site": "backend/app/practice_gen/dna/dp/probability_language.py:440",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F09": {
+   "source": "backend/app/practice_gen/dna/dp/probability_language.py",
+   "first_site": "backend/app/practice_gen/dna/dp/probability_language.py:439",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F10": {
+   "source": "backend/app/practice_gen/dna/dp/probability_language.py",
+   "first_site": "backend/app/practice_gen/dna/dp/probability_language.py:441",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F11": {
+   "source": "backend/app/practice_gen/dna/dp/probability_language.py",
+   "first_site": "backend/app/practice_gen/dna/dp/probability_language.py:437",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F12": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:32",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F13": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:39",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F14": {
+   "source": "backend/app/practice_gen/slots.py",
+   "first_site": "backend/app/practice_gen/slots.py:180",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F15": {
+   "source": "backend/app/practice_gen/slots.py",
+   "first_site": "backend/app/practice_gen/slots.py:182",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F16": {
+   "source": "backend/app/practice_gen/slots.py",
+   "first_site": "backend/app/practice_gen/slots.py:180",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  }
+ },
+ "packet": {
+  "item": "S445-005",
+  "competency": {
+   "text": "Describe and compare outcomes in real-life situations using the following terms: equally likely, less/least likely, more/most likely, certain, and impossible.",
+   "grade": 3,
+   "quarter": 3
+  },
+  "clauses": [
+   {
+    "id": "describe",
+    "kind": "task",
+    "clause": "Describe"
+   },
+   {
+    "id": "compare",
+    "kind": "task",
+    "clause": "compare"
+   },
+   {
+    "id": "outcomes",
+    "kind": "object",
+    "clause": "outcomes"
+   },
+   {
+    "id": "real_life_situations",
+    "kind": "context",
+    "clause": "real-life situations"
+   },
+   {
+    "id": "equally_likely",
+    "kind": "property",
+    "clause": "equally likely"
+   },
+   {
+    "id": "less_least_likely",
+    "kind": "property",
+    "clause": "less/least likely"
+   },
+   {
+    "id": "more_most_likely",
+    "kind": "property",
+    "clause": "more/most likely"
+   },
+   {
+    "id": "certain",
+    "kind": "property",
+    "clause": "certain"
+   },
+   {
+    "id": "impossible",
+    "kind": "property",
+    "clause": "impossible"
+   }
+  ],
+  "vocabulary": {
+   "student_vocab": [
+    "equally likely",
+    "more likely",
+    "less likely",
+    "certain",
+    "impossible"
+   ],
+   "curriculum_vocab": [
+    "least likely",
+    "most likely",
+    "likelihood",
+    "chance"
+   ],
+   "introduces_vocab": [
+    "equally likely",
+    "less likely",
+    "least likely",
+    "more likely",
+    "most likely",
+    "certain",
+    "impossible",
+    "likelihood",
+    "chance"
+   ],
+   "cumulative_vocab": [
+    "1 less",
+    "1 more",
+    "10th",
+    "1st",
+    "2nd",
+    "3rd",
+    "4th",
+    "5th",
+    "6th",
+    "7th",
+    "8th",
+    "9th",
+    "L",
+    "a.m.",
+    "addition",
+    "analog clock",
+    "area",
+    "axis",
+    "balance scale",
+    "bar graph",
+    "bigger",
+    "bill",
+    "calendar",
+    "capacity",
+    "centavo",
+    "centimeter",
+    "circle",
+    "clockwise",
+    "cm",
+    "coin",
+    "compare",
+    "corner",
+    "count",
+    "counter-clockwise",
+    "data",
+    "decreasing pattern",
+    "denominator",
+    "difference",
+    "digit",
+    "division",
+    "elapsed time",
+    "equal",
+    "equal groups",
+    "estimate",
+    "even",
+    "expanded form",
+    "fraction",
+    "g",
+    "gram",
+    "group",
+    "half",
+    "half hour",
+    "half turn",
+    "hour",
+    "how many",
+    "hundreds",
+    "increasing pattern",
+    "intersecting",
+    "kg",
+    "kilogram",
+    "left",
+    "length",
+    "less",
+    "line",
+    "line segment",
+    "liter",
+    "m",
+    "mL",
+    "mass",
+    "measure",
+    "meter",
+    "milliliter",
+    "minute",
+    "missing number",
+    "missing term",
+    "more",
+    "multiplication",
+    "nearest hundred",
+    "nearest ten",
+    "nearest thousand",
+    "number",
+    "number line",
+    "numeral",
+    "numerator",
+    "odd",
+    "ones",
+    "order of operations",
+    "outcome",
+    "p.m.",
+    "parallel",
+    "pattern",
+    "perimeter",
+    "perpendicular",
+    "peso",
+    "pictograph",
+    "place value",
+    "point",
+    "product",
+    "quarter",
+    "quarter hour",
+    "quarter turn",
+    "quotient",
+    "ray",
+    "rectangle",
+    "regrouping",
+    "repeating pattern",
+    "round",
+    "ruler",
+    "same",
+    "scale",
+    "side",
+    "similar fractions",
+    "skip counting",
+    "slide",
+    "smaller",
+    "solid figure",
+    "sq. cm",
+    "square",
+    "square centimeter",
+    "subtraction",
+    "sum",
+    "table",
+    "ten thousand",
+    "ten-thousands place",
+    "tens",
+    "thousand",
+    "total",
+    "translation",
+    "triangle",
+    "whole",
+    "₱"
+   ],
+   "NOT_YET_KNOWN": [
+    "improper fraction",
+    "line of symmetry",
+    "remainder",
+    "symmetry"
+   ],
+   "sentence_max_words": 22,
+   "number_format": "space separator for thousands (e.g. 1 000)"
+  },
+  "declared_variants": [
+   [
+    "context",
+    "coins"
+   ],
+   [
+    "context",
+    "colored_objects"
+   ],
+   [
+    "context",
+    "spinners"
+   ],
+   [
+    "context",
+    "weather"
+   ],
+   [
+    "scenario_type",
+    "certain_impossible"
+   ],
+   [
+    "scenario_type",
+    "comparative"
+   ],
+   [
+    "scenario_type",
+    "equally_likely"
+   ],
+   [
+    "scenario_type",
+    "superlative"
+   ]
+  ],
+  "declared_bounds": [
+   {
+    "scenario_type": [
+     "certain_impossible",
+     "equally_likely",
+     "comparative",
+     "superlative"
+    ]
+   }
+  ],
+  "families": [
+   {
+    "id": "F01",
+    "template": "{term}",
+    "appears_in": [
+     "correct_answer",
+     "distractors",
+     "format_data.options"
+    ],
+    "nested_in": [
+     "F11"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='certain')",
+        "requires_vocab": "certain",
+        "prints": "certain",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F02",
+    "template": "{term}",
+    "appears_in": [
+     "correct_answer",
+     "distractors",
+     "format_data.options"
+    ],
+    "nested_in": [
+     "F10"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='equally likely')",
+        "requires_vocab": "equally likely",
+        "prints": "equally likely",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F03",
+    "template": "{term}",
+    "appears_in": [
+     "correct_answer",
+     "distractors",
+     "format_data.options"
+    ],
+    "nested_in": [
+     "F07"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='impossible')",
+        "requires_vocab": "impossible",
+        "prints": "impossible",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F04",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F09"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='likely')",
+        "requires_vocab": "likely",
+        "prints": "will probably happen",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F05",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F08"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='unlikely')",
+        "requires_vocab": "unlikely",
+        "prints": "will probably not happen",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F06",
+    "template": "Count the favorable outcomes and compare to the total to decide.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F07",
+    "template": "{capitalize}: can never happen (probability = 0).",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "capitalize"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F03",
+         "F12",
+         "F13",
+         "F14",
+         "F15"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F08",
+    "template": "{capitalize}: does not happen often.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "capitalize"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F05"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F09",
+    "template": "{capitalize}: happens more often than not.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "capitalize"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F04"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F10",
+    "template": "{capitalize}: two events have the same chance.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "capitalize"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F02",
+         "F12",
+         "F13",
+         "F14",
+         "F15"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F11",
+    "template": "{capitalize}: will always happen (probability = 1).",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "capitalize"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F01",
+         "F12",
+         "F13",
+         "F14",
+         "F15"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F12",
+    "template": "{answer}",
+    "appears_in": [
+     "correct_answer",
+     "format_data.options"
+    ],
+    "nested_in": [
+     "F07",
+     "F10",
+     "F11"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "answer",
+        "printed": [
+         "Getting a number between 1 and 6.",
+         "Getting the number 5.",
+         "It stays sunny.",
+         "angelfish",
+         "certain",
+         "equally likely",
+         "green",
+         "impossible",
+         "less likely",
+         "math card",
+         "more likely",
+         "orange",
+         "pencil",
+         "red or green",
+         "red",
+         "yellow"
+        ],
+        "derived_from_values": [
+         "answer"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F13",
+    "template": "{member}",
+    "appears_in": [
+     "distractors",
+     "format_data.options"
+    ],
+    "nested_in": [
+     "F07",
+     "F10",
+     "F11"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "member"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "QuestionContext.distractors (the generator's own)",
+        "members": [
+         "A tornado happens.",
+         "All card types are equally likely.",
+         "All colors are equally likely.",
+         "All fish are equally likely.",
+         "All fruits are equally likely.",
+         "Getting a 0.",
+         "Getting a 10.",
+         "Getting a 7.",
+         "Getting heads or tails.",
+         "Getting heads.",
+         "Getting tails.",
+         "It is equally likely for all colors.",
+         "It is equally likely for all items.",
+         "It rains heavily.",
+         "It snows.",
+         "Red is more likely",
+         "Yellow is least likely",
+         "apple",
+         "art card",
+         "blue is more likely",
+         "blue",
+         "certain",
+         "equally likely",
+         "eraser",
+         "goldfish",
+         "green is more likely",
+         "green",
+         "guppy",
+         "heads is more likely",
+         "impossible",
+         "less likely",
+         "mango",
+         "more likely",
+         "neither can be picked",
+         "neither",
+         "pen",
+         "red is more likely",
+         "red",
+         "science card",
+         "tails is more likely",
+         "they are equally likely"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F14",
+    "template": "{answer}",
+    "appears_in": [
+     "correct_answer",
+     "format_data.options"
+    ],
+    "nested_in": [
+     "F07",
+     "F10",
+     "F11"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "a field of a fixed item bank",
+        "field": "answer",
+        "bank": "_ITEM_POOL",
+        "derived_from_values": [
+         "answer",
+         "context",
+         "distractors",
+         "probability_term",
+         "question",
+         "scenario_type"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F15",
+    "template": "{distractors}",
+    "appears_in": [
+     "distractors",
+     "format_data.options"
+    ],
+    "nested_in": [
+     "F07",
+     "F10",
+     "F11"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "distractors"
+      ],
+      "domains": [
+       {
+        "domain": "a field of a fixed item bank",
+        "field": "distractors",
+        "bank": "_ITEM_POOL",
+        "derived_from_values": [
+         "answer",
+         "context",
+         "distractors",
+         "probability_term",
+         "question",
+         "scenario_type"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F16",
+    "template": "{question}",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "question"
+      ],
+      "domains": [
+       {
+        "domain": "a field of a fixed item bank",
+        "field": "question",
+        "bank": "_ITEM_POOL",
+        "derived_from_values": [
+         "answer",
+         "context",
+         "distractors",
+         "probability_term",
+         "question",
+         "scenario_type"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   }
+  ],
+  "lists": {},
+  "banks": {
+   "_ITEM_POOL": {
+    "fields": [
+     "answer",
+     "distractors",
+     "question"
+    ],
+    "one_row_per_problem": true,
+    "rows": [
+     {
+      "answer": "certain",
+      "distractors": [
+       "impossible",
+       "equally likely",
+       "less likely"
+      ],
+      "question": "A bag has 5 red balls and no other colors. What is the chance of picking a red ball?"
+     },
+     {
+      "answer": "impossible",
+      "distractors": [
+       "certain",
+       "more likely",
+       "equally likely"
+      ],
+      "question": "A bag has only blue balls. What is the chance of picking a green ball?"
+     },
+     {
+      "answer": "certain",
+      "distractors": [
+       "impossible",
+       "equally likely",
+       "less likely"
+      ],
+      "question": "You flip a coin. What is the chance of getting either heads OR tails?"
+     },
+     {
+      "answer": "impossible",
+      "distractors": [
+       "certain",
+       "more likely",
+       "equally likely"
+      ],
+      "question": "You flip a regular coin. What is the chance of getting the number 3?"
+     },
+     {
+      "answer": "certain",
+      "distractors": [
+       "impossible",
+       "equally likely",
+       "less likely"
+      ],
+      "question": "A spinner has all sections colored red. What is the chance of landing on red?"
+     },
+     {
+      "answer": "impossible",
+      "distractors": [
+       "certain",
+       "more likely",
+       "equally likely"
+      ],
+      "question": "A spinner has all sections colored blue. What is the chance of landing on red?"
+     },
+     {
+      "answer": "impossible",
+      "distractors": [
+       "certain",
+       "equally likely",
+       "more likely"
+      ],
+      "question": "A standard 6-sided die with faces 1 to 6 is rolled. What is the chance of rolling the number 7?"
+     },
+     {
+      "answer": "equally likely",
+      "distractors": [
+       "red is more likely",
+       "blue is more likely",
+       "impossible"
+      ],
+      "question": "A bag has 5 red balls and 5 blue balls. The chances of picking red or blue are ___."
+     },
+     {
+      "answer": "equally likely",
+      "distractors": [
+       "heads is more likely",
+       "tails is more likely",
+       "impossible"
+      ],
+      "question": "A coin is flipped. The chance of heads and the chance of tails are ___."
+     },
+     {
+      "answer": "equally likely",
+      "distractors": [
+       "red is more likely",
+       "blue is more likely",
+       "certain"
+      ],
+      "question": "A spinner has two equal sections: one red and one blue. Spinning red or blue are ___."
+     },
+     {
+      "answer": "equally likely",
+      "distractors": [
+       "red is more likely",
+       "green is more likely",
+       "impossible"
+      ],
+      "question": "A box has 6 red crayons and 6 green crayons. Picking a red crayon and picking a green crayon are ___."
+     },
+     {
+      "answer": "equally likely",
+      "distractors": [
+       "Red is more likely",
+       "Yellow is least likely",
+       "impossible"
+      ],
+      "question": "A spinner is divided into 4 equal quarters: Red, Blue, Yellow, and Green. The chances of landing on any one color are ___."
+     },
+     {
+      "answer": "red",
+      "distractors": [
+       "blue",
+       "they are equally likely",
+       "neither can be picked"
+      ],
+      "question": "A bag has 7 red balls and 3 blue balls. Which color is MORE likely to be picked?"
+     },
+     {
+      "answer": "yellow",
+      "distractors": [
+       "green",
+       "they are equally likely",
+       "neither"
+      ],
+      "question": "A bag has 2 yellow marbles and 8 green marbles. Which is LESS likely to be picked?"
+     },
+     {
+      "answer": "red",
+      "distractors": [
+       "blue",
+       "equally likely",
+       "impossible"
+      ],
+      "question": "A spinner has 3 red sections and 1 blue section. Which outcome is more likely?"
+     },
+     {
+      "answer": "pencil",
+      "distractors": [
+       "pen",
+       "equally likely",
+       "impossible"
+      ],
+      "question": "A box has 10 pencils and 2 pens. Picking a pencil vs picking a pen — which is more likely?"
+     },
+     {
+      "answer": "It stays sunny.",
+      "distractors": [
+       "It rains heavily.",
+       "It snows.",
+       "A tornado happens."
+      ],
+      "question": "On a sunny day with no clouds, which event is more likely?"
+     },
+     {
+      "answer": "more likely",
+      "distractors": [
+       "less likely",
+       "equally likely",
+       "impossible"
+      ],
+      "question": "A bag has 6 red balls and 4 blue balls. Is picking red more likely, less likely, or equally likely compared to picking blue?"
+     },
+     {
+      "answer": "less likely",
+      "distractors": [
+       "more likely",
+       "equally likely",
+       "certain"
+      ],
+      "question": "A bag has 3 red balls and 7 blue balls. Is picking red more likely, less likely, or equally likely compared to picking blue?"
+     },
+     {
+      "answer": "less likely",
+      "distractors": [
+       "more likely",
+       "equally likely",
+       "certain"
+      ],
+      "question": "A bag has 3 yellow counters and 7 red counters. Picking a yellow counter is ___ compared to picking a red counter."
+     },
+     {
+      "answer": "less likely",
+      "distractors": [
+       "more likely",
+       "equally likely",
+       "impossible"
+      ],
+      "question": "A spinner has 1 green section and 4 purple sections. Landing on green is ___ than landing on purple."
+     },
+     {
+      "answer": "red",
+      "distractors": [
+       "blue",
+       "green",
+       "It is equally likely for all colors."
+      ],
+      "question": "A bag has 6 red balls, 3 blue balls, and 1 green ball. Which color is MOST likely to be picked?"
+     },
+     {
+      "answer": "red or green",
+      "distractors": [
+       "yellow",
+       "It is equally likely for all colors.",
+       "blue"
+      ],
+      "question": "A spinner has 5 sections: 3 yellow, 1 red, and 1 green. Which color is LEAST likely to be landed on?"
+     },
+     {
+      "answer": "pencil",
+      "distractors": [
+       "pen",
+       "eraser",
+       "It is equally likely for all items."
+      ],
+      "question": "A box has 8 pencils, 5 pens, and 2 erasers. Which item is MOST likely to be picked at random?"
+     },
+     {
+      "answer": "green",
+      "distractors": [
+       "blue",
+       "red",
+       "All colors are equally likely."
+      ],
+      "question": "A jar contains 10 green marbles, 4 blue marbles, and 1 red marble. Which marble color is MOST likely to be drawn at random?"
+     },
+     {
+      "answer": "orange",
+      "distractors": [
+       "mango",
+       "apple",
+       "All fruits are equally likely."
+      ],
+      "question": "A box has 9 mangoes, 5 apples, and 1 orange. Which fruit is LEAST likely to be chosen without looking?"
+     },
+     {
+      "answer": "green",
+      "distractors": [
+       "red",
+       "blue",
+       "All colors are equally likely."
+      ],
+      "question": "A spinner is divided into 6 equal parts: 3 are red, 2 are blue, and 1 is green. Which color is LEAST likely to be landed on?"
+     },
+     {
+      "answer": "math card",
+      "distractors": [
+       "science card",
+       "art card",
+       "All card types are equally likely."
+      ],
+      "question": "In a classroom box, there are 12 math cards, 6 science cards, and 2 art cards. Which card type is MOST likely to be picked?"
+     },
+     {
+      "answer": "angelfish",
+      "distractors": [
+       "goldfish",
+       "guppy",
+       "All fish are equally likely."
+      ],
+      "question": "In an aquarium tank, there are 8 goldfish, 4 guppies, and 1 angelfish. Which fish is LEAST likely to be scooped first?"
+     },
+     {
+      "answer": "Getting a number between 1 and 6.",
+      "distractors": [
+       "Getting a 7.",
+       "Getting a 0.",
+       "Getting a 10."
+      ],
+      "question": "Which event is CERTAIN to happen when you roll a standard number cube (1–6)?"
+     },
+     {
+      "answer": "Getting the number 5.",
+      "distractors": [
+       "Getting heads.",
+       "Getting tails.",
+       "Getting heads or tails."
+      ],
+      "question": "Which event is IMPOSSIBLE when you flip a coin?"
+     }
+    ],
+    "rows_left_out": 8
+   }
+  },
+  "value_derivations": [],
+  "reason_kinds": {}
+ }
+}

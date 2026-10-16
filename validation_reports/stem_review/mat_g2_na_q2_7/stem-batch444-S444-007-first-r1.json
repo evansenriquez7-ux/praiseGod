@@ -1,0 +1,2853 @@
+{
+ "schema_version": 2,
+ "hash_version": 8,
+ "node_id": "mat_g2_na_q2_7",
+ "record_id": "stem-batch444-S444-007-first-r1",
+ "role": "first",
+ "confirms": null,
+ "item_id": "S444-007",
+ "lc_hash": "ce971b96002a83eca4d4861b2b0e905b0ac0d3afe816add9252cd0498608594e",
+ "judged_by": "blind-stem-judge-claude-haiku-batch444-S444-007-first-r1",
+ "dispatch_id": "stem-batch444-S444-007-first-r1",
+ "filed_at": "2026-10-15T16:59:41Z",
+ "delivery": "Claude Code Agent tool, model=haiku, subagent_type=general-purpose; the judge was told to read only local_only/scratch/h4c/prompts/S444-007.prompt.txt (tests/stem_file.py prompt output, item S444-007; no lc id, no key or packets file in that directory) and reply with what it asks; dispatched with CLAUDE.md loaded (ruling 29). Blindness is a prompt contract, audited from the subagent transcript.",
+ "tool_uses_by_judge": "From the subagent transcript: 6 tool use(s), all Read of its own prompt file (2626 lines, every line read); no other tool, path or search. Model reported in the transcript: claude-haiku-5-5.",
+ "dispatch_prompt_digest": "03b7295faef16d8d53e859ae297449b4f0d875f8fda931354f8b8cc9e2631edf",
+ "raw_reply": "{\"item\": \"S444-007\", \"clauses\": {\"solve_problems\": {\"verdict\": \"NOT_PRODUCIBLE\", \"family\": null, \"template\": null, \"reasoning\": \"Every family states one operation: one start, one change and one question (F12, F13, F15, F16, F17, F18, F19, F20, F21, F22, F23). No family or declared variant produces a 2-step problem. The declared variants have no steps variant, and no template has two operations. The declared_bounds task_type says one_or_two_step_subtraction, but nothing produces the 2-step half. The 1-step half is produced by F17 and F12, so the clause is only partly producible.\"}, \"involving_subtraction\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F17\", \"template\": \"Start at {a}. Count back {b}. What number do you land on?\", \"reasoning\": \"F17 is a subtraction problem stated as counting back: a is repeated from printed values up to 900 and b from printed values up to 522, and the question asks for the number landed on. The template prints no pool text, so it passes.\"}, \"less_than_1000\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F12\", \"template\": \"{actor} had ₱{a} in a piggy bank and used ₱{b} to buy a notebook. How much money is left in the piggy bank?\", \"reasoning\": \"The observed printed runs for F12 a reach 990 and for b reach 840, both under 1000. The template prints no pool text, so it passes. The 4-digit answers in F09 and F10 are answer choices, not operands, and are judged there.\"}, \"problems_money\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F12\", \"template\": \"{actor} had ₱{a} in a piggy bank and used ₱{b} to buy a notebook. How much money is left in the piggy bank?\", \"reasoning\": \"F12 is a peso subtraction problem in a piggy bank and a notebook purchase. The template prints only actor and the two amounts, so it passes.\"}, \"regrouping\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F12\", \"template\": \"{actor} had ₱{a} in a piggy bank and used ₱{b} to buy a notebook. How much money is left in the piggy bank?\", \"reasoning\": \"Regrouping is set by the digits of a and b, not by text. F12 prints a and b with observed values in the range 10 to 990, which covers cases where the ones digit of b is greater than that of a, so the regrouping variants can be reached through F12.\"}}, \"failing_families\": [\"F09\", \"F10\", \"F11\", \"F13\", \"F15\", \"F16\", \"F19\", \"F20\", \"F21\", \"F22\", \"F23\"], \"failing_templates\": [\"{actor} solved this problem: \\\"{problem}\\\" {actor} says the answer is {answer}. Is {actor} correct?\", \"{q} The answer is {v}.\", \"{statement}. True or False?\", \"{actor} had ₱{a} and spent ₱{b} on {objects} at the {place}. How much money does {actor} have left?\", \"{actor} has {a} {objects}. A friend has {b} {objects}. How many more {objects} does {actor} have than the friend?\", \"{actor} has {a} {objects}. A friend has {b} {objects}. How many fewer {objects} does the friend have?\", \"{actor} had {a} {objects} and gave {b} to friends at the {place}. How many {objects} does {actor} have left?\", \"There were {a} {objects} in a box. {b} {objects} were taken out. How many {objects} are still in the box?\", \"A {place} has {a} {objects}. {actor} removes {b} {objects}. How many {objects} are left in the {place}?\", \"{actor} has {a} {objects}. {actor} gives away {b} {objects}. How many {objects} does {actor} have left?\", \"There are {a} {objects} on the table. {actor} takes away {b} {objects}. How many {objects} are left on the table?\"], \"overall\": \"FAIL\", \"reasoning\": \"Three faults, plus one scope gap. (1) F09 and F10 print answer choices beyond the lc's number range: the F09 answer domain includes 1047 and 1194, and the F10 distractor domain includes 1026 and 1047. These are printed as 'says the answer is {answer}' and 'The answer is {v}.', so a grade 2 learner reads 4-digit numbers. The basis is the keyed answer and the distractor candidates, so the list does not bound the slot. (2) F11 prints '{statement}. True or False?' after F10's statement, which already ends with a period, so every render shows a double period before 'True or False?'. (3) The objects and places pools hold contexts beyond grade 2. F13, F15, F16, F19, F20, F21, F22 and F23 print {objects} from OBJECTS_POOL, with values such as 'gacha tickets', 'photocards', 'lightsticks', 'subscriber badges'. F13, F19 and F21 also print {place} from PLACE_POOL, which includes 'esports arena' and 'Wattpad'. These are fandom, gaming and esports contexts that a grade 2 learner cannot read or relate to, and the domains are the full set of what can print. (4) Scope gap: no family produces a 2-step problem, although the competency and the declared_bounds both name 1- and 2-step problems. No family is at fault for this gap, so failing_families does not name it. F12, F14, F17 and F18 print no pool text and pass. F01, F02, F03, F04, F05, F06 and F07 are hint text and pass.\"}",
+ "raw_reply_digest": "8c47131400dc109b4a721c01ae0ff862a0ea4f5c7b344d38681d3190cee13de5",
+ "packet_digest": "8b6e9747e0b621d953057c144a24d812269df4abfd978ddb3aee0b7a5df4cc13",
+ "family_keys": {
+  "F01": {
+   "source": "backend/app/practice_gen/dna/base.py [gate difference]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F02": {
+   "source": "backend/app/practice_gen/dna/base.py [gate regrouping]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F03": {
+   "source": "backend/app/practice_gen/dna/na/subtraction.py",
+   "first_site": "backend/app/practice_gen/dna/na/subtraction.py:956",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {
+    "oa,ob,od": [
+     1,
+     null
+    ]
+   }
+  },
+  "F04": {
+   "source": "backend/app/practice_gen/dna/na/subtraction.py",
+   "first_site": "backend/app/practice_gen/dna/na/subtraction.py:967",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {
+    "ta,tb,td": [
+     1,
+     null
+    ]
+   }
+  },
+  "F05": {
+   "source": "backend/app/practice_gen/dna/na/subtraction.py",
+   "first_site": "backend/app/practice_gen/dna/na/subtraction.py:945",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {
+    "oa,ob,oa10,od": [
+     12,
+     null
+    ]
+   }
+  },
+  "F06": {
+   "source": "backend/app/practice_gen/dna/na/subtraction.py",
+   "first_site": "backend/app/practice_gen/dna/na/subtraction.py:927",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F07": {
+   "source": "backend/app/practice_gen/dna/na/subtraction.py",
+   "first_site": "backend/app/practice_gen/dna/na/subtraction.py:973",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F08": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_error_detect.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_error_detect.py:387",
+   "renderer": "",
+   "path": [
+    3,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F09": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_error_detect.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_error_detect.py:372",
+   "renderer": "",
+   "path": [
+    3,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F10": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_true_false.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_true_false.py:119",
+   "renderer": "",
+   "path": [
+    6,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F11": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_true_false.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_true_false.py:430",
+   "renderer": "",
+   "path": [
+    6,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F12": {
+   "source": "money_savings_withdraw",
+   "first_site": "backend/app/practice_gen/dna/base.py:225",
+   "renderer": "spine",
+   "path": [
+    3,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F13": {
+   "source": "money_spending",
+   "first_site": "backend/app/practice_gen/dna/base.py:225",
+   "renderer": "spine",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {
+    "objects,inflect_objects": [
+     1,
+     null
+    ]
+   }
+  },
+  "F14": {
+   "source": "money_store_snack",
+   "first_site": "backend/app/practice_gen/dna/base.py:225",
+   "renderer": "spine",
+   "path": [
+    8,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F15": {
+   "source": "sub_comparing",
+   "first_site": "backend/app/practice_gen/dna/base.py:225",
+   "renderer": "spine",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {
+    "objects,inflect_objects": [
+     5,
+     null
+    ]
+   }
+  },
+  "F16": {
+   "source": "sub_comparing_fewer",
+   "first_site": "backend/app/practice_gen/dna/base.py:225",
+   "renderer": "spine",
+   "path": [
+    10,
+    null
+   ],
+   "first_render_repeating": {
+    "objects,inflect_objects": [
+     10,
+     null
+    ]
+   }
+  },
+  "F17": {
+   "source": "sub_counting_back",
+   "first_site": "backend/app/practice_gen/dna/base.py:225",
+   "renderer": "spine",
+   "path": [
+    2,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F18": {
+   "source": "sub_counting_back_story",
+   "first_site": "backend/app/practice_gen/dna/base.py:225",
+   "renderer": "spine",
+   "path": [
+    6,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F19": {
+   "source": "sub_give_away",
+   "first_site": "backend/app/practice_gen/dna/base.py:225",
+   "renderer": "spine",
+   "path": [
+    19,
+    null
+   ],
+   "first_render_repeating": {
+    "objects,inflect_objects": [
+     19,
+     null
+    ]
+   }
+  },
+  "F20": {
+   "source": "sub_how_many_left",
+   "first_site": "backend/app/practice_gen/dna/base.py:225",
+   "renderer": "spine",
+   "path": [
+    24,
+    null
+   ],
+   "first_render_repeating": {
+    "objects,inflect_objects": [
+     24,
+     null
+    ]
+   }
+  },
+  "F21": {
+   "source": "sub_removes",
+   "first_site": "backend/app/practice_gen/dna/base.py:225",
+   "renderer": "spine",
+   "path": [
+    17,
+    null
+   ],
+   "first_render_repeating": {
+    "objects,inflect_objects": [
+     17,
+     null
+    ]
+   }
+  },
+  "F22": {
+   "source": "sub_taking_away",
+   "first_site": "backend/app/practice_gen/dna/base.py:225",
+   "renderer": "spine",
+   "path": [
+    20,
+    null
+   ],
+   "first_render_repeating": {
+    "objects,inflect_objects": [
+     20,
+     null
+    ]
+   }
+  },
+  "F23": {
+   "source": "sub_taking_away_table",
+   "first_site": "backend/app/practice_gen/dna/base.py:225",
+   "renderer": "spine",
+   "path": [
+    26,
+    null
+   ],
+   "first_render_repeating": {
+    "objects,inflect_objects": [
+     26,
+     null
+    ]
+   }
+  }
+ },
+ "packet": {
+  "item": "S444-007",
+  "competency": {
+   "text": "Solve 1- and 2-step problems involving subtraction where both numbers are less than 1000 (including problems involving money), with and without regrouping.",
+   "grade": 2,
+   "quarter": 2
+  },
+  "clauses": [
+   {
+    "id": "solve_problems",
+    "kind": "task",
+    "clause": "Solve 1- and 2-step problems"
+   },
+   {
+    "id": "involving_subtraction",
+    "kind": "context",
+    "clause": "involving subtraction"
+   },
+   {
+    "id": "less_than_1000",
+    "kind": "range",
+    "clause": "both numbers are less than 1000"
+   },
+   {
+    "id": "problems_money",
+    "kind": "context",
+    "clause": "problems involving money"
+   },
+   {
+    "id": "regrouping",
+    "kind": "property",
+    "clause": "with and without regrouping"
+   }
+  ],
+  "vocabulary": {
+   "student_vocab": [],
+   "curriculum_vocab": [
+    "2-step problem"
+   ],
+   "introduces_vocab": [
+    "2-step problem"
+   ],
+   "cumulative_vocab": [
+    "1 less",
+    "1 more",
+    "10th",
+    "1st",
+    "2nd",
+    "3rd",
+    "4th",
+    "5th",
+    "6th",
+    "7th",
+    "8th",
+    "9th",
+    "addition",
+    "analog clock",
+    "bigger",
+    "bill",
+    "calendar",
+    "centavo",
+    "circle",
+    "clockwise",
+    "coin",
+    "compare",
+    "corner",
+    "count",
+    "counter-clockwise",
+    "data",
+    "difference",
+    "digit",
+    "equal",
+    "expanded form",
+    "fraction",
+    "group",
+    "half",
+    "half hour",
+    "half turn",
+    "hour",
+    "how many",
+    "hundreds",
+    "left",
+    "length",
+    "less",
+    "measure",
+    "missing number",
+    "more",
+    "number",
+    "number line",
+    "numeral",
+    "ones",
+    "pattern",
+    "peso",
+    "pictograph",
+    "place value",
+    "quarter",
+    "quarter hour",
+    "quarter turn",
+    "rectangle",
+    "regrouping",
+    "repeating pattern",
+    "same",
+    "side",
+    "skip counting",
+    "slide",
+    "smaller",
+    "square",
+    "subtraction",
+    "sum",
+    "table",
+    "tens",
+    "thousand",
+    "total",
+    "translation",
+    "triangle",
+    "whole",
+    "₱"
+   ],
+   "NOT_YET_KNOWN": [
+    "L",
+    "a.m.",
+    "area",
+    "axis",
+    "balance scale",
+    "bar graph",
+    "capacity",
+    "centimeter",
+    "certain",
+    "cm",
+    "decreasing pattern",
+    "denominator",
+    "division",
+    "elapsed time",
+    "equal groups",
+    "equally likely",
+    "estimate",
+    "even",
+    "g",
+    "gram",
+    "impossible",
+    "improper fraction",
+    "increasing pattern",
+    "intersecting",
+    "kg",
+    "kilogram",
+    "less likely",
+    "line",
+    "line of symmetry",
+    "line segment",
+    "liter",
+    "m",
+    "mL",
+    "mass",
+    "meter",
+    "milliliter",
+    "minute",
+    "missing term",
+    "more likely",
+    "multiplication",
+    "nearest hundred",
+    "nearest ten",
+    "nearest thousand",
+    "numerator",
+    "odd",
+    "order of operations",
+    "outcome",
+    "p.m.",
+    "parallel",
+    "perimeter",
+    "perpendicular",
+    "point",
+    "product",
+    "quotient",
+    "ray",
+    "remainder",
+    "round",
+    "ruler",
+    "scale",
+    "similar fractions",
+    "solid figure",
+    "sq. cm",
+    "square centimeter",
+    "symmetry",
+    "ten thousand",
+    "ten-thousands place"
+   ],
+   "sentence_max_words": 18,
+   "number_format": "no commas for numbers up to 1000"
+  },
+  "declared_variants": [
+   [
+    "context",
+    "word_problem"
+   ],
+   [
+    "number_range",
+    10000
+   ],
+   [
+    "number_range",
+    1000
+   ],
+   [
+    "number_range",
+    100
+   ],
+   [
+    "number_range",
+    20
+   ],
+   [
+    "regrouping",
+    "none"
+   ],
+   [
+    "regrouping",
+    "one_place"
+   ],
+   [
+    "regrouping",
+    "two_places"
+   ],
+   [
+    "spine",
+    "comparing"
+   ],
+   [
+    "spine",
+    "taking_away"
+   ],
+   [
+    "structure",
+    "change_unknown"
+   ],
+   [
+    "structure",
+    "result_unknown"
+   ],
+   [
+    "structure",
+    "start_unknown"
+   ]
+  ],
+  "declared_bounds": [
+   {
+    "max_minuend": [
+     1,
+     999
+    ],
+    "task_type": "one_or_two_step_subtraction",
+    "context": "word_problem"
+   }
+  ],
+  "families": [
+   {
+    "id": "F01",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F07"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='difference')",
+        "requires_vocab": "difference",
+        "prints": "the difference",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F02",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F05"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='regrouping')",
+        "requires_vocab": "regrouping",
+        "prints": "regroup",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F03",
+    "template": "Subtract the ones: {oa} − {ob} = {od}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "oa",
+       "ob",
+       "od"
+      ],
+      "domains": [
+       {
+        "domain": "a number computed by the generator",
+        "reason": "arithmetic",
+        "derived_from_values": [
+         "a",
+         "b"
+        ]
+       }
+      ],
+      "distinct_in_every_render": false
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F04",
+    "template": "Subtract the tens: {ta} − {tb} = {td}.{note}",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "ta",
+       "tb",
+       "td"
+      ],
+      "domains": [
+       {
+        "domain": "a number computed by the generator",
+        "reason": "arithmetic",
+        "derived_from_values": [
+         "a",
+         "b"
+        ]
+       }
+      ],
+      "distinct_in_every_render": false
+     },
+     {
+      "slots": [
+       "note"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "subtraction tens-step note",
+        "members": [
+         " (1 ten became 10 ones)",
+         " (after regrouping)",
+         ""
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F05",
+    "template": "The ones digit {oa} is less than {ob}, so we need to {reg}. Regroup 1 ten as 10 ones: {oa10} − {ob} = {od}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "oa",
+       "ob",
+       "oa10",
+       "od"
+      ],
+      "domains": [
+       {
+        "domain": "a number computed by the generator",
+        "reason": "arithmetic",
+        "derived_from_values": [
+         "a",
+         "b"
+        ]
+       }
+      ],
+      "distinct_in_every_render": false
+     },
+     {
+      "slots": [
+       "reg"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F02"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F06",
+    "template": "We are subtracting {b} from {a}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "10 to 17, 19 to 22, 24 to 25, 29 to 30, 32 to 35, 38, 40, 42, 45, 50 to 52, 54, 58, 60, 64, 72, 74 to 75, 82, 90 to 91, 95 to 96, 100, 103 to 105, 108 to 109, 112, 116, 120, 122 to 123, 125, 128, 131, 137, 140 to 141, 144 to 145, 148, 150 to 152, 157 to 159, 162, 164 to 165, 167, 171 to 172, 180, 183, 186, 194 to 195, 201, 210, 217, 220, 222, 225, 238, 240, 247, 255, 263, 270, 273, 285, 291 to 294, 300, 305, 309 to 310, 315, 321, 330, 344, 351, 360 to 361, 370, 380, 382, 400, 406, 420, 424, 438, 447, 468, 510, 522 to 523, 610, 635, 645, 765, 770, 816, 835, 840",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "20 to 25, 28, 30, 32, 34, 36, 38, 40, 42 to 43, 45, 50, 52, 57, 60 to 62, 70, 72, 80 to 81, 87, 100 to 103, 105, 112, 117, 120, 123, 125 to 126, 131, 138 to 140, 150 to 151, 156, 160 to 161, 165, 174, 180, 183, 185, 200 to 201, 205, 210, 213, 215, 220, 222 to 225, 239 to 240, 250, 255, 261, 266, 270, 274, 285, 292 to 293, 300, 310 to 311, 313 to 315, 320, 326, 330, 347 to 348, 350, 352, 360 to 361, 366, 375, 378, 384, 390, 392, 400, 405, 409, 414 to 415, 420, 433, 450, 465, 470, 474, 480, 495, 498, 510, 512, 525, 532, 540 to 541, 550, 555, 580, 590, 600, 602, 620, 630, 635 to 636, 641, 655, 660, 690, 710, 712, 720, 750, 756, 765, 770, 774, 780, 804, 810, 840, 870, 882, 890, 900, 911, 930, 950, 960, 975, 990",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F07",
+    "template": "{label} of {a} − {b} = {result}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "label"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F01"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "20 to 25, 28, 30, 32, 34, 36, 38, 40, 42 to 43, 45, 50, 52, 57, 60 to 62, 70, 72, 80 to 81, 87, 100 to 103, 105, 112, 117, 120, 123, 125 to 126, 131, 138 to 140, 150 to 151, 156, 160 to 161, 165, 174, 180, 183, 185, 200 to 201, 205, 210, 213, 215, 220, 222 to 225, 239 to 240, 250, 255, 261, 266, 270, 274, 285, 292 to 293, 300, 310 to 311, 313 to 315, 320, 326, 330, 347 to 348, 350, 352, 360 to 361, 366, 375, 378, 384, 390, 392, 400, 405, 409, 414 to 415, 420, 433, 450, 465, 470, 474, 480, 495, 498, 510, 512, 525, 532, 540 to 541, 550, 555, 580, 590, 600, 602, 620, 630, 635 to 636, 641, 655, 660, 690, 710, 712, 720, 750, 756, 765, 770, 774, 780, 804, 810, 840, 870, 882, 890, 900, 911, 930, 950, 960, 975, 990",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "10 to 17, 19 to 22, 24 to 25, 29 to 30, 32 to 35, 38, 40, 42, 45, 50 to 52, 54, 58, 60, 64, 72, 74 to 75, 82, 90 to 91, 95 to 96, 100, 103 to 105, 108 to 109, 112, 116, 120, 122 to 123, 125, 128, 131, 137, 140 to 141, 144 to 145, 148, 150 to 152, 157 to 159, 162, 164 to 165, 167, 171 to 172, 180, 183, 186, 194 to 195, 201, 210, 217, 220, 222, 225, 238, 240, 247, 255, 263, 270, 273, 285, 291 to 294, 300, 305, 309 to 310, 315, 321, 330, 344, 351, 360 to 361, 370, 380, 382, 400, 406, 420, 424, 438, 447, 468, 510, 522 to 523, 610, 635, 645, 765, 770, 816, 835, 840",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "result"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "result",
+        "printed_runs": "5 to 18, 20 to 27, 30 to 33, 35, 39, 41 to 52, 57 to 58, 63, 65 to 67, 71, 73, 76 to 78, 81, 83 to 88, 92, 94 to 95, 97 to 99, 102, 107, 113, 116, 119 to 122, 125, 128, 130 to 131, 135, 138, 141, 145, 147, 149, 151 to 153, 156, 158, 162, 173, 175, 179, 182, 189 to 190, 199, 202, 204, 206 to 207, 210, 212, 214, 220, 226, 230, 232, 236, 250, 255, 266, 275, 279 to 280, 283, 288, 299, 311, 313, 320, 327, 348, 350, 354, 363, 367, 370, 375, 378 to 379, 382, 384, 386, 395 to 396, 399, 405 to 406, 420, 428, 452, 459, 481, 484, 486, 494, 500, 511, 516, 518, 522, 532, 534 to 535, 540, 542, 560, 590, 597, 599, 611, 615, 628, 641, 654, 669, 695, 699, 706, 708, 710, 755, 769, 791, 820, 888, 892, 960",
+        "derived_from_values": [
+         "result"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F08",
+    "template": "{actor}",
+    "appears_in": [
+     "format_data.actor_name"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "actor"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "_FILIPINO_NAMES"
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F09",
+    "template": "{actor} solved this problem: \"{problem}\" {actor} says the answer is {answer}. Is {actor} correct?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "actor"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "_FILIPINO_NAMES"
+       }
+      ]
+     },
+     {
+      "slots": [
+       "problem"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F12",
+         "F13",
+         "F15",
+         "F20",
+         "F21",
+         "F22",
+         "F23"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the keyed answer and the distractor candidates",
+        "members": [
+         1,
+         10,
+         1047,
+         105,
+         106,
+         108,
+         1194,
+         122,
+         143,
+         152,
+         153,
+         154,
+         163,
+         173,
+         19,
+         214,
+         261,
+         275,
+         29,
+         303,
+         312,
+         313,
+         314,
+         323,
+         33,
+         333,
+         338,
+         344,
+         347,
+         348,
+         349,
+         353,
+         354,
+         355,
+         358,
+         364,
+         365,
+         368,
+         374,
+         375,
+         376,
+         385,
+         395,
+         41,
+         474,
+         483,
+         484,
+         485,
+         494,
+         50,
+         504,
+         51,
+         52,
+         530,
+         539,
+         540,
+         541,
+         550,
+         553,
+         560,
+         61,
+         648,
+         705,
+         71,
+         716,
+         75,
+         76,
+         78,
+         8,
+         84,
+         85,
+         86,
+         87,
+         88,
+         89,
+         9,
+         95,
+         96,
+         98,
+         990
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F10",
+    "template": "{q} The answer is {v}.",
+    "appears_in": [
+     "format_data.statement"
+    ],
+    "nested_in": [
+     "F11"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "q"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F12",
+         "F13",
+         "F14",
+         "F15",
+         "F16",
+         "F18",
+         "F21"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "v"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the distractors shaped like the keyed answer",
+        "members": [
+         1,
+         1026,
+         1047,
+         139,
+         143,
+         148,
+         150,
+         152,
+         154,
+         159,
+         163,
+         169,
+         173,
+         18,
+         196,
+         205,
+         207,
+         216,
+         226,
+         28,
+         418,
+         427,
+         429,
+         438,
+         446,
+         448,
+         451,
+         474,
+         483,
+         485,
+         494,
+         504,
+         532,
+         644,
+         653,
+         655,
+         664,
+         674,
+         7,
+         716,
+         72,
+         9
+        ]
+       },
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the keyed answer (a true statement)",
+        "members": [
+         128,
+         42,
+         51
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F11",
+    "template": "{statement}. True or False?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "statement"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F10"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F12",
+    "template": "{actor} had ₱{a} in a piggy bank and used ₱{b} to buy a notebook. How much money is left in the piggy bank?",
+    "appears_in": [
+     "format_data.problem_expression",
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [
+     "F09",
+     "F10"
+    ],
+    "transformation": {
+     "name": "spine",
+     "meaning": "the template is rendered by the spine renderer, which also chooses a/an by sound and the singular after a count of 1"
+    },
+    "slots": [
+     {
+      "slots": [
+       "actor"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "ACTOR_POOL"
+       }
+      ]
+     },
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "20, 22, 25, 30, 32, 43, 45, 50, 61, 105, 126, 138, 140, 151, 156, 160, 165, 180, 205, 215, 222, 239, 292, 311, 314, 326, 330, 350, 361, 378, 450, 480, 512, 525, 532, 550, 602, 655, 690, 750, 765, 780, 882, 890, 911, 990",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "10, 12 to 15, 20 to 21, 24, 30, 45, 50, 52, 60, 72, 100, 104 to 105, 109, 120, 122, 165, 210, 225, 240, 270, 300, 305, 315, 344, 360, 370, 380, 468, 510, 770, 840",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "inflect_objects"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "OBJECTS_POOL"
+       }
+      ]
+     },
+     {
+      "slots": [
+       "inflect_item1"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "ITEM1_POOL"
+       }
+      ]
+     },
+     {
+      "slots": [
+       "inflect_item2"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "ITEM2_POOL"
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F13",
+    "template": "{actor} had ₱{a} and spent ₱{b} on {objects} at the {place}. How much money does {actor} have left?",
+    "appears_in": [
+     "format_data.problem_expression",
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [
+     "F09",
+     "F10"
+    ],
+    "transformation": {
+     "name": "spine",
+     "meaning": "the template is rendered by the spine renderer, which also chooses a/an by sound and the singular after a count of 1"
+    },
+    "slots": [
+     {
+      "slots": [
+       "actor"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "ACTOR_POOL"
+       }
+      ]
+     },
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "21, 24, 28, 30, 34, 40, 45, 52, 60, 87, 117, 139, 220, 285, 330, 347 to 348, 352, 361, 375, 378, 384, 405, 433, 465, 495, 540, 555, 690, 710, 712, 750, 770, 774, 870",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "10, 12 to 13, 15, 20, 22, 30, 35, 51, 75, 90, 100, 120, 125, 128, 162, 180, 210, 240, 270, 300, 330, 380, 420, 523, 645",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "objects",
+       "inflect_objects"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "OBJECTS_POOL"
+       }
+      ],
+      "distinct_in_every_render": false
+     },
+     {
+      "slots": [
+       "place"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "PLACE_POOL"
+       }
+      ]
+     },
+     {
+      "slots": [
+       "inflect_item1"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "ITEM1_POOL"
+       }
+      ]
+     },
+     {
+      "slots": [
+       "inflect_item2"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "ITEM2_POOL"
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F14",
+    "template": "{actor} had ₱{a} and bought a snack for ₱{b} at the sari-sari store. How much money does {actor} have left?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [
+     "F10"
+    ],
+    "transformation": {
+     "name": "spine",
+     "meaning": "the template is rendered by the spine renderer, which also chooses a/an by sound and the singular after a count of 1"
+    },
+    "slots": [
+     {
+      "slots": [
+       "actor"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "ACTOR_POOL"
+       }
+      ]
+     },
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "21, 23, 30, 32, 40, 62, 72, 103, 125, 131, 150, 161, 183, 185, 201, 223, 225, 250, 255, 266, 274, 313, 361, 366, 390, 409, 450, 474, 541, 635 to 636, 641, 756, 804, 840, 960, 975",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "11 to 13, 15, 20, 30, 32, 60, 90, 100, 120, 123, 140, 144, 150, 180, 210, 238, 240, 309, 330, 360, 420, 610, 816",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "inflect_objects"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "OBJECTS_POOL"
+       }
+      ]
+     },
+     {
+      "slots": [
+       "inflect_item1"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "ITEM1_POOL"
+       }
+      ]
+     },
+     {
+      "slots": [
+       "inflect_item2"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "ITEM2_POOL"
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F15",
+    "template": "{actor} has {a} {objects}. A friend has {b} {objects}. How many more {objects} does {actor} have than the friend?",
+    "appears_in": [
+     "format_data.problem_expression",
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [
+     "F09",
+     "F10"
+    ],
+    "transformation": {
+     "name": "spine",
+     "meaning": "the template is rendered by the spine renderer, which also chooses a/an by sound and the singular after a count of 1"
+    },
+    "slots": [
+     {
+      "slots": [
+       "actor"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "ACTOR_POOL"
+       }
+      ]
+     },
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "210, 240, 600, 810, 960, 990",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "objects",
+       "inflect_objects"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "OBJECTS_POOL"
+       }
+      ],
+      "distinct_in_every_render": false
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "58, 116, 167, 321, 361, 424",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "inflect_item1"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "ITEM1_POOL"
+       }
+      ]
+     },
+     {
+      "slots": [
+       "inflect_item2"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "ITEM2_POOL"
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F16",
+    "template": "{actor} has {a} {objects}. A friend has {b} {objects}. How many fewer {objects} does the friend have?",
+    "appears_in": [],
+    "nested_in": [
+     "F10"
+    ],
+    "transformation": {
+     "name": "spine",
+     "meaning": "the template is rendered by the spine renderer, which also chooses a/an by sound and the singular after a count of 1"
+    },
+    "slots": [
+     {
+      "slots": [
+       "actor"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "ACTOR_POOL"
+       }
+      ]
+     },
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "101, 250, 450, 510, 810, 840, 870",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "objects",
+       "inflect_objects"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "OBJECTS_POOL"
+       }
+      ],
+      "distinct_in_every_render": false
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "60, 137, 164, 186, 310, 382",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "inflect_item1"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "ITEM1_POOL"
+       }
+      ]
+     },
+     {
+      "slots": [
+       "inflect_item2"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "ITEM2_POOL"
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F17",
+    "template": "Start at {a}. Count back {b}. What number do you land on?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": {
+     "name": "spine",
+     "meaning": "the template is rendered by the spine renderer, which also chooses a/an by sound and the singular after a count of 1"
+    },
+    "slots": [
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "25, 38, 42, 102, 140, 293, 360, 540, 600, 630, 810, 900",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "12, 19 to 20, 25, 30, 96, 108, 141, 158, 270, 293, 522",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "inflect_objects"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "OBJECTS_POOL"
+       }
+      ]
+     },
+     {
+      "slots": [
+       "inflect_item1"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "ITEM1_POOL"
+       }
+      ]
+     },
+     {
+      "slots": [
+       "inflect_item2"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "ITEM2_POOL"
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F18",
+    "template": "{actor} is on step {a}. {actor} goes down {b} steps. What step is {actor} on now?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [
+     "F10"
+    ],
+    "transformation": {
+     "name": "spine",
+     "meaning": "the template is rendered by the spine renderer, which also chooses a/an by sound and the singular after a count of 1"
+    },
+    "slots": [
+     {
+      "slots": [
+       "actor"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "ACTOR_POOL"
+       }
+      ]
+     },
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "102, 180, 200, 213, 240, 261, 300, 450, 470, 620, 810",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "25, 40, 75, 120, 151, 159, 164, 220, 351, 400, 765",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "inflect_objects"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "OBJECTS_POOL"
+       }
+      ]
+     },
+     {
+      "slots": [
+       "inflect_item1"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "ITEM1_POOL"
+       }
+      ]
+     },
+     {
+      "slots": [
+       "inflect_item2"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "ITEM2_POOL"
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F19",
+    "template": "{actor} had {a} {objects} and gave {b} to friends at the {place}. How many {objects} does {actor} have left?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": {
+     "name": "spine",
+     "meaning": "the template is rendered by the spine renderer, which also chooses a/an by sound and the singular after a count of 1"
+    },
+    "slots": [
+     {
+      "slots": [
+       "actor"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "ACTOR_POOL"
+       }
+      ]
+     },
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "70, 100, 112, 210, 225, 315, 330, 414, 450, 510, 710, 810, 900",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "objects",
+       "inflect_objects"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "OBJECTS_POOL"
+       }
+      ],
+      "distinct_in_every_render": false
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "11, 15 to 16, 24, 45, 52, 64, 112, 131, 152, 162, 171, 447, 635",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "place"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "PLACE_POOL"
+       }
+      ]
+     },
+     {
+      "slots": [
+       "inflect_item1"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "ITEM1_POOL"
+       }
+      ]
+     },
+     {
+      "slots": [
+       "inflect_item2"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "ITEM2_POOL"
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F20",
+    "template": "There were {a} {objects} in a box. {b} {objects} were taken out. How many {objects} are still in the box?",
+    "appears_in": [
+     "format_data.problem_expression",
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [
+     "F09"
+    ],
+    "transformation": {
+     "name": "spine",
+     "meaning": "the template is rendered by the spine renderer, which also chooses a/an by sound and the singular after a count of 1"
+    },
+    "slots": [
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "105, 180, 240, 320, 400, 420, 540, 930",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "objects",
+       "inflect_objects"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "OBJECTS_POOL"
+       }
+      ],
+      "distinct_in_every_render": false
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "17, 38, 141, 194 to 195, 201, 247, 382",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "inflect_item1"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "ITEM1_POOL"
+       }
+      ]
+     },
+     {
+      "slots": [
+       "inflect_item2"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "ITEM2_POOL"
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F21",
+    "template": "A {place} has {a} {objects}. {actor} removes {b} {objects}. How many {objects} are left in the {place}?",
+    "appears_in": [
+     "format_data.problem_expression",
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [
+     "F09",
+     "F10"
+    ],
+    "transformation": {
+     "name": "spine",
+     "meaning": "the template is rendered by the spine renderer, which also chooses a/an by sound and the singular after a count of 1"
+    },
+    "slots": [
+     {
+      "slots": [
+       "place"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "PLACE_POOL"
+       }
+      ]
+     },
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "300, 330, 392, 415, 450, 600, 900",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "objects",
+       "inflect_objects"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "OBJECTS_POOL"
+       }
+      ],
+      "distinct_in_every_render": false
+     },
+     {
+      "slots": [
+       "actor"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "ACTOR_POOL"
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "54, 141, 148, 270, 300, 406, 447",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "inflect_item1"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "ITEM1_POOL"
+       }
+      ]
+     },
+     {
+      "slots": [
+       "inflect_item2"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "ITEM2_POOL"
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F22",
+    "template": "{actor} has {a} {objects}. {actor} gives away {b} {objects}. How many {objects} does {actor} have left?",
+    "appears_in": [
+     "format_data.problem_expression",
+     "question_text"
+    ],
+    "nested_in": [
+     "F09"
+    ],
+    "transformation": {
+     "name": "spine",
+     "meaning": "the template is rendered by the spine renderer, which also chooses a/an by sound and the singular after a count of 1"
+    },
+    "slots": [
+     {
+      "slots": [
+       "actor"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "ACTOR_POOL"
+       }
+      ]
+     },
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "60, 123, 150, 161, 200, 210, 310, 360, 498, 580, 720, 750, 780, 810",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "objects",
+       "inflect_objects"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "OBJECTS_POOL"
+       }
+      ],
+      "distinct_in_every_render": false
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "25, 30, 34, 45, 64, 103, 123, 150, 183, 273, 285, 292, 294, 330, 400",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "inflect_item1"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "ITEM1_POOL"
+       }
+      ]
+     },
+     {
+      "slots": [
+       "inflect_item2"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "ITEM2_POOL"
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F23",
+    "template": "There are {a} {objects} on the table. {actor} takes away {b} {objects}. How many {objects} are left on the table?",
+    "appears_in": [
+     "format_data.problem_expression"
+    ],
+    "nested_in": [
+     "F09"
+    ],
+    "transformation": {
+     "name": "spine",
+     "meaning": "the template is rendered by the spine renderer, which also chooses a/an by sound and the singular after a count of 1"
+    },
+    "slots": [
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "36, 80 to 81, 100, 120, 174, 180, 240, 270, 300, 330, 465, 510, 540, 590, 600, 900, 930, 950",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "objects",
+       "inflect_objects"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "OBJECTS_POOL"
+       }
+      ],
+      "distinct_in_every_render": false
+     },
+     {
+      "slots": [
+       "actor"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "ACTOR_POOL"
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "10, 15, 22, 29 to 30, 42, 45, 54, 60, 74, 82, 90 to 91, 95, 125, 157, 165, 172, 217, 240, 438, 835",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "inflect_item1"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "ITEM1_POOL"
+       }
+      ]
+     },
+     {
+      "slots": [
+       "inflect_item2"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "ITEM2_POOL"
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   }
+  ],
+  "lists": {
+   "_FILIPINO_NAMES": [
+    "Noel",
+    "Maria",
+    "Jose",
+    "Ana",
+    "Carlo",
+    "Liza",
+    "Manny",
+    "Grace",
+    "Rico",
+    "Pia",
+    "Dante",
+    "Rosa"
+   ],
+   "ACTOR_POOL": [
+    "David",
+    "Moses",
+    "Ruth",
+    "Esther",
+    "Daniel",
+    "Mary",
+    "Joseph",
+    "Paul",
+    "Peter",
+    "Ate Joy",
+    "Kuya Franz",
+    "Aldrin",
+    "Mikko",
+    "Gio",
+    "Trisha",
+    "Coach Val",
+    "Nico",
+    "Bea",
+    "Lester",
+    "Mariz",
+    "Kuya Dan",
+    "Raffy",
+    "Hiro",
+    "Rina",
+    "Emman",
+    "Yuki",
+    "Alvin",
+    "Ate Cai",
+    "Lola Caring",
+    "Tito Jun",
+    "Andrea",
+    "Migs",
+    "Reyna",
+    "Pabs",
+    "Ate Shei",
+    "Marco",
+    "Janna",
+    "Renz",
+    "Lianne",
+    "Kuya Pat",
+    "Ate Lia",
+    "Sora",
+    "Dani",
+    "Kris",
+    "Eunji",
+    "Hana",
+    "Rex",
+    "Ate Gem",
+    "Kuya Dos",
+    "Ate Cess",
+    "Jake",
+    "Mia",
+    "Ronan",
+    "Bria",
+    "Kuya Axel",
+    "Ate Nina",
+    "Luis",
+    "Camille",
+    "Raph",
+    "Zia",
+    "Kuya Bien",
+    "Kuya Lance",
+    "Ate Charm",
+    "Reina",
+    "Topher",
+    "Jade",
+    "Kuya Cong",
+    "Ate Mags",
+    "Boyax",
+    "Trish",
+    "Aldrei",
+    "Jomar",
+    "Ate Cara",
+    "Dex",
+    "Mika",
+    "Noel",
+    "Izza",
+    "Kuya Erwin",
+    "Isko",
+    "Ate Bea",
+    "Coach Roel",
+    "Jun",
+    "Gab",
+    "Ate Alyssa",
+    "Cris",
+    "Des",
+    "Coach Nora",
+    "Pia",
+    "Romel",
+    "Kuya Chad",
+    "Aling Rosa",
+    "Tito Bong",
+    "Faye",
+    "Arnel",
+    "Ate Sam",
+    "Ate Gab",
+    "Maico",
+    "Bianca",
+    "Sir Rez",
+    "Lara",
+    "Kuya Ton",
+    "Ate Liza",
+    "Carlo",
+    "Sir Ben",
+    "Yna",
+    "Kuya Renz",
+    "Kuya Noel",
+    "Ate Ria",
+    "Manny",
+    "Ching",
+    "Sir Leo",
+    "Dana",
+    "Lena",
+    "Nikka",
+    "Kuya Art",
+    "Tessie",
+    "Ate Nena",
+    "Kuya Coy",
+    "Lola Ising",
+    "Chef Demi",
+    "Riza",
+    "Boboy",
+    "Ate Beng",
+    "Kuya Tads",
+    "Nanding",
+    "Boyong",
+    "Kuya Ian",
+    "Ateneo Doc",
+    "Sir Erwin",
+    "Ate Dang",
+    "Celso",
+    "Kuya Bert",
+    "Ate Gina",
+    "Ronnie",
+    "Maribel",
+    "Sir Doy",
+    "Sir Mando",
+    "Ate Lory",
+    "Bogs",
+    "Celia",
+    "Kuya Dex",
+    "Rhea",
+    "Ate Lyn",
+    "Patricia",
+    "Romar",
+    "Sir Dave",
+    "Connie",
+    "Maria"
+   ],
+   "OBJECTS_POOL": [
+    "loaves of bread",
+    "fish",
+    "olives",
+    "coins",
+    "scrolls",
+    "lamps",
+    "jars",
+    "baskets",
+    "stones",
+    "seeds",
+    "match tickets",
+    "hero cards",
+    "score cards",
+    "tournament tickets",
+    "rank badges",
+    "headsets",
+    "building blocks",
+    "game manuals",
+    "block packs",
+    "coin tokens",
+    "skin cards",
+    "craft blocks",
+    "gacha tickets",
+    "character cards",
+    "gem tokens",
+    "event tickets",
+    "figure collectibles",
+    "resin figures",
+    "puzzle pieces",
+    "chess pieces",
+    "game cards",
+    "hint tokens",
+    "star stickers",
+    "power-up cards",
+    "photocards",
+    "albums",
+    "concert tickets",
+    "lightsticks",
+    "fan shirts",
+    "posters",
+    "fan merch",
+    "trading cards",
+    "manga volumes",
+    "anime figurines",
+    "cosplay pins",
+    "sticker sheets",
+    "art prints",
+    "keychains",
+    "album CDs",
+    "fan posters",
+    "movie tickets",
+    "collector cards",
+    "merchandise shirts",
+    "notebooks",
+    "story cards",
+    "book covers",
+    "bookmarks",
+    "pens",
+    "printed drafts",
+    "memory cards",
+    "fan letters",
+    "light clips",
+    "phone stands",
+    "preset cards",
+    "microphones",
+    "donation cards",
+    "subscriber badges",
+    "emote stickers",
+    "clip cards",
+    "fan art prints",
+    "merch shirts",
+    "template cards",
+    "photo prints",
+    "sketch cards",
+    "photo albums",
+    "brush packs",
+    "basketballs",
+    "jerseys",
+    "water bottles",
+    "medals",
+    "sneakers",
+    "volleyballs",
+    "shuttlecocks",
+    "whistles",
+    "arm sleeves",
+    "knee pads",
+    "score sheets",
+    "jump ropes",
+    "wristbands",
+    "running shoes",
+    "weights",
+    "helmets",
+    "dance shoes",
+    "costumes",
+    "trophies",
+    "fan accessories",
+    "pom-poms",
+    "ribbons",
+    "crayons",
+    "paintbrushes",
+    "sketchpads",
+    "colored pencils",
+    "watercolor sets",
+    "paint tubes",
+    "guitar picks",
+    "ukulele strings",
+    "song sheets",
+    "capos",
+    "drumsticks",
+    "yarn balls",
+    "journal notebooks",
+    "scrapbook pages",
+    "fabric swatches",
+    "washi tape rolls",
+    "cupcakes",
+    "cookies",
+    "milk tea cups",
+    "bags of flour",
+    "eggs",
+    "dog treats",
+    "cat toys",
+    "fish food packets",
+    "hamsters",
+    "leashes",
+    "water bowls",
+    "circuit boards",
+    "coding books",
+    "robot kits",
+    "solar cells",
+    "lab notebooks",
+    "USB drives",
+    "sticker packs",
+    "product samples",
+    "order slips",
+    "savings jars",
+    "business cards",
+    "packaging bags",
+    "trivia cards",
+    "history books",
+    "documentary DVDs",
+    "map prints",
+    "quiz notebooks",
+    "mystery novels",
+    "campaign posters",
+    "eco bags",
+    "ballot papers",
+    "project folders",
+    "campaign pins",
+    "speech scripts",
+    "stickers"
+   ],
+   "ITEM1_POOL": [
+    "Bible storybook",
+    "prayer journal",
+    "bookmark",
+    "coloring book",
+    "headset",
+    "gaming mouse",
+    "keyboard skin",
+    "mousepad",
+    "game skin",
+    "server pass",
+    "resource pack",
+    "avatar outfit",
+    "character keychain",
+    "acrylic standee",
+    "gacha topup card",
+    "enamel pin",
+    "chess set",
+    "puzzle book",
+    "mobile game credit",
+    "sudoku pad",
+    "album",
+    "photocard",
+    "lightstick",
+    "fan shirt",
+    "photocard sleeve",
+    "manga volume",
+    "anime keychain",
+    "album CD",
+    "fan poster",
+    "movie ticket",
+    "notebook",
+    "gel pen set",
+    "story planner",
+    "ring light",
+    "tripod",
+    "phone mic",
+    "green screen",
+    "streamer merch shirt",
+    "emote sticker",
+    "fan badge",
+    "stream credit",
+    "photo print",
+    "sticker sheet",
+    "design template pack",
+    "sketchpad",
+    "basketball",
+    "jersey",
+    "headband",
+    "wristband",
+    "volleyball",
+    "knee pad",
+    "sport socks",
+    "bicycle pump",
+    "helmet",
+    "knee guard",
+    "running shoes",
+    "dance shoes",
+    "costume sash",
+    "pom-pom",
+    "hair tie set",
+    "colored pencil set",
+    "watercolor set",
+    "crayons",
+    "guitar pick",
+    "ukulele string set",
+    "capo",
+    "song sheet booklet",
+    "yarn ball",
+    "journal notebook",
+    "washi tape roll",
+    "cupcake",
+    "cookie pack",
+    "bread loaf",
+    "baking mix pack",
+    "dog treat pack",
+    "cat toy",
+    "fish food packet",
+    "pet collar",
+    "coding book",
+    "USB drive",
+    "robot kit part",
+    "science kit",
+    "sticker pack",
+    "handmade keychain",
+    "savings jar",
+    "business card pack",
+    "trivia card pack",
+    "history book",
+    "quiz notebook",
+    "map print",
+    "eco bag",
+    "campaign poster roll",
+    "project folder",
+    "marker set",
+    "pencil"
+   ],
+   "ITEM2_POOL": [
+    "sticker set",
+    "wristband",
+    "song lyrics card",
+    "memory verse card",
+    "phone cooling fan",
+    "controller grip",
+    "RGB light strip",
+    "phone stand",
+    "gaming chair cushion",
+    "desk lamp",
+    "cooling pad",
+    "sticker sheet",
+    "loot box pass",
+    "tote bag",
+    "poster",
+    "pen set",
+    "timer",
+    "score notepad",
+    "strategy guide",
+    "lace pin",
+    "acrylic standee",
+    "art print",
+    "cosplay accessory",
+    "collector card",
+    "bookmark",
+    "pin badge",
+    "highlighter set",
+    "sticky notes",
+    "pen case",
+    "reading light",
+    "SD card",
+    "phone grip",
+    "led strip",
+    "editing app credit",
+    "meme poster",
+    "phone case",
+    "stylus pen",
+    "photo frame",
+    "washi tape set",
+    "colored markers",
+    "water bottle",
+    "sports towel",
+    "cap",
+    "knee pad",
+    "racket grip tape",
+    "headband",
+    "sports bag",
+    "resistance band",
+    "duffel bag",
+    "paintbrush set",
+    "eraser",
+    "ruler",
+    "drawing pen",
+    "tuner clip",
+    "microphone",
+    "music stand",
+    "drumstick pair",
+    "crochet hook",
+    "scissors",
+    "glue stick",
+    "colored pens",
+    "milk tea cup",
+    "pastry box",
+    "cooking apron",
+    "measuring cup set",
+    "water bowl",
+    "pet brush",
+    "leash",
+    "hamster bedding pack",
+    "notebook",
+    "ballpen set",
+    "calculator",
+    "solar toy",
+    "packaging bag",
+    "price tag set",
+    "receipt booklet",
+    "rubber band pack",
+    "booklight",
+    "sticky note pad",
+    "ballpen pack",
+    "tarpaulin print",
+    "ribbon spool"
+   ],
+   "PLACE_POOL": [
+    "temple",
+    "marketplace",
+    "well",
+    "mountain",
+    "garden",
+    "village",
+    "river",
+    "field",
+    "house",
+    "church",
+    "internet cafe",
+    "school computer lab",
+    "home setup",
+    "esports arena",
+    "barangay gaming hub",
+    "home computer",
+    "school tech room",
+    "friend's house",
+    "esports hub",
+    "home",
+    "gaming convention",
+    "school",
+    "comic book store",
+    "waiting area",
+    "school canteen",
+    "library",
+    "living room",
+    "concert venue",
+    "music store",
+    "fan meet venue",
+    "SM mall",
+    "mall event space",
+    "online shop",
+    "convention hall",
+    "school library",
+    "bookstore",
+    "cinema",
+    "mall",
+    "school event",
+    "home desk",
+    "coffee shop",
+    "Wattpad",
+    "home studio",
+    "school grounds",
+    "park",
+    "rooftop",
+    "home stream setup",
+    "gaming lounge",
+    "esports cafe",
+    "school print shop",
+    "photo studio",
+    "tech fair",
+    "barangay court",
+    "school gym",
+    "covered court",
+    "plaza",
+    "arena",
+    "sports complex",
+    "beach",
+    "barangay road",
+    "school track",
+    "gym",
+    "school stage",
+    "dance studio",
+    "barangay plaza",
+    "auditorium",
+    "classroom",
+    "art room",
+    "art fair",
+    "music room",
+    "recording studio",
+    "ukay-ukay stall",
+    "craft fair",
+    "tiangge",
+    "kitchen",
+    "bakery",
+    "cafe",
+    "palengke",
+    "pet shop",
+    "veterinary clinic",
+    "barangay",
+    "school lab",
+    "science fair",
+    "tech workshop",
+    "university exhibit",
+    "barangay market",
+    "museum",
+    "history fair",
+    "barangay hall",
+    "SSG office"
+   ]
+  },
+  "banks": {},
+  "value_derivations": [],
+  "reason_kinds": {
+   "arithmetic": "a number the generator computes from the generated values named in src (a half, a sum, a difference, a running total, a place's digit). Its range is the image of those values' own domains; whether the arithmetic is RIGHT is the hint contract's (§16) and §1E's to check, not §14's."
+  }
+ }
+}

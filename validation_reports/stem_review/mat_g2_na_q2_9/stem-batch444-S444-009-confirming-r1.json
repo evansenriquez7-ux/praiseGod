@@ -1,0 +1,920 @@
+{
+ "schema_version": 2,
+ "hash_version": 8,
+ "node_id": "mat_g2_na_q2_9",
+ "record_id": "stem-batch444-S444-009-confirming-r1",
+ "role": "confirming",
+ "confirms": "stem-batch444-S444-009-first",
+ "item_id": "S444-009",
+ "lc_hash": "625383969fde264b86e6334dfa38421c4d52ce6d65fd2e438e2dab8b213ad384",
+ "judged_by": "blind-stem-judge-claude-haiku-batch444-S444-009-confirming-r1",
+ "dispatch_id": "stem-batch444-S444-009-confirming-r1",
+ "filed_at": "2026-10-16T10:31:04Z",
+ "delivery": "Claude Code Agent tool, model=haiku, subagent_type=general-purpose; the judge was told to read only local_only/scratch/h4c/prompts/S444-009.prompt.txt (tests/stem_file.py prompt output, item S444-009; no lc id, no key or packets file in that directory) and reply with what it asks; dispatched with CLAUDE.md loaded (ruling 29). Blindness is a prompt contract, audited from the subagent transcript.",
+ "tool_uses_by_judge": "From the subagent transcript: 1 tool use(s), all Read of its own prompt file (878 lines, every line read); no other tool, path or search. Model reported in the transcript: claude-haiku-5-5.",
+ "dispatch_prompt_digest": "8d76c0239f1f444230ad00bc017bb082eadf579339d661f88696362514f63a66",
+ "raw_reply": "{\"item\": \"S444-009\", \"clauses\": {\"create\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F02\", \"template\": \"Create a pattern that starts at {first_term} and uses the rule: {rule}. Which sequence shows this pattern?\", \"reasoning\": \"F02 opens with the task verb Create and its own sentence asks for a pattern, so it addresses the clause. The fault that fails the item (see overall) does not remove the ability to produce this clause.\"}, \"increasing_decreasing\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F06\", \"template\": \"Which sequence correctly shows {v} {pattern_label} starting at {first_term} and following the rule: {rule}?\", \"reasoning\": \"F06 names the property through the pattern_label domain, whose three members include increasing pattern and decreasing pattern. Those labels can be produced for a direction clause. The article and rule coupling faults are separate and are recorded in failing_families.\"}, \"patterns\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F02\", \"template\": \"Create a pattern that starts at {first_term} and uses the rule: {rule}. Which sequence shows this pattern?\", \"reasoning\": \"F02 asks the learner about a pattern, which is the object the lc names.\"}}, \"failing_families\": [\"F02\", \"F03\", \"F04\", \"F05\", \"F06\", \"F07\"], \"failing_templates\": [\"Create a pattern that starts at {first_term} and uses the rule: {rule}. Which sequence shows this pattern?\", \"Start at {first_term} and create {v} {pattern_label} with the rule: {rule}. Which pattern did you create?\", \"Start at {first_term} and use the rule: {rule_description}.\", \"The sequence that follows the rule at every step is {answer}.\", \"Which sequence correctly shows {v} {pattern_label} starting at {first_term} and following the rule: {rule}?\", \"You want to create {v} {pattern_label} where the rule is: {rule}. Which sequence correctly creates it?\"], \"overall\": \"FAIL\", \"reasoning\": \"Three faults. (1) Independent slots: in F03, F06 and F07 the pattern_label domain (decreasing pattern, increasing pattern, repeating pattern) and the rule domain (F08: Add or Subtract, step 1 to 5) are declared as separate generator choices with no derived_from_values link, so a problem can state an increasing or decreasing rule for a repeating pattern, or Add with a decreasing pattern. The repeating pattern label is also outside this lc, which asks only for increasing or decreasing patterns. (2) The article slot v (members a and an) is declared as a separate choice, not tied to pattern_label, so a learner can be shown an article that does not match its noun (for example a before increasing). (3) Keyed answer and hints are not coupled to the question: F09 answer draws from its own observed list with derived_from_values answer only, and F02, F03, F06 and F07 use first_term but not the answer. F04 and F05 print rule_description and answer as separate generated values. A problem can therefore key a sequence that does not start at first_term or follow rule, and F05 can state that such a sequence follows the rule. F07 also renders up to 20 words in its sentence (for example with an increasing pattern and a one-digit step), over the lc's sentence_max_words of 18. Not a fault on its own: sequence and rule are not in cumulative_vocab but are not in NOT_YET_KNOWN either, so they are outside the gate and were not counted. Also not counted: the answer list shows only step sizes 1 to 4, while the rule domain allows step 5 and Add 4, which never appear in the observed answers; this is coverage, not a text fault.\"}",
+ "raw_reply_digest": "b4770ba42d80d037faf7e41f2ca71237dc0c57c16119f078ef960e187f1055ff",
+ "packet_digest": "9f444e0741989828b709a40e25f754c1c221ea006c4432aa83901ab212aa0991",
+ "family_keys": {
+  "F01": {
+   "source": "backend/app/practice_gen/dna/na/patterns.py",
+   "first_site": "backend/app/practice_gen/dna/na/patterns.py:579",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F02": {
+   "source": "backend/app/practice_gen/dna/na/patterns.py",
+   "first_site": "backend/app/practice_gen/dna/na/patterns.py:324",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F03": {
+   "source": "backend/app/practice_gen/dna/na/patterns.py",
+   "first_site": "backend/app/practice_gen/dna/na/patterns.py:322",
+   "renderer": "",
+   "path": [
+    2,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F04": {
+   "source": "backend/app/practice_gen/dna/na/patterns.py",
+   "first_site": "backend/app/practice_gen/dna/na/patterns.py:578",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F05": {
+   "source": "backend/app/practice_gen/dna/na/patterns.py",
+   "first_site": "backend/app/practice_gen/dna/na/patterns.py:580",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F06": {
+   "source": "backend/app/practice_gen/dna/na/patterns.py",
+   "first_site": "backend/app/practice_gen/dna/na/patterns.py:323",
+   "renderer": "",
+   "path": [
+    7,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F07": {
+   "source": "backend/app/practice_gen/dna/na/patterns.py",
+   "first_site": "backend/app/practice_gen/dna/na/patterns.py:321",
+   "renderer": "",
+   "path": [
+    3,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F08": {
+   "source": "backend/app/practice_gen/dna/na/patterns.py",
+   "first_site": "backend/app/practice_gen/dna/na/patterns.py:267",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F09": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:32",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F10": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:39",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  }
+ },
+ "packet": {
+  "item": "S444-009",
+  "competency": {
+   "text": "Create increasing or decreasing patterns.",
+   "grade": 2,
+   "quarter": 2
+  },
+  "clauses": [
+   {
+    "id": "create",
+    "kind": "task",
+    "clause": "Create"
+   },
+   {
+    "id": "increasing_decreasing",
+    "kind": "property",
+    "clause": "increasing or decreasing"
+   },
+   {
+    "id": "patterns",
+    "kind": "object",
+    "clause": "patterns"
+   }
+  ],
+  "vocabulary": {
+   "student_vocab": [],
+   "curriculum_vocab": [],
+   "introduces_vocab": [],
+   "cumulative_vocab": [
+    "1 less",
+    "1 more",
+    "10th",
+    "1st",
+    "2nd",
+    "3rd",
+    "4th",
+    "5th",
+    "6th",
+    "7th",
+    "8th",
+    "9th",
+    "addition",
+    "analog clock",
+    "bigger",
+    "bill",
+    "calendar",
+    "centavo",
+    "circle",
+    "clockwise",
+    "coin",
+    "compare",
+    "corner",
+    "count",
+    "counter-clockwise",
+    "data",
+    "decreasing pattern",
+    "difference",
+    "digit",
+    "equal",
+    "expanded form",
+    "fraction",
+    "group",
+    "half",
+    "half hour",
+    "half turn",
+    "hour",
+    "how many",
+    "hundreds",
+    "increasing pattern",
+    "left",
+    "length",
+    "less",
+    "measure",
+    "missing number",
+    "more",
+    "number",
+    "number line",
+    "numeral",
+    "ones",
+    "pattern",
+    "peso",
+    "pictograph",
+    "place value",
+    "quarter",
+    "quarter hour",
+    "quarter turn",
+    "rectangle",
+    "regrouping",
+    "repeating pattern",
+    "same",
+    "side",
+    "skip counting",
+    "slide",
+    "smaller",
+    "square",
+    "subtraction",
+    "sum",
+    "table",
+    "tens",
+    "thousand",
+    "total",
+    "translation",
+    "triangle",
+    "whole",
+    "₱"
+   ],
+   "NOT_YET_KNOWN": [
+    "L",
+    "a.m.",
+    "area",
+    "axis",
+    "balance scale",
+    "bar graph",
+    "capacity",
+    "centimeter",
+    "certain",
+    "cm",
+    "denominator",
+    "division",
+    "elapsed time",
+    "equal groups",
+    "equally likely",
+    "estimate",
+    "even",
+    "g",
+    "gram",
+    "impossible",
+    "improper fraction",
+    "intersecting",
+    "kg",
+    "kilogram",
+    "less likely",
+    "line",
+    "line of symmetry",
+    "line segment",
+    "liter",
+    "m",
+    "mL",
+    "mass",
+    "meter",
+    "milliliter",
+    "minute",
+    "missing term",
+    "more likely",
+    "multiplication",
+    "nearest hundred",
+    "nearest ten",
+    "nearest thousand",
+    "numerator",
+    "odd",
+    "order of operations",
+    "outcome",
+    "p.m.",
+    "parallel",
+    "perimeter",
+    "perpendicular",
+    "point",
+    "product",
+    "quotient",
+    "ray",
+    "remainder",
+    "round",
+    "ruler",
+    "scale",
+    "similar fractions",
+    "solid figure",
+    "sq. cm",
+    "square centimeter",
+    "symmetry",
+    "ten thousand",
+    "ten-thousands place"
+   ],
+   "sentence_max_words": 18,
+   "number_format": "no commas for numbers up to 1000"
+  },
+  "declared_variants": [],
+  "declared_bounds": [
+   {
+    "pattern_type": "increasing_or_decreasing",
+    "ask_type": "identify_valid"
+   }
+  ],
+  "families": [
+   {
+    "id": "F01",
+    "template": "Check every step of each choice against the rule.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F02",
+    "template": "Create a pattern that starts at {first_term} and uses the rule: {rule}. Which sequence shows this pattern?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "first_term"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "first_term",
+        "printed_runs": "1 to 3, 10 to 12, 15, 20, 30",
+        "derived_from_values": [
+         "first_term"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "rule"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F08"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F03",
+    "template": "Start at {first_term} and create {v} {pattern_label} with the rule: {rule}. Which pattern did you create?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "first_term"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "first_term",
+        "printed_runs": "1 to 3, 10 to 12, 15, 20, 30",
+        "derived_from_values": [
+         "first_term"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "v"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the article for the pattern label",
+        "members": [
+         "a",
+         "an"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "pattern_label"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the three pattern labels",
+        "members": [
+         "decreasing pattern",
+         "increasing pattern",
+         "repeating pattern"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "rule"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F08"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F04",
+    "template": "Start at {first_term} and use the rule: {rule_description}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "first_term"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "first_term",
+        "printed_runs": "1 to 3, 10 to 12, 15, 20, 30",
+        "derived_from_values": [
+         "first_term"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "rule_description"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "rule_description",
+        "printed": [
+         "Add 1 each time",
+         "Add 2 each time",
+         "Add 3 each time",
+         "Subtract 1 each time",
+         "Subtract 2 each time",
+         "Subtract 3 each time",
+         "Subtract 4 each time"
+        ],
+        "derived_from_values": [
+         "rule_description"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F05",
+    "template": "The sequence that follows the rule at every step is {answer}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "answer",
+        "printed": [
+         "1, 2, 3, 4, 5, 6",
+         "1, 3, 5, 7, 9, 11",
+         "1, 4, 7, 10, 13, 16",
+         "10, 11, 12, 13, 14, 15",
+         "10, 12, 14, 16, 18, 20",
+         "10, 13, 16, 19, 22, 25",
+         "10, 9, 8, 7, 6, 5",
+         "11, 10, 9, 8, 7, 6",
+         "11, 12, 13, 14, 15, 16",
+         "12, 11, 10, 9, 8, 7",
+         "12, 13, 14, 15, 16, 17",
+         "12, 14, 16, 18, 20, 22",
+         "15, 13, 11, 9, 7, 5",
+         "15, 14, 13, 12, 11, 10",
+         "15, 16, 17, 18, 19, 20",
+         "15, 17, 19, 21, 23, 25",
+         "2, 3, 4, 5, 6, 7",
+         "2, 4, 6, 8, 10, 12",
+         "2, 5, 8, 11, 14, 17",
+         "20, 17, 14, 11, 8, 5",
+         "20, 18, 16, 14, 12, 10",
+         "20, 19, 18, 17, 16, 15",
+         "20, 21, 22, 23, 24, 25",
+         "3, 4, 5, 6, 7, 8",
+         "3, 5, 7, 9, 11, 13",
+         "30, 26, 22, 18, 14, 10",
+         "30, 27, 24, 21, 18, 15",
+         "30, 28, 26, 24, 22, 20",
+         "30, 29, 28, 27, 26, 25"
+        ],
+        "derived_from_values": [
+         "answer"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F06",
+    "template": "Which sequence correctly shows {v} {pattern_label} starting at {first_term} and following the rule: {rule}?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "v"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the article for the pattern label",
+        "members": [
+         "a",
+         "an"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "pattern_label"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the three pattern labels",
+        "members": [
+         "decreasing pattern",
+         "increasing pattern",
+         "repeating pattern"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "first_term"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "first_term",
+        "printed_runs": "1 to 3, 10 to 12, 15, 20, 30",
+        "derived_from_values": [
+         "first_term"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "rule"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F08"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F07",
+    "template": "You want to create {v} {pattern_label} where the rule is: {rule}. Which sequence correctly creates it?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "v"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the article for the pattern label",
+        "members": [
+         "a",
+         "an"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "pattern_label"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the three pattern labels",
+        "members": [
+         "decreasing pattern",
+         "increasing pattern",
+         "repeating pattern"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "rule"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F08"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F08",
+    "template": "{v} {step} each time",
+    "appears_in": [],
+    "nested_in": [
+     "F02",
+     "F03",
+     "F06",
+     "F07"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "v"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the rule's direction",
+        "members": [
+         "Add",
+         "Subtract"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "step"
+      ],
+      "domains": [
+       {
+        "domain": "a number in a range",
+        "basis": "the step's range",
+        "lo": 1,
+        "hi": 5
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F09",
+    "template": "{answer}",
+    "appears_in": [
+     "correct_answer",
+     "format_data.mcq_options",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "answer",
+        "printed": [
+         "1, 2, 3, 4, 5, 6",
+         "1, 3, 5, 7, 9, 11",
+         "1, 4, 7, 10, 13, 16",
+         "10, 11, 12, 13, 14, 15",
+         "10, 12, 14, 16, 18, 20",
+         "10, 13, 16, 19, 22, 25",
+         "10, 9, 8, 7, 6, 5",
+         "11, 10, 9, 8, 7, 6",
+         "11, 12, 13, 14, 15, 16",
+         "12, 11, 10, 9, 8, 7",
+         "12, 13, 14, 15, 16, 17",
+         "12, 14, 16, 18, 20, 22",
+         "15, 13, 11, 9, 7, 5",
+         "15, 14, 13, 12, 11, 10",
+         "15, 16, 17, 18, 19, 20",
+         "15, 17, 19, 21, 23, 25",
+         "2, 3, 4, 5, 6, 7",
+         "2, 4, 6, 8, 10, 12",
+         "2, 5, 8, 11, 14, 17",
+         "20, 17, 14, 11, 8, 5",
+         "20, 18, 16, 14, 12, 10",
+         "20, 19, 18, 17, 16, 15",
+         "20, 21, 22, 23, 24, 25",
+         "3, 4, 5, 6, 7, 8",
+         "3, 5, 7, 9, 11, 13",
+         "30, 26, 22, 18, 14, 10",
+         "30, 27, 24, 21, 18, 15",
+         "30, 28, 26, 24, 22, 20",
+         "30, 29, 28, 27, 26, 25"
+        ],
+        "derived_from_values": [
+         "answer"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F10",
+    "template": "{member}",
+    "appears_in": [
+     "distractors",
+     "format_data.mcq_options",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "member"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "QuestionContext.distractors (the generator's own)",
+        "members": [
+         "1, 2, 1, 4, 5, 6",
+         "1, 2, 2, 4, 5, 6",
+         "1, 2, 3, 1, 5, 6",
+         "1, 2, 3, 4, 2, 6",
+         "1, 4, 3, 4, 5, 6",
+         "1, 4, 7, 10, 11, 16",
+         "1, 4, 7, 10, 13, 14",
+         "1, 4, 7, 10, 15, 16",
+         "1, 4, 7, 8, 13, 16",
+         "1, 4, 8, 10, 13, 16",
+         "1, 4, 9, 10, 13, 16",
+         "10, 11, 12, 13, 12, 15",
+         "10, 11, 12, 13, 15, 15",
+         "10, 11, 14, 16, 18, 20",
+         "10, 11, 16, 19, 22, 25",
+         "10, 11, 9, 13, 14, 15",
+         "10, 12, 14, 14, 18, 20",
+         "10, 12, 17, 16, 18, 20",
+         "10, 13, 12, 13, 14, 15",
+         "10, 13, 14, 19, 22, 25",
+         "10, 13, 15, 19, 22, 25",
+         "10, 13, 16, 17, 22, 25",
+         "10, 13, 16, 18, 22, 25",
+         "10, 13, 16, 19, 19, 25",
+         "10, 13, 16, 20, 22, 25",
+         "10, 13, 16, 22, 22, 25",
+         "10, 16, 16, 19, 22, 25",
+         "10, 6, 8, 7, 6, 5",
+         "10, 7, 8, 7, 6, 5",
+         "10, 8, 12, 13, 14, 15",
+         "10, 9, 12, 13, 14, 15",
+         "10, 9, 5, 7, 6, 5",
+         "10, 9, 8, 5, 6, 5",
+         "10, 9, 8, 6, 6, 5",
+         "10, 9, 8, 7, 6, 8",
+         "11, 10, 12, 8, 7, 6",
+         "11, 10, 9, 8, 6, 6",
+         "11, 10, 9, 8, 7, 3",
+         "11, 10, 9, 8, 7, 9",
+         "11, 10, 9, 9, 7, 6",
+         "11, 12, 11, 14, 15, 16",
+         "11, 12, 13, 14, 15, 13",
+         "11, 12, 13, 14, 15, 18",
+         "11, 12, 13, 14, 18, 16",
+         "11, 12, 13, 16, 15, 16",
+         "11, 12, 16, 14, 15, 16",
+         "11, 7, 9, 8, 7, 6",
+         "11, 9, 13, 14, 15, 16",
+         "12, 11, 10, 10, 8, 7",
+         "12, 11, 10, 11, 8, 7",
+         "12, 11, 10, 7, 8, 7",
+         "12, 11, 10, 9, 8, 8",
+         "12, 11, 13, 9, 8, 7",
+         "12, 11, 16, 18, 20, 22",
+         "12, 11, 7, 9, 8, 7",
+         "12, 12, 16, 18, 20, 22",
+         "12, 13, 12, 15, 16, 17",
+         "12, 13, 17, 15, 16, 17",
+         "12, 14, 14, 18, 20, 22",
+         "12, 14, 16, 18, 20, 19",
+         "12, 14, 16, 18, 20, 20",
+         "12, 14, 17, 18, 20, 22",
+         "12, 15, 14, 15, 16, 17",
+         "15, 10, 11, 9, 7, 5",
+         "15, 11, 11, 9, 7, 5",
+         "15, 12, 13, 12, 11, 10",
+         "15, 13, 11, 12, 7, 5",
+         "15, 13, 11, 9, 6, 5",
+         "15, 13, 11, 9, 8, 5",
+         "15, 13, 11, 9, 9, 5",
+         "15, 14, 13, 12, 11, 12",
+         "15, 14, 14, 12, 11, 10",
+         "15, 16, 16, 18, 19, 20",
+         "15, 16, 18, 18, 19, 20",
+         "15, 17, 19, 21, 23, 23",
+         "15, 17, 19, 22, 23, 25",
+         "15, 17, 20, 21, 23, 25",
+         "15, 19, 17, 18, 19, 20",
+         "2, 5, 8, 12, 14, 17",
+         "2, 5, 9, 11, 14, 17",
+         "2, 6, 8, 11, 14, 17",
+         "20, 15, 14, 11, 8, 5",
+         "20, 16, 18, 17, 16, 15",
+         "20, 17, 12, 11, 8, 5",
+         "20, 17, 14, 8, 8, 5",
+         "20, 17, 17, 11, 8, 5",
+         "20, 18, 14, 11, 8, 5",
+         "20, 19, 17, 17, 16, 15",
+         "20, 19, 18, 16, 16, 15",
+         "20, 19, 18, 17, 16, 12",
+         "20, 19, 18, 17, 16, 14",
+         "20, 19, 18, 17, 16, 18",
+         "20, 19, 18, 17, 17, 15",
+         "20, 19, 21, 17, 16, 15",
+         "20, 20, 14, 11, 8, 5",
+         "3, 4, 5, 3, 7, 8",
+         "3, 4, 5, 6, 10, 8",
+         "3, 4, 5, 6, 8, 8",
+         "30, 25, 22, 18, 14, 10",
+         "30, 26, 19, 18, 14, 10",
+         "30, 26, 22, 17, 14, 10",
+         "30, 26, 22, 18, 12, 10",
+         "30, 26, 22, 18, 14, 7",
+         "30, 26, 22, 21, 14, 10",
+         "30, 26, 24, 21, 18, 15",
+         "30, 27, 23, 21, 18, 15",
+         "30, 27, 24, 21, 18, 13",
+         "30, 27, 24, 21, 18, 17",
+         "30, 27, 24, 21, 21, 15",
+         "30, 28, 26, 26, 22, 20",
+         "30, 28, 27, 24, 22, 20",
+         "30, 29, 28, 24, 26, 25",
+         "30, 29, 28, 27, 26, 24",
+         "30, 29, 28, 27, 26, 27",
+         "30, 30, 26, 24, 22, 20"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   }
+  ],
+  "lists": {},
+  "banks": {},
+  "value_derivations": [],
+  "reason_kinds": {}
+ }
+}

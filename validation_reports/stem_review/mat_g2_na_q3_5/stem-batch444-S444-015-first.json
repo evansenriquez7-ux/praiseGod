@@ -1,0 +1,1479 @@
+{
+ "schema_version": 2,
+ "hash_version": 8,
+ "node_id": "mat_g2_na_q3_5",
+ "record_id": "stem-batch444-S444-015-first",
+ "role": "first",
+ "confirms": null,
+ "item_id": "S444-015",
+ "lc_hash": "50ddc3241d59ffa89c6ca1ea66b0a4af3798b4faa8e6103171a69a11755cdb00",
+ "judged_by": "blind-stem-judge-claude-haiku-batch444-S444-015-first",
+ "dispatch_id": "stem-batch444-S444-015-first",
+ "filed_at": "2026-10-15T16:47:34Z",
+ "delivery": "Claude Code Agent tool, model=haiku, subagent_type=general-purpose; the judge was told to read only local_only/scratch/h4c/prompts/S444-015.prompt.txt (tests/stem_file.py prompt output, item S444-015; no lc id, no key or packets file in that directory) and reply with what it asks; dispatched with CLAUDE.md loaded (ruling 29). Blindness is a prompt contract, audited from the subagent transcript.",
+ "tool_uses_by_judge": "From the subagent transcript: 1 tool use(s), all Read of its own prompt file (1337 lines, every line read); no other tool, path or search. Model reported in the transcript: claude-haiku-5-5.",
+ "dispatch_prompt_digest": "81f2cfd06194f568cc1ce7d0dd96dbcdc53240ef7390684970bf277dec15a562",
+ "raw_reply": "{\"item\": \"S444-015\", \"clauses\": {\"illustrate_and_write\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F18\", \"template\": \"Shade {total} squares into {rows} equal rows. How many squares are in each row?\", \"reasoning\": \"F18 has the learner shade a drawn array of squares, which illustrates the division, and asks for the quotient in the question. The written expression is produced by F09.\"}, \"division_expressions\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F09\", \"template\": \"{dividend} ÷ {divisor} = ___\", \"reasoning\": \"F09 writes a division expression with a blank for the quotient, from the dividend and divisor domains (repeats a generated value, keys a and b).\"}, \"concrete_and_pictorial_models\": {\"verdict\": \"NOT_PRODUCIBLE\", \"family\": null, \"template\": null, \"reasoning\": \"The pictorial half is produced by F18 (shaded squares). No family produces a concrete model (physical manipulatives or objects to handle). Every family is printed text, so the concrete half of the clause cannot be addressed.\"}, \"numerals\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F09\", \"template\": \"{dividend} ÷ {divisor} = ___\", \"reasoning\": \"F09 writes the division in numerals, with the dividend and divisor printed as numbers.\"}, \"modelling_division\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F18\", \"template\": \"Shade {total} squares into {rows} equal rows. How many squares are in each row?\", \"reasoning\": \"F18 models division as equal sharing into equal rows, with the quotient as the count in each row.\"}, \"equal_sharing\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F18\", \"template\": \"Shade {total} squares into {rows} equal rows. How many squares are in each row?\", \"reasoning\": \"F18 shares a total equally among a number of rows and asks for each share.\"}, \"formation_of_equal_groups\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F19\", \"template\": \"This array has {total} squares split into {rows} equal rows. How many squares are in each row?\", \"reasoning\": \"F19 forms equal groups (rows) of a total and asks for the size of each group. F19 is itself a failing family, as stated below. The clause is producible.\"}, \"objects\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F18\", \"template\": \"Shade {total} squares into {rows} equal rows. How many squares are in each row?\", \"reasoning\": \"F18 divides a set of squares (objects) into equal groups.\"}, \"repeated_subtraction\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F08\", \"template\": \"Start with {dividend}. Subtract {divisor} repeatedly until reaching 0: you subtract ___ times.\", \"reasoning\": \"F08 models division as repeated subtraction. Its template is chosen by task_type, and the repeated_subtraction bound is declared.\"}}, \"failing_families\": [\"F15\", \"F16\", \"F19\"], \"failing_templates\": [\"Starting from {dividend} and subtracting {divisor} repeatedly, you subtract {fill_value} times before reaching 0.\", \"{dividend} ÷ {divisor} = {fill_value}\", \"This array has {total} squares split into {rows} equal rows. How many squares are in each row?\"], \"overall\": \"FAIL\", \"reasoning\": \"F19 uses the word array. It is not in cumulative_vocab, not in the introduced vocabulary, and not in NOT_YET_KNOWN, so the lc's stated vocabulary does not include it. F16's fill_value slot is the union of a distractor list [0, 10, 2] and a keyed-true list [2, 4, 5, 9]. The value 2 sits in both, so a true statement can be keyed false. The domains allow this, for example a dividend of 20 with a divisor of 10 and a fill of 2. F15's distractor list [10, 15, 3, 5, 6, 60, 8, 80] overlaps the true quotients that its dividend domain (20, 40, 50, 70, 90) and divisor domain (5, 10) produce, for example 50 with 10 and 5. The statements are then true but keyed false. Non-failing notes: the F15 template ends with a period and the F17 template adds '. True or False?', so the printed text has a double period. The F05 and F06 templates use a {capitalize} slot with transformation null, so the sentence-initial nested text prints in lower case. Neither makes a statement wrong, so neither is failing. F08 and F18 can reach large counts (up to 45 subtractions and 90 squares), which is a load concern but is not stated as a bound in the competency.\"}",
+ "raw_reply_digest": "eab9d1c38bea364b235da0ef4de878c49588f045a489333acf110463b2e6a477",
+ "packet_digest": "7ed170418ce048d73f52e826eddb22fc1ad645f09e63a87d1bce83cb827fbcdd",
+ "family_keys": {
+  "F01": {
+   "source": "backend/app/practice_gen/dna/base.py [gate dividend]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F02": {
+   "source": "backend/app/practice_gen/dna/base.py [gate divisor]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F03": {
+   "source": "backend/app/practice_gen/dna/base.py [gate quotient]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F04": {
+   "source": "backend/app/practice_gen/dna/na/division.py",
+   "first_site": "backend/app/practice_gen/dna/na/division.py:661",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F05": {
+   "source": "backend/app/practice_gen/dna/na/division.py",
+   "first_site": "backend/app/practice_gen/dna/na/division.py:656",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F06": {
+   "source": "backend/app/practice_gen/dna/na/division.py",
+   "first_site": "backend/app/practice_gen/dna/na/division.py:681",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F07": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:51",
+   "renderer": "",
+   "path": [
+    2,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F08": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_cloze.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_cloze.py:167",
+   "renderer": "",
+   "path": [
+    23,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F09": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_cloze.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_cloze.py:171",
+   "renderer": "",
+   "path": [
+    4,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F10": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_error_detect.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_error_detect.py:242",
+   "renderer": "",
+   "path": [
+    7,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F11": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_error_detect.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_error_detect.py:387",
+   "renderer": "",
+   "path": [
+    6,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F12": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_error_detect.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_error_detect.py:367",
+   "renderer": "",
+   "path": [
+    6,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F13": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_error_detect.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_error_detect.py:246",
+   "renderer": "",
+   "path": [
+    6,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F14": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_mcq.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_mcq.py:137",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F15": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_true_false.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_true_false.py:297",
+   "renderer": "",
+   "path": [
+    11,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F16": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_true_false.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_true_false.py:304",
+   "renderer": "",
+   "path": [
+    26,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F17": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_true_false.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_true_false.py:430",
+   "renderer": "",
+   "path": [
+    11,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F18": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_array_grid.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_array_grid.py:424",
+   "renderer": "",
+   "path": [
+    22,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F19": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_array_grid.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_array_grid.py:410",
+   "renderer": "",
+   "path": [
+    2,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F20": {
+   "source": "backend/app/practice_gen/generators/base_generator.py",
+   "first_site": "backend/app/practice_gen/generators/base_generator.py:866",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  }
+ },
+ "packet": {
+  "item": "S444-015",
+  "competency": {
+   "text": "Illustrate and write division expressions using a variety of concrete and pictorial models and numerals, in modelling division as equal sharing or formation of equal groups of objects, and repeated subtraction.",
+   "grade": 2,
+   "quarter": 3
+  },
+  "clauses": [
+   {
+    "id": "illustrate_and_write",
+    "kind": "task",
+    "clause": "Illustrate and write"
+   },
+   {
+    "id": "division_expressions",
+    "kind": "object",
+    "clause": "division expressions"
+   },
+   {
+    "id": "concrete_and_pictorial_models",
+    "kind": "representation",
+    "clause": "concrete and pictorial models"
+   },
+   {
+    "id": "numerals",
+    "kind": "representation",
+    "clause": "numerals"
+   },
+   {
+    "id": "modelling_division",
+    "kind": "task",
+    "clause": "modelling division"
+   },
+   {
+    "id": "equal_sharing",
+    "kind": "task",
+    "clause": "equal sharing"
+   },
+   {
+    "id": "formation_of_equal_groups",
+    "kind": "task",
+    "clause": "formation of equal groups"
+   },
+   {
+    "id": "objects",
+    "kind": "object",
+    "clause": "objects"
+   },
+   {
+    "id": "repeated_subtraction",
+    "kind": "task",
+    "clause": "repeated subtraction"
+   }
+  ],
+  "vocabulary": {
+   "student_vocab": [
+    "quotient"
+   ],
+   "curriculum_vocab": [
+    "division expression",
+    "dividend",
+    "divisor",
+    "repeated subtraction",
+    "equal sharing",
+    "formation of equal groups"
+   ],
+   "introduces_vocab": [
+    "division expression",
+    "dividend",
+    "divisor",
+    "quotient",
+    "repeated subtraction",
+    "equal sharing",
+    "formation of equal groups"
+   ],
+   "cumulative_vocab": [
+    "1 less",
+    "1 more",
+    "10th",
+    "1st",
+    "2nd",
+    "3rd",
+    "4th",
+    "5th",
+    "6th",
+    "7th",
+    "8th",
+    "9th",
+    "addition",
+    "analog clock",
+    "bigger",
+    "bill",
+    "calendar",
+    "centavo",
+    "centimeter",
+    "circle",
+    "clockwise",
+    "cm",
+    "coin",
+    "compare",
+    "corner",
+    "count",
+    "counter-clockwise",
+    "data",
+    "decreasing pattern",
+    "difference",
+    "digit",
+    "division",
+    "equal",
+    "equal groups",
+    "estimate",
+    "expanded form",
+    "fraction",
+    "group",
+    "half",
+    "half hour",
+    "half turn",
+    "hour",
+    "how many",
+    "hundreds",
+    "increasing pattern",
+    "left",
+    "length",
+    "less",
+    "m",
+    "measure",
+    "meter",
+    "missing number",
+    "more",
+    "multiplication",
+    "number",
+    "number line",
+    "numeral",
+    "ones",
+    "pattern",
+    "peso",
+    "pictograph",
+    "place value",
+    "product",
+    "quarter",
+    "quarter hour",
+    "quarter turn",
+    "rectangle",
+    "regrouping",
+    "repeating pattern",
+    "ruler",
+    "same",
+    "side",
+    "skip counting",
+    "slide",
+    "smaller",
+    "square",
+    "subtraction",
+    "sum",
+    "table",
+    "tens",
+    "thousand",
+    "total",
+    "translation",
+    "triangle",
+    "whole",
+    "₱"
+   ],
+   "NOT_YET_KNOWN": [
+    "L",
+    "a.m.",
+    "area",
+    "axis",
+    "balance scale",
+    "bar graph",
+    "capacity",
+    "certain",
+    "denominator",
+    "elapsed time",
+    "equally likely",
+    "even",
+    "g",
+    "gram",
+    "impossible",
+    "improper fraction",
+    "intersecting",
+    "kg",
+    "kilogram",
+    "less likely",
+    "line",
+    "line of symmetry",
+    "line segment",
+    "liter",
+    "mL",
+    "mass",
+    "milliliter",
+    "minute",
+    "missing term",
+    "more likely",
+    "nearest hundred",
+    "nearest ten",
+    "nearest thousand",
+    "numerator",
+    "odd",
+    "order of operations",
+    "outcome",
+    "p.m.",
+    "parallel",
+    "perimeter",
+    "perpendicular",
+    "point",
+    "ray",
+    "remainder",
+    "round",
+    "scale",
+    "similar fractions",
+    "solid figure",
+    "sq. cm",
+    "square centimeter",
+    "symmetry",
+    "ten thousand",
+    "ten-thousands place"
+   ],
+   "sentence_max_words": 18,
+   "number_format": "no commas for numbers up to 1000"
+  },
+  "declared_variants": [
+   [
+    "context",
+    "pure"
+   ],
+   [
+    "context",
+    "word_problem"
+   ],
+   [
+    "remainder",
+    "none"
+   ],
+   [
+    "structure",
+    "result_unknown"
+   ],
+   [
+    "table",
+    "2_3_4_5_10"
+   ]
+  ],
+  "declared_bounds": [
+   {
+    "table": "2_3_4_5_10",
+    "remainder": "none",
+    "task_type": [
+     "find_quotient",
+     "repeated_subtraction"
+    ],
+    "structure": "result_unknown"
+   }
+  ],
+  "families": [
+   {
+    "id": "F01",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F05"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='dividend')",
+        "requires_vocab": "dividend",
+        "prints": "the dividend",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F02",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F05"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='divisor')",
+        "requires_vocab": "divisor",
+        "prints": "the divisor",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F03",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F06"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='quotient')",
+        "requires_vocab": "quotient",
+        "prints": "the quotient",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F04",
+    "template": "Ask: how many times does {b} fit into {a}? {b} × {result} = {v}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "2 to 5, 10",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "2 to 3, 10, 12, 15, 20, 30, 40, 50, 70, 80, 90",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "result",
+       "v"
+      ],
+      "domains": [
+       {
+        "domain": "a number computed by the generator",
+        "reason": "arithmetic",
+        "derived_from_values": [
+         "a",
+         "b"
+        ]
+       }
+      ],
+      "distinct_in_every_render": true
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F05",
+    "template": "We need to divide {a} by {b}. {capitalize} is {a}; {divisor_label} is {b}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "2 to 3, 10, 12, 15, 20, 30, 40, 50, 70, 80, 90",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "2 to 5, 10",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "capitalize"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F01"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "divisor_label"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F02"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F06",
+    "template": "{capitalize} of {a} ÷ {b} = {result}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "capitalize"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F03"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "2 to 3, 10, 12, 15, 20, 30, 40, 50, 70, 80, 90",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "2 to 5, 10",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "result"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "result",
+        "printed_runs": "1 to 9",
+        "derived_from_values": [
+         "result"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F07",
+    "template": "{key}",
+    "appears_in": [
+     "correct_answer"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "key"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the option keys this item shows",
+        "members": [
+         "A",
+         "B",
+         "C",
+         "D"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F08",
+    "template": "Start with {dividend}. Subtract {divisor} repeatedly until reaching 0: you subtract ___ times.",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "dividend"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "2 to 3, 10, 12, 20, 80, 90",
+        "derived_from_values": [
+         "a",
+         "dividend"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "divisor"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "2 to 3, 5, 10",
+        "derived_from_values": [
+         "b",
+         "divisor"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F09",
+    "template": "{dividend} ÷ {divisor} = ___",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "dividend"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "10, 15, 20, 30, 90",
+        "derived_from_values": [
+         "a",
+         "dividend"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "divisor"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "5, 10",
+        "derived_from_values": [
+         "b",
+         "divisor"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F10",
+    "template": "Starting from {dividend} and subtracting {divisor} repeatedly, you subtract {slot} times before reaching 0",
+    "appears_in": [
+     "format_data.problem_expression"
+    ],
+    "nested_in": [
+     "F12"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "dividend"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "10, 12, 15, 20, 80",
+        "derived_from_values": [
+         "a",
+         "dividend"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "divisor"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "3 to 5, 10",
+        "derived_from_values": [
+         "b",
+         "divisor"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "slot"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the blank for the unknown blank_target",
+        "members": [
+         "___"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F11",
+    "template": "{actor}",
+    "appears_in": [
+     "format_data.actor_name"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "actor"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "_FILIPINO_NAMES"
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F12",
+    "template": "{actor} solved: \"{problem}\". {actor} says the {miss} is {answer}. Is {actor} correct?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "actor"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "_FILIPINO_NAMES"
+       }
+      ]
+     },
+     {
+      "slots": [
+       "problem"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F10",
+         "F13"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the keyed answer and the distractor candidates",
+        "members": [
+         0,
+         1,
+         10,
+         12,
+         15,
+         2,
+         3,
+         30,
+         4,
+         5,
+         6,
+         60,
+         7,
+         8,
+         80,
+         9
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "miss"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "vocab gate 'missing number'",
+        "requires_vocab": "missing number",
+        "prints": "missing number",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F13",
+    "template": "{slot} ÷ {slot2} = {slot3}",
+    "appears_in": [
+     "format_data.problem_expression"
+    ],
+    "nested_in": [
+     "F12"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "slot"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "10, 20, 40, 50, 70, 90",
+        "derived_from_values": [
+         "a",
+         "dividend"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "slot2"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "10",
+        "derived_from_values": [
+         "b",
+         "divisor"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "slot3"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the blank for the unknown blank_target",
+        "members": [
+         "___"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F14",
+    "template": "What is {dividend} ÷ {divisor}?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "dividend"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "3, 10, 12, 15, 20, 30, 40, 50, 70, 80, 90",
+        "derived_from_values": [
+         "a",
+         "dividend"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "divisor"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "2 to 3, 5, 10",
+        "derived_from_values": [
+         "b",
+         "divisor"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F15",
+    "template": "Starting from {dividend} and subtracting {divisor} repeatedly, you subtract {fill_value} times before reaching 0.",
+    "appears_in": [
+     "format_data.statement"
+    ],
+    "nested_in": [
+     "F17"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "dividend"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "20, 40, 50, 70, 90",
+        "derived_from_values": [
+         "a",
+         "dividend"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "divisor"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "5, 10",
+        "derived_from_values": [
+         "b",
+         "divisor"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "fill_value"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the distractors shaped like the keyed answer",
+        "members": [
+         10,
+         15,
+         3,
+         5,
+         6,
+         60,
+         8,
+         80
+        ]
+       },
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the keyed answer (a true statement)",
+        "members": [
+         4
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F16",
+    "template": "{dividend} ÷ {divisor} = {fill_value}",
+    "appears_in": [
+     "format_data.statement"
+    ],
+    "nested_in": [
+     "F17"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "dividend"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "3, 10, 12, 15, 20, 30, 40, 90",
+        "derived_from_values": [
+         "a",
+         "dividend"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "divisor"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "2 to 5, 10",
+        "derived_from_values": [
+         "b",
+         "divisor"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "fill_value"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the distractors shaped like the keyed answer",
+        "members": [
+         0,
+         10,
+         2
+        ]
+       },
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the keyed answer (a true statement)",
+        "members": [
+         2,
+         4,
+         5,
+         9
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F17",
+    "template": "{statement}. True or False?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "statement"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F15",
+         "F16"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F18",
+    "template": "Shade {total} squares into {rows} equal rows. How many squares are in each row?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "total"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "10, 12, 15, 20, 90",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "rows"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "3 to 5, 10",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F19",
+    "template": "This array has {total} squares split into {rows} equal rows. How many squares are in each row?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "total"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "2 to 3, 10, 12, 20, 90",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "rows"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "2 to 3, 5, 10",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F20",
+    "template": "What is {total} ÷ {n}?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "total"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "3, 10, 12, 15, 20, 40, 50, 70, 80, 90",
+        "derived_from_values": [
+         "a",
+         "start",
+         "total"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "n"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "2 to 3, 5, 10",
+        "derived_from_values": [
+         "b",
+         "n",
+         "skip_by"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "blank_target"
+    ]
+   }
+  ],
+  "lists": {
+   "_FILIPINO_NAMES": [
+    "Noel",
+    "Maria",
+    "Jose",
+    "Ana",
+    "Carlo",
+    "Liza",
+    "Manny",
+    "Grace",
+    "Rico",
+    "Pia",
+    "Dante",
+    "Rosa"
+   ]
+  },
+  "banks": {},
+  "value_derivations": [
+   {
+    "kind": "computes",
+    "key": "remainder",
+    "from": [
+     "a",
+     "b"
+    ]
+   }
+  ],
+  "reason_kinds": {
+   "arithmetic": "a number the generator computes from the generated values named in src (a half, a sum, a difference, a running total, a place's digit). Its range is the image of those values' own domains; whether the arithmetic is RIGHT is the hint contract's (§16) and §1E's to check, not §14's."
+  }
+ }
+}

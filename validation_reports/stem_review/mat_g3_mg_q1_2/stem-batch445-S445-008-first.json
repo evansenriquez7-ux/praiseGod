@@ -1,0 +1,1164 @@
+{
+ "schema_version": 2,
+ "hash_version": 8,
+ "node_id": "mat_g3_mg_q1_2",
+ "record_id": "stem-batch445-S445-008-first",
+ "role": "first",
+ "confirms": null,
+ "item_id": "S445-008",
+ "lc_hash": "ab6ca2d38260150d632f5ac382180a9f934145ac14f3a57f0815a09f50ed0857",
+ "judged_by": "blind-stem-judge-claude-haiku-batch445-S445-008-first",
+ "dispatch_id": "stem-batch445-S445-008-first",
+ "filed_at": "2026-10-15T16:47:49Z",
+ "delivery": "Claude Code Agent tool, model=haiku, subagent_type=general-purpose; the judge was told to read only local_only/scratch/h4c/prompts/S445-008.prompt.txt (tests/stem_file.py prompt output, item S445-008; no lc id, no key or packets file in that directory) and reply with what it asks; dispatched with CLAUDE.md loaded (ruling 29). Blindness is a prompt contract, audited from the subagent transcript.",
+ "tool_uses_by_judge": "From the subagent transcript: 1 tool use(s), all Read of its own prompt file (1102 lines, every line read); no other tool, path or search. Model reported in the transcript: claude-haiku-5-5.",
+ "dispatch_prompt_digest": "f5e8d85bfd6d9bd88be68a3679d1f146661df194cbd218c8513bf08309e820a4",
+ "raw_reply": "{\"item\": \"S445-008\", \"clauses\": {\"compute_area\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F08\", \"template\": \"Find the area of a rectangle that is {l} {lu} long and {w} {lu} wide in {unit_label}.\", \"reasoning\": \"F08 prints the task verb Find and the attribute area for a rectangle. Its lu and unit_label slots are separate domains, so the pairing defect in failing_families applies to this template too, but the clause itself is producible.\"}, \"area_attribute\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F08\", \"template\": \"Find the area of a rectangle that is {l} {lu} long and {w} {lu} wide in {unit_label}.\", \"reasoning\": \"F08 prints the word area, which the clause names. The F01 term domain gives the vocabulary-gated word area, which is allowed under cumulative_vocab.\"}, \"square_figure\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F09\", \"template\": \"Find the area of a square measuring {s} {lu} on each side in {unit_label}.\", \"reasoning\": \"F09 names the figure as a square, with s drawn from a repeated generated value in the range 2 to 5.\"}, \"rectangle_figure\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F08\", \"template\": \"Find the area of a rectangle that is {l} {lu} long and {w} {lu} wide in {unit_label}.\", \"reasoning\": \"F08 names the figure as a rectangle with independent length and width values.\"}, \"square_centimeter\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F09\", \"template\": \"Find the area of a square measuring {s} {lu} on each side in {unit_label}.\", \"reasoning\": \"unit_label prints sq cm from the repeated unit value. The printed form omits the period that the clause and the student_vocab entry write as sq. cm. The unit is producible; the abbreviation differs from the competency wording.\"}, \"square_meter\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F09\", \"template\": \"Find the area of a square measuring {s} {lu} on each side in {unit_label}.\", \"reasoning\": \"unit_label prints sq m from the repeated unit value. The printed form omits the period that the clause writes as sq. m.\"}, \"square_unit_abbreviation\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F09\", \"template\": \"Find the area of a square measuring {s} {lu} on each side in {unit_label}.\", \"reasoning\": \"The sq abbreviation is printed inside unit_label values sq cm and sq m in F09.\"}}, \"failing_families\": [\"F02\", \"F03\", \"F04\", \"F05\", \"F06\", \"F07\", \"F08\", \"F09\", \"F11\", \"F12\"], \"failing_templates\": [\"A rectangle has sides {l} {lu} and {w} {lu}. What is its area in {unit_label}?\", \"A square has a side of {s} {lu}. What is its area in {unit_label}?\", \"Area of a rectangle = length × width = {l} × {w} = {answer} {unit}.\", \"Area of a square = side × side = {s} × {s} = {answer} {unit}.\", \"Calculate the area of a rectangle with dimensions {l} {lu} by {w} {lu} in {unit_label}.\", \"Calculate the area of a square with sides of {s} {lu} in {unit_label}.\", \"Find the area of a rectangle that is {l} {lu} long and {w} {lu} wide in {unit_label}.\", \"Find the area of a square measuring {s} {lu} on each side in {unit_label}.\", \"What is the area of a rectangle with length {l} {lu} and width {w} {lu} in {unit_label}?\", \"What is the area of a square with a side length of {s} {lu} in {unit_label}?\"], \"overall\": \"FAIL\", \"reasoning\": \"Every family that prints a length unit and an area unit draws them from two separate domains with no declared link: lu is a repeat of length_unit (cm or m) and unit_label or unit is a repeat of unit (sq cm or sq m). The packet has no value_derivations, so nothing ties the area unit to the length unit. The domains therefore allow a problem whose sides are in m and whose area is in sq cm, or sides in cm and area in sq m. Such a problem states a wrong or misleading relationship between the given sides and the keyed area, which is outside the grade 3 scope. The same applies to the hint families F04 and F05, where the area unit is printed beside the l, w or s values and the answer is keyed in the unit drawn from unit. The rest of the packet is in scope: the vocabulary gate prints area (F01), the non-gated vocabulary includes square, rectangle, side, length and sq cm, and no NOT_YET_KNOWN term appears in any template. The hint F10 names the area with unit squares. The term unit is not listed in cumulative_vocab but is not a NOT_YET_KNOWN term, so it is not treated as a failure here. The printed abbreviation sq cm and sq m omits the period that the clause text uses, which is noted but not counted as a failure.\"}",
+ "raw_reply_digest": "e5c013caba7e4f8f276c317f46b9e59658f73fd105e3f42f91c4b62b7938c675",
+ "packet_digest": "5bffc70c5a631beb4481d9113a1e3b7a317c3172e7a75d062f1abeda3e67cb6e",
+ "family_keys": {
+  "F01": {
+   "source": "backend/app/practice_gen/dna/base.py [gate area]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F02": {
+   "source": "backend/app/practice_gen/dna/mg/area.py",
+   "first_site": "backend/app/practice_gen/dna/mg/area.py:682",
+   "renderer": "",
+   "path": [
+    3,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F03": {
+   "source": "backend/app/practice_gen/dna/mg/area.py",
+   "first_site": "backend/app/practice_gen/dna/mg/area.py:658",
+   "renderer": "",
+   "path": [
+    7,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F04": {
+   "source": "backend/app/practice_gen/dna/mg/area.py",
+   "first_site": "backend/app/practice_gen/dna/mg/area.py:770",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F05": {
+   "source": "backend/app/practice_gen/dna/mg/area.py",
+   "first_site": "backend/app/practice_gen/dna/mg/area.py:767",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F06": {
+   "source": "backend/app/practice_gen/dna/mg/area.py",
+   "first_site": "backend/app/practice_gen/dna/mg/area.py:685",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F07": {
+   "source": "backend/app/practice_gen/dna/mg/area.py",
+   "first_site": "backend/app/practice_gen/dna/mg/area.py:661",
+   "renderer": "",
+   "path": [
+    16,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F08": {
+   "source": "backend/app/practice_gen/dna/mg/area.py",
+   "first_site": "backend/app/practice_gen/dna/mg/area.py:684",
+   "renderer": "",
+   "path": [
+    2,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F09": {
+   "source": "backend/app/practice_gen/dna/mg/area.py",
+   "first_site": "backend/app/practice_gen/dna/mg/area.py:660",
+   "renderer": "",
+   "path": [
+    12,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F10": {
+   "source": "backend/app/practice_gen/dna/mg/area.py",
+   "first_site": "backend/app/practice_gen/dna/mg/area.py:763",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F11": {
+   "source": "backend/app/practice_gen/dna/mg/area.py",
+   "first_site": "backend/app/practice_gen/dna/mg/area.py:683",
+   "renderer": "",
+   "path": [
+    4,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F12": {
+   "source": "backend/app/practice_gen/dna/mg/area.py",
+   "first_site": "backend/app/practice_gen/dna/mg/area.py:659",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {}
+  }
+ },
+ "packet": {
+  "item": "S445-008",
+  "competency": {
+   "text": "Find the areas of squares and rectangles in sq. cm and sq. m.",
+   "grade": 3,
+   "quarter": 1
+  },
+  "clauses": [
+   {
+    "id": "compute_area",
+    "kind": "task",
+    "clause": "Find"
+   },
+   {
+    "id": "area_attribute",
+    "kind": "attribute",
+    "clause": "the areas"
+   },
+   {
+    "id": "square_figure",
+    "kind": "object",
+    "clause": "squares"
+   },
+   {
+    "id": "rectangle_figure",
+    "kind": "object",
+    "clause": "rectangles"
+   },
+   {
+    "id": "square_centimeter",
+    "kind": "unit",
+    "clause": "sq. cm"
+   },
+   {
+    "id": "square_meter",
+    "kind": "unit",
+    "clause": "sq. m"
+   },
+   {
+    "id": "square_unit_abbreviation",
+    "kind": "unit",
+    "clause": "sq"
+   }
+  ],
+  "vocabulary": {
+   "student_vocab": [
+    "square centimeter",
+    "sq. cm"
+   ],
+   "curriculum_vocab": [
+    "square meter",
+    "sq. m"
+   ],
+   "introduces_vocab": [
+    "square centimeter",
+    "sq. cm",
+    "square meter",
+    "sq. m"
+   ],
+   "cumulative_vocab": [
+    "1 less",
+    "1 more",
+    "10th",
+    "1st",
+    "2nd",
+    "3rd",
+    "4th",
+    "5th",
+    "6th",
+    "7th",
+    "8th",
+    "9th",
+    "a.m.",
+    "addition",
+    "analog clock",
+    "area",
+    "bigger",
+    "bill",
+    "calendar",
+    "centavo",
+    "centimeter",
+    "circle",
+    "clockwise",
+    "cm",
+    "coin",
+    "compare",
+    "corner",
+    "count",
+    "counter-clockwise",
+    "data",
+    "decreasing pattern",
+    "denominator",
+    "difference",
+    "digit",
+    "division",
+    "elapsed time",
+    "equal",
+    "equal groups",
+    "estimate",
+    "even",
+    "expanded form",
+    "fraction",
+    "group",
+    "half",
+    "half hour",
+    "half turn",
+    "hour",
+    "how many",
+    "hundreds",
+    "increasing pattern",
+    "left",
+    "length",
+    "less",
+    "m",
+    "measure",
+    "meter",
+    "minute",
+    "missing number",
+    "more",
+    "multiplication",
+    "nearest hundred",
+    "nearest ten",
+    "nearest thousand",
+    "number",
+    "number line",
+    "numeral",
+    "numerator",
+    "odd",
+    "ones",
+    "p.m.",
+    "pattern",
+    "perimeter",
+    "peso",
+    "pictograph",
+    "place value",
+    "product",
+    "quarter",
+    "quarter hour",
+    "quarter turn",
+    "quotient",
+    "rectangle",
+    "regrouping",
+    "repeating pattern",
+    "round",
+    "ruler",
+    "same",
+    "scale",
+    "side",
+    "similar fractions",
+    "skip counting",
+    "slide",
+    "smaller",
+    "solid figure",
+    "square",
+    "subtraction",
+    "sum",
+    "table",
+    "ten thousand",
+    "ten-thousands place",
+    "tens",
+    "thousand",
+    "total",
+    "translation",
+    "triangle",
+    "whole",
+    "₱"
+   ],
+   "NOT_YET_KNOWN": [
+    "L",
+    "axis",
+    "balance scale",
+    "bar graph",
+    "capacity",
+    "certain",
+    "equally likely",
+    "g",
+    "gram",
+    "impossible",
+    "improper fraction",
+    "intersecting",
+    "kg",
+    "kilogram",
+    "less likely",
+    "line",
+    "line of symmetry",
+    "line segment",
+    "liter",
+    "mL",
+    "mass",
+    "milliliter",
+    "missing term",
+    "more likely",
+    "order of operations",
+    "outcome",
+    "parallel",
+    "perpendicular",
+    "point",
+    "ray",
+    "remainder",
+    "symmetry"
+   ],
+   "sentence_max_words": 22,
+   "number_format": "space separator for thousands (e.g. 1 000)"
+  },
+  "declared_variants": [
+   [
+    "context",
+    "pure"
+   ],
+   [
+    "context",
+    "word_problem"
+   ],
+   [
+    "shape",
+    "rectangle"
+   ],
+   [
+    "shape",
+    "square"
+   ],
+   [
+    "task_type",
+    "find_area"
+   ],
+   [
+    "unit",
+    "square_cm"
+   ],
+   [
+    "unit",
+    "square_m"
+   ]
+  ],
+  "declared_bounds": [
+   {
+    "task_type": "find_area"
+   }
+  ],
+  "families": [
+   {
+    "id": "F01",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F10"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='area')",
+        "requires_vocab": "area",
+        "prints": "area",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F02",
+    "template": "A rectangle has sides {l} {lu} and {w} {lu}. What is its area in {unit_label}?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "l"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "l",
+        "printed_runs": "2 to 8",
+        "derived_from_values": [
+         "l"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "lu"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "length_unit",
+        "printed": [
+         "cm",
+         "m"
+        ],
+        "derived_from_values": [
+         "length_unit"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "w"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "w",
+        "printed_runs": "2 to 8",
+        "derived_from_values": [
+         "w"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "unit_label"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "unit",
+        "printed": [
+         "sq cm",
+         "sq m"
+        ],
+        "derived_from_values": [
+         "unit"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "shape"
+    ]
+   },
+   {
+    "id": "F03",
+    "template": "A square has a side of {s} {lu}. What is its area in {unit_label}?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "s"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "s",
+        "printed_runs": "2 to 5",
+        "derived_from_values": [
+         "s"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "lu"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "length_unit",
+        "printed": [
+         "cm",
+         "m"
+        ],
+        "derived_from_values": [
+         "length_unit"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "unit_label"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "unit",
+        "printed": [
+         "sq cm",
+         "sq m"
+        ],
+        "derived_from_values": [
+         "unit"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "shape"
+    ]
+   },
+   {
+    "id": "F04",
+    "template": "Area of a rectangle = length × width = {l} × {w} = {answer} {unit}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "l"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "l",
+        "printed_runs": "2 to 8",
+        "derived_from_values": [
+         "l"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "w"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "w",
+        "printed_runs": "2 to 8",
+        "derived_from_values": [
+         "w"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "answer",
+        "printed_runs": "6, 8, 10, 12, 14 to 16, 18, 20 to 21, 24, 28, 30, 32, 35, 40",
+        "derived_from_values": [
+         "answer"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "unit"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "unit",
+        "printed": [
+         "sq cm",
+         "sq m"
+        ],
+        "derived_from_values": [
+         "unit"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F05",
+    "template": "Area of a square = side × side = {s} × {s} = {answer} {unit}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "s"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "s",
+        "printed_runs": "2 to 5",
+        "derived_from_values": [
+         "s",
+         "sides"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "answer",
+        "printed_runs": "4, 9, 16, 25",
+        "derived_from_values": [
+         "answer"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "unit"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "unit",
+        "printed": [
+         "sq cm",
+         "sq m"
+        ],
+        "derived_from_values": [
+         "unit"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "shape"
+    ]
+   },
+   {
+    "id": "F06",
+    "template": "Calculate the area of a rectangle with dimensions {l} {lu} by {w} {lu} in {unit_label}.",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "l"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "l",
+        "printed_runs": "2 to 5, 7 to 8",
+        "derived_from_values": [
+         "l"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "lu"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "length_unit",
+        "printed": [
+         "cm",
+         "m"
+        ],
+        "derived_from_values": [
+         "length_unit"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "w"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "w",
+        "printed_runs": "2 to 8",
+        "derived_from_values": [
+         "w"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "unit_label"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "unit",
+        "printed": [
+         "sq cm",
+         "sq m"
+        ],
+        "derived_from_values": [
+         "unit"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "shape"
+    ]
+   },
+   {
+    "id": "F07",
+    "template": "Calculate the area of a square with sides of {s} {lu} in {unit_label}.",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "s"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "s",
+        "printed_runs": "2 to 5",
+        "derived_from_values": [
+         "s"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "lu"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "length_unit",
+        "printed": [
+         "cm",
+         "m"
+        ],
+        "derived_from_values": [
+         "length_unit"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "unit_label"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "unit",
+        "printed": [
+         "sq cm",
+         "sq m"
+        ],
+        "derived_from_values": [
+         "unit"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "shape"
+    ]
+   },
+   {
+    "id": "F08",
+    "template": "Find the area of a rectangle that is {l} {lu} long and {w} {lu} wide in {unit_label}.",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "l"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "l",
+        "printed_runs": "2 to 8",
+        "derived_from_values": [
+         "l"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "lu"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "length_unit",
+        "printed": [
+         "cm",
+         "m"
+        ],
+        "derived_from_values": [
+         "length_unit"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "w"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "w",
+        "printed_runs": "2 to 8",
+        "derived_from_values": [
+         "w"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "unit_label"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "unit",
+        "printed": [
+         "sq cm",
+         "sq m"
+        ],
+        "derived_from_values": [
+         "unit"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "shape"
+    ]
+   },
+   {
+    "id": "F09",
+    "template": "Find the area of a square measuring {s} {lu} on each side in {unit_label}.",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "s"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "s",
+        "printed_runs": "2 to 5",
+        "derived_from_values": [
+         "s"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "lu"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "length_unit",
+        "printed": [
+         "cm",
+         "m"
+        ],
+        "derived_from_values": [
+         "length_unit"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "unit_label"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "unit",
+        "printed": [
+         "sq cm",
+         "sq m"
+        ],
+        "derived_from_values": [
+         "unit"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "shape"
+    ]
+   },
+   {
+    "id": "F10",
+    "template": "The {area_label} tells us how many unit squares cover the shape.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "area_label"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F01"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F11",
+    "template": "What is the area of a rectangle with length {l} {lu} and width {w} {lu} in {unit_label}?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "l"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "l",
+        "printed_runs": "2 to 8",
+        "derived_from_values": [
+         "l"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "lu"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "length_unit",
+        "printed": [
+         "cm",
+         "m"
+        ],
+        "derived_from_values": [
+         "length_unit"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "w"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "w",
+        "printed_runs": "2 to 8",
+        "derived_from_values": [
+         "w"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "unit_label"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "unit",
+        "printed": [
+         "sq cm",
+         "sq m"
+        ],
+        "derived_from_values": [
+         "unit"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "shape"
+    ]
+   },
+   {
+    "id": "F12",
+    "template": "What is the area of a square with a side length of {s} {lu} in {unit_label}?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "s"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "s",
+        "printed_runs": "2 to 5",
+        "derived_from_values": [
+         "s"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "lu"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "length_unit",
+        "printed": [
+         "cm",
+         "m"
+        ],
+        "derived_from_values": [
+         "length_unit"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "unit_label"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "unit",
+        "printed": [
+         "sq cm",
+         "sq m"
+        ],
+        "derived_from_values": [
+         "unit"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "shape"
+    ]
+   }
+  ],
+  "lists": {},
+  "banks": {},
+  "value_derivations": [],
+  "reason_kinds": {}
+ }
+}

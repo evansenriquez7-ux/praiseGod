@@ -1,0 +1,840 @@
+{
+ "schema_version": 2,
+ "hash_version": 8,
+ "node_id": "mat_g2_mg_q2_0",
+ "record_id": "stem-batch443-S443-003-first",
+ "role": "first",
+ "confirms": null,
+ "item_id": "S443-003",
+ "lc_hash": "8638eeb1a07ab8bdc3de2baa58ff6f438900dee9138fb80ea810b856a2fc83c5",
+ "judged_by": "blind-stem-judge-claude-haiku-batch443-S443-003-first",
+ "dispatch_id": "stem-batch443-S443-003-first",
+ "filed_at": "2026-10-15T16:47:07Z",
+ "delivery": "Claude Code Agent tool, model=haiku, subagent_type=general-purpose; the judge was told to read only local_only/scratch/h4c/prompts/S443-003.prompt.txt (tests/stem_file.py prompt output, item S443-003; no lc id, no key or packets file in that directory) and reply with what it asks; dispatched with CLAUDE.md loaded (ruling 29). Blindness is a prompt contract, audited from the subagent transcript.",
+ "tool_uses_by_judge": "From the subagent transcript: 1 tool use(s), all Read of its own prompt file (798 lines, every line read); no other tool, path or search. Model reported in the transcript: claude-haiku-5-5.",
+ "dispatch_prompt_digest": "fd1c2838c1ed64dd37bc7d9ff6b13e368affe743941e101abe29c209970390ed",
+ "raw_reply": "{\"item\": \"S443-003\", \"clauses\": {\"measure\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F09\", \"template\": \"How long is the object? Give your answer in {unit_name}.\", \"reasoning\": \"F09 asks the learner to find how long the object is and give the answer in a unit, which is measuring the length of an object.\"}, \"compare\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F07\", \"template\": \"{upper}{v} is {val_a} {unit} long. {upper2}{v2} is {val_b} {unit} long. Which length is {comp_word} in {unit}?\", \"reasoning\": \"F07 gives two object lengths in one unit and asks which length is longer or shorter, which is comparing lengths.\"}, \"lengths\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F07\", \"template\": \"{upper}{v} is {val_a} {unit} long. {upper2}{v2} is {val_b} {unit} long. Which length is {comp_word} in {unit}?\", \"reasoning\": \"F07 states the length of each object and asks the learner to compare those lengths.\"}, \"objects\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F07\", \"template\": \"{upper}{v} is {val_a} {unit} long. {upper2}{v2} is {val_b} {unit} long. Which length is {comp_word} in {unit}?\", \"reasoning\": \"F07 names objects from the pool (book, crayon, notebook, pencil, ruler, shoe, spoon) whose lengths are given and compared.\"}, \"meters_or_centimeters\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F03\", \"template\": \"The distance from the bench to the tree is {val_a} m. The distance from the gate to the tree is {val_b} m. Which distance is {comp_word} in meters?\", \"reasoning\": \"F03 expresses the measurements in meters; F07 expresses them in centimeters, so both named units are producible.\"}, \"distance\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F03\", \"template\": \"The distance from the bench to the tree is {val_a} m. The distance from the gate to the tree is {val_b} m. Which distance is {comp_word} in meters?\", \"reasoning\": \"F03 gives two distances in meters and asks which is longer or shorter.\"}, \"measuring_tools\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F02\", \"template\": \"Read the measurement on the ruler carefully.\", \"reasoning\": \"F02 directs the learner to read a measurement on a ruler, which is a measuring tool.\"}}, \"failing_families\": [\"F01\", \"F06\"], \"failing_templates\": [\"Compare {val_a} {count_noun} and {val_b} {count_noun2}.\", \"{max} is more than {min}.\"], \"overall\": \"FAIL\", \"reasoning\": \"F01 draws count_noun and count_noun2 independently from the two-member list 'centimeter (cm)' and 'meter (m)', and its domain shows no link that forces both units to match, so a hint can compare a value in one unit with a value in the other. The competency names both units and comparing lengths, but it does not name converting or comparing across units, so a mixed-unit comparison asks for a skill outside the named scope and can mislead a learner who compares the bare numbers. The count_noun slots also print only singular unit words, so a plural value is printed with a singular unit word, which is ungrammatical. F06 prints two bare numbers with no unit, drawn from the two compared values. When those values carry different units, which F01 shows can happen, the statement that the first number is more than the second is false about the lengths. Not failed: F02 uses 'measurement', which is absent from cumulative_vocab but not in NOT_YET_KNOWN. F03 has no distinct flag on val_a and val_b, so the packet does not show whether they can be equal; this is noted, not a failure on its own. F04 and F05 print the answer inside hints, which is a design concern but not a Rule 1 fault.\"}",
+ "raw_reply_digest": "f20bc8e5099568533a1ee749d809e5f75eb687cc218d5afc2ff1b1741de352a3",
+ "packet_digest": "0afee94776344c36d037987c3b619716cf13853bce1f5a4cf899aae78695fa61",
+ "family_keys": {
+  "F01": {
+   "source": "backend/app/practice_gen/dna/mg/length_measurement.py",
+   "first_site": "backend/app/practice_gen/dna/mg/length_measurement.py:972",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {
+    "count_noun,count_noun2": [
+     5,
+     null
+    ]
+   }
+  },
+  "F02": {
+   "source": "backend/app/practice_gen/dna/mg/length_measurement.py",
+   "first_site": "backend/app/practice_gen/dna/mg/length_measurement.py:1104",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F03": {
+   "source": "backend/app/practice_gen/dna/mg/length_measurement.py",
+   "first_site": "backend/app/practice_gen/dna/mg/length_measurement.py:379",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F04": {
+   "source": "backend/app/practice_gen/dna/mg/length_measurement.py",
+   "first_site": "backend/app/practice_gen/dna/mg/length_measurement.py:1105",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F05": {
+   "source": "backend/app/practice_gen/dna/mg/length_measurement.py",
+   "first_site": "backend/app/practice_gen/dna/mg/length_measurement.py:974",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F06": {
+   "source": "backend/app/practice_gen/dna/mg/length_measurement.py",
+   "first_site": "backend/app/practice_gen/dna/mg/length_measurement.py:973",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F07": {
+   "source": "backend/app/practice_gen/dna/mg/length_measurement.py",
+   "first_site": "backend/app/practice_gen/dna/mg/length_measurement.py:317",
+   "renderer": "",
+   "path": [
+    7,
+    null
+   ],
+   "first_render_repeating": {
+    "upper,upper2": [
+     7,
+     null
+    ]
+   }
+  },
+  "F08": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:51",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F09": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_ruler_measure.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_ruler_measure.py:166",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  }
+ },
+ "packet": {
+  "item": "S443-003",
+  "competency": {
+   "text": "Measure and compare lengths of objects, in meters (m) or centimeters (cm), and distance in meters, using appropriate measuring tools.",
+   "grade": 2,
+   "quarter": 2
+  },
+  "clauses": [
+   {
+    "id": "measure",
+    "kind": "task",
+    "clause": "Measure"
+   },
+   {
+    "id": "compare",
+    "kind": "task",
+    "clause": "compare"
+   },
+   {
+    "id": "lengths",
+    "kind": "property",
+    "clause": "lengths"
+   },
+   {
+    "id": "objects",
+    "kind": "object",
+    "clause": "objects"
+   },
+   {
+    "id": "meters_or_centimeters",
+    "kind": "property",
+    "clause": "meters (m) or centimeters (cm)"
+   },
+   {
+    "id": "distance",
+    "kind": "property",
+    "clause": "distance"
+   },
+   {
+    "id": "measuring_tools",
+    "kind": "object",
+    "clause": "measuring tools"
+   }
+  ],
+  "vocabulary": {
+   "student_vocab": [
+    "centimeter",
+    "meter",
+    "cm",
+    "m",
+    "ruler"
+   ],
+   "curriculum_vocab": [
+    "standard units",
+    "measuring tools"
+   ],
+   "introduces_vocab": [
+    "meter",
+    "centimeter",
+    "cm",
+    "m",
+    "standard units",
+    "measuring tools",
+    "ruler"
+   ],
+   "cumulative_vocab": [
+    "1 less",
+    "1 more",
+    "10th",
+    "1st",
+    "2nd",
+    "3rd",
+    "4th",
+    "5th",
+    "6th",
+    "7th",
+    "8th",
+    "9th",
+    "addition",
+    "analog clock",
+    "bigger",
+    "bill",
+    "calendar",
+    "centavo",
+    "circle",
+    "clockwise",
+    "coin",
+    "compare",
+    "corner",
+    "count",
+    "counter-clockwise",
+    "data",
+    "decreasing pattern",
+    "difference",
+    "digit",
+    "equal",
+    "expanded form",
+    "fraction",
+    "group",
+    "half",
+    "half hour",
+    "half turn",
+    "hour",
+    "how many",
+    "hundreds",
+    "increasing pattern",
+    "left",
+    "length",
+    "less",
+    "measure",
+    "missing number",
+    "more",
+    "number",
+    "number line",
+    "numeral",
+    "ones",
+    "pattern",
+    "peso",
+    "pictograph",
+    "place value",
+    "quarter",
+    "quarter hour",
+    "quarter turn",
+    "rectangle",
+    "regrouping",
+    "repeating pattern",
+    "same",
+    "side",
+    "skip counting",
+    "slide",
+    "smaller",
+    "square",
+    "subtraction",
+    "sum",
+    "table",
+    "tens",
+    "thousand",
+    "total",
+    "translation",
+    "triangle",
+    "whole",
+    "₱"
+   ],
+   "NOT_YET_KNOWN": [
+    "L",
+    "a.m.",
+    "area",
+    "axis",
+    "balance scale",
+    "bar graph",
+    "capacity",
+    "certain",
+    "denominator",
+    "division",
+    "elapsed time",
+    "equal groups",
+    "equally likely",
+    "estimate",
+    "even",
+    "g",
+    "gram",
+    "impossible",
+    "improper fraction",
+    "intersecting",
+    "kg",
+    "kilogram",
+    "less likely",
+    "line",
+    "line of symmetry",
+    "line segment",
+    "liter",
+    "mL",
+    "mass",
+    "milliliter",
+    "minute",
+    "missing term",
+    "more likely",
+    "multiplication",
+    "nearest hundred",
+    "nearest ten",
+    "nearest thousand",
+    "numerator",
+    "odd",
+    "order of operations",
+    "outcome",
+    "p.m.",
+    "parallel",
+    "perimeter",
+    "perpendicular",
+    "point",
+    "product",
+    "quotient",
+    "ray",
+    "remainder",
+    "round",
+    "scale",
+    "similar fractions",
+    "solid figure",
+    "sq. cm",
+    "square centimeter",
+    "symmetry",
+    "ten thousand",
+    "ten-thousands place"
+   ],
+   "sentence_max_words": 18,
+   "number_format": "no commas for numbers up to 1000"
+  },
+  "declared_variants": [
+   [
+    "context",
+    "pure"
+   ],
+   [
+    "unit_type",
+    "cm"
+   ],
+   [
+    "unit_type",
+    "m"
+   ]
+  ],
+  "declared_bounds": [
+   {
+    "task_type": "measure_compare_or_distance",
+    "context": "pure"
+   }
+  ],
+  "families": [
+   {
+    "id": "F01",
+    "template": "Compare {val_a} {count_noun} and {val_b} {count_noun2}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "val_a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "value_a",
+        "printed_runs": "1 to 10, 12, 20",
+        "derived_from_values": [
+         "value_a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "count_noun",
+       "count_noun2"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the unit word or its singular (dna.base.count_noun)",
+        "members": [
+         "centimeter (cm)",
+         "meter (m)"
+        ],
+        "derived_from_values": [
+         "unit"
+        ]
+       }
+      ],
+      "distinct_in_every_render": false
+     },
+     {
+      "slots": [
+       "val_b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "value_b",
+        "printed_runs": "1 to 12, 15, 18, 20 to 21",
+        "derived_from_values": [
+         "value_b"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F02",
+    "template": "Read the measurement on the ruler carefully.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F03",
+    "template": "The distance from the bench to the tree is {val_a} m. The distance from the gate to the tree is {val_b} m. Which distance is {comp_word} in meters?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "val_a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "value_a",
+        "printed_runs": "1 to 10",
+        "derived_from_values": [
+         "value_a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "val_b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "value_b",
+        "printed_runs": "1 to 10",
+        "derived_from_values": [
+         "value_b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "comp_word"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "comparison",
+        "printed": [
+         "longer",
+         "shorter"
+        ],
+        "derived_from_values": [
+         "comparison"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F04",
+    "template": "The length is {answer} {count_noun}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "answer",
+        "printed_runs": "5 to 8",
+        "derived_from_values": [
+         "answer"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "count_noun"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the noun or its singular (dna.base.count_noun)",
+        "members": [
+         "cm"
+        ],
+        "derived_from_values": [
+         "answer",
+         "unit"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F05",
+    "template": "The {comparison} {measure} is {answer} {count_noun}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "comparison"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "comparison",
+        "printed": [
+         "longer",
+         "shorter"
+        ],
+        "derived_from_values": [
+         "comparison"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "measure"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the two compare measures",
+        "members": [
+         "distance",
+         "length"
+        ],
+        "derived_from_values": [
+         "task_type"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "answer",
+        "printed_runs": "1 to 12, 15, 18, 20 to 21",
+        "derived_from_values": [
+         "answer"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "count_noun"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the unit word or its singular (dna.base.count_noun)",
+        "members": [
+         "centimeter (cm)",
+         "meter (m)"
+        ],
+        "derived_from_values": [
+         "unit"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F06",
+    "template": "{max} is more than {min}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "max",
+       "min"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the two compared values",
+        "members": [
+         1,
+         10,
+         12,
+         15,
+         18,
+         2,
+         20,
+         3,
+         4,
+         5,
+         6,
+         7,
+         8,
+         9
+        ]
+       }
+      ],
+      "distinct_in_every_render": true
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F07",
+    "template": "{upper}{v} is {val_a} {unit} long. {upper2}{v2} is {val_b} {unit} long. Which length is {comp_word} in {unit}?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "upper",
+       "upper2"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the object pool's initials, upper-cased",
+        "members": [
+         "A"
+        ]
+       }
+      ],
+      "distinct_in_every_render": false
+     },
+     {
+      "slots": [
+       "v",
+       "v2"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the object pool, after its initial",
+        "members": [
+         " book",
+         " crayon",
+         " notebook",
+         " pencil",
+         " ruler",
+         " shoe",
+         " spoon"
+        ]
+       }
+      ],
+      "distinct_in_every_render": true
+     },
+     {
+      "slots": [
+       "val_a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "value_a",
+        "printed_runs": "10, 12, 20",
+        "derived_from_values": [
+         "value_a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "unit"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "unit",
+        "printed": [
+         "cm"
+        ],
+        "derived_from_values": [
+         "unit"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "val_b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "value_b",
+        "printed_runs": "6, 8 to 12, 15, 18, 20 to 21",
+        "derived_from_values": [
+         "value_b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "comp_word"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "comparison",
+        "printed": [
+         "longer",
+         "shorter"
+        ],
+        "derived_from_values": [
+         "comparison"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F08",
+    "template": "{key}",
+    "appears_in": [
+     "correct_answer"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "key"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the option keys this item shows",
+        "members": [
+         "A",
+         "B",
+         "C",
+         "D"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F09",
+    "template": "How long is the object? Give your answer in {unit_name}.",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "unit_name"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "unit",
+        "printed": [
+         "cm"
+        ],
+        "derived_from_values": [
+         "unit"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   }
+  ],
+  "lists": {},
+  "banks": {},
+  "value_derivations": [],
+  "reason_kinds": {}
+ }
+}

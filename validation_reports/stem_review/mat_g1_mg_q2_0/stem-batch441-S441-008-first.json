@@ -1,0 +1,633 @@
+{
+ "schema_version": 2,
+ "hash_version": 8,
+ "node_id": "mat_g1_mg_q2_0",
+ "record_id": "stem-batch441-S441-008-first",
+ "role": "first",
+ "confirms": null,
+ "item_id": "S441-008",
+ "lc_hash": "89728068ae2cffdf7f42b4e41cc7a6bc64be2411e7a1c0438878681aae9f24b4",
+ "judged_by": "blind-stem-judge-claude-haiku-batch441-S441-008-first",
+ "dispatch_id": "stem-batch441-S441-008-first",
+ "filed_at": "2026-10-15T16:46:41Z",
+ "delivery": "Claude Code Agent tool, model=haiku, subagent_type=general-purpose; the judge was told to read only local_only/scratch/h4c/prompts/S441-008.prompt.txt (tests/stem_file.py prompt output, item S441-008; no lc id, no key or packets file in that directory) and reply with what it asks; dispatched with CLAUDE.md loaded (ruling 29). Blindness is a prompt contract, audited from the subagent transcript.",
+ "tool_uses_by_judge": "From the subagent transcript: 1 tool use(s), all Read of its own prompt file (611 lines, every line read); no other tool, path or search. Model reported in the transcript: claude-haiku-5-5.",
+ "dispatch_prompt_digest": "8852d68580897a456bd90405b96f5ecc717a211083ff64a7a7e4e8290f2ff7cc",
+ "raw_reply": "{\"item\": \"S441-008\", \"clauses\": {\"measure_length\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F03\", \"template\": \"How long is {obj}? Give your answer in {unit}.\", \"reasoning\": \"F03 draws obj from the printed objects (a paintbrush, a pencil, a shoe, a spoon) and unit from the four printed units. The question asks for the length of a named object, which is the task in the clause.\"}, \"measure_distance\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F07\", \"template\": \"{obj_a} and {obj_b} are placed apart. The distance between them is ___ {unit_word}.\", \"reasoning\": \"F07 places two objects apart and asks for the distance between them in unit_word, which prints hands or paperclips. The word distance is in this lc's introduces_vocab.\"}, \"non_standard_units\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F03\", \"template\": \"How long is {obj}? Give your answer in {unit}.\", \"reasoning\": \"The unit slot prints only blocks, crayons, hands and paperclips, which are non-standard units. F03 asks for the answer in that unit.\"}}, \"failing_families\": [], \"failing_templates\": [], \"overall\": \"PASS\", \"reasoning\": \"No template contains a NOT_YET_KNOWN term. The words used (units, gaps, overlaps, distance, length, placed, apart, answer, object, objects, count, how many) are either in cumulative_vocab, introduces_vocab, or not listed in NOT_YET_KNOWN. The number slots in F05 (printed_runs 2 to 12) and F06 (printed_runs 2 to 10) stay in small numbers suitable for this lc. Every unit printed is a non-standard unit, and F01, F02, F03, F04 and F07 print no standard unit or measurement term. F07 draws obj_a and obj_b independently from the same six objects, so one problem can print the same object twice. The sentence is still grammatical and the distance question remains answerable, so this is not a wrong or misleading statement under Rule 1. F05 hint text states the answer; that is a design choice and not a Rule 1 failure. Every template stays within the sentence limit of 15 words.\"}",
+ "raw_reply_digest": "730dd466e6dce7bcef8d52bd29e84b6e4faab2bfe8e465526f346de484cc966f",
+ "packet_digest": "2d5032dbec94a664f6a302b3428e96adaa162013819926f7d654c0f18ea27a3b",
+ "family_keys": {
+  "F01": {
+   "source": "backend/app/practice_gen/dna/mg/length_measurement.py",
+   "first_site": "backend/app/practice_gen/dna/mg/length_measurement.py:1078",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F02": {
+   "source": "backend/app/practice_gen/dna/mg/length_measurement.py",
+   "first_site": "backend/app/practice_gen/dna/mg/length_measurement.py:1011",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F03": {
+   "source": "backend/app/practice_gen/dna/mg/length_measurement.py",
+   "first_site": "backend/app/practice_gen/dna/mg/length_measurement.py:786",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F04": {
+   "source": "backend/app/practice_gen/dna/mg/length_measurement.py",
+   "first_site": "backend/app/practice_gen/dna/mg/length_measurement.py:1079",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F05": {
+   "source": "backend/app/practice_gen/dna/mg/length_measurement.py",
+   "first_site": "backend/app/practice_gen/dna/mg/length_measurement.py:1013",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F06": {
+   "source": "backend/app/practice_gen/dna/mg/length_measurement.py",
+   "first_site": "backend/app/practice_gen/dna/mg/length_measurement.py:1080",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F07": {
+   "source": "backend/app/practice_gen/dna/mg/length_measurement.py",
+   "first_site": "backend/app/practice_gen/dna/mg/length_measurement.py:593",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F08": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:51",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  }
+ },
+ "packet": {
+  "item": "S441-008",
+  "competency": {
+   "text": "Measure the length of an object and the distance between two objects using non-standard units.",
+   "grade": 1,
+   "quarter": 2
+  },
+  "clauses": [
+   {
+    "id": "measure_length",
+    "kind": "task",
+    "clause": "Measure the length of an object"
+   },
+   {
+    "id": "measure_distance",
+    "kind": "task",
+    "clause": "distance between two objects"
+   },
+   {
+    "id": "non_standard_units",
+    "kind": "representation",
+    "clause": "non-standard units"
+   }
+  ],
+  "vocabulary": {
+   "student_vocab": [
+    "length",
+    "measure"
+   ],
+   "curriculum_vocab": [
+    "distance",
+    "non-standard units",
+    "object"
+   ],
+   "introduces_vocab": [
+    "measure",
+    "length",
+    "distance",
+    "non-standard units",
+    "object"
+   ],
+   "cumulative_vocab": [
+    "1 less",
+    "1 more",
+    "10th",
+    "1st",
+    "2nd",
+    "3rd",
+    "4th",
+    "5th",
+    "6th",
+    "7th",
+    "8th",
+    "9th",
+    "addition",
+    "bigger",
+    "compare",
+    "corner",
+    "count",
+    "digit",
+    "equal",
+    "expanded form",
+    "group",
+    "how many",
+    "left",
+    "less",
+    "more",
+    "number",
+    "number line",
+    "numeral",
+    "ones",
+    "place value",
+    "rectangle",
+    "same",
+    "side",
+    "skip counting",
+    "smaller",
+    "square",
+    "sum",
+    "tens",
+    "total",
+    "triangle"
+   ],
+   "NOT_YET_KNOWN": [
+    "L",
+    "a.m.",
+    "analog clock",
+    "area",
+    "axis",
+    "balance scale",
+    "bar graph",
+    "bill",
+    "calendar",
+    "capacity",
+    "centavo",
+    "centimeter",
+    "certain",
+    "circle",
+    "clockwise",
+    "cm",
+    "coin",
+    "counter-clockwise",
+    "data",
+    "decreasing pattern",
+    "denominator",
+    "difference",
+    "division",
+    "elapsed time",
+    "equal groups",
+    "equally likely",
+    "estimate",
+    "even",
+    "fraction",
+    "g",
+    "gram",
+    "half",
+    "half hour",
+    "half turn",
+    "hour",
+    "hundreds",
+    "impossible",
+    "improper fraction",
+    "increasing pattern",
+    "intersecting",
+    "kg",
+    "kilogram",
+    "less likely",
+    "line",
+    "line of symmetry",
+    "line segment",
+    "liter",
+    "m",
+    "mL",
+    "mass",
+    "meter",
+    "milliliter",
+    "minute",
+    "missing number",
+    "missing term",
+    "more likely",
+    "multiplication",
+    "nearest hundred",
+    "nearest ten",
+    "nearest thousand",
+    "numerator",
+    "odd",
+    "order of operations",
+    "outcome",
+    "p.m.",
+    "parallel",
+    "pattern",
+    "perimeter",
+    "perpendicular",
+    "peso",
+    "pictograph",
+    "point",
+    "product",
+    "quarter",
+    "quarter hour",
+    "quarter turn",
+    "quotient",
+    "ray",
+    "regrouping",
+    "remainder",
+    "repeating pattern",
+    "round",
+    "ruler",
+    "scale",
+    "similar fractions",
+    "slide",
+    "solid figure",
+    "sq. cm",
+    "square centimeter",
+    "subtraction",
+    "symmetry",
+    "table",
+    "ten thousand",
+    "ten-thousands place",
+    "thousand",
+    "translation",
+    "whole",
+    "₱"
+   ],
+   "sentence_max_words": 15,
+   "number_format": "no commas, no thousands separator"
+  },
+  "declared_variants": [
+   [
+    "context",
+    "pure"
+   ]
+  ],
+  "declared_bounds": [
+   {
+    "task_type": "length_or_distance",
+    "context": "pure"
+   }
+  ],
+  "families": [
+   {
+    "id": "F01",
+    "template": "Count how many {unit} fit along the object from end to end.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "unit"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "unit",
+        "printed": [
+         "blocks",
+         "crayons",
+         "hands",
+         "paperclips"
+        ],
+        "derived_from_values": [
+         "unit"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "unit_type"
+    ]
+   },
+   {
+    "id": "F02",
+    "template": "Count how many {unit} fit in the gap between the two objects.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "unit"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "unit",
+        "printed": [
+         "hands",
+         "paperclips"
+        ],
+        "derived_from_values": [
+         "unit"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F03",
+    "template": "How long is {obj}? Give your answer in {unit}.",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "obj"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "item",
+        "printed": [
+         "a paintbrush",
+         "a pencil",
+         "a shoe",
+         "a spoon"
+        ],
+        "derived_from_values": [
+         "item"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "unit"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "unit",
+        "printed": [
+         "blocks",
+         "crayons",
+         "hands",
+         "paperclips"
+        ],
+        "derived_from_values": [
+         "unit"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F04",
+    "template": "Make sure no gaps or overlaps between the units.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": [
+     "task_type",
+     "unit_type"
+    ]
+   },
+   {
+    "id": "F05",
+    "template": "The distance between them is {answer} {count_noun}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "answer",
+        "printed_runs": "2 to 12",
+        "derived_from_values": [
+         "answer"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "count_noun"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "unit",
+        "printed": [
+         "hands",
+         "paperclips"
+        ],
+        "derived_from_values": [
+         "unit"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F06",
+    "template": "The length is {answer} {count_noun}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "answer",
+        "printed_runs": "2 to 10",
+        "derived_from_values": [
+         "answer"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "count_noun"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "unit",
+        "printed": [
+         "blocks",
+         "crayons",
+         "hands",
+         "paperclips"
+        ],
+        "derived_from_values": [
+         "unit"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "unit_type"
+    ]
+   },
+   {
+    "id": "F07",
+    "template": "{obj_a} and {obj_b} are placed apart. The distance between them is ___ {unit_word}.",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "obj_a"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the six objects, sentence-initial",
+        "members": [
+         "A bag",
+         "A ball",
+         "A box",
+         "A chair",
+         "A desk",
+         "A shelf"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "obj_b"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the six objects",
+        "members": [
+         "a bag",
+         "a ball",
+         "a box",
+         "a chair",
+         "a desk",
+         "a shelf"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "unit_word"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "unit",
+        "printed": [
+         "hands",
+         "paperclips"
+        ],
+        "derived_from_values": [
+         "unit"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F08",
+    "template": "{key}",
+    "appears_in": [
+     "correct_answer"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "key"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the option keys this item shows",
+        "members": [
+         "A",
+         "B",
+         "C",
+         "D"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   }
+  ],
+  "lists": {},
+  "banks": {},
+  "value_derivations": [],
+  "reason_kinds": {}
+ }
+}

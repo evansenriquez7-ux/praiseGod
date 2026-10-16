@@ -1,0 +1,1479 @@
+{
+ "schema_version": 2,
+ "hash_version": 8,
+ "node_id": "mat_g1_na_q4_3",
+ "record_id": "stem-batch442-S442-019-confirming",
+ "role": "confirming",
+ "confirms": "stem-batch442-S442-019-first",
+ "item_id": "S442-019",
+ "lc_hash": "c763baab6174b0777dd4fb1f093a9d1a05c4f954852dda013756c49c6291cc41",
+ "judged_by": "blind-stem-judge-claude-haiku-batch442-S442-019-confirming",
+ "dispatch_id": "stem-batch442-S442-019-confirming",
+ "filed_at": "2026-10-16T05:07:19Z",
+ "delivery": "Claude Code Agent tool, model=haiku, subagent_type=general-purpose; the judge was told to read only local_only/scratch/h4c/prompts/S442-019.prompt.txt (tests/stem_file.py prompt output, item S442-019; no lc id, no key or packets file in that directory) and reply with what it asks; dispatched with CLAUDE.md loaded (ruling 29). Blindness is a prompt contract, audited from the subagent transcript.",
+ "tool_uses_by_judge": "From the subagent transcript: 1 tool use(s), all Read of its own prompt file (1257 lines, every line read); no other tool, path or search. Model reported in the transcript: claude-haiku-5-5.",
+ "dispatch_prompt_digest": "c3e65ddd2e5051d5f1d72d41f45111b32009dc9c539dc97f4859672c05e420d0",
+ "raw_reply": "{\"item\": \"S442-019\", \"clauses\": {\"recognize\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F01\", \"template\": \"A bill marked with the number {denom} is shown. What bill is it?\", \"reasoning\": \"F01 asks the learner to identify a bill from its marked number. Its denom domain is the bills bank members 100, 20 and 50, all bills within the up to 100 range, so the task of recognizing bills is produced.\"}, \"coins\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F02\", \"template\": \"A coin marked with the number {denom} is shown. What coin is it?\", \"reasoning\": \"F02 asks the learner to identify a coin from its marked number. Its denom domain is the coins bank members 1, 10, 20 and 5, so coins are produced.\"}, \"excluding_centavo_coins\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F02\", \"template\": \"A coin marked with the number {denom} is shown. What coin is it?\", \"reasoning\": \"Every F02 denom is a peso coin (1, 5, 10, 20). No centavo coin value can be drawn by F02, so the exclusion is respected while coins are produced.\"}, \"bills\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F01\", \"template\": \"A bill marked with the number {denom} is shown. What bill is it?\", \"reasoning\": \"F01 produces bill recognition with denominations 20, 50 and 100 drawn from the bills bank.\"}, \"up_to_100\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F24\", \"template\": \"₱{total_rw}\", \"reasoning\": \"F24 prints peso amounts from the total key, whose printed runs are 5, 10, 20, 50 and 100, so amounts up to 100 are produced and the maximum is reached.\"}, \"notations\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F21\", \"template\": \"₱{denom} coin\", \"reasoning\": \"F21 gives the peso-sign notation of a coin value drawn from the coins bank, which is the notation of coins; F20 and F06 also print peso notations of bills and amounts.\"}}, \"failing_families\": [\"F03\", \"F07\", \"F09\", \"F12\", \"F16\", \"F18\", \"F19\", \"F28\"], \"failing_templates\": [\"How is '{words} pesos' written using the peso symbol?\", \"PhP{total_rw}c\", \"Remember that pesos use ₱ or PhP, and centavos can be written as a decimal.\", \"{num_to_words} pesos\", \"{total_rw}¢\", \"{words} centavos\", \"{words} pesos\", \"{member}\"], \"overall\": \"FAIL\", \"reasoning\": \"F03 draws its words from F13 and F17 with no link to the total that the F24 keyed answer prints, so the question can name a value that differs from its key. F19 is a keyed answer whose words come from the same unlinked lists, so a keyed answer can state a different amount from the question. F13 and F17 draw from lists that include an empty string, so F03, F12, F18 and F19 can print an empty number word, such as a bare pesos or centavos phrase. F12 can print amounts above 100 (through the nested F14 and F17 values), beyond the up to 100 range. F18 and F09 print centavos, a term in NOT_YET_KNOWN, and F09 also introduces decimals, a concept beyond this lc. F07 and F16 print centavo notations (c and cent sign) as distractors, which the competency does not name. F28 is a fixed distractor list containing centavo wording, centavo notations and amounts of 500 and 1000, which are outside the competency's range. F25 is computed by arithmetic whose range the packet does not state, so it was not failed here. F04, F06, F15, F20, F21, F22, F23, F24, F26 and F27 were judged within the domains shown.\"}",
+ "raw_reply_digest": "f07e692ad781e32486c8730d3c1bbed2cee462b732f4d3c51ed958ed4cf9b7d2",
+ "packet_digest": "689db163401d43ef751a7f0dbf777f854e1d7baf2f148207e6c14c26e1197d7a",
+ "family_keys": {
+  "F01": {
+   "source": "backend/app/practice_gen/dna/na/money_peso.py",
+   "first_site": "backend/app/practice_gen/dna/na/money_peso.py:422",
+   "renderer": "",
+   "path": [
+    3,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F02": {
+   "source": "backend/app/practice_gen/dna/na/money_peso.py",
+   "first_site": "backend/app/practice_gen/dna/na/money_peso.py:415",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F03": {
+   "source": "backend/app/practice_gen/dna/na/money_peso.py",
+   "first_site": "backend/app/practice_gen/dna/na/money_peso.py:441",
+   "renderer": "",
+   "path": [
+    7,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F04": {
+   "source": "backend/app/practice_gen/dna/na/money_peso.py",
+   "first_site": "backend/app/practice_gen/dna/na/money_peso.py:428",
+   "renderer": "",
+   "path": [
+    15,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F05": {
+   "source": "backend/app/practice_gen/dna/na/money_peso.py",
+   "first_site": "backend/app/practice_gen/dna/na/money_peso.py:471",
+   "renderer": "",
+   "path": [
+    2,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F06": {
+   "source": "backend/app/practice_gen/dna/na/money_peso.py",
+   "first_site": "backend/app/practice_gen/dna/na/money_peso.py:472",
+   "renderer": "",
+   "path": [
+    2,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F07": {
+   "source": "backend/app/practice_gen/dna/na/money_peso.py",
+   "first_site": "backend/app/practice_gen/dna/na/money_peso.py:475",
+   "renderer": "",
+   "path": [
+    2,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F08": {
+   "source": "backend/app/practice_gen/dna/na/money_peso.py",
+   "first_site": "backend/app/practice_gen/dna/na/money_peso.py:550",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F09": {
+   "source": "backend/app/practice_gen/dna/na/money_peso.py",
+   "first_site": "backend/app/practice_gen/dna/na/money_peso.py:552",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F10": {
+   "source": "backend/app/practice_gen/dna/na/money_peso.py",
+   "first_site": "backend/app/practice_gen/dna/na/money_peso.py:551",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F11": {
+   "source": "backend/app/practice_gen/dna/na/money_peso.py",
+   "first_site": "backend/app/practice_gen/dna/na/money_peso.py:122",
+   "renderer": "",
+   "path": [
+    15,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F12": {
+   "source": "backend/app/practice_gen/dna/na/money_peso.py",
+   "first_site": "backend/app/practice_gen/dna/na/money_peso.py:435",
+   "renderer": "",
+   "path": [
+    15,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F13": {
+   "source": "backend/app/practice_gen/dna/na/money_peso.py",
+   "first_site": "backend/app/practice_gen/dna/na/money_peso.py:124",
+   "renderer": "",
+   "path": [
+    7,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F14": {
+   "source": "backend/app/practice_gen/dna/na/money_peso.py",
+   "first_site": "backend/app/practice_gen/dna/na/money_peso.py:124",
+   "renderer": "",
+   "path": [
+    31,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F15": {
+   "source": "backend/app/practice_gen/dna/na/money_peso.py",
+   "first_site": "backend/app/practice_gen/dna/na/money_peso.py:476",
+   "renderer": "",
+   "path": [
+    2,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F16": {
+   "source": "backend/app/practice_gen/dna/na/money_peso.py",
+   "first_site": "backend/app/practice_gen/dna/na/money_peso.py:446",
+   "renderer": "",
+   "path": [
+    7,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F17": {
+   "source": "backend/app/practice_gen/dna/na/money_peso.py",
+   "first_site": "backend/app/practice_gen/dna/na/money_peso.py:113",
+   "renderer": "",
+   "path": [
+    26,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F18": {
+   "source": "backend/app/practice_gen/dna/na/money_peso.py",
+   "first_site": "backend/app/practice_gen/dna/na/money_peso.py:437",
+   "renderer": "",
+   "path": [
+    15,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F19": {
+   "source": "backend/app/practice_gen/dna/na/money_peso.py",
+   "first_site": "backend/app/practice_gen/dna/na/money_peso.py:429",
+   "renderer": "",
+   "path": [
+    15,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F20": {
+   "source": "backend/app/practice_gen/dna/na/money_peso.py",
+   "first_site": "backend/app/practice_gen/dna/na/money_peso.py:423",
+   "renderer": "",
+   "path": [
+    3,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F21": {
+   "source": "backend/app/practice_gen/dna/na/money_peso.py",
+   "first_site": "backend/app/practice_gen/dna/na/money_peso.py:416",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F22": {
+   "source": "backend/app/practice_gen/dna/na/money_peso.py",
+   "first_site": "backend/app/practice_gen/dna/na/money_peso.py:425",
+   "renderer": "",
+   "path": [
+    3,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F23": {
+   "source": "backend/app/practice_gen/dna/na/money_peso.py",
+   "first_site": "backend/app/practice_gen/dna/na/money_peso.py:418",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F24": {
+   "source": "backend/app/practice_gen/dna/na/money_peso.py",
+   "first_site": "backend/app/practice_gen/dna/na/money_peso.py:474",
+   "renderer": "",
+   "path": [
+    2,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F25": {
+   "source": "backend/app/practice_gen/dna/na/money_peso.py",
+   "first_site": "backend/app/practice_gen/dna/na/money_peso.py:444",
+   "renderer": "",
+   "path": [
+    7,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F26": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:32",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F27": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:51",
+   "renderer": "",
+   "path": [
+    4,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F28": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:39",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  }
+ },
+ "packet": {
+  "item": "S442-019",
+  "competency": {
+   "text": "Recognize coins (excluding centavo coins) and bills up to ₱100 and their notations.",
+   "grade": 1,
+   "quarter": 4
+  },
+  "clauses": [
+   {
+    "id": "recognize",
+    "kind": "task",
+    "clause": "Recognize"
+   },
+   {
+    "id": "coins",
+    "kind": "object",
+    "clause": "coins"
+   },
+   {
+    "id": "excluding_centavo_coins",
+    "kind": "property",
+    "clause": "excluding centavo coins"
+   },
+   {
+    "id": "bills",
+    "kind": "object",
+    "clause": "bills"
+   },
+   {
+    "id": "up_to_100",
+    "kind": "range",
+    "clause": "up to ₱100"
+   },
+   {
+    "id": "notations",
+    "kind": "representation",
+    "clause": "notations"
+   }
+  ],
+  "vocabulary": {
+   "student_vocab": [
+    "peso",
+    "₱",
+    "coin",
+    "bill"
+   ],
+   "curriculum_vocab": [
+    "centavo",
+    "denomination",
+    "notation",
+    "Philippine peso"
+   ],
+   "introduces_vocab": [
+    "coin",
+    "bill",
+    "peso",
+    "₱",
+    "centavo",
+    "denomination",
+    "notation",
+    "Philippine peso"
+   ],
+   "cumulative_vocab": [
+    "1 less",
+    "1 more",
+    "10th",
+    "1st",
+    "2nd",
+    "3rd",
+    "4th",
+    "5th",
+    "6th",
+    "7th",
+    "8th",
+    "9th",
+    "addition",
+    "bigger",
+    "compare",
+    "corner",
+    "count",
+    "data",
+    "difference",
+    "digit",
+    "equal",
+    "expanded form",
+    "fraction",
+    "group",
+    "half",
+    "how many",
+    "left",
+    "length",
+    "less",
+    "measure",
+    "missing number",
+    "more",
+    "number",
+    "number line",
+    "numeral",
+    "ones",
+    "pattern",
+    "pictograph",
+    "place value",
+    "quarter",
+    "rectangle",
+    "repeating pattern",
+    "same",
+    "side",
+    "skip counting",
+    "smaller",
+    "square",
+    "subtraction",
+    "sum",
+    "table",
+    "tens",
+    "total",
+    "triangle",
+    "whole"
+   ],
+   "NOT_YET_KNOWN": [
+    "L",
+    "a.m.",
+    "analog clock",
+    "area",
+    "axis",
+    "balance scale",
+    "bar graph",
+    "calendar",
+    "capacity",
+    "centavo",
+    "centimeter",
+    "certain",
+    "circle",
+    "clockwise",
+    "cm",
+    "counter-clockwise",
+    "decreasing pattern",
+    "denominator",
+    "division",
+    "elapsed time",
+    "equal groups",
+    "equally likely",
+    "estimate",
+    "even",
+    "g",
+    "gram",
+    "half hour",
+    "half turn",
+    "hour",
+    "hundreds",
+    "impossible",
+    "improper fraction",
+    "increasing pattern",
+    "intersecting",
+    "kg",
+    "kilogram",
+    "less likely",
+    "line",
+    "line of symmetry",
+    "line segment",
+    "liter",
+    "m",
+    "mL",
+    "mass",
+    "meter",
+    "milliliter",
+    "minute",
+    "missing term",
+    "more likely",
+    "multiplication",
+    "nearest hundred",
+    "nearest ten",
+    "nearest thousand",
+    "numerator",
+    "odd",
+    "order of operations",
+    "outcome",
+    "p.m.",
+    "parallel",
+    "perimeter",
+    "perpendicular",
+    "point",
+    "product",
+    "quarter hour",
+    "quarter turn",
+    "quotient",
+    "ray",
+    "regrouping",
+    "remainder",
+    "round",
+    "ruler",
+    "scale",
+    "similar fractions",
+    "slide",
+    "solid figure",
+    "sq. cm",
+    "square centimeter",
+    "symmetry",
+    "ten thousand",
+    "ten-thousands place",
+    "thousand",
+    "translation"
+   ],
+   "sentence_max_words": 15,
+   "number_format": "no commas, no thousands separator"
+  },
+  "declared_variants": [
+   [
+    "context",
+    "pure"
+   ],
+   [
+    "context",
+    "word_problem"
+   ],
+   [
+    "denomination_type",
+    "bills"
+   ],
+   [
+    "denomination_type",
+    "coins"
+   ],
+   [
+    "denomination_type",
+    "mixed"
+   ],
+   [
+    "task_type",
+    "count_total"
+   ],
+   [
+    "task_type",
+    "give_money"
+   ],
+   [
+    "task_type",
+    "make_change"
+   ]
+  ],
+  "declared_bounds": [
+   {
+    "operation": "read_write",
+    "max_total": [
+     1,
+     100
+    ]
+   }
+  ],
+  "families": [
+   {
+    "id": "F01",
+    "template": "A bill marked with the number {denom} is shown. What bill is it?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "denom"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the bills bank",
+        "members": [
+         100,
+         20,
+         50
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "operation"
+    ]
+   },
+   {
+    "id": "F02",
+    "template": "A coin marked with the number {denom} is shown. What coin is it?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "denom"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the coins bank",
+        "members": [
+         1,
+         10,
+         20,
+         5
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "operation"
+    ]
+   },
+   {
+    "id": "F03",
+    "template": "How is '{words} pesos' written using the peso symbol?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "words"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F13",
+         "F17"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "operation"
+    ]
+   },
+   {
+    "id": "F04",
+    "template": "How is ₱{total_rw} written in words?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "total_rw"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "total",
+        "printed_runs": "5, 10, 20, 50, 100",
+        "derived_from_values": [
+         "total"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "operation"
+    ]
+   },
+   {
+    "id": "F05",
+    "template": "How is ₱{total_rw} written using the currency code PhP?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "total_rw"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "total",
+        "printed_runs": "5, 10, 20, 50, 100",
+        "derived_from_values": [
+         "total"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "operation"
+    ]
+   },
+   {
+    "id": "F06",
+    "template": "PhP {total_rw}",
+    "appears_in": [
+     "correct_answer",
+     "format_data.mcq_options",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "total_rw"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "total",
+        "printed_runs": "5, 10, 20, 50, 100",
+        "derived_from_values": [
+         "total"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "operation"
+    ]
+   },
+   {
+    "id": "F07",
+    "template": "PhP{total_rw}c",
+    "appears_in": [
+     "distractors",
+     "format_data.mcq_options",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "total_rw"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "total",
+        "printed_runs": "5, 10, 20, 50, 100",
+        "derived_from_values": [
+         "total"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "operation"
+    ]
+   },
+   {
+    "id": "F08",
+    "template": "Read the number or words given in the question carefully.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": [
+     "operation"
+    ]
+   },
+   {
+    "id": "F09",
+    "template": "Remember that pesos use ₱ or PhP, and centavos can be written as a decimal.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": [
+     "operation"
+    ]
+   },
+   {
+    "id": "F10",
+    "template": "Think about the spelling of number words or the position of the currency symbol.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": [
+     "operation"
+    ]
+   },
+   {
+    "id": "F11",
+    "template": "{chunk}-{v}",
+    "appears_in": [],
+    "nested_in": [
+     "F12"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "chunk"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "_TENS"
+       }
+      ]
+     },
+     {
+      "slots": [
+       "v"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "_ONES"
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F12",
+    "template": "{num_to_words} pesos",
+    "appears_in": [
+     "distractors",
+     "format_data.mcq_options",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "num_to_words"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F11",
+         "F13",
+         "F14",
+         "F17"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "operation"
+    ]
+   },
+   {
+    "id": "F13",
+    "template": "{p0}",
+    "appears_in": [],
+    "nested_in": [
+     "F03",
+     "F12",
+     "F18",
+     "F19"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "p0"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "_ONES"
+       },
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "_TENS"
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F14",
+    "template": "{p0} {p1}",
+    "appears_in": [],
+    "nested_in": [
+     "F12"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "p0"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F17"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "p1"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "_TENS"
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F15",
+    "template": "{total_rw} PhP",
+    "appears_in": [
+     "distractors",
+     "format_data.mcq_options",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "total_rw"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "total",
+        "printed_runs": "5, 10, 20, 50, 100",
+        "derived_from_values": [
+         "total"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "operation"
+    ]
+   },
+   {
+    "id": "F16",
+    "template": "{total_rw}¢",
+    "appears_in": [
+     "distractors",
+     "format_data.mcq_options",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "total_rw"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "total",
+        "printed_runs": "5, 10, 20, 50, 100",
+        "derived_from_values": [
+         "total"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "operation"
+    ]
+   },
+   {
+    "id": "F17",
+    "template": "{v} hundred",
+    "appears_in": [],
+    "nested_in": [
+     "F03",
+     "F12",
+     "F14",
+     "F18",
+     "F19"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "v"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "_ONES"
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F18",
+    "template": "{words} centavos",
+    "appears_in": [
+     "distractors",
+     "format_data.mcq_options",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "words"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F13",
+         "F17"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "operation"
+    ]
+   },
+   {
+    "id": "F19",
+    "template": "{words} pesos",
+    "appears_in": [
+     "correct_answer",
+     "format_data.mcq_options",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "words"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F13",
+         "F17"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "operation"
+    ]
+   },
+   {
+    "id": "F20",
+    "template": "₱{denom} bill",
+    "appears_in": [
+     "correct_answer",
+     "format_data.mcq_options",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "denom"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the bills bank",
+        "members": [
+         100,
+         20,
+         50
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "operation"
+    ]
+   },
+   {
+    "id": "F21",
+    "template": "₱{denom} coin",
+    "appears_in": [
+     "correct_answer",
+     "format_data.mcq_options",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "denom"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the coins bank",
+        "members": [
+         1,
+         10,
+         20,
+         5
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "operation"
+    ]
+   },
+   {
+    "id": "F22",
+    "template": "₱{d} bill",
+    "appears_in": [
+     "distractors",
+     "format_data.mcq_options",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "d"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the bills bank",
+        "members": [
+         100,
+         20,
+         50
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "operation"
+    ]
+   },
+   {
+    "id": "F23",
+    "template": "₱{d} coin",
+    "appears_in": [
+     "distractors",
+     "format_data.mcq_options",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "d"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the coins bank",
+        "members": [
+         1,
+         10,
+         20,
+         5
+        ]
+       },
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the ₱10 coin added as a distractor",
+        "members": [
+         10
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "operation"
+    ]
+   },
+   {
+    "id": "F24",
+    "template": "₱{total_rw}",
+    "appears_in": [
+     "correct_answer",
+     "distractors",
+     "format_data.mcq_options",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "total_rw"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "total",
+        "printed_runs": "5, 10, 20, 50, 100",
+        "derived_from_values": [
+         "total"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "operation"
+    ]
+   },
+   {
+    "id": "F25",
+    "template": "₱{v}",
+    "appears_in": [
+     "distractors",
+     "format_data.mcq_options",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "v"
+      ],
+      "domains": [
+       {
+        "domain": "a number computed by the generator",
+        "reason": "arithmetic",
+        "derived_from_values": [
+         "total"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "operation"
+    ]
+   },
+   {
+    "id": "F26",
+    "template": "{answer}",
+    "appears_in": [
+     "correct_answer",
+     "format_data.mcq_options",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "answer",
+        "printed": [
+         "PhP 100",
+         "PhP 10",
+         "PhP 20",
+         "PhP 50",
+         "PhP 5",
+         "fifty pesos",
+         "five pesos",
+         "one hundred pesos",
+         "ten pesos",
+         "twenty pesos",
+         "₱1 coin",
+         "₱10 coin",
+         "₱100 bill",
+         "₱100",
+         "₱10",
+         "₱20 bill",
+         "₱20 coin",
+         "₱20",
+         "₱5 coin",
+         "₱50 bill",
+         "₱50",
+         "₱5"
+        ],
+        "derived_from_values": [
+         "answer"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F27",
+    "template": "{key}",
+    "appears_in": [
+     "correct_answer"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "key"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the option keys this item shows",
+        "members": [
+         "A",
+         "B",
+         "C",
+         "D"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F28",
+    "template": "{member}",
+    "appears_in": [
+     "distractors",
+     "format_data.mcq_options",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "member"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "QuestionContext.distractors (the generator's own)",
+        "members": [
+         "10 PhP",
+         "100 PhP",
+         "100¢",
+         "10¢",
+         "20 PhP",
+         "5 PhP",
+         "50 PhP",
+         "50¢",
+         "5¢",
+         "PhP100c",
+         "PhP10c",
+         "PhP20c",
+         "PhP50c",
+         "PhP5c",
+         "fifteen pesos",
+         "fifty centavos",
+         "fifty-five pesos",
+         "five centavos",
+         "forty pesos",
+         "forty-eight pesos",
+         "ninety-eight pesos",
+         "one hundred centavos",
+         "one hundred pesos",
+         "one hundred twenty pesos",
+         "seventy pesos",
+         "ten pesos",
+         "three pesos",
+         "twenty centavos",
+         "twenty-five pesos",
+         "two hundred pesos",
+         "₱1 coin",
+         "₱10 coin",
+         "₱10",
+         "₱100 bill",
+         "₱100",
+         "₱1000",
+         "₱20 bill",
+         "₱20 coin",
+         "₱20",
+         "₱45",
+         "₱5 coin",
+         "₱5",
+         "₱50 bill",
+         "₱50",
+         "₱500",
+         "₱95"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   }
+  ],
+  "lists": {
+   "_TENS": [
+    "",
+    "twenty",
+    "thirty",
+    "forty",
+    "fifty",
+    "sixty",
+    "seventy",
+    "eighty",
+    "ninety"
+   ],
+   "_ONES": [
+    "",
+    "one",
+    "two",
+    "three",
+    "four",
+    "five",
+    "six",
+    "seven",
+    "eight",
+    "nine",
+    "ten",
+    "eleven",
+    "twelve",
+    "thirteen",
+    "fourteen",
+    "fifteen",
+    "sixteen",
+    "seventeen",
+    "eighteen",
+    "nineteen"
+   ]
+  },
+  "banks": {},
+  "value_derivations": [],
+  "reason_kinds": {
+   "arithmetic": "a number the generator computes from the generated values named in src (a half, a sum, a difference, a running total, a place's digit). Its range is the image of those values' own domains; whether the arithmetic is RIGHT is the hint contract's (§16) and §1E's to check, not §14's."
+  }
+ }
+}

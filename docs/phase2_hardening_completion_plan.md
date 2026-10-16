@@ -1747,6 +1747,20 @@ that points at it break every time the section is refreshed.
 >     are set aside unfiled and every first reruns. Rejected: keep the pair and settle each gap ground by
 >     renders and ruling 21. Found in passing, a content finding left for the generator queue: seed 17 at
 >     three pinned formatters prints "48 / 8" on mat_g2_na_q3_6 and _9, outside their tables.
+> 51. **Ruling 21 only where every ground is false** (owner, 2026-10-16, asked in the H4-C session during the
+>     HV8 confirmer round; the owner chose the dispatcher's recommended option). Ruling 49 checks every ground of
+>     every standing non-PASS against real renders, and ruling 21 sends one fresh blind judge wherever a ground is
+>     false. On group S441, 12 of 16 FAIL lcs had at least one ground the renders disprove, but 11 of those 12
+>     also had at least one real printed ground; the 4 ruling-21 judges that returned all said FAIL, 3 re-asserting
+>     disproved grounds (ruling 49's named limit: the packet cannot state joint facts across families, so fresh
+>     judges re-derive the same domain claims). Options offered: (a) ruling 21 only where every ground is false
+>     [recommended]; (b) every false ground, as written (about 110 judges); (c) pause ruling 21 until the full
+>     table. **Every disproof is logged in the evidence log; where at least one ground is real and printed, the
+>     confirmer's FAIL stands (the verdict is not in dispute); a ruling-21 judge is dispatched only where every
+>     ground of the standing record is disproved by the renders.** Already dispatched before the ruling (outcomes
+>     recorded): S441-003-r1 (set aside, quote), S441-004-r1 FAIL, S441-009-r1 FAIL, S441-010-r2 FAIL,
+>     S441-012-r1 FAIL, S441-013-r1 (set aside, quote). Under ruling 51, S441-004 and S441-009 were the all-false
+>     cases and the ruling-21 outcome there stands. Rejected: (b) and (c).
 >
 > **Owner rulings recorded 2026-09-22, binding on the next session:**
 >

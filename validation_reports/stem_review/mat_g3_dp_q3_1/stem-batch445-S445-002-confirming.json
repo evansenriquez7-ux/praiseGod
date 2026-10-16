@@ -1,0 +1,883 @@
+{
+ "schema_version": 2,
+ "hash_version": 8,
+ "node_id": "mat_g3_dp_q3_1",
+ "record_id": "stem-batch445-S445-002-confirming",
+ "role": "confirming",
+ "confirms": "stem-batch445-S445-002-first",
+ "item_id": "S445-002",
+ "lc_hash": "c699c6708a1eabf5a199598ddbe35e38c93ef76e2b7b29644caa26c8212609eb",
+ "judged_by": "blind-stem-judge-claude-haiku-batch445-S445-002-confirming",
+ "dispatch_id": "stem-batch445-S445-002-confirming",
+ "filed_at": "2026-10-16T06:20:47Z",
+ "delivery": "Claude Code Agent tool, model=haiku, subagent_type=general-purpose; the judge was told to read only local_only/scratch/h4c/prompts/S445-002.prompt.txt (tests/stem_file.py prompt output, item S445-002; no lc id, no key or packets file in that directory) and reply with what it asks; dispatched with CLAUDE.md loaded (ruling 29). Blindness is a prompt contract, audited from the subagent transcript.",
+ "tool_uses_by_judge": "From the subagent transcript: 1 tool use(s), all Read of its own prompt file (841 lines, every line read); no other tool, path or search. Model reported in the transcript: claude-haiku-5-5.",
+ "dispatch_prompt_digest": "11c2eecd4d33520e6f075b2da19276065af195e8bf04b48eda04b1461ef8f94c",
+ "raw_reply": "{\"item\": \"S445-002\", \"clauses\": {\"present_data\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F08\", \"template\": \"Complete the table to show: {data_str}.\", \"reasoning\": \"F08 asks the learner to present the drawn data set in a table, so it addresses the task clause.\"}, \"data_set\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F08\", \"template\": \"Complete the table to show: {data_str}.\", \"reasoning\": \"The data_str slot prints generated category-and-value sets (5 to 70, multiples of 5, 4 categories), which are the data the lc names.\"}, \"data_table\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F08\", \"template\": \"Complete the table to show: {data_str}.\", \"reasoning\": \"F08 is the table-representation family, selected by orientation table in template_chosen_by_values.\"}, \"single_bar_graph\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F09\", \"template\": \"Create a {bg_full_lbl} to show: {data_str}.\", \"reasoning\": \"F09 asks for one bar graph of one data set, with bg_full_lbl built from F01 bar graph and F10 orientation.\"}, \"horizontal_bar_graph\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F09\", \"template\": \"Create a {bg_full_lbl} to show: {data_str}.\", \"reasoning\": \"F10 members include horizontal, which F09 prints through bg_full_lbl for the horizontal orientation.\"}, \"vertical_bar_graph\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F09\", \"template\": \"Create a {bg_full_lbl} to show: {data_str}.\", \"reasoning\": \"F10 members include vertical, which F09 prints through bg_full_lbl for the vertical orientation.\"}}, \"failing_families\": [\"F05\"], \"failing_templates\": [\"The {scale_label} on the {axis} goes up by {scale}.\"], \"overall\": \"FAIL\", \"reasoning\": \"F05 appears in hints. Its axis slot draws from F06 (horizontal (x-axis)) and F07 (vertical (y-axis)) as nested learner text with no derived_from_values, and value_derivations is empty, so the packet's own claim is that the axis word is independent of orientation. The same problem's question can be a horizontal bar graph (F09 with F10 horizontal), so F05 can name the vertical (y-axis) as the axis carrying the scale in a horizontal graph, where the scale runs along the horizontal axis. That is a misleading statement for the learner. F03 (Look at the table carefully.) and F04 (Look at the {bg_label} carefully.) are also hints with no packet-shown orientation pairing, so they are not counted as failing. F08 and F09 data sets are multiples of 5 from 5 to 70 with 4 categories; the longest F09 question is about 19 words, under sentence_max_words 22; the printed words (Grade, Math, Monday, apples) are not gated by vocabulary. The x-axis and y-axis notation is not in student_vocab or cumulative_vocab, though axis is introduced here.\"}",
+ "raw_reply_digest": "a79667ebbb9a54daeae76c2bf42ab7a5f4478b17b671af709237d46e5098b408",
+ "packet_digest": "c0ccf81c8bab6260401836cc43850e2a94aa8d41fedf432e362bdb71d6be7248",
+ "family_keys": {
+  "F01": {
+   "source": "backend/app/practice_gen/dna/base.py [gate bar graph]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F02": {
+   "source": "backend/app/practice_gen/dna/base.py [gate scale]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F03": {
+   "source": "backend/app/practice_gen/dna/dp/bar_graphs.py",
+   "first_site": "backend/app/practice_gen/dna/dp/bar_graphs.py:320",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F04": {
+   "source": "backend/app/practice_gen/dna/dp/bar_graphs.py",
+   "first_site": "backend/app/practice_gen/dna/dp/bar_graphs.py:323",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F05": {
+   "source": "backend/app/practice_gen/dna/dp/bar_graphs.py",
+   "first_site": "backend/app/practice_gen/dna/dp/bar_graphs.py:324",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F06": {
+   "source": "backend/app/practice_gen/dna/dp/bar_graphs.py",
+   "first_site": "backend/app/practice_gen/dna/dp/bar_graphs.py:315",
+   "renderer": "",
+   "path": [
+    7,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F07": {
+   "source": "backend/app/practice_gen/dna/dp/bar_graphs.py",
+   "first_site": "backend/app/practice_gen/dna/dp/bar_graphs.py:315",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F08": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_bar_chart.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_bar_chart.py:313",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F09": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_bar_chart.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_bar_chart.py:315",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F10": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_bar_chart.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_bar_chart.py:267",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  }
+ },
+ "packet": {
+  "item": "S445-002",
+  "competency": {
+   "text": "Present data in tables and single bar graphs (horizontal and vertical).",
+   "grade": 3,
+   "quarter": 3
+  },
+  "clauses": [
+   {
+    "id": "present_data",
+    "kind": "task",
+    "clause": "Present data"
+   },
+   {
+    "id": "data_set",
+    "kind": "object",
+    "clause": "data"
+   },
+   {
+    "id": "data_table",
+    "kind": "representation",
+    "clause": "tables"
+   },
+   {
+    "id": "single_bar_graph",
+    "kind": "representation",
+    "clause": "single bar graphs"
+   },
+   {
+    "id": "horizontal_bar_graph",
+    "kind": "orientation",
+    "clause": "horizontal"
+   },
+   {
+    "id": "vertical_bar_graph",
+    "kind": "orientation",
+    "clause": "vertical"
+   }
+  ],
+  "vocabulary": {
+   "student_vocab": [
+    "bar graph",
+    "axis"
+   ],
+   "curriculum_vocab": [
+    "single bar graph",
+    "horizontal bar graph",
+    "vertical bar graph",
+    "bar"
+   ],
+   "introduces_vocab": [
+    "bar graph",
+    "single bar graph",
+    "horizontal bar graph",
+    "vertical bar graph",
+    "axis",
+    "bar"
+   ],
+   "cumulative_vocab": [
+    "1 less",
+    "1 more",
+    "10th",
+    "1st",
+    "2nd",
+    "3rd",
+    "4th",
+    "5th",
+    "6th",
+    "7th",
+    "8th",
+    "9th",
+    "L",
+    "a.m.",
+    "addition",
+    "analog clock",
+    "area",
+    "balance scale",
+    "bigger",
+    "bill",
+    "calendar",
+    "capacity",
+    "centavo",
+    "centimeter",
+    "circle",
+    "clockwise",
+    "cm",
+    "coin",
+    "compare",
+    "corner",
+    "count",
+    "counter-clockwise",
+    "data",
+    "decreasing pattern",
+    "denominator",
+    "difference",
+    "digit",
+    "division",
+    "elapsed time",
+    "equal",
+    "equal groups",
+    "estimate",
+    "even",
+    "expanded form",
+    "fraction",
+    "g",
+    "gram",
+    "group",
+    "half",
+    "half hour",
+    "half turn",
+    "hour",
+    "how many",
+    "hundreds",
+    "increasing pattern",
+    "intersecting",
+    "kg",
+    "kilogram",
+    "left",
+    "length",
+    "less",
+    "line",
+    "line segment",
+    "liter",
+    "m",
+    "mL",
+    "mass",
+    "measure",
+    "meter",
+    "milliliter",
+    "minute",
+    "missing number",
+    "missing term",
+    "more",
+    "multiplication",
+    "nearest hundred",
+    "nearest ten",
+    "nearest thousand",
+    "number",
+    "number line",
+    "numeral",
+    "numerator",
+    "odd",
+    "ones",
+    "order of operations",
+    "outcome",
+    "p.m.",
+    "parallel",
+    "pattern",
+    "perimeter",
+    "perpendicular",
+    "peso",
+    "pictograph",
+    "place value",
+    "point",
+    "product",
+    "quarter",
+    "quarter hour",
+    "quarter turn",
+    "quotient",
+    "ray",
+    "rectangle",
+    "regrouping",
+    "repeating pattern",
+    "round",
+    "ruler",
+    "same",
+    "scale",
+    "side",
+    "similar fractions",
+    "skip counting",
+    "slide",
+    "smaller",
+    "solid figure",
+    "sq. cm",
+    "square",
+    "square centimeter",
+    "subtraction",
+    "sum",
+    "table",
+    "ten thousand",
+    "ten-thousands place",
+    "tens",
+    "thousand",
+    "total",
+    "translation",
+    "triangle",
+    "whole",
+    "₱"
+   ],
+   "NOT_YET_KNOWN": [
+    "certain",
+    "equally likely",
+    "impossible",
+    "improper fraction",
+    "less likely",
+    "line of symmetry",
+    "more likely",
+    "remainder",
+    "symmetry"
+   ],
+   "sentence_max_words": 22,
+   "number_format": "space separator for thousands (e.g. 1 000)"
+  },
+  "declared_variants": [
+   [
+    "orientation",
+    "horizontal"
+   ],
+   [
+    "orientation",
+    "table"
+   ],
+   [
+    "orientation",
+    "vertical"
+   ],
+   [
+    "scale",
+    "scale_10"
+   ],
+   [
+    "scale",
+    "scale_20"
+   ],
+   [
+    "scale",
+    "scale_5"
+   ],
+   [
+    "task_type",
+    "present_data"
+   ]
+  ],
+  "declared_bounds": [
+   {
+    "task_type": "present_data",
+    "orientation": [
+     "vertical",
+     "horizontal",
+     "table"
+    ]
+   }
+  ],
+  "families": [
+   {
+    "id": "F01",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F04",
+     "F09"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='bar graph')",
+        "requires_vocab": "bar graph",
+        "prints": "bar graph",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F02",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F05"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='scale')",
+        "requires_vocab": "scale",
+        "prints": "scale",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F03",
+    "template": "Look at the table carefully.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F04",
+    "template": "Look at the {bg_label} carefully.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "bg_label"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F01"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F05",
+    "template": "The {scale_label} on the {axis} goes up by {scale}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "scale_label"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F02"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "axis"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F06",
+         "F07"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "scale"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "_SCALE_MAP, the scales generate_params draws",
+        "members": [
+         10,
+         20,
+         5
+        ],
+        "derived_from_values": [
+         "visual_params"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F06",
+    "template": "horizontal (x-axis)",
+    "appears_in": [],
+    "nested_in": [
+     "F05"
+    ],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F07",
+    "template": "vertical (y-axis)",
+    "appears_in": [],
+    "nested_in": [
+     "F05"
+    ],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F08",
+    "template": "Complete the table to show: {data_str}.",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "data_str"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "data_str",
+        "printed": [
+         "Grade 1: 25, Grade 2: 65, Grade 3: 60, Grade 4: 55",
+         "Grade 1: 35, Grade 2: 10, Grade 3: 50, Grade 4: 70",
+         "Grade 1: 35, Grade 2: 65, Grade 3: 60, Grade 4: 10",
+         "Grade 1: 45, Grade 2: 5, Grade 3: 35, Grade 4: 40",
+         "Grade 1: 5, Grade 2: 55, Grade 3: 20, Grade 4: 55",
+         "Grade 1: 65, Grade 2: 25, Grade 3: 30, Grade 4: 25",
+         "Grade 1: 70, Grade 2: 50, Grade 3: 15, Grade 4: 20",
+         "Grade 1: 70, Grade 2: 70, Grade 3: 60, Grade 4: 55",
+         "January: 15, February: 20, March: 65, April: 35",
+         "January: 15, February: 40, March: 25, April: 30",
+         "January: 20, February: 15, March: 5, April: 5",
+         "January: 30, February: 45, March: 45, April: 35",
+         "January: 5, February: 45, March: 45, April: 70",
+         "January: 50, February: 15, March: 40, April: 70",
+         "January: 60, February: 25, March: 25, April: 20",
+         "January: 60, February: 60, March: 60, April: 70",
+         "January: 60, February: 60, March: 70, April: 45",
+         "January: 65, February: 15, March: 25, April: 45",
+         "Math: 10, Science: 70, English: 20, Art: 40",
+         "Math: 10, Science: 70, English: 25, Art: 25",
+         "Math: 20, Science: 45, English: 35, Art: 65",
+         "Math: 25, Science: 10, English: 60, Art: 30",
+         "Math: 25, Science: 55, English: 55, Art: 70",
+         "Math: 25, Science: 70, English: 60, Art: 55",
+         "Math: 35, Science: 40, English: 50, Art: 40",
+         "Math: 40, Science: 5, English: 15, Art: 65",
+         "Math: 45, Science: 20, English: 65, Art: 70",
+         "Math: 55, Science: 20, English: 70, Art: 70",
+         "Math: 65, Science: 35, English: 65, Art: 55",
+         "Monday: 15, Tuesday: 60, Wednesday: 60, Thursday: 50",
+         "Monday: 20, Tuesday: 55, Wednesday: 60, Thursday: 50",
+         "Monday: 20, Tuesday: 60, Wednesday: 55, Thursday: 20",
+         "Monday: 25, Tuesday: 5, Wednesday: 20, Thursday: 10",
+         "Monday: 40, Tuesday: 45, Wednesday: 60, Thursday: 40",
+         "Monday: 45, Tuesday: 15, Wednesday: 20, Thursday: 55",
+         "Monday: 45, Tuesday: 30, Wednesday: 40, Thursday: 5",
+         "Monday: 50, Tuesday: 20, Wednesday: 20, Thursday: 40",
+         "Monday: 50, Tuesday: 70, Wednesday: 25, Thursday: 10",
+         "Monday: 55, Tuesday: 20, Wednesday: 35, Thursday: 50",
+         "Monday: 60, Tuesday: 15, Wednesday: 5, Thursday: 55",
+         "Monday: 60, Tuesday: 20, Wednesday: 40, Thursday: 25",
+         "Monday: 70, Tuesday: 10, Wednesday: 5, Thursday: 35",
+         "apples: 10, bananas: 65, mangoes: 15, grapes: 10",
+         "apples: 15, bananas: 15, mangoes: 5, grapes: 60",
+         "apples: 15, bananas: 50, mangoes: 25, grapes: 10",
+         "apples: 35, bananas: 40, mangoes: 50, grapes: 5",
+         "apples: 40, bananas: 55, mangoes: 45, grapes: 25",
+         "apples: 5, bananas: 30, mangoes: 15, grapes: 50",
+         "apples: 50, bananas: 50, mangoes: 40, grapes: 20",
+         "apples: 50, bananas: 65, mangoes: 40, grapes: 15",
+         "apples: 65, bananas: 20, mangoes: 65, grapes: 35",
+         "apples: 65, bananas: 45, mangoes: 10, grapes: 45",
+         "basketball: 5, volleyball: 60, swimming: 35, running: 55",
+         "basketball: 5, volleyball: 65, swimming: 55, running: 10",
+         "basketball: 50, volleyball: 5, swimming: 50, running: 55",
+         "basketball: 55, volleyball: 65, swimming: 35, running: 45",
+         "basketball: 60, volleyball: 30, swimming: 65, running: 60",
+         "basketball: 65, volleyball: 5, swimming: 40, running: 5",
+         "cats: 30, dogs: 10, birds: 65, fish: 25",
+         "cats: 30, dogs: 50, birds: 70, fish: 50",
+         "cats: 40, dogs: 65, birds: 25, fish: 5",
+         "cats: 45, dogs: 30, birds: 35, fish: 15",
+         "cats: 5, dogs: 30, birds: 30, fish: 70",
+         "cats: 5, dogs: 60, birds: 25, fish: 20",
+         "cats: 50, dogs: 15, birds: 30, fish: 35",
+         "cats: 50, dogs: 55, birds: 70, fish: 60",
+         "roses: 15, sunflowers: 45, tulips: 60, daisies: 45",
+         "roses: 35, sunflowers: 25, tulips: 55, daisies: 45",
+         "roses: 40, sunflowers: 60, tulips: 30, daisies: 10",
+         "roses: 45, sunflowers: 5, tulips: 30, daisies: 60",
+         "roses: 50, sunflowers: 5, tulips: 70, daisies: 20",
+         "roses: 50, sunflowers: 65, tulips: 10, daisies: 5",
+         "roses: 55, sunflowers: 55, tulips: 50, daisies: 25",
+         "roses: 60, sunflowers: 20, tulips: 5, daisies: 30",
+         "roses: 65, sunflowers: 15, tulips: 60, daisies: 30"
+        ],
+        "derived_from_values": [
+         "data_str"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "orientation"
+    ]
+   },
+   {
+    "id": "F09",
+    "template": "Create a {bg_full_lbl} to show: {data_str}.",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "bg_full_lbl"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F01",
+         "F10"
+        ],
+        "derived_from_values": [
+         "orientation"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "data_str"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "data_str",
+        "printed": [
+         "Grade 1: 10, Grade 2: 40, Grade 3: 25, Grade 4: 45",
+         "Grade 1: 20, Grade 2: 20, Grade 3: 25, Grade 4: 65",
+         "Grade 1: 20, Grade 2: 25, Grade 3: 5, Grade 4: 20",
+         "Grade 1: 20, Grade 2: 50, Grade 3: 15, Grade 4: 20",
+         "Grade 1: 35, Grade 2: 5, Grade 3: 30, Grade 4: 70",
+         "Grade 1: 40, Grade 2: 25, Grade 3: 10, Grade 4: 25",
+         "Grade 1: 40, Grade 2: 5, Grade 3: 60, Grade 4: 65",
+         "Grade 1: 40, Grade 2: 60, Grade 3: 25, Grade 4: 20",
+         "Grade 1: 40, Grade 2: 65, Grade 3: 25, Grade 4: 15",
+         "Grade 1: 40, Grade 2: 70, Grade 3: 20, Grade 4: 40",
+         "Grade 1: 45, Grade 2: 30, Grade 3: 15, Grade 4: 40",
+         "Grade 1: 45, Grade 2: 60, Grade 3: 70, Grade 4: 35",
+         "Grade 1: 5, Grade 2: 50, Grade 3: 50, Grade 4: 70",
+         "Grade 1: 60, Grade 2: 20, Grade 3: 65, Grade 4: 30",
+         "Grade 1: 60, Grade 2: 35, Grade 3: 55, Grade 4: 25",
+         "Grade 1: 65, Grade 2: 30, Grade 3: 70, Grade 4: 70",
+         "Grade 1: 70, Grade 2: 25, Grade 3: 55, Grade 4: 60",
+         "Grade 1: 70, Grade 2: 45, Grade 3: 65, Grade 4: 40",
+         "January: 10, February: 15, March: 35, April: 5",
+         "January: 10, February: 55, March: 60, April: 40",
+         "January: 10, February: 65, March: 35, April: 15",
+         "January: 25, February: 25, March: 40, April: 55",
+         "January: 30, February: 50, March: 15, April: 20",
+         "January: 35, February: 20, March: 25, April: 5",
+         "January: 35, February: 50, March: 20, April: 60",
+         "January: 35, February: 70, March: 20, April: 20",
+         "January: 40, February: 25, March: 35, April: 20",
+         "January: 40, February: 45, March: 70, April: 50",
+         "January: 40, February: 65, March: 15, April: 60",
+         "January: 45, February: 25, March: 40, April: 40",
+         "January: 45, February: 25, March: 70, April: 65",
+         "January: 5, February: 40, March: 30, April: 10",
+         "January: 55, February: 20, March: 65, April: 30",
+         "January: 55, February: 70, March: 65, April: 65",
+         "January: 60, February: 10, March: 45, April: 70",
+         "January: 65, February: 50, March: 15, April: 50",
+         "Math: 10, Science: 65, English: 50, Art: 30",
+         "Math: 15, Science: 20, English: 35, Art: 70",
+         "Math: 15, Science: 25, English: 70, Art: 50",
+         "Math: 20, Science: 70, English: 20, Art: 70",
+         "Math: 30, Science: 50, English: 40, Art: 55",
+         "Math: 30, Science: 60, English: 45, Art: 50",
+         "Math: 35, Science: 20, English: 65, Art: 10",
+         "Math: 35, Science: 30, English: 20, Art: 20",
+         "Math: 35, Science: 5, English: 15, Art: 5",
+         "Math: 35, Science: 55, English: 5, Art: 10",
+         "Math: 45, Science: 20, English: 65, Art: 30",
+         "Math: 45, Science: 45, English: 10, Art: 45",
+         "Math: 45, Science: 50, English: 60, Art: 15",
+         "Math: 50, Science: 30, English: 65, Art: 65",
+         "Math: 55, Science: 40, English: 20, Art: 45",
+         "Math: 55, Science: 55, English: 15, Art: 35",
+         "Math: 60, Science: 40, English: 40, Art: 5",
+         "Math: 60, Science: 65, English: 45, Art: 55",
+         "Math: 65, Science: 30, English: 30, Art: 20",
+         "Math: 70, Science: 35, English: 70, Art: 65",
+         "Monday: 15, Tuesday: 25, Wednesday: 60, Thursday: 20",
+         "Monday: 15, Tuesday: 60, Wednesday: 25, Thursday: 70",
+         "Monday: 20, Tuesday: 25, Wednesday: 70, Thursday: 30",
+         "Monday: 25, Tuesday: 25, Wednesday: 5, Thursday: 5",
+         "Monday: 25, Tuesday: 60, Wednesday: 25, Thursday: 25",
+         "Monday: 30, Tuesday: 15, Wednesday: 55, Thursday: 5",
+         "Monday: 35, Tuesday: 40, Wednesday: 60, Thursday: 25",
+         "Monday: 40, Tuesday: 10, Wednesday: 45, Thursday: 20",
+         "Monday: 40, Tuesday: 40, Wednesday: 45, Thursday: 5",
+         "Monday: 45, Tuesday: 20, Wednesday: 35, Thursday: 40",
+         "Monday: 5, Tuesday: 50, Wednesday: 40, Thursday: 15",
+         "Monday: 5, Tuesday: 50, Wednesday: 65, Thursday: 50",
+         "Monday: 5, Tuesday: 60, Wednesday: 50, Thursday: 60",
+         "Monday: 50, Tuesday: 70, Wednesday: 35, Thursday: 55",
+         "Monday: 60, Tuesday: 45, Wednesday: 60, Thursday: 60",
+         "Monday: 60, Tuesday: 60, Wednesday: 5, Thursday: 15",
+         "Monday: 60, Tuesday: 65, Wednesday: 20, Thursday: 35",
+         "Monday: 65, Tuesday: 10, Wednesday: 45, Thursday: 10",
+         "Monday: 70, Tuesday: 60, Wednesday: 15, Thursday: 35",
+         "Monday: 70, Tuesday: 65, Wednesday: 50, Thursday: 25",
+         "Monday: 70, Tuesday: 70, Wednesday: 45, Thursday: 10",
+         "apples: 15, bananas: 5, mangoes: 35, grapes: 25",
+         "apples: 20, bananas: 10, mangoes: 10, grapes: 5",
+         "apples: 20, bananas: 25, mangoes: 55, grapes: 55",
+         "apples: 20, bananas: 60, mangoes: 60, grapes: 30",
+         "apples: 20, bananas: 70, mangoes: 25, grapes: 55",
+         "apples: 25, bananas: 15, mangoes: 70, grapes: 65",
+         "apples: 25, bananas: 5, mangoes: 45, grapes: 60",
+         "apples: 30, bananas: 35, mangoes: 5, grapes: 40",
+         "apples: 40, bananas: 10, mangoes: 70, grapes: 60",
+         "apples: 40, bananas: 5, mangoes: 55, grapes: 30",
+         "apples: 45, bananas: 60, mangoes: 5, grapes: 15",
+         "apples: 5, bananas: 20, mangoes: 15, grapes: 20",
+         "apples: 5, bananas: 65, mangoes: 65, grapes: 25",
+         "apples: 55, bananas: 60, mangoes: 70, grapes: 35",
+         "apples: 60, bananas: 35, mangoes: 10, grapes: 40",
+         "apples: 60, bananas: 45, mangoes: 40, grapes: 70",
+         "apples: 60, bananas: 50, mangoes: 5, grapes: 25",
+         "apples: 65, bananas: 20, mangoes: 65, grapes: 10",
+         "apples: 70, bananas: 40, mangoes: 50, grapes: 20",
+         "apples: 70, bananas: 55, mangoes: 35, grapes: 30",
+         "apples: 70, bananas: 55, mangoes: 45, grapes: 50",
+         "basketball: 10, volleyball: 40, swimming: 25, running: 35",
+         "basketball: 10, volleyball: 60, swimming: 35, running: 40",
+         "basketball: 10, volleyball: 65, swimming: 35, running: 25",
+         "basketball: 15, volleyball: 30, swimming: 70, running: 10",
+         "basketball: 15, volleyball: 50, swimming: 45, running: 10",
+         "basketball: 25, volleyball: 40, swimming: 40, running: 50",
+         "basketball: 25, volleyball: 45, swimming: 70, running: 20",
+         "basketball: 30, volleyball: 55, swimming: 20, running: 60",
+         "basketball: 35, volleyball: 20, swimming: 65, running: 40",
+         "basketball: 35, volleyball: 5, swimming: 20, running: 20",
+         "basketball: 5, volleyball: 40, swimming: 45, running: 30",
+         "basketball: 50, volleyball: 15, swimming: 25, running: 20",
+         "basketball: 55, volleyball: 45, swimming: 55, running: 30",
+         "basketball: 55, volleyball: 55, swimming: 65, running: 70",
+         "basketball: 60, volleyball: 40, swimming: 35, running: 65",
+         "basketball: 60, volleyball: 40, swimming: 40, running: 15",
+         "basketball: 60, volleyball: 45, swimming: 5, running: 45",
+         "basketball: 60, volleyball: 65, swimming: 15, running: 40",
+         "basketball: 65, volleyball: 65, swimming: 55, running: 65",
+         "basketball: 70, volleyball: 5, swimming: 70, running: 50",
+         "cats: 10, dogs: 30, birds: 70, fish: 15",
+         "cats: 15, dogs: 35, birds: 20, fish: 25",
+         "cats: 20, dogs: 70, birds: 10, fish: 10",
+         "cats: 25, dogs: 10, birds: 40, fish: 65",
+         "cats: 25, dogs: 35, birds: 15, fish: 15",
+         "cats: 25, dogs: 55, birds: 60, fish: 70",
+         "cats: 25, dogs: 60, birds: 20, fish: 70",
+         "cats: 30, dogs: 20, birds: 20, fish: 40",
+         "cats: 30, dogs: 35, birds: 30, fish: 70",
+         "cats: 30, dogs: 55, birds: 20, fish: 55",
+         "cats: 35, dogs: 45, birds: 40, fish: 50",
+         "cats: 35, dogs: 60, birds: 55, fish: 10",
+         "cats: 40, dogs: 55, birds: 50, fish: 50",
+         "cats: 45, dogs: 40, birds: 50, fish: 15",
+         "cats: 5, dogs: 25, birds: 60, fish: 70",
+         "cats: 5, dogs: 5, birds: 25, fish: 20",
+         "cats: 5, dogs: 50, birds: 25, fish: 35",
+         "cats: 50, dogs: 20, birds: 15, fish: 35",
+         "cats: 55, dogs: 35, birds: 60, fish: 25",
+         "cats: 55, dogs: 40, birds: 30, fish: 20",
+         "cats: 55, dogs: 40, birds: 5, fish: 15",
+         "cats: 55, dogs: 5, birds: 50, fish: 25",
+         "cats: 55, dogs: 50, birds: 35, fish: 45",
+         "cats: 60, dogs: 70, birds: 5, fish: 30",
+         "cats: 65, dogs: 35, birds: 40, fish: 35",
+         "cats: 70, dogs: 10, birds: 5, fish: 45",
+         "roses: 10, sunflowers: 10, tulips: 30, daisies: 15",
+         "roses: 10, sunflowers: 40, tulips: 70, daisies: 20",
+         "roses: 10, sunflowers: 70, tulips: 25, daisies: 20",
+         "roses: 15, sunflowers: 45, tulips: 60, daisies: 55",
+         "roses: 20, sunflowers: 15, tulips: 35, daisies: 50",
+         "roses: 20, sunflowers: 20, tulips: 20, daisies: 70",
+         "roses: 20, sunflowers: 20, tulips: 30, daisies: 30",
+         "roses: 25, sunflowers: 15, tulips: 15, daisies: 70",
+         "roses: 30, sunflowers: 10, tulips: 20, daisies: 30",
+         "roses: 35, sunflowers: 10, tulips: 30, daisies: 65",
+         "roses: 35, sunflowers: 15, tulips: 20, daisies: 60",
+         "roses: 35, sunflowers: 15, tulips: 50, daisies: 30",
+         "roses: 35, sunflowers: 5, tulips: 65, daisies: 25",
+         "roses: 40, sunflowers: 20, tulips: 35, daisies: 35",
+         "roses: 40, sunflowers: 20, tulips: 35, daisies: 70",
+         "roses: 40, sunflowers: 30, tulips: 65, daisies: 50",
+         "roses: 50, sunflowers: 50, tulips: 5, daisies: 20",
+         "roses: 55, sunflowers: 35, tulips: 20, daisies: 10",
+         "roses: 60, sunflowers: 5, tulips: 65, daisies: 10",
+         "roses: 65, sunflowers: 45, tulips: 10, daisies: 35"
+        ],
+        "derived_from_values": [
+         "data_str"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F10",
+    "template": "{orientation} ",
+    "appears_in": [],
+    "nested_in": [
+     "F09"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "orientation"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the two bar orientations",
+        "members": [
+         "horizontal",
+         "vertical"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "orientation"
+    ]
+   }
+  ],
+  "lists": {},
+  "banks": {},
+  "value_derivations": [],
+  "reason_kinds": {}
+ }
+}

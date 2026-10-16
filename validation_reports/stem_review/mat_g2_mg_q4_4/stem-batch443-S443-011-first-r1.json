@@ -1,0 +1,858 @@
+{
+ "schema_version": 2,
+ "hash_version": 8,
+ "node_id": "mat_g2_mg_q4_4",
+ "record_id": "stem-batch443-S443-011-first-r1",
+ "role": "first",
+ "confirms": null,
+ "item_id": "S443-011",
+ "lc_hash": "6424ca4ab6fa1dac29bdb1085281f501cea9198b0c031abb981b165d434c372c",
+ "judged_by": "blind-stem-judge-claude-haiku-batch443-S443-011-first-r1",
+ "dispatch_id": "stem-batch443-S443-011-first-r1",
+ "filed_at": "2026-10-15T16:54:50Z",
+ "delivery": "Claude Code Agent tool, model=haiku, subagent_type=general-purpose; the judge was told to read only local_only/scratch/h4c/prompts/S443-011.prompt.txt (tests/stem_file.py prompt output, item S443-011; no lc id, no key or packets file in that directory) and reply with what it asks; dispatched with CLAUDE.md loaded (ruling 29). Blindness is a prompt contract, audited from the subagent transcript.",
+ "tool_uses_by_judge": "From the subagent transcript: 1 tool use(s), all Read of its own prompt file (806 lines, every line read); no other tool, path or search. Model reported in the transcript: claude-haiku-5-5.",
+ "dispatch_prompt_digest": "c6ef89b5c59545b2e4a83d19c1aa676a0f5505f1c5efb4bb69945b97fc2fd928",
+ "raw_reply": "{\"item\": \"S443-011\", \"clauses\": {\"identify\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F10\", \"template\": \"A {shape} has sides {l} cm and {w} cm. What is its perimeter?\", \"reasoning\": \"F10 names the figure through its shape slot (domain: repeats a generated value, printed: rectangle) and asks for its perimeter, so the learner must recognise the plane figure named. F10 is not in failing_families.\"}, \"measure\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F09\", \"template\": \"A triangle has sides {a} cm, {b} cm, and {c} cm. What is its perimeter?\", \"reasoning\": \"F09 gives three measured side lengths in cm (domain: values['sides'], 1 to 13) and the learner works from those measurements. F09 is not in failing_families.\"}, \"perimeter\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F08\", \"template\": \"A square has a side of {s} cm. What is its perimeter?\", \"reasoning\": \"F08 asks the perimeter question directly, with s drawn from values['sides'] (members 1, 2, 3, 5, 8, 9, 10, 13). F08 is not in failing_families.\"}, \"plane_figure\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F09\", \"template\": \"A triangle has sides {a} cm, {b} cm, and {c} cm. What is its perimeter?\", \"reasoning\": \"F09 names the triangle, a plane figure, as the object whose perimeter is asked. 'triangle' is in cumulative_vocab. F09 is not in failing_families.\"}, \"tools\": {\"verdict\": \"NOT_PRODUCIBLE\", \"family\": null, \"template\": null, \"reasoning\": \"No family prints a measuring tool or instrument. The declared task_type variants (identify_and_measure, measure_tools) are not named in any template_chosen_by_values, so the measure_tools variant selects no text and cannot be shown to produce a problem that addresses the clause 'tools'.\"}}, \"failing_families\": [\"F02\", \"F03\", \"F04\", \"F05\"], \"failing_templates\": [\"A rectangle has two sides of length {l} and two sides of width {w}.\", \"A square has 4 equal sides, each {s} {count_noun} long.\", \"Add all three sides: {a} + {b} + {c} = {answer}.\", \"Perimeter = 2 × ({l} + {w}) = 2 × {v} = {answer}.\"], \"overall\": \"FAIL\", \"reasoning\": \"F02 prints 'width' in every render (distinct l and w from values['sides'], members 1 to 13). 'width' is in neither cumulative_vocab nor introduces_vocab, so it is outside the lc's gates. F03's count_noun slot prints 'unit' or 'units' (domain: the noun or its singular); neither word is in cumulative_vocab. F04 is not chosen by any value (template_chosen_by_values is empty), so it can print for a rectangle or square, which have four sides; the template states 'all three sides', which is a false statement for those shapes. F05 uses grouping parentheses ('2 × (' with l and w), which a reader needs 'order of operations' to parse; 'order of operations' is in NOT_YET_KNOWN. F07 uses 'distance' in a plain-language gloss of perimeter; I did not flag it because it is an everyday word, not a measurement term. F08, F09 and F10 print only values from values['sides'] inside correct statements (square side, triangle sides, rectangle sides in cm) with cumulative_vocab words, and I found no fault in them. The clause 'tools' has no producing family, so the lc is not fully producible as written. Each failing family's template is copied exactly as printed in failing_templates.\"}",
+ "raw_reply_digest": "33e1067e6b8ad6035c9c92b04426be0dd8874e34df96b323bab1d46883960c4e",
+ "packet_digest": "e8eef3d5282661a62690241a5d138f996b6c864b826d2d9c1548c7dd71f08860",
+ "family_keys": {
+  "F01": {
+   "source": "backend/app/practice_gen/dna/base.py [gate perimeter]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F02": {
+   "source": "backend/app/practice_gen/dna/mg/perimeter.py",
+   "first_site": "backend/app/practice_gen/dna/mg/perimeter.py:392",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F03": {
+   "source": "backend/app/practice_gen/dna/mg/perimeter.py",
+   "first_site": "backend/app/practice_gen/dna/mg/perimeter.py:388",
+   "renderer": "",
+   "path": [
+    7,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F04": {
+   "source": "backend/app/practice_gen/dna/mg/perimeter.py",
+   "first_site": "backend/app/practice_gen/dna/mg/perimeter.py:396",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {
+    "a,b,c": [
+     6,
+     null
+    ]
+   }
+  },
+  "F05": {
+   "source": "backend/app/practice_gen/dna/mg/perimeter.py",
+   "first_site": "backend/app/practice_gen/dna/mg/perimeter.py:393",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F06": {
+   "source": "backend/app/practice_gen/dna/mg/perimeter.py",
+   "first_site": "backend/app/practice_gen/dna/mg/perimeter.py:389",
+   "renderer": "",
+   "path": [
+    7,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F07": {
+   "source": "backend/app/practice_gen/dna/mg/perimeter.py",
+   "first_site": "backend/app/practice_gen/dna/mg/perimeter.py:384",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F08": {
+   "source": "backend/app/practice_gen/generators/base_generator.py",
+   "first_site": "backend/app/practice_gen/generators/base_generator.py:1276",
+   "renderer": "",
+   "path": [
+    7,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F09": {
+   "source": "backend/app/practice_gen/generators/base_generator.py",
+   "first_site": "backend/app/practice_gen/generators/base_generator.py:1278",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {
+    "a,b,c": [
+     6,
+     null
+    ]
+   }
+  },
+  "F10": {
+   "source": "backend/app/practice_gen/generators/base_generator.py",
+   "first_site": "backend/app/practice_gen/generators/base_generator.py:1279",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  }
+ },
+ "packet": {
+  "item": "S443-011",
+  "competency": {
+   "text": "Identify and measure the perimeter of a plane figure using appropriate tools.",
+   "grade": 2,
+   "quarter": 4
+  },
+  "clauses": [
+   {
+    "id": "identify",
+    "kind": "task",
+    "clause": "Identify"
+   },
+   {
+    "id": "measure",
+    "kind": "task",
+    "clause": "measure"
+   },
+   {
+    "id": "perimeter",
+    "kind": "property",
+    "clause": "perimeter"
+   },
+   {
+    "id": "plane_figure",
+    "kind": "object",
+    "clause": "plane figure"
+   },
+   {
+    "id": "tools",
+    "kind": "representation",
+    "clause": "tools"
+   }
+  ],
+  "vocabulary": {
+   "student_vocab": [
+    "perimeter"
+   ],
+   "curriculum_vocab": [
+    "plane figure"
+   ],
+   "introduces_vocab": [
+    "perimeter",
+    "plane figure"
+   ],
+   "cumulative_vocab": [
+    "1 less",
+    "1 more",
+    "10th",
+    "1st",
+    "2nd",
+    "3rd",
+    "4th",
+    "5th",
+    "6th",
+    "7th",
+    "8th",
+    "9th",
+    "a.m.",
+    "addition",
+    "analog clock",
+    "bigger",
+    "bill",
+    "calendar",
+    "centavo",
+    "centimeter",
+    "circle",
+    "clockwise",
+    "cm",
+    "coin",
+    "compare",
+    "corner",
+    "count",
+    "counter-clockwise",
+    "data",
+    "decreasing pattern",
+    "denominator",
+    "difference",
+    "digit",
+    "division",
+    "elapsed time",
+    "equal",
+    "equal groups",
+    "estimate",
+    "even",
+    "expanded form",
+    "fraction",
+    "group",
+    "half",
+    "half hour",
+    "half turn",
+    "hour",
+    "how many",
+    "hundreds",
+    "increasing pattern",
+    "left",
+    "length",
+    "less",
+    "m",
+    "measure",
+    "meter",
+    "minute",
+    "missing number",
+    "more",
+    "multiplication",
+    "number",
+    "number line",
+    "numeral",
+    "numerator",
+    "odd",
+    "ones",
+    "p.m.",
+    "pattern",
+    "peso",
+    "pictograph",
+    "place value",
+    "product",
+    "quarter",
+    "quarter hour",
+    "quarter turn",
+    "quotient",
+    "rectangle",
+    "regrouping",
+    "repeating pattern",
+    "ruler",
+    "same",
+    "scale",
+    "side",
+    "similar fractions",
+    "skip counting",
+    "slide",
+    "smaller",
+    "solid figure",
+    "square",
+    "subtraction",
+    "sum",
+    "table",
+    "tens",
+    "thousand",
+    "total",
+    "translation",
+    "triangle",
+    "whole",
+    "₱"
+   ],
+   "NOT_YET_KNOWN": [
+    "L",
+    "area",
+    "axis",
+    "balance scale",
+    "bar graph",
+    "capacity",
+    "certain",
+    "equally likely",
+    "g",
+    "gram",
+    "impossible",
+    "improper fraction",
+    "intersecting",
+    "kg",
+    "kilogram",
+    "less likely",
+    "line",
+    "line of symmetry",
+    "line segment",
+    "liter",
+    "mL",
+    "mass",
+    "milliliter",
+    "missing term",
+    "more likely",
+    "nearest hundred",
+    "nearest ten",
+    "nearest thousand",
+    "order of operations",
+    "outcome",
+    "parallel",
+    "perpendicular",
+    "point",
+    "ray",
+    "remainder",
+    "round",
+    "sq. cm",
+    "square centimeter",
+    "symmetry",
+    "ten thousand",
+    "ten-thousands place"
+   ],
+   "sentence_max_words": 18,
+   "number_format": "no commas for numbers up to 1000"
+  },
+  "declared_variants": [
+   [
+    "context",
+    "pure"
+   ],
+   [
+    "context",
+    "word_problem"
+   ],
+   [
+    "shape",
+    "rectangle"
+   ],
+   [
+    "shape",
+    "square"
+   ],
+   [
+    "shape",
+    "triangle"
+   ],
+   [
+    "task_type",
+    "identify_and_measure"
+   ],
+   [
+    "task_type",
+    "measure_tools"
+   ]
+  ],
+  "declared_bounds": [
+   {
+    "task_type": [
+     "identify_and_measure",
+     "measure_tools"
+    ]
+   }
+  ],
+  "families": [
+   {
+    "id": "F01",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F07"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='perimeter')",
+        "requires_vocab": "perimeter",
+        "prints": "perimeter",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F02",
+    "template": "A rectangle has two sides of length {l} and two sides of width {w}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "l",
+       "w"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "values['sides']",
+        "members": [
+         1,
+         11,
+         13,
+         2,
+         3,
+         4,
+         5,
+         6,
+         7,
+         8,
+         9
+        ]
+       }
+      ],
+      "distinct_in_every_render": true
+     }
+    ],
+    "template_chosen_by_values": [
+     "shape"
+    ]
+   },
+   {
+    "id": "F03",
+    "template": "A square has 4 equal sides, each {s} {count_noun} long.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "s"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "values['sides']",
+        "members": [
+         1,
+         10,
+         13,
+         2,
+         3,
+         5,
+         8,
+         9
+        ],
+        "derived_from_values": [
+         "sides"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "count_noun"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the noun or its singular (dna.base.count_noun)",
+        "members": [
+         "unit",
+         "units"
+        ],
+        "derived_from_values": [
+         "sides"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "shape"
+    ]
+   },
+   {
+    "id": "F04",
+    "template": "Add all three sides: {a} + {b} + {c} = {answer}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "a",
+       "b",
+       "c"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "values['sides']",
+        "members": [
+         1,
+         10,
+         11,
+         12,
+         13,
+         2,
+         3,
+         4,
+         5,
+         6,
+         7,
+         8,
+         9
+        ]
+       }
+      ],
+      "distinct_in_every_render": false
+     },
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "answer",
+        "printed_runs": "3, 5, 7 to 9, 11, 13 to 33, 35",
+        "derived_from_values": [
+         "answer"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F05",
+    "template": "Perimeter = 2 × ({l} + {w}) = 2 × {v} = {answer}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "l",
+       "w"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "values['sides']",
+        "members": [
+         1,
+         11,
+         13,
+         2,
+         3,
+         4,
+         5,
+         6,
+         7,
+         8,
+         9
+        ]
+       }
+      ],
+      "distinct_in_every_render": true
+     },
+     {
+      "slots": [
+       "v"
+      ],
+      "domains": [
+       {
+        "domain": "a number computed by the generator",
+        "reason": "arithmetic",
+        "derived_from_values": [
+         "sides"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "answer",
+        "printed_runs": "6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48",
+        "derived_from_values": [
+         "answer"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "shape"
+    ]
+   },
+   {
+    "id": "F06",
+    "template": "Perimeter = 4 × {s} = {answer}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "s"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "values['sides']",
+        "members": [
+         1,
+         10,
+         13,
+         2,
+         3,
+         5,
+         8,
+         9
+        ],
+        "derived_from_values": [
+         "sides"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "answer",
+        "printed_runs": "4, 8, 12, 16, 20, 24, 28, 32, 36, 40, 44, 48, 52",
+        "derived_from_values": [
+         "answer"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "shape"
+    ]
+   },
+   {
+    "id": "F07",
+    "template": "The {perim_label} is the total distance around the {shape}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "perim_label"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F01"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "shape"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "shape",
+        "printed": [
+         "rectangle",
+         "square",
+         "triangle"
+        ],
+        "derived_from_values": [
+         "shape"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F08",
+    "template": "A square has a side of {s} cm. What is its perimeter?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "s"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "values['sides']",
+        "members": [
+         1,
+         10,
+         13,
+         2,
+         3,
+         5,
+         8,
+         9
+        ],
+        "derived_from_values": [
+         "sides"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "shape"
+    ]
+   },
+   {
+    "id": "F09",
+    "template": "A triangle has sides {a} cm, {b} cm, and {c} cm. What is its perimeter?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "a",
+       "b",
+       "c"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "values['sides']",
+        "members": [
+         1,
+         10,
+         11,
+         12,
+         13,
+         2,
+         3,
+         4,
+         5,
+         6,
+         7,
+         8,
+         9
+        ],
+        "derived_from_values": [
+         "sides"
+        ]
+       }
+      ],
+      "distinct_in_every_render": false
+     }
+    ],
+    "template_chosen_by_values": [
+     "shape"
+    ]
+   },
+   {
+    "id": "F10",
+    "template": "A {shape} has sides {l} cm and {w} cm. What is its perimeter?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "shape"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "shape",
+        "printed": [
+         "rectangle"
+        ],
+        "derived_from_values": [
+         "shape"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "l",
+       "w"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "values['sides']",
+        "members": [
+         1,
+         11,
+         13,
+         2,
+         3,
+         4,
+         5,
+         6,
+         7,
+         8,
+         9
+        ],
+        "derived_from_values": [
+         "sides"
+        ]
+       }
+      ],
+      "distinct_in_every_render": true
+     }
+    ],
+    "template_chosen_by_values": []
+   }
+  ],
+  "lists": {},
+  "banks": {},
+  "value_derivations": [],
+  "reason_kinds": {
+   "arithmetic": "a number the generator computes from the generated values named in src (a half, a sum, a difference, a running total, a place's digit). Its range is the image of those values' own domains; whether the arithmetic is RIGHT is the hint contract's (§16) and §1E's to check, not §14's."
+  }
+ }
+}

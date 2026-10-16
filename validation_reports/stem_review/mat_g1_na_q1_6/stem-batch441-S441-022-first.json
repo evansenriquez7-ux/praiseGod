@@ -1,0 +1,949 @@
+{
+ "schema_version": 2,
+ "hash_version": 8,
+ "node_id": "mat_g1_na_q1_6",
+ "record_id": "stem-batch441-S441-022-first",
+ "role": "first",
+ "confirms": null,
+ "item_id": "S441-022",
+ "lc_hash": "1db3d5126e6502b42f5296c404ed4f9bed6b8fcf1f127d8d04454efea07d8b71",
+ "judged_by": "blind-stem-judge-claude-haiku-batch441-S441-022-first",
+ "dispatch_id": "stem-batch441-S441-022-first",
+ "filed_at": "2026-10-15T16:46:48Z",
+ "delivery": "Claude Code Agent tool, model=haiku, subagent_type=general-purpose; the judge was told to read only local_only/scratch/h4c/prompts/S441-022.prompt.txt (tests/stem_file.py prompt output, item S441-022; no lc id, no key or packets file in that directory) and reply with what it asks; dispatched with CLAUDE.md loaded (ruling 29). Blindness is a prompt contract, audited from the subagent transcript.",
+ "tool_uses_by_judge": "From the subagent transcript: 1 tool use(s), all Read of its own prompt file (917 lines, every line read); no other tool, path or search. Model reported in the transcript: claude-haiku-5-5.",
+ "dispatch_prompt_digest": "41a759475fa4665808a3c61b2ab4f8c2a57f5b7468230e8a6717feb22c554f32",
+ "raw_reply": "{\"item\": \"S441-022\",\n \"clauses\": {\"compose\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F09\", \"template\": \"{question}\", \"reasoning\": \"Bank rows that ask the learner to find the total of two given groups (for example rows 15, 16, 19 to 21 of _ITEM_POOL) give the task of composing a total through F09, with 'in all' phrasing.\"},\n  \"decompose\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F09\", \"template\": \"{question}\", \"reasoning\": \"Bank rows that split a set of objects into two groups and ask for the other group (for example rows 1 to 6 and 22 to 28 of _ITEM_POOL) produce decomposition through F09.\"},\n  \"numbers\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F09\", \"template\": \"{question}\", \"reasoning\": \"Every bank row prints a count of numbers or objects, so the object clause is produced by F09.\"},\n  \"up_to_10\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F09\", \"template\": \"{question}\", \"reasoning\": \"Bank rows print totals and sets up to 10, for example the rows with 10 blocks, and the answer slot in F05 and F07 can reach 10.\"},\n  \"concrete_materials\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F09\", \"template\": \"{question}\", \"reasoning\": \"Bank rows show the objects as emoji, for example shells, stones, sticks, beads and buttons, through F09.\"},\n  \"5_is_5_and_0\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F09\", \"template\": \"{question}\", \"reasoning\": \"Bank rows that split 5 counters into two groups with one group holding all 5 (the row whose keyed answer is the 5 and 0 pair) produce the 5 and 0 pair through F09.\"},\n  \"4_and_1\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F09\", \"template\": \"{question}\", \"reasoning\": \"Bank rows that split 5 into two groups with one group holding 4 produce the 4 and 1 pair through F09.\"},\n  \"3_and_2\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F09\", \"template\": \"{question}\", \"reasoning\": \"Bank rows that split 5 into two groups with one group holding 3 produce the 3 and 2 pair through F09.\"},\n  \"2_and_3\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F09\", \"template\": \"{question}\", \"reasoning\": \"Bank rows that split 5 into two groups with one group holding 2 produce the 2 and 3 pair through F09.\"},\n  \"1_and_4\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F09\", \"template\": \"{question}\", \"reasoning\": \"Bank rows that split 5 into two groups with one group holding 1 produce the 1 and 4 pair through F09.\"},\n  \"0_and_5\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F09\", \"template\": \"{question}\", \"reasoning\": \"Bank rows that split 5 into two groups with one group empty produce the 0 and 5 pair through F09.\"}\n },\n \"failing_families\": [\"F06\", \"F09\"],\n \"failing_templates\": [\"{member}\", \"{question}\"],\n \"overall\": \"FAIL\",\n \"reasoning\": \"Rule 1 fails on two families. F09 ({question}, from the _ITEM_POOL question field, one_row_per_problem true): the vocabulary and sentence rule gives sentence_max_words 15, but the first sentence of bank row 13 (the 'These pairs each make 5' row) has 20 words, and the first sentence of bank row 14 (the 'Ana lists ways to make 5' row) has 21 words. Both are printed in full by F09, so a grade 1 learner can be shown a sentence over the declared limit. Other rows were checked and stay within 15 words per sentence, and no row uses NOT_YET_KNOWN vocabulary (bare 'missing' is not on that list; only 'missing number' and 'missing term' are). F06 ({member}, the generator's own distractor choices, which the domain lists in full): the member list includes the single number 5 (and 0, 1, 8, 9), and bank rows with keyed answer 5 (compose-total rows) are printed with F05/F07 answers. Nothing in the domain excludes 5 from being offered as a distractor for a keyed answer of 5, so two identical answer choices can appear. Single numbers are also offered as choices on pair items, which is off-shape though not false. F05, F07, F08, F01 to F04 pass: their values stay within 0 to 10, their hints are correct for the printed totals, and the bank distractors in rows checked never equal the keyed answer. Rule 2: every clause is producible through F09 ({question}); the pairs 5 and 0, 4 and 1, 3 and 2, 2 and 3, 1 and 4, 0 and 5 each have a bank row with that keyed answer.\"}",
+ "raw_reply_digest": "59571061e4772b37dee5f46755e81d451f6c643fb0499cf6af74f0b8f42faf36",
+ "packet_digest": "f4527a3c049f74de5a4213d71ee782a7d3d822c708cf959b618885d892f9039f",
+ "family_keys": {
+  "F01": {
+   "source": "backend/app/practice_gen/dna/na/compose_decompose_to_10.py",
+   "first_site": "backend/app/practice_gen/dna/na/compose_decompose_to_10.py:542",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F02": {
+   "source": "backend/app/practice_gen/dna/na/compose_decompose_to_10.py",
+   "first_site": "backend/app/practice_gen/dna/na/compose_decompose_to_10.py:538",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F03": {
+   "source": "backend/app/practice_gen/dna/na/compose_decompose_to_10.py",
+   "first_site": "backend/app/practice_gen/dna/na/compose_decompose_to_10.py:541",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F04": {
+   "source": "backend/app/practice_gen/dna/na/compose_decompose_to_10.py",
+   "first_site": "backend/app/practice_gen/dna/na/compose_decompose_to_10.py:543",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F05": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:32",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F06": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:39",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F07": {
+   "source": "backend/app/practice_gen/slots.py",
+   "first_site": "backend/app/practice_gen/slots.py:180",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F08": {
+   "source": "backend/app/practice_gen/slots.py",
+   "first_site": "backend/app/practice_gen/slots.py:182",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F09": {
+   "source": "backend/app/practice_gen/slots.py",
+   "first_site": "backend/app/practice_gen/slots.py:180",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  }
+ },
+ "packet": {
+  "item": "S441-022",
+  "competency": {
+   "text": "Compose and decompose numbers up to 10 using concrete materials (e.g., 5 is 5 and 0; 4 and 1; 3 and 2; 2 and 3; 1 and 4; 0 and 5).",
+   "grade": 1,
+   "quarter": 1
+  },
+  "clauses": [
+   {
+    "id": "compose",
+    "kind": "task",
+    "clause": "Compose"
+   },
+   {
+    "id": "decompose",
+    "kind": "task",
+    "clause": "decompose"
+   },
+   {
+    "id": "numbers",
+    "kind": "object",
+    "clause": "numbers"
+   },
+   {
+    "id": "up_to_10",
+    "kind": "range",
+    "clause": "up to 10"
+   },
+   {
+    "id": "concrete_materials",
+    "kind": "representation",
+    "clause": "concrete materials"
+   },
+   {
+    "id": "5_is_5_and_0",
+    "kind": "representation",
+    "clause": "5 is 5 and 0"
+   },
+   {
+    "id": "4_and_1",
+    "kind": "representation",
+    "clause": "4 and 1"
+   },
+   {
+    "id": "3_and_2",
+    "kind": "representation",
+    "clause": "3 and 2"
+   },
+   {
+    "id": "2_and_3",
+    "kind": "representation",
+    "clause": "2 and 3"
+   },
+   {
+    "id": "1_and_4",
+    "kind": "representation",
+    "clause": "1 and 4"
+   },
+   {
+    "id": "0_and_5",
+    "kind": "representation",
+    "clause": "0 and 5"
+   }
+  ],
+  "vocabulary": {
+   "student_vocab": [],
+   "curriculum_vocab": [
+    "compose",
+    "decompose",
+    "concrete materials",
+    "and"
+   ],
+   "introduces_vocab": [
+    "compose",
+    "decompose",
+    "concrete materials",
+    "and"
+   ],
+   "cumulative_vocab": [
+    "1 less",
+    "1 more",
+    "10th",
+    "1st",
+    "2nd",
+    "3rd",
+    "4th",
+    "5th",
+    "6th",
+    "7th",
+    "8th",
+    "9th",
+    "bigger",
+    "compare",
+    "count",
+    "equal",
+    "group",
+    "how many",
+    "left",
+    "less",
+    "more",
+    "number",
+    "number line",
+    "numeral",
+    "same",
+    "smaller",
+    "total"
+   ],
+   "NOT_YET_KNOWN": [
+    "L",
+    "a.m.",
+    "addition",
+    "analog clock",
+    "area",
+    "axis",
+    "balance scale",
+    "bar graph",
+    "bill",
+    "calendar",
+    "capacity",
+    "centavo",
+    "centimeter",
+    "certain",
+    "circle",
+    "clockwise",
+    "cm",
+    "coin",
+    "corner",
+    "counter-clockwise",
+    "data",
+    "decreasing pattern",
+    "denominator",
+    "difference",
+    "digit",
+    "division",
+    "elapsed time",
+    "equal groups",
+    "equally likely",
+    "estimate",
+    "even",
+    "expanded form",
+    "fraction",
+    "g",
+    "gram",
+    "half",
+    "half hour",
+    "half turn",
+    "hour",
+    "hundreds",
+    "impossible",
+    "improper fraction",
+    "increasing pattern",
+    "intersecting",
+    "kg",
+    "kilogram",
+    "length",
+    "less likely",
+    "line",
+    "line of symmetry",
+    "line segment",
+    "liter",
+    "m",
+    "mL",
+    "mass",
+    "measure",
+    "meter",
+    "milliliter",
+    "minute",
+    "missing number",
+    "missing term",
+    "more likely",
+    "multiplication",
+    "nearest hundred",
+    "nearest ten",
+    "nearest thousand",
+    "numerator",
+    "odd",
+    "ones",
+    "order of operations",
+    "outcome",
+    "p.m.",
+    "parallel",
+    "pattern",
+    "perimeter",
+    "perpendicular",
+    "peso",
+    "pictograph",
+    "place value",
+    "point",
+    "product",
+    "quarter",
+    "quarter hour",
+    "quarter turn",
+    "quotient",
+    "ray",
+    "rectangle",
+    "regrouping",
+    "remainder",
+    "repeating pattern",
+    "round",
+    "ruler",
+    "scale",
+    "side",
+    "similar fractions",
+    "skip counting",
+    "slide",
+    "solid figure",
+    "sq. cm",
+    "square",
+    "square centimeter",
+    "subtraction",
+    "sum",
+    "symmetry",
+    "table",
+    "ten thousand",
+    "ten-thousands place",
+    "tens",
+    "thousand",
+    "translation",
+    "triangle",
+    "whole",
+    "₱"
+   ],
+   "sentence_max_words": 15,
+   "number_format": "no commas, no thousands separator"
+  },
+  "declared_variants": [
+   [
+    "pair",
+    "0 and 5"
+   ],
+   [
+    "pair",
+    "1 and 4"
+   ],
+   [
+    "pair",
+    "2 and 3"
+   ],
+   [
+    "pair",
+    "3 and 2"
+   ],
+   [
+    "pair",
+    "4 and 1"
+   ],
+   [
+    "pair",
+    "5 and 0"
+   ],
+   [
+    "pair",
+    "7 and 3"
+   ],
+   [
+    "representation",
+    "concrete_objects"
+   ],
+   [
+    "task_type",
+    "compose_total"
+   ],
+   [
+    "task_type",
+    "decompose_pair"
+   ],
+   [
+    "task_type",
+    "name_the_pair"
+   ]
+  ],
+  "declared_bounds": [
+   {}
+  ],
+  "families": [
+   {
+    "id": "F01",
+    "template": "A group can have 0 objects. An empty group still counts.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F02",
+    "template": "Count all the objects first. There are {total} in all.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "total"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "target_total",
+        "printed_runs": "5, 10",
+        "derived_from_values": [
+         "target_total"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F03",
+    "template": "Count the group you can see. Then count the objects left over.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F04",
+    "template": "The two groups always go back together to make {total}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "total"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "target_total",
+        "printed_runs": "5, 10",
+        "derived_from_values": [
+         "target_total"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F05",
+    "template": "{answer}",
+    "appears_in": [
+     "correct_answer",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "result",
+        "printed": [
+         "0 and 5",
+         "0",
+         "1 and 4",
+         "10",
+         "1",
+         "2 and 3",
+         "2",
+         "3 and 2",
+         "3",
+         "4 and 1",
+         "4",
+         "5 and 0",
+         "5",
+         "7 and 3"
+        ],
+        "derived_from_values": [
+         "result"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F06",
+    "template": "{member}",
+    "appears_in": [
+     "distractors",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "member"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "QuestionContext.distractors (the generator's own)",
+        "members": [
+         "0 and 4",
+         "0",
+         "1 and 3",
+         "1 and 4",
+         "1 and 5",
+         "1",
+         "2 and 2",
+         "2 and 3",
+         "2",
+         "3 and 2",
+         "3 and 3",
+         "3",
+         "4 and 1",
+         "4 and 2",
+         "4",
+         "5 and 0",
+         "5 and 1",
+         "5 and 5",
+         "5",
+         "6 and 3",
+         "6",
+         "7 and 2",
+         "7 and 4",
+         "7",
+         "8",
+         "9"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F07",
+    "template": "{answer}",
+    "appears_in": [
+     "correct_answer",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "a field of a fixed item bank",
+        "field": "answer",
+        "bank": "_ITEM_POOL",
+        "derived_from_values": [
+         "answer",
+         "distractors",
+         "grade_min",
+         "pair",
+         "question",
+         "representation",
+         "target_total",
+         "task_type"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F08",
+    "template": "{distractors}",
+    "appears_in": [
+     "distractors",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "distractors"
+      ],
+      "domains": [
+       {
+        "domain": "a field of a fixed item bank",
+        "field": "distractors",
+        "bank": "_ITEM_POOL",
+        "derived_from_values": [
+         "answer",
+         "distractors",
+         "grade_min",
+         "pair",
+         "question",
+         "representation",
+         "target_total",
+         "task_type"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F09",
+    "template": "{question}",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "question"
+      ],
+      "domains": [
+       {
+        "domain": "a field of a fixed item bank",
+        "field": "question",
+        "bank": "_ITEM_POOL",
+        "derived_from_values": [
+         "answer",
+         "distractors",
+         "grade_min",
+         "pair",
+         "question",
+         "representation",
+         "target_total",
+         "task_type"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   }
+  ],
+  "lists": {},
+  "banks": {
+   "_ITEM_POOL": {
+    "fields": [
+     "answer",
+     "distractors",
+     "question"
+    ],
+    "one_row_per_problem": true,
+    "rows": [
+     {
+      "answer": "0",
+      "distractors": [
+       "1",
+       "5",
+       "2"
+      ],
+      "question": "Ana has 5 shells: 🐚🐚🐚🐚🐚 She puts 5 in one group. How many are in the other group?"
+     },
+     {
+      "answer": "1",
+      "distractors": [
+       "4",
+       "2",
+       "0"
+      ],
+      "question": "Ben has 5 stones: 🪨🪨🪨🪨🪨 He puts 4 in one group. How many are in the other group?"
+     },
+     {
+      "answer": "2",
+      "distractors": [
+       "3",
+       "1",
+       "5"
+      ],
+      "question": "Cita has 5 sticks: 🥢🥢🥢🥢🥢 She puts 3 in one group. How many are in the other group?"
+     },
+     {
+      "answer": "3",
+      "distractors": [
+       "2",
+       "4",
+       "1"
+      ],
+      "question": "Dino has 5 beads: 🔵🔵🔵🔵🔵 He puts 2 in one group. How many are in the other group?"
+     },
+     {
+      "answer": "4",
+      "distractors": [
+       "1",
+       "3",
+       "5"
+      ],
+      "question": "Ella has 5 buttons: 🔘🔘🔘🔘🔘 She puts 1 in one group. How many are in the other group?"
+     },
+     {
+      "answer": "5",
+      "distractors": [
+       "0",
+       "4",
+       "1"
+      ],
+      "question": "Fely has 5 counters: 🔴🔴🔴🔴🔴 One group has 0 counters. How many are in the other group?"
+     },
+     {
+      "answer": "5 and 0",
+      "distractors": [
+       "4 and 1",
+       "3 and 2",
+       "5 and 5"
+      ],
+      "question": "Fely puts 5 counters into two groups. One group has all 5. Which pair shows her groups?"
+     },
+     {
+      "answer": "4 and 1",
+      "distractors": [
+       "4 and 2",
+       "3 and 2",
+       "5 and 0"
+      ],
+      "question": "Ben puts 5 stones into two groups. One group has 4. Which pair shows his groups?"
+     },
+     {
+      "answer": "3 and 2",
+      "distractors": [
+       "3 and 3",
+       "4 and 1",
+       "2 and 2"
+      ],
+      "question": "Cita puts 5 sticks into two groups. One group has 3. Which pair shows her groups?"
+     },
+     {
+      "answer": "2 and 3",
+      "distractors": [
+       "2 and 2",
+       "1 and 4",
+       "3 and 3"
+      ],
+      "question": "Dino puts 5 beads into two groups. One group has 2. Which pair shows his groups?"
+     },
+     {
+      "answer": "1 and 4",
+      "distractors": [
+       "1 and 3",
+       "2 and 3",
+       "1 and 5"
+      ],
+      "question": "Ella puts 5 buttons into two groups. One group has 1. Which pair shows her groups?"
+     },
+     {
+      "answer": "0 and 5",
+      "distractors": [
+       "1 and 4",
+       "0 and 4",
+       "5 and 5"
+      ],
+      "question": "Ana puts 5 shells into two groups. One group is empty. Which pair shows her groups?"
+     },
+     {
+      "answer": "1 and 4",
+      "distractors": [
+       "1 and 3",
+       "2 and 2",
+       "4 and 2"
+      ],
+      "question": "These pairs each make 5: 5 and 0, 4 and 1, 3 and 2, 2 and 3, 0 and 5. Which pair also makes 5?"
+     },
+     {
+      "answer": "3 and 2",
+      "distractors": [
+       "3 and 3",
+       "5 and 1",
+       "2 and 2"
+      ],
+      "question": "Ana lists ways to make 5: 5 and 0, 4 and 1, 2 and 3, 1 and 4, 0 and 5. Which way is missing?"
+     },
+     {
+      "answer": "5",
+      "distractors": [
+       "4",
+       "6",
+       "3"
+      ],
+      "question": "Cita has 3 sticks and 2 sticks: 🥢🥢🥢 🥢🥢 How many sticks does she have in all?"
+     },
+     {
+      "answer": "5",
+      "distractors": [
+       "3",
+       "6",
+       "4"
+      ],
+      "question": "Ben has 4 stones and 1 stone: 🪨🪨🪨🪨 🪨 How many stones does he have in all?"
+     },
+     {
+      "answer": "10",
+      "distractors": [
+       "9",
+       "8",
+       "7"
+      ],
+      "question": "Dino has 7 blocks and 3 blocks: 🟦🟦🟦🟦🟦🟦🟦 🟦🟦🟦 How many blocks in all?"
+     },
+     {
+      "answer": "5",
+      "distractors": [
+       "0",
+       "4",
+       "6"
+      ],
+      "question": "Ana has 0 shells in one basket and 5 shells in another: 🐚🐚🐚🐚🐚 How many in all?"
+     },
+     {
+      "answer": "5",
+      "distractors": [
+       "0",
+       "4",
+       "6"
+      ],
+      "question": "Fely puts 5 counters in one group and 0 counters in another. How many in all?"
+     },
+     {
+      "answer": "5",
+      "distractors": [
+       "4",
+       "6",
+       "2"
+      ],
+      "question": "Dino has 2 beads and 3 beads: 🔵🔵 🔵🔵🔵 How many beads does he have in all?"
+     },
+     {
+      "answer": "5",
+      "distractors": [
+       "4",
+       "6",
+       "1"
+      ],
+      "question": "Ella has 1 button and 4 buttons: 🔘 🔘🔘🔘🔘 How many buttons does she have in all?"
+     },
+     {
+      "answer": "3",
+      "distractors": [
+       "7",
+       "4",
+       "2"
+      ],
+      "question": "Dino has 10 blocks: 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦 He puts 7 in one group. How many are in the other group?"
+     },
+     {
+      "answer": "7 and 3",
+      "distractors": [
+       "7 and 2",
+       "6 and 3",
+       "7 and 4"
+      ],
+      "question": "Dino puts 10 blocks into two groups. One group has 7. Which pair shows his groups?"
+     },
+     {
+      "answer": "1",
+      "distractors": [
+       "4",
+       "2",
+       "0"
+      ],
+      "question": "Take 5 stones from the box. Put 4 in one hand. How many are in your other hand?"
+     },
+     {
+      "answer": "2",
+      "distractors": [
+       "3",
+       "1",
+       "5"
+      ],
+      "question": "Get 5 counters. Put 3 in one group. How many counters are in the other group?"
+     },
+     {
+      "answer": "3",
+      "distractors": [
+       "2",
+       "4",
+       "1"
+      ],
+      "question": "Take 5 buttons. Put 2 in one hand. How many buttons are in your other hand?"
+     },
+     {
+      "answer": "0 and 5",
+      "distractors": [
+       "1 and 4",
+       "0 and 4",
+       "5 and 5"
+      ],
+      "question": "Take 5 shells. Put them into two groups so one group is empty. Which pair shows your groups?"
+     },
+     {
+      "answer": "3",
+      "distractors": [
+       "7",
+       "4",
+       "2"
+      ],
+      "question": "Get 10 blocks. Put 7 into one group. How many blocks are left over?"
+     },
+     {
+      "answer": "0",
+      "distractors": [
+       "1",
+       "5",
+       "2"
+      ],
+      "question": "Take 5 sticks. Hold all 5 in one hand. How many sticks are in your other hand?"
+     },
+     {
+      "answer": "1 and 4",
+      "distractors": [
+       "1 and 3",
+       "2 and 3",
+       "1 and 5"
+      ],
+      "question": "Get 5 beads. Put 1 in one group. Which pair shows your two groups?"
+     }
+    ],
+    "rows_left_out": 0
+   }
+  },
+  "value_derivations": [],
+  "reason_kinds": {}
+ }
+}

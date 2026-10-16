@@ -1,0 +1,755 @@
+{
+ "schema_version": 2,
+ "hash_version": 8,
+ "node_id": "mat_g1_na_q3_7",
+ "record_id": "stem-batch442-S442-015-first",
+ "role": "first",
+ "confirms": null,
+ "item_id": "S442-015",
+ "lc_hash": "16fbefd4a2105c308645897cd17b76a4c4080751c02653e95cf469ed8a9de331",
+ "judged_by": "blind-stem-judge-claude-haiku-batch442-S442-015-first",
+ "dispatch_id": "stem-batch442-S442-015-first",
+ "filed_at": "2026-10-15T16:46:57Z",
+ "delivery": "Claude Code Agent tool, model=haiku, subagent_type=general-purpose; the judge was told to read only local_only/scratch/h4c/prompts/S442-015.prompt.txt (tests/stem_file.py prompt output, item S442-015; no lc id, no key or packets file in that directory) and reply with what it asks; dispatched with CLAUDE.md loaded (ruling 29). Blindness is a prompt contract, audited from the subagent transcript.",
+ "tool_uses_by_judge": "From the subagent transcript: 1 tool use(s), all Read of its own prompt file (733 lines, every line read); no other tool, path or search. Model reported in the transcript: claude-haiku-5-5.",
+ "dispatch_prompt_digest": "dc9dfca947ad3f2cb06415b0b4214bdf635f0ce91e6c441e383d9ededbfc96fd",
+ "raw_reply": "{\"item\": \"S442-015\", \"clauses\": {\"create\": {\"verdict\": \"NOT_PRODUCIBLE\", \"family\": null, \"template\": null, \"reasoning\": \"declared_bounds lists only ask_type identify_valid, and declared_variants is empty. Every family (F02, F05, F06, F07, F08) gives the learner finished sequences to choose among. No family or variant has the learner build or continue a pattern, so the task verb in the competency is not produced.\"}, \"repeating_patterns\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F02\", \"template\": \"Create a repeating pattern with the repeating group: {elements_str}. Which sequence shows this pattern?\", \"reasoning\": \"F02 names a repeating pattern in question_text and format_data.sentence. Its elements_str slot is filled from repeat_group, whose values are two-element groups, and F07 prints the keyed six-element sequence that repeats each group three times.\"}, \"objects_images_or_numbers\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F02\", \"template\": \"Create a repeating pattern with the repeating group: {elements_str}. Which sequence shows this pattern?\", \"reasoning\": \"elements_str draws numeric groups (numbers from 1 to 14) and shape-name groups (rectangle, square, triangle). F07 and F08 print numeric and shape sequences as answer choices. Objects and images are represented only by shape names in the printed text.\"}}, \"failing_families\": [\"F02\", \"F05\", \"F06\"], \"failing_templates\": [\"Create a repeating pattern with the repeating group: {elements_str}. Which sequence shows this pattern?\", \"Use the repeating unit {elements_str} to build a repeating pattern. Which sequence correctly creates it?\", \"You want to create a repeating pattern using: {elements_str}. Which sequence correctly creates it?\"], \"overall\": \"FAIL\", \"reasoning\": \"Rule 1: F02, F05 and F06 tell the learner to create or build a repeating pattern, but declared_bounds allows only identify_valid, and each printed question asks the learner to select a finished sequence. The task wording is therefore short of the competency's create scope on every render. Other checks passed. No vocabulary term in the families is in NOT_YET_KNOWN; repeating group and repeating unit use only cumulative words. Sentence lengths are within 15 words per sentence: F02 has 10 words in its first sentence and 5 in its second, and F05 has 11 words in its first sentence. The F08 distractors each break the repeat rule, so no second answer is correct. F04 prints the full keyed answer in a hint, which leaks the answer but is not a Rule 1 category, so it is not listed as failing.\"}",
+ "raw_reply_digest": "052570becf9c9942dfc8fefe54db9b37a362b2839d0d119278778b245dcaf413",
+ "packet_digest": "46fc3bb456789ddc0b00ba9089ec3bdf04849a03713dbdee5b974ee37848861e",
+ "family_keys": {
+  "F01": {
+   "source": "backend/app/practice_gen/dna/na/patterns.py",
+   "first_site": "backend/app/practice_gen/dna/na/patterns.py:574",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F02": {
+   "source": "backend/app/practice_gen/dna/na/patterns.py",
+   "first_site": "backend/app/practice_gen/dna/na/patterns.py:314",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F03": {
+   "source": "backend/app/practice_gen/dna/na/patterns.py",
+   "first_site": "backend/app/practice_gen/dna/na/patterns.py:573",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F04": {
+   "source": "backend/app/practice_gen/dna/na/patterns.py",
+   "first_site": "backend/app/practice_gen/dna/na/patterns.py:575",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F05": {
+   "source": "backend/app/practice_gen/dna/na/patterns.py",
+   "first_site": "backend/app/practice_gen/dna/na/patterns.py:315",
+   "renderer": "",
+   "path": [
+    2,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F06": {
+   "source": "backend/app/practice_gen/dna/na/patterns.py",
+   "first_site": "backend/app/practice_gen/dna/na/patterns.py:313",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F07": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:32",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F08": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:39",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  }
+ },
+ "packet": {
+  "item": "S442-015",
+  "competency": {
+   "text": "Create repeating patterns using objects, images, or numbers.",
+   "grade": 1,
+   "quarter": 3
+  },
+  "clauses": [
+   {
+    "id": "create",
+    "kind": "task",
+    "clause": "Create"
+   },
+   {
+    "id": "repeating_patterns",
+    "kind": "object",
+    "clause": "repeating patterns"
+   },
+   {
+    "id": "objects_images_or_numbers",
+    "kind": "representation",
+    "clause": "objects, images, or numbers"
+   }
+  ],
+  "vocabulary": {
+   "student_vocab": [],
+   "curriculum_vocab": [
+    "create pattern"
+   ],
+   "introduces_vocab": [
+    "create pattern"
+   ],
+   "cumulative_vocab": [
+    "1 less",
+    "1 more",
+    "10th",
+    "1st",
+    "2nd",
+    "3rd",
+    "4th",
+    "5th",
+    "6th",
+    "7th",
+    "8th",
+    "9th",
+    "addition",
+    "bigger",
+    "compare",
+    "corner",
+    "count",
+    "difference",
+    "digit",
+    "equal",
+    "expanded form",
+    "group",
+    "how many",
+    "left",
+    "length",
+    "less",
+    "measure",
+    "missing number",
+    "more",
+    "number",
+    "number line",
+    "numeral",
+    "ones",
+    "pattern",
+    "place value",
+    "rectangle",
+    "repeating pattern",
+    "same",
+    "side",
+    "skip counting",
+    "smaller",
+    "square",
+    "subtraction",
+    "sum",
+    "tens",
+    "total",
+    "triangle"
+   ],
+   "NOT_YET_KNOWN": [
+    "L",
+    "a.m.",
+    "analog clock",
+    "area",
+    "axis",
+    "balance scale",
+    "bar graph",
+    "bill",
+    "calendar",
+    "capacity",
+    "centavo",
+    "centimeter",
+    "certain",
+    "circle",
+    "clockwise",
+    "cm",
+    "coin",
+    "counter-clockwise",
+    "data",
+    "decreasing pattern",
+    "denominator",
+    "division",
+    "elapsed time",
+    "equal groups",
+    "equally likely",
+    "estimate",
+    "even",
+    "fraction",
+    "g",
+    "gram",
+    "half",
+    "half hour",
+    "half turn",
+    "hour",
+    "hundreds",
+    "impossible",
+    "improper fraction",
+    "increasing pattern",
+    "intersecting",
+    "kg",
+    "kilogram",
+    "less likely",
+    "line",
+    "line of symmetry",
+    "line segment",
+    "liter",
+    "m",
+    "mL",
+    "mass",
+    "meter",
+    "milliliter",
+    "minute",
+    "missing term",
+    "more likely",
+    "multiplication",
+    "nearest hundred",
+    "nearest ten",
+    "nearest thousand",
+    "numerator",
+    "odd",
+    "order of operations",
+    "outcome",
+    "p.m.",
+    "parallel",
+    "perimeter",
+    "perpendicular",
+    "peso",
+    "pictograph",
+    "point",
+    "product",
+    "quarter",
+    "quarter hour",
+    "quarter turn",
+    "quotient",
+    "ray",
+    "regrouping",
+    "remainder",
+    "round",
+    "ruler",
+    "scale",
+    "similar fractions",
+    "slide",
+    "solid figure",
+    "sq. cm",
+    "square centimeter",
+    "symmetry",
+    "table",
+    "ten thousand",
+    "ten-thousands place",
+    "thousand",
+    "translation",
+    "whole",
+    "₱"
+   ],
+   "sentence_max_words": 15,
+   "number_format": "no commas, no thousands separator"
+  },
+  "declared_variants": [],
+  "declared_bounds": [
+   {
+    "pattern_type": "repeating",
+    "ask_type": "identify_valid"
+   }
+  ],
+  "families": [
+   {
+    "id": "F01",
+    "template": "Check each choice: the group must repeat in the same order, with nothing out of place.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": [
+     "repeat_group",
+     "task_type"
+    ]
+   },
+   {
+    "id": "F02",
+    "template": "Create a repeating pattern with the repeating group: {elements_str}. Which sequence shows this pattern?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "elements_str"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "repeat_group",
+        "printed": [
+         "1, 10",
+         "1, 2",
+         "1, 6",
+         "1, 8",
+         "10, 12",
+         "10, 1",
+         "10, 2",
+         "10, 8",
+         "10, 9",
+         "2, 10",
+         "2, 13",
+         "2, 1",
+         "2, 4",
+         "rectangle, square",
+         "rectangle, triangle",
+         "square, rectangle",
+         "square, triangle",
+         "triangle, rectangle",
+         "triangle, square"
+        ],
+        "derived_from_values": [
+         "repeat_group"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F03",
+    "template": "The repeating group is {group}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "group"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "repeat_group",
+        "printed": [
+         "1, 10",
+         "1, 14",
+         "1, 2",
+         "1, 3",
+         "1, 5",
+         "1, 6",
+         "1, 7",
+         "1, 8",
+         "10, 12",
+         "10, 14",
+         "10, 1",
+         "10, 2",
+         "10, 5",
+         "10, 7",
+         "10, 8",
+         "10, 9",
+         "2, 10",
+         "2, 13",
+         "2, 14",
+         "2, 1",
+         "2, 3",
+         "2, 4",
+         "2, 8",
+         "2, 9",
+         "rectangle, square",
+         "rectangle, triangle",
+         "square, rectangle",
+         "square, triangle",
+         "triangle, rectangle",
+         "triangle, square"
+        ],
+        "derived_from_values": [
+         "repeat_group"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "repeat_group",
+     "task_type"
+    ]
+   },
+   {
+    "id": "F04",
+    "template": "The sequence that does this is {answer}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "answer",
+        "printed": [
+         "1, 10, 1, 10, 1, 10",
+         "1, 14, 1, 14, 1, 14",
+         "1, 2, 1, 2, 1, 2",
+         "1, 3, 1, 3, 1, 3",
+         "1, 5, 1, 5, 1, 5",
+         "1, 6, 1, 6, 1, 6",
+         "1, 7, 1, 7, 1, 7",
+         "1, 8, 1, 8, 1, 8",
+         "10, 1, 10, 1, 10, 1",
+         "10, 12, 10, 12, 10, 12",
+         "10, 14, 10, 14, 10, 14",
+         "10, 2, 10, 2, 10, 2",
+         "10, 5, 10, 5, 10, 5",
+         "10, 7, 10, 7, 10, 7",
+         "10, 8, 10, 8, 10, 8",
+         "10, 9, 10, 9, 10, 9",
+         "2, 1, 2, 1, 2, 1",
+         "2, 10, 2, 10, 2, 10",
+         "2, 13, 2, 13, 2, 13",
+         "2, 14, 2, 14, 2, 14",
+         "2, 3, 2, 3, 2, 3",
+         "2, 4, 2, 4, 2, 4",
+         "2, 8, 2, 8, 2, 8",
+         "2, 9, 2, 9, 2, 9",
+         "rectangle, square, rectangle, square, rectangle, square",
+         "rectangle, triangle, rectangle, triangle, rectangle, triangle",
+         "square, rectangle, square, rectangle, square, rectangle",
+         "square, triangle, square, triangle, square, triangle",
+         "triangle, rectangle, triangle, rectangle, triangle, rectangle",
+         "triangle, square, triangle, square, triangle, square"
+        ],
+        "derived_from_values": [
+         "answer"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "repeat_group",
+     "task_type"
+    ]
+   },
+   {
+    "id": "F05",
+    "template": "Use the repeating unit {elements_str} to build a repeating pattern. Which sequence correctly creates it?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "elements_str"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "repeat_group",
+        "printed": [
+         "1, 10",
+         "1, 2",
+         "1, 7",
+         "1, 8",
+         "10, 14",
+         "10, 1",
+         "10, 2",
+         "10, 7",
+         "10, 9",
+         "2, 10",
+         "2, 1",
+         "2, 8",
+         "rectangle, square",
+         "rectangle, triangle",
+         "square, rectangle",
+         "square, triangle",
+         "triangle, rectangle",
+         "triangle, square"
+        ],
+        "derived_from_values": [
+         "repeat_group"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F06",
+    "template": "You want to create a repeating pattern using: {elements_str}. Which sequence correctly creates it?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "elements_str"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "repeat_group",
+        "printed": [
+         "1, 10",
+         "1, 14",
+         "1, 2",
+         "1, 3",
+         "1, 5",
+         "1, 7",
+         "10, 12",
+         "10, 14",
+         "10, 1",
+         "10, 2",
+         "10, 5",
+         "10, 7",
+         "10, 8",
+         "2, 10",
+         "2, 14",
+         "2, 1",
+         "2, 3",
+         "2, 4",
+         "2, 9",
+         "rectangle, square",
+         "rectangle, triangle",
+         "square, rectangle",
+         "square, triangle",
+         "triangle, rectangle",
+         "triangle, square"
+        ],
+        "derived_from_values": [
+         "repeat_group"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F07",
+    "template": "{answer}",
+    "appears_in": [
+     "correct_answer",
+     "format_data.mcq_options",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "answer",
+        "printed": [
+         "1, 10, 1, 10, 1, 10",
+         "1, 14, 1, 14, 1, 14",
+         "1, 2, 1, 2, 1, 2",
+         "1, 3, 1, 3, 1, 3",
+         "1, 5, 1, 5, 1, 5",
+         "1, 6, 1, 6, 1, 6",
+         "1, 7, 1, 7, 1, 7",
+         "1, 8, 1, 8, 1, 8",
+         "10, 1, 10, 1, 10, 1",
+         "10, 12, 10, 12, 10, 12",
+         "10, 14, 10, 14, 10, 14",
+         "10, 2, 10, 2, 10, 2",
+         "10, 5, 10, 5, 10, 5",
+         "10, 7, 10, 7, 10, 7",
+         "10, 8, 10, 8, 10, 8",
+         "10, 9, 10, 9, 10, 9",
+         "2, 1, 2, 1, 2, 1",
+         "2, 10, 2, 10, 2, 10",
+         "2, 13, 2, 13, 2, 13",
+         "2, 14, 2, 14, 2, 14",
+         "2, 3, 2, 3, 2, 3",
+         "2, 4, 2, 4, 2, 4",
+         "2, 8, 2, 8, 2, 8",
+         "2, 9, 2, 9, 2, 9",
+         "rectangle, square, rectangle, square, rectangle, square",
+         "rectangle, triangle, rectangle, triangle, rectangle, triangle",
+         "square, rectangle, square, rectangle, square, rectangle",
+         "square, triangle, square, triangle, square, triangle",
+         "triangle, rectangle, triangle, rectangle, triangle, rectangle",
+         "triangle, square, triangle, square, triangle, square"
+        ],
+        "derived_from_values": [
+         "answer"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F08",
+    "template": "{member}",
+    "appears_in": [
+     "distractors",
+     "format_data.mcq_options",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "member"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "QuestionContext.distractors (the generator's own)",
+        "members": [
+         "1, 0, 1, 2, 1, 2",
+         "1, 10, 0, 10, 1, 10",
+         "1, 10, 1, 10, 2, 10",
+         "1, 2, 4, 2, 1, 2",
+         "1, 4, 1, 2, 1, 2",
+         "1, 7, 1, 10, 1, 10",
+         "10, 0, 10, 1, 10, 1",
+         "10, 1, 10, 1, 9, 1",
+         "10, 10, 10, 12, 10, 12",
+         "10, 12, 10, 10, 10, 12",
+         "10, 12, 10, 12, 10, 9",
+         "10, 12, 10, 12, 7, 12",
+         "10, 12, 10, 12, 8, 12",
+         "10, 12, 10, 13, 10, 12",
+         "10, 14, 13, 14, 10, 14",
+         "10, 14, 8, 14, 10, 14",
+         "10, 16, 10, 14, 10, 14",
+         "10, 2, 10, 2, 10, 0",
+         "10, 2, 10, 2, 11, 2",
+         "10, 2, 10, 3, 10, 2",
+         "10, 2, 10, 4, 10, 2",
+         "10, 2, 11, 2, 10, 2",
+         "10, 2, 7, 2, 10, 2",
+         "10, 3, 10, 1, 10, 1",
+         "10, 5, 10, 5, 7, 5",
+         "10, 5, 10, 6, 10, 5",
+         "10, 7, 10, 5, 10, 5",
+         "2, 0, 2, 1, 2, 1",
+         "2, 1, 0, 1, 2, 1",
+         "2, 1, 2, 0, 2, 1",
+         "2, 1, 2, 1, 2, 0",
+         "2, 1, 2, 1, 2, 2",
+         "2, 1, 2, 1, 5, 1",
+         "2, 1, 2, 3, 2, 1",
+         "2, 1, 5, 1, 2, 1",
+         "2, 10, 2, 10, 2, 8",
+         "2, 10, 2, 10, 3, 10",
+         "2, 10, 2, 10, 5, 10",
+         "2, 10, 2, 13, 2, 10",
+         "2, 10, 4, 10, 2, 10",
+         "2, 2, 2, 4, 2, 4",
+         "2, 4, 2, 1, 2, 4",
+         "2, 4, 2, 4, 2, 7",
+         "2, 8, 2, 10, 2, 10",
+         "2, 8, 2, 6, 2, 8",
+         "2, 8, 3, 8, 2, 8",
+         "2, 9, 2, 8, 2, 8",
+         "rectangle, square, rectangle, square, rectangle, rectangle",
+         "rectangle, square, rectangle, square, rectangle, triangle",
+         "rectangle, square, rectangle, square, triangle, square",
+         "rectangle, square, rectangle, triangle, rectangle, square",
+         "rectangle, square, rectangle, triangle, rectangle, triangle",
+         "rectangle, square, square, square, rectangle, square",
+         "rectangle, square, triangle, square, rectangle, square",
+         "rectangle, triangle, rectangle, square, rectangle, square",
+         "rectangle, triangle, rectangle, square, rectangle, triangle",
+         "rectangle, triangle, rectangle, triangle, rectangle, square",
+         "rectangle, triangle, rectangle, triangle, square, triangle",
+         "rectangle, triangle, rectangle, triangle, triangle, triangle",
+         "rectangle, triangle, triangle, triangle, rectangle, triangle",
+         "square, rectangle, square, rectangle, rectangle, rectangle",
+         "square, rectangle, square, square, square, rectangle",
+         "square, rectangle, square, triangle, square, rectangle",
+         "square, rectangle, square, triangle, square, triangle",
+         "square, rectangle, triangle, rectangle, square, rectangle",
+         "square, square, square, rectangle, square, rectangle",
+         "square, square, square, triangle, square, triangle",
+         "square, triangle, rectangle, triangle, square, triangle",
+         "square, triangle, square, rectangle, square, rectangle",
+         "square, triangle, square, rectangle, square, triangle",
+         "square, triangle, square, square, square, triangle",
+         "square, triangle, square, triangle, rectangle, triangle",
+         "square, triangle, square, triangle, square, rectangle",
+         "square, triangle, square, triangle, square, square",
+         "square, triangle, square, triangle, triangle, triangle",
+         "square, triangle, triangle, triangle, square, triangle",
+         "triangle, rectangle, rectangle, rectangle, triangle, rectangle",
+         "triangle, rectangle, triangle, rectangle, rectangle, rectangle",
+         "triangle, rectangle, triangle, rectangle, square, rectangle",
+         "triangle, rectangle, triangle, rectangle, triangle, square",
+         "triangle, rectangle, triangle, rectangle, triangle, triangle",
+         "triangle, rectangle, triangle, square, triangle, rectangle",
+         "triangle, square, rectangle, square, triangle, square",
+         "triangle, square, square, square, triangle, square",
+         "triangle, square, triangle, square, rectangle, square",
+         "triangle, square, triangle, square, square, square",
+         "triangle, square, triangle, square, triangle, triangle",
+         "triangle, square, triangle, triangle, triangle, square",
+         "triangle, triangle, triangle, square, triangle, square"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   }
+  ],
+  "lists": {},
+  "banks": {},
+  "value_derivations": [],
+  "reason_kinds": {}
+ }
+}

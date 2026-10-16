@@ -1,0 +1,1119 @@
+{
+ "schema_version": 2,
+ "hash_version": 8,
+ "node_id": "mat_g3_na_q2_6",
+ "record_id": "stem-batch446-S446-010-first",
+ "role": "first",
+ "confirms": null,
+ "item_id": "S446-010",
+ "lc_hash": "7a78706f002cd256c78ee3edce73b1e21e8436b7e8b8c32bce72133bcb80a1bc",
+ "judged_by": "blind-stem-judge-claude-haiku-batch446-S446-010-first",
+ "dispatch_id": "stem-batch446-S446-010-first",
+ "filed_at": "2026-10-15T16:48:14Z",
+ "delivery": "Claude Code Agent tool, model=haiku, subagent_type=general-purpose; the judge was told to read only local_only/scratch/h4c/prompts/S446-010.prompt.txt (tests/stem_file.py prompt output, item S446-010; no lc id, no key or packets file in that directory) and reply with what it asks; dispatched with CLAUDE.md loaded (ruling 29). Blindness is a prompt contract, audited from the subagent transcript.",
+ "tool_uses_by_judge": "From the subagent transcript: 1 tool use(s), all Read of its own prompt file (1107 lines, every line read); no other tool, path or search. Model reported in the transcript: claude-haiku-5-5.",
+ "dispatch_prompt_digest": "8b4c830f66908c32ccda0f6ce880fdcf4ca65e9fc3a3e30f57279eee4990fc50",
+ "raw_reply": "{\"item\": \"S446-010\", \"clauses\": {\"addition_and_subtraction\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F07\", \"template\": \"{expression_str} = ___\", \"reasoning\": \"F07 prints expression_str from the repeats-a-generated-value domain, and the printed list mixes + and - operators in every expression shown, so the question asks the learner to add and subtract.\"}, \"3_to_4_numbers\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F07\", \"template\": \"{expression_str} = ___\", \"reasoning\": \"Every expression in the F07 printed list has 3 or 4 numbers, with 3 operators at most. The F04 step count (1 to 3) is consistent with that range.\"}, \"up_to_2_digits\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F07\", \"template\": \"{expression_str} = ___\", \"reasoning\": \"Every number in the F07 printed list is at most 2 digits (1 to 99). The printed values include 1-digit and 2-digit operands only.\"}, \"observing_correct_order_of_operations\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F07\", \"template\": \"{expression_str} = ___\", \"reasoning\": \"Expressions in F07 mix + and - in one sentence, so the learner must work left to right. F06 names the rule in hints (\\\"work left to right for + and −\\\"), and F07 is the question family that produces the problems.\"}}, \"failing_families\": [], \"failing_templates\": [], \"overall\": \"PASS\", \"reasoning\": \"F01 and F02 are vocabulary-gated: F01 prints \\\"number sentence\\\", which is not in NOT_YET_KNOWN, and F02 prints \\\"order of operations\\\", which this lc introduces. F03 (\\\"Evaluate the {expr_label}: {expr_str}.\\\") prints only observed expressions of 3 or 4 numbers, each at most 2 digits, using + and -. F04 (\\\"Step {i}: {prev} {op} {val} = {running}.\\\") has i from 1 to 3, op from + or -, and val from operands up to 98. Every observed running total is non-negative and at most 264. F05 (\\\"The answer is {answer}.\\\") prints observed answers from 0 to 264. F06 (\\\"Use the {order_label}: work left to right for + and −.\\\") states the left-to-right rule for + and -, which matches the competency's scope, since the generator uses no multiplication or division. F07 (\\\"{expression_str} = ___\\\") is the question. No family uses NOT_YET_KNOWN terms or the words gram, kilogram, mass, or capacity, and no slot exceeds the declared 2-digit operand range or the 3-to-4-number scope.\"}",
+ "raw_reply_digest": "9fab5991dc317a8ae406e722473ffc2e7a283e805c680786616b753cd4ca1fa7",
+ "packet_digest": "8d1d3a800ce2eab7679f86e318f51596c9e135c4c40a230c4f5f9829a18a85e7",
+ "family_keys": {
+  "F01": {
+   "source": "backend/app/practice_gen/dna/base.py [gate expression]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F02": {
+   "source": "backend/app/practice_gen/dna/base.py [gate order of operations]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F03": {
+   "source": "backend/app/practice_gen/dna/na/order_of_operations.py",
+   "first_site": "backend/app/practice_gen/dna/na/order_of_operations.py:244",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F04": {
+   "source": "backend/app/practice_gen/dna/na/order_of_operations.py",
+   "first_site": "backend/app/practice_gen/dna/na/order_of_operations.py:252",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F05": {
+   "source": "backend/app/practice_gen/dna/na/order_of_operations.py",
+   "first_site": "backend/app/practice_gen/dna/na/order_of_operations.py:254",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F06": {
+   "source": "backend/app/practice_gen/dna/na/order_of_operations.py",
+   "first_site": "backend/app/practice_gen/dna/na/order_of_operations.py:245",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F07": {
+   "source": "backend/app/practice_gen/dna/na/order_of_operations.py",
+   "first_site": "backend/app/practice_gen/dna/na/order_of_operations.py:184",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  }
+ },
+ "packet": {
+  "item": "S446-010",
+  "competency": {
+   "text": "Perform addition and subtraction of 3 to 4 numbers of up to 2 digits, observing correct order of operations.",
+   "grade": 3,
+   "quarter": 2
+  },
+  "clauses": [
+   {
+    "id": "addition_and_subtraction",
+    "kind": "task",
+    "clause": "addition and subtraction"
+   },
+   {
+    "id": "3_to_4_numbers",
+    "kind": "object",
+    "clause": "3 to 4 numbers"
+   },
+   {
+    "id": "up_to_2_digits",
+    "kind": "range",
+    "clause": "up to 2 digits"
+   },
+   {
+    "id": "observing_correct_order_of_operations",
+    "kind": "property",
+    "clause": "observing correct order of operations"
+   }
+  ],
+  "vocabulary": {
+   "student_vocab": [
+    "order of operations"
+   ],
+   "curriculum_vocab": [
+    "correct order of operations"
+   ],
+   "introduces_vocab": [
+    "order of operations",
+    "correct order of operations"
+   ],
+   "cumulative_vocab": [
+    "1 less",
+    "1 more",
+    "10th",
+    "1st",
+    "2nd",
+    "3rd",
+    "4th",
+    "5th",
+    "6th",
+    "7th",
+    "8th",
+    "9th",
+    "a.m.",
+    "addition",
+    "analog clock",
+    "area",
+    "bigger",
+    "bill",
+    "calendar",
+    "centavo",
+    "centimeter",
+    "circle",
+    "clockwise",
+    "cm",
+    "coin",
+    "compare",
+    "corner",
+    "count",
+    "counter-clockwise",
+    "data",
+    "decreasing pattern",
+    "denominator",
+    "difference",
+    "digit",
+    "division",
+    "elapsed time",
+    "equal",
+    "equal groups",
+    "estimate",
+    "even",
+    "expanded form",
+    "fraction",
+    "group",
+    "half",
+    "half hour",
+    "half turn",
+    "hour",
+    "how many",
+    "hundreds",
+    "increasing pattern",
+    "intersecting",
+    "left",
+    "length",
+    "less",
+    "line",
+    "line segment",
+    "m",
+    "measure",
+    "meter",
+    "minute",
+    "missing number",
+    "more",
+    "multiplication",
+    "nearest hundred",
+    "nearest ten",
+    "nearest thousand",
+    "number",
+    "number line",
+    "numeral",
+    "numerator",
+    "odd",
+    "ones",
+    "p.m.",
+    "parallel",
+    "pattern",
+    "perimeter",
+    "perpendicular",
+    "peso",
+    "pictograph",
+    "place value",
+    "point",
+    "product",
+    "quarter",
+    "quarter hour",
+    "quarter turn",
+    "quotient",
+    "ray",
+    "rectangle",
+    "regrouping",
+    "repeating pattern",
+    "round",
+    "ruler",
+    "same",
+    "scale",
+    "side",
+    "similar fractions",
+    "skip counting",
+    "slide",
+    "smaller",
+    "solid figure",
+    "sq. cm",
+    "square",
+    "square centimeter",
+    "subtraction",
+    "sum",
+    "table",
+    "ten thousand",
+    "ten-thousands place",
+    "tens",
+    "thousand",
+    "total",
+    "translation",
+    "triangle",
+    "whole",
+    "₱"
+   ],
+   "NOT_YET_KNOWN": [
+    "L",
+    "axis",
+    "balance scale",
+    "bar graph",
+    "capacity",
+    "certain",
+    "equally likely",
+    "g",
+    "gram",
+    "impossible",
+    "improper fraction",
+    "kg",
+    "kilogram",
+    "less likely",
+    "line of symmetry",
+    "liter",
+    "mL",
+    "mass",
+    "milliliter",
+    "missing term",
+    "more likely",
+    "outcome",
+    "remainder",
+    "symmetry"
+   ],
+   "sentence_max_words": 22,
+   "number_format": "space separator for thousands (e.g. 1 000)"
+  },
+  "declared_variants": [
+   [
+    "context",
+    "pure"
+   ],
+   [
+    "context",
+    "word_problem"
+   ],
+   [
+    "num_operands",
+    "four_terms"
+   ],
+   [
+    "num_operands",
+    "three_terms"
+   ],
+   [
+    "number_size",
+    "1_digit"
+   ],
+   [
+    "number_size",
+    "2_digit"
+   ],
+   [
+    "operation_mix",
+    "add_only"
+   ],
+   [
+    "operation_mix",
+    "mixed_add_sub"
+   ]
+  ],
+  "declared_bounds": [
+   {}
+  ],
+  "families": [
+   {
+    "id": "F01",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F03"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='expression')",
+        "requires_vocab": "expression",
+        "prints": "number sentence",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F02",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F06"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='order of operations')",
+        "requires_vocab": "order of operations",
+        "prints": "order of operations",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F03",
+    "template": "Evaluate the {expr_label}: {expr_str}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "expr_label"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F01"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "expr_str"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "expression_str",
+        "printed": [
+         "1 + 88 + 94 - 52",
+         "10 + 65 + 2",
+         "11 + 40 + 95",
+         "11 + 84 + 59",
+         "12 + 56 + 93 + 82",
+         "13 + 33 + 49",
+         "16 + 81 + 79 - 52",
+         "17 + 21 + 3",
+         "17 + 49 + 41",
+         "18 + 71 + 8 + 18",
+         "18 + 80 + 43",
+         "2 + 67 + 95",
+         "2 + 97 - 83 - 16",
+         "20 + 11 - 20 + 18",
+         "20 + 12 - 9",
+         "20 + 51 + 84 - 7",
+         "20 + 53 - 8 + 22",
+         "20 - 6 + 38 + 24",
+         "21 - 10 + 74 + 86",
+         "22 + 43 + 81 - 1",
+         "22 + 66 + 24",
+         "22 + 74 + 37",
+         "22 + 87 + 58 + 32",
+         "22 - 20 + 85 + 14",
+         "23 + 94 + 89",
+         "24 + 53 + 42",
+         "24 - 22 + 27",
+         "25 + 43 + 24 - 81",
+         "25 + 60 + 10",
+         "26 + 19 - 39 + 64",
+         "26 + 94 - 99",
+         "26 - 20 + 95",
+         "27 + 18 + 2 - 45",
+         "27 + 83 - 6",
+         "27 + 93 - 26",
+         "27 + 95 + 83",
+         "27 + 95 + 91",
+         "28 + 19 - 39",
+         "28 + 61 + 66",
+         "28 + 75 + 51",
+         "29 + 12 + 67",
+         "29 + 61 + 51",
+         "29 + 77 - 39",
+         "29 - 21 - 3 + 4",
+         "3 + 49 - 14",
+         "3 + 72 - 68 + 61",
+         "30 + 59 + 58 + 71",
+         "31 + 37 + 40",
+         "32 + 66 + 66 + 41",
+         "32 - 13 + 89 + 41",
+         "32 - 4 + 79",
+         "33 + 78 + 28",
+         "34 + 1 - 31",
+         "34 + 50 + 4",
+         "34 + 87 - 82",
+         "34 - 16 + 62 + 63",
+         "34 - 8 + 75 - 53",
+         "35 + 14 - 25 + 64",
+         "36 + 88 + 30 - 48",
+         "37 + 74 - 20 - 34",
+         "37 + 85 + 34 - 37",
+         "37 + 90 - 98",
+         "38 + 88 + 88 + 24",
+         "39 + 93 - 87",
+         "4 + 35 + 3",
+         "4 + 95 + 36",
+         "40 + 95 - 92",
+         "41 + 16 + 40",
+         "41 + 87 - 51 + 27",
+         "42 + 14 - 20",
+         "42 + 24 + 23 + 23",
+         "42 + 26 - 31 - 25",
+         "44 + 37 + 61 - 6",
+         "46 + 57 + 25 - 51",
+         "46 - 3 + 54 + 4",
+         "47 + 29 - 68 + 59",
+         "48 + 15 - 32",
+         "48 + 49 + 17",
+         "48 + 76 + 78",
+         "48 + 95 - 21",
+         "48 - 4 + 71 + 98",
+         "49 + 26 + 77 + 23",
+         "49 + 34 + 79 - 27",
+         "49 - 26 + 11",
+         "5 + 59 - 11 + 93",
+         "5 + 70 + 50 + 57",
+         "5 + 83 + 71 - 76",
+         "50 + 16 + 45 + 73",
+         "51 + 79 + 6 + 54",
+         "52 + 6 + 76",
+         "52 + 66 - 47",
+         "52 - 25 + 30 + 39",
+         "53 + 29 + 37",
+         "54 - 39 + 83 - 70",
+         "55 + 48 + 7",
+         "55 + 62 + 74",
+         "55 + 97 - 93 - 14",
+         "55 - 12 + 63",
+         "56 + 78 - 98",
+         "56 - 8 + 48",
+         "57 + 18 + 28 - 28",
+         "57 + 38 - 33 + 62",
+         "57 + 45 + 77",
+         "57 - 4 + 64",
+         "57 - 9 + 59 + 87",
+         "58 + 37 - 2 - 76",
+         "58 - 34 + 51",
+         "59 + 12 + 17 + 49",
+         "59 + 59 - 99",
+         "6 + 3 + 29",
+         "6 + 63 + 77",
+         "6 + 83 - 26 + 87",
+         "6 + 89 - 52 + 81",
+         "60 + 50 - 26 + 39",
+         "60 + 67 - 17",
+         "61 + 62 - 37 + 54",
+         "61 + 76 + 20 - 75",
+         "61 - 15 + 98",
+         "62 - 38 + 59",
+         "63 + 98 + 34",
+         "64 + 4 + 18",
+         "64 + 54 - 75",
+         "64 + 66 - 63 + 59",
+         "65 + 44 - 52",
+         "65 + 71 + 21",
+         "66 + 80 + 2 - 34",
+         "66 - 45 + 51",
+         "67 + 16 - 66",
+         "67 + 26 + 93 - 72",
+         "67 + 35 + 32",
+         "67 + 48 + 49",
+         "67 + 70 - 90 + 15",
+         "67 + 80 - 23 - 72",
+         "67 - 1 - 57 - 4",
+         "67 - 42 + 72",
+         "68 + 30 + 62",
+         "68 + 8 - 56 + 64",
+         "68 - 60 + 52 + 93",
+         "69 + 41 + 29 - 87",
+         "7 + 75 + 33",
+         "70 + 46 + 60",
+         "71 + 44 + 82 - 56",
+         "71 - 1 - 23 - 8",
+         "71 - 22 + 30",
+         "72 + 41 + 96",
+         "72 + 57 - 27 - 74",
+         "72 + 60 + 58 - 66",
+         "72 + 60 - 83",
+         "73 + 13 + 44",
+         "73 + 93 - 46 + 15",
+         "74 + 15 - 60 + 63",
+         "74 + 77 + 59",
+         "74 + 92 - 62",
+         "74 - 29 - 29",
+         "74 - 55 - 9",
+         "75 + 23 - 64 + 37",
+         "75 + 24 + 28 + 22",
+         "75 - 14 - 1 + 40",
+         "75 - 20 - 46",
+         "75 - 4 - 30 + 4",
+         "75 - 61 + 23",
+         "75 - 68 + 5 + 32",
+         "76 + 10 - 63 + 52",
+         "76 + 23 - 88",
+         "76 + 41 - 41 - 12",
+         "76 + 65 + 58",
+         "77 + 36 - 69",
+         "77 - 32 + 53 - 62",
+         "77 - 39 + 10",
+         "79 + 22 - 81",
+         "79 + 4 - 80 + 84",
+         "79 + 48 + 35 - 18",
+         "79 + 90 - 97",
+         "8 + 3 + 37 + 11",
+         "8 + 43 - 44",
+         "8 + 92 - 56",
+         "8 + 99 - 29",
+         "80 + 59 - 4 - 14",
+         "80 + 75 + 73",
+         "80 + 86 - 96",
+         "81 + 19 + 49 + 26",
+         "81 + 75 - 9",
+         "81 - 30 + 36",
+         "81 - 32 + 92 + 62",
+         "81 - 43 + 13",
+         "81 - 78 + 53",
+         "82 + 6 + 9",
+         "83 + 61 - 53 + 26",
+         "84 + 8 + 74 + 4",
+         "84 + 93 - 36",
+         "85 + 27 + 56",
+         "85 - 54 + 71 - 99",
+         "87 + 79 + 46",
+         "87 + 85 - 44 + 27",
+         "88 + 44 + 62 + 8",
+         "88 + 48 - 11 - 58",
+         "88 - 6 + 98",
+         "89 + 66 - 45 - 33",
+         "89 + 81 - 27",
+         "89 + 96 - 65 - 15",
+         "89 - 79 + 69",
+         "90 + 32 - 21",
+         "90 + 36 + 37 - 26",
+         "90 + 61 + 49",
+         "90 + 7 - 72 - 22",
+         "90 - 79 + 14",
+         "91 - 30 + 13",
+         "92 + 42 - 54",
+         "92 - 12 - 62",
+         "92 - 14 + 60",
+         "92 - 35 - 5 + 81",
+         "93 + 46 + 29 + 40",
+         "93 + 66 + 99 + 5",
+         "93 + 90 + 95 - 28",
+         "93 + 92 + 1 - 45",
+         "93 - 32 - 59",
+         "93 - 80 + 69 + 27",
+         "94 + 59 + 94",
+         "94 + 98 + 74 - 2",
+         "94 - 4 + 44 + 87",
+         "94 - 87 + 72 - 9",
+         "95 + 25 - 70",
+         "95 + 46 - 89 + 95",
+         "95 - 21 + 4",
+         "95 - 31 + 3 - 41",
+         "95 - 39 - 33",
+         "96 + 17 + 70",
+         "96 + 36 - 19 + 74",
+         "96 + 52 + 23",
+         "96 + 84 + 5 - 80",
+         "96 - 67 - 1",
+         "97 + 67 + 24 + 13",
+         "98 - 23 + 39 + 72",
+         "98 - 40 + 18",
+         "99 - 2 + 28 - 40",
+         "99 - 3 + 39",
+         "99 - 52 + 98",
+         "99 - 63 + 65",
+         "99 - 78 + 91",
+         "99 - 96 + 95 + 38"
+        ],
+        "derived_from_values": [
+         "expression_str"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F04",
+    "template": "Step {i}: {prev} {op} {val} = {running}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "i"
+      ],
+      "domains": [
+       {
+        "domain": "a number in a range",
+        "basis": "the step number, one per operator",
+        "lo": 1,
+        "hi": 3
+       }
+      ]
+     },
+     {
+      "slots": [
+       "prev",
+       "running"
+      ],
+      "domains": [
+       {
+        "domain": "a number computed by the generator",
+        "reason": "arithmetic",
+        "derived_from_values": [
+         "operands",
+         "operators"
+        ]
+       }
+      ],
+      "distinct_in_every_render": true
+     },
+     {
+      "slots": [
+       "op"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "values['operators']",
+        "members": [
+         "+",
+         "-"
+        ],
+        "derived_from_values": [
+         "operators"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "val"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "values['operands'] after the first",
+        "members": [
+         11,
+         12,
+         14,
+         15,
+         16,
+         17,
+         18,
+         19,
+         2,
+         22,
+         24,
+         26,
+         27,
+         28,
+         3,
+         30,
+         32,
+         34,
+         35,
+         36,
+         37,
+         38,
+         39,
+         4,
+         40,
+         44,
+         45,
+         46,
+         48,
+         49,
+         5,
+         50,
+         51,
+         54,
+         56,
+         58,
+         59,
+         60,
+         61,
+         62,
+         66,
+         67,
+         68,
+         7,
+         70,
+         71,
+         72,
+         74,
+         75,
+         78,
+         79,
+         8,
+         80,
+         82,
+         84,
+         86,
+         87,
+         88,
+         89,
+         9,
+         90,
+         93,
+         95,
+         96,
+         97,
+         98
+        ],
+        "derived_from_values": [
+         "operands"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F05",
+    "template": "The answer is {answer}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "answer",
+        "printed_runs": "0, 2 to 5, 7 to 12, 16 to 21, 23, 25 to 26, 28 to 29, 31, 34, 36 to 39, 41 to 45, 48 to 52, 56 to 57, 59, 62, 64, 67 to 68, 70 to 72, 74 to 80, 82 to 88, 92, 94 to 97, 100 to 101, 104 to 110, 112, 114 to 115, 117, 119, 121 to 124, 126, 130 to 131, 133 to 141, 143 to 150, 153 to 155, 157, 160, 164, 168, 170 to 171, 175 to 176, 179 to 180, 182 to 184, 186 to 187, 190 to 191, 194 to 195, 199 to 203, 205 to 206, 208 to 210, 212 to 213, 218, 221, 228, 238, 243, 247, 250, 263 to 264",
+        "derived_from_values": [
+         "answer"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F06",
+    "template": "Use the {order_label}: work left to right for + and −.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "order_label"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F02"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F07",
+    "template": "{expression_str} = ___",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "expression_str"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "expression_str",
+        "printed": [
+         "1 + 88 + 94 - 52",
+         "10 + 65 + 2",
+         "11 + 40 + 95",
+         "11 + 84 + 59",
+         "12 + 56 + 93 + 82",
+         "13 + 33 + 49",
+         "16 + 81 + 79 - 52",
+         "17 + 21 + 3",
+         "17 + 49 + 41",
+         "18 + 71 + 8 + 18",
+         "18 + 80 + 43",
+         "2 + 67 + 95",
+         "2 + 97 - 83 - 16",
+         "20 + 11 - 20 + 18",
+         "20 + 12 - 9",
+         "20 + 51 + 84 - 7",
+         "20 + 53 - 8 + 22",
+         "20 - 6 + 38 + 24",
+         "21 - 10 + 74 + 86",
+         "22 + 43 + 81 - 1",
+         "22 + 66 + 24",
+         "22 + 74 + 37",
+         "22 + 87 + 58 + 32",
+         "22 - 20 + 85 + 14",
+         "23 + 94 + 89",
+         "24 + 53 + 42",
+         "24 - 22 + 27",
+         "25 + 43 + 24 - 81",
+         "25 + 60 + 10",
+         "26 + 19 - 39 + 64",
+         "26 + 94 - 99",
+         "26 - 20 + 95",
+         "27 + 18 + 2 - 45",
+         "27 + 83 - 6",
+         "27 + 93 - 26",
+         "27 + 95 + 83",
+         "27 + 95 + 91",
+         "28 + 19 - 39",
+         "28 + 61 + 66",
+         "28 + 75 + 51",
+         "29 + 12 + 67",
+         "29 + 61 + 51",
+         "29 + 77 - 39",
+         "29 - 21 - 3 + 4",
+         "3 + 49 - 14",
+         "3 + 72 - 68 + 61",
+         "30 + 59 + 58 + 71",
+         "31 + 37 + 40",
+         "32 + 66 + 66 + 41",
+         "32 - 13 + 89 + 41",
+         "32 - 4 + 79",
+         "33 + 78 + 28",
+         "34 + 1 - 31",
+         "34 + 50 + 4",
+         "34 + 87 - 82",
+         "34 - 16 + 62 + 63",
+         "34 - 8 + 75 - 53",
+         "35 + 14 - 25 + 64",
+         "36 + 88 + 30 - 48",
+         "37 + 74 - 20 - 34",
+         "37 + 85 + 34 - 37",
+         "37 + 90 - 98",
+         "38 + 88 + 88 + 24",
+         "39 + 93 - 87",
+         "4 + 35 + 3",
+         "4 + 95 + 36",
+         "40 + 95 - 92",
+         "41 + 16 + 40",
+         "41 + 87 - 51 + 27",
+         "42 + 14 - 20",
+         "42 + 24 + 23 + 23",
+         "42 + 26 - 31 - 25",
+         "44 + 37 + 61 - 6",
+         "46 + 57 + 25 - 51",
+         "46 - 3 + 54 + 4",
+         "47 + 29 - 68 + 59",
+         "48 + 15 - 32",
+         "48 + 49 + 17",
+         "48 + 76 + 78",
+         "48 + 95 - 21",
+         "48 - 4 + 71 + 98",
+         "49 + 26 + 77 + 23",
+         "49 + 34 + 79 - 27",
+         "49 - 26 + 11",
+         "5 + 59 - 11 + 93",
+         "5 + 70 + 50 + 57",
+         "5 + 83 + 71 - 76",
+         "50 + 16 + 45 + 73",
+         "51 + 79 + 6 + 54",
+         "52 + 6 + 76",
+         "52 + 66 - 47",
+         "52 - 25 + 30 + 39",
+         "53 + 29 + 37",
+         "54 - 39 + 83 - 70",
+         "55 + 48 + 7",
+         "55 + 62 + 74",
+         "55 + 97 - 93 - 14",
+         "55 - 12 + 63",
+         "56 + 78 - 98",
+         "56 - 8 + 48",
+         "57 + 18 + 28 - 28",
+         "57 + 38 - 33 + 62",
+         "57 + 45 + 77",
+         "57 - 4 + 64",
+         "57 - 9 + 59 + 87",
+         "58 + 37 - 2 - 76",
+         "58 - 34 + 51",
+         "59 + 12 + 17 + 49",
+         "59 + 59 - 99",
+         "6 + 3 + 29",
+         "6 + 63 + 77",
+         "6 + 83 - 26 + 87",
+         "6 + 89 - 52 + 81",
+         "60 + 50 - 26 + 39",
+         "60 + 67 - 17",
+         "61 + 62 - 37 + 54",
+         "61 + 76 + 20 - 75",
+         "61 - 15 + 98",
+         "62 - 38 + 59",
+         "63 + 98 + 34",
+         "64 + 4 + 18",
+         "64 + 54 - 75",
+         "64 + 66 - 63 + 59",
+         "65 + 44 - 52",
+         "65 + 71 + 21",
+         "66 + 80 + 2 - 34",
+         "66 - 45 + 51",
+         "67 + 16 - 66",
+         "67 + 26 + 93 - 72",
+         "67 + 35 + 32",
+         "67 + 48 + 49",
+         "67 + 70 - 90 + 15",
+         "67 + 80 - 23 - 72",
+         "67 - 1 - 57 - 4",
+         "67 - 42 + 72",
+         "68 + 30 + 62",
+         "68 + 8 - 56 + 64",
+         "68 - 60 + 52 + 93",
+         "69 + 41 + 29 - 87",
+         "7 + 75 + 33",
+         "70 + 46 + 60",
+         "71 + 44 + 82 - 56",
+         "71 - 1 - 23 - 8",
+         "71 - 22 + 30",
+         "72 + 41 + 96",
+         "72 + 57 - 27 - 74",
+         "72 + 60 + 58 - 66",
+         "72 + 60 - 83",
+         "73 + 13 + 44",
+         "73 + 93 - 46 + 15",
+         "74 + 15 - 60 + 63",
+         "74 + 77 + 59",
+         "74 + 92 - 62",
+         "74 - 29 - 29",
+         "74 - 55 - 9",
+         "75 + 23 - 64 + 37",
+         "75 + 24 + 28 + 22",
+         "75 - 14 - 1 + 40",
+         "75 - 20 - 46",
+         "75 - 4 - 30 + 4",
+         "75 - 61 + 23",
+         "75 - 68 + 5 + 32",
+         "76 + 10 - 63 + 52",
+         "76 + 23 - 88",
+         "76 + 41 - 41 - 12",
+         "76 + 65 + 58",
+         "77 + 36 - 69",
+         "77 - 32 + 53 - 62",
+         "77 - 39 + 10",
+         "79 + 22 - 81",
+         "79 + 4 - 80 + 84",
+         "79 + 48 + 35 - 18",
+         "79 + 90 - 97",
+         "8 + 3 + 37 + 11",
+         "8 + 43 - 44",
+         "8 + 92 - 56",
+         "8 + 99 - 29",
+         "80 + 59 - 4 - 14",
+         "80 + 75 + 73",
+         "80 + 86 - 96",
+         "81 + 19 + 49 + 26",
+         "81 + 75 - 9",
+         "81 - 30 + 36",
+         "81 - 32 + 92 + 62",
+         "81 - 43 + 13",
+         "81 - 78 + 53",
+         "82 + 6 + 9",
+         "83 + 61 - 53 + 26",
+         "84 + 8 + 74 + 4",
+         "84 + 93 - 36",
+         "85 + 27 + 56",
+         "85 - 54 + 71 - 99",
+         "87 + 79 + 46",
+         "87 + 85 - 44 + 27",
+         "88 + 44 + 62 + 8",
+         "88 + 48 - 11 - 58",
+         "88 - 6 + 98",
+         "89 + 66 - 45 - 33",
+         "89 + 81 - 27",
+         "89 + 96 - 65 - 15",
+         "89 - 79 + 69",
+         "90 + 32 - 21",
+         "90 + 36 + 37 - 26",
+         "90 + 61 + 49",
+         "90 + 7 - 72 - 22",
+         "90 - 79 + 14",
+         "91 - 30 + 13",
+         "92 + 42 - 54",
+         "92 - 12 - 62",
+         "92 - 14 + 60",
+         "92 - 35 - 5 + 81",
+         "93 + 46 + 29 + 40",
+         "93 + 66 + 99 + 5",
+         "93 + 90 + 95 - 28",
+         "93 + 92 + 1 - 45",
+         "93 - 32 - 59",
+         "93 - 80 + 69 + 27",
+         "94 + 59 + 94",
+         "94 + 98 + 74 - 2",
+         "94 - 4 + 44 + 87",
+         "94 - 87 + 72 - 9",
+         "95 + 25 - 70",
+         "95 + 46 - 89 + 95",
+         "95 - 21 + 4",
+         "95 - 31 + 3 - 41",
+         "95 - 39 - 33",
+         "96 + 17 + 70",
+         "96 + 36 - 19 + 74",
+         "96 + 52 + 23",
+         "96 + 84 + 5 - 80",
+         "96 - 67 - 1",
+         "97 + 67 + 24 + 13",
+         "98 - 23 + 39 + 72",
+         "98 - 40 + 18",
+         "99 - 2 + 28 - 40",
+         "99 - 3 + 39",
+         "99 - 52 + 98",
+         "99 - 63 + 65",
+         "99 - 78 + 91",
+         "99 - 96 + 95 + 38"
+        ],
+        "derived_from_values": [
+         "expression_str"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   }
+  ],
+  "lists": {},
+  "banks": {},
+  "value_derivations": [],
+  "reason_kinds": {
+   "arithmetic": "a number the generator computes from the generated values named in src (a half, a sum, a difference, a running total, a place's digit). Its range is the image of those values' own domains; whether the arithmetic is RIGHT is the hint contract's (§16) and §1E's to check, not §14's."
+  }
+ }
+}

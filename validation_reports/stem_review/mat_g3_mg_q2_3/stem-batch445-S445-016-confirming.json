@@ -1,0 +1,489 @@
+{
+ "schema_version": 2,
+ "hash_version": 8,
+ "node_id": "mat_g3_mg_q2_3",
+ "record_id": "stem-batch445-S445-016-confirming",
+ "role": "confirming",
+ "confirms": "stem-batch445-S445-016-first",
+ "item_id": "S445-016",
+ "lc_hash": "c8e5b02447cf6889c09980d9ad4901d249fe17f89639d12f4d98be0018c69939",
+ "judged_by": "blind-stem-judge-claude-haiku-batch445-S445-016-confirming",
+ "dispatch_id": "stem-batch445-S445-016-confirming",
+ "filed_at": "2026-10-16T06:24:12Z",
+ "delivery": "Claude Code Agent tool, model=haiku, subagent_type=general-purpose; the judge was told to read only local_only/scratch/h4c/prompts/S445-016.prompt.txt (tests/stem_file.py prompt output, item S445-016; no lc id, no key or packets file in that directory) and reply with what it asks; dispatched with CLAUDE.md loaded (ruling 29). Blindness is a prompt contract, audited from the subagent transcript.",
+ "tool_uses_by_judge": "From the subagent transcript: 1 tool use(s), all Read of its own prompt file (497 lines, every line read); no other tool, path or search. Model reported in the transcript: claude-haiku-5-5.",
+ "dispatch_prompt_digest": "7f6475bd8c09148ba897bf218e9e1aae4045333559fcfbc560477e190b8edb3a",
+ "raw_reply": "{\"item\": \"S445-016\",\n \"clauses\": {\n  \"measure_capacity\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F05\", \"template\": \"Look at the {tool}. What is the {quantity} of {object_label}? Give your answer in {unit}.\", \"reasoning\": \"F05 with tool 'measuring cylinder' and quantity from nested F01 ('capacity') asks the learner to measure capacity.\"},\n  \"capacity_of_a_container\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F05\", \"template\": \"Look at the {tool}. What is the {quantity} of {object_label}? Give your answer in {unit}.\", \"reasoning\": \"The quantity slot takes F01 'capacity' and the object_label slot takes 'the container', 'the jug' or 'the bottle' from _CAPACITY_LABELS, so F05 addresses a container's capacity.\"},\n  \"liters_and_or_milliliters\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F05\", \"template\": \"Look at the {tool}. What is the {quantity} of {object_label}? Give your answer in {unit}.\", \"reasoning\": \"The unit slot repeats the generated unit, printed as 'L' and 'mL', so F05 asks for an answer in liters or milliliters.\"},\n  \"measuring_tools_for_capacity\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F05\", \"template\": \"Look at the {tool}. What is the {quantity} of {object_label}? Give your answer in {unit}.\", \"reasoning\": \"The tool slot offers 'measuring cylinder', a measuring tool for capacity, alongside 'scale'. F02 also names the measuring cylinder in hints.\"}\n },\n \"failing_families\": [\"F05\"],\n \"failing_templates\": [\"Look at the {tool}. What is the {quantity} of {object_label}? Give your answer in {unit}.\"],\n \"overall\": \"FAIL\",\n \"reasoning\": \"F05 is at fault. Its tool slot is the generator's own choice with members 'measuring cylinder' and 'scale'. A scale measures mass, not capacity, yet the quantity slot (nested F01, which prints only 'capacity') and the unit slot (printed 'L' and 'mL') are not tied to the tool slot. Any render with tool 'scale' therefore asks a learner to read a scale for capacity in L or mL, which is misleading (Rule 1). Other families checked: F01 prints only 'capacity', which is in student_vocab and is correct. F02 is a fixed hint; its phrase 'find the mark at the top of the liquid' is loose wording but I do not judge it a misleading statement, so it passes. F03 prints a computed reading from a value the packet does not declare, so its range cannot be judged from this packet; I do not fail it on that basis. F04 prints only option letters A to D. 'measuring cylinder' is not in curriculum_vocab, which lists 'graduated cylinder', but it is not a NOT_YET_KNOWN term, so it is not failed on vocabulary grounds.\"}",
+ "raw_reply_digest": "cff75b93b9de322520c0c246d456ac07aff83ffdea981a11413e2e2508a56103",
+ "packet_digest": "536d3dd7ecc777f31ed6a746c2758c54321be068d41b496b9c9ff709b89f01b1",
+ "family_keys": {
+  "F01": {
+   "source": "backend/app/practice_gen/dna/base.py [gate capacity]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F02": {
+   "source": "backend/app/practice_gen/dna/mg/mass_capacity.py",
+   "first_site": "backend/app/practice_gen/dna/mg/mass_capacity.py:454",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F03": {
+   "source": "backend/app/practice_gen/dna/mg/mass_capacity.py",
+   "first_site": "backend/app/practice_gen/dna/mg/mass_capacity.py:455",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F04": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:51",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F05": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_scale_read.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_scale_read.py:184",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  }
+ },
+ "packet": {
+  "item": "S445-016",
+  "competency": {
+   "text": "Measure capacity in liters (L) and/or milliliters (mL), using appropriate measuring tools.",
+   "grade": 3,
+   "quarter": 2
+  },
+  "clauses": [
+   {
+    "id": "measure_capacity",
+    "kind": "task",
+    "clause": "Measure capacity"
+   },
+   {
+    "id": "capacity_of_a_container",
+    "kind": "attribute",
+    "clause": "capacity"
+   },
+   {
+    "id": "liters_and_or_milliliters",
+    "kind": "unit",
+    "clause": "liters (L) and/or milliliters (mL)"
+   },
+   {
+    "id": "measuring_tools_for_capacity",
+    "kind": "object",
+    "clause": "measuring tools"
+   }
+  ],
+  "vocabulary": {
+   "student_vocab": [
+    "capacity",
+    "liter",
+    "milliliter",
+    "L",
+    "mL"
+   ],
+   "curriculum_vocab": [
+    "graduated cylinder",
+    "measuring cup"
+   ],
+   "introduces_vocab": [
+    "capacity",
+    "liter",
+    "L",
+    "milliliter",
+    "mL",
+    "graduated cylinder",
+    "measuring cup"
+   ],
+   "cumulative_vocab": [
+    "1 less",
+    "1 more",
+    "10th",
+    "1st",
+    "2nd",
+    "3rd",
+    "4th",
+    "5th",
+    "6th",
+    "7th",
+    "8th",
+    "9th",
+    "a.m.",
+    "addition",
+    "analog clock",
+    "area",
+    "balance scale",
+    "bigger",
+    "bill",
+    "calendar",
+    "centavo",
+    "centimeter",
+    "circle",
+    "clockwise",
+    "cm",
+    "coin",
+    "compare",
+    "corner",
+    "count",
+    "counter-clockwise",
+    "data",
+    "decreasing pattern",
+    "denominator",
+    "difference",
+    "digit",
+    "division",
+    "elapsed time",
+    "equal",
+    "equal groups",
+    "estimate",
+    "even",
+    "expanded form",
+    "fraction",
+    "g",
+    "gram",
+    "group",
+    "half",
+    "half hour",
+    "half turn",
+    "hour",
+    "how many",
+    "hundreds",
+    "increasing pattern",
+    "intersecting",
+    "kg",
+    "kilogram",
+    "left",
+    "length",
+    "less",
+    "line",
+    "line segment",
+    "m",
+    "mass",
+    "measure",
+    "meter",
+    "minute",
+    "missing number",
+    "more",
+    "multiplication",
+    "nearest hundred",
+    "nearest ten",
+    "nearest thousand",
+    "number",
+    "number line",
+    "numeral",
+    "numerator",
+    "odd",
+    "ones",
+    "order of operations",
+    "p.m.",
+    "parallel",
+    "pattern",
+    "perimeter",
+    "perpendicular",
+    "peso",
+    "pictograph",
+    "place value",
+    "point",
+    "product",
+    "quarter",
+    "quarter hour",
+    "quarter turn",
+    "quotient",
+    "ray",
+    "rectangle",
+    "regrouping",
+    "repeating pattern",
+    "round",
+    "ruler",
+    "same",
+    "scale",
+    "side",
+    "similar fractions",
+    "skip counting",
+    "slide",
+    "smaller",
+    "solid figure",
+    "sq. cm",
+    "square",
+    "square centimeter",
+    "subtraction",
+    "sum",
+    "table",
+    "ten thousand",
+    "ten-thousands place",
+    "tens",
+    "thousand",
+    "total",
+    "translation",
+    "triangle",
+    "whole",
+    "₱"
+   ],
+   "NOT_YET_KNOWN": [
+    "axis",
+    "bar graph",
+    "certain",
+    "equally likely",
+    "impossible",
+    "improper fraction",
+    "less likely",
+    "line of symmetry",
+    "missing term",
+    "more likely",
+    "outcome",
+    "remainder",
+    "symmetry"
+   ],
+   "sentence_max_words": 22,
+   "number_format": "space separator for thousands (e.g. 1 000)"
+  },
+  "declared_variants": [
+   [
+    "measurement_type",
+    "capacity"
+   ],
+   [
+    "task_type",
+    "read_measurement"
+   ],
+   [
+    "unit",
+    "g"
+   ],
+   [
+    "unit",
+    "kg"
+   ],
+   [
+    "unit",
+    "l"
+   ],
+   [
+    "unit",
+    "ml"
+   ]
+  ],
+  "declared_bounds": [
+   {
+    "measurement_type": "capacity",
+    "task_type": "read_measurement"
+   }
+  ],
+  "families": [
+   {
+    "id": "F01",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F05"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='capacity')",
+        "requires_vocab": "capacity",
+        "prints": "capacity",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F02",
+    "template": "Read the measuring cylinder: find the mark at the top of the liquid.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F03",
+    "template": "The capacity shown is {reading} {unit}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "reading"
+      ],
+      "domains": [
+       {
+        "domain": "a number computed by the generator",
+        "reason": "arithmetic",
+        "derived_from_values": [
+         "value"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "unit"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "unit",
+        "printed": [
+         "L",
+         "mL"
+        ],
+        "derived_from_values": [
+         "unit"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F04",
+    "template": "{key}",
+    "appears_in": [
+     "correct_answer"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "key"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the option keys this item shows",
+        "members": [
+         "A",
+         "B",
+         "C",
+         "D"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F05",
+    "template": "Look at the {tool}. What is the {quantity} of {object_label}? Give your answer in {unit}.",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "tool"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the two instruments",
+        "members": [
+         "measuring cylinder",
+         "scale"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "quantity"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F01"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "object_label"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "_CAPACITY_LABELS"
+       }
+      ]
+     },
+     {
+      "slots": [
+       "unit"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "unit",
+        "printed": [
+         "L",
+         "mL"
+        ],
+        "derived_from_values": [
+         "unit"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   }
+  ],
+  "lists": {
+   "_CAPACITY_LABELS": [
+    "the container",
+    "the jug",
+    "the bottle"
+   ]
+  },
+  "banks": {},
+  "value_derivations": [],
+  "reason_kinds": {
+   "arithmetic": "a number the generator computes from the generated values named in src (a half, a sum, a difference, a running total, a place's digit). Its range is the image of those values' own domains; whether the arithmetic is RIGHT is the hint contract's (§16) and §1E's to check, not §14's."
+  }
+ }
+}

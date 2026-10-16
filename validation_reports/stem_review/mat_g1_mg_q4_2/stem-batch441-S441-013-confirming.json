@@ -1,0 +1,695 @@
+{
+ "schema_version": 2,
+ "hash_version": 8,
+ "node_id": "mat_g1_mg_q4_2",
+ "record_id": "stem-batch441-S441-013-confirming",
+ "role": "confirming",
+ "confirms": "stem-batch441-S441-013-first",
+ "item_id": "S441-013",
+ "lc_hash": "3a0c0a07b7e74f05bf1cf69b5b3cc8f2e8a1b17b177c74448bbfc2ea27a68caf",
+ "judged_by": "blind-stem-judge-claude-haiku-batch441-S441-013-confirming",
+ "dispatch_id": "stem-batch441-S441-013-confirming",
+ "filed_at": "2026-10-16T04:56:25Z",
+ "delivery": "Claude Code Agent tool, model=haiku, subagent_type=general-purpose; the judge was told to read only local_only/scratch/h4c/prompts/S441-013.prompt.txt (tests/stem_file.py prompt output, item S441-013; no lc id, no key or packets file in that directory) and reply with what it asks; dispatched with CLAUDE.md loaded (ruling 29). Blindness is a prompt contract, audited from the subagent transcript.",
+ "tool_uses_by_judge": "From the subagent transcript: 1 tool use(s), all Read of its own prompt file (673 lines, every line read); no other tool, path or search. Model reported in the transcript: claude-haiku-5-5.",
+ "dispatch_prompt_digest": "0b9ac16dad1bf79c5726fb9807071989239d5e62e730ecae7d5b39f8db3c8170",
+ "raw_reply": "{\"item\": \"S441-013\", \"clauses\": {\"give\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F05\", \"template\": \"What {unit_label} comes right after {v}?\", \"reasoning\": \"F05 asks the learner to name the day or month that follows a given value, which addresses the task of giving the units in order. unit_label can print 'day of the week' or 'month of the year', and v repeats a day or month value from reference_name.\"}, \"days_of_the_week\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F05\", \"template\": \"What {unit_label} comes right after {v}?\", \"reasoning\": \"With unit_label set to 'day of the week' and v set to one of the day values in the reference_name list, F05 produces a question about the order of the days of the week.\"}, \"months_of_the_year\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F05\", \"template\": \"What {unit_label} comes right after {v}?\", \"reasoning\": \"With unit_label set to 'month of the year' and v set to one of the month values in the reference_name list, F05 produces a question about the order of the months of the year.\"}, \"correct_order\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F06\", \"template\": \"What {unit_label} comes right before {v}?\", \"reasoning\": \"F06 asks for the unit that precedes a given day or month, which tests the correct order of both sequences. The same domain limitation noted for F05 applies to its unit and v pairing.\"}}, \"failing_families\": [\"F02\", \"F03\", \"F05\", \"F06\"], \"failing_templates\": [\"{term}\", \"The {elapsed_label} is the number of days or weeks that have passed.\", \"What {unit_label} comes right after {v}?\", \"What {unit_label} comes right before {v}?\"], \"overall\": \"FAIL\", \"reasoning\": \"F03 is a hint whose slot is filled from F02, which prints 'how much time has passed'. The result reads ungrammatically for a grade 1 learner, and its concept of days or weeks that have passed is elapsed time, which is outside this lc's clauses and near the NOT_YET_KNOWN term 'elapsed time'. F02 is the source of that phrase and is judged with it. F05 and F06 each draw unit_label from 'day of the week' or 'month of the year' independently of v, which repeats reference_name values covering both days and months, and no value_derivations link the two. So a question can pair the day unit with a month value, or the month unit with a day value, and the resulting question is wrong for the learner. F07 and F08 are judged as answer choices and pass on the packet as shown: F08 members are drawn from the generator's own distractor list, and the packet does not show whether a distractor can equal the keyed answer. F01 and F04 pass as text: 'date chart' is not in NOT_YET_KNOWN, and the packet does not show a chart being printed with the item.\"}",
+ "raw_reply_digest": "60181d428536a05f83ef8ba463c9114d8cfccac35567a516176f5aabf385fe4e",
+ "packet_digest": "4deb27d3d0d7b633204bdedf00b1d9c5de654e05ce05ff865852a725376c1fc2",
+ "family_keys": {
+  "F01": {
+   "source": "backend/app/practice_gen/dna/base.py [gate calendar]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F02": {
+   "source": "backend/app/practice_gen/dna/base.py [gate elapsed]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F03": {
+   "source": "backend/app/practice_gen/dna/mg/calendar.py",
+   "first_site": "backend/app/practice_gen/dna/mg/calendar.py:452",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F04": {
+   "source": "backend/app/practice_gen/dna/mg/calendar.py",
+   "first_site": "backend/app/practice_gen/dna/mg/calendar.py:451",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F05": {
+   "source": "backend/app/practice_gen/dna/mg/calendar.py",
+   "first_site": "backend/app/practice_gen/dna/mg/calendar.py:329",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F06": {
+   "source": "backend/app/practice_gen/dna/mg/calendar.py",
+   "first_site": "backend/app/practice_gen/dna/mg/calendar.py:332",
+   "renderer": "",
+   "path": [
+    2,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F07": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:32",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F08": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:39",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  }
+ },
+ "packet": {
+  "item": "S441-013",
+  "competency": {
+   "text": "Give the days of the week and months of the year in the correct order.",
+   "grade": 1,
+   "quarter": 4
+  },
+  "clauses": [
+   {
+    "id": "give",
+    "kind": "task",
+    "clause": "Give"
+   },
+   {
+    "id": "days_of_the_week",
+    "kind": "object",
+    "clause": "days of the week"
+   },
+   {
+    "id": "months_of_the_year",
+    "kind": "object",
+    "clause": "months of the year"
+   },
+   {
+    "id": "correct_order",
+    "kind": "property",
+    "clause": "correct order"
+   }
+  ],
+  "vocabulary": {
+   "student_vocab": [],
+   "curriculum_vocab": [
+    "days of the week",
+    "months of the year",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday",
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+   ],
+   "introduces_vocab": [
+    "days of the week",
+    "months of the year",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday",
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+   ],
+   "cumulative_vocab": [
+    "1 less",
+    "1 more",
+    "10th",
+    "1st",
+    "2nd",
+    "3rd",
+    "4th",
+    "5th",
+    "6th",
+    "7th",
+    "8th",
+    "9th",
+    "addition",
+    "analog clock",
+    "bigger",
+    "bill",
+    "clockwise",
+    "coin",
+    "compare",
+    "corner",
+    "count",
+    "counter-clockwise",
+    "data",
+    "difference",
+    "digit",
+    "equal",
+    "expanded form",
+    "fraction",
+    "group",
+    "half",
+    "half hour",
+    "half turn",
+    "hour",
+    "how many",
+    "left",
+    "length",
+    "less",
+    "measure",
+    "missing number",
+    "more",
+    "number",
+    "number line",
+    "numeral",
+    "ones",
+    "pattern",
+    "peso",
+    "pictograph",
+    "place value",
+    "quarter",
+    "quarter hour",
+    "quarter turn",
+    "rectangle",
+    "repeating pattern",
+    "same",
+    "side",
+    "skip counting",
+    "smaller",
+    "square",
+    "subtraction",
+    "sum",
+    "table",
+    "tens",
+    "total",
+    "triangle",
+    "whole",
+    "₱"
+   ],
+   "NOT_YET_KNOWN": [
+    "L",
+    "a.m.",
+    "area",
+    "axis",
+    "balance scale",
+    "bar graph",
+    "calendar",
+    "capacity",
+    "centavo",
+    "centimeter",
+    "certain",
+    "circle",
+    "cm",
+    "decreasing pattern",
+    "denominator",
+    "division",
+    "elapsed time",
+    "equal groups",
+    "equally likely",
+    "estimate",
+    "even",
+    "g",
+    "gram",
+    "hundreds",
+    "impossible",
+    "improper fraction",
+    "increasing pattern",
+    "intersecting",
+    "kg",
+    "kilogram",
+    "less likely",
+    "line",
+    "line of symmetry",
+    "line segment",
+    "liter",
+    "m",
+    "mL",
+    "mass",
+    "meter",
+    "milliliter",
+    "minute",
+    "missing term",
+    "more likely",
+    "multiplication",
+    "nearest hundred",
+    "nearest ten",
+    "nearest thousand",
+    "numerator",
+    "odd",
+    "order of operations",
+    "outcome",
+    "p.m.",
+    "parallel",
+    "perimeter",
+    "perpendicular",
+    "point",
+    "product",
+    "quotient",
+    "ray",
+    "regrouping",
+    "remainder",
+    "round",
+    "ruler",
+    "scale",
+    "similar fractions",
+    "slide",
+    "solid figure",
+    "sq. cm",
+    "square centimeter",
+    "symmetry",
+    "ten thousand",
+    "ten-thousands place",
+    "thousand",
+    "translation"
+   ],
+   "sentence_max_words": 15,
+   "number_format": "no commas, no thousands separator"
+  },
+  "declared_variants": [
+   [
+    "calendar_feature",
+    "dates"
+   ],
+   [
+    "calendar_feature",
+    "days"
+   ],
+   [
+    "calendar_feature",
+    "days_order"
+   ],
+   [
+    "calendar_feature",
+    "full_calendar"
+   ],
+   [
+    "calendar_feature",
+    "months"
+   ],
+   [
+    "calendar_feature",
+    "months_order"
+   ],
+   [
+    "calendar_feature",
+    "weeks"
+   ],
+   [
+    "task_type",
+    "sequence"
+   ]
+  ],
+  "declared_bounds": [
+   {
+    "task_type": "sequence"
+   }
+  ],
+  "families": [
+   {
+    "id": "F01",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F04"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='calendar')",
+        "requires_vocab": "calendar",
+        "prints": "date chart",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F02",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F03"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='elapsed')",
+        "requires_vocab": "elapsed",
+        "prints": "how much time has passed",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F03",
+    "template": "The {elapsed_label} is the number of days or weeks that have passed.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "elapsed_label"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F02"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F04",
+    "template": "Use the {cal_label} to find the answer.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "cal_label"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F01"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F05",
+    "template": "What {unit_label} comes right after {v}?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "unit_label"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the two sequence units",
+        "members": [
+         "day of the week",
+         "month of the year"
+        ],
+        "derived_from_values": [
+         "unit"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "v"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "reference_name",
+        "printed": [
+         "April",
+         "August",
+         "December",
+         "February",
+         "Friday",
+         "January",
+         "July",
+         "June",
+         "March",
+         "May",
+         "Monday",
+         "November",
+         "October",
+         "Saturday",
+         "September",
+         "Sunday",
+         "Thursday",
+         "Tuesday",
+         "Wednesday"
+        ],
+        "derived_from_values": [
+         "reference_name"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F06",
+    "template": "What {unit_label} comes right before {v}?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "unit_label"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the two sequence units",
+        "members": [
+         "day of the week",
+         "month of the year"
+        ],
+        "derived_from_values": [
+         "unit"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "v"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "reference_name",
+        "printed": [
+         "April",
+         "August",
+         "December",
+         "February",
+         "Friday",
+         "January",
+         "July",
+         "June",
+         "March",
+         "May",
+         "Monday",
+         "November",
+         "October",
+         "Saturday",
+         "September",
+         "Sunday",
+         "Thursday",
+         "Tuesday",
+         "Wednesday"
+        ],
+        "derived_from_values": [
+         "reference_name"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F07",
+    "template": "{answer}",
+    "appears_in": [
+     "correct_answer",
+     "format_data.mcq_options",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "answer",
+        "printed": [
+         "April",
+         "August",
+         "December",
+         "February",
+         "Friday",
+         "January",
+         "July",
+         "June",
+         "March",
+         "May",
+         "Monday",
+         "November",
+         "October",
+         "Saturday",
+         "September",
+         "Sunday",
+         "Thursday",
+         "Tuesday",
+         "Wednesday"
+        ],
+        "derived_from_values": [
+         "answer"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F08",
+    "template": "{member}",
+    "appears_in": [
+     "distractors",
+     "format_data.mcq_options",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "member"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "QuestionContext.distractors (the generator's own)",
+        "members": [
+         "April",
+         "February",
+         "January",
+         "March",
+         "May",
+         "Monday",
+         "Sunday",
+         "Thursday",
+         "Tuesday",
+         "Wednesday"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   }
+  ],
+  "lists": {},
+  "banks": {},
+  "value_derivations": [],
+  "reason_kinds": {}
+ }
+}

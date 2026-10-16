@@ -1,0 +1,1289 @@
+{
+ "schema_version": 2,
+ "hash_version": 8,
+ "node_id": "mat_g1_na_q1_1",
+ "record_id": "stem-batch441-S441-017-first",
+ "role": "first",
+ "confirms": null,
+ "item_id": "S441-017",
+ "lc_hash": "c3caa5e94009b99eaa03a2fe7bcc2ca4b461286bbd6e47c90b001aaa2da0b09c",
+ "judged_by": "blind-stem-judge-claude-haiku-batch441-S441-017-first",
+ "dispatch_id": "stem-batch441-S441-017-first",
+ "filed_at": "2026-10-15T16:46:45Z",
+ "delivery": "Claude Code Agent tool, model=haiku, subagent_type=general-purpose; the judge was told to read only local_only/scratch/h4c/prompts/S441-017.prompt.txt (tests/stem_file.py prompt output, item S441-017; no lc id, no key or packets file in that directory) and reply with what it asks; dispatched with CLAUDE.md loaded (ruling 29). Blindness is a prompt contract, audited from the subagent transcript.",
+ "tool_uses_by_judge": "From the subagent transcript: 1 tool use(s), all Read of its own prompt file (1177 lines, every line read); no other tool, path or search. Model reported in the transcript: claude-haiku-5-5.",
+ "dispatch_prompt_digest": "fcb7a8484504eb5d504e992eea06822c044de7895e2b5939047e95b8d14287e2",
+ "raw_reply": "{\"item\": \"S441-017\", \"clauses\": {\"read\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F05\", \"template\": \"Read the number {number} one place at a time, starting from the largest place.\", \"reasoning\": \"F05 is the only family whose text directs the learner to read a numeral. Its number slot prints digit values from 33 to 100 (printed_runs 33 to 100), so it addresses the clause through a hint rather than a question.\"}, \"write\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F16\", \"template\": \"Write the number: {word_form}.\", \"reasoning\": \"F16 appears in question_text and asks the learner to write a numeral from a word form. Its word_form values are observed from the generator's own word-form list and are in range 1 to 100.\"}, \"numerals\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F14\", \"template\": \"The number {number} is written in words as '{fill_value}'\", \"reasoning\": \"F14 prints the numeral itself in its number slot (printed_runs 33 to 100), so the learner works with numerals in the statement. It is a true or false style item nested in F15.\"}, \"up_to_100\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F05\", \"template\": \"Read the number {number} one place at a time, starting from the largest place.\", \"reasoning\": \"F05 prints numerals across the full range including the top of the bound (printed_runs reaches 90 to 100), so it produces problems at the upper limit of the declared range of 10 to 100.\"}}, \"failing_families\": [\"F03\", \"F04\", \"F07\", \"F08\", \"F09\", \"F10\", \"F17\"], \"failing_templates\": [\"Add the parts together to get {number}.\", \"Identify each word part and its {pv_label}.\", \"{capitalize}: {expanded_form}.\", \"{chunk}-{v}\", \"{p0}\", \"{v} hundred\", \"Write {number} in words.\"], \"overall\": \"FAIL\", \"reasoning\": \"F03 (hint): the template asks the learner to add the parts together, and addition is in NOT_YET_KNOWN for this lc. F04 (hint): the nested F02 gate word value of each part gives the sentence Identify each word part and its value of each part, which is ungrammatical and does not state a task a grade 1 learner can follow. F07 (hint): the expanded_form domain prints sums joined with the plus operator, which is addition beyond this lc's gates; the capitalize slot inherits F01's gate word broken apart form. F08 (answer choices and keyed answer): chunk is drawn from the tens list and v from the ones list, both of which include the empty string and the teen words, so the template can produce a hyphen with a missing part or a tens word joined to a teen word, which are malformed number names. F09 (answer choices and keyed answer): p0 draws from the ones list and the tens list, both of which include the empty string, so the domain can produce a blank answer choice or a blank keyed answer. F10 (answer choices): the template v hundred with the ones list yields amounts above 100, outside the declared bound of 10 to 100. F17 (question): the template Write number in words asks the learner to write number names; the competency names numerals only, so this is outside its scope. The clauses are producible from F05, F14 and F16, which do not depend on the failing families.\"}",
+ "raw_reply_digest": "7eb0f9d0a7d861fa379a78001c05053c281edbd99d29da1b98f1b4a8f52e3348",
+ "packet_digest": "76081f39f4583347b39a8e21705a226963983171e42e50cd646d6f437d208691",
+ "family_keys": {
+  "F01": {
+   "source": "backend/app/practice_gen/dna/base.py [gate expanded form]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F02": {
+   "source": "backend/app/practice_gen/dna/base.py [gate place value]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F03": {
+   "source": "backend/app/practice_gen/dna/na/number_reading.py",
+   "first_site": "backend/app/practice_gen/dna/na/number_reading.py:352",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F04": {
+   "source": "backend/app/practice_gen/dna/na/number_reading.py",
+   "first_site": "backend/app/practice_gen/dna/na/number_reading.py:349",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F05": {
+   "source": "backend/app/practice_gen/dna/na/number_reading.py",
+   "first_site": "backend/app/practice_gen/dna/na/number_reading.py:338",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F06": {
+   "source": "backend/app/practice_gen/dna/na/number_reading.py",
+   "first_site": "backend/app/practice_gen/dna/na/number_reading.py:346",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F07": {
+   "source": "backend/app/practice_gen/dna/na/number_reading.py",
+   "first_site": "backend/app/practice_gen/dna/na/number_reading.py:351",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F08": {
+   "source": "backend/app/practice_gen/dna/na/number_reading.py",
+   "first_site": "backend/app/practice_gen/dna/na/number_reading.py:97",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F09": {
+   "source": "backend/app/practice_gen/dna/na/number_reading.py",
+   "first_site": "backend/app/practice_gen/dna/na/number_reading.py:100",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F10": {
+   "source": "backend/app/practice_gen/dna/na/number_reading.py",
+   "first_site": "backend/app/practice_gen/dna/na/number_reading.py:87",
+   "renderer": "",
+   "path": [
+    14,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F11": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:32",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F12": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:39",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F13": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_true_false.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_true_false.py:326",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F14": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_true_false.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_true_false.py:321",
+   "renderer": "",
+   "path": [
+    4,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F15": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_true_false.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_true_false.py:430",
+   "renderer": "",
+   "path": [
+    4,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F16": {
+   "source": "backend/app/practice_gen/generators/base_generator.py",
+   "first_site": "backend/app/practice_gen/generators/base_generator.py:1140",
+   "renderer": "",
+   "path": [
+    7,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F17": {
+   "source": "backend/app/practice_gen/generators/base_generator.py",
+   "first_site": "backend/app/practice_gen/generators/base_generator.py:1144",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  }
+ },
+ "packet": {
+  "item": "S441-017",
+  "competency": {
+   "text": "Read and write numerals up to 100.",
+   "grade": 1,
+   "quarter": 1
+  },
+  "clauses": [
+   {
+    "id": "read",
+    "kind": "task",
+    "clause": "Read"
+   },
+   {
+    "id": "write",
+    "kind": "task",
+    "clause": "write"
+   },
+   {
+    "id": "numerals",
+    "kind": "object",
+    "clause": "numerals"
+   },
+   {
+    "id": "up_to_100",
+    "kind": "range",
+    "clause": "up to 100"
+   }
+  ],
+  "vocabulary": {
+   "student_vocab": [
+    "numeral"
+   ],
+   "curriculum_vocab": [
+    "read numerals",
+    "write numerals"
+   ],
+   "introduces_vocab": [
+    "numeral",
+    "read numerals",
+    "write numerals"
+   ],
+   "cumulative_vocab": [
+    "1 less",
+    "1 more",
+    "bigger",
+    "count",
+    "equal",
+    "group",
+    "how many",
+    "left",
+    "less",
+    "more",
+    "number",
+    "same",
+    "smaller",
+    "total"
+   ],
+   "NOT_YET_KNOWN": [
+    "10th",
+    "1st",
+    "2nd",
+    "3rd",
+    "4th",
+    "5th",
+    "6th",
+    "7th",
+    "8th",
+    "9th",
+    "L",
+    "a.m.",
+    "addition",
+    "analog clock",
+    "area",
+    "axis",
+    "balance scale",
+    "bar graph",
+    "bill",
+    "calendar",
+    "capacity",
+    "centavo",
+    "centimeter",
+    "certain",
+    "circle",
+    "clockwise",
+    "cm",
+    "coin",
+    "compare",
+    "corner",
+    "counter-clockwise",
+    "data",
+    "decreasing pattern",
+    "denominator",
+    "difference",
+    "digit",
+    "division",
+    "elapsed time",
+    "equal groups",
+    "equally likely",
+    "estimate",
+    "even",
+    "expanded form",
+    "fraction",
+    "g",
+    "gram",
+    "half",
+    "half hour",
+    "half turn",
+    "hour",
+    "hundreds",
+    "impossible",
+    "improper fraction",
+    "increasing pattern",
+    "intersecting",
+    "kg",
+    "kilogram",
+    "length",
+    "less likely",
+    "line",
+    "line of symmetry",
+    "line segment",
+    "liter",
+    "m",
+    "mL",
+    "mass",
+    "measure",
+    "meter",
+    "milliliter",
+    "minute",
+    "missing number",
+    "missing term",
+    "more likely",
+    "multiplication",
+    "nearest hundred",
+    "nearest ten",
+    "nearest thousand",
+    "number line",
+    "numerator",
+    "odd",
+    "ones",
+    "order of operations",
+    "outcome",
+    "p.m.",
+    "parallel",
+    "pattern",
+    "perimeter",
+    "perpendicular",
+    "peso",
+    "pictograph",
+    "place value",
+    "point",
+    "product",
+    "quarter",
+    "quarter hour",
+    "quarter turn",
+    "quotient",
+    "ray",
+    "rectangle",
+    "regrouping",
+    "remainder",
+    "repeating pattern",
+    "round",
+    "ruler",
+    "scale",
+    "side",
+    "similar fractions",
+    "skip counting",
+    "slide",
+    "solid figure",
+    "sq. cm",
+    "square",
+    "square centimeter",
+    "subtraction",
+    "sum",
+    "symmetry",
+    "table",
+    "ten thousand",
+    "ten-thousands place",
+    "tens",
+    "thousand",
+    "translation",
+    "triangle",
+    "whole",
+    "₱"
+   ],
+   "sentence_max_words": 15,
+   "number_format": "no commas, no thousands separator"
+  },
+  "declared_variants": [],
+  "declared_bounds": [
+   {
+    "range": [
+     10,
+     100
+    ],
+    "task_type": "read_and_write"
+   }
+  ],
+  "families": [
+   {
+    "id": "F01",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F07"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='expanded form')",
+        "requires_vocab": "expanded form",
+        "prints": "broken apart form",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F02",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F04"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='place value')",
+        "requires_vocab": "place value",
+        "prints": "value of each part",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F03",
+    "template": "Add the parts together to get {number}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "number"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "number",
+        "printed_runs": "32 to 43, 45, 47 to 48, 50 to 51, 53 to 63, 65 to 70, 72 to 75, 77, 79 to 80, 82 to 88, 90 to 99",
+        "derived_from_values": [
+         "number"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F04",
+    "template": "Identify each word part and its {pv_label}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "pv_label"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F02"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F05",
+    "template": "Read the number {number} one place at a time, starting from the largest place.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "number"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "number",
+        "printed_runs": "33, 35 to 37, 39 to 40, 42 to 49, 51 to 63, 65 to 74, 76 to 77, 79 to 80, 82 to 86, 88, 90 to 100",
+        "derived_from_values": [
+         "number"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F06",
+    "template": "The full word form is: '{word_form}'.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "word_form"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "word_form",
+        "printed": [
+         "eighty-eight",
+         "eighty-five",
+         "eighty-four",
+         "eighty-six",
+         "eighty-three",
+         "eighty-two",
+         "eighty",
+         "fifty-eight",
+         "fifty-five",
+         "fifty-four",
+         "fifty-nine",
+         "fifty-one",
+         "fifty-seven",
+         "fifty-six",
+         "fifty-three",
+         "fifty-two",
+         "forty-eight",
+         "forty-five",
+         "forty-four",
+         "forty-nine",
+         "forty-seven",
+         "forty-six",
+         "forty-three",
+         "forty-two",
+         "forty",
+         "ninety-eight",
+         "ninety-five",
+         "ninety-four",
+         "ninety-nine",
+         "ninety-one",
+         "ninety-seven",
+         "ninety-six",
+         "ninety-three",
+         "ninety-two",
+         "ninety",
+         "one hundred",
+         "seventy-four",
+         "seventy-nine",
+         "seventy-one",
+         "seventy-seven",
+         "seventy-six",
+         "seventy-three",
+         "seventy-two",
+         "seventy",
+         "sixty-eight",
+         "sixty-five",
+         "sixty-nine",
+         "sixty-one",
+         "sixty-seven",
+         "sixty-six",
+         "sixty-three",
+         "sixty-two",
+         "sixty",
+         "thirty-five",
+         "thirty-nine",
+         "thirty-seven",
+         "thirty-six",
+         "thirty-three"
+        ],
+        "derived_from_values": [
+         "word_form"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F07",
+    "template": "{capitalize}: {expanded_form}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "capitalize"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F01"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "expanded_form"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "expanded_form",
+        "printed": [
+         "30 + 2",
+         "30 + 3",
+         "30 + 4",
+         "30 + 5",
+         "30 + 6",
+         "30 + 7",
+         "30 + 8",
+         "30 + 9",
+         "40 + 1",
+         "40 + 2",
+         "40 + 3",
+         "40 + 5",
+         "40 + 7",
+         "40 + 8",
+         "40",
+         "50 + 1",
+         "50 + 3",
+         "50 + 4",
+         "50 + 5",
+         "50 + 6",
+         "50 + 7",
+         "50 + 8",
+         "50 + 9",
+         "50",
+         "60 + 1",
+         "60 + 2",
+         "60 + 3",
+         "60 + 5",
+         "60 + 6",
+         "60 + 7",
+         "60 + 8",
+         "60 + 9",
+         "60",
+         "70 + 2",
+         "70 + 3",
+         "70 + 4",
+         "70 + 5",
+         "70 + 7",
+         "70 + 9",
+         "70",
+         "80 + 2",
+         "80 + 3",
+         "80 + 4",
+         "80 + 5",
+         "80 + 6",
+         "80 + 7",
+         "80 + 8",
+         "80",
+         "90 + 1",
+         "90 + 2",
+         "90 + 3",
+         "90 + 4",
+         "90 + 5",
+         "90 + 6",
+         "90 + 7",
+         "90 + 8",
+         "90 + 9",
+         "90"
+        ],
+        "derived_from_values": [
+         "expanded_form"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F08",
+    "template": "{chunk}-{v}",
+    "appears_in": [
+     "correct_answer",
+     "distractors",
+     "format_data.mcq_options",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "chunk"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "_TENS"
+       }
+      ]
+     },
+     {
+      "slots": [
+       "v"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "_ONES"
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F09",
+    "template": "{p0}",
+    "appears_in": [
+     "correct_answer",
+     "distractors",
+     "format_data.mcq_options",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "p0"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "_ONES"
+       },
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "_TENS"
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F10",
+    "template": "{v} hundred",
+    "appears_in": [
+     "distractors",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "v"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "_ONES"
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F11",
+    "template": "{answer}",
+    "appears_in": [
+     "correct_answer",
+     "format_data.mcq_options",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "word_form",
+        "printed": [
+         "eighty-eight",
+         "eighty-four",
+         "eighty-six",
+         "eighty-three",
+         "eighty-two",
+         "eighty",
+         "fifty-eight",
+         "fifty-five",
+         "fifty-four",
+         "fifty-nine",
+         "fifty-one",
+         "fifty-seven",
+         "fifty-six",
+         "fifty-three",
+         "forty-eight",
+         "forty-five",
+         "forty-four",
+         "forty-nine",
+         "forty-seven",
+         "forty-six",
+         "forty-three",
+         "forty-two",
+         "forty",
+         "ninety-eight",
+         "ninety-five",
+         "ninety-four",
+         "ninety-nine",
+         "ninety-six",
+         "ninety-three",
+         "ninety-two",
+         "ninety",
+         "seventy-four",
+         "seventy-nine",
+         "seventy-one",
+         "seventy-seven",
+         "seventy-six",
+         "seventy-three",
+         "seventy-two",
+         "seventy",
+         "sixty-eight",
+         "sixty-five",
+         "sixty-one",
+         "sixty-seven",
+         "sixty-six",
+         "sixty-three",
+         "sixty-two",
+         "thirty-five",
+         "thirty-nine",
+         "thirty-seven",
+         "thirty-six"
+        ],
+        "derived_from_values": [
+         "word_form"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F12",
+    "template": "{member}",
+    "appears_in": [
+     "distractors",
+     "format_data.mcq_options",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "member"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "QuestionContext.distractors (the generator's own)",
+        "members": [
+         "eighty",
+         "eighty-eight",
+         "eighty-five",
+         "eighty-four",
+         "eighty-nine",
+         "eighty-seven",
+         "eighty-six",
+         "eighty-two",
+         "fifty-eight",
+         "fifty-five",
+         "fifty-nine",
+         "fifty-one",
+         "fifty-six",
+         "fifty-three",
+         "forty-eight",
+         "forty-four",
+         "forty-nine",
+         "forty-one",
+         "four",
+         "ninety-eight",
+         "ninety-five",
+         "ninety-nine",
+         "ninety-seven",
+         "ninety-three",
+         "one hundred",
+         "seven",
+         "seventy-five",
+         "seventy-four",
+         "seventy-nine",
+         "seventy-one",
+         "seventy-seven",
+         "seventy-six",
+         "sixteen",
+         "sixty",
+         "sixty-eight",
+         "sixty-four",
+         "sixty-nine",
+         "sixty-seven",
+         "sixty-six",
+         "sixty-two",
+         "thirty",
+         "thirty-eight",
+         "thirty-four",
+         "thirty-seven",
+         "thirty-six",
+         "thirty-three",
+         "thirty-two",
+         "twenty-nine",
+         "twenty-three"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F13",
+    "template": "The number written as '{word}' is {fill_value}",
+    "appears_in": [
+     "format_data.statement"
+    ],
+    "nested_in": [
+     "F15"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "word"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "word_form",
+        "printed": [
+         "eighty-five",
+         "eighty-six",
+         "eighty",
+         "fifty-five",
+         "fifty-four",
+         "fifty-nine",
+         "fifty",
+         "forty-eight",
+         "forty-five",
+         "forty-seven",
+         "forty-two",
+         "forty",
+         "ninety-eight",
+         "ninety-five",
+         "ninety-nine",
+         "ninety-six",
+         "ninety-three",
+         "ninety-two",
+         "seventy-seven",
+         "seventy",
+         "sixty-eight",
+         "sixty-five",
+         "sixty-nine",
+         "sixty-six",
+         "sixty-three",
+         "sixty-two",
+         "thirty-eight",
+         "thirty-five",
+         "thirty-seven",
+         "thirty-six",
+         "thirty-two"
+        ],
+        "derived_from_values": [
+         "word_form"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "fill_value"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the distractors shaped like the keyed answer",
+        "members": [
+         38,
+         49,
+         60,
+         7,
+         71,
+         84
+        ]
+       },
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the keyed answer (a true statement)",
+        "members": [
+         35,
+         69,
+         77,
+         86
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F14",
+    "template": "The number {number} is written in words as '{fill_value}'",
+    "appears_in": [
+     "format_data.statement"
+    ],
+    "nested_in": [
+     "F15"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "number"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "number",
+        "printed_runs": "33, 35, 37, 42, 48, 51 to 52, 54 to 60, 63, 69 to 70, 72, 76 to 77, 80, 85, 88, 91 to 92, 94, 97 to 100",
+        "derived_from_values": [
+         "number"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "fill_value"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the distractors shaped like the keyed answer",
+        "members": [
+         "eighty-four",
+         "eighty-six",
+         "fifty-eight",
+         "forty-nine",
+         "seven",
+         "seventy-five",
+         "seventy-one",
+         "seventy-seven",
+         "sixty",
+         "sixty-seven",
+         "sixty-six",
+         "thirty-eight"
+        ]
+       },
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the keyed answer (a true statement)",
+        "members": [
+         "fifty-eight",
+         "forty-eight",
+         "ninety-eight",
+         "ninety-seven",
+         "seventy-six",
+         "thirty-three"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F15",
+    "template": "{statement}. True or False?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "statement"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F13",
+         "F14"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F16",
+    "template": "Write the number: {word_form}.",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "word_form"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "word_form",
+        "printed": [
+         "eighty-eight",
+         "eighty-five",
+         "eighty-four",
+         "eighty-seven",
+         "eighty-three",
+         "eighty-two",
+         "fifty-eight",
+         "fifty-five",
+         "fifty-four",
+         "fifty-one",
+         "fifty-seven",
+         "fifty-six",
+         "fifty-three",
+         "forty-one",
+         "forty-seven",
+         "forty-three",
+         "forty-two",
+         "ninety-eight",
+         "ninety-four",
+         "ninety-nine",
+         "ninety-one",
+         "ninety-seven",
+         "ninety-two",
+         "ninety",
+         "seventy-five",
+         "seventy-four",
+         "seventy-nine",
+         "seventy-seven",
+         "seventy-three",
+         "seventy-two",
+         "seventy",
+         "sixty-eight",
+         "sixty-one",
+         "sixty-seven",
+         "sixty-six",
+         "sixty-two",
+         "sixty",
+         "thirty-five",
+         "thirty-four",
+         "thirty-nine",
+         "thirty-seven",
+         "thirty-six",
+         "thirty-three",
+         "thirty-two"
+        ],
+        "derived_from_values": [
+         "word_form"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type",
+     "word_form"
+    ]
+   },
+   {
+    "id": "F17",
+    "template": "Write {number} in words.",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "number"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "number",
+        "printed_runs": "35 to 37, 39 to 40, 42 to 49, 51, 53 to 59, 61 to 63, 65 to 68, 70 to 74, 76 to 77, 79 to 80, 82 to 84, 86, 88, 90, 92 to 96, 98 to 99",
+        "derived_from_values": [
+         "number"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   }
+  ],
+  "lists": {
+   "_TENS": [
+    "",
+    "twenty",
+    "thirty",
+    "forty",
+    "fifty",
+    "sixty",
+    "seventy",
+    "eighty",
+    "ninety"
+   ],
+   "_ONES": [
+    "",
+    "one",
+    "two",
+    "three",
+    "four",
+    "five",
+    "six",
+    "seven",
+    "eight",
+    "nine",
+    "ten",
+    "eleven",
+    "twelve",
+    "thirteen",
+    "fourteen",
+    "fifteen",
+    "sixteen",
+    "seventeen",
+    "eighteen",
+    "nineteen"
+   ]
+  },
+  "banks": {},
+  "value_derivations": [],
+  "reason_kinds": {}
+ }
+}

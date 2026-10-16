@@ -1,0 +1,759 @@
+{
+ "schema_version": 2,
+ "hash_version": 8,
+ "node_id": "mat_g2_mg_q2_2",
+ "record_id": "stem-batch443-S443-005-first",
+ "role": "first",
+ "confirms": null,
+ "item_id": "S443-005",
+ "lc_hash": "48ebe1c85f66c1c49387f50fd1d1e485b1693cc3800dd58cd1cff9cd626eacaf",
+ "judged_by": "blind-stem-judge-claude-haiku-batch443-S443-005-first",
+ "dispatch_id": "stem-batch443-S443-005-first",
+ "filed_at": "2026-10-15T16:47:09Z",
+ "delivery": "Claude Code Agent tool, model=haiku, subagent_type=general-purpose; the judge was told to read only local_only/scratch/h4c/prompts/S443-005.prompt.txt (tests/stem_file.py prompt output, item S443-005; no lc id, no key or packets file in that directory) and reply with what it asks; dispatched with CLAUDE.md loaded (ruling 29). Blindness is a prompt contract, audited from the subagent transcript.",
+ "tool_uses_by_judge": "From the subagent transcript: 1 tool use(s), all Read of its own prompt file (732 lines, every line read); no other tool, path or search. Model reported in the transcript: claude-haiku-5-5.",
+ "dispatch_prompt_digest": "43a3d994a00394f3a6c95c17d0d1342b1b5bd592a9a7fc59724991533d2e2ff8",
+ "raw_reply": "{\"item\": \"S443-005\", \"clauses\": {\"estimate\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F07\", \"template\": \"{upper}{v} measures {length} cm. About how many centimeters is that, rounded to the nearest {round_unit} cm?\", \"reasoning\": \"F07 asks an estimate question (About how many centimeters is that) about the length of an object, so it addresses the task clause.\"}, \"length\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F08\", \"template\": \"{upper}{v} measures {length} m. About how many meters is that, rounded to the nearest {round_unit} m?\", \"reasoning\": \"F08 gives an object's length in meters with a length-estimation question; the length domain is a range of values from 8 to 33.\"}, \"meters_or_centimeters\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F07\", \"template\": \"{upper}{v} measures {length} cm. About how many centimeters is that, rounded to the nearest {round_unit} cm?\", \"reasoning\": \"F07 uses the centimeter unit (F08 covers the meter unit with the same structure). The clause is producible.\"}, \"distance\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F05\", \"template\": \"The distance from {pair} is {length} m. About how many meters is that, rounded to the nearest {round_unit} m?\", \"reasoning\": \"F05 gives a distance between generator-chosen pairs of places in meters and asks for an estimate.\"}}, \"failing_families\": [\"F04\", \"F05\", \"F07\", \"F08\"], \"failing_templates\": [\"So {length} {count_noun} is about {answer} {count_noun2}.\", \"The distance from {pair} is {length} m. About how many meters is that, rounded to the nearest {round_unit} m?\", \"{upper}{v} measures {length} cm. About how many centimeters is that, rounded to the nearest {round_unit} cm?\", \"{upper}{v} measures {length} m. About how many meters is that, rounded to the nearest {round_unit} m?\"], \"overall\": \"FAIL\", \"reasoning\": \"(1) F04 (hints) prints count_noun and count_noun2 from the nested families F01 (the text 'centimeter (cm)') and F02 (the text 'meter (m)'). Both are singular with no plural form, and the length and answer slots are bare numbers such as 8, 11 to 14 and 10, 15, 20, 30 (the printed runs). So the hint reads as a number followed by a singular unit noun, which is an agreement error on every render. The two unit slots share one nested domain with distinct_in_every_render false, so a render can pair meter with centimeter, giving a mixed-unit statement that is false. (2) F05, F07 and F08 all use the phrase 'rounded to the nearest', and the word 'round' is listed under NOT_YET_KNOWN for this lc. The rounding concept is therefore a vocabulary gate failure in every question family that asks for an estimate. The other families (F01, F02, F03, F06) use only cumulative vocabulary and stay within the printed domains.\"}",
+ "raw_reply_digest": "d6132d169be4d3a0489498b207e3ff374d25a5e514335796fd5c048b3e7d4868",
+ "packet_digest": "c7e29a8fafecf429a3f2fdf0bef0719bdecf4a1097ba8a44f26e1c12dcc492b8",
+ "family_keys": {
+  "F01": {
+   "source": "backend/app/practice_gen/dna/base.py [gate centimeter]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    10,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F02": {
+   "source": "backend/app/practice_gen/dna/base.py [gate meter]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F03": {
+   "source": "backend/app/practice_gen/dna/mg/length_measurement.py",
+   "first_site": "backend/app/practice_gen/dna/mg/length_measurement.py:1050",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F04": {
+   "source": "backend/app/practice_gen/dna/mg/length_measurement.py",
+   "first_site": "backend/app/practice_gen/dna/mg/length_measurement.py:1052",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {
+    "count_noun,count_noun2": [
+     1,
+     null
+    ]
+   }
+  },
+  "F05": {
+   "source": "backend/app/practice_gen/dna/mg/length_measurement.py",
+   "first_site": "backend/app/practice_gen/dna/mg/length_measurement.py:511",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F06": {
+   "source": "backend/app/practice_gen/dna/mg/length_measurement.py",
+   "first_site": "backend/app/practice_gen/dna/mg/length_measurement.py:1047",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F07": {
+   "source": "backend/app/practice_gen/dna/mg/length_measurement.py",
+   "first_site": "backend/app/practice_gen/dna/mg/length_measurement.py:544",
+   "renderer": "",
+   "path": [
+    10,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F08": {
+   "source": "backend/app/practice_gen/dna/mg/length_measurement.py",
+   "first_site": "backend/app/practice_gen/dna/mg/length_measurement.py:572",
+   "renderer": "",
+   "path": [
+    2,
+    null
+   ],
+   "first_render_repeating": {}
+  }
+ },
+ "packet": {
+  "item": "S443-005",
+  "competency": {
+   "text": "Estimate length using meters or centimeters, and distance using meters.",
+   "grade": 2,
+   "quarter": 2
+  },
+  "clauses": [
+   {
+    "id": "estimate",
+    "kind": "task",
+    "clause": "Estimate"
+   },
+   {
+    "id": "length",
+    "kind": "property",
+    "clause": "length"
+   },
+   {
+    "id": "meters_or_centimeters",
+    "kind": "property",
+    "clause": "meters or centimeters"
+   },
+   {
+    "id": "distance",
+    "kind": "property",
+    "clause": "distance"
+   }
+  ],
+  "vocabulary": {
+   "student_vocab": [
+    "estimate"
+   ],
+   "curriculum_vocab": [
+    "estimate length",
+    "estimate distance"
+   ],
+   "introduces_vocab": [
+    "estimate length",
+    "estimate distance"
+   ],
+   "cumulative_vocab": [
+    "1 less",
+    "1 more",
+    "10th",
+    "1st",
+    "2nd",
+    "3rd",
+    "4th",
+    "5th",
+    "6th",
+    "7th",
+    "8th",
+    "9th",
+    "addition",
+    "analog clock",
+    "bigger",
+    "bill",
+    "calendar",
+    "centavo",
+    "centimeter",
+    "circle",
+    "clockwise",
+    "cm",
+    "coin",
+    "compare",
+    "corner",
+    "count",
+    "counter-clockwise",
+    "data",
+    "decreasing pattern",
+    "difference",
+    "digit",
+    "equal",
+    "expanded form",
+    "fraction",
+    "group",
+    "half",
+    "half hour",
+    "half turn",
+    "hour",
+    "how many",
+    "hundreds",
+    "increasing pattern",
+    "left",
+    "length",
+    "less",
+    "m",
+    "measure",
+    "meter",
+    "missing number",
+    "more",
+    "number",
+    "number line",
+    "numeral",
+    "ones",
+    "pattern",
+    "peso",
+    "pictograph",
+    "place value",
+    "quarter",
+    "quarter hour",
+    "quarter turn",
+    "rectangle",
+    "regrouping",
+    "repeating pattern",
+    "ruler",
+    "same",
+    "side",
+    "skip counting",
+    "slide",
+    "smaller",
+    "square",
+    "subtraction",
+    "sum",
+    "table",
+    "tens",
+    "thousand",
+    "total",
+    "translation",
+    "triangle",
+    "whole",
+    "₱"
+   ],
+   "NOT_YET_KNOWN": [
+    "L",
+    "a.m.",
+    "area",
+    "axis",
+    "balance scale",
+    "bar graph",
+    "capacity",
+    "certain",
+    "denominator",
+    "division",
+    "elapsed time",
+    "equal groups",
+    "equally likely",
+    "even",
+    "g",
+    "gram",
+    "impossible",
+    "improper fraction",
+    "intersecting",
+    "kg",
+    "kilogram",
+    "less likely",
+    "line",
+    "line of symmetry",
+    "line segment",
+    "liter",
+    "mL",
+    "mass",
+    "milliliter",
+    "minute",
+    "missing term",
+    "more likely",
+    "multiplication",
+    "nearest hundred",
+    "nearest ten",
+    "nearest thousand",
+    "numerator",
+    "odd",
+    "order of operations",
+    "outcome",
+    "p.m.",
+    "parallel",
+    "perimeter",
+    "perpendicular",
+    "point",
+    "product",
+    "quotient",
+    "ray",
+    "remainder",
+    "round",
+    "scale",
+    "similar fractions",
+    "solid figure",
+    "sq. cm",
+    "square centimeter",
+    "symmetry",
+    "ten thousand",
+    "ten-thousands place"
+   ],
+   "sentence_max_words": 18,
+   "number_format": "no commas for numbers up to 1000"
+  },
+  "declared_variants": [
+   [
+    "context",
+    "pure"
+   ],
+   [
+    "task_type",
+    "estimate"
+   ],
+   [
+    "unit_type",
+    "cm"
+   ],
+   [
+    "unit_type",
+    "m"
+   ]
+  ],
+  "declared_bounds": [
+   {
+    "task_type": "estimate",
+    "context": "pure"
+   }
+  ],
+  "families": [
+   {
+    "id": "F01",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F04"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='centimeter')",
+        "requires_vocab": "centimeter",
+        "prints": "centimeter (cm)",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F02",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F04"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='meter')",
+        "requires_vocab": "meter",
+        "prints": "meter (m)",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F03",
+    "template": "Count by {step}s: {length} is between {low} and {high}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "step"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "round_to",
+        "printed_runs": "5, 10",
+        "derived_from_values": [
+         "round_to"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "length"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "length",
+        "printed_runs": "8, 11 to 14, 16 to 19, 21 to 29, 31, 33",
+        "derived_from_values": [
+         "length"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "low",
+       "high"
+      ],
+      "domains": [
+       {
+        "domain": "a number computed by the generator",
+        "reason": "arithmetic",
+        "derived_from_values": [
+         "length",
+         "round_to"
+        ]
+       }
+      ],
+      "distinct_in_every_render": true
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F04",
+    "template": "So {length} {count_noun} is about {answer} {count_noun2}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "length"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "length",
+        "printed_runs": "8, 11 to 14, 16 to 19, 21 to 29, 31, 33",
+        "derived_from_values": [
+         "length"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "count_noun",
+       "count_noun2"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F01",
+         "F02"
+        ]
+       }
+      ],
+      "distinct_in_every_render": false
+     },
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "answer",
+        "printed_runs": "10, 15, 20, 30",
+        "derived_from_values": [
+         "answer"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F05",
+    "template": "The distance from {pair} is {length} m. About how many meters is that, rounded to the nearest {round_unit} m?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "pair"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the estimate_pairs bank",
+        "members": [
+         "the bench to the mango tree",
+         "the classroom to the canteen",
+         "the front door to the school fence",
+         "the gate to the flagpole",
+         "the library to the garden"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "length"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "length",
+        "printed_runs": "11 to 14, 16 to 19, 21 to 24",
+        "derived_from_values": [
+         "length"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "round_unit"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "round_to",
+        "printed_runs": "5, 10",
+        "derived_from_values": [
+         "round_to"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F06",
+    "template": "{length} is closer to {answer}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "length"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "length",
+        "printed_runs": "8, 11 to 14, 16 to 19, 21 to 24, 26 to 29, 31, 33",
+        "derived_from_values": [
+         "length"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "answer",
+        "printed_runs": "10, 15, 20, 30",
+        "derived_from_values": [
+         "answer"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F07",
+    "template": "{upper}{v} measures {length} cm. About how many centimeters is that, rounded to the nearest {round_unit} cm?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "upper"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the obj_specs bank's initials, upper-cased",
+        "members": [
+         "A"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "v"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the obj_specs bank, after its initial",
+        "members": [
+         " notebook",
+         " pencil case",
+         " piece of ribbon",
+         " storybook",
+         " wooden ruler"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "length"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "length",
+        "printed_runs": "16 to 19, 21 to 29, 31",
+        "derived_from_values": [
+         "length"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "round_unit"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "round_to",
+        "printed_runs": "5, 10",
+        "derived_from_values": [
+         "round_to"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F08",
+    "template": "{upper}{v} measures {length} m. About how many meters is that, rounded to the nearest {round_unit} m?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "upper"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the obj_specs bank's initials, upper-cased",
+        "members": [
+         "A"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "v"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the obj_specs bank, after its initial",
+        "members": [
+         " classroom hallway",
+         " garden hose",
+         " garden path",
+         " school fence"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "length"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "length",
+        "printed_runs": "8, 11 to 13, 16 to 19, 21 to 28, 31, 33",
+        "derived_from_values": [
+         "length"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "round_unit"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "round_to",
+        "printed_runs": "5, 10",
+        "derived_from_values": [
+         "round_to"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   }
+  ],
+  "lists": {},
+  "banks": {},
+  "value_derivations": [],
+  "reason_kinds": {
+   "arithmetic": "a number the generator computes from the generated values named in src (a half, a sum, a difference, a running total, a place's digit). Its range is the image of those values' own domains; whether the arithmetic is RIGHT is the hint contract's (§16) and §1E's to check, not §14's."
+  }
+ }
+}

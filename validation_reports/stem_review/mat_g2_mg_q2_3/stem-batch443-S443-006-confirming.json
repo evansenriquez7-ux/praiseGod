@@ -1,0 +1,1045 @@
+{
+ "schema_version": 2,
+ "hash_version": 8,
+ "node_id": "mat_g2_mg_q2_3",
+ "record_id": "stem-batch443-S443-006-confirming",
+ "role": "confirming",
+ "confirms": "stem-batch443-S443-006-first",
+ "item_id": "S443-006",
+ "lc_hash": "f4c30094123cd32739ce2698013357e5dfde01d874061185d0306297ce988467",
+ "judged_by": "blind-stem-judge-claude-haiku-batch443-S443-006-confirming",
+ "dispatch_id": "stem-batch443-S443-006-confirming",
+ "filed_at": "2026-10-16T05:10:23Z",
+ "delivery": "Claude Code Agent tool, model=haiku, subagent_type=general-purpose; the judge was told to read only local_only/scratch/h4c/prompts/S443-006.prompt.txt (tests/stem_file.py prompt output, item S443-006; no lc id, no key or packets file in that directory) and reply with what it asks; dispatched with CLAUDE.md loaded (ruling 29). Blindness is a prompt contract, audited from the subagent transcript.",
+ "tool_uses_by_judge": "From the subagent transcript: 1 tool use(s), all Read of its own prompt file (983 lines, every line read); no other tool, path or search. Model reported in the transcript: claude-haiku-5-5.",
+ "dispatch_prompt_digest": "3f1fde592bf597c57df7cfac7e70771d1ca8e99915a4d9c21a1adfa952d50d8a",
+ "raw_reply": "{\"item\": \"S443-006\", \"clauses\": {\"solve_problems\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F08\", \"template\": \"{name} walked {dist_a} m from {loc_a} to {loc_b}, and then walked {dist_b} m from {loc_b} to {loc_c}. What is the total distance {name} walked in meters?\", \"reasoning\": \"F08 poses a two-leg word problem and asks for the total, which is a problem to solve. Its domains (names bank, distances 10 to 45 m, places bank with three distinct places) give totals of 20 to 90 m. No NOT_YET_KNOWN term appears in the template or its domains.\"}, \"length\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F10\", \"template\": \"{upper}{v} is {val_a} {unit_mode} long. {upper2}{v2} is {val_b} {unit_mode} long. If they are placed end to end, what is their combined length in {unit_mode}?\", \"reasoning\": \"F10 gives two object lengths in cm (printed values 6 to 20) and asks for their combined length. The two objects are distinct in every render, and the question refers to the two described objects only.\"}, \"distance\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F08\", \"template\": \"{name} walked {dist_a} m from {loc_a} to {loc_b}, and then walked {dist_b} m from {loc_b} to {loc_c}. What is the total distance {name} walked in meters?\", \"reasoning\": \"F08 asks for a total distance walked in meters, with each leg a distance from 10 to 45 m between named places.\"}}, \"failing_families\": [\"F01\", \"F02\", \"F03\", \"F06\", \"F09\"], \"failing_templates\": [\"So one is {answer} {count_noun} {v} than the other.\", \"The distance from the school gate to {dest_a} is {longer_val} m. The distance from the school gate to {dest_b} is {shorter_val} m. How many meters farther is {dest_a} than {dest_b}?\", \"The total {measure} is {answer} {count_noun}.\", \"{a} + {b} = {answer}.\", \"{upper}{v} is {longer_val} {unit_mode} long. {upper2}{v2} is {shorter_val} {unit_mode} long. How many {unit_mode} longer is {longer_obj} than {shorter_obj}?\"], \"overall\": \"FAIL\", \"reasoning\": \"F01 and F03 print count_noun from a list whose only members are the singular forms centimeter (cm) and meter (m), while answer ranges over 1 to 29 and includes many values other than 1, so a plural number takes a singular noun (for example, a total of 12 printed as 12 centimeter (cm)). F02 draws longer_val from 10 to 50 and shorter_val from 10 to 45 with no ordering stated, so the template can state that dest_a is 10 m from the gate and dest_b is 45 m, then ask how many meters farther dest_a is, which is false. F09 draws longer_val and shorter_val from one unordered list, so the question can ask how much longer the object named as shorter is. F09 also draws longer_obj and shorter_obj from the full object pool with no link to v and v2, so the question can name objects the statement never measured. F06 draws a and b from 10 to 39, so a + b is at most 78 and at least 20, yet the observed answer runs for F06 include 18 and 86 to 87, so the equation can print a false sum. F04, F05, F07, F08 and F10 were checked and their printed values stay within what their templates can state correctly.\"}",
+ "raw_reply_digest": "e5053fb15b6566e155bfb242b033b74d0cc16b926ccc6173b9cefc1450be3045",
+ "packet_digest": "58a96bf88fe550d2c5f59709f58593923965145b680d10ebaf7ef763cc9522b1",
+ "family_keys": {
+  "F01": {
+   "source": "backend/app/practice_gen/dna/mg/length_measurement.py",
+   "first_site": "backend/app/practice_gen/dna/mg/length_measurement.py:1031",
+   "renderer": "",
+   "path": [
+    3,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F02": {
+   "source": "backend/app/practice_gen/dna/mg/length_measurement.py",
+   "first_site": "backend/app/practice_gen/dna/mg/length_measurement.py:838",
+   "renderer": "",
+   "path": [
+    11,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F03": {
+   "source": "backend/app/practice_gen/dna/mg/length_measurement.py",
+   "first_site": "backend/app/practice_gen/dna/mg/length_measurement.py:1025",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F04": {
+   "source": "backend/app/practice_gen/dna/mg/length_measurement.py",
+   "first_site": "backend/app/practice_gen/dna/mg/length_measurement.py:1023",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F05": {
+   "source": "backend/app/practice_gen/dna/mg/length_measurement.py",
+   "first_site": "backend/app/practice_gen/dna/mg/length_measurement.py:1028",
+   "renderer": "",
+   "path": [
+    3,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F06": {
+   "source": "backend/app/practice_gen/dna/mg/length_measurement.py",
+   "first_site": "backend/app/practice_gen/dna/mg/length_measurement.py:1024",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {
+    "a,b": [
+     168,
+     null
+    ]
+   }
+  },
+  "F07": {
+   "source": "backend/app/practice_gen/dna/mg/length_measurement.py",
+   "first_site": "backend/app/practice_gen/dna/mg/length_measurement.py:1029",
+   "renderer": "",
+   "path": [
+    3,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F08": {
+   "source": "backend/app/practice_gen/dna/mg/length_measurement.py",
+   "first_site": "backend/app/practice_gen/dna/mg/length_measurement.py:823",
+   "renderer": "",
+   "path": [
+    4,
+    null
+   ],
+   "first_render_repeating": {
+    "dist_a,dist_b": [
+     168,
+     null
+    ]
+   }
+  },
+  "F09": {
+   "source": "backend/app/practice_gen/dna/mg/length_measurement.py",
+   "first_site": "backend/app/practice_gen/dna/mg/length_measurement.py:882",
+   "renderer": "",
+   "path": [
+    3,
+    null
+   ],
+   "first_render_repeating": {
+    "upper,upper2": [
+     3,
+     null
+    ]
+   }
+  },
+  "F10": {
+   "source": "backend/app/practice_gen/dna/mg/length_measurement.py",
+   "first_site": "backend/app/practice_gen/dna/mg/length_measurement.py:873",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {
+    "upper,upper2": [
+     1,
+     null
+    ]
+   }
+  }
+ },
+ "packet": {
+  "item": "S443-006",
+  "competency": {
+   "text": "Solve problems involving length and distance.",
+   "grade": 2,
+   "quarter": 2
+  },
+  "clauses": [
+   {
+    "id": "solve_problems",
+    "kind": "task",
+    "clause": "Solve problems"
+   },
+   {
+    "id": "length",
+    "kind": "property",
+    "clause": "length"
+   },
+   {
+    "id": "distance",
+    "kind": "property",
+    "clause": "distance"
+   }
+  ],
+  "vocabulary": {
+   "student_vocab": [],
+   "curriculum_vocab": [],
+   "introduces_vocab": [],
+   "cumulative_vocab": [
+    "1 less",
+    "1 more",
+    "10th",
+    "1st",
+    "2nd",
+    "3rd",
+    "4th",
+    "5th",
+    "6th",
+    "7th",
+    "8th",
+    "9th",
+    "addition",
+    "analog clock",
+    "bigger",
+    "bill",
+    "calendar",
+    "centavo",
+    "centimeter",
+    "circle",
+    "clockwise",
+    "cm",
+    "coin",
+    "compare",
+    "corner",
+    "count",
+    "counter-clockwise",
+    "data",
+    "decreasing pattern",
+    "difference",
+    "digit",
+    "equal",
+    "estimate",
+    "expanded form",
+    "fraction",
+    "group",
+    "half",
+    "half hour",
+    "half turn",
+    "hour",
+    "how many",
+    "hundreds",
+    "increasing pattern",
+    "left",
+    "length",
+    "less",
+    "m",
+    "measure",
+    "meter",
+    "missing number",
+    "more",
+    "number",
+    "number line",
+    "numeral",
+    "ones",
+    "pattern",
+    "peso",
+    "pictograph",
+    "place value",
+    "quarter",
+    "quarter hour",
+    "quarter turn",
+    "rectangle",
+    "regrouping",
+    "repeating pattern",
+    "ruler",
+    "same",
+    "side",
+    "skip counting",
+    "slide",
+    "smaller",
+    "square",
+    "subtraction",
+    "sum",
+    "table",
+    "tens",
+    "thousand",
+    "total",
+    "translation",
+    "triangle",
+    "whole",
+    "₱"
+   ],
+   "NOT_YET_KNOWN": [
+    "L",
+    "a.m.",
+    "area",
+    "axis",
+    "balance scale",
+    "bar graph",
+    "capacity",
+    "certain",
+    "denominator",
+    "division",
+    "elapsed time",
+    "equal groups",
+    "equally likely",
+    "even",
+    "g",
+    "gram",
+    "impossible",
+    "improper fraction",
+    "intersecting",
+    "kg",
+    "kilogram",
+    "less likely",
+    "line",
+    "line of symmetry",
+    "line segment",
+    "liter",
+    "mL",
+    "mass",
+    "milliliter",
+    "minute",
+    "missing term",
+    "more likely",
+    "multiplication",
+    "nearest hundred",
+    "nearest ten",
+    "nearest thousand",
+    "numerator",
+    "odd",
+    "order of operations",
+    "outcome",
+    "p.m.",
+    "parallel",
+    "perimeter",
+    "perpendicular",
+    "point",
+    "product",
+    "quotient",
+    "ray",
+    "remainder",
+    "round",
+    "scale",
+    "similar fractions",
+    "solid figure",
+    "sq. cm",
+    "square centimeter",
+    "symmetry",
+    "ten thousand",
+    "ten-thousands place"
+   ],
+   "sentence_max_words": 18,
+   "number_format": "no commas for numbers up to 1000"
+  },
+  "declared_variants": [
+   [
+    "context",
+    "word_problem"
+   ],
+   [
+    "task_type",
+    "solve_word_problem"
+   ],
+   [
+    "unit_type",
+    "cm"
+   ],
+   [
+    "unit_type",
+    "m"
+   ]
+  ],
+  "declared_bounds": [
+   {
+    "task_type": "solve_word_problem",
+    "context": "word_problem"
+   }
+  ],
+  "families": [
+   {
+    "id": "F01",
+    "template": "So one is {answer} {count_noun} {v} than the other.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "answer",
+        "printed_runs": "1 to 17, 19 to 24, 27 to 29",
+        "derived_from_values": [
+         "answer"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "count_noun"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the noun or its singular (dna.base.count_noun)",
+        "members": [
+         "centimeter (cm)",
+         "meter (m)"
+        ],
+        "derived_from_values": [
+         "answer",
+         "unit"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "v"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the comparative for a distance or a length",
+        "members": [
+         "farther",
+         "longer"
+        ],
+        "derived_from_values": [
+         "word_measure"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F02",
+    "template": "The distance from the school gate to {dest_a} is {longer_val} m. The distance from the school gate to {dest_b} is {shorter_val} m. How many meters farther is {dest_a} than {dest_b}?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "dest_a",
+       "dest_b"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the dests bank",
+        "members": [
+         "the canteen",
+         "the classroom",
+         "the garden",
+         "the gym",
+         "the library",
+         "the playground",
+         "the science lab"
+        ]
+       }
+      ],
+      "distinct_in_every_render": true
+     },
+     {
+      "slots": [
+       "longer_val"
+      ],
+      "domains": [
+       {
+        "domain": "a number in a range",
+        "basis": "the distances' draw bounds, +5 when the two are equal",
+        "lo": 10,
+        "hi": 50
+       }
+      ]
+     },
+     {
+      "slots": [
+       "shorter_val"
+      ],
+      "domains": [
+       {
+        "domain": "a number in a range",
+        "basis": "the distances' draw bounds",
+        "lo": 10,
+        "hi": 45
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type",
+     "word_measure"
+    ]
+   },
+   {
+    "id": "F03",
+    "template": "The total {measure} is {answer} {count_noun}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "measure"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "word_measure",
+        "printed": [
+         "distance",
+         "length"
+        ],
+        "derived_from_values": [
+         "word_measure"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "answer",
+        "printed_runs": "18, 21 to 22, 24 to 35, 38, 41 to 46, 48 to 49, 51, 53, 55 to 56, 58, 62 to 65, 67 to 68, 71 to 74, 76, 79, 82, 84, 86 to 87",
+        "derived_from_values": [
+         "answer"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "count_noun"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the noun or its singular (dna.base.count_noun)",
+        "members": [
+         "centimeter (cm)",
+         "meter (m)"
+        ],
+        "derived_from_values": [
+         "answer",
+         "unit"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type",
+     "word_operation"
+    ]
+   },
+   {
+    "id": "F04",
+    "template": "The two {measure}s join together, so add them.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "measure"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "word_measure",
+        "printed": [
+         "distance",
+         "length"
+        ],
+        "derived_from_values": [
+         "word_measure"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type",
+     "word_operation"
+    ]
+   },
+   {
+    "id": "F05",
+    "template": "To find how much {v} one is, take the smaller {measure} away from the bigger one.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "v"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the comparative for a distance or a length",
+        "members": [
+         "farther",
+         "longer"
+        ],
+        "derived_from_values": [
+         "word_measure"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "measure"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "word_measure",
+        "printed": [
+         "distance",
+         "length"
+        ],
+        "derived_from_values": [
+         "word_measure"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F06",
+    "template": "{a} + {b} = {answer}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "a",
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the declared word_operands",
+        "members": [
+         10,
+         11,
+         12,
+         13,
+         14,
+         15,
+         16,
+         18,
+         19,
+         20,
+         24,
+         25,
+         26,
+         31,
+         33,
+         34,
+         35,
+         37,
+         39
+        ]
+       }
+      ],
+      "distinct_in_every_render": false
+     },
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "answer",
+        "printed_runs": "18, 21 to 22, 24 to 35, 38, 41 to 46, 48 to 49, 51, 53, 55 to 56, 58, 62 to 65, 67 to 68, 71 to 74, 76, 79, 82, 84, 86 to 87",
+        "derived_from_values": [
+         "answer"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type",
+     "word_operation"
+    ]
+   },
+   {
+    "id": "F07",
+    "template": "{a} - {b} = {answer}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "a",
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the declared word_operands",
+        "members": [
+         10,
+         11,
+         12,
+         14,
+         15,
+         18,
+         19,
+         20,
+         21,
+         23,
+         27,
+         33,
+         38,
+         39,
+         40,
+         42,
+         44,
+         6,
+         9
+        ]
+       }
+      ],
+      "distinct_in_every_render": true
+     },
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "answer",
+        "printed_runs": "1 to 17, 19 to 24, 27 to 29",
+        "derived_from_values": [
+         "answer"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F08",
+    "template": "{name} walked {dist_a} m from {loc_a} to {loc_b}, and then walked {dist_b} m from {loc_b} to {loc_c}. What is the total distance {name} walked in meters?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "name"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the names bank",
+        "members": [
+         "Ben",
+         "Carlo",
+         "Dan",
+         "Elena",
+         "Liza",
+         "Mia",
+         "Renz"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "dist_a",
+       "dist_b"
+      ],
+      "domains": [
+       {
+        "domain": "a number in a range",
+        "basis": "the distances' draw bounds",
+        "lo": 10,
+        "hi": 45
+       }
+      ],
+      "distinct_in_every_render": false
+     },
+     {
+      "slots": [
+       "loc_a",
+       "loc_b",
+       "loc_c"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the places bank",
+        "members": [
+         "the canteen",
+         "the classroom",
+         "the gym",
+         "the library",
+         "the playground",
+         "the school gate"
+        ]
+       }
+      ],
+      "distinct_in_every_render": true
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type",
+     "word_measure"
+    ]
+   },
+   {
+    "id": "F09",
+    "template": "{upper}{v} is {longer_val} {unit_mode} long. {upper2}{v2} is {shorter_val} {unit_mode} long. How many {unit_mode} longer is {longer_obj} than {shorter_obj}?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "upper",
+       "upper2"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the object pool's initials, upper-cased",
+        "members": [
+         "A"
+        ]
+       }
+      ],
+      "distinct_in_every_render": false
+     },
+     {
+      "slots": [
+       "v",
+       "v2"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the object pool, after its initial",
+        "members": [
+         " book",
+         " crayon",
+         " notebook",
+         " pencil",
+         " ruler",
+         " shoe",
+         " spoon"
+        ]
+       }
+      ],
+      "distinct_in_every_render": true
+     },
+     {
+      "slots": [
+       "longer_val",
+       "shorter_val"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the two lengths, length and length_b",
+        "members": [
+         10,
+         11,
+         12,
+         15,
+         18,
+         20,
+         21,
+         6,
+         9
+        ]
+       }
+      ],
+      "distinct_in_every_render": true
+     },
+     {
+      "slots": [
+       "unit_mode"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "unit_type",
+        "printed": [
+         "cm"
+        ],
+        "derived_from_values": [
+         "unit_type"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "longer_obj",
+       "shorter_obj"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the object pool",
+        "members": [
+         "a book",
+         "a crayon",
+         "a notebook",
+         "a pencil",
+         "a ruler",
+         "a shoe",
+         "a spoon"
+        ]
+       }
+      ],
+      "distinct_in_every_render": true
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type",
+     "word_measure"
+    ]
+   },
+   {
+    "id": "F10",
+    "template": "{upper}{v} is {val_a} {unit_mode} long. {upper2}{v2} is {val_b} {unit_mode} long. If they are placed end to end, what is their combined length in {unit_mode}?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "upper",
+       "upper2"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the object pool's initials, upper-cased",
+        "members": [
+         "A"
+        ]
+       }
+      ],
+      "distinct_in_every_render": false
+     },
+     {
+      "slots": [
+       "v",
+       "v2"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the object pool, after its initial",
+        "members": [
+         " book",
+         " crayon",
+         " notebook",
+         " pencil",
+         " ruler",
+         " shoe",
+         " spoon"
+        ]
+       }
+      ],
+      "distinct_in_every_render": true
+     },
+     {
+      "slots": [
+       "val_a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "length",
+        "printed_runs": "9 to 15, 18, 20",
+        "derived_from_values": [
+         "length"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "unit_mode"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "unit_type",
+        "printed": [
+         "cm"
+        ],
+        "derived_from_values": [
+         "unit_type"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "val_b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "length_b",
+        "printed_runs": "6 to 8, 10 to 16, 18, 20 to 21",
+        "derived_from_values": [
+         "length_b"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type",
+     "word_measure"
+    ]
+   }
+  ],
+  "lists": {},
+  "banks": {},
+  "value_derivations": [],
+  "reason_kinds": {}
+ }
+}

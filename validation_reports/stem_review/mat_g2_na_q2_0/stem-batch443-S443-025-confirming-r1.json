@@ -1,0 +1,1231 @@
+{
+ "schema_version": 2,
+ "hash_version": 8,
+ "node_id": "mat_g2_na_q2_0",
+ "record_id": "stem-batch443-S443-025-confirming-r1",
+ "role": "confirming",
+ "confirms": "stem-batch443-S443-025-first",
+ "item_id": "S443-025",
+ "lc_hash": "4c2dbe5fb2c38fae79a74cafa077855ef7d71442abf09c554b359109cacac0ff",
+ "judged_by": "blind-stem-judge-claude-haiku-batch443-S443-025-confirming-r1",
+ "dispatch_id": "stem-batch443-S443-025-confirming-r1",
+ "filed_at": "2026-10-16T06:11:08Z",
+ "delivery": "Claude Code Agent tool, model=haiku, subagent_type=general-purpose; the judge was told to read only local_only/scratch/h4c/prompts/S443-025.prompt.txt (tests/stem_file.py prompt output, item S443-025; no lc id, no key or packets file in that directory) and reply with what it asks; dispatched with CLAUDE.md loaded (ruling 29). Blindness is a prompt contract, audited from the subagent transcript.",
+ "tool_uses_by_judge": "From the subagent transcript: 1 tool use(s), all Read of its own prompt file (1079 lines, every line read); no other tool, path or search. Model reported in the transcript: claude-haiku-5-5.",
+ "dispatch_prompt_digest": "a5f549dabcd6c2506e2d2792596d27ed623f590a34b709d75c93aca7c1201ad7",
+ "raw_reply": "{\"item\": \"S443-025\",\n \"clauses\": {\"determine\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F10\", \"template\": \"Determine the total value of {desc}:\", \"reasoning\": \"F10 prints the verb 'Determine' with the value question, and its desc slot nests the pile families F19 and F20, so it produces problems that ask the learner to determine a value.\"},\n \"write_value\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F16\", \"template\": \"What is the total value of {desc}?\", \"reasoning\": \"F16 asks for the total value of the described money. The only answer text the packet prints is the option letter (F05, F07), so the 'write' part is not shown by any printed family; the value-asking question is the closest producible form.\"},\n \"number_of_bills\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F17\", \"template\": \"{count} {face} {unit}\", \"reasoning\": \"F17 prints a count of one denomination with the unit 'bill' or 'bills' (unit domain members include bill and bills), which is a number of bills. Its count domain is 1 to 12.\"},\n \"number_of_coins\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F17\", \"template\": \"{count} {face} {unit}\", \"reasoning\": \"F17 prints a count of one denomination with the unit 'coin' or 'coins' (unit domain members include coin and coins), which is a number of coins.\"},\n \"combination_of_bills_and_coins\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F20\", \"template\": \"{v} and {v2}\", \"reasoning\": \"F20 joins two piles from F17, and each pile's unit is chosen independently, so one problem can show a pile of bills and a pile of coins together.\"},\n \"up_to_1000\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F08\", \"template\": \"Use coins and bills to make exactly ₱{total}.\", \"reasoning\": \"The total key is printed up to 1000 (printed_runs ends at 1000), so F08 produces amounts up to ₱1000.\"},\n \"centavo_coins_only\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F17\", \"template\": \"{count} {face} {unit}\", \"reasoning\": \"F17's face domain includes F18 (centavo faces, denom members 25 and 50, printed with the cent sign), so F17 can produce piles of centavo coins.\"},\n \"peso_coins_only\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F17\", \"template\": \"{count} {face} {unit}\", \"reasoning\": \"F17's face domain includes F21 (peso faces with the peso sign), and its unit can be coin or coins, so F17 can produce piles of peso coins.\"},\n \"peso_bills_only\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F17\", \"template\": \"{count} {face} {unit}\", \"reasoning\": \"F17's face domain includes F21 (peso faces) and its unit can be bill or bills, so F17 can produce piles of peso bills.\"},\n \"combined_peso_coins_and_peso_bills\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F20\", \"template\": \"{v} and {v2}\", \"reasoning\": \"F20 combines two F17 piles with independently chosen units and peso faces, so one problem can show peso coins and peso bills together.\"}\n },\n \"failing_families\": [\"F02\", \"F03\", \"F06\", \"F11\", \"F13\", \"F15\", \"F17\"],\n \"failing_templates\": [\"Step {v}: Add {peso_label}{amt} → running total = {peso_label}{running}.\", \"The total is {peso_label}{total}.\", \"The dot is at ₱{a} and it moves {direction} ₱{b}. Which amount will the dot land on?\", \"Find the total amount of {desc}, in centavos:\", \"How much is {desc} altogether, in centavos?\", \"What is the total value of {desc}, in centavos?\", \"{count} {face} {unit}\"],\n \"overall\": \"FAIL\",\n \"reasoning\": \"F17 ('{count} {face} {unit}') is the root fault. Its count (1 to 12) and its unit (bill/bills, coin/coins) are chosen independently of its face, and the face domain includes peso faces (F21) such as 100, 200 and 500 and centavo faces (F18) of 25 and 50. So the family can print a unit that does not exist for that denomination, and a unit that disagrees with the count (singular unit with a count above 1, or plural with 1). Its count is also unbounded against the ₱1000 limit, since 12 pieces of the 500 face total far more than 1000. Every family that nests F17 (F10 through F16, F19, F20) prints that text. F02 and F03 print the peso label before every amount and total, but amounts include 5, 25 and 50 and totals include 2 and 7, which are centavo values in this centavo context, so a learner reads them as pesos. F06 prints the peso sign before amounts including 25, and it can move back by more than the starting amount, which gives a negative landing value; it is also a number-line story that is outside the bills-and-coins competency. F11, F13 and F15 ask for the value in centavos. Conversion to centavos is not named by the competency, and a peso total up to 1000 becomes a centavo number well beyond grade 2 (the number format is no commas up to 1000). F04 prints the amounts as bare numbers with no unit, but the packet does not show what its computed text contains, so it is not failed here. Rule 2 is satisfied for all ten clauses.\"}",
+ "raw_reply_digest": "9cf3d3bf1264e4b30f2d3fab661695e7914c7780de264225b105061f2ecb7d82",
+ "packet_digest": "2fb85c2d3f05feadd9cdf9fc4b88e0803d017c9e2aa241ca67d327711046edc2",
+ "family_keys": {
+  "F01": {
+   "source": "backend/app/practice_gen/dna/base.py [gate peso]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F02": {
+   "source": "backend/app/practice_gen/dna/na/money_peso.py",
+   "first_site": "backend/app/practice_gen/dna/na/money_peso.py:561",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F03": {
+   "source": "backend/app/practice_gen/dna/na/money_peso.py",
+   "first_site": "backend/app/practice_gen/dna/na/money_peso.py:562",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F04": {
+   "source": "backend/app/practice_gen/dna/na/money_peso.py",
+   "first_site": "backend/app/practice_gen/dna/na/money_peso.py:555",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F05": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:51",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F06": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_number_line.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_number_line.py:860",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F07": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_number_line.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_number_line.py:834",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F08": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_peso_money.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_peso_money.py:394",
+   "renderer": "",
+   "path": [
+    4,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F09": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_peso_money.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_peso_money.py:396",
+   "renderer": "",
+   "path": [
+    4,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F10": {
+   "source": "backend/app/practice_gen/generators/base_generator.py",
+   "first_site": "backend/app/practice_gen/generators/base_generator.py:1112",
+   "renderer": "",
+   "path": [
+    8,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F11": {
+   "source": "backend/app/practice_gen/generators/base_generator.py",
+   "first_site": "backend/app/practice_gen/generators/base_generator.py:1104",
+   "renderer": "",
+   "path": [
+    32,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F12": {
+   "source": "backend/app/practice_gen/generators/base_generator.py",
+   "first_site": "backend/app/practice_gen/generators/base_generator.py:1110",
+   "renderer": "",
+   "path": [
+    26,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F13": {
+   "source": "backend/app/practice_gen/generators/base_generator.py",
+   "first_site": "backend/app/practice_gen/generators/base_generator.py:1105",
+   "renderer": "",
+   "path": [
+    29,
+    "cloze"
+   ],
+   "first_render_repeating": {}
+  },
+  "F14": {
+   "source": "backend/app/practice_gen/generators/base_generator.py",
+   "first_site": "backend/app/practice_gen/generators/base_generator.py:1111",
+   "renderer": "",
+   "path": [
+    12,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F15": {
+   "source": "backend/app/practice_gen/generators/base_generator.py",
+   "first_site": "backend/app/practice_gen/generators/base_generator.py:1103",
+   "renderer": "",
+   "path": [
+    2,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F16": {
+   "source": "backend/app/practice_gen/generators/base_generator.py",
+   "first_site": "backend/app/practice_gen/generators/base_generator.py:1109",
+   "renderer": "",
+   "path": [
+    13,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F17": {
+   "source": "backend/app/practice_gen/generators/base_generator.py",
+   "first_site": "backend/app/practice_gen/generators/base_generator.py:1091",
+   "renderer": "",
+   "path": [
+    2,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F18": {
+   "source": "backend/app/practice_gen/generators/base_generator.py",
+   "first_site": "backend/app/practice_gen/generators/base_generator.py:1085",
+   "renderer": "",
+   "path": [
+    2,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F19": {
+   "source": "backend/app/practice_gen/generators/base_generator.py",
+   "first_site": "backend/app/practice_gen/generators/base_generator.py:1098",
+   "renderer": "",
+   "path": [
+    12,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F20": {
+   "source": "backend/app/practice_gen/generators/base_generator.py",
+   "first_site": "backend/app/practice_gen/generators/base_generator.py:1096",
+   "renderer": "",
+   "path": [
+    8,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F21": {
+   "source": "backend/app/practice_gen/generators/base_generator.py",
+   "first_site": "backend/app/practice_gen/generators/base_generator.py:1088",
+   "renderer": "",
+   "path": [
+    8,
+    null
+   ],
+   "first_render_repeating": {}
+  }
+ },
+ "packet": {
+  "item": "S443-025",
+  "competency": {
+   "text": "Determine and write the value of a number of bills, or a number of coins, or a combination of bills and coins up to ₱1000 (centavo coins only, peso coins only, peso bills only, combined peso coins and peso bills).",
+   "grade": 2,
+   "quarter": 2
+  },
+  "clauses": [
+   {
+    "id": "determine",
+    "kind": "task",
+    "clause": "Determine"
+   },
+   {
+    "id": "write_value",
+    "kind": "task",
+    "clause": "write the value"
+   },
+   {
+    "id": "number_of_bills",
+    "kind": "object",
+    "clause": "number of bills"
+   },
+   {
+    "id": "number_of_coins",
+    "kind": "object",
+    "clause": "number of coins"
+   },
+   {
+    "id": "combination_of_bills_and_coins",
+    "kind": "object",
+    "clause": "combination of bills and coins"
+   },
+   {
+    "id": "up_to_1000",
+    "kind": "range",
+    "clause": "up to ₱1000"
+   },
+   {
+    "id": "centavo_coins_only",
+    "kind": "object",
+    "clause": "centavo coins only"
+   },
+   {
+    "id": "peso_coins_only",
+    "kind": "object",
+    "clause": "peso coins only"
+   },
+   {
+    "id": "peso_bills_only",
+    "kind": "object",
+    "clause": "peso bills only"
+   },
+   {
+    "id": "combined_peso_coins_and_peso_bills",
+    "kind": "object",
+    "clause": "combined peso coins and peso bills"
+   }
+  ],
+  "vocabulary": {
+   "student_vocab": [
+    "centavo"
+   ],
+   "curriculum_vocab": [
+    "combination of bills and coins",
+    "up to ₱1000",
+    "peso coins",
+    "peso bills"
+   ],
+   "introduces_vocab": [
+    "centavo",
+    "combination of bills and coins",
+    "up to ₱1000",
+    "peso coins",
+    "peso bills"
+   ],
+   "cumulative_vocab": [
+    "1 less",
+    "1 more",
+    "10th",
+    "1st",
+    "2nd",
+    "3rd",
+    "4th",
+    "5th",
+    "6th",
+    "7th",
+    "8th",
+    "9th",
+    "addition",
+    "analog clock",
+    "bigger",
+    "bill",
+    "calendar",
+    "circle",
+    "clockwise",
+    "coin",
+    "compare",
+    "corner",
+    "count",
+    "counter-clockwise",
+    "data",
+    "difference",
+    "digit",
+    "equal",
+    "expanded form",
+    "fraction",
+    "group",
+    "half",
+    "half hour",
+    "half turn",
+    "hour",
+    "how many",
+    "hundreds",
+    "left",
+    "length",
+    "less",
+    "measure",
+    "missing number",
+    "more",
+    "number",
+    "number line",
+    "numeral",
+    "ones",
+    "pattern",
+    "peso",
+    "pictograph",
+    "place value",
+    "quarter",
+    "quarter hour",
+    "quarter turn",
+    "rectangle",
+    "regrouping",
+    "repeating pattern",
+    "same",
+    "side",
+    "skip counting",
+    "slide",
+    "smaller",
+    "square",
+    "subtraction",
+    "sum",
+    "table",
+    "tens",
+    "thousand",
+    "total",
+    "translation",
+    "triangle",
+    "whole",
+    "₱"
+   ],
+   "NOT_YET_KNOWN": [
+    "L",
+    "a.m.",
+    "area",
+    "axis",
+    "balance scale",
+    "bar graph",
+    "capacity",
+    "centimeter",
+    "certain",
+    "cm",
+    "decreasing pattern",
+    "denominator",
+    "division",
+    "elapsed time",
+    "equal groups",
+    "equally likely",
+    "estimate",
+    "even",
+    "g",
+    "gram",
+    "impossible",
+    "improper fraction",
+    "increasing pattern",
+    "intersecting",
+    "kg",
+    "kilogram",
+    "less likely",
+    "line",
+    "line of symmetry",
+    "line segment",
+    "liter",
+    "m",
+    "mL",
+    "mass",
+    "meter",
+    "milliliter",
+    "minute",
+    "missing term",
+    "more likely",
+    "multiplication",
+    "nearest hundred",
+    "nearest ten",
+    "nearest thousand",
+    "numerator",
+    "odd",
+    "order of operations",
+    "outcome",
+    "p.m.",
+    "parallel",
+    "perimeter",
+    "perpendicular",
+    "point",
+    "product",
+    "quotient",
+    "ray",
+    "remainder",
+    "round",
+    "ruler",
+    "scale",
+    "similar fractions",
+    "solid figure",
+    "sq. cm",
+    "square centimeter",
+    "symmetry",
+    "ten thousand",
+    "ten-thousands place"
+   ],
+   "sentence_max_words": 18,
+   "number_format": "no commas for numbers up to 1000"
+  },
+  "declared_variants": [
+   [
+    "context",
+    "pure"
+   ],
+   [
+    "task_type",
+    "count_total"
+   ],
+   [
+    "task_type",
+    "give_money"
+   ],
+   [
+    "task_type",
+    "make_change"
+   ]
+  ],
+  "declared_bounds": [
+   {
+    "operation": "add_amounts",
+    "context": "pure",
+    "denomination_type": "peso_sub_cases",
+    "max_total": [
+     1,
+     1000
+    ]
+   }
+  ],
+  "families": [
+   {
+    "id": "F01",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F02",
+     "F03"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='peso')",
+        "requires_vocab": "peso",
+        "prints": "peso",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F02",
+    "template": "Step {v}: Add {peso_label}{amt} → running total = {peso_label}{running}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "v"
+      ],
+      "domains": [
+       {
+        "domain": "a number in a range",
+        "basis": "the step number, one per amount",
+        "lo": 1,
+        "hi": 12
+       }
+      ]
+     },
+     {
+      "slots": [
+       "peso_label"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F01"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "amt"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "values['amounts']",
+        "members": [
+         1,
+         10,
+         100,
+         20,
+         200,
+         25,
+         5,
+         50,
+         500
+        ],
+        "derived_from_values": [
+         "amounts"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "running"
+      ],
+      "domains": [
+       {
+        "domain": "a number computed by the generator",
+        "reason": "arithmetic",
+        "derived_from_values": [
+         "amounts"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "operation"
+    ]
+   },
+   {
+    "id": "F03",
+    "template": "The total is {peso_label}{total}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "peso_label"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F01"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "total"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "total",
+        "printed_runs": "2, 7, 10 to 11, 14 to 15, 20 to 21, 25 to 26, 30, 32 to 33, 35 to 36, 40 to 42, 45, 49 to 50, 52, 54 to 55, 57 to 58, 60 to 62, 66, 68 to 71, 73 to 77, 81 to 83, 87, 100 to 101, 105, 120 to 121, 125, 131, 140, 150, 170, 175, 200 to 201, 206, 220 to 221, 225, 235, 245, 250 to 251, 265, 270, 275, 300, 305, 320, 350, 355, 375, 390, 400, 410, 415, 425, 440, 450, 460, 475, 500, 505, 521 to 522, 530, 536, 540, 550, 552, 560, 570 to 571, 601, 610, 620, 626, 640, 650, 655, 661, 670, 700, 740, 756, 760, 770, 790, 800, 850 to 851, 920, 940, 1000",
+        "derived_from_values": [
+         "total"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "operation"
+    ]
+   },
+   {
+    "id": "F04",
+    "template": "You have these amounts: {v}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "v"
+      ],
+      "domains": [
+       {
+        "domain": "text computed by the generator",
+        "derived_from_values": [
+         "amounts"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F05",
+    "template": "{key}",
+    "appears_in": [
+     "correct_answer"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "key"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the option keys this item shows",
+        "members": [
+         "A",
+         "B",
+         "C",
+         "D"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F06",
+    "template": "The dot is at ₱{a} and it moves {direction} ₱{b}. Which amount will the dot land on?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "1, 5, 10, 20, 25, 50, 100, 200, 500",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "direction"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the dot's two directions",
+        "members": [
+         "back",
+         "forward"
+        ],
+        "derived_from_values": [
+         "operation"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "1, 5, 10, 20, 25, 50, 100, 200, 500",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F07",
+    "template": "{key}",
+    "appears_in": [
+     "correct_answer"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "key"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "_OPTION_KEYS"
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F08",
+    "template": "Use coins and bills to make exactly ₱{total}.",
+    "appears_in": [],
+    "nested_in": [
+     "F09"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "total"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "total",
+        "printed_runs": "2, 11, 14 to 15, 20, 25 to 26, 30, 32, 36, 45, 49, 54, 60 to 62, 66, 68, 70 to 71, 73, 82, 87, 101, 120, 125, 131, 140, 150, 170, 175, 200 to 201, 220, 225, 245, 250 to 251, 300, 305, 320, 350, 390, 410, 425, 450, 460, 475, 500, 522, 530, 550, 552, 610, 620, 650, 670, 740, 760, 790, 800, 940, 1000",
+        "derived_from_values": [
+         "total"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F09",
+    "template": "{stem} Use the fewest pieces possible.",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "stem"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F08"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F10",
+    "template": "Determine the total value of {desc}:",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "desc"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F19",
+         "F20"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "amounts"
+    ]
+   },
+   {
+    "id": "F11",
+    "template": "Find the total amount of {desc}, in centavos:",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "desc"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F17"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "amounts"
+    ]
+   },
+   {
+    "id": "F12",
+    "template": "Find the total amount of {desc}:",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "desc"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F19"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "amounts"
+    ]
+   },
+   {
+    "id": "F13",
+    "template": "How much is {desc} altogether, in centavos?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "desc"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F20"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "amounts"
+    ]
+   },
+   {
+    "id": "F14",
+    "template": "How much is {desc} altogether?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "desc"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F19",
+         "F20"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "amounts"
+    ]
+   },
+   {
+    "id": "F15",
+    "template": "What is the total value of {desc}, in centavos?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "desc"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F17"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "amounts"
+    ]
+   },
+   {
+    "id": "F16",
+    "template": "What is the total value of {desc}?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "desc"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F17",
+         "F19"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "amounts"
+    ]
+   },
+   {
+    "id": "F17",
+    "template": "{count} {face} {unit}",
+    "appears_in": [],
+    "nested_in": [
+     "F11",
+     "F15",
+     "F16",
+     "F19",
+     "F20"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "count"
+      ],
+      "domains": [
+       {
+        "domain": "a number in a range",
+        "basis": "how many of one denomination the pile holds",
+        "lo": 1,
+        "hi": 12,
+        "derived_from_values": [
+         "amounts"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "face"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F18",
+         "F21"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "unit"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "coin/bill, singular or plural",
+        "members": [
+         "bill",
+         "bills",
+         "coin",
+         "coins"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "amounts"
+    ]
+   },
+   {
+    "id": "F18",
+    "template": "{denom}¢",
+    "appears_in": [],
+    "nested_in": [
+     "F17"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "denom"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "values['amounts']",
+        "members": [
+         25,
+         50
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "amounts"
+    ]
+   },
+   {
+    "id": "F19",
+    "template": "{join}, and {v}",
+    "appears_in": [],
+    "nested_in": [
+     "F10",
+     "F12",
+     "F14",
+     "F16"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "join",
+       "v"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F17"
+        ]
+       }
+      ],
+      "distinct_in_every_render": true
+     }
+    ],
+    "template_chosen_by_values": [
+     "amounts"
+    ]
+   },
+   {
+    "id": "F20",
+    "template": "{v} and {v2}",
+    "appears_in": [],
+    "nested_in": [
+     "F10",
+     "F13",
+     "F14"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "v",
+       "v2"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F17"
+        ]
+       }
+      ],
+      "distinct_in_every_render": true
+     }
+    ],
+    "template_chosen_by_values": [
+     "amounts"
+    ]
+   },
+   {
+    "id": "F21",
+    "template": "₱{denom}",
+    "appears_in": [],
+    "nested_in": [
+     "F17"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "denom"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "values['amounts']",
+        "members": [
+         1,
+         10,
+         100,
+         20,
+         200,
+         5,
+         50,
+         500
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "amounts"
+    ]
+   }
+  ],
+  "lists": {
+   "_OPTION_KEYS": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ]
+  },
+  "banks": {},
+  "value_derivations": [
+   {
+    "kind": "derives",
+    "key": "amounts",
+    "from": [
+     "denomination_unit"
+    ]
+   }
+  ],
+  "reason_kinds": {
+   "arithmetic": "a number the generator computes from the generated values named in src (a half, a sum, a difference, a running total, a place's digit). Its range is the image of those values' own domains; whether the arithmetic is RIGHT is the hint contract's (§16) and §1E's to check, not §14's."
+  }
+ }
+}

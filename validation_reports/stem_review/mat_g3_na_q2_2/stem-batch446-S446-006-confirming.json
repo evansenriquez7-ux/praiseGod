@@ -1,0 +1,698 @@
+{
+ "schema_version": 2,
+ "hash_version": 8,
+ "node_id": "mat_g3_na_q2_2",
+ "record_id": "stem-batch446-S446-006-confirming",
+ "role": "confirming",
+ "confirms": "stem-batch446-S446-006-first",
+ "item_id": "S446-006",
+ "lc_hash": "a1a2665d561c53ef92ae9383d2a36f364edf049a698fff78883b72b9f50b6f56",
+ "judged_by": "blind-stem-judge-claude-haiku-batch446-S446-006-confirming",
+ "dispatch_id": "stem-batch446-S446-006-confirming",
+ "filed_at": "2026-10-16T06:28:19Z",
+ "delivery": "Claude Code Agent tool, model=haiku, subagent_type=general-purpose; the judge was told to read only local_only/scratch/h4c/prompts/S446-006.prompt.txt (tests/stem_file.py prompt output, item S446-006; no lc id, no key or packets file in that directory) and reply with what it asks; dispatched with CLAUDE.md loaded (ruling 29). Blindness is a prompt contract, audited from the subagent transcript.",
+ "tool_uses_by_judge": "From the subagent transcript: 1 tool use(s), all Read of its own prompt file (676 lines, every line read); no other tool, path or search. Model reported in the transcript: claude-haiku-5-5.",
+ "dispatch_prompt_digest": "48b7e5481391dbb28f13b7b5e094887f387947674d23d6974cc5fbc4fd3d4fdf",
+ "raw_reply": "{\"item\": \"S446-006\", \"clauses\": {\"estimate\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F07\", \"template\": \"Estimate the sum: {real_a} + {real_b}\", \"reasoning\": \"F07 is the question_text family and its template opens with the task word 'Estimate the sum', which is in cumulative_vocab and matches the competency's 'Estimate' clause.\"}, \"sum\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F07\", \"template\": \"Estimate the sum: {real_a} + {real_b}\", \"reasoning\": \"F07 prints 'the sum' as the object to be estimated, so the 'sum' clause is addressed directly by the question.\"}, \"addends\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F07\", \"template\": \"Estimate the sum: {real_a} + {real_b}\", \"reasoning\": \"F07 prints two addends, real_a and real_b, joined by '+', so the 'addends' clause is addressed.\"}, \"up_to_4_digits\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F07\", \"template\": \"Estimate the sum: {real_a} + {real_b}\", \"reasoning\": \"The observed printed_runs for real_a and real_b include 4-digit values (for example 9477 and 9303), and the domains allow 4-digit addends in F07, so the 'up to 4 digits' range is produced.\"}}, \"failing_families\": [\"F03\", \"F07\", \"F08\"], \"failing_templates\": [\"Add the ones: {ones_a} + {ones_b} = {ones_sum}. Keep {ones_sum} in the ones place.\", \"Estimate the sum: {real_a} + {real_b}\"], \"overall\": \"FAIL\", \"reasoning\": \"F03 (hints) prints ones_sum, a computed sum of two ones-digit values from the generator's arithmetic reason, and its own template then says to keep that value in the ones place. The domain for ones_sum is the image of the ones-digit values, which reaches two-digit results, so the hint can state that a two-digit number is kept in the ones place. That statement is wrong for a learner. F07 and F08 print identical templates over the same domains for real_a and real_b. The observed printed_runs reach 9477 for real_a and 9303 for real_b with no joint constraint between them in the domains, so one problem can print an estimate whose sum is about 18780. The declared bound for this lc is max_sum [20, 10000], so this exceeds the lc's declared bound and the grade 3 range. Note, not counted as a finding: the printed_runs are bare integers such as 1000 and 5000, while number_format declares a space separator; the packet records numeric values rather than rendered text, so the packet does not show whether the separator is applied. F02 is empty and F01 prints 'the sum' only inside F06's capitalised hint, which is correct. F04, F05 and F06 contain no wrong or out-of-scope statement within their observed domains. F06's result runs stay at or below 10000, consistent with the bound.\"}",
+ "raw_reply_digest": "a17fa65591ef20ed64c62bf4020054eb16475f12b140bdb06a7ece9fd2d967e4",
+ "packet_digest": "eb18450f433197ccd3e50e2365abca8c5bd9c53c6ba7216cd37afab1d61bbfa8",
+ "family_keys": {
+  "F01": {
+   "source": "backend/app/practice_gen/dna/base.py [gate sum]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F02": {
+   "source": "backend/app/practice_gen/dna/na/addition.py",
+   "first_site": "backend/app/practice_gen/dna/na/addition.py:1150",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F03": {
+   "source": "backend/app/practice_gen/dna/na/addition.py",
+   "first_site": "backend/app/practice_gen/dna/na/addition.py:1124",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F04": {
+   "source": "backend/app/practice_gen/dna/na/addition.py",
+   "first_site": "backend/app/practice_gen/dna/na/addition.py:1151",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F05": {
+   "source": "backend/app/practice_gen/dna/na/addition.py",
+   "first_site": "backend/app/practice_gen/dna/na/addition.py:1096",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F06": {
+   "source": "backend/app/practice_gen/dna/na/addition.py",
+   "first_site": "backend/app/practice_gen/dna/na/addition.py:1158",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F07": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_mcq.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_mcq.py:41",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F08": {
+   "source": "backend/app/practice_gen/generators/base_generator.py",
+   "first_site": "backend/app/practice_gen/generators/base_generator.py:786",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  }
+ },
+ "packet": {
+  "item": "S446-006",
+  "competency": {
+   "text": "Estimate the sum of addends with up to 4 digits.",
+   "grade": 3,
+   "quarter": 2
+  },
+  "clauses": [
+   {
+    "id": "estimate",
+    "kind": "task",
+    "clause": "Estimate"
+   },
+   {
+    "id": "sum",
+    "kind": "property",
+    "clause": "sum"
+   },
+   {
+    "id": "addends",
+    "kind": "object",
+    "clause": "addends"
+   },
+   {
+    "id": "up_to_4_digits",
+    "kind": "range",
+    "clause": "up to 4 digits"
+   }
+  ],
+  "vocabulary": {
+   "student_vocab": [],
+   "curriculum_vocab": [
+    "estimate the sum",
+    "estimate"
+   ],
+   "introduces_vocab": [
+    "estimate the sum",
+    "estimate"
+   ],
+   "cumulative_vocab": [
+    "1 less",
+    "1 more",
+    "10th",
+    "1st",
+    "2nd",
+    "3rd",
+    "4th",
+    "5th",
+    "6th",
+    "7th",
+    "8th",
+    "9th",
+    "a.m.",
+    "addition",
+    "analog clock",
+    "area",
+    "bigger",
+    "bill",
+    "calendar",
+    "centavo",
+    "centimeter",
+    "circle",
+    "clockwise",
+    "cm",
+    "coin",
+    "compare",
+    "corner",
+    "count",
+    "counter-clockwise",
+    "data",
+    "decreasing pattern",
+    "denominator",
+    "difference",
+    "digit",
+    "division",
+    "elapsed time",
+    "equal",
+    "equal groups",
+    "estimate",
+    "even",
+    "expanded form",
+    "fraction",
+    "group",
+    "half",
+    "half hour",
+    "half turn",
+    "hour",
+    "how many",
+    "hundreds",
+    "increasing pattern",
+    "intersecting",
+    "left",
+    "length",
+    "less",
+    "line",
+    "line segment",
+    "m",
+    "measure",
+    "meter",
+    "minute",
+    "missing number",
+    "more",
+    "multiplication",
+    "nearest hundred",
+    "nearest ten",
+    "nearest thousand",
+    "number",
+    "number line",
+    "numeral",
+    "numerator",
+    "odd",
+    "ones",
+    "p.m.",
+    "parallel",
+    "pattern",
+    "perimeter",
+    "perpendicular",
+    "peso",
+    "pictograph",
+    "place value",
+    "point",
+    "product",
+    "quarter",
+    "quarter hour",
+    "quarter turn",
+    "quotient",
+    "ray",
+    "rectangle",
+    "regrouping",
+    "repeating pattern",
+    "round",
+    "ruler",
+    "same",
+    "scale",
+    "side",
+    "similar fractions",
+    "skip counting",
+    "slide",
+    "smaller",
+    "solid figure",
+    "sq. cm",
+    "square",
+    "square centimeter",
+    "subtraction",
+    "sum",
+    "table",
+    "ten thousand",
+    "ten-thousands place",
+    "tens",
+    "thousand",
+    "total",
+    "translation",
+    "triangle",
+    "whole",
+    "₱"
+   ],
+   "NOT_YET_KNOWN": [
+    "L",
+    "axis",
+    "balance scale",
+    "bar graph",
+    "capacity",
+    "certain",
+    "equally likely",
+    "g",
+    "gram",
+    "impossible",
+    "improper fraction",
+    "kg",
+    "kilogram",
+    "less likely",
+    "line of symmetry",
+    "liter",
+    "mL",
+    "mass",
+    "milliliter",
+    "missing term",
+    "more likely",
+    "order of operations",
+    "outcome",
+    "remainder",
+    "symmetry"
+   ],
+   "sentence_max_words": 22,
+   "number_format": "space separator for thousands (e.g. 1 000)"
+  },
+  "declared_variants": [
+   [
+    "context",
+    "pure"
+   ],
+   [
+    "context",
+    "word_problem"
+   ],
+   [
+    "spine",
+    "counting_up"
+   ],
+   [
+    "spine",
+    "putting_together"
+   ],
+   [
+    "strategy",
+    "expanded_form"
+   ],
+   [
+    "strategy",
+    "standard"
+   ],
+   [
+    "structure",
+    "result_unknown"
+   ]
+  ],
+  "declared_bounds": [
+   {
+    "task_type": "estimate",
+    "max_sum": [
+     20,
+     10000
+    ]
+   }
+  ],
+  "families": [
+   {
+    "id": "F01",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F06"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='sum')",
+        "requires_vocab": "sum",
+        "prints": "the sum",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F02",
+    "template": "",
+    "appears_in": [],
+    "nested_in": [
+     "F04"
+    ],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F03",
+    "template": "Add the ones: {ones_a} + {ones_b} = {ones_sum}. Keep {ones_sum} in the ones place.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "ones_a"
+      ],
+      "domains": [
+       {
+        "domain": "a number computed by the generator",
+        "reason": "arithmetic",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "ones_b"
+      ],
+      "domains": [
+       {
+        "domain": "a number computed by the generator",
+        "reason": "arithmetic",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "ones_sum"
+      ],
+      "domains": [
+       {
+        "domain": "a number computed by the generator",
+        "reason": "arithmetic",
+        "derived_from_values": [
+         "a",
+         "b"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F04",
+    "template": "Add the tens: {tens_a} + {tens_b}{tail} = {tens_sum}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "tens_a"
+      ],
+      "domains": [
+       {
+        "domain": "a number computed by the generator",
+        "reason": "arithmetic",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "tens_b"
+      ],
+      "domains": [
+       {
+        "domain": "a number computed by the generator",
+        "reason": "arithmetic",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "tail"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F02"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "tens_sum"
+      ],
+      "domains": [
+       {
+        "domain": "a number computed by the generator",
+        "reason": "arithmetic",
+        "derived_from_values": [
+         "a",
+         "b"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "a",
+     "b"
+    ]
+   },
+   {
+    "id": "F05",
+    "template": "We are adding two numbers: {a} and {b}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "20, 90, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "20, 30, 40, 50, 90, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F06",
+    "template": "{capitalize} is {a} + {b} = {result}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "capitalize"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F01"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "20, 90, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "20, 30, 40, 50, 90, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "result"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "result",
+        "printed_runs": "590, 800, 1090, 1100, 1200, 1300, 1400, 1500, 1700, 2000, 2020, 2030, 2100, 2200, 2500, 2600, 2900, 3000, 3040, 3200, 3300, 3400, 3500, 3600, 3700, 3800, 3900, 4000, 4100, 4400, 4500, 4700, 5000, 5100, 5200, 5400, 5500, 5700, 5900, 6000, 6200, 6700, 6800, 6900, 7000, 7030, 7100, 7200, 7600, 7700, 7800, 8000, 8100, 8300, 8400, 8500, 8700, 8800, 9000, 9020, 9030, 9050, 9200, 9400, 9600, 9800, 10000",
+        "derived_from_values": [
+         "result"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F07",
+    "template": "Estimate the sum: {real_a} + {real_b}",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "real_a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "real_a",
+        "printed_runs": "20, 91, 105 to 106, 150, 159, 168, 173, 184, 217, 225, 270, 285, 343, 356, 370, 373, 384, 411, 459, 473, 498, 500, 507, 520, 533, 540, 580, 593, 659, 667, 694, 708, 840, 862, 895, 906, 920, 930, 936, 940, 956, 1014, 1020, 1038, 1040, 1050, 1082, 1087, 1119, 1135, 1148, 1170, 1185, 1221, 1224, 1234, 1250, 1263, 1304, 1308, 1330, 1335, 1353, 1366, 1368, 1400, 1402, 1425, 1470, 1473, 1536, 1547, 1575, 1646, 1650, 1716, 1770, 1805, 1836, 1869, 1905, 1916, 1925, 1950, 1960, 1980, 2004, 2015, 2054, 2071, 2115, 2130, 2200, 2230, 2235, 2280, 2308, 2313, 2330, 2404, 2429, 2490, 2519, 2619, 2636, 2663, 2687, 2706, 2722, 2807, 2835, 2842, 2918, 2948, 2950, 2970, 2990, 2995, 3002, 3040, 3065, 3074, 3138, 3144, 3147, 3175, 3194, 3317, 3330, 3374, 3380, 3422, 3556, 3570, 3591, 3627, 3655, 3660, 3665, 3695, 3698, 3756, 3822, 3895, 3917, 3930, 3945, 3957, 3960, 3990, 4000, 4020, 4064, 4080, 4108, 4150 to 4151, 4156, 4172, 4193, 4290, 4410, 4454, 4463, 4502, 4588, 4590, 4681, 4700, 4725, 4865, 4870, 4919, 5055, 5074, 5100, 5164, 5203, 5215, 5311, 5317, 5335, 5460, 5531, 5571, 5638, 5700, 5722, 5735, 5762, 5810, 5925, 5975, 5989, 6000, 6088, 6211, 6400, 6443, 6463, 6465, 6575, 6585, 6663, 6840, 6878, 7155, 7167, 7237, 7253, 7357, 7558, 7698, 7733, 7870, 7976, 8082, 8165, 8193, 8284, 8431, 8483, 8529, 8550, 8560, 8621, 8748, 8836, 8990, 9288, 9455, 9477",
+        "derived_from_values": [
+         "real_a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "real_b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "real_b",
+        "printed_runs": "21, 26, 29 to 30, 41, 48, 90, 98, 120, 142, 224, 226, 231, 250, 338, 353, 359, 364, 369, 380, 499, 516, 559, 570, 593, 623, 645, 670, 682, 690, 712, 770 to 771, 793, 796, 808, 835, 858, 902, 974, 994, 999 to 1000, 1005, 1015, 1030, 1036, 1054, 1067, 1104, 1119, 1125, 1147, 1172, 1242, 1268, 1284, 1304, 1345, 1370, 1383, 1389, 1430, 1435, 1446, 1491, 1498, 1529, 1542, 1561, 1576, 1636, 1659, 1713, 1726, 1787, 1842, 1866, 1890, 1905, 1925, 1933, 1950, 1991, 2020, 2043, 2073, 2076, 2091, 2104, 2106, 2108, 2204, 2207, 2212, 2218, 2220, 2266, 2270, 2310, 2319, 2333 to 2334, 2385, 2431, 2476, 2480, 2560, 2628, 2650, 2672, 2684, 2730, 2762, 2848, 2850, 2911, 2915, 3016, 3030, 3055, 3060, 3090, 3108, 3127, 3134 to 3135, 3140, 3151, 3161, 3177, 3219, 3394, 3407, 3443, 3482, 3616, 3620, 3636, 3707, 3753, 3756, 3791, 3796, 3800, 3863, 3901, 3931, 3957, 3974, 4056, 4060, 4075, 4083, 4110, 4191, 4222, 4229, 4260, 4274, 4321, 4337, 4343 to 4344, 4369, 4423, 4510, 4597, 4672, 4695, 4725, 4768, 4800, 4822, 4830, 4857, 5000, 5005, 5100, 5124, 5145, 5150, 5307, 5340, 5350, 5374, 5427, 5469, 5487, 5508, 5539, 5579, 5606, 5684, 5691, 5704, 5729 to 5730, 5822, 5856, 5895, 5966, 6066, 6180, 6219, 6303, 6310, 6342, 6423, 6441, 6600, 6765, 6849, 7020, 7030, 7062, 7091, 7098, 7156, 7350, 7360, 7371, 7383, 7406, 7544, 7920, 7931, 8054, 8100, 8310, 8380, 8481, 8637, 8746, 8940, 9303",
+        "derived_from_values": [
+         "real_b"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F08",
+    "template": "Estimate the sum: {real_a} + {real_b}",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "real_a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "real_a",
+        "printed_runs": "20, 91, 105 to 106, 150, 159, 168, 173, 184, 217, 225, 270, 285, 343, 356, 370, 373, 384, 411, 459, 473, 498, 500, 507, 520, 533, 540, 580, 593, 659, 667, 694, 708, 840, 862, 895, 906, 920, 930, 936, 940, 956, 1014, 1020, 1038, 1040, 1050, 1082, 1087, 1119, 1135, 1148, 1170, 1185, 1221, 1224, 1234, 1250, 1263, 1304, 1308, 1330, 1335, 1353, 1366, 1368, 1400, 1402, 1425, 1470, 1473, 1536, 1547, 1575, 1646, 1650, 1716, 1770, 1805, 1836, 1869, 1905, 1916, 1925, 1950, 1960, 1980, 2004, 2015, 2054, 2071, 2115, 2130, 2200, 2230, 2235, 2280, 2308, 2313, 2330, 2404, 2429, 2490, 2519, 2619, 2636, 2663, 2687, 2706, 2722, 2807, 2835, 2842, 2918, 2948, 2950, 2970, 2990, 2995, 3002, 3040, 3065, 3074, 3138, 3144, 3147, 3175, 3194, 3317, 3330, 3374, 3380, 3422, 3556, 3570, 3591, 3627, 3655, 3660, 3665, 3695, 3698, 3756, 3822, 3895, 3917, 3930, 3945, 3957, 3960, 3990, 4000, 4020, 4064, 4080, 4108, 4150 to 4151, 4156, 4172, 4193, 4290, 4410, 4454, 4463, 4502, 4588, 4590, 4681, 4700, 4725, 4865, 4870, 4919, 5055, 5074, 5100, 5164, 5203, 5215, 5311, 5317, 5335, 5460, 5531, 5571, 5638, 5700, 5722, 5735, 5762, 5810, 5925, 5975, 5989, 6000, 6088, 6211, 6400, 6443, 6463, 6465, 6575, 6585, 6663, 6840, 6878, 7155, 7167, 7237, 7253, 7357, 7558, 7698, 7733, 7870, 7976, 8082, 8165, 8193, 8284, 8431, 8483, 8529, 8550, 8560, 8621, 8748, 8836, 8990, 9288, 9455, 9477",
+        "derived_from_values": [
+         "real_a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "real_b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "real_b",
+        "printed_runs": "21, 26, 29 to 30, 41, 48, 90, 98, 120, 142, 224, 226, 231, 250, 338, 353, 359, 364, 369, 380, 499, 516, 559, 570, 593, 623, 645, 670, 682, 690, 712, 770 to 771, 793, 796, 808, 835, 858, 902, 974, 994, 999 to 1000, 1005, 1015, 1030, 1036, 1054, 1067, 1104, 1119, 1125, 1147, 1172, 1242, 1268, 1284, 1304, 1345, 1370, 1383, 1389, 1430, 1435, 1446, 1491, 1498, 1529, 1542, 1561, 1576, 1636, 1659, 1713, 1726, 1787, 1842, 1866, 1890, 1905, 1925, 1933, 1950, 1991, 2020, 2043, 2073, 2076, 2091, 2104, 2106, 2108, 2204, 2207, 2212, 2218, 2220, 2266, 2270, 2310, 2319, 2333 to 2334, 2385, 2431, 2476, 2480, 2560, 2628, 2650, 2672, 2684, 2730, 2762, 2848, 2850, 2911, 2915, 3016, 3030, 3055, 3060, 3090, 3108, 3127, 3134 to 3135, 3140, 3151, 3161, 3177, 3219, 3394, 3407, 3443, 3482, 3616, 3620, 3636, 3707, 3753, 3756, 3791, 3796, 3800, 3863, 3901, 3931, 3957, 3974, 4056, 4060, 4075, 4083, 4110, 4191, 4222, 4229, 4260, 4274, 4321, 4337, 4343 to 4344, 4369, 4423, 4510, 4597, 4672, 4695, 4725, 4768, 4800, 4822, 4830, 4857, 5000, 5005, 5100, 5124, 5145, 5150, 5307, 5340, 5350, 5374, 5427, 5469, 5487, 5508, 5539, 5579, 5606, 5684, 5691, 5704, 5729 to 5730, 5822, 5856, 5895, 5966, 6066, 6180, 6219, 6303, 6310, 6342, 6423, 6441, 6600, 6765, 6849, 7020, 7030, 7062, 7091, 7098, 7156, 7350, 7360, 7371, 7383, 7406, 7544, 7920, 7931, 8054, 8100, 8310, 8380, 8481, 8637, 8746, 8940, 9303",
+        "derived_from_values": [
+         "real_b"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   }
+  ],
+  "lists": {},
+  "banks": {},
+  "value_derivations": [],
+  "reason_kinds": {
+   "arithmetic": "a number the generator computes from the generated values named in src (a half, a sum, a difference, a running total, a place's digit). Its range is the image of those values' own domains; whether the arithmetic is RIGHT is the hint contract's (§16) and §1E's to check, not §14's."
+  }
+ }
+}

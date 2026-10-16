@@ -1,0 +1,835 @@
+{
+ "schema_version": 2,
+ "hash_version": 8,
+ "node_id": "mat_g2_mg_q1_1",
+ "record_id": "stem-batch443-S443-001-confirming",
+ "role": "confirming",
+ "confirms": "stem-batch443-S443-001-first",
+ "item_id": "S443-001",
+ "lc_hash": "75d0b0539dfc104fbfd6677112a05a2a365b88a2cceaa633ecfe7e90e96e1848",
+ "judged_by": "blind-stem-judge-claude-haiku-batch443-S443-001-confirming",
+ "dispatch_id": "stem-batch443-S443-001-confirming",
+ "filed_at": "2026-10-16T05:08:42Z",
+ "delivery": "Claude Code Agent tool, model=haiku, subagent_type=general-purpose; the judge was told to read only local_only/scratch/h4c/prompts/S443-001.prompt.txt (tests/stem_file.py prompt output, item S443-001; no lc id, no key or packets file in that directory) and reply with what it asks; dispatched with CLAUDE.md loaded (ruling 29). Blindness is a prompt contract, audited from the subagent transcript.",
+ "tool_uses_by_judge": "From the subagent transcript: 1 tool use(s), all Read of its own prompt file (783 lines, every line read); no other tool, path or search. Model reported in the transcript: claude-haiku-5-5.",
+ "dispatch_prompt_digest": "d56e4189f40f7c3bf909ad24b722a42fd839f8689945dfd6700c149bd86f9310",
+ "raw_reply": "{\"item\": \"S443-001\", \"clauses\": {\"compose_figures\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F11\", \"template\": \"{question}\", \"reasoning\": \"Bank rows 2 and 3 ask the learner to join half-circles or quarter-circles into one shape, which is composing.\"}, \"decompose_figures\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F11\", \"template\": \"{question}\", \"reasoning\": \"Bank row 4 cuts a square along a slant into two triangles, and bank row 8 cuts a 4-by-2 rectangle into two 2-by-2 parts.\"}, \"composite_figures\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F11\", \"template\": \"{question}\", \"reasoning\": \"Bank row 5 describes a rectangle with a half-circle attached on top as a composite figure, and bank row 9 describes a composite figure built from a square, a half-circle and a rectangle.\"}, \"squares\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F11\", \"template\": \"{question}\", \"reasoning\": \"Bank row 10 asks how many 1-by-1 unit squares compose a 2-by-2 square.\"}, \"rectangles\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F11\", \"template\": \"{question}\", \"reasoning\": \"Bank row 7 joins 2 squares side by side to form a rectangle.\"}, \"triangles\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F11\", \"template\": \"{question}\", \"reasoning\": \"Bank row 4 produces two triangles from a cut square. Row 1 is faulty, but row 4 is sound.\"}, \"circles\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F11\", \"template\": \"{question}\", \"reasoning\": \"Bank row 3 joins four quarter-circles to make a complete circle.\"}, \"half_circles\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F11\", \"template\": \"{question}\", \"reasoning\": \"Bank rows 2 and 5 use half-circles, joined along a straight edge or attached to a rectangle.\"}, \"quarter_circles\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F11\", \"template\": \"{question}\", \"reasoning\": \"Bank row 3 composes a circle from four quarter-circles.\"}, \"cut_outs\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F11\", \"template\": \"{question}\", \"reasoning\": \"Bank rows 1 to 4 each ask the learner to work Using cut-outs.\"}, \"square_grids\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F11\", \"template\": \"{question}\", \"reasoning\": \"Bank rows 7 to 11 each ask the learner to work On a square grid.\"}}, \"failing_families\": [\"F09\", \"F11\"], \"failing_templates\": [\"{question}\", \"{answer}\"], \"overall\": \"FAIL\", \"reasoning\": \"Bank row 1 (_ITEM_POOL, one_row_per_problem true) has the question 'Using cut-outs, two identical triangles are placed together along their matching edges. What shape can they form?' with keyed answer 'rectangle' and distractors circle, half-circle and quarter-circle. Two identical triangles joined along matching edges form a rectangle only if they are right triangles, which the question does not state. A learner who reasons about any triangle correctly gets a parallelogram, so the keyed answer is misleading. The domains for F11 (question) and F09 (answer) draw any row, so this row can print, and both families are failing. The word identical is not in cumulative_vocab. Checked and sound: the other ten bank rows (answers circle, circle, two triangles, 2, 2, rectangle, square, 3, 4, 3 are correct for their questions); F01 to F05 hint facts with the gated word sides; F06 printed values; F07 option keys A to D; F08 generator distractors; F10 distractors.\"}",
+ "raw_reply_digest": "e3afa53b289e4ede1ce634b66a3705f2919ed00ceb534300b759b30c3e04741e",
+ "packet_digest": "330f33b0008b68c8a8b6961ec5093e202c89aa2e13476446f22c160fd98e5a2f",
+ "family_keys": {
+  "F01": {
+   "source": "backend/app/practice_gen/dna/mg/shapes_2d.py [gate side]",
+   "first_site": "backend/app/practice_gen/dna/mg/shapes_2d.py:820",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F02": {
+   "source": "backend/app/practice_gen/dna/mg/shapes_2d.py [gate side]",
+   "first_site": "backend/app/practice_gen/dna/mg/shapes_2d.py:817",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F03": {
+   "source": "backend/app/practice_gen/dna/mg/shapes_2d.py [gate side]",
+   "first_site": "backend/app/practice_gen/dna/mg/shapes_2d.py:816",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F04": {
+   "source": "backend/app/practice_gen/dna/mg/shapes_2d.py [gate side]",
+   "first_site": "backend/app/practice_gen/dna/mg/shapes_2d.py:815",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F05": {
+   "source": "backend/app/practice_gen/dna/mg/shapes_2d.py [gate side]",
+   "first_site": "backend/app/practice_gen/dna/mg/shapes_2d.py:814",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F06": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:32",
+   "renderer": "",
+   "path": [
+    4,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F07": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:51",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F08": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:39",
+   "renderer": "",
+   "path": [
+    4,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F09": {
+   "source": "backend/app/practice_gen/slots.py",
+   "first_site": "backend/app/practice_gen/slots.py:180",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F10": {
+   "source": "backend/app/practice_gen/slots.py",
+   "first_site": "backend/app/practice_gen/slots.py:182",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F11": {
+   "source": "backend/app/practice_gen/slots.py",
+   "first_site": "backend/app/practice_gen/slots.py:180",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  }
+ },
+ "packet": {
+  "item": "S443-001",
+  "competency": {
+   "text": "Compose and decompose composite figures made up of squares, rectangles, triangles, circles, half circles, and quarter circles, using cut-outs and square grids.",
+   "grade": 2,
+   "quarter": 1
+  },
+  "clauses": [
+   {
+    "id": "compose_figures",
+    "kind": "task",
+    "clause": "Compose"
+   },
+   {
+    "id": "decompose_figures",
+    "kind": "task",
+    "clause": "decompose"
+   },
+   {
+    "id": "composite_figures",
+    "kind": "object",
+    "clause": "composite figures made up"
+   },
+   {
+    "id": "squares",
+    "kind": "object",
+    "clause": "squares"
+   },
+   {
+    "id": "rectangles",
+    "kind": "object",
+    "clause": "rectangles"
+   },
+   {
+    "id": "triangles",
+    "kind": "object",
+    "clause": "triangles"
+   },
+   {
+    "id": "circles",
+    "kind": "object",
+    "clause": "circles"
+   },
+   {
+    "id": "half_circles",
+    "kind": "object",
+    "clause": "half circles"
+   },
+   {
+    "id": "quarter_circles",
+    "kind": "object",
+    "clause": "quarter circles"
+   },
+   {
+    "id": "cut_outs",
+    "kind": "representation",
+    "clause": "cut-outs"
+   },
+   {
+    "id": "square_grids",
+    "kind": "representation",
+    "clause": "square grids"
+   }
+  ],
+  "vocabulary": {
+   "student_vocab": [],
+   "curriculum_vocab": [
+    "composite figure",
+    "square grid",
+    "cut-out"
+   ],
+   "introduces_vocab": [
+    "composite figure",
+    "square grid",
+    "cut-out"
+   ],
+   "cumulative_vocab": [
+    "1 less",
+    "1 more",
+    "10th",
+    "1st",
+    "2nd",
+    "3rd",
+    "4th",
+    "5th",
+    "6th",
+    "7th",
+    "8th",
+    "9th",
+    "addition",
+    "analog clock",
+    "bigger",
+    "bill",
+    "calendar",
+    "circle",
+    "clockwise",
+    "coin",
+    "compare",
+    "corner",
+    "count",
+    "counter-clockwise",
+    "data",
+    "difference",
+    "digit",
+    "equal",
+    "expanded form",
+    "fraction",
+    "group",
+    "half",
+    "half hour",
+    "half turn",
+    "hour",
+    "how many",
+    "hundreds",
+    "left",
+    "length",
+    "less",
+    "measure",
+    "missing number",
+    "more",
+    "number",
+    "number line",
+    "numeral",
+    "ones",
+    "pattern",
+    "peso",
+    "pictograph",
+    "place value",
+    "quarter",
+    "quarter hour",
+    "quarter turn",
+    "rectangle",
+    "regrouping",
+    "repeating pattern",
+    "same",
+    "side",
+    "skip counting",
+    "smaller",
+    "square",
+    "subtraction",
+    "sum",
+    "table",
+    "tens",
+    "thousand",
+    "total",
+    "triangle",
+    "whole",
+    "₱"
+   ],
+   "NOT_YET_KNOWN": [
+    "L",
+    "a.m.",
+    "area",
+    "axis",
+    "balance scale",
+    "bar graph",
+    "capacity",
+    "centavo",
+    "centimeter",
+    "certain",
+    "cm",
+    "decreasing pattern",
+    "denominator",
+    "division",
+    "elapsed time",
+    "equal groups",
+    "equally likely",
+    "estimate",
+    "even",
+    "g",
+    "gram",
+    "impossible",
+    "improper fraction",
+    "increasing pattern",
+    "intersecting",
+    "kg",
+    "kilogram",
+    "less likely",
+    "line",
+    "line of symmetry",
+    "line segment",
+    "liter",
+    "m",
+    "mL",
+    "mass",
+    "meter",
+    "milliliter",
+    "minute",
+    "missing term",
+    "more likely",
+    "multiplication",
+    "nearest hundred",
+    "nearest ten",
+    "nearest thousand",
+    "numerator",
+    "odd",
+    "order of operations",
+    "outcome",
+    "p.m.",
+    "parallel",
+    "perimeter",
+    "perpendicular",
+    "point",
+    "product",
+    "quotient",
+    "ray",
+    "remainder",
+    "round",
+    "ruler",
+    "scale",
+    "similar fractions",
+    "slide",
+    "solid figure",
+    "sq. cm",
+    "square centimeter",
+    "symmetry",
+    "ten thousand",
+    "ten-thousands place",
+    "translation"
+   ],
+   "sentence_max_words": 18,
+   "number_format": "no commas for numbers up to 1000"
+  },
+  "declared_variants": [
+   [
+    "orientation",
+    "rotated"
+   ],
+   [
+    "orientation",
+    "standard"
+   ],
+   [
+    "shape_set",
+    "composite_figures"
+   ],
+   [
+    "task_type",
+    "compose_decompose"
+   ]
+  ],
+  "declared_bounds": [
+   {
+    "shape_set": "composite_figures",
+    "task_type": "compose_decompose"
+   }
+  ],
+  "families": [
+   {
+    "id": "F01",
+    "template": "A circle has no straight {sides_label} and no corners.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "sides_label"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "'side' gated by cumulative_vocab",
+        "requires_vocab": "side",
+        "prints": "sides",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F02",
+    "template": "A rectangle has 4 {sides_label} (opposite {sides_label} are equal) and 4 corners.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "sides_label"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "'side' gated by cumulative_vocab",
+        "requires_vocab": "side",
+        "prints": "sides",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F03",
+    "template": "A square has 4 equal {sides_label} and 4 corners.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "sides_label"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "'side' gated by cumulative_vocab",
+        "requires_vocab": "side",
+        "prints": "sides",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F04",
+    "template": "A triangle has 3 {sides_label} and 3 corners.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "sides_label"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "'side' gated by cumulative_vocab",
+        "requires_vocab": "side",
+        "prints": "sides",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F05",
+    "template": "Think about the {sides_label} and corners of each shape.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "sides_label"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "'side' gated by cumulative_vocab",
+        "requires_vocab": "side",
+        "prints": "sides",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F06",
+    "template": "{answer}",
+    "appears_in": [
+     "correct_answer",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "result",
+        "printed": [
+         "2",
+         "3",
+         "4",
+         "circle",
+         "rectangle",
+         "square",
+         "two triangles"
+        ],
+        "derived_from_values": [
+         "result"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F07",
+    "template": "{key}",
+    "appears_in": [
+     "correct_answer"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "key"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the option keys this item shows",
+        "members": [
+         "A",
+         "B",
+         "C",
+         "D"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F08",
+    "template": "{member}",
+    "appears_in": [
+     "distractors",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "member"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "QuestionContext.distractors (the generator's own)",
+        "members": [
+         "1",
+         "2",
+         "3",
+         "4",
+         "5",
+         "6",
+         "circle",
+         "half-circle",
+         "quarter-circle",
+         "rectangle",
+         "square",
+         "triangle",
+         "two circles",
+         "two rectangles",
+         "two squares"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F09",
+    "template": "{answer}",
+    "appears_in": [
+     "correct_answer",
+     "format_data.mcq_options",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "a field of a fixed item bank",
+        "field": "answer",
+        "bank": "_ITEM_POOL",
+        "derived_from_values": [
+         "answer",
+         "distractors",
+         "grade_min",
+         "orientation",
+         "question",
+         "shape_set",
+         "task_type"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F10",
+    "template": "{distractors}",
+    "appears_in": [
+     "distractors",
+     "format_data.mcq_options",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "distractors"
+      ],
+      "domains": [
+       {
+        "domain": "a field of a fixed item bank",
+        "field": "distractors",
+        "bank": "_ITEM_POOL",
+        "derived_from_values": [
+         "answer",
+         "distractors",
+         "grade_min",
+         "orientation",
+         "question",
+         "shape_set",
+         "task_type"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F11",
+    "template": "{question}",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "question"
+      ],
+      "domains": [
+       {
+        "domain": "a field of a fixed item bank",
+        "field": "question",
+        "bank": "_ITEM_POOL",
+        "derived_from_values": [
+         "answer",
+         "distractors",
+         "grade_min",
+         "orientation",
+         "question",
+         "shape_set",
+         "task_type"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   }
+  ],
+  "lists": {},
+  "banks": {
+   "_ITEM_POOL": {
+    "fields": [
+     "answer",
+     "distractors",
+     "question"
+    ],
+    "one_row_per_problem": true,
+    "rows": [
+     {
+      "answer": "rectangle",
+      "distractors": [
+       "circle",
+       "half-circle",
+       "quarter-circle"
+      ],
+      "question": "Using cut-outs, two identical triangles are placed together along their matching edges. What shape can they form?"
+     },
+     {
+      "answer": "circle",
+      "distractors": [
+       "rectangle",
+       "square",
+       "triangle"
+      ],
+      "question": "Using cut-outs, two half-circles are joined along their flat straight edges. What shape is formed?"
+     },
+     {
+      "answer": "circle",
+      "distractors": [
+       "square",
+       "rectangle",
+       "triangle"
+      ],
+      "question": "Using cut-outs, four quarter-circles of the same size are joined together. What complete shape do they make?"
+     },
+     {
+      "answer": "two triangles",
+      "distractors": [
+       "two rectangles",
+       "two circles",
+       "two squares"
+      ],
+      "question": "Using cut-outs, a square is cut along a slant from one corner to the opposite corner. What two shapes are made?"
+     },
+     {
+      "answer": "2",
+      "distractors": [
+       "1",
+       "3",
+       "4"
+      ],
+      "question": "A composite figure is made of a rectangle with a half-circle attached on top. How many simple shapes form this figure?"
+     },
+     {
+      "answer": "2",
+      "distractors": [
+       "1",
+       "3",
+       "4"
+      ],
+      "question": "A composite figure is made of a square with a triangle on top. How many simple shapes form this figure?"
+     },
+     {
+      "answer": "rectangle",
+      "distractors": [
+       "triangle",
+       "circle",
+       "quarter-circle"
+      ],
+      "question": "On a square grid, a composite figure is made by joining 2 squares of 4 grid units each side by side. What shape is formed?"
+     },
+     {
+      "answer": "square",
+      "distractors": [
+       "circle",
+       "triangle",
+       "half-circle"
+      ],
+      "question": "On a square grid, a 4-by-2 rectangle is cut straight down the middle into two 2-by-2 parts. What shape is each part?"
+     },
+     {
+      "answer": "3",
+      "distractors": [
+       "1",
+       "2",
+       "4"
+      ],
+      "question": "On a square grid, a composite figure is made of 1 square, 1 half-circle, and 1 rectangle. How many shapes form this composite figure?"
+     },
+     {
+      "answer": "4",
+      "distractors": [
+       "2",
+       "3",
+       "6"
+      ],
+      "question": "On a square grid, how many 1-by-1 unit squares are needed to compose a 2-by-2 square?"
+     },
+     {
+      "answer": "3",
+      "distractors": [
+       "2",
+       "4",
+       "5"
+      ],
+      "question": "On a square grid, a composite shape has 1 square, 1 triangle, and 1 rectangle joined together. How many simple shapes were used to compose it?"
+     }
+    ],
+    "rows_left_out": 63
+   }
+  },
+  "value_derivations": [],
+  "reason_kinds": {}
+ }
+}

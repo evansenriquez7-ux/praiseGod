@@ -1,0 +1,685 @@
+{
+ "schema_version": 2,
+ "hash_version": 8,
+ "node_id": "mat_g1_dp_q3_1",
+ "record_id": "stem-batch441-S441-002-confirming",
+ "role": "confirming",
+ "confirms": "stem-batch441-S441-002-first",
+ "item_id": "S441-002",
+ "lc_hash": "901c766ddb035c420baa2e2501a6241f446f7f01c6151c1df308358b9f586f99",
+ "judged_by": "blind-stem-judge-claude-haiku-batch441-S441-002-confirming",
+ "dispatch_id": "stem-batch441-S441-002-confirming",
+ "filed_at": "2026-10-16T04:53:39Z",
+ "delivery": "Claude Code Agent tool, model=haiku, subagent_type=general-purpose; the judge was told to read only local_only/scratch/h4c/prompts/S441-002.prompt.txt (tests/stem_file.py prompt output, item S441-002; no lc id, no key or packets file in that directory) and reply with what it asks; dispatched with CLAUDE.md loaded (ruling 29). Blindness is a prompt contract, audited from the subagent transcript.",
+ "tool_uses_by_judge": "From the subagent transcript: 1 tool use(s), all Read of its own prompt file (653 lines, every line read); no other tool, path or search. Model reported in the transcript: claude-haiku-5-5.",
+ "dispatch_prompt_digest": "9e26824dda431de4936bd43da517676885eee9ad57b6e27e2b7c3957234a03da",
+ "raw_reply": "{\"item\": \"S441-002\",\n \"clauses\": {\"present_data\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F07\", \"template\": \"Make a picture graph to show: {data_str}. Draw one {symbol} for each item.\", \"reasoning\": \"F07 is a presenting task: it asks the learner to make a picture graph from the data in data_str, which is nested F09 text drawn from the _THEMES row. Its symbol slot reads the same row (one_row_per_problem true), so the drawing key matches the problem's categories.\"},\n  \"pictograph\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F05\", \"template\": \"Complete the picture graph for {data_str}. Draw one {symbol} for each item.\", \"reasoning\": \"F05 names the representation as a picture graph and asks the learner to draw one symbol per item, which is the pictograph form. F01 supplies the word 'pictograph' only in hints via F04, and the vocabulary gate prints it for this lc.\"},\n  \"without_scale\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F07\", \"template\": \"Make a picture graph to show: {data_str}. Draw one {symbol} for each item.\", \"reasoning\": \"The one-symbol-per-item rule in F07 gives a graph with no scale: each picture stands for one item and no scale value is printed or required. The only declared variant is scale_type no_scale, and no template prints a scale. The F03 hint 'Each picture stands for 1 item.' supports the same property.\"}},\n \"failing_families\": [],\n \"failing_templates\": [],\n \"overall\": \"PASS\",\n \"reasoning\": \"Vocabulary: F01 prints only 'pictograph' (requires_vocab pictograph, words_left_out 1), which is in this lc's introduces_vocab. No printed family uses a NOT_YET_KNOWN term. The words 'picture graph', 'survey', 'category' and 'item' appear in F02, F05 to F08 and are not in NOT_YET_KNOWN. Numbers: the counts are 1 to 5 under F09 v2 (one of the generator's own choices, members 1 to 5), which fits the no-commas number format. Symbols: _THEMES symbol fields are emoji drawn from one row per problem (one_row_per_problem true), so the key matches the row's categories. Observed weaknesses that are not wrong statements: F05 and F06 say 'picture graph' where no graph is shown; the symbol for some rows (for example the paw-print symbol for the animals row, or the book symbol for the days row) is a loose fit for its categories; and F09 prints a single category and count per problem, so the question shows one data point. None makes a statement false or unreadable for a grade 1 quarter 3 learner, so the overall verdict is PASS.\"}",
+ "raw_reply_digest": "4d5223cf80ff477abb8cec41efd72a3da4345b6f5bbd7f316848fca02a9d2713",
+ "packet_digest": "c0712fde22ad10ae191750eecdb45fa982b09361c40aadaa0d6912b5bd0dc255",
+ "family_keys": {
+  "F01": {
+   "source": "backend/app/practice_gen/dna/base.py [gate pictograph]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F02": {
+   "source": "backend/app/practice_gen/dna/dp/pictographs.py",
+   "first_site": "backend/app/practice_gen/dna/dp/pictographs.py:579",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F03": {
+   "source": "backend/app/practice_gen/dna/dp/pictographs.py",
+   "first_site": "backend/app/practice_gen/dna/dp/pictographs.py:559",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F04": {
+   "source": "backend/app/practice_gen/dna/dp/pictographs.py",
+   "first_site": "backend/app/practice_gen/dna/dp/pictographs.py:549",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F05": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_pictograph.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_pictograph.py:227",
+   "renderer": "",
+   "path": [
+    3,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F06": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_pictograph.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_pictograph.py:225",
+   "renderer": "",
+   "path": [
+    8,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F07": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_pictograph.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_pictograph.py:224",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F08": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_pictograph.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_pictograph.py:226",
+   "renderer": "",
+   "path": [
+    2,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F09": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_pictograph.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_pictograph.py:213",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  }
+ },
+ "packet": {
+  "item": "S441-002",
+  "competency": {
+   "text": "Present data in a pictograph without a scale.",
+   "grade": 1,
+   "quarter": 3
+  },
+  "clauses": [
+   {
+    "id": "present_data",
+    "kind": "task",
+    "clause": "Present data"
+   },
+   {
+    "id": "pictograph",
+    "kind": "representation",
+    "clause": "pictograph"
+   },
+   {
+    "id": "without_scale",
+    "kind": "property",
+    "clause": "without a scale"
+   }
+  ],
+  "vocabulary": {
+   "student_vocab": [
+    "pictograph"
+   ],
+   "curriculum_vocab": [
+    "present data",
+    "without a scale"
+   ],
+   "introduces_vocab": [
+    "pictograph",
+    "present data",
+    "without a scale"
+   ],
+   "cumulative_vocab": [
+    "1 less",
+    "1 more",
+    "10th",
+    "1st",
+    "2nd",
+    "3rd",
+    "4th",
+    "5th",
+    "6th",
+    "7th",
+    "8th",
+    "9th",
+    "addition",
+    "bigger",
+    "compare",
+    "corner",
+    "count",
+    "data",
+    "difference",
+    "digit",
+    "equal",
+    "expanded form",
+    "group",
+    "how many",
+    "left",
+    "length",
+    "less",
+    "measure",
+    "missing number",
+    "more",
+    "number",
+    "number line",
+    "numeral",
+    "ones",
+    "pattern",
+    "place value",
+    "rectangle",
+    "repeating pattern",
+    "same",
+    "side",
+    "skip counting",
+    "smaller",
+    "square",
+    "subtraction",
+    "sum",
+    "tens",
+    "total",
+    "triangle"
+   ],
+   "NOT_YET_KNOWN": [
+    "L",
+    "a.m.",
+    "analog clock",
+    "area",
+    "axis",
+    "balance scale",
+    "bar graph",
+    "bill",
+    "calendar",
+    "capacity",
+    "centavo",
+    "centimeter",
+    "certain",
+    "circle",
+    "clockwise",
+    "cm",
+    "coin",
+    "counter-clockwise",
+    "decreasing pattern",
+    "denominator",
+    "division",
+    "elapsed time",
+    "equal groups",
+    "equally likely",
+    "estimate",
+    "even",
+    "fraction",
+    "g",
+    "gram",
+    "half",
+    "half hour",
+    "half turn",
+    "hour",
+    "hundreds",
+    "impossible",
+    "improper fraction",
+    "increasing pattern",
+    "intersecting",
+    "kg",
+    "kilogram",
+    "less likely",
+    "line",
+    "line of symmetry",
+    "line segment",
+    "liter",
+    "m",
+    "mL",
+    "mass",
+    "meter",
+    "milliliter",
+    "minute",
+    "missing term",
+    "more likely",
+    "multiplication",
+    "nearest hundred",
+    "nearest ten",
+    "nearest thousand",
+    "numerator",
+    "odd",
+    "order of operations",
+    "outcome",
+    "p.m.",
+    "parallel",
+    "perimeter",
+    "perpendicular",
+    "peso",
+    "point",
+    "product",
+    "quarter",
+    "quarter hour",
+    "quarter turn",
+    "quotient",
+    "ray",
+    "regrouping",
+    "remainder",
+    "round",
+    "ruler",
+    "scale",
+    "similar fractions",
+    "slide",
+    "solid figure",
+    "sq. cm",
+    "square centimeter",
+    "symmetry",
+    "table",
+    "ten thousand",
+    "ten-thousands place",
+    "thousand",
+    "translation",
+    "whole",
+    "₱"
+   ],
+   "sentence_max_words": 15,
+   "number_format": "no commas, no thousands separator"
+  },
+  "declared_variants": [
+   [
+    "scale_type",
+    "no_scale"
+   ],
+   [
+    "task_type",
+    "present_data"
+   ]
+  ],
+  "declared_bounds": [
+   {
+    "task_type": "present_data",
+    "scale_type": "no_scale"
+   }
+  ],
+  "families": [
+   {
+    "id": "F01",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F04"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='pictograph')",
+        "requires_vocab": "pictograph",
+        "prints": "pictograph",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F02",
+    "template": "Draw 1 picture for each item in each category.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F03",
+    "template": "Each picture stands for 1 item.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F04",
+    "template": "Look at the {pg_label} carefully.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "pg_label"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F01"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F05",
+    "template": "Complete the picture graph for {data_str}. Draw one {symbol} for each item.",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "data_str"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F09"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "symbol"
+      ],
+      "domains": [
+       {
+        "domain": "a field of a fixed item bank",
+        "field": "symbol",
+        "bank": "_THEMES"
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F06",
+    "template": "Look at the data: {data_str}. Draw one {symbol} for each item in the picture graph.",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "data_str"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F09"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "symbol"
+      ],
+      "domains": [
+       {
+        "domain": "a field of a fixed item bank",
+        "field": "symbol",
+        "bank": "_THEMES"
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F07",
+    "template": "Make a picture graph to show: {data_str}. Draw one {symbol} for each item.",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "data_str"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F09"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "symbol"
+      ],
+      "domains": [
+       {
+        "domain": "a field of a fixed item bank",
+        "field": "symbol",
+        "bank": "_THEMES"
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F08",
+    "template": "The survey shows: {data_str}. Make a picture graph by drawing one {symbol} for each item.",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "data_str"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F09"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "symbol"
+      ],
+      "domains": [
+       {
+        "domain": "a field of a fixed item bank",
+        "field": "symbol",
+        "bank": "_THEMES"
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F09",
+    "template": "{v}: {v2}",
+    "appears_in": [],
+    "nested_in": [
+     "F05",
+     "F06",
+     "F07",
+     "F08"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "v"
+      ],
+      "domains": [
+       {
+        "domain": "a field of a fixed item bank",
+        "field": "categories",
+        "read_from": "the row drawn for the problem",
+        "bank": "_THEMES"
+       }
+      ]
+     },
+     {
+      "slots": [
+       "v2"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the graph's counts",
+        "members": [
+         1,
+         2,
+         3,
+         4,
+         5
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   }
+  ],
+  "lists": {},
+  "banks": {
+   "_THEMES": {
+    "fields": [
+     "categories",
+     "symbol"
+    ],
+    "one_row_per_problem": true,
+    "rows": [
+     {
+      "categories": [
+       "apples",
+       "bananas",
+       "mangoes",
+       "grapes",
+       "oranges",
+       "strawberries"
+      ],
+      "symbol": "🍎"
+     },
+     {
+      "categories": [
+       "cats",
+       "dogs",
+       "birds",
+       "fish",
+       "rabbits",
+       "turtles"
+      ],
+      "symbol": "🐾"
+     },
+     {
+      "categories": [
+       "red",
+       "blue",
+       "green",
+       "yellow",
+       "purple",
+       "orange"
+      ],
+      "symbol": "🎨"
+     },
+     {
+      "categories": [
+       "Math",
+       "Science",
+       "English",
+       "Art",
+       "PE",
+       "Music"
+      ],
+      "symbol": "📚"
+     },
+     {
+      "categories": [
+       "Monday",
+       "Tuesday",
+       "Wednesday",
+       "Thursday",
+       "Friday",
+       "Saturday"
+      ],
+      "symbol": "📖"
+     },
+     {
+      "categories": [
+       "basketball",
+       "volleyball",
+       "swimming",
+       "running",
+       "soccer",
+       "tennis"
+      ],
+      "symbol": "⚽"
+     },
+     {
+      "categories": [
+       "roses",
+       "sunflowers",
+       "tulips",
+       "daisies",
+       "orchids",
+       "lilies"
+      ],
+      "symbol": "🌸"
+     },
+     {
+      "categories": [
+       "Grade 1",
+       "Grade 2",
+       "Grade 3",
+       "Grade 4",
+       "Grade 5",
+       "Grade 6"
+      ],
+      "symbol": "⭐"
+     }
+    ],
+    "rows_left_out": 0
+   }
+  },
+  "value_derivations": [],
+  "reason_kinds": {}
+ }
+}

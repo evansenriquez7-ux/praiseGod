@@ -1,0 +1,811 @@
+{
+ "schema_version": 2,
+ "hash_version": 8,
+ "node_id": "mat_g2_na_q3_8",
+ "record_id": "stem-batch444-S444-018-confirming",
+ "role": "confirming",
+ "confirms": "stem-batch444-S444-018-first",
+ "item_id": "S444-018",
+ "lc_hash": "494e7ee674d822e271ccf5b2701e37364077f3dc21acb42f95d70bcbdba36d9d",
+ "judged_by": "blind-stem-judge-claude-haiku-batch444-S444-018-confirming",
+ "dispatch_id": "stem-batch444-S444-018-confirming",
+ "filed_at": "2026-10-16T06:17:07Z",
+ "delivery": "Claude Code Agent tool, model=haiku, subagent_type=general-purpose; the judge was told to read only local_only/scratch/h4c/prompts/S444-018.prompt.txt (tests/stem_file.py prompt output, item S444-018; no lc id, no key or packets file in that directory) and reply with what it asks; dispatched with CLAUDE.md loaded (ruling 29). Blindness is a prompt contract, audited from the subagent transcript.",
+ "tool_uses_by_judge": "From the subagent transcript: 1 tool use(s), all Read of its own prompt file (734 lines, every line read); no other tool, path or search. Model reported in the transcript: claude-haiku-5-5.",
+ "dispatch_prompt_digest": "94291e784312b9f7c02ac00c9cadf46b0b6bf7bf484127241aab39ae6d508f86",
+ "raw_reply": "{\"item\": \"S444-018\", \"clauses\": {\"distinguish\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F13\", \"template\": \"{statement}. True or False?\", \"reasoning\": \"F13 wraps the nested true/false statements (F07 to F12), each of which asserts whether a number is even or odd on the basis of dividing it by 2, so the task of distinguishing is what the learner performs on each statement.\"}, \"even_and_odd_numbers\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F04\", \"template\": \"Nothing is left over, so {n} is an even number.\", \"reasoning\": \"F04 prints the even values of the dividend (2 through 90, all even in the printed runs) and names them even, so it addresses the even and odd numbers object. F01 does the same for odd values.\"}, \"division\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F03\", \"template\": \"Divide {n} by 2: how many 2s fit into {n}?\", \"reasoning\": \"F03 directly asks the learner to divide a printed number by 2, which is the division task named in the competency.\"}, \"divisor_2\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F11\", \"template\": \"{d} ÷ 2 comes out exactly, so {d} is an even number\", \"reasoning\": \"Every family uses the divisor 2 only, and F11 states the division by 2 explicitly with the symbol, so the range clause '2' is met.\"}}, \"failing_families\": [], \"failing_templates\": [], \"overall\": \"PASS\", \"reasoning\": \"Every printed value in F01 to F04 and F07 to F12 sits in the printed runs for the dividend key. F01 and F04 print only odd and even values respectively, and their statements are correct. F07 to F12 print a mix of true and false statements, which is appropriate for a true or false question, and the packet does not show the keyed answer, so no key error can be established from these families. Vocabulary is gated: 'remainder' appears only in a generator basis and is printed as 'left over' (F01, F02), and no NOT_YET_KNOWN term is printed. Statements in F13 stay within 18 words per sentence, with the statement sentence at 17 words and the question sentence at 3 words. Numbers stay below 1000 with no commas. No family prints text beyond grade 2 quarter 3 load.\"}",
+ "raw_reply_digest": "65405daf972ee14788b7ce140a1f30ef6d6f16ae861cdee881d05ab1fccb86ce",
+ "packet_digest": "92a0a75e90db47d33be8c85e8ab7c34485e92b4d015e0c154086bbc32c0a27c6",
+ "family_keys": {
+  "F01": {
+   "source": "backend/app/practice_gen/dna/na/division.py",
+   "first_site": "backend/app/practice_gen/dna/na/division.py:627",
+   "renderer": "",
+   "path": [
+    3,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F02": {
+   "source": "backend/app/practice_gen/dna/na/division.py",
+   "first_site": "backend/app/practice_gen/dna/na/division.py:622",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {
+    "half,twice": [
+     139,
+     null
+    ]
+   }
+  },
+  "F03": {
+   "source": "backend/app/practice_gen/dna/na/division.py",
+   "first_site": "backend/app/practice_gen/dna/na/division.py:621",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F04": {
+   "source": "backend/app/practice_gen/dna/na/division.py",
+   "first_site": "backend/app/practice_gen/dna/na/division.py:626",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F05": {
+   "source": "backend/app/practice_gen/dna/na/division.py",
+   "first_site": "backend/app/practice_gen/dna/na/division.py:365",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F06": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:39",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F07": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_true_false.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_true_false.py:279",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F08": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_true_false.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_true_false.py:274",
+   "renderer": "",
+   "path": [
+    2,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F09": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_true_false.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_true_false.py:275",
+   "renderer": "",
+   "path": [
+    13,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F10": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_true_false.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_true_false.py:280",
+   "renderer": "",
+   "path": [
+    4,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F11": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_true_false.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_true_false.py:273",
+   "renderer": "",
+   "path": [
+    16,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F12": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_true_false.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_true_false.py:278",
+   "renderer": "",
+   "path": [
+    9,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F13": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_true_false.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_true_false.py:430",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  }
+ },
+ "packet": {
+  "item": "S444-018",
+  "competency": {
+   "text": "Distinguish even and odd numbers using division by 2.",
+   "grade": 2,
+   "quarter": 3
+  },
+  "clauses": [
+   {
+    "id": "distinguish",
+    "kind": "task",
+    "clause": "Distinguish"
+   },
+   {
+    "id": "even_and_odd_numbers",
+    "kind": "object",
+    "clause": "even and odd numbers"
+   },
+   {
+    "id": "division",
+    "kind": "task",
+    "clause": "division"
+   },
+   {
+    "id": "divisor_2",
+    "kind": "range",
+    "clause": "2"
+   }
+  ],
+  "vocabulary": {
+   "student_vocab": [
+    "even",
+    "odd"
+   ],
+   "curriculum_vocab": [
+    "even number",
+    "odd number"
+   ],
+   "introduces_vocab": [
+    "even number",
+    "odd number"
+   ],
+   "cumulative_vocab": [
+    "1 less",
+    "1 more",
+    "10th",
+    "1st",
+    "2nd",
+    "3rd",
+    "4th",
+    "5th",
+    "6th",
+    "7th",
+    "8th",
+    "9th",
+    "addition",
+    "analog clock",
+    "bigger",
+    "bill",
+    "calendar",
+    "centavo",
+    "centimeter",
+    "circle",
+    "clockwise",
+    "cm",
+    "coin",
+    "compare",
+    "corner",
+    "count",
+    "counter-clockwise",
+    "data",
+    "decreasing pattern",
+    "difference",
+    "digit",
+    "division",
+    "equal",
+    "equal groups",
+    "estimate",
+    "expanded form",
+    "fraction",
+    "group",
+    "half",
+    "half hour",
+    "half turn",
+    "hour",
+    "how many",
+    "hundreds",
+    "increasing pattern",
+    "left",
+    "length",
+    "less",
+    "m",
+    "measure",
+    "meter",
+    "missing number",
+    "more",
+    "multiplication",
+    "number",
+    "number line",
+    "numeral",
+    "ones",
+    "pattern",
+    "peso",
+    "pictograph",
+    "place value",
+    "product",
+    "quarter",
+    "quarter hour",
+    "quarter turn",
+    "quotient",
+    "rectangle",
+    "regrouping",
+    "repeating pattern",
+    "ruler",
+    "same",
+    "side",
+    "skip counting",
+    "slide",
+    "smaller",
+    "square",
+    "subtraction",
+    "sum",
+    "table",
+    "tens",
+    "thousand",
+    "total",
+    "translation",
+    "triangle",
+    "whole",
+    "₱"
+   ],
+   "NOT_YET_KNOWN": [
+    "L",
+    "a.m.",
+    "area",
+    "axis",
+    "balance scale",
+    "bar graph",
+    "capacity",
+    "certain",
+    "denominator",
+    "elapsed time",
+    "equally likely",
+    "g",
+    "gram",
+    "impossible",
+    "improper fraction",
+    "intersecting",
+    "kg",
+    "kilogram",
+    "less likely",
+    "line",
+    "line of symmetry",
+    "line segment",
+    "liter",
+    "mL",
+    "mass",
+    "milliliter",
+    "minute",
+    "missing term",
+    "more likely",
+    "nearest hundred",
+    "nearest ten",
+    "nearest thousand",
+    "numerator",
+    "order of operations",
+    "outcome",
+    "p.m.",
+    "parallel",
+    "perimeter",
+    "perpendicular",
+    "point",
+    "ray",
+    "remainder",
+    "round",
+    "scale",
+    "similar fractions",
+    "solid figure",
+    "sq. cm",
+    "square centimeter",
+    "symmetry",
+    "ten thousand",
+    "ten-thousands place"
+   ],
+   "sentence_max_words": 18,
+   "number_format": "no commas for numbers up to 1000"
+  },
+  "declared_variants": [
+   [
+    "context",
+    "pure"
+   ],
+   [
+    "context",
+    "word_problem"
+   ],
+   [
+    "remainder",
+    "none"
+   ],
+   [
+    "structure",
+    "result_unknown"
+   ],
+   [
+    "table",
+    "2_3_4_5_10"
+   ]
+  ],
+  "declared_bounds": [
+   {
+    "table": "2_3_4_5_10",
+    "remainder": "none",
+    "structure": "result_unknown",
+    "task_type": "even_odd"
+   }
+  ],
+  "families": [
+   {
+    "id": "F01",
+    "template": "1 is left over, so {n} is an odd number.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "n"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "dividend",
+        "printed_runs": "1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29, 31, 33, 35, 37, 39, 41, 43, 45, 47, 49, 51, 53, 55, 57, 59, 61, 63, 65, 67, 69, 71, 73, 75, 77, 79, 81, 87",
+        "derived_from_values": [
+         "dividend"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F02",
+    "template": "2 × {half} = {twice}, and {n} − {twice} = {left}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "half",
+       "twice"
+      ],
+      "domains": [
+       {
+        "domain": "a number computed by the generator",
+        "reason": "arithmetic",
+        "derived_from_values": [
+         "dividend"
+        ]
+       }
+      ],
+      "distinct_in_every_render": false
+     },
+     {
+      "slots": [
+       "n"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "dividend",
+        "printed_runs": "1 to 82, 84, 86 to 88, 90",
+        "derived_from_values": [
+         "dividend"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "left"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the remainder of the dividend divided by 2",
+        "members": [
+         0,
+         1
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F03",
+    "template": "Divide {n} by 2: how many 2s fit into {n}?",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "n"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "dividend",
+        "printed_runs": "1 to 82, 84, 86 to 88, 90",
+        "derived_from_values": [
+         "dividend"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F04",
+    "template": "Nothing is left over, so {n} is an even number.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "n"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "dividend",
+        "printed_runs": "2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 72, 74, 76, 78, 80, 82, 84, 86, 88, 90",
+        "derived_from_values": [
+         "dividend"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F05",
+    "template": "{label}",
+    "appears_in": [
+     "distractors"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "label"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "EVEN_ODD_LABELS"
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F06",
+    "template": "{member}",
+    "appears_in": [
+     "distractors"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "member"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "QuestionContext.distractors (the generator's own)",
+        "members": [
+         "even",
+         "odd"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F07",
+    "template": "Dividing {d} by 2 does not give an exact whole number, so {d} is an odd number",
+    "appears_in": [
+     "format_data.statement"
+    ],
+    "nested_in": [
+     "F13"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "d"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "dividend",
+        "printed_runs": "1 to 2, 7, 10 to 12, 14 to 15, 18 to 19, 22, 26, 28 to 33, 36, 41 to 43, 45, 48, 50, 53, 57 to 58, 67 to 68, 72, 75 to 77, 81 to 82, 84, 87",
+        "derived_from_values": [
+         "dividend"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F08",
+    "template": "Dividing {d} by 2 gives an exact whole number, so {d} is an even number",
+    "appears_in": [
+     "format_data.statement"
+    ],
+    "nested_in": [
+     "F13"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "d"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "dividend",
+        "printed_runs": "6, 8 to 9, 12, 18, 25 to 27, 29, 31 to 32, 35 to 38, 40, 45, 51 to 52, 61 to 62, 64, 70 to 71, 74 to 76, 79 to 80, 88",
+        "derived_from_values": [
+         "dividend"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F09",
+    "template": "{d} can be divided into 2 equal parts, so {d} is an even number",
+    "appears_in": [
+     "format_data.statement"
+    ],
+    "nested_in": [
+     "F13"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "d"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "dividend",
+        "printed_runs": "6, 9 to 10, 14, 17, 19 to 20, 24 to 25, 32, 34 to 35, 43 to 46, 50 to 51, 53 to 55, 60 to 62, 64 to 67, 71, 74 to 75, 80, 87",
+        "derived_from_values": [
+         "dividend"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F10",
+    "template": "{d} cannot be divided into 2 equal whole parts, so {d} is an odd number",
+    "appears_in": [
+     "format_data.statement"
+    ],
+    "nested_in": [
+     "F13"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "d"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "dividend",
+        "printed_runs": "1, 3, 10, 12, 14 to 16, 18, 21, 30 to 31, 33, 37, 39, 42, 44, 49 to 52, 54, 64 to 65, 69 to 70, 72 to 74, 77 to 79, 86, 88",
+        "derived_from_values": [
+         "dividend"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F11",
+    "template": "{d} ÷ 2 comes out exactly, so {d} is an even number",
+    "appears_in": [
+     "format_data.statement"
+    ],
+    "nested_in": [
+     "F13"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "d"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "dividend",
+        "printed_runs": "2 to 4, 6, 9 to 10, 13, 15 to 16, 23, 27, 31, 35, 37, 42, 47 to 48, 51 to 53, 56 to 58, 62, 64, 67 to 68, 70, 72, 79, 82, 88, 90",
+        "derived_from_values": [
+         "dividend"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F12",
+    "template": "{d} ÷ 2 does not come out exactly, so {d} is an odd number",
+    "appears_in": [
+     "format_data.statement"
+    ],
+    "nested_in": [
+     "F13"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "d"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "dividend",
+        "printed_runs": "5, 10 to 11, 18, 24, 26 to 27, 46, 48 to 51, 58 to 60, 62 to 64, 66 to 68, 74, 78 to 79, 84, 88, 90",
+        "derived_from_values": [
+         "dividend"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F13",
+    "template": "{statement}. True or False?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "statement"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F07",
+         "F08",
+         "F09",
+         "F10",
+         "F11",
+         "F12"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   }
+  ],
+  "lists": {
+   "EVEN_ODD_LABELS": [
+    "even",
+    "odd"
+   ]
+  },
+  "banks": {},
+  "value_derivations": [
+   {
+    "kind": "computes",
+    "key": "remainder",
+    "from": [
+     "a",
+     "b"
+    ]
+   }
+  ],
+  "reason_kinds": {
+   "arithmetic": "a number the generator computes from the generated values named in src (a half, a sum, a difference, a running total, a place's digit). Its range is the image of those values' own domains; whether the arithmetic is RIGHT is the hint contract's (§16) and §1E's to check, not §14's."
+  }
+ }
+}

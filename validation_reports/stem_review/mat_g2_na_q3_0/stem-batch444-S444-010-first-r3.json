@@ -1,0 +1,3856 @@
+{
+ "schema_version": 2,
+ "hash_version": 8,
+ "node_id": "mat_g2_na_q3_0",
+ "record_id": "stem-batch444-S444-010-first-r3",
+ "role": "first",
+ "confirms": null,
+ "item_id": "S444-010",
+ "lc_hash": "ad7889a8f6cd6ffa6f0e0d87a2638ee015be79bd29afa34915db881e11c504a3",
+ "judged_by": "blind-stem-judge-claude-haiku-batch444-S444-010-first-r3",
+ "dispatch_id": "stem-batch444-S444-010-first-r3",
+ "filed_at": "2026-10-16T04:55:36Z",
+ "delivery": "Claude Code Agent tool, model=haiku, subagent_type=general-purpose; the judge was told to read only local_only/scratch/h4c/prompts/S444-010.prompt.txt (tests/stem_file.py prompt output, item S444-010; no lc id, no key or packets file in that directory) and reply with what it asks; dispatched with CLAUDE.md loaded (ruling 29). Blindness is a prompt contract, audited from the subagent transcript.",
+ "tool_uses_by_judge": "From the subagent transcript: 6 tool use(s), all Read of its own prompt file (3279 lines, every line read); no other tool, path or search. Model reported in the transcript: claude-haiku-5-5.",
+ "dispatch_prompt_digest": "e7ab214a9db6a090a12f296d6aa52bbcdfa33695caf1734ba0462781b342e1ba",
+ "raw_reply": "{\"item\": \"S444-010\", \"clauses\": {\"count_number_of\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F36\", \"template\": \"How many {name_plural} are there in all?\", \"reasoning\": \"F36 counts named concrete objects (names from _EMOJI_NAMES such as apple, teddy bear) in one total, which is the counting task the clause names. F36 is itself failing on the singular-noun domain (see reasoning), but the clause is producible from its plural renders.\"}, \"concrete_objects\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F36\", \"template\": \"How many {name_plural} are there in all?\", \"reasoning\": \"The objects counted are drawn from the concrete-object list _EMOJI_NAMES and shown as emoji strings in F40 to F44 (question_text).\"}, \"group\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F06\", \"template\": \"We need to {mul_phrase} {b} {count_noun}.\", \"reasoning\": \"count_noun is one of the group phrases (group of N or groups of N), derived from a and b, and b prints 1 to 5 and 10, so the word group appears in a learner-facing sentence.\"}, \"repeated_addition\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F21\", \"template\": \"Count {b} {count_noun} by repeated addition ({terms}): how many in all?\", \"reasoning\": \"The template names repeated addition literally. F21 is failing on its terms domain for b=5 and b=10 (see reasoning), but it produces the clause.\"}, \"create_equal_groups\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F29\", \"template\": \"Shade {rows} {count_noun} of {cols} {count_noun2} to show {repeated_sum}. How many squares did you shade in all?\", \"reasoning\": \"The learner builds rows of equal size (cols per row) on a grid, which is creating equal groups. F29 is failing on its unpaired count nouns, but the clause is producible.\"}, \"language\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F06\", \"template\": \"We need to {mul_phrase} {b} {count_noun}.\", \"reasoning\": \"The sentence prints groups of N phrasing (count_noun members such as groups of 3) with a learner-facing number of groups, derived from a and b.\"}, \"5_groups_of_3\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F06\", \"template\": \"We need to {mul_phrase} {b} {count_noun}.\", \"reasoning\": \"b prints 5 (printed_runs 1 to 5, 10) and count_noun can be the phrase groups of 3 (a=3), giving the exact phrase 5 groups of 3.\"}, \"5_threes\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F14\", \"template\": \"Count {b} {count_noun} ({terms}) = ___\", \"reasoning\": \"count_noun prints the plural name threes (plural_name printed list) and b prints 5, giving 5 threes. F14 is failing on noun-number agreement and terms count (see reasoning), but the clause is producible.\"}}, \"failing_families\": [\"F03\", \"F04\", \"F05\", \"F07\", \"F14\", \"F16\", \"F21\", \"F22\", \"F28\", \"F29\", \"F36\", \"F37\", \"F45\", \"F46\"], \"failing_templates\": [\"Break {a} into {tens_a} + {ones_a}: ({tens_a} × {b}) + ({ones_a} × {b}) = {v} + {v2} = {result}.\", \"Think of it as {b} {count_noun}: {groups}.\", \"Use the {b} times table: {b} × {a}.\", \"{capitalize} of {a} × {b} = {result}.\", \"Count {b} {count_noun} ({terms}) = ___\", \"{b} {unit} of {a} ({terms}) makes ___ in all\", \"Count {b} {count_noun} by repeated addition ({terms}): how many in all?\", \"There {was} {b} {unit} of {a} ({terms}). How many in all?\", \"Look at the array. It shows {rows} groups of {cols} ({repeated_sum}). How many squares are shaded in all?\", \"Shade {rows} {count_noun} of {cols} {count_noun2} to show {repeated_sum}. How many squares did you shade in all?\", \"How many {name_plural} are there in all?\", \"There {v} {b} {unit} of {a} {name_a}.\", \"Count {b} {count_noun} by repeated addition ({terms}): how many in all?\", \"There {was} {b} {unit} of {a} ({terms}). How many in all?\"], \"overall\": \"FAIL\", \"reasoning\": \"Multiplication notation and concepts beyond the lc gates: F03 (distributive break-apart with the x symbol), F05 (the phrase times table with the x symbol) and F07 (x symbol in an equation) print multiplication, which is NOT_YET_KNOWN ('multiplication') and absent from cumulative_vocab; the vocabulary gate for this lc withholds 'multiply' and 'product' and these families bypass it. Agreement defects, where a domain is not tied to the number it sits beside: F14 and F45 print count nouns from plural_name (printed values include 'one', 'two', 'three' and 'threes') whose domain is independent of b (b prints 1 to 5 and 10), so a learner can read a plural noun with 1 or a singular noun with 5. F28 hard-codes 'groups' while rows prints 1 to 5 and 10, so rows=1 prints a singular count with a plural noun. F29 draws count_noun and count_noun2 with no derivation from rows or cols. F37 draws the copula, the unit and the name each independent of b and a. F36 draws name_plural from a list 'or its plural', so singular nouns can print as 'How many' + singular. Term count versus b: F14, F16, F21, F22, F45 and F46 print b values (F16 prints 10; F21, F22, F45, F46 print 5; F14 prints 5 and 10) whose nested terms families carry no family of that many addends, while their template_chosen_by_values do not include b, so a count and its terms can disagree. F04 nests the groups-keyed families F31 to F35 (derived from groups) although F04 derives only a and b. F06 (group, language, 5_groups_of_3 producer), F01, F02, F13, F38, F39 to F44, F09 to F12 and the nested sum families pass as printed. Examined but passed: F21's count_noun is chosen by b and n, so the singular-plural pairing is generator-controlled, but its terms check still fails as listed. Seed: none printed in this packet.\"}",
+ "raw_reply_digest": "a620685a058188af3800c5cba6041bd521ca387d10186d94e957b6baa88bc662",
+ "packet_digest": "acf19526d1db71b3dd73307a5bcd622b69cb4fb6508be2485c9cee1925f2aecd",
+ "family_keys": {
+  "F01": {
+   "source": "backend/app/practice_gen/dna/base.py [gate multiply]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F02": {
+   "source": "backend/app/practice_gen/dna/base.py [gate product]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F03": {
+   "source": "backend/app/practice_gen/dna/na/multiplication.py",
+   "first_site": "backend/app/practice_gen/dna/na/multiplication.py:883",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F04": {
+   "source": "backend/app/practice_gen/dna/na/multiplication.py",
+   "first_site": "backend/app/practice_gen/dna/na/multiplication.py:874",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F05": {
+   "source": "backend/app/practice_gen/dna/na/multiplication.py",
+   "first_site": "backend/app/practice_gen/dna/na/multiplication.py:876",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F06": {
+   "source": "backend/app/practice_gen/dna/na/multiplication.py",
+   "first_site": "backend/app/practice_gen/dna/na/multiplication.py:865",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F07": {
+   "source": "backend/app/practice_gen/dna/na/multiplication.py",
+   "first_site": "backend/app/practice_gen/dna/na/multiplication.py:887",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F08": {
+   "source": "backend/app/practice_gen/dna/na/multiplication.py",
+   "first_site": "backend/app/practice_gen/dna/na/multiplication.py:873",
+   "renderer": "",
+   "path": [
+    9,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F09": {
+   "source": "backend/app/practice_gen/dna/na/multiplication.py",
+   "first_site": "backend/app/practice_gen/dna/na/multiplication.py:873",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {
+    "p0,p1": [
+     1,
+     null
+    ]
+   }
+  },
+  "F10": {
+   "source": "backend/app/practice_gen/dna/na/multiplication.py",
+   "first_site": "backend/app/practice_gen/dna/na/multiplication.py:873",
+   "renderer": "",
+   "path": [
+    3,
+    null
+   ],
+   "first_render_repeating": {
+    "p0,p1,p2": [
+     3,
+     null
+    ]
+   }
+  },
+  "F11": {
+   "source": "backend/app/practice_gen/dna/na/multiplication.py",
+   "first_site": "backend/app/practice_gen/dna/na/multiplication.py:873",
+   "renderer": "",
+   "path": [
+    7,
+    null
+   ],
+   "first_render_repeating": {
+    "p0,p1,p2,p3": [
+     7,
+     null
+    ]
+   }
+  },
+  "F12": {
+   "source": "backend/app/practice_gen/dna/na/multiplication.py",
+   "first_site": "backend/app/practice_gen/dna/na/multiplication.py:873",
+   "renderer": "",
+   "path": [
+    24,
+    null
+   ],
+   "first_render_repeating": {
+    "p0,p1,p2,p3,p4": [
+     24,
+     null
+    ]
+   }
+  },
+  "F13": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:51",
+   "renderer": "",
+   "path": [
+    2,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F14": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_cloze.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_cloze.py:126",
+   "renderer": "",
+   "path": [
+    9,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F15": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_cloze.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_cloze.py:124",
+   "renderer": "",
+   "path": [
+    27,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F16": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_cloze.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_cloze.py:128",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F17": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_cloze.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_cloze.py:124",
+   "renderer": "",
+   "path": [
+    9,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F18": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_cloze.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_cloze.py:124",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {
+    "p0,p1": [
+     1,
+     null
+    ]
+   }
+  },
+  "F19": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_cloze.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_cloze.py:124",
+   "renderer": "",
+   "path": [
+    3,
+    null
+   ],
+   "first_render_repeating": {
+    "p0,p1,p2": [
+     3,
+     null
+    ]
+   }
+  },
+  "F20": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_cloze.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_cloze.py:124",
+   "renderer": "",
+   "path": [
+    16,
+    null
+   ],
+   "first_render_repeating": {
+    "p0,p1,p2,p3": [
+     16,
+     null
+    ]
+   }
+  },
+  "F21": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_mcq.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_mcq.py:103",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F22": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_mcq.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_mcq.py:108",
+   "renderer": "",
+   "path": [
+    15,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F23": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_mcq.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_mcq.py:101",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F24": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_mcq.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_mcq.py:101",
+   "renderer": "",
+   "path": [
+    29,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F25": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_mcq.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_mcq.py:101",
+   "renderer": "",
+   "path": [
+    19,
+    null
+   ],
+   "first_render_repeating": {
+    "p0,p1": [
+     19,
+     null
+    ]
+   }
+  },
+  "F26": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_mcq.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_mcq.py:101",
+   "renderer": "",
+   "path": [
+    3,
+    "mcq"
+   ],
+   "first_render_repeating": {
+    "p0,p1,p2": [
+     3,
+     "mcq"
+    ]
+   }
+  },
+  "F27": {
+   "source": "backend/app/practice_gen/formatters/textual/fmt_mcq.py",
+   "first_site": "backend/app/practice_gen/formatters/textual/fmt_mcq.py:101",
+   "renderer": "",
+   "path": [
+    15,
+    null
+   ],
+   "first_render_repeating": {
+    "p0,p1,p2,p3": [
+     15,
+     null
+    ]
+   }
+  },
+  "F28": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_array_grid.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_array_grid.py:442",
+   "renderer": "",
+   "path": [
+    2,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F29": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_array_grid.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_array_grid.py:461",
+   "renderer": "",
+   "path": [
+    8,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F30": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_array_grid.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_array_grid.py:144",
+   "renderer": "",
+   "path": [
+    38,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F31": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_array_grid.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_array_grid.py:143",
+   "renderer": "",
+   "path": [
+    12,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F32": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_array_grid.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_array_grid.py:143",
+   "renderer": "",
+   "path": [
+    2,
+    null
+   ],
+   "first_render_repeating": {
+    "p0,p1": [
+     2,
+     null
+    ]
+   }
+  },
+  "F33": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_array_grid.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_array_grid.py:143",
+   "renderer": "",
+   "path": [
+    8,
+    null
+   ],
+   "first_render_repeating": {
+    "p0,p1,p2": [
+     8,
+     null
+    ]
+   }
+  },
+  "F34": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_array_grid.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_array_grid.py:143",
+   "renderer": "",
+   "path": [
+    23,
+    null
+   ],
+   "first_render_repeating": {
+    "p0,p1,p2,p3": [
+     23,
+     null
+    ]
+   }
+  },
+  "F35": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_array_grid.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_array_grid.py:143",
+   "renderer": "",
+   "path": [
+    24,
+    null
+   ],
+   "first_render_repeating": {
+    "p0,p1,p2,p3,p4": [
+     24,
+     null
+    ]
+   }
+  },
+  "F36": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_emoji_pictorial.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_emoji_pictorial.py:334",
+   "renderer": "",
+   "path": [
+    4,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F37": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_emoji_pictorial.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_emoji_pictorial.py:333",
+   "renderer": "",
+   "path": [
+    4,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F38": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_emoji_pictorial.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_emoji_pictorial.py:464",
+   "renderer": "",
+   "path": [
+    4,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F39": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_emoji_pictorial.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_emoji_pictorial.py:174",
+   "renderer": "",
+   "path": [
+    11,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F40": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_emoji_pictorial.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_emoji_pictorial.py:174",
+   "renderer": "",
+   "path": [
+    31,
+    null
+   ],
+   "first_render_repeating": {
+    "p0,p1": [
+     31,
+     null
+    ]
+   }
+  },
+  "F41": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_emoji_pictorial.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_emoji_pictorial.py:174",
+   "renderer": "",
+   "path": [
+    10,
+    null
+   ],
+   "first_render_repeating": {
+    "p0,p1,p2": [
+     10,
+     null
+    ]
+   }
+  },
+  "F42": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_emoji_pictorial.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_emoji_pictorial.py:174",
+   "renderer": "",
+   "path": [
+    7,
+    null
+   ],
+   "first_render_repeating": {
+    "p0,p1,p2,p3": [
+     7,
+     null
+    ]
+   }
+  },
+  "F43": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_emoji_pictorial.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_emoji_pictorial.py:174",
+   "renderer": "",
+   "path": [
+    4,
+    null
+   ],
+   "first_render_repeating": {
+    "p0,p1,p2,p3,p4,p5,p6,p7": [
+     4,
+     null
+    ]
+   }
+  },
+  "F44": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_emoji_pictorial.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_emoji_pictorial.py:174",
+   "renderer": "",
+   "path": [
+    6,
+    null
+   ],
+   "first_render_repeating": {
+    "p0,p1,p2,p3,p4,p5,p6,p7,p8": [
+     6,
+     null
+    ]
+   }
+  },
+  "F45": {
+   "source": "backend/app/practice_gen/generators/base_generator.py",
+   "first_site": "backend/app/practice_gen/generators/base_generator.py:836",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F46": {
+   "source": "backend/app/practice_gen/generators/base_generator.py",
+   "first_site": "backend/app/practice_gen/generators/base_generator.py:841",
+   "renderer": "",
+   "path": [
+    15,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F47": {
+   "source": "backend/app/practice_gen/generators/base_generator.py",
+   "first_site": "backend/app/practice_gen/generators/base_generator.py:834",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F48": {
+   "source": "backend/app/practice_gen/generators/base_generator.py",
+   "first_site": "backend/app/practice_gen/generators/base_generator.py:834",
+   "renderer": "",
+   "path": [
+    9,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F49": {
+   "source": "backend/app/practice_gen/generators/base_generator.py",
+   "first_site": "backend/app/practice_gen/generators/base_generator.py:834",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {
+    "p0,p1": [
+     1,
+     null
+    ]
+   }
+  },
+  "F50": {
+   "source": "backend/app/practice_gen/generators/base_generator.py",
+   "first_site": "backend/app/practice_gen/generators/base_generator.py:834",
+   "renderer": "",
+   "path": [
+    3,
+    null
+   ],
+   "first_render_repeating": {
+    "p0,p1,p2": [
+     3,
+     null
+    ]
+   }
+  },
+  "F51": {
+   "source": "backend/app/practice_gen/generators/base_generator.py",
+   "first_site": "backend/app/practice_gen/generators/base_generator.py:834",
+   "renderer": "",
+   "path": [
+    7,
+    null
+   ],
+   "first_render_repeating": {
+    "p0,p1,p2,p3": [
+     7,
+     null
+    ]
+   }
+  },
+  "F52": {
+   "source": "backend/app/practice_gen/generators/base_generator.py",
+   "first_site": "backend/app/practice_gen/generators/base_generator.py:834",
+   "renderer": "",
+   "path": [
+    24,
+    null
+   ],
+   "first_render_repeating": {
+    "p0,p1,p2,p3,p4": [
+     24,
+     null
+    ]
+   }
+  }
+ },
+ "packet": {
+  "item": "S444-010",
+  "competency": {
+   "text": "Count the number of concrete objects in a group by repeated addition and create equal groups, using language such as '5 groups of 3' and '5 threes'.",
+   "grade": 2,
+   "quarter": 3
+  },
+  "clauses": [
+   {
+    "id": "count_number_of",
+    "kind": "task",
+    "clause": "Count the number of"
+   },
+   {
+    "id": "concrete_objects",
+    "kind": "object",
+    "clause": "concrete objects"
+   },
+   {
+    "id": "group",
+    "kind": "context",
+    "clause": "group"
+   },
+   {
+    "id": "repeated_addition",
+    "kind": "task",
+    "clause": "repeated addition"
+   },
+   {
+    "id": "create_equal_groups",
+    "kind": "task",
+    "clause": "create equal groups"
+   },
+   {
+    "id": "language",
+    "kind": "representation",
+    "clause": "language"
+   },
+   {
+    "id": "5_groups_of_3",
+    "kind": "representation",
+    "clause": "5 groups of 3"
+   },
+   {
+    "id": "5_threes",
+    "kind": "representation",
+    "clause": "5 threes"
+   }
+  ],
+  "vocabulary": {
+   "student_vocab": [
+    "equal groups"
+   ],
+   "curriculum_vocab": [
+    "repeated addition",
+    "groups of",
+    "5 groups of 3",
+    "5 threes"
+   ],
+   "introduces_vocab": [
+    "repeated addition",
+    "equal groups",
+    "groups of",
+    "5 groups of 3",
+    "5 threes"
+   ],
+   "cumulative_vocab": [
+    "1 less",
+    "1 more",
+    "10th",
+    "1st",
+    "2nd",
+    "3rd",
+    "4th",
+    "5th",
+    "6th",
+    "7th",
+    "8th",
+    "9th",
+    "addition",
+    "analog clock",
+    "bigger",
+    "bill",
+    "calendar",
+    "centavo",
+    "centimeter",
+    "circle",
+    "clockwise",
+    "cm",
+    "coin",
+    "compare",
+    "corner",
+    "count",
+    "counter-clockwise",
+    "data",
+    "decreasing pattern",
+    "difference",
+    "digit",
+    "equal",
+    "estimate",
+    "expanded form",
+    "fraction",
+    "group",
+    "half",
+    "half hour",
+    "half turn",
+    "hour",
+    "how many",
+    "hundreds",
+    "increasing pattern",
+    "left",
+    "length",
+    "less",
+    "m",
+    "measure",
+    "meter",
+    "missing number",
+    "more",
+    "number",
+    "number line",
+    "numeral",
+    "ones",
+    "pattern",
+    "peso",
+    "pictograph",
+    "place value",
+    "quarter",
+    "quarter hour",
+    "quarter turn",
+    "rectangle",
+    "regrouping",
+    "repeating pattern",
+    "ruler",
+    "same",
+    "side",
+    "skip counting",
+    "slide",
+    "smaller",
+    "square",
+    "subtraction",
+    "sum",
+    "table",
+    "tens",
+    "thousand",
+    "total",
+    "translation",
+    "triangle",
+    "whole",
+    "₱"
+   ],
+   "NOT_YET_KNOWN": [
+    "L",
+    "a.m.",
+    "area",
+    "axis",
+    "balance scale",
+    "bar graph",
+    "capacity",
+    "certain",
+    "denominator",
+    "division",
+    "elapsed time",
+    "equally likely",
+    "even",
+    "g",
+    "gram",
+    "impossible",
+    "improper fraction",
+    "intersecting",
+    "kg",
+    "kilogram",
+    "less likely",
+    "line",
+    "line of symmetry",
+    "line segment",
+    "liter",
+    "mL",
+    "mass",
+    "milliliter",
+    "minute",
+    "missing term",
+    "more likely",
+    "multiplication",
+    "nearest hundred",
+    "nearest ten",
+    "nearest thousand",
+    "numerator",
+    "odd",
+    "order of operations",
+    "outcome",
+    "p.m.",
+    "parallel",
+    "perimeter",
+    "perpendicular",
+    "point",
+    "product",
+    "quotient",
+    "ray",
+    "remainder",
+    "round",
+    "scale",
+    "similar fractions",
+    "solid figure",
+    "sq. cm",
+    "square centimeter",
+    "symmetry",
+    "ten thousand",
+    "ten-thousands place"
+   ],
+   "sentence_max_words": 18,
+   "number_format": "no commas for numbers up to 1000"
+  },
+  "declared_variants": [
+   [
+    "context",
+    "pure"
+   ],
+   [
+    "context",
+    "word_problem"
+   ],
+   [
+    "number_type",
+    "single_digit"
+   ],
+   [
+    "structure",
+    "result_unknown"
+   ],
+   [
+    "table",
+    "10"
+   ],
+   [
+    "table",
+    "2"
+   ],
+   [
+    "table",
+    "3"
+   ],
+   [
+    "table",
+    "4"
+   ],
+   [
+    "table",
+    "5"
+   ],
+   [
+    "table",
+    "6"
+   ],
+   [
+    "table",
+    "7"
+   ],
+   [
+    "table",
+    "8"
+   ],
+   [
+    "table",
+    "9"
+   ],
+   [
+    "task_type",
+    "equal_groups"
+   ]
+  ],
+  "declared_bounds": [
+   {
+    "group_form": [
+     "groups_of",
+     "plural_name"
+    ],
+    "task_type": "equal_groups",
+    "max_product": [
+     4,
+     100
+    ]
+   }
+  ],
+  "families": [
+   {
+    "id": "F01",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F06"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='multiply')",
+        "requires_vocab": "multiply",
+        "prints": "find the total of equal groups",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F02",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F07"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='product')",
+        "requires_vocab": "product",
+        "prints": "the answer",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F03",
+    "template": "Break {a} into {tens_a} + {ones_a}: ({tens_a} × {b}) + ({ones_a} × {b}) = {v} + {v2} = {result}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "10",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "tens_a",
+       "ones_a"
+      ],
+      "domains": [
+       {
+        "domain": "a number computed by the generator",
+        "reason": "arithmetic",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ],
+      "distinct_in_every_render": true
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "2 to 5",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "v",
+       "v2"
+      ],
+      "domains": [
+       {
+        "domain": "a number computed by the generator",
+        "reason": "arithmetic",
+        "derived_from_values": [
+         "a",
+         "b"
+        ]
+       }
+      ],
+      "distinct_in_every_render": true
+     },
+     {
+      "slots": [
+       "result"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "result",
+        "printed_runs": "20, 30, 40, 50",
+        "derived_from_values": [
+         "result"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "a"
+    ]
+   },
+   {
+    "id": "F04",
+    "template": "Think of it as {b} {count_noun}: {groups}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "1 to 5",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "count_noun"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the phrase or its singular (dna.base.count_noun)",
+        "members": [
+         "group of 1",
+         "group of 10",
+         "group of 2",
+         "group of 3",
+         "group of 4",
+         "group of 5",
+         "group of 6",
+         "group of 7",
+         "group of 8",
+         "group of 9",
+         "groups of 1",
+         "groups of 10",
+         "groups of 2",
+         "groups of 3",
+         "groups of 4",
+         "groups of 5",
+         "groups of 6",
+         "groups of 7",
+         "groups of 8",
+         "groups of 9"
+        ],
+        "derived_from_values": [
+         "a",
+         "b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "groups"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F08",
+         "F09",
+         "F10",
+         "F11",
+         "F12",
+         "F17",
+         "F18",
+         "F19",
+         "F20",
+         "F24",
+         "F25",
+         "F26",
+         "F27",
+         "F31",
+         "F32",
+         "F33",
+         "F34",
+         "F35",
+         "F48",
+         "F49",
+         "F50",
+         "F51",
+         "F52"
+        ],
+        "derived_from_values": [
+         "a",
+         "b"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "b"
+    ]
+   },
+   {
+    "id": "F05",
+    "template": "Use the {b} times table: {b} × {a}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "10",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "3 to 5, 7 to 9",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F06",
+    "template": "We need to {mul_phrase} {b} {count_noun}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "mul_phrase"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F01"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "1 to 5, 10",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "count_noun"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the phrase or its singular (dna.base.count_noun)",
+        "members": [
+         "group of 1",
+         "group of 10",
+         "group of 2",
+         "group of 3",
+         "group of 4",
+         "group of 5",
+         "group of 6",
+         "group of 7",
+         "group of 8",
+         "group of 9",
+         "groups of 1",
+         "groups of 10",
+         "groups of 2",
+         "groups of 3",
+         "groups of 4",
+         "groups of 5",
+         "groups of 6",
+         "groups of 7",
+         "groups of 8",
+         "groups of 9"
+        ],
+        "derived_from_values": [
+         "a",
+         "b"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F07",
+    "template": "{capitalize} of {a} × {b} = {result}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "capitalize"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F02"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "1 to 10",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "1 to 5, 10",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "result"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "result",
+        "printed_runs": "1 to 4, 6, 8 to 10, 12, 14 to 16, 18, 20 to 21, 24 to 25, 27 to 28, 30, 32, 35 to 36, 40, 45, 50, 70, 80, 90",
+        "derived_from_values": [
+         "result"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F08",
+    "template": "{p0}",
+    "appears_in": [],
+    "nested_in": [
+     "F04",
+     "F14",
+     "F16",
+     "F21",
+     "F22",
+     "F28",
+     "F29",
+     "F45",
+     "F46"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "p0"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "1 to 4",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F09",
+    "template": "{p0} + {p1}",
+    "appears_in": [],
+    "nested_in": [
+     "F04",
+     "F16",
+     "F22",
+     "F28",
+     "F29",
+     "F46"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "p0",
+       "p1"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "2 to 10",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ],
+      "distinct_in_every_render": false
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F10",
+    "template": "{p0} + {p1} + {p2}",
+    "appears_in": [],
+    "nested_in": [
+     "F04",
+     "F14",
+     "F16",
+     "F22",
+     "F28",
+     "F29",
+     "F46"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "p0",
+       "p1",
+       "p2"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "2 to 10",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ],
+      "distinct_in_every_render": false
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F11",
+    "template": "{p0} + {p1} + {p2} + {p3}",
+    "appears_in": [],
+    "nested_in": [
+     "F04",
+     "F14",
+     "F16",
+     "F22",
+     "F28",
+     "F29",
+     "F46"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "p0",
+       "p1",
+       "p2",
+       "p3"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "2 to 10",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ],
+      "distinct_in_every_render": false
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F12",
+    "template": "{p0} + {p1} + {p2} + {p3} + {p4}",
+    "appears_in": [],
+    "nested_in": [
+     "F04",
+     "F29"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "p0",
+       "p1",
+       "p2",
+       "p3",
+       "p4"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "2 to 5, 7 to 10",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ],
+      "distinct_in_every_render": false
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F13",
+    "template": "{key}",
+    "appears_in": [
+     "correct_answer"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "key"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the option keys this item shows",
+        "members": [
+         "A",
+         "B",
+         "C",
+         "D"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F14",
+    "template": "Count {b} {count_noun} ({terms}) = ___",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "1 to 5, 10",
+        "derived_from_values": [
+         "b",
+         "n"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "count_noun"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "plural_name",
+        "printed": [
+         "eights",
+         "fives",
+         "fours",
+         "one",
+         "sevens",
+         "sixes",
+         "tens",
+         "three",
+         "threes",
+         "two",
+         "twos"
+        ],
+        "derived_from_values": [
+         "plural_name"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "terms"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F08",
+         "F10",
+         "F11",
+         "F15",
+         "F17",
+         "F19",
+         "F20",
+         "F47",
+         "F48",
+         "F50",
+         "F51"
+        ],
+        "derived_from_values": [
+         "a",
+         "b",
+         "groups",
+         "n"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "group_form",
+     "task_type"
+    ]
+   },
+   {
+    "id": "F15",
+    "template": "{a} added {b} times",
+    "appears_in": [],
+    "nested_in": [
+     "F14"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "3 to 4, 7, 9",
+        "derived_from_values": [
+         "a",
+         "groups"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "10",
+        "derived_from_values": [
+         "b",
+         "n"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F16",
+    "template": "{b} {unit} of {a} ({terms}) makes ___ in all",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "1 to 4, 10",
+        "derived_from_values": [
+         "b",
+         "n"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "unit"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "group or groups, by the count",
+        "members": [
+         "group",
+         "groups"
+        ],
+        "derived_from_values": [
+         "b",
+         "n"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "1 to 10",
+        "derived_from_values": [
+         "a",
+         "groups"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "terms"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F08",
+         "F09",
+         "F10",
+         "F11",
+         "F17",
+         "F18",
+         "F19",
+         "F20",
+         "F48",
+         "F49",
+         "F50",
+         "F51"
+        ],
+        "derived_from_values": [
+         "a",
+         "b",
+         "groups",
+         "n"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "group_form",
+     "task_type"
+    ]
+   },
+   {
+    "id": "F17",
+    "template": "{p0}",
+    "appears_in": [],
+    "nested_in": [
+     "F04",
+     "F14",
+     "F16"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "p0"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "1 to 3",
+        "derived_from_values": [
+         "a",
+         "groups"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F18",
+    "template": "{p0} + {p1}",
+    "appears_in": [],
+    "nested_in": [
+     "F04",
+     "F16"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "p0",
+       "p1"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "6, 8, 10",
+        "derived_from_values": [
+         "a",
+         "groups"
+        ]
+       }
+      ],
+      "distinct_in_every_render": false
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F19",
+    "template": "{p0} + {p1} + {p2}",
+    "appears_in": [],
+    "nested_in": [
+     "F04",
+     "F14",
+     "F16"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "p0",
+       "p1",
+       "p2"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "2 to 8, 10",
+        "derived_from_values": [
+         "a",
+         "groups"
+        ]
+       }
+      ],
+      "distinct_in_every_render": false
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F20",
+    "template": "{p0} + {p1} + {p2} + {p3}",
+    "appears_in": [],
+    "nested_in": [
+     "F04",
+     "F14",
+     "F16"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "p0",
+       "p1",
+       "p2",
+       "p3"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "2 to 7, 9",
+        "derived_from_values": [
+         "a",
+         "groups"
+        ]
+       }
+      ],
+      "distinct_in_every_render": false
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F21",
+    "template": "Count {b} {count_noun} by repeated addition ({terms}): how many in all?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "1 to 5, 10",
+        "derived_from_values": [
+         "b",
+         "n"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "count_noun"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the noun or its singular (dna.base.count_noun)",
+        "members": [
+         "four",
+         "fours",
+         "one",
+         "three"
+        ],
+        "derived_from_values": [
+         "b",
+         "n"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "terms"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F08",
+         "F23",
+         "F24",
+         "F47",
+         "F48"
+        ],
+        "derived_from_values": [
+         "a",
+         "b",
+         "groups",
+         "n"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "group_form",
+     "task_type"
+    ]
+   },
+   {
+    "id": "F22",
+    "template": "There {was} {b} {unit} of {a} ({terms}). How many in all?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "was"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the verb for one group or more",
+        "members": [
+         "are",
+         "is"
+        ],
+        "derived_from_values": [
+         "b",
+         "n"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "1 to 5, 10",
+        "derived_from_values": [
+         "b",
+         "n"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "unit"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "group or groups, by the count",
+        "members": [
+         "group",
+         "groups"
+        ],
+        "derived_from_values": [
+         "b",
+         "n"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "1 to 10",
+        "derived_from_values": [
+         "a",
+         "groups"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "terms"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F08",
+         "F09",
+         "F10",
+         "F11",
+         "F24",
+         "F25",
+         "F26",
+         "F27",
+         "F48",
+         "F49",
+         "F50",
+         "F51"
+        ],
+        "derived_from_values": [
+         "a",
+         "b",
+         "groups",
+         "n"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "group_form",
+     "task_type"
+    ]
+   },
+   {
+    "id": "F23",
+    "template": "{a} added {b} times",
+    "appears_in": [],
+    "nested_in": [
+     "F21",
+     "F45"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "4, 7 to 8",
+        "derived_from_values": [
+         "a",
+         "groups"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "10",
+        "derived_from_values": [
+         "b",
+         "n"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F24",
+    "template": "{p0}",
+    "appears_in": [],
+    "nested_in": [
+     "F04",
+     "F21",
+     "F22",
+     "F45",
+     "F46"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "p0"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "1, 3",
+        "derived_from_values": [
+         "a",
+         "groups"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F25",
+    "template": "{p0} + {p1}",
+    "appears_in": [],
+    "nested_in": [
+     "F04",
+     "F22",
+     "F46"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "p0",
+       "p1"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "2, 4 to 5, 7 to 10",
+        "derived_from_values": [
+         "a",
+         "groups"
+        ]
+       }
+      ],
+      "distinct_in_every_render": false
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F26",
+    "template": "{p0} + {p1} + {p2}",
+    "appears_in": [],
+    "nested_in": [
+     "F04",
+     "F22",
+     "F46"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "p0",
+       "p1",
+       "p2"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "2, 5, 8 to 10",
+        "derived_from_values": [
+         "a",
+         "groups"
+        ]
+       }
+      ],
+      "distinct_in_every_render": false
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F27",
+    "template": "{p0} + {p1} + {p2} + {p3}",
+    "appears_in": [],
+    "nested_in": [
+     "F04",
+     "F22",
+     "F46"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "p0",
+       "p1",
+       "p2",
+       "p3"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "3, 5 to 10",
+        "derived_from_values": [
+         "a",
+         "groups"
+        ]
+       }
+      ],
+      "distinct_in_every_render": false
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F28",
+    "template": "Look at the array. It shows {rows} groups of {cols} ({repeated_sum}). How many squares are shaded in all?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "rows"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "n",
+        "printed_runs": "1 to 5, 10",
+        "derived_from_values": [
+         "n"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "cols"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "groups",
+        "printed_runs": "1 to 10",
+        "derived_from_values": [
+         "groups"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "repeated_sum"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F08",
+         "F09",
+         "F10",
+         "F11",
+         "F30",
+         "F31",
+         "F32",
+         "F33",
+         "F34",
+         "F47",
+         "F48",
+         "F49",
+         "F50",
+         "F51"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "cols",
+     "rows",
+     "shape_type"
+    ]
+   },
+   {
+    "id": "F29",
+    "template": "Shade {rows} {count_noun} of {cols} {count_noun2} to show {repeated_sum}. How many squares did you shade in all?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "rows"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "n",
+        "printed_runs": "1 to 5, 10",
+        "derived_from_values": [
+         "n"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "count_noun"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the noun or its singular (dna.base.count_noun)",
+        "members": [
+         "group",
+         "groups"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "cols"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "groups",
+        "printed_runs": "1 to 10",
+        "derived_from_values": [
+         "groups"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "count_noun2"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the noun or its singular (dna.base.count_noun)",
+        "members": [
+         "square",
+         "squares"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "repeated_sum"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F08",
+         "F09",
+         "F10",
+         "F11",
+         "F12",
+         "F31",
+         "F32",
+         "F33",
+         "F34",
+         "F35",
+         "F48",
+         "F49",
+         "F50",
+         "F51",
+         "F52"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "cols",
+     "rows",
+     "shape_type"
+    ]
+   },
+   {
+    "id": "F30",
+    "template": "{addend} added {terms} times",
+    "appears_in": [],
+    "nested_in": [
+     "F28"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "addend"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "groups",
+        "printed_runs": "4 to 5, 7",
+        "derived_from_values": [
+         "groups"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "terms"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "n",
+        "printed_runs": "10",
+        "derived_from_values": [
+         "n"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F31",
+    "template": "{p0}",
+    "appears_in": [],
+    "nested_in": [
+     "F04",
+     "F28",
+     "F29"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "p0"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "groups",
+        "printed_runs": "1 to 3",
+        "derived_from_values": [
+         "groups"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F32",
+    "template": "{p0} + {p1}",
+    "appears_in": [],
+    "nested_in": [
+     "F04",
+     "F28",
+     "F29"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "p0",
+       "p1"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "groups",
+        "printed_runs": "2 to 10",
+        "derived_from_values": [
+         "groups"
+        ]
+       }
+      ],
+      "distinct_in_every_render": false
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F33",
+    "template": "{p0} + {p1} + {p2}",
+    "appears_in": [],
+    "nested_in": [
+     "F04",
+     "F28",
+     "F29"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "p0",
+       "p1",
+       "p2"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "groups",
+        "printed_runs": "2, 5 to 10",
+        "derived_from_values": [
+         "groups"
+        ]
+       }
+      ],
+      "distinct_in_every_render": false
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F34",
+    "template": "{p0} + {p1} + {p2} + {p3}",
+    "appears_in": [],
+    "nested_in": [
+     "F04",
+     "F28",
+     "F29"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "p0",
+       "p1",
+       "p2",
+       "p3"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "groups",
+        "printed_runs": "2, 4 to 10",
+        "derived_from_values": [
+         "groups"
+        ]
+       }
+      ],
+      "distinct_in_every_render": false
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F35",
+    "template": "{p0} + {p1} + {p2} + {p3} + {p4}",
+    "appears_in": [],
+    "nested_in": [
+     "F04",
+     "F29"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "p0",
+       "p1",
+       "p2",
+       "p3",
+       "p4"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "groups",
+        "printed_runs": "2, 7 to 8, 10",
+        "derived_from_values": [
+         "groups"
+        ]
+       }
+      ],
+      "distinct_in_every_render": false
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F36",
+    "template": "How many {name_plural} are there in all?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "name_plural"
+      ],
+      "domains": [
+       {
+        "domain": "a noun from a fixed list, or its plural",
+        "members_in_list": "_EMOJI_NAMES"
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F37",
+    "template": "There {v} {b} {unit} of {a} {name_a}.",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "v"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "_COPULAS"
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "1 to 5, 10",
+        "derived_from_values": [
+         "b"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "unit"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "group, singular or plural",
+        "members": [
+         "group",
+         "groups"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "1 to 10",
+        "derived_from_values": [
+         "a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "name_a"
+      ],
+      "domains": [
+       {
+        "domain": "a noun from a fixed list, or its plural",
+        "members_in_list": "_EMOJI_NAMES"
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F38",
+    "template": "{key}",
+    "appears_in": [
+     "correct_answer"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "key"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "_OPTION_KEYS"
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F39",
+    "template": "{p0}",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "p0"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "fmt_emoji_pictorial._EMOJI_SETS and the interest themes' emojis",
+        "members": [
+         "⚔️",
+         "⚽",
+         "✍️",
+         "✏️",
+         "✝️",
+         "⭐",
+         "🌮",
+         "🌳",
+         "🌷",
+         "🌸",
+         "🌺",
+         "🌻",
+         "🌼",
+         "🍀",
+         "🍇",
+         "🍊",
+         "🍋",
+         "🍌",
+         "🍎",
+         "🍑",
+         "🍒",
+         "🍓",
+         "🍕",
+         "🍩",
+         "🍪",
+         "🍫",
+         "🍬",
+         "🎁",
+         "🎈",
+         "🎤",
+         "🎨",
+         "🎬",
+         "🎮",
+         "🎵",
+         "🎸",
+         "🏀",
+         "🏐",
+         "🐕",
+         "🐟",
+         "🐢",
+         "🐥",
+         "🐰",
+         "🐱",
+         "🐶",
+         "🐸",
+         "🐻",
+         "💃",
+         "💜",
+         "💰",
+         "📖",
+         "📚",
+         "📜",
+         "📱",
+         "📷",
+         "🔬",
+         "🗳️",
+         "😂",
+         "🚴",
+         "🥤",
+         "🧁",
+         "🧩",
+         "🧱",
+         "🧶",
+         "🧸"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F40",
+    "template": "{p0}{p1}",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "p0",
+       "p1"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "fmt_emoji_pictorial._EMOJI_SETS and the interest themes' emojis",
+        "members": [
+         "⚔️",
+         "⚽",
+         "✍️",
+         "✏️",
+         "✝️",
+         "⭐",
+         "🌮",
+         "🌳",
+         "🌷",
+         "🌸",
+         "🌺",
+         "🌻",
+         "🌼",
+         "🍀",
+         "🍇",
+         "🍊",
+         "🍋",
+         "🍌",
+         "🍎",
+         "🍑",
+         "🍒",
+         "🍓",
+         "🍕",
+         "🍩",
+         "🍪",
+         "🍫",
+         "🍬",
+         "🎁",
+         "🎈",
+         "🎤",
+         "🎨",
+         "🎬",
+         "🎮",
+         "🎵",
+         "🎸",
+         "🏀",
+         "🏐",
+         "🐕",
+         "🐟",
+         "🐢",
+         "🐥",
+         "🐰",
+         "🐱",
+         "🐶",
+         "🐸",
+         "🐻",
+         "💃",
+         "💜",
+         "💰",
+         "📖",
+         "📚",
+         "📜",
+         "📱",
+         "📷",
+         "🔬",
+         "🗳️",
+         "😂",
+         "🚴",
+         "🥤",
+         "🧁",
+         "🧩",
+         "🧱",
+         "🧶",
+         "🧸"
+        ]
+       }
+      ],
+      "distinct_in_every_render": false
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F41",
+    "template": "{p0}{p1}{p2}",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "p0",
+       "p1",
+       "p2"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "fmt_emoji_pictorial._EMOJI_SETS and the interest themes' emojis",
+        "members": [
+         "⚔️",
+         "⚽",
+         "✍️",
+         "✏️",
+         "✝️",
+         "⭐",
+         "🌮",
+         "🌳",
+         "🌷",
+         "🌸",
+         "🌺",
+         "🌻",
+         "🌼",
+         "🍀",
+         "🍇",
+         "🍊",
+         "🍋",
+         "🍌",
+         "🍎",
+         "🍑",
+         "🍒",
+         "🍓",
+         "🍕",
+         "🍩",
+         "🍪",
+         "🍫",
+         "🍬",
+         "🎁",
+         "🎈",
+         "🎤",
+         "🎨",
+         "🎬",
+         "🎮",
+         "🎵",
+         "🎸",
+         "🏀",
+         "🏐",
+         "🐕",
+         "🐟",
+         "🐢",
+         "🐥",
+         "🐰",
+         "🐱",
+         "🐶",
+         "🐸",
+         "🐻",
+         "💃",
+         "💜",
+         "💰",
+         "📖",
+         "📚",
+         "📜",
+         "📱",
+         "📷",
+         "🔬",
+         "🗳️",
+         "😂",
+         "🚴",
+         "🥤",
+         "🧁",
+         "🧩",
+         "🧱",
+         "🧶",
+         "🧸"
+        ]
+       }
+      ],
+      "distinct_in_every_render": false
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F42",
+    "template": "{p0}{p1}{p2}{p3}",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "p0",
+       "p1",
+       "p2",
+       "p3"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "fmt_emoji_pictorial._EMOJI_SETS and the interest themes' emojis",
+        "members": [
+         "⚔️",
+         "⚽",
+         "✍️",
+         "✏️",
+         "✝️",
+         "⭐",
+         "🌮",
+         "🌳",
+         "🌷",
+         "🌸",
+         "🌺",
+         "🌻",
+         "🌼",
+         "🍀",
+         "🍇",
+         "🍊",
+         "🍋",
+         "🍌",
+         "🍎",
+         "🍑",
+         "🍒",
+         "🍓",
+         "🍕",
+         "🍩",
+         "🍪",
+         "🍫",
+         "🍬",
+         "🎁",
+         "🎈",
+         "🎤",
+         "🎨",
+         "🎬",
+         "🎮",
+         "🎵",
+         "🎸",
+         "🏀",
+         "🏐",
+         "🐕",
+         "🐟",
+         "🐢",
+         "🐥",
+         "🐰",
+         "🐱",
+         "🐶",
+         "🐸",
+         "🐻",
+         "💃",
+         "💜",
+         "💰",
+         "📖",
+         "📚",
+         "📜",
+         "📱",
+         "📷",
+         "🔬",
+         "🗳️",
+         "😂",
+         "🚴",
+         "🥤",
+         "🧁",
+         "🧩",
+         "🧱",
+         "🧶",
+         "🧸"
+        ]
+       }
+      ],
+      "distinct_in_every_render": false
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F43",
+    "template": "{p0}{p1}{p2}{p3}{p4}{p5}{p6}{p7}",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "p0",
+       "p1",
+       "p2",
+       "p3",
+       "p4",
+       "p5",
+       "p6",
+       "p7"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "fmt_emoji_pictorial._EMOJI_SETS and the interest themes' emojis",
+        "members": [
+         "⚔️",
+         "⚽",
+         "✍️",
+         "✏️",
+         "✝️",
+         "⭐",
+         "🌮",
+         "🌳",
+         "🌷",
+         "🌸",
+         "🌺",
+         "🌻",
+         "🌼",
+         "🍀",
+         "🍇",
+         "🍊",
+         "🍋",
+         "🍌",
+         "🍎",
+         "🍑",
+         "🍒",
+         "🍓",
+         "🍕",
+         "🍩",
+         "🍪",
+         "🍫",
+         "🍬",
+         "🎁",
+         "🎈",
+         "🎤",
+         "🎨",
+         "🎬",
+         "🎮",
+         "🎵",
+         "🎸",
+         "🏀",
+         "🏐",
+         "🐕",
+         "🐟",
+         "🐢",
+         "🐥",
+         "🐰",
+         "🐱",
+         "🐶",
+         "🐸",
+         "🐻",
+         "💃",
+         "💜",
+         "💰",
+         "📖",
+         "📚",
+         "📜",
+         "📱",
+         "📷",
+         "🔬",
+         "🗳️",
+         "😂",
+         "🚴",
+         "🥤",
+         "🧁",
+         "🧩",
+         "🧱",
+         "🧶",
+         "🧸"
+        ]
+       }
+      ],
+      "distinct_in_every_render": false
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F44",
+    "template": "{p0}{p1}{p2}{p3}{p4}{p5}{p6}{p7}{p8}",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "p0",
+       "p1",
+       "p2",
+       "p3",
+       "p4",
+       "p5",
+       "p6",
+       "p7",
+       "p8"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "fmt_emoji_pictorial._EMOJI_SETS and the interest themes' emojis",
+        "members": [
+         "⚔️",
+         "⚽",
+         "✍️",
+         "✏️",
+         "✝️",
+         "⭐",
+         "🌮",
+         "🌳",
+         "🌷",
+         "🌸",
+         "🌺",
+         "🌻",
+         "🌼",
+         "🍀",
+         "🍇",
+         "🍊",
+         "🍋",
+         "🍌",
+         "🍎",
+         "🍑",
+         "🍒",
+         "🍓",
+         "🍕",
+         "🍩",
+         "🍪",
+         "🍫",
+         "🍬",
+         "🎁",
+         "🎈",
+         "🎤",
+         "🎨",
+         "🎬",
+         "🎮",
+         "🎵",
+         "🎸",
+         "🏀",
+         "🏐",
+         "🐕",
+         "🐟",
+         "🐢",
+         "🐥",
+         "🐰",
+         "🐱",
+         "🐶",
+         "🐸",
+         "🐻",
+         "💃",
+         "💜",
+         "💰",
+         "📖",
+         "📚",
+         "📜",
+         "📱",
+         "📷",
+         "🔬",
+         "🗳️",
+         "😂",
+         "🚴",
+         "🥤",
+         "🧁",
+         "🧩",
+         "🧱",
+         "🧶",
+         "🧸"
+        ]
+       }
+      ],
+      "distinct_in_every_render": false
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F45",
+    "template": "Count {b} {count_noun} by repeated addition ({terms}): how many in all?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "1 to 5, 10",
+        "derived_from_values": [
+         "b",
+         "skip_by"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "count_noun"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "plural_name",
+        "printed": [
+         "eights",
+         "fives",
+         "fours",
+         "nines",
+         "one",
+         "sevens",
+         "sixes",
+         "tens",
+         "three",
+         "twos"
+        ],
+        "derived_from_values": [
+         "plural_name"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "terms"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F08",
+         "F23",
+         "F24",
+         "F47",
+         "F48"
+        ],
+        "derived_from_values": [
+         "a",
+         "b",
+         "skip_by",
+         "start"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "blank_target",
+     "group_form",
+     "task_type"
+    ]
+   },
+   {
+    "id": "F46",
+    "template": "There {was} {b} {unit} of {a} ({terms}). How many in all?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "was"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the verb for one group or more",
+        "members": [
+         "are",
+         "is"
+        ],
+        "derived_from_values": [
+         "b",
+         "skip_by"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "1 to 5, 10",
+        "derived_from_values": [
+         "b",
+         "skip_by"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "unit"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "group or groups, by the count",
+        "members": [
+         "group",
+         "groups"
+        ],
+        "derived_from_values": [
+         "b",
+         "skip_by"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "1 to 10",
+        "derived_from_values": [
+         "a",
+         "start"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "terms"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F08",
+         "F09",
+         "F10",
+         "F11",
+         "F24",
+         "F25",
+         "F26",
+         "F27",
+         "F48",
+         "F49",
+         "F50",
+         "F51"
+        ],
+        "derived_from_values": [
+         "a",
+         "b",
+         "skip_by",
+         "start"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "blank_target",
+     "task_type"
+    ]
+   },
+   {
+    "id": "F47",
+    "template": "{a} added {b} times",
+    "appears_in": [],
+    "nested_in": [
+     "F14",
+     "F21",
+     "F28",
+     "F45"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "3 to 5, 7 to 9",
+        "derived_from_values": [
+         "a",
+         "start"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "b",
+        "printed_runs": "10",
+        "derived_from_values": [
+         "b",
+         "skip_by"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "blank_target",
+     "task_type"
+    ]
+   },
+   {
+    "id": "F48",
+    "template": "{p0}",
+    "appears_in": [],
+    "nested_in": [
+     "F04",
+     "F14",
+     "F16",
+     "F21",
+     "F22",
+     "F28",
+     "F29",
+     "F45",
+     "F46"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "p0"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "1 to 4",
+        "derived_from_values": [
+         "a",
+         "start"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F49",
+    "template": "{p0} + {p1}",
+    "appears_in": [],
+    "nested_in": [
+     "F04",
+     "F16",
+     "F22",
+     "F28",
+     "F29",
+     "F46"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "p0",
+       "p1"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "2 to 10",
+        "derived_from_values": [
+         "a",
+         "start"
+        ]
+       }
+      ],
+      "distinct_in_every_render": false
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F50",
+    "template": "{p0} + {p1} + {p2}",
+    "appears_in": [],
+    "nested_in": [
+     "F04",
+     "F14",
+     "F16",
+     "F22",
+     "F28",
+     "F29",
+     "F46"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "p0",
+       "p1",
+       "p2"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "2 to 10",
+        "derived_from_values": [
+         "a",
+         "start"
+        ]
+       }
+      ],
+      "distinct_in_every_render": false
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F51",
+    "template": "{p0} + {p1} + {p2} + {p3}",
+    "appears_in": [],
+    "nested_in": [
+     "F04",
+     "F14",
+     "F16",
+     "F22",
+     "F28",
+     "F29",
+     "F46"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "p0",
+       "p1",
+       "p2",
+       "p3"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "2 to 10",
+        "derived_from_values": [
+         "a",
+         "start"
+        ]
+       }
+      ],
+      "distinct_in_every_render": false
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F52",
+    "template": "{p0} + {p1} + {p2} + {p3} + {p4}",
+    "appears_in": [],
+    "nested_in": [
+     "F04",
+     "F29"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "p0",
+       "p1",
+       "p2",
+       "p3",
+       "p4"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "a",
+        "printed_runs": "2 to 5, 7 to 10",
+        "derived_from_values": [
+         "a",
+         "start"
+        ]
+       }
+      ],
+      "distinct_in_every_render": false
+     }
+    ],
+    "template_chosen_by_values": []
+   }
+  ],
+  "lists": {
+   "_EMOJI_NAMES": [
+    "apple",
+    "orange",
+    "lemon",
+    "grape",
+    "strawberry",
+    "banana",
+    "peach",
+    "cherry",
+    "puppy",
+    "kitten",
+    "bunny",
+    "bear",
+    "frog",
+    "chick",
+    "turtle",
+    "fish",
+    "flower",
+    "sunflower",
+    "hibiscus",
+    "tulip",
+    "daisy",
+    "clover",
+    "tree",
+    "star",
+    "book",
+    "pencil",
+    "balloon",
+    "gift",
+    "ball",
+    "teddy bear",
+    "paint",
+    "note",
+    "cookie",
+    "donut",
+    "cupcake",
+    "candy",
+    "chocolate",
+    "drink",
+    "pizza",
+    "taco"
+   ],
+   "_COPULAS": [
+    "is",
+    "are"
+   ],
+   "_OPTION_KEYS": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ]
+  },
+  "banks": {},
+  "value_derivations": [],
+  "reason_kinds": {
+   "arithmetic": "a number the generator computes from the generated values named in src (a half, a sum, a difference, a running total, a place's digit). Its range is the image of those values' own domains; whether the arithmetic is RIGHT is the hint contract's (§16) and §1E's to check, not §14's."
+  }
+ }
+}

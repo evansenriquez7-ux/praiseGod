@@ -1,0 +1,645 @@
+{
+ "schema_version": 2,
+ "hash_version": 8,
+ "node_id": "mat_g3_mg_q2_4",
+ "record_id": "stem-batch445-S445-017-confirming-r1",
+ "role": "confirming",
+ "confirms": "stem-batch445-S445-017-first",
+ "item_id": "S445-017",
+ "lc_hash": "89f7334619ee3cf777b7fe06deea8b4c5c6ef0278b5699d41758bedfdac2a09c",
+ "judged_by": "blind-stem-judge-claude-haiku-batch445-S445-017-confirming-r1",
+ "dispatch_id": "stem-batch445-S445-017-confirming-r1",
+ "filed_at": "2026-10-16T10:35:35Z",
+ "delivery": "Claude Code Agent tool, model=haiku, subagent_type=general-purpose; the judge was told to read only local_only/scratch/h4c/prompts/S445-017.prompt.txt (tests/stem_file.py prompt output, item S445-017; no lc id, no key or packets file in that directory) and reply with what it asks; dispatched with CLAUDE.md loaded (ruling 29). Blindness is a prompt contract, audited from the subagent transcript.",
+ "tool_uses_by_judge": "From the subagent transcript: 1 tool use(s), all Read of its own prompt file (643 lines, every line read); no other tool, path or search. Model reported in the transcript: claude-haiku-5-5.",
+ "dispatch_prompt_digest": "6d5f86ccf4a9b30e65be75938b34c3b6819ee44847e33217a23e8ca3cbd75008",
+ "raw_reply": "{\"item\": \"S445-017\", \"clauses\": {\"estimate_capacity\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F06\", \"template\": \"{article} {target_noun}'s {mc_lbl} measures {val} {unit}. About how many {unit} is that, rounded to the nearest {round_to}?\", \"reasoning\": \"F06 asks the learner to estimate the capacity by rounding the measured value to the nearest round_to (fixed at 10). The declared bound task_type = estimate holds, so this is the estimation task the clause names.\"}, \"liters_and_or_milliliters\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F06\", \"template\": \"{article} {target_noun}'s {mc_lbl} measures {val} {unit}. About how many {unit} is that, rounded to the nearest {round_to}?\", \"reasoning\": \"The unit slot of F06 is drawn from the printed values L and mL, so the problem is shown in liters or milliliters, as the clause requires. The declared variants unit = l and unit = ml are both reachable through this slot.\"}}, \"failing_families\": [\"F06\"], \"failing_templates\": [\"{article} {target_noun}'s {mc_lbl} measures {val} {unit}. About how many {unit} is that, rounded to the nearest {round_to}?\"], \"overall\": \"FAIL\", \"reasoning\": \"In F06 the article slot (members A and An) and the target_noun slot (members container and object) each name only measurement_type as their derived value. Neither slot is tied to the other, so the domains allow an article to pair with the wrong noun, which is ungrammatical text printed to a grade 3 learner. Every other family checks out. F02, F03, F04 and F05 pair each printed value with the correct rounded answer (for example, the F04 runs 6 to 9 and 11 to 14 pair with 10, and 16 to 19 and 21 to 24 pair with 20). F05 prints 5, 15, ..., 55 with high 10, ..., 60, which is round-half-up and consistent. F01 supplies only the gated word capacity. The article and noun defect is in F06 alone.\"}",
+ "raw_reply_digest": "55a7c52fb7ad206ff808bb2fb1358c97012b5471d0b1c4f04715ac349efd0ebc",
+ "packet_digest": "301ec7f91f4ebe230d155f6569fbe5a0847321dc843d83b740ddb9852d374498",
+ "family_keys": {
+  "F01": {
+   "source": "backend/app/practice_gen/dna/base.py [gate capacity]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F02": {
+   "source": "backend/app/practice_gen/dna/mg/mass_capacity.py",
+   "first_site": "backend/app/practice_gen/dna/mg/mass_capacity.py:421",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F03": {
+   "source": "backend/app/practice_gen/dna/mg/mass_capacity.py",
+   "first_site": "backend/app/practice_gen/dna/mg/mass_capacity.py:423",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F04": {
+   "source": "backend/app/practice_gen/dna/mg/mass_capacity.py",
+   "first_site": "backend/app/practice_gen/dna/mg/mass_capacity.py:418",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F05": {
+   "source": "backend/app/practice_gen/dna/mg/mass_capacity.py",
+   "first_site": "backend/app/practice_gen/dna/mg/mass_capacity.py:416",
+   "renderer": "",
+   "path": [
+    10,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F06": {
+   "source": "backend/app/practice_gen/generators/base_generator.py",
+   "first_site": "backend/app/practice_gen/generators/base_generator.py:1223",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  }
+ },
+ "packet": {
+  "item": "S445-017",
+  "competency": {
+   "text": "Estimate capacity using liters and/or milliliters.",
+   "grade": 3,
+   "quarter": 2
+  },
+  "clauses": [
+   {
+    "id": "estimate_capacity",
+    "kind": "task",
+    "clause": "Estimate capacity"
+   },
+   {
+    "id": "liters_and_or_milliliters",
+    "kind": "representation",
+    "clause": "liters and/or milliliters"
+   }
+  ],
+  "vocabulary": {
+   "student_vocab": [],
+   "curriculum_vocab": [
+    "estimate capacity"
+   ],
+   "introduces_vocab": [
+    "estimate capacity"
+   ],
+   "cumulative_vocab": [
+    "1 less",
+    "1 more",
+    "10th",
+    "1st",
+    "2nd",
+    "3rd",
+    "4th",
+    "5th",
+    "6th",
+    "7th",
+    "8th",
+    "9th",
+    "L",
+    "a.m.",
+    "addition",
+    "analog clock",
+    "area",
+    "balance scale",
+    "bigger",
+    "bill",
+    "calendar",
+    "capacity",
+    "centavo",
+    "centimeter",
+    "circle",
+    "clockwise",
+    "cm",
+    "coin",
+    "compare",
+    "corner",
+    "count",
+    "counter-clockwise",
+    "data",
+    "decreasing pattern",
+    "denominator",
+    "difference",
+    "digit",
+    "division",
+    "elapsed time",
+    "equal",
+    "equal groups",
+    "estimate",
+    "even",
+    "expanded form",
+    "fraction",
+    "g",
+    "gram",
+    "group",
+    "half",
+    "half hour",
+    "half turn",
+    "hour",
+    "how many",
+    "hundreds",
+    "increasing pattern",
+    "intersecting",
+    "kg",
+    "kilogram",
+    "left",
+    "length",
+    "less",
+    "line",
+    "line segment",
+    "liter",
+    "m",
+    "mL",
+    "mass",
+    "measure",
+    "meter",
+    "milliliter",
+    "minute",
+    "missing number",
+    "more",
+    "multiplication",
+    "nearest hundred",
+    "nearest ten",
+    "nearest thousand",
+    "number",
+    "number line",
+    "numeral",
+    "numerator",
+    "odd",
+    "ones",
+    "order of operations",
+    "p.m.",
+    "parallel",
+    "pattern",
+    "perimeter",
+    "perpendicular",
+    "peso",
+    "pictograph",
+    "place value",
+    "point",
+    "product",
+    "quarter",
+    "quarter hour",
+    "quarter turn",
+    "quotient",
+    "ray",
+    "rectangle",
+    "regrouping",
+    "repeating pattern",
+    "round",
+    "ruler",
+    "same",
+    "scale",
+    "side",
+    "similar fractions",
+    "skip counting",
+    "slide",
+    "smaller",
+    "solid figure",
+    "sq. cm",
+    "square",
+    "square centimeter",
+    "subtraction",
+    "sum",
+    "table",
+    "ten thousand",
+    "ten-thousands place",
+    "tens",
+    "thousand",
+    "total",
+    "translation",
+    "triangle",
+    "whole",
+    "₱"
+   ],
+   "NOT_YET_KNOWN": [
+    "axis",
+    "bar graph",
+    "certain",
+    "equally likely",
+    "impossible",
+    "improper fraction",
+    "less likely",
+    "line of symmetry",
+    "missing term",
+    "more likely",
+    "outcome",
+    "remainder",
+    "symmetry"
+   ],
+   "sentence_max_words": 22,
+   "number_format": "space separator for thousands (e.g. 1 000)"
+  },
+  "declared_variants": [
+   [
+    "measurement_type",
+    "capacity"
+   ],
+   [
+    "task_type",
+    "estimate"
+   ],
+   [
+    "unit",
+    "g"
+   ],
+   [
+    "unit",
+    "kg"
+   ],
+   [
+    "unit",
+    "l"
+   ],
+   [
+    "unit",
+    "ml"
+   ]
+  ],
+  "declared_bounds": [
+   {
+    "measurement_type": "capacity",
+    "task_type": "estimate"
+   }
+  ],
+  "families": [
+   {
+    "id": "F01",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F06"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='capacity')",
+        "requires_vocab": "capacity",
+        "prints": "capacity",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F02",
+    "template": "Count by {step}s: {value} is between {low} and {high}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "step"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "round_to",
+        "printed_runs": "10",
+        "derived_from_values": [
+         "round_to"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "value"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "value",
+        "printed_runs": "5 to 9, 11 to 19, 21 to 28, 31 to 32, 34 to 35, 37 to 39, 41 to 42, 44 to 49, 51 to 53, 55 to 59, 61 to 64, 67 to 69",
+        "derived_from_values": [
+         "value"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "low",
+       "high"
+      ],
+      "domains": [
+       {
+        "domain": "a number computed by the generator",
+        "reason": "arithmetic",
+        "derived_from_values": [
+         "round_to",
+         "value"
+        ]
+       }
+      ],
+      "distinct_in_every_render": true
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F03",
+    "template": "So {value} {unit} is about {answer} {unit}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "value"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "value",
+        "printed_runs": "5 to 9, 11 to 19, 21 to 28, 31 to 32, 34 to 35, 37 to 39, 41 to 42, 44 to 49, 51 to 53, 55 to 59, 61 to 64, 67 to 69",
+        "derived_from_values": [
+         "value"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "unit"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "unit",
+        "printed": [
+         "L",
+         "mL"
+        ],
+        "derived_from_values": [
+         "unit"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "answer",
+        "printed_runs": "10, 20, 30, 40, 50, 60, 70",
+        "derived_from_values": [
+         "answer"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F04",
+    "template": "{value} is closer to {answer}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "value"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "value",
+        "printed_runs": "6 to 9, 11 to 14, 16 to 19, 21 to 24, 26 to 28, 31 to 32, 34, 37 to 39, 41 to 42, 44, 46 to 49, 51 to 53, 56 to 59, 61 to 64, 67 to 69",
+        "derived_from_values": [
+         "value"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "answer",
+        "printed_runs": "10, 20, 30, 40, 50, 60, 70",
+        "derived_from_values": [
+         "answer"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F05",
+    "template": "{value} is exactly halfway, so it rounds up to {high}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "value"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "value",
+        "printed_runs": "5, 15, 25, 35, 45, 55",
+        "derived_from_values": [
+         "value"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "high"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "answer",
+        "printed_runs": "10, 20, 30, 40, 50, 60",
+        "derived_from_values": [
+         "answer"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F06",
+    "template": "{article} {target_noun}'s {mc_lbl} measures {val} {unit}. About how many {unit} is that, rounded to the nearest {round_to}?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "article"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the article this stem chooses",
+        "members": [
+         "A",
+         "An"
+        ],
+        "derived_from_values": [
+         "measurement_type"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "target_noun"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the mass and capacity nouns",
+        "members": [
+         "container",
+         "object"
+        ],
+        "derived_from_values": [
+         "measurement_type"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "mc_lbl"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F01"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "val"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "value",
+        "printed_runs": "5 to 9, 11 to 19, 21 to 28, 31 to 32, 34 to 35, 37 to 39, 41 to 42, 44 to 49, 51 to 53, 55 to 59, 61 to 64, 67 to 69",
+        "derived_from_values": [
+         "value"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "unit"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "unit",
+        "printed": [
+         "L",
+         "mL"
+        ],
+        "derived_from_values": [
+         "unit"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "round_to"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "round_to",
+        "printed_runs": "10",
+        "derived_from_values": [
+         "round_to"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   }
+  ],
+  "lists": {},
+  "banks": {},
+  "value_derivations": [],
+  "reason_kinds": {
+   "arithmetic": "a number the generator computes from the generated values named in src (a half, a sum, a difference, a running total, a place's digit). Its range is the image of those values' own domains; whether the arithmetic is RIGHT is the hint contract's (§16) and §1E's to check, not §14's."
+  }
+ }
+}

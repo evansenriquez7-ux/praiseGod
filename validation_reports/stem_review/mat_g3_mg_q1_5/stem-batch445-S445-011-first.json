@@ -1,0 +1,716 @@
+{
+ "schema_version": 2,
+ "hash_version": 8,
+ "node_id": "mat_g3_mg_q1_5",
+ "record_id": "stem-batch445-S445-011-first",
+ "role": "first",
+ "confirms": null,
+ "item_id": "S445-011",
+ "lc_hash": "6cd73354a31d949ead2cec399b0fb8340207739dfa4f4f3bab3b2ca406c776f3",
+ "judged_by": "blind-stem-judge-claude-haiku-batch445-S445-011-first",
+ "dispatch_id": "stem-batch445-S445-011-first",
+ "filed_at": "2026-10-15T16:47:51Z",
+ "delivery": "Claude Code Agent tool, model=haiku, subagent_type=general-purpose; the judge was told to read only local_only/scratch/h4c/prompts/S445-011.prompt.txt (tests/stem_file.py prompt output, item S445-011; no lc id, no key or packets file in that directory) and reply with what it asks; dispatched with CLAUDE.md loaded (ruling 29). Blindness is a prompt contract, audited from the subagent transcript.",
+ "tool_uses_by_judge": "From the subagent transcript: 1 tool use(s), all Read of its own prompt file (704 lines, every line read); no other tool, path or search. Model reported in the transcript: claude-haiku-5-5.",
+ "dispatch_prompt_digest": "22838dcd842e802b5af68b81784e59d6b7b10cde88e78f961f40baab44cff22b",
+ "raw_reply": "{\"item\": \"S445-011\",\n \"clauses\": {\"recognize_line_relationships\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F04\", \"template\": \"{text}\", \"reasoning\": \"F04 draws its text from the _ITEM_POOL rows, each one problem. Rows such as 'Two lines that never meet, no matter how far they extend, are called ___.' and 'Look at the model: two lines that cross each other and form right angles / square corners ( ⟂ / + ). What type of lines are they?' require the learner to recognize a line relationship from its description or model.\"},\n  \"draw_line_relationships\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F04\", \"template\": \"{text}\", \"reasoning\": \"A row of _ITEM_POOL reads 'To draw parallel lines using a ruler and a set square, what is the correct technique?' with the keyed answer 'Slide the set square along the straight edge of the ruler and draw along its side.' Its distractors are other drawing techniques, so the problem addresses drawing. The declared variant task_type draw_construct also exists.\"},\n  \"parallel_lines\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F04\", \"template\": \"{text}\", \"reasoning\": \"A row of _ITEM_POOL reads 'Two lines that never meet, no matter how far they extend, are called ___.' with the keyed answer 'parallel lines'. The row addresses parallel lines directly.\"},\n  \"intersecting_lines\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F04\", \"template\": \"{text}\", \"reasoning\": \"A row of _ITEM_POOL reads 'Two lines that cross at exactly one point are called ___.' with the keyed answer 'intersecting lines'. The row addresses intersecting lines directly.\"},\n  \"perpendicular_lines\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F04\", \"template\": \"{text}\", \"reasoning\": \"A row of _ITEM_POOL reads 'Two lines that meet at a right angle (90°) are called ___.' with the keyed answer 'perpendicular lines'. The row addresses perpendicular lines directly, though the right-angle wording is flagged under Rule 1.\"}},\n \"failing_families\": [\"F03\", \"F04\", \"F07\"],\n \"failing_templates\": [\"Perpendicular lines intersect at exactly a right angle (90°).\", \"{text}\", \"{member}\"],\n \"overall\": \"FAIL\",\n \"reasoning\": \"Rule 1 vocabulary gate: cumulative_vocab is the set of words this lc may use, and it contains no 'right angle', 'angle' used as a measure, or '90°'. None of these appear in NOT_YET_KNOWN either, so the packet does not say whether they are gated in. The degree measure ('90°') is a measurement concept the packet does not introduce. F03 (template 'Perpendicular lines intersect at exactly a right angle (90°).', appears in hints) prints 'right angle (90°)' with no slot. F04 (template '{text}') draws rows of _ITEM_POOL, and at least two rows print 'right angle (90°)' or 'right angles': the question 'Two lines that meet at a right angle (90°) are called ___.' and the model question 'two lines that cross each other and form right angles / square corners'. F07 (template '{member}', distractors and format_data.options) prints members containing 'right angle': 'Two lines that meet at a square right angle.', 'Yes, they intersect at a right angle.' and 'form a square right angle'. Families F05 and F06 were checked. F05 prints 'Two straight lines that cross each other at a slanted angle.' and I did not flag the bare word 'angle' there, but the right-angle and degree wording above is the gap. All other printed text in F04, F05 and F07 uses cumulative_vocab or plain English and is factually correct for its row, and the F04 rows keep their answer, distractors and question together. The hints F01 and F02 are correct. Rule 2: every clause has a producible family through F04 (the bank rows). The draw clause is covered by a drawing-technique row. The failing vocabulary does not change producibility.\"}",
+ "raw_reply_digest": "a77fa21428c58dd89ba86a3cf0a53e29a1414386fd17898de27e7bb0aa6d830d",
+ "packet_digest": "7ed415cddc15328248b02a8db882e81653c60b292e86aebfcca88c8f410d1682",
+ "family_keys": {
+  "F01": {
+   "source": "backend/app/practice_gen/dna/mg/geometric_lines.py",
+   "first_site": "backend/app/practice_gen/dna/mg/geometric_lines.py:730",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F02": {
+   "source": "backend/app/practice_gen/dna/mg/geometric_lines.py",
+   "first_site": "backend/app/practice_gen/dna/mg/geometric_lines.py:729",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F03": {
+   "source": "backend/app/practice_gen/dna/mg/geometric_lines.py",
+   "first_site": "backend/app/practice_gen/dna/mg/geometric_lines.py:731",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F04": {
+   "source": "backend/app/practice_gen/dna/mg/geometric_lines.py",
+   "first_site": "backend/app/practice_gen/dna/mg/geometric_lines.py:704",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F05": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:32",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F06": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:51",
+   "renderer": "",
+   "path": [
+    2,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F07": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:39",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  }
+ },
+ "packet": {
+  "item": "S445-011",
+  "competency": {
+   "text": "Recognize and draw parallel, intersecting, and perpendicular lines.",
+   "grade": 3,
+   "quarter": 1
+  },
+  "clauses": [
+   {
+    "id": "recognize_line_relationships",
+    "kind": "task",
+    "clause": "Recognize"
+   },
+   {
+    "id": "draw_line_relationships",
+    "kind": "task",
+    "clause": "draw"
+   },
+   {
+    "id": "parallel_lines",
+    "kind": "object",
+    "clause": "parallel"
+   },
+   {
+    "id": "intersecting_lines",
+    "kind": "object",
+    "clause": "intersecting"
+   },
+   {
+    "id": "perpendicular_lines",
+    "kind": "object",
+    "clause": "perpendicular lines"
+   }
+  ],
+  "vocabulary": {
+   "student_vocab": [
+    "parallel",
+    "perpendicular",
+    "intersecting"
+   ],
+   "curriculum_vocab": [
+    "parallel lines",
+    "intersecting lines",
+    "perpendicular lines"
+   ],
+   "introduces_vocab": [
+    "parallel lines",
+    "intersecting lines",
+    "perpendicular lines"
+   ],
+   "cumulative_vocab": [
+    "1 less",
+    "1 more",
+    "10th",
+    "1st",
+    "2nd",
+    "3rd",
+    "4th",
+    "5th",
+    "6th",
+    "7th",
+    "8th",
+    "9th",
+    "a.m.",
+    "addition",
+    "analog clock",
+    "area",
+    "bigger",
+    "bill",
+    "calendar",
+    "centavo",
+    "centimeter",
+    "circle",
+    "clockwise",
+    "cm",
+    "coin",
+    "compare",
+    "corner",
+    "count",
+    "counter-clockwise",
+    "data",
+    "decreasing pattern",
+    "denominator",
+    "difference",
+    "digit",
+    "division",
+    "elapsed time",
+    "equal",
+    "equal groups",
+    "estimate",
+    "even",
+    "expanded form",
+    "fraction",
+    "group",
+    "half",
+    "half hour",
+    "half turn",
+    "hour",
+    "how many",
+    "hundreds",
+    "increasing pattern",
+    "left",
+    "length",
+    "less",
+    "line",
+    "line segment",
+    "m",
+    "measure",
+    "meter",
+    "minute",
+    "missing number",
+    "more",
+    "multiplication",
+    "nearest hundred",
+    "nearest ten",
+    "nearest thousand",
+    "number",
+    "number line",
+    "numeral",
+    "numerator",
+    "odd",
+    "ones",
+    "p.m.",
+    "pattern",
+    "perimeter",
+    "peso",
+    "pictograph",
+    "place value",
+    "point",
+    "product",
+    "quarter",
+    "quarter hour",
+    "quarter turn",
+    "quotient",
+    "ray",
+    "rectangle",
+    "regrouping",
+    "repeating pattern",
+    "round",
+    "ruler",
+    "same",
+    "scale",
+    "side",
+    "similar fractions",
+    "skip counting",
+    "slide",
+    "smaller",
+    "solid figure",
+    "sq. cm",
+    "square",
+    "square centimeter",
+    "subtraction",
+    "sum",
+    "table",
+    "ten thousand",
+    "ten-thousands place",
+    "tens",
+    "thousand",
+    "total",
+    "translation",
+    "triangle",
+    "whole",
+    "₱"
+   ],
+   "NOT_YET_KNOWN": [
+    "L",
+    "axis",
+    "balance scale",
+    "bar graph",
+    "capacity",
+    "certain",
+    "equally likely",
+    "g",
+    "gram",
+    "impossible",
+    "improper fraction",
+    "kg",
+    "kilogram",
+    "less likely",
+    "line of symmetry",
+    "liter",
+    "mL",
+    "mass",
+    "milliliter",
+    "missing term",
+    "more likely",
+    "order of operations",
+    "outcome",
+    "remainder",
+    "symmetry"
+   ],
+   "sentence_max_words": 22,
+   "number_format": "space separator for thousands (e.g. 1 000)"
+  },
+  "declared_variants": [
+   [
+    "concept_type",
+    "parallel_intersecting_perpendicular"
+   ],
+   [
+    "task_type",
+    "draw_construct"
+   ],
+   [
+    "task_type",
+    "explain_difference"
+   ],
+   [
+    "task_type",
+    "identify_name"
+   ],
+   [
+    "task_type",
+    "identify_property"
+   ],
+   [
+    "task_type",
+    "recognize_model"
+   ]
+  ],
+  "declared_bounds": [
+   {
+    "concept_type": "parallel_intersecting_perpendicular"
+   }
+  ],
+  "families": [
+   {
+    "id": "F01",
+    "template": "Intersecting lines cross at one point.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F02",
+    "template": "Parallel lines never meet — they stay the same distance apart.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F03",
+    "template": "Perpendicular lines intersect at exactly a right angle (90°).",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F04",
+    "template": "{text}",
+    "appears_in": [
+     "correct_answer",
+     "distractors",
+     "format_data.mcq_options",
+     "format_data.options",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "text"
+      ],
+      "domains": [
+       {
+        "domain": "a field of a fixed item bank",
+        "field": "answer",
+        "bank": "_ITEM_POOL"
+       },
+       {
+        "domain": "a field of a fixed item bank",
+        "field": "distractors",
+        "bank": "_ITEM_POOL"
+       },
+       {
+        "domain": "a field of a fixed item bank",
+        "field": "question",
+        "bank": "_ITEM_POOL"
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F05",
+    "template": "{answer}",
+    "appears_in": [
+     "correct_answer",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "result",
+        "printed": [
+         "No, they never intersect.",
+         "Slide the set square along the straight edge of the ruler and draw along its side.",
+         "Two straight lines that cross each other at a slanted angle.",
+         "Yes",
+         "cross at a single point",
+         "intersecting lines",
+         "parallel lines",
+         "perpendicular lines",
+         "ruler and set square",
+         "stay the same distance apart and never meet"
+        ],
+        "derived_from_values": [
+         "result"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F06",
+    "template": "{key}",
+    "appears_in": [
+     "correct_answer"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "key"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the option keys this item shows",
+        "members": [
+         "A",
+         "B",
+         "C",
+         "D"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F07",
+    "template": "{member}",
+    "appears_in": [
+     "distractors",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "member"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "QuestionContext.distractors (the generator's own)",
+        "members": [
+         "A single ray with one endpoint.",
+         "Draw a single point and connect it in a circle.",
+         "Draw along the corner of the set square without moving it.",
+         "No",
+         "Only if they are line segments.",
+         "Only if they are rays",
+         "Only sometimes",
+         "Turn the set square over after drawing the first line.",
+         "Two lines that meet at a square right angle.",
+         "Two lines that never meet.",
+         "Yes, they intersect at a right angle.",
+         "Yes, they intersect at one point.",
+         "bend toward each other",
+         "clock and ruler",
+         "cross at a single point",
+         "curved lines",
+         "form a square right angle",
+         "intersecting lines",
+         "line segments",
+         "never meet",
+         "parallel lines",
+         "perpendicular lines",
+         "rays",
+         "ruler only",
+         "run side by side",
+         "stay the same distance apart",
+         "thermometer and clock"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   }
+  ],
+  "lists": {},
+  "banks": {
+   "_ITEM_POOL": {
+    "fields": [
+     "answer",
+     "distractors",
+     "question"
+    ],
+    "one_row_per_problem": true,
+    "rows": [
+     {
+      "answer": "parallel lines",
+      "distractors": [
+       "perpendicular lines",
+       "intersecting lines",
+       "rays"
+      ],
+      "question": "Two lines that never meet, no matter how far they extend, are called ___."
+     },
+     {
+      "answer": "intersecting lines",
+      "distractors": [
+       "parallel lines",
+       "curved lines",
+       "rays"
+      ],
+      "question": "Two lines that cross at exactly one point are called ___."
+     },
+     {
+      "answer": "perpendicular lines",
+      "distractors": [
+       "parallel lines",
+       "curved lines",
+       "line segments"
+      ],
+      "question": "Two lines that meet at a right angle (90°) are called ___."
+     },
+     {
+      "answer": "parallel lines",
+      "distractors": [
+       "perpendicular lines",
+       "intersecting lines",
+       "rays"
+      ],
+      "question": "The edges of a ruler's two long sides are an example of what type of lines?"
+     },
+     {
+      "answer": "perpendicular lines",
+      "distractors": [
+       "parallel lines",
+       "curved lines",
+       "line segments"
+      ],
+      "question": "The corner of a square shows which type of lines meeting?"
+     },
+     {
+      "answer": "No, they never intersect.",
+      "distractors": [
+       "Yes, they intersect at one point.",
+       "Yes, they intersect at a right angle.",
+       "Only if they are line segments."
+      ],
+      "question": "Do parallel lines ever intersect?"
+     },
+     {
+      "answer": "Yes",
+      "distractors": [
+       "No",
+       "Only sometimes",
+       "Only if they are rays"
+      ],
+      "question": "Are all perpendicular lines also intersecting lines?"
+     },
+     {
+      "answer": "parallel lines",
+      "distractors": [
+       "perpendicular lines",
+       "intersecting lines",
+       "rays"
+      ],
+      "question": "Look at the model: two straight lines that run side by side and never meet ( || ). What type of lines are they?"
+     },
+     {
+      "answer": "perpendicular lines",
+      "distractors": [
+       "parallel lines",
+       "curved lines",
+       "line segments"
+      ],
+      "question": "Look at the model: two lines that cross each other and form right angles / square corners ( ⟂ / + ). What type of lines are they?"
+     },
+     {
+      "answer": "intersecting lines",
+      "distractors": [
+       "parallel lines",
+       "perpendicular lines",
+       "rays"
+      ],
+      "question": "Look at the model: two lines that cross at a single point without forming square corners ( X ). What type of lines are they?"
+     },
+     {
+      "answer": "parallel lines",
+      "distractors": [
+       "perpendicular lines",
+       "intersecting lines",
+       "rays"
+      ],
+      "question": "Look at the letter 'H'. The two vertical side segments are an example of ___."
+     },
+     {
+      "answer": "perpendicular lines",
+      "distractors": [
+       "parallel lines",
+       "rays",
+       "curved lines"
+      ],
+      "question": "Look at the letter 'T'. The vertical and horizontal segments meet to form ___."
+     },
+     {
+      "answer": "intersecting lines",
+      "distractors": [
+       "parallel lines",
+       "curved lines",
+       "flat surfaces"
+      ],
+      "question": "Look at the letter 'X'. The two crossing line segments form ___."
+     },
+     {
+      "answer": "ruler and set square",
+      "distractors": [
+       "thermometer and clock",
+       "clock and ruler",
+       "ruler only"
+      ],
+      "question": "To draw perpendicular lines forming a square right angle, which tools can you use together?"
+     },
+     {
+      "answer": "Slide the set square along the straight edge of the ruler and draw along its side.",
+      "distractors": [
+       "Turn the set square over after drawing the first line.",
+       "Draw along the corner of the set square without moving it.",
+       "Draw a single point and connect it in a circle."
+      ],
+      "question": "To draw parallel lines using a ruler and a set square, what is the correct technique?"
+     },
+     {
+      "answer": "perpendicular lines",
+      "distractors": [
+       "parallel lines",
+       "curved lines",
+       "rays"
+      ],
+      "question": "When you draw a vertical line meeting a horizontal line to form a square corner, what type of lines have you drawn?"
+     },
+     {
+      "answer": "stay the same distance apart and never meet",
+      "distractors": [
+       "cross at a single point",
+       "form a square right angle",
+       "bend toward each other"
+      ],
+      "question": "To draw two parallel lines using a ruler, you must make sure the lines ___."
+     },
+     {
+      "answer": "cross at a single point",
+      "distractors": [
+       "never meet",
+       "run side by side",
+       "stay the same distance apart"
+      ],
+      "question": "To draw two intersecting lines, you draw two straight paths that ___."
+     },
+     {
+      "answer": "parallel lines",
+      "distractors": [
+       "perpendicular lines",
+       "intersecting lines",
+       "curved lines"
+      ],
+      "question": "When drawing the two straight sides of a ladder, which type of lines should you draw?"
+     },
+     {
+      "answer": "perpendicular lines",
+      "distractors": [
+       "parallel lines",
+       "curved lines",
+       "rays"
+      ],
+      "question": "When drawing a plus sign (+), which type of lines are being drawn?"
+     },
+     {
+      "answer": "Two straight lines that cross each other at a slanted angle.",
+      "distractors": [
+       "Two lines that never meet.",
+       "Two lines that meet at a square right angle.",
+       "A single ray with one endpoint."
+      ],
+      "question": "To draw intersecting lines that are not perpendicular, what should you draw?"
+     }
+    ],
+    "rows_left_out": 34
+   }
+  },
+  "value_derivations": [],
+  "reason_kinds": {}
+ }
+}

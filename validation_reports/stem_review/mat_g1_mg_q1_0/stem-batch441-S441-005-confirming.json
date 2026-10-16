@@ -1,0 +1,715 @@
+{
+ "schema_version": 2,
+ "hash_version": 8,
+ "node_id": "mat_g1_mg_q1_0",
+ "record_id": "stem-batch441-S441-005-confirming",
+ "role": "confirming",
+ "confirms": "stem-batch441-S441-005-first-r1",
+ "item_id": "S441-005",
+ "lc_hash": "f278f440f5e6cb96bc5240b91af120d2eaec5e067b1fc48a1fc070e1a4ff4870",
+ "judged_by": "blind-stem-judge-claude-haiku-batch441-S441-005-confirming",
+ "dispatch_id": "stem-batch441-S441-005-confirming",
+ "filed_at": "2026-10-16T04:54:07Z",
+ "delivery": "Claude Code Agent tool, model=haiku, subagent_type=general-purpose; the judge was told to read only local_only/scratch/h4c/prompts/S441-005.prompt.txt (tests/stem_file.py prompt output, item S441-005; no lc id, no key or packets file in that directory) and reply with what it asks; dispatched with CLAUDE.md loaded (ruling 29). Blindness is a prompt contract, audited from the subagent transcript.",
+ "tool_uses_by_judge": "From the subagent transcript: 1 tool use(s), all Read of its own prompt file (693 lines, every line read); no other tool, path or search. Model reported in the transcript: claude-haiku-5-5.",
+ "dispatch_prompt_digest": "c665dd09b16474186070463da6f411c9ec7725305b1931f4c5b33920ea6e6ed7",
+ "raw_reply": "{\"item\": \"S441-005\", \"clauses\": {\"identify\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F06\", \"template\": \"Look at the shapes in different sizes and orientations. Which shape on the board has {v}?\", \"reasoning\": \"F06 asks the learner to identify which shape on the board has a stated clue, which is the identify task.\"}, \"simple_2_dimensional_shapes\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F07\", \"template\": \"{answer}\", \"reasoning\": \"F07 prints the answer field of the _ITEM_POOL bank, which holds the shape names triangle, square and rectangle. F08 also prints these names as choices.\"}, \"triangle\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F07\", \"template\": \"{answer}\", \"reasoning\": \"The answer field of _ITEM_POOL includes triangle, and F07 prints it as the keyed answer.\"}, \"rectangle\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F07\", \"template\": \"{answer}\", \"reasoning\": \"The answer field of _ITEM_POOL includes rectangle, and F07 prints it as the keyed answer.\"}, \"square\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F07\", \"template\": \"{answer}\", \"reasoning\": \"The answer field of _ITEM_POOL includes square, and F07 prints it as the keyed answer.\"}, \"different_size\": {\"verdict\": \"NOT_PRODUCIBLE\", \"family\": null, \"template\": null, \"reasoning\": \"The declared variants are orientation, shape_set and task_type. None varies size, and no family prints a size value. The size wording in F06 is text with no declared domain that produces the size it names.\"}, \"different_orientation\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F06\", \"template\": \"Look at the shapes in different sizes and orientations. Which shape on the board has {v}?\", \"reasoning\": \"The declared variant orientation has the members rotated and standard, and F06 is the question that presents shapes in different orientations.\"}}, \"failing_families\": [\"F01\", \"F06\"], \"failing_templates\": [\"A rectangle has 4 {sides_label} (opposite {sides_label} are equal).\", \"Look at the shapes in different sizes and orientations. Which shape on the board has {v}?\"], \"overall\": \"FAIL\", \"reasoning\": \"F01 prints the word opposite, which appears in neither cumulative_vocab nor introduces_vocab, and its parenthetical teaches that opposite sides are equal. That property is outside the identify-shapes competency. F06 states that shapes appear in different sizes, but no declared variant or domain produces size variation, so the statement can be false for every learner who sees it. The remaining families (F02, F03, F04, F05, F07, F08) keep their printed text within the declared domains and gates.\"}",
+ "raw_reply_digest": "76f86db2e84a83e12f6ddba9c447b0aa76b2da4cc09d21399ff128e45bc6bd5b",
+ "packet_digest": "8f7ca5ca369b805c4e1a61f05ec1423bb6ed21ef54f3d464f65f17b250670d01",
+ "family_keys": {
+  "F01": {
+   "source": "backend/app/practice_gen/dna/mg/shapes_2d.py [gate side]",
+   "first_site": "backend/app/practice_gen/dna/mg/shapes_2d.py:826",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F02": {
+   "source": "backend/app/practice_gen/dna/mg/shapes_2d.py [gate side]",
+   "first_site": "backend/app/practice_gen/dna/mg/shapes_2d.py:825",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F03": {
+   "source": "backend/app/practice_gen/dna/mg/shapes_2d.py [gate side]",
+   "first_site": "backend/app/practice_gen/dna/mg/shapes_2d.py:824",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F04": {
+   "source": "backend/app/practice_gen/dna/mg/shapes_2d.py [gate side]",
+   "first_site": "backend/app/practice_gen/dna/mg/shapes_2d.py:823",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F05": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:51",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F06": {
+   "source": "backend/app/practice_gen/formatters/visual/fmt_shape_board.py",
+   "first_site": "backend/app/practice_gen/formatters/visual/fmt_shape_board.py:350",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F07": {
+   "source": "backend/app/practice_gen/slots.py",
+   "first_site": "backend/app/practice_gen/slots.py:180",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F08": {
+   "source": "backend/app/practice_gen/slots.py",
+   "first_site": "backend/app/practice_gen/slots.py:182",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  }
+ },
+ "packet": {
+  "item": "S441-005",
+  "competency": {
+   "text": "Identify simple 2-dimensional shapes (triangle, rectangle, square) of different size and in different orientation.",
+   "grade": 1,
+   "quarter": 1
+  },
+  "clauses": [
+   {
+    "id": "identify",
+    "kind": "task",
+    "clause": "Identify"
+   },
+   {
+    "id": "simple_2_dimensional_shapes",
+    "kind": "object",
+    "clause": "simple 2-dimensional shapes"
+   },
+   {
+    "id": "triangle",
+    "kind": "object",
+    "clause": "triangle"
+   },
+   {
+    "id": "rectangle",
+    "kind": "object",
+    "clause": "rectangle"
+   },
+   {
+    "id": "square",
+    "kind": "object",
+    "clause": "square"
+   },
+   {
+    "id": "different_size",
+    "kind": "property",
+    "clause": "different size"
+   },
+   {
+    "id": "different_orientation",
+    "kind": "property",
+    "clause": "different orientation"
+   }
+  ],
+  "vocabulary": {
+   "student_vocab": [
+    "triangle",
+    "rectangle",
+    "square"
+   ],
+   "curriculum_vocab": [
+    "2-dimensional shape",
+    "2D shape",
+    "orientation",
+    "size"
+   ],
+   "introduces_vocab": [
+    "2-dimensional shape",
+    "2D shape",
+    "triangle",
+    "rectangle",
+    "square",
+    "orientation",
+    "size"
+   ],
+   "cumulative_vocab": [
+    "1 less",
+    "1 more",
+    "10th",
+    "1st",
+    "2nd",
+    "3rd",
+    "4th",
+    "5th",
+    "6th",
+    "7th",
+    "8th",
+    "9th",
+    "addition",
+    "bigger",
+    "compare",
+    "count",
+    "equal",
+    "group",
+    "how many",
+    "left",
+    "less",
+    "more",
+    "number",
+    "number line",
+    "numeral",
+    "same",
+    "smaller",
+    "sum",
+    "total"
+   ],
+   "NOT_YET_KNOWN": [
+    "L",
+    "a.m.",
+    "analog clock",
+    "area",
+    "axis",
+    "balance scale",
+    "bar graph",
+    "bill",
+    "calendar",
+    "capacity",
+    "centavo",
+    "centimeter",
+    "certain",
+    "circle",
+    "clockwise",
+    "cm",
+    "coin",
+    "corner",
+    "counter-clockwise",
+    "data",
+    "decreasing pattern",
+    "denominator",
+    "difference",
+    "digit",
+    "division",
+    "elapsed time",
+    "equal groups",
+    "equally likely",
+    "estimate",
+    "even",
+    "expanded form",
+    "fraction",
+    "g",
+    "gram",
+    "half",
+    "half hour",
+    "half turn",
+    "hour",
+    "hundreds",
+    "impossible",
+    "improper fraction",
+    "increasing pattern",
+    "intersecting",
+    "kg",
+    "kilogram",
+    "length",
+    "less likely",
+    "line",
+    "line of symmetry",
+    "line segment",
+    "liter",
+    "m",
+    "mL",
+    "mass",
+    "measure",
+    "meter",
+    "milliliter",
+    "minute",
+    "missing number",
+    "missing term",
+    "more likely",
+    "multiplication",
+    "nearest hundred",
+    "nearest ten",
+    "nearest thousand",
+    "numerator",
+    "odd",
+    "ones",
+    "order of operations",
+    "outcome",
+    "p.m.",
+    "parallel",
+    "pattern",
+    "perimeter",
+    "perpendicular",
+    "peso",
+    "pictograph",
+    "place value",
+    "point",
+    "product",
+    "quarter",
+    "quarter hour",
+    "quarter turn",
+    "quotient",
+    "ray",
+    "regrouping",
+    "remainder",
+    "repeating pattern",
+    "round",
+    "ruler",
+    "scale",
+    "side",
+    "similar fractions",
+    "skip counting",
+    "slide",
+    "solid figure",
+    "sq. cm",
+    "square centimeter",
+    "subtraction",
+    "symmetry",
+    "table",
+    "ten thousand",
+    "ten-thousands place",
+    "tens",
+    "thousand",
+    "translation",
+    "whole",
+    "₱"
+   ],
+   "sentence_max_words": 15,
+   "number_format": "no commas, no thousands separator"
+  },
+  "declared_variants": [
+   [
+    "orientation",
+    "rotated"
+   ],
+   [
+    "orientation",
+    "standard"
+   ],
+   [
+    "shape_set",
+    "basic_triangles_rectangles_squares"
+   ],
+   [
+    "shape_set",
+    "composite_figures"
+   ],
+   [
+    "shape_set",
+    "extended_with_circles"
+   ],
+   [
+    "task_type",
+    "identify_name"
+   ]
+  ],
+  "declared_bounds": [
+   {
+    "task_type": "identify_name"
+   }
+  ],
+  "families": [
+   {
+    "id": "F01",
+    "template": "A rectangle has 4 {sides_label} (opposite {sides_label} are equal).",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "sides_label"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "'side' gated by cumulative_vocab",
+        "requires_vocab": "side",
+        "prints": "straight edges",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F02",
+    "template": "A square has 4 equal {sides_label}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "sides_label"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "'side' gated by cumulative_vocab",
+        "requires_vocab": "side",
+        "prints": "straight edges",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F03",
+    "template": "A triangle has 3 {sides_label}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "sides_label"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "'side' gated by cumulative_vocab",
+        "requires_vocab": "side",
+        "prints": "straight edges",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F04",
+    "template": "Look at each shape and its {sides_label}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "sides_label"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "'side' gated by cumulative_vocab",
+        "requires_vocab": "side",
+        "prints": "straight edges",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F05",
+    "template": "{key}",
+    "appears_in": [
+     "correct_answer"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "key"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the option keys this item shows",
+        "members": [
+         "A",
+         "B",
+         "C",
+         "D"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F06",
+    "template": "Look at the shapes in different sizes and orientations. Which shape on the board has {v}?",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "v"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the three identification clues",
+        "members": [
+         "four equal straight edges",
+         "three straight edges",
+         "two longer and two shorter straight edges"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F07",
+    "template": "{answer}",
+    "appears_in": [
+     "format_data.mcq_options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "a field of a fixed item bank",
+        "field": "answer",
+        "bank": "_ITEM_POOL",
+        "derived_from_values": [
+         "answer",
+         "distractors",
+         "grade_min",
+         "orientation",
+         "question",
+         "shape_set",
+         "task_type"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F08",
+    "template": "{distractors}",
+    "appears_in": [
+     "distractors",
+     "format_data.mcq_options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "distractors"
+      ],
+      "domains": [
+       {
+        "domain": "a field of a fixed item bank",
+        "field": "distractors",
+        "bank": "_ITEM_POOL",
+        "derived_from_values": [
+         "answer",
+         "distractors",
+         "grade_min",
+         "orientation",
+         "question",
+         "shape_set",
+         "task_type"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   }
+  ],
+  "lists": {},
+  "banks": {
+   "_ITEM_POOL": {
+    "fields": [
+     "answer",
+     "distractors"
+    ],
+    "one_row_per_problem": true,
+    "rows": [
+     {
+      "answer": "triangle",
+      "distractors": [
+       "rectangle",
+       "square",
+       "none of these"
+      ]
+     },
+     {
+      "answer": "square",
+      "distractors": [
+       "triangle",
+       "rectangle",
+       "none of these"
+      ]
+     },
+     {
+      "answer": "rectangle",
+      "distractors": [
+       "triangle",
+       "square",
+       "none of these"
+      ]
+     },
+     {
+      "answer": "triangle",
+      "distractors": [
+       "rectangle",
+       "square",
+       "none of these"
+      ]
+     },
+     {
+      "answer": "square",
+      "distractors": [
+       "triangle",
+       "rectangle",
+       "none of these"
+      ]
+     },
+     {
+      "answer": "triangle",
+      "distractors": [
+       "square",
+       "rectangle",
+       "none of these"
+      ]
+     },
+     {
+      "answer": "square",
+      "distractors": [
+       "triangle",
+       "rectangle",
+       "none of these"
+      ]
+     },
+     {
+      "answer": "triangle",
+      "distractors": [
+       "rectangle",
+       "square",
+       "none of these"
+      ]
+     },
+     {
+      "answer": "rectangle",
+      "distractors": [
+       "triangle",
+       "square",
+       "none of these"
+      ]
+     },
+     {
+      "answer": "square",
+      "distractors": [
+       "triangle",
+       "rectangle",
+       "none of these"
+      ]
+     },
+     {
+      "answer": "rectangle",
+      "distractors": [
+       "square",
+       "triangle",
+       "none of these"
+      ]
+     },
+     {
+      "answer": "rectangle",
+      "distractors": [
+       "triangle",
+       "square",
+       "none of these"
+      ]
+     },
+     {
+      "answer": "square",
+      "distractors": [
+       "rectangle",
+       "triangle",
+       "none of these"
+      ]
+     },
+     {
+      "answer": "rectangle",
+      "distractors": [
+       "square",
+       "triangle",
+       "none of these"
+      ]
+     },
+     {
+      "answer": "rectangle",
+      "distractors": [
+       "triangle",
+       "square",
+       "none of these"
+      ]
+     },
+     {
+      "answer": "square",
+      "distractors": [
+       "triangle",
+       "rectangle",
+       "none of these"
+      ]
+     }
+    ],
+    "rows_left_out": 58
+   }
+  },
+  "value_derivations": [],
+  "reason_kinds": {}
+ }
+}

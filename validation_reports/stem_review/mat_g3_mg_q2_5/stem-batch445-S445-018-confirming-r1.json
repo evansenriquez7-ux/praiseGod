@@ -1,0 +1,505 @@
+{
+ "schema_version": 2,
+ "hash_version": 8,
+ "node_id": "mat_g3_mg_q2_5",
+ "record_id": "stem-batch445-S445-018-confirming-r1",
+ "role": "confirming",
+ "confirms": "stem-batch445-S445-018-first",
+ "item_id": "S445-018",
+ "lc_hash": "05ddc63bbea5e9dfa7a259826e65551645b883f7a706e8c60f769aeabd4830c1",
+ "judged_by": "blind-stem-judge-claude-haiku-batch445-S445-018-confirming-r1",
+ "dispatch_id": "stem-batch445-S445-018-confirming-r1",
+ "filed_at": "2026-10-16T10:35:19Z",
+ "delivery": "Claude Code Agent tool, model=haiku, subagent_type=general-purpose; the judge was told to read only local_only/scratch/h4c/prompts/S445-018.prompt.txt (tests/stem_file.py prompt output, item S445-018; no lc id, no key or packets file in that directory) and reply with what it asks; dispatched with CLAUDE.md loaded (ruling 29). Blindness is a prompt contract, audited from the subagent transcript.",
+ "tool_uses_by_judge": "From the subagent transcript: 1 tool use(s), all Read of its own prompt file (533 lines, every line read); no other tool, path or search. Model reported in the transcript: claude-haiku-5-5.",
+ "dispatch_prompt_digest": "7449c2a620fdf205e966047338b1bcd7d2c454e6907185754ed5ec54a55061aa",
+ "raw_reply": "{\"item\": \"S445-018\", \"clauses\": {\"compare_capacities\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F03\", \"template\": \"Which is {v}: {val_a} {u} or {val_b} {u}?\", \"reasoning\": \"F03 is the only family that appears in question_text. Its v slot can take the capacity comparative \\\"more\\\", so it produces a question comparing two capacity values, which is the task the clause names. Its v slot can also take \\\"heavier\\\", which is wrong for capacity; see failing_families.\"}, \"two_containers\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F03\", \"template\": \"Which is {v}: {val_a} {u} or {val_b} {u}?\", \"reasoning\": \"No family prints the word container. Each problem sets two capacity amounts side by side, and those amounts stand for the two containers, so the object is represented only implicitly by the measured values. Judged as addressed, not named explicitly.\"}}, \"failing_families\": [\"F02\", \"F03\"], \"failing_templates\": [\"The larger number {more}: {answer} {unit}.\", \"Which is {v}: {val_a} {u} or {val_b} {u}?\"], \"overall\": \"FAIL\", \"reasoning\": \"F02 slot more (domain: one of the generator's own choices, derived from measurement_type) has members \\\"holds more\\\" and \\\"is heavier\\\". F03 slot v has members \\\"heavier\\\" and \\\"more\\\", same derivation. The lc is capacity only: declared_variants lists measurement_type capacity alone, and declared_bounds pins measurement_type to capacity. The domains still list the mass comparative as a member, and the packet gives no bound that removes it, so judged as the full set of what can appear, a capacity problem can print that heaviness is being compared. Heaviness is a mass property, so \\\"is heavier\\\" in F02 and \\\"heavier\\\" in F03 are misleading for capacity. \\\"heavier\\\" is also absent from cumulative_vocab. F01 (hints, template \\\"Compare the two measurements: {a} {unit} and {b} {unit}.\\\") uses only the measurement word and the units L and mL, both in cumulative_vocab, with values 1 to 70 that suit grade 3 quarter 2; it passes. The overall FAIL rests on the mass comparative in F02 and F03; the \\\"holds more\\\" and \\\"more\\\" members are capacity-appropriate.\"}",
+ "raw_reply_digest": "ea7d4c45ed6b8fbe6560efef71832176fa1fbc517cbbc8122dfd7d609e927207",
+ "packet_digest": "b66231bd819a6f42e371209c8a98e1fce183041c14d1cdebe60883715ba6954f",
+ "family_keys": {
+  "F01": {
+   "source": "backend/app/practice_gen/dna/mg/mass_capacity.py",
+   "first_site": "backend/app/practice_gen/dna/mg/mass_capacity.py:397",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F02": {
+   "source": "backend/app/practice_gen/dna/mg/mass_capacity.py",
+   "first_site": "backend/app/practice_gen/dna/mg/mass_capacity.py:398",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F03": {
+   "source": "backend/app/practice_gen/generators/base_generator.py",
+   "first_site": "backend/app/practice_gen/generators/base_generator.py:1198",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  }
+ },
+ "packet": {
+  "item": "S445-018",
+  "competency": {
+   "text": "Compare capacities of two containers.",
+   "grade": 3,
+   "quarter": 2
+  },
+  "clauses": [
+   {
+    "id": "compare_capacities",
+    "kind": "task",
+    "clause": "Compare capacities"
+   },
+   {
+    "id": "two_containers",
+    "kind": "object",
+    "clause": "two containers"
+   }
+  ],
+  "vocabulary": {
+   "student_vocab": [],
+   "curriculum_vocab": [
+    "compare capacities",
+    "container"
+   ],
+   "introduces_vocab": [
+    "compare capacities",
+    "container"
+   ],
+   "cumulative_vocab": [
+    "1 less",
+    "1 more",
+    "10th",
+    "1st",
+    "2nd",
+    "3rd",
+    "4th",
+    "5th",
+    "6th",
+    "7th",
+    "8th",
+    "9th",
+    "L",
+    "a.m.",
+    "addition",
+    "analog clock",
+    "area",
+    "balance scale",
+    "bigger",
+    "bill",
+    "calendar",
+    "capacity",
+    "centavo",
+    "centimeter",
+    "circle",
+    "clockwise",
+    "cm",
+    "coin",
+    "compare",
+    "corner",
+    "count",
+    "counter-clockwise",
+    "data",
+    "decreasing pattern",
+    "denominator",
+    "difference",
+    "digit",
+    "division",
+    "elapsed time",
+    "equal",
+    "equal groups",
+    "estimate",
+    "even",
+    "expanded form",
+    "fraction",
+    "g",
+    "gram",
+    "group",
+    "half",
+    "half hour",
+    "half turn",
+    "hour",
+    "how many",
+    "hundreds",
+    "increasing pattern",
+    "intersecting",
+    "kg",
+    "kilogram",
+    "left",
+    "length",
+    "less",
+    "line",
+    "line segment",
+    "liter",
+    "m",
+    "mL",
+    "mass",
+    "measure",
+    "meter",
+    "milliliter",
+    "minute",
+    "missing number",
+    "more",
+    "multiplication",
+    "nearest hundred",
+    "nearest ten",
+    "nearest thousand",
+    "number",
+    "number line",
+    "numeral",
+    "numerator",
+    "odd",
+    "ones",
+    "order of operations",
+    "p.m.",
+    "parallel",
+    "pattern",
+    "perimeter",
+    "perpendicular",
+    "peso",
+    "pictograph",
+    "place value",
+    "point",
+    "product",
+    "quarter",
+    "quarter hour",
+    "quarter turn",
+    "quotient",
+    "ray",
+    "rectangle",
+    "regrouping",
+    "repeating pattern",
+    "round",
+    "ruler",
+    "same",
+    "scale",
+    "side",
+    "similar fractions",
+    "skip counting",
+    "slide",
+    "smaller",
+    "solid figure",
+    "sq. cm",
+    "square",
+    "square centimeter",
+    "subtraction",
+    "sum",
+    "table",
+    "ten thousand",
+    "ten-thousands place",
+    "tens",
+    "thousand",
+    "total",
+    "translation",
+    "triangle",
+    "whole",
+    "₱"
+   ],
+   "NOT_YET_KNOWN": [
+    "axis",
+    "bar graph",
+    "certain",
+    "equally likely",
+    "impossible",
+    "improper fraction",
+    "less likely",
+    "line of symmetry",
+    "missing term",
+    "more likely",
+    "outcome",
+    "remainder",
+    "symmetry"
+   ],
+   "sentence_max_words": 22,
+   "number_format": "space separator for thousands (e.g. 1 000)"
+  },
+  "declared_variants": [
+   [
+    "context",
+    "pure"
+   ],
+   [
+    "context",
+    "word_problem"
+   ],
+   [
+    "direction",
+    "ascending"
+   ],
+   [
+    "direction",
+    "descending"
+   ],
+   [
+    "measurement_type",
+    "capacity"
+   ],
+   [
+    "proximity",
+    "close_together"
+   ],
+   [
+    "proximity",
+    "far_apart"
+   ],
+   [
+    "task_type",
+    "compare"
+   ],
+   [
+    "unit",
+    "g"
+   ],
+   [
+    "unit",
+    "kg"
+   ],
+   [
+    "unit",
+    "l"
+   ],
+   [
+    "unit",
+    "ml"
+   ]
+  ],
+  "declared_bounds": [
+   {
+    "measurement_type": "capacity",
+    "task_type": "compare"
+   },
+   {
+    "task_type": "compare_pair",
+    "max_value": [
+     1,
+     10000
+    ]
+   }
+  ],
+  "families": [
+   {
+    "id": "F01",
+    "template": "Compare the two measurements: {a} {unit} and {b} {unit}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "value_a",
+        "printed_runs": "1 to 24, 26 to 28, 30 to 31, 33 to 38, 40 to 49, 51 to 60, 63 to 65, 67, 69 to 70",
+        "derived_from_values": [
+         "value_a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "unit"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "unit",
+        "printed": [
+         "L",
+         "mL"
+        ],
+        "derived_from_values": [
+         "unit"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "value_b",
+        "printed_runs": "1 to 23, 25 to 26, 28 to 30, 32, 34 to 36, 38, 40 to 44, 46 to 52, 54, 56, 58 to 68, 70",
+        "derived_from_values": [
+         "value_b"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F02",
+    "template": "The larger number {more}: {answer} {unit}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "more"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the mass and capacity comparatives",
+        "members": [
+         "holds more",
+         "is heavier"
+        ],
+        "derived_from_values": [
+         "measurement_type"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "answer",
+        "printed_runs": "4, 6 to 28, 30 to 32, 34 to 38, 40 to 45, 47 to 48, 50 to 54, 56 to 70",
+        "derived_from_values": [
+         "answer"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "unit"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "unit",
+        "printed": [
+         "L",
+         "mL"
+        ],
+        "derived_from_values": [
+         "unit"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F03",
+    "template": "Which is {v}: {val_a} {u} or {val_b} {u}?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "v"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the mass and capacity comparatives",
+        "members": [
+         "heavier",
+         "more"
+        ],
+        "derived_from_values": [
+         "measurement_type"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "val_a"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "value_a",
+        "printed_runs": "1 to 24, 26 to 28, 30 to 31, 33 to 38, 40 to 49, 51 to 60, 63 to 65, 67, 69 to 70",
+        "derived_from_values": [
+         "value_a"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "u"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "unit",
+        "printed": [
+         "L",
+         "mL"
+        ],
+        "derived_from_values": [
+         "unit"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "val_b"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "value_b",
+        "printed_runs": "1 to 23, 25 to 26, 28 to 30, 32, 34 to 36, 38, 40 to 44, 46 to 52, 54, 56, 58 to 68, 70",
+        "derived_from_values": [
+         "value_b"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   }
+  ],
+  "lists": {},
+  "banks": {},
+  "value_derivations": [],
+  "reason_kinds": {}
+ }
+}

@@ -1,0 +1,2243 @@
+{
+ "schema_version": 2,
+ "hash_version": 8,
+ "node_id": "mat_g3_na_q1_2",
+ "record_id": "stem-batch445-S445-024-first-r3",
+ "role": "first",
+ "confirms": null,
+ "item_id": "S445-024",
+ "lc_hash": "7ffcfcc478cefc234cf83ffdff445b6b49d4ad179562810c0027c0cbc5ae1d98",
+ "judged_by": "blind-stem-judge-claude-haiku-batch445-S445-024-first-r3",
+ "dispatch_id": "stem-batch445-S445-024-first-r3",
+ "filed_at": "2026-10-16T04:53:25Z",
+ "delivery": "Claude Code Agent tool, model=haiku, subagent_type=general-purpose; the judge was told to read only local_only/scratch/h4c/prompts/S445-024.prompt.txt (tests/stem_file.py prompt output, item S445-024; no lc id, no key or packets file in that directory) and reply with what it asks; dispatched with CLAUDE.md loaded (ruling 29). Blindness is a prompt contract, audited from the subagent transcript.",
+ "tool_uses_by_judge": "From the subagent transcript: 4 tool use(s), all Read of its own prompt file (2031 lines, every line read); no other tool, path or search. Model reported in the transcript: claude-haiku-5-5.",
+ "dispatch_prompt_digest": "1cb8dd457d1b1d3f7060ce63ea9a4f76757d9f73bfe0bd6baa155cf70705ed6b",
+ "raw_reply": "{\"item\": \"S445-024\",\n \"clauses\": {\"describe\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F16\", \"template\": \"What ordinal describes position number {n}?\", \"reasoning\": \"F16 asks the learner for the ordinal word that describes a position number n, which is the describe task. Its n is a repeated generated value with printed runs up to 98, inside the 1 to 100 bound, and F16 is not in the failing set.\"},\n \"position\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F04\", \"template\": \"A runner is at position number {n}. In what place did the runner finish?\", \"reasoning\": \"F04 places a position number n in a race context and asks for the place, which addresses position. Its n prints runs from 3 to 95 and F04 is not in the failing set.\"},\n \"objects\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F14\", \"template\": \"The {objects_plural} are placed in a row. One {object_singular} is number {n} in the row. Which word describes its position?\", \"reasoning\": \"F14 places a set of named objects in a row and asks for the position of one of them, which addresses objects. The plural and singular object slots are not declared linked, so F14 is listed as failing even though it can produce the clause.\"},\n \"ordinal_numbers\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F16\", \"template\": \"What ordinal describes position number {n}?\", \"reasoning\": \"F16 asks the learner to name the ordinal number for a position, which is the ordinal numbers representation. n is printed from 1 to 98.\"},\n \"up_to_100th\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F24\", \"template\": \"{symbol} means position {n}.\", \"reasoning\": \"F24 prints the symbol computed from n, and its printed symbols and n values reach 100th and 100 inside the declared range 1 to 100, so it addresses the up to 100th range.\"}},\n \"failing_families\": [\"F03\", \"F09\", \"F12\", \"F14\", \"F15\", \"F19\", \"F20\", \"F21\", \"F22\", \"F23\", \"F26\"],\n \"failing_templates\": [\"'{capitalize}' is an {ord_label} word.\", \"Ordinal numbers describe {pos_label} in order.\", \"The number {n} in order is called the {symbol} ({word}).\", \"The {objects_plural} are placed in a row. One {object_singular} is number {n} in the row. Which word describes its position?\", \"The {symbol} ({word}) place is position number {n}.\", \"Who arrived earlier: the student in {symbol} place or {symbol2} place?\", \"Write the symbol for the {word} position.\", \"{capitalize} = position {n}, written as {symbol}.\", \"{n}{v}\", \"{prefix}-{get}\", \"{answer}\"],\n \"overall\": \"FAIL\",\n \"reasoning\": \"F03 renders ord_label from F01, which prints the text order word, and the template adds another word after it, so the learner reads order word word, and the article and noun phrase are otherwise ungrammatical for the hint. F09 prints pos_label from F02, which prints the bare text order, so the hint reads as a circular statement about order. F22 combines n and v with no declared link, so a correct answer or distractor can be an invalid ordinal such as a suffix that does not match its number. F23 combines prefix and get with no declared link, so it can print invalid ordinal words such as a tens prefix followed by a teens or tenth word. F26 draws from the answer domain, which prints a pupil name, Elena, as an answer choice for an ordinal question. F19 nests symbol2 from F22 and F26, so its comparison can print a name or an invalid ordinal, and symbol and symbol2 are separate draws with no declared distinctness, so two identical positions can be compared. F21 nests capitalize from F23 and F25, inheriting the invalid F23 words. F12, F15 and F20 print a word slot that has no declared derivation from n or symbol, so the word can name a different ordinal than the symbol or number in the same problem. F14 prints objects_plural and object_singular as independent draws, so one row can name eggs and then one mango. Clause coverage is complete: each clause has a producing family, and no family was judged not producible.\"}",
+ "raw_reply_digest": "486dd2cd4a21802f7da962c79370a2c2469768f3687bc0db57921dc706d6f968",
+ "packet_digest": "66a12aad25061413431950b3c0388f07694e10dc7cf31100721810b713b895b0",
+ "family_keys": {
+  "F01": {
+   "source": "backend/app/practice_gen/dna/base.py [gate ordinal]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F02": {
+   "source": "backend/app/practice_gen/dna/base.py [gate position]",
+   "first_site": "backend/app/practice_gen/dna/base.py:318",
+   "renderer": "",
+   "path": [
+    2,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F03": {
+   "source": "backend/app/practice_gen/dna/na/ordinal_numbers.py",
+   "first_site": "backend/app/practice_gen/dna/na/ordinal_numbers.py:574",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F04": {
+   "source": "backend/app/practice_gen/dna/na/ordinal_numbers.py",
+   "first_site": "backend/app/practice_gen/dna/na/ordinal_numbers.py:501",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F05": {
+   "source": "backend/app/practice_gen/dna/na/ordinal_numbers.py",
+   "first_site": "backend/app/practice_gen/dna/na/ordinal_numbers.py:585",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F06": {
+   "source": "backend/app/practice_gen/dna/na/ordinal_numbers.py",
+   "first_site": "backend/app/practice_gen/dna/na/ordinal_numbers.py:575",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F07": {
+   "source": "backend/app/practice_gen/dna/na/ordinal_numbers.py",
+   "first_site": "backend/app/practice_gen/dna/na/ordinal_numbers.py:579",
+   "renderer": "",
+   "path": [
+    9,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F08": {
+   "source": "backend/app/practice_gen/dna/na/ordinal_numbers.py",
+   "first_site": "backend/app/practice_gen/dna/na/ordinal_numbers.py:581",
+   "renderer": "",
+   "path": [
+    9,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F09": {
+   "source": "backend/app/practice_gen/dna/na/ordinal_numbers.py",
+   "first_site": "backend/app/practice_gen/dna/na/ordinal_numbers.py:569",
+   "renderer": "",
+   "path": [
+    2,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F10": {
+   "source": "backend/app/practice_gen/dna/na/ordinal_numbers.py",
+   "first_site": "backend/app/practice_gen/dna/na/ordinal_numbers.py:571",
+   "renderer": "",
+   "path": [
+    2,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F11": {
+   "source": "backend/app/practice_gen/dna/na/ordinal_numbers.py",
+   "first_site": "backend/app/practice_gen/dna/na/ordinal_numbers.py:584",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F12": {
+   "source": "backend/app/practice_gen/dna/na/ordinal_numbers.py",
+   "first_site": "backend/app/practice_gen/dna/na/ordinal_numbers.py:570",
+   "renderer": "",
+   "path": [
+    2,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F13": {
+   "source": "backend/app/practice_gen/dna/na/ordinal_numbers.py",
+   "first_site": "backend/app/practice_gen/dna/na/ordinal_numbers.py:501",
+   "renderer": "",
+   "path": [
+    24,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F14": {
+   "source": "backend/app/practice_gen/dna/na/ordinal_numbers.py",
+   "first_site": "backend/app/practice_gen/dna/na/ordinal_numbers.py:501",
+   "renderer": "",
+   "path": [
+    9,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F15": {
+   "source": "backend/app/practice_gen/dna/na/ordinal_numbers.py",
+   "first_site": "backend/app/practice_gen/dna/na/ordinal_numbers.py:580",
+   "renderer": "",
+   "path": [
+    9,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F16": {
+   "source": "backend/app/practice_gen/dna/na/ordinal_numbers.py",
+   "first_site": "backend/app/practice_gen/dna/na/ordinal_numbers.py:501",
+   "renderer": "",
+   "path": [
+    4,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F17": {
+   "source": "backend/app/practice_gen/dna/na/ordinal_numbers.py",
+   "first_site": "backend/app/practice_gen/dna/na/ordinal_numbers.py:501",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F18": {
+   "source": "backend/app/practice_gen/dna/na/ordinal_numbers.py",
+   "first_site": "backend/app/practice_gen/dna/na/ordinal_numbers.py:501",
+   "renderer": "",
+   "path": [
+    2,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F19": {
+   "source": "backend/app/practice_gen/dna/na/ordinal_numbers.py",
+   "first_site": "backend/app/practice_gen/dna/na/ordinal_numbers.py:501",
+   "renderer": "",
+   "path": [
+    7,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F20": {
+   "source": "backend/app/practice_gen/dna/na/ordinal_numbers.py",
+   "first_site": "backend/app/practice_gen/dna/na/ordinal_numbers.py:501",
+   "renderer": "",
+   "path": [
+    6,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F21": {
+   "source": "backend/app/practice_gen/dna/na/ordinal_numbers.py",
+   "first_site": "backend/app/practice_gen/dna/na/ordinal_numbers.py:576",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F22": {
+   "source": "backend/app/practice_gen/dna/na/ordinal_numbers.py",
+   "first_site": "backend/app/practice_gen/dna/na/ordinal_numbers.py:42",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F23": {
+   "source": "backend/app/practice_gen/dna/na/ordinal_numbers.py",
+   "first_site": "backend/app/practice_gen/dna/na/ordinal_numbers.py:78",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F24": {
+   "source": "backend/app/practice_gen/dna/na/ordinal_numbers.py",
+   "first_site": "backend/app/practice_gen/dna/na/ordinal_numbers.py:586",
+   "renderer": "",
+   "path": [
+    5,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F25": {
+   "source": "backend/app/practice_gen/dna/na/ordinal_numbers.py",
+   "first_site": "backend/app/practice_gen/dna/na/ordinal_numbers.py:64",
+   "renderer": "",
+   "path": [
+    2,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F26": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:32",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F27": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:39",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  }
+ },
+ "packet": {
+  "item": "S445-024",
+  "competency": {
+   "text": "Describe the position of objects using ordinal numbers up to 100th.",
+   "grade": 3,
+   "quarter": 1
+  },
+  "clauses": [
+   {
+    "id": "describe",
+    "kind": "task",
+    "clause": "Describe"
+   },
+   {
+    "id": "position",
+    "kind": "property",
+    "clause": "position"
+   },
+   {
+    "id": "objects",
+    "kind": "object",
+    "clause": "objects"
+   },
+   {
+    "id": "ordinal_numbers",
+    "kind": "representation",
+    "clause": "ordinal numbers"
+   },
+   {
+    "id": "up_to_100th",
+    "kind": "range",
+    "clause": "up to 100th"
+   }
+  ],
+  "vocabulary": {
+   "student_vocab": [],
+   "curriculum_vocab": [
+    "ordinal numbers up to 100th"
+   ],
+   "introduces_vocab": [
+    "ordinal numbers up to 100th"
+   ],
+   "cumulative_vocab": [
+    "1 less",
+    "1 more",
+    "10th",
+    "1st",
+    "2nd",
+    "3rd",
+    "4th",
+    "5th",
+    "6th",
+    "7th",
+    "8th",
+    "9th",
+    "a.m.",
+    "addition",
+    "analog clock",
+    "bigger",
+    "bill",
+    "calendar",
+    "centavo",
+    "centimeter",
+    "circle",
+    "clockwise",
+    "cm",
+    "coin",
+    "compare",
+    "corner",
+    "count",
+    "counter-clockwise",
+    "data",
+    "decreasing pattern",
+    "denominator",
+    "difference",
+    "digit",
+    "division",
+    "elapsed time",
+    "equal",
+    "equal groups",
+    "estimate",
+    "even",
+    "expanded form",
+    "fraction",
+    "group",
+    "half",
+    "half hour",
+    "half turn",
+    "hour",
+    "how many",
+    "hundreds",
+    "increasing pattern",
+    "left",
+    "length",
+    "less",
+    "m",
+    "measure",
+    "meter",
+    "minute",
+    "missing number",
+    "more",
+    "multiplication",
+    "number",
+    "number line",
+    "numeral",
+    "numerator",
+    "odd",
+    "ones",
+    "p.m.",
+    "pattern",
+    "perimeter",
+    "peso",
+    "pictograph",
+    "place value",
+    "product",
+    "quarter",
+    "quarter hour",
+    "quarter turn",
+    "quotient",
+    "rectangle",
+    "regrouping",
+    "repeating pattern",
+    "ruler",
+    "same",
+    "scale",
+    "side",
+    "similar fractions",
+    "skip counting",
+    "slide",
+    "smaller",
+    "solid figure",
+    "square",
+    "subtraction",
+    "sum",
+    "table",
+    "ten thousand",
+    "tens",
+    "thousand",
+    "total",
+    "translation",
+    "triangle",
+    "whole",
+    "₱"
+   ],
+   "NOT_YET_KNOWN": [
+    "L",
+    "area",
+    "axis",
+    "balance scale",
+    "bar graph",
+    "capacity",
+    "certain",
+    "equally likely",
+    "g",
+    "gram",
+    "impossible",
+    "improper fraction",
+    "intersecting",
+    "kg",
+    "kilogram",
+    "less likely",
+    "line",
+    "line of symmetry",
+    "line segment",
+    "liter",
+    "mL",
+    "mass",
+    "milliliter",
+    "missing term",
+    "more likely",
+    "nearest hundred",
+    "nearest ten",
+    "nearest thousand",
+    "order of operations",
+    "outcome",
+    "parallel",
+    "perpendicular",
+    "point",
+    "ray",
+    "remainder",
+    "round",
+    "sq. cm",
+    "square centimeter",
+    "symmetry",
+    "ten-thousands place"
+   ],
+   "sentence_max_words": 22,
+   "number_format": "space separator for thousands (e.g. 1 000)"
+  },
+  "declared_variants": [
+   [
+    "task_type",
+    "compare_positions"
+   ],
+   [
+    "task_type",
+    "describe_position"
+   ],
+   [
+    "task_type",
+    "find_position"
+   ],
+   [
+    "task_type",
+    "identify_ordinal"
+   ]
+  ],
+  "declared_bounds": [
+   {
+    "ordinal_range": [
+     1,
+     100
+    ]
+   }
+  ],
+  "families": [
+   {
+    "id": "F01",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F03"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='ordinal')",
+        "requires_vocab": "ordinal",
+        "prints": "order word",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F02",
+    "template": "{term}",
+    "appears_in": [],
+    "nested_in": [
+     "F09"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "term"
+      ],
+      "domains": [
+       {
+        "domain": "the one word a vocabulary gate gives this lc",
+        "basis": "VocabGated(requires_vocab='position')",
+        "requires_vocab": "position",
+        "prints": "order",
+        "words_left_out": 1
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F03",
+    "template": "'{capitalize}' is an {ord_label} word.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "capitalize"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F23",
+         "F25"
+        ],
+        "derived_from_values": [
+         "word"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "ord_label"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F01"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F04",
+    "template": "A runner is at position number {n}. In what place did the runner finish?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "n"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "n",
+        "printed_runs": "3 to 4, 8 to 9, 22, 29 to 33, 36, 39, 42 to 44, 48, 56, 59, 62, 67, 69 to 70, 77, 80, 82, 84 to 85, 87, 91, 94 to 95",
+        "derived_from_values": [
+         "n"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F05",
+    "template": "Compare the numbers: the smaller ordinal position is earlier.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F06",
+    "template": "Count positions from the start: 1st, 2nd, 3rd, … until you reach {word}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "word"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "word",
+        "printed": [
+         "eighth",
+         "eightieth",
+         "eighty-fifth",
+         "eighty-fourth",
+         "eighty-ninth",
+         "eighty-second",
+         "eighty-seventh",
+         "fiftieth",
+         "fifty-eighth",
+         "fifty-fifth",
+         "fifty-fourth",
+         "fifty-ninth",
+         "fifty-seventh",
+         "fifty-sixth",
+         "first",
+         "forty-eighth",
+         "forty-fifth",
+         "forty-fourth",
+         "forty-ninth",
+         "forty-second",
+         "forty-third",
+         "fourteenth",
+         "fourth",
+         "ninety-eighth",
+         "ninety-fifth",
+         "ninety-first",
+         "ninety-fourth",
+         "ninety-third",
+         "ninth",
+         "seventieth",
+         "seventy-second",
+         "seventy-seventh",
+         "sixtieth",
+         "sixty-fifth",
+         "sixty-fourth",
+         "sixty-ninth",
+         "sixty-second",
+         "sixty-seventh",
+         "sixty-sixth",
+         "sixty-third",
+         "tenth",
+         "third",
+         "thirteenth",
+         "thirtieth",
+         "thirty-first",
+         "thirty-ninth",
+         "thirty-second",
+         "thirty-sixth",
+         "thirty-third",
+         "twelfth",
+         "twenty-ninth",
+         "twenty-second"
+        ],
+        "derived_from_values": [
+         "word"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F07",
+    "template": "Count the objects in order from the front: 1st, 2nd, 3rd, …",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F08",
+    "template": "Find the object standing at position {n}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "n"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "n",
+        "printed_runs": "5, 7, 11 to 12, 15 to 16, 19, 21, 23, 26, 28, 30 to 32, 35, 37 to 39, 43, 46 to 47, 49, 53, 56 to 59, 62 to 64, 72, 75, 78, 81, 83, 85, 87 to 91, 93, 95, 97",
+        "derived_from_values": [
+         "n"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F09",
+    "template": "Ordinal numbers describe {pos_label} in order.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "pos_label"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F02"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F10",
+    "template": "Remember: 1st = first, 2nd = second, 3rd = third, then add -th.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F11",
+    "template": "Smaller ordinal numbers come earlier (closer to the start).",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F12",
+    "template": "The number {n} in order is called the {symbol} ({word}).",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "n"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "n",
+        "printed_runs": "3 to 4, 6, 11 to 13, 15 to 16, 18 to 23, 32 to 33, 35, 37, 40 to 41, 43, 45 to 46, 49, 52 to 54, 56, 60, 62 to 63, 65 to 66, 70, 74 to 77, 81, 83 to 84, 88, 90 to 92, 94 to 99",
+        "derived_from_values": [
+         "n"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "symbol"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "symbol",
+        "printed": [
+         "11th",
+         "12th",
+         "13th",
+         "15th",
+         "16th",
+         "18th",
+         "19th",
+         "20th",
+         "21st",
+         "22nd",
+         "23rd",
+         "32nd",
+         "33rd",
+         "35th",
+         "37th",
+         "3rd",
+         "40th",
+         "41st",
+         "43rd",
+         "45th",
+         "46th",
+         "49th",
+         "4th",
+         "52nd",
+         "53rd",
+         "54th",
+         "56th",
+         "60th",
+         "62nd",
+         "63rd",
+         "65th",
+         "66th",
+         "6th",
+         "70th",
+         "74th",
+         "75th",
+         "76th",
+         "77th",
+         "81st",
+         "83rd",
+         "84th",
+         "88th",
+         "90th",
+         "91st",
+         "92nd",
+         "94th",
+         "95th",
+         "96th",
+         "97th",
+         "98th",
+         "99th"
+        ],
+        "derived_from_values": [
+         "symbol"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "word"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "word",
+        "printed": [
+         "eighteenth",
+         "eighty-eighth",
+         "eighty-first",
+         "eighty-fourth",
+         "eighty-third",
+         "eleventh",
+         "fifteenth",
+         "fifty-fourth",
+         "fifty-second",
+         "fifty-sixth",
+         "fifty-third",
+         "fortieth",
+         "forty-fifth",
+         "forty-first",
+         "forty-ninth",
+         "forty-sixth",
+         "forty-third",
+         "fourth",
+         "nineteenth",
+         "ninetieth",
+         "ninety-eighth",
+         "ninety-fifth",
+         "ninety-first",
+         "ninety-fourth",
+         "ninety-ninth",
+         "ninety-second",
+         "ninety-seventh",
+         "ninety-sixth",
+         "seventieth",
+         "seventy-fifth",
+         "seventy-fourth",
+         "seventy-seventh",
+         "seventy-sixth",
+         "sixteenth",
+         "sixth",
+         "sixtieth",
+         "sixty-fifth",
+         "sixty-second",
+         "sixty-sixth",
+         "sixty-third",
+         "third",
+         "thirteenth",
+         "thirty-fifth",
+         "thirty-second",
+         "thirty-seventh",
+         "thirty-third",
+         "twelfth",
+         "twentieth",
+         "twenty-first",
+         "twenty-second",
+         "twenty-third"
+        ],
+        "derived_from_values": [
+         "word"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F13",
+    "template": "The pupils stand in a row. {actor} is number {n} in the row. Which word describes {actor}'s position?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "n"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "n",
+        "printed_runs": "7, 21, 23, 28, 31 to 32, 39, 43, 46, 49, 53, 56 to 57, 59, 63 to 64, 72, 75, 78, 81, 83, 87 to 89, 91, 93",
+        "derived_from_values": [
+         "n"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "actor"
+      ],
+      "domains": [
+       {
+        "domain": "one of a fixed list",
+        "members_in_list": "_LINEUP_NAMES",
+        "derived_from_values": [
+         "actor"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F14",
+    "template": "The {objects_plural} are placed in a row. One {object_singular} is number {n} in the row. Which word describes its position?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "n"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "n",
+        "printed_runs": "11 to 12, 15 to 16, 19, 26, 30, 35, 37 to 38, 47, 53, 58 to 59, 62, 72, 85, 87, 90, 93, 95, 97",
+        "derived_from_values": [
+         "n"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "object_singular"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "_LINEUP_OBJECTS' singulars",
+        "members": [
+         "basket",
+         "egg",
+         "mango",
+         "marble",
+         "notebook",
+         "pencil",
+         "shell",
+         "spoon",
+         "sticker",
+         "storybook"
+        ],
+        "derived_from_values": [
+         "object_singular"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "objects_plural"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "_LINEUP_OBJECTS' plurals",
+        "members": [
+         "baskets",
+         "eggs",
+         "mangoes",
+         "marbles",
+         "notebooks",
+         "pencils",
+         "shells",
+         "spoons",
+         "stickers",
+         "storybooks"
+        ],
+        "derived_from_values": [
+         "objects_plural"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F15",
+    "template": "The {symbol} ({word}) place is position number {n}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "symbol"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "symbol",
+        "printed": [
+         "11th",
+         "12th",
+         "15th",
+         "16th",
+         "19th",
+         "21st",
+         "23rd",
+         "26th",
+         "28th",
+         "30th",
+         "31st",
+         "32nd",
+         "35th",
+         "37th",
+         "38th",
+         "39th",
+         "43rd",
+         "46th",
+         "47th",
+         "49th",
+         "53rd",
+         "56th",
+         "57th",
+         "58th",
+         "59th",
+         "5th",
+         "62nd",
+         "63rd",
+         "64th",
+         "72nd",
+         "75th",
+         "78th",
+         "7th",
+         "81st",
+         "83rd",
+         "85th",
+         "87th",
+         "88th",
+         "89th",
+         "90th",
+         "91st",
+         "93rd",
+         "95th",
+         "97th"
+        ],
+        "derived_from_values": [
+         "symbol"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "word"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "word",
+        "printed": [
+         "eighty-eighth",
+         "eighty-fifth",
+         "eighty-first",
+         "eighty-ninth",
+         "eighty-seventh",
+         "eighty-third",
+         "eleventh",
+         "fifteenth",
+         "fifth",
+         "fifty-eighth",
+         "fifty-ninth",
+         "fifty-seventh",
+         "fifty-sixth",
+         "fifty-third",
+         "forty-ninth",
+         "forty-seventh",
+         "forty-sixth",
+         "forty-third",
+         "nineteenth",
+         "ninetieth",
+         "ninety-fifth",
+         "ninety-first",
+         "ninety-seventh",
+         "ninety-third",
+         "seventh",
+         "seventy-eighth",
+         "seventy-fifth",
+         "seventy-second",
+         "sixteenth",
+         "sixty-fourth",
+         "sixty-second",
+         "sixty-third",
+         "thirtieth",
+         "thirty-eighth",
+         "thirty-fifth",
+         "thirty-first",
+         "thirty-ninth",
+         "thirty-second",
+         "thirty-seventh",
+         "twelfth",
+         "twenty-eighth",
+         "twenty-first",
+         "twenty-sixth",
+         "twenty-third"
+        ],
+        "derived_from_values": [
+         "word"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "n"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "n",
+        "printed_runs": "5, 7, 11 to 12, 15 to 16, 19, 21, 23, 26, 28, 30 to 32, 35, 37 to 39, 43, 46 to 47, 49, 53, 56 to 59, 62 to 64, 72, 75, 78, 81, 83, 85, 87 to 91, 93, 95, 97",
+        "derived_from_values": [
+         "n"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F16",
+    "template": "What ordinal describes position number {n}?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "n"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "n",
+        "printed_runs": "1, 4, 10, 12 to 14, 22, 29, 45, 48 to 50, 54 to 55, 57 to 60, 62 to 66, 72, 87, 89, 93, 98",
+        "derived_from_values": [
+         "n"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F17",
+    "template": "Which position comes after {symbol}?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "symbol"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "symbol",
+        "printed": [
+         "12th",
+         "25th",
+         "26th",
+         "36th",
+         "39th",
+         "41st",
+         "50th",
+         "57th",
+         "62nd",
+         "63rd",
+         "70th",
+         "71st",
+         "74th",
+         "76th",
+         "86th",
+         "87th",
+         "88th",
+         "89th",
+         "8th",
+         "94th",
+         "99th"
+        ],
+        "derived_from_values": [
+         "symbol"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F18",
+    "template": "Which word describes the {symbol} position?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "symbol"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "symbol",
+        "printed": [
+         "11th",
+         "19th",
+         "20th",
+         "21st",
+         "22nd",
+         "33rd",
+         "35th",
+         "37th",
+         "40th",
+         "41st",
+         "43rd",
+         "45th",
+         "46th",
+         "49th",
+         "4th",
+         "53rd",
+         "60th",
+         "63rd",
+         "65th",
+         "66th",
+         "70th",
+         "74th",
+         "75th",
+         "81st",
+         "88th",
+         "91st",
+         "92nd",
+         "94th",
+         "95th",
+         "96th",
+         "97th",
+         "99th"
+        ],
+        "derived_from_values": [
+         "symbol"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F19",
+    "template": "Who arrived earlier: the student in {symbol} place or {symbol2} place?",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "symbol"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "symbol",
+        "printed": [
+         "100th",
+         "14th",
+         "1st",
+         "23rd",
+         "24th",
+         "28th",
+         "30th",
+         "31st",
+         "32nd",
+         "34th",
+         "3rd",
+         "43rd",
+         "46th",
+         "51st",
+         "56th",
+         "59th",
+         "63rd",
+         "65th",
+         "72nd",
+         "80th",
+         "89th",
+         "8th",
+         "93rd",
+         "95th",
+         "96th",
+         "97th"
+        ],
+        "derived_from_values": [
+         "symbol"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "symbol2"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F22",
+         "F26"
+        ],
+        "derived_from_values": [
+         "symbol2"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F20",
+    "template": "Write the symbol for the {word} position.",
+    "appears_in": [
+     "format_data.sentence",
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "word"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "word",
+        "printed": [
+         "eighteenth",
+         "eighty-fourth",
+         "eighty-third",
+         "fifteenth",
+         "fifty-fourth",
+         "fifty-second",
+         "fifty-sixth",
+         "fifty-third",
+         "forty-ninth",
+         "fourth",
+         "ninetieth",
+         "ninety-eighth",
+         "ninety-sixth",
+         "seventy-seventh",
+         "seventy-sixth",
+         "sixteenth",
+         "sixth",
+         "sixty-second",
+         "third",
+         "thirteenth",
+         "thirty-second",
+         "thirty-third",
+         "twelfth",
+         "twenty-third"
+        ],
+        "derived_from_values": [
+         "word"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F21",
+    "template": "{capitalize} = position {n}, written as {symbol}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "capitalize"
+      ],
+      "domains": [
+       {
+        "domain": "nested learner text",
+        "families": [
+         "F23",
+         "F25"
+        ],
+        "derived_from_values": [
+         "word"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "n"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "n",
+        "printed_runs": "1, 3 to 4, 8 to 10, 12 to 14, 22, 29 to 33, 36, 39, 42 to 45, 48 to 50, 54 to 60, 62 to 67, 69 to 70, 72, 77, 80, 82, 84 to 85, 87, 89, 91, 93 to 95, 98",
+        "derived_from_values": [
+         "n"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "symbol"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "symbol",
+        "printed": [
+         "10th",
+         "12th",
+         "13th",
+         "14th",
+         "1st",
+         "22nd",
+         "29th",
+         "30th",
+         "31st",
+         "32nd",
+         "33rd",
+         "36th",
+         "39th",
+         "3rd",
+         "42nd",
+         "43rd",
+         "44th",
+         "45th",
+         "48th",
+         "49th",
+         "4th",
+         "50th",
+         "54th",
+         "55th",
+         "56th",
+         "57th",
+         "58th",
+         "59th",
+         "60th",
+         "62nd",
+         "63rd",
+         "64th",
+         "65th",
+         "66th",
+         "67th",
+         "69th",
+         "70th",
+         "72nd",
+         "77th",
+         "80th",
+         "82nd",
+         "84th",
+         "85th",
+         "87th",
+         "89th",
+         "8th",
+         "91st",
+         "93rd",
+         "94th",
+         "95th",
+         "98th",
+         "9th"
+        ],
+        "derived_from_values": [
+         "symbol"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": [
+     "task_type"
+    ]
+   },
+   {
+    "id": "F22",
+    "template": "{n}{v}",
+    "appears_in": [
+     "correct_answer",
+     "distractors",
+     "format_data.mcq_options",
+     "format_data.options"
+    ],
+    "nested_in": [
+     "F19"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "n"
+      ],
+      "domains": [
+       {
+        "domain": "a number in a range",
+        "basis": "the distractor ordinals' range",
+        "lo": 1,
+        "hi": 100
+       },
+       {
+        "domain": "a number in a range",
+        "basis": "the second ordinal's draw bounds",
+        "lo": 1,
+        "hi": 100
+       },
+       {
+        "domain": "a number computed by the generator",
+        "reason": "arithmetic",
+        "derived_from_values": [
+         "n"
+        ]
+       },
+       {
+        "domain": "repeats a generated value",
+        "key": "n",
+        "printed_runs": "1, 3 to 4, 6, 8 to 10, 14 to 16, 18, 22 to 24, 28 to 33, 36, 39, 42 to 46, 48 to 60, 62 to 67, 69 to 70, 72, 76 to 77, 80, 82 to 85, 87, 89 to 91, 93 to 96, 98",
+        "derived_from_values": [
+         "n"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "v"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the ordinal suffixes",
+        "members": [
+         "nd",
+         "rd",
+         "st",
+         "th"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F23",
+    "template": "{prefix}-{get}",
+    "appears_in": [
+     "correct_answer",
+     "distractors",
+     "format_data.mcq_options",
+     "format_data.options"
+    ],
+    "nested_in": [
+     "F03",
+     "F21"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "prefix"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "the tens prefixes",
+        "members": [
+         "eighty",
+         "fifty",
+         "forty",
+         "ninety",
+         "seventy",
+         "sixty",
+         "thirty",
+         "twenty"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "get"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "_ORDINAL_WORDS",
+        "members": [
+         "eighteenth",
+         "eighth",
+         "eleventh",
+         "fifteenth",
+         "fifth",
+         "first",
+         "fourteenth",
+         "fourth",
+         "nineteenth",
+         "ninth",
+         "second",
+         "seventeenth",
+         "seventh",
+         "sixteenth",
+         "sixth",
+         "tenth",
+         "third",
+         "thirteenth",
+         "twelfth",
+         "twentieth"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F24",
+    "template": "{symbol} means position {n}.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "symbol"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "symbol",
+        "printed": [
+         "100th",
+         "12th",
+         "14th",
+         "1st",
+         "23rd",
+         "24th",
+         "25th",
+         "26th",
+         "28th",
+         "30th",
+         "31st",
+         "32nd",
+         "34th",
+         "36th",
+         "39th",
+         "3rd",
+         "41st",
+         "43rd",
+         "46th",
+         "50th",
+         "51st",
+         "56th",
+         "57th",
+         "59th",
+         "62nd",
+         "63rd",
+         "65th",
+         "70th",
+         "71st",
+         "72nd",
+         "74th",
+         "76th",
+         "80th",
+         "86th",
+         "87th",
+         "88th",
+         "89th",
+         "8th",
+         "93rd",
+         "94th",
+         "95th",
+         "96th",
+         "97th",
+         "99th"
+        ],
+        "derived_from_values": [
+         "symbol"
+        ]
+       }
+      ]
+     },
+     {
+      "slots": [
+       "n"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "n",
+        "printed_runs": "1, 3, 8, 12, 14, 23 to 26, 28, 30 to 32, 34, 36, 39, 41, 43, 46, 50 to 51, 56 to 57, 59, 62 to 63, 65, 70 to 72, 74, 76, 80, 86 to 89, 93 to 97, 99 to 100",
+        "derived_from_values": [
+         "n"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F25",
+    "template": "{w}",
+    "appears_in": [
+     "correct_answer",
+     "distractors",
+     "format_data.mcq_options",
+     "format_data.options"
+    ],
+    "nested_in": [
+     "F03",
+     "F21"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "w"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "_ORDINAL_WORDS",
+        "members": [
+         "eighteenth",
+         "eighth",
+         "eleventh",
+         "fifteenth",
+         "fifth",
+         "first",
+         "fourteenth",
+         "fourth",
+         "nineteenth",
+         "ninth",
+         "second",
+         "seventeenth",
+         "seventh",
+         "sixteenth",
+         "sixth",
+         "tenth",
+         "third",
+         "thirteenth",
+         "twelfth",
+         "twentieth"
+        ]
+       },
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "_TENS_ORDINAL",
+        "members": [
+         "eightieth",
+         "fiftieth",
+         "fortieth",
+         "ninetieth",
+         "seventieth",
+         "sixtieth",
+         "thirtieth",
+         "twentieth"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F26",
+    "template": "{answer}",
+    "appears_in": [
+     "correct_answer",
+     "format_data.mcq_options",
+     "format_data.options"
+    ],
+    "nested_in": [
+     "F19"
+    ],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "answer",
+        "printed": [
+         "100th",
+         "10th",
+         "11th",
+         "12th",
+         "13th",
+         "14th",
+         "15th",
+         "16th",
+         "18th",
+         "1st",
+         "20th",
+         "22nd",
+         "23rd",
+         "24th",
+         "26th",
+         "27th",
+         "28th",
+         "29th",
+         "30th",
+         "31st",
+         "32nd",
+         "33rd",
+         "36th",
+         "37th",
+         "39th",
+         "3rd",
+         "40th",
+         "42nd",
+         "43rd",
+         "44th",
+         "45th",
+         "46th",
+         "48th",
+         "49th",
+         "4th",
+         "50th",
+         "51st",
+         "52nd",
+         "53rd",
+         "54th",
+         "55th",
+         "56th",
+         "57th",
+         "58th",
+         "59th",
+         "60th",
+         "62nd",
+         "63rd",
+         "64th",
+         "65th",
+         "66th",
+         "67th",
+         "69th",
+         "6th",
+         "70th",
+         "71st",
+         "72nd",
+         "75th",
+         "76th",
+         "77th",
+         "80th",
+         "82nd",
+         "83rd",
+         "84th",
+         "85th",
+         "87th",
+         "88th",
+         "89th",
+         "8th",
+         "90th",
+         "91st",
+         "93rd",
+         "94th",
+         "95th",
+         "96th",
+         "98th",
+         "9th",
+         "Elena",
+         "eighty-eighth",
+         "eighty-fifth",
+         "eighty-first",
+         "eighty-ninth",
+         "eighty-seventh",
+         "eighty-third",
+         "eleventh",
+         "fifteenth",
+         "fifty-eighth",
+         "fifty-ninth",
+         "fifty-seventh",
+         "fifty-sixth",
+         "fifty-third",
+         "fortieth",
+         "forty-fifth",
+         "forty-first",
+         "forty-ninth",
+         "forty-seventh",
+         "forty-sixth",
+         "forty-third",
+         "fourth",
+         "nineteenth",
+         "ninetieth",
+         "ninety-fifth",
+         "ninety-first",
+         "ninety-fourth",
+         "ninety-ninth",
+         "ninety-second",
+         "ninety-seventh",
+         "ninety-sixth",
+         "ninety-third",
+         "seventh",
+         "seventieth",
+         "seventy-eighth",
+         "seventy-fifth",
+         "seventy-fourth",
+         "seventy-second",
+         "sixteenth",
+         "sixtieth",
+         "sixty-fifth",
+         "sixty-fourth",
+         "sixty-second",
+         "sixty-sixth",
+         "sixty-third",
+         "thirtieth",
+         "thirty-eighth",
+         "thirty-fifth",
+         "thirty-first",
+         "thirty-ninth",
+         "thirty-second",
+         "thirty-seventh",
+         "thirty-third",
+         "twelfth",
+         "twentieth",
+         "twenty-eighth",
+         "twenty-first",
+         "twenty-second",
+         "twenty-sixth",
+         "twenty-third"
+        ],
+        "derived_from_values": [
+         "answer"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F27",
+    "template": "{member}",
+    "appears_in": [
+     "distractors",
+     "format_data.mcq_options",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "member"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "QuestionContext.distractors (the generator's own)",
+        "members": [
+         "10th",
+         "14th",
+         "16th",
+         "20th",
+         "22nd",
+         "23rd",
+         "24th",
+         "26th",
+         "27th",
+         "28th",
+         "29th",
+         "30th",
+         "33rd",
+         "34th",
+         "36th",
+         "37th",
+         "41st",
+         "44th",
+         "45th",
+         "47th",
+         "48th",
+         "49th",
+         "4th",
+         "51st",
+         "52nd",
+         "55th",
+         "56th",
+         "57th",
+         "60th",
+         "63rd",
+         "64th",
+         "65th",
+         "66th",
+         "6th",
+         "73rd",
+         "75th",
+         "76th",
+         "77th",
+         "78th",
+         "80th",
+         "84th",
+         "85th",
+         "86th",
+         "87th",
+         "8th",
+         "90th",
+         "91st",
+         "93rd",
+         "96th",
+         "98th",
+         "99th",
+         "9th",
+         "eighty-fifth",
+         "eighty-second",
+         "eighty-seventh",
+         "eighty-third",
+         "fifth",
+         "fiftieth",
+         "fifty-fifth",
+         "first",
+         "forty-eighth",
+         "forty-seventh",
+         "forty-sixth",
+         "ninetieth",
+         "ninety-eighth",
+         "ninety-fourth",
+         "ninety-seventh",
+         "ninety-sixth",
+         "second",
+         "seventh",
+         "seventy-first",
+         "seventy-fourth",
+         "seventy-ninth",
+         "sixteenth",
+         "sixth",
+         "sixtieth",
+         "sixty-fifth",
+         "sixty-first",
+         "sixty-fourth",
+         "sixty-ninth",
+         "tenth",
+         "third",
+         "thirty-eighth",
+         "thirty-second",
+         "thirty-sixth",
+         "twelfth",
+         "twenty-first",
+         "twenty-fourth",
+         "twenty-seventh",
+         "twenty-third"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   }
+  ],
+  "lists": {
+   "_LINEUP_NAMES": [
+    "Ana",
+    "Ben",
+    "Carlo",
+    "Dina",
+    "Elena",
+    "Fidel",
+    "Gina",
+    "Hector",
+    "Iris",
+    "Jose"
+   ]
+  },
+  "banks": {},
+  "value_derivations": [
+   {
+    "kind": "computes",
+    "key": "symbol",
+    "from": [
+     "n"
+    ]
+   },
+   {
+    "kind": "derives",
+    "key": "answer",
+    "from": [
+     "symbol"
+    ]
+   }
+  ],
+  "reason_kinds": {
+   "arithmetic": "a number the generator computes from the generated values named in src (a half, a sum, a difference, a running total, a place's digit). Its range is the image of those values' own domains; whether the arithmetic is RIGHT is the hint contract's (§16) and §1E's to check, not §14's."
+  }
+ }
+}

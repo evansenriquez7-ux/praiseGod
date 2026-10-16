@@ -1,0 +1,646 @@
+{
+ "schema_version": 2,
+ "hash_version": 8,
+ "node_id": "mat_g3_mg_q4_0",
+ "record_id": "stem-batch445-S445-019-first",
+ "role": "first",
+ "confirms": null,
+ "item_id": "S445-019",
+ "lc_hash": "f79ad4da2943beb71e5d1908fe38bf32fdec584842a20a6632d52149da0dafc8",
+ "judged_by": "blind-stem-judge-claude-haiku-batch445-S445-019-first",
+ "dispatch_id": "stem-batch445-S445-019-first",
+ "filed_at": "2026-10-15T16:48:00Z",
+ "delivery": "Claude Code Agent tool, model=haiku, subagent_type=general-purpose; the judge was told to read only local_only/scratch/h4c/prompts/S445-019.prompt.txt (tests/stem_file.py prompt output, item S445-019; no lc id, no key or packets file in that directory) and reply with what it asks; dispatched with CLAUDE.md loaded (ruling 29). Blindness is a prompt contract, audited from the subagent transcript.",
+ "tool_uses_by_judge": "From the subagent transcript: 1 tool use(s), all Read of its own prompt file (624 lines, every line read); no other tool, path or search. Model reported in the transcript: claude-haiku-5-5.",
+ "dispatch_prompt_digest": "e4410a64e96cd6c9c1324ef651b31f6a6c1d4d4b06264496052161adaf90340e",
+ "raw_reply": "{\"item\": \"S445-019\", \"clauses\": {\"describe\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F08\", \"template\": \"{question}\", \"reasoning\": \"F08 draws from _ITEM_POOL rows that ask the learner to describe a movement, e.g. the row asking what type of movement a shape with a 5 left and 2 down slide made, and the row asking whether the orientation or shape of a rectangle changes after a two-direction slide.\"}, \"draw\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F08\", \"template\": \"{question}\", \"reasoning\": \"F08 draws the _ITEM_POOL row asking what to do to each corner to draw the result of a two-direction slide, and the rows asking where a circle or star should be drawn after a slide.\"}, \"two_direction_multi_step_slide\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F08\", \"template\": \"{question}\", \"reasoning\": \"F08 draws the _ITEM_POOL row where a figure slides 2 spaces left, then 1 more space left, then 4 spaces up, which is a multi-step two-direction slide.\"}, \"translation\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F08\", \"template\": \"{question}\", \"reasoning\": \"F08 draws the _ITEM_POOL row asking what type of movement a shape made, whose keyed answer is 'two-direction slide (translation)', so the problem addresses translation as a slide.\"}, \"basic_shapes_and_figures\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F08\", \"template\": \"{question}\", \"reasoning\": \"F08 draws _ITEM_POOL rows that name a rectangle, a circle and a triangle as the moved figure.\"}}, \"failing_families\": [\"F05\", \"F07\", \"F08\"], \"failing_templates\": [\"{member}\", \"{distractors}\", \"{question}\"], \"overall\": \"FAIL\", \"reasoning\": \"Rule 1: the _ITEM_POOL row whose distractors include 'flip (reflection)' and 'turn (rotation)' is printed through F07 ('{distractors}', one_row_per_problem true), and the same two choices are F05 members ('{member}', generator's own distractors). 'reflection' and 'rotation' are absent from cumulative_vocab and introduced_vocab, and NOT_YET_KNOWN lists only 'line of symmetry' and 'symmetry', so they fall outside this lc's vocabulary gates. The _ITEM_POOL row asking whether the 'orientation' of a rectangle changes, and the row describing a rectangle that 'undergoes' a slide, print F08 ('{question}') words absent from cumulative_vocab. All ten drawn rows were checked: the keyed answers are arithmetically correct for their stated moves and grid coordinates, and the F04 and F06 keyed answers are correct. Judgment on whether 'reflection' and 'rotation' are gated is made against the cumulative_vocab list as printed.\"}",
+ "raw_reply_digest": "a483710fa7140349afb8ae67004cfd6fd3bbb05f07032deeaf4c296546240462",
+ "packet_digest": "de80078cdd5ff73c2a2a9ed8f32f9190f98a7732974532f3cd037cff4b6a3ad7",
+ "family_keys": {
+  "F01": {
+   "source": "backend/app/practice_gen/dna/mg/symmetry_slides.py",
+   "first_site": "backend/app/practice_gen/dna/mg/symmetry_slides.py:582",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F02": {
+   "source": "backend/app/practice_gen/dna/mg/symmetry_slides.py",
+   "first_site": "backend/app/practice_gen/dna/mg/symmetry_slides.py:584",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F03": {
+   "source": "backend/app/practice_gen/dna/mg/symmetry_slides.py",
+   "first_site": "backend/app/practice_gen/dna/mg/symmetry_slides.py:583",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F04": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:32",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F05": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:39",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F06": {
+   "source": "backend/app/practice_gen/slots.py",
+   "first_site": "backend/app/practice_gen/slots.py:180",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F07": {
+   "source": "backend/app/practice_gen/slots.py",
+   "first_site": "backend/app/practice_gen/slots.py:182",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F08": {
+   "source": "backend/app/practice_gen/slots.py",
+   "first_site": "backend/app/practice_gen/slots.py:180",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  }
+ },
+ "packet": {
+  "item": "S445-019",
+  "competency": {
+   "text": "Describe and draw the effect of a two-direction multi-step slide (or translation) in basic shapes and figures.",
+   "grade": 3,
+   "quarter": 4
+  },
+  "clauses": [
+   {
+    "id": "describe",
+    "kind": "task",
+    "clause": "Describe"
+   },
+   {
+    "id": "draw",
+    "kind": "task",
+    "clause": "draw"
+   },
+   {
+    "id": "two_direction_multi_step_slide",
+    "kind": "property",
+    "clause": "two-direction multi-step slide"
+   },
+   {
+    "id": "translation",
+    "kind": "property",
+    "clause": "translation"
+   },
+   {
+    "id": "basic_shapes_and_figures",
+    "kind": "object",
+    "clause": "basic shapes and figures"
+   }
+  ],
+  "vocabulary": {
+   "student_vocab": [],
+   "curriculum_vocab": [
+    "two-direction multi-step slide"
+   ],
+   "introduces_vocab": [
+    "two-direction multi-step slide"
+   ],
+   "cumulative_vocab": [
+    "1 less",
+    "1 more",
+    "10th",
+    "1st",
+    "2nd",
+    "3rd",
+    "4th",
+    "5th",
+    "6th",
+    "7th",
+    "8th",
+    "9th",
+    "L",
+    "a.m.",
+    "addition",
+    "analog clock",
+    "area",
+    "axis",
+    "balance scale",
+    "bar graph",
+    "bigger",
+    "bill",
+    "calendar",
+    "capacity",
+    "centavo",
+    "centimeter",
+    "certain",
+    "circle",
+    "clockwise",
+    "cm",
+    "coin",
+    "compare",
+    "corner",
+    "count",
+    "counter-clockwise",
+    "data",
+    "decreasing pattern",
+    "denominator",
+    "difference",
+    "digit",
+    "division",
+    "elapsed time",
+    "equal",
+    "equal groups",
+    "equally likely",
+    "estimate",
+    "even",
+    "expanded form",
+    "fraction",
+    "g",
+    "gram",
+    "group",
+    "half",
+    "half hour",
+    "half turn",
+    "hour",
+    "how many",
+    "hundreds",
+    "impossible",
+    "improper fraction",
+    "increasing pattern",
+    "intersecting",
+    "kg",
+    "kilogram",
+    "left",
+    "length",
+    "less",
+    "less likely",
+    "line",
+    "line segment",
+    "liter",
+    "m",
+    "mL",
+    "mass",
+    "measure",
+    "meter",
+    "milliliter",
+    "minute",
+    "missing number",
+    "missing term",
+    "more",
+    "more likely",
+    "multiplication",
+    "nearest hundred",
+    "nearest ten",
+    "nearest thousand",
+    "number",
+    "number line",
+    "numeral",
+    "numerator",
+    "odd",
+    "ones",
+    "order of operations",
+    "outcome",
+    "p.m.",
+    "parallel",
+    "pattern",
+    "perimeter",
+    "perpendicular",
+    "peso",
+    "pictograph",
+    "place value",
+    "point",
+    "product",
+    "quarter",
+    "quarter hour",
+    "quarter turn",
+    "quotient",
+    "ray",
+    "rectangle",
+    "regrouping",
+    "remainder",
+    "repeating pattern",
+    "round",
+    "ruler",
+    "same",
+    "scale",
+    "side",
+    "similar fractions",
+    "skip counting",
+    "slide",
+    "smaller",
+    "solid figure",
+    "sq. cm",
+    "square",
+    "square centimeter",
+    "subtraction",
+    "sum",
+    "table",
+    "ten thousand",
+    "ten-thousands place",
+    "tens",
+    "thousand",
+    "total",
+    "translation",
+    "triangle",
+    "whole",
+    "₱"
+   ],
+   "NOT_YET_KNOWN": [
+    "line of symmetry",
+    "symmetry"
+   ],
+   "sentence_max_words": 22,
+   "number_format": "space separator for thousands (e.g. 1 000)"
+  },
+  "declared_variants": [
+   [
+    "concept",
+    "slide_translation"
+   ],
+   [
+    "directions",
+    "two_directions"
+   ]
+  ],
+  "declared_bounds": [
+   {
+    "concept": "slide_translation",
+    "directions": "two_directions"
+   }
+  ],
+  "families": [
+   {
+    "id": "F01",
+    "template": "A slide (translation) moves a shape without turning or flipping it.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": [
+     "concept"
+    ]
+   },
+   {
+    "id": "F02",
+    "template": "Count how many spaces it moved in each direction.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": [
+     "concept"
+    ]
+   },
+   {
+    "id": "F03",
+    "template": "The shape looks the same — only its position changes.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": [
+     "concept"
+    ]
+   },
+   {
+    "id": "F04",
+    "template": "{answer}",
+    "appears_in": [
+     "correct_answer",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "result",
+        "printed": [
+         "(3, 2)",
+         "(4, 3)",
+         "(4, 6)",
+         "(7, 3)",
+         "2",
+         "3 spaces left and 4 spaces up",
+         "3 units right and 4 units up",
+         "No, only its position changes.",
+         "shift each corner 3 units right and 2 units down",
+         "two-direction slide (translation)"
+        ],
+        "derived_from_values": [
+         "result"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F05",
+    "template": "{member}",
+    "appears_in": [
+     "distractors",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "member"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "QuestionContext.distractors (the generator's own)",
+        "members": [
+         "(0, 3)",
+         "(1, 6)",
+         "(2, 3)",
+         "(3, 4)",
+         "(3, 5)",
+         "(3, 9)",
+         "(4, 0)",
+         "(4, 2)",
+         "(5, 2)",
+         "(7, 5)",
+         "(7, 8)",
+         "1 unit right and 1 unit up",
+         "1",
+         "2 spaces left and 4 spaces up",
+         "3 spaces left and 1 space up",
+         "3 units right and 5 units up",
+         "3",
+         "4 units right and 5 units up",
+         "5",
+         "7 spaces left",
+         "Yes, it becomes a square.",
+         "Yes, it gets smaller.",
+         "Yes, it turns upside down.",
+         "flip (reflection)",
+         "make each corner 3 times larger",
+         "one-direction slide",
+         "shift each corner 3 units left and 2 units up",
+         "turn (rotation)",
+         "turn the shape 90 degrees"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F06",
+    "template": "{answer}",
+    "appears_in": [
+     "correct_answer",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "a field of a fixed item bank",
+        "field": "answer",
+        "bank": "_ITEM_POOL",
+        "derived_from_values": [
+         "answer",
+         "concept",
+         "directions",
+         "distractors",
+         "grade_min",
+         "question"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F07",
+    "template": "{distractors}",
+    "appears_in": [
+     "distractors",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "distractors"
+      ],
+      "domains": [
+       {
+        "domain": "a field of a fixed item bank",
+        "field": "distractors",
+        "bank": "_ITEM_POOL",
+        "derived_from_values": [
+         "answer",
+         "concept",
+         "directions",
+         "distractors",
+         "grade_min",
+         "question"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F08",
+    "template": "{question}",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "question"
+      ],
+      "domains": [
+       {
+        "domain": "a field of a fixed item bank",
+        "field": "question",
+        "bank": "_ITEM_POOL",
+        "derived_from_values": [
+         "answer",
+         "concept",
+         "directions",
+         "distractors",
+         "grade_min",
+         "question"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   }
+  ],
+  "lists": {},
+  "banks": {
+   "_ITEM_POOL": {
+    "fields": [
+     "answer",
+     "distractors",
+     "question"
+    ],
+    "one_row_per_problem": true,
+    "rows": [
+     {
+      "answer": "2",
+      "distractors": [
+       "1",
+       "3",
+       "5"
+      ],
+      "question": "A shape moves 2 spaces right AND 3 spaces up. How many directions did it slide?"
+     },
+     {
+      "answer": "two-direction slide (translation)",
+      "distractors": [
+       "one-direction slide",
+       "flip (reflection)",
+       "turn (rotation)"
+      ],
+      "question": "A shape slides 5 spaces to the left and 2 spaces down. What type of movement is this?"
+     },
+     {
+      "answer": "(4, 6)",
+      "distractors": [
+       "(3, 4)",
+       "(4, 2)",
+       "(1, 6)"
+      ],
+      "question": "A triangle at grid mark (1, 2) slides 3 units to the right and 4 units up. Where is its new position?"
+     },
+     {
+      "answer": "(3, 2)",
+      "distractors": [
+       "(7, 8)",
+       "(3, 5)",
+       "(5, 2)"
+      ],
+      "question": "A shape starts at position (5, 5). It undergoes a two-direction slide: 2 spaces left and 3 spaces down. What is the new position?"
+     },
+     {
+      "answer": "(7, 3)",
+      "distractors": [
+       "(7, 5)",
+       "(2, 3)",
+       "(3, 9)"
+      ],
+      "question": "A circle at grid coordinate (2, 4) slides 5 spaces right and 1 space down. At what grid point will the circle be drawn?"
+     },
+     {
+      "answer": "shift each corner 3 units right and 2 units down",
+      "distractors": [
+       "shift each corner 3 units left and 2 units up",
+       "turn the shape 90 degrees",
+       "make each corner 3 times larger"
+      ],
+      "question": "To draw the result of a two-direction slide: 3 units right and 2 units down, what should you do to each corner of the shape?"
+     },
+     {
+      "answer": "3 spaces left and 4 spaces up",
+      "distractors": [
+       "2 spaces left and 4 spaces up",
+       "3 spaces left and 1 space up",
+       "7 spaces left"
+      ],
+      "question": "A figure slides 2 spaces left, then 1 more space left, then 4 spaces up. What is the total movement in the two directions?"
+     },
+     {
+      "answer": "No, only its position changes.",
+      "distractors": [
+       "Yes, it turns upside down.",
+       "Yes, it becomes a square.",
+       "Yes, it gets smaller."
+      ],
+      "question": "A rectangle undergoes a two-direction slide: 4 units right and 2 units up. Does the orientation or shape of the rectangle change?"
+     },
+     {
+      "answer": "3 units right and 4 units up",
+      "distractors": [
+       "4 units right and 5 units up",
+       "1 unit right and 1 unit up",
+       "3 units right and 5 units up"
+      ],
+      "question": "A point moves from (1, 1) to (4, 5). How many units right and how many units up did it slide?"
+     },
+     {
+      "answer": "(4, 3)",
+      "distractors": [
+       "(3, 4)",
+       "(4, 0)",
+       "(0, 3)"
+      ],
+      "question": "A star at point (0, 0) slides 4 spaces right, then 3 spaces up. Where should the star be drawn?"
+     }
+    ],
+    "rows_left_out": 43
+   }
+  },
+  "value_derivations": [],
+  "reason_kinds": {}
+ }
+}

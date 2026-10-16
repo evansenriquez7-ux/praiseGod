@@ -1,0 +1,702 @@
+{
+ "schema_version": 2,
+ "hash_version": 8,
+ "node_id": "mat_g2_mg_q1_2",
+ "record_id": "stem-batch443-S443-002-confirming",
+ "role": "confirming",
+ "confirms": "stem-batch443-S443-002-first",
+ "item_id": "S443-002",
+ "lc_hash": "9f87f7e191a866173523e00dda707455773f33c1f1b4774407af06c4e0b59274",
+ "judged_by": "blind-stem-judge-claude-haiku-batch443-S443-002-confirming",
+ "dispatch_id": "stem-batch443-S443-002-confirming",
+ "filed_at": "2026-10-16T05:09:48Z",
+ "delivery": "Claude Code Agent tool, model=haiku, subagent_type=general-purpose; the judge was told to read only local_only/scratch/h4c/prompts/S443-002.prompt.txt (tests/stem_file.py prompt output, item S443-002; no lc id, no key or packets file in that directory) and reply with what it asks; dispatched with CLAUDE.md loaded (ruling 29). Blindness is a prompt contract, audited from the subagent transcript.",
+ "tool_uses_by_judge": "From the subagent transcript: 1 tool use(s), all Read of its own prompt file (680 lines, every line read); no other tool, path or search. Model reported in the transcript: claude-haiku-5-5.",
+ "dispatch_prompt_digest": "001693cc49ca6a3b34905b9c0b8e498840fe7f2850b2e7fadbe69f385f37d50f",
+ "raw_reply": "{\"item\": \"S443-002\", \"clauses\": {\"describe_effect\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F08\", \"template\": \"{question}\", \"reasoning\": \"Row 2 of _ITEM_POOL asks whether the size or shape changes after a multi-step slide in one direction, so the learner describes the effect of the slide. Row 2 is not among the sentence-length failures.\"}, \"draw_effect\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F08\", \"template\": \"{question}\", \"reasoning\": \"Row 10 of _ITEM_POOL asks where a circle is drawn after two slides of marks to the right, so the learner draws the effect. Keyed answer mark 7 is arithmetically correct (1 + 2 + 4).\"}, \"one_direction\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F08\", \"template\": \"{question}\", \"reasoning\": \"Row 5 of _ITEM_POOL asks whether two slide steps in the same direction are still a one-direction slide.\"}, \"multi_step\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F08\", \"template\": \"{question}\", \"reasoning\": \"Row 1 of _ITEM_POOL asks what a two-step slide in one direction is called; the two steps are the multi-step property.\"}, \"slide\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F08\", \"template\": \"{question}\", \"reasoning\": \"Row 2 of _ITEM_POOL reasons about a multi-step slide as the movement the learner must judge.\"}, \"translation\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F08\", \"template\": \"{question}\", \"reasoning\": \"Row 7 of _ITEM_POOL asks for another mathematical name for a slide, keyed as translation, which is in introduces_vocab.\"}, \"basic_shapes\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F08\", \"template\": \"{question}\", \"reasoning\": \"Row 10 of _ITEM_POOL uses a circle; rows 9, 11 and 8 use triangle, rectangle and square, so basic shapes are produced.\"}, \"basic_figures\": {\"verdict\": \"PRODUCIBLE\", \"family\": \"F08\", \"template\": \"{question}\", \"reasoning\": \"Row 7 of _ITEM_POOL says a figure undergoes a multi-step slide.\"}}, \"failing_families\": [\"F05\", \"F08\"], \"failing_templates\": [\"{member}\", \"{question}\"], \"overall\": \"FAIL\", \"reasoning\": \"F08 {question} breaks the lc's declared sentence_max_words of 18. Row 8 of _ITEM_POOL (keyed answer: 4 spaces to the right of the original square) has its question as one sentence of 23 words. Row 11 (keyed answer: mark 3) has its first sentence at 19 words. Row 12 (keyed answer: 5 units down) has its question as one sentence of 26 words. Row 1 is exactly 18 words and is not over. F05 {member} prints the generator's own distractors, which are not linked to any bank row, and can fill the distractors field of any problem. Its member 4 spaces to the right is the same position as the keyed answer of row 8 (F06 {answer}, 4 spaces to the right of the original square), so a row 8 problem can show two correct options. F01-F04, F06 and F07 raise no failure on these checks. Unresolved note, not counted as a finding: rotation, reflection, dilation, flip and two-direction appear as distractors (F05, F07). They are in neither cumulative_vocab nor NOT_YET_KNOWN, and the packet's gates do not name them, so they are not counted here.\"}",
+ "raw_reply_digest": "ebc512ced98f90f0dd09752fb83d7db68088a6af1347f6283ecc6dced85caff3",
+ "packet_digest": "dfcbb97bf8259fb27a32d693a8758c159da19ba1cbd8ee47865b8437342a147d",
+ "family_keys": {
+  "F01": {
+   "source": "backend/app/practice_gen/dna/mg/symmetry_slides.py",
+   "first_site": "backend/app/practice_gen/dna/mg/symmetry_slides.py:582",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F02": {
+   "source": "backend/app/practice_gen/dna/mg/symmetry_slides.py",
+   "first_site": "backend/app/practice_gen/dna/mg/symmetry_slides.py:584",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F03": {
+   "source": "backend/app/practice_gen/dna/mg/symmetry_slides.py",
+   "first_site": "backend/app/practice_gen/dna/mg/symmetry_slides.py:583",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F04": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:32",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F05": {
+   "source": "backend/app/practice_gen/formatters/_answer_slots.py",
+   "first_site": "backend/app/practice_gen/formatters/_answer_slots.py:39",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F06": {
+   "source": "backend/app/practice_gen/slots.py",
+   "first_site": "backend/app/practice_gen/slots.py:180",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F07": {
+   "source": "backend/app/practice_gen/slots.py",
+   "first_site": "backend/app/practice_gen/slots.py:182",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  },
+  "F08": {
+   "source": "backend/app/practice_gen/slots.py",
+   "first_site": "backend/app/practice_gen/slots.py:180",
+   "renderer": "",
+   "path": [
+    1,
+    null
+   ],
+   "first_render_repeating": {}
+  }
+ },
+ "packet": {
+  "item": "S443-002",
+  "competency": {
+   "text": "Describe and draw the effect of one-direction multi-step slide (or translation) in basic shapes and figures.",
+   "grade": 2,
+   "quarter": 1
+  },
+  "clauses": [
+   {
+    "id": "describe_effect",
+    "kind": "task",
+    "clause": "Describe"
+   },
+   {
+    "id": "draw_effect",
+    "kind": "task",
+    "clause": "draw the effect"
+   },
+   {
+    "id": "one_direction",
+    "kind": "property",
+    "clause": "one-direction"
+   },
+   {
+    "id": "multi_step",
+    "kind": "property",
+    "clause": "multi-step"
+   },
+   {
+    "id": "slide",
+    "kind": "object",
+    "clause": "slide"
+   },
+   {
+    "id": "translation",
+    "kind": "object",
+    "clause": "translation"
+   },
+   {
+    "id": "basic_shapes",
+    "kind": "object",
+    "clause": "basic shapes"
+   },
+   {
+    "id": "basic_figures",
+    "kind": "object",
+    "clause": "figures"
+   }
+  ],
+  "vocabulary": {
+   "student_vocab": [
+    "slide",
+    "translation"
+   ],
+   "curriculum_vocab": [
+    "one-direction",
+    "multi-step slide"
+   ],
+   "introduces_vocab": [
+    "slide",
+    "translation",
+    "one-direction",
+    "multi-step slide"
+   ],
+   "cumulative_vocab": [
+    "1 less",
+    "1 more",
+    "10th",
+    "1st",
+    "2nd",
+    "3rd",
+    "4th",
+    "5th",
+    "6th",
+    "7th",
+    "8th",
+    "9th",
+    "addition",
+    "analog clock",
+    "bigger",
+    "bill",
+    "calendar",
+    "circle",
+    "clockwise",
+    "coin",
+    "compare",
+    "corner",
+    "count",
+    "counter-clockwise",
+    "data",
+    "difference",
+    "digit",
+    "equal",
+    "expanded form",
+    "fraction",
+    "group",
+    "half",
+    "half hour",
+    "half turn",
+    "hour",
+    "how many",
+    "hundreds",
+    "left",
+    "length",
+    "less",
+    "measure",
+    "missing number",
+    "more",
+    "number",
+    "number line",
+    "numeral",
+    "ones",
+    "pattern",
+    "peso",
+    "pictograph",
+    "place value",
+    "quarter",
+    "quarter hour",
+    "quarter turn",
+    "rectangle",
+    "regrouping",
+    "repeating pattern",
+    "same",
+    "side",
+    "skip counting",
+    "smaller",
+    "square",
+    "subtraction",
+    "sum",
+    "table",
+    "tens",
+    "thousand",
+    "total",
+    "triangle",
+    "whole",
+    "₱"
+   ],
+   "NOT_YET_KNOWN": [
+    "L",
+    "a.m.",
+    "area",
+    "axis",
+    "balance scale",
+    "bar graph",
+    "capacity",
+    "centavo",
+    "centimeter",
+    "certain",
+    "cm",
+    "decreasing pattern",
+    "denominator",
+    "division",
+    "elapsed time",
+    "equal groups",
+    "equally likely",
+    "estimate",
+    "even",
+    "g",
+    "gram",
+    "impossible",
+    "improper fraction",
+    "increasing pattern",
+    "intersecting",
+    "kg",
+    "kilogram",
+    "less likely",
+    "line",
+    "line of symmetry",
+    "line segment",
+    "liter",
+    "m",
+    "mL",
+    "mass",
+    "meter",
+    "milliliter",
+    "minute",
+    "missing term",
+    "more likely",
+    "multiplication",
+    "nearest hundred",
+    "nearest ten",
+    "nearest thousand",
+    "numerator",
+    "odd",
+    "order of operations",
+    "outcome",
+    "p.m.",
+    "parallel",
+    "perimeter",
+    "perpendicular",
+    "point",
+    "product",
+    "quotient",
+    "ray",
+    "remainder",
+    "round",
+    "ruler",
+    "scale",
+    "similar fractions",
+    "solid figure",
+    "sq. cm",
+    "square centimeter",
+    "symmetry",
+    "ten thousand",
+    "ten-thousands place"
+   ],
+   "sentence_max_words": 18,
+   "number_format": "no commas for numbers up to 1000"
+  },
+  "declared_variants": [
+   [
+    "concept",
+    "slide_translation"
+   ],
+   [
+    "directions",
+    "one_direction"
+   ]
+  ],
+  "declared_bounds": [
+   {
+    "concept": "slide_translation",
+    "directions": "one_direction"
+   }
+  ],
+  "families": [
+   {
+    "id": "F01",
+    "template": "A slide (translation) moves a shape without turning or flipping it.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": [
+     "concept"
+    ]
+   },
+   {
+    "id": "F02",
+    "template": "Count how many spaces it moved in each direction.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": [
+     "concept"
+    ]
+   },
+   {
+    "id": "F03",
+    "template": "The shape looks the same — only its position changes.",
+    "appears_in": [
+     "hints"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [],
+    "template_chosen_by_values": [
+     "concept"
+    ]
+   },
+   {
+    "id": "F04",
+    "template": "{answer}",
+    "appears_in": [
+     "correct_answer",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "repeats a generated value",
+        "key": "result",
+        "printed": [
+         "4 spaces to the right of the original square",
+         "5 spaces to the right",
+         "5 units down",
+         "No, the size and shape stay the same.",
+         "True",
+         "Yes, both steps moved the same direction.",
+         "downward",
+         "mark 3",
+         "mark 7",
+         "one-direction multi-step slide (translation)",
+         "space 7",
+         "translation"
+        ],
+        "derived_from_values": [
+         "result"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F05",
+    "template": "{member}",
+    "appears_in": [
+     "distractors",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "member"
+      ],
+      "domains": [
+       {
+        "domain": "one of the generator's own choices",
+        "basis": "QuestionContext.distractors (the generator's own)",
+        "members": [
+         "1 space to the right",
+         "1 unit down",
+         "2 spaces to the right",
+         "3 spaces to the right",
+         "3 units down",
+         "4 spaces to the left",
+         "4 spaces to the right",
+         "4 spaces upward",
+         "6 spaces to the right",
+         "6 units down",
+         "False",
+         "No, this is a flip (reflection).",
+         "No, this is a turn (rotation).",
+         "No, two steps means two directions.",
+         "Only for squares",
+         "Only sometimes true",
+         "Yes, it changes shape.",
+         "Yes, it gets bigger.",
+         "Yes, it gets smaller.",
+         "dilation",
+         "flip (reflection)",
+         "in the same place",
+         "mark 2",
+         "mark 5",
+         "mark 6",
+         "mark 8",
+         "reflection",
+         "rotation",
+         "space 4",
+         "space 5",
+         "space 6",
+         "to the left",
+         "to the right",
+         "turn (rotation)",
+         "two-direction slide",
+         "upward"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F06",
+    "template": "{answer}",
+    "appears_in": [
+     "correct_answer",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "answer"
+      ],
+      "domains": [
+       {
+        "domain": "a field of a fixed item bank",
+        "field": "answer",
+        "bank": "_ITEM_POOL",
+        "derived_from_values": [
+         "answer",
+         "concept",
+         "directions",
+         "distractors",
+         "grade_min",
+         "question"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F07",
+    "template": "{distractors}",
+    "appears_in": [
+     "distractors",
+     "format_data.options"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "distractors"
+      ],
+      "domains": [
+       {
+        "domain": "a field of a fixed item bank",
+        "field": "distractors",
+        "bank": "_ITEM_POOL",
+        "derived_from_values": [
+         "answer",
+         "concept",
+         "directions",
+         "distractors",
+         "grade_min",
+         "question"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   },
+   {
+    "id": "F08",
+    "template": "{question}",
+    "appears_in": [
+     "question_text"
+    ],
+    "nested_in": [],
+    "transformation": null,
+    "slots": [
+     {
+      "slots": [
+       "question"
+      ],
+      "domains": [
+       {
+        "domain": "a field of a fixed item bank",
+        "field": "question",
+        "bank": "_ITEM_POOL",
+        "derived_from_values": [
+         "answer",
+         "concept",
+         "directions",
+         "distractors",
+         "grade_min",
+         "question"
+        ]
+       }
+      ]
+     }
+    ],
+    "template_chosen_by_values": []
+   }
+  ],
+  "lists": {},
+  "banks": {
+   "_ITEM_POOL": {
+    "fields": [
+     "answer",
+     "distractors",
+     "question"
+    ],
+    "one_row_per_problem": true,
+    "rows": [
+     {
+      "answer": "one-direction multi-step slide (translation)",
+      "distractors": [
+       "flip (reflection)",
+       "turn (rotation)",
+       "two-direction slide"
+      ],
+      "question": "A shape slides 2 spaces right, then slides 1 more space right in the same direction without turning. What is this multi-step movement called?"
+     },
+     {
+      "answer": "No, the size and shape stay the same.",
+      "distractors": [
+       "Yes, it gets bigger.",
+       "Yes, it gets smaller.",
+       "Yes, it changes shape."
+      ],
+      "question": "After a shape undergoes a multi-step slide in one direction, does its size or shape change?"
+     },
+     {
+      "answer": "downward",
+      "distractors": [
+       "upward",
+       "to the right",
+       "to the left"
+      ],
+      "question": "A triangle slides 2 spaces down, then slides 2 more spaces down. In which single direction did the multi-step slide move?"
+     },
+     {
+      "answer": "5 spaces to the right",
+      "distractors": [
+       "2 spaces to the right",
+       "3 spaces to the right",
+       "6 spaces to the right"
+      ],
+      "question": "A shape slides 2 spaces right, then slides 3 more spaces right. How far did it move in all?"
+     },
+     {
+      "answer": "Yes, both steps moved the same direction.",
+      "distractors": [
+       "No, two steps means two directions.",
+       "No, this is a turn (rotation).",
+       "No, this is a flip (reflection)."
+      ],
+      "question": "A shape slides 4 spaces down, then slides 1 more space down. Is this still a one-direction slide?"
+     },
+     {
+      "answer": "True",
+      "distractors": [
+       "False",
+       "Only sometimes true",
+       "Only for squares"
+      ],
+      "question": "After a multi-step slide, the shape looks exactly the same — only its position changed. True or false?"
+     },
+     {
+      "answer": "translation",
+      "distractors": [
+       "rotation",
+       "reflection",
+       "dilation"
+      ],
+      "question": "A figure undergoes a multi-step slide: 2 spaces up, then 3 more spaces up. What is another mathematical name for a slide?"
+     },
+     {
+      "answer": "4 spaces to the right of the original square",
+      "distractors": [
+       "4 spaces to the left",
+       "4 spaces upward",
+       "in the same place"
+      ],
+      "question": "To draw the result of sliding a square 4 spaces to the right in one direction, where should you draw the new square?"
+     },
+     {
+      "answer": "space 7",
+      "distractors": [
+       "space 5",
+       "space 4",
+       "space 6"
+      ],
+      "question": "A triangle is drawn at space 2. It undergoes a multi-step slide: 3 spaces right, then 2 more spaces right. At which space should you draw the final triangle?"
+     },
+     {
+      "answer": "mark 7",
+      "distractors": [
+       "mark 6",
+       "mark 5",
+       "mark 8"
+      ],
+      "question": "A circle is at grid mark 1. It is slid 2 marks right, then another 4 marks right in the same direction. At what grid mark will the circle be drawn?"
+     },
+     {
+      "answer": "mark 3",
+      "distractors": [
+       "mark 5",
+       "mark 6",
+       "mark 2"
+      ],
+      "question": "A rectangle at mark 8 slides 3 spaces left, then slides 2 more spaces left in the same direction. At what mark should the rectangle be drawn?"
+     },
+     {
+      "answer": "5 units down",
+      "distractors": [
+       "6 units down",
+       "1 unit down",
+       "3 units down"
+      ],
+      "question": "To draw a multi-step slide of 2 units down followed by 3 units down in one direction, what is the total distance to draw the shift?"
+     },
+     {
+      "answer": "5 spaces to the right",
+      "distractors": [
+       "4 spaces to the right",
+       "1 space to the right",
+       "3 spaces to the right"
+      ],
+      "question": "A shape starts at position 3. It slides 1 space right, then 4 spaces right. Describe the total slide in one direction."
+     }
+    ],
+    "rows_left_out": 40
+   }
+  },
+  "value_derivations": [],
+  "reason_kinds": {}
+ }
+}
