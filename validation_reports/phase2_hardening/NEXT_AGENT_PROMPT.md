@@ -1,10 +1,9 @@
-# Task prompt: Phase 2 pipeline hardening under owner rulings 23–51 (Claude host)
+# Task prompt: finish Phase 2 pipeline hardening (owner rulings 19–51; Claude host)
 
-**Rewritten 2026-10-13 after batch H4; §0, §2 and §5's status rewritten 2026-10-16 after batch H4-C (the §17 judge
-campaign is complete: every lc has a filed first judge and a blind confirmer). This REPLACES every earlier version of
-this file.**
-`CLAUDE_AGENT_PROMPT.md`, `GPT_HANDOFF_PROMPT.md` and `HANDOFF_PROMPT.md` beside it are history: their method notes
-(§7 heavy runs and the lock, §8 anchor one-liner, §9 traps, §11 not yours) are still correct and cited below; their
+**Rewritten 2026-10-16 after batch H4-C, at the owner's request: "rewrite the next_agent_prompt.md for a fresh claude
+agent session to finish phase 2 hardening". This REPLACES every earlier version of this file.**
+`CLAUDE_AGENT_PROMPT.md`, `GPT_HANDOFF_PROMPT.md` and `HANDOFF_PROMPT.md` beside it are history. Their method notes
+are still correct and cited below: §7 heavy runs and the lock, §8 anchor one-liner, §9 traps, §11 not yours. Their
 state sections are stale.
 
 Trust order: a command you executed > this file > `CLAUDE_AGENT_PROMPT.md` > the dated blocks in
@@ -14,88 +13,109 @@ Trust order: a command you executed > this file > `CLAUDE_AGENT_PROMPT.md` > the
 
 ## 0. Your task, in one paragraph
 
-Batch **H4-C is done** (2026-10-16). Every one of the 151 lcs has a filed first Haiku judge and a filed blind
-confirming judge under `validation_reports/stem_review/` (355 records, `967f5d2c`). Each standing FAIL was checked
-against real renders (rulings 49 and 51). `validate_stem_review` now reports `stem_review_missing_17` 0 and every
-integrity label PASS; `stem_review_fail_17 (141)` and `stem_clause_unproducible_17 (15)` are content findings for
-the generator queue (ruling 23).
+**Finish Phase 2** (ruling 23): harden the testing pipeline until it meets the exit test in §5. The §17 stem
+review gate is built, proven, and run to completion over all 151 lcs (batches H4 and H4-C). What is left is:
+- **H6**, retiring the per-sample LLM gates (ruling 25);
+- the **exit items** that still need an owner ruling;
+- the open hardening rows **H-02, H-05, H-07, H-08, H-10**;
+- a final exit verification.
 
-**Next: there is no approved batch.** At Phase 0, ask the owner which of these to run:
-- **H6** (§6.2): retire the per-sample gates. Ruling 25's precondition (the stem gate proven, its campaign done) now
-  holds, but the owner has not said to start.
-- An unowned exit item (§6.3).
-- Stopping Phase 2 for generator work (§6.4).
+Work in batches (§5.2). Each batch is claimed, proven by mutation on the path it executes, chained, CERTIFIED,
+logged and released. **Ask the owner the questions in §5.1 before building anything they govern.** One question at
+a time, each with measured numbers and a recommendation.
 
-Do not fix generator content, and do not edit a filed record. Read the "H4-C" evidence entry (at the END of
-`validation_reports/HARDENING_EVIDENCE.md`) before anything else.
+Do not fix generator content. The 141 §17 FAILs and every other content finding are the generators' work queue
+(ruling 23, §6), not Phase 2 blockers. Leave this file rewritten for the next session when you stop.
 
-**Goal of Phase 2 (ruling 23).** It hardens the **testing pipeline**, not the generators. It is done when every
-check is proven by a mutation on the path it executes (Scaling Mandate 1–2), `run_all` exits 0 or 2 (integrity
-green; ruling 27), every finding is named by lc, seed and owed build, and the tree is CERTIFIED. Content findings
-are the generators' work queue (§6.4).
+**Goal of Phase 2 (ruling 23, with ruling 27).** It is done when:
+- every check is proven by a mutation that lands on its executed path (Scaling Mandate 1–2);
+- `run_all` exits 0 or 2 (integrity green);
+- every finding is reported by name with its lc, seed and what to build;
+- the tree is CERTIFIED.
 
-**Terminology.** The harness calls `mat_g3_dp_q3_4` a "node"; `CLAUDE.md` calls it an **lc**. A node is the bundle
-`mat_g3_dp_q3`. A **clause** is a fragment of one lc's competency text. A **stem family** is (spine id or call-site
-module, template, renderer) as `stem_packets.family_key` defines it (ruling 44a). Do not rename code identifiers.
+Content findings do not block Phase 2.
+
+**Terminology.**
+- **Node** vs **lc**: the harness calls `mat_g3_dp_q3_4` a "node"; `CLAUDE.md` calls it an **lc**. A node is the
+  bundle `mat_g3_dp_q3`.
+- **Clause:** a fragment of one lc's competency text.
+- **Stem family:** (spine id or call-site module, template, renderer), as `stem_packets.family_key` defines it.
+- Do not rename code identifiers.
 
 ---
 
-## 1. Read first (in this order; budget about 40 minutes)
+## 1. Read first (in this order; budget about 45 minutes)
 
-1. `CLAUDE.md` (a symlink to `AGENTS.md`): the Scaling Mandate, Engineering Protocols, Content Rules, Definition of
-   Done and **"If you are a judge"** (your judges will read it; ruling 29). Then `MEMORY.md`, especially:
-   "Attester dispatch gotchas", "Dispatch subagents on Haiku", "Judgment reviews go stale", "Reviewer evidence must
-   be lossless", "Duplicated rule copies disagree", "Allowlist checks drift silently", "Mutation must land where
-   behaviour changes", "Proof admissible, not just detected", "CERTIFIED can hide a red unit test", "New run_all
-   stage needs a stub".
+1. `CLAUDE.md` (a symlink to `AGENTS.md`): the Scaling Mandate, Engineering Protocols, Content Rules, Definition
+   of Done, and "If you are a judge". Then `MEMORY.md`, especially these entries:
+   - "Mutation must land where behaviour changes"
+   - "Proof admissible, not just detected"
+   - "New run_all stage needs a stub"
+   - "CERTIFIED can hide a red unit test"
+   - "Allowlist checks drift silently"
+   - "Duplicated rule copies disagree"
+   - "Name-keyed stage dispatch hid failures"
+   - "Dispatch subagents on Haiku"
 2. This file, completely.
 3. **Owner rulings** in `docs/phase2_hardening_completion_plan.md`, verbatim: 19–22 (search "rulings recorded
-   2026-10-07") and 23–45 (search "rulings recorded 2026-10-08"; 27–45 follow). Rulings 20, 21, 24, 26, 29, 44 and
-   45 are the campaign's core.
-4. `validation_reports/HARDENING_EVIDENCE.md`, newest at the END: "H4" fully; then "H4-0-R2", "H4-0", "H3-R2"
-   (headings and NAMED LIMITS).
-5. `docs/pgen_contract.md` rows §17 (the stem review gate, NAMED LIMITS 1–12), §14 (its H4 amendment), §5
-   (`validate_judgment`), §2L, the verdict row, and the rule above `_manifest.FINDING_CLASS`.
-6. Code: `validation/stem_packets.py`, `validation/validate_stem_review.py` and `tests/stem_file.py` (whole
-   files: the packet, the gate and the filer the campaign uses); then, as background, `backend/app/practice_gen/slots.py`;
-   `validation/validate_slots.py` (`render_findings`, `collect_findings`); `validation/judgment_packets.py`;
-   `validation/validate_judgment.py` (its docstring: why freshness, quote provenance, plurality and skeleton checks
-   exist); `tests/file_reviews.py`, `tests/attester_packets.py`, `tests/attester_file.py` (docstrings);
-   `validation/run_all.py` around the stage table (~line 670), the stage functions (~line 1105) and the stage list
-   (~line 1204); `validation/_manifest.py` (`FINDING_CLASS`); one `Mutation(...)` in `tests/mutation_harness.py`
-   (e.g. `slot_loosened_to_type_only`, ~line 5189).
-7. `CLAUDE_AGENT_PROMPT.md` §7, §8, §9, §11.
+   2026-10-07") and 23–51 (search "rulings recorded 2026-10-08"; 27–51 follow). Rulings 23, 25, 27, 30, 31 and 44d
+   govern what is left.
+4. `validation_reports/HARDENING_EVIDENCE.md`, newest at the END. Read "H4-C" and "H4" fully, then the NAMED LIMITS
+   of "H4-0-R2", "H4-0" and "H3-R2".
+5. `docs/pgen_contract.md`:
+   - the verdict row and the rule above `_manifest.FINDING_CLASS`;
+   - §5 (`validate_judgment`), §6 (capability) and §17 (stem review), whose NAMED LIMITS H6 must re-read;
+   - §8 (mutation proofs, assertion coverage) and §10 (`phase1_hermetic`).
+6. `validation_reports/phase2_hardening/hardening_status.json`: rows H-02, H-05, H-06, H-07, H-08, H-10 (`finding`,
+   `acceptance_checks`, `progress`).
+7. Code, as background:
+   - `validation/run_all.py`: the stage table (~line 670), the stage functions (~line 1105), the stage list
+     (~line 1204), and the verdict and exit code;
+   - `validation/_manifest.py` (`FINDING_CLASS`);
+   - `validation/validate_coverage.py` (`UNPROVEN_ASSERTIONS`);
+   - one `Mutation(...)` in `tests/mutation_harness.py`;
+   - `tests/test_stage_ledger.py` (`stubbed_harness`);
+   - `tests/tree_state.py`.
+8. `CLAUDE_AGENT_PROMPT.md` §7, §8, §9, §11.
 
 ---
 
 ## 2. State at handoff (2026-10-16, after H4-C; re-measure before quoting)
 
 ```
-HEAD                local main, NOT pushed (git status -sb: ahead of origin)
-source              6ebbd1b3 (ruling 50b, packet HASH_VERSION 8) after 6b2c59ed/8f83125a/613315ee/fb146422/0388fecf/
-                    09ca8af0/39c2752b (rulings 46-50); chain 563f7c59; tree_state 9067acd4; records 967f5d2c;
-                    evidence/handoff in the bookkeeping commit after it
-H-06 lock           RELEASED (follow-up commit); claim it before any work (§4 Phase 0)
+HEAD                d729425a on main, PUSHED (origin/main == main)
+source              6ebbd1b3 (last harness change, ruling 50b); chain 563f7c59; tree_state 9067acd4;
+                    §17 records 967f5d2c; evidence/handoff f5e16525; lock released d729425a
+H-06 lock           RELEASED @ f5e16525; claim a row before any work (§4)
 tree_state          CERTIFIED (262 proofs, 7 shards, benchmark, frontend fresh; digest 28d1e3f4ef451da6)
-run_all             on 6ebbd1b3 (before the records): EXIT 2; scheduled=22 completed=15 failed=7 crashed=0; INTEGRITY
-                    GREEN; 184/195 assertions proven by execution; finding_class_registry_complete 195 labels
-  CONTENT           variant_not_exhibited_2L 420, attester_packet_refused_2L 61, judgment_reviews 752,
-                    capability_contract 78, count_noun_singular_after_many_1J 423, slot_domain_escape_14 74,
+run_all             2026-10-16 after d729425a: EXIT 2; scheduled=22 completed=15 failed=7 crashed=0; INTEGRITY
+                    GREEN; unit_tests 1010 passed, 1 skipped; mutation_proof_integrity_8 262 verified;
+                    assertion_coverage_8 184/195 proven by execution, 11 knowingly unproven;
+                    finding_class_registry_complete 195 labels; census nodes=151 unit_tests=1011 mutations=262
+  CONTENT           judgment_reviews 752, capability_contract 78, stem_review_fail_17 141,
+                    stem_clause_unproducible_17 15, count_noun_singular_after_many_1J 423,
+                    variant_not_exhibited_2L 420, attester_packet_refused_2L 61, slot_domain_escape_14 74,
                     slot_text_unaccounted_14 4, slot_path_refused_14 1, selector_value_unexhibited_15 58,
-                    hint_sequence_unshown_15 6, stem_review_missing_17 151 (now 0; see §17 below)
-§17                 validate_stem_review over the filed records: stem_review_missing_17 0, every integrity label PASS;
-                    stem_review_fail_17 141, stem_clause_unproducible_17 15; 10 of 151 lcs carry a confirmed PASS with
-                    every clause PRODUCIBLE; 2,684 stem families packeted
-records             355 in validation_reports/stem_review/ (151 first, 204 confirming incl. 53 ruling-21 records);
-                    451 Haiku replies audited, 96 set aside unfiled; all transcripts record claude-haiku-5-5
-unit suite          1010 passed, 1 skipped (in the chain's run_all); after the last commit: see the lock-release commit
+                    hint_sequence_unshown_15 6   (log: local_only/scratch/h4c/run_all_final.log)
+§17                 every lc has a filed first judge and blind confirmer (355 records); 141 FAIL, 10 PASS,
+                    15 NOT_PRODUCIBLE clauses; every §17 integrity label PASS
+floors              obligation_routes_reachable 5 unreachable (balance_scale, fill_in_blank, numeric_input,
+                    table_read, ten_frame); formatters_reachable 6; the §6 Phase 1 floor's 5 draw gaps
+                    (the last two from the 2026-10-13 handoff; re-measure)
 mutations           262; corpus 262/262, no INVALID
 latest attestation  batch447 (next free prefix: batch448)
 ```
 
-The chain's run_all predates the records, so its CONTENT line still shows `stem_review_missing_17 151`. The next
-run_all will report `stem_review_fail_17 (141)` and `stem_clause_unproducible_17 (15)` instead. Records are not a
-digest input, so no chain is owed for them.
+Open hardening rows (H-01, H-03 and H-04 are closed; H-09 is out of scope):
+
+| Row | Status |
+|---|---|
+| H-02 | no progress recorded |
+| H-05 | PARTIAL |
+| H-06 | PARTIAL; its §17 work is done |
+| H-07 | no progress recorded |
+| H-08 | substantial progress recorded |
+| H-10 | `tests/tree_state.py` exists and works, but the row is still open with no progress recorded |
 
 **Before you resume anything detached, run `ps -eo pid,lstart,command | grep claude`**: one copy of the agent per
 conversation.
@@ -110,30 +130,29 @@ conversation.
 - 21: a dispatcher who believes a non-PASS claim is false sends the lc to one fresh blind reviewer, whose verdict
   settles it; the disproving render and the outcome go in the evidence log.
 - 22: packet-only selectors observe structured values only; every required clause is classified.
-- 23: Phase 2 hardens the pipeline, not the generators.
-- 24: **LLM judges review stems plus field domains**; deterministic checks prove fields stay inside them.
-- 25: the per-sample gates (`judgment_reviews_5`, `capability_phase2`) are retired once the stem gate and field
-  checks are each proven by mutation; records stay as history; confirmed defects go to the content queue.
+- 23: **Phase 2 hardens the pipeline, not the generators**; it is DONE when integrity is green, every check is
+  proven by a mutation on its executed path, the tree is CERTIFIED, and every finding is reported with its lc,
+  seed and what to build.
+- 24: LLM judges review stems plus field domains; deterministic checks prove fields stay inside them.
+- 25: **the per-sample gates (`judgment_reviews_5`, `capability_phase2`) are retired once the stem gate and field
+  checks are each proven by mutation; records stay as read-only history; confirmed defects go to the content
+  queue.** Its precondition now holds (§17 and §14 proven; the §17 campaign complete).
 - 26: clause coverage is ruled per lc from stems and declared variants, proven by the §2L exhibit check.
-- 27: `run_all` exits 0 / 2 / 1.  28: structured slots.  29: judges see `CLAUDE.md`.
+- 27: `run_all` exits 0 / 2 / 1; harness work is done at 0 or 2.  28: structured slots.  29: judges see `CLAUDE.md`.
 - 30: unit-test failures are integrity.  31: floors unchanged.  32: record defects are content.
 - 33: slots cover everything the learner reads (hints included).  34: an un-instrumented site is a content finding.
 - 35, 41: §15 decides selector survival by slot and value-level provenance (`derives`, `computes`, template `_src`).
 - 36: H5 hint checks are content only.  37: many slices may share one chain.  38: `error_label` is metadata.
 - 39: error-detect names its ErrorPattern.  40: indefinite articles by sound, gated by §1J.
-- 42: **H4 approves an lc only after that lc's type-only slots are tightened** (now true for all 151).
+- 42: H4 approves an lc only after its type-only slots are tightened (true for all 151).
 - 43: a type-only slot's reason is a registered `slots.DERIVED_REASONS` kind plus a `src` the values carry.
-- 44: **the stem gate's design**: (a) families keep only fills that reach learner text, wordless all-`fill` wrappers
-  collapse; (b) §14 and §17 share `validate_slots.paths()`; (c) freshness binds resolved content; (d) ONE overall
-  verdict per lc; (e) **every lc gets a first judge and a blind confirmer; the later verdict stands**; a FAIL quotes
-  its failing templates; (f) verdicts and record defects are content; (g) the judge rules every clause
-  PRODUCIBLE / NOT_PRODUCIBLE (gated); (h) Haiku judges, about 6 concurrent.
-- 45: **the campaign is approved**, as designed, from batch441, in a fresh session.
-- 46-48e: packet content (where each family is read; item banks row by row; only printable text; repeated values;
-  one family per gate word).  49: a standing FAIL is settled by real renders.  50, 50b: a value slot shows what
-  it printed, numbers as lossless runs (HASH_VERSION 8).
-- 51: **ruling 21 only where every ground of the standing record is disproved by renders**; every disproof is
-  logged; where a real printed ground exists the confirmer's FAIL stands.
+- 44: the stem gate's design.
+  - (d) ONE overall verdict per lc: `stem_review_fail_17` names templates, not seeds.
+  - (e) Every lc gets a first judge and a blind confirmer; the later verdict stands.
+  - (h) Haiku judges, about 6 concurrent.
+- 45: the campaign was approved.  46–48e: packet content.  49: a standing FAIL is settled by real renders.
+  50, 50b: a value slot shows what it printed (HASH_VERSION 8).
+- 51: ruling 21 only where every ground of the standing record is disproved by renders; every disproof is logged.
 
 **Stop and ask** for any content judgment or design question that rulings 1–51 and MATATAG do not settle, and for
 anything in "Not yours" (§7).
@@ -142,24 +161,31 @@ anything in "Not yours" (§7).
 
 ## 4. Phase 0: baseline and lock (always, before any edit)
 
-1. `ps` grep empty; `df -h /System/Volumes/Data` shows space; `PYTHONPATH=. .venv/bin/python tests/tree_state.py`
-   prints CERTIFIED; worktree clean. CERTIFIED does not cover `validation_reports/`, so also run
-   `PYTHONPATH=. .venv/bin/python -m pytest tests/unit -m "not slow" -q -p no:cacheprovider` (expect 999 passed,
-   1 skipped; ~11 min; run it in the background and read while it runs).
-2. Claim H-06: in `validation_reports/phase2_hardening/hardening_status.json` edit ONLY its `owner` line with
-   `sed` (`git diff --numstat` must read `1 1`), commit by name, then
-   `PYTHONPATH=. .venv/bin/python tests/tree_state.py --begin batch --session <yours> --note "H4-C: ..."`.
+1. Check the starting state:
+   - `ps` grep is empty;
+   - `df -h /System/Volumes/Data` shows space;
+   - `PYTHONPATH=. .venv/bin/python tests/tree_state.py` prints CERTIFIED;
+   - the worktree is clean and `git status -sb` shows no divergence from origin.
+
+   CERTIFIED does not cover `validation_reports/`, so also run
+   `PYTHONPATH=. .venv/bin/python -m pytest tests/unit -m "not slow" -q -p no:cacheprovider`. Expect 1010 passed,
+   1 skipped, about 12 minutes; run it in the background and read while it runs.
+2. Claim the row you will work. In `validation_reports/phase2_hardening/hardening_status.json`, edit ONLY its
+   `owner` line with `sed` (`git diff --numstat` must read `1 1`) and commit by name. Then run
+   `PYTHONPATH=. .venv/bin/python tests/tree_state.py --begin batch --session <yours> --note "<batch>: ..."`.
 3. Re-measure, and explain any move before building:
-   - `validate_slots`: `slot_domain_escape_14 (74)`, `slot_text_unaccounted_14 (4)`, `slot_path_refused_14 (1)`,
-     `slot_domain_type_only_14` PASS, NOTE `151 of 151`;
-   - `validate_stem_review`: `stem_review_missing_17 (151)`, every other §17 label PASS, `2561 stem families`;
-   - `validate_composition`: 58 + 6, with 1,351 of 1,351 decided;
-   - `validate_language`: `indefinite_article_1J` PASS and 423 mirror findings;
-   - the capability queue snippet below (`78 42 33 55` at H4-0-R2's Phase 0; ~2 min).
-4. If you will touch any source: `PYTHONPATH=. .venv/bin/python -m tests.render_snapshot local_only/scratch/<batch>/before.jsonl`
-   BEFORE the first edit, and keep `tests/slot_wide_check.py` (expect `TOTAL distinct 24 | renders that raised: 2`,
-   the two `mat_g2_mg_q4_3` pinned-mcq refusals; it now walks §14's own paths) and the §15 dump
-   (`validation_reports/phase2_hardening/h4_0_tools/comp_dump.py OUT.json`) as baselines.
+   - `run_all`'s CONTENT line (§2), about 45 minutes; or the stage modules one by one:
+     - `validate_slots`: 74 / 4 / 1, type-only PASS, `151 of 151`;
+     - `validate_stem_review`: missing 0, fail 141, unproducible 15, every integrity label PASS, 2684 families;
+     - `validate_composition`: 58 + 6, 1,351 of 1,351 decided;
+     - `validate_language`: `indefinite_article_1J` PASS, 423 mirror findings;
+   - the capability queue snippet below (`78 42 33 55` at H4-0-R2's Phase 0; about 2 minutes);
+   - `assertion_coverage_8` and its 11 `UNPROVEN_ASSERTIONS` (§5.2 B).
+4. If you will touch any source:
+   - run `PYTHONPATH=. .venv/bin/python -m tests.render_snapshot local_only/scratch/<batch>/before.jsonl` BEFORE
+     the first edit;
+   - keep `tests/slot_wide_check.py` as a baseline (expect `TOTAL distinct 24 | renders that raised: 2`);
+   - keep the §15 dump as a baseline (`validation_reports/phase2_hardening/h4_0_tools/comp_dump.py OUT.json`).
 
 ```sh
 PYTHONPATH=. .venv/bin/python - <<'PY'
@@ -177,164 +203,152 @@ PY
 
 ---
 
-## 5. H4: the stem review gate (ruling 24, LLM half)
+## 5. What is left, and how to finish it
 
-### 5.0 Status
+### 5.1 Owner questions to ask FIRST (each blocks the work it governs; ask one at a time)
 
-**Built and proven in batch H4 (2026-10-13), CERTIFIED, and run to completion in batch H4-C (2026-10-14 to
-2026-10-16).**
+The owner asked this session to finish Phase 2. That covers the work below. It does not settle the design choices,
+which earlier rulings left open:
 
-What exists:
-- `validate_slots.paths()` / `observe()`: the one path enumeration and render that §14 and §17 share.
-- `validation/stem_packets.py`: builds the blind item, now HASH_VERSION 8, under rulings 46-50b:
-  - the competency, clauses, vocabulary gates, and declared variants and bounds;
-  - families with their slot domains, each saying where it is read (46);
-  - item banks printed row by row (47);
-  - only printable text (48), and whether a render repeated a value (48d);
-  - each gate word as its own family (48e);
-  - what a generated value printed, numbers shown as lossless runs (50, 50b).
-- `validation/validate_stem_review.py` (§17, Phase 2) reads `validation_reports/stem_review/<lc>/*.json` and uses
-  the latest-filed confirming record per lc.
-- `tests/stem_file.py prompt|file`: the judge's instructions plus item, and the filer.
-- Proofs: 14 §17 mutations against the fixture in `tests/stem_review_fixtures/`. **A generator change to
-  mat_g2_na_q3_8 stales the fixture and makes every §17 proof INVALID: re-run `tests/stem_review_fixture.py` then**
-  (contract §17 limit 12).
+1. **Naming findings by lc, seed and what to build** (ruling 23's exit test). Several findings name an lc but no
+   seed:
+   - §5 `judgment_reviews` names an lc but no seed.
+   - §6F names a seed in only 49 of 78 (2026-10-13; re-measure).
+   - §17 `stem_review_fail_17` names an lc and the quoted templates; ruling 44d makes it lc-wide.
 
-The campaign's result (evidence entry "H4-C"):
-- **Records:** 151 firsts and 204 confirmers, 53 of them ruling-21 records. Standing verdicts are 141 FAIL and
-  10 PASS, with 15 NOT_PRODUCIBLE clauses.
-- **Render checks:** ruling 49/51 checks covered all 141 FAILs and are in `local_only/scratch/h4c/r49.log`, which is
-  not committed.
-- **Tools:** in `local_only/scratch/h4c/`, not committed:
-  - `h4c.py` (take, audit, file);
-  - `taf.sh`;
-  - `mkdisp.py` (prompts of 2,000 lines or more need explicit chunked Read calls; Haiku otherwise reads only 2,000
-    lines);
-  - `render_dump.py`, `grounds.py`, `r49brief.py`.
-- **When a record goes stale:** a generator change stales the records of the lcs it touches (freshness binds
-  resolved content). Re-dispatch those lcs on fresh packets by §5.1 (new dispatch ids; never edit a record).
-- **Model:** judges run on the Agent tool's `haiku` alias at `effort: medium`, which the owner asked for to conserve
-  rate limits. It resolved to `claude-haiku-5-5` in every transcript. An older Haiku cannot be pinned from this
-  host.
+   Ask whether an lc-wide finding may stand as "lc + template/clause + owed build" with no seed. If not, ask
+   whether each must carry a witness seed: a render that prints the failing template, found from
+   `validate_slots.paths()`. Recommend the witness seed where one exists. A clause ruled NOT_PRODUCIBLE has no
+   render, so lc + clause + owed build must be enough for it.
+2. **Floors that hide content** (ruling 31 left them unchanged):
+   - `obligation_routes_reachable` 5;
+   - `formatters_reachable` 6;
+   - the §6 Phase 1 floor's 5 `draw` gaps.
 
-### 5.1 The campaign, step by step (H4-C)
+   Ask whether each floor becomes a named content finding (an lc, a route, an owed build) or stays as a documented
+   Phase 2 limit.
+3. **Cross-process determinism.** `comparing_ordering` iterates a set, and 89 of 7,285 renders changed with
+   `PYTHONHASHSEED` (2026-10-13; re-measure). Ask whether a determinism check belongs in Phase 2. It would run
+   §14's paths under two hash seeds and diff them, which plants and proves trivially. Ask too whether the set
+   iteration it would expose counts as content.
+4. **H6's shape** (§5.2 A). Two questions:
+   - Are `judgment_reviews` (752) and `capability_contract` (78) re-filed as content findings in the new report?
+   - Or are they frozen as read-only history, with only their confirmed defects carried into the generator queue?
 
-1. Build every packet FIRST, in groups (e.g. 25 lcs per packets file; prefix `S441`, `S442`, ...; ids
-   `S441-001`...): `PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.stem_packets --nodes
-   <lcs> --prefix S441 --packets local_only/scratch/h4c/S441.json --key local_only/scratch/h4c/S441.key.json`.
-   Every lc must build (the builder raises on a coverage gap or a slot-name mismatch: that is harness work; stop).
-2. For each item write its prompt: `tests/stem_file.py prompt --packets ... --item S441-001 --out
-   local_only/scratch/h4c/S441-001.prompt.txt`. Keep the key files out of every judge's reach.
-3. Dispatch the FIRST judge per item with the Agent tool, `model: "haiku"` (memory "Dispatch subagents on Haiku"),
-   about 6 concurrent. The agent prompt only says: read that one prompt file and reply with exactly what it asks.
-   Judges inherit `CLAUDE.md` by design (ruling 29). Save each reply byte for byte to a file.
-4. **Audit every reply against its prompt before filing** (memory "Attester dispatch gotchas"): it parses as one
-   JSON object; every quoted span appears in the prompt; `failing_templates` and each PRODUCIBLE `template` are
-   templates the packet prints EXACTLY; every clause id is answered. The filer refuses most of these itself, but
-   a refused or doubtful reply is set aside (never edited) and the item re-dispatched to a fresh judge. If the agent
-   read any file other than its prompt, set it aside.
-5. File: `tests/stem_file.py file --packets ... --key ... --item S441-001 --reply <reply file> --role first
-   --judged-by blind-stem-judge-claude-haiku-<batch>-<item>-first --dispatch-id stem-<batch>-<item>-first
-   --filed-at <ISO time> --delivery "judge read only <prompt path>; dispatched with CLAUDE.md loaded (ruling 29)"
-   --tool-uses "<what the agent did>" --prompt <prompt path>`. The identity must name the model that judged; the
-   Agent tool exposes only `haiku`, so say that, not a version you did not see.
-6. Dispatch the CONFIRMING judge per item on the SAME prompt file, a new agent that has seen nothing of the first
-   reply; audit; file with `--role confirming --confirms stem-<batch>-<item>-first` and its own identity and
-   dispatch id. The later verdict stands (ruling 20).
-7. **Disputes (ruling 21):** if you believe a FAIL or NOT_PRODUCIBLE claim is false, do not set it aside on that
-   belief: dispatch one more fresh blind judge as a confirming record on the same first record, and log the
-   disproving evidence and the outcome in the evidence entry. That record is the latest and stands.
-8. After each group: `PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_stem_review
-   --node-ids <group>`; at the end, the whole gate. Expect `stem_review_missing_17` to fall to 0 and
-   `stem_review_fail_17` / `stem_clause_unproducible_17` to name real generator work by lc and template.
-9. Records are FILES under `validation_reports/` (not a digest input): commit them by name per group, claim the
-   directory in H-06's `proof_artifacts` in the same commit (memory "CERTIFIED can hide a red unit test"), and run
-   the unit suite after the last commit. No chain is owed unless you changed source.
-10. If a generator changes while you dispatch, packets filed before it go STALE by design (the filer copies the
-    dispatch-time packet); re-dispatch those lcs on fresh packets.
+   Ruling 25 says "carried into the work queue". Ask how they are named: by lc and seed from the record.
+5. **H-07** (contextual and logical validity, ambiguity, hints, misconceptions, interaction clarity,
+   accessibility). Much of it overlaps the §17 stem judges' Rule 1. Ask whether §17 plus §14 satisfy it for Phase
+   2, or whether the §1L semantic-role checks and calibrated reviewers in its acceptance checks are still required.
+   Recommend closing it against §17 with its NAMED LIMITS written, if the owner agrees.
 
-### 5.2 Known limits a judge's verdict inherits (contract §17 NAMED LIMITS)
+Record every answer verbatim as owner ruling 52, 53, … in the plan doc (same format as 44–51) before building.
 
-Paths are `validate_slots.paths()` only; runtime `E`/`R` domains show the members/bounds observed there; a
-`value:<key>` slot shows its key, not its range (the item lists the declared bounds); a `fill` slot's families are
-matched by text (over-inclusive); one-member domains of the value itself (e.g. `answer_text`, fmt_true_false's
-"not" statement) are shown as observed and the prompt tells the judge to treat them as unbounded.
+### 5.2 The batches (suggested order; each is its own claim, proof, chain and release)
 
-### 5.3 Open design points (ask the owner before building any)
+**A. H6: retire the per-sample gates (ruling 25; row H-06).**
+- Remove `judgment_reviews_5` and the `capability_phase2` attestation stage as gates in `run_all`.
+- Keep their records as read-only history: never edit or delete `validation_reports/judgment_reviews/`, attester
+  records or the batch117–batch150 corpus.
+- Carry every confirmed defect into the content report in the shape question 4 decides.
+- In the same commit, update the contract rows §5 and §6 and `docs/pgen_judgment.md` (Protocol 7).
+- Update `_manifest.FINDING_CLASS` and `test_stage_ledger.stubbed_harness`. Memory "New run_all stage needs a stub":
+  removing a stage also moves the stage-ledger mutations.
+- Re-run the assertion-coverage census. `judgment_reviews` and `capability_contract` are in `UNPROVEN_ASSERTIONS`
+  as rollup prints, and leave it with their stages.
+- Prove the replacement: §17 plus §14 must still catch what the retired gates caught. Name in the evidence which
+  of the retired gates' confirmed defect classes §17/§14 now catch, by mutation or by a filed §17 FAIL. Name the
+  rest as a NAMED LIMIT.
+- Close H-06 only when its four acceptance checks each have evidence.
 
-- `stem_review_fail_17` names the templates a judge quoted, not seeds (ruling 44d); the lc-and-seed naming question
-  of §6.3 applies to it too.
-- After the campaign, H6 (§6.2) retires `judgment_reviews_5` and `capability_phase2` as gates; the owner rules when.
+**B. H-02: no assertion without an executed mutation.**
+`UNPROVEN_ASSERTIONS` holds 11 entries (shrink-only):
 
-### 5.4 Integrity rules carried over from §5/§6 (non-negotiable)
+| Assertion | Why it is unproven |
+|---|---|
+| `concept_gating` | — |
+| `reverse_compatibility_check_crash` | — |
+| `reverse_curriculum_gate_check` | — |
+| `reverse_curriculum_gate_check_crash` | — |
+| `visual_schema_integrity` | measured as shadowed by §1G |
+| `monotonicity` | — |
+| `judgment_reviews` | rollup; leaves with H6 |
+| `capability_contract` | rollup; leaves with H6 |
+| `census_unit_tests` | self-referential floor |
+| `census_mutations` | self-referential floor |
+| `coverage_regression_1H` | — |
 
-One dispatch id per lc; verdicts never edited; ruling 20's confirming judge; ruling 21 for disputed claims; the
-identity names the model that judged; delivery by opaque file; judges see `CLAUDE.md` (ruling 29) and the record's
-delivery field says so; a judge that read any file other than its packet is set aside; the dispatcher never retypes
-a verdict.
+For each one:
+- plant a mutation that lands on the executed path and is caught by name; or
+- write an owner-approved narrow limitation with an independent executable control, per H-02's acceptance check;
+  ask the owner for the self-referential census floors.
+
+"Shadowed" means the check is unreachable, which is itself a finding: either the check moves so it can fire, or it
+is removed with the reason recorded.
+
+**C. Exit items 2 and 3 (§5.1 answers):** floors and determinism, as the owner rules.
+
+**D. Naming every finding (§5.1 answer 1).**
+- Make every content label print lc, seed (or the ruled substitute) and owed build.
+- Add a check that FAILS when a content finding lacks them, built while its count is zero (Scaling Mandate 5).
+  Prove it with a mutation that strips the seed from one stage's finding.
+
+**E. H-05, H-08, H-10.** Re-measure each row against its own acceptance checks:
+- **H-10:** `tests/tree_state.py`, with `--begin`/`--complete` intent and a committed digest-free state file, likely
+  satisfies all five checks. Show each by command and close it.
+- **H-08:** check the pointer-drag blind spot is written as a NAMED LIMIT.
+- **H-05:** PARTIAL. List what is left and fix it or rule it.
+
+Close a row only with evidence per acceptance check.
+
+**F. Exit verification (last).**
+- One full chain (§8) on the final source.
+- `run_all` EXIT 0 or 2 with INTEGRITY GREEN.
+- The corpus DETECTED with no INVALID.
+- `tree_state.py` CERTIFIED.
+- Every content label names lc, seed and owed build.
+- Every check's NAMED LIMITS written in its docstring, contract row and the evidence log.
+- Every hardening row closed or ruled out of scope.
+- A final evidence entry "Phase 2 DONE". Update `CLAUDE.md`'s Definition of Done only if a ruling changed it
+  (Protocol 7).
+- Then rewrite this file to hand off to generator work (§6).
+
+### 5.3 Integrity rules carried over (non-negotiable)
+
+- Records are never edited or deleted.
+- One dispatch id per review.
+- The identity names the model that judged: Haiku via the `haiku` alias; read the model from the transcript, since
+  the alias resolved to `claude-haiku-5-5` and cannot pin a version.
+- Judges see `CLAUDE.md` (ruling 29).
+- A judge that read any file other than its packet is set aside.
+- The dispatcher never retypes a verdict.
+
+If you dispatch judges:
+- use `effort: "medium"`;
+- give prompts of 2,000 lines or more as explicit chunked Read calls;
+- the tools in `local_only/scratch/h4c/` (`h4c.py`, `taf.sh`, `mkdisp.py`, `render_dump.py`) are uncommitted
+  scratch; copy and re-prove them before relying on them.
 
 ---
 
-## 6. Other work (not this batch unless the owner says so)
+## 6. The generator work queue (NOT Phase 2; for after the exit)
 
-### 6.1 Tightening a type-only slot a new path reaches (the H4-0-R2 method)
-
-If H4's wider enumeration reaches one of the 61 unreasoned `derived(` lines, tighten it before that family is
-reviewed (ruling 42). Tools in `validation_reports/phase2_hardening/h4_0_tools/` take paths as arguments and run in
-place: `tonly.py` (the real §14 findings as JSON), `obs.py` (wide observation), `plan.py`, `tighten.py`/`propose.py`
-(AST rewrites; dry-run first), `rep.py`, `reanchor.py`, `comp_dump.py`, `kinds.py`, `anchors.sh`. Also
-`tests/slot_wide_check.py` and `tests/scoped_snapshot.py`. Rules paid for:
-- Strongest honest domain, in order: a non-learner string back to plain code; `value:<the key the code reads>`
-  (`slots.carried(values, *keys)` for a `values.get(k1, values.get(k2))` chain); `enum:`/`bank:`; `E` over the local
-  list (bind it to a name first, same rng draw); `R` over the draw bounds by name; `fill`/`join`/`transform`; only
-  then `arithmetic` with src keys the values carry.
-- Never a one-member domain of the value itself (`E((x,), ...)`): it bounds nothing.
-- A `.get(k, fill(...))` default is built and RECORDED even when unused: make it lazy.
-- Keep provenance as it was unless the dependence is plainly true; then re-diff §15 and explain every move.
-- An honest domain can surface a real defect as an escape: report it by name and count; never weaken the domain.
-- After every file: check module-level imports (a missing `R` raised `NameError` in H4-0-R2), run the scoped
-  snapshot and the anchor one-liner. Byte identity is the proof: `render_snapshot --diff` reads 0 changed.
-
-### 6.2 H6: retire the per-sample gates (ruling 25), only after H4 is proven
-
-Remove `judgment_reviews_5` and the `capability_phase2` attestation stage as gates; keep their records as read-only
-history; carry every confirmed defect (Phase 3 evidence) into the content report; update the contract rows and
-`docs/pgen_judgment.md` in the same commit.
-
-### 6.3 Exit (Phase 2 DONE, ruling 23) and items no batch owns yet (stop and ask before building any)
-
-Exit: `run_all` exits 0 or 2; the corpus DETECTED with no INVALID; CERTIFIED; every finding names lc, seed and owed
-build (this needs a ruling on lc-wide findings first); every check's NAMED LIMITS written. Unowned items:
-- **lc and seed naming:** §5's findings name an lc but no seed; §6F names a seed in 49 of 78. Unruled.
-- **Floors still hide content** (ruling 31): the §6 Phase 1 floor holds 5 `draw` gaps; `formatters_reachable` 6;
-  `obligation_routes_reachable` 5.
-- **Unit-test failures are integrity** (ruling 30): 6 lc-parametrized tests and
-  `test_invariant_holds_across_the_live_tree`.
-- **No cross-process determinism check:** `comparing_ordering` iterates a set; 89 of 7,285 renders change with
-  `PYTHONHASHSEED`.
-- **Unowned hint gaps:** a doubled word ("order word word"); `roles` misses "20 items at ₱50 each" hinted as "50
-  groups of 20".
-- **A non-digest commit can turn the unit suite red under a CERTIFIED tree** (`validation_reports/` is not a digest
-  input): nothing gates the class, so run the unit suite at Phase 0 and after your last commit.
-
-### 6.4 The generator work queue (NOT Phase 2)
-
-- §2L: 420 non-exhibited variant values; 61 packet refusals. §6: 78 CONTRADICTED capabilities. §5: 752 judgment
-  problems. §1J: 423 singular-after-many.
-- §14 since H4's wider paths (79): +7 escapes from `fmt_emoji_pictorial`'s "items" fallback (now also on the
-  STUDENT path, mat_g2_na_q2_4 seed 22); `pattern_sequence` pinned at seed 29 serving the single letters 'n'/'p' as
-  options (4 `slot_text_unaccounted_14`, mat_g1_na_q3_6, mat_g2_na_q2_8); mat_g2_mg_q4_3 refusing its advertised
-  `mcq` at seeds 17 and 29 (`slot_path_refused_14`). The 67 at the old 20 seeds were:
-- §14: 67 escapes: H3-R2's 26 (incl. money_peso's `['peso5', ...]` and patterns' `[8, 8]` printed into hints); the
-  `fmt_emoji_pictorial` "items" fallback, +29; base_generator's pictograph fallback `category` default, +5, and its
-  bar-graph twin, +3 (neither learner-read at the 20 seeds); the fractions add/subtract hint chain served on
-  count_sequence items, +4 (mat_g1_na_q4_2, every seed: "Add only the top numbers: 2 + 0 = 2.").
-- §15: 58 + 6 (classified in the H3-R2 evidence; two fewer since H4-0-R2, a provenance correction).
-- The "Found, not fixed" lists in the H3-R2, H4-0 and H4-0-R2 evidence: centavo items asking for pesos;
-  clock-reading selections served as elapsed-time stems; silent fallbacks and defaults (incl. the `"+"`
-  operation-symbol defaults, `model_names.get(model_type, "model")`, `_fraction_words`' digit fallback and "halfs",
-  `num_to_words` past 10,000); two copies of the number-to-words builder; one-member answer domains (`answer_text`,
-  fmt_true_false's "not" statement) that H4's judges must treat as unbounded.
+- §17: 141 FAIL lcs (`stem_review_fail_17`, each naming its failing templates) and 15 NOT_PRODUCIBLE clauses (the
+  "H4-C" evidence entry lists them).
+- Disproved and real grounds per lc: `local_only/scratch/h4c/r49.log` (uncommitted).
+- §2L: 420 non-exhibited variant values; 61 packet refusals.
+- §6: 78 CONTRADICTED capabilities.
+- §5: 752 judgment problems.
+- §1J: 423 singular-after-many.
+- §14: 74 / 4 / 1.
+- §15: 58 + 6.
+- The "Found, not fixed" lists in the H4-C, H4, H4-0-R2, H4-0 and H3-R2 evidence entries. These include:
+  - a wrong True/False key on mat_g3_na_q4_2 (seeds 11, 16);
+  - "48 ÷ 8" on mat_g2_na_q3_6/_9;
+  - "order word word";
+  - 'peso60';
+  - the gaming/fandom OBJECTS_POOL members;
+  - `fmt_emoji_pictorial`'s "items" fallback;
+  - single-letter `pattern_sequence` options.
 - The interactive `draw` formatters (rulings 13–18, 31).
 
 ---
@@ -343,28 +357,39 @@ build (this needs a ruling on lc-wide findings first); every check's NAMED LIMIT
 
 - **Verification is execution.** Quote every command with its verbatim output; otherwise write "not measured".
   Re-count every number you publish.
-- **Never weaken a check.** Floors and pins move only for a documented ground-truth error.
-- **Invocation:** `PYTHONPATH=. .venv/bin/python …`, logged, `EXIT $?` captured; never pipe a long run through
+- **Never weaken a check.** Floors and pins move only for a documented ground-truth error or an owner ruling.
+- **Invocation:** `PYTHONPATH=. .venv/bin/python …`, logged, with `EXIT $?` captured. Never pipe a long run through
   `tail`. zsh does not word-split `$VAR`: use `${=VAR}`.
 - **Heavy runs alone.** The mutation harness plants real bugs in real source (and in some `validation_reports/`
-  files): never edit source, tests, snapshots or `validation_reports/` while it runs, and never run renders beside
+  files). Never edit source, tests, snapshots or `validation_reports/` while it runs, and never run renders beside
   it. Afterwards the escaped-plant `git grep` shows only `validate_coverage.py:456`.
-- **Stage by name** (never `git add -A`; the pre-commit hook also stages `graphify-out/`). Commit end lines name your
-  model truthfully. Release the lock in a follow-up commit. Never `--amend` a commit you will cite.
-- **Do not fix generator content** without an owner ruling; a source change stales reviews.
+- **Stage by name.** Never `git add -A`; the pre-commit hook also stages `graphify-out/`. Commit end lines name your
+  model truthfully. Release the lock in a follow-up commit. Never `--amend` a commit you will cite. Push only when
+  the owner asks.
+- **Do not fix generator content** without an owner ruling; a source change stales reviews and §17 records. If one
+  is unavoidable, re-dispatch the stale lcs' §17 judges on fresh packets (new dispatch ids).
 - **Instrumentation must be byte-identical** (`render_snapshot --diff`: 0 changed).
-- **Not yours:** the ✝️/`bible` theme; `requires`/`requires_ignore`; opening H-11; supersession and CSI-R1–R3; H-09
-  release promotion; renaming identities or "node" to "lc" in code; discarding filed records or the
-  `batch117`–`batch150` corpus; `.claude/worktrees/agent-aaac714fac3fe0cc6`.
-- **Traps measured in earlier batches:** locate insertion points by AST or by exact full-line match, never `rfind`;
-  infer `value:<key>` from direct `values[...]` reads, not return dicts; template provenance counts the TRUE branch
-  only; an upgrade proven only by observation may have an unobserved alternative
-  (`validation_reports/phase2_hardening/h3r2_tools/fill_audit.py`); read every line `slot_wide_check.py` prints;
-  a scoped check given an unknown formatter name gets an EMPTY lc list and silently measures the whole tree.
+- **Not yours:**
+  - the ✝️/`bible` theme;
+  - `requires`/`requires_ignore`;
+  - opening H-11;
+  - supersession and CSI-R1–R3;
+  - H-09 release promotion;
+  - renaming identities, or "node" to "lc", in code;
+  - discarding filed records or the `batch117`–`batch150` corpus;
+  - `.claude/worktrees/agent-aaac714fac3fe0cc6`.
+- **Traps measured in earlier batches:**
+  - Locate insertion points by AST or by exact full-line match, never `rfind`.
+  - Infer `value:<key>` from direct `values[...]` reads, not return dicts.
+  - Template provenance counts the TRUE branch only.
+  - An upgrade proven only by observation may have an unobserved alternative.
+  - Read every line `slot_wide_check.py` prints.
+  - A scoped check given an unknown formatter name gets an EMPTY lc list and silently measures the whole tree.
+  - A mutation's fixture invalidated by same-session work shows only in the FULL table run.
 
 ---
 
-## 8. The re-proof chain (once per batch; about 4 h 20 min; detached)
+## 8. The re-proof chain (once per batch that changes source; about 4 h 50 min; detached)
 
 ```sh
 PYTHONPATH=. .venv/bin/python -m pytest tests/unit -m "not slow" -q -p no:cacheprovider   # before committing source
@@ -377,45 +402,47 @@ PYTHONPATH=. .venv/bin/python tests/tree_state.py --begin chain --force --sessio
 nohup zsh local_only/scratch/<batch>/chain.sh > local_only/scratch/<batch>/chain.nohup 2>&1 &
 ```
 
-`chain.sh` (copy `local_only/scratch/h4_0_r2/chain.sh` and change the directory):
+Copy `local_only/scratch/h4c/chain50.sh`, NOT `h4c/chain.sh`, which hard-codes 6 shards. `chain50.sh` reads
+`projection.recommended_shard_count` from `obligation_benchmark.json` after the benchmark step (7 today) and moves
+stale `shard_*_of_*.json` receipts aside first. Change its directory, and never hard-code the shard count.
 
-```sh
-#!/bin/zsh
-cd <repo root>; L=local_only/scratch/<batch>/chain; mkdir -p $L; export PYTHONPATH=.
-step() { local name=$1; shift; echo "START $name $(date +%H:%M:%S)" >> $L/progress.log
-  "$@" > $L/$name.log 2>&1; local rc=$?; echo "END $name EXIT $rc $(date +%H:%M:%S)" >> $L/progress.log; }
-step regen .venv/bin/python -m scripts.regen_formatter_exclusions
-step benchmark .venv/bin/python -m tests.obligation_executor --tier benchmark --sample-size 1000
-step frontend env DATABASE_URL= .venv/bin/python tests/frontend_suite.py
-step corpus .venv/bin/python tests/mutation_harness.py
-git grep -n "planted mutation" -- backend scripts frontend/src data > $L/escaped_plants.log 2>&1
-echo "escaped-plant grep lines: $(wc -l < $L/escaped_plants.log)" >> $L/progress.log
-for i in 0 1 2 3 4 5; do step shard$i .venv/bin/python -m tests.obligation_executor --tier release --shard-count 6 --shard-index $i; done
-step verify .venv/bin/python -m tests.obligation_executor --tier verify-release
-step run_all .venv/bin/python -m backend.app.practice_gen.validation.run_all
-echo "CHAIN DONE $(date +%H:%M:%S)" >> $L/progress.log
-```
+Measured in H4-C on `6ebbd1b3`:
+- regen + benchmark + frontend: 50 s;
+- corpus: 68 min (262 mutations);
+- 7 shards: 26–27 min each;
+- run_all: 48 min;
+- about 5 h in all.
 
-- Measured in H4-0-R2: regen+benchmark+frontend 45 s, corpus 64 min (230 mutations), shards 24–27 min each, run_all
-  40 min; 4 h 19 min in all. Each new mutation adds roughly 20–60 s to the corpus.
-- Wait with one background `until grep -q "CHAIN DONE" $L/progress.log; do sleep 60; done` (one notification),
-  never on `pgrep -f` of a string in the same command.
-- **If interrupted:** confirm no `chain.sh`/`mutation_harness` process, no `MUTATION_IN_FLIGHT` marker, and that
-  `tests.mutation_harness.recover_orphaned_mutation()` returns False; purge `__pycache__`; resume at the first
-  stale artifact.
-- **When it completes:** commit the artifacts by name (`validation_reports/mutation_proofs`,
-  `.../obligation_release_shards`, `obligation_benchmark.json`, `frontend_static_render.json`); run
-  `tree_state.py --complete --note "..."`; commit `tree_state.json`; confirm CERTIFIED.
+Each new mutation adds roughly 20–60 s to the corpus.
+
+- Wait with one background `until grep -q "CHAIN DONE" $L/progress.log; do sleep 60; done` (one notification).
+  Never wait on `pgrep -f` of a string in the same command.
+- **If interrupted:**
+  - confirm there is no `chain.sh` or `mutation_harness` process;
+  - confirm there is no `MUTATION_IN_FLIGHT` marker;
+  - confirm `tests.mutation_harness.recover_orphaned_mutation()` returns False;
+  - purge `__pycache__`;
+  - resume at the first stale artifact.
+- **When it completes:**
+  - commit the artifacts by name (`validation_reports/mutation_proofs`, `.../obligation_release_shards`,
+    `obligation_benchmark.json`, `frontend_static_render.json`);
+  - run `tree_state.py --complete --note "..."`;
+  - commit `tree_state.json`;
+  - confirm CERTIFIED.
 
 ---
 
 ## 9. Bookkeeping before you stop
 
-- An evidence entry at the END of `validation_reports/HARDENING_EVIDENCE.md`: commands with verbatim output, seeds,
-  every new check's mutation result and NAMED LIMITS, before/after counts, the owner questions asked and answered
-  (record any new owner ruling verbatim in the plan doc too), and your own mistakes caught before commit.
-- Append to H-06 `progress` surgically (`numstat 1 1`).
-- **Rewrite §0, §2 and §5's status in this file.** No banners, no new prompt files.
-- Commit by name; run the unit suite once more after the last commit (CERTIFIED cannot see `validation_reports/`);
-  confirm the tree state; release the lock in a follow-up commit.
-- If interrupted: leave an accurate open intent and a **committed** checkpoint.
+- **Evidence entry.** Add one at the END of `validation_reports/HARDENING_EVIDENCE.md`, with:
+  - commands with verbatim output, and seeds;
+  - every new check's mutation result and NAMED LIMITS;
+  - before and after counts;
+  - the owner questions asked and answered (record each new ruling verbatim in the plan doc too);
+  - your own mistakes caught before commit.
+- **Hardening rows.** Append to the worked row's `progress` surgically (`numstat 1 1`). Close a row (`status`) only
+  with evidence per acceptance check.
+- **Rewrite this file's §0, §2 and §5 status.** No banners, no new prompt files.
+- **Commit and release.** Commit by name, then run the unit suite once more after the last commit (CERTIFIED
+  cannot see `validation_reports/`). Confirm the tree state, and release the lock in a follow-up commit.
+- **If interrupted:** leave an accurate open intent and a **committed** checkpoint.
