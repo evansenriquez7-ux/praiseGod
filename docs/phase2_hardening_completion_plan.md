@@ -1762,6 +1762,62 @@ that points at it break every time the section is refreshed.
 >     S441-012-r1 FAIL, S441-013-r1 (set aside, quote). Under ruling 51, S441-004 and S441-009 were the all-false
 >     cases and the ruling-21 outcome there stands. Rejected: (b) and (c).
 >
+> **Owner rulings recorded 2026-10-17 (52-56), binding.** Asked one at a time at the start of the session that
+> finishes Phase 2, under `NEXT_AGENT_PROMPT.md` §5.1, each with numbers measured that session; the owner chose the
+> dispatcher's recommended option on all five. The answer chosen is quoted verbatim.
+>
+> 52. **A finding is named by lc + witness seed + owed build** (owner, 2026-10-17; §5.1 question 1). Measured: 7 of
+>     12 content labels already name all three (`stem_review_fail_17` a witness seed and owed build on 141 of 141;
+>     §2L variant 420/420; §14 and §15 all); five do not: `judgment_reviews` 751 (449 cite one sample whose seed is
+>     in the record, 302 lc-wide; no owed build), `capability_contract` 78 (owed build on all; seeds only inside the
+>     quoted judge text), `stem_clause_unproducible_17` 15 (no seed: nothing renders), `count_noun_1J` 423 (seed, no
+>     owed build), `attester_packet_refused_2L` 61 (seed on 41, no owed build). Chosen: "Each finding prints lc +
+>     seed + owed build. The seed must be a render that shows the defect, from the record or from
+>     validate_slots.paths(). Only where no render can exist (a NOT_PRODUCIBLE clause, a packet refused before any
+>     render, an lc-wide verdict on a retired record) does lc + clause/template/capability + owed build count,
+>     marked as a ruled substitute. A new integrity check fails any content finding without these fields; it is
+>     built while that count is zero." Rejected: lc-wide findings without a seed where a witness exists; a seed
+>     always (unnameable NOT_PRODUCIBLE clauses; conflicts with ruling 44d).
+> 53. **The three floors become named content findings** (owner, 2026-10-17; §5.1 question 2; supersedes ruling
+>     31's "floors unchanged" for these three). Measured: `formatters_reachable` floor 6 (mat_g1_na_q3_4
+>     number_bond; mat_g1_mg_q4_4 timetable_read; mat_g3_na_q4_0 and mat_g3_na_q4_2 array_grid_read and
+>     array_grid_set), `obligation_routes_reachable` floor 5 (balance_scale, fill_in_blank, numeric_input,
+>     table_read, ten_frame; route-level, no lc owns them), §6 Phase 1 floor 5 (the `draw` capabilities on
+>     mat_g2_mg_q1_2, mat_g3_mg_q1_4, mat_g3_mg_q1_5, mat_g3_mg_q4_0, mat_g3_mg_q4_1). Chosen: "Each floored item
+>     is reported as a content finding (exit 2), named by lc (or route) + witness seed where a render exists + owed
+>     build. The floor number goes away, so a 7th unreachable pair is reported by name instead of hidden. Each check
+>     stays proven by mutation. Route-level items name the route and the owed build ('declare it in a DNA or
+>     deregister it')." Rejected: only the lc-owned floors; keeping all three as documented limits.
+> 54. **Cross-process determinism is checked; a differing render is content** (owner, 2026-10-17; §5.1 question
+>     3). Measured: all 7,285 `validate_slots.paths()` renders under PYTHONHASHSEED=0 and 12345 differ on 81, all on
+>     the four comparing_ordering lcs (mat_g1_na_q1_4 24, mat_g2_na_q1_4 23, mat_g1_na_q2_0 18, mat_g3_na_q1_6 16),
+>     only in the order of `distractors` and `given_values.distractors` (format_data identical). Chosen: "Add a
+>     §14-paths stage that renders under two fixed hash seeds and diffs them. Its harness parts (renders raised,
+>     path sets differ) are integrity; each differing render is a CONTENT finding by lc + seed + field + owed build
+>     ('make the order independent of hash order'). That is 81 findings on 4 lcs today. The stage is proven by a
+>     mutation that iterates a set on a clean lc." Rejected: differences as integrity (red until a generator fix,
+>     outside Phase 2); no check, a named limit.
+> 55. **H6 carries the retired gates' defects in a read-only content stage** (owner, 2026-10-17; §5.1 question 4;
+>     applies ruling 25). Measured: `judgment_reviews` 751 findings on 73 lcs (449 per sample, 302 lc-wide; none
+>     stale); `capability_contract` 78 CONTRADICTED on 42 lcs; 69 of the 73 and 39 of the 42 lcs are also §17
+>     FAILs. Chosen: "One read-only content stage (exit 2) reports each defect from the frozen records. Per-sample
+>     ones are named by lc + seed + facet + owed build. lc-wide ones and the 78 capabilities are named by lc +
+>     clause/capability + owed build, plus a witness seed where the record cites one (ruling 52's substitute). A
+>     defect clears when its reviewed render no longer replays to the reviewed digest, because the generator
+>     changed it; that lc's §17 review is then stale and must be re-judged. NAMED LIMIT: §17 judges stems, not
+>     samples, so a cleared defect is re-judged only to §17's depth. Records are never edited." Rejected: a frozen
+>     queue file run_all no longer reports; history only.
+> 56. **H-07 closes on §17 + §14 + §15/§16 with its gaps written as NAMED LIMITS** (owner, 2026-10-17; §5.1
+>     question 5). Measured against §17's Rule 1 (`tests/stem_file.py`): it asks for an incorrect or misleading
+>     statement, unreadable wording, vocabulary or concepts past the gates, context or load past the grade, and
+>     scope; hints and answer choices are judged as families; it does not name ambiguity, misconception quality,
+>     interaction clarity or accessibility; no judge was calibrated on a planted defect; §1L does not exist.
+>     Chosen: "Close H-07 against §17 + §14 + §15/§16 (hint checks) as they stand. Write NAMED LIMITS in the
+>     contract §17 row, the evidence log and the row: ambiguity, misconception quality, interaction clarity and
+>     accessibility are not separately judged; judges are uncalibrated; there are no §1L checks. No re-dispatch.
+>     This is weaker than the row's written acceptance checks, on your authority." Rejected: widening Rule 1 and
+>     re-running the campaign; building §1L and calibrated reviewers as written; ruling H-07 out of scope.
+>
 > **Owner rulings recorded 2026-09-22, binding on the next session:**
 >
 > 1. **The medium test.** When a clause names a medium, decide from the competency's grammar
