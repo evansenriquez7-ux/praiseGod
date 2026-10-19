@@ -407,10 +407,11 @@ def collect_findings(node_ids: Optional[List[str]] = None) -> List[str]:
             missing = [k for k in required[vt] if k not in params]
             if missing:
                 findings.append(
-                    f"{node_id} (seed {seed}): {vt} payload omits {missing}, which the "
+                    f"{node_id}: seed {seed}: {vt} payload omits {missing}, which the "
                     f"React component reads. It collapses to undefined/0/false and the "
                     f"student sees a broken or empty visual. Payload has: "
-                    f"{sorted(params)[:6] or 'NOTHING'}"
+                    f"{sorted(params)[:6] or 'NOTHING'}. Owed: emit every key the component "
+                    f"reads."
                 )
     return findings
 
@@ -428,7 +429,7 @@ def validate_all(node_ids: Optional[List[str]] = None, *, artifact_only: bool = 
     if node_ids:
         if findings:
             print(f"  FAIL render_contract_9: {len(findings)} finding(s) on {node_ids}")
-            for f in findings[:8]:
+            for f in findings:  # every content finding, by name (ruling 23)
                 print(f"    - {f}")
             return False
         print(f"  PASS render_contract_9: 0 findings on {len(node_ids)} node(s)")
@@ -437,7 +438,7 @@ def validate_all(node_ids: Optional[List[str]] = None, *, artifact_only: bool = 
     if len(findings) > RENDER_FLOOR:
         print(f"  FAIL render_contract_floor_9: {len(findings)} broken renders exceeds "
               f"floor {RENDER_FLOOR}")
-        for f in findings[:10]:
+        for f in findings:  # every content finding, by name (ruling 23)
             print(f"    - {f}")
         return False
     print(f"  PASS render_contract_floor_9: {len(findings)} broken renders (floor {RENDER_FLOOR})")

@@ -196,6 +196,7 @@ FINDING_CLASS: Dict[str, str] = {
     "config_respects_competency": CONTENT,
     "option_placement": CONTENT,
     "formatters_reachable": CONTENT,
+    "formatters_served_are_advertised": CONTENT,  # §2C reverse (owner ruling 57)
     "node_references_resolve": CONTENT,
     # The parsed competency bounds are what §1A/§1B certify against, so a bound that
     # does not parse, or parses narrower than the competency, is a ground-truth defect.

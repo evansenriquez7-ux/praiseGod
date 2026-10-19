@@ -890,7 +890,10 @@ def run_all(fail_fast: bool = False, phase: Optional[int] = None) -> int:
         # §1E, §4 and §1I depend on what a seed happens to produce, so applicability cannot
         # predict them and a node that silently stops exercising one is invisible. Comparison
         # against the last recorded run can see it.
-        applicability_errors += validate_matrix.coverage_regressions(
+        # Printed under its OWN label since 2026-10-17 (H-02): until then a regression was
+        # appended to the applicability list and printed as per_node_applicability_1H, so
+        # `coverage_regression_1H` was inventoried and classified but never emitted.
+        regression_errors = validate_matrix.coverage_regressions(
             validate_matrix._EXECUTED_BY_NODE
         )
         executed_checks.add("§1H")
@@ -904,6 +907,16 @@ def run_all(fail_fast: bool = False, phase: Optional[int] = None) -> int:
         else:
             print(f"  PASS §1H applicability (all {len(validate_matrix._EXECUTED_BY_NODE)} "
                   f"nodes ran every check their composition makes applicable)")
+        if regression_errors:
+            matrix_ok = False
+            print(f"  FAIL coverage_regression_1H ({len(regression_errors)} node(s) stopped "
+                  f"exercising a check they ran on the recorded run):")
+            for e in regression_errors[:10]:
+                print(f"    - {e}")
+            if len(regression_errors) > 10:
+                print(f"    ... and {len(regression_errors) - 10} more.")
+        else:
+            print("  PASS coverage_regression_1H (no node stopped exercising §1E/§4/§1I)")
 
         if not matrix_ok and fail_fast:
             print("  ABORT after matrix validation (fail-fast active)")
@@ -960,15 +973,14 @@ def run_all(fail_fast: bool = False, phase: Optional[int] = None) -> int:
     def _stage_capability_phase1() -> bool:
         print("\n--- Capability Contract Phase 1 (artifact-free — §6A–§6E) ---")
         tagged = validate_capability.provision_findings_tagged()
-        # The floor tolerates CONTENT only (ruling 31 keeps its number); an integrity
-        # finding fails this stage whatever the floor -- see `provision_over_floor`.
-        provision_ok = not validate_capability.provision_over_floor(tagged)
+        # No floor since 2026-10-17 (owner ruling 53): every content finding is reported by
+        # name (exit 2), and an integrity finding exits 1 by its own label.
+        provision_ok = not validate_capability.provision_failed(tagged)
         if provision_ok:
             _record_phase(1)
-            print(f"  PASS capability_contract (Phase 1: {len(tagged)} content finding(s), "
-                  f"floor {validate_capability._PROVISION_FLOOR}; no integrity finding)")
+            print("  PASS capability_contract (Phase 1: no content or integrity finding)")
         else:
-            _print_tagged(tagged, f"Phase 1, floor {validate_capability._PROVISION_FLOOR}")
+            _print_tagged(tagged, "Phase 1")
             if fail_fast:
                 return provision_ok
         return provision_ok

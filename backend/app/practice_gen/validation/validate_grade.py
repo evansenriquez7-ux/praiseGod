@@ -311,141 +311,144 @@ def collect_findings(node_ids: Optional[List[str]] = None) -> _Findings:
         finally:
             db.close()
 
-        client = TestClient(app)
+        with TestClient(app) as client:
 
-        def submit(node_id: str, problem_id: str, answer: Any) -> Dict[str, Any]:
-            """The same submission through all three production grader entry points."""
-            verdicts: Dict[str, Any] = {}
-            try:
-                verdicts["portal"] = client.post("/api/practice/submit", json={
-                    "selected_answer": answer, "student_id": student_id,
-                    "session_id": None, "skill_id": node_id, "skeleton_id": problem_id,
-                    "stem": "", "correct_answer": "", "response_time_ms": 5000,
-                    "telemetry_flagged": False,
-                }).json().get("is_correct")
-            except HermeticNetworkError:
-                raise
-            except Exception as exc:
-                verdicts["portal"] = f"ERR:{type(exc).__name__}"
-            try:
-                as_str = (json.dumps(answer) if isinstance(answer, (list, dict))
-                          else str(answer))
-                verdicts["lab_v1"] = client.post(
-                    "/api/matatag/lab/submit",
-                    params={"skeleton_id": problem_id, "student_answer": as_str},
-                ).json().get("is_correct")
-            except HermeticNetworkError:
-                raise
-            except Exception as exc:
-                verdicts["lab_v1"] = f"ERR:{type(exc).__name__}"
-            try:
-                verdicts["lab_v2"] = client.post(
-                    "/api/matatag/lab/v2/submit",
-                    json={"problem_id": problem_id, "student_answer": answer},
-                ).json().get("is_correct")
-            except HermeticNetworkError:
-                raise
-            except Exception as exc:
-                verdicts["lab_v2"] = f"ERR:{type(exc).__name__}"
-            return verdicts
-
-        for node_id in (node_ids or get_all_node_ids()):
-            for seed in SEEDS_PER_NODE:
+            def submit(node_id: str, problem_id: str, answer: Any) -> Dict[str, Any]:
+                """The same submission through all three production grader entry points."""
+                verdicts: Dict[str, Any] = {}
                 try:
-                    problem = PracticeOrchestrator.generate_problem(
-                        node_id=node_id, seed=seed, is_student_path=True
-                    )
-                except HermeticNetworkError as exc:
-                    found.hermetic.append(f"{node_id} (seed {seed}): generation {exc}")
-                    continue
+                    verdicts["portal"] = client.post("/api/practice/submit", json={
+                        "selected_answer": answer, "student_id": student_id,
+                        "session_id": None, "skill_id": node_id, "skeleton_id": problem_id,
+                        "stem": "", "correct_answer": "", "response_time_ms": 5000,
+                        "telemetry_flagged": False,
+                    }).json().get("is_correct")
+                except HermeticNetworkError:
+                    raise
                 except Exception as exc:
-                    # NOT `continue`. A node that cannot be generated is a node this gate
-                    # has not checked, and the previous version reported that as silence.
-                    found.obligation.append(
-                        f"{node_id} (seed {seed}): generation raised "
-                        f"{type(exc).__name__}: {exc}. The grading contract was never "
-                        f"exercised for this obligation."
-                    )
-                    continue
-
-                payload = problem if isinstance(problem, dict) else (
-                    problem.model_dump() if hasattr(problem, "model_dump")
-                    else dict(problem.__dict__))
-                problem_id = payload.get("problem_id") or f"{node_id}_{seed}"
-                for prefix in ("matatag:", "practice_gen_v2:", "practice_gen:"):
-                    _fallback_cache[prefix + problem_id] = payload
-
-                fmt = payload.get("format")
-                collection = payload.get("answer_collection")
-                correct = _emit_correct(payload)
-                if correct is None:
-                    found.obligation.append(
-                        f"{node_id} (seed {seed}): no correct answer is derivable for "
-                        f"format={fmt!r} answer_collection={collection!r}. The grading "
-                        f"contract cannot be stated, let alone checked."
-                    )
-                    continue
-
-                found.samples += 1
-
+                    verdicts["portal"] = f"ERR:{type(exc).__name__}"
                 try:
-                    # --- direction 1: the correct answer must be ACCEPTED -------------
-                    verdicts = submit(node_id, problem_id, correct)
-                    refused = {k: v for k, v in verdicts.items() if v is not True}
-                    if refused:
-                        found.accept.append(
-                            f"{node_id} (seed {seed}): a KNOWN-CORRECT answer {correct!r} "
-                            f"was not graded correct by {sorted(refused)} -- verdicts "
-                            f"{verdicts}. A pupil who does the mathematics right is told "
-                            f"they are wrong."
-                        )
+                    as_str = (json.dumps(answer) if isinstance(answer, (list, dict))
+                              else str(answer))
+                    verdicts["lab_v1"] = client.post(
+                        "/api/matatag/lab/submit",
+                        params={"skeleton_id": problem_id, "student_answer": as_str},
+                    ).json().get("is_correct")
+                except HermeticNetworkError:
+                    raise
+                except Exception as exc:
+                    verdicts["lab_v1"] = f"ERR:{type(exc).__name__}"
+                try:
+                    verdicts["lab_v2"] = client.post(
+                        "/api/matatag/lab/v2/submit",
+                        json={"problem_id": problem_id, "student_answer": answer},
+                    ).json().get("is_correct")
+                except HermeticNetworkError:
+                    raise
+                except Exception as exc:
+                    verdicts["lab_v2"] = f"ERR:{type(exc).__name__}"
+                return verdicts
 
-                    # --- direction 2: a wrong answer must be REFUSED ------------------
-                    wrong = _emit_wrong(payload, correct)
-                    if wrong is None:
-                        found.obligation.append(
-                            f"{node_id} (seed {seed}): no KNOWN-WRONG answer is derivable "
-                            f"for format={fmt!r} answer_collection={collection!r} "
-                            f"(correct={correct!r}). The refusal direction is unchecked "
-                            f"for this obligation."
+            for node_id in (node_ids or get_all_node_ids()):
+                for seed in SEEDS_PER_NODE:
+                    try:
+                        problem = PracticeOrchestrator.generate_problem(
+                            node_id=node_id, seed=seed, is_student_path=True
                         )
-                    else:
-                        verdicts = submit(node_id, problem_id, wrong)
+                    except HermeticNetworkError as exc:
+                        found.hermetic.append(f"{node_id} (seed {seed}): generation {exc}")
+                        continue
+                    except Exception as exc:
+                        # NOT `continue`. A node that cannot be generated is a node this gate
+                        # has not checked, and the previous version reported that as silence.
+                        found.obligation.append(
+                            f"{node_id} (seed {seed}): generation raised "
+                            f"{type(exc).__name__}: {exc}. The grading contract was never "
+                            f"exercised for this obligation."
+                        )
+                        continue
+
+                    payload = problem if isinstance(problem, dict) else (
+                        problem.model_dump() if hasattr(problem, "model_dump")
+                        else dict(problem.__dict__))
+                    problem_id = payload.get("problem_id") or f"{node_id}_{seed}"
+                    for prefix in ("matatag:", "practice_gen_v2:", "practice_gen:"):
+                        _fallback_cache[prefix + problem_id] = payload
+
+                    fmt = payload.get("format")
+                    collection = payload.get("answer_collection")
+                    correct = _emit_correct(payload)
+                    if correct is None:
+                        found.obligation.append(
+                            f"{node_id} (seed {seed}): no correct answer is derivable for "
+                            f"format={fmt!r} answer_collection={collection!r}. The grading "
+                            f"contract cannot be stated, let alone checked."
+                        )
+                        continue
+
+                    found.samples += 1
+
+                    try:
+                        # --- direction 1: the correct answer must be ACCEPTED -------------
+                        verdicts = submit(node_id, problem_id, correct)
+                        refused = {k: v for k, v in verdicts.items() if v is not True}
+                        if refused:
+                            found.accept.append(
+                                f"{node_id}: seed {seed}: a KNOWN-CORRECT answer {correct!r} "
+                                f"was not graded correct by {sorted(refused)} -- verdicts "
+                                f"{verdicts}. A pupil who does the mathematics right is told "
+                                f"they are wrong. Owed: make every grader accept the keyed "
+                                f"answer (services.scoring.answers_match)."
+                            )
+
+                        # --- direction 2: a wrong answer must be REFUSED ------------------
+                        wrong = _emit_wrong(payload, correct)
+                        if wrong is None:
+                            found.obligation.append(
+                                f"{node_id} (seed {seed}): no KNOWN-WRONG answer is derivable "
+                                f"for format={fmt!r} answer_collection={collection!r} "
+                                f"(correct={correct!r}). The refusal direction is unchecked "
+                                f"for this obligation."
+                            )
+                        else:
+                            verdicts = submit(node_id, problem_id, wrong)
+                            accepted = sorted(k for k, v in verdicts.items() if v is True)
+                            if accepted:
+                                found.refuse.append(
+                                    f"{node_id}: seed {seed}: a KNOWN-WRONG answer {wrong!r} "
+                                    f"(correct: {correct!r}) was graded CORRECT by {accepted} "
+                                    f"-- verdicts {verdicts}. A pupil who gets it wrong is "
+                                    f"told they are right. Owed: make every grader refuse it."
+                                )
+
+                        # --- direction 3: a malformed submission must be REFUSED ----------
+                        malformed = _emit_malformed(correct)
+                        verdicts = submit(node_id, problem_id, malformed)
                         accepted = sorted(k for k, v in verdicts.items() if v is True)
                         if accepted:
                             found.refuse.append(
-                                f"{node_id} (seed {seed}): a KNOWN-WRONG answer {wrong!r} "
-                                f"(correct: {correct!r}) was graded CORRECT by {accepted} "
-                                f"-- verdicts {verdicts}. A pupil who gets it wrong is "
-                                f"told they are right."
+                                f"{node_id}: seed {seed}: a MALFORMED submission "
+                                f"{malformed!r} (correct: {correct!r}) was graded CORRECT by "
+                                f"{accepted} -- verdicts {verdicts}. An out-of-contract "
+                                f"submission is being coerced into the keyed answer. Owed: make "
+                                f"every grader refuse it."
                             )
 
-                    # --- direction 3: a malformed submission must be REFUSED ----------
-                    malformed = _emit_malformed(correct)
-                    verdicts = submit(node_id, problem_id, malformed)
-                    accepted = sorted(k for k, v in verdicts.items() if v is True)
-                    if accepted:
-                        found.refuse.append(
-                            f"{node_id} (seed {seed}): a MALFORMED submission "
-                            f"{malformed!r} (correct: {correct!r}) was graded CORRECT by "
-                            f"{accepted} -- verdicts {verdicts}. An out-of-contract "
-                            f"submission is being coerced into the keyed answer."
-                        )
-
-                    # --- direction 4: an equivalent rendering must be ACCEPTED --------
-                    equivalent = _emit_whitespace_equivalent(correct)
-                    if equivalent is not None:
-                        found.equivalence_samples += 1
-                        verdicts = submit(node_id, problem_id, equivalent)
-                        refused = {k: v for k, v in verdicts.items() if v is not True}
-                        if refused:
-                            found.equivalence.append(
-                                f"{node_id} (seed {seed}): {equivalent!r}, a whitespace-"
-                                f"equivalent rendering of the correct answer {correct!r}, "
-                                f"was refused by {sorted(refused)} -- verdicts {verdicts}."
-                            )
-                except HermeticNetworkError as exc:
-                    found.hermetic.append(f"{node_id} (seed {seed}): {exc}")
+                        # --- direction 4: an equivalent rendering must be ACCEPTED --------
+                        equivalent = _emit_whitespace_equivalent(correct)
+                        if equivalent is not None:
+                            found.equivalence_samples += 1
+                            verdicts = submit(node_id, problem_id, equivalent)
+                            refused = {k: v for k, v in verdicts.items() if v is not True}
+                            if refused:
+                                found.equivalence.append(
+                                    f"{node_id}: seed {seed}: {equivalent!r}, a "
+                                    f"whitespace-equivalent rendering of the correct answer "
+                                    f"{correct!r}, was refused by {sorted(refused)} -- verdicts "
+                                    f"{verdicts}. Owed: make every grader accept it."
+                                )
+                    except HermeticNetworkError as exc:
+                        found.hermetic.append(f"{node_id} (seed {seed}): {exc}")
 
     return found
 
@@ -473,14 +476,14 @@ def validate_all(node_ids: Optional[List[str]] = None) -> bool:
     if found.refuse:
         print(f"  FAIL grading_refusal_10: {len(found.refuse)} submission(s) that must be "
               f"refused were graded CORRECT")
-        for finding in found.refuse[:8]:
+        for finding in found.refuse:  # every content finding, by name (ruling 23)
             print(f"    - {finding}")
         ok = False
 
     if found.equivalence:
         print(f"  FAIL grading_equivalence_10: {len(found.equivalence)} equivalent "
               f"rendering(s) of a correct answer were refused")
-        for finding in found.equivalence[:8]:
+        for finding in found.equivalence:  # every content finding, by name (ruling 23)
             print(f"    - {finding}")
         ok = False
 
@@ -490,7 +493,7 @@ def validate_all(node_ids: Optional[List[str]] = None) -> bool:
         # direction, which has no floor outside a full-tree run.
         if found.accept:
             print(f"  FAIL grading_contract_10: {len(found.accept)} finding(s) on {node_ids}")
-            for finding in found.accept[:8]:
+            for finding in found.accept:  # every content finding, by name (ruling 23)
                 print(f"    - {finding}")
             ok = False
         elif ok:
@@ -501,7 +504,7 @@ def validate_all(node_ids: Optional[List[str]] = None) -> bool:
     if len(found.accept) > GRADE_FLOOR:
         print(f"  FAIL grading_contract_floor_10: {len(found.accept)} mis-gradings exceeds "
               f"floor {GRADE_FLOOR}")
-        for finding in found.accept[:10]:
+        for finding in found.accept:  # every content finding, by name (ruling 23)
             print(f"    - {finding}")
         ok = False
     else:

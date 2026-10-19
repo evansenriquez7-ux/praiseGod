@@ -1818,6 +1818,19 @@ that points at it break every time the section is refreshed.
 >     This is weaker than the row's written acceptance checks, on your authority." Rejected: widening Rule 1 and
 >     re-running the campaign; building §1L and calibrated reviewers as written; ruling H-07 out of scope.
 >
+> 57. **§2C checks the reverse direction too: a formatter the student path serves must be one the lc advertises;
+>     each violation is content** (owner, 2026-10-17; asked during batch P2-A part 2, after the gap was found by
+>     execution while removing the floors). Measured over student seeds 1-40: on 16 lcs the student path served a
+>     formatter the lc's own NODE_FORMATTER_EXCLUSIONS excludes -- 30 (lc, formatter) pairs, 262 renders (e.g.
+>     mat_g3_na_q4_2 serves balance_scale at seed 1; mat_g2_dp_q3_0 serves pictograph_set on 22 of 40 seeds); the §1
+>     matrix and the §11 obligation manifest derive from the advertised set, so they never validated those pairs,
+>     and §11 called balance_scale a route no obligation can reach. Chosen: "Add the reverse direction to §2C: a
+>     formatter the student path serves must be one the lc advertises. Each served-but-excluded pair is a CONTENT
+>     finding by lc + witness seed + owed build ('advertise it, or stop serving it'): 30 findings on 16 lcs today.
+>     It is proven by a mutation on a clean lc. The §11 manifest's resulting blind spot (it under-counts production
+>     by these pairs) is written as a NAMED LIMIT that closes as the findings are fixed." Rejected: the same check as
+>     integrity (red until a generator/registry fix, outside Phase 2); a named limit only.
+>
 > **Owner rulings recorded 2026-09-22, binding on the next session:**
 >
 > 1. **The medium test.** When a clause names a medium, decide from the competency's grammar

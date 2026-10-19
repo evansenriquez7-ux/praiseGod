@@ -212,17 +212,21 @@ def _tagged_phase1(stubbed, tagged):
                     lambda node_ids=None: list(tagged))
 
 
-def test_capability_content_within_the_floor_passes(stubbed_harness):
-    _tagged_phase1(stubbed_harness, [(VC.CONTENT_ROLLUP, f"mat_g1_na_q1_0: gap {i} at seed {i}. Owed: x.")
-                                     for i in range(VC._PROVISION_FLOOR)])
-    assert ra.run_all(phase=1) == 0
+def test_one_capability_content_finding_exits_2_and_is_printed_by_name(stubbed_harness, capsys):
+    """Owner ruling 53: no floor -- ONE content gap is reported by name (exit 2), not absorbed.
 
-
-def test_capability_content_over_the_floor_exits_2(stubbed_harness, capsys):
-    _tagged_phase1(stubbed_harness, [(VC.CONTENT_ROLLUP, f"mat_g1_na_q1_0: gap {i} at seed {i}. Owed: x.")
-                                     for i in range(VC._PROVISION_FLOOR + 1)])
+    The catching side of `capability_content_absorbed_again`, which restores a tolerance."""
+    _tagged_phase1(stubbed_harness, [(VC.CONTENT_ROLLUP,
+                                      "mat_g1_na_q1_0: gap 'x'; ruled substitute (ruling 52): an absence. Owed: x.")])
     assert ra.run_all(phase=1) == 2
-    assert "FAIL capability_contract" in capsys.readouterr().out
+    out = capsys.readouterr().out
+    assert "FAIL capability_contract (Phase 1, 1 content finding(s)):" in out
+    assert "mat_g1_na_q1_0: gap 'x'" in out
+
+
+def test_no_capability_finding_passes(stubbed_harness):
+    _tagged_phase1(stubbed_harness, [])
+    assert ra.run_all(phase=1) == 0
 
 
 @pytest.mark.parametrize("label", ["requires_ignore_locked_6B",
@@ -230,9 +234,9 @@ def test_capability_content_over_the_floor_exits_2(stubbed_harness, capsys):
                                    "capability_provenance_6A", "capability_coverage_6B",
                                    "capability_phase_boundary_6",
                                    "capability_phase_partition_6"])
-def test_a_capability_integrity_finding_is_not_absorbed_by_the_floor(
+def test_a_capability_integrity_finding_exits_1_beside_content(
         stubbed_harness, capsys, label):
-    """One integrity finding plus content well inside the floor: still exit 1."""
+    """One integrity finding beside a content finding: still exit 1."""
     _tagged_phase1(stubbed_harness, [(VC.CONTENT_ROLLUP, "mat_g1_na_q1_0: a gap at seed 1. Owed: x."),
                                      (label, "mat_x: planted")])
     assert ra.run_all(phase=1) == 1

@@ -18,7 +18,7 @@ import json
 import re
 import sys
 from pathlib import Path
-from typing import Dict, List
+from typing import Dict, List, Optional
 
 from ..compatibility import COMPATIBILITY
 from ..registry import NODE_TO_DNA, get_node_formatters
@@ -37,6 +37,7 @@ ASSERTIONS = (
     "config_respects_competency",           # §2D
     "option_placement",                     # §2E
     "formatters_reachable",                 # §2C
+    "formatters_served_are_advertised",     # §2C reverse (owner ruling 57)
     "node_references_resolve",              # §2F
     "all_competency_bounds_parse",          # §2G
     "competency_scope_not_narrowed",        # §2H
@@ -780,7 +781,10 @@ _REACH_SEEDS = 40
 # fixed were different EXCLUSION-FILE states, not sampling noise):
 #   mat_g1_na_q3_4/number_bond, mat_g1_mg_q4_4/timetable_read,
 #   mat_g3_na_q4_0 and mat_g3_na_q4_2 x {array_grid_read, array_grid_set}
-_REACH_FLOOR = 6
+# 2026-10-17 (owner ruling 53): the floor is GONE. Each unreachable pair is a named content
+# finding (exit 2) -- lc + ruling 52's substitute (an unserved formatter has no render) +
+# owed build -- so a seventh pair is reported by name instead of absorbed. The check is
+# proven by mutations scoped (`--only reachable --node-ids`) to lcs whose baseline is clean.
 
 # A node needs this many successful generations before its unreachable set means
 # anything. Half the seed budget: enough for a formatter with any real selection
@@ -794,7 +798,76 @@ _REACH_MIN_SAMPLES = _REACH_SEEDS // 2
 _DANGLING_FLOOR = 1
 
 
-def validate_advertised_formatters_are_reachable() -> List[str]:
+_SWEEP_CACHE: Dict[tuple, Dict[str, tuple]] = {}
+
+
+def _student_path_sweep(node_ids: Optional[List[str]] = None) -> Dict[str, tuple]:
+    """{lc: (advertised set, {served formatter: [seeds]}, successful renders)} over student
+    seeds 1.._REACH_SEEDS. Shared by §2C's two directions so the tree is rendered once per
+    process (cached by scope); every lc is swept, whatever it advertises."""
+    from backend.app.services.orchestrator import PracticeOrchestrator
+    from ..registry import get_all_node_ids, get_node_formatters
+
+    key = tuple(node_ids) if node_ids else ()
+    if key in _SWEEP_CACHE:
+        return _SWEEP_CACHE[key]
+    out: Dict[str, tuple] = {}
+    for node_id in (node_ids or get_all_node_ids()):
+        advertised = set(get_node_formatters(node_id) or [])
+        served_at: Dict[str, List[int]] = {}
+        generated = 0
+        for seed in range(1, _REACH_SEEDS + 1):
+            try:
+                p = PracticeOrchestrator.generate_problem(
+                    node_id=node_id, seed=seed, is_student_path=True)
+            except Exception:
+                # DISPOSITION: checked -- `generated` counts only successful renders and
+                # §2C compares reachability against that count, so a failure shrinks the
+                # sample rather than being counted as a reach. §1C owns the failure.
+                continue
+            generated += 1
+            d = p if isinstance(p, dict) else p.__dict__
+            if d.get("formatter_name"):
+                served_at.setdefault(d["formatter_name"], []).append(seed)
+        out[node_id] = (advertised, served_at, generated)
+    _SWEEP_CACHE[key] = out
+    return out
+
+
+def validate_served_formatters_are_advertised(node_ids: Optional[List[str]] = None) -> List[str]:
+    """
+    §2C reverse (owner ruling 57, 2026-10-17) -- a formatter the student path SERVES must be
+    one the lc ADVERTISES.
+
+    §2C proved only that everything advertised is served. Measured 2026-10-17 over student
+    seeds 1-40: on 16 lcs the student path served a formatter the lc's own
+    NODE_FORMATTER_EXCLUSIONS excludes -- 30 (lc, formatter) pairs, 262 renders (e.g.
+    mat_g3_na_q4_2 serves balance_scale at seed 1). The §1 matrix and the §11 obligation
+    manifest derive from the ADVERTISED set, so they never validated those renders, and
+    §11 called balance_scale a route no obligation reaches. Each pair is a CONTENT finding
+    by lc + witness seed + owed build. NAMED LIMIT: seeds 1-40 of the student path only;
+    a pair served only at other seeds or experiences is not seen.
+    """
+    from backend.app.practice_gen._generated_formatter_exclusions import NODE_FORMATTER_EXCLUSIONS
+
+    errors: List[str] = []
+    for node_id, (advertised, served_at, _generated) in _student_path_sweep(node_ids).items():
+        excluded = set(NODE_FORMATTER_EXCLUSIONS.get(node_id, ()))
+        for fmt in sorted(set(served_at) - advertised):
+            seeds = served_at[fmt]
+            why = "NODE_FORMATTER_EXCLUSIONS excludes it" if fmt in excluded else "it is not in its advertised set"
+            errors.append(
+                f"{node_id}: seed {seeds[0]} serves {fmt!r} on the student path, but the lc does not "
+                f"advertise it ({why}); served at {len(seeds)} of seeds 1-{_REACH_SEEDS}: {seeds[:10]}. "
+                f"The §1 matrix and the §11 obligation manifest validate only advertised formatters, "
+                f"so these items are outside both. Reproduce: PracticeOrchestrator.generate_problem("
+                f"node_id={node_id!r}, seed={seeds[0]}, is_student_path=True). Owed: advertise it (so "
+                f"§1 and §11 validate it), or stop the student path serving it."
+            )
+    return errors
+
+
+def validate_advertised_formatters_are_reachable(node_ids: Optional[List[str]] = None) -> List[str]:
     """
     §2C — a formatter a node advertises must be REACHABLE by the path students take.
 
@@ -814,29 +887,11 @@ def validate_advertised_formatters_are_reachable() -> List[str]:
     which several formatters share, and a first attempt at fingerprinting mis-reported 62
     unreachable pairs where the real number was 12.
     """
-    from backend.app.services.orchestrator import PracticeOrchestrator
-    from ..registry import get_all_node_ids, get_node_formatters
-
     errors: List[str] = []
-    for node_id in get_all_node_ids():
-        advertised = set(get_node_formatters(node_id) or [])
+    for node_id, (advertised, served_at, generated) in _student_path_sweep(node_ids).items():
         if len(advertised) < 2:
             continue
-        served = set()
-        generated = 0
-        for seed in range(1, _REACH_SEEDS + 1):
-            try:
-                p = PracticeOrchestrator.generate_problem(
-                    node_id=node_id, seed=seed, is_student_path=True)
-            except Exception:
-                # DISPOSITION: checked -- `generated` counts only successful renders and
-                # §2C compares reachability against that count, so a failure shrinks the
-                # sample rather than being counted as a reach. §1C owns the failure.
-                continue
-            generated += 1
-            d = p if isinstance(p, dict) else p.__dict__
-            if d.get("formatter_name"):
-                served.add(d["formatter_name"])
+        served = set(served_at)
 
         # A failed generation is not evidence that a formatter is unreachable -- it is no
         # evidence at all. Swallowing them with `continue` and then reporting the shortfall
@@ -847,12 +902,15 @@ def validate_advertised_formatters_are_reachable() -> List[str]:
         if generated < _REACH_MIN_SAMPLES:
             continue
         # One finding per (node, formatter), not per node. A node already on this list
-        # losing another formatter used to change nothing at all -- see _REACH_FLOOR.
+        # losing another formatter used to change nothing at all (ruling 53 removed the floor).
         for fmt in sorted(advertised - served):
             errors.append(
                 f"{node_id}: advertises {fmt!r} but the student path never selected it in "
                 f"{_REACH_SEEDS} seeds (served: {sorted(served)}). §1 validates content no "
-                f"pupil receives, and the Lab offers a menu wider than what is served (§2C)."
+                f"pupil receives, and the Lab offers a menu wider than what is served (§2C). "
+                f"Witness: ruled substitute (ruling 52): a formatter the student path never "
+                f"serves has no render; student seeds 1-{_REACH_SEEDS} tried. Owed: make the "
+                f"student path select {fmt!r} for this lc, or stop advertising it here."
             )
     return errors
 
@@ -1378,6 +1436,7 @@ def validate_all() -> bool:
     config_errors = validate_config_respects_competency()
     placement_errors = validate_option_placement()
     reach_errors = validate_advertised_formatters_are_reachable()
+    served_errors = validate_served_formatters_are_advertised()
     dangling_errors = validate_node_references_resolve()
     bounds_property_errors = validate_all_competency_bounds_parse()
     scope_errors = validate_competency_scope_not_narrowed()
@@ -1387,16 +1446,17 @@ def validate_all() -> bool:
     all_errors = (compat_errors + coverage_errors + monotonicity_errors
                   + equivalence_errors + bounds_errors + servable_errors + config_errors
                   + placement_errors
-                  + (reach_errors if len(reach_errors) > _REACH_FLOOR else [])
+                  + reach_errors + served_errors
                   + dangling_errors + bounds_property_errors + scope_errors
                   + (producible_errors if len(producible_errors) > _PRODUCIBLE_FLOOR else [])
                   + medium_errors + batch_errors)
 
-    total_checks = 15
+    total_checks = 16
     passed = sum([not compat_errors, not coverage_errors, not monotonicity_errors,
                   not equivalence_errors, not bounds_errors, not servable_errors,
                   not config_errors, not placement_errors,
-                  len(reach_errors) <= _REACH_FLOOR,
+                  not reach_errors,
+                  not served_errors,
                   not dangling_errors,
                   not bounds_property_errors,
                   not scope_errors,
@@ -1455,14 +1515,19 @@ def validate_all() -> bool:
     else:
         print("  PASS option_placement")
 
-    if len(reach_errors) > _REACH_FLOOR:
-        print(f"  FAIL formatters_reachable ({len(reach_errors)} (node, formatter) pair(s), "
-              f"floor {_REACH_FLOOR}):")
+    if reach_errors:
+        print(f"  FAIL formatters_reachable ({len(reach_errors)} (node, formatter) pair(s)):")
         for e in reach_errors:  # every content finding, by name (ruling 23)
             print(f"    - {e}")
     else:
-        print(f"  PASS formatters_reachable ({len(reach_errors)} (node, formatter) pair(s), "
-              f"floor {_REACH_FLOOR})")
+        print("  PASS formatters_reachable (every advertised formatter is served on the student path)")
+
+    if served_errors:
+        print(f"  FAIL formatters_served_are_advertised ({len(served_errors)} (node, formatter) pair(s)):")
+        for e in served_errors:  # every content finding, by name (ruling 23)
+            print(f"    - {e}")
+    else:
+        print("  PASS formatters_served_are_advertised (every served formatter is advertised)")
 
     if dangling_errors:
         print("  FAIL node_references_resolve:")
@@ -1522,6 +1587,7 @@ def validate_all() -> bool:
 
 _SINGLE_CHECKS = {
     "reachable": ("formatters_reachable", validate_advertised_formatters_are_reachable),
+    "served": ("formatters_served_are_advertised", validate_served_formatters_are_advertised),
     "config": ("config_respects_competency", validate_config_respects_competency),
     "placement": ("option_placement", validate_option_placement),
     "references": ("node_references_resolve", validate_node_references_resolve),
@@ -1535,7 +1601,12 @@ _SINGLE_CHECKS = {
 }
 
 
-def _run_single(name: str) -> int:
+# The single checks that accept an lc scope (proof mode: a content check with standing
+# findings is proven on an lc whose baseline is clean, Mandate 5; run_all never scopes).
+_SCOPABLE = {"reachable", "served"}
+
+
+def _run_single(name: str, node_ids: Optional[List[str]] = None) -> int:
     """
     Run ONE check and report it the way validate_all does.
 
@@ -1545,12 +1616,13 @@ def _run_single(name: str) -> int:
     A check that is expensive to prove tends to end up unproven.
     """
     label, fn = _SINGLE_CHECKS[name]
-    errors = fn()
-    floor = {"formatters_reachable": _REACH_FLOOR,
-             "node_references_resolve": _DANGLING_FLOOR,
+    if node_ids and name not in _SCOPABLE:
+        raise SystemExit(f"--node-ids is accepted only with --only {sorted(_SCOPABLE)}, not {name!r}")
+    errors = fn(node_ids) if node_ids else fn()
+    floor = {"node_references_resolve": _DANGLING_FLOOR,
              "declared_variants_are_producible": _PRODUCIBLE_FLOOR}.get(label, 0)
     over = (len(errors) > floor
-            if label in ("formatters_reachable", "declared_variants_are_producible")
+            if label == "declared_variants_are_producible"
             else bool(errors))
     if label == "node_references_resolve":
         over = bool(errors)  # the floor is applied inside that check
@@ -1569,7 +1641,8 @@ if __name__ == "__main__":
     ap = argparse.ArgumentParser(description="compatibility / registry checks")
     ap.add_argument("--only", choices=sorted(_SINGLE_CHECKS),
                     help="run a single check (used by the mutation harness)")
+    ap.add_argument("--node-ids", help="comma-separated lc scope for --only reachable (proof mode)")
     args = ap.parse_args()
     if args.only:
-        sys.exit(_run_single(args.only))
+        sys.exit(_run_single(args.only, args.node_ids.split(",") if args.node_ids else None))
     sys.exit(0 if validate_all() else 1)

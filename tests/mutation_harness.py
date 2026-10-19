@@ -1107,8 +1107,10 @@ MUTATIONS: List[Mutation] = [
         # so the proof was rejected for a red baseline (Mandate 5) and the assertion read
         # as having no mutation at all. §6D is a Phase 1 check, `--phase 1` exits 0 on the
         # current tree, and the plant still reaches the code §6D executes.
-        command=["backend.app.practice_gen.validation.validate_capability",
-                 "--phase", "1"],
+        # Scoped since 2026-10-17 (owner ruling 53): the five standing Phase 1 content
+        # findings no longer sit under a floor, so this CONTENT proof runs on the lc the
+        # plant reaches, whose baseline is clean (Mandate 5).
+        command=["backend.app.practice_gen.validation.validate_capability", "--phase", "1", "--node-ids", "mat_g1_na_q1_0"],
         expected_check="§6D (a generic textual formatter is not a provider)",
         # Must name the capability AND cite §6D: exiting non-zero is not proof
         # while the honest §6D queue is open.
@@ -1153,7 +1155,10 @@ MUTATIONS: List[Mutation] = [
         ),
         edits={},
         apply_fn=lambda: _plant_orphan_provider(),
-        command=["backend.app.practice_gen.validation.validate_capability", "--phase", "1"],
+        # Scoped since 2026-10-17 (owner ruling 53): the five standing Phase 1 content
+        # findings no longer sit under a floor, so this CONTENT proof runs on the lc the
+        # plant reaches, whose baseline is clean (Mandate 5).
+        command=["backend.app.practice_gen.validation.validate_capability", "--phase", "1", "--node-ids", "mat_g1_na_q1_0"],
         expected_check="§6A (a provider entry no requirement reaches)",
         expect_output_contains=[f"{_ORPHAN_PROVIDER} && but no node's `requires` names it"],
         baseline_must_not_contain=[f"{_ORPHAN_PROVIDER} && but no node's `requires` names it"],
@@ -1566,8 +1571,10 @@ MUTATIONS: List[Mutation] = [
         # `wildcard_provider`: the unscoped command's baseline is red from the Phase 2
         # attestation queue. The partition check reports from the Phase 1 half, which is
         # where this plant lands.
-        command=["backend.app.practice_gen.validation.validate_capability",
-                 "--phase", "1"],
+        # --integrity-only since 2026-10-17 (owner ruling 53): the five standing Phase 1
+        # content findings no longer sit under a floor, so this INTEGRITY proof reports
+        # integrity labels only (Mandate 5).
+        command=["backend.app.practice_gen.validation.validate_capability", "--phase", "1", "--integrity-only"],
         expected_check="§6 per-phase reconciliation (a finding may only cite refs of its own phase)",
         expect_output_contains=["capability_phase_partition_6 && §6D"],
         baseline_must_not_contain=["capability_phase_partition_6"],
@@ -3241,7 +3248,11 @@ MUTATIONS: List[Mutation] = [
                 "            problem.formatter_name = None  # planted mutation\n",
             )
         },
-        command=["backend.app.practice_gen.validation.validate_compat", "--only", "reachable"],
+        # SCOPED 2026-10-17 (owner ruling 53): formatters_reachable has no floor now, so the six
+        # standing pairs make the unscoped baseline red. Proven on an lc whose baseline is clean
+        # and which the plant reaches (Mandate 5).
+        command=["backend.app.practice_gen.validation.validate_compat", "--only", "reachable",
+                 "--node-ids", "mat_g1_na_q1_0"],
         expected_check="§2C (an advertised formatter must be reachable by the student path)",
         expect_output_contains=["FAIL formatters_reachable"],
         baseline_must_not_contain=["FAIL formatters_reachable"],
@@ -3297,8 +3308,7 @@ MUTATIONS: List[Mutation] = [
             "The other half of ruling 15's one rule: what a node ADVERTISES (and the Lab "
             "offers). Skip the composition in get_node_formatters and every composed node "
             "advertises text formatters the student path can no longer select. That is "
-            "§2C's defect class exactly -- a menu wider than what is served -- and it must "
-            "fail above its floor."
+            "§2C's defect class exactly -- a menu wider than what is served."
         ),
         edits={
             "backend/app/practice_gen/registry.py": (
@@ -3306,7 +3316,11 @@ MUTATIONS: List[Mutation] = [
                 "    return result  # planted mutation\n",
             )
         },
-        command=["backend.app.practice_gen.validation.validate_compat", "--only", "reachable"],
+        # SCOPED 2026-10-17 (owner ruling 53): formatters_reachable has no floor now, so the six
+        # standing pairs make the unscoped baseline red. Proven on an lc whose baseline is clean
+        # and which the plant reaches (Mandate 5).
+        command=["backend.app.practice_gen.validation.validate_compat", "--only", "reachable",
+                 "--node-ids", "mat_g1_na_q1_9"],  # measured: the plant reaches 12 clean lcs
         expected_check="§2C (an advertised formatter must be reachable by the student path)",
         expect_output_contains=["FAIL formatters_reachable"],
         baseline_must_not_contain=["FAIL formatters_reachable"],
@@ -3486,25 +3500,24 @@ MUTATIONS: List[Mutation] = [
         name="coverage_map_gap",
         asserts=["assertion_coverage_8"],
         description=(
-            "Remove an assertion from the allowlist without writing its mutation. §8 must "
-            "then report it as neither proven nor excused. This is the gate that stops the "
+            "Declare an assertion with no mutation and no allowlist entry (originally: remove "
+            "one from the allowlist without writing its mutation). §8 must then report it as "
+            "neither proven nor excused. This is the gate that stops the "
             "deficit growing: before §8, `Mutation.expected_check` was free text and "
             "nothing could state which assertions were proven, so '17 of 24 checks' "
             "counted a REF as proven when one of its sub-assertions was -- while "
             "validate_matrix alone emits 26 assertion labels behind ~11 refs."
         ),
         edits={
-            # RE-ANCHORED 2026-09-17. The previous anchor was the `worker_crash` allowlist
-            # entry, which no longer exists -- the allowlist shrank from 29 entries to 11,
-            # and this plant had been matching ZERO lines. It could never land, so the
-            # mutation could never have been DETECTED even against a green baseline. The
-            # red baseline hid it: the runner rejects on the baseline BEFORE it plants, so
-            # the anchor was never exercised. Mandate 2's two causes, both present at once.
-            # `census_unit_tests` is a permanent resident (proving it means shrinking the
-            # suite), so it is a more stable anchor than an infrastructure label.
-            "backend/app/practice_gen/validation/validate_coverage.py": (
-                '    "census_unit_tests":            "2026-09-08: the unit-test floor. Proving it means shrinking the suite under the harness, which the mutation runner cannot restore safely if interrupted mid-collection",\n',
-                '    # planted mutation: allowlist entry removed, no mutation written\n',
+            # RE-ANCHORED 2026-10-17 (P2-A). This planted by deleting an UNPROVEN_ASSERTIONS
+            # entry (`worker_crash` until 2026-09-17, then `census_unit_tests`). H-02 paid
+            # every entry it could, so an allowlist anchor keeps vanishing. The same §8
+            # direction -- an assertion neither proven nor excused -- is planted instead by
+            # declaring a NEW label no mutation names, in a module's ASSERTIONS.
+            "backend/app/practice_gen/validation/validate_naming.py": (
+                '    "content_finding_named",   # a content finding lacks lc/route, witness seed or substitute, or owed build\n',
+                '    "content_finding_named",   # a content finding lacks lc/route, witness seed or substitute, or owed build\n'
+                '    "planted_unproven_assertion",  # planted mutation: declared, no mutation written\n',
             )
         },
         command=["pytest", "tests/unit/test_coverage_selfcheck.py", "-q", "-p", "no:cacheprovider"],
@@ -4173,14 +4186,11 @@ MUTATIONS: List[Mutation] = [
         name="single_formatter_unreachable",
         asserts=["formatters_reachable"],
         description=(
-            "Make ONE more advertised formatter unreachable on nodes that are ALREADY on "
-            "§2C's list. The existing mutation makes every advertised formatter "
-            "unreachable and so blows past any floor; this is the regression a floor "
-            "actually has to catch, and at node granularity it could not: the node count "
-            "stays at 18 while cloze joins pattern_sequence as unserved on two patterns "
-            "nodes. Measured -- pairs 37 -> 39, nodes 18 -> 18. A floor defeats only a "
-            "regression smaller than its headroom, and every within-node regression was "
-            "smaller than a node-counted floor's headroom by construction."
+            "Make ONE more advertised formatter unreachable: cloze stops being servable on "
+            "the patterns lcs that advertise it. When §2C had a floor, a regression smaller "
+            "than its headroom passed; the floor is gone (owner ruling 53), so one new "
+            "(lc, formatter) pair must fail by name. Scoped to the two lcs the plant reaches "
+            "(measured in-process 2026-10-17: mat_g1_na_q3_7, mat_g2_na_q2_9)."
         ),
         edits={
             "backend/app/practice_gen/compatibility.py": (
@@ -4191,7 +4201,11 @@ MUTATIONS: List[Mutation] = [
                 '        "cloze": {"task_type": ["__planted_never__"]},  # planted mutation\n',
             ),
         },
-        command=["backend.app.practice_gen.validation.validate_compat", "--only", "reachable"],
+        # SCOPED 2026-10-17 (owner ruling 53): formatters_reachable has no floor now, so the six
+        # standing pairs make the unscoped baseline red. Proven on an lc whose baseline is clean
+        # and which the plant reaches (Mandate 5).
+        command=["backend.app.practice_gen.validation.validate_compat", "--only", "reachable",
+                 "--node-ids", "mat_g1_na_q3_7,mat_g2_na_q2_9"],  # measured: the 2 lcs it reaches
         expected_check="§2C (an advertised formatter must be reachable on the student path)",
         expect_output_contains=["FAIL formatters_reachable", "advertises 'cloze'"],
         baseline_must_not_contain=["advertises 'cloze'"],
@@ -4218,7 +4232,10 @@ MUTATIONS: List[Mutation] = [
                 '"id": "half_turn",\n          "clause": "half rotation"',
             ),
         },
-        command=["backend.app.practice_gen.validation.validate_capability", "--phase", "1"],
+        # --integrity-only since 2026-10-17 (owner ruling 53): the five standing Phase 1
+        # content findings no longer sit under a floor, so this INTEGRITY proof reports
+        # integrity labels only (Mandate 5).
+        command=["backend.app.practice_gen.validation.validate_capability", "--phase", "1", "--integrity-only"],
         expected_check="§6 (the declarations validated are the ones an author wrote)",
         expect_output_contains=["mat_g1_mg_q4_0 && does not match"],
         baseline_must_not_contain=["does not match"],
@@ -4237,7 +4254,10 @@ MUTATIONS: List[Mutation] = [
         ),
         edits={},
         apply_fn=lambda: _plant_stale_generated_graph(),
-        command=["backend.app.practice_gen.validation.validate_capability", "--phase", "1"],
+        # --integrity-only since 2026-10-17 (owner ruling 53): the five standing Phase 1
+        # content findings no longer sit under a floor, so this INTEGRITY proof reports
+        # integrity labels only (Mandate 5).
+        command=["backend.app.practice_gen.validation.validate_capability", "--phase", "1", "--integrity-only"],
         expected_check="§6 (the generated graph matches a fresh build, in every field)",
         expect_output_contains=[f"{_STALE_GRAPH_NODE} && 'cumulative_concepts'"],
         baseline_must_not_contain=[f"{_STALE_GRAPH_NODE} && 'cumulative_concepts'"],
@@ -4255,7 +4275,10 @@ MUTATIONS: List[Mutation] = [
         ),
         edits={},
         apply_fn=lambda: _plant_unsanctioned_requires_ignore(),
-        command=["backend.app.practice_gen.validation.validate_capability", "--phase", "1"],
+        # --integrity-only since 2026-10-17 (owner ruling 53): the five standing Phase 1
+        # content findings no longer sit under a floor, so this INTEGRITY proof reports
+        # integrity labels only (Mandate 5).
+        command=["backend.app.practice_gen.validation.validate_capability", "--phase", "1", "--integrity-only"],
         expected_check="§6B (requires_ignore is human-authored ground truth)",
         expect_output_contains=[f"{_IGNORE_LOCK_NODE} && does not match"],
         baseline_must_not_contain=[f"{_IGNORE_LOCK_NODE} && does not match"],
@@ -4309,7 +4332,10 @@ MUTATIONS: List[Mutation] = [
                 '"id": "half_turn",\n          "clause": "half somersault"',
             ),
         },
-        command=['backend.app.practice_gen.validation.validate_capability', '--phase', '1'],
+        # --integrity-only since 2026-10-17 (owner ruling 53): the five standing Phase 1
+        # content findings no longer sit under a floor, so this INTEGRITY proof reports
+        # integrity labels only (Mandate 5).
+        command=["backend.app.practice_gen.validation.validate_capability", "--phase", "1", "--integrity-only"],
         expected_check="§6A (a declared clause must be a literal substring of the competency)",
         expect_output_contains=["half somersault && does not appear in the node's competency"],
         baseline_must_not_contain=["does not appear in the node's competency"],
@@ -4331,7 +4357,10 @@ MUTATIONS: List[Mutation] = [
                 '',
             ),
         },
-        command=['backend.app.practice_gen.validation.validate_capability', '--phase', '1'],
+        # --integrity-only since 2026-10-17 (owner ruling 53): the five standing Phase 1
+        # content findings no longer sit under a floor, so this INTEGRITY proof reports
+        # integrity labels only (Mandate 5).
+        command=["backend.app.practice_gen.validation.validate_capability", "--phase", "1", "--integrity-only"],
         expected_check="§6B (every content word of the competency is covered by some clause)",
         expect_output_contains=["mat_g1_mg_q4_0 && are covered by no requirement"],
         baseline_must_not_contain=["are covered by no requirement"],
@@ -4354,7 +4383,10 @@ MUTATIONS: List[Mutation] = [
                 "    # planted mutation: provider entry deleted\n",
             ),
         },
-        command=['backend.app.practice_gen.validation.validate_capability', '--phase', '1'],
+        # Scoped since 2026-10-17 (owner ruling 53): the five standing Phase 1 content
+        # findings no longer sit under a floor, so this CONTENT proof runs on the lc the
+        # plant reaches, whose baseline is clean (Mandate 5).
+        command=["backend.app.practice_gen.validation.validate_capability", "--phase", "1", "--node-ids", "mat_g1_na_q1_6"],
         expected_check="§6C (every declared capability maps to something the node can produce)",
         expect_output_contains=["'0_and_5' && register it in CAPABILITY_PROVIDERS"],
         baseline_must_not_contain=["'0_and_5' && register it in CAPABILITY_PROVIDERS"],
@@ -4380,7 +4412,10 @@ MUTATIONS: List[Mutation] = [
                 "    'range_up_to_100': {'bounds': ['range', 'max_value', 'max_count', 'max_sum', 'max_minuend', 'minuend_max', 'max_product', 'max_result', 'max_total', 'max_subtrahend', 'min_minuend', 'min_subtrahend', 'min_a', 'ordinal_range', 'digit_count', 'operand_digits', 'skip_interval', 'skip_pool', 'denominators', 'table', 'tables', 'max_ordinal', 'factors', 'products', 'minuends', 'subtrahends', 'addends']},\n",
             ),
         },
-        command=['backend.app.practice_gen.validation.validate_capability', '--phase', '1'],
+        # Scoped since 2026-10-17 (owner ruling 53): the five standing Phase 1 content
+        # findings no longer sit under a floor, so this CONTENT proof runs on the lc the
+        # plant reaches, whose baseline is clean (Mandate 5).
+        command=["backend.app.practice_gen.validation.validate_capability", "--phase", "1", "--node-ids", "mat_g1_na_q1_0"],
         expected_check="§6E (a `bounds` catch-all most of the table shares is not a provider)",
         expect_output_contains=["'range_up_to_100' && only reachable provider is a `bounds` catch-all"],
         baseline_must_not_contain=["only reachable provider is a `bounds` catch-all"],
@@ -5444,7 +5479,9 @@ MUTATIONS: List[Mutation] = [
                 "                    rejections.append(Rejection(\n",
             )
         },
-        command=["backend.app.practice_gen.validation.validate_obligations", "--only", "manifest"],
+        # --integrity-only since 2026-10-17: the five unreachable routes are content findings
+        # now (ruling 53) and would make this integrity proof's baseline red (Mandate 5).
+        command=["backend.app.practice_gen.validation.validate_obligations", "--only", "manifest", "--integrity-only"],
         expected_check="§11 (two independent derivations of the reachable count agree)",
         expect_output_contains=["FAIL obligation_derivations_agree",
                                 "disagree"],
@@ -5454,23 +5491,25 @@ MUTATIONS: List[Mutation] = [
         name="dead_formatter_route_ignored",
         asserts=["obligation_routes_reachable"],
         description=(
-            "Register a sixth formatter route nothing can reach. §2B and §2C hold "
-            "'a formatter a node ADVERTISES must be servable'; until §11 nothing held the "
-            "reverse, so a route in adapter.FORMATTER_ROUTES that no DNA declares and no "
-            "node advertises sat there indefinitely. Five already do, in two classes, "
-            "which is why the gate is a shrink-only floor rather than a hard zero."
+            "Take calendar_read away from the only DNA that declares it, so the route stays "
+            "registered in adapter.FORMATTER_ROUTES while no obligation can reach it. §2B/§2C "
+            "hold 'what a node ADVERTISES must be servable'; this holds the reverse for routes. "
+            "Until 2026-10-17 the five standing dead routes sat under a shrink-only floor; owner "
+            "ruling 53 made each a named content finding, so the proof is scoped with --routes "
+            "to a route that is reachable at baseline (Mandate 5). The first version planted a "
+            "brand-new route, which a --routes scope cannot name at baseline."
         ),
         edits={
-            "backend/app/practice_gen/adapter.py": (
-                "FORMATTER_ROUTES: Dict[str, tuple] = {\n",
-                'FORMATTER_ROUTES: Dict[str, tuple] = {\n'
-                '    "planted_dead_route": (),  # planted mutation\n',
+            "backend/app/practice_gen/compatibility.py": (
+                '    "calendar": [\n        "calendar_read",\n',
+                '    "calendar": [  # planted mutation: calendar_read undeclared\n',
             )
         },
-        command=["backend.app.practice_gen.validation.validate_obligations", "--only", "manifest"],
-        expected_check="§11 (a registered formatter route no obligation can reach)",
+        command=["backend.app.practice_gen.validation.validate_obligations", "--only", "manifest",
+                 "--routes", "calendar_read"],
+        expected_check="§11 (a registered formatter route no obligation can reach; ruling 53)",
         expect_output_contains=["FAIL obligation_routes_reachable",
-                                "planted_dead_route"],
+                                "route 'calendar_read'"],
         baseline_must_not_contain=["FAIL obligation_routes_reachable"],
     ),
     Mutation(
@@ -5487,7 +5526,9 @@ MUTATIONS: List[Mutation] = [
                 "    return tuple(sorted(bank))  # planted mutation: automatic path dropped\n",
             )
         },
-        command=["backend.app.practice_gen.validation.validate_obligations", "--only", "manifest"],
+        # --integrity-only since 2026-10-17: the five unreachable routes are content findings
+        # now (ruling 53) and would make this integrity proof's baseline red (Mandate 5).
+        command=["backend.app.practice_gen.validation.validate_obligations", "--only", "manifest", "--integrity-only"],
         expected_check="§11 (every finite serving dimension is crossed)",
         expect_output_contains=["FAIL obligation_dimension_coverage_11",
                                 "fewer than 27 interest request paths"],
@@ -6688,6 +6729,250 @@ MUTATIONS: List[Mutation] = [
         expected_check="§18 the two render children enumerate the same paths (integrity)",
         expect_output_contains=["FAIL determinism_harness_18", "enumerated different paths"],
         baseline_must_not_contain=["FAIL determinism_harness_18"],
+    ),
+    # ---- owner ruling 57: §2C reverse, a served formatter must be advertised --------------
+    Mutation(
+        name="served_formatter_left_unadvertised",
+        asserts=["formatters_served_are_advertised"],
+        description=(
+            "Exclude number_line_read from mat_g1_na_q1_0's advertised set while the student "
+            "path keeps serving it (measured in-process 2026-10-17: 10 of 40 seeds). The Lab "
+            "menu, the §1 matrix and the §11 obligation manifest then all omit a formatter "
+            "pupils receive -- the shape found on 16 lcs, 262 renders, that ruling 57 gates."
+        ),
+        edits={
+            "backend/app/practice_gen/_generated_formatter_exclusions.py": (
+                "NODE_FORMATTER_EXCLUSIONS: Dict[str, List[str]] = {\n",
+                "NODE_FORMATTER_EXCLUSIONS: Dict[str, List[str]] = {\n"
+                "    \"mat_g1_na_q1_0\": [\"number_line_read\"],  # planted mutation\n",
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_compat", "--only", "served",
+                 "--node-ids", "mat_g1_na_q1_0"],
+        expected_check="§2C reverse (a formatter the student path serves must be advertised; ruling 57)",
+        expect_output_contains=["FAIL formatters_served_are_advertised",
+                                "mat_g1_na_q1_0: seed && 'number_line_read'"],
+        baseline_must_not_contain=["FAIL formatters_served_are_advertised"],
+    ),
+    # ---- owner ruling 53: the §6 Phase 1 floor is gone; H-02 pays capability_contract ------
+    Mutation(
+        name="capability_content_absorbed_again",
+        asserts=["capability_contract"],
+        description=(
+            "Let Phase 1 pass on content findings, as the floor did until 2026-10-17. The five "
+            "named draw gaps -- and a sixth -- would print PASS and leave the generator queue; "
+            "ruling 53 reports every one by name. Pays `capability_contract`, the rollup label "
+            "run_all prints for §6's content, unproven since 2026-09-08."
+        ),
+        edits={
+            "backend/app/practice_gen/validation/validate_capability.py": (
+                "    return bool(tagged)\n",
+                "    return any(label != CONTENT_ROLLUP for label, _f in tagged)  # planted mutation\n",
+            )
+        },
+        command=["pytest", "tests/unit/test_verdict.py", "-q", "-p", "no:cacheprovider",
+                 "-k", "test_one_capability_content_finding_exits_2_and_is_printed_by_name"],
+        expected_check="§6 Phase 1 content is reported by name, never absorbed (ruling 53)",
+        expect_output_contains=["test_one_capability_content_finding_exits_2_and_is_printed_by_name",
+                                "failed"],
+        baseline_must_not_contain=["test_one_capability_content_finding_exits_2_and_is_printed_by_name && failed"],
+    ),
+    # ---- H-02: the census floors, proven on their counting path --------------------------
+    Mutation(
+        name="census_counts_a_hollowed_suite",
+        asserts=["census_unit_tests"],
+        description=(
+            "Count only one test file's tests inside the census (`-k test_tree_state`), the "
+            "measurement a hollowed-out suite would produce. (`-k` matching NOTHING makes pytest "
+            "print 'no tests collected', which the census reports as an unparseable count -- "
+            "caught, but not on the floor comparison this proves.) Until 2026-10-17 this floor was "
+            "allowlisted as self-referential: proving it seemed to need shrinking the real "
+            "suite under the harness. Planting on the COUNT path proves the floor comparison "
+            "and the collect-and-parse it reads, without touching a test."
+        ),
+        edits={
+            "backend/app/practice_gen/validation/validate_census.py": (
+                '        [sys.executable, "-m", "pytest", "tests/unit", "-q", "--collect-only",\n',
+                '        [sys.executable, "-m", "pytest", "tests/unit", "-q", "--collect-only",'
+                ' "-k", "test_tree_state",  # planted mutation\n',
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_census"],
+        expected_check="§7 census: the unit-test floor (H-02)",
+        expect_output_contains=["FAIL census", "unit_tests= && is below the floor"],
+        baseline_must_not_contain=["FAIL census"],
+    ),
+    Mutation(
+        name="census_counts_a_truncated_corpus",
+        asserts=["census_mutations"],
+        description=(
+            "Count only the first 100 registered mutations, the measurement a corpus that lost "
+            "most of its proofs would produce. Allowlisted until 2026-10-17 as self-referential "
+            "(a mutation that deletes mutations); planting on the count proves the floor without "
+            "deleting one."
+        ),
+        edits={
+            "backend/app/practice_gen/validation/validate_census.py": (
+                "    return len(MUTATIONS)\n",
+                "    return len(MUTATIONS[:100])  # planted mutation\n",
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_census"],
+        expected_check="§7 census: the mutation-count floor (H-02)",
+        expect_output_contains=["FAIL census", "mutations=100 is below the floor"],
+        baseline_must_not_contain=["FAIL census"],
+    ),
+    # ---- H-02: §1C-reverse's crash variants and the curriculum gate ------------------------
+    Mutation(
+        name="excluded_variant_raises_wrong_exception",
+        asserts=["reverse_compatibility_check_crash", "reverse_curriculum_gate_check_crash"],
+        description=(
+            "Make the orchestrator's refusal of a forced DNA that cannot serve the request raise "
+            "TypeError instead of ValueError. Both §1C-reverse probes -- an excluded variant x "
+            "formatter pair and a curriculum-gated variant -- reach that one refusal, so both "
+            "now see a crash where a named refusal belongs. Measured on the real path first "
+            "(2026-10-17): the adapter's own raise is never reached by these probes; planting "
+            "it (with the orchestrator's marking disabled) made them read 'did not raise'. "
+            "mat_g2_mg_q4_3 executes both probes (geometric_lines' draw_construct is gated "
+            "at G2 Q4)."
+        ),
+        edits={
+            "backend/app/services/orchestrator.py": (
+                "                raise ValueError(f\"Forced DNA '{forced_dna}' not compatible or supported for node '{node_id}'\")\n",
+                "                raise TypeError(f\"Forced DNA '{forced_dna}' not compatible or supported for node '{node_id}'\")  # planted mutation\n",
+            ),
+        },
+        command=["backend.app.practice_gen.validation.validate_matrix", "--node", "mat_g2_mg_q4_3"],
+        expected_check="§1C-reverse (a refused combination must raise ValueError, not crash)",
+        expect_output_contains=["reverse_compatibility_check_crash && raised wrong exception",
+                                "reverse_curriculum_gate_check_crash && raised wrong exception"],
+        baseline_must_not_contain=["raised wrong exception"],
+    ),
+    Mutation(
+        name="curriculum_gate_lets_variant_through",
+        asserts=["reverse_curriculum_gate_check"],
+        description=(
+            "Disable both curriculum gates for a variant not yet available at the lc's grade "
+            "and quarter: the orchestrator's disqualification and generate_context's raise. "
+            "geometric_lines' draw_construct then serves at mat_g2_mg_q4_3 (G2 Q4), content the "
+            "Lab hides from teachers until a later quarter. Both are planted together, as "
+            "`silent_substitution` learned for the formatter gates."
+        ),
+        edits={
+            "backend/app/services/orchestrator.py": (
+                "                        if not is_variant_available_at(d, var_name, str(var_val), _node_grade, _node_quarter):\n"
+                "                            dna_compatible = False\n"
+                "                            break\n",
+                "                        pass  # planted mutation: curriculum disqualification disabled\n",
+            ),
+            "backend/app/practice_gen/generators/base_generator.py": (
+                "            if not is_variant_available_at(dna.concept, var_name, str(opt_val), grade, quarter):\n"
+                "                raise ValueError(\n",
+                "            if False:  # planted mutation: curriculum gate disabled\n"
+                "                raise ValueError(\n",
+            ),
+        },
+        command=["backend.app.practice_gen.validation.validate_matrix", "--node", "mat_g2_mg_q4_3"],
+        expected_check="§1C-reverse (a curriculum-gated variant must be refused)",
+        expect_output_contains=["reverse_curriculum_gate_check && did not raise an error"],
+        baseline_must_not_contain=["Curriculum-gate violation"],
+    ),
+    # ---- H-02: concept gating of distractors -----------------------------------------------
+    Mutation(
+        name="distractor_from_an_untaught_concept",
+        asserts=["concept_gating"],
+        description=(
+            "Stop the generator filtering ErrorPatterns by the lc's cumulative concepts. On "
+            "mat_g1_na_q1_7 (addition, grade 1) the wrong-operation pattern `ar_wrong_op` "
+            "needs a concept the lc has not met, so its distractor -- a misconception a pupil "
+            "cannot yet hold -- reaches the options. §1D-concepts reads distractors_provenance "
+            "against the same cumulative concepts; measured 2026-10-17: 21 (lc, DNA) pairs carry "
+            "such a pattern, and this lc is one."
+        ),
+        edits={
+            "backend/app/practice_gen/generators/base_generator.py": (
+                "        ep for ep in dna.error_patterns\n"
+                "        if ep.required_concept in cumulative_concepts\n",
+                "        ep for ep in dna.error_patterns\n"
+                "        if True  # planted mutation: concept gate on distractors removed\n",
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_matrix", "--node", "mat_g1_na_q1_7"],
+        expected_check="§1D concept gating (a distractor from an ErrorPattern past the lc's concepts)",
+        expect_output_contains=["concept_gating && ar_wrong_op"],
+        baseline_must_not_contain=["concept_gating"],
+    ),
+    # ---- H-02: §1B monotonicity --------------------------------------------------------------
+    Mutation(
+        name="log_axis_maps_backwards",
+        asserts=["monotonicity"],
+        description=(
+            "Invert the production logarithmic mapper, so a higher difficulty scalar maps to a "
+            "LOWER magnitude ceiling on every logarithmic axis (counting's range among them). "
+            "§1B's ceilings for log axes are computed through this same mapper "
+            "(`axes_catalog.log_scale_value`, ONE copy), so the plant lands where the check "
+            "reads; the linear branch is the harness's own arithmetic and cannot be planted "
+            "from production. Proven on mat_g1_na_q1_0 (counting)."
+        ),
+        edits={
+            "backend/app/practice_gen/axes_catalog.py": (
+                "    raw = math.pow(10, log_min + t * (log_max - log_min))\n",
+                "    raw = math.pow(10, log_max - t * (log_max - log_min))  # planted mutation\n",
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_matrix", "--node", "mat_g1_na_q1_0"],
+        expected_check="§1B difficulty monotonicity across the scalar sweep",
+        expect_output_contains=["monotonicity_range && Monotonicity violation"],
+        baseline_must_not_contain=["Monotonicity violation"],
+    ),
+    # ---- H-02: §1H's regression half ------------------------------------------------------------
+    Mutation(
+        name="visual_check_silently_stops_on_a_node",
+        asserts=["coverage_regression_1H"],
+        description=(
+            "Stop recording that §4 ran. mat_g1_na_q1_0 serves visual payloads and ran §4 on "
+            "the recorded run (validation_reports/check_coverage_baseline.json), so it now "
+            "silently stops exercising a check applicability cannot predict from structure. "
+            "`node_dropped_from_check` proves the applicability half; this proves the "
+            "comparison against the last recorded run."
+        ),
+        edits={
+            "backend/app/practice_gen/validation/validate_matrix.py": (
+                '                            executed.add("§4")\n',
+                '                            pass  # planted mutation: §4 no longer recorded\n',
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_matrix", "--node", "mat_g1_na_q1_0"],
+        expected_check="§1H regression (a node stops exercising a check it ran on the recorded run)",
+        expect_output_contains=["§1H coverage regression: 1 node(s)", "mat_g1_na_q1_0: stopped exercising ['§4']"],
+        baseline_must_not_contain=["stopped exercising"],
+    ),
+    # ---- H-02: §4 visual schema, proven as the second layer behind the adapter ---------------
+    Mutation(
+        name="visual_payload_breaks_schema_behind_disabled_gate",
+        asserts=["visual_schema_integrity"],
+        description=(
+            "Turn the adapter's runtime contract validation off AND give every NumberLine "
+            "payload a content_type its schema's pattern rejects. Allowlisted since 2026-08-28 "
+            "as SHADOWED: adapter.py validates the same VisualSchemaRegistry at generation, so "
+            "a schema violation raises there and the matrix sees a failed generation, never "
+            "a payload (measured 2026-10-17: nothing after the adapter writes visual_params). "
+            "The matrix check is the second layer; it is proven the way `silent_substitution` "
+            "proves a redundant gate -- with the first layer planted off in the same edit. "
+            "NAMED LIMIT: while the adapter gate stands, this check cannot fire."
+        ),
+        edits={
+            "backend/app/practice_gen/adapter.py": (
+                "    if problem.is_visual and problem.visual_params:\n"
+                "        VisualSchemaRegistry.validate(problem.visual_type, problem.visual_params)\n",
+                "    if problem.is_visual and problem.visual_params and problem.visual_type == \"NumberLine\":\n"
+                "        problem.visual_params[\"content_type\"] = \"planted_unknown\"  # planted mutation: gate off, schema broken\n",
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_matrix", "--node", "mat_g1_na_q1_0"],
+        expected_check="§4 visual payload schema (second layer behind the adapter's runtime gate)",
+        expect_output_contains=["visual_schema_integrity && Visual schema validation failed for 'NumberLine'"],
+        baseline_must_not_contain=["Visual schema validation failed"],
     ),
 ]
 

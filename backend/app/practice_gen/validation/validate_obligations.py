@@ -71,7 +71,7 @@ from __future__ import annotations
 import json
 import sys
 from pathlib import Path
-from typing import List
+from typing import List, Optional, Tuple
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
 
@@ -85,8 +85,11 @@ ASSERTIONS = (
     "obligation_release_shards_11",   # release absent/incomplete/overlapping/stale
 )
 
-# MEASURED 2026-09-12: 5, in the two classes named in the docstring. Shrink-only.
-UNREACHABLE_ROUTE_FLOOR = 5
+# MEASURED 2026-09-12: 5, in the two classes named in the docstring. Until 2026-10-17 a
+# shrink-only floor of 5 absorbed them and printed PASS. Owner ruling 53: each unreachable
+# route is a named CONTENT finding (`route '<name>'` + ruling 52's substitute + owed build),
+# so a sixth is reported by name. Proven by a mutation scoped with `--routes` to a route
+# whose baseline is reachable.
 
 # Measured after the executor exposed and the manifest fixed a DNA-keyed curriculum-gate
 # argument bug. Floors may only rise; a legitimate shrink is a ground-truth change.
@@ -123,7 +126,28 @@ REQUIRED_RESPONSE_MODES = {
 }
 
 
-def collect_findings() -> List[str]:
+def route_findings(unreachable: List[str]) -> List[str]:
+    """One named content finding per registered route no obligation can reach (ruling 53)."""
+    return [
+        f"route {route!r}: registered in adapter.FORMATTER_ROUTES, but no obligation can reach "
+        f"it -- no DNA declares it, or every lc that could serve it excludes it. Witness: ruled "
+        f"substitute (ruling 52): an unreachable route has no lc and no render. Owed: declare "
+        f"it in a DNA that can serve it, or deregister it."
+        for route in unreachable
+    ]
+
+
+def _print_routes(findings: List[str]) -> None:
+    if findings:
+        print(f"  FAIL obligation_routes_reachable ({len(findings)}):")
+        for finding in findings:  # every content finding, by name (ruling 23)
+            print(f"    - {finding}")
+    else:
+        print("  PASS obligation_routes_reachable: every registered route is reached by an obligation")
+
+
+def collect_findings() -> Tuple[List[str], List[str]]:
+    """(integrity findings, the registered routes no obligation can reach)."""
     sys.path.insert(0, str(REPO_ROOT))
     from tests.obligation_manifest import build_budget
 
@@ -142,16 +166,7 @@ def collect_findings() -> List[str]:
             f"reachable space."
         )
 
-    unreachable = budget["derived_coverage"]["formatters_no_obligation_can_reach"]
-    if len(unreachable) > UNREACHABLE_ROUTE_FLOOR:
-        findings.append(
-            f"obligation_routes_reachable: {len(unreachable)} registered formatter "
-            f"route(s) no obligation can reach, above the floor of "
-            f"{UNREACHABLE_ROUTE_FLOOR}: {unreachable}. A route in "
-            f"adapter.FORMATTER_ROUTES that no node can ever serve is either a DNA that "
-            f"forgot to declare it, or a formatter whose nodes all exclude it. The floor "
-            f"may only shrink."
-        )
+    unreachable = list(budget["derived_coverage"]["formatters_no_obligation_can_reach"])
 
     execution = budget["execution_model"]
     dimension_failures: List[str] = []
@@ -195,7 +210,7 @@ def collect_findings() -> List[str]:
             f"obligation_release_shards_11: modulo shards cover {shard_key_count} "
             f"cache keys, expected {expected_keys}"
         )
-    return findings
+    return findings, unreachable
 
 
 def _benchmark_findings() -> List[str]:
@@ -269,7 +284,8 @@ def _sentinel_findings() -> tuple[List[str], dict]:
 
 
 def validate_all() -> bool:
-    findings = collect_findings()
+    findings, unreachable = collect_findings()
+    routes = route_findings(unreachable)
     findings.extend(_benchmark_findings())
     sentinel_findings, sentinel_summary = _sentinel_findings()
     findings.extend(sentinel_findings)
@@ -282,6 +298,7 @@ def validate_all() -> bool:
     if findings:
         for finding in findings:
             print(f"  FAIL {finding}")
+        _print_routes(routes)
         return False
 
     from tests.obligation_manifest import BUDGET_PATH, write_budget
@@ -289,13 +306,11 @@ def validate_all() -> bool:
     budget = write_budget()
     counts = budget["counts"]
     execution = budget["execution_model"]
-    unreachable = budget["derived_coverage"]["formatters_no_obligation_can_reach"]
     print(f"  PASS obligation_derivations_agree: two independent traversals agree on "
           f"{counts['node_dna_formatter_pairs']} (node, DNA, formatter) pair(s) and "
           f"{counts['discrete_obligations']} discrete obligation(s); "
           f"{counts['continuous_class_crossings']} continuous class crossing(s)")
-    print(f"  PASS obligation_routes_reachable: {len(unreachable)} registered route(s) "
-          f"unreachable (floor {UNREACHABLE_ROUTE_FLOOR}, shrink-only): {unreachable}")
+    _print_routes(routes)
     print(f"  PASS obligation_dimension_coverage_11: "
           f"{counts['discrete_obligations']} base x "
           f"{execution['student_interest_request']['multiplier']} interest requests x "
@@ -312,13 +327,30 @@ def validate_all() -> bool:
           f"shards cover {release_summary['cache_keys']} cache keys / "
           f"{release_summary['represented_executions']} executions with no overlap")
     print(f"       budget written to {BUDGET_PATH.relative_to(REPO_ROOT)}")
-    return True
+    return not routes
 
 
-def _run_single(name: str) -> int:
-    """Run one independent §11 direction for clean mutation controls."""
+def _run_single(name: str, routes: Optional[List[str]] = None, integrity_only: bool = False) -> int:
+    """Run one independent §11 direction for clean mutation controls.
+
+    `routes` scopes the route-reachability findings to named registered routes (proof mode,
+    owner ruling 53: the standing unreachable routes keep the unscoped baseline red).
+    `integrity_only` reports no content finding at all, for a mutation that proves one of
+    this direction's INTEGRITY checks on the whole tree. run_all never passes either.
+    """
+    if routes and name != "manifest":
+        raise SystemExit("--routes is accepted only with --only manifest")
+    route_lines: List[str] = []
     if name == "manifest":
-        findings = collect_findings()
+        findings, unreachable = collect_findings()
+        if routes:
+            from backend.app.practice_gen.adapter import FORMATTER_ROUTES
+            unknown = sorted(set(routes) - set(FORMATTER_ROUTES))
+            if unknown:
+                raise SystemExit(f"--routes names unregistered route(s) {unknown}: a scope that "
+                                 f"names nothing would measure nothing")
+            unreachable = [r for r in unreachable if r in routes]
+        route_lines = [] if integrity_only else route_findings(unreachable)
     elif name == "benchmark":
         findings = _benchmark_findings()
     elif name == "sentinels":
@@ -330,9 +362,11 @@ def _run_single(name: str) -> int:
         findings = [f"obligation_release_shards_11: {finding}" for finding in raw]
     else:  # pragma: no cover - argparse owns this boundary
         raise ValueError(f"unknown §11 check {name!r}")
-    if findings:
+    if findings or route_lines:
         for finding in findings:
             print(f"  FAIL {finding}")
+        if route_lines:
+            _print_routes(route_lines)
         return 1
     print(f"  PASS obligation_{name}_11")
     return 0
@@ -346,8 +380,15 @@ def main() -> int:
         "--only", choices=("manifest", "benchmark", "sentinels", "release"),
         help="run one independent direction (used by mutation proofs)",
     )
+    parser.add_argument("--routes", help="comma-separated registered routes to scope "
+                        "obligation_routes_reachable to (with --only manifest; proof mode)")
+    parser.add_argument("--integrity-only", action="store_true",
+                        help="report integrity findings only (proof mode for an integrity check)")
     args = parser.parse_args()
-    return _run_single(args.only) if args.only else (0 if validate_all() else 1)
+    if args.only:
+        return _run_single(args.only, args.routes.split(",") if args.routes else None,
+                           args.integrity_only)
+    return 0 if validate_all() else 1
 
 
 if __name__ == "__main__":

@@ -142,14 +142,15 @@ ASSERTIONS = (
 # exists to catch -- write the mutation instead.
 UNPROVEN_ASSERTIONS: Dict[str, str] = {
     # ---- §1* validate_matrix -------------------------------------------------------
-    "concept_gating":               "2026-08-28: distractor-provenance gate; vocabulary_gating is proven, this is not",
-    "reverse_compatibility_check_crash": "2026-08-28: crash variant of a proven check",
-    "reverse_curriculum_gate_check": "2026-08-28: curriculum-gate reverse path, unproven",
-    "reverse_curriculum_gate_check_crash": "2026-08-28: crash variant of the above",
-    "visual_schema_integrity":      "2026-08-28: SHADOWED, measured. Three plants were tried and none isolated it: negative counts and non-coercible types are both caught first by §1G (visual_payload), and a wrong-typed extra field violates nothing because the Pydantic schema coerces and total_value is not even declared. §4 adds little over §1G+§9 on this payload -- worth revisiting as a possible merge rather than a missing mutation",
+    # concept_gating, monotonicity, visual_schema_integrity (proven as the second layer
+    # behind the adapter's runtime gate) and coverage_regression_1H PAID 2026-10-17 (H-02):
+    # distractor_from_an_untaught_concept, log_axis_maps_backwards,
+    # visual_payload_breaks_schema_behind_disabled_gate, visual_check_silently_stops_on_a_node.
+    # reverse_compatibility_check_crash, reverse_curriculum_gate_check and its _crash PAID
+    # 2026-10-17 (H-02) by excluded_variant_raises_wrong_exception and
+    # curriculum_gate_lets_variant_through, both measured on mat_g2_mg_q4_3's real path.
     # These eleven were emitted as f-strings and invisible to the old regex. Each is now
     # inventoried by its family name; the ones with mutations are absent from this list.
-    "monotonicity":                 "2026-09-08: §1B's difficulty monotonicity across the scalar sweep. Unproven",
     # ---- §2 validate_compat --------------------------------------------------------
     # ---- §3 validate_dna -----------------------------------------------------------
     # ---- §5 validate_judgment ------------------------------------------------------
@@ -161,10 +162,11 @@ UNPROVEN_ASSERTIONS: Dict[str, str] = {
     # `judgment_reviews` left 2026-10-17 with its stage (H6, ruling 25): run_all no longer
     # prints a §5 rollup; validate_carried's labels replace it, each proven by mutation.
     # ---- §6 validate_capability ----------------------------------------------------
-    "capability_contract":          "2026-09-08: run_all's rollup print for §6; the sub-assertions above carry the proof",
+    # `capability_contract` PAID 2026-10-17 by `capability_content_absorbed_again` (ruling 53).
     # ---- §7 validate_census --------------------------------------------------------
-    "census_unit_tests":            "2026-09-08: the unit-test floor. Proving it means shrinking the suite under the harness, which the mutation runner cannot restore safely if interrupted mid-collection",
-    "census_mutations":             "2026-09-08: the mutation-count floor. A mutation that deletes mutations is self-referential; the floor is checked by hand when this file changes",
+    # census_unit_tests and census_mutations PAID 2026-10-17 (H-02) by plants on the COUNT
+    # path (census_counts_a_hollowed_suite, census_counts_a_truncated_corpus): no test or
+    # mutation is deleted to prove the floor.
     # ---- §8 validate_coverage ------------------------------------------------------
     # (none: every direction of §8 is proven -- see the five coverage_* mutations)
     # ---- §10 validate_grade --------------------------------------------------------
@@ -174,7 +176,6 @@ UNPROVEN_ASSERTIONS: Dict[str, str] = {
     # `grader_rejects_correct_answer_tree_wide` now plants against the floor path itself.
     # §10's other four assertions are proven by the five mutations added with them.
     # ---- §0 / run_all --------------------------------------------------------------
-    "coverage_regression_1H":       "2026-09-08: §1E/§4/§1I coverage compared against the last recorded run. node_dropped_from_check proves the applicability half of §1H, not the regression half",
     # PAID 2026-09-12 by `crash_deletes_its_own_expected_refs`. The tripwire was unproven
     # for four days; the plant that proves it is the one that matters most, because it
     # silences the tripwire using the very crash that stopped a check executing.

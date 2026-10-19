@@ -1833,7 +1833,11 @@ def run_matrix_for_node(node_id: str, fail_fast: bool) -> Tuple[List[Dict[str, A
                 excluded_vals = set(full_vals) - set(allowed_vals)
                 if excluded_vals:
                     executed.add("§1C-reverse")
-                    excluded_val = list(excluded_vals)[0]
+                # EVERY excluded value, in sorted order (2026-10-17, P2-A). This requested
+                # `list(excluded_vals)[0]` -- one value, chosen by iterating a set of strings,
+                # so WHICH excluded variant was tested followed PYTHONHASHSEED (Protocol 6)
+                # and the others were never requested at all.
+                for excluded_val in sorted(excluded_vals, key=str):
                     # Request this excluded option
                     bad_profile = {var_name: excluded_val}
                     try:
@@ -1864,7 +1868,7 @@ def run_matrix_for_node(node_id: str, fail_fast: bool) -> Tuple[List[Dict[str, A
             # must also raise ValueError when requested at a grade/quarter that
             # doesn't support them yet (e.g. missing_number operation=multiplication
             # before G3) — mirrors what the Lab UI hides from teachers.
-            for var_name, excluded_val in curriculum_excluded:
+            for var_name, excluded_val in sorted(curriculum_excluded, key=str):  # deterministic order
                 bad_profile = {var_name: excluded_val}
                 try:
                     run(node_id=node_id, formatter=formatter, difficulty_profile=bad_profile, seed=42, forced_dna=dna_name)
@@ -2270,6 +2274,15 @@ def main() -> int:
         code = 1
     else:
         print(f"\n§1H applicability: PASS ({len(_EXECUTED_BY_NODE)} node(s))")
+    # The regression half too (2026-10-17, H-02), so it can be proved on one node.
+    regressions = coverage_regressions(_EXECUTED_BY_NODE)
+    if regressions:
+        print(f"\n§1H coverage regression: {len(regressions)} node(s) stopped exercising a check")
+        for e in regressions:
+            print(f"  - {e}")
+        code = 1
+    else:
+        print(f"\n§1H coverage regression: PASS ({len(_EXECUTED_BY_NODE)} node(s))")
     return code
 
 

@@ -725,9 +725,9 @@ def _validate_no_orphan_providers(all_requires: Set[str]) -> List[str]:
     unregistered on an Attester's NOT_PROVIDED ruling. The registration outlived the
     requirement by a rename and nothing in the harness could say so.
 
-    Zero findings is the only acceptable state and there is no floor: unlike §6D's
-    `_PROVISION_FLOOR`, an orphan is never a legitimate gap in the pipeline's ability —
-    it is bookkeeping, and deleting the entry always clears it.
+    Zero findings is the only acceptable state: an orphan is never a legitimate gap in the
+    pipeline's ability -- it is bookkeeping, and deleting the entry always clears it. (§6D's
+    floor, which this docstring once contrasted it with, is gone too: owner ruling 53.)
     """
     orphans = sorted(set(CAPABILITY_PROVIDERS) - all_requires)
     return [
@@ -965,6 +965,12 @@ def _provided_for_node(node_id: str) -> Dict[str, Set[str]]:
     return {"variants": variants, "formatters": formatters}
 
 
+# Ruling 52's witness and owed build for a provision gap (owner rulings 52/53, 2026-10-17):
+# an unprovided capability is an absence, so no render shows it.
+_PROVISION_WITNESS = ("Witness: ruled substitute (ruling 52): a capability no pipeline artifact "
+                      "provides is an absence, and no render shows it.")
+
+
 def _validate_provision(node_id: str, requires: List[Dict]) -> List[str]:
     """§6C — required ⊆ provided. An unprovided capability is a build item, named."""
     errs: List[str] = []
@@ -982,7 +988,8 @@ def _validate_provision(node_id: str, requires: List[Dict]) -> List[str]:
                 f"Reachable DNAs: {dnas or '[]'}. Build the formatter/variant/dd/DNA that "
                 f"produces it and register it in CAPABILITY_PROVIDERS "
                 f"(see docs/pgen_hardening.md Part 1) -- this is the fix, not a reason to defer "
-                f"the node (AGENTS.md Content Rule 4)."
+                f"the node (AGENTS.md Content Rule 4). {_PROVISION_WITNESS} Owed: build the "
+                f"artifact that produces {cap!r} and register it."
             )
             continue
 
@@ -1041,7 +1048,9 @@ def _validate_provision(node_id: str, requires: List[Dict]) -> List[str]:
                 + f" Registered providers: {spec}. Reachable DNAs: {dnas or '[]'}. "
                 f"Either build the formatter/variant/dd/DNA that renders what the clause "
                 f"names and register that, or delete the entry and let this gap be "
-                f"reported -- a generic textual formatter is never the answer."
+                f"reported -- a generic textual formatter is never the answer. "
+                f"{_PROVISION_WITNESS} Owed: build the artifact that renders what the clause "
+                f"names (Content Rule 4), or delete the entry."
             )
             continue
 
@@ -1057,7 +1066,9 @@ def _validate_provision(node_id: str, requires: List[Dict]) -> List[str]:
                 f"Registered providers: {spec}. Reachable DNAs: {dnas or '[]'}. "
                 f"Either build the formatter/variant/dd/DNA that renders what the clause "
                 f"names and register that, or delete the entry and let this gap be "
-                f"reported. A bounds list is a numeric-ceiling provider and nothing else."
+                f"reported. A bounds list is a numeric-ceiling provider and nothing else. "
+                f"{_PROVISION_WITNESS} Owed: build the artifact that renders what the clause "
+                f"names (Content Rule 4), or delete the entry."
             )
             continue
 
@@ -1065,7 +1076,8 @@ def _validate_provision(node_id: str, requires: List[Dict]) -> List[str]:
             f"{node_id}: capability {cap!r} (clause {req.get('clause')!r}) has "
             f"providers registered {spec}, but none is reachable from this node's "
             f"DNAs {dnas}. Either the node is mapped to the wrong DNA, or the "
-            f"provider is gated off the node that needs it."
+            f"provider is gated off the node that needs it. {_PROVISION_WITNESS} Owed: map "
+            f"the lc to a DNA that provides it, or ungate the provider for this lc."
         )
     return errs
 
@@ -1844,7 +1856,10 @@ def declaration_sync_failures() -> List[str]:
 # sixth unprovided capability fails immediately -- and `wildcard_provider` clears it by
 # an order of magnitude, so §6D stays provable (a floor above the real defect count makes
 # a check unprovable, which is how §9 lost a mutation at RENDER_FLOOR=16).
-_PROVISION_FLOOR = 5
+# `_PROVISION_FLOOR = 5` tolerated the five named `draw` gaps until 2026-10-17. Owner ruling
+# 53 removed it: every Phase 1 content finding is reported by name (exit 2), and a sixth gap
+# is no longer absorbed. Mutations that prove a content check are scoped to clean lcs
+# (`--node-ids`); those that prove an integrity check pass `--integrity-only` (Mandate 5).
 
 
 # Owner ruling 27 (H2): run_all exits 1 on an INTEGRITY finding and 2 on a CONTENT one,
@@ -2056,17 +2071,16 @@ def provision_findings_tagged(node_ids: List[str] | None = None) -> Tagged:
             + _tag("capability_phase_partition_6", _phase_partition_failures(findings, 1)))
 
 
-def provision_over_floor(tagged: Tagged) -> bool:
+def provision_failed(tagged: Tagged) -> bool:
     """
-    Whether Phase 1 fails: any INTEGRITY finding, or CONTENT findings above the floor.
+    Whether Phase 1 fails: ANY finding, integrity or content (owner ruling 53).
 
-    `_PROVISION_FLOOR` tolerates the five named `draw` gaps (content). Until 2026-10-09 it
-    was compared against EVERY Phase 1 finding, so once those gaps were built a lock
-    violation or a declaration drift -- integrity -- could sit inside the floor and print
-    PASS. The floor's number is unchanged (owner ruling 31); it now absorbs content only.
+    Until 2026-10-17 `provision_over_floor` let five CONTENT findings (the named `draw`
+    gaps on mat_g2_mg_q1_2, mat_g3_mg_q1_4, mat_g3_mg_q1_5, mat_g3_mg_q4_0, mat_g3_mg_q4_1)
+    print PASS. They are now reported by name as content (exit 2); integrity findings
+    still exit 1 by their own labels.
     """
-    content = [f for label, f in tagged if label == CONTENT_ROLLUP]
-    return len(content) > _PROVISION_FLOOR or len(content) != len(tagged)
+    return bool(tagged)
 
 
 def validate_capability_attestation(node_ids: List[str] | None = None) -> List[str]:
@@ -2118,20 +2132,28 @@ if __name__ == "__main__":
     # its baseline red (Mandate 5). See `_scoped_records` for what a scope weakens.
     ap.add_argument("--node-ids", nargs="+", default=None,
                     help="restrict to these lc ids (proof mode; run_all never scopes)")
+    # Proof mode for an INTEGRITY check over the whole tree (owner ruling 53): with no floor,
+    # the standing Phase 1 content findings make an unscoped baseline red, so a mutation
+    # that proves a lock, sync, provenance, coverage or partition check reports integrity
+    # labels only. They are computed over every finding first, so the partition check
+    # still sees the content findings it reconciles. run_all never passes it.
+    ap.add_argument("--integrity-only", action="store_true",
+                    help="report Phase 1 INTEGRITY findings only (proof mode)")
     args = ap.parse_args()
 
     tagged1 = provision_findings_tagged(args.node_ids) if args.phase in (None, 1) else []
+    if args.integrity_only:
+        tagged1 = [(label, f) for label, f in tagged1 if label != CONTENT_ROLLUP]
     phase1 = [f for _label, f in tagged1]
     phase2 = (validate_capability_attestation(args.node_ids)
               if args.phase in (None, 2) else [])
-    over_floor = provision_over_floor(tagged1)
     failures = phase1 + phase2
     if failures:
         print(f"Capability contract: {len(failures)} failure(s) "
-              f"({len(phase1)} Phase 1 / artifact-free, floor {_PROVISION_FLOOR}; "
+              f"({len(phase1)} Phase 1 / artifact-free; "
               f"{len(phase2)} Phase 2 / attestation).")
         for f in failures:
             print(f"  - {f}")
     else:
         print("Capability contract: all nodes declare, cite, cover, and are provided for.")
-    sys.exit(1 if (over_floor or phase2) else 0)
+    sys.exit(1 if failures else 0)
