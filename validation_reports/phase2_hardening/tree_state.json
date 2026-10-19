@@ -2,11 +2,11 @@
   "schema_version": 1,
   "note": "Intent record for interruption safety. Written when a batch, chain or campaign STARTS and cleared when it completes; an intent left open means a session did not reach its finish line. Deliberately digest-free -- see tests/tree_state.py. Read with `PYTHONPATH=. .venv/bin/python tests/tree_state.py`.",
   "open_intent": {
-    "kind": "batch",
-    "began_at": "2026-10-17T06:49:17+08:00",
-    "session": "p2fin-claude-opus-5-5",
-    "note": "P2-A part 2: floors become content (ruling 53), H-02 unproven assertions, H-05/H-07/H-08/H-10 closure",
-    "next_step": "Land every remaining source edit, then run the re-proof chain in order."
+    "kind": "chain",
+    "began_at": "2026-10-20T00:10:25+08:00",
+    "session": "claude-opus-5-5",
+    "note": "Re-prove after batch P2-A part 2 (rulings 53, 56, 57, H-02, H-05)",
+    "next_step": "Resume the chain at the first step whose artifact is still stale; shards are individually resumable, so re-run only the stale indices."
   },
   "last_completed": {
     "kind": "chain",
