@@ -1,0 +1,47 @@
+{
+ "asserts": [
+  "reverse_compatibility_check_crash",
+  "reverse_curriculum_gate_check_crash"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "raised wrong exception"
+ ],
+ "command": [
+  "backend.app.practice_gen.validation.validate_matrix",
+  "--node",
+  "mat_g2_mg_q4_3"
+ ],
+ "definition_digest": "8cdcd03ccfc9dbbf00c8a2648172e1f81d5bfedc4ef96bef9e4841ab7f8cb490",
+ "detected": true,
+ "diagnostic_line": "exit 1 — [1/1] Checking mat_g2_mg_q4_3 ...  FAIL",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "reverse_compatibility_check_crash && raised wrong exception",
+  "reverse_curriculum_gate_check_crash && raised wrong exception"
+ ],
+ "expected_check": "§1C-reverse (a refused combination must raise ValueError, not crash)",
+ "finished_at": "2026-10-20T06:09:05+08:00",
+ "input_digest": "1e0d9d480c1c325736e6169f9fa0240467b40cdcefb52bb4725277bca4ae10fa",
+ "mutated_paths": [
+  "backend/app/services/orchestrator.py"
+ ],
+ "mutation": "excluded_variant_raises_wrong_exception",
+ "observed_markers": {
+  "reverse_compatibility_check_crash && raised wrong exception": true,
+  "reverse_curriculum_gate_check_crash && raised wrong exception": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-10-20T06:09:03+08:00"
+}

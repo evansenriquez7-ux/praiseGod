@@ -10,11 +10,13 @@
  "command": [
   "backend.app.practice_gen.validation.validate_compat",
   "--only",
-  "reachable"
+  "reachable",
+  "--node-ids",
+  "mat_g1_na_q1_9"
  ],
- "definition_digest": "a4145a29ee78b4730a0f16fc0f1ae5931757dff61a52b63d40f8f651eedf5fa5",
+ "definition_digest": "6e6ffbd4c74943f9bde750a5d4d29e8135ced01907dbba75b6bb9b1711e27213",
  "detected": true,
- "diagnostic_line": "exit 1 — FAIL formatters_reachable (44):",
+ "diagnostic_line": "exit 1 — FAIL formatters_reachable (3):",
  "environment": {
   "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
   "machine": "x86_64",
@@ -26,8 +28,8 @@
   "FAIL formatters_reachable"
  ],
  "expected_check": "§2C (an advertised formatter must be reachable by the student path)",
- "finished_at": "2026-10-17T02:17:03+08:00",
- "input_digest": "d0982b98639c1a08460e0fc28c0800af2421d2cd6c5b74356d34e0eada966ada",
+ "finished_at": "2026-10-20T05:46:11+08:00",
+ "input_digest": "1e0d9d480c1c325736e6169f9fa0240467b40cdcefb52bb4725277bca4ae10fa",
  "mutated_paths": [
   "backend/app/practice_gen/registry.py"
  ],
@@ -40,5 +42,5 @@
  "planted_exit": 1,
  "restored_clean": true,
  "schema_version": 1,
- "started_at": "2026-10-17T02:15:44+08:00"
+ "started_at": "2026-10-20T05:46:09+08:00"
 }

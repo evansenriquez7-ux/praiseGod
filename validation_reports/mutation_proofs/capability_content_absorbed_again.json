@@ -1,0 +1,50 @@
+{
+ "asserts": [
+  "capability_contract"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "test_one_capability_content_finding_exits_2_and_is_printed_by_name && failed"
+ ],
+ "command": [
+  "pytest",
+  "tests/unit/test_verdict.py",
+  "-q",
+  "-p",
+  "no:cacheprovider",
+  "-k",
+  "test_one_capability_content_finding_exits_2_and_is_printed_by_name"
+ ],
+ "definition_digest": "b8af9d095043ccf9b8e024925bcbd25ee9a7f3f781928c68ad9fdc1d35bc59c2",
+ "detected": true,
+ "diagnostic_line": "exit 1 — =================================== FAILURES ===================================",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "test_one_capability_content_finding_exits_2_and_is_printed_by_name",
+  "failed"
+ ],
+ "expected_check": "§6 Phase 1 content is reported by name, never absorbed (ruling 53)",
+ "finished_at": "2026-10-20T06:08:38+08:00",
+ "input_digest": "1e0d9d480c1c325736e6169f9fa0240467b40cdcefb52bb4725277bca4ae10fa",
+ "mutated_paths": [
+  "backend/app/practice_gen/validation/validate_capability.py"
+ ],
+ "mutation": "capability_content_absorbed_again",
+ "observed_markers": {
+  "failed": true,
+  "test_one_capability_content_finding_exits_2_and_is_printed_by_name": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-10-20T06:08:35+08:00"
+}

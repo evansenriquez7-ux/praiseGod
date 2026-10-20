@@ -10,11 +10,12 @@
  "command": [
   "backend.app.practice_gen.validation.validate_capability",
   "--phase",
-  "1"
+  "1",
+  "--integrity-only"
  ],
- "definition_digest": "e553fe03f89bbebaf80b60f4729aba3e47ce63ea12a02107729af50751d319d9",
+ "definition_digest": "f378e906b2985a46bd696c1183e3989797394634dc0a1eb3eab0d14de7417ab8",
  "detected": true,
- "diagnostic_line": "exit 1 — Capability contract: 6 failure(s) (6 Phase 1 / artifact-free, floor 5; 0 Phase 2 / attestation).",
+ "diagnostic_line": "exit 1 — Capability contract: 1 failure(s) (1 Phase 1 / artifact-free; 0 Phase 2 / attestation).",
  "environment": {
   "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
   "machine": "x86_64",
@@ -26,8 +27,8 @@
   "capability_phase_partition_6 && §6D"
  ],
  "expected_check": "§6 per-phase reconciliation (a finding may only cite refs of its own phase)",
- "finished_at": "2026-10-17T02:04:54+08:00",
- "input_digest": "d0982b98639c1a08460e0fc28c0800af2421d2cd6c5b74356d34e0eada966ada",
+ "finished_at": "2026-10-20T05:36:36+08:00",
+ "input_digest": "1e0d9d480c1c325736e6169f9fa0240467b40cdcefb52bb4725277bca4ae10fa",
  "mutated_paths": [
   "backend/app/practice_gen/validation/_manifest.py"
  ],
@@ -40,5 +41,5 @@
  "planted_exit": 1,
  "restored_clean": true,
  "schema_version": 1,
- "started_at": "2026-10-17T02:04:52+08:00"
+ "started_at": "2026-10-20T05:36:34+08:00"
 }

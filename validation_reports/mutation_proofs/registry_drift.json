@@ -6,9 +6,11 @@
  "baseline_markers_already_present": [],
  "baseline_must_not_contain": [],
  "command": [
-  "backend.app.practice_gen.validation.validate_compat"
+  "backend.app.practice_gen.validation.validate_compat",
+  "--only",
+  "table"
  ],
- "definition_digest": "af480b23fc527f1d1adf2e76a9e4be05c101a17b2bec1018d6e961f8ca82571f",
+ "definition_digest": "0a39e797808e0da664b2a745679829445c2d2e7954c5b340fcf94c37d9cd5c35",
  "detected": true,
  "diagnostic_line": "exit 1 — Traceback (most recent call last):",
  "environment": {
@@ -22,8 +24,8 @@
   "planted_phantom_dna"
  ],
  "expected_check": "_manifest.py import-time registry assertion",
- "finished_at": "2026-10-17T01:36:19+08:00",
- "input_digest": "d0982b98639c1a08460e0fc28c0800af2421d2cd6c5b74356d34e0eada966ada",
+ "finished_at": "2026-10-20T05:18:19+08:00",
+ "input_digest": "1e0d9d480c1c325736e6169f9fa0240467b40cdcefb52bb4725277bca4ae10fa",
  "mutated_paths": [
   "backend/app/practice_gen/compatibility.py"
  ],
@@ -36,5 +38,5 @@
  "planted_exit": 1,
  "restored_clean": true,
  "schema_version": 1,
- "started_at": "2026-10-17T01:34:33+08:00"
+ "started_at": "2026-10-20T05:18:18+08:00"
 }

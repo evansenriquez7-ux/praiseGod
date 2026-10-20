@@ -10,11 +10,12 @@
  "command": [
   "backend.app.practice_gen.validation.validate_capability",
   "--phase",
-  "1"
+  "1",
+  "--integrity-only"
  ],
- "definition_digest": "6fcab072f04c3e6bce969a662fe1313106b20cb7a33db7067791dec0f25fbc43",
+ "definition_digest": "93a9d2ceeb22b82c21be2faca99dc7c8cef87486dd3c0621e1c247413f14cad1",
  "detected": true,
- "diagnostic_line": "exit 1 — Capability contract: 6 failure(s) (6 Phase 1 / artifact-free, floor 5; 0 Phase 2 / attestation).",
+ "diagnostic_line": "exit 1 — Capability contract: 1 failure(s) (1 Phase 1 / artifact-free; 0 Phase 2 / attestation).",
  "environment": {
   "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
   "machine": "x86_64",
@@ -26,8 +27,8 @@
   "mat_g1_na_q3_6 && 'cumulative_concepts'"
  ],
  "expected_check": "§6 (the generated graph matches a fresh build, in every field)",
- "finished_at": "2026-10-17T02:28:33+08:00",
- "input_digest": "d0982b98639c1a08460e0fc28c0800af2421d2cd6c5b74356d34e0eada966ada",
+ "finished_at": "2026-10-20T05:56:25+08:00",
+ "input_digest": "1e0d9d480c1c325736e6169f9fa0240467b40cdcefb52bb4725277bca4ae10fa",
  "mutated_paths": [
   "data/knowledge_graph_g1_3.json"
  ],
@@ -40,5 +41,5 @@
  "planted_exit": 1,
  "restored_clean": true,
  "schema_version": 1,
- "started_at": "2026-10-17T02:28:31+08:00"
+ "started_at": "2026-10-20T05:56:23+08:00"
 }

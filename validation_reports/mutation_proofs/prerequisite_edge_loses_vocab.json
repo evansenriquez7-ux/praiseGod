@@ -8,11 +8,13 @@
   "KG Monotonicity Error (edge"
  ],
  "command": [
-  "backend.app.practice_gen.validation.validate_compat"
+  "backend.app.practice_gen.validation.validate_compat",
+  "--only",
+  "monotonicity"
  ],
- "definition_digest": "b0c263fd3eabaa0c7e58bfb82ba3393d07e19736f2d46d1ee4ac78da33263554",
+ "definition_digest": "189c543bf051792acc2bb7b19ee07b465ee865adc7dddf4c848dd3dff38d934d",
  "detected": true,
- "diagnostic_line": "exit 1 — FAIL kg_monotonicity:",
+ "diagnostic_line": "exit 1 — FAIL kg_monotonicity (1):",
  "environment": {
   "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
   "machine": "x86_64",
@@ -24,8 +26,8 @@
   "KG Monotonicity Error (edge"
  ],
  "expected_check": "§2 KG monotonicity on explicit prerequisite edges",
- "finished_at": "2026-10-17T01:43:21+08:00",
- "input_digest": "d0982b98639c1a08460e0fc28c0800af2421d2cd6c5b74356d34e0eada966ada",
+ "finished_at": "2026-10-20T05:18:21+08:00",
+ "input_digest": "1e0d9d480c1c325736e6169f9fa0240467b40cdcefb52bb4725277bca4ae10fa",
  "mutated_paths": [
   "data/knowledge_graph_g1_3.json"
  ],
@@ -38,5 +40,5 @@
  "planted_exit": 1,
  "restored_clean": true,
  "schema_version": 1,
- "started_at": "2026-10-17T01:39:51+08:00"
+ "started_at": "2026-10-20T05:18:20+08:00"
 }

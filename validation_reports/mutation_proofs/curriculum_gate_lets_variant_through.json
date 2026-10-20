@@ -1,0 +1,45 @@
+{
+ "asserts": [
+  "reverse_curriculum_gate_check"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "Curriculum-gate violation"
+ ],
+ "command": [
+  "backend.app.practice_gen.validation.validate_matrix",
+  "--node",
+  "mat_g2_mg_q4_3"
+ ],
+ "definition_digest": "f262b36aebd606401ccde986de4b797cd535cbe4bd1bbf71e6fd4a962cc65ba5",
+ "detected": true,
+ "diagnostic_line": "exit 1 — [1/1] Checking mat_g2_mg_q4_3 ...  FAIL",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "reverse_curriculum_gate_check && did not raise an error"
+ ],
+ "expected_check": "§1C-reverse (a curriculum-gated variant must be refused)",
+ "finished_at": "2026-10-20T06:09:08+08:00",
+ "input_digest": "1e0d9d480c1c325736e6169f9fa0240467b40cdcefb52bb4725277bca4ae10fa",
+ "mutated_paths": [
+  "backend/app/practice_gen/generators/base_generator.py",
+  "backend/app/services/orchestrator.py"
+ ],
+ "mutation": "curriculum_gate_lets_variant_through",
+ "observed_markers": {
+  "reverse_curriculum_gate_check && did not raise an error": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-10-20T06:09:05+08:00"
+}

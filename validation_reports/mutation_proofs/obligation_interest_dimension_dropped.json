@@ -10,9 +10,10 @@
  "command": [
   "backend.app.practice_gen.validation.validate_obligations",
   "--only",
-  "manifest"
+  "manifest",
+  "--integrity-only"
  ],
- "definition_digest": "ae3eb8ee97683f1a0cce098262605ceb99ec50e7937964490be5a0a998ded536",
+ "definition_digest": "6b2225062adc3d9b986acd93873973c0a879c0f06fa56def0b8eb399c0bda47c",
  "detected": true,
  "diagnostic_line": "exit 1 — FAIL obligation_dimension_coverage_11: finite obligations 400296 < floor 411696; fewer than 27 interest request paths",
  "environment": {
@@ -27,8 +28,8 @@
   "fewer than 27 interest request paths"
  ],
  "expected_check": "§11 (every finite serving dimension is crossed)",
- "finished_at": "2026-10-17T02:35:49+08:00",
- "input_digest": "d0982b98639c1a08460e0fc28c0800af2421d2cd6c5b74356d34e0eada966ada",
+ "finished_at": "2026-10-20T06:03:11+08:00",
+ "input_digest": "1e0d9d480c1c325736e6169f9fa0240467b40cdcefb52bb4725277bca4ae10fa",
  "mutated_paths": [
   "tests/obligation_executor.py"
  ],
@@ -42,5 +43,5 @@
  "planted_exit": 1,
  "restored_clean": true,
  "schema_version": 1,
- "started_at": "2026-10-17T02:35:47+08:00"
+ "started_at": "2026-10-20T06:03:10+08:00"
 }

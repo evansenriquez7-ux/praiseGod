@@ -10,11 +10,13 @@
  "command": [
   "backend.app.practice_gen.validation.validate_obligations",
   "--only",
-  "manifest"
+  "manifest",
+  "--routes",
+  "calendar_read"
  ],
- "definition_digest": "21ad59835e479729cf3f7cf74f9ef7ce353af2dfb2a31141fc7e8ffd3b84754e",
+ "definition_digest": "11ff84ad6ad485199f78e000e22f8d1013d3f496af57d2724648851840fbc3c4",
  "detected": true,
- "diagnostic_line": "exit 1 — FAIL obligation_routes_reachable: 6 registered formatter route(s) no obligation can reach, above the floor of 5: ['balance_scale', 'fill_in_blank', 'numeric_input', 'planted_dead_route', 'table_read', 'ten_frame']. A rou",
+ "diagnostic_line": "exit 1 — FAIL obligation_routes_reachable (1):",
  "environment": {
   "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
   "machine": "x86_64",
@@ -24,23 +26,23 @@
  },
  "expect_output_contains": [
   "FAIL obligation_routes_reachable",
-  "planted_dead_route"
+  "route 'calendar_read'"
  ],
- "expected_check": "§11 (a registered formatter route no obligation can reach)",
- "finished_at": "2026-10-17T02:35:47+08:00",
- "input_digest": "d0982b98639c1a08460e0fc28c0800af2421d2cd6c5b74356d34e0eada966ada",
+ "expected_check": "§11 (a registered formatter route no obligation can reach; ruling 53)",
+ "finished_at": "2026-10-20T06:03:09+08:00",
+ "input_digest": "1e0d9d480c1c325736e6169f9fa0240467b40cdcefb52bb4725277bca4ae10fa",
  "mutated_paths": [
-  "backend/app/practice_gen/adapter.py"
+  "backend/app/practice_gen/compatibility.py"
  ],
  "mutation": "dead_formatter_route_ignored",
  "observed_markers": {
   "FAIL obligation_routes_reachable": true,
-  "planted_dead_route": true
+  "route 'calendar_read'": true
  },
  "paths_outside_input_set": [],
  "phase1_admissible": true,
  "planted_exit": 1,
  "restored_clean": true,
  "schema_version": 1,
- "started_at": "2026-10-17T02:35:45+08:00"
+ "started_at": "2026-10-20T06:03:08+08:00"
 }

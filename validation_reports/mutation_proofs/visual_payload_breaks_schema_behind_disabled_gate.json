@@ -1,0 +1,44 @@
+{
+ "asserts": [
+  "visual_schema_integrity"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "Visual schema validation failed"
+ ],
+ "command": [
+  "backend.app.practice_gen.validation.validate_matrix",
+  "--node",
+  "mat_g1_na_q1_0"
+ ],
+ "definition_digest": "89111724195ab8803cbbb71dc2851e3e344aa3ec6a2514d5151c6d9bcad08cde",
+ "detected": true,
+ "diagnostic_line": "exit 1 — [1/1] Checking mat_g1_na_q1_0 ...  FAIL",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "visual_schema_integrity && Visual schema validation failed for 'NumberLine'"
+ ],
+ "expected_check": "§4 visual payload schema (second layer behind the adapter's runtime gate)",
+ "finished_at": "2026-10-20T06:09:36+08:00",
+ "input_digest": "1e0d9d480c1c325736e6169f9fa0240467b40cdcefb52bb4725277bca4ae10fa",
+ "mutated_paths": [
+  "backend/app/practice_gen/adapter.py"
+ ],
+ "mutation": "visual_payload_breaks_schema_behind_disabled_gate",
+ "observed_markers": {
+  "visual_schema_integrity && Visual schema validation failed for 'NumberLine'": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-10-20T06:09:30+08:00"
+}

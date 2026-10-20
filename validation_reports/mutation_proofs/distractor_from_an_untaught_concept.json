@@ -1,0 +1,44 @@
+{
+ "asserts": [
+  "concept_gating"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "concept_gating"
+ ],
+ "command": [
+  "backend.app.practice_gen.validation.validate_matrix",
+  "--node",
+  "mat_g1_na_q1_7"
+ ],
+ "definition_digest": "d67fdcc8971ad47d1a723b2c3741b882a7260e273db3b18df6dec797b79d1a8e",
+ "detected": true,
+ "diagnostic_line": "exit 1 — [1/1] Checking mat_g1_na_q1_7 ...  FAIL",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "concept_gating && ar_wrong_op"
+ ],
+ "expected_check": "§1D concept gating (a distractor from an ErrorPattern past the lc's concepts)",
+ "finished_at": "2026-10-20T06:09:16+08:00",
+ "input_digest": "1e0d9d480c1c325736e6169f9fa0240467b40cdcefb52bb4725277bca4ae10fa",
+ "mutated_paths": [
+  "backend/app/practice_gen/generators/base_generator.py"
+ ],
+ "mutation": "distractor_from_an_untaught_concept",
+ "observed_markers": {
+  "concept_gating && ar_wrong_op": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-10-20T06:09:08+08:00"
+}

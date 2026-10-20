@@ -1,0 +1,46 @@
+{
+ "asserts": [
+  "coverage_regression_1H"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "stopped exercising"
+ ],
+ "command": [
+  "backend.app.practice_gen.validation.validate_matrix",
+  "--node",
+  "mat_g1_na_q1_0"
+ ],
+ "definition_digest": "ab4a57026e52e5d48a45a6f1d6d4eb6f516c6fe9109a462fa4100084ffc6801b",
+ "detected": true,
+ "diagnostic_line": "exit 1 — Nodes Failed:  0",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "§1H coverage regression: 1 node(s)",
+  "mat_g1_na_q1_0: stopped exercising ['§4']"
+ ],
+ "expected_check": "§1H regression (a node stops exercising a check it ran on the recorded run)",
+ "finished_at": "2026-10-20T06:09:30+08:00",
+ "input_digest": "1e0d9d480c1c325736e6169f9fa0240467b40cdcefb52bb4725277bca4ae10fa",
+ "mutated_paths": [
+  "backend/app/practice_gen/validation/validate_matrix.py"
+ ],
+ "mutation": "visual_check_silently_stops_on_a_node",
+ "observed_markers": {
+  "mat_g1_na_q1_0: stopped exercising ['§4']": true,
+  "§1H coverage regression: 1 node(s)": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-10-20T06:09:23+08:00"
+}

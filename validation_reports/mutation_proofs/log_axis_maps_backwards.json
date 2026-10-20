@@ -1,0 +1,44 @@
+{
+ "asserts": [
+  "monotonicity"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "Monotonicity violation"
+ ],
+ "command": [
+  "backend.app.practice_gen.validation.validate_matrix",
+  "--node",
+  "mat_g1_na_q1_0"
+ ],
+ "definition_digest": "abb349dfbc95ad3db49fd53bd1d1292496f6b10127fd0542241627c14402ea86",
+ "detected": true,
+ "diagnostic_line": "exit 1 — [1/1] Checking mat_g1_na_q1_0 ...  FAIL",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "monotonicity_range && Monotonicity violation"
+ ],
+ "expected_check": "§1B difficulty monotonicity across the scalar sweep",
+ "finished_at": "2026-10-20T06:09:23+08:00",
+ "input_digest": "1e0d9d480c1c325736e6169f9fa0240467b40cdcefb52bb4725277bca4ae10fa",
+ "mutated_paths": [
+  "backend/app/practice_gen/axes_catalog.py"
+ ],
+ "mutation": "log_axis_maps_backwards",
+ "observed_markers": {
+  "monotonicity_range && Monotonicity violation": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-10-20T06:09:17+08:00"
+}

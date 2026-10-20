@@ -1,0 +1,44 @@
+{
+ "asserts": [
+  "census_mutations"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "FAIL census"
+ ],
+ "command": [
+  "backend.app.practice_gen.validation.validate_census"
+ ],
+ "definition_digest": "d75ea47747a5caca75d301831a5365233a2dcb603dffd48cdda574af44391d9e",
+ "detected": true,
+ "diagnostic_line": "exit 1 — FAIL census (1 floor(s) breached):",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "FAIL census",
+  "mutations=100 is below the floor"
+ ],
+ "expected_check": "§7 census: the mutation-count floor (H-02)",
+ "finished_at": "2026-10-20T06:09:03+08:00",
+ "input_digest": "1e0d9d480c1c325736e6169f9fa0240467b40cdcefb52bb4725277bca4ae10fa",
+ "mutated_paths": [
+  "backend/app/practice_gen/validation/validate_census.py"
+ ],
+ "mutation": "census_counts_a_truncated_corpus",
+ "observed_markers": {
+  "FAIL census": true,
+  "mutations=100 is below the floor": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-10-20T06:08:50+08:00"
+}

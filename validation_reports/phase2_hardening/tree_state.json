@@ -1,20 +1,14 @@
 {
   "schema_version": 1,
   "note": "Intent record for interruption safety. Written when a batch, chain or campaign STARTS and cleared when it completes; an intent left open means a session did not reach its finish line. Deliberately digest-free -- see tests/tree_state.py. Read with `PYTHONPATH=. .venv/bin/python tests/tree_state.py`.",
-  "open_intent": {
+  "open_intent": null,
+  "last_completed": {
     "kind": "chain",
     "began_at": "2026-10-20T00:10:25+08:00",
     "session": "claude-opus-5-5",
     "note": "Re-prove after batch P2-A part 2 (rulings 53, 56, 57, H-02, H-05)",
-    "next_step": "Resume the chain at the first step whose artifact is still stale; shards are individually resumable, so re-run only the stale indices."
-  },
-  "last_completed": {
-    "kind": "chain",
-    "began_at": "2026-10-17T01:30:24+08:00",
-    "session": "p2fin-claude-opus-5-5",
-    "note": "P2-A chain 1 on 10078725: H6 carried stage, ruling 52 naming, §18 determinism (272 mutations)",
     "next_step": "Resume the chain at the first step whose artifact is still stale; shards are individually resumable, so re-run only the stale indices.",
-    "completed_at": "2026-10-17T06:43:43+08:00",
-    "completion_note": "P2-A chain 1 on 10078725: 272/272, 7 shards, run_all exit 2 integrity green"
+    "completed_at": "2026-10-20T10:10:35+08:00",
+    "completion_note": "Batch P2-A part 2 re-proved on 1956e7f9 (digest 1e0d9d480c1c3257): 282/282 mutations detected, 7 release shards, run_all exit 2 INTEGRITY: GREEN"
   }
 }

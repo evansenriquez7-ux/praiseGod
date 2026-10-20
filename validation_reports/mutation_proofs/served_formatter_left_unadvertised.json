@@ -1,0 +1,48 @@
+{
+ "asserts": [
+  "formatters_served_are_advertised"
+ ],
+ "baseline_exit": 0,
+ "baseline_markers_already_present": [],
+ "baseline_must_not_contain": [
+  "FAIL formatters_served_are_advertised"
+ ],
+ "command": [
+  "backend.app.practice_gen.validation.validate_compat",
+  "--only",
+  "served",
+  "--node-ids",
+  "mat_g1_na_q1_0"
+ ],
+ "definition_digest": "566982199aaeb9756ca5c04da06adce04a619f8686c42be0cbc0fb9567f64ba9",
+ "detected": true,
+ "diagnostic_line": "exit 1 — FAIL formatters_served_are_advertised (1):",
+ "environment": {
+  "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "requirements_sha256": "08826c41d65b7ef55729fdd05728738f15cf7ba589969e0528b846d271fcc21f",
+  "system": "Darwin"
+ },
+ "expect_output_contains": [
+  "FAIL formatters_served_are_advertised",
+  "mat_g1_na_q1_0: seed && 'number_line_read'"
+ ],
+ "expected_check": "§2C reverse (a formatter the student path serves must be advertised; ruling 57)",
+ "finished_at": "2026-10-20T06:08:35+08:00",
+ "input_digest": "1e0d9d480c1c325736e6169f9fa0240467b40cdcefb52bb4725277bca4ae10fa",
+ "mutated_paths": [
+  "backend/app/practice_gen/_generated_formatter_exclusions.py"
+ ],
+ "mutation": "served_formatter_left_unadvertised",
+ "observed_markers": {
+  "FAIL formatters_served_are_advertised": true,
+  "mat_g1_na_q1_0: seed && 'number_line_read'": true
+ },
+ "paths_outside_input_set": [],
+ "phase1_admissible": true,
+ "planted_exit": 1,
+ "restored_clean": true,
+ "schema_version": 1,
+ "started_at": "2026-10-20T06:08:33+08:00"
+}

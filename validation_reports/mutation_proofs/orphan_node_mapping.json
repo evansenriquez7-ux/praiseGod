@@ -8,11 +8,13 @@
   "mat_g10_na_q1_999"
  ],
  "command": [
-  "backend.app.practice_gen.validation.validate_compat"
+  "backend.app.practice_gen.validation.validate_compat",
+  "--only",
+  "coverage"
  ],
- "definition_digest": "e1bf74312b677c7f412466255ff44dc1edcf8c25a9c5d0fc45733670e2294136",
+ "definition_digest": "9f17c8d04abae2612762df41093f5cd763a3d088798a449dcbe65850ebfc1b47",
  "detected": true,
- "diagnostic_line": "exit 1 — FAIL registry_coverage:",
+ "diagnostic_line": "exit 1 — FAIL registry_coverage (1):",
  "environment": {
   "executable": "/Users/enrichmentcap/Documents/antigravity/ccmed/.venv/bin/python",
   "machine": "x86_64",
@@ -24,8 +26,8 @@
   "NODE_TO_DNA node 'mat_g10_na_q1_999' is missing from the knowledge graph"
  ],
  "expected_check": "§2 registry coverage (NODE_TO_DNA -> KG reverse direction)",
- "finished_at": "2026-10-17T01:39:51+08:00",
- "input_digest": "d0982b98639c1a08460e0fc28c0800af2421d2cd6c5b74356d34e0eada966ada",
+ "finished_at": "2026-10-20T05:18:20+08:00",
+ "input_digest": "1e0d9d480c1c325736e6169f9fa0240467b40cdcefb52bb4725277bca4ae10fa",
  "mutated_paths": [
   "backend/app/practice_gen/registry.py"
  ],
@@ -38,5 +40,5 @@
  "planted_exit": 1,
  "restored_clean": true,
  "schema_version": 1,
- "started_at": "2026-10-17T01:36:19+08:00"
+ "started_at": "2026-10-20T05:18:19+08:00"
 }
