@@ -873,7 +873,7 @@ MUTATIONS: List[Mutation] = [
                 '    "planted_phantom_dna": ["mcq"],\n',
             )
         },
-        command=["backend.app.practice_gen.validation.validate_compat"],
+        command=["backend.app.practice_gen.validation.validate_compat", "--only", "table"],
         expected_check="_manifest.py import-time registry assertion",
         expect_output_contains=["planted_phantom_dna"],
     ),
@@ -892,7 +892,7 @@ MUTATIONS: List[Mutation] = [
                 '    "mat_g10_na_q1_999": ["addition"],  # planted orphan\n',
             )
         },
-        command=["backend.app.practice_gen.validation.validate_compat"],
+        command=["backend.app.practice_gen.validation.validate_compat", "--only", "coverage"],
         expected_check="§2 registry coverage (NODE_TO_DNA -> KG reverse direction)",
         expect_output_contains=[
             "NODE_TO_DNA node 'mat_g10_na_q1_999' is missing from the knowledge graph"
@@ -909,7 +909,7 @@ MUTATIONS: List[Mutation] = [
         ),
         edits={},
         apply_fn=_plant_prerequisite_vocab_loss,
-        command=["backend.app.practice_gen.validation.validate_compat"],
+        command=["backend.app.practice_gen.validation.validate_compat", "--only", "monotonicity"],
         expected_check="§2 KG monotonicity on explicit prerequisite edges",
         expect_output_contains=["KG Monotonicity Error (edge"],
         baseline_must_not_contain=["KG Monotonicity Error (edge"],
@@ -1071,7 +1071,7 @@ MUTATIONS: List[Mutation] = [
                 "        student_interest=None,  # planted Lab/portal drift\n",
             )
         },
-        command=["backend.app.practice_gen.validation.validate_compat"],
+        command=["backend.app.practice_gen.validation.validate_compat", "--only", "equivalence"],
         expected_check="behavioral Lab v2/student-portal equivalence",
         expect_output_contains=[
             "FAIL lab_portal_equivalence",

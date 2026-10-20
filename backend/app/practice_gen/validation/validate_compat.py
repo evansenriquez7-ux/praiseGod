@@ -1586,6 +1586,10 @@ def validate_all() -> bool:
 # ─── entry point ──────────────────────────────────────────────────────────────
 
 _SINGLE_CHECKS = {
+    "table": ("compatibility_table", validate_compatibility_table),
+    "coverage": ("registry_coverage", validate_registry_coverage),
+    "monotonicity": ("kg_monotonicity", validate_kg_monotonicity),
+    "equivalence": ("lab_portal_equivalence", validate_lab_portal_equivalence),
     "reachable": ("formatters_reachable", validate_advertised_formatters_are_reachable),
     "served": ("formatters_served_are_advertised", validate_served_formatters_are_advertised),
     "config": ("config_respects_competency", validate_config_respects_competency),
