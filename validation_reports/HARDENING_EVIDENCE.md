@@ -21070,3 +21070,157 @@ H-06 is closed with these.
 - **Not yet ruled out by measurement:** a set iteration found while reading. `validate_matrix`'s §1C-reverse picks
   `list(excluded_vals)[0]` from a set of strings, so which excluded variant the harness requests follows PYTHONHASHSEED
   (Protocol 6). It is fixed in part 2.
+
+---
+
+## 2026-10-20 — P2-A (part 2) & Phase 2 DONE: H-02 (202/202 assertions proven, 0 allowlisted), H-05 floors & §2C reverse (rulings 53, 57), and closure of H-02, H-05, H-07, H-08, H-10
+
+Batch P2-A part 2 completes the Phase 2 hardening plan (`docs/phase2_hardening_completion_plan.md`, rulings 23, 27, 52–57). No generator content was changed (`axes_catalog.log_scale_value` was extracted as a pure helper called by both `axes_catalog.py` and `validate_matrix.py`, byte-identical across all renders).
+
+### Owner ruling 57 (recorded verbatim in `docs/phase2_hardening_completion_plan.md`)
+
+While proving `formatters_reachable` (§2C), measurement over 6,040 student-path renders (151 lcs × seeds 1–40) exposed the reverse gap: on **16 lcs, 30 `(lc, formatter)` pairs (262 of 6,040 renders)**, `PracticeOrchestrator.generate_problem(node_id=lc, seed=s, is_student_path=True)` served a formatter that `get_node_formatters(lc)` did NOT advertise (because `NODE_FORMATTER_EXCLUSIONS` excluded it while the student path selected from `COMPATIBILITY` directly). Because the §1 matrix and the §11 obligation manifest enumerate `get_node_formatters`, those 262 served student-path items were outside both gates. Owner ruling 57 added `formatters_served_are_advertised` (§2C, content) to gate the reverse direction.
+
+### What was built (`ce82b256`, `1956e7f9`, chain `e8ad784d`)
+
+1. **Ruling 53 — three tolerated floors removed (now named content findings):**
+   - `validate_compat.py` (§2C `formatters_reachable`): floor 6 removed; the 6 standing `(lc, formatter)` pairs (`mat_g1_na_q3_4/number_bond`, `mat_g1_mg_q4_4/timetable_read`, `mat_g3_na_q4_0/array_grid_read`, `mat_g3_na_q4_0/array_grid_set`, `mat_g3_na_q4_2/array_grid_read`, `mat_g3_na_q4_2/array_grid_set`) now fail `formatters_reachable` (content) by name (`lc`, `ruled substitute (ruling 52)`, `Owed:`).
+   - `validate_obligations.py` (§11 `obligation_routes_reachable`): floor 5 removed and `_UNREACHABLE_ROUTE_FLOOR` deleted; the 5 standing dead routes (`balance_scale`, `fill_in_blank`, `numeric_input`, `table_read`, `ten_frame`) now fail `obligation_routes_reachable` (content) by name (`route '<name>'`, `ruled substitute (ruling 52)`, `Owed:`). Added `--routes` CLI scoping so `dead_formatter_route_ignored` proves the check on a clean-baseline route (`calendar_read`).
+   - `validate_capability.py` (§6 Phase 1): `_PROVISION_FLOOR` removed (was 5); the 5 standing `draw` gaps (`mat_g2_mg_q1_2`, `mat_g3_mg_q1_4`, `mat_g3_mg_q1_5`, `mat_g3_mg_q4_0`, `mat_g3_mg_q4_1`) now fail `capability_contract` (content) by name (`lc`, `ruled substitute (ruling 52)`, `Owed:`). Added `--integrity-only` CLI flag so integrity mutations against `--phase 1` run on a clean baseline; proven by `capability_content_absorbed_again`.
+
+2. **Ruling 57 — `formatters_served_are_advertised` (§2C reverse direction, content):**
+   - Added `validate_served_formatters_are_advertised` in `validate_compat.py` and registered `formatters_served_are_advertised` in `_manifest.py` (`CHECK_PHASE = 1`, `FINDING_CLASS = CONTENT`), `run_all.py`, and `docs/pgen_contract.md` §2C.
+   - Reports 30 `(lc, formatter)` pairs across 16 lcs with `lc`, first witness `seed`, sample list over seeds 1–40, `Reproduce:` call, and `Owed:`. Proven by `served_formatter_left_unadvertised` on `mat_g1_na_q1_0`.
+   - Added `"table"`, `"coverage"`, `"monotonicity"`, and `"equivalence"` to `validate_compat._SINGLE_CHECKS` and scoped the four §2 integrity mutations (`registry_drift`, `orphan_node_mapping`, `prerequisite_edge_loses_vocab`, `lab_route_drops_interest`) in `tests/mutation_harness.py` (`1956e7f9`).
+
+3. **H-02 — `UNPROVEN_ASSERTIONS` emptied (`10 -> 0`; `202/202` assertions proven by execution):**
+   - `capability_contract`: proven by `capability_content_absorbed_again`.
+   - `census_unit_tests`: proven by `census_counts_a_hollowed_suite` (plants on the count path in `validate_census.py` with `-k test_tree_state`, proving the floor comparison and collect-and-parse without deleting a test).
+   - `census_mutations`: proven by `census_counts_a_truncated_corpus` (plants `MUTATIONS[:100]` on the count path in `validate_census.py`).
+   - `reverse_compatibility_check_crash` and `reverse_curriculum_gate_check_crash`: proven by `excluded_variant_raises_wrong_exception` on `mat_g2_mg_q4_3` (after fixing `orchestrator.py` so a forced DNA that is disqualified raises `ValueError` rather than silently substituting another DNA, and sorting `excluded_vals` in `validate_matrix.py` for determinism).
+   - `reverse_curriculum_gate_check`: proven by `curriculum_gate_lets_variant_through` on `mat_g2_mg_q4_3` (disables both the orchestrator disqualification and `base_generator.generate_context`'s curriculum gate).
+   - `concept_gating`: proven by `distractor_from_an_untaught_concept` on `mat_g1_na_q1_7` (stops `base_generator` filtering `ErrorPattern`s by `cumulative_concepts`).
+   - `monotonicity`: extracted `axes_catalog.log_scale_value` as the single shared helper between `axes_catalog.py` and `validate_matrix.py`; proven by `log_axis_maps_backwards` on `mat_g1_na_q1_0`.
+   - `coverage_regression_1H`: proven by `visual_check_silently_stops_on_a_node` on `mat_g1_na_q1_0`.
+   - `visual_schema_integrity`: proven by `visual_payload_breaks_schema_behind_disabled_gate` on `mat_g1_na_q1_0` (disables the adapter's first-layer runtime `VisualSchemaRegistry` check and plants an invalid `NumberLine.content_type` in `fmt_number_line.py`; the second-layer shadowing is documented in `validate_matrix.py` and `docs/pgen_contract.md` §4).
+
+4. **H-05 — `validate_render.py` (§9) and `validate_grade.py` (§10) uncapped naming & breadth limits:**
+   - Removed `[:8]` / `[:10]` truncation from all content finding prints in `validate_render.py` and `validate_grade.py`; every content finding prints `lc: seed N ... Owed: ...` (ruling 52).
+   - Documented `SEEDS_PER_NODE = (11, 42, 64)` in both module docstrings and `docs/pgen_contract.md` §9/§10 rows as a NAMED LIMIT (formatter/variant breadth is covered by §11's 2,078,460 executions and §14's `validate_slots.paths()`).
+
+### Mutations (10 new + 4 scoped; corpus 272 -> 282)
+
+```text
+served_formatter_left_unadvertised                 formatters_served_are_advertised         validate_compat --only served --node-ids mat_g1_na_q1_0   DETECTED
+capability_content_absorbed_again                  capability_contract                      pytest test_validate_capability                           DETECTED
+census_counts_a_hollowed_suite                     census_unit_tests                        validate_census                                           DETECTED
+census_counts_a_truncated_corpus                   census_mutations                         validate_census                                           DETECTED
+excluded_variant_raises_wrong_exception            reverse_compatibility_check_crash,       validate_matrix --node-ids mat_g2_mg_q4_3                 DETECTED
+                                                   reverse_curriculum_gate_check_crash
+curriculum_gate_lets_variant_through               reverse_curriculum_gate_check            validate_matrix --node-ids mat_g2_mg_q4_3                 DETECTED
+distractor_from_an_untaught_concept                concept_gating                           validate_matrix --node-ids mat_g1_na_q1_7                 DETECTED
+log_axis_maps_backwards                            monotonicity                             validate_matrix --node-ids mat_g1_na_q1_0                 DETECTED
+visual_check_silently_stops_on_a_node              coverage_regression_1H                   validate_matrix --node-ids mat_g1_na_q1_0 --check-1h-only DETECTED
+visual_payload_breaks_schema_behind_disabled_gate  visual_schema_integrity                  validate_matrix --node-ids mat_g1_na_q1_0                 DETECTED
+registry_drift (scoped --only table)               compatibility_table                      validate_compat --only table                              DETECTED
+orphan_node_mapping (scoped --only coverage)       registry_coverage                        validate_compat --only coverage                           DETECTED
+prerequisite_edge_loses_vocab (--only monotonicity) kg_monotonicity                         validate_compat --only monotonicity                       DETECTED
+lab_route_drops_interest (--only equivalence)      lab_portal_equivalence                   validate_compat --only equivalence                        DETECTED
+```
+
+### Mistakes caught and Found-not-fixed bugs
+
+1. **Widening `SEEDS_PER_NODE` in `validate_grade.py` / `validate_render.py`:** Initially widened `SEEDS_PER_NODE` from `(11, 42, 64)` to 9 seeds `(3, 8, 11, 17, 23, 29, 34, 42, 64)`. Running `validate_grade` exposed a real generator/grader defect at `mat_g1_mg_q4_4` seed 8 (`clock_set` on an elapsed-time item where `time_reading` sets `answer_formula = "end_hour"` (`"11"`) while `fmt_clock` sets `correct_answer = "11:00"`; `portal` and `lab_v2` accept `"11:00"` via `scoring.answers_match`, whereas `lab_v1` evaluates `answer_formula` and checks `float("11:00") == float("11")`, which raises `ValueError` and grades `False`). Furthermore, 9 seeds × 151 lcs × 9 HTTP requests took ~54s per run, causing `grader_rejects_correct_answer_tree_wide` (baseline + planted = 2 runs) to exceed the 120s mutation timeout (`TIMEOUT` -> `INVALID`). Restored `SEEDS_PER_NODE = (11, 42, 64)` (`validate_grade` runs in 18.6s; `grader_rejects_correct_answer_tree_wide` `DETECTED`), named the 3-seed sample breadth in docstrings and `docs/pgen_contract.md` §9/§10, and recorded the `mat_g1_mg_q4_4` seed 8 `lab_v1` `ClockSet` elapsed-time grading bug in the generator work queue ("Found, not fixed").
+2. **Unscoped `validate_compat` mutations in the first chain (`p2fin2`):** In the first chain run on `ce82b256`, 278/282 mutations were `DETECTED` and 4 (`registry_drift`, `orphan_node_mapping`, `prerequisite_edge_loses_vocab`, `lab_route_drops_interest`) scored `INVALID` (`baseline exited 1`) because those 4 ran `validate_compat` without `--only`, which now exits 1 on the 6 `formatters_reachable` and 30 `formatters_served_are_advertised` content findings. Added `"table"`, `"coverage"`, `"monotonicity"`, and `"equivalence"` to `validate_compat._SINGLE_CHECKS`, scoped those 4 mutations in `tests/mutation_harness.py` (`1956e7f9`), verified each `DETECTED` individually, and re-ran the full chain (`e8ad784d`): **282/282 mutations `DETECTED`**.
+
+### Full Re-Proof Chain (`1956e7f9`, artifacts `e8ad784d`, digest `1e0d9d480c1c3257`)
+
+```text
+$ cat local_only/scratch/anchors/chain/progress.log
+START regen 05:14:56      -> END regen EXIT 0 05:15:08
+START benchmark 05:15:08  -> END benchmark EXIT 0 05:15:31 (shard count from benchmark: 7)
+START frontend 05:15:32   -> END frontend EXIT 0 05:15:44
+START corpus 05:15:44     -> END corpus EXIT 0 06:09:36 (282/282 mutations detected)
+escaped-plant grep lines: 1 (validate_coverage.py:446, benign comment)
+START shard0..shard6 06:09:36..09:16:35 -> all 7 shards EXIT 0 (26.2-27.4 min each; 519,615 cache keys / 2,078,460 executions)
+START verify 09:16:35     -> END verify EXIT 0 09:16:36
+START run_all 09:16:36    -> END run_all EXIT 2 10:05:33
+CHAIN DONE 10:05:33
+```
+
+Verbatim `run_all` summary (`local_only/scratch/anchors/chain/run_all.log`):
+
+```text
+--- Assertion Coverage (§8) ---
+  PASS mutation_proof_integrity_8: 282 executed mutation proof(s) verified against the current source/fixture digest
+  PASS silent_path_disposition_8: all 17 silent handler(s) carry a recorded disposition ({'checked': 7, 'named-failure': 3, 'limitation': 7})
+  PASS assertion_coverage_8: 202/202 harness assertions proven BY EXECUTION (38 discovered in validate_matrix, 164 declared across 24 modules), 0 knowingly unproven (allowlist may only shrink)
+
+--- Obligation Manifest (§11) ---
+  PASS obligation_derivations_agree: two independent traversals agree on 420 (node, DNA, formatter) pair(s) and 3849 discrete obligation(s); 16701 continuous class crossing(s)
+  FAIL obligation_routes_reachable (5):
+    - route 'balance_scale': ... Witness: ruled substitute (ruling 52): an unreachable route has no lc and no render. Owed: declare it in a DNA that can serve it, or deregister it.
+    - route 'fill_in_blank': ...
+    - route 'numeric_input': ...
+    - route 'table_read': ...
+    - route 'ten_frame': ...
+  PASS obligation_dimension_coverage_11: 3849 base x 27 interest requests x 4 experiences = 415692 finite obligations; 2078460 executions at 5 seeds
+  PASS obligation_execution_11: 168 PR cache-key sentinels / 672 experience executions completed in 1.538s
+  PASS obligation_benchmark_11: 1,000 representative cache keys are current, failure-free, and project within the four-hour / 30-minute-shard budgets
+  PASS obligation_release_shards_11: 7 current shards cover 519615 cache keys / 2078460 executions with no overlap
+
+--- Suite Census (§7) ---
+  PASS census: nodes=151 (floor 151)
+  PASS census: unit_tests=1023 (floor 635)
+  PASS census: mutations=282 (floor 105)
+  PASS census: variant_candidates=973 (floor 973)
+
+--- Two-Direction Contract Verification ---
+  PASS contract_doc_matches_registry
+  PASS operator_doc_covers_registry (47/49 refs, floor 12)
+  PASS two_direction_contract_match
+
+--- Stage Ledger ---
+  scheduled=22 completed=12 failed=10 crashed=0 not_run=0 incomplete=0
+  PASS stage_ledger_complete: every scheduled stage ran to a verdict
+  PASS stage_phase_matches_manifest: every stage's refs are registered to the band that stage runs in
+  PASS content_finding_named: every content finding names its lc, a witness seed (or ruling 52's substitute) and its owed build, and every one is printed
+  PASS finding_class_registry_complete: 202 label(s) classified, equal to the §8 inventory
+
+--- Verdict (owner ruling 27: 0 green / 2 content findings / 1 integrity) ---
+  INTEGRITY: GREEN (every stage ran to a verdict and no integrity label failed)
+  CONTENT: 17 label(s) reported findings -- the generator work queue; each stage's own output above names them by lc and seed:
+    - attester_packet_refused_2L (stage variant_exhibit_2L)
+    - capability_contract (stage capability_phase1)
+    - carried_capability_defect_6F (stage carried_defects_5_6)
+    - carried_judgment_defect_5 (stage carried_defects_5_6)
+    - count_noun_singular_after_many_1J (stage count_noun_1J)
+    - formatters_reachable (stage compatibility)
+    - formatters_served_are_advertised (stage compatibility)
+    - hint_sequence_unshown_15 (stage composition_15)
+    - obligation_routes_reachable (stage obligation_manifest_11)
+    - render_hash_order_dependent_18 (stage determinism_18)
+    - selector_value_unexhibited_15 (stage composition_15)
+    - slot_domain_escape_14 (stage slot_domains_14)
+    - slot_path_refused_14 (stage slot_domains_14)
+    - slot_text_unaccounted_14 (stage slot_domains_14)
+    - stem_clause_unproducible_17 (stage stem_review_17)
+    - stem_review_fail_17 (stage stem_review_17)
+    - variant_not_exhibited_2L (stage variant_exhibit_2L)
+
+======================================================================
+ALL TESTS: integrity green, CONTENT FINDINGS REMAIN (exit 2). Harness work may stop here; generator work is not done.
+======================================================================
+```
+
+### Phase 2 DONE — Exit Verification (`e8ad784d`, digest `1e0d9d480c1c3257`)
+
+| Phase 2 Exit Criterion (rulings 23, 27, 52–57) | Verbatim Result |
+|---|---|
+| `run_all` exits **0 or 2** with `INTEGRITY: GREEN` | `EXIT 2` — `INTEGRITY: GREEN (every stage ran to a verdict and no integrity label failed)` |
+| Every assertion in `run_all` proven by a current `DETECTED` mutation (`UNPROVEN_ASSERTIONS` empty) | `PASS assertion_coverage_8: 202/202 harness assertions proven BY EXECUTION ..., 0 knowingly unproven`; `282/282 mutations detected` (`0 SURVIVED`, `0 INVALID`) |
+| Every content finding names `lc`, witness `seed` (or ruling 52's substitute), and `Owed:` build, printed uncapped | `PASS content_finding_named: every content finding names its lc, a witness seed (or ruling 52's substitute) and its owed build, and every one is printed` |
+| All four digest-bound artifact families current and `tests/tree_state.py` prints `CERTIFIED` | `PASS tree_state: CERTIFIED` (`live input digest : 1e0d9d480c1c3257`, `worktree : clean`, `mutation_proofs fresh 282`, `release_shards fresh 7`, `obligation_benchmark fresh 1`, `frontend_static_render fresh 1`) |
+| Every H-row in `hardening_status.json` closed (or ruled `out_of_scope`) with evidence per acceptance check | `PASS hardening_status: 10 H-row(s) valid — 9 closed, 1 out_of_scope` (`H-01`..`H-08`, `H-10` closed; `H-09` out_of_scope) |
+| Every check's NAMED LIMITS recorded in its docstring, `docs/pgen_contract.md`, and `HARDENING_EVIDENCE.md` | Verified by `PASS contract_doc_matches_registry` and `PASS two_direction_contract_match` |
+
